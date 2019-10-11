@@ -286,8 +286,6 @@ local freeSlotContainer = {
 }
 
 function module:CreateFreeSlots()
-	if not NDuiDB["Bags"]["GatherEmpty"] then return end
-
 	local name = self.name
 	if not freeSlotContainer[name] then return end
 
@@ -321,7 +319,7 @@ function module:OnLogin()
 	local iconSize = NDuiDB["Bags"]["IconSize"]
 	local showItemLevel = NDuiDB["Bags"]["BagsiLvl"]
 	local deleteButton = NDuiDB["Bags"]["DeleteButton"]
-	local itemSetFilter = NDuiDB["Bags"]["ItemSetFilter"]
+	--local itemSetFilter = NDuiDB["Bags"]["ItemSetFilter"]
 
 	-- Init
 	local Backpack = cargBags:NewImplementation("NDui_Backpack")
@@ -330,9 +328,11 @@ function module:OnLogin()
 	Backpack:HookScript("OnShow", function() PlaySound(SOUNDKIT.IG_BACKPACK_OPEN) end)
 	Backpack:HookScript("OnHide", function() PlaySound(SOUNDKIT.IG_BACKPACK_CLOSE) end)
 
+	module.BagsType = {}
+	module.BagsType[0] = 0
+	module.BagsType[-1] = 0
+
 	local f = {}
-	module.AmmoBags = {}
-	module.SpecialBags = {}
 	local onlyBags, bagAmmo, bagEquipment, bagConsumble, bagsJunk, onlyBank, bankAmmo, bankLegendary, bankEquipment, bankConsumble, onlyReagent, bagFavourite, bankFavourite = self:GetFilters()
 
 	function Backpack:OnInit()
@@ -402,7 +402,7 @@ function module:OnLogin()
 		self.Count:SetFont(unpack(DB.Font))
 
 		self.BG = B.CreateBG(self)
-		B.CreateBD(self.BG, .3)
+		B.CreateBD(self.BG, .25)
 
 		self.junkIcon = self:CreateTexture(nil, "ARTWORK")
 		self.junkIcon:SetAtlas("bags-junkcoin")
@@ -432,6 +432,14 @@ function module:OnLogin()
 			C_NewItems_RemoveNewItem(self.bagID, self.slotID)
 		end
 	end
+
+	local bagTypeColor = {
+		[-1] = {.67, .83, .45, .25},
+		[0] = {0, 0, 0, .25},
+		[1] = {.53, .53, .93, .25},
+		[2] = {0, .5, 0, .25},
+		[3] = {0, .5, .8, .25},
+	}
 
 	function MyButton:OnUpdate(item)
 		if MerchantFrame:IsShown() then
@@ -473,6 +481,14 @@ function module:OnLogin()
 				B.HideOverlayGlow(self.glowFrame)
 			end
 		end
+
+		if NDuiDB["Bags"]["SpecialBagsColor"] then
+			local bagType = module.BagsType[item.bagID]
+			local color = bagTypeColor[bagType] or bagTypeColor[0]
+			self.BG:SetBackdropColor(unpack(color))
+		else
+			self.BG:SetBackdropColor(0, 0, 0, .25)
+		end
 	end
 
 	function MyButton:OnUpdateQuest(item)
@@ -500,20 +516,25 @@ function module:OnLogin()
 		local yOffset = -offset + spacing
 		local width, height = self:LayoutButtons("grid", columns, spacing, xOffset, yOffset)
 		if self.freeSlot then
-			local numSlots = #self.buttons + 1
-			local row = ceil(numSlots / columns)
-			local col = numSlots % columns
-			if col == 0 then col = columns end
-			local xPos = (col-1) * (iconSize + spacing)
-			local yPos = -1 * (row-1) * (iconSize + spacing)
+			if NDuiDB["Bags"]["GatherEmpty"] then
+				local numSlots = #self.buttons + 1
+				local row = ceil(numSlots / columns)
+				local col = numSlots % columns
+				if col == 0 then col = columns end
+				local xPos = (col-1) * (iconSize + spacing)
+				local yPos = -1 * (row-1) * (iconSize + spacing)
 
-			self.freeSlot:ClearAllPoints()
-			self.freeSlot:SetPoint("TOPLEFT", self, "TOPLEFT", xPos+xOffset, yPos+yOffset)
+				self.freeSlot:ClearAllPoints()
+				self.freeSlot:SetPoint("TOPLEFT", self, "TOPLEFT", xPos+xOffset, yPos+yOffset)
+				self.freeSlot:Show()
 
-			if height < 0 then
-				width, height = columns * (iconSize+spacing)-spacing, iconSize
-			elseif col == 1 then
-				height = height + iconSize + spacing
+				if height < 0 then
+					width, height = columns * (iconSize+spacing)-spacing, iconSize
+				elseif col == 1 then
+					height = height + iconSize + spacing
+				end
+			else
+				self.freeSlot:Hide()
 			end
 		end
 		self:SetSize(width + xOffset*2, height + offset)
@@ -532,13 +553,13 @@ function module:OnLogin()
 
 		local label
 		if strmatch(name, "AmmoItem$") then
-			label = INVTYPE_AMMO
+			label = DB.MyClass == "HUNTER" and INVTYPE_AMMO or SOUL_SHARDS
 		elseif strmatch(name, "Equipment$") then
-			if itemSetFilter then
-				label = L["Equipement Set"]
-			else
+			--if itemSetFilter then
+			--	label = L["Equipement Set"]
+			--else
 				label = BAG_FILTER_EQUIPMENT
-			end
+			--end
 		elseif name == "BankLegendary" then
 			label = LOOT_JOURNAL_LEGENDARIES
 		elseif strmatch(name, "Consumble$") then
@@ -600,7 +621,7 @@ function module:OnLogin()
 	function BagButton:OnUpdate()
 		local id = GetInventoryItemID("player", (self.GetInventorySlot and self:GetInventorySlot()) or self.invID)
 		if not id then return end
-		local _, _, quality, _, _, _, _, _, _, _, _, classID = GetItemInfo(id)
+		local _, _, quality, _, _, _, _, _, _, _, _, classID, subClassID = GetItemInfo(id)
 		quality = quality or 0
 		if quality == 1 then quality = 0 end
 		local color = BAG_ITEM_QUALITY_COLORS[quality]
@@ -610,10 +631,12 @@ function module:OnLogin()
 			self.BG:SetBackdropBorderColor(0, 0, 0)
 		end
 
-		module.AmmoBags[self.bagID] = (classID == LE_ITEM_CLASS_QUIVER)
-		local bagFamily = select(2, GetContainerNumFreeSlots(self.bagID))
-		if bagFamily then
-			module.SpecialBags[self.bagID] = bagFamily ~= 0
+		if classID == LE_ITEM_CLASS_CONTAINER then
+			module.BagsType[self.bagID] = subClassID or 0
+		elseif classID == LE_ITEM_CLASS_QUIVER then
+			module.BagsType[self.bagID] = -1
+		else
+			module.BagsType[self.bagID] = 0
 		end
 	end
 
@@ -632,27 +655,4 @@ function module:OnLogin()
 		AuroraOptionsbags:Disable()
 		AuroraConfig.bags = false
 	end
-
-	-- SHIFT KEY DETECT
-	local function onUpdate(self, elapsed)
-		if IsShiftKeyDown() then
-			self.elapsed = self.elapsed + elapsed
-			if self.elapsed > 3 then
-				UIErrorsFrame:AddMessage(DB.InfoColor..L["StupidShiftKey"])
-				self:Hide()
-			end
-		end
-	end
-	local shiftUpdater = CreateFrame("Frame")
-	shiftUpdater:SetScript("OnUpdate", onUpdate)
-	shiftUpdater:Hide()
-
-	f.main:HookScript("OnShow", function()
-		shiftUpdater.elapsed = 0
-		shiftUpdater:Show()
-	end)
-
-	f.main:HookScript("OnHide", function()
-		shiftUpdater:Hide()
-	end)
 end

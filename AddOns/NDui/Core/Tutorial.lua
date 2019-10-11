@@ -30,7 +30,6 @@ local function ForceDefaultSettings()
 	SetCVar("autoQuestWatch", 1)
 	SetCVar("overrideArchive", 0)
 	SetCVar("WorldTextScale", 1)
-	SetCVar("chatClassColorOverride", "0")
 end
 
 local function ForceRaidFrame()
@@ -291,6 +290,7 @@ local function ForceAddonSkins()
 	if NDuiADB["DBMRequest"] then ForceDBMOptions() end
 	if NDuiADB["SkadaRequest"] then ForceSkadaOptions() end
 	if NDuiADB["BWRequest"] then ForceBigwigs() end
+	NDuiDB["Skins"]["ResetRecount"] = true
 end
 
 -- Tutorial

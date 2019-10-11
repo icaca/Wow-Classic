@@ -46,6 +46,7 @@ function M:OnLogin()
 	self:TradeTargetInfo()
 	self:MenuButton_Add()
 	self:AutoDismount()
+	self:BidPriceHighlight()
 
 	-- Max camera distancee
 	if tonumber(GetCVar("cameraDistanceMaxZoomFactor")) ~= 2.6 then
@@ -227,7 +228,9 @@ function M:TradeTargetInfo()
 end
 
 -- Show BID and highlight price
-do
+function M:BidPriceHighlight()
+	if IsAddOnLoaded("Auc-Advanced") then return end
+
 	local function setupMisc(event, addon)
 		if addon == "Blizzard_AuctionUI" then
 			hooksecurefunc("AuctionFrameBrowse_Update", function()
@@ -248,7 +251,7 @@ do
 						local itemName = _G[buttonName.."Name"]
 						local moneyFrame = _G[buttonName.."MoneyFrame"]
 						local buyoutMoney = _G[buttonName.."BuyoutFrameMoney"]
-						if buyoutPrice >= 5*1e7 then color = "red" end
+						if buyoutPrice >= 1e6 then color = "red" end
 						if bidAmount > 0 then
 							name = name.." |cffffff00"..BID.."|r"
 							alpha = 1.0
@@ -426,4 +429,32 @@ function M:AutoDismount()
 		end
 	end
 	B:RegisterEvent("UI_ERROR_MESSAGE", updateEvent)
+end
+
+-- Check SHIFT key status
+do
+	local function onUpdate(self, elapsed)
+		if IsShiftKeyDown() then
+			self.elapsed = self.elapsed + elapsed
+			if self.elapsed > 5 then
+				UIErrorsFrame:AddMessage(DB.InfoColor..L["StupidShiftKey"])
+				self:Hide()
+			end
+		end
+	end
+	local shiftUpdater = CreateFrame("Frame")
+	shiftUpdater:SetScript("OnUpdate", onUpdate)
+	shiftUpdater:Hide()
+
+	local function ShiftKeyOnEvent(_, key, down)
+		if key == "LSHIFT" then
+			if down == 1 then
+				shiftUpdater.elapsed = 0
+				shiftUpdater:Show()
+			else
+				shiftUpdater:Hide()
+			end
+		end
+	end
+	B:RegisterEvent("MODIFIER_STATE_CHANGED", ShiftKeyOnEvent)
 end

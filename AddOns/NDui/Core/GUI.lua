@@ -42,10 +42,11 @@ local defaultSettings = {
 		BagsiLvl = true,
 		ReverseSort = false,
 		ItemFilter = true,
-		ItemSetFilter = false,
+		--ItemSetFilter = false,
 		DeleteButton = true,
 		FavouriteItems = {},
 		GatherEmpty = false,
+		SpecialBagsColor = true,
 	},
 	Auras = {
 		Reminder = true,
@@ -119,7 +120,7 @@ local defaultSettings = {
 	},
 	Chat = {
 		Sticky = false,
-		Lock = false,
+		Lock = true,
 		Invite = true,
 		Freedom = true,
 		Keyword = "raid",
@@ -203,6 +204,8 @@ local defaultSettings = {
 		Details = true,
 		QuestLogEx = true,
 		QuestTracker = true,
+		Recount = true,
+		ResetRecount = true,
 	},
 	Tooltip = {
 		CombatHide = false,
@@ -236,7 +239,7 @@ local defaultSettings = {
 		OnlyCompleteRing = false,
 		ExplosiveCache = {},
 		PlacedItemAlert = false,
-		EnhancedMenu = false,
+		EnhancedMenu = true,
 		AutoDismount = true,
 	},
 	Tutorial = {
@@ -272,6 +275,7 @@ local accountSettings = {
 	AutoBubbles = false,
 	SystemInfoType = 0,
 	DisableInfobars = false,
+	ClassColorChat = true,
 }
 
 -- Initial settings
@@ -363,6 +367,10 @@ end
 
 local function updateChatSticky()
 	B:GetModule("Chat"):ChatWhisperSticky()
+end
+
+local function updateClassColorName()
+	B:GetModule("Chat"):UpdateClassColorName()
 end
 
 local function updateTimestamp()
@@ -457,6 +465,20 @@ local function updateReminder()
 	B:GetModule("Auras"):InitReminder()
 end
 
+StaticPopupDialogs["RESET_DETAILS"] = {
+	text = L["Reset Details check"],
+	button1 = YES,
+	button2 = NO,
+	OnAccept = function()
+		NDuiADB["ResetDetails"] = true
+		ReloadUI()
+	end,
+	whileDead = 1,
+}
+local function resetDetails()
+	StaticPopup_Show("RESET_DETAILS")
+end
+
 -- Config
 local tabList = {
 	L["Actionbar"],
@@ -494,13 +516,14 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 	},
 	[2] = {
 		{1, "Bags", "Enable", "|cff00cc4c"..L["Enable Bags"]},
-		{1, "Bags", "ItemFilter", L["Bags ItemFilter"]},
-		{1, "Bags", "ItemSetFilter", L["Use ItemSetFilter"], true},
+		--{1, "Bags", "ItemSetFilter", L["Use ItemSetFilter"], true},
 		{},--blank
+		{1, "Bags", "ItemFilter", L["Bags ItemFilter"].."*"},
+		{1, "Bags", "GatherEmpty", L["Bags GatherEmpty"].."*", true},
+		{1, "Bags", "SpecialBagsColor", L["SpecialBagsColor"].."*", nil, nil, nil, L["SpecialBagsColorTip"]},
+		{1, "Bags", "ReverseSort", L["Bags ReverseSort"].."*", true, nil, updateBagSortOrder},
 		{1, "Bags", "BagsiLvl", L["Bags Itemlevel"]},
 		{1, "Bags", "DeleteButton", L["Bags DeleteButton"], true},
-		{1, "Bags", "ReverseSort", L["Bags ReverseSort"].."*", nil, nil, updateBagSortOrder},
-		{1, "Bags", "GatherEmpty", "|cff00cc4c"..L["Bags GatherEmpty"], true},
 		{},--blank
 		{3, "Bags", "BagsScale", L["Bags Scale"], false, {.5, 1.5, 1}},
 		{3, "Bags", "IconSize", L["Bags IconSize"], true, {30, 42, 0}},
@@ -638,13 +661,14 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{3, "Chat", "ChatWidth", L["LockChatWidth"].."*", nil, {200, 600, 0}, updateChatSize},
 		{3, "Chat", "ChatHeight", L["LockChatHeight"].."*", true, {100, 500, 0}, updateChatSize},
 		{},--blank
-		{1, "Chat", "Oldname", L["Default Channel"]},
+		{1, "ACCOUNT", "ClassColorChat", L["ClassColorChat"].."*", nil, nil, updateClassColorName},
 		{1, "ACCOUNT", "Timestamp", L["Timestamp"], true, nil, updateTimestamp},
 		{1, "Chat", "Sticky", L["Chat Sticky"].."*", nil, nil, updateChatSticky},
 		{1, "Chat", "WhisperColor", L["Differ WhipserColor"].."*", true},
 		{1, "Chat", "Freedom", L["Language Filter"]},
-		{1, "Chat", "Chatbar", L["ShowChatbar"], true},
-		{1, "Chat", "ChatItemLevel", "|cff00cc4c"..L["ShowChatItemLevel"]},
+		{1, "Chat", "Oldname", L["Default Channel"], true},
+		{1, "Chat", "Chatbar", L["ShowChatbar"]},
+		{1, "Chat", "ChatItemLevel", "|cff00cc4c"..L["ShowChatItemLevel"], true},
 		{},--blank
 		{1, "Chat", "EnableFilter", "|cff00cc4c"..L["Enable Chatfilter"]},
 		{1, "Chat", "BlockAddonAlert", L["Block Addon Alert"]},
@@ -677,15 +701,16 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Skins", "ClassLine", L["ClassColor Line"]},
 		{},--blank
 		{1, "Skins", "MicroMenu", L["Micromenu"]},
-		{1, "Skins", "QuestTracker", L["QuestTracker"], true},
+		{1, "Skins", "QuestTracker", L["EnhancedQuestLog"], true, nil, nil, L["EnhancedQuestLogTips"]},
 		{},--blank
 		{1, "Skins", "DBM", L["DBM Skin"]},
 		{1, "Skins", "Skada", L["Skada Skin"], true},
 		{1, "Skins", "Bigwigs", L["Bigwigs Skin"]},
 		{1, "Skins", "TMW", L["TMW Skin"], true},
 		{1, "Skins", "WeakAuras", L["WeakAuras Skin"]},
-		{1, "Skins", "Details", L["Details Skin"], true},
+		{1, "Skins", "Details", L["Details Skin"], true, resetDetails},
 		{1, "Skins", "QuestLogEx", L["QuestLogEx Skin"], nil, nil, nil, L["ExtendedQuestLogAddons"]},
+		{1, "Skins", "Recount", L["Recount Skin"], true},
 	},
 	[11] = {
 		{1, "Tooltip", "CombatHide", L["Hide Tooltip"].."*"},
@@ -707,11 +732,11 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Misc", "GemNEnchant", L["Show GemNEnchant"].."*", true},
 		{1, "Misc", "ShowItemLevel", L["Show ItemLevel"].."*"},
 		{},--blank
-		{1, "Misc", "Mail", L["Mail Tool"]},
-		{1, "ACCOUNT", "AutoBubbles", L["AutoBubbles"], true},
 		{1, "Misc", "FasterLoot", L["Faster Loot"].."*", nil, nil, updateFasterLoot},
 		{1, "Misc", "HideErrors", L["Hide Error"].."*", true, nil, updateErrorBlocker},
-		{1, "Misc", "EnhancedMenu", L["TargetEnhancedMenu"], nil, nil, nil, L["MenuEnhancedTaints"]},
+		{1, "Misc", "Mail", L["Mail Tool"]},
+		{1, "ACCOUNT", "AutoBubbles", L["AutoBubbles"], true},
+		{1, "Misc", "EnhancedMenu", L["TargetEnhancedMenu"], nil, nil, nil, L["MenuEnhancedTips"]},
 		{1, "Misc", "AutoDismount", L["AutoDismount"], true},
 	},
 	[13] = {
@@ -1321,15 +1346,6 @@ local function OpenGUI()
 		end
 	end
 	B:RegisterEvent("PLAYER_REGEN_DISABLED", showLater)
-
-	-- Reset Details skin
-	local detail = B.CreateButton(guiPage[10].child, 50, 25, RESET)
-	detail:SetPoint("TOPLEFT", 480, -300)
-	detail.text:SetTextColor(.6, .8, 1)
-	detail:SetScript("OnClick", function()
-		NDuiADB["ResetDetails"] = true
-		StaticPopup_Show("RELOAD_NDUI")
-	end)
 
 	SelectTab(1)
 end
