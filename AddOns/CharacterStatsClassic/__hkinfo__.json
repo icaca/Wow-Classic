@@ -3,5 +3,6 @@
     "searchName": "CharacterStatsClassic",
     "localName": "CharacterStatsClassic",
     "version": "1.0",
-    "fileName": "characterstatsclassic"
+    "ignore": true,
+    "status": ""
 }

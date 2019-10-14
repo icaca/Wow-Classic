@@ -1,6 +1,6 @@
 # Deadly Boss Mods Core
 
-## [1.13.5](https://github.com/DeadlyBossMods/DBM-Classic/tree/1.13.5) (2019-08-31)
-[Full Changelog](https://github.com/DeadlyBossMods/DBM-Classic/compare/1.13.4...1.13.5)
+## [1.13.13b](https://github.com/DeadlyBossMods/DBM-Classic/tree/1.13.13b) (2019-09-26)
+[Full Changelog](https://github.com/DeadlyBossMods/DBM-Classic/compare/1.13.13...1.13.13b)
 
-- Embed Ace libs that threatlib requires, for now. threatlib will cull it's dependancies on a later date.  
+- Revert "Optimized checkForSafeSender"  

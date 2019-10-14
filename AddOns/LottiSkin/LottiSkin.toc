@@ -1,0 +1,17 @@
+## Interface: 11302
+## Title: |Cff81d8cfLotti |rSkin 美化
+## Notes: Bigwigs,DBM,WA,TMW美化
+## Version: 10.6
+## Author: Lotti
+## OptionalDeps: DBM-Core, BigWigs, WeakAuras, TellMeWhen
+## X-DBM-Timer-Skin: 1
+## X-DBM-Timer-Skin-Name: LottiSkin
+## X-DBM-Timer-Skin-Textures: Interface\AddOns\LottiSkin\media\statusbar.tga
+## X-DBM-Timer-Skin-Texture-Names: statusbar
+## X-DBM-Timer-Skin-Fonts: Interface\AddOns\LottiSkin\media\Font.ttf
+## X-DBM-Timer-Skin-Font-Names: LottiSkin Font
+
+LottiSkin.lua
+TimerSkin.xml
+BossSkin.lua
+
