@@ -159,5 +159,7 @@ L["Wing Commander Vipore"] = "空军指挥官维波里"
 L["Wintergrasp Graveyard"] = "冬拥湖墓地"
 L["WSG"] = "WSG"
 L["Wyvern Camp"] = "双足飞龙营地"
+--补充汉化
+L["Steamsaw"] = "蒸汽锯"
 
 end

@@ -24,7 +24,8 @@
 
 
 This file is for storing global strings as well as some things that don't fit
-very well in the other localization files.
+very well in the other localization files, such as Battlegrounds, Outdoor
+Raids, etc.
 
 
 --]]
@@ -70,7 +71,7 @@ AQCCON = "AtlasQuest will now recolour quests depending on their levels.";
 AQCCOFF = "AtlasQuest will not recolour quests."
 
 -- QuestLog Colour Check
-AQQLColourChange = ""..WHITE.."DISABLED Colours all quest, you have in your Questlog "..BLUE.."blue.";
+AQQLColourChange = ""..WHITE.."Colours all quest, you have in your Questlog "..BLUE.."blue.";
 
 -- AutoQuery Quest Rewards
 AQOptionsAutoQueryTEXT = ""..WHITE.."Automatically query the server for items you haven't seen.";
@@ -79,7 +80,7 @@ AQOptionsAutoQueryTEXT = ""..WHITE.."Automatically query the server for items yo
 AQOptionsNoQuerySpamTEXT = ""..WHITE.."Suppress Server Query spam.";
 
 -- Use Comparison Tooltips
-AQOptionsCompareTooltipTEXT = ""..WHITE.."DISABLED Compare rewards to currently equipped items.";
+AQOptionsCompareTooltipTEXT = ""..WHITE.."Compare rewards to currently equipped items.";
 
 -- Quest Query text
 AQQuestQueryButtonTEXT = ""..WHITE.."Quest Query";
@@ -143,6 +144,7 @@ AQITEM_CLOTH = " Cloth"
 AQITEM_LEATHER = " Leather"
 AQITEM_MAIL = " Mail"
 AQITEM_PLATE = " Plate"
+AQITEM_COSMETIC = " Cosmetic"
 
 AQITEM_OFFHAND = "Offhand"
 AQITEM_MAINHAND = "Main Hand,"
@@ -150,6 +152,7 @@ AQITEM_ONEHAND = "One-Hand,"
 AQITEM_TWOHAND = "Two-Hand,"
 
 AQITEM_ITEM = "Item" -- Use this for those oddball rewards which aren't really anything else.
+AQITEM_TOY = "Toy"
 AQITEM_PET = "Pet"
 AQITEM_TRINKET = "Trinket"
 AQITEM_POTION = "Potion"
@@ -157,6 +160,7 @@ AQITEM_NECK = "Neck"
 AQITEM_PATTERN = "Pattern"
 AQITEM_BAG = "Bag"
 AQITEM_RING = "Ring"
+AQITEM_GEM = "Gem"
 AQITEM_ENCHANT = "Enchant"
 AQITEM_SPELL = "Spell"
 

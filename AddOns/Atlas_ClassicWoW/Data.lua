@@ -532,7 +532,7 @@ db.AtlasMaps = {
 		{ BLUE.." A) "..ALC["Entrance"] },
 		{ BLUE.." B) "..ALC["Exit"] },
 		{ WHIT.." 1) "..Atlas:GetBossName("Rhahk'Zor") },
-		{ WHIT.." 2) "..Atlas:GetBossName("Miner Johnson")..ALC["L-Parenthesis"]..ALC["(Rare)"]..ALC["R-Parenthesis"] },
+		{ WHIT.." 2) "..Atlas:GetBossName("Miner Johnson")..ALC["L-Parenthesis"]..ALC["Rare"]..ALC["R-Parenthesis"] },
 		{ WHIT.." 3) "..Atlas:GetBossName("Sneed") },
 		{ WHIT..INDENT..L["Sneed's Shredder"] },
 		{ WHIT.." 4) "..Atlas:GetBossName("Gilnid") },
