@@ -155,7 +155,6 @@ local defaultSettings = {
 		HostileCC = true,
 		TankMode = false,
 		TargetIndicator = 5,
-		InsideView = true,
 		Distance = 42,
 		PlateWidth = 135,
 		PlateHeight = 5,
@@ -241,6 +240,7 @@ local defaultSettings = {
 		PlacedItemAlert = false,
 		EnhancedMenu = true,
 		AutoDismount = true,
+		TradeTabs = true,
 	},
 	Tutorial = {
 		Complete = false,
@@ -391,10 +391,6 @@ end
 
 local function updateChatSize()
 	B:GetModule("Chat"):UpdateChatSize()
-end
-
-local function updatePlateInsideView()
-	B:GetModule("UnitFrames"):PlateInsideView()
 end
 
 local function updatePlateSpacing()
@@ -588,13 +584,12 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{4, "Nameplate", "TargetIndicator", L["TargetIndicator"].."*", true, {DISABLE, L["TopArrow"], L["RightArrow"], L["TargetGlow"], L["TopNGlow"], L["RightNGlow"]}, refreshNameplates},
 		{1, "Nameplate", "FullHealth", L["Show FullHealth"].."*", nil, nil, refreshNameplates},
 		{1, "Nameplate", "ColorBorder", L["ColorBorder"].."*", true, nil, refreshNameplates},
-		{1, "Nameplate", "InsideView", L["Nameplate InsideView"].."*", nil, nil, updatePlateInsideView},
-		{1, "Nameplate", "QuestIndicator", L["QuestIndicator"], true, nil, nil, L["QuestIndicatorAddOns"]},
+		{1, "Nameplate", "QuestIndicator", L["QuestIndicator"], nil, nil, nil, L["QuestIndicatorAddOns"]},
 		{},--blank
 		{1, "Nameplate", "CustomUnitColor", "|cff00cc4c"..L["CustomUnitColor"].."*", nil, nil, updateCustomUnitList},
 		{5, "Nameplate", "CustomColor", L["Custom Color"].."*", 2},
-		{2, "Nameplate", "UnitList", L["UnitColor List"].."*", nil, nil, updateCustomUnitList},
-		{2, "Nameplate", "ShowPowerList", L["ShowPowerList"].."*", true, nil, updatePowerUnitList},
+		{2, "Nameplate", "UnitList", L["UnitColor List"].."*", nil, nil, updateCustomUnitList, L["CustomUnitTips"]},
+		{2, "Nameplate", "ShowPowerList", L["ShowPowerList"].."*", true, nil, updatePowerUnitList, L["CustomUnitTips"]},
 		{1, "Nameplate", "TankMode", "|cff00cc4c"..L["Tank Mode"].."*"},
 		{5, "Nameplate", "SecureColor", L["Secure Color"].."*", 2},
 		--{1, "Nameplate", "DPSRevertThreat", L["DPS Revert Threat"].."*", true},
@@ -728,9 +723,9 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Tooltip", "HideAllID", "|cff00cc4c"..L["HideAllID"], true},
 	},
 	[12] = {
-		{1, "Misc", "ItemLevel", "|cff00cc4c"..L["Show ItemLevel"]},
-		{1, "Misc", "GemNEnchant", L["Show GemNEnchant"].."*", true},
-		{1, "Misc", "ShowItemLevel", L["Show ItemLevel"].."*"},
+		{1, "Misc", "ItemLevel", "|cff00cc4c"..L["Show ItemQuality"]},
+		{1, "Misc", "GemNEnchant", L["Show GemNEnchant"].."*"},
+		{1, "Misc", "ShowItemLevel", L["Show ItemLevel"].."*", true},
 		{},--blank
 		{1, "Misc", "FasterLoot", L["Faster Loot"].."*", nil, nil, updateFasterLoot},
 		{1, "Misc", "HideErrors", L["Hide Error"].."*", true, nil, updateErrorBlocker},
@@ -738,10 +733,11 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{1, "ACCOUNT", "AutoBubbles", L["AutoBubbles"], true},
 		{1, "Misc", "EnhancedMenu", L["TargetEnhancedMenu"], nil, nil, nil, L["MenuEnhancedTips"]},
 		{1, "Misc", "AutoDismount", L["AutoDismount"], true},
+		{1, "Misc", "TradeTabs", L["TradeTabs"], nil, nil, nil, L["TradeTabsTips"]},
 	},
 	[13] = {
 		{1, "ACCOUNT", "VersionCheck", L["Version Check"]},
-		{1, "ACCOUNT", "DisableInfobars", L["DisableInfobars"]},
+		{1, "ACCOUNT", "DisableInfobars", L["DisableInfobars"], true},
 		{},--blank
 		{3, "ACCOUNT", "UIScale", L["Setup UIScale"], false, {.4, 1.15, 2}},
 		{1, "ACCOUNT", "LockUIScale", "|cff00cc4c"..L["Lock UIScale"], true},
