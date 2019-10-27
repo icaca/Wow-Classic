@@ -13,28 +13,25 @@
 A1
 驱除疾病
 #showtooltip [noexists][help]驱除疾病;[harm]安抚心灵
+/cast [@mouseover,harm] [harm]安抚心灵
 /cast [noexists] [@mouseover,help] [help]驱除疾病
-/cast [@mouseover,harm]安抚心灵
 
 F1
 治疗术
 #showtooltip [noexists][help]治疗术;[harm]束缚亡灵
-/cast [noexists] [@mouseover,help] [help]治疗术
-/cast [@mouseover,harm]束缚亡灵
+/cast [@mouseover,harm] [harm]束缚亡灵
+/cast [noexists] [help]治疗术
 
 F2
 治疗术(等级 1)
 #showtooltip [noexists][help]治疗术(等级 1);[harm]精神控制
-/cast [noexists] [@mouseover,help] [help]治疗术(等级 1)
+/cast [noexists] [help]治疗术(等级 1)
 /cast [harm]精神控制
 
 4
 强效治疗术
 #showtooltip [noexists][help]强效治疗术;[harm]法力燃烧
-/script UIErrorsFrame:Hide()
 /cast 心灵专注
-/script UIErrorsFrame:Clear()
-/script UIErrorsFrame:Show()
-/cast [noexists] [@mouseover,help] [help]强效治疗术
+/cast [noexists] [help]强效治疗术
 /cast [harm]法力燃烧
 
