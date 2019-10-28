@@ -1,0 +1,11 @@
+## Interface: 11302
+## Title: XLoot Options
+## Notes: Configuration interface for XLoot
+## Version: 8.1-1
+## Author: Xuerian
+## X-Category: Inventory
+
+## Dependencies: XLoot
+## LoadOnDemand: 1
+
+load.xml

@@ -1,0 +1,10 @@
+## Interface: 11302
+## Title: XLoot Master
+## Notes: Configurable Master Looter interface
+## Version: 8.1-1
+## Author: Xuerian, Dridzt
+## X-Category: Inventory
+
+## Dependencies: XLoot
+
+load.xml
