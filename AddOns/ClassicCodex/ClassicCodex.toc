@@ -4,7 +4,7 @@
 ## Title: ClassicCodex
 ## Notes: ClassicCodex
 ## Author: Pgarneau, Shagu
-## Version: 1.2.2
+## Version: 1.2.3
 ## SavedVariablesPerCharacter: CodexConfig, CodexHiddenQuests, CodexBrowserFavorites, CodexColors
 
 # database index
@@ -72,6 +72,14 @@ db\esES\quests.lua
 db\esES\zones.lua
 db\esES\professions.lua
 
+# database esMX
+db\esMX\items.lua
+db\esMX\units.lua
+db\esMX\objects.lua
+db\esMX\quests.lua
+db\esMX\zones.lua
+db\esMX\professions.lua
+
 # database ruRU
 db\ruRU\items.lua
 db\ruRU\units.lua
@@ -85,6 +93,14 @@ lib\LibStub\LibStub.lua
 lib\CallbackHandler-1.0\CallbackHandler-1.0.xml
 lib\HereBeDragons\HereBeDragons-2.0.lua
 lib\HereBeDragons\HereBeDragons-Pins-2.0.lua
+lib\AceLocale-3.0\AceLocale-3.0.lua
+
+# locales
+locale\enUS.lua
+locale\esES.lua
+locale\esMX.lua
+locale\zhCN.lua
+locale\zhTW.lua
 
 # main
 command.lua

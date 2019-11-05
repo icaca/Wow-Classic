@@ -1,7 +1,7 @@
 ## Interface: 11302
 ## Author: Peter Getov
-## Version: 1.0
-## Title: CharacterStatsClassic
+## Version: 2.5
+## Title: |cff00aeffCharacterStatsClassic|r
 ## Notes: Advanced Character Stats
 ## DefaultState:  enabled
 ## SavedVariables: CharacterStatsClassicDB
@@ -10,3 +10,15 @@
 CharacterStatsClassicUI.lua
 CharacterStatsClassicCore.lua
 CharacterStatsClassicUtils.lua
+ClassUtils.lua
+
+Localization\Localization_en.lua
+Localization\Localization_de.lua
+Localization\Localization_cn.lua
+Localization\Localization_ru.lua
+Localization\Localization_fr.lua
+Localization\Localization_it.lua
+Localization\Localization_tw.lua
+Localization\Localization_kr.lua
+Localization\Localization_es.lua
+Localization\Localization_br.lua
