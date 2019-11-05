@@ -1,7 +1,7 @@
 2
 快速治疗
-#showtooltip [noexists][help]快速治疗;[harm]心灵震爆
-/cast [noexists] [@mouseover,help] [help]快速治疗
+#showtooltip [noexists][help]快速治疗(等级 6);[harm]心灵震爆
+/cast [noexists] [@mouseover,help] [help]快速治疗(等级 6)
 /castsequence [harm] reset=6 神圣之火,心灵震爆,惩击,惩击,惩击,惩击,惩击
 
 3
