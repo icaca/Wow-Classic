@@ -75,7 +75,7 @@ local defaultSettings = {
 		SwingBar = false,
 		SwingTimer = false,
 		RaidFrame = true,
-		NumGroups = 6,
+		NumGroups = 8,
 		SimpleMode = false,
 		SimpleModeSortByRole = true,
 		InstanceAuras = true,
@@ -117,6 +117,12 @@ local defaultSettings = {
 		BossWidth = 150,
 		BossHeight = 22,
 		BossPowerHeight = 2,
+
+		CastingColor = {r=.3, g=.7, b=1},
+		PlayerCBWidth = 300,
+		PlayerCBHeight = 20,
+		TargetCBWidth = 280,
+		TargetCBHeight = 20,
 	},
 	Chat = {
 		Sticky = false,
@@ -356,6 +362,10 @@ local function updateRaidSize()
 	B:GetModule("UnitFrames"):ResizeRaidFrame()
 end
 
+local function setupCastbar()
+	G:SetupCastbar(guiPage[3])
+end
+
 local function setupAuraWatch()
 	f:Hide()
 	SlashCmdList["NDUI_AWCONFIG"]()
@@ -529,7 +539,7 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 	[3] = {
 		{1, "UFs", "Enable", "|cff00cc4c"..L["Enable UFs"], nil, setupUnitFrame},
 		{},--blank
-		{1, "UFs", "Castbars", "|cff00cc4c"..L["UFs Castbar"]},
+		{1, "UFs", "Castbars", "|cff00cc4c"..L["UFs Castbar"], nil, setupCastbar},
 		{1, "UFs", "LagString", L["Castbar LagString"], true},
 		{1, "UFs", "SwingBar", L["UFs SwingBar"]},
 		{1, "UFs", "SwingTimer", L["UFs SwingTimer"], true},
@@ -647,7 +657,7 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Misc", "Interrupt", "|cff00cc4c"..L["Interrupt Alert"].."*", nil, nil, updateInterruptAlert},
 		{1, "Misc", "AlertInInstance", L["Alert In Instance"].."*", true},
 		{1, "Misc", "OwnInterrupt", L["Own Interrupt"].."*"},
-		{1, "Misc", "BrokenSpell", L["Broken Spell"].."*", true},
+		{1, "Misc", "BrokenSpell", L["Broken Spell"].."*", true, nil, nil, L["BrokenSpellTip"]},
 		{},--blank
 		{1, "Misc", "PlacedItemAlert", L["Placed Item Alert"].."*"},
 	},
@@ -911,7 +921,7 @@ local function CreateOption(i)
 			B.CreateFS(dd, 14, name, "system", "CENTER", 0, 25)
 		-- Colorswatch
 		elseif optType == 5 then
-			local f = B.CreateColorSwatch(parent)
+			local f = B.CreateColorSwatch(parent, name, NDUI_VARIABLE(key, value))
 			local width = 25 + (horizon or 0)*155
 			if horizon then
 				f:SetPoint("TOPLEFT", width, -offset + 30)
@@ -919,30 +929,6 @@ local function CreateOption(i)
 				f:SetPoint("TOPLEFT", width, -offset - 5)
 				offset = offset + 35
 			end
-			B.CreateFS(f, 14, name, false, "LEFT", 26, 0)
-			f.tex:SetVertexColor(NDUI_VARIABLE(key, value).r, NDUI_VARIABLE(key, value).g, NDUI_VARIABLE(key, value).b)
-
-			local function onUpdate()
-				local r, g, b = ColorPickerFrame:GetColorRGB()
-				f.tex:SetVertexColor(r, g, b)
-				NDUI_VARIABLE(key, value).r, NDUI_VARIABLE(key, value).g, NDUI_VARIABLE(key, value).b = r, g, b
-				if callback then callback() end
-			end
-
-			local function onCancel()
-				local r, g, b = ColorPicker_GetPreviousValues()
-				f.tex:SetVertexColor(r, g, b)
-				NDUI_VARIABLE(key, value).r, NDUI_VARIABLE(key, value).g, NDUI_VARIABLE(key, value).b = r, g, b
-			end
-
-			f:SetScript("OnClick", function()
-				local r, g, b = NDUI_VARIABLE(key, value).r, NDUI_VARIABLE(key, value).g, NDUI_VARIABLE(key, value).b
-				ColorPickerFrame.func = onUpdate
-				ColorPickerFrame.previousValues = {r = r, g = g, b = b}
-				ColorPickerFrame.cancelFunc = onCancel
-				ColorPickerFrame:SetColorRGB(r, g, b)
-				ColorPickerFrame:Show()
-			end)
 		-- Blank, no optType
 		else
 			local l = CreateFrame("Frame", nil, parent)
@@ -986,7 +972,7 @@ local function exportData()
 								end
 							end
 						end
-					elseif KEY == "Mover" or KEY == "RaidClickSets" or KEY == "InternalCD" then
+					elseif KEY == "Mover" or KEY == "RaidClickSets" or KEY == "InternalCD" or KEY == "AuraWatchMover" then
 						text = text..";"..KEY..":"..key
 						for _, v in ipairs(value) do
 							text = text..":"..tostring(v)
@@ -1093,8 +1079,9 @@ local function importData()
 			for _, itemID in next, items do
 				NDuiDB[key][value][tonumber(itemID)] = true
 			end
-		elseif key == "Mover" then
+		elseif key == "Mover" or key == "AuraWatchMover" then
 			local relFrom, parent, relTo, x, y = select(3, strsplit(":", option))
+			value = tonumber(value) or value
 			x = tonumber(x)
 			y = tonumber(y)
 			NDuiDB[key][value] = {relFrom, parent, relTo, x, y}

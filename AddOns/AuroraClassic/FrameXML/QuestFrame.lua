@@ -9,6 +9,13 @@ tinsert(C.themes["AuroraClassic"], function()
 	F.StripTextures(QuestFrameGreetingPanel)
 	F.StripTextures(EmptyQuestLogFrame)
 
+	hooksecurefunc("QuestFrame_SetMaterial", function(frame)
+		_G[frame:GetName().."MaterialTopLeft"]:Hide()
+		_G[frame:GetName().."MaterialTopRight"]:Hide()
+		_G[frame:GetName().."MaterialBotLeft"]:Hide()
+		_G[frame:GetName().."MaterialBotRight"]:Hide()
+	end)
+
 	local line = QuestFrameGreetingPanel:CreateTexture()
 	line:SetColorTexture(1, 1, 1, .25)
 	line:SetSize(256, C.mult)
@@ -117,6 +124,8 @@ tinsert(C.themes["AuroraClassic"], function()
 	QuestLogItemReceiveText.SetTextColor = F.dummy
 	QuestLogItemChooseText:SetTextColor(1, 1, 1)
 	QuestLogItemChooseText.SetTextColor = F.dummy
+	QuestLogTimerText:SetTextColor(1, .8, 0)
+	QuestLogTimerText.SetTextColor = F.dummy
 	for i = 1, 10 do
 		local text = _G["QuestLogObjective"..i]
 		text:SetTextColor(1, 1, 1)

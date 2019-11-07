@@ -118,7 +118,7 @@ function module:RecycleBin()
 	local secureAddons = {
 		["HANDYNOTES"] = true,
 		["GUIDELIME"] = true,
-		["TOWNSFOLKTRACKER"] = true,
+		--["TOWNSFOLKTRACKER"] = true,
 	}
 
 	local function isButtonSecure(name)
@@ -130,7 +130,12 @@ function module:RecycleBin()
 		end
 	end
 
+	local isCollecting
+
 	local function CollectRubbish()
+		if isCollecting then return end
+		isCollecting = true
+
 		for _, child in ipairs({Minimap:GetChildren()}) do
 			local name = child:GetName()
 			if name and not blackList[name] and not isButtonSecure(name) then
@@ -154,7 +159,7 @@ function module:RecycleBin()
 
 					if child:HasScript("OnDragStart") then child:SetScript("OnDragStart", nil) end
 					if child:HasScript("OnDragStop") then child:SetScript("OnDragStop", nil) end
-					if child:HasScript("OnClick") then child:HookScript("OnClick", clickFunc) end
+					--if child:HasScript("OnClick") then child:HookScript("OnClick", clickFunc) end
 
 					if child:GetObjectType() == "Button" then
 						child:SetHighlightTexture(DB.bdTex) -- prevent nil function
@@ -170,14 +175,16 @@ function module:RecycleBin()
 					if name == "DBMMinimapButton" then
 						child:SetScript("OnMouseDown", nil)
 						child:SetScript("OnMouseUp", nil)
-					elseif name == "BagSync_MinimapButton" then
-						child:HookScript("OnMouseUp", clickFunc)
+					--elseif name == "BagSync_MinimapButton" then
+					--	child:HookScript("OnMouseUp", clickFunc)
 					end
 
 					tinsert(buttons, child)
 				end
 			end
 		end
+
+		isCollecting = nil
 	end
 
 	local function SortRubbish()
