@@ -1,0 +1,12 @@
+## Interface:11200
+## Title: FelwoodGather
+## Title-zhCN: 费伍德水果助手
+## Notes: Timer manager for felwood fruit gathering.
+## Notes-zhCN: 显示费伍德水果分布和冷却计时器
+## Author: nor3
+## Dependencies:
+## OptionalDeps: 
+## SavedVariables: FelwoodGather_Config, FelwoodGatherMap_Config
+## LoadOnDemand:
+FelwoodGather.xml
+FelwoodGatherMap.xml
