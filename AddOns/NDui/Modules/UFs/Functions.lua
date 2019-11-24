@@ -4,8 +4,6 @@ local B, C, L, DB = unpack(ns)
 local oUF = ns.oUF or oUF
 local UF = B:RegisterModule("UnitFrames")
 
-local LCD = DB.LibClassicDurations
-
 local format, floor, abs, min = string.format, math.floor, math.abs, math.min
 local pairs, next = pairs, next
 
@@ -475,17 +473,6 @@ local filteredStyle = {
 function UF.PostUpdateIcon(element, unit, button, index, _, duration, expiration, debuffType)
 	if duration then button.Shadow:Show() end
 
-	if duration == 0 then
-		local name, _, _, _, _, _, caster, _, _, spellID = LCD:UnitAura(unit, index, button.filter)
-		duration, expiration = LCD:GetAuraDurationByUnit(unit, spellID, caster, name)
-		if duration and duration > 0 then
-			if button.cd and not element.disableCooldown then
-				button.cd:SetCooldown(expiration - duration, duration)
-				button.cd:Show()
-			end
-		end
-	end
-
 	local style = element.__owner.mystyle
 	if style == "nameplate" then
 		button:SetSize(element.size, element.size - 4)
@@ -917,9 +904,12 @@ function UF:CreateAddPower(self)
 end
 
 function UF:CreateSwing(self)
+	if not NDuiDB["UFs"]["Castbars"] then return end
+
 	local bar = CreateFrame("Frame", nil, self)
-	bar:SetSize(250, 3)
-	bar:SetPoint("TOP", self.Castbar, "BOTTOM", -16, -5)
+	local width = NDuiDB["UFs"]["PlayerCBWidth"] - NDuiDB["UFs"]["PlayerCBHeight"] - 5
+	bar:SetSize(width, 3)
+	bar:SetPoint("TOP", self.Castbar.mover, "BOTTOM", 0, -5)
 
 	local two = CreateFrame("StatusBar", nil, bar)
 	two:Hide()
