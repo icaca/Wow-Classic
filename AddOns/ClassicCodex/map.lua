@@ -84,21 +84,10 @@ function str2rgb(text)
 end
 
 function showTooltip()
-	local focus = GetMouseFocus()
-	
-	if focus and focus:GetName() ~= "TargetFrame" and not UnitExists("mouseover") then
-		GameTooltip:Hide()
-		return
-	end
-	
-	if focus and focus.title then 
-		return
-	end
+	if not CodexConfig.showUnitTooltip then return end
+	local name = UnitName("mouseover")
 
-	if focus and focus:GetName() and strsub((focus:GetName() or ""), 0, 10) == "QuestTimer" then return end
-
-	local name = getglobal("GameTooltipTextLeft1") and getglobal("GameTooltipTextLeft1"):GetText()
-	if name and CodexMap.tooltips[name] then
+	if name and not UnitIsPlayer("mouseover") and CodexMap.tooltips[name] then
 		for title, meta in pairs(CodexMap.tooltips[name]) do
 			CodexMap:ShowTooltip(meta, GameTooltip)
 			GameTooltip:Show()
@@ -441,6 +430,7 @@ end
 
 function CodexMap:UpdateNode(frame, node)
 	frame.layer = 0
+	local markerSize = CodexConfig.spawnMarkerSize
 
 	for title, meta in pairs(node) do
 		meta.layer = GetLayerByTexture(meta.texture)
@@ -467,14 +457,18 @@ function CodexMap:UpdateNode(frame, node)
 			else
 				frame.color = meta.title
 			end
+
+			if meta.coordsNum == 1 then
+				markerSize = CodexConfig.bossMarkerSize
+			end
 		end
 	end
 
 	frame.tex:SetVertexColor(1, 1, 1, 1)
 	
 	if not frame.texture then
-		frame:SetWidth(CodexConfig.spawnMarkerSize)
-		frame:SetHeight(CodexConfig.spawnMarkerSize)
+		frame:SetWidth(markerSize)
+		frame:SetHeight(markerSize)
 		frame.tex:SetTexture("Interface\\Addons\\ClassicCodex\\img\\icon.tga")
 
 		local r, g, b = str2rgb(frame.color)
@@ -494,7 +488,17 @@ function CodexMap:UpdateNode(frame, node)
 	end
 
 	frame:SetScript("OnClick", function(self)
-		if IsShiftKeyDown() and self.questId and self.texture and self.layer < 5 then
+		if IsControlKeyDown() then
+			if TomTom and TomTom.AddWaypoint and TomTom.RemoveWaypoint then
+				local node = self.node[self.title]
+				if not node then return end
+
+				if CodexConfig._tom_waypoint then
+					TomTom:RemoveWaypoint(CodexConfig._tom_waypoint)
+				end
+				CodexConfig._tom_waypoint = TomTom:AddWaypoint(CodexMap.zones[node.zone], node.x/100, node.y/100,  {title = self.spawn, crazy = true})
+			end
+		elseif IsShiftKeyDown() and self.questId and self.texture and self.layer < 5 then
 			-- player hides the quest
 			CodexMap:DeleteNode(self.node[self.title].addon, self.title)
 			CodexHiddenQuests[self.questId] = true
@@ -618,6 +622,13 @@ function CodexMap:UpdateNodes()
 	CodexMap.HBDP:RemoveAllWorldMapIcons("Map")
 	CodexMap.HBDP:RemoveAllMinimapIcons("Map")
 
+	local worldMapLevel = nil
+	if CodexConfig.continentIcon then 
+		worldMapLevel = HBD_PINS_WORLDMAP_SHOW_WORLD
+	elseif CodexConfig.zoneMapIcon then
+		worldMapLevel = HBD_PINS_WORLDMAP_SHOW_PARENT
+	end
+
 	-- refresh all nodes
 	for addon in pairs(CodexMap.nodes) do
 		for mapId in pairs(CodexMap.nodes[addon]) do
@@ -636,8 +647,12 @@ function CodexMap:UpdateNodes()
 					x = x / 100
 					y = y / 100
 				
-					CodexMap.HBDP:AddWorldMapIconMap("Map", CodexMap.markers[i], worldMapId, x, y, HBD_PINS_WORLDMAP_SHOW_PARENT)
-					CodexMap.HBDP:AddMinimapIconMap("Map", CodexMap.minimapMarkers[i], worldMapId, x, y, true, false)
+					if worldMapLevel then
+						CodexMap.HBDP:AddWorldMapIconMap("Map", CodexMap.markers[i], worldMapId, x, y, worldMapLevel)
+					end
+					if CodexConfig.miniMapIcon then
+						CodexMap.HBDP:AddMinimapIconMap("Map", CodexMap.minimapMarkers[i], worldMapId, x, y, true, false)
+					end
 
 					i = i + 1
 				end

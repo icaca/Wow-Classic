@@ -1881,8 +1881,8 @@ function _G._detalhes:Start()
 		print ("|CFFFFFF00[Details!]: you're using the classic version of Details! on the 8.2.0 patch. If you need help, see our Discord (/details discord)")
 	else
 		if (math.random (0, 2) == 0) then
-			print ("|CFFFFFF00[Details!]: Tiny Threat (aggro meter) plugin is updated to classic (cogwheel > raid plugins > Tiny Threat).")
-			print ("|CFFFFFF00[Details!]: Tiny Threat won't show users which does not have their Details! updated.")
+			print ("|CFFFFFF00[Details!]: To use Tiny Threat: cogwheel > raid plugins > Tiny Threat.")
+			print ("|CFFFFFF00[Details!]: To fix the '50 yard' issue try: /details sync.")
 		end
 	end
 

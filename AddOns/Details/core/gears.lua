@@ -2745,6 +2745,38 @@ function Details:ShowTalentsPanel()
 				end
 			end
 		end
+
+		--create animation
+		local animHub = DetailsFramework:CreateAnimationHub (DetailsTalentFrame, function() 
+			DetailsTalentFrame:SetAlpha (0)
+
+			Details.PlayTalentLoadingAnimation()
+		end,
+		function()
+			DetailsTalentFrame:SetAlpha (1)
+			Details.StopTalentLoadingAnimation()
+
+			if (not InspectFrame:IsShown()) then
+				return DetailsTalentFrame:Hide()
+			end
+
+			if (not _detalhes.cached_talents [UnitGUID (InspectFrame.unit)]) then
+				return DetailsTalentFrame:Hide()
+			end
+		end)
+
+		DetailsFramework:CreateAnimation (animHub, "ALPHA", 1, .1, 0, .1)
+		DetailsFramework:CreateAnimation (animHub, "ALPHA", 2, 2, .1, .2)
+		DetailsFramework:CreateAnimation (animHub, "ALPHA", 3, .3, .2, 0)
+
+		local queryTalentsLabel = DetailsFramework:CreateLabel (DetailsTalentFrame, "Details!\nRetriving Talents", 10, "silver", "GameFontNormalSmall", "queryTalentLabel", "$parentQueryTalentLabel", "border")
+		queryTalentsLabel.align = "center"
+		queryTalentsLabel.alpha = .7
+		queryTalentsLabel:SetPoint ("center", DetailsTalentFrame, "center", 0, 26)
+
+		Details.CreateTalentLoadingAnimation()
+		DetailsTalentFrame.showAnimation = animHub
+		
 	end
 
 	--reset all talent tabs
@@ -2864,38 +2896,6 @@ function Details:ShowTalentsPanel()
 		if (targetName) then
 			_detalhes:SendCommMessage (CONST_DETAILS_PREFIX, _detalhes:Serialize (CONST_ASK_TALENTS, UnitName("player"), GetRealmName(), _detalhes.realversion, UnitGUID ("player")), "WHISPER", targetName)
 		
-			if (not DetailsTalentFrame.showAnimation) then
-				local animHub = DetailsFramework:CreateAnimationHub (DetailsTalentFrame, function() 
-					DetailsTalentFrame:SetAlpha (0)
-
-					Details.PlayTalentLoadingAnimation()
-				end,
-				function()
-					DetailsTalentFrame:SetAlpha (1)
-					Details.StopTalentLoadingAnimation()
-
-					if (not InspectFrame:IsShown()) then
-						return DetailsTalentFrame:Hide()
-					end
-
-					if (not _detalhes.cached_talents [UnitGUID (InspectFrame.unit)]) then
-						return DetailsTalentFrame:Hide()
-					end
-				end)
-
-				DetailsFramework:CreateAnimation (animHub, "ALPHA", 1, .1, 0, .1)
-				DetailsFramework:CreateAnimation (animHub, "ALPHA", 2, 2, .1, .2)
-				DetailsFramework:CreateAnimation (animHub, "ALPHA", 3, .3, .2, 0)
-
-				local queryTalentsLabel = DetailsFramework:CreateLabel (DetailsTalentFrame, "Details!\nRetriving Talents", 10, "silver", "GameFontNormalSmall", "queryTalentLabel", "$parentQueryTalentLabel", "border")
-				queryTalentsLabel.align = "center"
-				queryTalentsLabel.alpha = .7
-				queryTalentsLabel:SetPoint ("center", DetailsTalentFrame, "center", 0, 26)
-
-				Details.CreateTalentLoadingAnimation()
-				DetailsTalentFrame.showAnimation = animHub
-			end
-
 			DetailsTalentFrame:Show()
 			DetailsTalentFrame.showAnimation:Play()
 			

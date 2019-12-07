@@ -278,6 +278,7 @@ L.Area_PullTimer			= "開怪計時器過濾選項"
 L.DontShowPTNoID			= "阻擋與你不同區域ID送出的開怪倒數計時條"
 L.DontShowPT				= "不要顯示開怪/休息倒數計時條"
 L.DontShowPTText			= "不要顯示開怪/休息提示文字"
+L.DontShowPTCountdownText	= "不要顯示開怪計時器倒數文字"
 L.DontPlayPTCountdown		= "完全不要使用開怪/休息/開戰/自訂計時器倒數音效"
 L.PT_Threshold				= "不要使用高於%d秒以上的開怪/休息/開戰/自訂倒數計時器音效"
 
@@ -296,14 +297,11 @@ L.AfterFirst				= "在副本中每次動畫播放一次之後"
 L.Always					= ALWAYS
 L.CombatOnly				= "在任何戰鬥中禁用"
 L.RaidCombat				= "只在首領戰鬥中禁用"
-L.TrivialContent			= "五人地城"--Basically anything below 340
-L.NormalRaider				= "傳奇地城+5和隨機團隊"--Basically, anything below 355
-L.HeroicRaider				= "傳奇地城+10和英雄團隊和非戰爭前線首領"--Basically anything below 370
-L.MythicRaider				= "傳奇團隊"--Basically anything below 385
 
 L.Panel_ExtraFeatures		= "額外功能"
 --
 L.Area_ChatAlerts			= "文字警告選項"
+L.RoleSpecAlert				= "當你加入團隊時捨取專精不符合你目前專精顯示警告訊息"
 L.CheckGear					= "開怪時顯示裝備警告訊息 (當你裝備的裝備等級低於包包裡40等以上或主手武器沒有裝備時顯示警告訊息)"
 L.WorldBossAlert			= "當你的工會成員或是朋友可能在你的伺服器上開戰世界首領時顯示警告訊息(如果發送者是被戰復的會不準確)"
 --
@@ -312,6 +310,7 @@ L.LFDEnhance				= "使用主要或對話聲音頻道播放準備確認音效和�
 L.WorldBossNearAlert		= "當你需要的世界首領在你附近開戰播放準備確認音效和閃爍應用程式圖示"
 L.RLReadyCheckSound			= "從主要或對話音效頻道播放準備確認音效和閃爍應用程式圖示"
 L.AFKHealthWarning			= "播放警告聲音和閃爍應用程式圖示假如你在暫離時被攻擊"
+L.AutoReplySound			= "當接收到DBM自動回覆密語時播放警告聲和閃爍應用程式圖示"
 --
 L.TimerGeneral 				= "計時器選項"
 L.SKT_Enabled				= "顯示目前戰鬥的最佳紀錄勝利計時器"
@@ -321,7 +320,7 @@ L.ShowQueuePop				= "為佇列(隨機,戰場,其他)接受時間顯示計時器"
 L.Area_AutoLogging			= "自動記錄選項"
 L.AutologBosses				= "自動使用暴雪戰鬥日誌記錄首領戰鬥(為了紀錄藥水事件等其他事件請於開打前使用/dbm pull)"
 L.AdvancedAutologBosses		= "自動使用Transcriptor紀錄首領戰鬥"
-L.LogOnlyRaidBosses			= "只記錄當前資料片團隊首領的戰鬥(除了隨機團隊/隨機隊伍/隨機事件/舊副本團隊)"
+L.LogOnlyNonTrivial			= "只記錄當前資料片團隊首領的戰鬥(除了隨機團隊/隨機隊伍/隨機事件/舊副本團隊)"
 --
 L.Area_3rdParty				= "協力插件選項"
 L.ShowBBOnCombatStart		= "戰鬥開始時顯示BigBrother(檢查團隊 增益/精煉UI)"

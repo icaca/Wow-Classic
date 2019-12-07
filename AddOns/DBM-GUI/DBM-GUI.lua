@@ -43,7 +43,7 @@
 --
 
 
-local revision =(string.sub("20191023173347", 1, -5))
+local revision =(string.sub("20191116200254", 1, -5))
 local FrameTitle = "DBM_GUI_Option_"	-- all GUI frames get automatically a name FrameTitle..ID
 
 local PanelPrototype = {}
@@ -416,16 +416,23 @@ do
 		{ sound=true, text = "SW 4", value = 4 },
 
 		--Inject DBMs custom media that's not available to LibSharedMedia because it uses SoundKit Id (which LSM doesn't support)
-		--{ sound=true, text = "AirHorn", value = "Interface\\AddOns\\DBM-Core\\sounds\\AirHorn.ogg" },
-		{ sound=true, text = "Algalon: Beware!", value = "Interface\\AddOns\\DBM-Core\\sounds\\ClassicSupport\\UR_Algalon_BHole01.ogg" },
-		{ sound=true, text = "BB Wolf: Run Away", value = "Interface\\AddOns\\DBM-Core\\sounds\\ClassicSupport\\HoodWolfTransformPlayer01.ogg" },
-		--{ sound=true, text = "Blizzard", value = 37666 },--"Sound\\interface\\UI_RaidBossWhisperWarning.ogg"
-		{ sound=true, text = "Illidan: Not Prepared", value = "Interface\\AddOns\\DBM-Core\\sounds\\ClassicSupport\\BLACK_Illidan_04.ogg" },
-		{ sound=true, text = "Illidan: Not Prepared2", value = "Interface\\AddOns\\DBM-Core\\sounds\\ClassicSupport\\VO_703_Illidan_Stormrage_03.ogg" },
-		{ sound=true, text = "Kil'Jaeden: Destruction", value = "Interface\\AddOns\\DBM-Core\\sounds\\ClassicSupport\\KILJAEDEN02.ogg" },
-		{ sound=true, text = "Loatheb: I see you", value = "Interface\\AddOns\\DBM-Core\\sounds\\ClassicSupport\\LOA_NAXX_AGGRO02.ogg" },
-		{ sound=true, text = "Night Elf Bell", value = 11742 },--"Sound\\Doodad\\BellTollNightElf.ogg"
-		{ sound=true, text = "PvP Flag", value = 8174 },--"Sound\\Spells\\PVPFlagTaken.ogg"
+		--{ sound=true, text = "AirHorn (DBM)", value = "Interface\\AddOns\\DBM-Core\\sounds\\AirHorn.ogg" },
+		{ sound=true, text = "Algalon: Beware!", value = 15391 },
+		{ sound=true, text = "BB Wolf: Run Away", value = 9278 },
+		{ sound=true, text = "Blizzard Raid Emote", value = 37666 },
+		{ sound=true, text = "C'Thun: You Will Die!", value = 8585 },
+		{ sound=true, text = "Headless Horseman: Laugh", value = 11965 },
+		{ sound=true, text = "Illidan: Not Prepared", value = 11466 },
+		{ sound=true, text = "Illidan: Not Prepared2", value = 68563 },
+		{ sound=true, text = "Kaz'rogal: Marked", value = 11052 },
+		{ sound=true, text = "Kil'Jaeden: Destruction", value = 12506 },
+		{ sound=true, text = "Loatheb: I see you", value = 128466 },
+		{ sound=true, text = "Lady Malande: Flee", value = 11482 },
+		{ sound=true, text = "Milhouse: Light You Up", value = 49764 },
+		{ sound=true, text = "Night Elf Bell", value = 11742 },
+		{ sound=true, text = "PvP Flag", value = 8174 },
+		{ sound=true, text = "Void Reaver: Marked", value = 11213 },
+		{ sound=true, text = "Yogg Saron: Laugh", value = 15757 },
 	})
 
 	local tcolors = {
@@ -1441,12 +1448,12 @@ local function CreateOptionsMenu()
 		generalMessagesArea:CreateCheckButton(L.ShowEngageMessage, true, nil, "ShowEngageMessage")
 		generalMessagesArea:CreateCheckButton(L.ShowDefeatMessage, true, nil, "ShowDefeatMessage")
 		generalMessagesArea:CreateCheckButton(L.ShowGuildMessages, true, nil, "ShowGuildMessages")
+		generalMessagesArea:CreateCheckButton(L.ShowGuildMessagesPlus, true, nil, "ShowGuildMessagesPlus")
 		local generalWhispersArea = generalWarningPanel:CreateArea(L.WhisperMessages, nil, 135, true)
 		generalWhispersArea:CreateCheckButton(L.AutoRespond, true, nil, "AutoRespond")
 		generalWhispersArea:CreateCheckButton(L.WhisperStats, true, nil, "WhisperStats")
 		generalWhispersArea:CreateCheckButton(L.DisableStatusWhisper, true, nil, "DisableStatusWhisper")
 		generalWhispersArea:CreateCheckButton(L.DisableGuildStatus, true, nil, "DisableGuildStatus")
-		generalWhispersArea:CreateCheckButton(L.EnableWBSharing, true, nil, "EnableWBSharing")
 		generalCoreArea:AutoSetDimension()
 		generalMessagesArea:AutoSetDimension()
 		generalWhispersArea:AutoSetDimension()
@@ -1510,7 +1517,7 @@ local function CreateOptionsMenu()
 		local Sounds = MixinSharedMedia3("sound", {
 			{	text	= L.NoSound,	value	= "" },
 			{	text	= "RaidWarning",value 	= 8959, 	sound=true },--"Sound\\interface\\RaidWarning.ogg"
-			{	text	= "Classic",	value 	= 6674, 	sound=true },--"Sound\\Doodad\\BellTollNightElf.ogg"
+			{	text	= "Classic",	value 	= 11742, 	sound=true },--"Sound\\Doodad\\BellTollNightElf.ogg"
 			{	text	= "Ding",		value 	= 12889, 	sound=true }--"Sound\\interface\\AlarmClockWarning3.ogg"
 		})
 
@@ -2733,17 +2740,25 @@ local function CreateOptionsMenu()
 		end
 
 		local Sounds = MixinSharedMedia3("sound", {
-			{	text	= L.NoSound,			value	= "" },
-			--{ sound=true, text = "AirHorn", value = "Interface\\AddOns\\DBM-Core\\sounds\\AirHorn.ogg" },
-			{ sound=true, text = "Algalon: Beware!", value = "Interface\\AddOns\\DBM-Core\\sounds\\ClassicSupport\\UR_Algalon_BHole01.ogg" },
-			{ sound=true, text = "BB Wolf: Run Away", value = "Interface\\AddOns\\DBM-Core\\sounds\\ClassicSupport\\HoodWolfTransformPlayer01.ogg" },
-			--{ sound=true, text = "Blizzard", value = 37666 },--"Sound\\interface\\UI_RaidBossWhisperWarning.ogg"
-			{ sound=true, text = "Illidan: Not Prepared", value = "Interface\\AddOns\\DBM-Core\\sounds\\ClassicSupport\\BLACK_Illidan_04.ogg" },
-			{ sound=true, text = "Illidan: Not Prepared2", value = "Interface\\AddOns\\DBM-Core\\sounds\\ClassicSupport\\VO_703_Illidan_Stormrage_03.ogg" },
-			{ sound=true, text = "Kil'Jaeden: Destruction", value = "Interface\\AddOns\\DBM-Core\\sounds\\ClassicSupport\\KILJAEDEN02.ogg" },
-			{ sound=true, text = "Loatheb: I see you", value = "Interface\\AddOns\\DBM-Core\\sounds\\ClassicSupport\\LOA_NAXX_AGGRO02.ogg" },
-			{ sound=true, text = "Night Elf Bell", value = 11742 },--"Sound\\Doodad\\BellTollNightElf.ogg"
-			{ sound=true, text = "PvP Flag", value = 8174 },--"Sound\\Spells\\PVPFlagTaken.ogg"
+			{ text = L.NoSound, value = "" },
+			--Inject DBMs custom media that's not available to LibSharedMedia because it uses SoundKit Id (which LSM doesn't support)
+			--{ sound=true, text = "AirHorn (DBM)", value = "Interface\\AddOns\\DBM-Core\\sounds\\AirHorn.ogg" },
+			{ sound=true, text = "Algalon: Beware!", value = 15391 },
+			{ sound=true, text = "BB Wolf: Run Away", value = 9278 },
+			{ sound=true, text = "Blizzard Raid Emote", value = 37666 },
+			{ sound=true, text = "C'Thun: You Will Die!", value = 8585 },
+			{ sound=true, text = "Headless Horseman: Laugh", value = 12506 },
+			{ sound=true, text = "Illidan: Not Prepared", value = 68563 },
+			{ sound=true, text = "Illidan: Not Prepared2", value = 12506 },
+			{ sound=true, text = "Kaz'rogal: Marked", value = 11052 },
+			{ sound=true, text = "Kil'Jaeden: Destruction", value = 12506 },
+			{ sound=true, text = "Loatheb: I see you", value = 128466 },
+			{ sound=true, text = "Lady Malande: Flee", value = 11482 },
+			{ sound=true, text = "Milhouse: Light You Up", value = 49764 },
+			{ sound=true, text = "Night Elf Bell", value = 11742 },
+			{ sound=true, text = "PvP Flag", value = 8174 },
+			{ sound=true, text = "Void Reaver: Marked", value = 11213 },
+			{ sound=true, text = "Yogg Saron: Laugh", value = 15757 },
 		})
 
 		local SpecialWarnSoundDropDown = specArea:CreateDropdown(L.SpecialWarnSound, Sounds, "DBM", "SpecialWarningSound", function(value)
@@ -3079,8 +3094,8 @@ local function CreateOptionsMenu()
 
 	do
 		local Sounds = MixinSharedMedia3("sound", {
-			{	text	= L.NoSound,						value	= "None" },
-			--{	text	= "Muradin: Charge",				value 	= 16971, 		sound=true },--"Sound\\Creature\\MuradinBronzebeard\\IC_Muradin_Saurfang02.ogg"
+			{	text	= L.NoSound,			value	= "None" },
+			{	text	= "Muradin: Charge",	value 	= 16971, 		sound=true },--"Sound\\Creature\\MuradinBronzebeard\\IC_Muradin_Saurfang02.ogg"
 		})
 
 		local eventSoundsPanel	 	= DBM_GUI_Frame:CreateNewPanel(L.Panel_EventSounds, "option")
@@ -3146,6 +3161,10 @@ local function CreateOptionsMenu()
 		local eventSoundsExtrasArea	= eventSoundsPanel:CreateArea(L.Area_EventSoundsExtras, nil, 52, true)
 		local combineMusic			= eventSoundsExtrasArea:CreateCheckButton(L.EventMusicCombined, true, nil, "EventSoundMusicCombined")
 
+		local eventSoundsFiltersArea= eventSoundsPanel:CreateArea(L.Area_EventSoundsFilters, nil, 72, true)
+		local musicDungMythicFilter	= eventSoundsFiltersArea:CreateCheckButton(L.EventFilterDungMythicMusic, true, nil, "EventDungMusicMythicFilter")
+		local musicMythicFilter		= eventSoundsFiltersArea:CreateCheckButton(L.EventFilterMythicMusic, true, nil, "EventMusicMythicFilter")
+
 		eventSoundsPanel:SetMyOwnHeight()
 	end
 
@@ -3164,6 +3183,7 @@ local function CreateOptionsMenu()
 		spamOutArea:CreateCheckButton(L.SpamBlockNoInfoFrame, true, nil, "DontShowInfoFrame")
 		spamOutArea:CreateCheckButton(L.SpamBlockNoHudMap, true, nil, "DontShowHudMap2")
 		spamOutArea:CreateCheckButton(L.SpamBlockNoNameplate, true, nil, "DontShowNameplateIcons")
+		spamOutArea:CreateCheckButton(L.SpamBlockNoNameplateLines, true, nil, "DontShowNameplateLines")
 		spamOutArea:CreateCheckButton(L.SpamBlockNoCountdowns, true, nil, "DontPlayCountdowns")
 		spamOutArea:CreateCheckButton(L.SpamBlockNoYells, true, nil, "DontSendYells")
 		spamOutArea:CreateCheckButton(L.SpamBlockNoNoteSync, true, nil, "BlockNoteShare")
@@ -3176,6 +3196,7 @@ local function CreateOptionsMenu()
 		local spamArea = spamPanel:CreateArea(L.Area_SpamFilter, nil, 170, true)
 		spamArea:CreateCheckButton(L.DontShowFarWarnings, true, nil, "DontShowFarWarnings")
 		spamArea:CreateCheckButton(L.StripServerName, true, nil, "StripServerName")
+		spamArea:CreateCheckButton(L.FilterVoidFormSay, true, nil, "FilterVoidFormSay")
 
 		local spamSpecArea = spamPanel:CreateArea(L.Area_SpecFilter, nil, 140, true)
 		spamSpecArea:CreateCheckButton(L.FilterTankSpec, true, nil, "FilterTankSpec")
@@ -3198,6 +3219,7 @@ local function CreateOptionsMenu()
 		spamPTArea:CreateCheckButton(L.DontShowPTNoID, true, nil, "DontShowPTNoID")
 		spamPTArea:CreateCheckButton(L.DontShowPT, true, nil, "DontShowPT2")
 		spamPTArea:CreateCheckButton(L.DontShowPTText, true, nil, "DontShowPTText")
+		spamPTArea:CreateCheckButton(L.DontShowPTCountdownText, true, nil, "DontShowPTCountdownText")
 		local SPTCDA = spamPTArea:CreateCheckButton(L.DontPlayPTCountdown, true, nil, "DontPlayPTCountdown")
 
 		local PTSlider = spamPTArea:CreateSlider(L.PT_Threshold, 1, 10, 1, 300)   -- (text , min_value , max_value , step , width)
@@ -3215,14 +3237,16 @@ local function CreateOptionsMenu()
 
 	do
 		local hideBlizzPanel = DBM_GUI_Frame:CreateNewPanel(L.Panel_HideBlizzard, "option")
-		local hideBlizzArea = hideBlizzPanel:CreateArea(L.Area_HideBlizzard, nil, 315, true)--295
+		local hideBlizzArea = hideBlizzPanel:CreateArea(L.Area_HideBlizzard, nil, 295, true)
 		hideBlizzArea:CreateCheckButton(L.HideBossEmoteFrame, true, nil, "HideBossEmoteFrame2")
 		hideBlizzArea:CreateCheckButton(L.HideWatchFrame, true, nil, "HideObjectivesFrame")
-		--hideBlizzArea:CreateCheckButton(L.HideQuestTooltips, true, nil, "HideQuestTooltips")
+		hideBlizzArea:CreateCheckButton(L.HideGarrisonUpdates, true, nil, "HideGarrisonToasts")
+		hideBlizzArea:CreateCheckButton(L.HideGuildChallengeUpdates, true, nil, "HideGuildChallengeUpdates")
+		hideBlizzArea:CreateCheckButton(L.HideQuestTooltips, true, nil, "HideQuestTooltips")
 		hideBlizzArea:CreateCheckButton(L.HideTooltips, true, nil, "HideTooltips")
 		local DisableSFX	= hideBlizzArea:CreateCheckButton(L.DisableSFX, true, nil, "DisableSFX")
 
-		--[[local movieOptions = {
+		local movieOptions = {
 			{	text	= L.Disable,	value 	= "Never"},
 			{	text	= L.OnlyFight,	value 	= "OnlyFight"},
 			{	text	= L.AfterFirst,	value 	= "AfterFirst"},
@@ -3231,43 +3255,46 @@ local function CreateOptionsMenu()
 		local blockMovieDropDown = hideBlizzArea:CreateDropdown(L.DisableCinematics, movieOptions, "DBM", "MovieFilter2", function(value)
 			DBM.Options.MovieFilter2 = value
 		end)
-		blockMovieDropDown:SetPoint("TOPLEFT", DisableSFX, "TOPLEFT", 0, -40)--]]
+		blockMovieDropDown:SetPoint("TOPLEFT", DisableSFX, "TOPLEFT", 0, -40)
 
-		hideBlizzArea:AutoSetDimension()
+		--hideBlizzArea:AutoSetDimension()
 		hideBlizzPanel:SetMyOwnHeight()
 	end
 
 	do
 		local extraFeaturesPanel 	= DBM_GUI_Frame:CreateNewPanel(L.Panel_ExtraFeatures, "option")
 		local chatAlertsArea		= extraFeaturesPanel:CreateArea(L.Area_ChatAlerts, nil, 100, true)
+		local RoleSpecAlert			= chatAlertsArea:CreateCheckButton(L.RoleSpecAlert, true, nil, "RoleSpecAlert")
+		local CheckGear				= chatAlertsArea:CreateCheckButton(L.CheckGear, true, nil, "CheckGear")
 		local WorldBossAlert		= chatAlertsArea:CreateCheckButton(L.WorldBossAlert, true, nil, "WorldBossAlert")
-		local WorldBuffAlert		= chatAlertsArea:CreateCheckButton(L.WorldBuffAlert, true, nil, "WorldBuffAlert")
 
 		local soundAlertsArea		= extraFeaturesPanel:CreateArea(L.Area_SoundAlerts, nil, 100, true)
 		local LFDEnhance			= soundAlertsArea:CreateCheckButton(L.LFDEnhance, true, nil, "LFDEnhance")
 		local WorldBossNearAlert	= soundAlertsArea:CreateCheckButton(L.WorldBossNearAlert, true, nil, "WorldBossNearAlert")
 		local RLReadyCheckSound		= soundAlertsArea:CreateCheckButton(L.RLReadyCheckSound, true, nil, "RLReadyCheckSound")
 		local AFKHealthWarning		= soundAlertsArea:CreateCheckButton(L.AFKHealthWarning, true, nil, "AFKHealthWarning")
+		local AutoReplySound		= soundAlertsArea:CreateCheckButton(L.AutoReplySound, true, nil, "AutoReplySound")
 
 		local generaltimeroptions	= extraFeaturesPanel:CreateArea(L.TimerGeneral, nil, 105, true)
 
-		local SKT_Enabled		= generaltimeroptions:CreateCheckButton(L.SKT_Enabled, true, nil, "AlwaysShowSpeedKillTimer")
+		local SKT_Enabled		= generaltimeroptions:CreateCheckButton(L.SKT_Enabled, true, nil, "AlwaysShowSpeedKillTimer2")
 		local RespawnTimer		= generaltimeroptions:CreateCheckButton(L.ShowRespawn, true, nil, "ShowRespawn")
 		local QueueTimer		= generaltimeroptions:CreateCheckButton(L.ShowQueuePop, true, nil, "ShowQueuePop")
 
-		local bossLoggingArea		= extraFeaturesPanel:CreateArea(L.Area_AutoLogging, nil, 100, true)
+		local bossLoggingArea		= extraFeaturesPanel:CreateArea(L.Area_AutoLogging, nil, 120, true)
 		local AutologBosses			= bossLoggingArea:CreateCheckButton(L.AutologBosses, true, nil, "AutologBosses")
 		if Transcriptor then
 			local AdvancedAutologBosses	= bossLoggingArea:CreateCheckButton(L.AdvancedAutologBosses, true, nil, "AdvancedAutologBosses")
 		end
-		local LogOnlyRaidBosses		= bossLoggingArea:CreateCheckButton(L.LogOnlyRaidBosses, true, nil, "LogOnlyRaidBosses")
+		local RecordOnlyBosses		= bossLoggingArea:CreateCheckButton(L.RecordOnlyBosses, true, nil, "RecordOnlyBosses")
+		local LogOnlyNonTrivial		= bossLoggingArea:CreateCheckButton(L.LogOnlyNonTrivial, true, nil, "LogOnlyNonTrivial")
 
-		--[[local thirdPartyArea
+		local thirdPartyArea
 		if BigBrother and type(BigBrother.ConsumableCheck) == "function" then
 			thirdPartyArea			= extraFeaturesPanel:CreateArea(L.Area_3rdParty, nil, 100, true)
 			thirdPartyArea:CreateCheckButton(L.ShowBBOnCombatStart, true, nil, "ShowBigBrotherOnCombatStart")
 			thirdPartyArea:CreateCheckButton(L.BigBrotherAnnounceToRaid, true, nil, "BigBrotherAnnounceToRaid")
-		end--]]
+		end
 
 		local inviteArea			= extraFeaturesPanel:CreateArea(L.Area_Invite, nil, 100, true)
 		local AutoAcceptFriendInvite= inviteArea:CreateCheckButton(L.AutoAcceptFriendInvite, true, nil, "AutoAcceptFriendInvite")
@@ -3282,9 +3309,9 @@ local function CreateOptionsMenu()
 		soundAlertsArea:AutoSetDimension()
 		generaltimeroptions:AutoSetDimension()
 		bossLoggingArea:AutoSetDimension()
-		--if thirdPartyArea then
-		--	thirdPartyArea:AutoSetDimension()
-		--end
+		if thirdPartyArea then
+			thirdPartyArea:AutoSetDimension()
+		end
 		inviteArea:AutoSetDimension()
 		advancedArea:AutoSetDimension()
 		extraFeaturesPanel:SetMyOwnHeight()

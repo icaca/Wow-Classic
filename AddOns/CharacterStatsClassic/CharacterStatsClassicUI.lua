@@ -5,6 +5,7 @@ core.UIConfig = {};
 
 -- Defaults
 local UISettingsGlobal = {
+    shouldAddWeaponSkillToHit = false;
 }
 
 local UISettingsCharacter = {
@@ -15,6 +16,7 @@ local UISettingsCharacter = {
 -- for easier referencing the core config
 local UIConfig = core.UIConfig;
 local CSC_UIFrame = core.UIConfig;
+local CSC_ConfigFrame = { };
 
 local statsDropdownList = {
     PLAYERSTAT_BASE_STATS,
@@ -24,7 +26,7 @@ local statsDropdownList = {
     PLAYERSTAT_DEFENSES
 }
 
-local NUM_STATS_TO_SHOW = 6;
+local NUM_STATS_TO_SHOW = 5;
 local LeftStatsTable = { }
 local RightStatsTable = { }
 
@@ -110,6 +112,7 @@ function UIConfig:CreateMenu()
     CSC_UIFrame.CharacterStatsPanel:SetWidth(200);
 
     UIConfig:SetupDropdown();
+    UIConfig:SetupConfigInterface();
 
     UIConfig:InitializeStatsFrames(CSC_UIFrame.CharacterStatsPanel.leftStatsDropDown, CSC_UIFrame.CharacterStatsPanel.rightStatsDropDown);
     UIConfig:UpdateStats();
@@ -171,41 +174,42 @@ function UIConfig:SetupDropdown()
     UIDropDownMenu_JustifyText(CSC_UIFrame.CharacterStatsPanel.rightStatsDropDown, "LEFT");
 end
 
--- Extend the functionality of the default CharacterFrameTab
-function ToggleCharacter(tab, onlyShow)
-    if ( tab == "PaperDollFrame") then
+function UIConfig:SetupConfigInterface()
+
+    CSC_ConfigFrame = CreateFrame("Frame", "CSC_InterfaceOptionsPanel", UIParent);
+    CSC_ConfigFrame.name = "CharacterStatsClassic";
+    InterfaceOptions_AddCategory(CSC_ConfigFrame);
+
+    -- Title and font
+    CSC_ConfigFrame.title = CreateFrame("Frame", "CharacterStatsClassic", CSC_ConfigFrame);
+    CSC_ConfigFrame.title:SetPoint("TOPLEFT", CSC_ConfigFrame, "TOPLEFT", 10, -10);
+    CSC_ConfigFrame.title:SetWidth(300);
+    CSC_ConfigFrame.titleString = CSC_ConfigFrame.title:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+    CSC_ConfigFrame.titleString:SetPoint("TOPLEFT", CSC_ConfigFrame, "TOPLEFT", 10, -10);
+    CSC_ConfigFrame.titleString:SetText('|cff00c0ffCharacterStatsClassic|r');
+    CSC_ConfigFrame.titleString:SetFont("Fonts\\FRIZQT__.tff", 20, "OUTLINE");
+
+    -- Checkboxes
+    CSC_ConfigFrame.chkBtnAddWeaponSkillToHit = CreateFrame("CheckButton", "default", CSC_ConfigFrame, "UICheckButtonTemplate");
+    CSC_ConfigFrame.chkBtnAddWeaponSkillToHit:SetPoint("TOPLEFT", 20, -30);
+    CSC_ConfigFrame.chkBtnAddWeaponSkillToHit.text:SetText("Count Hit from Weapon Skill in Hit Chance. (Works only for melee weapons and level 60 players)");
+    CSC_ConfigFrame.chkBtnAddWeaponSkillToHit:SetChecked(UISettingsGlobal.shouldAddWeaponSkillToHit);
+    CSC_ConfigFrame.chkBtnAddWeaponSkillToHit:SetScript("OnClick", 
+    function()
+        UISettingsGlobal.shouldAddWeaponSkillToHit = not UISettingsGlobal.shouldAddWeaponSkillToHit;
+    end);
+end
+
+-- Hook a custom function in order to extend the functionality of the default ToggleCharacter function
+local function CSC_ToggleCharacterPostHook(tab, onlyShow)
+    if (tab == "PaperDollFrame") then
         CSC_UIFrame.CharacterStatsPanel:Show();
         CSC_UIFrame:UpdateStats();
     else
         CSC_UIFrame.CharacterStatsPanel:Hide();
     end
-
-	if ( tab == "PetPaperDollFrame" and not HasPetUI() and not PetPaperDollFrame:IsVisible() ) then
-		return;
-	end
-	if ( tab == "HonorFrame" and not HonorSystemEnabled() and not HonorFrame:IsVisible() ) then
-		return;
-	end
-	local subFrame = _G[tab];
-	if ( subFrame ) then
-		if (not subFrame.hidden) then
-			PanelTemplates_SetTab(CharacterFrame, subFrame:GetID());
-			if ( CharacterFrame:IsShown() ) then
-				if ( subFrame:IsShown() ) then
-					if ( not onlyShow ) then
-						HideUIPanel(CharacterFrame);
-					end
-				else
-					PlaySound(SOUNDKIT.IG_CHARACTER_INFO_TAB);
-					CharacterFrame_ShowSubFrame(tab);
-				end
-			else
-				CharacterFrame_ShowSubFrame(tab);
-				ShowUIPanel(CharacterFrame);
-			end
-		end
-    end
 end
+hooksecurefunc("ToggleCharacter", CSC_ToggleCharacterPostHook);
 
 -- Serializing the DB
 local dbLoader = CreateFrame("Frame");

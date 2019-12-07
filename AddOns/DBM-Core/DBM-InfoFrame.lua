@@ -74,7 +74,7 @@ local playerName = UnitName("player")
 local GetRaidTargetIndex = GetRaidTargetIndex
 local UnitName = UnitName
 local UnitHealth, UnitPower, UnitPowerMax = UnitHealth, UnitPower, UnitPowerMax
-local UnitIsDeadOrGhost = UnitIsDeadOrGhost
+local UnitIsDeadOrGhost, UnitThreatSituation = UnitIsDeadOrGhost, UnitThreatSituation
 local UnitPosition = UnitPosition
 local twipe = table.wipe
 local select, tonumber = select, tonumber
@@ -302,7 +302,6 @@ local function updateLinesCustomSort(sortFunc)
 	end
 end
 
---8.2 TODO FIXME if broken.
 local function updateIcons()
 	twipe(icons)
 	for uId in DBM:GetGroupMembers() do
@@ -366,16 +365,18 @@ local function updateEnemyPower()
 		if specificUnit then
 			local currentPower, maxPower = UnitPower(specificUnit, powerType), UnitPowerMax(specificUnit, powerType)
 			if maxPower and maxPower ~= 0 then--Prevent division by 0 in addition to filtering non existing units that may still return false on UnitExists()
-				if currentPower / maxPower * 100 >= threshold then
-					lines[UnitName(specificUnit)] = currentPower
+				local percent = currentPower / maxPower * 100
+				if percent >= threshold then
+					lines[UnitName(specificUnit)] = mfloor(percent).."%"
 				end
 			end
 		else
 			if specificUnit then
 				local currentPower, maxPower = UnitPower(specificUnit), UnitPowerMax(specificUnit)
 				if maxPower and maxPower ~= 0 then--Prevent division by 0 in addition to filtering non existing units that may still return false on UnitExists()
-					if currentPower / maxPower * 100 >= threshold then
-						lines[UnitName(specificUnit)] = currentPower
+					local percent = currentPower / maxPower * 100
+					if percent >= threshold then
+						lines[UnitName(specificUnit)] = mfloor(percent).."%"
 					end
 				end
 			else
@@ -383,8 +384,9 @@ local function updateEnemyPower()
 					local uId = "boss"..i
 					local currentPower, maxPower = UnitPower(uId), UnitPowerMax(uId)
 					if maxPower and maxPower ~= 0 then--Prevent division by 0 in addition to filtering non existing units that may still return false on UnitExists()
-						if currentPower / maxPower * 100 >= threshold then
-							lines[UnitName(uId)] = currentPower
+						local percent = currentPower / maxPower * 100
+						if percent >= threshold then
+							lines[UnitName(uId)] = mfloor(percent).."%"
 						end
 					end
 				end
@@ -430,10 +432,11 @@ local function updateEnemyAbsorb()
 				local text
 				if totalAbsorb then
 					text = absorbAmount / totalAbsorb * 100
+					lines[UnitName(specificUnit)] = mfloor(text).."%"
 				else
 					text = absorbAmount
+					lines[UnitName(specificUnit)] = mfloor(text)
 				end
-				lines[UnitName(specificUnit)] = mfloor(text).."%"
 			end
 		end
 	else
@@ -659,6 +662,23 @@ local function updatePlayerDebuffStacks()
 	updateLines()
 end
 
+local function updatePlayerAggro()
+	twipe(lines)
+	local aggroType = value[1]
+	local tankIgnored = value[2]
+	for uId in DBM:GetGroupMembers() do
+		if tankIgnored and (UnitGroupRolesAssigned(uId) == "TANK" or GetPartyAssignment("MAINTANK", uId, 1)) then
+		else
+			local currentThreat = UnitThreatSituation(uId) or 0
+			if currentThreat >= aggroType then
+				lines[UnitName(uId)] = ""
+			end
+		end
+	end
+	updateLines()
+	updateIcons()
+end
+
 local function updatePlayerTargets()
 	twipe(lines)
 	local cId = value[1]
@@ -729,6 +749,7 @@ local events = {
 	["playerdebuffremaining"] = updatePlayerDebuffRemaining,
 	["playerbuffremaining"] = updatePlayerBuffRemaining,
 	["reverseplayerbaddebuff"] = updateReverseBadPlayerDebuffs,
+	["playeraggro"] = updatePlayerAggro,
 	["playerbuffstacks"] = updatePlayerBuffStacks,
 	["playerdebuffstacks"] = updatePlayerDebuffStacks,
 	["playertargets"] = updatePlayerTargets,
@@ -750,6 +771,7 @@ local friendlyEvents = {
 	["playerdebuffremaining"] = true,
 	["playerbuffremaining"] = true,
 	["reverseplayerbaddebuff"] = true,
+	["playeraggro"] = true,
 	["playerbuffstacks"] = true,
 	["playerdebuffstacks"] = true,
 	["playertargets"] = true
@@ -796,7 +818,7 @@ function onUpdate(frame, table)
 				end
 				linesShown = linesShown + 1
 				if (extraName or leftText) == playerName then--It's player.
-					if currentEvent == "health" or currentEvent == "playerpower" or currentEvent == "playerabsorb" or currentEvent == "playerbuff" or currentEvent == "playergooddebuff" or currentEvent == "playerbaddebuff" or currentEvent == "playerdebuffremaining" or currentEvent == "playerdebuffstacks" or currentEvent == "playerbuffremaining" or currentEvent == "playertargets" then--Red
+					if currentEvent == "health" or currentEvent == "playerpower" or currentEvent == "playerabsorb" or currentEvent == "playerbuff" or currentEvent == "playergooddebuff" or currentEvent == "playerbaddebuff" or currentEvent == "playerdebuffremaining" or currentEvent == "playerdebuffstacks" or currentEvent == "playerbuffremaining" or currentEvent == "playertargets" or currentEvent == "playeraggro" then--Red
 						frame:AddDoubleLine(icon or leftText, rightText, 255, 0, 0, 255, 255, 255)-- (leftText, rightText, left.R, left.G, left.B, right.R, right.G, right.B)
 					else--Green
 						frame:AddDoubleLine(icon or leftText, rightText, 0, 255, 0, 255, 255, 255)
@@ -855,7 +877,7 @@ end
 ---------------
 --  Methods  --
 ---------------
---Arg 1: spellName, health/powervalue, customfunction, table type. Arg 2: TankIgnore, Powertype, SortFunction, totalAbsorb, sortmethod (table/stacks). Arg 3: SpellFilter, UseIcon. Arg 4: disable onUpdate
+--Arg 1: spellName, health/powervalue, customfunction, table type. Arg 2: TankIgnore, Powertype, SortFunction, totalAbsorb, sortmethod (table/stacks). Arg 3: SpellFilter, UseIcon. Arg 4: disable onUpdate. Arg 5: sortmethod (playerpower)
 function infoFrame:Show(maxLines, event, ...)
 	currentMapId = select(4, UnitPosition("player"))
 	if DBM.Options.DontShowInfoFrame and (event or 0) ~= "test" then return end
@@ -879,22 +901,22 @@ function infoFrame:Show(maxLines, event, ...)
 		end
 	--If spellId is given as value one and it's not a byspellid event, convert to spellname
 	--this also allows spell name to be given by mod, since value 1 verifies it's a number
-	elseif type(value[1]) == "number" and event ~= "health" and event ~= "function" and event ~= "table" and event ~= "playertargets" and event ~= "playerpower" and event ~= "enemypower" and event ~= "test" then
+	elseif type(value[1]) == "number" and event ~= "health" and event ~= "function" and event ~= "table" and event ~= "playertargets" and event ~= "playeraggro" and event ~= "playerpower" and event ~= "enemypower" and event ~= "test" then
 		--Outside of "byspellid" functions, typical frames will still use spell NAME matching not spellID.
 		--This just determines if we convert the spell input to a spell Name, if a spellId was provided for a non byspellid infoframe
 		value[1] = DBM:GetSpellInfo(value[1])
 	end
 	currentEvent = event
 	if event == "playerbuff" or event == "playerbaddebuff" or event == "playergooddebuff" then
-		sortMethod = 3
+		sortMethod = 3--Sort by group ID
 	elseif event == "health" or event == "playerdebuffremaining" then
-		sortMethod = 2	-- Sort lowest first
-	elseif (event == "playerdebuffstacks" or event == "table") and value[2] then
-		if type(value[2]) == "number" then
-			sortMethod = value[2]
-		end
+		sortMethod = 2--Sort lowest first
+	elseif (event == "playerdebuffstacks" or event == "table") and value[2] and type(value[2]) == "number" then
+		sortMethod = value[2]
+	elseif event == "playerpower" and value[5] and type(value[5]) == "number" then
+		sortMethod = value[5]
 	else
-		sortMethod = 1
+		sortMethod = 1--Sort highest first
 	end
 	if events[currentEvent] then
 		events[currentEvent](value[1])
