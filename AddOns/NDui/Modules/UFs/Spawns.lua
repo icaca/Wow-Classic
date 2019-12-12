@@ -28,7 +28,7 @@ local function CreatePlayerStyle(self)
 	end
 	if NDuiDB["UFs"]["Castbars"] then
 		UF:ReskinMirrorBars()
-		UF:ReskinTimerTrakcer(self)
+		--UF:ReskinTimerTrakcer(self)
 	end
 	if NDuiDB["UFs"]["ClassPower"] and not NDuiDB["Nameplate"]["ShowPlayerPlate"] then
 		UF:CreateClassPower(self)
@@ -215,25 +215,28 @@ function UF:OnLogin()
 				boss[i].mover = B.Mover(boss[i], L["BossFrame"]..i, "Boss"..i, {"BOTTOM", boss[i-1], "TOP", 0, 50}, moverWidth, moverHeight)
 			end
 		end
+
+		UF:UpdateTextScale()
 	end
 
 	if NDuiDB["UFs"]["RaidFrame"] then
 		UF:AddClickSetsListener()
 
 		-- Hide Default RaidFrame
-		local function HideRaid()
-			if InCombatLockdown() then return end
-			B.HideObject(CompactRaidFrameManager)
-			local compact_raid = CompactRaidFrameManager_GetSetting("IsShown")
-			if compact_raid and compact_raid ~= "0" then
-				CompactRaidFrameManager_SetSetting("IsShown", "0")
-			end
-		end
-		CompactRaidFrameManager:HookScript("OnShow", HideRaid)
 		if CompactRaidFrameManager_UpdateShown then
+			local function HideRaid()
+				if InCombatLockdown() then return end
+				B.HideObject(CompactRaidFrameManager)
+				local compact_raid = CompactRaidFrameManager_GetSetting("IsShown")
+				if compact_raid and compact_raid ~= "0" then
+					CompactRaidFrameManager_SetSetting("IsShown", "0")
+				end
+			end
+			CompactRaidFrameManager:HookScript("OnShow", HideRaid)
 			hooksecurefunc("CompactRaidFrameManager_UpdateShown", HideRaid)
+			CompactRaidFrameContainer:UnregisterAllEvents()
+			HideRaid()
 		end
-		CompactRaidFrameContainer:UnregisterAllEvents()
 
 		-- Group Styles
 		if showPartyFrame then

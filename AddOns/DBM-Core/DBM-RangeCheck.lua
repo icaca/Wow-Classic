@@ -80,19 +80,17 @@ local GetBestMapForUnit = C_Map.GetBestMapForUnit
 
 -- for Phanx' Class Colors
 local RAID_CLASS_COLORS = CUSTOM_CLASS_COLORS or RAID_CLASS_COLORS
+
 local BLIP_TEX_COORDS = {
 	["WARRIOR"]		 = { 0, 0.125, 0, 0.25 },
 	["PALADIN"]		 = { 0.125, 0.25, 0, 0.25 },
 	["HUNTER"]		 = { 0.25, 0.375, 0, 0.25 },
 	["ROGUE"]		 = { 0.375, 0.5, 0, 0.25 },
 	["PRIEST"]		 = { 0.5, 0.625, 0, 0.25 },
-	["DEATHKNIGHT"]	 = { 0.625, 0.75, 0, 0.25 },
 	["SHAMAN"]		 = { 0.75, 0.875, 0, 0.25 },
 	["MAGE"]		 = { 0.875, 1, 0, 0.25 },
 	["WARLOCK"]		 = { 0, 0.125, 0.25, 0.5 },
 	["DRUID"]		 = { 0.25, 0.375, 0.25, 0.5 },
-	["MONK"]		 = { 0.125, 0.25, 0.25, 0.5 },
-	["DEMONHUNTER"]	 = { 0.375, 0.5, 0.25, 0.5 },
 }
 ---------------------
 --  Dropdown Menu  --
@@ -183,20 +181,6 @@ do
 		elseif level == 2 then
 			if menu == "range" then
 				info = UIDropDownMenu_CreateInfo()
-				info.text = DBM_CORE_RANGECHECK_SETRANGE_TO:format(4)
-				info.func = setRange
-				info.arg1 = 4
-				info.checked = (mainFrame.range == 4)
-				UIDropDownMenu_AddButton(info, 2)
-
-				info = UIDropDownMenu_CreateInfo()
-				info.text = DBM_CORE_RANGECHECK_SETRANGE_TO:format(6)
-				info.func = setRange
-				info.arg1 = 6
-				info.checked = (mainFrame.range == 6)
-				UIDropDownMenu_AddButton(info, 2)
-
-				info = UIDropDownMenu_CreateInfo()
 				info.text = DBM_CORE_RANGECHECK_SETRANGE_TO:format(8)
 				info.func = setRange
 				info.arg1 = 8
@@ -211,10 +195,10 @@ do
 				UIDropDownMenu_AddButton(info, 2)
 
 				info = UIDropDownMenu_CreateInfo()
-				info.text = DBM_CORE_RANGECHECK_SETRANGE_TO:format(13)
+				info.text = DBM_CORE_RANGECHECK_SETRANGE_TO:format(11)
 				info.func = setRange
-				info.arg1 = 13
-				info.checked = (mainFrame.range == 13)
+				info.arg1 = 11
+				info.checked = (mainFrame.range == 11)
 				UIDropDownMenu_AddButton(info, 2)
 
 				info = UIDropDownMenu_CreateInfo()
@@ -229,13 +213,6 @@ do
 				info.func = setRange
 				info.arg1 = 23
 				info.checked = (mainFrame.range == 23)
-				UIDropDownMenu_AddButton(info, 2)
-
-				info = UIDropDownMenu_CreateInfo()
-				info.text = DBM_CORE_RANGECHECK_SETRANGE_TO:format(30)
-				info.func = setRange
-				info.arg1 = 30
-				info.checked = (mainFrame.range == 30)
 				UIDropDownMenu_AddButton(info, 2)
 
 				info = UIDropDownMenu_CreateInfo()
@@ -628,23 +605,16 @@ do
 				if restricted then--API restrictions are in play, so pretend we're back in BC
 					--Start at bottom and work way up.
 					--Definitely not most efficient way of doing it. Refactor later
-					--All ranges are tested and compared against UnitDistanceSquared.
+					--All ranges aer tested and compared against UnitDistanceSquared.
 					--Worgsaw has a tooltip of 6 but doesn't factor in hitboxes/etc. It doesn't return false until UnitDistanceSquared of 8. bandages 18 even though spell range is 15, etc. Acorn actually is 5 in both though
-					if IsItemInRange(90175, uId) then range = 4--Gin-Ji Knife Set
-					elseif IsItemInRange(37727, uId) then range = 6--Ruby Acorn
-					elseif IsItemInRange(8149, uId) then range = 8--Voodoo Charm
+					if IsItemInRange(8149, uId) then range = 8--Voodoo Charm
 					elseif CheckInteractDistance(uId, 3) then range = 10
 					elseif CheckInteractDistance(uId, 2) then range = 11
-					elseif IsItemInRange(32321, uId) then range = 13--reports 12 but actual range tested is 13
-					elseif IsItemInRange(6450, uId) then range = 18--Bandages. (despite popular sites saying it's 15 yards, it's actually 18 yards verified by UnitDistanceSquared
+					elseif IsItemInRange(14530, uId) then range = 18--Heavy Runecloth Bandage. (despite popular sites saying it's 15 yards, it's actually 18 yards verified by UnitDistanceSquared
 					elseif IsItemInRange(21519, uId) then range = 23--Item says 20, returns true until 23.
-					elseif CheckInteractDistance(uId, 1) then range = 30
+					--elseif CheckInteractDistance(uId, 1) then range = 30 (not in classic, 1 is 10 yards)
 					elseif IsItemInRange(1180, uId) then range = 33--Scroll of Stamina
 					elseif UnitInRange(uId) then range = 43--item check of 34471 also good for 43
-					elseif IsItemInRange(32698, uId)  then range = 48--Wrangling Rope
-					elseif IsItemInRange(116139, uId)  then range = 53
-					elseif IsItemInRange(32825, uId) then range = 60
-					elseif IsItemInRange(35278, uId) then range = 80
 					else range = 1000 end--Just so it has a numeric value, even if it's unknown to protect from nil errors
 				else
 					range = UnitDistanceSquared(uId) ^ 0.5
@@ -755,21 +725,14 @@ end)
 local getDistanceBetween, getDistanceBetweenALL
 do
 	local function itsBCAgain(uId)
-		if IsItemInRange(90175, uId) then return 4
-		elseif IsItemInRange(37727, uId) then return 6
-		elseif IsItemInRange(8149, uId) then return 8
+		if IsItemInRange(8149, uId) then return 8
 		elseif CheckInteractDistance(uId, 3) then return 10
 		elseif CheckInteractDistance(uId, 2) then return 11
-		elseif IsItemInRange(32321, uId) then return 13
 		elseif IsItemInRange(6450, uId) then return 18
 		elseif IsItemInRange(21519, uId) then return 23
-		elseif CheckInteractDistance(uId, 1) then return 30
+		--elseif CheckInteractDistance(uId, 1) then return 30
 		elseif IsItemInRange(1180, uId) then return 33
 		elseif UnitInRange(uId) then return 43
-		elseif IsItemInRange(32698, uId) then return 48
-		elseif IsItemInRange(116139, uId) then return 53
-		elseif IsItemInRange(32825, uId) then return 60
-		elseif IsItemInRange(35278, uId) then return 80
 		else return 1000 end--Just so it has a numeric value, even if it's unknown to protect from nil errors
 	end
 
@@ -847,34 +810,20 @@ function rangeCheck:Show(range, filter, forceshow, redCircleNumPlayers, reverse,
 	local restrictionsActive = DBM:HasMapRestrictions()
 	if (DBM.Options.RangeFrameFrames == "text" or DBM.Options.RangeFrameFrames == "both" or restrictionsActive) and not textFrame.isShown then
 		if restrictionsActive then
-			if range <= 4 then
-				range = 4
-			elseif range <= 6 then
-				range = 6
-			elseif range <= 8 then
+			if range <= 8 then
 				range = 8
 			elseif range <= 10 then
 				range = 10
 			elseif range <= 11 then
 				range = 11
-			elseif range <= 13 then
-				range = 13
 			elseif range <= 18 then
 				range = 18
-			elseif range <= 22 then
-				range = 22
-			elseif range <= 30 then
-				range = 30
+			elseif range <= 23 then
+				range = 23
+			elseif range <= 33 then
+				range = 33
 			elseif range <= 43 then
 				range = 43
-			elseif range <= 48 then
-				range = 48
-			elseif range <= 53 then
-				range = 53
-			elseif range <= 60 then
-				range = 60
-			elseif range <= 80 then
-				range = 80
 			end
 		end
 		textFrame.isShown = true

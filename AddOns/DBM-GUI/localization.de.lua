@@ -274,7 +274,6 @@ L.DontShowPTNoID			= "Blockiere Pull-Timer, die nicht aus deiner derzeitigen Zon
 L.DontShowPT				= "Zeige keinen Timerbalken für Pull-/Pausen-Timer"
 L.DontShowPTText			= "Zeige keine Mitteilungen für Pull-/Pausen-Timer im Chatfenster"
 L.DontPlayPTCountdown		= "Spiele keinen akustischen Countdown für Pull-, Pausen-, Kampf- und benutzerdefinierte Timer"
-L.DontShowPTCountdownText	= "Zeige keinen optischen Countdown für Pull-Timer"
 L.PT_Threshold				= "Zeige keinen opt. Countd. für Pausen-/Kampf-/Nutzer-Timer über: %d"
 
 L.Panel_HideBlizzard		= "Deaktivierung von Spielelementen"
@@ -291,11 +290,14 @@ L.AfterFirst				= "Nach jeweils einmaligem Abspielen"
 L.Always					= ALWAYS
 L.CombatOnly				= "im Kampf deaktivieren (alle)"
 L.RaidCombat				= "im Kampf deaktivieren (nur Bosse)"
+L.TrivialContent			= "NICHT-mythischen Dungeons (<340)"--Basically anything below 340
+L.NormalRaider				= "Dungeons unter Mythisch+5 und in Schlachtzügen auf Schwierigkeitsgrad LFR (<355)"--Basically, anything below 355
+L.HeroicRaider				= "Dungeons unter Mythisch+10, SZ unter Heroisch, Nicht-Kriegsfront Weltbosse (<370)"--Basically anything below 370
+L.MythicRaider				= "allem unterhalb Schlachtzügen auf Schwierigkeitsgrad Mythisch (<385)"--Basically anything below 385
 
 L.Panel_ExtraFeatures		= "Sonstige Funktionen"
 --
 L.Area_ChatAlerts			= "Alarmmeldungen im Chatfenster"
-L.RoleSpecAlert				= "Zeige Alarmmeldung, wenn deine Beutespezialisierung nicht deiner aktuellen Spezialisierung beim Betreten eines Schlachtzugs entspricht"
 L.CheckGear					= "Zeige Alarmmeldung beim Pull, wenn deine angelegte Gegenstandsstufe viel niedriger als die in deinen Taschen (40+) oder deine Hauptwaffe nicht ausgerüstet ist"
 L.WorldBossAlert			= "Zeige Alarmmeldung, wenn auf deinem Realm Gildenmitglieder oder Freunde möglicherweise beginnen gegen Weltbosse zu kämpfen (ungenau falls Sender \"CRZed\" ist)"
 --
@@ -304,7 +306,6 @@ L.LFDEnhance				= "Spiele \"Bereitschaftscheck\"-Sound und lasse Anwendungsymbol
 L.WorldBossNearAlert		= "Spiele \"Bereitschaftscheck\"-Sound und lasse Anwendungsymbol aufblicken, wenn Weltbosse in deiner Nähe gepullt werden, die du brauchst"
 L.RLReadyCheckSound			= "Wenn ein Bereitschaftscheck durchgeführt wird, den Sound im Master- oder Dialog-Audiokanal abspielen und Anwendungsymbol aufblicken lassen"
 L.AFKHealthWarning			= "Spiele Alarmsound und lasse Anwendungsymbol aufblicken, wenn du Gesundheit verlierst, während du als nicht an der Tastatur (\"AFK\") markiert bist"
---L.AutoReplySound			--translate? (misleading option..)
 --
 L.TimerGeneral 				= "Allgemeine Einstellungen für Timer"
 L.SKT_Enabled				= "Zeige Timer für Rekordzeit für aktuellen Kampf (falls verfügbar)"

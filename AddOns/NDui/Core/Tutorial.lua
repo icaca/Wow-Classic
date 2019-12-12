@@ -13,7 +13,7 @@ print("|cff70C0F5------------------------")
 -- Tuitorial
 local function ForceDefaultSettings()
 	SetCVar("autoLootDefault", 1)
-	SetCVar("alwaysCompareItems", 0)
+	SetCVar("alwaysCompareItems", DB.isDeveloper and 0 or 1)
 	SetCVar("useCompactPartyFrames", 1)
 	SetCVar("lootUnderMouse", 1)
 	SetCVar("autoSelfCast", 1)
@@ -33,7 +33,7 @@ local function ForceDefaultSettings()
 end
 
 local function ForceRaidFrame()
-	if not CompactUnitFrameProfiles.selectedProfile then return end
+	if not CompactUnitFrameProfiles then return end
 	SetRaidProfileOption(CompactUnitFrameProfiles.selectedProfile, "useClassColors", true)
 	SetRaidProfileOption(CompactUnitFrameProfiles.selectedProfile, "displayPowerBar", true)
 	SetRaidProfileOption(CompactUnitFrameProfiles.selectedProfile, "displayBorder", false)

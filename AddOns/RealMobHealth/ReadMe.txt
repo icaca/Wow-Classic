@@ -17,6 +17,14 @@ Clears all recorded health data.
 
 ===============================================================================
 Versions:
+2.15	(2019-12-11)
+	-Implemented an anti-spam measure to help mitigate Blizzard's throttle bug of the YELL channel
+	-TextStatusBar_UpdateTextString() code moved to a secure hook to mitigate Blizzard taint bug
+
+2.14	(2019-12-10)
+	-The YELL addon channel has been added to the list of broadcast channels
+	-Some internal functions are now metatable-aware (opens possibilities for future features?)
+
 2.13	(2019-09-25)
 	-Removed lingering debug message that was hiding in the aura scanner
 

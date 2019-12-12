@@ -227,6 +227,9 @@ local function show(runAway, x, y, distance, time, legacy, dwayed, title, custom
 		end
 		targetX, targetY = x, y
 	end
+	if dwayed then
+		DBM:AddMsg(DBM_ARROW_WAY_SUCCESS)
+	end
 end
 
 function arrowFrame:ShowRunTo(...)
@@ -273,7 +276,7 @@ function arrowFrame:Move()
 	hideDistance = 0
 	frame:EnableMouse(true)
 	frame:Show()
-	DBM.Bars:CreateBar(25, DBM_ARROW_MOVABLE, 237538)
+	DBM.Bars:CreateBar(25, DBM_ARROW_MOVABLE, 136106)
 	DBM:Unschedule(endMove)
 	DBM:Schedule(25, endMove)
 end

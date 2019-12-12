@@ -294,6 +294,7 @@ function module:OnLogin()
 	local iconSize = NDuiDB["Bags"]["IconSize"]
 	local showItemLevel = NDuiDB["Bags"]["BagsiLvl"]
 	local deleteButton = NDuiDB["Bags"]["DeleteButton"]
+	local showNewItem = NDuiDB["Bags"]["ShowNewItem"]
 	--local itemSetFilter = NDuiDB["Bags"]["ItemSetFilter"]
 
 	-- Init
@@ -308,7 +309,7 @@ function module:OnLogin()
 	module.BagsType[-1] = 0
 
 	local f = {}
-	local onlyBags, bagAmmo, bagEquipment, bagConsumble, bagsJunk, onlyBank, bankAmmo, bankLegendary, bankEquipment, bankConsumble, onlyReagent, bagFavourite, bankFavourite = self:GetFilters()
+	local onlyBags, bagAmmo, bagEquipment, bagConsumble, bagsJunk, onlyBank, bankAmmo, bankLegendary, bankEquipment, bankConsumble, onlyReagent, bagFavourite, bankFavourite, onlyKeyring = self:GetFilters()
 
 	function Backpack:OnInit()
 		local MyContainer = self:GetContainerClass()
@@ -331,6 +332,9 @@ function module:OnLogin()
 
 		f.consumble = MyContainer:New("Consumble", {Columns = bagsWidth, Parent = f.main})
 		f.consumble:SetFilter(bagConsumble, true)
+
+		f.keyring = MyContainer:New("Keyring", {Columns = bagsWidth, Parent = f.main})
+		f.keyring:SetFilter(onlyKeyring, true)
 
 		f.bank = MyContainer:New("Bank", {Columns = bankWidth, Bags = "bank"})
 		f.bank:SetFilter(onlyBank, true)
@@ -401,8 +405,10 @@ function module:OnLogin()
 			self.iLvl = B.CreateFS(self, 12, "", false, "BOTTOMLEFT", 1, 1)
 		end
 
-		self.glowFrame = B.CreateBG(self, 4)
-		self.glowFrame:SetSize(iconSize+8, iconSize+8)
+		if showNewItem then
+			self.glowFrame = B.CreateBG(self, 4)
+			self.glowFrame:SetSize(iconSize+8, iconSize+8)
+		end
 
 		self:HookScript("OnClick", module.ButtonOnClick)
 	end
@@ -495,7 +501,8 @@ function module:OnLogin()
 		local spacing = 5
 		local xOffset = 5
 		local yOffset = -offset + spacing
-		local width, height = self:LayoutButtons("grid", columns, spacing, xOffset, yOffset)
+		local _, height = self:LayoutButtons("grid", columns, spacing, xOffset, yOffset)
+		local width = columns * (iconSize+spacing)-spacing
 		if self.freeSlot then
 			if NDuiDB["Bags"]["GatherEmpty"] then
 				local numSlots = #self.buttons + 1
@@ -510,7 +517,7 @@ function module:OnLogin()
 				self.freeSlot:Show()
 
 				if height < 0 then
-					width, height = columns * (iconSize+spacing)-spacing, iconSize
+					height = iconSize
 				elseif col == 1 then
 					height = height + iconSize + spacing
 				end
@@ -520,7 +527,7 @@ function module:OnLogin()
 		end
 		self:SetSize(width + xOffset*2, height + offset)
 
-		module:UpdateAnchors(f.main, {f.ammoItem, f.equipment, f.bagFavourite, f.consumble, f.junk})
+		module:UpdateAnchors(f.main, {f.ammoItem, f.equipment, f.bagFavourite, f.consumble, f.keyring, f.junk})
 		module:UpdateAnchors(f.bank, {f.bankAmmoItem, f.bankEquipment, f.bankLegendary, f.bankFavourite, f.bankConsumble})
 	end
 
@@ -549,6 +556,8 @@ function module:OnLogin()
 			label = BAG_FILTER_JUNK
 		elseif strmatch(name, "Favourite") then
 			label = PREFERENCES
+		elseif name == "Keyring" then
+			label = KEYRING
 		end
 		if label then B.CreateFS(self, 14, label, true, "TOPLEFT", 5, -8) return end
 
@@ -624,9 +633,12 @@ function module:OnLogin()
 	-- Fixes
 	ToggleAllBags()
 	ToggleAllBags()
+	module.initComplete = true
+
 	BankFrame.GetRight = function() return f.bank:GetRight() end
 	BankFrameItemButton_Update = B.Dummy
 
+	-- Sort order
 	SetSortBagsRightToLeft(not NDuiDB["Bags"]["ReverseSort"])
 	SetInsertItemsLeftToRight(false)
 

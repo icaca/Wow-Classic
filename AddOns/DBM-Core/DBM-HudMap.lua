@@ -1,5 +1,5 @@
 ﻿--Original code and concept by Antiarc. Used and modified with his permission.
---First adaptation in dbm credits to VEM team. Continued on their behalf do to no time from original author to make it an external mod or DBM plugin.
+--First adaptation in dbm credits to VEM team. Continued on their behalf do to no time from origiinal author to make it an external mod or DBM plugin.
 
 local ADDON_NAME = ...
 
@@ -1389,6 +1389,10 @@ function mod:FreeEncounterMarker(key)
 	if activeMarkers == 0 then--No markers left, disable hud
 		self:Disable()
 	end
+end
+
+function mod:GetEncounterMarker(key)
+	return encounterMarkers[key]
 end
 
 -- should be called to manually free marker

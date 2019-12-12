@@ -35,29 +35,19 @@ DBM_CORE_MOD_AVAILABLE				= "이 지역에서 %s|1을;를; 사용할 수 있습�
 DBM_CORE_COMBAT_STARTED				= "%s 전투 시작. 행운을 빕니다! :)";
 DBM_CORE_COMBAT_STARTED_IN_PROGRESS	= "%s 전투 진행 도중 참가했습니다. 행운을 빕니다! :)"
 DBM_CORE_GUILD_COMBAT_STARTED		= "길드가 %s 전투를 시작했습니다."
-DBM_CORE_SCENARIO_STARTED			= "%s 시작. 행운을 빕니다! :)";
-DBM_CORE_SCENARIO_STARTED_IN_PROGRESS	= "%s 시나리오 진행 도중 참가하였습니다. 행운을 빕니다! :)"
 DBM_CORE_BOSS_DOWN					= "%s|1이;가; %s만에 쓰러졌습니다!"
 DBM_CORE_BOSS_DOWN_I				= "%s|1이;가; 쓰러졌습니다! 총 %d회 승리했습니다."
 DBM_CORE_BOSS_DOWN_L				= "%s|1이;가; %s만에 쓰러졌습니다! 지난번 처치 기록은 %s, 가장 빠른 기록은 %s 입니다. 총 %d회 승리했습니다."
 DBM_CORE_BOSS_DOWN_NR				= "%s|1이;가; %s만에 쓰러졌습니다! 신기록입니다! (이전 기록은 %s) 총 %d회 승리했습니다."
 DBM_CORE_GUILD_BOSS_DOWN			= "길드가 %s|1을;를; %s만에 물리쳤습니다!"
-DBM_CORE_SCENARIO_COMPLETE			= "%s|1을;를; %s만에 완료했습니다!"
-DBM_CORE_SCENARIO_COMPLETE_I		= "%s|1을;를; 완료했습니다! 총 %d회 완료했습니다."
-DBM_CORE_SCENARIO_COMPLETE_L		= "%s|1을;를; %s만에 완료했습니다! 지난번 완료 기록은 %s, 가장 빠른 기록은 %s 입니다. 총 %d회 완료했습니다."
-DBM_CORE_SCENARIO_COMPLETE_NR		= "%s|1을;를; %s만에 완료했습니다! 신기록입니다! (이전 기록은 %s) 총 %d회 완료했습니다."
 DBM_CORE_COMBAT_ENDED_AT			= "%s (%s) 전투에서 %s만에 전멸했습니다."
 DBM_CORE_COMBAT_ENDED_AT_LONG		= "%s (%s) 전투에서 %s만에 전멸했습니다. 현재 난이도에서 총 %d회 전멸했습니다."
 DBM_CORE_GUILD_COMBAT_ENDED_AT		= "길드가 %s (%s)에서 %s만에 전멸했습니다."
-DBM_CORE_SCENARIO_ENDED_AT			= "%s|1이;가; %s만에 끝났습니다."
-DBM_CORE_SCENARIO_ENDED_AT_LONG		= "%s|1이;가; %s만에 끝났습니다. 현재 난이도에서 총 %d회 실패했습니다."
 DBM_CORE_COMBAT_STATE_RECOVERED		= "%s 전투가 %s전에 시작됐습니다. 타이머 복구중..."
 DBM_CORE_TRANSCRIPTOR_LOG_START		= "Transcriptor 기록이 시작됐습니다."
 DBM_CORE_TRANSCRIPTOR_LOG_END		= "Transcriptor 기록이 종료됐습니다."
 
 DBM_CORE_MOVIE_SKIPPED				= "DBM이 동영상 자동 생략 기능을 작동시켰습니다."
-DBM_CORE_BONUS_SKIPPED				= "DBM이 자동으로 추가 전리품 주사위 굴림 창을 닫았습니다. 창을 열고 싶으면 3분 안에 /dbmbonusroll 명령어를 입력하세요"
-DBM_CORE_BONUS_EXPIRED				= "/dbmbonusroll 명령어를 사용해 추가 전리품 주사위 굴림 창을 열려고 했으나 현재 굴릴 수 있는 추가 전리품 주사위가 없습니다."
 
 DBM_CORE_AFK_WARNING				= "자리 비움 상태에서 전투에 돌입하여 (남은 생명력 %d퍼센트) 경고음을 재생중입니다. 자리를 비우고 있는게 아니라면 자리 비움 상태를 해제하거나 '기타 기능' 항목에서 해당 설정을 비활성화 해주세요."
 
@@ -100,10 +90,11 @@ DBM_CORE_NOTESHAREERRORALREADYOPEN	= "메모 편집기가 이미 열려 있는 �
 DBM_CORE_ALLMOD_DEFAULT_LOADED		= "이 인스턴스에 속한 모든 모드의 기본 설정이 로딩됐습니다."
 DBM_CORE_ALLMOD_STATS_RESETED		= "모든 모드 통계가 초기화 되었습니다."
 DBM_CORE_MOD_DEFAULT_LOADED			= "이 전투의 기본 설정이 로딩됐습니다."
-DBM_CORE_SOUNDKIT_MIGRATION			= "한개 이상의 경고/특수 경고 효과음이 호환되지 않는 미디어 형식이거나 파일 경로가 잘못되는 등의 문제로 인해 기본값으로 초기화 되었습니다. DBM은 현재 애드온 폴더 내에 있는 효과음 파일이나 미디어 재생에 쓰이는 SoundKit ID만 지원하고 있습니다."
+DBM_CORE_SOUNDKIT_MIGRATION			= "한개 이상의 경고/특수 경고 효과음이 8.2 패치 이후의 버전과 호환되지 않아 기본값으로 초기화 되었습니다 (interface 폴더 안에 있는 효과음 파일 경로 또는 SoundKit ID를 사용해야 합니다)"
 
 DBM_CORE_WORLDBOSS_ENGAGED			= "당신이 속한 서버에서 %s 전투가 %s 퍼센트의 체력으로 시작된 것 같습니다. (%s|1이;가; 전송)"
 DBM_CORE_WORLDBOSS_DEFEATED			= "당신이 속한 서버에서 %s|1이;가; 잡힌 것 같습니다. (%s|1이;가; 전송)"
+DBM_CORE_WORLDBUFF_STARTED			= "%s 버프가 당신이 속한 서버의 %s 진영에서 시작됐습니다. (%s|1이;가; 받음)"
 
 DBM_CORE_TIMER_FORMAT_SECS			= "%.2f초"
 DBM_CORE_TIMER_FORMAT_MINS			= "%d분"
@@ -124,13 +115,14 @@ DBM_CORE_OPTION_TIMER_COMBAT		= "전투 시작 타이머 바 보기"
 DBM_CORE_BAD						= "바닥"
 
 DBM_CORE_OPTION_CATEGORY_TIMERS		= "바"
+--Sub cats for "announce" object
 DBM_CORE_OPTION_CATEGORY_WARNINGS	= "일반 알림"
 DBM_CORE_OPTION_CATEGORY_WARNINGS_YOU	= "개인 알림"
 DBM_CORE_OPTION_CATEGORY_WARNINGS_OTHER	= "대상 관련 알림"
 DBM_CORE_OPTION_CATEGORY_WARNINGS_ROLE	= "역할 관련 알림"
 
 DBM_CORE_OPTION_CATEGORY_SOUNDS		= "음성"
---Sub cats for "announce" object
+--Misc object broken down into sub cats
 DBM_CORE_OPTION_CATEGORY_DROPDOWNS		= "드롭다운 옵션"
 DBM_CORE_OPTION_CATEGORY_YELLS			= "말풍선"
 DBM_CORE_OPTION_CATEGORY_NAMEPLATES		= "이름표"
@@ -144,12 +136,6 @@ DBM_CORE_WHISPER_COMBAT_END_KILL			= "%s님이 %s 전투에서 승리했습니�
 DBM_CORE_WHISPER_COMBAT_END_KILL_STATS		= "%s님이 %s 전투에서 승리했습니다! 총 %d회 승리했습니다."
 DBM_CORE_WHISPER_COMBAT_END_WIPE_AT			= "%s님이 %s %s에서 전멸했습니다."
 DBM_CORE_WHISPER_COMBAT_END_WIPE_STATS_AT	= "%s님이 %s %s에서 전멸했습니다. 이 난이도에서 총 %d회 전멸했습니다."
---Scenarios (no percents. words like "fighting" or "wipe" changed to better fit scenarios)
-DBM_CORE_AUTO_RESPOND_WHISPER_SCENARIO		= "%s님이 %s 시나리오를 진행중입니다. (%d/%d 생존)"
-DBM_CORE_WHISPER_SCENARIO_END_KILL			= "%s님이 %s 시나리오를 완료했습니다!"
-DBM_CORE_WHISPER_SCENARIO_END_KILL_STATS	= "%s님이 %s 시나리오를 완료했습니다! 이 난이도를 %d회 완료했습니다!"
-DBM_CORE_WHISPER_SCENARIO_END_WIPE			= "%s님이 %s 시나리오를 완료하지 못했습니다."
-DBM_CORE_WHISPER_SCENARIO_END_WIPE_STATS	= "%s님이 %s 시나리오를 완료하지 못했습니다. 이 난이도를 총 %d회 실패했습니다."
 
 DBM_CORE_VERSIONCHECK_HEADER		= "보스 모드 - 버전"
 DBM_CORE_VERSIONCHECK_ENTRY_NO_DBM	= "%s: 설치된 보스 모드 없음"
@@ -179,11 +165,11 @@ DBM_CORE_DPMCORE						= "경고: Deadly PvP 모드는 더이상 개발되지 않
 DBM_CORE_DBMLDB							= "경고: DBM-LDB는 이제 DBM-Core에 편입되었습니다. 같이 사용해도 문제가 생기는건 아니지만 가급적 애드온 폴더에서 'DBM-LDB' 폴더를 삭제하는걸 권장합니다"
 DBM_CORE_UPDATE_REQUIRES_RELAUNCH		= "경고: 지금 업데이트한 DBM은 게임 클라이언트를 완전히 재시작하기 전까진 정상 작동하지 않습니다. 이 업데이트엔 새 파일이 포함되어 있거나 UI 재시작으로는 로딩할 수 없는 .toc 파일의 변경 사항이 있습니다. 클라이언트 재시작 없이 사용할 경우 오류가 발생하거나 작동하지 않을 수 있습니다."
 DBM_CORE_OUT_OF_DATE_NAG				= "현재 사용중인 Deadly Boss Mods 버전이 오래되었습니다. 업데이트를 해야 이 전투의 중요한 알림이나 타이머 그리고 공격대원 모두가 보는 외침 등이 빠지지 않게 나옵니다."
-DBM_CORE_RETAIL_ONLY					= "경고: 이 DBM 버전은 월드 오브 워크래프트 최신 버전용입니다. 삭제하시고 클래식 WoW 전용 DBM을 설치하세요."
+DBM_CORE_CLASSIC_ONLY					= "경고: 이 DBM은 월드 오브 워크래프트: 클래식 전용 버전입니다. 삭제하시고 최신 WoW 버전용 DBM을 설치하세요."
 
 DBM_CORE_MOVABLE_BAR				= "드래그 하세요!"
 
-DBM_PIZZA_SYNC_INFO					= "|Hplayer:%1$s|h[%1$s]|h님이 당신에게 DBM 타이머를 전송했습니다"
+DBM_PIZZA_SYNC_INFO					= "|Hplayer:%1$s|h[%1$s]|h1이;가; 당신에게 DBM 타이머를 전송했습니다"
 DBM_PIZZA_CONFIRM_IGNORE			= "정말 %s의 DBM 타이머를 차단하시겠습니까? 이 공격대에 있는 동안에만 적용됩니다."
 DBM_PIZZA_ERROR_USAGE				= "사용법: /dbm [broadcast] timer <시간> <텍스트>. <시간>은 1초 이상이어야 합니다."
 
@@ -285,9 +271,7 @@ DBM_BOSS							= "보스"
 DBM_CORE_ROOM_EDGE					= "구석"
 DBM_CORE_FAR_AWAY					= "먼 곳"
 DBM_CORE_BREAK_LOS					= "시야를 가리는 곳"
-DBM_CORE_RESTORE_LOS				= "시야가 나오는 곳"
 DBM_CORE_SAFE						= "안전함"
-DBM_CORE_NOTSAFE					= "위험함"
 DBM_CORE_SHIELD						= "보호막"
 DBM_INCOMING						= "%s 등장"
 --Common Locals end
@@ -327,7 +311,6 @@ DBM_CORE_AUTO_ANNOUNCE_TEXTS.bait		= "곧 %s - 위치 유도"
 DBM_CORE_AUTO_ANNOUNCE_TEXTS.stage			= "%s단계"
 DBM_CORE_AUTO_ANNOUNCE_TEXTS.prestage		= "곧 %s단계"
 DBM_CORE_AUTO_ANNOUNCE_TEXTS.stack			= "%s: >%%s< (%%d)"
-DBM_CORE_AUTO_ANNOUNCE_TEXTS.moveto		= "%s - >%%s<|1으로;로; 이동"
 
 local prewarnOption = "$spell:%s 사전 경고 보기"
 DBM_CORE_AUTO_ANNOUNCE_OPTIONS.you			= "당신이 $spell:%s 대상이 된 경우 알림 보기"
@@ -349,7 +332,6 @@ DBM_CORE_AUTO_ANNOUNCE_OPTIONS.stagechange	= "단계 전환 알림"
 DBM_CORE_AUTO_ANNOUNCE_OPTIONS.prestage		= "%s단계로 넘어가기 전 경고 보기"
 DBM_CORE_AUTO_ANNOUNCE_OPTIONS.count		= "$spell:%s 경고 보기 (횟수 포함)"
 DBM_CORE_AUTO_ANNOUNCE_OPTIONS.stack		= "$spell:%s 중첩 알림"
-DBM_CORE_AUTO_ANNOUNCE_OPTIONS.moveto		= "$spell:%s에 특정인 또는 특정 위치로 이동 경고 보기"
 
 DBM_CORE_AUTO_SPEC_WARN_TEXTS.ends		= "%s 종료!"
 DBM_CORE_AUTO_SPEC_WARN_TEXTS.fades		= "%s 사라짐!"
@@ -451,6 +433,7 @@ DBM_CORE_AUTO_TIMER_TEXTS.nextspecial		= "다음 특수 능력"
 DBM_CORE_AUTO_TIMER_TEXTS.stage			= "다음 단계"
 DBM_CORE_AUTO_TIMER_TEXTS.adds			= "쫄 등장"
 DBM_CORE_AUTO_TIMER_TEXTS.addscustom		= "쫄 등장 (%%s)"
+DBM_CORE_AUTO_TIMER_TEXTS.roleplay		= "롤플레이"
 
 DBM_CORE_AUTO_TIMER_OPTIONS.target		= "$spell:%s 디버프 타이머 바 보기"
 DBM_CORE_AUTO_TIMER_OPTIONS.cast		= "$spell:%s 시전 타이머 바 보기"
@@ -478,6 +461,13 @@ DBM_CORE_AUTO_ICONS_OPTION_TEXT2		= "$spell:%s에 공격대 징표 설정"
 DBM_CORE_AUTO_ARROW_OPTION_TEXT			= "$spell:%s 대상을 향하는 DBM 화살표 표시"
 DBM_CORE_AUTO_ARROW_OPTION_TEXT2		= "$spell:%s 대상과 반대 방향의 DBM 화살표 표시"
 DBM_CORE_AUTO_ARROW_OPTION_TEXT3		= "$spell:%s 특정 지점을 가리키는 DBM 화살표 표시"
+DBM_CORE_AUTO_VOICE_OPTION_TEXT			= "$spell:%s에 대한 음성 경보 듣기"
+DBM_CORE_AUTO_VOICE2_OPTION_TEXT		= "단계 전환시 음성 경보 듣기"
+DBM_CORE_AUTO_VOICE3_OPTION_TEXT		= "쫄 등장시 음성 경보 듣기"
+DBM_CORE_AUTO_VOICE4_OPTION_TEXT		= "바닥 밟았을 때 음성 경보 듣기"
+DBM_CORE_AUTO_COUNTDOWN_OPTION_TEXT		= "$spell:%s 쿨타임에 맞춰 초읽기 듣기"
+DBM_CORE_AUTO_COUNTDOWN_OPTION_TEXT2		= "$spell:%s 남은 시간 초읽기 듣기"
+DBM_CORE_AUTO_COUNTOUT_OPTION_TEXT		= "$spell:%s 지속 시간 초읽기 듣기"
 DBM_CORE_AUTO_YELL_OPTION_TEXT.shortyell	= "$spell:%s 대상일 때 말풍선으로 알리기"
 DBM_CORE_AUTO_YELL_OPTION_TEXT.yell		= "$spell:%s 대상일 때 말풍선으로 알리기 (플레이어 이름 포함)"
 DBM_CORE_AUTO_YELL_OPTION_TEXT.count		= "$spell:%s 대상일 때 말풍선으로 알리기 (횟수 포함)"
@@ -575,9 +565,23 @@ DBM_LDB_TOOLTIP_HELP2	= "오른쪽 클릭으로 설정 메뉴 열기"
 
 DBM_LDB_LOAD_MODS		= "보스 모드 로드"
 
+DBM_LDB_CAT_BFA			= "격전의 아제로스"
+DBM_LDB_CAT_LEG			= "군단"
+DBM_LDB_CAT_WOD			= "드레노어의 전쟁군주"
+DBM_LDB_CAT_MOP			= "판다리아의 안개"
+DBM_LDB_CAT_CATA		= "대격변"
+DBM_LDB_CAT_WOTLK		= "리치 왕의 분노"
+DBM_LDB_CAT_BC			= "불타는 성전"
 DBM_LDB_CAT_OTHER		= "그 외 보스 모드"
 
 DBM_LDB_CAT_GENERAL		= "일반"
 DBM_LDB_ENABLE_BOSS_MOD	= "보스 모드 사용"
+
+DBM_CORE_WORLD_BUFFS.hordeOny		= "호드의 백성들이여, 오그리마의 주민들이여, 모두 와서 호드의 영웅을 찬양하라."
+DBM_CORE_WORLD_BUFFS.allianceOny	= "스톰윈드의 주민들과 모든 얼라이언스여! 오늘, 역사가 이루어졌노라."
+DBM_CORE_WORLD_BUFFS.hordeNef		= "NEFARIAN IS SLAIN! People of Orgrimmar"
+DBM_CORE_WORLD_BUFFS.allianceNef	= "Citizens of the Alliance, the Lord of Blackrock is slain!"
+DBM_CORE_WORLD_BUFFS.zgHeart		= "Now, only one step remains to rid us of the Soulflayer's threat"
+DBM_CORE_WORLD_BUFFS.rendHead		= "가짜 대족장 렌드 블랙핸드가 쓰러졌도다!"
 
 end

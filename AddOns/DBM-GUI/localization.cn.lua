@@ -2,7 +2,7 @@
 -- yleaf(yaroot@gmail.com)
 -- sunlcy@NGA
 -- Mini Dragon(projecteurs@gmail.com)
--- Last update: 2019/08/09
+-- Last update: 2019/02/22
 
 if GetLocale() ~= "zhCN" then return end
 if not DBM_GUI_Translations then DBM_GUI_Translations = {} end
@@ -111,7 +111,6 @@ L.CombatMessages			= "战斗信息设置"
 L.ShowEngageMessage 		= "在聊天窗口中显示开战信息"
 L.ShowDefeatMessage 		= "在聊天窗口中显示击杀信息"
 L.ShowGuildMessages 		= "在聊天窗口中显示工会开战，击杀，灭团信息"
-L.ShowGuildMessagesPlus		= "显示工会中的M+以上难度的开战，击杀，灭团信息(需要团队选项)"
 L.WhisperMessages			= "密语信息设置"
 L.AutoRespond 				= "在战斗中自动回复私聊"
 L.WhisperStats 				= "在回复的私聊中包含击杀或灭团次数统计信息"
@@ -256,8 +255,7 @@ L.SpamBlockNoSetIcon		= "不在目标上设定标记"
 L.SpamBlockNoRangeFrame		= "不显示距离雷达框体"
 L.SpamBlockNoInfoFrame		= "不显示信息框体"
 L.SpamBlockNoHudMap			= "不显示HudMap"
-L.SpamBlockNoNameplate		= "不要显示姓名板高亮(完全取消)"
-L.SpamBlockNoNameplateLines	= "不要显示姓名版高亮(效果图标继续显示)"
+L.SpamBlockNoNameplate		= "不要显示姓名面板高亮"
 L.SpamBlockNoCountdowns		= "不要播放倒计时语音"
 L.SpamBlockNoYells			= "不要再战斗中大喊"
 L.SpamBlockNoNoteSync		= "不接受别人分享的自定义注记"
@@ -271,7 +269,6 @@ L.SpamBlockNoRangeRestore	= "当Boss模块隐藏距离窗体时不重置窗体�
 L.Area_SpamFilter			= "信息过滤设置"
 L.DontShowFarWarnings		= "不为过远的事件显示计时条/警报"
 L.StripServerName			= "警告和计时器中不显示服务器名"
-L.FilterVoidFormSay			= "当在虚无状态下，不播发位置或报数喊叫"
 
 L.Area_SpecFilter			= "角色过滤选项"
 L.FilterTankSpec			= "当非坦克专精时，过滤掉给予坦克的专用信息"
@@ -288,7 +285,6 @@ L.DontShowPTNoID			= "不显示不同区域发送的倒计时"
 L.DontShowPT				= "不显示开怪和倒计时条"
 L.DontShowPTText			= "不显示开怪和倒计时文字"
 L.DontPlayPTCountdown		= "不播放开怪倒计时语音"
-L.DontShowPTCountdownText	= "不显示开怪倒计时动画"
 L.PT_Threshold				= "不显示高于%d秒的倒计时动画"
 
 L.Panel_HideBlizzard		= "隐藏游戏自带内容"
@@ -301,16 +297,18 @@ L.HideQuestTooltips			= "Boss战斗中隐藏鼠标提示窗体(tooltips)中的�
 L.HideTooltips				= "Boss战斗中完全隐藏鼠标提示窗体(tooltips)"
 L.DisableSFX				= "Boss战斗中关闭音效"
 L.DisableCinematics			= "自动跳过游戏内过场动画"
-L.OnlyFight					= "当每个动画被播放国一次后，只在战斗中放"
 L.AfterFirst				= "仅第一次播放"
 L.Always					= "总是跳过"
 L.CombatOnly				= "在任何战斗中隐藏"
 L.RaidCombat				= "只在Boss战斗中隐藏"
+L.TrivialContent			= "低于5M掉落"--Basically anything below 340
+L.NormalRaider				= "低于5层大秘和随机团掉落"--Basically, anything below 355
+L.HeroicRaider				= "低于10层大秘，H副本"--Basically anything below 370
+L.MythicRaider				= "M副本"--Basically anything below 385
 
 L.Panel_ExtraFeatures		= "其他功能"
 --
 L.Area_ChatAlerts			= "文字提示警告选项"
-L.RoleSpecAlert				= "当进入团队时，如果拾取专精与当前角色专精不同，则显示警告。"
 L.CheckGear					= "当你身上的装备装等低于背包装等40点时显示警告。(可能没有装备某物品或装备了低等级的任务道具或没有装备主武器)"
 L.WorldBossAlert			= "当世界Boss进入战斗后发送警告，这个信息可能是你的朋友或者同工会成员发送的。 (由于跨服，卡位面等因素，可能不准确)"
 --
@@ -319,7 +317,6 @@ L.LFDEnhance				= "当发起角色检查或随机团队/战场就绪时，在主
 L.WorldBossNearAlert		= "当世界附近的Boss进入战斗时播放准备音效(覆盖单独BOSS设置)并闪烁图标"
 L.RLReadyCheckSound			= "在主声道/对话声道播放检查准备音效并闪烁图标"
 L.AFKHealthWarning			= "当你在挂机/暂离而受到伤害时播放音效并闪烁图标(你会死)"
-L.AutoReplySound			= "当收到DBM可自动回复的信息时播放音效并闪烁图标"
 --
 L.TimerGeneral 				= "计时器选项"
 L.SKT_Enabled				= "总是显示最速胜利计时条(覆盖单独BOSS设置)"

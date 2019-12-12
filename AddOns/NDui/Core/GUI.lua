@@ -47,6 +47,7 @@ local defaultSettings = {
 		FavouriteItems = {},
 		GatherEmpty = false,
 		SpecialBagsColor = true,
+		ShowNewItem = true,
 	},
 	Auras = {
 		Reminder = true,
@@ -107,6 +108,7 @@ local defaultSettings = {
 		BuffIndicatorType = 1,
 		BI_IconSize = 10,
 		EnergyTicker = true,
+		UFTextScale = 1,
 
 		PlayerWidth = 245,
 		PlayerHeight = 24,
@@ -439,6 +441,10 @@ local function updatePlayerPlate()
 	B:GetModule("UnitFrames"):ResizePlayerPlate()
 end
 
+local function updateUFTextScale()
+	B:GetModule("UnitFrames"):UpdateTextScale()
+end
+
 local function updateMapFader()
 	B:GetModule("Maps"):MapFader()
 end
@@ -465,6 +471,10 @@ end
 
 local function updateErrorBlocker()
 	B:GetModule("Misc"):UpdateErrorBlocker()
+end
+
+local function updateActionbarScale()
+	B:GetModule("Actionbar"):UpdateAllScale()
 end
 
 local function updateReminder()
@@ -509,7 +519,7 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Actionbar", "Bar4Fade", L["Bar4 Fade"]},
 		{1, "Actionbar", "Bar5Fade", L["Bar5 Fade"], true},
 		{4, "Actionbar", "Style", L["Actionbar Style"], false, {L["BarStyle1"], L["BarStyle2"], L["BarStyle3"], L["BarStyle4"], L["BarStyle5"]}},
-		{3, "Actionbar", "Scale", L["Actionbar Scale"], true, {.8, 1.5, 1}},
+		{3, "Actionbar", "Scale", L["Actionbar Scale"].."*", true, {.8, 1.5, 1}, updateActionbarScale},
 		{},--blank
 		{1, "Actionbar", "Hotkeys", L["Actionbar Hotkey"]},
 		{1, "Actionbar", "Macro", L["Actionbar Macro"], true},
@@ -530,6 +540,7 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Bags", "ReverseSort", L["Bags ReverseSort"].."*", true, nil, updateBagSortOrder},
 		{1, "Bags", "BagsiLvl", L["Bags Itemlevel"]},
 		{1, "Bags", "DeleteButton", L["Bags DeleteButton"], true},
+		{1, "Bags", "ShowNewItem", L["Bags ShowNewItem"]},
 		{},--blank
 		{3, "Bags", "BagsScale", L["Bags Scale"], false, {.5, 1.5, 1}},
 		{3, "Bags", "IconSize", L["Bags IconSize"], true, {30, 42, 0}},
@@ -537,7 +548,7 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{3, "Bags", "BankWidth", L["Bank Width"], true, {10, 20, 0}},
 	},
 	[3] = {
-		{1, "UFs", "Enable", "|cff00cc4c"..L["Enable UFs"], nil, setupUnitFrame},
+		{1, "UFs", "Enable", "|cff00cc4c"..L["Enable UFs"], nil, setupUnitFrame, nil, L["HideUFWarning"]},
 		{},--blank
 		{1, "UFs", "Castbars", "|cff00cc4c"..L["UFs Castbar"], nil, setupCastbar},
 		{1, "UFs", "LagString", L["Castbar LagString"], true},
@@ -547,9 +558,10 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{1, "UFs", "Portrait", L["UFs Portrait"]},
 		{1, "UFs", "ClassPower", L["UFs ClassPower"], true},
 		{1, "UFs", "PlayerDebuff", L["Player Debuff"]},
-		{1, "UFs", "ToTAuras", L["ToT Debuff"]},
-		{4, "UFs", "HealthColor", L["HealthColor"], true, {L["Default Dark"], L["ClassColorHP"], L["GradientHP"]}},
+		{1, "UFs", "ToTAuras", L["ToT Debuff"], true},
 		{1, "UFs", "EnergyTicker", L["EnergyTicker"]},
+		{4, "UFs", "HealthColor", L["HealthColor"], nil, {L["Default Dark"], L["ClassColorHP"], L["GradientHP"]}},
+		{3, "UFs", "UFTextScale", L["UFTextScale"], true, {.8, 2, 2}, updateUFTextScale},
 		{},--blank
 		{1, "UFs", "CombatText", "|cff00cc4c"..L["UFs CombatText"]},
 		{1, "UFs", "AutoAttack", L["CombatText AutoAttack"]},
