@@ -1886,6 +1886,59 @@ function _G._detalhes:Start()
 		end
 	end
 
+	--> queue workaround: when pressing 'enter battle' for battlegrounds
+	--> the client blocks the action due to some no sense taint, this taint has been fixed 5 years ago on retail
+	--> and it's up again on the client client
+
+	local originalPosition
+	local isOnOriginalPosition = true
+
+	local taintWarning = CreateFrame ("frame")
+	taintWarning:SetSize (400, 35)
+	taintWarning:SetFrameStrata ("low")
+
+	taintWarning:SetBackdrop ({edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border", 
+	edgeSize = 16, bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background-Dark", tileSize = 64, tile = true, insets={left=4, right=4, top=4, bottom=4}})
+
+	local warningMessage = taintWarning:CreateFontString (nil, "overlay", "GameFontNormal")
+	warningMessage:SetText ("< right click and choose enter if they try to blame addons")
+
+	C_Timer.NewTicker(1, function()
+		if (StaticPopup1:IsShown()) then
+			if (StaticPopup1.which == "CONFIRM_BATTLEFIELD_ENTRY") then
+
+				taintWarning:Show()
+				taintWarning:SetPoint ("topleft", StaticPopup1, "bottomleft", 0, -10)
+				if (MiniMapBattlefieldFrame:IsShown())then
+					if (not originalPosition) then
+						local a = {}
+						for i = 1, MiniMapBattlefieldFrame:GetNumPoints() do
+							a[#a + 1] = {MiniMapBattlefieldFrame:GetPoint(i)}
+						end
+						originalPosition = a
+					end
+
+					MiniMapBattlefieldFrame:ClearAllPoints()
+					MiniMapBattlefieldFrame:SetPoint("left", taintWarning, "left", 10, -2)
+					warningMessage:SetPoint ("left", MiniMapBattlefieldFrame, "right", 9, 0)
+
+					isOnOriginalPosition = false
+				end
+			end
+		else
+			if (originalPosition and not isOnOriginalPosition) then
+				MiniMapBattlefieldFrame:ClearAllPoints()
+				for i = 1, #originalPosition do
+					MiniMapBattlefieldFrame:SetPoint(unpack (originalPosition[i]))
+				end
+				taintWarning:Hide()
+				isOnOriginalPosition = true
+			end
+		end
+	end)
+
+
+
 end
 
 _detalhes.AddOnLoadFilesTime = GetTime()
