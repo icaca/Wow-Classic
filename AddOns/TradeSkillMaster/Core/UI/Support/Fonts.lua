@@ -10,12 +10,12 @@ local _, TSM = ...
 
 TSM.UI.Fonts = {
 	FRIZQT = TSM.UI.GetFont(TSM4FrizQT),
-	MontserratRegular = "Interface\\Addons\\TradeSkillMaster\\Media\\Montserrat-Regular.ttf",
-	MontserratMedium = "Interface\\Addons\\TradeSkillMaster\\Media\\Montserrat-Medium.ttf",
-	MontserratBold = "Interface\\Addons\\TradeSkillMaster\\Media\\Montserrat-Bold.ttf",
-	MontserratItalic = "Interface\\Addons\\TradeSkillMaster\\Media\\Montserrat-Italic.ttf",
-	RobotoMedium = "Interface\\Addons\\TradeSkillMaster\\Media\\Roboto-Medium.ttf",
-	RobotoRegular = "Interface\\Addons\\TradeSkillMaster\\Media\\Roboto-Regular.ttf",
+	MontserratRegular = "Fonts\\FRIZQT__.ttf",
+	MontserratMedium = "Fonts\\FRIZQT__.ttf",
+	MontserratBold = "Fonts\\FRIZQT__.ttf",
+	MontserratItalic = "Fonts\\FRIZQT__.ttf",
+	RobotoMedium = "Fonts\\FRIZQT__.ttf",
+	RobotoRegular = "Fonts\\FRIZQT__.ttf",
 }
 
 do
