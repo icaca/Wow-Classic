@@ -871,6 +871,7 @@ function UF:CreatePrediction(self)
 	myBar:SetPoint("LEFT", self.Health:GetStatusBarTexture(), "RIGHT")
 	myBar:SetStatusBarTexture(DB.normTex)
 	myBar:SetStatusBarColor(0, 1, .5, .5)
+	myBar:Hide()
 
 	local otherBar = CreateFrame("StatusBar", nil, self)
 	otherBar:SetWidth(self:GetWidth())
@@ -879,6 +880,7 @@ function UF:CreatePrediction(self)
 	otherBar:SetPoint("LEFT", myBar:GetStatusBarTexture(), "RIGHT")
 	otherBar:SetStatusBarTexture(DB.normTex)
 	otherBar:SetStatusBarColor(0, 1, 0, .5)
+	otherBar:Hide()
 
 	self.HealthPrediction = {
 		myBar = myBar,
@@ -956,7 +958,7 @@ function UF:CreateSwing(self)
 	if NDuiDB["UFs"]["SwingTimer"] then
 		bar.Text = B.CreateFS(bar, 12, "")
 		bar.TextMH = B.CreateFS(main, 12, "")
-		bar.TextOH = B.CreateFS(off, 12, "", false, "CENTER", 1, -3)
+		bar.TextOH = B.CreateFS(off, 12, "", false, "CENTER", 1, -5)
 	end
 
 	self.Swing = bar

@@ -74,7 +74,9 @@ function M:OnLogin()
 
 	-- Instant delete
 	hooksecurefunc(StaticPopupDialogs["DELETE_GOOD_ITEM"], "OnShow", function(self)
-		self.editBox:SetText(DELETE_ITEM_CONFIRM_STRING)
+		if NDuiDB["Misc"]["InstantDelete"] then
+			self.editBox:SetText(DELETE_ITEM_CONFIRM_STRING)
+		end
 	end)
 
 	-- Fix blizz error
@@ -132,6 +134,8 @@ end
 -- Faster Looting
 local lootDelay = 0
 function M:DoFasterLoot()
+	if GetLootMethod() == "master" then return end
+
 	if GetTime() - lootDelay >= .3 then
 		lootDelay = GetTime()
 		if GetCVarBool("autoLootDefault") ~= IsModifiedClick("AUTOLOOTTOGGLE") then
