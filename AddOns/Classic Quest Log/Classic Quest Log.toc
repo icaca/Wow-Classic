@@ -2,7 +2,7 @@
 ## Title: Classic Quest Log
 ## Notes: This addon restores the old quest log with the familiar list of quests on the left and details on the right.
 ## Author: Gello v Stanzilla
-## Version: 1.4.5-Classic
+## Version: 1.4.6-Classic
 ## SavedVariables: ClassicQuestLogSettings
 ## SavedVariablesPerCharacter: ClassicQuestLogCollapsedHeaders
 
