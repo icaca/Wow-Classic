@@ -1,48 +1,18 @@
-tag 772217bc40aaf3823d11cd6a8845f6fc0555fdef v1.029
-Author:	max-ri <max_r_@web.de>
-Date:	Tue Sep 24 17:52:20 2019 +0200
+tag f5dc7d5f7471c5ea557320fad65d9bbbc021b204 v1.040
+Author:	max-ri <51713394+max-ri@users.noreply.github.com>
+Date:	Fri Nov 29 12:21:19 2019 +0100
 
-v1.029
+v1.040
 
-commit 423e424aea4959566da0726991db84ccab82b573
-Author: max-ri <max_r_@web.de>
-Date:   Tue Sep 24 17:52:19 2019 +0200
-
-    v1.029
-
-commit 49140932a2568f6e9f9965d60067d8e1a9951e87
-Author: max-ri <max_r_@web.de>
-Date:   Tue Sep 24 17:51:52 2019 +0200
-
-    scan quests script: correctly respect class/race restrictions ([A])
-
-commit 58e49032f2f75c4b23a107f4f32f7f0c8c4993b3
-Author: max-ri <max_r_@web.de>
-Date:   Tue Sep 24 17:36:18 2019 +0200
-
-    check quests function finished
-    
-    also fixes for scan quests script: supports multiple paths now; correctly checks "requires one of" prequest type (if marked as such in db)
-
-commit fcb6146566f52e8aa3699f11e8c52c81ab3ba9ea
-Author: max-ri <max_r_@web.de>
-Date:   Tue Sep 24 17:33:30 2019 +0200
-
-    corrections to quests db
-    
-    - added "requires one of" for prequests on certain quests
-    - some Timbermaw quests have been replace with new ids
-    - marked 2 breadcrumb quests as optional (for lvl 10 mage quests)
-
-commit 3cef4cf837833c6ddd00730734b339e77a0607e1
-Author: max-ri <max_r_@web.de>
-Date:   Mon Sep 23 17:59:14 2019 +0200
-
-    check quests function (continued)
-
-commit 6bc3bfea3a31ad0349fe99ad764fe6779ac4f003
+commit d635da35afee1b1207c60a6b8270ef43ed246a90
 Author: max-ri <51713394+max-ri@users.noreply.github.com>
-Date:   Mon Sep 23 07:31:42 2019 +0200
+Date:   Fri Nov 29 12:21:19 2019 +0100
 
-    check quests function added (incomplete)
+    v1.040
+
+commit be9e00bee845b8ff6e3ae6a9e2f92965de24a954
+Author: max-ri <51713394+max-ri@users.noreply.github.com>
+Date:   Fri Nov 29 12:21:08 2019 +0100
+
+    bugfix: wrong default size for second arrow
 

@@ -1,10 +1,10 @@
-## Interface: 11302
-## X-Min-Interface: 11302
+## Interface: 11303
+## X-Min-Interface: 11303
 
 ## Title: ClassicCodex
 ## Notes: ClassicCodex
 ## Author: Pgarneau, Shagu, SwimmingTiger
-## Version: v1.3.6
+## Version: v1.3.7
 ## SavedVariablesPerCharacter: CodexConfig, CodexHiddenQuests, CodexBrowserFavorites, CodexColors
 ## X-Curse-Project-ID: 351302
 ## X-WoWI-ID: 25442
@@ -20,6 +20,8 @@ db\meta.lua
 
 # database patches
 db-patches\quests-patch.lua
+db-patches\units-patch.lua
+db-patches\manual-patch.lua
 
 # database enUS
 db\enUS\items.lua

@@ -43,6 +43,7 @@ local NUM_LE_ITEM_WEAPONS = _G.NUM_LE_ITEM_WEAPONS
 -- General Constants
 -- ============================================================================
 
+Consts.MAX_NUMBER = 2147483647 -- 32-bit signed
 Consts.SAFE_MODE_MAX = 12
 
 -- SellBelowPrice
@@ -91,8 +92,10 @@ function Consts:Initialize()
   -- Item classes
   self.CONSUMABLE_CLASS = GetItemClassInfo(_G.LE_ITEM_CLASS_CONSUMABLE)
   self.ITEM_ENHANCEMENT_CLASS = GetItemClassInfo(_G.LE_ITEM_CLASS_ITEM_ENHANCEMENT)
+  self.REAGENT_CLASS = GetItemClassInfo(_G.LE_ITEM_CLASS_REAGENT)
   self.RECIPE_CLASS = GetItemClassInfo(_G.LE_ITEM_CLASS_RECIPE)
   self.TRADEGOODS_CLASS = GetItemClassInfo(_G.LE_ITEM_CLASS_TRADEGOODS)
+  self.QUESTITEM_CLASS = GetItemClassInfo(_G.LE_ITEM_CLASS_QUESTITEM)
 
   if Addon.IS_RETAIL then
     self.BATTLEPET_CLASS = GetItemClassInfo(_G.LE_ITEM_CLASS_BATTLEPET)

@@ -129,7 +129,7 @@ function PostScan.DoProcess()
 	local itemString, stackSize, bid, buyout, itemBuyout, postTime = postRow:GetFields("itemString", "stackSize", "bid", "buyout", "itemBuyout", "postTime")
 	local bag, slot = private.GetPostBagSlot(itemString, stackSize)
 	if bag then
-		if not TSM.IsWow83() then
+		if TSM.IsWowClassic() then
 			-- need to set the duration in the default UI to avoid Blizzard errors
 			AuctionFrameAuctions.duration = postTime
 			ClearCursor()
@@ -195,6 +195,7 @@ function PostScan.HandleConfirm(success, canRetry)
 
 	private.DebugLogInsert(confirmRow:GetField("itemString"), "HandleConfirm(success=%s) x %d", tostring(success), confirmRow:GetField("stackSize"))
 	if canRetry then
+		assert(not success)
 		confirmRow:SetField("numFailed", confirmRow:GetField("numFailed") + 1)
 	end
 	confirmRow:SetField("numConfirmed", confirmRow:GetField("numConfirmed") + 1)
@@ -342,7 +343,7 @@ function private.IsOperationValid(itemString, num, operationName, operationSetti
 	end
 
 	local minPostQuantity = nil
-	if TSM.IsWow83() then
+	if not TSM.IsWowClassic() then
 		minPostQuantity = 1
 	else
 		-- check the stack size
@@ -408,9 +409,9 @@ function private.IsOperationValid(itemString, num, operationName, operationSetti
 		local vendorSellPrice = ItemInfo.GetVendorSell(itemString) or 0
 		if vendorSellPrice > 0 and minPrice <= vendorSellPrice / 0.95 then
 			-- just a warning, not an error
-			Log.PrintfUser(L["WARNING: You minimum price for %s is below its vendorsell price (with AH cut taken into account). Consider raising your minimum price, or vendoring the item."], ItemInfo.GetLink(itemString))
+			Log.PrintfUser(L["WARNING: Your minimum price for %s is below its vendorsell price (with AH cut taken into account). Consider raising your minimum price, or vendoring the item."], ItemInfo.GetLink(itemString))
 		end
-		return true, (TSM.IsWow83() and 1 or operationSettings.stackSize) * operationSettings.postCap
+		return true, (TSM.IsWowClassic() and operationSettings.stackSize or 1) * operationSettings.postCap
 	end
 end
 
@@ -439,7 +440,7 @@ function private.IsFilterDoneForItem(auctionScan, itemString)
 				:GreaterThan("itemBuyout", 0)
 				:GreaterThan("timeLeft", operationSettings.ignoreLowDuration)
 				:OrderBy("itemBuyout", true)
-			if not TSM.IsWow83() and operationSettings.matchStackSize then
+			if TSM.IsWowClassic() and operationSettings.matchStackSize then
 				query:Equal("stackSize", operationSettings.stackSize)
 			end
 			local numBuyouts = query:Count()
@@ -474,6 +475,7 @@ function private.AuctionScanOnFilterDone(_, filter)
 			:Equal(isBaseItemString and "baseItemString" or "itemString", itemString)
 			:GreaterThan("itemBuyout", 0)
 			:OrderBy("itemBuyout", true)
+			:OrderBy("auctionId", false)
 		local groupPath = TSM.Groups.GetPathByItem(itemString)
 		if groupPath then
 			local numHave = 0
@@ -512,12 +514,12 @@ function private.GeneratePosts(itemString, operationName, operationSettings, num
 	end
 
 	local perAuction, maxCanPost = nil, nil
-	if TSM.IsWow83() then
+	if not TSM.IsWowClassic() then
 		perAuction = min(operationSettings.postCap, numHave)
 		maxCanPost = 1
 	else
 		local maxStackSize = ItemInfo.GetMaxStack(itemString)
-		if not TSM.IsWow83() and operationSettings.stackSize > maxStackSize and not operationSettings.stackSizeIsCap then
+		if TSM.IsWowClassic() and operationSettings.stackSize > maxStackSize and not operationSettings.stackSizeIsCap then
 			return "postNotEnough"
 		end
 		perAuction = min(operationSettings.stackSize, maxStackSize)
@@ -622,7 +624,15 @@ function private.GeneratePosts(itemString, operationName, operationSettings, num
 	if lowestAuction then
 		TempTable.Release(lowestAuction)
 	end
-	bid = floor(bid)
+	if TSM.IsWowClassic() then
+		bid = floor(bid)
+	else
+		bid = max(Math.Round(bid, COPPER_PER_SILVER), COPPER_PER_SILVER)
+		buyout = max(Math.Round(buyout, COPPER_PER_SILVER), COPPER_PER_SILVER)
+	end
+
+	bid = min(bid, TSM.IsWowClassic() and MAXIMUM_BID_PRICE or MAXIMUM_BID_PRICE - 99)
+	buyout = min(buyout, TSM.IsWowClassic() and MAXIMUM_BID_PRICE or MAXIMUM_BID_PRICE - 99)
 
 	-- check if we can't post anymore
 	local queueQuery = private.queueDB:NewQuery()
@@ -634,21 +644,32 @@ function private.GeneratePosts(itemString, operationName, operationSettings, num
 		activeAuctions = activeAuctions + numStacks
 	end
 	queueQuery:Release()
-	if TSM.IsWow83() then
-		perAuction = min(operationSettings.postCap - activeAuctions, perAuction)
-	else
+	if TSM.IsWowClassic() then
 		maxCanPost = min(operationSettings.postCap - activeAuctions, maxCanPost)
+	else
+		perAuction = min(operationSettings.postCap - activeAuctions, perAuction)
 	end
 	if maxCanPost <= 0 or perAuction <= 0 then
 		return "postTooMany"
 	end
 
+	if TSM.IsWowClassic() and (bid * perAuction > MAXIMUM_BID_PRICE or buyout * perAuction > MAXIMUM_BID_PRICE) then
+		Log.PrintfUser(L["The buyout price for %s would be above the maximum allowed price. Skipping this item."], ItemInfo.GetLink(itemString))
+		return "invalidItemGroup"
+	end
+
 	-- insert the posts into our DB
 	local auctionId = private.nextQueueIndex
 	local postTime = operationSettings.duration
+	if not TSM.IsWowClassic() and not ItemInfo.IsCommodity(itemString) then
+		-- post non-commodities as single stacks
+		assert(maxCanPost == 1)
+		maxCanPost = perAuction
+		perAuction = 1
+	end
 	private.AddToQueue(itemString, operationName, bid, buyout, perAuction, maxCanPost, postTime)
 	-- check if we can post an extra partial stack
-	local extraStack = (not TSM.IsWow83() and maxCanPost < operationSettings.postCap and operationSettings.stackSizeIsCap and (numHave % perAuction)) or 0
+	local extraStack = (TSM.IsWowClassic() and maxCanPost < operationSettings.postCap and operationSettings.stackSizeIsCap and (numHave % perAuction)) or 0
 	if extraStack > 0 then
 		private.AddToQueue(itemString, operationName, bid, buyout, extraStack, 1, postTime)
 	end
@@ -661,8 +682,8 @@ function private.AddToQueue(itemString, operationName, itemBid, itemBuyout, stac
 		:SetField("auctionId", private.nextQueueIndex)
 		:SetField("itemString", itemString)
 		:SetField("operationName", operationName)
-		:SetField("bid", min(itemBid * stackSize, MAXIMUM_BID_PRICE))
-		:SetField("buyout", min(itemBuyout * stackSize, MAXIMUM_BID_PRICE))
+		:SetField("bid", itemBid * stackSize)
+		:SetField("buyout", itemBuyout * stackSize)
 		:SetField("itemBuyout", itemBuyout)
 		:SetField("stackSize", stackSize)
 		:SetField("numStacks", numStacks)

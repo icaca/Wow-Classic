@@ -27,7 +27,7 @@ local private = {
 	filterText = ""
 }
 local PLAYER_NAME = UnitName("player")
-local MAIL_REFRESH_TIME = TSM.IsWow83() and 15 or 60
+local MAIL_REFRESH_TIME = TSM.IsWowClassic() and 60 or 15
 
 
 
@@ -590,6 +590,7 @@ function private.UpdateInboxItemsFrame()
 	local bodyText, _, _, _, isInvoice = GetInboxText(private.selectedMail)
 	if isInvoice then
 		local invoiceType, itemName, playerName, bid, buyout, deposit, consignment, _, etaHour, etaMin = GetInboxInvoiceInfo(private.selectedMail)
+		playerName = playerName or (invoiceType == "buyer" and AUCTION_HOUSE_MAIL_MULTIPLE_SELLERS or AUCTION_HOUSE_MAIL_MULTIPLE_BUYERS)
 		local purchaseType = bid == buyout and BUYOUT or HIGH_BIDDER
 		if invoiceType == "buyer" then
 			bodyText = ITEM_PURCHASED_COLON.." "..itemName.."\n"..SOLD_BY_COLON.." "..playerName.." ("..purchaseType..")".."\n\n"..AMOUNT_RECEIVED_COLON.." "..Money.ToString(bid)

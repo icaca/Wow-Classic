@@ -67,17 +67,15 @@ local AQMAXINSTANCES = "38"
 local AQMAXQUESTS = "23"
 
 -- Set title for AtlasQuest side panel
-ATLASQUEST_VERSION = ""..BLUE.."AtlasQuest 4.11.51";
+ATLASQUEST_VERSION = ""..BLUE.."AtlasQuest 4.11.61";
 
 local AtlasQuest_Defaults = {
-  ["Version"] =  "4.11.51",
+  ["Version"] =  "4.11.61",
   [UnitName("player")] = {
     ["ShownSide"] = "Left",
     ["AtlasAutoShow"] = 1,
     ["NOColourCheck"] = nil,
     ["CheckQuestlog"] = nil,
-    ["AutoQuery"] = nil,
-    ["NoQuerySpam"] = "yes",
     ["CompareTooltip"] = nil,
   },
 };
@@ -169,10 +167,6 @@ function AtlasQuest_LoadData()
   end
   --AQCheckQuestlog
   AQCheckQuestlog = AtlasQuest_Options[UnitName("player")]["CheckQuestlog"];
-  -- AutoQuery option
-  AQAutoQuery = AtlasQuest_Options[UnitName("player")]["AutoQuery"];
-  -- Suppress Server Query Text option
-  AQNoQuerySpam = AtlasQuest_Options[UnitName("player")]["NoQuerySpam"];
   -- Comparison Tooltips option
   AQCompareTooltip = AtlasQuest_Options[UnitName("player")]["CompareTooltip"];
 
@@ -187,8 +181,6 @@ function AtlasQuest_SaveData()
   AtlasQuest_Options[UnitName("player")]["AtlasAutoShow"] = AQAtlasAuto;
   AtlasQuest_Options[UnitName("player")]["ColourCheck"] = AQNOColourCheck;
   AtlasQuest_Options[UnitName("player")]["CheckQuestlog"] = AQCheckQuestlog;
-  AtlasQuest_Options[UnitName("player")]["AutoQuery"] = AQAutoQuery;
-  AtlasQuest_Options[UnitName("player")]["NoQuerySpam"] = AQNoQuerySpam;
   AtlasQuest_Options[UnitName("player")]["CompareTooltip"] = AQCompareTooltip;
 end
 
@@ -234,7 +226,6 @@ end
 -- Set the button text
 -----------------------------------------------------------------------------
 function AQSetButtontext()
---      STORYbutton:SetText(AQStoryB);
       OPTIONbutton:SetText(AQOptionB);
       AQOptionCloseButton:SetText(AQ_OK);
 	  AQOptionQuestQueryButton:SetText(AQQuestQueryButtonTEXT);
@@ -249,8 +240,6 @@ function AQSetButtontext()
       AQColourOptionTEXT:SetText(AQOptionsCCTEXT);
       AQFQ_TEXT:SetText(AQFinishedTEXT);
       AQCheckQuestlogTEXT:SetText(AQQLColourChange);
-      AQAutoQueryTEXT:SetText(AQOptionsAutoQueryTEXT);
-      AQNoQuerySpamTEXT:SetText(AQOptionsNoQuerySpamTEXT);
       AQCompareTooltipTEXT:SetText(AQOptionsCompareTooltipTEXT);
 end
 
@@ -619,24 +608,16 @@ local itemName, itemQuality
      end
 
 
-     if (SHOWNID ~= nil) then
         if(GetItemInfo(SHOWNID) ~= nil) then
               AtlasQuestTooltip:SetOwner(AtlasQuestItemframe1, "ANCHOR_RIGHT", -(AtlasQuestItemframe1:GetWidth() / 2), 24);
               AtlasQuestTooltip:SetHyperlink("item:"..SHOWNID..":0:0:0");
-              if(AQCompareTooltip ~= nil) then
-                if((EquipCompare_Enabled == nil) or (not EquipCompare_Enabled)) then  -- Only show this if EquipCompare isn't present or not enabled.
-                  AtlasQuestItem_ShowCompareItem();  -- Show Comparison Tooltip
-                end
-              end
+
+--              if(AQCompareTooltip ~= nil) then
+--                  AtlasQuestItem_ShowCompareItem();  -- Show Comparison Tooltip
+--              end
+
               AtlasQuestTooltip:Show();
-        else
-              AtlasQuestTooltip:SetOwner(AtlasQuestItemframe1, "ANCHOR_RIGHT", -(AtlasQuestItemframe1:GetWidth() / 2), 24);
-              AtlasQuestTooltip:ClearLines();
-              AtlasQuestTooltip:AddLine(RED..AQERRORNOTSHOWN);
-              AtlasQuestTooltip:AddLine(AQERRORASKSERVER);
-              AtlasQuestTooltip:Show();
-        end
-     end
+		end
 
 
 end

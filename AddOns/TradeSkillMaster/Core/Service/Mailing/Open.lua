@@ -24,7 +24,7 @@ local private = {
 	lastCheck = nil,
 	moneyCollected = 0,
 }
-local MAIL_REFRESH_TIME = TSM.IsWow83() and 15 or 60
+local MAIL_REFRESH_TIME = TSM.IsWowClassic() and 60 or 15
 
 
 
@@ -173,7 +173,7 @@ function private.PrintOpenMailMessage(index)
 	if isInvoice then
 		-- it's an invoice
 		local invoiceType, itemName, playerName, bid, _, _, ahcut, _, _, _, quantity = GetInboxInvoiceInfo(index)
-		playerName = playerName or "?"
+		playerName = playerName or (invoiceType == "buyer" and AUCTION_HOUSE_MAIL_MULTIPLE_SELLERS or AUCTION_HOUSE_MAIL_MULTIPLE_BUYERS)
 		if invoiceType == "buyer" then
 			local itemLink =  MailTracking.GetInboxItemLink(index) or itemName
 			Log.PrintfUser(L["Bought %sx%d for %s from %s"], itemLink, quantity, Money.ToString(bid, "|cffff0000"), playerName)

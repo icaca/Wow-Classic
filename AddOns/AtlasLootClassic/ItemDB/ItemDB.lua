@@ -16,7 +16,7 @@ local STRING_TYPE = "string"
 local BOSS_LINK_FORMAT = "%s:%s:%s"
 local LEVEL_RANGE_FORMAT = "  (|cffff0000%d|r: |cffff8040%d|r - |cff40bf40%d|r)"--"  <|cffff0000%d|r |cffff8040%d|r |cffffff00%d|r |cff40bf40%d|r>"
 local LEVEL_RANGE_FORMAT2 = "  (|cffff8040%d|r - |cff40bf40%d|r)"
-local CONTENT_PHASE_FORMAT = "|cff00FF96".."<P: %d>".."|r"
+local CONTENT_PHASE_FORMAT = "|cff00FF96".."<P: %g>".."|r"
 
 local IsMapsModuleAviable = AtlasLoot.Loader.IsMapsModuleAviable
 
@@ -70,7 +70,7 @@ function ItemDB:Add(addonName, tierID)
 end
 
 function ItemDB:Get(addonName)
-	assert(ItemDB.Storage[addonName], addonName.." not found!")
+	--assert(ItemDB.Storage[addonName], addonName.." not found!")
 	return ItemDB.Storage[addonName]
 end
 

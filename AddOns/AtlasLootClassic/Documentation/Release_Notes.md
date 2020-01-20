@@ -2,6 +2,65 @@
 
 This mod is distributed under Version 2 of the GPL.  A copy of the GPL is included in this zip file with links to non-english translations.
 
+## v1.4.4 (Dec. 24, 2019)
+
+- Favourites lists are now sorted by name
+- Fix some dungeon levels
+- Update data
+
+## v1.4.3 (Dec. 15, 2019)
+
+- Update content phases
+- Update much crafting min skill
+- Fix alliance druid rare pvp set
+- Fix lua error when in combat
+
+## v1.4.2 (Dec. 11, 2019)
+
+- Set Phase 2.5
+- Add PvP Ranks overview
+- Fix missing random enchants on gear
+
+## v1.4.1 (Dec. 02, 2019)
+
+- Items for Sets now show PvP Rank requirements
+- Set Sack of Gems for every Dragon (Ony, Nef,...)
+- Add some missing Class requirements
+- Fix bug with selected boss reset after every reopen
+- Translation updates. Big thanks to all the translators!!!
+
+## v1.4.0 (Dec. 01, 2019)
+
+- New: Items now show class / PvP rank icons
+- Add PvP Non set armor
+- Set Panzor in BRD as rare
+- Add level for Avatar of Hakkar
+- Fix bug with empty boss names
+
+## v1.3.5 (Nov. 30, 2019)
+
+- add Phase 2.5 for PvP
+- move out Phalanx (BRD) into own boss
+- fix bug with item display on first load
+
+## v1.3.4 (Nov. 13, 2019)
+
+- Set content phase 2
+- Update drop data
+- Fix bug with auto selection
+
+## v1.3.3 (Oct. 28, 2019)
+
+- Fix bug with kr translation
+- Droprate for Leaf and Eye should be 50% ( yes @MadSeasonShow )
+
+## v1.3.2 (Oct. 20, 2019)
+
+- Add Boss level for Dire Maul bosses
+- Add missing translations for Spanish big thanks @Rick !
+- Also big thanks to all the other translators
+- Fix some rare markers for LBRS thanks @wallrik
+
 ## v1.3.1 (Oct. 15, 2019)
 
 - Add Legendarys into Collections

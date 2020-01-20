@@ -3,8 +3,9 @@ local L		= mod:GetLocalizedStrings()
 
 local ipairs, math = ipairs, math
 local IsInInstance, CreateFrame = IsInInstance, CreateFrame
+local GetPlayerFactionGroup = GetPlayerFactionGroup or UnitFactionGroup--Classic Compat fix
 
-mod:SetRevision("20191003200209")
+mod:SetRevision("20200116160625")
 mod:SetZone(DBM_DISABLE_ZONE_DETECTION)
 
 --mod:AddBoolOption("ColorByClass", true)
@@ -15,8 +16,8 @@ mod:RegisterEvents(
 	"ZONE_CHANGED_NEW_AREA",
 	"PLAYER_ENTERING_WORLD",
 	"PLAYER_DEAD",
-	"START_TIMER",
-	"UPDATE_BATTLEFIELD_STATUS"
+	"START_TIMER"
+--	"UPDATE_BATTLEFIELD_STATUS"
 )
 
 do
@@ -26,7 +27,11 @@ do
 	function mod:ZONE_CHANGED_NEW_AREA()
 		local _, instanceType = IsInInstance()
 		if instanceType == "pvp" or instanceType == "arena" then
-			C_ChatInfo.SendAddonMessage("D4", "H", "INSTANCE_CHAT")
+			if WOW_PROJECT_ID ~= WOW_PROJECT_CLASSIC then
+				C_ChatInfo.SendAddonMessage("D4", "H", "INSTANCE_CHAT")
+			else
+				C_ChatInfo.SendAddonMessage("D4C", "H", "INSTANCE_CHAT")
+			end
 			self:Schedule(3, DBM.RequestTimers, DBM)
 			if not bgzone and self.Options.HideBossEmoteFrame then
 				DBM:HideBlizzardEvents(1, true)
@@ -50,7 +55,7 @@ do
 
 	function mod:PLAYER_DEAD()
 		local _, instanceType = IsInInstance()
-		if instanceType == "pvp" and not C_DeathInfo.GetSelfResurrectOptions() and self.Options.AutoSpirit then
+		if instanceType == "pvp" and #C_DeathInfo.GetSelfResurrectOptions() == 0 and self.Options.AutoSpirit then
 			RepopMe()
 		end
 	end
@@ -60,15 +65,17 @@ do
 	local tonumber = tonumber
 	local C_UIWidgetManager, TimerTracker = C_UIWidgetManager, TimerTracker
 	-- Interface\\Icons\\INV_BannerPVP_02.blp || Interface\\Icons\\INV_BannerPVP_01.blp
-	local remainingTimer	= mod:NewTimer(0, "TimerRemaining", GetPlayerFactionGroup() == "Alliance" and "132486" or "132485")
+	local remainingTimer	= mod:NewTimer(0, "TimerRemaining", GetPlayerFactionGroup("player") == "Alliance" and "132486" or "132485")
 	local timerShadow		= mod:NewNextTimer(90, 34709)
 	local timerDamp			= mod:NewCastTimer(300, 110310)
 
 	function mod:START_TIMER(_, timeSeconds)
 		local _, instanceType = IsInInstance()
 		if (instanceType == "pvp" or instanceType == "arena" or instanceType == "scenario") and self.Options.TimerRemaining then
-			for _, bar in ipairs(TimerTracker.timerList) do
-				bar.bar:Hide()
+			if TimerTracker then
+				for _, bar in ipairs(TimerTracker.timerList) do
+					bar.bar:Hide()
+				end
 			end
 			remainingTimer:Start(timeSeconds)
 		end
@@ -88,11 +95,12 @@ do
 	end
 end
 
+--[[
 do
 	local format, tostring = string.format, tostring
 	local GetBattlefieldStatus, GetBattlefieldPortExpiration, PVP_TEAMSIZE = GetBattlefieldStatus, GetBattlefieldPortExpiration, PVP_TEAMSIZE
 	-- Interface\\Icons\\INV_BannerPVP_02.blp || Interface\\Icons\\INV_BannerPVP_01.blp
-	local inviteTimer = mod:NewTimer(60, "TimerInvite", GetPlayerFactionGroup() == "Alliance" and "132486" or "132485")
+	local inviteTimer = mod:NewTimer(60, "TimerInvite", GetPlayerFactionGroup("player") == "Alliance" and "132486" or "132485")
 
 	function mod:UPDATE_BATTLEFIELD_STATUS(queueID)
 		if self.Options.TimerInvite then
@@ -112,6 +120,7 @@ do
 		end
 	end
 end
+--]]
 
 -- Utility functions
 local scoreFrame1, scoreFrame2, scoreFrameToWin, scoreFrame1Text, scoreFrame2Text, scoreFrameToWinText
@@ -265,9 +274,9 @@ do
 end
 
 do
-	local GetTime, UnitFactionGroup, FACTION_HORDE, FACTION_ALLIANCE = GetTime, UnitFactionGroup, FACTION_HORDE, FACTION_ALLIANCE
+	local GetTime, FACTION_HORDE, FACTION_ALLIANCE = GetTime, FACTION_HORDE, FACTION_ALLIANCE
 	-- Interface\\Icons\\INV_BannerPVP_02.blp || Interface\\Icons\\INV_BannerPVP_01.blp
-	local winTimer = mod:NewTimer(30, "TimerWin", GetPlayerFactionGroup() == "Alliance" and "132486" or "132485")
+	local winTimer = mod:NewTimer(30, "TimerWin", GetPlayerFactionGroup("player") == "Alliance" and "132486" or "132485")
 
 	function mod:UpdateWinTimer(maxScore, allianceScore, hordeScore, allianceBases, hordeBases)
 		local gameTime = GetTime()
@@ -302,7 +311,7 @@ do
 		end
 		if self.Options.ShowBasesToWin then
 			local friendlyLast, enemyLast, friendlyBases, enemyBases
-			if UnitFactionGroup("player") == "Alliance" then
+			if GetPlayerFactionGroup("player") == "Alliance" then
 				friendlyLast = allianceScore
 				enemyLast = hordeScore
 				friendlyBases = allianceBases
@@ -340,7 +349,8 @@ do
 	function mod:AREA_POIS_UPDATED(widget)
 		local allyBases, hordeBases = 0, 0
 		local widgetID = widget and widget.widgetID
-		if subscribedMapID ~= 0 and widgetID and widgetID == 1671 then
+		-- Standard battleground score predictor: 1671. Deepwind rework: 2074
+		if subscribedMapID ~= 0 and widgetID and (widgetID == 1671 or widgetID == 2074) then
 			local isAtlas = false
 			for _, areaPOIID in ipairs(C_AreaPoiInfo.GetAreaPOIForMap(subscribedMapID)) do
 				local areaPOIInfo = C_AreaPoiInfo.GetAreaPOIInfo(subscribedMapID, areaPOIID)

@@ -1,6 +1,7 @@
 # <DBM> PvP
 
-## [r76](https://github.com/DeadlyBossMods/DBM-PvP/tree/r76) (2019-10-03)
-[Full Changelog](https://github.com/DeadlyBossMods/DBM-PvP/compare/r75...r76)
+## [r80](https://github.com/DeadlyBossMods/DBM-PvP/tree/r80) (2020-01-16)
+[Full Changelog](https://github.com/DeadlyBossMods/DBM-PvP/compare/r79...r80)
 
-- Fix Temple of Kotmogu, which never would have worked at all, do to bad code logic.  
+- Derp  
+- Deepwind update for 8.3  
