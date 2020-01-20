@@ -1,15 +1,10 @@
 # Deadly Boss Mods Core
 
-## [1.13.25](https://github.com/DeadlyBossMods/DBM-Classic/tree/1.13.25) (2019-12-19)
-[Full Changelog](https://github.com/DeadlyBossMods/DBM-Classic/compare/1.13.24...1.13.25)
+## [1.13.30](https://github.com/DeadlyBossMods/DBM-Classic/tree/1.13.30) (2020-01-13)
+[Full Changelog](https://github.com/DeadlyBossMods/DBM-Classic/compare/1.13.29...1.13.30)
 
-- Bump version to push pvp syncing out  
-- Restore syncing of PVP mod timers  
-- Merge pull request #29 from wallrik/pizzatimer-1  
-    Fix pizzatimer arguments for '/dbm timer endloop'  
-- Fix pizzatimer arguments for '/dbm timer endloop'  
-- fix incorrect copy paste  
-- Quick fix to last  
-- Update battleground timer to use faction icon and more accurate timer when available from API  
-- Don't send syncs to self, immediately forward to sync handler instead  
-- Update packager script now that it supports 1.13.3  
+- Fixed pull timer canceling so it works again  
+    Updated range checker to be more efficient with API usage as well as fixes some cases it'd try to use ranges not possible in classic  
+- Merge pull request #49 from woopydalan/patch-12  
+    Update localization.es.lua  
+- Update localization.es.lua  
