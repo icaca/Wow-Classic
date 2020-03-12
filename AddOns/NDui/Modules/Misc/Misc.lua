@@ -81,6 +81,14 @@ function M:OnLogin()
 
 	-- Fix blizz error
 	MAIN_MENU_MICRO_ALERT_PRIORITY = MAIN_MENU_MICRO_ALERT_PRIORITY or {}
+
+	-- Fix blizz bug in addon list
+	local _AddonTooltip_Update = AddonTooltip_Update
+	function AddonTooltip_Update(owner)
+		if not owner then return end
+		if owner:GetID() < 1 then return end
+		_AddonTooltip_Update(owner)
+	end
 end
 
 -- Reanchor Vehicle
@@ -434,32 +442,4 @@ function M:AutoDismount()
 		end
 	end
 	B:RegisterEvent("UI_ERROR_MESSAGE", updateEvent)
-end
-
--- Check SHIFT key status
-do
-	local function onUpdate(self, elapsed)
-		if IsShiftKeyDown() then
-			self.elapsed = self.elapsed + elapsed
-			if self.elapsed > 5 then
-				UIErrorsFrame:AddMessage(DB.InfoColor..L["StupidShiftKey"])
-				self:Hide()
-			end
-		end
-	end
-	local shiftUpdater = CreateFrame("Frame")
-	shiftUpdater:SetScript("OnUpdate", onUpdate)
-	shiftUpdater:Hide()
-
-	local function ShiftKeyOnEvent(_, key, down)
-		if key == "LSHIFT" then
-			if down == 1 then
-				shiftUpdater.elapsed = 0
-				shiftUpdater:Show()
-			else
-				shiftUpdater:Hide()
-			end
-		end
-	end
-	B:RegisterEvent("MODIFIER_STATE_CHANGED", ShiftKeyOnEvent)
 end

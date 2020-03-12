@@ -1,16 +1,18 @@
 local AddonName, Addon = ...
-local _G = _G
 local Colors = Addon.Colors
+local Core = Addon.Core
 local DCL = Addon.Libs.DCL
+local Dejunker = Addon.Dejunker
 local Destroyables = Addon.Lists.Destroyables
 local Destroyer = Addon.Destroyer
 local Exclusions = Addon.Lists.Exclusions
 local Inclusions = Addon.Lists.Inclusions
 local L = Addon.Libs.L
-local Tools = Addon.Tools
+local Lists = Addon.Lists
+local MerchantFrame = _G.MerchantFrame
 local UI = Addon.UI
 local Undestroyables = Addon.Lists.Undestroyables
-local Lists = Addon.Lists
+local Utils = Addon.Utils
 
 -- Variables
 local currentItemID = nil
@@ -24,6 +26,7 @@ _G.BINDING_CATEGORY_DEJUNK = DCL:ColorString(AddonName, Colors.Primary)
 
 -- General
 _G.BINDING_NAME_DEJUNK_TOGGLE_OPTIONS = L.BINDINGS_TOGGLE_OPTIONS_TEXT
+_G.BINDING_NAME_DEJUNK_START_SELLING = L.START_SELLING_BUTTON_TEXT
 _G.BINDING_NAME_DEJUNK_START_DESTROYING = L.START_DESTROYING_BUTTON_TEXT
 
 -- Inclusions
@@ -50,8 +53,16 @@ function DejunkBindings_ToggleOptions()
   UI:Toggle()
 end
 
+function DejunkBindings_StartSelling()
+  if MerchantFrame:IsShown() then
+    Dejunker:Start()
+  else
+    Core:Print(L.CANNOT_SELL_WITHOUT_MERCHANT)
+  end
+end
+
 function DejunkBindings_StartDestroying()
-  Destroyer:StartDestroying()
+  Destroyer:Start()
 end
 
 function DejunkBindings_AddToList(listName)
@@ -69,7 +80,7 @@ end
 -- ============================================================================
 
 local function OnTooltipSetItem(self, ...)
-  currentItemID = Tools:GetItemIDFromLink(select(2, self:GetItem()))
+  currentItemID = Utils:GetItemIDFromLink(select(2, self:GetItem()))
 end
 
 local function OnTooltipCleared(self, ...)

@@ -1,0 +1,11 @@
+## Interface: 11303
+## Title: Altoholic_Search
+## Notes: Altoholic's Search UI
+## Author: Thaoky (EU-Marécages de Zangar)
+## Version: r191
+## Dependencies: Altoholic, DataStore, DataStore_Characters
+## LoadOnDemand: 1
+## X-Category: Interface Enhancements
+
+TabSearch.xml
+Search.xml

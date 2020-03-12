@@ -1,8 +1,8 @@
 -- ------------------------------------------------------------------------------ --
---                           TradeSkillMaster_Accounting                          --
---           http://www.curse.com/addons/wow/tradeskillmaster_accounting          --
+--                                TradeSkillMaster                                --
+--             https://www.curseforge.com/wow/addons/tradeskill-master            --
 --                                                                                --
---             A TradeSkillMaster Addon (http://tradeskillmaster.com)             --
+--             A TradeSkillMaster Addon (https://tradeskillmaster.com)            --
 --    All Rights Reserved* - Detailed license information included with addon.    --
 -- ------------------------------------------------------------------------------ --
 
@@ -13,6 +13,7 @@ local Event = TSM.Include("Util.Event")
 local TempTable = TSM.Include("Util.TempTable")
 local Money = TSM.Include("Util.Money")
 local ItemString = TSM.Include("Util.ItemString")
+local Wow = TSM.Include("Util.Wow")
 local ItemInfo = TSM.Include("Service.ItemInfo")
 local private = {
 	tradeInfo = nil,
@@ -150,7 +151,7 @@ function private.OnChatMsg(_, msg)
 				}
 			end
 			StaticPopupDialogs["TSMAccountingOnTrade"].text = format(L["TSM_Accounting detected that you just traded %s %s in return for %s. Would you like Accounting to store a record of this trade?"], insertInfo.name, gaveText, gotText)
-			TSM.Wow.ShowStaticPopupDialog("TSMAccountingOnTrade")
+			Wow.ShowStaticPopupDialog("TSMAccountingOnTrade")
 		end
 	end
 end

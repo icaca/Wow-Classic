@@ -202,9 +202,6 @@ function TT:OnTooltipSetUnit()
 
 			if GameTooltipStatusBar.text then
 				local value, max = UnitHealth(unit), UnitHealthMax(unit)
-				if RealMobHealth and RealMobHealth.UnitHasHealthData(unit) then
-					value, max = RealMobHealth.GetUnitHealth(unit)
-				end
 				GameTooltipStatusBar.text:SetText(B.Numb(value).." | "..B.Numb(max))
 			end
 		else
@@ -230,9 +227,6 @@ function TT:StatusBar_OnValueChanged(value)
 		self.text:SetFormattedText("%d%%", value*100)
 	else
 		local unit = TT.GetUnit(GameTooltip)
-		if RealMobHealth and RealMobHealth.UnitHasHealthData(unit) then
-			value, max = RealMobHealth.GetUnitHealth(unit)
-		end
 		self.text:SetText(B.Numb(value).." | "..B.Numb(max))
 	end
 end
@@ -288,6 +282,32 @@ function TT:GameTooltip_SetDefaultAnchor(parent)
 		self:SetOwner(parent, "ANCHOR_NONE")
 		self:ClearAllPoints()
 		self:SetPoint("BOTTOMRIGHT", mover)
+	end
+end
+
+-- Fix comparison error on cursor
+function TT:GameTooltip_ComparisonFix(anchorFrame, shoppingTooltip1, shoppingTooltip2, _, secondaryItemShown)
+	local point = shoppingTooltip1:GetPoint(2)
+	if secondaryItemShown then
+		if point == "TOP" then
+			shoppingTooltip1:ClearAllPoints()
+			shoppingTooltip1:SetPoint("TOPLEFT", anchorFrame, "TOPRIGHT", 3, 0)
+			shoppingTooltip2:ClearAllPoints()
+			shoppingTooltip2:SetPoint("TOPLEFT", shoppingTooltip1, "TOPRIGHT", 3, 0)
+		elseif point == "RIGHT" then
+			shoppingTooltip1:ClearAllPoints()
+			shoppingTooltip1:SetPoint("TOPRIGHT", anchorFrame, "TOPLEFT", -3, 0)
+			shoppingTooltip2:ClearAllPoints()
+			shoppingTooltip2:SetPoint("TOPRIGHT", shoppingTooltip1, "TOPLEFT", -3, 0)
+		end
+	else
+		if point == "LEFT" then
+			shoppingTooltip1:ClearAllPoints()
+			shoppingTooltip1:SetPoint("TOPLEFT", anchorFrame, "TOPRIGHT", 3, 0)
+		elseif point == "RIGHT" then
+			shoppingTooltip1:ClearAllPoints()
+			shoppingTooltip1:SetPoint("TOPRIGHT", anchorFrame, "TOPLEFT", -3, 0)
+		end
 	end
 end
 
@@ -360,16 +380,12 @@ function TT:OnLogin()
 	hooksecurefunc("GameTooltip_ShowProgressBar", self.GameTooltip_ShowProgressBar)
 	hooksecurefunc("GameTooltip_SetDefaultAnchor", self.GameTooltip_SetDefaultAnchor)
 	hooksecurefunc("GameTooltip_SetBackdropStyle", self.GameTooltip_SetBackdropStyle)
+	hooksecurefunc("GameTooltip_AnchorComparisonTooltips", self.GameTooltip_ComparisonFix)
 
 	-- Elements
 	self:ReskinTooltipIcons()
 	self:SetupTooltipID()
 	self:TargetedInfo()
-
-	-- RealMobHealth override
-	if RealMobHealth and RealMobHealth.OverrideOption then
-		RealMobHealth.OverrideOption("ShowTooltipHealthText", false)
-	end
 end
 
 -- Tooltip Skin Registration

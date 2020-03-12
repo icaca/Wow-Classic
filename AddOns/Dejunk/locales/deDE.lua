@@ -63,7 +63,6 @@ L["START_DESTROYING_BUTTON_TEXT"] = "Zerstören beginnen"
 L["UNCOMMON_TEXT"] = "Ungewöhnlich"
 L["USE_GUILD_REPAIR_TEXT"] = "Gilde benutzen"
 L["USE_GUILD_REPAIR_TOOLTIP"] = "Gildenreparaturen bevorzugen, wenn diese verfügbar sind."
-L["VENDOR_DOESNT_BUY"] = "Dieser Händler kauft nichts."
 L["VERBOSE_MODE_TEXT"] = "Ausführlicher Modus"
 L["VERBOSE_MODE_TOOLTIP"] = "Aktiviere zusätzliche Dejunk-Chatfensternachrichten, wenn du Gegenstände verkaufst und zerstörst."
 

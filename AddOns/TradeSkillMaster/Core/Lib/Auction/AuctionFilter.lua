@@ -16,15 +16,16 @@ local DisenchantInfo = TSM.Include("Data.DisenchantInfo")
 local TempTable = TSM.Include("Util.TempTable")
 local String = TSM.Include("Util.String")
 local Log = TSM.Include("Util.Log")
-local Event = TSM.Include("Util.Event")
 local ItemString = TSM.Include("Util.ItemString")
+local AuctionHouseWrapper = TSM.Include("Service.AuctionHouseWrapper")
 local Threading = TSM.Include("Service.Threading")
 local ItemInfo = TSM.Include("Service.ItemInfo")
 local Conversions = TSM.Include("Service.Conversions")
 TSM.Auction.classes.AuctionFilter = AuctionFilter
-local private = {
-	gotBrowseResultsUpdate = false,
-}
+local DEFAULT_83_SORTS = not TSM.IsWowClassic() and {
+	{ sortOrder = Enum.AuctionHouseSortOrder.Price, reverseSort = false },
+	{ sortOrder = Enum.AuctionHouseSortOrder.Name, reverseSort = false },
+} or nil
 
 
 
@@ -368,8 +369,16 @@ function AuctionFilter._IsItemFiltered(self, baseItemString, itemString, itemLev
 	if self._evenOnly and totalQuantity < 5 then
 		return true
 	end
-	if itemLevel and (itemLevel < (self._minItemLevel or 0) or itemLevel > (self._maxItemLevel or math.huge)) then
-		return true
+	if itemLevel and itemString then
+		-- we know the exact itemLevel
+		if itemLevel < (self._minItemLevel or 0) or itemLevel > (self._maxItemLevel or math.huge) then
+			return true
+		end
+	elseif itemLevel then
+		-- we know the max itemLevel
+		if itemLevel < (self._minItemLevel or 0) then
+			return true
+		end
 	end
 	if self._unlearned and CanIMogIt:PlayerKnowsTransmog(ItemInfo.GetLink(baseItemString)) then
 		return true
@@ -479,7 +488,6 @@ function AuctionFilter._DoAuctionQueryThreaded(self)
 		assert(not self:_IsGetAll()) -- GetAll is not supported on >= 8.3
 
 		local query = Threading.AcquireSafeTempTable()
-		local sorts = Threading.AcquireSafeTempTable()
 		local filters = Threading.AcquireSafeTempTable()
 		if self._uncollected then
 			tinsert(filters, Enum.AuctionHouseFilter.UncollectedOnly)
@@ -498,39 +506,60 @@ function AuctionFilter._DoAuctionQueryThreaded(self)
 		end
 		local itemClassFilters = Threading.AcquireSafeTempTable()
 		if self._class or self._subClass or self._invType then
-			local info = Threading.AcquireSafeTempTable()
-			info.classID = self._class
-			info.subClassID = self._subClass
-			info.inventoryType = self._invType
-			tinsert(itemClassFilters, info)
+			if self._invType == LE_INVENTORY_TYPE_CHEST_TYPE or self._invType == LE_INVENTORY_TYPE_ROBE_TYPE then
+				-- default AH only sends queries for robe chest type, we need to mimic this when using a chest filter
+				local info1 = Threading.AcquireSafeTempTable()
+				info1.classID = LE_ITEM_CLASS_ARMOR
+				info1.subClassID = self._subClass
+				info1.inventoryType = LE_INVENTORY_TYPE_CHEST_TYPE
+				tinsert(itemClassFilters, info1)
+				local info2 = Threading.AcquireSafeTempTable()
+				info2.classID = LE_ITEM_CLASS_ARMOR
+				info2.subClassID = self._subClass
+				info2.inventoryType = LE_INVENTORY_TYPE_ROBE_TYPE
+				tinsert(itemClassFilters, info2)
+			elseif self._invType == LE_INVENTORY_TYPE_NECK_TYPE or self._invType == LE_INVENTORY_TYPE_FINGER_TYPE or self._invType == LE_INVENTORY_TYPE_TRINKET_TYPE or self._invType == LE_INVENTORY_TYPE_HOLDABLE_TYPE or self._invType == LE_INVENTORY_TYPE_BODY_TYPE then
+				local info = Threading.AcquireSafeTempTable()
+				info.classID = LE_ITEM_CLASS_ARMOR
+				info.subClassID = LE_ITEM_ARMOR_GENERIC
+				info.inventoryType = self._invType
+				tinsert(itemClassFilters, info)
+			elseif self._invType == LE_INVENTORY_TYPE_CLOAK_TYPE then
+				local info = Threading.AcquireSafeTempTable()
+				info.classID = LE_ITEM_CLASS_ARMOR
+				info.subClassID = LE_ITEM_ARMOR_CLOTH
+				info.inventoryType = LE_INVENTORY_TYPE_CLOAK_TYPE
+				tinsert(itemClassFilters, info)
+			else
+				local info = Threading.AcquireSafeTempTable()
+				info.classID = self._class
+				info.subClassID = self._subClass
+				info.inventoryType = self._invType
+				tinsert(itemClassFilters, info)
+			end
 		end
 
 		query.searchString = self._name or ""
-		query.sorts = sorts
-		query.minLevel = self._minLevel or 0
-		query.maxLevel = self._maxLevel or 0
+		query.sorts = DEFAULT_83_SORTS
+		query.minLevel = self._minLevel
+		query.maxLevel = self._maxLevel
 		query.filters = filters
 		query.itemClassFilters = itemClassFilters
 		while true do
-			private.gotBrowseResultsUpdate = false
-			local result = self._scan:_SendBrowseQuery83(query)
-			if result then
-				for _ = 1, 50 do
-					if private.gotBrowseResultsUpdate then
-						break
-					end
-					Threading.Sleep(0.1)
-				end
-				if private.gotBrowseResultsUpdate then
-					break
-				end
-				Log.Warn("Retrying browse query which didn't result in an update event")
-			else
+			if self._scan:_IsCancelled() then
+				Log.Info("Stopping cancelled scan")
+				return false
+			end
+			local future = AuctionHouseWrapper.SendBrowseQuery(query)
+			if not future then
+				Log.Err("Failed to send browse query - retrying")
 				Threading.Sleep(0.5)
-				Log.Warn("Retrying throttled browse query")
+			elseif not Threading.WaitForFuture(future) then
+				Log.Warn("Retrying browse query which timed-out")
+			else
+				break
 			end
 		end
-		Threading.ReleaseSafeTempTable(sorts)
 		Threading.ReleaseSafeTempTable(filters)
 		for i = #itemClassFilters, 1, -1 do
 			Threading.ReleaseSafeTempTable(itemClassFilters[i])
@@ -539,14 +568,19 @@ function AuctionFilter._DoAuctionQueryThreaded(self)
 		Threading.ReleaseSafeTempTable(itemClassFilters)
 		Threading.ReleaseSafeTempTable(query)
 
-		-- wait for the browse results to fully load
+		-- load the full browse results
 		while not C_AuctionHouse.HasFullBrowseResults() do
 			if self._scan:_IsCancelled() then
+				Log.Info("Stopping cancelled scan")
 				return false
 			end
-			Log.Info("Requesting more...")
-			C_AuctionHouse.RequestMoreBrowseResults()
-			Threading.Sleep(0.5)
+			local future = AuctionHouseWrapper.RequestMoreBrowseResults()
+			if not future then
+				Log.Err("Failed to request full browse results - retrying")
+				Threading.Sleep(0.5)
+			elseif not Threading.WaitForFuture(future) then
+				Log.Warn("Timed out waiting for full browse results - retrying")
+			end
 		end
 	else
 		if self:_IsSniper() then
@@ -557,7 +591,7 @@ function AuctionFilter._DoAuctionQueryThreaded(self)
 					-- wait for the AH to be ready
 					while not CanSendAuctionQuery() do
 						if self._scan:_IsCancelled() then
-							Log.Info("Stopping canelled scan")
+							Log.Info("Stopping cancelled scan")
 							return false
 						end
 						Threading.Yield(true)
@@ -600,26 +634,26 @@ function AuctionFilter._DoAuctionQueryThreaded(self)
 			if self._class or self._subClass or self._invType then
 				classFilterInfo = TempTable.Acquire()
 				if self._invType == LE_INVENTORY_TYPE_CHEST_TYPE or self._invType == LE_INVENTORY_TYPE_ROBE_TYPE then
-					-- default AH sends in queries for both chest types, we need to mimic this when using a chest filter
+					-- default AH only sends in queries for robe chest type, we need to mimic this when using a chest filter
 					local info1 = TempTable.Acquire()
-					info1.classID = self._class
+					info1.classID = LE_ITEM_CLASS_ARMOR
 					info1.subClassID = self._subClass
 					info1.inventoryType = LE_INVENTORY_TYPE_CHEST_TYPE
 					tinsert(classFilterInfo, info1)
 					local info2 = TempTable.Acquire()
-					info2.classID = self._class
+					info2.classID = LE_ITEM_CLASS_ARMOR
 					info2.subClassID = self._subClass
 					info2.inventoryType = LE_INVENTORY_TYPE_ROBE_TYPE
 					tinsert(classFilterInfo, info2)
 				elseif self._invType == LE_INVENTORY_TYPE_NECK_TYPE or self._invType == LE_INVENTORY_TYPE_FINGER_TYPE or self._invType == LE_INVENTORY_TYPE_TRINKET_TYPE or self._invType == LE_INVENTORY_TYPE_HOLDABLE_TYPE or self._invType == LE_INVENTORY_TYPE_BODY_TYPE then
 					local info = TempTable.Acquire()
-					info.classID = self._class
+					info.classID = LE_ITEM_CLASS_ARMOR
 					info.subClassID = LE_ITEM_ARMOR_GENERIC
 					info.inventoryType = self._invType
 					tinsert(classFilterInfo, info)
 				elseif self._invType == LE_INVENTORY_TYPE_CLOAK_TYPE then
 					local info = TempTable.Acquire()
-					info.classID = self._class
+					info.classID = LE_ITEM_CLASS_ARMOR
 					info.subClassID = LE_ITEM_ARMOR_CLOTH
 					info.inventoryType = LE_INVENTORY_TYPE_CLOAK_TYPE
 					tinsert(classFilterInfo, info)
@@ -686,7 +720,7 @@ function AuctionFilter._RemoveResultRows(self, db, row, numBought)
 	else
 		stackSize = stackSize - numBought
 		assert(stackSize > 0)
-		assert(not TSM.IsWowClassic() and ItemInfo.IsCommodity(itemString))
+		assert(ItemInfo.IsCommodity(itemString))
 		row:SetField("stackSize", stackSize)
 			:Update()
 	end
@@ -730,18 +764,4 @@ function AuctionFilter._RemoveResultRows(self, db, row, numBought)
 		end
 	end
 	return result
-end
-
-
-
--- ============================================================================
--- Initialization Code
--- ============================================================================
-
-do
-	if not TSM.IsWowClassic() then
-		Event.Register("AUCTION_HOUSE_BROWSE_RESULTS_UPDATED", function()
-			private.gotBrowseResultsUpdate = true
-		end)
-	end
 end

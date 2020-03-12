@@ -1,13 +1,13 @@
 local _, ns = ...
 local B, C, L, DB = unpack(ns)
+local oUF = ns.oUF or oUF
 local UF = B:GetModule("UnitFrames")
 
 local LCD = DB.LibClassicDurations
 
 local strmatch, format, wipe, tinsert = string.match, string.format, table.wipe, table.insert
-local pairs, ipairs, next, tonumber, unpack = pairs, ipairs, next, tonumber, unpack
-local UnitAura = UnitAura
-local GetSpellInfo, GetSpellTexture = GetSpellInfo, GetSpellTexture
+local pairs, ipairs, next, tonumber, unpack, gsub = pairs, ipairs, next, tonumber, unpack, gsub
+local UnitAura, GetSpellInfo = UnitAura, GetSpellInfo
 local InCombatLockdown = InCombatLockdown
 
 -- RaidFrame Elements
@@ -52,24 +52,20 @@ function UF:CreateTargetBorder(self)
 	self:RegisterEvent("GROUP_ROSTER_UPDATE", UF.UpdateTargetBorder, true)
 end
 
-function UF:UpdateThreatBorder(_, unit)
-	if unit ~= self.unit then return end
-
-	local element = self.Health.Shadow
-	local status = UnitThreatSituation(unit)
-
-	if status and status > 1 then
-		local r, g, b = GetThreatStatusColor(status)
-		element:SetBackdropBorderColor(r, g, b)
+local function postUpdateThreat(element, _, status)
+	local self = element.__owner
+	local shadow = self.Health.Shadow
+	if status then
+		shadow:SetBackdropBorderColor(1, 0, 0)
 	else
-		element:SetBackdropBorderColor(0, 0, 0)
+		shadow:SetBackdropBorderColor(0, 0, 0)
 	end
 end
 
 function UF:CreateThreatBorder(self)
 	local threatIndicator = CreateFrame("Frame", nil, self)
 	self.ThreatIndicator = threatIndicator
-	self.ThreatIndicator.Override = UF.UpdateThreatBorder
+	self.ThreatIndicator.PostUpdate = postUpdateThreat
 end
 
 local debuffList = {}
@@ -102,13 +98,15 @@ local function buttonOnEnter(self)
 end
 
 function UF:CreateRaidDebuffs(self)
-	local size = 18*NDuiDB["UFs"]["RaidScale"]
+	local scale = NDuiDB["UFs"]["RaidDebuffScale"]
+	local size = 18
 
 	local bu = CreateFrame("Frame", nil, self)
 	bu:SetSize(size, size)
 	bu:SetPoint("RIGHT", -15, 0)
 	bu:SetFrameLevel(self:GetFrameLevel() + 3)
 	B.CreateSD(bu, 3, 3)
+	bu:SetScale(scale)
 	bu:Hide()
 
 	bu.icon = bu:CreateTexture(nil, "ARTWORK")
@@ -266,6 +264,7 @@ local function setupClickSets(self)
 					self:SetAttribute(format(v[3], "macrotext"), "/follow mouseover")
 				elseif strmatch(value, "/") then
 					self:SetAttribute(format(v[3], "type"), "macro")
+					value = gsub(value, "~", "\n")
 					self:SetAttribute(format(v[3], "macrotext"), value)
 				end
 				break
@@ -324,14 +323,16 @@ local found = {}
 local auraFilter = {"HELPFUL", "HARMFUL"}
 
 function UF:UpdateBuffIndicator(event, unit)
-	if self.unit ~= unit then return end
+	if event == "UNIT_AURA" and self.unit ~= unit then return end
+
 	local spellList = NDuiADB["CornerBuffs"][DB.MyClass]
-	local icons = self.BuffIndicator
+	local buttons = self.BuffIndicator
+	unit = self.unit
 
 	wipe(found)
 	for _, filter in next, auraFilter do
 		for i = 1, 32 do
-			local name, _, count, _, duration, expiration, caster, _, _, spellID = UnitAura(unit, i, filter)
+			local name, texture, count, _, duration, expiration, caster, _, _, spellID = UnitAura(unit, i, filter)
 			if not name then break end
 			local value = spellList[spellID] or C.CornerBuffsByName[name]
 			if value and (value[3] or caster == "player" or caster == "pet") then
@@ -342,32 +343,32 @@ function UF:UpdateBuffIndicator(event, unit)
 					end
 				end
 
-				for _, icon in pairs(icons) do
-					if icon.anchor == value[1] then
-						if icon.timer then
+				for _, bu in pairs(buttons) do
+					if bu.anchor == value[1] then
+						if NDuiDB["UFs"]["BuffIndicatorType"] == 3 then
 							if duration and duration > 0 then
-								icon.expiration = expiration
-								icon:SetScript("OnUpdate", UF.BuffIndicatorOnUpdate)
+								bu.expiration = expiration
+								bu:SetScript("OnUpdate", UF.BuffIndicatorOnUpdate)
 							else
-								icon:SetScript("OnUpdate", nil)
+								bu:SetScript("OnUpdate", nil)
 							end
-							icon.timer:SetTextColor(unpack(value[2]))
+							bu.timer:SetTextColor(unpack(value[2]))
 						else
 							if duration and duration > 0 then
-								icon.cd:SetCooldown(expiration - duration, duration)
-								icon.cd:Show()
+								bu.cd:SetCooldown(expiration - duration, duration)
+								bu.cd:Show()
 							else
-								icon.cd:Hide()
+								bu.cd:Hide()
 							end
-							if icon.block then
-								icon.icon:SetVertexColor(unpack(value[2]))
+							if NDuiDB["UFs"]["BuffIndicatorType"] == 1 then
+								bu.icon:SetVertexColor(unpack(value[2]))
 							else
-								icon.icon:SetTexture(GetSpellTexture(spellID))
+								bu.icon:SetTexture(texture)
 							end
 						end
-						if count > 1 then icon.count:SetText(count) end
-						icon:Show()
-						found[icon.anchor] = true
+						if count > 1 then bu.count:SetText(count) end
+						bu:Show()
+						found[bu.anchor] = true
 						break
 					end
 				end
@@ -375,10 +376,35 @@ function UF:UpdateBuffIndicator(event, unit)
 		end
 	end
 
-	for _, icon in pairs(icons) do
-		if not found[icon.anchor] then
-			icon:Hide()
+	for _, bu in pairs(buttons) do
+		if not found[bu.anchor] then
+			bu:Hide()
 		end
+	end
+end
+
+function UF:RefreshBuffIndicator(bu)
+	if NDuiDB["UFs"]["BuffIndicatorType"] == 3 then
+		local point, anchorPoint, x, y = unpack(counterOffsets[bu.anchor][2])
+		bu.timer:Show()
+		bu.count:ClearAllPoints()
+		bu.count:SetPoint(point, bu.timer, anchorPoint, x, y)
+		bu.icon:Hide()
+		bu.cd:Hide()
+		bu.bg:Hide()
+	else
+		bu:SetScript("OnUpdate", nil)
+		bu.timer:Hide()
+		bu.count:ClearAllPoints()
+		bu.count:SetPoint("CENTER", unpack(counterOffsets[bu.anchor][1]))
+		if NDuiDB["UFs"]["BuffIndicatorType"] == 1 then
+			bu.icon:SetTexture(DB.bdTex)
+		else
+			bu.icon:SetVertexColor(1, 1, 1)
+		end
+		bu.icon:Show()
+		bu.cd:Show()
+		bu.bg:Show()
 	end
 end
 
@@ -386,46 +412,54 @@ function UF:CreateBuffIndicator(self)
 	if not NDuiDB["UFs"]["RaidBuffIndicator"] then return end
 	if NDuiDB["UFs"]["SimpleMode"] and not self.isPartyFrame then return end
 
-	local iconSize = NDuiDB["UFs"]["BI_IconSize"]
-	local fontScale = iconSize/10
 	local anchors = {"TOPLEFT", "TOP", "TOPRIGHT", "LEFT", "RIGHT", "BOTTOMLEFT", "BOTTOM", "BOTTOMRIGHT"}
-	local icons = {}
+	local buttons = {}
 	for _, anchor in pairs(anchors) do
-		local icon = CreateFrame("Frame", nil, self)
-		icon:SetFrameLevel(self:GetFrameLevel()+10)
-		icon:SetSize(iconSize, iconSize)
-		icon:SetPoint(anchor)
-		icon:Hide()
+		local bu = CreateFrame("Frame", nil, self)
+		bu:SetFrameLevel(self:GetFrameLevel()+10)
+		bu:SetSize(10, 10)
+		bu:SetScale(NDuiDB["UFs"]["BuffIndicatorScale"])
+		bu:SetPoint(anchor)
+		bu:Hide()
 
-		icon.count = B.CreateFS(icon, 12*fontScale, "")
-		icon.count:ClearAllPoints()
-		if NDuiDB["UFs"]["BuffIndicatorType"] == 3 then
-			local point, anchorPoint, x, y = unpack(counterOffsets[anchor][2])
-			icon.timer = B.CreateFS(icon, 12*fontScale, "", false, "CENTER", -x, 0)
-			icon.count:SetPoint(point, icon.timer, anchorPoint, x, y)
-		else
-			icon.bg = B.CreateBG(icon)
-			B.CreateBD(icon.bg)
+		bu.bg = B.CreateBG(bu)
+		B.CreateBD(bu.bg)
+		bu.icon = bu:CreateTexture(nil, "BORDER")
+		bu.icon:SetAllPoints()
+		bu.icon:SetTexCoord(unpack(DB.TexCoord))
+		bu.cd = CreateFrame("Cooldown", nil, bu, "CooldownFrameTemplate")
+		bu.cd:SetAllPoints()
+		bu.cd:SetReverse(true)
+		bu.cd:SetHideCountdownNumbers(true)
+		bu.timer = B.CreateFS(bu, 12, "", false, "CENTER", -counterOffsets[anchor][2][3], 0)
+		bu.count = B.CreateFS(bu, 12, "")
 
-			icon.icon = icon:CreateTexture(nil, "BORDER")
-			icon.icon:SetAllPoints()
-			if NDuiDB["UFs"]["BuffIndicatorType"] == 1 then
-				icon.icon:SetTexture(DB.bdTex)
-				icon.block = true
-			end
+		bu.anchor = anchor
+		tinsert(buttons, bu)
 
-			icon.cd = CreateFrame("Cooldown", nil, icon, "CooldownFrameTemplate")
-			icon.cd:SetAllPoints()
-			icon.cd:SetReverse(true)
-			icon.cd:SetHideCountdownNumbers(true)
+		UF:RefreshBuffIndicator(bu)
 
-			icon.count:SetPoint("CENTER", unpack(counterOffsets[anchor][1]))
-		end
-
-		icon.anchor = anchor
-		tinsert(icons, icon)
+		bu.anchor = anchor
+		tinsert(buttons, bu)
 	end
 
-	self.BuffIndicator = icons
+	self.BuffIndicator = buttons
 	self:RegisterEvent("UNIT_AURA", UF.UpdateBuffIndicator)
+	self:RegisterEvent("GROUP_ROSTER_UPDATE", UF.UpdateBuffIndicator, true)
+end
+
+function UF:RefreshRaidFrameIcons()
+	for _, frame in pairs(oUF.objects) do
+		if frame.mystyle == "raid" then
+			if frame.RaidDebuffs then
+				frame.RaidDebuffs:SetScale(NDuiDB["UFs"]["RaidDebuffScale"])
+			end
+			if frame.BuffIndicator then
+				for _, bu in pairs(frame.BuffIndicator) do
+					bu:SetScale(NDuiDB["UFs"]["BuffIndicatorScale"])
+					UF:RefreshBuffIndicator(bu)
+				end
+			end
+		end
+	end
 end

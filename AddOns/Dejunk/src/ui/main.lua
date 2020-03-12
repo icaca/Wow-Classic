@@ -7,6 +7,8 @@ local DCL = Addon.Libs.DCL
 local Dejunker = Addon.Dejunker
 local Destroyables = Addon.Lists.Destroyables
 local Destroyer = Addon.Destroyer
+local E = Addon.Events
+local EventManager = Addon.EventManager
 local Exclusions = Addon.Lists.Exclusions
 local Inclusions = Addon.Lists.Inclusions
 local L = Addon.Libs.L
@@ -14,7 +16,7 @@ local ListHelper = Addon.ListHelper
 local pairs = pairs
 local UI = Addon.UI
 local Undestroyables = Addon.Lists.Undestroyables
-local Utils = Addon.UI.Utils
+local Widgets = Addon.UI.Widgets
 
 function UI:IsShown()
   return self.frame and self.frame:IsShown()
@@ -69,34 +71,31 @@ function UI:Create()
   frame:SetHeight(660)
   frame.frame:SetMinResize(600, 500)
   frame:SetLayout("Flow")
-  frame:SetCallback("OnClose", Destroyer.StartAutoDestroy)
+  frame:SetCallback("OnClose", function() EventManager:Fire(E.MainUIClosed) end)
   self.frame = frame
   self.widgetsToDisable = {}
   self.disabled = false
 
   -- Heading
-  Utils:Heading(
+  Widgets:Heading(
     frame,
     ("%s: %s"):format(
       L.VERSION_TEXT,
-      DCL:ColorString(
-        _G.GetAddOnMetadata(AddonName, "Version"),
-        Colors.Primary
-      )
+      DCL:ColorString(Addon.VERSION, Colors.Primary)
     )
   )
 
   -- Start Destroying button
-  local startDestroying = Utils:Button({
+  local startDestroying = Widgets:Button({
     parent = frame,
     text = L.START_DESTROYING_BUTTON_TEXT,
     width = 175,
-    onClick = function() Destroyer:StartDestroying() end
+    onClick = function() Destroyer:Start() end
   })
   self.widgetsToDisable[startDestroying] = true
 
   -- Key Bindings button
-  local keyBindings = Utils:Button({
+  local keyBindings = Widgets:Button({
     parent = frame,
     text = _G.KEY_BINDINGS,
     onClick = function()
@@ -119,7 +118,7 @@ function UI:Create()
   self.widgetsToDisable[keyBindings] = true
 
   -- Container for the TreeGroup
-  local treeGroupContainer = Utils:SimpleGroup({
+  local treeGroupContainer = Widgets:SimpleGroup({
     parent = frame,
     fullWidth = true,
     fullHeight = true,
@@ -135,12 +134,12 @@ function UI:Create()
     { text = L.GENERAL_TEXT, value = "General" },
     { text = "", value = "SPACE_1", disabled = true },
     { text = L.SELL_TEXT, value = "Sell" },
-    { text = "  " .. Inclusions.localeColored, value = "Inclusions" },
-    { text = "  " .. Exclusions.localeColored, value = "Exclusions" },
+    { text = Inclusions.localeColored, value = "Inclusions" },
+    { text = Exclusions.localeColored, value = "Exclusions" },
     { text = "", value = "SPACE_2", disabled = true },
     { text = L.DESTROY_TEXT, value = "Destroy" },
-    { text = "  " .. Destroyables.localeColored, value = "Destroyables" },
-    { text = "  " .. Undestroyables.localeColored, value = "Undestroyables" },
+    { text = Destroyables.localeColored, value = "Destroyables" },
+    { text = Undestroyables.localeColored, value = "Undestroyables" },
     { text = "", value = "SPACE_3", disabled = true },
     { text = L.PROFILES_TEXT, value = "Profiles" }
   })

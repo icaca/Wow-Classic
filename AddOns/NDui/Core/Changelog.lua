@@ -5,25 +5,19 @@ if DB.Client ~= "zhCN" then return end
 local strsplit, pairs = string.split, pairs
 
 local hx = {
-	"更新各法术库；",
-	"AuroraClassic更新；",
-	"添加LibTotemInfo；",
-	"更新部分法术监控；",
-	"移除角色宝石附魔信息的选项；",
-	"添加按钮以开关钥匙链；",
-	"动作条材质微调；",
-	"整理按钮的材质更新；",
-	"更新插件刷屏过滤列表；",
-	"Details皮肤更新；",
-	"声望条崇拜后的显示调整；",
-	"信息条好友模块更新；",
-	"小地图回收站过滤更新；",
-	"添加选项以关闭自动填写DELETE的功能；",
-	"添加小队的宠物框体，默认关闭；",
-	"队长拾取的相关调整；",
-	"施法条优化；",
-	"背包偏好标记的层级调整；",
-	"控制台及本地文本更新。",
+	"添加BindPad的美化；",
+	"调整大于1小时的buff时间显示；",
+	"修复边角增益指示器无法保存的问题；",
+	"界面美化更新；",
+	"Details和Bigwigs美化更新；",
+	"鼠标提示调整；",
+	"移除BOSS框体的相关信息；",
+	"更新牧师的初始边角指示器增益；",
+	"姓名板的施法条字号跟随其名字字号；",
+	"团队框架添加目标高亮；",
+	"移除RealMobHealth的支持；",
+	"背包过滤更新，添加更多可选分类；",
+	"Shift键卡住提示调整。",
 }
 
 local f
@@ -38,8 +32,8 @@ local function changelog()
 	B.CreateBD(f)
 	B.CreateSD(f)
 	B.CreateTex(f)
-	B.CreateFS(f, 30, "NDui", true, "TOPLEFT", 10, 26)
-	B.CreateFS(f, 14, DB.Version, true, "TOPLEFT", 90, 14)
+	B.CreateFS(f, 30, "|cff0080ffNDui|rClassic", true, "TOPLEFT", 10, 26)
+	B.CreateFS(f, 14, DB.Version, true, "TOPRIGHT", -10, 14)
 	B.CreateFS(f, 16, L["Changelog"], true, "TOP", 0, -10)
 	local ll = CreateFrame("Frame", nil, f)
 	ll:SetPoint("TOP", -50, -35)

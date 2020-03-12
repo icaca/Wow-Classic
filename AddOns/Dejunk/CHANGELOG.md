@@ -1,3 +1,35 @@
+# 8.3.4
+
+## Fixes
+
+- Fixed a bug which sometimes caused `Auto Sell` to not start
+
+# 8.3.3
+
+## Additions
+
+- Added keybind to `Start Selling` items when at a merchant
+- Added option `General > Global > Merchant Button` to toggle the merchant button
+
+## Fixes
+
+- Added the Dagger weapon type as suitable equipment for Hunters in Classic
+
+# 8.3.2
+
+- Localization updates
+
+# 8.3.1
+
+## Changes
+
+- Items set to be destroyed are now sold by default (if they can be sold)
+
+## Additions
+
+- Added options for ignoring **Miscellaneous** items
+- Added **Save Space** destroy option which causes **Auto Destroy** to occur only when less than a set number of bag spaces remain
+
 # 8.3.0
 
 ## Changes

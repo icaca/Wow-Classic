@@ -1,0 +1,14 @@
+## Interface: 11303
+## Title: DataStore_Reputations
+## Notes: Stores information about character reputation levels
+## Author: Thaoky (EU-Marécages de Zangar)
+## Version: r44
+## Dependencies: DataStore
+## OptionalDeps: Ace3
+## SavedVariables: DataStore_ReputationsDB
+## X-Category: Interface Enhancements
+## X-Embeds: Ace3
+
+embeds.xml
+
+DataStore_Reputations.lua

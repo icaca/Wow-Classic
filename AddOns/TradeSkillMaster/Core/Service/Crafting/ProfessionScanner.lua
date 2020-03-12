@@ -376,10 +376,16 @@ function private.ScanRecipe(professionName, spellId)
 		-- result of craft is item
 		itemString = ItemString.GetBase(itemLink)
 		craftName = ItemInfo.GetName(itemLink)
+		-- Blizzard broke Brilliant Scarlet Ruby in 8.3, so just hard-code a workaround
+		if spellId == 53946 and not itemString and not craftName then
+			itemString = "i:39998"
+			craftName = GetSpellInfo(spellId)
+		end
 	else
 		error("Invalid craft: "..tostring(spellId))
 	end
 	if not itemString or not craftName then
+		Log.Warn("No itemString (%s) or craftName (%s) found (%s, %s)", tostring(itemString), tostring(craftName), tostring(professionName), tostring(spellId))
 		return false
 	end
 
@@ -420,10 +426,12 @@ function private.ScanRecipe(professionName, spellId)
 		local matItemLink, name, _, quantity = TSM.Crafting.ProfessionUtil.GetMatInfo(spellId, i)
 		local matItemString = ItemString.GetBase(matItemLink)
 		if not matItemString then
+			Log.Warn("Failed to get itemString for mat %d (%s, %s)", i, tostring(professionName), tostring(spellId))
 			haveInvalidMats = true
 			break
 		end
 		if not name or not quantity then
+			Log.Warn("Failed to get name (%s) or quantity (%s) for mat (%s, %s, %d)", tostring(name), tostring(quantity), tostring(professionName), tostring(spellId), i)
 			haveInvalidMats = true
 			break
 		end

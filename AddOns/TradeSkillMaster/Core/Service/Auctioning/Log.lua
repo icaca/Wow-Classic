@@ -1,8 +1,8 @@
 -- ------------------------------------------------------------------------------ --
---                           TradeSkillMaster_Auctioning                          --
---           http://www.curse.com/addons/wow/tradeskillmaster_auctioning          --
+--                                TradeSkillMaster                                --
+--             https://www.curseforge.com/wow/addons/tradeskill-master            --
 --                                                                                --
---             A TradeSkillMaster Addon (http://tradeskillmaster.com)             --
+--             A TradeSkillMaster Addon (https://tradeskillmaster.com)            --
 --    All Rights Reserved* - Detailed license information included with addon.    --
 -- ------------------------------------------------------------------------------ --
 
@@ -85,6 +85,17 @@ function Log.CreateQuery()
 	return private.db:NewQuery()
 		:InnerJoin(ItemInfo.GetDBForJoin(), "itemString")
 		:OrderBy("index", true)
+end
+
+function Log.UpdateRowByIndex(index, field, value)
+	local row = private.db:NewQuery()
+		:Equal("index", index)
+		:GetFirstResultAndRelease()
+
+	row:SetField(field, value)
+		:Update()
+
+	row:Release()
 end
 
 function Log.SetQueryUpdatesPaused(paused)

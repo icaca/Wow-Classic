@@ -1,10 +1,9 @@
 # ClassicCodex
 
-## [v1.3.7](https://github.com/SwimmingTiger/ClassicCodex/tree/v1.3.7) (2020-01-01)
-[Full Changelog](https://github.com/SwimmingTiger/ClassicCodex/compare/v1.3.6...v1.3.7)
+## [v1.3.9](https://github.com/SwimmingTiger/ClassicCodex/tree/v1.3.9) (2020-02-22)
+[Full Changelog](https://github.com/SwimmingTiger/ClassicCodex/compare/v1.3.8...v1.3.9)
 
-- update interface version to 1.13.3  
-- Added missing class quests  
-- Database update: Added unit patches generated from Questie 5.4.1, as well as a manual patch  
-- update quest database patch (from Questie 5.4.1)  
-- add a script to generate database patch files  
+- Add missing objects for quest "Magram Alliance" and "Gelkis Alliance"  
+- Add missing coords for 397 NPCs/creatures (Data were collected from WowHead)  
+- add a script to download missing coords from wowhead  
+- Sycn database with Questie 5.7.1; Add coords for Magrami Spectre  

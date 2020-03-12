@@ -16,6 +16,7 @@ local Sound = TSM.Include("Util.Sound")
 local Money = TSM.Include("Util.Money")
 local Log = TSM.Include("Util.Log")
 local Threading = TSM.Include("Service.Threading")
+local AuctionHouseWrapper = TSM.Include("Service.AuctionHouseWrapper")
 local private = {
 	fsm = nil,
 	selectionFrame = nil,
@@ -75,10 +76,11 @@ function private.GetSelectionFrame()
 			:SetLayout("HORIZONTAL")
 			:SetStyle("height", 26)
 			:AddChild(TSMAPI_FOUR.UI.NewElement("Spacer", "leftSpacer"))
-			:AddChild(TSMAPI_FOUR.UI.NewElement("ActionButton", "buyoutScanBtn")
+			:AddChild(TSMAPI_FOUR.UI.NewElement("SecureMacroActionButton", "buyoutScanBtn")
 				:SetStyle("width", 200)
 				:SetText(L["Run Buyout Sniper"])
-				:SetScript("OnClick", private.BuyoutScanButtonOnClick)
+				:SetMacroText(AuctionHouseWrapper.GetMacroText())
+				:SetScript("PostClick", private.BuyoutScanButtonOnClick)
 			)
 			:AddChild(TSMAPI_FOUR.UI.NewElement("Spacer", "rightSpacer"))
 		)
@@ -694,7 +696,10 @@ function private.FSMCreate()
 				else
 					error("Invalid scanType: "..tostring(context.scanType))
 				end
-				if context.auctionScan:PlaceBidOrBuyout(index, bidBuyout, context.findAuction, true, quantity) then
+				-- TODO: do the prepare at the time we show the confirmation dialog
+				local result = context.auctionScan:PrepareForBidOrBuyout(index, context.findAuction, true, quantity)
+				result = result and context.auctionScan:PlaceBidOrBuyout(index, bidBuyout, context.findAuction, quantity)
+				if result then
 					context.numActioned = context.numActioned + (TSM.IsWowClassic() and 1 or quantity)
 					context.lastBuyQuantity = quantity
 				else

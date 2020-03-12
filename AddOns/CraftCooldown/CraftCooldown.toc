@@ -1,0 +1,8 @@
+## Interface: 11303
+## Title: CraftCooldown
+## Notes: TradeSkills Cooldown Tracker
+## Author: Czupak
+## SavedVariablesPerCharacter: cache
+## SavedVariables: globalCache
+## Version: 1.3
+CraftCooldown.lua

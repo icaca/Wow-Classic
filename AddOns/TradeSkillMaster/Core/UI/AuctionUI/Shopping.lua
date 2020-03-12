@@ -22,6 +22,7 @@ local Threading = TSM.Include("Service.Threading")
 local ItemInfo = TSM.Include("Service.ItemInfo")
 local CustomPrice = TSM.Include("Service.CustomPrice")
 local BagTracking = TSM.Include("Service.BagTracking")
+local AuctionHouseWrapper = TSM.Include("Service.AuctionHouseWrapper")
 local private = {
 	singleItemSearchType = "normal",
 	fsm = nil,
@@ -44,7 +45,7 @@ local private = {
 	postTimeStr = nil,
 	perItem = true,
 	updateCallbacks = {},
-	itemLocation = ItemLocation.CreateEmpty(),
+	itemLocation = ItemLocation:CreateEmpty(),
 }
 local SINGLE_ITEM_SEARCH_TYPES = {
 	normal = "|cffffd839" .. L["Normal"] .. "|r",
@@ -1122,7 +1123,7 @@ function private.PostingFrameOnUpdate(frame)
 	elseif buyout > MAXIMUM_BID_PRICE then
 		buyout = MAXIMUM_BID_PRICE
 	end
-	local cagedPet = strfind(private.itemString, "^p")
+
 	private.perItem = true
 
 	frame:GetElement("item.icon")
@@ -1130,25 +1131,15 @@ function private.PostingFrameOnUpdate(frame)
 		:SetTooltip(private.itemString)
 	frame:GetElement("item.name")
 		:SetText(TSM.UI.GetColoredItemName(private.itemString))
-	if not TSM.IsWowClassic() then
-		if ItemInfo.IsCommodity(private.itemString) then
-			frame:GetElement("bid"):Hide()
-		else
-			frame:GetElement("bid"):Show()
-		end
+	if ItemInfo.IsCommodity(private.itemString) then
+		frame:GetElement("bid"):Hide()
 	else
-		frame:GetElement("quantity.num")
-			:SetDisabled(cagedPet)
-		frame:GetElement("maxBtns.numBtn")
-			:SetDisabled(cagedPet)
+		frame:GetElement("bid"):Show()
 	end
 	local maxPostStack = private.GetMaxPostStack(private.itemString)
 	frame:GetElement("quantity.stackSize")
-		:SetDisabled(cagedPet)
-		:SetText(TSM.IsWowClassic() and min(record.stackSize, maxPostStack) or maxPostStack)
+		:SetText(min(record.stackSize, maxPostStack))
 		:SetMaxNumber(maxPostStack)
-	frame:GetElement("maxBtns.stackSizeBtn")
-		:SetDisabled(cagedPet)
 	frame:GetElement("bid.text")
 		:SetText(Money.ToString(bid, nil, "OPT_83_NO_COPPER"))
 	frame:GetElement("buyout.text")
@@ -1400,7 +1391,7 @@ function private.StartFilterSearchHelper(viewContainer, filter, isGreatDeals, it
 	local mode = (private.singleItemSearchType == "crafting" and not isGreatDeals) and "CRAFTING" or "NORMAL"
 	filter = TSM.Shopping.FilterSearch.PrepareFilter(strtrim(filter), mode, TSM.db.global.shoppingOptions.pctSource)
 	if not filter or filter == "" then
-		viewContainer:SetPath("scan", true)
+		viewContainer:SetPath("selection", true)
 		Log.PrintUser(L["Invalid search filter"]..": "..originalFilter)
 		return
 	end
@@ -1738,12 +1729,17 @@ function private.PostButtonOnClick(button)
 			private.itemLocation:Clear()
 			private.itemLocation:SetBagAndSlot(postBag, postSlot)
 			local commodityStatus = C_AuctionHouse.GetItemCommodityStatus(private.itemLocation)
+			local future = nil
 			if commodityStatus == Enum.ItemCommodityStatus.Item then
-				C_AuctionHouse.PostItem(private.itemLocation, postTime, stackSize, bid < buyout and bid or nil, buyout)
+				future = AuctionHouseWrapper.PostItem(private.itemLocation, postTime, stackSize, bid < buyout and bid or nil, buyout)
 			elseif commodityStatus == Enum.ItemCommodityStatus.Commodity then
-				C_AuctionHouse.PostCommodity(private.itemLocation, postTime, stackSize, buyout)
+				future = AuctionHouseWrapper.PostCommodity(private.itemLocation, postTime, stackSize, buyout)
 			else
 				error("Unknown commodity status: "..tostring(itemString))
+			end
+			if future then
+				-- TODO: wait for the future
+				future:Cancel()
 			end
 		else
 			local num = frame:GetElement("quantity.num"):GetText()
@@ -2032,7 +2028,7 @@ function private.FSMCreate()
 					else
 						progress = (filtersScanned + pagesScanned / numPages) / numFilters
 					end
-					text = format(L["Scanning %d / %d (Page %d / %d)"], filtersScanned + 1, numFilters, pagesScanned + 1, numPages)
+					text = format(L["Scanning %d / %d (Page %d / %d)"], filtersScanned + 1, numFilters, pagesScanned < numPages and pagesScanned + 1 or numPages, numPages)
 				end
 				context.progress = progress
 				context.progressText = text
@@ -2067,7 +2063,7 @@ function private.FSMCreate()
 						cheapest:Release()
 					end
 				end
-				context.postDisabled = not context.itemInfo and true or private.GetBagQuantity(context.itemInfo.itemString) == 0
+				context.postDisabled = not context.itemInfo or private.GetBagQuantity(context.itemInfo.itemString) == 0
 				context.bidDisabled = true
 				context.buyoutDisabled = true
 				context.stopDisabled = true
@@ -2209,7 +2205,7 @@ function private.FSMCreate()
 				end
 				context.progress = context.numConfirmed / context.numFound
 				context.progressText = progressText
-				context.postDisabled = private.GetBagQuantity(selection:GetField("itemString")) == 0
+				context.postDisabled = not selection or private.GetBagQuantity(selection:GetField("itemString")) == 0
 				local isPlayer = TSMAPI_FOUR.PlayerInfo.IsPlayer(selection.seller, true, true, true)
 				if numCanBuy == 0 or isPlayer or (not TSM.IsWowClassic() and numConfirming > 0) then
 					context.bidDisabled = true
@@ -2295,7 +2291,10 @@ function private.FSMCreate()
 				local index = TSM.IsWowClassic() and tremove(context.findResult, #context.findResult) or nil
 				assert(not TSM.IsWowClassic() or index)
 				-- buy the auction
-				if context.auctionScan:PlaceBidOrBuyout(index, context.findAuction:GetField("buyout"), context.findAuction, false, quantity) then
+				-- TODO: do the prepare at the time we show the confirmation dialog
+				local result = context.auctionScan:PrepareForBidOrBuyout(index, context.findAuction, false, quantity)
+				result = result and context.auctionScan:PlaceBidOrBuyout(index, context.findAuction:GetField("buyout"), context.findAuction, quantity)
+				if result then
 					context.numBought = context.numBought + (TSM.IsWowClassic() and 1 or quantity)
 					context.lastBuyQuantity = quantity
 				else
@@ -2322,7 +2321,9 @@ function private.FSMCreate()
 				local index = TSM.IsWowClassic() and tremove(context.findResult, #context.findResult) or nil
 				assert(not TSM.IsWowClassic() or index)
 				-- bid on the auction
-				if context.auctionScan:PlaceBidOrBuyout(index, TSM.Auction.GetRequiredBidByScanResultRow(context.findAuction), context.findAuction, false, quantity) then
+				local result = context.auctionScan:PrepareForBidOrBuyout(index, context.findAuction, false, quantity)
+				result = result and context.auctionScan:PlaceBidOrBuyout(index, TSM.Auction.GetRequiredBidByScanResultRow(context.findAuction), context.findAuction, quantity)
+				if result then
 					context.numBid = context.numBid + (TSM.IsWowClassic() and 1 or quantity)
 					context.lastBuyQuantity = quantity
 				else
