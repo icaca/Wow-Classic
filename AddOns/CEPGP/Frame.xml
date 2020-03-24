@@ -24,7 +24,7 @@
 			</EdgeSize>
 		</Backdrop>
 		<Frames>
-			<Button name="CEPGP_button_guild" inherits="GameMenuButtonTemplate" text="公会">
+			<Button name="CEPGP_button_guild" inherits="GameMenuButtonTemplate" text="Guild">
 				<Size>
 					<AbsDimension x="80" y="21" />
 				</Size>
@@ -44,7 +44,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_button_raid" inherits="GameMenuButtonTemplate" text="团队">
+			<Button name="CEPGP_button_raid" inherits="GameMenuButtonTemplate" text="Raid">
 				<Size>
 					<AbsDimension x="80" y="21" />
 				</Size>
@@ -69,7 +69,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_button_options" inherits="GameMenuButtonTemplate" text="选项">
+			<Button name="CEPGP_button_options" inherits="GameMenuButtonTemplate" text="Options">
 			  <HitRectInsets>
 					<AbsInset left="0" right="0" top="0" bottom="0" />
 				</HitRectInsets>
@@ -89,9 +89,9 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_button_loot_dist" inherits="GameMenuButtonTemplate" text="战利品分配" hidden="Loot Distribution">
+			<Button name="CEPGP_button_loot_dist" inherits="GameMenuButtonTemplate" text="Loot List" hidden="true">
 				<Size>
-					<AbsDimension x="140" y="21" />
+					<AbsDimension x="100" y="21" />
 				</Size>
 				<Anchors>
 					<Anchor point="RIGHT" relativePoint="LEFT" relativeTo="CEPGP_button_options">
@@ -133,9 +133,9 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="distributing" inherits="GameMenuButtonTemplate" text="分发" hidden="true">
+			<Button name="CEPGP_distributing_button" inherits="GameMenuButtonTemplate" text="Loot Distribution" hidden="true">
 				<Size>
-					<AbsDimension x="100" y="22" />
+					<AbsDimension x="125" y="22" />
 				</Size>
 				<Anchors>
 					<Anchor point="TOPRIGHT" relativeTo="CEPGP_frame">
@@ -158,7 +158,7 @@
 					<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_button_guild" />
 				</Anchors>
 				<Frames>
-					<Button name="CEPGP_button_guild_dump" inherits="GameMenuButtonTemplate" text="保存排名">
+					<Button name="CEPGP_button_guild_dump" inherits="GameMenuButtonTemplate" text="Save Standings">
 						<Size>
 							<AbsDimension x="125" y="22" />
 						</Size>
@@ -172,12 +172,12 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_button_guild_export" inherits="GameMenuButtonTemplate" text="导出排名">
+					<Button name="CEPGP_button_guild_export" inherits="GameMenuButtonTemplate" text="Export Standings">
 						<Size>
 							<AbsDimension x="125" y="21" />
 						</Size>
 						<Anchors>
-							<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="distributing" />
+							<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_distributing_button" />
 						</Anchors>
 						<Scripts>
 							<OnClick>
@@ -186,7 +186,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_button_guild_import" inherits="GameMenuButtonTemplate" text="导入排名">
+					<Button name="CEPGP_button_guild_import" inherits="GameMenuButtonTemplate" text="Import Standings">
 						<Size>
 							<AbsDimension x="100" y="22" />
 						</Size>
@@ -200,7 +200,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_button_options_attendance" inherits="GameMenuButtonTemplate" text="团队出勤">
+					<Button name="CEPGP_button_options_attendance" inherits="GameMenuButtonTemplate" text="Raid Attendance">
 						<Size>
 							<AbsDimension x="125" y="21" />
 						</Size>
@@ -220,14 +220,14 @@
 							</OnClick>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("通过创建快照来衡量团队的出勤率");
+								GameTooltip:SetText("Measure the attendance of your raid by creating snapshots.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
 							</OnLeave>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_button_guild_restore" inherits="GameMenuButtonTemplate" text="恢复排名">
+					<Button name="CEPGP_button_guild_restore" inherits="GameMenuButtonTemplate" text="Restore Standings">
 						<Size>
 							<AbsDimension x="125" y="21" />
 						</Size>
@@ -241,7 +241,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_button_guild_traffic" inherits="GameMenuButtonTemplate" text="查看EPGP详情">
+					<Button name="CEPGP_button_guild_traffic" inherits="GameMenuButtonTemplate" text="View EPGP Traffic">
 						<Size>
 							<AbsDimension x="125" y="21" />
 						</Size>
@@ -255,7 +255,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_guild_name" inherits="CEPGPHeaderButton" text="名字" >
+					<Button name="CEPGP_guild_name" inherits="CEPGPHeaderButton" text="Name" >
 						<Anchors>
 							<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_button_guild_traffic">
 								<Offset>
@@ -269,7 +269,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_guild_class" inherits="CEPGPHeaderButton" text="职业">
+					<Button name="CEPGP_guild_class" inherits="CEPGPHeaderButton" text="Class">
 						<Anchors>
 							<Anchor point="TOPLEFT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_button_guild_traffic">
 								<Offset>
@@ -283,7 +283,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_guild_rank" inherits="CEPGPHeaderButton" text="会阶">
+					<Button name="CEPGP_guild_rank" inherits="CEPGPHeaderButton" text="Rank">
 						<Anchors>
 							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_guild_class">
 								<Offset>
@@ -358,7 +358,7 @@
 							</Frame>
 						</ScrollChild>
 					</ScrollFrame>
-					<Button name="CEPGP_guild_add_EP" inherits="GameMenuButtonTemplate" text="增加公会EP">
+					<Button name="CEPGP_guild_add_EP" inherits="GameMenuButtonTemplate" text="Add Guild EP">
 						<Size>
 							<AbsDimension x="100" y="21" />
 						</Size>
@@ -381,14 +381,14 @@
 							</OnClick>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("为整个公会加/减EP\n|c00FF0000警告：这可能会给大型公会的玩家造成短暂的延迟峰值。小心使用。|r");
+								GameTooltip:SetText("Add/subtract EP for the whole guild.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
 							</OnLeave>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_guild_decay" inherits="GameMenuButtonTemplate" text="衰减公会EP">
+					<Button name="CEPGP_guild_decay" inherits="GameMenuButtonTemplate" text="Decay Guild EPGP">
 						<Size>
 							<AbsDimension x="120" y="21" />
 						</Size>
@@ -411,14 +411,14 @@
 							</OnClick>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("衰减/膨胀整个公会的EPGP排名。\n|c00FF0000警告：这可能会给大型公会的玩家造成短暂的延迟峰值。小心使用。|r");
+								GameTooltip:SetText("Decay/inflate the EPGP standings for the whole guild.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
 							</OnLeave>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_guild_reset" inherits="GameMenuButtonTemplate" text="重置所有EPGP排名">
+					<Button name="CEPGP_guild_reset" inherits="GameMenuButtonTemplate" text="Reset All EPGP Standings">
 						<Size>
 							<AbsDimension x="160" y="21" />
 						</Size>
@@ -441,7 +441,7 @@
 							</OnClick>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("将整个公会的EPGP积分重置为默认值。\n|c00FF0000警告：这可能会给大型公会的玩家造成短暂的延迟峰值。小心使用。|r");
+								GameTooltip:SetText("Reset EPGP standings to default values for the whole guild.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
@@ -451,7 +451,7 @@
 				</Frames>
 				<Layers>
 					<Layer level="OVERLAY">
-						<FontString name="CEPGP_guild_CEPGP_mode" inherits="GameFontNormal" text="当前位置: 公会">
+						<FontString name="CEPGP_guild_CEPGP_mode" inherits="GameFontNormal" text="Current View: Guild">
 							<Color r="1" g="1" b="1"/>
 							<Anchors>
 								<Anchor point="CENTER" relativePoint="TOP" />
@@ -466,7 +466,7 @@
 				</Size>
 				<Layers>
 					<Layer level="OVERLAY">
-						<FontString name="CEPGP_raid_CEPGP_mode" inherits="GameFontNormal" text="当前位置: 团队">
+						<FontString name="CEPGP_raid_CEPGP_mode" inherits="GameFontNormal" text="Current View: Raid">
 							<Color r="1" g="1" b="1"/>
 							<Anchors>
 								<Anchor point="CENTER" relativePoint="TOP" />
@@ -494,7 +494,7 @@
 							</Frame>
 						</ScrollChild>
 					</ScrollFrame>
-					<Button name="CEPGP_raid_name" inherits="CEPGPHeaderButton" text="名字">
+					<Button name="CEPGP_raid_name" inherits="CEPGPHeaderButton" text="Name">
 						<Size>
 							<AbsDimension x="30" y="20" />
 						</Size>
@@ -511,7 +511,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_raid_class" inherits="CEPGPHeaderButton" text="职业">
+					<Button name="CEPGP_raid_class" inherits="CEPGPHeaderButton" text="Class">
 						<Size>
 							<AbsDimension x="30" y="20" />
 						</Size>
@@ -528,7 +528,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_raid_rank" inherits="CEPGPHeaderButton" text="会阶">
+					<Button name="CEPGP_raid_rank" inherits="CEPGPHeaderButton" text="Rank">
 						<Size>
 							<AbsDimension x="30" y="20" />
 						</Size>
@@ -596,7 +596,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_raid_add_EP" inherits="GameMenuButtonTemplate" text="增加团队EP">
+					<Button name="CEPGP_raid_add_EP" inherits="GameMenuButtonTemplate" text="Add Raid EP">
 						<Size>
 							<AbsDimension x="100" y="21" />
 						</Size>
@@ -627,7 +627,7 @@
 				</Size>
 				<Layers>
 					<Layer level="OVERLAY">
-						<FontString name="CEPGP_loot_CEPGP_mode" inherits="GameFontNormal" text="当前位置: 战利品分配">
+						<FontString name="CEPGP_loot_CEPGP_mode" inherits="GameFontNormal" text="Current View: Loot Distribution">
 							<Color r="1" g="1" b="1"/>
 							<Anchors>
 								<Anchor point="CENTER" relativePoint="TOP" />
@@ -636,7 +636,7 @@
 					</Layer>
 				</Layers>
 				<Frames>
-					<Button name="CEPGP_loot_announce" inherits="CEPGPHeaderButton" text="通告">
+					<Button name="CEPGP_loot_announce" inherits="CEPGPHeaderButton" text="Announce">
 						<Size>
 							<AbsDimension x="50" y="20" />
 						</Size>
@@ -648,7 +648,7 @@
 							</Anchor>
 						</Anchors>
 					</Button>
-					<Button name="CEPGP_loot_item" inherits="CEPGPHeaderButton" text="物品">
+					<Button name="CEPGP_loot_item" inherits="CEPGPHeaderButton" text="Item">
 						<Size>
 							<AbsDimension x="50" y="20" />
 						</Size>
@@ -680,7 +680,7 @@
 				</Size>
 				<Layers>
 					<Layer level="OVERLAY">
-						<FontString name="CEPGP_distribute_CEPGP_mode" inherits="GameFontNormal" text="分发物品">
+						<FontString name="CEPGP_distribute_CEPGP_mode" inherits="GameFontNormal" text="Distributing Item">
 							<Color r="1" g="1" b="1"/>
 							<Anchors>
 								<Anchor point="CENTER" relativePoint="TOP">
@@ -690,7 +690,7 @@
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="CEPGP_distribute_item" inherits="GameFontNormal" text="物品">
+						<FontString name="CEPGP_distribute_item" inherits="GameFontNormal" text="Item">
 							<Color r="1" g="1" b="1"/>
 							<Anchors>
 								<Anchor point="TOPLEFT">
@@ -762,7 +762,7 @@
 						</Anchors>
 					</Button>
 					<!--Display for the raid members-->
-					<Button name="CEPGP_distribute_raid_name" inherits="CEPGPHeaderButton" text="名字">
+					<Button name="CEPGP_distribute_raid_name" inherits="CEPGPHeaderButton" text="Name">
 						<Size>
 							<AbsDimension x="50" y="20" />
 						</Size>
@@ -779,7 +779,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_distribute_raid_class" inherits="CEPGPHeaderButton" text="职业">
+					<Button name="CEPGP_distribute_raid_class" inherits="CEPGPHeaderButton" text="Class">
 						<Size>
 							<AbsDimension x="50" y="20" />
 						</Size>
@@ -796,7 +796,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_distribute_raid_rank" inherits="CEPGPHeaderButton" text="会阶">
+					<Button name="CEPGP_distribute_raid_rank" inherits="CEPGPHeaderButton" text="Rank">
 						<Size>
 							<AbsDimension x="50" y="20" />
 						</Size>
@@ -813,7 +813,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_distribute_raid_response" inherits="CEPGPHeaderButton" text="响应">
+					<Button name="CEPGP_distribute_raid_response" inherits="CEPGPHeaderButton" text="Response">
 						<Size>
 							<AbsDimension x="50" y="20" />
 						</Size>
@@ -903,7 +903,7 @@
 				</Frames>
 				<Scripts>
 					<OnShow>
-						distributing:Show();
+						CEPGP_distributing_button:Show();
 					</OnShow>
 				</Scripts>
 			</Frame>
@@ -913,7 +913,7 @@
 				</Size>	
 				<Layers>
 					<Layer level="OVERLAY">
-						<FontString name="CEPGP_options_CEPGP_mode" inherits="GameFontNormal" text="当前位置: 选项">
+						<FontString name="CEPGP_options_CEPGP_mode" inherits="GameFontNormal" text="Current View: Options">
 							<Color r="1" g="1" b="1"/>
 							<Anchors>
 								<Anchor point="CENTER" relativePoint="TOP" />
@@ -922,7 +922,7 @@
 					</Layer>
 				</Layers>
 				<Frames>
-					<Button name="CEPGP_button_options_import" inherits="GameMenuButtonTemplate" text="导入设置">
+					<Button name="CEPGP_button_options_import" inherits="GameMenuButtonTemplate" text="Import Settings">
 						<Size>
 							<AbsDimension x="125" y="21" />
 						</Size>
@@ -940,14 +940,14 @@
 							</OnClick>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("从公会成员导入cepg配置。");
+								GameTooltip:SetText("Import CEPGP configuration from a guild member.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
 							</OnLeave>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_button_options_CEPGP_override" inherits="GameMenuButtonTemplate" text="装备GP值设置">
+					<Button name="CEPGP_button_options_CEPGP_override" inherits="GameMenuButtonTemplate" text="Override Settings">
 						<Size>
 							<AbsDimension x="125" y="21" />
 						</Size>
@@ -965,14 +965,14 @@
 							</OnClick>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("允许您为物品GP值创建永久覆盖.");
+								GameTooltip:SetText("Allows you to create permanent overrides for item GP values.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
 							</OnLeave>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_button_options_plugins" inherits="GameMenuButtonTemplate" hidden="true" text="插件">
+					<Button name="CEPGP_button_options_plugins" inherits="GameMenuButtonTemplate" hidden="true" text="Plugins">
 						<Size>
 							<AbsDimension x="125" y="21" />
 						</Size>
@@ -983,6 +983,12 @@
 								</Offset>
 							</Anchor>
 						</Anchors>
+						<Scripts>
+							<OnClick>
+								CEPGP_options:Hide();
+								CEPGP_options_plugins:Show();
+							</OnClick>
+						</Scripts>
 					</Button>
 					<Frame name="CEPGP_options_gp_container">
 						<Size>
@@ -993,7 +999,7 @@
 						</Anchors>
 						<Layers>
 							<Layer level="OVERLAY">
-								<FontString name="CEPGP_options_response_checkbox" inherits="GameFontNormal" text=" 启用战利品分配GUI: ">
+								<FontString name="CEPGP_options_response_checkbox" inherits="GameFontNormal" text="Enable GUI for Loot: ">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT">
@@ -1003,7 +1009,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_keyword" inherits="GameFontNormal" text="响应关键字:">
+								<FontString name="CEPGP_options_keyword" inherits="GameFontNormal" text="Response Keyword:">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_options_response_checkbox">
@@ -1013,7 +1019,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_formula_desc" inherits="GameFontNormal" text="GP 公式:">
+								<FontString name="CEPGP_options_formula_desc" inherits="GameFontNormal" text="GP Formula:">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_response_checkbox">
@@ -1029,7 +1035,7 @@
 								<FontString name="CEPGP_options_formula_2" inherits="GameFontNormal" text="^((ilvl/26)+(rarity-4)) x slot) x">
 									<Color r="1" g="1" b="1"/>
 								</FontString>
-								<FontString name="CEPGP_options_gp_base" inherits="GameFontNormal" text="初始值/最小值玩家GP:">
+								<FontString name="CEPGP_options_gp_base" inherits="GameFontNormal" text="Initial/Minimum Player GP:">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_formula_desc">
@@ -1039,7 +1045,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_gp_base_decay_factor" inherits="GameFontNormal" text="衰减基础GP: ">
+								<FontString name="CEPGP_options_gp_base_decay_factor" inherits="GameFontNormal" text="Decay Ignores Base GP: ">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_gp_base">
@@ -1079,11 +1085,11 @@
 										else
 											if value == "" then
 												self:SetText(CEPGP_keyword);
-												CEPGP_print("你必须指定一个关键字分配战利品", true);
+												CEPGP_print("You must nominate a keyword to distribute loot", true);
 												return;
 											else
 												CEPGP_keyword = value;
-												CEPGP_print("战利品关键字更新");
+												CEPGP_print("Loot keyword updated");
 											end
 										end
 									</OnEditFocusLost>
@@ -1104,12 +1110,12 @@
 									<OnClick>
 										CEPGP_loot_GUI = self:GetChecked();
 										if CEPGP_loot_GUI then
-											CEPGP_print("拾取GUI选项开启");
+											CEPGP_print("Loot GUI enabled");
 											_G["CEPGP_options_keyword"]:Hide();
 											_G["CEPGP_options_keyword_edit"]:Hide();
 											CEPGP_button_options_loot_gui:Show();
 										else
-											CEPGP_print("拾取GUI选项关闭");
+											CEPGP_print("Loot GUI disabled");
 											_G["CEPGP_options_keyword"]:Show();
 											_G["CEPGP_options_keyword_edit"]:Show();
 											CEPGP_button_options_loot_gui:Hide();
@@ -1117,14 +1123,14 @@
 									</OnClick>
 									<OnEnter>
 										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-										GameTooltip:SetText("战利品大师功能\n显示一个窗口，玩家可以通过点击按钮来响应战利品拍卖.\n启用此选项将强制您的团队使用此功能.\n\n|c00FF0000此功能不适用于没有安装CEPGP的玩家！必须全团安装！|r");
+										GameTooltip:SetText("Loot Master Feature\nDisplays a window for players to respond to loot with the click of a button.\nEnabling this option will force your raid to use this feature.\n\n|c00FF0000This feature will not work for players not running CEPGP!|r");
 									</OnEnter>
 									<OnLeave>
 										GameTooltip:Hide();
 									</OnLeave>
 								</Scripts>
 							</CheckButton>
-							<Button name="CEPGP_button_options_loot_gui" inherits="GameMenuButtonTemplate" text="拾取GUI 选项">
+							<Button name="CEPGP_button_options_loot_gui" inherits="GameMenuButtonTemplate" text="Loot GUI Options">
 								<Size>
 									<AbsDimension x="125" y="21" />
 								</Size>
@@ -1164,17 +1170,17 @@
 										self:HighlightText(0,0);
 										local value = self:GetText();
 										if not CEPGP_isNumber(value) then
-											CEPGP_print("基础系数必须只包含数字", true);
+											CEPGP_print("Base coefficient must contain numbers only", true);
 											self:SetText(tostring(COEF));
 										elseif value == "" then
-											CEPGP_print("基础GP系数不能为空", true);
+											CEPGP_print("Base GP coefficient cannot be blank", true);
 											self:SetText(tostring(COEF));
 										elseif tonumber(self:GetText()) == 0 then
-											CEPGP_print("基础GP系数不能为0", true);
+											CEPGP_print("Base GP coefficient cannot be 0", true);
 											self:SetText(tostring(COEF));
 										elseif COEF ~= tonumber(value) then
 											COEF = tonumber(value);
-											CEPGP_print("更新基础系数");
+											CEPGP_print("Updated base coefficient");
 										end
 									</OnEditFocusLost>
 								</Scripts>
@@ -1201,17 +1207,17 @@
 										self:HighlightText(0,0);
 										local value = self:GetText();
 										if not CEPGP_isNumber(value) then
-											CEPGP_print("mod系数只能包含数字", true);
+											CEPGP_print("Mod coefficient must contain numbers only", true);
 											self:SetText(tostring(MOD_COEF));
 										elseif value == "" then
-											CEPGP_print("mod gp系数不能为空", true);
+											CEPGP_print("Mod GP coefficient cannot be blank", true);
 											self:SetText(tostring(MOD_COEF));
 										elseif tonumber(self:GetText()) == 0 then
-											CEPGP_print("mod gp系数不能为0", true);
+											CEPGP_print("Mod GP coefficient cannot be 0", true);
 											self:SetText(tostring(MOD_COEF));
 										elseif MOD_COEF ~= tonumber(value) then
 											MOD_COEF = tonumber(value);
-											CEPGP_print("修正mod系数");
+											CEPGP_print("Updated mod coefficient");
 										end
 									</OnEditFocusLost>
 								</Scripts>
@@ -1231,17 +1237,17 @@
 										self:HighlightText(0,0);
 										local value = self:GetText();
 										if not CEPGP_isNumber(value) then
-											CEPGP_print("GP倍数必须只包含数字", true);
+											CEPGP_print("GP modifier must contain numbers only", true);
 											self:SetText(tostring(MOD));
 										elseif value == "" then
-											CEPGP_print("GP倍数不能为空", true);
+											CEPGP_print("GP modifier cannot be blank", true);
 											self:SetText(tostring(MOD));
 										elseif 0 >= tonumber(self:GetText()) then
-											CEPGP_print("GP倍数不能为0", true);
+											CEPGP_print("GP modifier cannot be 0", true);
 											self:SetText(tostring(MOD));
 										elseif MOD ~= tonumber(value) then
 											MOD = tonumber(value);
-											CEPGP_print("更新GP倍数");
+											CEPGP_print("Updated GP modifier");
 										end
 									</OnEditFocusLost>
 								</Scripts>
@@ -1268,30 +1274,28 @@
 										self:HighlightText(0,0);
 										local value = self:GetText();
 										if not CEPGP_isNumber(value) then
-											CEPGP_print("基础GP必须只包含数字", true);
+											CEPGP_print("Base GP must contain numbers only", true);
 											self:SetText(tostring(BASEGP));
 										elseif value == "" then
-											CEPGP_print("基础GP不能是空白的", true);
+											CEPGP_print("Base GP cannot be blank", true);
 											self:SetText(tostring(BASEGP));
 										elseif tonumber(self:GetText()) == 0 then
-											CEPGP_print("基础GP不能为0", true);
+											CEPGP_print("Base GP cannot be 0", true);
 											self:SetText(tostring(BASEGP));
 										elseif 0 > tonumber(self:GetText()) then
-											CEPGP_print("基础GP必须是正数", true);
+											CEPGP_print("Base GP must be a positive number", true);
 											self:SetText(tostring(BASEGP));
 										elseif BASEGP ~= tonumber(value) then
 											BASEGP = tonumber(value);
-											CEPGP_print("更新基础GP");
+											CEPGP_print("Updated base GP");
 										end
 										CEPGP_updateGuild();
 										if CanEditOfficerNote() then
 											for i = 1, GetNumGuildMembers() do
-												local name, rank, rankIndex, _, class, _, _, officerNote = GetGuildRosterInfo(i);
-												if officerNote then
-													local EP, GP = CEPGP_getEPGP(officerNote);
-													if BASEGP > GP then
-														GuildRosterSetOfficerNote(i, EP .. "," .. BASEGP);
-													end
+												local name, rank, rankIndex, _, class = GetGuildRosterInfo(i);
+												local EP, GP = CEPGP_getEPGP(name, i);
+												if BASEGP > GP then
+													GuildRosterSetOfficerNote(i, EP .. "," .. BASEGP);
 												end
 											end
 										end
@@ -1313,15 +1317,15 @@
 									<OnClick>
 										if self:GetChecked() then
 											CEPGP_minGPDecayFactor = true;
-											CEPGP_print("现在衰减EPGP时会减去公会默认最小GP值。");
+											CEPGP_print("Now subtracting minimum GP from calculation when decaying guild EPGP standings.");
 										else
 											CEPGP_minGPDecayFactor = false;
-											CEPGP_print("现在衰减EPGP时不会减去公会默认最小GP值。");
+											CEPGP_print("No longer subtracting minimum GP from calculation when decaying guild EPGP standings.");
 										end
 									</OnClick>
 									<OnEnter>
 										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-										GameTooltip:SetText("衰减公会EPGP积分时是否从计算中减去基础GP。");
+										GameTooltip:SetText("Subtract base GP from the calculation when decaying guild EPGP standings.");
 									</OnEnter>
 									<OnLeave>
 										GameTooltip:Hide();
@@ -1345,7 +1349,7 @@
 						</Anchors>
 						<Layers>
 							<Layer level="OVERLAY">
-								<FontString name="CEPGP_options_slot_weight_head" inherits="GameFontNormal" text="槽权重值">
+								<FontString name="CEPGP_options_slot_weight_head" inherits="GameFontNormal" text="Slot Weights">
 									<Color r="0.95" g="0.75" b="0.26"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
@@ -1355,7 +1359,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_slot_HEAD" inherits="SlotWeightFontTemplate" text="头:">
+								<FontString name="CEPGP_options_slot_HEAD" inherits="SlotWeightFontTemplate" text="Head:">
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_slot_weight_head">
 											<Offset>
@@ -1364,7 +1368,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_slot_NECK" inherits="SlotWeightFontTemplate" text="项链:">
+								<FontString name="CEPGP_options_slot_NECK" inherits="SlotWeightFontTemplate" text="Neck:">
 									<Anchors>
 										<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_options_slot_HEAD">
 											<Offset>
@@ -1373,7 +1377,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_slot_SHOULDER" inherits="SlotWeightFontTemplate" text="肩膀:">
+								<FontString name="CEPGP_options_slot_SHOULDER" inherits="SlotWeightFontTemplate" text="Shoulder:">
 									<Anchors>
 										<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_options_slot_NECK">
 											<Offset>
@@ -1382,7 +1386,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_slot_CLOAK" inherits="SlotWeightFontTemplate" text="披风:">
+								<FontString name="CEPGP_options_slot_CLOAK" inherits="SlotWeightFontTemplate" text="Cloak:">
 									<Anchors>
 										<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_options_slot_SHOULDER">
 											<Offset>
@@ -1391,7 +1395,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_slot_CHEST" inherits="SlotWeightFontTemplate" text="衣服:">
+								<FontString name="CEPGP_options_slot_CHEST" inherits="SlotWeightFontTemplate" text="Chest:">
 									<Anchors>
 										<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_options_slot_CLOAK">
 											<Offset>
@@ -1400,7 +1404,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_slot_WRIST" inherits="SlotWeightFontTemplate" text="护腕:">
+								<FontString name="CEPGP_options_slot_WRIST" inherits="SlotWeightFontTemplate" text="Wrist:">
 									<Anchors>
 										<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_options_slot_CHEST">
 											<Offset>
@@ -1409,7 +1413,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_slot_HAND" inherits="SlotWeightFontTemplate" text="手:">
+								<FontString name="CEPGP_options_slot_HAND" inherits="SlotWeightFontTemplate" text="Hands:">
 									<Anchors>
 										<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_options_slot_WRIST">
 											<Offset>
@@ -1418,7 +1422,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_slot_WAIST" inherits="SlotWeightFontTemplate" text="腰带:">
+								<FontString name="CEPGP_options_slot_WAIST" inherits="SlotWeightFontTemplate" text="Waist:">
 									<Anchors>
 										<Anchor point="RIGHT" relativePoint="RIGHT" relativeTo="CEPGP_options_slot_HEAD">
 											<Offset>
@@ -1427,7 +1431,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_slot_LEGS" inherits="SlotWeightFontTemplate" text="腿:">
+								<FontString name="CEPGP_options_slot_LEGS" inherits="SlotWeightFontTemplate" text="Legs:">
 									<Anchors>
 										<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_options_slot_WAIST">
 											<Offset>
@@ -1436,7 +1440,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_slot_FEET" inherits="SlotWeightFontTemplate" text="脚:">
+								<FontString name="CEPGP_options_slot_FEET" inherits="SlotWeightFontTemplate" text="Feet:">
 									<Anchors>
 										<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_options_slot_LEGS">
 											<Offset>
@@ -1445,7 +1449,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_slot_FINGER" inherits="SlotWeightFontTemplate" text="戒指:">
+								<FontString name="CEPGP_options_slot_FINGER" inherits="SlotWeightFontTemplate" text="Ring:">
 									<Anchors>
 										<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_options_slot_FEET">
 											<Offset>
@@ -1454,7 +1458,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_slot_TRINKET" inherits="SlotWeightFontTemplate" text="饰品:">
+								<FontString name="CEPGP_options_slot_TRINKET" inherits="SlotWeightFontTemplate" text="Trinket:">
 									<Anchors>
 										<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_options_slot_FINGER">
 											<Offset>
@@ -1463,7 +1467,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_slot_WEAPONMAINHAND" inherits="SlotWeightFontTemplate" text="主手武器:">
+								<FontString name="CEPGP_options_slot_WEAPONMAINHAND" inherits="SlotWeightFontTemplate" text="Main Hand Weapon:">
 									<Anchors>
 										<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_options_slot_TRINKET">
 											<Offset>
@@ -1472,7 +1476,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_slot_WEAPONOFFHAND" inherits="SlotWeightFontTemplate" text="副手武器:">
+								<FontString name="CEPGP_options_slot_WEAPONOFFHAND" inherits="SlotWeightFontTemplate" text="Off Hand Weapon:">
 									<Anchors>
 										<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_options_slot_WEAPONMAINHAND">
 											<Offset>
@@ -1481,7 +1485,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_slot_HOLDABLE" inherits="SlotWeightFontTemplate" text="副手物品:">
+								<FontString name="CEPGP_options_slot_HOLDABLE" inherits="SlotWeightFontTemplate" text="Holdable Off Hand:">
 									<Anchors>
 										<Anchor point="RIGHT" relativePoint="RIGHT" relativeTo="CEPGP_options_slot_WAIST">
 											<Offset>
@@ -1490,7 +1494,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_slot_WEAPON" inherits="SlotWeightFontTemplate" text="单手武器:">
+								<FontString name="CEPGP_options_slot_WEAPON" inherits="SlotWeightFontTemplate" text="One-Hand Weapon:">
 									<Anchors>
 										<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_options_slot_HOLDABLE">
 											<Offset>
@@ -1499,7 +1503,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_slot_SHIELD" inherits="SlotWeightFontTemplate" text="盾牌:">
+								<FontString name="CEPGP_options_slot_SHIELD" inherits="SlotWeightFontTemplate" text="Shield:">
 									<Anchors>
 										<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_options_slot_WEAPON">
 											<Offset>
@@ -1508,7 +1512,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_slot_RANGEDRIGHT" inherits="SlotWeightFontTemplate" text="魔杖:">
+								<FontString name="CEPGP_options_slot_RANGEDRIGHT" inherits="SlotWeightFontTemplate" text="Ranged:">
 									<Anchors>
 										<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_options_slot_SHIELD">
 											<Offset>
@@ -1517,7 +1521,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_slot_RELIC" inherits="SlotWeightFontTemplate" text="遗物:">
+								<FontString name="CEPGP_options_slot_RELIC" inherits="SlotWeightFontTemplate" text="Relic:">
 									<Anchors>
 										<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_options_slot_RANGEDRIGHT">
 											<Offset>
@@ -1526,7 +1530,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_slot_THROWN" inherits="SlotWeightFontTemplate" text="投掷物:">
+								<FontString name="CEPGP_options_slot_THROWN" inherits="SlotWeightFontTemplate" text="Throwing:">
 									<Anchors>
 										<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_options_slot_RELIC">
 											<Offset>
@@ -1535,7 +1539,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_slot_2HWEAPON" inherits="SlotWeightFontTemplate" text="双手武器:">
+								<FontString name="CEPGP_options_slot_2HWEAPON" inherits="SlotWeightFontTemplate" text="2H Weapon:">
 									<Anchors>
 										<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_options_slot_THROWN">
 											<Offset>
@@ -1586,7 +1590,7 @@
 						</Anchors>
 						<Layers>
 							<Layer level="OVERLAY">
-								<FontString name="CEPGP_options_standby_ep_head" inherits="GameFontNormal" text="团队替补成员EP设置：">
+								<FontString name="CEPGP_options_standby_ep_head" inherits="GameFontNormal" text="Standby EP">
 									<Color r="0.95" g="0.75" b="0.26"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
@@ -1596,7 +1600,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_standby_ep" inherits="GameFontNormal" text="自动奖励替补EP:">
+								<FontString name="CEPGP_options_standby_ep" inherits="GameFontNormal" text="Award Standby EP:">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_standby_ep_head">
@@ -1606,7 +1610,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_standby_ep_share_text" inherits="GameFontNormal" text="与助手共享替补列表:">
+								<FontString name="CEPGP_options_standby_ep_share_text" inherits="GameFontNormal" text="Share Standby List with Assists:">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_standby_ep">
@@ -1616,7 +1620,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_standby_ep_offline" inherits="GameFontNormal" text="自动奖励EP给离线的替补玩家: ">
+								<FontString name="CEPGP_options_standby_ep_offline" inherits="GameFontNormal" text="Award Standby EP to Offline Players: ">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
@@ -1626,7 +1630,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_standby_ep_byrank" inherits="GameFontNormal" text="根据会阶自动奖励替补EP: ">
+								<FontString name="CEPGP_options_standby_ep_byrank" inherits="GameFontNormal" text="Award Standby EP by Rank: ">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_options_standby_ep_offline">
@@ -1636,7 +1640,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_standby_ep_manual" inherits="GameFontNormal" text="根据替补列表自动奖励替补EP: ">
+								<FontString name="CEPGP_options_standby_ep_manual" inherits="GameFontNormal" text="Award Standby EP by Player: ">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="CEPGP_options_standby_ep_byrank">
@@ -1646,7 +1650,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_standby_ep_val_percent" inherits="GameFontNormal" text="替补奖励EP比例: ">
+								<FontString name="CEPGP_options_standby_ep_val_percent" inherits="GameFontNormal" text="Standby EP Percent: ">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_standby_ep_share_text">
@@ -1656,7 +1660,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_standby_ep_accept_whispers" inherits="GameFontNormal" text="允许私聊加入替补列表:">
+								<FontString name="CEPGP_options_standby_ep_accept_whispers" inherits="GameFontNormal" text="Allow Whispers for Standby EP Designation:">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_standby_ep_val_percent">
@@ -1666,7 +1670,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_standby_ep_whisper_message" inherits="GameFontNormal" text="替补的私聊消息: ">
+								<FontString name="CEPGP_options_standby_ep_whisper_message" inherits="GameFontNormal" text="Whisper message for standby EP list: ">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_standby_ep_accept_whispers">
@@ -1803,7 +1807,7 @@
 									</OnClick>
 									<OnEnter>
 										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-										GameTooltip:SetText("替补奖励说明\n给替补名单上的玩家自动奖励一定比例\n团队击杀BOSS所获得EP值。（只有击杀BOSS）");
+										GameTooltip:SetText("Loot Master Feature\nAward a percentage of automatic EP gains (for example, from boss kills)\nto players on the standby list.");
 									</OnEnter>
 									<OnLeave>
 										GameTooltip:Hide();
@@ -1836,12 +1840,12 @@
 												self:SetText(string.sub(value, 0, string.find(value, "%%")-1));
 												STANDBYPERCENT = tonumber(value);
 											else
-												CEPGP_print("替补人员百分比只能包含数字", true);
+												CEPGP_print("Standby percent must contain numbers only", true);
 												self:SetText(tostring(STANDBYPERCENT));
 											end
 										elseif STANDBYPERCENT ~= tonumber(value) then
 											STANDBYPERCENT = tonumber(value);
-											CEPGP_print("替补人员EP百分比已更新");
+											CEPGP_print("Standby EP percent updated");
 										end
 									</OnEditFocusLost>
 								</Scripts>
@@ -1873,7 +1877,7 @@
 									</OnClick>
 									<OnEnter>
 										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-										GameTooltip:SetText("替补主功能\n与助手共享显示团队所有的替补。");
+										GameTooltip:SetText("Loot Master Feature\nShare the standby list with all raid assists.");
 									</OnEnter>
 									<OnLeave>
 										GameTooltip:Hide();
@@ -1911,7 +1915,7 @@
 									</OnClick>
 									<OnEnter>
 										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-										GameTooltip:SetText("将自动奖励EP授予替补列表中的离线玩家。");
+										GameTooltip:SetText("Award standby EP to offline players on the standby list.");
 									</OnEnter>
 									<OnLeave>
 										GameTooltip:Hide();
@@ -1949,7 +1953,7 @@
 									</OnClick>
 									<OnEnter>
 										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-										GameTooltip:SetText("允许公会成员向你密语特定信息\n自动把该玩家添加到替补列表");
+										GameTooltip:SetText("Allow players to whisper you a certain message to be automatically\nadded to the standby list");
 									</OnEnter>
 									<OnLeave>
 										GameTooltip:Hide();
@@ -1980,7 +1984,7 @@
 											self:SetText(CEPGP_standby_whisper_msg);
 										elseif CEPGP_standby_whisper_msg ~= msg then
 											CEPGP_standby_whisper_msg = msg;
-											CEPGP_print("自动加入团队替补的密语消息已更新");
+											CEPGP_print("Whisper message for standby EP updated");
 										end
 									</OnEditFocusLost>
 								</Scripts>
@@ -2024,7 +2028,7 @@
 									</OnClick>
 									<OnEnter>
 										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-										GameTooltip:SetText("将团队替补自动获取EP授予所选的会阶中的所有玩家。");
+										GameTooltip:SetText("Award standby EP to all players in the selected ranks.");
 									</OnEnter>
 									<OnLeave>
 										GameTooltip:Hide();
@@ -2064,7 +2068,7 @@
 									</OnClick>
 									<OnEnter>
 										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-										GameTooltip:SetText("手动将公会成员添加到替补列表。");
+										GameTooltip:SetText("Add players to the standby EP list manually.");
 									</OnEnter>
 									<OnLeave>
 										GameTooltip:Hide();
@@ -2081,7 +2085,7 @@
 							<CheckButton name="CEPGP_options_standby_ep_check_rank_8" id="8" inherits="StandbyEPRankCheckBox" />
 							<CheckButton name="CEPGP_options_standby_ep_check_rank_9" id="9" inherits="StandbyEPRankCheckBox" />
 							<CheckButton name="CEPGP_options_standby_ep_check_rank_10" id="10" inherits="StandbyEPRankCheckBox" />
-							<Button name="CEPGP_options_standby_ep_list_button" inherits="GameMenuButtonTemplate" text="替补列表">
+							<Button name="CEPGP_options_standby_ep_list_button" inherits="GameMenuButtonTemplate" text="Standby List">
 								<Size>
 									<AbsDimension x="125" y="25"/>
 								</Size>
@@ -2100,14 +2104,14 @@
 									</OnClick>
 									<OnEnter>
 										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-										GameTooltip:SetText("调整替补名单");
+										GameTooltip:SetText("Moderate the standby list.");
 									</OnEnter>
 									<OnLeave>
 										GameTooltip:Hide();
 									</OnLeave>
 								</Scripts>
 							</Button>
-							<Button name="CEPGP_options_standby_ep_award" inherits="GameMenuButtonTemplate" text="奖励替补EP">
+							<Button name="CEPGP_options_standby_ep_award" inherits="GameMenuButtonTemplate" text="Award Standby EP">
 								<Size>
 									<AbsDimension x="125" y="25"/>
 								</Size>
@@ -2125,7 +2129,7 @@
 									</OnClick>
 									<OnEnter>
 										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-										GameTooltip:SetText("为替补列表中的玩家添加/减去EP.");
+										GameTooltip:SetText("Add/subtract EP for players on the standby list.");
 									</OnEnter>
 									<OnLeave>
 										GameTooltip:Hide();
@@ -2188,7 +2192,7 @@
 				</Size>
 				<Layers>
 					<Layer level="OVERLAY">
-						<FontString name="CEPGP_options_auto_pass" inherits="GameFontNormal" text="自动放弃不适合自己的装备:">
+						<FontString name="CEPGP_options_auto_pass" inherits="GameFontNormal" text="Auto Pass on Ineligible Items:">
 							<Color r="1" g="1" b="1" />
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
@@ -2196,7 +2200,7 @@
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="CEPGP_options_dist_raidwide_text" inherits="GameFontNormal" text="团队所有成员的战利品分发窗口可见:">
+						<FontString name="CEPGP_options_dist_raidwide_text" inherits="GameFontNormal" text="Raid Wide Loot Visibility:">
 							<Color r="1" g="1" b="1" />
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_auto_pass">
@@ -2204,7 +2208,7 @@
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="CEPGP_options_gp_tooltips_text" inherits="GameFontNormal" text="鼠标提示上显示装备GP值:">
+						<FontString name="CEPGP_options_gp_tooltips_text" inherits="GameFontNormal" text="GP Values on Tooltips:">
 							<Color r="1" g="1" b="1" />
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_dist_raidwide_text">
@@ -2212,7 +2216,7 @@
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="CEPGP_options_announcement_suppression" inherits="GameFontNormal" text="聊天窗口屏蔽需求分配公告: ">
+						<FontString name="CEPGP_options_announcement_suppression" inherits="GameFontNormal" text="Suppress Loot Response Announcements: ">
 							<Color r="1" g="1" b="1" />
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_gp_tooltips_text">
@@ -2220,7 +2224,7 @@
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="CEPGP_options_min_EP_text" inherits="GameFontNormal" text="战利品要求最低EP: ">
+						<FontString name="CEPGP_options_min_EP_text" inherits="GameFontNormal" text="Require Minimum EP for Loot: ">
 							<Color r="1" g="1" b="1" />
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_announcement_suppression">
@@ -2228,7 +2232,7 @@
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="CEPGP_options_show_passes" inherits="GameFontNormal" text="在战利品分配界面中显示放弃的成员: ">
+						<FontString name="CEPGP_options_show_passes" inherits="GameFontNormal" text="Show Passes in Loot Distribution: ">
 							<Color r="1" g="1" b="1" />
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_min_EP_text">
@@ -2236,7 +2240,7 @@
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="CEPGP_options_enforce_PR_sorting" inherits="GameFontNormal" text="在分配战利品时自动排序: ">
+						<FontString name="CEPGP_options_enforce_PR_sorting" inherits="GameFontNormal" text="Automate Sorting During Loot Distribution: ">
 							<Color r="1" g="1" b="1" />
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_show_passes">
@@ -2244,7 +2248,7 @@
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="CEPGP_options_force_sync" inherits="GameFontNormal" text="允许从会阶强制同步插件设置:">
+						<FontString name="CEPGP_options_force_sync" inherits="GameFontNormal" text="Allow Forced Synchronisation from Rank:">
 							<Color r="1" g="1" b="1"/>
 							<Anchors>
 								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT">
@@ -2254,7 +2258,7 @@
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="CEPGP_options_min_threshold_text" inherits="GameFontNormal" text="分配界面自动显示装备最低稀有度:">
+						<FontString name="CEPGP_options_min_threshold_text" inherits="GameFontNormal" text="Minimum Threshold for Auto Show:">
 							<Color r="1" g="1" b="1"/>
 							<Anchors>
 								<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT" relativeTo="CEPGP_options_force_sync">
@@ -2264,7 +2268,7 @@
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="CEPGP_options_loot_channel_text" inherits="GameFontNormal" text="装备拾取报告频道:">
+						<FontString name="CEPGP_options_loot_channel_text" inherits="GameFontNormal" text="Loot Response Channel:">
 							<Color r="1" g="1" b="1"/>
 							<Anchors>
 								<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT" relativeTo="CEPGP_options_min_threshold_text">
@@ -2274,7 +2278,7 @@
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="CEPGP_options_def_channel_text" inherits="GameFontNormal" text="EPGP管理员操作报告频道:">
+						<FontString name="CEPGP_options_def_channel_text" inherits="GameFontNormal" text="Reporting Channel:">
 							<Color r="1" g="1" b="1"/>
 							<Anchors>
 								<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT" relativeTo="CEPGP_options_loot_channel_text">
@@ -2304,17 +2308,17 @@
 									CEPGP_sync_rank:Show();
 									CEPGP_button_options_force_sync:Show();
 									ALLOW_FORCED_SYNC = true;
-									CEPGP_print("强制同步");
+									CEPGP_print("Enabled forced synchronisation");
 								else
 									CEPGP_sync_rank:Hide();
 									CEPGP_button_options_force_sync:Hide();
 									ALLOW_FORCED_SYNC = false;
-									CEPGP_print("禁用强制同步");
+									CEPGP_print("Disabled forced synchronisation");
 								end
 							</OnClick>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("允许所选会阶或更高级别会阶成员强制同步成您的插件使用配置.（不包含EPGP详情）");
+								GameTooltip:SetText("Allows the selected rank or higher to force your addon to use the same configuration as theirs.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
@@ -2336,17 +2340,17 @@
 							<OnClick>
 								if self:GetChecked() then
 									CEPGP_minEP[1] = true;
-									CEPGP_print("现在需要一个允许需求装备的最低EP值.");
+									CEPGP_print("Now requiring a minimum EP to request loot.");
 									CEPGP_options_min_EP_amount:Show();
 								else
 									CEPGP_minEP[1] = false;
-									CEPGP_print("不在需要一个允许需求装备的最低EP值.");
+									CEPGP_print("No longer requiring a minimum EP to request loot.");
 									CEPGP_options_min_EP_amount:Hide();
 								end
 							</OnClick>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("战利品大师选项\n要求玩家在他们的战利品响应被识别之前拥有一定数量的EP值。");
+								GameTooltip:SetText("Loot Master Feature\nRequire players to have a certain amount of EP before their loot responses are recognised.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
@@ -2368,15 +2372,15 @@
 							<OnClick>
 								if self:GetChecked() then
 									CEPGP_show_passes = true;
-									CEPGP_print("在战利品分配中显示放弃的玩家");
+									CEPGP_print("Now showing pass responses in loot distribution");
 								else
 									CEPGP_show_passes = false;
-									CEPGP_print("在战利品分配中不再显示放弃的玩家");
+									CEPGP_print("No longer showing pass responses in loot distribution");
 								end
 							</OnClick>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("战利品大师选项\n切换是否希望放弃的玩家信息显示在分发窗口中。");
+								GameTooltip:SetText("Loot Master Feature\nToggle whether or not you want players who pass on items to show up in the distribution window.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
@@ -2398,15 +2402,15 @@
 							<OnClick>
 								if self:GetChecked() then
 									CEPGP_PR_sort = true;
-									CEPGP_print("启用战利品分配的自动排序");
+									CEPGP_print("Automated sorting for loot distribution enabled");
 								else
 									CEPGP_PR_sort = false;
-									CEPGP_print("已禁用战利品分配的自动排序");
+									CEPGP_print("Automated sorting for loot distribution disabled");
 								end
 							</OnClick>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("分配战利品时自动按响应排序，然后按优先级排序");
+								GameTooltip:SetText("Automatically sort by response and then by priority when distributing loot");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
@@ -2431,7 +2435,7 @@
 							</OnEnterPressed>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("指定需求战利品所需的最小EP值。");
+								GameTooltip:SetText("Specify the minimum amount of EP that is required to request loot.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
@@ -2443,7 +2447,7 @@
 									return;
 								end
 								CEPGP_minEP[2] = tonumber(self:GetText());
-								CEPGP_print("玩家现在至少需要 " .. CEPGP_minEP[2] .. " EP才能需求.");
+								CEPGP_print("Players now require at least " .. CEPGP_minEP[2] .. " EP to request loot.");
 							</OnEditFocusLost>
 							<OnShow>
 								self:SetText(CEPGP_minEP[2]);
@@ -2465,7 +2469,7 @@
 							</OnShow>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("允许任何级别的玩家 " .. GuildControlGetRankName(CEPGP_force_sync_rank) .. " 或更高的会阶更新你的CEPGP插件设置以覆盖他们的设置。");
+								GameTooltip:SetText("Allows any player that is the rank " .. GuildControlGetRankName(CEPGP_force_sync_rank) .. " or higher to update your addon settings to reflect theirs.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
@@ -2487,7 +2491,7 @@
 							</OnShow>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("个人设置\n为CEPGP战利品分配窗口设置最低等级物品稀有度，使其在界面中自动显示。\n要求你是队长拾取并且在一个团队中。");
+								GameTooltip:SetText("Personal Feature\nSet the minimum item rarity for the CEPGP loot window to automatically show in raids.\nRequires that you are the master looter and are in a raid group.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
@@ -2509,7 +2513,7 @@
 							</OnShow>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("设置战利品分配及响应发送到的频道。\n示例：玩家（职业）需要。");
+								GameTooltip:SetText("Sets the channel that loot responses are sent to.\nExample: Player (class) needs.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
@@ -2531,7 +2535,7 @@
 							</OnShow>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("设置管理员对EP/GP修改时发送到的频道。");
+								GameTooltip:SetText("Sets the channel that EPGP modifications are sent to.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
@@ -2599,15 +2603,15 @@
 							<OnClick>
 								if self:GetChecked() then
 									CEPGP_auto_pass = true;
-									CEPGP_print("现在自动放弃不适合自己的装备分配响应");
+									CEPGP_print("Now passing on ineligible items.");
 								else
 									CEPGP_auto_pass = false;
-									CEPGP_print("现在不会放弃不合适自己的装备分配响应");
+									CEPGP_print("No longer passing on ineligible items.");
 								end
 							</OnClick>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("如果你不能装备该物品，使用战利品图形用户界面时会自动放弃装备。");
+								GameTooltip:SetText("Automatically pass on items when using the loot GUI if you cannot equip the item.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
@@ -2636,16 +2640,16 @@
 							<OnClick>
 								if self:GetChecked() then
 									CEPGP_raid_wide_dist = true;
-									CEPGP_print("所有团队成员现在都可以看到装备分发窗口。");
+									CEPGP_print("All raid members can now see item distribution window.");
 								else
 									CEPGP_raid_wide_dist = false;
-									CEPGP_print("现在只有队长和助手可以看到项目分发窗口。");
+									CEPGP_print("Only raid assists can now see the item distribution window.");
 									CEPGP_SendAddonMsg("RaidAssistLootClosed", "RAID");
 								end
 							</OnClick>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("战利品分发设置\n允许所有团队成员查看战利品分发窗口，而不仅仅是团队里的管理。");
+								GameTooltip:SetText("Loot Master Feature\nAllow all raid members to view the loot distribution window, not just raid assists.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
@@ -2674,15 +2678,15 @@
 							<OnClick>
 								if self:GetChecked() then
 									CEPGP_gp_tooltips = true;
-									CEPGP_print("已开启鼠标提示上的GP值.");
+									CEPGP_print("Enabled GP values on tooltips.");
 								else
 									CEPGP_gp_tooltips = false;
-									CEPGP_print("已关闭鼠标提示上的GP值");
+									CEPGP_print("Disabled GP values on tooltips");
 								end
 							</OnClick>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("显示基于当前GP公式的装备鼠标提示上的GP值。");
+								GameTooltip:SetText("Shows GP values on tooltips based on your current GP formula.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
@@ -2711,15 +2715,15 @@
 							<OnClick>
 								if self:GetChecked() then
 									CEPGP_suppress_announcements = true;
-									CEPGP_print("已屏蔽响应公告");
+									CEPGP_print("Suppressing loot response announcements.");
 								else
 									CEPGP_suppress_announcements = false;
-									CEPGP_print("已开启响应公告");
+									CEPGP_print("Announcing all loot responses.");
 								end
 							</OnClick>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("战利品分配响应\n在聊天中屏蔽对战利品的响应。\n示例：玩家（职业）需求。");
+								GameTooltip:SetText("Loot Master Feature\nSuppress responses for loot in chat.\nExample: Player (class) needs.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
@@ -2733,7 +2737,7 @@
 							</OnShow>
 						</Scripts>
 					</CheckButton>
-					<Button name="CEPGP_button_options_force_sync" inherits="GameMenuButtonTemplate" text="强制同步">
+					<Button name="CEPGP_button_options_force_sync" inherits="GameMenuButtonTemplate" text="Force Synchronise">
 						<Size>
 							<AbsDimension x="150" y="21" />
 						</Size>
@@ -2751,7 +2755,7 @@
 							</OnClick>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("强制所选会阶以及高于该会阶的所有公会成员 '\n同步成和你相同的CEPGP插件设置.");
+								GameTooltip:SetText("Forces players below your rank that have the 'Allowed Forced Synchronisation From Rank'\nsetting enabled to use the same settings as your addon.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
@@ -2765,7 +2769,7 @@
 					<AbsDimension x="580" y="435" />
 				</Size>
 				<Frames>
-					<Button name="CEPGP_options_page_3_mc_button" inherits="GameMenuButtonTemplate" text="熔火之心和奥妮克希亚巢穴">
+					<Button name="CEPGP_options_page_3_mc_button" inherits="GameMenuButtonTemplate" text="Molten Core / Onyxia">
 						<Size>
 							<AbsDimension x="150" y="21" />
 						</Size>
@@ -2783,7 +2787,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_options_page_3_bwl_button" inherits="GameMenuButtonTemplate" text="黑翼之巢">
+					<Button name="CEPGP_options_page_3_bwl_button" inherits="GameMenuButtonTemplate" text="Blackwing Lair">
 						<Size>
 							<AbsDimension x="150" y="21" />
 						</Size>
@@ -2801,7 +2805,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_options_page_3_zg_button" inherits="GameMenuButtonTemplate" text="祖尔格拉布">
+					<Button name="CEPGP_options_page_3_zg_button" inherits="GameMenuButtonTemplate" text="Zul'Gurub">
 						<Size>
 							<AbsDimension x="100" y="21" />
 						</Size>
@@ -2819,7 +2823,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_options_page_3_aq20_button" inherits="GameMenuButtonTemplate" text="安其拉废墟">
+					<Button name="CEPGP_options_page_3_aq20_button" inherits="GameMenuButtonTemplate" text="The Ruins of Ahn'Qiraj">
 						<Size>
 							<AbsDimension x="150" y="21" />
 						</Size>
@@ -2837,7 +2841,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_options_page_3_aq40_button" inherits="GameMenuButtonTemplate" text="安其拉神殿">
+					<Button name="CEPGP_options_page_3_aq40_button" inherits="GameMenuButtonTemplate" text="The Temple of Ahn'Qiraj">
 						<Size>
 							<AbsDimension x="175" y="21" />
 						</Size>
@@ -2855,7 +2859,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_options_page_3_naxx_button" inherits="GameMenuButtonTemplate" text="纳克萨玛斯">
+					<Button name="CEPGP_options_page_3_naxx_button" inherits="GameMenuButtonTemplate" text="Naxxramas">
 						<Size>
 							<AbsDimension x="100" y="21" />
 						</Size>
@@ -2873,7 +2877,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_options_page_3_world_button" inherits="GameMenuButtonTemplate" text="世界boss">
+					<Button name="CEPGP_options_page_3_world_button" inherits="GameMenuButtonTemplate" text="World Encounters">
 						<Size>
 							<AbsDimension x="150" y="21" />
 						</Size>
@@ -3055,7 +3059,7 @@
 						</Anchors>
 						<Layers>
 							<Layer level="OVERLAY">
-								<FontString name="CEPGP_options_Razorgore the Untamed_val" inherits="GameFontNormal" text="Razorgore the Untamed ">
+								<FontString name="CEPGP_options_Razorgore the Untamed_val" inherits="GameFontNormal" parentArray="bosses" text="Razorgore the Untamed">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
@@ -3065,7 +3069,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Vaelastrasz the Corrupt_val" inherits="GameFontNormal" text="Vaelastrasz the Corrupt ">
+								<FontString name="CEPGP_options_Vaelastrasz the Corrupt_val" inherits="GameFontNormal" parentArray="bosses" text="Vaelastrasz the Corrupt">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Razorgore the Untamed_val">
@@ -3075,7 +3079,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Broodlord Lashlayer_val" inherits="GameFontNormal" text="Broodlord Lashlayer ">
+								<FontString name="CEPGP_options_Broodlord Lashlayer_val" inherits="GameFontNormal" parentArray="bosses" text="Broodlord Lashlayer">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Vaelastrasz the Corrupt_val">
@@ -3085,7 +3089,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Firemaw_val" inherits="GameFontNormal" text="Firemaw ">
+								<FontString name="CEPGP_options_Firemaw_val" inherits="GameFontNormal" parentArray="bosses" text="Firemaw">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Broodlord Lashlayer_val">
@@ -3095,7 +3099,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Ebonroc_val" inherits="GameFontNormal" text="Ebonroc ">
+								<FontString name="CEPGP_options_Ebonroc_val" inherits="GameFontNormal" parentArray="bosses" text="Ebonroc">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Firemaw_val">
@@ -3105,7 +3109,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Flamegor_val" inherits="GameFontNormal" text="Flamegor ">
+								<FontString name="CEPGP_options_Flamegor_val" inherits="GameFontNormal" parentArray="bosses" text="Flamegor">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Ebonroc_val">
@@ -3115,7 +3119,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Chromaggus_val" inherits="GameFontNormal" text="Chromaggus ">
+								<FontString name="CEPGP_options_Chromaggus_val" inherits="GameFontNormal" parentArray="bosses" text="Chromaggus">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Flamegor_val">
@@ -3125,7 +3129,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Nefarian_val" inherits="GameFontNormal" text="Nefarian ">
+								<FontString name="CEPGP_options_Nefarian_val" inherits="GameFontNormal" parentArray="bosses" text="Nefarian">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Chromaggus_val">
@@ -3170,7 +3174,7 @@
 						</Anchors>
 						<Layers>
 							<Layer level="OVERLAY">
-								<FontString name="CEPGP_options_High Priest Venoxis_val" inherits="GameFontNormal" text="High Priest Venoxis ">
+								<FontString name="CEPGP_options_High Priest Venoxis_val" inherits="GameFontNormal" parentArray="bosses" text="High Priest Venoxis">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
@@ -3180,7 +3184,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_High Priestess Jeklik_val" inherits="GameFontNormal" text="High Priestess Jeklik ">
+								<FontString name="CEPGP_options_High Priestess Jeklik_val" inherits="GameFontNormal" parentArray="bosses" text="High Priestess Jeklik">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_High Priest Venoxis_val">
@@ -3190,7 +3194,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_High Priestess Mar'li_val" inherits="GameFontNormal" text="High Priestess Mar'li ">
+								<FontString name="CEPGP_options_High Priestess Mar'li_val" inherits="GameFontNormal" parentArray="bosses" text="High Priestess Mar'li">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_High Priestess Jeklik_val">
@@ -3200,7 +3204,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_High Priest Thekal_val" inherits="GameFontNormal" text="High Priest Thekal ">
+								<FontString name="CEPGP_options_High Priest Thekal_val" inherits="GameFontNormal" parentArray="bosses" text="High Priest Thekal">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_High Priestess Mar'li_val">
@@ -3210,7 +3214,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_High Priestess Arlokk_val" inherits="GameFontNormal" text="High Priestess Arlokk ">
+								<FontString name="CEPGP_options_High Priestess Arlokk_val" inherits="GameFontNormal" parentArray="bosses" text="High Priestess Arlokk">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_High Priest Thekal_val">
@@ -3220,7 +3224,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_The Edge of Madness_val" inherits="GameFontNormal" text="The Edge of Madness ">
+								<FontString name="CEPGP_options_The Edge of Madness_val" inherits="GameFontNormal" parentArray="bosses" text="The Edge of Madness">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_High Priestess Arlokk_val">
@@ -3230,7 +3234,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Bloodlord Mandokir_val" inherits="GameFontNormal" text="Bloodlord Mandokir ">
+								<FontString name="CEPGP_options_Bloodlord Mandokir_val" inherits="GameFontNormal" parentArray="bosses" text="Bloodlord Mandokir">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_The Edge of Madness_val">
@@ -3240,7 +3244,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Jin'do the Hexxer_val" inherits="GameFontNormal" text="Jin'do the Hexxer ">
+								<FontString name="CEPGP_options_Jin'do the Hexxer_val" inherits="GameFontNormal" parentArray="bosses" text="Jin'do the Hexxer">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Bloodlord Mandokir_val">
@@ -3250,7 +3254,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Gahz'ranka_val" inherits="GameFontNormal" text="Gahz'ranka ">
+								<FontString name="CEPGP_options_Gahz'ranka_val" inherits="GameFontNormal" parentArray="bosses" text="Gahz'ranka">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Jin'do the Hexxer_val">
@@ -3260,7 +3264,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Hakkar_val" inherits="GameFontNormal" text="Hakkar ">
+								<FontString name="CEPGP_options_Hakkar_val" inherits="GameFontNormal" parentArray="bosses" text="Hakkar">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Gahz'ranka_val">
@@ -3309,7 +3313,7 @@
 						</Anchors>
 						<Layers>
 							<Layer level="OVERLAY">
-								<FontString name="CEPGP_options_Kurinnaxx_val" inherits="GameFontNormal" text="Kurinnaxx ">
+								<FontString name="CEPGP_options_Kurinnaxx_val" inherits="GameFontNormal" parentArray="bosses" text="Kurinnaxx">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
@@ -3319,7 +3323,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_General Rajaxx_val" inherits="GameFontNormal" text="General Rajaxx ">
+								<FontString name="CEPGP_options_General Rajaxx_val" inherits="GameFontNormal" parentArray="bosses" text="General Rajaxx">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Kurinnaxx_val">
@@ -3329,7 +3333,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Moam_val" inherits="GameFontNormal" text="Moam ">
+								<FontString name="CEPGP_options_Moam_val" inherits="GameFontNormal" parentArray="bosses" text="Moam">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_General Rajaxx_val">
@@ -3339,7 +3343,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Buru the Gorger_val" inherits="GameFontNormal" text="Buru the Gorger ">
+								<FontString name="CEPGP_options_Buru the Gorger_val" inherits="GameFontNormal" parentArray="bosses" text="Buru the Gorger">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Moam_val">
@@ -3349,7 +3353,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Ayamiss the Hunter_val" inherits="GameFontNormal" text="Ayamiss the Hunter ">
+								<FontString name="CEPGP_options_Ayamiss the Hunter_val" inherits="GameFontNormal" parentArray="bosses" text="Ayamiss the Hunter">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Buru the Gorger_val">
@@ -3359,7 +3363,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Ossirian the Unscarred_val" inherits="GameFontNormal" text="Ossirian the Unscarred ">
+								<FontString name="CEPGP_options_Ossirian the Unscarred_val" inherits="GameFontNormal" parentArray="bosses" text="Ossirian the Unscarred">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Ayamiss the Hunter_val">
@@ -3400,7 +3404,7 @@
 						</Anchors>
 						<Layers>
 							<Layer level="OVERLAY">
-								<FontString name="CEPGP_options_The Prophet Skeram_val" inherits="GameFontNormal" text="The Prophet Skeram ">
+								<FontString name="CEPGP_options_The Prophet Skeram_val" inherits="GameFontNormal" parentArray="bosses" text="The Prophet Skeram">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
@@ -3410,7 +3414,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Battleguard Sartura_val" inherits="GameFontNormal" text="Battleguard Sartura ">
+								<FontString name="CEPGP_options_Battleguard Sartura_val" inherits="GameFontNormal" parentArray="bosses" text="Battleguard Sartura">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_The Prophet Skeram_val">
@@ -3420,7 +3424,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Fankriss the Unyielding_val" inherits="GameFontNormal" text="Fankriss the Unyielding ">
+								<FontString name="CEPGP_options_Fankriss the Unyielding_val" inherits="GameFontNormal" parentArray="bosses" text="Fankriss the Unyielding">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Battleguard Sartura_val">
@@ -3430,7 +3434,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Princess Huhuran_val" inherits="GameFontNormal" text="Princess Huhuran ">
+								<FontString name="CEPGP_options_Princess Huhuran_val" inherits="GameFontNormal" parentArray="bosses" text="Princess Huhuran">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Fankriss the Unyielding_val">
@@ -3440,7 +3444,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_The Bug Trio_val" inherits="GameFontNormal" text="The Bug Trio ">
+								<FontString name="CEPGP_options_Silithid Royalty_val" inherits="GameFontNormal" parentArray="bosses" text="The Silithid Royalty">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Princess Huhuran_val">
@@ -3450,17 +3454,17 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Viscidus_val" inherits="GameFontNormal" text="Viscidus ">
+								<FontString name="CEPGP_options_Viscidus_val" inherits="GameFontNormal" parentArray="bosses" text="Viscidus">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
-										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_The Bug Trio_val">
+										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Silithid Royalty_val">
 											<Offset>
 												<AbsDimension x="0" y="-10" />
 											</Offset>
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Ouro_val" inherits="GameFontNormal" text="Ouro ">
+								<FontString name="CEPGP_options_Ouro_val" inherits="GameFontNormal" parentArray="bosses" text="Ouro">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Viscidus_val">
@@ -3470,7 +3474,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_The Twin Emperors_val" inherits="GameFontNormal" text="The Twin Emperors ">
+								<FontString name="CEPGP_options_Twin Emperors_val" inherits="GameFontNormal" parentArray="bosses" text="The Twin Emperors">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Ouro_val">
@@ -3480,10 +3484,10 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_C'Thun_val" inherits="GameFontNormal" text="C'Thun ">
+								<FontString name="CEPGP_options_C'Thun_val" inherits="GameFontNormal" parentArray="bosses" text="C'Thun">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
-										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_The Twin Emperors_val">
+										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Twin Emperors_val">
 											<Offset>
 												<AbsDimension x="0" y="-10" />
 											</Offset>
@@ -3497,20 +3501,20 @@
 							<CheckButton name="CEPGP_options_Battleguard Sartura_auto_check" inherits="AutoAwardEPCheckBox" />
 							<CheckButton name="CEPGP_options_Fankriss the Unyielding_auto_check" inherits="AutoAwardEPCheckBox" />
 							<CheckButton name="CEPGP_options_Princess Huhuran_auto_check" inherits="AutoAwardEPCheckBox" />
-							<CheckButton name="CEPGP_options_The Bug Trio_auto_check" inherits="AutoAwardEPCheckBox" />
+							<CheckButton name="CEPGP_options_Silithid Royalty_auto_check" inherits="AutoAwardEPCheckBox" />
 							<CheckButton name="CEPGP_options_Viscidus_auto_check" inherits="AutoAwardEPCheckBox" />
 							<CheckButton name="CEPGP_options_Ouro_auto_check" inherits="AutoAwardEPCheckBox" />
-							<CheckButton name="CEPGP_options_The Twin Emperors_auto_check" inherits="AutoAwardEPCheckBox" />
+							<CheckButton name="CEPGP_options_Twin Emperors_auto_check" inherits="AutoAwardEPCheckBox" />
 							<CheckButton name="CEPGP_options_C'Thun_auto_check" inherits="AutoAwardEPCheckBox" />
 							
 							<EditBox name="CEPGP_options_The Prophet Skeram_EP_value" inherits="epValInputBoxTemplate" />
 							<EditBox name="CEPGP_options_Battleguard Sartura_EP_value" inherits="epValInputBoxTemplate" />
 							<EditBox name="CEPGP_options_Fankriss the Unyielding_EP_value" inherits="epValInputBoxTemplate" />
 							<EditBox name="CEPGP_options_Princess Huhuran_EP_value" inherits="epValInputBoxTemplate" />
-							<EditBox name="CEPGP_options_The Bug Trio_EP_value" inherits="epValInputBoxTemplate" />
+							<EditBox name="CEPGP_options_Silithid Royalty_EP_value" inherits="epValInputBoxTemplate" />
 							<EditBox name="CEPGP_options_Viscidus_EP_value" inherits="epValInputBoxTemplate" />
 							<EditBox name="CEPGP_options_Ouro_EP_value" inherits="epValInputBoxTemplate" />
-							<EditBox name="CEPGP_options_The Twin Emperors_EP_value" inherits="epValInputBoxTemplate" />
+							<EditBox name="CEPGP_options_Twin Emperors_EP_value" inherits="epValInputBoxTemplate" />
 							<EditBox name="CEPGP_options_C'Thun_EP_value" inherits="epValInputBoxTemplate" />
 						</Frames>
 					</Frame>
@@ -3527,7 +3531,7 @@
 						</Anchors>
 						<Layers>
 							<Layer level="OVERLAY">
-								<FontString name="CEPGP_options_Anub'Rekhan_val" inherits="GameFontNormal" text="Anub'Rekhan ">
+								<FontString name="CEPGP_options_Anub'Rekhan_val" inherits="GameFontNormal" parentArray="bosses" text="Anub'Rekhan">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
@@ -3537,7 +3541,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Grand Widow Faerlina_val" inherits="GameFontNormal" text="Grand Widow Faerlina ">
+								<FontString name="CEPGP_options_Grand Widow Faerlina_val" inherits="GameFontNormal" parentArray="bosses" text="Grand Widow Faerlina">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Anub'Rekhan_val">
@@ -3547,7 +3551,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Maexxna_val" inherits="GameFontNormal" text="Maexxna ">
+								<FontString name="CEPGP_options_Maexxna_val" inherits="GameFontNormal" parentArray="bosses" text="Maexxna">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Grand Widow Faerlina_val">
@@ -3557,7 +3561,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Noth the Plaguebringer_val" inherits="GameFontNormal" text="Noth the Plaguebringer ">
+								<FontString name="CEPGP_options_Noth the Plaguebringer_val" inherits="GameFontNormal" parentArray="bosses" text="Noth the Plaguebringer">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Maexxna_val">
@@ -3567,7 +3571,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Heigan the Unclean_val" inherits="GameFontNormal" text="Heigan the Unclean ">
+								<FontString name="CEPGP_options_Heigan the Unclean_val" inherits="GameFontNormal" parentArray="bosses" text="Heigan the Unclean">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Noth the Plaguebringer_val">
@@ -3577,7 +3581,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Loatheb_val" inherits="GameFontNormal" text="Loatheb ">
+								<FontString name="CEPGP_options_Loatheb_val" inherits="GameFontNormal" parentArray="bosses" text="Loatheb">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Heigan the Unclean_val">
@@ -3587,7 +3591,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Instructor Razuvious_val" inherits="GameFontNormal" text="Instructor Razuvious ">
+								<FontString name="CEPGP_options_Instructor Razuvious_val" inherits="GameFontNormal" parentArray="bosses" text="Instructor Razuvious">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Loatheb_val">
@@ -3597,7 +3601,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Gothik the Harvester_val" inherits="GameFontNormal" text="Gothik the Harvester ">
+								<FontString name="CEPGP_options_Gothik the Harvester_val" inherits="GameFontNormal" parentArray="bosses" text="Gothik the Harvester">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Instructor Razuvious_val">
@@ -3607,7 +3611,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_The Four Horsemen_val" inherits="GameFontNormal" text="The Four Horsemen ">
+								<FontString name="CEPGP_options_The Four Horsemen_val" inherits="GameFontNormal" parentArray="bosses" text="The Four Horsemen">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Gothik the Harvester_val">
@@ -3617,7 +3621,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Patchwerk_val" inherits="GameFontNormal" text="Patchwerk ">
+								<FontString name="CEPGP_options_Patchwerk_val" inherits="GameFontNormal" parentArray="bosses" text="Patchwerk">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_The Four Horsemen_val">
@@ -3627,7 +3631,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Grobbulus_val" inherits="GameFontNormal" text="Grobbulus ">
+								<FontString name="CEPGP_options_Grobbulus_val" inherits="GameFontNormal" parentArray="bosses" text="Grobbulus">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Patchwerk_val">
@@ -3637,7 +3641,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Gluth_val" inherits="GameFontNormal" text="Gluth ">
+								<FontString name="CEPGP_options_Gluth_val" inherits="GameFontNormal" parentArray="bosses" text="Gluth">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Grobbulus_val">
@@ -3647,7 +3651,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Thaddius_val" inherits="GameFontNormal" text="Thaddius ">
+								<FontString name="CEPGP_options_Thaddius_val" inherits="GameFontNormal" parentArray="bosses" text="Thaddius">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Gluth_val">
@@ -3657,7 +3661,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Sapphiron_val" inherits="GameFontNormal" text="Sapphiron ">
+								<FontString name="CEPGP_options_Sapphiron_val" inherits="GameFontNormal" parentArray="bosses" text="Sapphiron">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Thaddius_val">
@@ -3667,7 +3671,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Kel'Thuzad_val" inherits="GameFontNormal" text="Kel'Thuzad ">
+								<FontString name="CEPGP_options_Kel'Thuzad_val" inherits="GameFontNormal" parentArray="bosses" text="Kel'Thuzad">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Sapphiron_val">
@@ -3726,7 +3730,7 @@
 						</Anchors>
 						<Layers>
 							<Layer level="OVERLAY">
-								<FontString name="CEPGP_options_Lord Kazzak_val" inherits="GameFontNormal" text="Lord Kazzak ">
+								<FontString name="CEPGP_options_Lord Kazzak_val" inherits="GameFontNormal" parentArray="bosses" text="Lord Kazzak">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
@@ -3736,7 +3740,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Azuregos_val" inherits="GameFontNormal" text="Azuregos ">
+								<FontString name="CEPGP_options_Azuregos_val" inherits="GameFontNormal" parentArray="bosses" text="Azuregos">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Lord Kazzak_val">
@@ -3746,7 +3750,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Emeriss_val" inherits="GameFontNormal" text="Emeriss ">
+								<FontString name="CEPGP_options_Emeriss_val" inherits="GameFontNormal" parentArray="bosses" text="Emeriss">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Azuregos_val">
@@ -3756,7 +3760,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Lethon_val" inherits="GameFontNormal" text="Lethon ">
+								<FontString name="CEPGP_options_Lethon_val" inherits="GameFontNormal" parentArray="bosses" text="Lethon">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Emeriss_val">
@@ -3766,7 +3770,7 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Ysondre_val" inherits="GameFontNormal" text="Ysondre ">
+								<FontString name="CEPGP_options_Ysondre_val" inherits="GameFontNormal" parentArray="bosses" text="Ysondre">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Lethon_val">
@@ -3776,22 +3780,12 @@
 										</Anchor>
 									</Anchors>
 								</FontString>
-								<FontString name="CEPGP_options_Taerar_val" inherits="GameFontNormal" text="Taerar ">
+								<FontString name="CEPGP_options_Taerar_val" inherits="GameFontNormal" parentArray="bosses" text="Taerar">
 									<Color r="1" g="1" b="1"/>
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Ysondre_val">
 											<Offset>
 												<AbsDimension x="0" y="-10" />
-											</Offset>
-										</Anchor>
-									</Anchors>
-								</FontString>
-								<FontString name="CEPGP_options_wb_notice" inherits="GameFontNormal" justifyH="LEFT" text="">
-									<Color r="1" g="1" b="1"/>
-									<Anchors>
-										<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Taerar_val">
-											<Offset>
-												<AbsDimension x="0" y="-40" />
 											</Offset>
 										</Anchor>
 									</Anchors>
@@ -3863,13 +3857,13 @@
 				</Frames>
 				<Layers>
 					<Layer level="OVERLAY">
-						<FontString name="CEPGP_options_CEPGP_mode" inherits="GameFontNormal" text="当前位置:选项">
+						<FontString name="CEPGP_options_CEPGP_mode" inherits="GameFontNormal" text="Current View: Options">
 							<Color r="1" g="1" b="1"/>
 							<Anchors>
 								<Anchor point="CENTER" relativePoint="TOP" />
 							</Anchors>
 						</FontString>
-						<FontString name="CEPGP_options_page_3_header" inherits="GameFontNormal" text="击杀BOSS自动奖励EP">
+						<FontString name="CEPGP_options_page_3_header" inherits="GameFontNormal" text="EP       Auto Award">
 							<Color r="1" g="1" b="1"/>
 							<Anchors>
 								<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
@@ -3885,28 +3879,37 @@
 					<OnShow>
 						CEPGP_toggleBossConfigFrame("CEPGP_options_page_3_mc");
 						local L = CEPGP_Locale:GetLocale("CEPGP");
-						for k, v in pairs(L) do
+						--[[for k, v in pairs(L) do
 							if k ~= v then
 								if _G["CEPGP_options_" .. v .. "_val"] then
 									_G["CEPGP_options_" .. v .. "_val"]:SetText(k);
 								end
 							end
-						end
-						_G["CEPGP_options_Lord Kazzak_auto_check"]:SetChecked(false);
-						_G["CEPGP_options_Lord Kazzak_auto_check"]:Disable();
-						CEPGP_options_Azuregos_auto_check:SetChecked(false);
-						CEPGP_options_Azuregos_auto_check:Disable();
-						CEPGP_options_Emeriss_auto_check:SetChecked(false);
-						CEPGP_options_Emeriss_auto_check:Disable();
-						CEPGP_options_Lethon_auto_check:SetChecked(false);
-						CEPGP_options_Lethon_auto_check:Disable();
-						CEPGP_options_Ysondre_auto_check:SetChecked(false);
-						CEPGP_options_Ysondre_auto_check:Disable();
-						CEPGP_options_Taerar_auto_check:SetChecked(false);
-						CEPGP_options_Taerar_auto_check:Disable();
-						CEPGP_options_wb_notice:SetText(L["注意：世界boss自动奖励已被取消\n它已经被一个弹出窗口所取代，确认您是否愿意将EP授予团队。"]);	
+						end]]
 					</OnShow>
 				</Scripts>
+			</Frame>
+			<Frame name="CEPGP_options_plugins" inherits="CEPGPFrameTemplate">
+				<Size>
+					<AbsDimension x="580" y="435" />
+				</Size>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parent_mode" inherits="GameFontNormal" text="Current View: Plugins">
+							<Color r="1" g="1" b="1"/>
+							<Anchors>
+								<Anchor point="CENTER" relativePoint="TOP" />
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_enabled_header" inherits="GameFontNormal" text="Enabled">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+									<AbsDimension x="5" y="-20" />
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
 			</Frame>
 			<Frame name="CEPGP_standby" inherits="CEPGPFrameTemplate">
 				<Frames>
@@ -3929,7 +3932,7 @@
 							</Frame>
 						</ScrollChild>
 					</ScrollFrame>
-					<Button name="CEPGP_standby_ep_list_add" inherits="GameMenuButtonTemplate" text="添加到替补">
+					<Button name="CEPGP_standby_ep_list_add" inherits="GameMenuButtonTemplate" text="Add to Standby">
 						<Size>
 							<AbsDimension x="100" y="25" />
 						</Size>
@@ -3946,12 +3949,12 @@
 								if UnitInRaid("player") then
 									CEPGP_ListButton_OnClick(self:GetName());
 								else
-									CEPGP_print("您需要加入一个团队才能将玩家添加到替补列表。", true);
+									CEPGP_print("You need to be in a raid group to add players to standby.", true);
 								end
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_standby_ep_list_addbyrank" inherits="GameMenuButtonTemplate" text="添加会阶到替补">
+					<Button name="CEPGP_standby_ep_list_addbyrank" inherits="GameMenuButtonTemplate" text="Add Rank to Standby">
 						<Size>
 							<AbsDimension x="125" y="25" />
 						</Size>
@@ -3968,12 +3971,12 @@
 								if UnitInRaid("player") then
 									CEPGP_ListButton_OnClick(self:GetName());
 								else
-									CEPGP_print("您需要加入团队才能将玩家添加到替补列表。", true);
+									CEPGP_print("You need to be in a raid group to add players to standby.", true);
 								end
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_standby_ep_list_purge" inherits="GameMenuButtonTemplate" text="清空替补列表">
+					<Button name="CEPGP_standby_ep_list_purge" inherits="GameMenuButtonTemplate" text="Clear Standby List">
 						<Size>
 							<AbsDimension x="100" y="25" />
 						</Size>
@@ -3991,7 +3994,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_standby_name" inherits="CEPGPHeaderButton" text="名字">
+					<Button name="CEPGP_standby_name" inherits="CEPGPHeaderButton" text="Name">
 						<Size>
 							<AbsDimension x="50" y="20" />
 						</Size>
@@ -4011,7 +4014,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_standby_class" inherits="CEPGPHeaderButton" text="职业">
+					<Button name="CEPGP_standby_class" inherits="CEPGPHeaderButton" text="Class">
 						<Size>
 							<AbsDimension x="50" y="20" />
 						</Size>
@@ -4030,7 +4033,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
-					<Button name="CEPGP_standby_rank" inherits="CEPGPHeaderButton" text="会阶">
+					<Button name="CEPGP_standby_rank" inherits="CEPGPHeaderButton" text="Rank">
 						<Size>
 							<AbsDimension x="50" y="20" />
 						</Size>
@@ -4110,7 +4113,7 @@
 				</Frames>
 				<Layers>
 					<Layer level="OVERLAY">
-						<FontString name="CEPGP_standby_CEPGP_mode" inherits="GameFontNormal" text="当前位置:替补列表">
+						<FontString name="CEPGP_standby_CEPGP_mode" inherits="GameFontNormal" text="Current View: Standby List">
 							<Color r="1" g="1" b="1"/>
 							<Anchors>
 								<Anchor point="CENTER" relativePoint="TOP" />
@@ -4138,7 +4141,6 @@
 				self:RegisterEvent("CHAT_MSG_BN_WHISPER");
 				self:RegisterEvent("GET_ITEM_INFO_RECEIVED");
 				self:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED");
-				self:RegisterEvent("BOSS_KILL");
 				self:RegisterEvent("ENCOUNTER_END");
 			</OnLoad>
 			<OnMouseDown>
@@ -4182,7 +4184,7 @@
 
 		<Layers>
 			<Layer level="OVERLAY">
-				<FontString name="CEPGP_version_offline" inherits="GameFontNormal" text="显示离线玩家: ">
+				<FontString name="CEPGP_version_offline" inherits="GameFontNormal" text="Show Offline Players: ">
 					<Color r="1" g="1" b="1"/>
 					<Anchors>
 						<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
@@ -4192,7 +4194,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="CEPGP_version_CEPGP_mode" inherits="GameFontNormal" text="当前位置:版本检测">
+				<FontString name="CEPGP_version_CEPGP_mode" inherits="GameFontNormal" text="Current View: Version">
 					<Color r="1" g="1" b="1"/>
 					<Anchors>
 						<Anchor point="CENTER" relativePoint="TOP">
@@ -4260,7 +4262,7 @@
 					</Frame>
 				</ScrollChild>
 			</ScrollFrame>
-			<Button name="CEPGP_version_name" inherits="CEPGPHeaderButton" text="名字">
+			<Button name="CEPGP_version_name" inherits="CEPGPHeaderButton" text="Name">
 				<Size>
 					<AbsDimension x="35" y="20" />
 				</Size>
@@ -4279,7 +4281,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_version_version" inherits="CEPGPHeaderButton" text="版本">
+			<Button name="CEPGP_version_version" inherits="CEPGPHeaderButton" text="Version">
 				<Size>
 					<AbsDimension x="50" y="20" />
 				</Size>
@@ -4298,7 +4300,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_version_close" inherits="GameMenuButtonTemplate" text="取消">
+			<Button name="CEPGP_version_close" inherits="GameMenuButtonTemplate" text="Close">
 				<Size>
 					<AbsDimension x="100" y="21" />
 				</Size>
@@ -4316,7 +4318,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_version_raid_check" inherits="GameMenuButtonTemplate" text="获取团队状态">
+			<Button name="CEPGP_version_raid_check" inherits="GameMenuButtonTemplate" text="Get Raid Status">
 				<Size>
 					<AbsDimension x="140" y="21" />
 				</Size>
@@ -4340,14 +4342,14 @@
 							if online then
 								CEPGP_groupVersion[i] = {
 									[1] = name,
-									[2] = "插件未安装",
+									[2] = "Addon not enabled",
 									[3] = class,
 									[4] = classFile
 								};
 							else
 								CEPGP_groupVersion[i] = {
 									[1] = name,
-									[2] = "离线",
+									[2] = "Offline",
 									[3] = class,
 									[4] = classFile
 								};
@@ -4359,7 +4361,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_version_guild_check" inherits="GameMenuButtonTemplate" text="获取公会状态">
+			<Button name="CEPGP_version_guild_check" inherits="GameMenuButtonTemplate" text="Get Guild Status">
 				<Size>
 					<AbsDimension x="145" y="21" />
 				</Size>
@@ -4381,14 +4383,14 @@
 							if online then
 								CEPGP_groupVersion[i] = {
 									[1] = name,
-									[2] = "插件未安装",
+									[2] = "Addon not enabled",
 									[3] = class,
 									[4] = classFileName
 								};
 							else
 								CEPGP_groupVersion[i] = {
 									[1] = name,
-									[2] = "离线",
+									[2] = "Offline",
 									[3] = class,
 									[4] = classFileName
 								};
@@ -4454,7 +4456,7 @@
 				</Texture>
 			</Layer>
 			<Layer level="OVERLAY">
-				<FontString name="CEPGP_distribute_popup_header" inherits="GameFontNormal" text="分发物品">
+				<FontString name="CEPGP_distribute_popup_header" inherits="GameFontNormal" text="Distributing Item">
 					<Anchors>
 						<Anchor point="TOP" relativeTo="CEPGP_distribute_popup">
 							<Offset>
@@ -4463,7 +4465,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="CEPGP_distribute_popup_title" inherits="GameFontNormal" text="物品信息">
+				<FontString name="CEPGP_distribute_popup_title" inherits="GameFontNormal" text="Item Info">
 					<Anchors>
 						<Anchor point="TOP" relativePoint="BOTTOM" relativeTo="CEPGP_distribute_popup_header">
 							<Offset>
@@ -4475,7 +4477,7 @@
 			</Layer>
 		</Layers>
 		<Frames>
-			<Button name="$parent_pass" inherits="GameMenuButtonTemplate" text="取消">
+			<Button name="$parent_pass" inherits="GameMenuButtonTemplate" text="Cancel">
 				<Size>
 					<AbsDimension x="80" y="21" />
 				</Size>
@@ -4493,7 +4495,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_distribute_popup_gp" inherits="GameMenuButtonTemplate" text="给予GP">
+			<Button name="CEPGP_distribute_popup_gp" inherits="GameMenuButtonTemplate" text="Discount">
 				<Size>
 					<AbsDimension x="110" y="40"/>
 				</Size>
@@ -4505,7 +4507,7 @@
 				</Anchor>
 			</Anchors>
 			</Button>
-			<Button name="CEPGP_distribute_popup_gp_full" inherits="GameMenuButtonTemplate" text="全价GP">
+			<Button name="CEPGP_distribute_popup_gp_full" inherits="GameMenuButtonTemplate" text="Give for Full Price">
 				<Size>
 					<AbsDimension x="110" y="40"/>
 				</Size>
@@ -4516,15 +4518,6 @@
 					</Offset>
 				</Anchor>
 			</Anchors>
-				<Scripts>
-					<OnClick>
-						CEPGP_distGP = true;
-						CEPGP_award = true;
-						CEPGP_rate = 1;
-						PlaySound(799);
-						CEPGP_distribute_popup_give();
-					</OnClick>
-				</Scripts>
 			</Button>
 			<Button name="CEPGP_distribute_popup_free" inherits="GameMenuButtonTemplate">
 				<Size>
@@ -4538,14 +4531,8 @@
 				</Anchor>
 			</Anchors>
 				<Scripts>
-					<OnClick>
-						CEPGP_distGP = false;
-						CEPGP_award = true;
-						PlaySound(799);
-						CEPGP_distribute_popup_give();
-					</OnClick>
 					<OnLoad>
-						self:SetText("免费\n赠送");
+						self:SetText("Give for\nFree");
 					</OnLoad>
 				</Scripts>
 			</Button>
@@ -4622,7 +4609,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="CEPGP_context_popup_header" inherits="GameFontNormal" text="评分">
+				<FontString name="CEPGP_context_popup_header" inherits="GameFontNormal" text="Moderation">
 					<Anchors>
 						<Anchor point="TOP">
 							<Offset>
@@ -4631,7 +4618,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="CEPGP_context_popup_title" inherits="GameFontNormal" text="增加公会EP">
+				<FontString name="CEPGP_context_popup_title" inherits="GameFontNormal" text="Add Guild EP">
 					<Anchors>
 						<Anchor point="BOTTOM" relativeTo="CEPGP_context_popup_header">
 							<Offset>
@@ -4640,7 +4627,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="CEPGP_context_popup_desc" inherits="GameFontNormal" text="增加公会EP">
+				<FontString name="CEPGP_context_popup_desc" inherits="GameFontNormal" text="Add Guild EP">
 					<Anchors>
 						<Anchor point="TOP" relativeTo="CEPGP_context_popup_title" relativePoint="BOTTOM">
 							<Offset>
@@ -4649,7 +4636,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="CEPGP_context_popup_reason" inherits="GameFontNormal" text="原因(可选)">
+				<FontString name="CEPGP_context_popup_reason" inherits="GameFontNormal" text="Reason (Optional)">
 					<Anchors>
 						<Anchor point="BOTTOM" relativeTo="CEPGP_context_popup_title">
 							<Offset>
@@ -4676,7 +4663,7 @@
 					<OnClick>
 						if self:GetChecked() then
 							CEPGP_context_popup_GP_check:SetChecked(nil);
-							CEPGP_context_popup_desc:SetText("加/减EP");
+							CEPGP_context_popup_desc:SetText("Add/Subtract EP");
 						else
 							self:SetChecked(1);
 						end
@@ -4698,7 +4685,7 @@
 					<OnClick>
 						if self:GetChecked() then
 							CEPGP_context_popup_EP_check:SetChecked(nil);
-							CEPGP_context_popup_desc:SetText("加/减GP");
+							CEPGP_context_popup_desc:SetText("Add/Subtract GP");
 						else
 							self:SetChecked(1);
 						end
@@ -4746,7 +4733,7 @@
 					</OnEnterPressed>
 				</Scripts>
 			</EditBox>
-			<Button name="CEPGP_context_popup_cancel" inherits="GameMenuButtonTemplate" text="取消">
+			<Button name="CEPGP_context_popup_cancel" inherits="GameMenuButtonTemplate" text="Cancel">
 				<Size>
 					<AbsDimension x="75" y="30"/>
 				</Size>
@@ -4764,7 +4751,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_context_popup_confirm" inherits="GameMenuButtonTemplate" text="确认">
+			<Button name="CEPGP_context_popup_confirm" inherits="GameMenuButtonTemplate" text="Confirm">
 				<Size>
 					<AbsDimension x="75" y="30"/>
 				</Size>
@@ -4824,7 +4811,7 @@
 				</Texture>
 			</Layer>
 			<Layer level="OVERLAY">
-				<FontString name="CEPGP_guild_log_save_header" inherits="GameFontNormal" text="保存公会排名">
+				<FontString name="CEPGP_guild_log_save_header" inherits="GameFontNormal" text="Save Guild Standings">
 					<Anchors>
 						<Anchor point="TOP">
 							<Offset>
@@ -4865,7 +4852,7 @@
 					</OnEnterPressed>
 				</Scripts>
 			</EditBox>
-			<Button name="CEPGP_guild_log_save_cancel" inherits="GameMenuButtonTemplate" text="取消">
+			<Button name="CEPGP_guild_log_save_cancel" inherits="GameMenuButtonTemplate" text="Cancel">
 				<Size>
 					<AbsDimension x="75" y="30"/>
 				</Size>
@@ -4883,7 +4870,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_guild_log_save_confirm" inherits="GameMenuButtonTemplate" text="确认">
+			<Button name="CEPGP_guild_log_save_confirm" inherits="GameMenuButtonTemplate" text="Confirm">
 				<Size>
 					<AbsDimension x="75" y="30"/>
 				</Size>
@@ -4909,7 +4896,7 @@
 		<Scripts>
 			<OnLoad>
 				self:RegisterForDrag("LeftButton");
-				CEPGP_guild_log_save_desc:SetText("命名你的备份名称\n\n如果选择已使用的名称，它将覆盖现有备份日志.");
+				CEPGP_guild_log_save_desc:SetText("Name your log\n\nIf you choose a name already in use,\nit will overwrite the existing log.");
 			</OnLoad>
 			<OnDragStart>
 				self:StartMoving();
@@ -4954,7 +4941,7 @@
 				</Texture>
 			</Layer>
 			<Layer level="OVERLAY">
-				<FontString name="CEPGP_guild_log_restore_header" inherits="GameFontNormal" text="恢复排名">
+				<FontString name="CEPGP_guild_log_restore_header" inherits="GameFontNormal" text="Restore Standings">
 					<Anchors>
 						<Anchor point="TOP">
 							<Offset>
@@ -4990,7 +4977,7 @@
 					</OnShow>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_guild_log_restore_cancel" inherits="GameMenuButtonTemplate" text="取消">
+			<Button name="CEPGP_guild_log_restore_cancel" inherits="GameMenuButtonTemplate" text="Cancel">
 				<Size>
 					<AbsDimension x="75" y="30"/>
 				</Size>
@@ -5008,7 +4995,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_guild_log_restore_delete" inherits="GameMenuButtonTemplate" text="删除记录">
+			<Button name="CEPGP_guild_log_restore_delete" inherits="GameMenuButtonTemplate" text="Delete Record">
 				<Size>
 					<AbsDimension x="100" y="30"/>
 				</Size>
@@ -5023,12 +5010,12 @@
 					<OnClick>
 						local record = UIDropDownMenu_GetSelectedName(CEPGP_restoreDropdown);
 						RECORDS[record] = nil;
-						CEPGP_print("删除日志： " .. 记录);
+						CEPGP_print("Deleted log: " .. record);
 						CEPGP_UIDropDownMenu_Initialize(self, CEPGP_initRestoreDropdown);
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_guild_log_restore_confirm" inherits="GameMenuButtonTemplate" text="确认">
+			<Button name="CEPGP_guild_log_restore_confirm" inherits="GameMenuButtonTemplate" text="Confirm">
 				<Size>
 					<AbsDimension x="75" y="30"/>
 				</Size>
@@ -5042,31 +5029,40 @@
 				<Scripts>
 					<OnClick>
 						local name = UIDropDownMenu_GetSelectedName(CEPGP_restoreDropdown);
-						CEPGP_updateGuild();
-						CEPGP_ignoreUpdates = true;
+						
+						local function update()
+							CEPGP_Info.IgnoreUpdates = false;
+							CEPGP_rosterUpdate("GUILD_ROSTER_UPDATE");
+							CEPGP_print("Guild EPGP standings have been restored from record [" .. name .. "]");
+							TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Guild", UnitName("player"), "Restored EPGP Standings from log [" .. name .. "]", "", "", "", "", "", time()};
+							CEPGP_ShareTraffic("Guild", UnitName("player"), "Restored EPGP Standings from log [" .. name .. "]");
+						end
+						
+						CEPGP_Info.IgnoreUpdates = true;
+						
 						C_Timer.After(0.1, function()
 							if RECORDS[name] ~= nil and CEPGP_confirmrestore then
-								for i = 1, GetNumGuildMembers(), 1 do
+								local i = 0;
+								C_Timer.NewTicker(0.0001, function()
+									i = i + 1;
 									if RECORDS[name][GetGuildRosterInfo(i)] == nil then
 										GuildRosterSetOfficerNote(i, "0,"..BASEGP);
 									else
 										GuildRosterSetOfficerNote(i, RECORDS[name][GetGuildRosterInfo(i)]);
 									end
-								end
-								CEPGP_print("公会EPGP积分已从备份中恢复 [" .. name .. "]");
+									if i == GetNumGuildMembers() then
+										update();
+									end
+								end, GetNumGuildMembers());
 								CEPGP_confirmrestore = false;
 								HideUIPanel(CEPGP_restore_guild_logs);
 							elseif RECORDS[name] ~= nil then
-								CEPGP_print("你确定要从该备份中恢复公会EPGP积分 [" .. name .. "]?");
-								CEPGP_print("此操作无法撤消。再次按确认恢复.");
+								CEPGP_print("Are you sure you would like to restore guild EPGP standings from record [" .. name .. "]?");
+								CEPGP_print("This action CANNOT be undone. Press confirm again to restore.");
 								CEPGP_confirmrestore = true;
 							else
-								CEPGP_print("备份 [" .. name .. "] 找不到", true);
+								CEPGP_print("Record [" .. name .. "] could not be found", true);
 							end
-						end);
-						C_Timer.After(1, function()
-							CEPGP_ignoreUpdates = false;
-							CEPGP_rosterUpdate("GUILD_ROSTER_UPDATE");
 						end);
 					</OnClick>
 					<OnHide>
@@ -5078,7 +5074,7 @@
 		<Scripts>
 			<OnLoad>
 				self:RegisterForDrag("LeftButton");
-				CEPGP_guild_log_restore_desc:SetText("选择要还原的备份\n\n|c00FF0000确保这是你想要做的.\n这将覆盖所有当前的公会epgp\n");
+				CEPGP_guild_log_restore_desc:SetText("Select the record you would like to restore\n\n|c00FF0000Make sure this is what you want to do.\nThis will overwrite ALL current guild EPGP\nstandings with the record.");
 			</OnLoad>
 			<OnDragStart>
 				self:StartMoving();
@@ -5126,7 +5122,7 @@
 				</Texture>
 			</Layer>
 			<Layer level="OVERLAY">
-				<FontString name="CEPGP_settings_import_header" inherits="GameFontNormal" text="导入设置">
+				<FontString name="CEPGP_settings_import_header" inherits="GameFontNormal" text="Import Settings">
 					<Anchors>
 						<Anchor point="TOP">
 							<Offset>
@@ -5167,7 +5163,7 @@
 					</OnEnterPressed>
 				</Scripts>
 			</EditBox>
-			<Button name="CEPGP_settings_import_cancel" inherits="GameMenuButtonTemplate" text="取消">
+			<Button name="CEPGP_settings_import_cancel" inherits="GameMenuButtonTemplate" text="Cancel">
 				<Size>
 					<AbsDimension x="75" y="30"/>
 				</Size>
@@ -5186,7 +5182,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_settings_import_confirm" inherits="GameMenuButtonTemplate" text="确认">
+			<Button name="CEPGP_settings_import_confirm" inherits="GameMenuButtonTemplate" text="Confirm">
 				<Size>
 					<AbsDimension x="75" y="30"/>
 				</Size>
@@ -5201,9 +5197,9 @@
 					<OnClick>
 						local CEPGP_target = CEPGP_settings_import_name:GetText();
 						if CEPGP_roster[CEPGP_target] then
-							CEPGP_SendAddonMsg(CEPGP_target .. ";导入", "GUILD");
+							CEPGP_SendAddonMsg(CEPGP_target .. ";import", "GUILD");
 						else
-							CEPGP_print(CEPGP_target .. " 在公会中找不到。", true);
+							CEPGP_print(CEPGP_target .. " not found in guild.", true);
 						end
 						CEPGP_settings_import_name:ClearFocus();
 						HideUIPanel(CEPGP_settings_import);
@@ -5214,7 +5210,7 @@
 		<Scripts>
 			<OnLoad>
 				self:RegisterForDrag("LeftButton");
-				CEPGP_settings_import_desc:SetText("输入该玩家的名字\n您要将他的设置导入到你的设置。\n将覆盖所有现有设置。\n\n该玩家必须在你的公会或团队中");
+				CEPGP_settings_import_desc:SetText("Enter the name of the player\nyou would like to import settings from.\nself will overwrite all of your existing settings.\n\nPlayer must be in your guild or raid group");
 			</OnLoad>
 			<OnDragStart>
 				self:StartMoving();
@@ -5259,7 +5255,7 @@
 				</Texture>
 			</Layer>
 			<Layer level="OVERLAY">
-				<FontString name="CEPGP_override_header" inherits="GameFontNormal" text="装备GP值设置">
+				<FontString name="CEPGP_override_header" inherits="GameFontNormal" text="Item Override">
 					<Anchors>
 						<Anchor point="TOP">
 							<Offset>
@@ -5277,7 +5273,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="CEPGP_override_item_name_string" inherits="GameFontNormal" text="装备/物品名字">
+				<FontString name="CEPGP_override_item_name_string" inherits="GameFontNormal" text="Item Name">
 					<Anchors>
 						<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
 							<Offset>
@@ -5286,7 +5282,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="CEPGP_override_item_id_string" inherits="GameFontNormal" text="装备/物品Item ID">
+				<FontString name="CEPGP_override_item_id_string" inherits="GameFontNormal" text="Item ID">
 					<Anchors>
 						<Anchor point="TOP" relativePoint="TOP">
 							<Offset>
@@ -5353,7 +5349,7 @@
 					</OnTabPressed>
 					<OnEnter>
 						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-						GameTooltip:SetText("物品ID查询方法，可以安装AtlasLoot插件找到需要添加的装备按住Alt查看该物品Item ID号。\n也可登录各大数据库网站查询");
+						GameTooltip:SetText("Item ID can be found by searching for the item on classic.wowhead.com and grabbing it from the URL.\nFor exmaple: https://classic.wowhead.com/item=xxxxx (xxxxx will be the item ID).");
 					</OnEnter>
 					<OnLeave>
 						GameTooltip:Hide();
@@ -5379,7 +5375,7 @@
 						self:ClearFocus();
 						PlaySound(799);
 						if CEPGP_override_item_name:GetText() == "" and CEPGP_override_item_id:GetText() == "" then
-							CEPGP_print("输入物品/装备名称或Item ID", true);
+							CEPGP_print("Enter an item name or ID", true);
 							return;
 						end
 						local gp;
@@ -5392,7 +5388,7 @@
 							local item = CEPGP_standardiseString(CEPGP_override_item_name:GetText());
 							if (OVERRIDE_INDEX[item] and CEPGP_override_confirm) or not OVERRIDE_INDEX[item] then
 								OVERRIDE_INDEX[item] = gp;
-								CEPGP_print("该物品/装备 " .. item .. " 的GP值已经更新为 " .. gp);
+								CEPGP_print("GP value for " .. item .. " has been overriden to " .. gp);
 								CEPGP_UpdateOverrideScrollBar();
 								CEPGP_override_confirm = false;
 								CEPGP_override_item_name:SetText("");
@@ -5401,7 +5397,7 @@
 								CEPGP_override_item_gp:ClearFocus();
 								return;
 							else
-								CEPGP_print(item .. " 已被覆盖为 " .. OVERRIDE_INDEX[item] .. ". 再次单击“添加”将自身更改为 " .. gp);
+								CEPGP_print(item .. " has already been overridden to " .. OVERRIDE_INDEX[item] .. ". Click add again to change self to " .. gp);
 								CEPGP_override_confirm = true;
 							end
 						elseif CEPGP_override_item_id:GetText() ~= "" then
@@ -5413,7 +5409,7 @@
 									link = CEPGP_getItemLink(id);
 									if (OVERRIDE_INDEX[link] and CEPGP_override_confirm) or not OVERRIDE_INDEX[link] then
 										OVERRIDE_INDEX[link] = gp;
-										CEPGP_print("该物品/装备" .. link .. " |c006969FF的GP值已经更新为 " .. gp);
+										CEPGP_print("GP value for " .. link .. " |c006969FFhas been overriden to " .. gp);
 										CEPGP_UpdateOverrideScrollBar();
 										CEPGP_override_confirm = false;
 										CEPGP_override_item_id:SetText("");
@@ -5424,14 +5420,14 @@
 										CEPGP_override_item_gp:ClearFocus();
 										return;
 									else
-										CEPGP_print(link .. " 已被覆盖为 " .. OVERRIDE_INDEX[link] .. "|c006969FF. 再次单击“添加”将自身更改为 " .. gp);
+										CEPGP_print(link .. " has already been overridden to " .. OVERRIDE_INDEX[link] .. "|c006969FF. Click add again to change self to " .. gp);
 										CEPGP_override_confirm = true;
 									end
 								end);
 							elseif CEPGP_itemExists(id) then
 								if (OVERRIDE_INDEX[link] and CEPGP_override_confirm) or not OVERRIDE_INDEX[link] then
 									OVERRIDE_INDEX[link] = gp;
-									CEPGP_print("该物品/装备 " .. link .. " |c006969FF的GP值已经更新为" .. gp);
+									CEPGP_print("GP value for " .. link .. " |c006969FFhas been overriden to " .. gp);
 									CEPGP_UpdateOverrideScrollBar();
 									CEPGP_override_confirm = false;
 									CEPGP_override_item_id:SetText("");
@@ -5442,11 +5438,11 @@
 									CEPGP_override_item_gp:ClearFocus();
 									return;
 								else
-									CEPGP_print(link .. " 已被覆盖为 " .. OVERRIDE_INDEX[link] .. "|c006969FF. 再次单击“添加”将自身更改为 " .. gp);
+									CEPGP_print(link .. " has already been overridden to " .. OVERRIDE_INDEX[link] .. "|c006969FF. Click add again to change self to " .. gp);
 									CEPGP_override_confirm = true;
 								end
 							else
-								CEPGP_print("不存在的ID项目" .. id, true);
+								CEPGP_print("No item exists for item ID " .. id, true);
 							end
 						end
 					</OnEnterPressed>
@@ -5473,7 +5469,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_override_confirm" inherits="GameMenuButtonTemplate" text="添加覆盖">
+			<Button name="CEPGP_override_confirm" inherits="GameMenuButtonTemplate" text="Add Override">
 				<Size>
 					<AbsDimension x="150" y="30"/>
 				</Size>
@@ -5488,7 +5484,7 @@
 					<OnClick>
 						PlaySound(799);
 						if CEPGP_override_item_name:GetText() == "" and CEPGP_override_item_id:GetText() == "" then
-							CEPGP_print("请输入装备名称或装备Itme ID", true);
+							CEPGP_print("Enter an item name or ID", true);
 							return;
 						end
 						local gp;
@@ -5503,7 +5499,7 @@
 							if iString then item = iString; end
 							if (OVERRIDE_INDEX[item] and CEPGP_override_confirm) or not OVERRIDE_INDEX[item] then
 								OVERRIDE_INDEX[item] = gp;
-								CEPGP_print("该物品/装备 " .. item .. "的GP值已经更新为" .. gp);
+								CEPGP_print("GP value for " .. item .. " has been overriden to " .. gp);
 								CEPGP_UpdateOverrideScrollBar();
 								CEPGP_override_confirm = false;
 								CEPGP_override_item_name:SetText("");
@@ -5512,7 +5508,7 @@
 								CEPGP_override_item_gp:ClearFocus();
 								return;
 							else
-								CEPGP_print(item .. "已被覆盖为" .. OVERRIDE_INDEX[item] .. ". 再次单击“添加”将自身更改为 " .. gp);
+								CEPGP_print(item .. " has already been overridden to " .. OVERRIDE_INDEX[item] .. ". Click add again to change self to " .. gp);
 								CEPGP_override_confirm = true;
 							end
 						elseif CEPGP_override_item_id:GetText() ~= "" then
@@ -5524,7 +5520,7 @@
 									_, link = GetItemInfo(id);
 									if (OVERRIDE_INDEX[link] and CEPGP_override_confirm) or not OVERRIDE_INDEX[link] then
 										OVERRIDE_INDEX[link] = gp;
-										CEPGP_print("该物品/装备  " .. link .. " |c006969FF的GP值已经更新为" .. gp);
+										CEPGP_print("GP value for " .. link .. " |c006969FFhas been overriden to " .. gp);
 										CEPGP_UpdateOverrideScrollBar();
 										CEPGP_override_confirm = false;
 										CEPGP_override_item_id:SetText("");
@@ -5535,14 +5531,14 @@
 										CEPGP_override_item_gp:ClearFocus();
 										return;
 									else
-										CEPGP_print(link .. "已被覆盖为" .. OVERRIDE_INDEX[link] .. "|c006969FF. 再次单击“添加”将自身更改为 " .. gp);
+										CEPGP_print(link .. " has already been overridden to " .. OVERRIDE_INDEX[link] .. "|c006969FF. Click add again to change self to " .. gp);
 										CEPGP_override_confirm = true;
 									end
 								end);
 							elseif CEPGP_itemExists(id) then
 								if (OVERRIDE_INDEX[link] and CEPGP_override_confirm) or not OVERRIDE_INDEX[link] then
 									OVERRIDE_INDEX[link] = gp;
-									CEPGP_print("该物品/装备" .. link .. " |c006969FF的GP值已经更新为" .. gp);
+									CEPGP_print("GP value for " .. link .. " |c006969FFhas been overriden to " .. gp);
 									CEPGP_UpdateOverrideScrollBar();
 									CEPGP_override_confirm = false;
 									CEPGP_override_item_id:SetText("");
@@ -5553,11 +5549,11 @@
 									CEPGP_override_item_gp:ClearFocus();
 									return;
 								else
-									CEPGP_print(link .. " 已被覆盖为 " .. OVERRIDE_INDEX[link] .. "|c006969FF. 再次单击“添加”将自身更改为 " .. gp);
+									CEPGP_print(link .. " has already been overridden to " .. OVERRIDE_INDEX[link] .. "|c006969FF. Click add again to change self to " .. gp);
 									CEPGP_override_confirm = true;
 								end
 							else
-								CEPGP_print("没有该物品或者ID" .. id, true);
+								CEPGP_print("No item exists for item ID " .. id, true);
 							end
 						end
 					</OnClick>
@@ -5591,7 +5587,7 @@
 		<Scripts>
 			<OnLoad>
 				self:RegisterForDrag("LeftButton");
-				CEPGP_override_desc:SetText("此窗口允许您覆盖装备/物品的分配gp值\n\n|c00FF0000注意：仅建议使用装备/物品的Item ID来设置GP值|r");
+				CEPGP_override_desc:SetText("This window allows you to override the gp value\nof an item to what ever you specify.\n|c00FF0000Only enter either an item name OR an item ID|r");
 			</OnLoad>
 			<OnDragStart>
 				self:StartMoving();
@@ -5639,7 +5635,7 @@
 				</Texture>
 			</Layer>
 			<Layer level="OVERLAY">
-				<FontString name="CEPGP_traffic_header" inherits="GameFontNormalSmall" text="EPGP详细">
+				<FontString name="CEPGP_traffic_header" inherits="GameFontNormalSmall" text="EPGP Traffic">
 					<Anchors>
 						<Anchor point="TOP">
 							<Offset>
@@ -5648,7 +5644,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="CEPGP_traffic_search_text" inherits="GameFontNormalSmall" text="内容搜索: ">
+				<FontString name="CEPGP_traffic_search_text" inherits="GameFontNormalSmall" text="Search: ">
 					<Anchors>
 						<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
 							<Offset>
@@ -5657,7 +5653,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="CEPGP_traffic_desc" inherits="GameFontNormalSmall" text="公会的EPGP详细记录">
+				<FontString name="CEPGP_traffic_desc" inherits="GameFontNormalSmall" text="A record of the EPGP traffic in your guild">
 					<Anchors>
 						<Anchor point="TOP" relativePoint="TOP">
 							<Offset>
@@ -5666,13 +5662,13 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="CEPGP_traffic_name" inherits="GameFontNormalSmall" text="玩家" />
-				<FontString name="CEPGP_traffic_issuer" inherits="GameFontNormalSmall" text="管理者" />
-				<FontString name="CEPGP_traffic_action" inherits="GameFontNormalSmall" text="动作" />
-				<FontString name="CEPGP_traffic_epb" inherits="GameFontNormalSmall" text="原EP /" />
-				<FontString name="CEPGP_traffic_epa" inherits="GameFontNormalSmall" text="现EP/" />
-				<FontString name="CEPGP_traffic_gpb" inherits="GameFontNormalSmall" text="原GP /" />
-				<FontString name="CEPGP_traffic_gpa" inherits="GameFontNormalSmall" text="现GP" />
+				<FontString name="CEPGP_traffic_name" inherits="GameFontNormalSmall" text="Player" />
+				<FontString name="CEPGP_traffic_issuer" inherits="GameFontNormalSmall" text="Issued By" />
+				<FontString name="CEPGP_traffic_action" inherits="GameFontNormalSmall" text="Action" />
+				<FontString name="CEPGP_traffic_epb" inherits="GameFontNormalSmall" text="EP Before /" />
+				<FontString name="CEPGP_traffic_epa" inherits="GameFontNormalSmall" text="EP After" />
+				<FontString name="CEPGP_traffic_gpb" inherits="GameFontNormalSmall" text="GP Before /" />
+				<FontString name="CEPGP_traffic_gpa" inherits="GameFontNormalSmall" text="GP After" />
 			</Layer>
 		</Layers>
 		<Frames>
@@ -5700,7 +5696,7 @@
 					</OnTextChanged>
 				</Scripts>
 			</EditBox>
-			<Button name="CEPGP_traffic_clear" inherits="GameMenuButtonTemplate" text="清除EPGP详细">
+			<Button name="CEPGP_traffic_clear" inherits="GameMenuButtonTemplate" text="Clear EPGP Traffic">
 				<Size>
 					<AbsDimension x="125" y="21" />
 				</Size>
@@ -5717,11 +5713,11 @@
 						if CEPGP_traffic_clear then
 							TRAFFIC = {};
 							CEPGP_UpdateTrafficScrollBar();
-							CEPGP_print("已清除EPGP记录");
+							CEPGP_print("EPGP traffic wiped");
 							CEPGP_traffic_clear = false;
 						else
-							CEPGP_print("您正在试图清除该条EPGP记录. 此操作无法恢复.");
-							CEPGP_print("	请再次点击以便清除EPGP记录");
+							CEPGP_print("You are trying to clear your EPGP traffic log. This action cannot be reversed.");
+							CEPGP_print("Press Clear EPGP traffic again to confirm");
 							CEPGP_traffic_clear = true;
 						end
 					</OnClick>
@@ -5836,7 +5832,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="CEPGP_debuginfo_text" inherits="GameFontNormal" text="将此字符串复制并粘贴到github报表中">
+				<FontString name="CEPGP_debuginfo_text" inherits="GameFontNormal" text="Copy and paste this string into your github report">
 					<Anchors>
 						<Anchor point="TOP">
 							<Offset>
@@ -5944,7 +5940,7 @@
 				</Texture>
 			</Layer>
 			<Layer level="OVERLAY">
-				<FontString name="CEPGP_notice_title" inherits="GameFontNormal" text="通知">
+				<FontString name="CEPGP_notice_title" inherits="GameFontNormal" text="Notice">
 					<Anchors>
 						<Anchor point="TOP">
 							<Offset>
@@ -5965,7 +5961,7 @@
 			</Layer>
 		</Layers>
 		<Frames>
-			<Button name="CEPGP_notice_accept" inherits="GameMenuButtonTemplate" text="知道了">
+			<Button name="CEPGP_notice_accept" inherits="GameMenuButtonTemplate" text="Got it!">
 				<Size>
 					<AbsDimension x="150" y="25" />
 				</Size>
@@ -5984,7 +5980,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_notice_cancel" inherits="GameMenuButtonTemplate" text="不.禁用！">
+			<Button name="CEPGP_notice_cancel" inherits="GameMenuButtonTemplate" text="NOPE. Abort!">
 				<Size>
 					<AbsDimension x="150" y="25" />
 				</Size>
@@ -6006,7 +6002,7 @@
 		</Frames>
 		<Scripts>
 			<OnLoad>
-				CEPGP_notice_text:SetText("感谢您选择使用CEPGP！\n我希望你喜欢使用这个插件，我希望它能帮助你的公会\n 你怎么使用它。\n\n你只需要知道一件事-这个插件需要\n你需要开启管员备注的查看和修改权限以保存和修改EPGP记录。\n意思是，当这个插件试图维护您的记录时，它将覆盖\n任何现有的官员备注。同样，如果你想让你的公会成员\n能够看到他们的EP和GP值，他们需要能够看到管员备注\n管理者也注意。基本上，插件只能看到你能看到的。\n\n如果您的整个公会（或至少您的团队）都安装了它，那么它的工作效果最好。\n将为您提供战利品自动分发等功能，并能够查看您分发物品时您的团队成员所穿戴的物品。\n\n我希望您喜欢使用该插件，如果您有任何功能请求或发现错误，请在addon GitHub页面提交一张票证：\n github.com/Alumian/CEPGP-Retail \n如果发现汉化有任何问题，请去NGA论坛怀旧服插件讨论区留言告诉我");
+				CEPGP_notice_text:SetText("Thank you for choosing to use Classic EPGP!\nI hope that you enjoy using this addon and I hope that it helps your guild\nhow ever you end up using it.\n\nJust one thing you should know - this addon needs to have\nfull control over your officer notes to maintain EPGP records.\nMeaning, as this addon attempts to maintain your records, it will overwrite\nany existing officer notes. Similarly, if you want your guild members to\nbe able to see their EP and GP values, they need to be able to see\nofficer notes too. Essentially, the addon can only see what you can see.\n\nself addon is designed and really does work best if your\nyour whole guild (or at least your raid team) has it installed.\nself will provide you with functions like loot council support\nand being able to see what items your raid members are wearing\nwhen you're distributing items.\n\nI hope you enjoy using the addon and if you have any feature requests or\nfind a bug, please submit a ticket on the addon GitHub page:\ngithub.com/Alumian/CEPGP-Retail");
 				CEPGP_notice_frame:SetWidth(CEPGP_notice_text:GetStringWidth()+25);
 			</OnLoad>
 			<OnMouseDown>
@@ -6041,7 +6037,7 @@
 				</Texture>
 			</Layer>
 			<Layer level="OVERLAY">
-				<FontString name="CEPGP_attendance_title" inherits="GameFontNormal" text="团队出勤">
+				<FontString name="CEPGP_attendance_title" inherits="GameFontNormal" text="Raid Attendance">
 					<Anchors>
 						<Anchor point="TOP">
 							<Offset>
@@ -6050,7 +6046,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="CEPGP_attendance_desc" inherits="GameFontNormal" text="出勤摘要">
+				<FontString name="CEPGP_attendance_desc" inherits="GameFontNormal" text="Snapshot Summary">
 					<Anchors>
 						<Anchor point="TOP">
 							<Offset>
@@ -6059,7 +6055,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="CEPGP_attendance_standby_text" inherits="GameFontNormal" text="替补列表" hidden="true">
+				<FontString name="CEPGP_attendance_standby_text" inherits="GameFontNormal" text="Standby List" hidden="true">
 					<Anchors>
 						<Anchor point="LEFT" relativePoint="LEFT">
 							<Offset>
@@ -6089,7 +6085,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_attendance_record" inherits="GameMenuButtonTemplate" text="记录出勤">
+			<Button name="CEPGP_attendance_record" inherits="GameMenuButtonTemplate" text="Record Snapshot">
 				<Size>
 					<AbsDimension x="125" y="20"/>
 				</Size>
@@ -6107,7 +6103,7 @@
 					</OnClick>
 					<OnEnter>
 						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-						GameTooltip:SetText("记录当前在您的团队中的玩家的出勤。");
+						GameTooltip:SetText("Records a snapshot of the players currently in your raid group.");
 					</OnEnter>
 					<OnLeave>
 						GameTooltip:Hide();
@@ -6129,7 +6125,7 @@
 					</OnShow>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_attendance_record_view" inherits="GameMenuButtonTemplate" text="按快照筛选">
+			<Button name="CEPGP_attendance_record_view" inherits="GameMenuButtonTemplate" text="Filter by Snapshot">
 				<Size>
 					<AbsDimension x="130" y="20"/>
 				</Size>
@@ -6148,23 +6144,23 @@
 						end
 						if UIDropDownMenu_GetSelectedValue(CEPGP_attendance_dropdown) == 0 then
 							CEPGP_snapshot = nil;
-							CEPGP_attendance_desc:SetText("出勤摘要");
+							CEPGP_attendance_desc:SetText("Snapshot Summary");
 						else
 							CEPGP_snapshot = UIDropDownMenu_GetSelectedValue(CEPGP_attendance_dropdown);
-							CEPGP_attendance_desc:SetText("查看出勤" .. date("%A %d %B, %Y, %H:%M", CEPGP_raid_logs[CEPGP_snapshot][1]));
+							CEPGP_attendance_desc:SetText("Viewing Snapshot: " .. date("%A %d %B, %Y, %H:%M", CEPGP_raid_logs[CEPGP_snapshot][1]));
 						end
 						CEPGP_UpdateAttendanceScrollBar();
 					</OnClick>
 					<OnEnter>
 						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-						GameTooltip:SetText("筛选记录以仅显示所选的出勤记录。");
+						GameTooltip:SetText("Filters the records to show you only the players\nthat were present in the selected snapshot.");
 					</OnEnter>
 					<OnLeave>
 						GameTooltip:Hide();
 					</OnLeave>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_attendance_delete" inherits="GameMenuButtonTemplate" text="删除快照">
+			<Button name="CEPGP_attendance_delete" inherits="GameMenuButtonTemplate" text="Delete Snapshot">
 				<Size>
 					<AbsDimension x="125" y="20"/>
 				</Size>
@@ -6182,14 +6178,14 @@
 					</OnClick>
 					<OnEnter>
 						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-						GameTooltip:SetText("删除下拉菜单中当前选定的快照。\n这可能与您当前查看的快照不同。\n\n|c00FF0000警告：此操作无法撤消！|r");
+						GameTooltip:SetText("Deletes the snapshot currently selected in the dropdown menu.\nThis may be different from the snapshot you're currently viewing.\n\n|c00FF0000Warning: This action cannot be undone!|r");
 					</OnEnter>
 					<OnLeave>
 						GameTooltip:Hide();
 					</OnLeave>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_attendance_header_name" inherits="CEPGPHeaderButton" text="名字">
+			<Button name="CEPGP_attendance_header_name" inherits="CEPGPHeaderButton" text="Name">
 				<Size>
 					<AbsDimension x="50" y="20" />
 				</Size>
@@ -6206,7 +6202,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_attendance_header_rank" inherits="CEPGPHeaderButton" text="会阶">
+			<Button name="CEPGP_attendance_header_rank" inherits="CEPGPHeaderButton" text="Rank">
 				<Size>
 					<AbsDimension x="50" y="20" />
 				</Size>
@@ -6236,14 +6232,14 @@
 				</Anchors>
 				<Scripts>
 					<OnLoad>
-						self:SetText("活动出勤率");
+						self:SetText("Raids\nAttended");
 					</OnLoad>
 					<OnClick>
 						CEPGP_setCriteria(4, "Attendance");
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_attendance_header_total" inherits="CEPGPHeaderButton" text="记录快照总数:" justifyH="LEFT">
+			<Button name="CEPGP_attendance_header_total" inherits="CEPGPHeaderButton" text="Total Snapshots Recorded:" justifyH="LEFT">
 				<Size>
 					<AbsDimension x="50" y="20" />
 				</Size>
@@ -6257,7 +6253,7 @@
 				<Scripts>
 					<OnShow>
 						local total = CEPGP_ntgetn(CEPGP_raid_logs);
-						self:SetText(“记录的出勤总数：”。。全部的);
+						self:SetText("Total Snapshots Recorded: " .. total);
 					</OnShow>
 				</Scripts>
 			</Button>
@@ -6346,7 +6342,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_attendance_header_interval_days" inherits="CEPGPHeaderButton" text="天">
+			<Button name="CEPGP_attendance_header_interval_days" inherits="CEPGPHeaderButton" text="Days">
 				<Size>
 					<AbsDimension x="50" y="20" />
 				</Size>
@@ -6462,7 +6458,7 @@
 						</Anchor>
 					</Anchors>
 				</Texture>
-				<FontString name="CEPGP_respond_title" inherits="GameFontNormal" text="分发物品">
+				<FontString name="CEPGP_respond_title" inherits="GameFontNormal" text="Distributing Item">
 					<Anchors>
 						<Anchor point="TOP">
 							<Offset>
@@ -6609,7 +6605,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_respond_pass" inherits="GameMenuButtonTemplate" text="放弃">
+			<Button name="CEPGP_respond_pass" inherits="GameMenuButtonTemplate" text="Pass">
 				<Size>
 					<AbsDimension x="100" y="21" />
 				</Size>
@@ -6677,7 +6673,7 @@
 				</Texture>
 			</Layer>
 			<Layer level="OVERLAY">
-				<FontString name="CEPGP_export_title" inherits="GameFontNormal" text="导出EPGP">
+				<FontString name="CEPGP_export_title" inherits="GameFontNormal" text="Export EPGP">
 					<Anchors>
 						<Anchor point="TOP">
 							<Offset>
@@ -6755,7 +6751,7 @@
 					</OnLoad>
 				</Scripts>
 			</ScrollFrame>
-			<Button name="CEPGP_export_csv" inherits="GameMenuButtonTemplate" text="格式到 CSV">
+			<Button name="CEPGP_export_csv" inherits="GameMenuButtonTemplate" text="Format to CSV">
 				<Size>
 					<AbsDimension x="150" y="21" />
 				</Size>
@@ -6773,14 +6769,14 @@
 					</OnClick>
 					<OnEnter>
 						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-						GameTooltip:SetText("导出格式为CSV");
+						GameTooltip:SetText("Changes export format to CSV");
 					</OnEnter>
 					<OnLeave>
 						GameTooltip:Hide();
 					</OnLeave>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_export_json" inherits="GameMenuButtonTemplate" text="格式到 JSON">
+			<Button name="CEPGP_export_json" inherits="GameMenuButtonTemplate" text="Format to JSON">
 				<Size>
 					<AbsDimension x="150" y="21" />
 				</Size>
@@ -6798,7 +6794,7 @@
 					</OnClick>
 					<OnEnter>
 						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-						GameTooltip:SetText("导出格式为JSON.");
+						GameTooltip:SetText("Changes export format to JSON.");
 					</OnEnter>
 					<OnLeave>
 						GameTooltip:Hide();
@@ -6814,7 +6810,7 @@
 				</Anchors>
 				<Layers>
 					<Layer level="OVERLAY">
-						<FontString name="CEPGP_export_attr_class" inherits="GameFontNormal" text="职业">
+						<FontString name="CEPGP_export_attr_class" inherits="GameFontNormal" text="Class">
 							<Anchors>
 								<Anchor point="TOPLEFT">
 									<Offset>
@@ -6823,7 +6819,7 @@
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="CEPGP_export_attr_rank" inherits="GameFontNormal" text="公会等级">
+						<FontString name="CEPGP_export_attr_rank" inherits="GameFontNormal" text="Guild Rank">
 							<Anchors>
 								<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_export_attr_class">
 									<Offset>
@@ -6870,7 +6866,7 @@
 							</OnClick>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("向导出字段添加类。");
+								GameTooltip:SetText("Add classes to the exported fields.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
@@ -6894,7 +6890,7 @@
 							</OnClick>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("将公会等级添加到导出字段。");
+								GameTooltip:SetText("Add guild ranks to the exported fields.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
@@ -6918,7 +6914,7 @@
 							</OnClick>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("为导出字段添加优先级。");
+								GameTooltip:SetText("Add priority to the exported fields.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
@@ -6942,7 +6938,7 @@
 							</OnClick>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("在每条记录的末尾添加一个逗号。");
+								GameTooltip:SetText("Add a trailing comma at the end of each record.");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
@@ -6954,8 +6950,17 @@
 		</Frames>
 		<Scripts>
 			<OnShow>
-				CEPGP_formatExport();
+				CEPGP_Info.IgnoreUpdates = true;
+				if CEPGP_ntgetn(CEPGP_roster) == GetNumGuildMembers() then
+					CEPGP_formatExport();
+				else
+					CEPGP_export_dump:SetText("Scanning guild roster. Please wait...");
+					table.insert(CEPGP_Info.RosterStack, CEPGP_formatExport);
+				end
 			</OnShow>
+			<OnHide>
+				CEPGP_Info.IgnoreUpdates = false;
+			</OnHide>
 		</Scripts>
 	</Frame>
 
@@ -6992,7 +6997,7 @@
 			</Layer>
 		</Layers>
 		<Frames>
-			<Button name="CEPGP_confirmation_yes" inherits="GameMenuButtonTemplate" text="是">
+			<Button name="CEPGP_confirmation_yes" inherits="GameMenuButtonTemplate" text="Yes">
 				<Size>
 					<AbsDimension x="100" y="31" />
 				</Size>
@@ -7011,7 +7016,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="CEPGP_confirmation_no" inherits="GameMenuButtonTemplate" text="不">
+			<Button name="CEPGP_confirmation_no" inherits="GameMenuButtonTemplate" text="No">
 				<Size>
 					<AbsDimension x="100" y="31" />
 				</Size>
@@ -7033,7 +7038,7 @@
 		</Frames>
 		<Scripts>
 			<OnLoad>
-				CEPGP_confirmation_desc:SetText("你想这次团队活动使用CEPGP吗？");
+				CEPGP_confirmation_desc:SetText("Would you like to use CEPGP for this raid?");
 			</OnLoad>
 		</Scripts>
 	</Frame>
@@ -7400,7 +7405,7 @@
 				</Texture>
 			</Layer>
 			<Layer level="OVERLAY">
-				<FontString name="CEPGP_loot_gui_options_head" inherits="GameFontNormalSmall" text="拾取GUI选项">
+				<FontString name="CEPGP_loot_gui_options_head" inherits="GameFontNormalSmall" text="Loot GUI Options">
 					<Anchors>
 						<Anchor point="TOP">
 							<Offset>
@@ -7441,26 +7446,26 @@
 				</Anchors>
 				<Layers>
 					<Layer level="OVERLAY">
-						<FontString name="$parent_string" inherits="GameFontNormal" text="按钮1">
+						<FontString name="$parent_string" inherits="GameFontNormal" text="Button 1">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" />
 							</Anchors>
 						</FontString>
-						<FontString name="$parent_string_enabled" inherits="GameFontNormal" text="启用: ">
+						<FontString name="$parent_string_enabled" inherits="GameFontNormal" text="Enabled: ">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string">
 									<AbsDimension x="0" y="-7" />
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="$parent_string_text" inherits="GameFontNormal" text="按钮文本: ">
+						<FontString name="$parent_string_text" inherits="GameFontNormal" text="Button Text: ">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_enabled">
 									<AbsDimension x="0" y="-7" />
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="$parent_string_discount" inherits="GameFontNormal" text="% GP 折扣: ">
+						<FontString name="$parent_string_discount" inherits="GameFontNormal" text="% GP Discount: ">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_text">
 									<AbsDimension x="0" y="-7" />
@@ -7514,14 +7519,14 @@
 								local default = CEPGP_response_buttons[1][2];
 								if value == "" then
 									self:SetText(default);
-									CEPGP_print("按钮文本不能为空", true);
+									CEPGP_print("Button text cannot be blank", true);
 									return;
 								elseif value == default then
 									return;
 								end
 								
 								CEPGP_response_buttons[1][2] = value;
-								CEPGP_print("更新了按钮1文本。");
+								CEPGP_print("Updated loot GUI button 1 text.");
 								CEPGP_loot_gui_options_preview_1:SetText(value);
 							</OnEditFocusLost>
 							<OnShow>
@@ -7557,7 +7562,7 @@
 									return;
 								end
 								CEPGP_response_buttons[1][3] = value;
-								CEPGP_print("更新按钮1的GP折扣.");
+								CEPGP_print("Updated GP discount for button 1.");
 							</OnEditFocusLost>
 							<OnShow>
 								self:SetText(tostring(CEPGP_response_buttons[1][3]));
@@ -7577,26 +7582,26 @@
 				</Anchors>
 				<Layers>
 					<Layer level="OVERLAY">
-						<FontString name="$parent_string" inherits="GameFontNormal" text="按钮 2">
+						<FontString name="$parent_string" inherits="GameFontNormal" text="Button 2">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" />
 							</Anchors>
 						</FontString>
-						<FontString name="$parent_string_enabled" inherits="GameFontNormal" text="启用: ">
+						<FontString name="$parent_string_enabled" inherits="GameFontNormal" text="Enabled: ">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string">
 									<AbsDimension x="0" y="-7" />
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="$parent_string_text" inherits="GameFontNormal" text="按钮文本: ">
+						<FontString name="$parent_string_text" inherits="GameFontNormal" text="Button Text: ">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_enabled">
 									<AbsDimension x="0" y="-7" />
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="$parent_string_discount" inherits="GameFontNormal" text="% GP 折扣: ">
+						<FontString name="$parent_string_discount" inherits="GameFontNormal" text="% GP Discount: ">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_text">
 									<AbsDimension x="0" y="-7" />
@@ -7625,11 +7630,11 @@
 								if self:GetChecked() then
 									CEPGP_response_buttons[2][1] = true;
 									CEPGP_loot_gui_options_preview_2:Show();
-									CEPGP_print("开启按钮2.");
+									CEPGP_print("Loot GUI button 2 enabled.");
 								else
 									CEPGP_response_buttons[2][1] = false;
 									CEPGP_loot_gui_options_preview_2:Hide();
-									CEPGP_print("隐藏按钮2.");
+									CEPGP_print("Loot GUI button 2 disabled.");
 								end
 							</OnClick>
 						</Scripts>
@@ -7659,14 +7664,14 @@
 								local default = CEPGP_response_buttons[2][2];
 								if value == "" then
 									self:SetText(default);
-									CEPGP_print("按钮文本不能为空", true);
+									CEPGP_print("Button text cannot be blank", true);
 									return;
 								elseif value == default then
 									return;
 								end
 								
 								CEPGP_response_buttons[2][2] = value;
-								CEPGP_print("更新按钮2文本.");
+								CEPGP_print("Updated loot GUI button 2 text.");
 								CEPGP_loot_gui_options_preview_2:SetText(value);
 							</OnEditFocusLost>
 							<OnShow>
@@ -7702,7 +7707,7 @@
 									return;
 								end
 								CEPGP_response_buttons[2][3] = value;
-								CEPGP_print("更新按钮2的GP折扣.");
+								CEPGP_print("Updated GP discount for button 2.");
 							</OnEditFocusLost>
 							<OnShow>
 								self:SetText(tostring(CEPGP_response_buttons[2][3]));
@@ -7722,26 +7727,26 @@
 				</Anchors>
 				<Layers>
 					<Layer level="OVERLAY">
-						<FontString name="$parent_string" inherits="GameFontNormal" text="按钮 3">
+						<FontString name="$parent_string" inherits="GameFontNormal" text="Button 3">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" />
 							</Anchors>
 						</FontString>
-						<FontString name="$parent_string_enabled" inherits="GameFontNormal" text="启用: ">
+						<FontString name="$parent_string_enabled" inherits="GameFontNormal" text="Enabled: ">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string">
 									<AbsDimension x="0" y="-7" />
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="$parent_string_text" inherits="GameFontNormal" text="按钮文本: ">
+						<FontString name="$parent_string_text" inherits="GameFontNormal" text="Button Text: ">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_enabled">
 									<AbsDimension x="0" y="-7" />
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="$parent_string_discount" inherits="GameFontNormal" text="% GP折扣: ">
+						<FontString name="$parent_string_discount" inherits="GameFontNormal" text="% GP Discount: ">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_text">
 									<AbsDimension x="0" y="-7" />
@@ -7767,11 +7772,11 @@
 								if self:GetChecked() then
 									CEPGP_response_buttons[3][1] = true;
 									CEPGP_loot_gui_options_preview_3:Show();
-									CEPGP_print("开启按钮3.");
+									CEPGP_print("Loot GUI button 3 enabled.");
 								else
 									CEPGP_response_buttons[3][1] = false;
 									CEPGP_loot_gui_options_preview_3:Hide();
-									CEPGP_print("隐藏按钮3.");
+									CEPGP_print("Loot GUI button 3 disabled.");
 								end
 							</OnClick>
 							<OnShow>
@@ -7804,13 +7809,13 @@
 								local default = CEPGP_response_buttons[3][2];
 								if value == "" then
 									self:SetText(default);
-									CEPGP_print("按钮文本不能为空", true);
+									CEPGP_print("Button text cannot be blank", true);
 									return;
 								elseif value == default then
 									return;
 								end
 								CEPGP_response_buttons[3][2] = value;
-								CEPGP_print("更新按钮3文本.");
+								CEPGP_print("Updated loot GUI button 3 text.");
 								CEPGP_loot_gui_options_preview_3:SetText(value);
 							</OnEditFocusLost>
 							<OnShow>
@@ -7846,7 +7851,7 @@
 									return;
 								end
 								CEPGP_response_buttons[3][3] = value;
-								CEPGP_print("更新按钮3的GP折扣.");
+								CEPGP_print("Updated GP discount for button 3.");
 							</OnEditFocusLost>
 							<OnShow>
 								self:SetText(tostring(CEPGP_response_buttons[3][3]));
@@ -7866,26 +7871,26 @@
 				</Anchors>
 				<Layers>
 					<Layer level="OVERLAY">
-						<FontString name="$parent_string" inherits="GameFontNormal" text="按钮 4">
+						<FontString name="$parent_string" inherits="GameFontNormal" text="Button 4">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" />
 							</Anchors>
 						</FontString>
-						<FontString name="$parent_string_enabled" inherits="GameFontNormal" text="启用: ">
+						<FontString name="$parent_string_enabled" inherits="GameFontNormal" text="Enabled: ">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string">
 									<AbsDimension x="0" y="-7" />
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="$parent_string_text" inherits="GameFontNormal" text="按钮文本: ">
+						<FontString name="$parent_string_text" inherits="GameFontNormal" text="Button Text: ">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_enabled">
 									<AbsDimension x="0" y="-7" />
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="$parent_string_discount" inherits="GameFontNormal" text="% GP 折扣: ">
+						<FontString name="$parent_string_discount" inherits="GameFontNormal" text="% GP Discount: ">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_text">
 									<AbsDimension x="0" y="-7" />
@@ -7911,11 +7916,11 @@
 								if self:GetChecked() then
 									CEPGP_response_buttons[4][1] = true;
 									CEPGP_loot_gui_options_preview_4:Show();
-									CEPGP_print("开启按钮4.");
+									CEPGP_print("Loot GUI button 4 enabled.");
 								else
 									CEPGP_response_buttons[4][1] = false;
 									CEPGP_loot_gui_options_preview_4:Hide();
-									CEPGP_print("隐藏按钮4.");
+									CEPGP_print("Loot GUI button 4 disabled.");
 								end
 							</OnClick>
 							<OnShow>
@@ -7948,13 +7953,13 @@
 								local default = CEPGP_response_buttons[4][2];
 								if value == "" then
 									self:SetText(default);
-									CEPGP_print("按钮文本不能为空", true);
+									CEPGP_print("Button text cannot be blank", true);
 									return;
 								elseif value == default then
 									return;
 								end
 								CEPGP_response_buttons[4][2] = value;
-								CEPGP_print("更新按钮4文本.");
+								CEPGP_print("Updated loot GUI button 4 text.");
 								CEPGP_loot_gui_options_preview_4:SetText(value);
 							</OnEditFocusLost>
 							<OnShow>
@@ -7990,7 +7995,7 @@
 									return;
 								end
 								CEPGP_response_buttons[4][3] = value;
-								CEPGP_print("更新按钮4的GP折扣.");
+								CEPGP_print("Updated GP discount for button 4.");
 							</OnEditFocusLost>
 							<OnShow>
 								self:SetText(tostring(CEPGP_response_buttons[4][3]));
@@ -8010,7 +8015,7 @@
 				</Anchors>
 				<Layers>
 					<Layer level="OVERLAY">
-						<FontString name="$parent_text" inherits="GameFontNormal" text="需求界面持续时间: ">
+						<FontString name="$parent_text" inherits="GameFontNormal" text="Timeout Duration: ">
 							<Anchors>
 								<Anchor point="LEFT" />
 							</Anchors>
@@ -8030,7 +8035,7 @@
 						<Scripts>
 							<OnEnter>
 								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-								GameTooltip:SetText("战利品需求设置\n团队成员在自动放弃装备之前有多少秒时间。\n0 = 关闭 (不会自动放弃)");
+								GameTooltip:SetText("Loot Master Feature\nHow many seconds raid members have before they automatically pass on an item.\n0 = disabled (no auto passing)");
 							</OnEnter>
 							<OnLeave>
 								GameTooltip:Hide();
@@ -8049,9 +8054,9 @@
 								if tonumber(value) then
 									CEPGP_response_time = tonumber(value);
 									if value == "0" then
-										CEPGP_print("关闭界面需求时间");
+										CEPGP_print("Disabled loot timeout");
 									else
-										CEPGP_print("更新界面需求时间");
+										CEPGP_print("Updated loot timeout");
 									end
 								end
 							</OnEditFocusLost>
@@ -8073,7 +8078,7 @@
 				</Anchors>
 				<Layers>
 					<Layer level="OVERLAY">
-						<FontString name="$parent_string" inherits="GameFontNormal" text="预览">
+						<FontString name="$parent_string" inherits="GameFontNormal" text="Preview">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" />
 							</Anchors>
@@ -8213,7 +8218,7 @@
 				</Texture>
 			</Layer>
 			<Layer level="OVERLAY">
-				<FontString name="$parent_title" inherits="GameFontNormal" text="导入EPGP">
+				<FontString name="$parent_title" inherits="GameFontNormal" text="Import EPGP">
 					<Anchors>
 						<Anchor point="TOP">
 							<Offset>
@@ -8271,7 +8276,7 @@
 						<FontString inherits="GameFontNormal"/>
 						<Layers>
 							<Layer level="OVERLAY">
-								<FontString name="$parent_clickhere" inherits="GameFontNormal" text="单击此处键入">
+								<FontString name="$parent_clickhere" inherits="GameFontNormal" text="Click Here to Type">
 									<Anchors>
 										<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
 											<Offset>
@@ -8343,7 +8348,7 @@
 					</EditBox>
 				</ScrollChild>
 			</ScrollFrame>
-			<Button name="$parent_confirm" inherits="GameMenuButtonTemplate" text="导入排名">
+			<Button name="$parent_confirm" inherits="GameMenuButtonTemplate" text="Import Standings">
 				<Size>
 					<AbsDimension x="150" y="35" />
 				</Size>
@@ -8361,7 +8366,7 @@
 					</OnClick>
 					<OnEnter>
 						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-						GameTooltip:SetText("处理提供的CSV字符串并更新您的公会排名。");
+						GameTooltip:SetText("Processes the CSV string supplied and updates your guild standings.");
 					</OnEnter>
 					<OnLeave>
 						GameTooltip:Hide();
@@ -8392,7 +8397,7 @@
 		</Layers>
 		<Scripts>
 			<OnLoad>
-				CEPGP_import_guide_text:SetText("将CSV格式的字符串粘贴到左边的框中\n然后单击“导入排行榜”按钮确认更改.\nT他希望使用的格式是：\n玩家,EP,GP, (包括\n尾随逗号GP).\n\n你的公会排名记录\n将自动保存\n您需要还原更改。");
+				CEPGP_import_guide_text:SetText("Paste a CSV formatted string in to\nthe box on the left and then\nclick the \"Import Standings\" button\nto confirm the changes.\nThe expected format to use is:\nplayer,EP,GP, (Include the\ntrailing comma after GP).\n\nA record of your guild standings\nwill be automatically saved incase\nyou need to revert the changes.");
 			</OnLoad>
 			<OnMouseDown>
 				self:StartMoving();
@@ -8440,7 +8445,7 @@
 			</Layer>
 		</Layers>
 		<Frames>
-			<Button name="$parent_yes" inherits="GameMenuButtonTemplate" text="是">
+			<Button name="$parent_yes" inherits="GameMenuButtonTemplate" text="Yes">
 				<Size>
 					<AbsDimension x="100" y="31" />
 				</Size>
@@ -8459,7 +8464,7 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="$parent_no" inherits="GameMenuButtonTemplate" text="不">
+			<Button name="$parent_no" inherits="GameMenuButtonTemplate" text="No">
 				<Size>
 					<AbsDimension x="100" y="31" />
 				</Size>

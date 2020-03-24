@@ -16,11 +16,6 @@ for k, v in pairs(LOCALIZED_CLASS_NAMES_MALE) do
 	DB.ClassList[v] = k
 end
 DB.ClassColors = {}
--- Shaman classcolor
-RAID_CLASS_COLORS["SHAMAN"].r = 0
-RAID_CLASS_COLORS["SHAMAN"].g = .44
-RAID_CLASS_COLORS["SHAMAN"].b = .87
-RAID_CLASS_COLORS["SHAMAN"].colorStr = "ff0070dd"
 local colors = CUSTOM_CLASS_COLORS or RAID_CLASS_COLORS
 for class, value in pairs(colors) do
 	DB.ClassColors[class] = {}
@@ -33,8 +28,14 @@ DB.r, DB.g, DB.b = DB.ClassColors[DB.MyClass].r, DB.ClassColors[DB.MyClass].g, D
 DB.MyColor = format("|cff%02x%02x%02x", DB.r*255, DB.g*255, DB.b*255)
 DB.InfoColor = "|cff99ccff" --.6,.8,1
 DB.GreyColor = "|cff7b8489"
-BAG_ITEM_QUALITY_COLORS[LE_ITEM_QUALITY_POOR] = {r = .61, g = .61, b = .61}
-BAG_ITEM_QUALITY_COLORS[LE_ITEM_QUALITY_COMMON] = {r = 0, g = 0, b = 0}
+DB.QualityColors = {}
+local qualityColors = BAG_ITEM_QUALITY_COLORS
+for index, value in pairs(qualityColors) do
+	DB.QualityColors[index] = {r = value.r, g = value.g, b = value.b}
+end
+DB.QualityColors[-1] = {r = 0, g = 0, b = 0}
+DB.QualityColors[LE_ITEM_QUALITY_POOR] = {r = .61, g = .61, b = .61}
+DB.QualityColors[LE_ITEM_QUALITY_COMMON] = {r = 0, g = 0, b = 0}
 
 -- Fonts
 DB.Font = {STANDARD_TEXT_FONT, 12, "OUTLINE"}

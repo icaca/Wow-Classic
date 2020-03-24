@@ -6,5 +6,5 @@
 ## X-Category: Library
 ## X-License: BSD
 ## X-Website: http://www.wowace.com/addons/herebedragons/
-## Version: v1.9.0
+## Version: v2.3
 ## Dependencies: HereBeDragons

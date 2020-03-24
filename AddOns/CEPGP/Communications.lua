@@ -3,6 +3,10 @@ local L = CEPGP_Locale:GetLocale("CEPGP")
 function CEPGP_IncAddonMsg(message, sender, sync)
 	local args = CEPGP_split(message, ";"); -- The broken down message, delimited by semi-colons
 	
+	if args[1] == "message" and args[2] == UnitName("player") then
+		CEPGP_print(args[3]);
+	end
+	
 	if args[1] == "CEPGP_setDistID" then
 		CEPGP_DistID = args[2];
 	
@@ -95,9 +99,9 @@ function CEPGP_IncAddonMsg(message, sender, sync)
 		if not sender then return; end
 		CEPGP_updateGuild();
 		if CEPGP_roster[sender] then
-			CEPGP_SendAddonMsg(sender .. ";versioncheck;" .. CEPGP_VERSION, "GUILD");
+			CEPGP_SendAddonMsg(sender .. ";versioncheck;" .. CEPGP_Info.Version .. "." .. CEPGP_Info.Build, "GUILD");
 		else
-			CEPGP_SendAddonMsg(sender .. ";versioncheck;" .. CEPGP_VERSION, "RAID");
+			CEPGP_SendAddonMsg(sender .. ";versioncheck;" .. CEPGP_Info.Version .. "." .. CEPGP_Info.Build, "RAID");
 		end
 	end
 		
@@ -171,17 +175,29 @@ function CEPGP_IncAddonMsg(message, sender, sync)
 	elseif args[1] == "!info" and args[2] == UnitName("player") then--strfind(message, "!info"..UnitName("player")) then
 		CEPGP_print(args[3]);
 		
+		
+		
+		--[[	IMPORTS		]]--
+	
 	elseif (args[1] == UnitName("player") and args[2] == "import") or (args[1] == "?forceSync" and not args[2]) then
+		if time() - CEPGP_Info.LastImport < 2 then
+			CEPGP_SendAddonMsg("message;" .. sender .. ";" .. UnitName("player") .. " has received too many import requests. Please try again.", "GUILD");
+			return;
+		end
 		local lane = "GUILD";
 		local target = sender;
 		if args[1] == "?forceSync" then
 			target = "?forceSync";
 			CEPGP_print("Synchronising CEPGP settings with Guild members.");
+			CEPGP_SendAddonMsg(target..";impresponse;SYNCHRONISING;"..UnitName("player"), lane);
 		end
-		CEPGP_SendAddonMsg(target..";impresponse;SYNCHRONISING;"..UnitName("player"), lane);
+		
 		
 		
 		CEPGP_SendAddonMsg(target..";impresponse;CHANNEL;"..CHANNEL, lane);
+		CEPGP_SendAddonMsg(target..";impresponse;CEPGP_lootChannel;"..CEPGP_lootChannel, lane);
+		CEPGP_SendAddonMsg(target..";impresponse;CEPGP_min_threshold;"..CEPGP_min_threshold, lane);
+		
 		
 			--	GP Options Page 1	--
 		CEPGP_SendAddonMsg(target..";impresponse;MOD;"..MOD, lane);
@@ -197,6 +213,11 @@ function CEPGP_IncAddonMsg(message, sender, sync)
 		end
 		
 			--	Loot GUI Options	--
+		if CEPGP_loot_GUI then
+			CEPGP_SendAddonMsg(target..";impresponse;CEPGP_loot_GUI;true", lane);
+		else
+			CEPGP_SendAddonMsg(target..";impresponse;CEPGP_loot_GUI;false", lane);
+		end
 		for index, v in ipairs(CEPGP_response_buttons) do
 			if v[1] then
 				CEPGP_SendAddonMsg(target..";impresponse;LOOTGUIBUTTON;"..index..";true;"..v[2]..";"..v[3]);
@@ -204,7 +225,6 @@ function CEPGP_IncAddonMsg(message, sender, sync)
 				CEPGP_SendAddonMsg(target..";impresponse;LOOTGUIBUTTON;"..index..";false;"..v[2]..";"..v[3]);
 			end
 		end
-		
 		CEPGP_SendAddonMsg(target..";impresponse;LOOTGUIBUTTONTIMEOUT;"..CEPGP_response_time);
 		
 			--	Slot Weights	--
@@ -248,7 +268,7 @@ function CEPGP_IncAddonMsg(message, sender, sync)
 		end
 		
 		
-		
+			--	Boss EP Settings	--
 		for k, v in pairs(EPVALS) do
 			CEPGP_SendAddonMsg(target..";impresponse;EPVALS;"..k..";"..v, lane);
 		end
@@ -262,7 +282,50 @@ function CEPGP_IncAddonMsg(message, sender, sync)
 		for k, v in pairs(OVERRIDE_INDEX) do
 			CEPGP_SendAddonMsg(target..";impresponse;OVERRIDE;"..k..";"..v, lane);
 		end
+		
+		
+			--	Page 2	--
+		if CEPGP_auto_pass then
+			CEPGP_SendAddonMsg(target..";impresponse;CEPGP_auto_pass;true", lane);
+		else
+			CEPGP_SendAddonMsg(target..";impresponse;CEPGP_auto_pass;false", lane);
+		end
+		if CEPGP_raid_wide_dist then
+			CEPGP_SendAddonMsg(target..";impresponse;CEPGP_raid_wide_dist;true", lane);
+		else
+			CEPGP_SendAddonMsg(target..";impresponse;CEPGP_raid_wide_dist;false", lane);
+		end
+		if CEPGP_gp_tooltips then
+			CEPGP_SendAddonMsg(target..";impresponse;CEPGP_gp_tooltips;true", lane);
+		else
+			CEPGP_SendAddonMsg(target..";impresponse;CEPGP_gp_tooltips;false", lane)
+		end
+		if CEPGP_suppress_announcements then
+			CEPGP_SendAddonMsg(target..";impresponse;CEPGP_suppress_announcements;true", lane);
+		else
+			CEPGP_SendAddonMsg(target..";impresponse;CEPGP_suppress_announcements;false", lane)
+		end
+		
+		if CEPGP_minEP[1] then
+			CEPGP_SendAddonMsg(target..";impresponse;CEPGP_minEP;true;" .. CEPGP_minEP[2], lane);
+		else
+			CEPGP_SendAddonMsg(target..";impresponse;CEPGP_minEP;false;" .. CEPGP_minEP[2], lane);	
+		end
+		
+		if CEPGP_show_passes then
+			CEPGP_SendAddonMsg(target..";impresponse;CEPGP_show_passes;true", lane);
+		else
+			CEPGP_SendAddonMsg(target..";impresponse;CEPGP_show_passes;false", lane)
+		end
+		if CEPGP_PR_sort then
+			CEPGP_SendAddonMsg(target..";impresponse;CEPGP_PR_sort;true", lane);
+		else
+			CEPGP_SendAddonMsg(target..";impresponse;CEPGP_PR_sort;false", lane)
+		end
+		
 		CEPGP_SendAddonMsg(target..";impresponse;COMPLETE;", lane);
+		
+		CEPGP_Info.LastImport = time();
 		
 		
 		
@@ -278,6 +341,14 @@ function CEPGP_IncAddonMsg(message, sender, sync)
 		local option = args[3];
 		if option == "SYNCHRONISING" then
 			CEPGP_print(sender .. " is synchronising your settings with theirs");
+		end		
+		
+		if option == "CEPGP_loot_GUI" then
+			if args[4] == "true" then
+				CEPGP_loot_GUI = true;
+			else
+				CEPGP_loot_GUI = false;
+			end
 		end
 		
 		if option == "LOOTGUIBUTTON" then
@@ -293,6 +364,14 @@ function CEPGP_IncAddonMsg(message, sender, sync)
 					[2] = args[6],
 					[3] = tonumber(args[7])
 				}
+			end
+		end
+		
+		if option == "CEPGP_minEP" then
+			if args[4] == "true" then
+				CEPGP_minEP = {true, tonumber(args[5])};
+			else
+				CEPGP_minEP = {false, tonumber(args[5])};
 			end
 		end
 		
@@ -327,7 +406,7 @@ function CEPGP_IncAddonMsg(message, sender, sync)
 					AUTOEP[field] = false;
 				end
 			elseif option == "OVERRIDE" then
-				if not CEPGP_inOverride(val) then
+				if not CEPGP_inOverride(field) then
 					OVERRIDE_INDEX[field] = val;
 				end
 			end
@@ -335,6 +414,8 @@ function CEPGP_IncAddonMsg(message, sender, sync)
 			local val = args[4];
 			if option == "CHANNEL" then
 				CHANNEL = val;
+			elseif option == "CEPGP_lootChannel" then
+				CEPGP_lootChannel = val;
 			elseif option == "KEYWORD" then
 				CEPGP_keyword = val;
 			elseif option == "MOD" then
@@ -345,6 +426,8 @@ function CEPGP_IncAddonMsg(message, sender, sync)
 				MOD_COEF = tonumber(val);
 			elseif option == "BASEGP" then
 				BASEGP = tonumber(val);
+			elseif option == "CEPGP_min_threshold" then
+				CEPGP_min_threshold = tonumber(val);
 			elseif option == "BASEGPFACTOR" then
 				if val == "true" then
 					CEPGP_minGPDecayFactor = true;
@@ -383,7 +466,50 @@ function CEPGP_IncAddonMsg(message, sender, sync)
 					STANDBYOFFLINE = false;
 				end
 			elseif option == "STANDBYPERCENT" then
-				STANDBYPERCENT = tonumber(val);		
+				STANDBYPERCENT = tonumber(val);
+				
+			elseif option == "CEPGP_auto_pass" then
+			if args[4] == "true" then
+				CEPGP_auto_pass = true;
+			else
+				CEPGP_auto_pass = false;
+			end
+		
+			elseif option == "CEPGP_raid_wide_dist" then
+				if args[4] == "true" then
+					CEPGP_raid_wide_dist = true;
+				else
+					CEPGP_raid_wide_dist = false;
+				end
+			
+			elseif option == "CEPGP_gp_tooltips" then
+				if args[4] == "true" then
+					CEPGP_gp_tooltips = true;
+				else
+					CEPGP_gp_tooltips = false;
+				end
+			
+			elseif option == "CEPGP_suppress_announcements" then
+				if args[4] == "true" then
+					CEPGP_suppress_announcements = true;
+				else
+					CEPGP_suppress_announcements = false;
+				end
+			
+			elseif option == "CEPGP_show_passes" then
+				if args[4] == "true" then
+					CEPGP_show_passes = true;
+				else
+					CEPGP_show_passes = false;
+				end
+			
+			elseif option == "CEPGP_PR_sort" then
+				if args[4] == "true" then
+					CEPGP_PR_sort = true;
+				else
+					CEPGP_PR_sort = false;
+				end
+				
 			elseif option == "COMPLETE" then
 				CEPGP_print("Import complete");
 				CEPGP_button_options_OnClick();
@@ -394,9 +520,9 @@ function CEPGP_IncAddonMsg(message, sender, sync)
 		
 	elseif args[1] == "?IgnoreUpdates" and sender ~= UnitName("player") then
 		if args[2] == "true" then
-			CEPGP_ignoreUpdates = true;
+			CEPGP_Info.IgnoreUpdates = true;
 		else
-			CEPGP_ignoreUpdates = false;
+			CEPGP_Info.IgnoreUpdates = false;
 			CEPGP_rosterUpdate("GUILD_ROSTER_UPDATE");
 		end
 	
@@ -410,23 +536,6 @@ function CEPGP_IncAddonMsg(message, sender, sync)
 	elseif strfind(message, "MainSpec") or args[1] == "LootRsp" then
 		local response = args[2];
 		CEPGP_handleComms("CHAT_MSG_WHISPER", CEPGP_keyword, sender, response);	
-		
-	elseif args[1] == "?KillUpdate" and sender ~= UnitName("player") and CEPGP_isML() == 0 and CEPGP_use then
-		local name = args[2];
-		local guid = args[3];
-		if not guid then return; end
-		if CEPGP_tContains(CEPGP_kills, guid) then
-			return;
-		end
-		if L[name] == "Zealot Zath" or L[name] == "Zealot Lor'Khan" then
-			CEPGP_handleCombat(name, false, guid);
-		end
-		if L[name] == "Flamewaker Elite" or L[name] == "Flamewaker Healer" then
-			CEPGP_handleCombat(name, true, guid);
-		end
-		if bossNameIndex[L[name]] then
-			CEPGP_handleCombat(name, false, guid);
-		end
 	
 	elseif args[1] == "CEPGP_TRAFFIC" then
 		if string.find(sender, "-") then
@@ -505,7 +614,7 @@ function CEPGP_SendAddonMsg(message, channel)
 	end
 end
 
-function CEPGP_ShareTraffic(player, issuer, action, EPB, EPA, GPB, GPA, itemID)
+function CEPGP_ShareTraffic(player, issuer, action, EPB, EPA, GPB, GPA, itemID, tStamp)
 	if not player or not action then return; end
 	if not itemID then
 		itemID = "";
@@ -525,7 +634,10 @@ function CEPGP_ShareTraffic(player, issuer, action, EPB, EPA, GPB, GPA, itemID)
 	if not GPA then
 		GPA = "";
 	end
+	if not tstamp then
+		tStamp = time();
+	end
 	if CanEditOfficerNote() then
-		CEPGP_SendAddonMsg("CEPGP_TRAFFIC;" .. player .. ";" .. issuer .. ";" .. action .. ";" .. EPB .. ";" .. EPA .. ";" .. GPB .. ";" .. GPA .. ";" .. itemID, "GUILD");
+		CEPGP_SendAddonMsg("CEPGP_TRAFFIC;" .. player .. ";" .. issuer .. ";" .. action .. ";" .. EPB .. ";" .. EPA .. ";" .. GPB .. ";" .. GPA .. ";" .. itemID .. ";" .. tStamp, "GUILD");
 	end
 end

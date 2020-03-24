@@ -745,6 +745,50 @@
 		</Scripts>
 		<HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD"/>
 	</Button>
+	<Button name="PluginButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="200" y="15"/>
+		</Size>
+		<Frames>
+			<CheckButton name="$parentEnabled" inherits="UIOptionsCheckButtonTemplate">
+				<HitRectInsets>
+					<AbsInset left="0" right="0" top="0" bottom="0" />
+				</HitRectInsets>
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="LEFT">
+						<AbsDimension x="10" y="0" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<Button name="$parentOptions" inherits="GameMenuButtonTemplate" text="Options">
+				<Size>
+					<AbsDimension x="80" y="25" />
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentEnabled">
+						<AbsDimension x="200" y="0" />
+					</Anchor>
+				</Anchors>
+			</Button>
+		</Frames>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parentName" inherits="GameFontNormal" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="LEFT" relativePoint="LEFT">
+							<Offset>
+								<AbsDimension x="60" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+	</Button>
 	
 	<EditBox name="epValInputBoxTemplate" inherits="InputBoxTemplate" numeric="true" virtual="true">
 		<Size>
@@ -768,23 +812,12 @@
 				elseif value == EPVALS[name] then
 					return;
 				elseif EPVALS[name] ~= tonumber(value) then
+					value = tonumber(value);
 					if name == "The Edge of Madness" then
 						EPVALS["Gri'lek"] = value;
 						EPVALS["Hazza'rah"] = value;
 						EPVALS["Renataki"] = value;
 						EPVALS["Wushoolay"] = value;
-					elseif name == "The Bug Trio" then
-						EPVALS["Princess Yauj"] = value;
-						EPVALS["Vem"] = value;
-						EPVALS["Lord Kri"] = value;
-					elseif name == "The Twin Emperors" then
-						EPVALS["Emperor Vek'lor"] = value;
-						EPVALS["Emperor Vek'nilash"] = value;
-					elseif name == "The Four Horsemen" then
-						EPVALS["Highlord Mograine"] = value;
-						EPVALS["Thane Korth'azz"] = value;
-						EPVALS["Lady Blaumeux"] = value;
-						EPVALS["Sir Zeliek"] = value;
 					else
 						EPVALS[name] = value;
 					end
@@ -799,14 +832,8 @@
 				local target = _G["CEPGP_options_" .. name .. "_val"];
 				if name == "The Edge of Madness" then
 					name = "Gri'lek"; --All bosses in the edge of madness will have the same value
-				elseif name == "The Bug Trio" then
-					name = "Princess Yauj";
-				elseif name == "The Twin Emperors" then
-					name = "Emperor Vek'lor";
-				elseif name == "The Four Horsemen" then
-					name = "Highlord Mograine";
 				end				
-				self:SetText(tostring(EPVALS[L[name]]));
+				self:SetText(tostring(EPVALS[name]));
 				self:SetPoint('LEFT', target, 'LEFT', 420, 0); --FontStrings justify to the left, so for the sake of structuring, it's better to set the relative anchor to left
 			</OnShow>
 		</Scripts>
@@ -866,36 +893,6 @@
 						AUTOEP["Renataki"] = false;
 						AUTOEP["Wushoolay"] = false;
 					end
-				elseif name == "The Bug Trio" then
-					if self:GetChecked() then
-						AUTOEP["Princess Yauj"] = true;
-						AUTOEP["Vem"] = true;
-						AUTOEP["Lord Kri"] = true;
-					else
-						AUTOEP["Princess Yauj"] = false;
-						AUTOEP["Vem"] = false;
-						AUTOEP["Lord Kri"] = false;
-					end
-				elseif name == "The Twin Emperors" then
-					if self:GetChecked() then
-						AUTOEP["Emperor Vek'lor"] = true;
-						AUTOEP["Emperor Vek'nilash"] = true;
-					else
-						AUTOEP["Emperor Vek'lor"] = false;
-						AUTOEP["Emperor Vek'nilash"] = false;
-					end
-				elseif name == "The Four Horsemen" then
-					if self:GetChecked() then
-						AUTOEP["Highlord Mograine"] = true;
-						AUTOEP["Thane Korth'azz"] = true;
-						AUTOEP["Lady Blaumeux"] = true;
-						AUTOEP["Sir Zeliek"] = true;
-					else
-						AUTOEP["Highlord Mograine"] = false;
-						AUTOEP["Thane Korth'azz"] = false;
-						AUTOEP["Lady Blaumeux"] = false;
-						AUTOEP["Sir Zeliek"] = false;
-					end
 				else
 					local name = strsub(self:GetName(), 15, strfind(self:GetName(), "_auto_check")-1);
 					if self:GetChecked() then
@@ -908,20 +905,12 @@
 				CEPGP_print(L["Updated auto award for "] .. tName);
 			</OnClick>
 			<OnShow>
-				local L = CEPGP_Locale:GetLocale("CEPGP")
-
 				local name = strsub(self:GetName(), 15, strfind(self:GetName(), "_auto_check")-1);
 				local target = _G["CEPGP_options_" .. name .. "_EP_value"];
 				if name == "The Edge of Madness" then
 					name = "Gri'lek"; --All bosses in the edge of madness will have the same value
-				elseif name == "The Bug Trio" then
-					name = "Princess Yauj";
-				elseif name == "The Twin Emperors" then
-					name = "Emperor Vek'lor";
-				elseif name == "The Four Horsemen" then
-					name = "Highlord Mograine";
 				end				
-				self:SetChecked(AUTOEP[L[name]]);
+				self:SetChecked(AUTOEP[name]);
 				self:SetPoint('LEFT', target, 'RIGHT', 15, 0);
 			</OnShow>
 		</Scripts>

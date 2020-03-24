@@ -91,11 +91,10 @@ local defaultSettings = {
 		SimpleModeSortByRole = true,
 		InstanceAuras = true,
 		RaidDebuffScale = 1,
-		SpecRaidPos = false,
+		--SpecRaidPos = false,
 		RaidClassColor = false,
 		HorizonRaid = false,
 		HorizonParty = false,
-		ReverseRaid = false,
 		SimpleRaidScale = 10,
 		RaidWidth = 80,
 		RaidHeight = 32,
@@ -126,6 +125,7 @@ local defaultSettings = {
 		BuffIndicatorScale = 1,
 		EnergyTicker = true,
 		UFTextScale = 1,
+		SmoothAmount = .3,
 
 		PlayerWidth = 245,
 		PlayerHeight = 24,
@@ -229,6 +229,7 @@ local defaultSettings = {
 		Recount = true,
 		ResetRecount = true,
 		ToggleDirection = 1,
+		TradeSkills = true,
 	},
 	Tooltip = {
 		CombatHide = false,
@@ -482,6 +483,10 @@ local function refreshRaidFrameIcons()
 	B:GetModule("UnitFrames"):RefreshRaidFrameIcons()
 end
 
+local function updateSmoothingAmount()
+	B:SetSmoothingAmount(NDuiDB["UFs"]["SmoothAmount"])
+end
+
 local function updateMapFader()
 	B:GetModule("Maps"):MapFader()
 end
@@ -587,8 +592,9 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{1, "UFs", "Portrait", L["UFs Portrait"]},
 		{1, "UFs", "ClassPower", L["UFs ClassPower"], true},
 		{1, "UFs", "PlayerDebuff", L["Player Debuff"]},
-		{1, "UFs", "ToTAuras", L["ToT Debuff"], true},
+		{1, "UFs", "ToTAuras", L["ToT Debuff"]},
 		{1, "UFs", "EnergyTicker", L["EnergyTicker"]},
+		{3, "UFs", "SmoothAmount", "|cff00cc4c"..L["SmoothAmount"], true, {.15, .6, 2}, updateSmoothingAmount, L["SmoothAmountTip"]},
 		{4, "UFs", "HealthColor", L["HealthColor"], nil, {L["Default Dark"], L["ClassColorHP"], L["GradientHP"]}},
 		{3, "UFs", "UFTextScale", L["UFTextScale"], true, {.8, 2, 2}, updateUFTextScale},
 		{},--blank
@@ -613,13 +619,12 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{1, "UFs", "AurasClickThrough", L["RaidAuras ClickThrough"], nil},
 		{3, "UFs", "RaidDebuffScale", L["RaidDebuffScale"].."*", true, {1, 2, 1}, refreshRaidFrameIcons},
 		{},--blank
+		{4, "UFs", "RaidHPMode", L["RaidHPMode"].."*", nil, {L["DisableRaidHP"], L["RaidHPPercent"], L["RaidHPCurrent"], L["RaidHPLost"]}, updateRaidNameText},
+		{3, "UFs", "NumGroups", L["Num Groups"], true, {4, 8, 0}},
 		{1, "UFs", "ShowTeamIndex", L["RaidFrame TeamIndex"]},
 		{1, "UFs", "RaidClassColor", L["ClassColor RaidFrame"], true},
 		{1, "UFs", "HorizonRaid", L["Horizon RaidFrame"]},
-		{1, "UFs", "ReverseRaid", L["Reverse RaidFrame"], true},
 		--{1, "UFs", "SpecRaidPos", L["Spec RaidPos"]},
-		{4, "UFs", "RaidHPMode", L["RaidHPMode"].."*", nil, {L["DisableRaidHP"], L["RaidHPPercent"], L["RaidHPCurrent"], L["RaidHPLost"]}, updateRaidNameText},
-		{3, "UFs", "NumGroups", L["Num Groups"], true, {4, 8, 0}},
 		{},--blank
 		{1, "UFs", "SimpleMode", "|cff00cc4c"..L["Simple RaidFrame"]},
 		{1, "UFs", "SimpleModeSortByRole", L["SimpleMode SortByRole"], true},
@@ -676,8 +681,8 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{},--blank
 		{1, "Auras", "ReverseBuffs", L["ReverseBuffs"]},
 		{1, "Auras", "ReverseDebuffs", L["ReverseDebuffs"], true},
-		{3, "Auras", "BuffSize", L["BuffSize"], nil, {24, 40, 0}},
-		{3, "Auras", "DebuffSize", L["DebuffSize"], true, {24, 40, 0}},
+		{3, "Auras", "BuffSize", L["BuffSize"], nil, {24, 50, 0}},
+		{3, "Auras", "DebuffSize", L["DebuffSize"], true, {24, 50, 0}},
 		{3, "Auras", "BuffsPerRow", L["BuffsPerRow"], nil, {10, 20, 0}},
 		{3, "Auras", "DebuffsPerRow", L["DebuffsPerRow"], true, {10, 16, 0}},
 		--{1, "Auras", "Totems", L["Enable Totems"]},
@@ -746,6 +751,7 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{},--blank
 		{1, "Skins", "MicroMenu", L["Micromenu"]},
 		{1, "Skins", "QuestTracker", L["EnhancedQuestLog"], true, nil, nil, L["EnhancedQuestLogTips"]},
+		{1, "Skins", "TradeSkills", L["EnhancedTradeSkills"]},
 		{},--blank
 		{1, "Skins", "Skada", L["Skada Skin"]},
 		{1, "Skins", "Details", L["Details Skin"], nil, resetDetails},

@@ -311,6 +311,11 @@ function Altoholic.Sharing.Content:Check_OnClick(self, button)
 		index = line.key
 	else
 		index = line.key .. "." .. line.module
+        -- Code added 2020/03/12:
+        -- if we just checked a child option, check the parent option, too
+        if isChecked and line.linetype == CHARACTER_DATASTORE_LINE then
+            sc[line.key] = isChecked
+        end
 	end
 	sc[index] = isChecked
 	self:BuildView()
@@ -652,6 +657,24 @@ function Altoholic.Sharing.AvailableContent:Check_OnClick(self, button)
 	
 	if not AvailableContentCheckedItems[id] then
 		AvailableContentCheckedItems[id] = true
+                
+        -- Code added 2020/03/12: purpose is to check the parent header when a child option is checked
+        -- Since I can't find a clean way to do this, using content visible to this function, I'll do it mathematically using the id instead
+        -- If the ID is between 5 and 11, check 4
+        -- If the ID is between 13 and 19, check 12
+        -- and so on
+        local idInitialOffset = 3
+        local idNumRows = 8
+        
+        local idMultiple = math.floor((id - idInitialOffset) / idNumRows)
+        local idRemainder = math.fmod((id - idInitialOffset), idNumRows)
+
+        if (idRemainder > 1) and (idRemainder < (idNumRows + 1)) then 
+            AvailableContentCheckedItems[(idMultiple * idNumRows) + 1 + idInitialOffset] = true
+            local content = Altoholic.Sharing.AvailableContent
+            content:BuildView()
+	        content:Update()
+        end
 	else
 		AvailableContentCheckedItems[id] = nil
 	end

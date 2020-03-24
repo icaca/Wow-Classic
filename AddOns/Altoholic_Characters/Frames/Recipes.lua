@@ -87,7 +87,7 @@ local function RecipePassesSearchFilter(recipeID)
 	-- no search filter ? ok
 	if currentSearch == "" then return true end
 	
-	local name = GetSpellInfo(recipeID)
+	local name = DataStore:GetResultItemName(recipeID)
 	if name and string.find(strlower(name), currentSearch, 1, true) then
 		return true
 	end

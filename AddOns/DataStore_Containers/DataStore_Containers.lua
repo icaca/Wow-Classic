@@ -258,7 +258,8 @@ local function ScanBankSlotsInfo()
 end
 
 local function ScanBag(bagID)
-	if bagID < 0 then return end
+    -- The keyring bagID is -2, so allow it!
+	if (bagID < -2) or (bagID == -1) then return end
 
 	local char = addon.ThisCharacter
 	local bag = char.Containers["Bag" .. bagID]
@@ -266,7 +267,10 @@ local function ScanBag(bagID)
 	if bagID == 0 then	-- Bag 0	
 		bag.icon = "Interface\\Buttons\\Button-Backpack-Up";
 		bag.link = nil;
-	else						-- Bags 1 through 11
+	elseif bagID == -2 then
+        bag.icon = "ICONS\\INV_Misc_Key_04.blp"
+        bag.link = nil
+    else						-- Bags 1 through 11
 		bag.icon = GetInventoryItemTexture("player", ContainerIDToInventoryID(bagID))
 		bag.link = GetInventoryItemLink("player", ContainerIDToInventoryID(bagID))
 		if bag.link then
@@ -521,6 +525,10 @@ function addon:OnEnable()
 	for bagID = 0, NUM_BAG_SLOTS do
 		ScanBag(bagID)
 	end
+    
+    if HasKey() then
+        ScanBag(-2)
+    end
 	
 	addon:RegisterEvent("BAG_UPDATE", OnBagUpdate)
 	addon:RegisterEvent("BANKFRAME_OPENED", OnBankFrameOpened)

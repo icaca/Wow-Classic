@@ -1,18 +1,17 @@
 --[[ Globals ]]--
-CEPGP_VERSION = "1.12.8.release-hotfix2";
+
+CEPGP_VERSION = "1.12.9.release";
 SLASH_CEPGP1 = "/CEPGP";
 SLASH_CEPGP2 = "/cep";
 CEPGP_VERSION_NOTIFIED = false;
 CEPGP_mode = "guild";
 CEPGP_recordholder = "";
 CEPGP_distPlayer = "";
-CEPGP_combatModule = "";
 CEPGP_distGP = false;
 CEPGP_lootSlot = nil;
 CEPGP_target = nil;
 CEPGP_DistID = nil;
 CEPGP_distSlot = nil;
-CEPGP_distSlotID = nil;
 CEPGP_distItemLink = nil;
 CEPGP_debugMode = false;
 CEPGP_critReverse = false; --Criteria reverse
@@ -23,8 +22,7 @@ CEPGP_confirmrestore = false;
 CEPGP_looting = false;
 CEPGP_traffic_clear = false;
 CEPGP_criteria = 4;
-CEPGP_kills = {};
-CEPGP_frames = {CEPGP_guild, CEPGP_raid, CEPGP_loot, CEPGP_distribute, CEPGP_options, CEPGP_options_page_2, CEPGP_options_page_3, CEPGP_distribute_popup, CEPGP_context_popup, CEPGP_save_guild_logs, CEPGP_restore_guild_logs, CEPGP_settings_import, CEPGP_override, CEPGP_traffic, CEPGP_standby};
+CEPGP_frames = {CEPGP_guild, CEPGP_raid, CEPGP_loot, CEPGP_distribute, CEPGP_options, CEPGP_options_page_2, CEPGP_options_page_3, CEPGP_distribute_popup, CEPGP_context_popup, CEPGP_save_guild_logs, CEPGP_restore_guild_logs, CEPGP_settings_import, CEPGP_override, CEPGP_traffic, CEPGP_standby, CEPGP_options_plugins};
 CEPGP_boss_config_frames = {CEPGP_options_page_3_mc, CEPGP_options_page_3_bwl, CEPGP_options_page_3_zg, CEPGP_options_page_3_aq20, CEPGP_options_page_3_aq40, CEPGP_options_page_3_naxx, CEPGP_options_page_3_worldboss};
 CEPGP_LANGUAGE = GetDefaultLanguage("player");
 CEPGP_responses = {};
@@ -35,15 +33,11 @@ CEPGP_vInfo = {};
 CEPGP_vSearch = "GUILD";
 CEPGP_ElvUI = nil;
 CEPGP_groupVersion = {};
-CEPGP_RAZORGORE_EGG_COUNT = 0;
-CEPGP_THEKAL_PARAMS = {};
 CEPGP_snapshot = nil;
 CEPGP_use = false;
-CEPGP_ignoreUpdates = false;
 CEPGP_award = false;
 CEPGP_rate = 1;
 CEPGP_plugins = {};
-CEPGP_response_stop = false;
 
 --[[ SAVED VARIABLES ]]--
 CHANNEL = nil;
@@ -86,6 +80,43 @@ CEPGP_response_time = 60;
 CEPGP_show_passes = false;
 CEPGP_PR_sort = true;
 
+CEPGP = {};
+CEPGP_Info = {
+	Version = "1.12.9",
+	Build = "release",
+	IgnoreUpdates = false,
+	LastImport = time(),
+	LastUpdate = GetTime(),
+	QueuedAnnouncement = nil,
+	RosterStack = {},
+	VersionNotified = false,
+	Defaults = {
+		SlotWeights = {
+			["2HWEAPON"] = 2,
+			["WEAPONMAINHAND"] = 1.5,
+			["WEAPON"] = 1.5,
+			["WEAPONOFFHAND"] = 0.5,
+			["HOLDABLE"] = 0.5,
+			["SHIELD"] = 0.5,
+			["RANGED"] = 0.5,
+			["RANGEDRIGHT"] = 0.5,
+			["RELIC"] = 0.5,
+			["HEAD"] = 1,
+			["NECK"] = 0.5,
+			["SHOULDER"] = 0.75,
+			["CLOAK"] = 0.5,
+			["CHEST"] = 1,
+			["ROBE"] = 1,
+			["WRIST"] = 0.5,
+			["HAND"] = 0.75,
+			["WAIST"] = 0.75,
+			["LEGS"] = 1,
+			["FEET"] = 0.75,
+			["FINGER"] = 0.5,
+			["TRINKET"] = 0.75
+		}
+	}
+};
 local L = CEPGP_Locale:GetLocale("CEPGP")
 
 
@@ -93,14 +124,65 @@ local L = CEPGP_Locale:GetLocale("CEPGP")
 function CEPGP_OnEvent(event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12, arg13, arg14, arg15, arg16, arg17)
 	
 	if event == "ADDON_LOADED" and arg1 == "CEPGP" then --arg1 = addon name
+		--	Translating from old structure to new
+		CEPGP = {
+			Attendance = CEPGP_raid_logs,
+			Backups = RECORDS,
+			Channel = CHANNEL,
+			LootChannel = CEPGP_lootChannel,
+			Notice = CEPGP_notice,
+			Overrides = OVERRIDE_INDEX,
+			Sync = {ALLOW_FORCED_SYNC, CEPGP_force_sync_rank},
+			Traffic = TRAFFIC,
+			EP = {
+				AutoAward = AUTOEP,
+				BossEP = EPVALS,
+				Keyword = CEPGP_keyword,
+			},
+			GP = {
+				Base = COEF,
+				Mod = MOD,
+				Multiplier = MOD_COEF,
+				SlotWeights = SLOTWEIGHTS,
+				Tooltips = CEPGP_gp_tooltips
+			},
+			Loot = {
+				AutoPass = CEPGP_auto_pass,
+				AutoSort = CEPGP_PR_sort,
+				Keyword = CEPGP_keyword,
+				MinThreshold = CEPGP_minEP,
+				RaidVisibility = CEPGP_raid_wide_dist,
+				SuppressResponses = CEPGP_suppress_announcements,
+				GUI = {
+					Buttons = CEPGP_response_buttons,
+					Enabled = CEPGP_loot_GUI,
+					Timer = CEPGP_response_time
+				}
+			},
+			Standby = {
+				AcceptWhispers = CEPGP_standby_accept_whispers,
+				ByRank = CEPGP_standby_byrank,
+				Enabled = STANDBYEP,
+				Keyword = CEPGP_standby_whisper_msg,
+				Manual = CEPGP_standby_manual,
+				Offline = STANDBYOFFLINE,
+				Percent = STANDBYPERCENT,
+				Ranks = STANDBYRANKS,
+				Roster = CEPGP_standbyRoster,
+				Share = CEPGP_standby_share,
+			}
+		}
 		CEPGP_initialise();
+		return;
 		
 	elseif event == "GUILD_ROSTER_UPDATE" or event == "GROUP_ROSTER_UPDATE" then
 		CEPGP_rosterUpdate(event);
+		return;
 	
 	elseif event == "GET_ITEM_INFO_RECEIVED" then
 		local id, success = arg1, arg2;
 		if success then CEPGP_updateOverride(id); end
+		return;
 		
 	elseif event == "PARTY_LOOT_METHOD_CHANGED" then
 		if GetLootMethod() == "master" and IsInRaid("player") and CEPGP_isML() == 0 then
@@ -108,6 +190,8 @@ function CEPGP_OnEvent(event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, ar
 		else
 			_G["CEPGP_confirmation"]:Hide();
 		end
+		return;
+		
 	elseif event == "CHAT_MSG_BN_WHISPER" then
 		local sender = arg2;
 		if not UnitInRaid("player") then return; end
@@ -123,7 +207,7 @@ function CEPGP_OnEvent(event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, ar
 			if sender == accName then --Behaves the same way for both Battle Tag and RealID friends
 				if string.lower(arg1) == string.lower(CEPGP_standby_whisper_msg) then
 					if (CEPGP_standby_manual and CEPGP_standby_accept_whispers) and
-						not CEPGP_tContains(CEPGP_standbyRoster, name) and not inRaid and CEPGP_tContains(CEPGP_roster, name, true) then
+						not CEPGP_tContains(CEPGP_standbyRoster, name) and not inRaid and CEPGP_roster[name] then
 						CEPGP_addToStandby(name);
 					end
 				elseif (string.lower(arg1) == string.lower(CEPGP_keyword) and CEPGP_distributing) or
@@ -134,19 +218,21 @@ function CEPGP_OnEvent(event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, ar
 				return;
 			end
 		end
-		
+		return;
 	
 	elseif event == "CHAT_MSG_WHISPER" and string.lower(arg1) == string.lower(CEPGP_standby_whisper_msg) and CEPGP_standby_manual and CEPGP_standby_accept_whispers then
 		if not CEPGP_tContains(CEPGP_standbyRoster, arg5)
 		and not CEPGP_tContains(CEPGP_raidRoster, arg5, true)
-		and CEPGP_tContains(CEPGP_roster, arg5, true) then
+		and CEPGP_roster[arg5] then
 			CEPGP_addToStandby(arg5);
 		end
+		return;
 			
 	elseif (event == "CHAT_MSG_WHISPER" and string.lower(arg1) == string.lower(CEPGP_keyword) and CEPGP_distributing) or
 		(event == "CHAT_MSG_WHISPER" and string.lower(arg1) == "!info") or
 		(event == "CHAT_MSG_WHISPER" and (string.lower(arg1) == "!infoguild" or string.lower(arg1) == "!inforaid" or string.lower(arg1) == "!infoclass")) then
 			CEPGP_handleComms(event, arg1, arg5);
+			return;
 	
 	elseif (event == "CHAT_MSG_ADDON") then
 		if (arg1 == "CEPGP")then
@@ -155,92 +241,33 @@ function CEPGP_OnEvent(event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, ar
 			end
 			CEPGP_IncAddonMsg(arg2, arg4);
 		end
-	end
-	
-	if event == "COMBAT_LOG_EVENT_UNFILTERED" and
-		((GetLootMethod() == "master" and CEPGP_isML() ~= 0) or (GetLootMethod() == "group" and not UnitIsGroupLeader("player"))) then
-		local _, action, _, _, _, _, _, guid, name = CombatLogGetCurrentEventInfo();
-		if action == "UNIT_DIED" and string.find(guid, "Creature") then
-			CEPGP_SendAddonMsg("?KillUpdate;" .. name .. ";" .. guid, "RAID");
-			if L[name] == "Zealot Zath" or L[name] == "Zealot Lor'Khan" or
-				L[name] == "Flamewaker Elite" or L[name] == "Flamewaker Healer" then
-				CEPGP_SendAddonMsg("?KillUpdate;" .. name .. ";" .. guid, "RAID");
-				return;
-			elseif bossNameIndex[L[name]] then
-				CEPGP_SendAddonMsg("?KillUpdate;" .. name .. ";" .. guid, "RAID");
-				return;
-			end
-		end
-	end
-	if event == "CHAT_MSG_MONSTER_YELL" then
-		local name = arg2;
-		local guid = arg12;
-		if L[arg2] == "The Prophet Skeram" then
-			if arg1 == L["You only delay... the inevetable."] then
-				local name = arg2;
-				local guid = arg12;
-				CEPGP_handleCombat(name, true, guid);
-				CEPGP_SendAddonMsg("?KillUpdate;" .. name .. ";" .. guid, "RAID");
-			end
-		end
+		return;
 	end
 	
 	if CEPGP_use then --EPGP and loot distribution related 
-		if event == "COMBAT_LOG_EVENT_UNFILTERED" then
-			local _, action, _, _, _, _, _, guid, name = CombatLogGetCurrentEventInfo();
-			if action == "UNIT_DIED" and string.find(guid, "Creature") then
-				if L[name] == "Zealot Zath" or L[name] == "Zealot Lor'Khan" then
-					CEPGP_handleCombat(name, false, guid);
-					return;
+		--	An encounter has been defeated
+		local function handleEncounter(event, arg2, arg5)
+			if event == "ENCOUNTER_END" and arg5 == 1 then
+				local bossName = L[arg2];
+				if bossNameIndex[bossName] and AUTOEP[bossName] and tonumber(EPVALS[bossName]) > 0 then
+					CEPGP_handleCombat(arg2);
 				end
-				if L[name] == "Flamewaker Elite" or L[name] == "Flamewaker Healer" then
-					CEPGP_handleCombat(name, true, guid);
-					return;
-				end
-				if bossNameIndex[L[name]] then
-					CEPGP_handleCombat(name, false, guid);
-					return;
-				end
+				return;
 			end
-		elseif event == "UNIT_SPELLCAST_SUCCEEDED" then
-			local unit, signature, spellID = UnitName(arg1), arg2, arg3;
-			if L[unit] == "Razorgore the Untamed" and spellID == 19873 then --Razorgore casts destroy egg
-				CEPGP_kills[#CEPGP_kills+1] = signature;
-				CEPGP_SendAddonMsg("?KillUpdate;" .. name .. ";" .. signature);
-			end
-			
-		elseif event == "CHAT_MSG_MONSTER_EMOTE" then
-			if arg1 == L["%s is resurrected by a nearby ally!"] then
-				if L[arg2] == "Zealot Lor'Khan" then
-					CEPGP_THEKAL_PARAMS["LOR'KHAN_DEAD"] = false;
-				elseif L[arg2] == "Zealot Zath" then
-					CEPGP_THEKAL_PARAMS["ZATH_DEAD"] = false;
-				elseif L[arg2] == "High Priest Thekal" and not (CEPGP_THEKAL_PARAMS["LOR'KHAN_DEAD"] or CEPGP_THEKAL_PARAMS["ZATH_DEAD"]) then
-					CEPGP_THEKAL_PARAMS["THEKAL_DEAD"] = false;
-				end
-			end
-			
-		elseif event == "CHAT_MSG_MONSTER_YELL" then
-			if L[arg2] == "The Prophet Skeram" then
-				if arg1 == L["You only delay... the inevetable."] then
-					local name = arg2;
-					local guid = arg12;
-					CEPGP_handleCombat(name, true, guid);
-					CEPGP_SendAddonMsg("?KillUpdate;" .. name .. ";" .. guid, "RAID");
-				end
-			end
-			
-		elseif (event == "LOOT_OPENED" or event == "LOOT_CLOSED" or event == "LOOT_SLOT_CLEARED") then
-			CEPGP_handleLoot(event, arg1, arg2);
+		end
 		
-		elseif event == "PLAYER_REGEN_DISABLED" then -- Player has started combat
-			if CEPGP_debugMode then
-				CEPGP_print("Combat started");
-			end
-			CEPGP_kills = {};
-			CEPGP_THEKAL_PARAMS = {["ZATH_DEAD"] = false, ["LOR'KHAN_DEAD"] = false, ["THEKAL_DEAD"] = false};
+		local success, failMsg = pcall(handleEncounter, event, arg2, arg5);
+		
+		if not success then
+			CEPGP_print("Failed to award GP for encounter!", true);
+			CEPGP_print(failMsg, true);
+		end
+		
+		if (event == "LOOT_OPENED" or event == "LOOT_CLOSED" or event == "LOOT_SLOT_CLEARED") then
+			CEPGP_handleLoot(event, arg1, arg2);
 		end
 	end
+	
 end
 
 function SlashCmdList.CEPGP(msg, editbox)
@@ -310,9 +337,9 @@ end
 
 function CEPGP_RaidAssistLootClosed()
 		HideUIPanel(CEPGP_distribute_popup);
-		HideUIPanel(CEPGP_distribute);
-		HideUIPanel(CEPGP_loot_CEPGP_distributing);
-		HideUIPanel(distributing);
+		HideUIPanel(CEPGP_distributing_button);
+		HideUIPanel(CEPGP_loot_distributing);
+		HideUIPanel(CEPGP_distributing_button);
 		CEPGP_distribute_item_tex:SetBackdrop(nil);
 		_G["CEPGP_distribute_item_tex"]:SetScript('OnEnter', function() end);
 		_G["CEPGP_distribute_item_name_frame"]:SetScript('OnClick', function() end);
@@ -320,7 +347,7 @@ end
 
 function CEPGP_RaidAssistLootDist(link, gp, raidwide) --raidwide refers to whether or not the ML would like everyone in the raid to be able to see the distribution window
 	if UnitIsGroupAssistant("player") or raidwide then --Only returns true if the unit is raid ASSIST, not raid leader
-		ShowUIPanel(distributing);
+		ShowUIPanel(CEPGP_distributing_button);
 		CEPGP_itemsTable = {};
 		CEPGP_UpdateLootScrollBar();
 		local name, iString, _, _, _, _, _, _, slot, tex = GetItemInfo(CEPGP_DistID);
@@ -370,193 +397,244 @@ end
 function CEPGP_AddRaidEP(amount, msg, encounter)
 	amount = math.floor(amount);
 	local total = GetNumGroupMembers();
-	if total > 0 then
-		for i = 1, total do
-			local name = GetRaidRosterInfo(i);
-			if CEPGP_tContains(CEPGP_roster, name, true) then
-				local index = CEPGP_getIndex(name, CEPGP_roster[name][1]);
-				if not CEPGP_checkEPGP(CEPGP_roster[name][5]) then
-					GuildRosterSetOfficerNote(index, amount .. "," .. BASEGP);
+	CEPGP_Info.IgnoreUpdates = true;
+	CEPGP_SendAddonMsg("?IgnoreUpdates;true");
+	local function update()
+		if msg ~= "" and msg ~= nil or encounter then
+			if encounter then -- a boss was killed
+				TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Raid", UnitName("player"), "Add Raid EP +" .. amount .. " - " .. encounter, "", "", "", "", "", time()};
+				CEPGP_ShareTraffic("Raid", UnitName("player"), "Add Raid EP +" .. amount .. " - " .. encounter);
+				CEPGP_sendChatMessage(msg, CHANNEL);
+			else -- EP was manually given, could be either positive or negative, and a message was written
+				if tonumber(amount) <= 0 then
+					TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Raid", UnitName("player"), "Subtract Raid EP +" .. amount .. " (" .. msg .. ")", "", "", "", "", "", time()};
+					CEPGP_ShareTraffic("Raid", UnitName("player"), "Subtract Raid EP " .. amount .. " (" .. msg .. ")");
+					CEPGP_sendChatMessage(amount .. " EP taken from all raid members (" .. msg .. ")", CHANNEL);
 				else
-					EP,GP = CEPGP_getEPGP(CEPGP_roster[name][5]);
-					EP = tonumber(EP);
-					GP = tonumber(GP);
-					EP = EP + amount;
-					if GP < BASEGP then
-						GP = BASEGP;
-					end
-					if EP < 0 then
-						EP = 0;
-					end
-					GuildRosterSetOfficerNote(index, EP .. "," .. GP);
+					TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Raid", UnitName("player"), "Add Raid EP +" .. amount .. " (" .. msg .. ")", "", "", "", "", "", time()};
+					CEPGP_ShareTraffic("Raid", UnitName("player"), "Add Raid EP +" .. amount .. " (" .. msg .. ")");
+					CEPGP_sendChatMessage(amount .. " EP awarded to all raid members (" .. msg .. ")", CHANNEL);
 				end
 			end
-		end
-	end
-	if msg ~= "" and msg ~= nil or encounter then
-		if encounter then -- a boss was killed
-			TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Raid", UnitName("player"), "增加团队EP +" .. amount .. " - " .. encounter, "", "", "", "", "", time()};
-			CEPGP_ShareTraffic("Raid", UnitName("player"), "增加团队EP +" .. amount .. " - " .. encounter);
-			CEPGP_sendChatMessage(msg, CHANNEL);
-		else -- EP was manually given, could be either positive or negative, and a message was written
+		else -- no message was written
 			if tonumber(amount) <= 0 then
-				TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Raid", UnitName("player"), "减少团队EP +" .. amount .. " (" .. msg .. ")", "", "", "", "", "", time()};
-				CEPGP_ShareTraffic("Raid", UnitName("player"), "减少团队EP " .. amount .. " (" .. msg .. ")");
-				CEPGP_sendChatMessage(amount .. " EP taken from all raid members (" .. msg .. ")", CHANNEL);
+				amount = string.sub(amount, 2, string.len(amount));
+				TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Raid", UnitName("player"), "Subtract Raid EP -" .. amount, "", "", "", "", "", time()};
+				CEPGP_ShareTraffic("Raid", UnitName("player"), "Subtract Raid EP -" .. amount);	
+				CEPGP_sendChatMessage(amount .. " EP taken from all raid members", CHANNEL);
 			else
-				TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Raid", UnitName("player"), "增加团队EP +" .. amount .. " (" .. msg .. ")", "", "", "", "", "", time()};
-				CEPGP_ShareTraffic("Raid", UnitName("player"), "增加团队EP +" .. amount .. " (" .. msg .. ")");
-				CEPGP_sendChatMessage(amount .. " EP奖励给所有团队成员(" .. msg .. ")", CHANNEL);
+				TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Raid", UnitName("player"), "Add Raid EP +" .. amount, "", "", "", "", "", time()};
+				CEPGP_ShareTraffic("Raid", UnitName("player"), "Add Raid EP +" .. amount);
+				CEPGP_sendChatMessage(amount .. " EP awarded to all raid members", CHANNEL);
 			end
 		end
-	else -- no message was written
-		if tonumber(amount) <= 0 then
-			amount = string.sub(amount, 2, string.len(amount));
-			TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Raid", UnitName("player"), "减少团队EP -" .. amount, "", "", "", "", "", time()};
-			CEPGP_ShareTraffic("Raid", UnitName("player"), "减少团队EP -" .. amount);	
-			CEPGP_sendChatMessage(amount .. " EP taken from all raid members", CHANNEL);
-		else
-			TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Raid", UnitName("player"), "增加团队EP +" .. amount, "", "", "", "", "", time()};
-			CEPGP_ShareTraffic("Raid", UnitName("player"), "增加团队EP +" .. amount);
-			CEPGP_sendChatMessage(amount .. " EP awarded to all raid members", CHANNEL);
+		if _G["CEPGP_traffic"]:IsVisible() then
+			CEPGP_UpdateTrafficScrollBar();
 		end
+		C_Timer.After(2, function()
+			CEPGP_Info.IgnoreUpdates = false;
+			CEPGP_SendAddonMsg("?IgnoreUpdates;false");
+			CEPGP_rosterUpdate("GUILD_ROSTER_UPDATE");
+		end);
 	end
-	CEPGP_UpdateTrafficScrollBar();
+	
+	local i = 0;
+	C_Timer.NewTicker(0.0001, function()
+		i = i + 1;
+		local name = GetRaidRosterInfo(i);
+		if CEPGP_roster[name] then
+			local index = CEPGP_getIndex(name, CEPGP_roster[name][1]);
+			local _, _, _, _, _, _, _, oNote = GetGuildRosterInfo(index);
+			EP,GP = CEPGP_getEPGP(name, index);
+			EP = tonumber(EP);
+			GP = tonumber(GP);
+			EP = EP + amount;
+			if GP < BASEGP then
+				GP = BASEGP;
+			end
+			if EP < 0 then
+				EP = 0;
+			end
+			GuildRosterSetOfficerNote(index, math.floor(EP) .. "," .. GP);
+		end
+		if i == total then
+			update();
+		end
+	end, total);
 end
 
 function CEPGP_addGuildEP(amount, msg)
 	if amount == nil then
-		CEPGP_print("请输入有效数字", 1);
+		CEPGP_print("Please enter a valid number", 1);
 		return;
 	end
-	local total = CEPGP_ntgetn(CEPGP_roster);
+
 	local EP, GP = nil;
 	amount = math.floor(amount);
-	CEPGP_ignoreUpdates = true;
-	CEPGP_SendAddonMsg("?IgnoreUpdates;true");
-	C_Timer.After(0.1, function()
-		if total > 0 then
-			for name,_ in pairs(CEPGP_roster)do
-				offNote = CEPGP_roster[name][5];
-				local index = CEPGP_getIndex(name, CEPGP_roster[name][1]);
-				if offNote == "" or offNote == "点击这里设置一个官员备注" then
-					GuildRosterSetOfficerNote(index, amount .. "," .. BASEGP);
-				else
-					EP,GP = CEPGP_getEPGP(CEPGP_roster[name][5]);
-					EP = tonumber(EP) + tonumber(amount);
-					GP = tonumber(GP);
-					if GP < BASEGP then
-						GP = BASEGP;
-					end
-					if EP < 0 then
-						EP = 0;
-					end
-					GuildRosterSetOfficerNote(index, EP .. "," .. GP);
-				end
-			end
-		end
-	end);
-	C_Timer.After(1, function()
-		CEPGP_ignoreUpdates = false;
-		CEPGP_SendAddonMsg("?IgnoreUpdates;false");
+	
+	local function update()
 		if tonumber(amount) <= 0 then
 			amount = string.sub(amount, 2, string.len(amount));
 			if msg ~= "" and msg ~= nil then
-				CEPGP_sendChatMessage(amount .. " EP 取走所有公会成员 (" .. msg .. ")", CHANNEL);
+				CEPGP_sendChatMessage(amount .. " EP taken from all guild members (" .. msg .. ")", CHANNEL);
 				TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Guild", UnitName("player"), "Subtract Guild EP -" .. amount .. " (" .. msg .. ")", "", "", "", "", "", time()};
 				CEPGP_ShareTraffic("Guild", UnitName("player"), "Subtract Guild EP -" .. amount .. " (" .. msg .. ")");
 			else
-				CEPGP_sendChatMessage(amount .. " EP 取走所有公会成员", CHANNEL);
+				CEPGP_sendChatMessage(amount .. " EP taken from all guild members", CHANNEL);
 				TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Guild", UnitName("player"), "Subtract Guild EP -" .. amount, "", "", "", "", "", time()};
 				CEPGP_ShareTraffic("Guild", UnitName("player"), "Subtract Guild EP -" .. amount);
 			end
 		else
 			if msg ~= "" and msg ~= nil then
-				CEPGP_sendChatMessage(amount .. " EP 奖励给所有公会成员 (" .. msg .. ")", CHANNEL);
+				CEPGP_sendChatMessage(amount .. " EP awarded to all guild members (" .. msg .. ")", CHANNEL);
 				TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Guild", UnitName("player"), "Add Guild EP +" .. amount .. " (" .. msg .. ")", "", "", "", "", "", time()};
 				CEPGP_ShareTraffic("Guild", UnitName("player"), "Add Guild EP +" .. amount .. " (" .. msg .. ")");
 			else
-				CEPGP_sendChatMessage(amount .. " EP 奖励给所有公会成员", CHANNEL);
+				CEPGP_sendChatMessage(amount .. " EP awarded to all guild members", CHANNEL);
 				TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Guild", UnitName("player"), "Add Guild EP +" .. amount, "", "", "", "", "", time()};
 				CEPGP_ShareTraffic("Guild", UnitName("player"), "Add Guild EP +" .. amount);
 			end
 		end
-		CEPGP_UpdateTrafficScrollBar();
-		CEPGP_rosterUpdate("GUILD_ROSTER_UPDATE");
+		if _G["CEPGP_traffic"]:IsVisible() then
+			CEPGP_UpdateTrafficScrollBar();
+		end
+		C_Timer.After(2, function()
+			CEPGP_Info.IgnoreUpdates = false;
+			CEPGP_SendAddonMsg("?IgnoreUpdates;false");
+			CEPGP_rosterUpdate("GUILD_ROSTER_UPDATE");
+		end);
+	end
+	
+	CEPGP_Info.IgnoreUpdates = true;
+	CEPGP_SendAddonMsg("?IgnoreUpdates;true");
+	local temp = {};
+	for k, _ in pairs(CEPGP_roster) do
+		table.insert(temp, k);
+	end
+	local i = 0;
+	C_Timer.After(0.1, function()
+		C_Timer.NewTicker(0.0001, function()
+			i = i + 1;
+			local name = temp[i];
+			local index = CEPGP_getIndex(name, CEPGP_roster[name][1]);
+			EP,GP = CEPGP_getEPGP(name, index);
+			EP = tonumber(EP) + tonumber(amount);
+			GP = tonumber(GP);
+			if GP < BASEGP then
+				GP = BASEGP;
+			end
+			if EP < 0 then
+				EP = 0;
+			end
+			GuildRosterSetOfficerNote(index, math.floor(EP) .. "," .. GP);
+			if i == #temp then
+				update();
+			end
+		end, #temp);
 	end);
 end
 
 function CEPGP_addStandbyEP(amount, boss, msg)
 	if amount == nil then
-		CEPGP_print("请输入有效数字", 1);
+		CEPGP_print("Please enter a valid number", 1);
 		return;
 	end
-	local inRaid = false;
-	if CEPGP_standby_byrank then
-		for name, _ in pairs(CEPGP_roster) do
-			inRaid = false;
-			for _, v in ipairs(CEPGP_raidRoster) do
-				if name == v[1] then
-					inRaid = true;
-					break;
-				end
+	
+	local function update()
+		if tonumber(amount) > 0 then
+			TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Guild", UnitName("player"), "Standby EP +" .. amount, "", "", "", "", "", time()};
+		elseif tonumber(amount) < 0 then
+			TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Guild", UnitName("player"), "Standby EP " .. amount, "", "", "", "", "", time()};
+		end
+		if tonumber(amount) > 0 then
+			CEPGP_ShareTraffic("Guild", UnitName("player"), "Standby EP +" .. amount);
+		elseif tonumber(amount) < 0 then
+			CEPGP_ShareTraffic("Guild", UnitName("player"), "Standby EP " .. amount);
+		end
+		if _G["CEPGP_traffic"]:IsVisible() then
+			CEPGP_UpdateTrafficScrollBar();
+		end
+		if _G["CEPGP_standby"]:IsVisible() then
+			CEPGP_UpdateStandbyScrollBar();
+		end
+		C_Timer.After(2, function()
+			CEPGP_Info.IgnoreUpdates = false;
+			CEPGP_SendAddonMsg("?IgnoreUpdates;false");
+			CEPGP_rosterUpdate("GUILD_ROSTER_UPDATE");
+		end);
+	end
+	
+	CEPGP_Info.IgnoreUpdates = true;
+	CEPGP_SendAddonMsg("?IgnoreUpdates;true");
+	
+	local i = 0;
+	
+	C_Timer.After(0.1, function()
+		local temp = {};
+		if CEPGP_standby_byrank then
+			local inRaid = false;
+			for k, _ in pairs(CEPGP_roster) do
+				table.insert(temp, k);
 			end
-			if not inRaid then
-				local index = CEPGP_getIndex(name, CEPGP_roster[name][1]);
-				local _, rank, _, _, _, _, _, offNote, online = GetGuildRosterInfo(index);
-				local EP,GP = CEPGP_getEPGP(offNote);
-				EP = math.floor(tonumber(EP) + amount);
-				GP = math.floor(tonumber(GP));
-				if GP < BASEGP then
-					GP = BASEGP;
+			C_Timer.NewTicker(0.0001, function()
+				i = i + 1;
+				local name = temp[i];
+				inRaid = false;
+				for _, v in ipairs(CEPGP_raidRoster) do
+					if name == v[1] then
+						inRaid = true;
+						break;
+					end
 				end
-				if EP < 0 then
-					EP = 0;
-				end				
-				for i = 1, table.getn(STANDBYRANKS) do
-					if STANDBYRANKS[i][1] == rank then
-						if STANDBYRANKS[i][2] == true and (online or STANDBYOFFLINE) then
-							local index = CEPGP_getIndex(name, CEPGP_roster[name][1]);
-							if offNote == "" or offNote == "点击这里设置一个官员备注" then
-								GuildRosterSetOfficerNote(index, EP .. "," .. BASEGP);
-							else
+				if not inRaid then
+					local index = CEPGP_getIndex(name, CEPGP_roster[name][1]);
+					local _, rank, _, _, _, _, _, _, online = GetGuildRosterInfo(index);
+					local EP,GP = CEPGP_getEPGP(name, index);
+					EP = math.floor(tonumber(EP) + amount);
+					GP = math.floor(tonumber(GP));
+					if GP < BASEGP then
+						GP = BASEGP;
+					end
+					if EP < 0 then
+						EP = 0;
+					end				
+					for i = 1, #STANDBYRANKS do
+						if STANDBYRANKS[i][1] == rank then
+							if STANDBYRANKS[i][2] == true and (online or STANDBYOFFLINE) then
+								local index = CEPGP_getIndex(name, CEPGP_roster[name][1]);
 								GuildRosterSetOfficerNote(index, EP .. "," .. GP);
-							end
-							if boss then
-								CEPGP_SendAddonMsg("STANDBYEP;"..name..";你已经被奖励了 "..amount.." 替补 EP ,因为 " .. boss,  "GUILD");
-							elseif msg ~= "" and msg ~= nil then
-								if tonumber(amount) > 0 then
-									CEPGP_SendAddonMsg("STANDBYEP;"..name..";你已经被奖励了 "..amount.." 替补 EP - "..msg, "GUILD");
-								elseif tonumber(amount) < 0 then
-									CEPGP_SendAddonMsg("STANDBYEP;"..name..";"..amount.." 替补 EP 已被取走 - "..msg, "GUILD");
-								end
-							else
-								if tonumber(amount) > 0 then
-									CEPGP_SendAddonMsg("STANDBYEP;"..name..";你已经被奖励了 "..amount.." 替补 EP", "GUILD");
-								elseif tonumber(amount) < 0 then
-									CEPGP_SendAddonMsg("STANDBYEP;"..name..";"..amount.." 你的替补 EP 已被取走", "GUILD");
+								if boss then
+									CEPGP_SendAddonMsg("STANDBYEP;"..name..";You have been awarded "..amount.." standby EP for encounter " .. boss, "GUILD");
+								elseif msg ~= "" and msg ~= nil then
+									if tonumber(amount) > 0 then
+										CEPGP_SendAddonMsg("STANDBYEP;"..name..";You have been awarded "..amount.." standby EP - "..msg, "GUILD");
+									elseif tonumber(amount) < 0 then
+										CEPGP_SendAddonMsg("STANDBYEP;"..name..";"..amount.." standby EP has been taken from you - "..msg, "GUILD");
+									end
+								else
+									if tonumber(amount) > 0 then
+										CEPGP_SendAddonMsg("STANDBYEP;"..name..";You have been awarded "..amount.." standby EP", "GUILD");
+									elseif tonumber(amount) < 0 then
+										CEPGP_SendAddonMsg("STANDBYEP;"..name..";"..amount.." standby EP has been taken from you", "GUILD");
+									end
 								end
 							end
 						end
 					end
 				end
-			end
-		end
-	elseif CEPGP_standby_manual then
-		for _, x in pairs(CEPGP_standbyRoster) do
-			local name = x[1];
-			inRaid = false;
-			for _, v in ipairs(CEPGP_raidRoster) do
-				if name == v[1] then
-					inRaid = true;
-					break;
+				if i == #temp then
+					update();
 				end
-			end
-			if not inRaid then
+			end, #temp);
+			
+		elseif CEPGP_standby_manual and #CEPGP_standbyRoster > 0 then
+			C_Timer.NewTicker(0.0001, function()
+				i = i + 1;
+				local name = CEPGP_standbyRoster[i][1];
 				local index = CEPGP_getIndex(name, CEPGP_roster[name][1]);
-				local _, rank, _, _, _, _, _, offNote, online = GetGuildRosterInfo(index);
+				local _, rank, _, _, _, _, _, _, online = GetGuildRosterInfo(index);
 				if online or STANDBYOFFLINE then
-					local EP,GP = CEPGP_getEPGP(offNote);
+					local EP,GP = CEPGP_getEPGP(name, index);
 					EP = math.floor(tonumber(EP) + amount);
 					GP = math.floor(tonumber(GP));
 					if GP < BASEGP then
@@ -565,60 +643,46 @@ function CEPGP_addStandbyEP(amount, boss, msg)
 					if EP < 0 then
 						EP = 0;
 					end
-					local index = CEPGP_getIndex(name, CEPGP_roster[name][1]);
-					if offNote == "" or offNote == "点击这里设置一个官员备注" then
+
+					if offNote == "" or offNote == "Click here to set an Officer's Note" then
 						GuildRosterSetOfficerNote(index, EP .. "," .. BASEGP);
 					else
 						GuildRosterSetOfficerNote(index, EP .. "," .. GP);
 					end
 					if boss then
-						CEPGP_SendAddonMsg("STANDBYEP;"..name..";你已经被奖励了 "..amount.." 替补 EP ,因为 " .. boss, "GUILD");
+						CEPGP_SendAddonMsg("STANDBYEP;"..name..";You have been awarded "..amount.." standby EP for encounter " .. boss, "GUILD");
 					elseif msg ~= "" and msg ~= nil then
 						if tonumber(amount) > 0 then
-							CEPGP_SendAddonMsg("STANDBYEP;"..name..";你已经被奖励了 "..amount.." 替补 EP - "..msg, "GUILD");
+							CEPGP_SendAddonMsg("STANDBYEP;"..name..";You have been awarded "..amount.." standby EP - "..msg, "GUILD");
 						elseif tonumber(amount) < 0 then
-							CEPGP_SendAddonMsg("STANDBYEP;"..name..";"..amount.." 替补 EP 已被取走 - "..msg, "GUILD");
+							CEPGP_SendAddonMsg("STANDBYEP;"..name..";"..amount.." standby EP has been taken from you - "..msg, "GUILD");
 						end
 					else
 						if tonumber(amount) > 0 then
-							CEPGP_SendAddonMsg("STANDBYEP;"..name..";你已经被奖励了 "..amount.." 替补 EP", "GUILD");
+							CEPGP_SendAddonMsg("STANDBYEP;"..name..";You have been awarded "..amount.." standby EP", "GUILD");
 						elseif tonumber(amount) < 0 then
-							CEPGP_SendAddonMsg("STANDBYEP;"..name..";"..amount.." 你的替补 EP 已被取走", "GUILD");
+							CEPGP_SendAddonMsg("STANDBYEP;"..name..";"..amount.." standby EP has been taken from you", "GUILD");
 						end
 					end
 				end
-			end
+				if i == #CEPGP_standbyRoster then
+					update();
+				end
+			end, #CEPGP_standbyRoster);
 		end
-	end
-	if tonumber(amount) > 0 then
-		TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Guild", UnitName("player"), "替补 EP +" .. amount, "", "", "", "", "", time()};
-	elseif tonumber(amount) < 0 then
-		TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Guild", UnitName("player"), "替补 EP " .. amount, "", "", "", "", "", time()};
-	end
-	if tonumber(amount) > 0 then
-		CEPGP_ShareTraffic("Guild", UnitName("player"), "替补 EP +" .. amount);
-	elseif tonumber(amount) < 0 then
-		CEPGP_ShareTraffic("Guild", UnitName("player"), "替补 EP " .. amount);
-	end
-	CEPGP_UpdateTrafficScrollBar();
-	CEPGP_UpdateStandbyScrollBar();
+	end);
 end
 
 function CEPGP_addGP(player, amount, itemID, itemLink, msg, response)
 	if amount == nil then
-		CEPGP_print("请输入有效数字", 1);
+		CEPGP_print("Please enter a valid number", 1);
 		return;
 	end
 	local EP, GP = nil;
 	amount = math.floor(amount);
-	if CEPGP_tContains(CEPGP_roster, player, true) then
-		offNote = CEPGP_roster[player][5];
+	if CEPGP_roster[player] then
 		local index = CEPGP_getIndex(player, CEPGP_roster[player][1]);
-		if offNote == "" or offNote == "点击这里设置一个官员备注" then
-			GuildRosterSetOfficerNote(index, "0," .. BASEGP);
-			offNote = "0," .. BASEGP;
-		end
-		EP,GP = CEPGP_getEPGP(offNote);
+		EP,GP = CEPGP_getEPGP(player, index);
 		GPB = GP;
 		GP = tonumber(GP) + amount;
 		EP = tonumber(EP);
@@ -633,8 +697,8 @@ function CEPGP_addGP(player, amount, itemID, itemLink, msg, response)
 			if tonumber(amount) < 0 then -- Number is negative
 				amount = string.sub(amount, 2, string.len(amount));
 				if msg ~= "" and msg ~= nil then
-					CEPGP_sendChatMessage(amount .. " GP 取走自 " .. player .. " (" .. msg .. ")", CHANNEL);
-					CEPGP_ShareTraffic(player, UnitName("player"), "减去 GP " .. amount .. " (" .. msg .. ")", EP, EP, GP - amount, GPB);
+					CEPGP_sendChatMessage(amount .. " GP taken from " .. player .. " (" .. msg .. ")", CHANNEL);
+					CEPGP_ShareTraffic(player, UnitName("player"), "Subtract GP " .. amount .. " (" .. msg .. ")", EP, EP, GP - amount, GPB);
 					TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {
 						[1] = player,
 						[2] = UnitName("player"),
@@ -646,8 +710,8 @@ function CEPGP_addGP(player, amount, itemID, itemLink, msg, response)
 						[9] = time()
 					};
 				else
-					CEPGP_sendChatMessage(amount .. " GP 取走自 " .. player, CHANNEL);
-					CEPGP_ShareTraffic(player, UnitName("player"), "减去 GP " .. amount, EP, EP, GP - amount, GPB);
+					CEPGP_sendChatMessage(amount .. " GP taken from " .. player, CHANNEL);
+					CEPGP_ShareTraffic(player, UnitName("player"), "Subtract GP " .. amount, EP, EP, GP - amount, GPB);
 					TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {
 						[1] = player,
 						[2] = UnitName("player"),
@@ -661,8 +725,8 @@ function CEPGP_addGP(player, amount, itemID, itemLink, msg, response)
 				end
 			else -- Number is positive
 				if msg ~= "" and msg ~= nil then
-					CEPGP_sendChatMessage(amount .. " GP 增加给 " .. player .. " (" .. msg .. ")", CHANNEL);
-					CEPGP_ShareTraffic(player, UnitName("player"), "增加 GP " .. amount .. " (" .. msg .. ")", EP, EP, GPB, GP);
+					CEPGP_sendChatMessage(amount .. " GP added to " .. player .. " (" .. msg .. ")", CHANNEL);
+					CEPGP_ShareTraffic(player, UnitName("player"), "Add GP " .. amount .. " (" .. msg .. ")", EP, EP, GPB, GP);
 					TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {
 						[1] = player,
 						[2] = UnitName("player"),
@@ -674,8 +738,8 @@ function CEPGP_addGP(player, amount, itemID, itemLink, msg, response)
 						[9] = time()
 					};
 				else
-					CEPGP_sendChatMessage(amount .. " GP 增加给 " .. player, CHANNEL);
-					CEPGP_ShareTraffic(player, UnitName("player"), "增加 GP " .. amount, EP, EP, GPB, GP);
+					CEPGP_sendChatMessage(amount .. " GP added to " .. player, CHANNEL);
+					CEPGP_ShareTraffic(player, UnitName("player"), "Add GP " .. amount, EP, EP, GPB, GP);
 					TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {
 						[1] = player,
 						[2] = UnitName("player"),
@@ -696,7 +760,7 @@ function CEPGP_addGP(player, amount, itemID, itemLink, msg, response)
 				TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {
 					[1] = player,
 					[2] = UnitName("player"),
-					[3] = "增加 GP " .. amount .. " (" .. response .. ")",
+					[3] = "Add GP " .. amount .. " (" .. response .. ")",
 					[4] = EP,
 					[5] = EP,
 					[6] = GPB,
@@ -708,7 +772,7 @@ function CEPGP_addGP(player, amount, itemID, itemLink, msg, response)
 				TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {
 					[1] = player,
 					[2] = UnitName("player"),
-					[3] = "增加 GP " .. amount,
+					[3] = "Add GP " .. amount,
 					[4] = EP,
 					[5] = EP,
 					[6] = GPB,
@@ -718,33 +782,28 @@ function CEPGP_addGP(player, amount, itemID, itemLink, msg, response)
 				};
 			end
 			if response then
-				CEPGP_ShareTraffic(player, UnitName("player"), "增加 GP " .. amount .. " (" .. response .. ")", EP, EP, GPB, GP, itemID);
+				CEPGP_ShareTraffic(player, UnitName("player"), "Add GP " .. amount .. " (" .. response .. ")", EP, EP, GPB, GP, itemID);
 			else
-				CEPGP_ShareTraffic(player, UnitName("player"), "增加 GP " .. amount, EP, EP, GPB, GP, itemID);
+				CEPGP_ShareTraffic(player, UnitName("player"), "Add GP " .. amount, EP, EP, GPB, GP, itemID);
 			end
 		end
 		CEPGP_UpdateTrafficScrollBar();
 	else
-		CEPGP_print(player .. " 在公会名册中找不到-没有GP");
-		CEPGP_print("如果这是一个错误，你可以通过cepgp公会菜单手动授予他们gp");
+		CEPGP_print(player .. " not found in guild roster - no GP given");
+		CEPGP_print("If this was a mistake, you can manually award them GP via the CEPGP guild menu");
 	end
 end
 
 function CEPGP_addEP(player, amount, msg)
 	if amount == nil then
-		CEPGP_print("请输入有效数字", 1);
+		CEPGP_print("Please enter a valid number", 1);
 		return;
 	end
 	amount = math.floor(amount);
 	local EP, GP = nil;
-	if CEPGP_tContains(CEPGP_roster, player, true) then
-		offNote = CEPGP_roster[player][5];
+	if CEPGP_roster[player] then
 		local index = CEPGP_getIndex(player, CEPGP_roster[player][1]);
-		if offNote == "" or offNote == "点击这里设置一个官员备注" then
-			GuildRosterSetOfficerNote(index, "0," .. BASEGP);
-			offNote = "0," .. BASEGP;
-		end
-		EP,GP = CEPGP_getEPGP(offNote);
+		EP,GP = CEPGP_getEPGP(player, index);
 		EPB = EP;
 		EP = tonumber(EP) + amount;
 		GP = tonumber(GP);
@@ -758,155 +817,175 @@ function CEPGP_addEP(player, amount, msg)
 		if tonumber(amount) <= 0 then
 			if msg ~= "" and msg ~= nil then
 				amount = string.sub(amount, 2, string.len(amount));
-				CEPGP_sendChatMessage(amount .. " EP 取走自 " .. player .. " (" .. msg .. ")", CHANNEL);
+				CEPGP_sendChatMessage(amount .. " EP taken from " .. player .. " (" .. msg .. ")", CHANNEL);
 				TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {
 					[1] = player,
 					[2] = UnitName("player"),
-					[3] = "减去 EP -" .. amount .. " (" .. msg .. ")",
+					[3] = "Subtract EP " .. amount .. " (" .. msg .. ")",
 					[4] = EPB,
 					[5] = EP,
 					[6] = GP,
 					[7] = GP,
 					[9] = time()
 				};
-				CEPGP_ShareTraffic(player, UnitName("player"), "减去 EP -" .. amount .. " (" .. msg .. ")", EPB, EP, GP, GP);
+				CEPGP_ShareTraffic(player, UnitName("player"), "Subtract EP -" .. amount .. " (" .. msg .. ")", EPB, EP, GP, GP);
 			else
 				amount = string.sub(amount, 2, string.len(amount));
-				CEPGP_sendChatMessage(amount .. " EP 取走自 " .. player, CHANNEL);
+				CEPGP_sendChatMessage(amount .. " EP taken from " .. player, CHANNEL);
 				TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {
 					[1] = player,
 					[2] = UnitName("player"),
-					[3] = "减去 EP -" .. amount,
+					[3] = "Subtract EP -" .. amount,
 					[4] = EPB,
 					[5] = EP,
 					[6] = GP,
 					[7] = GP,
 					[9] = time()
 				};
-				CEPGP_ShareTraffic(player, UnitName("player"), "减去 EP -" .. amount, EPB, EP, GP, GP);
+				CEPGP_ShareTraffic(player, UnitName("player"), "Subtract EP -" .. amount, EPB, EP, GP, GP);
 			end
 		else
 			if msg ~= "" and msg ~= nil then
-				CEPGP_sendChatMessage(amount .. " EP 增加给 " .. player .. " (" .. msg .. ")", CHANNEL);
+				CEPGP_sendChatMessage(amount .. " EP added to " .. player .. " (" .. msg .. ")", CHANNEL);
 				TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {
 					[1] = player,
 					[2] = UnitName("player"),
-					[3] = "增加 EP +" .. amount .. " (" .. msg .. ")",
+					[3] = "Add EP +" .. amount .. " (" .. msg .. ")",
 					[4] = EPB,
 					[5] = EP,
 					[6] = GP,
 					[7] = GP,
 					[9] = time()
 				};
-				CEPGP_ShareTraffic(player, UnitName("player"), "增加 EP +" .. amount .. " (" .. msg ..")", EPB, EP, GP, GP);
+				CEPGP_ShareTraffic(player, UnitName("player"), "Add EP +" .. amount .. " (" .. msg ..")", EPB, EP, GP, GP);
 			else
-				CEPGP_sendChatMessage(amount .. " EP 增加给 " .. player, CHANNEL);
+				CEPGP_sendChatMessage(amount .. " EP added to " .. player, CHANNEL);
 				TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {
 					[1] = player,
 					[2] = UnitName("player"),
-					[3] = "增加 EP +" .. amount,
+					[3] = "Add EP +" .. amount,
 					[4] = EPB,
 					[5] = EP,
 					[6] = GP,
 					[7] = GP,
 					[9] = time()
 				};
-				CEPGP_ShareTraffic(player, UnitName("player"), "增加 EP +" .. amount, EPB, EP, GP, GP);
+				CEPGP_ShareTraffic(player, UnitName("player"), "Add EP " .. amount, EPB, EP, GP, GP);
 			end
 		end
 		CEPGP_UpdateTrafficScrollBar();
 	else
-		CEPGP_print("在公会cepgp_花名册中找不到玩家.", true);
+		CEPGP_print("Player not found in guild CEPGP_roster.", true);
 	end
 end
 
 function CEPGP_decay(amount, msg)
 	if amount == nil then
-		CEPGP_print("请输入有效数字", 1);
+		CEPGP_print("Please enter a valid number", 1);
 		return;
 	end
-	CEPGP_updateGuild();
-	local EP, GP = nil;
-	CEPGP_ignoreUpdates = true;
-	CEPGP_SendAddonMsg("?IgnoreUpdates;true");
-	C_Timer.After(0.1, function()
-		for name,_ in pairs(CEPGP_roster)do
-			EP, GP = CEPGP_getEPGP(CEPGP_roster[name][5]);
-			local index = CEPGP_getIndex(name, CEPGP_roster[name][1]);
-			--[[if offNote == "" or offNote == "点击这里设置一个官员备注" then
-				GuildRosterSetOfficerNote(index, 0 .. "," .. BASEGP);
-				EP,GP = CEPGP_getEPGP(offNote);
-			else]]
-				EP = math.floor(tonumber(EP)*(1-(amount/100)));
-				if CEPGP_minGPDecayFactor then
-					GP = math.floor((tonumber((GP-BASEGP))*(1-(amount/100)))+BASEGP);
-				else
-					GP = math.floor((tonumber(GP)*(1-(amount/100))));
-				end
-				if GP < BASEGP then
-					GP = BASEGP;
-				end
-				if EP < 0 then
-					EP = 0;
-				end
-				GuildRosterSetOfficerNote(index, EP .. "," .. GP);
-			--end
-		end
-	end);
-	C_Timer.After(1, function()
-		CEPGP_ignoreUpdates = false;
-		CEPGP_SendAddonMsg("?IgnoreUpdates;false");
+	
+	local function update()
 		if tonumber(amount) <= 0 then
 			amount = string.sub(amount, 2, string.len(amount));
 			if msg ~= "" and msg ~= nil then
-				CEPGP_sendChatMessage("公会 EPGP 膨胀 " .. amount .. "% (" .. msg .. ")", CHANNEL);
-				TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Guild", UnitName("player"), "膨胀 EPGP +" .. amount .. "% (" .. msg .. ")", "", "", "", "", "", time()}; 
-				CEPGP_ShareTraffic("Guild", UnitName("player"), "膨胀 EPGP +" .. amount .. "% (" .. msg .. ")");
+				CEPGP_sendChatMessage("Guild EPGP inflated by " .. amount .. "% (" .. msg .. ")", CHANNEL);
+				TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Guild", UnitName("player"), "Inflated EPGP +" .. amount .. "% (" .. msg .. ")", "", "", "", "", "", time()}; 
+				CEPGP_ShareTraffic("Guild", UnitName("player"), "Inflated EPGP +" .. amount .. "% (" .. msg .. ")");
 			else
-				CEPGP_sendChatMessage("公会 EPGP 膨胀 " .. amount .. "%", CHANNEL);
-				TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Guild", UnitName("player"), "膨胀 EPGP +" .. amount .. "%", "", "", "", "", "", time()}; 
-				CEPGP_ShareTraffic("Guild", UnitName("player"), "膨胀 EPGP +" .. amount .. "%");
+				CEPGP_sendChatMessage("Guild EPGP inflated by " .. amount .. "%", CHANNEL);
+				TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Guild", UnitName("player"), "Inflated EPGP +" .. amount .. "%", "", "", "", "", "", time()}; 
+				CEPGP_ShareTraffic("Guild", UnitName("player"), "Inflated EPGP +" .. amount .. "%");
 			end
 		else
 			if msg ~= "" and msg ~= nil then
-				CEPGP_sendChatMessage("公会 EPGP 衰减 " .. amount .. "% (" .. msg .. ")", CHANNEL);
+				CEPGP_sendChatMessage("Guild EPGP decayed by " .. amount .. "% (" .. msg .. ")", CHANNEL);
 				TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Guild", UnitName("player"), "Decay EPGP -" .. amount .. "% (" .. msg .. ")", "", "", "", "", "", time()}; 
-				CEPGP_ShareTraffic("Guild", UnitName("player"), "衰减 EPGP -" .. amount .. "% (" .. msg .. ")");
+				CEPGP_ShareTraffic("Guild", UnitName("player"), "Decayed EPGP -" .. amount .. "% (" .. msg .. ")");
 			else
-				CEPGP_sendChatMessage("公会 EPGP 衰减 " .. amount .. "%", CHANNEL);
+				CEPGP_sendChatMessage("Guild EPGP decayed by " .. amount .. "%", CHANNEL);
 				TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Guild", UnitName("player"), "Decay EPGP -" .. amount .. "%", "", "", "", "", "", time()}; 
-				CEPGP_ShareTraffic("Guild", UnitName("player"), "衰减 EPGP -" .. amount .. "%");
+				CEPGP_ShareTraffic("Guild", UnitName("player"), "Decayed EPGP -" .. amount .. "%");
 			end
 		end
-		CEPGP_UpdateTrafficScrollBar();
-		CEPGP_rosterUpdate("GUILD_ROSTER_UPDATE");
+		if _G["CEPGP_traffic"]:IsVisible() then
+			CEPGP_UpdateTrafficScrollBar();
+		end
+		C_Timer.After(2, function()
+			CEPGP_Info.IgnoreUpdates = false;
+			CEPGP_SendAddonMsg("?IgnoreUpdates;false");
+			CEPGP_rosterUpdate("GUILD_ROSTER_UPDATE");
+		end);
+	end
+	
+	local EP, GP = nil;
+	CEPGP_Info.IgnoreUpdates = true;
+	CEPGP_SendAddonMsg("?IgnoreUpdates;true");
+	
+	local temp = {};
+	local i = 0;
+	
+	for k, _ in pairs(CEPGP_roster) do
+		table.insert(temp, k);
+	end
+	C_Timer.After(0.1, function()
+		C_Timer.NewTicker(0.0001, function()
+			i = i + 1;
+			local name = temp[i];
+			local index = CEPGP_getIndex(name, CEPGP_roster[name][1]);
+			EP, GP = CEPGP_getEPGP(name, index);
+			EP = math.floor(tonumber(EP)*(1-(amount/100)));
+			if CEPGP_minGPDecayFactor then
+				GP = math.floor((tonumber((GP-BASEGP))*(1-(amount/100)))+BASEGP);
+			else
+				GP = math.floor((tonumber(GP)*(1-(amount/100))));
+			end
+			if GP < BASEGP then
+				GP = BASEGP;
+			end
+			if EP < 0 then
+				EP = 0;
+			end
+			GuildRosterSetOfficerNote(index, EP .. "," .. GP);
+			if i == #temp then
+				update();
+			end
+		end, #temp);
 	end);
 end
 
 function CEPGP_resetAll(msg)
-	local total = CEPGP_ntgetn(CEPGP_roster);
-	CEPGP_ignoreUpdates = true;
-	CEPGP_SendAddonMsg("?IgnoreUpdates;true");
-	C_Timer.After(0.1, function()
-		if total > 0 then
-			for i = 1, total, 1 do
-				GuildRosterSetOfficerNote(i, "0,"..BASEGP);
-			end
+	
+	local function update()
+		if msg ~= "" and msg ~= nil then
+			TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Guild", UnitName("player"), "Cleared EPGP standings (" .. msg .. ")", "", "", "", "", "", time()};
+			CEPGP_ShareTraffic("Guild", UnitName("player"), "Cleared EPGP standings (" .. msg .. ")");
+			CEPGP_sendChatMessage("All EPGP standings have been cleared! (" .. msg .. ")", CHANNEL);
+		else
+			TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Guild", UnitName("player"), "Cleared EPGP standings", "", "", "", "", "", time()};
+			CEPGP_ShareTraffic("Guild", UnitName("player"), "Cleared EPGP standings");
+			CEPGP_sendChatMessage("All EPGP standings have been cleared!", CHANNEL);
 		end
-	end);
-	if msg ~= "" and msg ~= nil then
-		TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Guild", UnitName("player"), "清除EPGP (" .. msg .. ")", "", "", "", "", "", time()};
-		CEPGP_ShareTraffic("Guild", UnitName("player"), "Cleared EPGP standings (" .. msg .. ")");
-		CEPGP_sendChatMessage("所有的epgp积分都被清除了！ (" .. msg .. ")", CHANNEL);
-	else
-		TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Guild", UnitName("player"), "清除EPGP", "", "", "", "", "", time()};
-		CEPGP_ShareTraffic("Guild", UnitName("player"), "Cleared EPGP standings");
-		CEPGP_sendChatMessage("所有的epgp积分都被清除了！", CHANNEL);
+		C_Timer.After(2, function()
+			CEPGP_Info.IgnoreUpdates = false;
+			CEPGP_SendAddonMsg("?IgnoreUpdates;false");
+			CEPGP_rosterUpdate("GUILD_ROSTER_UPDATE");
+		end);
 	end
-	C_Timer.After(1, function()
-		CEPGP_ignoreUpdates = false;
-		CEPGP_SendAddonMsg("?IgnoreUpdates;false");
-		CEPGP_UpdateTrafficScrollBar();
-		CEPGP_rosterUpdate("GUILD_ROSTER_UPDATE");
+	
+	CEPGP_Info.IgnoreUpdates = true;
+	CEPGP_SendAddonMsg("?IgnoreUpdates;true");
+	
+	local i = 0;
+	
+	C_Timer.After(0.1, function()
+		C_Timer.NewTicker(0.0001, function()
+			i = i + 1;
+			GuildRosterSetOfficerNote(i, "0,"..BASEGP);
+			if i == GetNumGuildMembers() then
+				update();
+			end
+		end, GetNumGuildMembers());
 	end);
+	
 end
