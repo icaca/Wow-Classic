@@ -450,7 +450,7 @@ function G:SetupBuffIndicator(parent)
 
 	local frameData = {
 		[1] = {text = L["RaidBuffWatch"].."*", offset = -25, width = 160, barList = {}},
-		[2] = {text = L["BuffIndicator"].."*", offset = -315, width = 70, barList = {}},
+		[2] = {text = L["BuffIndicator"].."*", offset = -315, width = 50, barList = {}},
 	}
 	local decodeAnchor = {
 		["TL"] = "TOPLEFT",
@@ -464,7 +464,7 @@ function G:SetupBuffIndicator(parent)
 	}
 	local anchors = {"TL", "T", "TR", "L", "R", "BL", "B", "BR"}
 
-	local function createBar(parent, index, spellID, anchor, r, g, b)
+	local function createBar(parent, index, spellID, anchor, r, g, b, showAll)
 		local name, _, texture = GetSpellInfo(spellID)
 		local bar = CreateFrame("Frame", nil, parent)
 		bar:SetSize(220, 30)
@@ -489,6 +489,7 @@ function G:SetupBuffIndicator(parent)
 		text:SetWidth(180)
 		text:SetJustifyH("LEFT")
 		if anchor then text:SetTextColor(r, g, b) end
+		if showAll then B.CreateFS(bar, 14, "ALL", false, "RIGHT", -30, 0) end
 
 		sortBars(frameData[index].barList)
 	end
@@ -496,17 +497,18 @@ function G:SetupBuffIndicator(parent)
 	local function addClick(parent, index)
 		local spellID = tonumber(parent.box:GetText())
 		if not spellID or not GetSpellInfo(spellID) then UIErrorsFrame:AddMessage(DB.InfoColor..L["Incorrect SpellID"]) return end
-		local anchor, r, g, b
+		local anchor, r, g, b, showAll
 		if index == 1 then
 			if NDuiADB["RaidAuraWatch"][spellID] then UIErrorsFrame:AddMessage(DB.InfoColor..L["Existing ID"]) return end
 			NDuiADB["RaidAuraWatch"][spellID] = true
 		else
 			anchor, r, g, b = parent.dd.Text:GetText(), parent.swatch.tex:GetVertexColor()
+			showAll = parent.showAll:GetChecked() or nil
 			if NDuiADB["CornerBuffs"][DB.MyClass][spellID] then UIErrorsFrame:AddMessage(DB.InfoColor..L["Existing ID"]) return end
 			anchor = decodeAnchor[anchor]
-			NDuiADB["CornerBuffs"][DB.MyClass][spellID] = {anchor, {r, g, b}}
+			NDuiADB["CornerBuffs"][DB.MyClass][spellID] = {anchor, {r, g, b}, showAll}
 		end
-		createBar(parent.child, index, spellID, anchor, r, g, b)
+		createBar(parent.child, index, spellID, anchor, r, g, b, showAll)
 		parent.box:SetText("")
 	end
 
@@ -572,14 +574,22 @@ function G:SetupBuffIndicator(parent)
 				scroll.dd.options[i]:HookScript("OnEnter", optionOnEnter)
 				scroll.dd.options[i]:HookScript("OnLeave", B.HideTooltip)
 			end
-			scroll.box:SetPoint("TOPLEFT", scroll.dd, "TOPRIGHT", 25, 0)
+			scroll.box:SetPoint("TOPLEFT", scroll.dd, "TOPRIGHT", 20, 0)
 
 			local swatch = B.CreateColorSwatch(frame, "")
 			swatch:SetPoint("LEFT", scroll.box, "RIGHT", 5, 0)
 			scroll.swatch = swatch
 
+			local showAll = B.CreateCheckBox(frame)
+			showAll:SetPoint("LEFT", swatch, "RIGHT", 2, 0)
+			showAll:SetHitRectInsets(0, 0, 0, 0)
+			showAll.title = L["Tips"]
+			B.AddTooltip(showAll, "ANCHOR_RIGHT", L["ShowAllTip"], "info")
+			scroll.showAll = showAll
+
 			for spellID, value in pairs(NDuiADB["CornerBuffs"][DB.MyClass]) do
-				createBar(scroll.child, index, spellID, value[1], unpack(value[2]))
+				local r, g, b = unpack(value[2])
+				createBar(scroll.child, index, spellID, value[1], r, g, b, value[3])
 			end
 		end
 	end
@@ -642,7 +652,7 @@ function G:SetupUnitFrame(parent)
 	end
 	createOptionGroup(scroll.child, L["Player&Target"], -10, "Player", updatePlayerSize)
 
-	local subFrames = {_G.oUF_Pet, _G.oUF_ToT}
+	local subFrames = {_G.oUF_Pet, _G.oUF_ToT, _G.oUF_ToToT}
 	local function updatePetSize()
 		for _, frame in pairs(subFrames) do
 			frame:SetSize(NDuiDB["UFs"]["PetWidth"], NDuiDB["UFs"]["PetHeight"])
@@ -681,7 +691,7 @@ function G:SetupRaidFrame(parent)
 
 	local function resizeRaidFrame()
 		for _, frame in pairs(ns.oUF.objects) do
-			if frame.mystyle == "raid" and not frame.isPartyFrame then
+			if frame.mystyle == "raid" and not frame.isPartyFrame and not frame.isPartyPet then
 				if NDuiDB["UFs"]["SimpleMode"] then
 					frame:SetSize(100*NDuiDB["UFs"]["SimpleRaidScale"]/10, 20*NDuiDB["UFs"]["SimpleRaidScale"]/10)
 				else
@@ -706,7 +716,7 @@ function G:SetupRaidFrame(parent)
 
 	local function resizePartyPetFrame()
 		for _, frame in pairs(ns.oUF.objects) do
-			if frame.mystyle == "partypet" then
+			if frame.isPartyPet then
 				frame:SetSize(NDuiDB["UFs"]["PartyPetWidth"], NDuiDB["UFs"]["PartyPetHeight"])
 				frame.Power:SetHeight(NDuiDB["UFs"]["PartyPetPowerHeight"])
 			end

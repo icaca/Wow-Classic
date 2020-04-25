@@ -152,15 +152,19 @@ local function ScanInventory()
 			else 									-- .. otherwise, only save the id
 				inventory[i] = tonumber(link:match("item:(%d+)"))
 			end		
-			
+            
 			if (i ~= 4) and (i ~= 19) then		-- InventorySlotId 4 = shirt, 19 = tabard, skip them
 				itemCount = itemCount + 1
-				totalItemLevel = totalItemLevel + tonumber(((select(4, GetItemInfo(link))) or 0))
+				totalItemLevel = totalItemLevel + tonumber( ( ( select(4, GetItemInfo(link)) )  or 0) )
 			end
 		end
 	end
-	
-    addon.ThisCharacter.averageItemLvl = totalItemLevel / itemCount
+
+    if itemCount > 0 then
+        addon.ThisCharacter.averageItemLvl = totalItemLevel / itemCount
+    else
+        addon.ThisCharacter.averageItemLvl = 0
+    end
 	addon.ThisCharacter.lastUpdate = time()
 end
 
@@ -197,7 +201,7 @@ local function _GetInventoryItemCount(character, searchedID)
 end
 	
 local function _GetAverageItemLevel(character)
-	return character.averageItemLvl
+	return character.averageItemLvl or 0
 end
 
 local sentRequests		-- recently sent requests

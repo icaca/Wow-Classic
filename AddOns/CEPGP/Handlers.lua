@@ -1,10 +1,22 @@
 local L = CEPGP_Locale:GetLocale("CEPGP")
 
 function CEPGP_handleComms(event, arg1, arg2, response)
+	if arg1 then
+		for i = 1, 4 do
+			if string.lower(arg1) == string.lower(CEPGP_response_buttons[i][4]) then
+				response = i;
+				break;
+			end
+		end
+	end
 	response = tonumber(response);
-	if not response then response = 5; end
-	if event == "CHAT_MSG_WHISPER" and string.lower(arg1) == string.lower(CEPGP_keyword) and CEPGP_distributing then
-		
+	
+	local index = CEPGP_getIndex(arg2);
+
+	--if not response then response = 5; end
+
+	if event == "CHAT_MSG_WHISPER" and response then
+		if not CEPGP_distributing then return; end
 		for _, name in ipairs(CEPGP_responses) do
 			if name == arg2 then return; end
 		end
@@ -20,15 +32,14 @@ function CEPGP_handleComms(event, arg1, arg2, response)
 				local _, _, _, _, _, _, _, _, slot = GetItemInfo(CEPGP_DistID)
 				local EP, GP = nil;
 				local inGuild = false;
-				if CEPGP_roster[arg2] then
-					local index = CEPGP_getIndex(arg2, CEPGP_roster[arg2][1]);
+				if CEPGP_roster[arg2] then 
 					EP, GP = CEPGP_getEPGP(arg2, index);
-					if CEPGP_minEP[1] and CEPGP_minEP[2] > EP then
-						CEPGP_print(arg2 .. " is interested in this item but doesn't have enough EP.");
-						return;
-					end
 					class = CEPGP_roster[arg2][2];
 					inGuild = true;
+				elseif index then
+					EP, GP = CEPGP_getEPGP(arg2, index);
+					class = select(5, GetGuildRosterInfo(index));
+					inGuild = true; 
 				end
 				if (CEPGP_show_passes and response == 6) or response < 6 then
 					CEPGP_SendAddonMsg(arg2..";distslot;"..CEPGP_distSlot, "RAID");
@@ -52,7 +63,7 @@ function CEPGP_handleComms(event, arg1, arg2, response)
 						CEPGP_sendChatMessage(arg2 .. " (" .. class .. ") needs (Non-guild Member)", CEPGP_lootChannel);
 					end
 				end
-				if CEPGP_isML() == 0 and ((CEPGP_show_passes and response == 6) or response < 6) then --If you are the master looter
+				if (CEPGP_show_passes and response == 6) or response < 6 then --If you are the master looter
 					if not response then response = 5; end
 					CEPGP_SendAddonMsg("!need;"..arg2..";"..CEPGP_DistID..";"..response, "RAID"); --!need;playername;itemID (of the item being distributed) is sent for sharing with raid assist
 					CEPGP_itemsTable[arg2] = {};
@@ -64,16 +75,22 @@ function CEPGP_handleComms(event, arg1, arg2, response)
 
 			local EP, GP = nil;
 			local inGuild = false;
-			if CEPGP_roster[arg2] then
-				local index = CEPGP_getIndex(arg2, CEPGP_roster[arg2][1]);
-				EP, GP = CEPGP_getEPGP(arg2, index);
-				if CEPGP_minEP[1] and CEPGP_minEP[2] > EP then
-					CEPGP_print(arg2 .. " is interested in this item but doesn't have enough EP.");
-					return;
+			if CEPGP_roster[arg2] then 
+					local index = CEPGP_getIndex(arg2);
+					EP, GP = CEPGP_getEPGP(arg2, index);
+					--[[if CEPGP.Loot.MinReq[1] and CEPGP.Loot.MinReq[2] > tonumber(EP) then
+						CEPGP_print(arg2 .. " is interested in this item but doesn't have enough EP.");
+					end]]
+					class = CEPGP_roster[arg2][2];
+					inGuild = true;
+				else
+					local index = CEPGP_getIndex(arg2);
+					if index then
+						EP, GP = CEPGP_getEPGP(arg2, index);
+						class = select(5, GetGuildRosterInfo(index));
+						inGuild = true; 
+					end
 				end
-				class = CEPGP_roster[arg2][2];
-				inGuild = true;
-			end
 			if (CEPGP_show_passes and response == 6) or response < 6 then
 				CEPGP_SendAddonMsg(arg2..";distslot;"..CEPGP_distSlot, "RAID");
 			end
@@ -96,7 +113,7 @@ function CEPGP_handleComms(event, arg1, arg2, response)
 					CEPGP_sendChatMessage(arg2 .. " (" .. class .. ") needs (Non-guild Member)", CEPGP_lootChannel);
 				end
 			end
-			if CEPGP_isML() == 0 and ((CEPGP_show_passes and response == 6) or response < 6) then --If you are the master looter
+			if (CEPGP_show_passes and response == 6) or response < 6 then --If you are the master looter
 				CEPGP_SendAddonMsg("!need;"..arg2..";"..CEPGP_DistID..";"..response, "RAID"); --!need;playername;itemID (of the item being distributed) is sent for sharing with raid assist
 				CEPGP_itemsTable[arg2] = {};
 				CEPGP_itemsTable[arg2][3] = response;						
@@ -106,7 +123,7 @@ function CEPGP_handleComms(event, arg1, arg2, response)
 		
 	elseif event == "CHAT_MSG_WHISPER" and string.lower(arg1) == "!info" then
 		if CEPGP_getGuildInfo(arg2) ~= nil then
-			local index = CEPGP_getIndex(arg2, CEPGP_roster[arg2][1]);
+			local index = CEPGP_getIndex(arg2);
 			EP, GP = CEPGP_getEPGP(arg2, index);
 			if not CEPGP_vInfo[arg2] then
 				SendChatMessage("EPGP Standings - EP: " .. EP .. " / GP: " .. GP .. " / PR: " .. math.floor((EP/GP)*100)/100, "WHISPER", CEPGP_LANGUAGE, arg2);
@@ -175,7 +192,7 @@ function CEPGP_handleComms(event, arg1, arg2, response)
 							break;
 						end
 					end
-					local index = CEPGP_getIndex(arg2, CEPGP_roster[arg2][1]);
+					local index = CEPGP_getIndex(arg2);
 					EP, GP = CEPGP_getEPGP(arg2, index);
 					class = CEPGP_roster[name][2];
 					rRoster[count] = {
@@ -194,7 +211,7 @@ function CEPGP_handleComms(event, arg1, arg2, response)
 							EP, GP = 0, BASEGP;
 							class = UnitClass("raid"..i);
 						else
-							local index = CEPGP_getIndex(arg2, CEPGP_roster[arg2][1]);
+							local index = CEPGP_getIndex(arg2);
 							EP, GP = CEPGP_getEPGP(arg2, index);
 							class = CEPGP_roster[name][2];
 						end
@@ -219,7 +236,7 @@ function CEPGP_handleComms(event, arg1, arg2, response)
 							EP, GP = 0, BASEGP;
 							class = UnitClass("raid"..i);
 						else
-							local index = CEPGP_getIndex(arg2, CEPGP_roster[arg2][1]);
+							local index = CEPGP_getIndex(arg2);
 							EP, GP = CEPGP_getEPGP(arg2, index);
 							class = CEPGP_roster[name][2];
 						end
@@ -265,21 +282,38 @@ function CEPGP_handleComms(event, arg1, arg2, response)
 end
 
 function CEPGP_handleCombat(name)
-	if (((GetLootMethod() == "master" and CEPGP_isML() == 0) or (GetLootMethod() == "group" and UnitIsGroupLeader("player"))) and CEPGP_ntgetn(CEPGP_roster) > 0) then
-		local localName = name;
-		name = L[name];
+	if (((GetLootMethod() == "master" and CEPGP_isML() == 0) or (GetLootMethod() == "group" and UnitIsGroupLeader("player"))) and CEPGP_ntgetn(CEPGP_roster) > 0) or CEPGP_debugMode then
+		local localName = L[name];
 		local EP = EPVALS[name];
 		local plurals = name == "The Four Horsemen" or name == "Silithid Royalty" or name == "Twin Emperors";
 		local message = format(L["%s " .. (plurals and "have" or "has") .. " been defeated! %d EP has been awarded to the raid"], localName, EP);
-		
 		local callback = function()
-			CEPGP_AddRaidEP(EP, message, name);
-			if STANDBYEP and tonumber(STANDBYPERCENT) > 0 then
-				CEPGP_addStandbyEP(EP*(tonumber(STANDBYPERCENT)/100), name);
+			local function awardEP(localName, EP, message)
+				CEPGP_AddRaidEP(EP, message, localName);
+			end
+			
+			local success, failMsg = pcall(awardEP, localName, EP, message);
+			
+			if not success then
+				CEPGP_print("Failed to award raid EP for " .. name, true);
+				CEPGP_print(failMsg);
+			end
+			
+			local function awardStandbyEP(localName, EP)
+				if STANDBYEP and tonumber(STANDBYPERCENT) > 0 then
+					CEPGP_addStandbyEP(EP*(tonumber(STANDBYPERCENT)/100), localName);
+				end
+			end
+			
+			success, failMsg = pcall(awardStandbyEP, localName, EP);
+			
+			if not success then
+				CEPGP_print("Failed to award standby EP for " .. name, true);
+				CEPGP_print(failMsg);
 			end
 		end
 		
-		if CEPGP_ntgetn(CEPGP_roster) < GetNumGuildMembers() then
+		if CEPGP_ntgetn(CEPGP_roster) < (GetNumGuildMembers() - CEPGP_Info.NumExcluded) and CEPGP_Info.Polling then
 			table.insert(CEPGP_Info.RosterStack, callback);
 		else
 			callback();
@@ -296,7 +330,6 @@ function CEPGP_handleLoot(event, arg1, arg2)
 		end
 		CEPGP_distributing = false;
 		CEPGP_toggleGPEdit(true);
-		CEPGP_button_options_loot_gui:Enable();
 		CEPGP_distItemLink = nil;
 		CEPGP_Info.IgnoreUpdates = false;
 		_G["CEPGP_distributing_button"]:Hide();
@@ -342,7 +375,6 @@ function CEPGP_handleLoot(event, arg1, arg2)
 				if CEPGP_distPlayer ~= "" and CEPGP_award then
 					CEPGP_distributing = false;
 					CEPGP_toggleGPEdit(true);
-					CEPGP_button_options_loot_gui:Enable();
 					if CEPGP_isML() == 0 then
 						CEPGP_SendAddonMsg("RaidAssistLootClosed", "RAID");
 						CEPGP_SendAddonMsg("LootClosed;", "RAID");
@@ -362,21 +394,18 @@ function CEPGP_handleLoot(event, arg1, arg2)
 						end
 						CEPGP_addGP(CEPGP_distPlayer, CEPGP_distribute_GP_value:GetText()*CEPGP_rate, CEPGP_DistID, CEPGP_distItemLink, nil, response);
 					else
-						SendChatMessage("Awarded " .. _G["CEPGP_distribute_item_name"]:GetText() .. " to ".. CEPGP_distPlayer .. " for free", CHANNEL, CEPGP_LANGUAGE);
-						local index = CEPGP_roster[CEPGP_distPlayer][1];
-						local EP, GP = CEPGP_getEPGP(CEPGP_distPlayer, index);
-						TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {
-							[1] = CEPGP_distPlayer,
-							[2] = UnitName("player"),
-							[3] = "Given for Free",
-							[4] = EP,
-							[5] = EP,
-							[6] = GP,
-							[7] = GP,
-							[8] = CEPGP_distItemLink,
-							[9] = time()
-						};
-						CEPGP_ShareTraffic(CEPGP_distPlayer, UnitName("player"), "Given for Free", EP, EP, GP, GP, CEPGP_DistID, time());
+						if CEPGP_roster[CEPGP_distPlayer] then
+							local index = CEPGP_roster[CEPGP_distPlayer][1];
+							local EP, GP = CEPGP_getEPGP(CEPGP_distPlayer, index);
+							SendChatMessage("Awarded " .. _G["CEPGP_distribute_item_name"]:GetText() .. " to ".. CEPGP_distPlayer .. " for free", CHANNEL, CEPGP_LANGUAGE);
+							CEPGP_addTraffic(CEPGP_distPlayer, UnitName("player"), "Given for Free", EP, EP, GP, GP, CEPGP_DistID, time());
+						else
+							local index = CEPGP_getIndex(CEPGP_distPlayer);
+							if index then
+								SendChatMessage("Awarded " .. _G["CEPGP_distribute_item_name"]:GetText() .. " to ".. CEPGP_distPlayer .. " for free (Exclusion List)", CHANNEL, CEPGP_LANGUAGE);
+								CEPGP_addTraffic(CEPGP_distPlayer, UnitName("player"), "Given for Free (Exclusion List)", nil, nil, nil, nil, CEPGP_DistID, time());
+							end
+						end
 					end
 					CEPGP_distPlayer = "";
 					CEPGP_distribute_popup:Hide();
@@ -386,32 +415,21 @@ function CEPGP_handleLoot(event, arg1, arg2)
 				else
 					CEPGP_distributing = false;
 					CEPGP_toggleGPEdit(true);
-					CEPGP_button_options_loot_gui:Enable();
 					SendChatMessage(_G["CEPGP_distribute_item_name"]:GetText() .. " has been distributed without EPGP", CHANNEL, CEPGP_LANGUAGE);
-					TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {
-						[1] = "",
-						[2] = UnitName("player"),
-						[3] = "Manually Awarded",
-						[4] = "",
-						[5] = "",
-						[6] = "",
-						[7] = "",
-						[8] = CEPGP_distItemLink,
-						[9] = time()
-					};
-					CEPGP_ShareTraffic("", UnitName("player"), "Manually Awarded", "", "", "", "", CEPGP_DistID, time());
+					CEPGP_addTraffic("", UnitName("player"), "Manually Awarded", "", "", "", "", CEPGP_DistID, time());
 					CEPGP_distribute_popup:Hide();
 					CEPGP_distribute:Hide();
 					_G["CEPGP_distributing_button"]:Hide();
 					CEPGP_loot:Show();
 				end
 			end;
-			if CEPGP_ntgetn(CEPGP_roster) < GetNumGuildMembers() then
+			if CEPGP_ntgetn(CEPGP_roster) < (GetNumGuildMembers() - CEPGP_Info.NumExcluded) and CEPGP_Info.Polling then
 				table.insert(CEPGP_Info.RosterStack, callback);
 			else
 				callback();
 			end
 		end
+		
 		CEPGP_LootFrame_Update();
 	end	
 end

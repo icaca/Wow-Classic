@@ -293,6 +293,7 @@ function ns:DropDownLocation_Initialize()
 		info.value = i
 		info.func = function(self) 
 				UIDropDownMenu_SetSelectedValue(parent.SelectLocation, self.value)
+                addon:SetOption("UI.Tabs.Search.LocationRealm", UIDropDownMenu_GetSelectedValue(AltoholicTabSearch.SelectLocation))
 			end
 		info.checked = nil; 
 		info.icon = nil; 

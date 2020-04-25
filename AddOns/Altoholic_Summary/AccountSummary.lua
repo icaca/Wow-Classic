@@ -971,12 +971,12 @@ columns["Prof2"] = {
 	OnEnter = function(frame)
 			local character = frame:GetParent().character
 			local _, _, _, skillName = DataStore:GetProfession2(character)
-			Tradeskill_OnEnter(frame, skillName, true)
+			Tradeskill_OnEnter(frame, DataStore:ConvertProfessionSecondaryNameToPrimary(skillName), true)
 		end,
 	OnClick = function(frame, button)
 			local character = frame:GetParent().character
 			local _, _, _, skillName = DataStore:GetProfession2(character)
-			Tradeskill_OnClick(frame, skillName)
+			Tradeskill_OnClick(frame, DataStore:ConvertProfessionSecondaryNameToPrimary(skillName))
 		end,
 }
 
@@ -984,7 +984,7 @@ columns["ProfCooking"] = {
 	-- Header
 	headerWidth = 60,
 	headerLabel = "   " .. format(TEXTURE_FONT, addon:GetSpellIcon(2550), 18, 18),
-	tooltipTitle = GetSpellInfo(2550),
+	tooltipTitle = DataStore:ConvertProfessionSecondaryNameToPrimary(GetSpellInfo(2550)),
 	tooltipSubTitle = nil,
 	headerOnEnter = TradeskillHeader_OnEnter,
 	headerOnClick = function() SortView("ProfCooking") end,
@@ -999,10 +999,10 @@ columns["ProfCooking"] = {
 			return format("%s%s", GetSkillRankColor(rank), rank)
 		end,
 	OnEnter = function(frame)
-			Tradeskill_OnEnter(frame, GetSpellInfo(2550), true)
+			Tradeskill_OnEnter(frame, DataStore:ConvertProfessionSecondaryNameToPrimary(GetSpellInfo(2550)), true)
 		end,
 	OnClick = function(frame, button)
-			Tradeskill_OnClick(frame, GetSpellInfo(2550))
+			Tradeskill_OnClick(frame, DataStore:ConvertProfessionSecondaryNameToPrimary(GetSpellInfo(2550)))
 		end,
 }
 
@@ -1010,7 +1010,7 @@ columns["ProfFirstAid"] = {
 	-- Header
 	headerWidth = 60,
 	headerLabel = "   " .. format(TEXTURE_FONT, addon:GetSpellIcon(3273), 18, 18),
-	tooltipTitle = GetSpellInfo(3273),
+	tooltipTitle = DataStore:ConvertProfessionSecondaryNameToPrimary(GetSpellInfo(3273)),
 	tooltipSubTitle = nil,
 	headerOnEnter = TradeskillHeader_OnEnter,
 	headerOnClick = function() SortView("ProfFirstAid") end,
@@ -1025,10 +1025,10 @@ columns["ProfFirstAid"] = {
 			return format("%s%s", GetSkillRankColor(rank), rank)
 		end,
 	OnEnter = function(frame)
-			Tradeskill_OnEnter(frame, GetSpellInfo(3273), true)
+			Tradeskill_OnEnter(frame, DataStore:ConvertProfessionSecondaryNameToPrimary(GetSpellInfo(3273)), true)
 		end,
 	OnClick = function(frame, button)
-			Tradeskill_OnClick(frame, GetSpellInfo(3273))
+			Tradeskill_OnClick(frame, DataStore:ConvertProfessionSecondaryNameToPrimary(GetSpellInfo(3273)))
 		end,
 }
 

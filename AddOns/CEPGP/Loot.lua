@@ -102,60 +102,80 @@ function CEPGP_announce(link, x, slotNum, quantity)
 		else
 			CEPGP_SendAddonMsg("RaidAssistLootDist;"..link..";"..gp..";false", "RAID");
 		end
-		if CEPGP_loot_GUI then
-			local call = "CallItem;"..id..";"..gp;
-			local buttons = {};
-			if CEPGP_response_buttons[1][1] then
-				call = call .. ";" .. CEPGP_response_buttons[1][2];
-				buttons[1] = CEPGP_response_buttons[1][2];
-			else
-				call = call .. ";";
-			end
-			if CEPGP_response_buttons[2][1] then
-				call = call .. ";" .. CEPGP_response_buttons[2][2];
-				buttons[2] = CEPGP_response_buttons[2][2];
-			else
-				call = call .. ";";
-			end
-			if CEPGP_response_buttons[3][1] then
-				call = call .. ";" .. CEPGP_response_buttons[3][2];
-				buttons[3] = CEPGP_response_buttons[3][2];
-			else
-				call = call .. ";";
-			end
-			if CEPGP_response_buttons[4][1] then
-				call = call .. ";" .. CEPGP_response_buttons[4][2];
-				buttons[4] = CEPGP_response_buttons[4][2];
-			else
-				call = call .. ";";
-			end
-			call = call .. ";" .. tostring(CEPGP_response_time);
-			CEPGP_callItem(id, gp, buttons, CEPGP_response_time);
-			CEPGP_SendAddonMsg(call, "RAID");
-			SendChatMessage("NOW DISTRIBUTING: " .. link .. " for " .. gp .. " GP", "RAID_WARNING", CEPGP_LANGUAGE);
-		else
-			SendChatMessage("--------------------------", "RAID", CEPGP_LANGUAGE);
-			if rank > 0 then
-				if quantity > 1 then
+		SendChatMessage("--------------------------", "RAID", CEPGP_LANGUAGE);
+		if rank > 0 then
+			if quantity > 1 then
+				if CEPGP.Loot.RaidWarning then
 					SendChatMessage("NOW DISTRIBUTING: x" .. quantity .. " " .. link, "RAID_WARNING", CEPGP_LANGUAGE);
 				else
-					SendChatMessage("NOW DISTRIBUTING: " .. link, "RAID_WARNING", CEPGP_LANGUAGE);
+					SendChatMessage("NOW DISTRIBUTING: x" .. quantity .. " " .. link, "RAID", CEPGP_LANGUAGE);
 				end
 			else
-				if quantity > 1 then
-					SendChatMessage("NOW DISTRIBUTING: x" .. quantity .. " " .. link, "RAID", CEPGP_LANGUAGE);
+				if CEPGP.Loot.RaidWarning then
+					SendChatMessage("NOW DISTRIBUTING: " .. link, "RAID_WARNING", CEPGP_LANGUAGE);
 				else
 					SendChatMessage("NOW DISTRIBUTING: " .. link, "RAID", CEPGP_LANGUAGE);
 				end
 			end
+		else
 			if quantity > 1 then
-				SendChatMessage("GP Value: " .. gp .. " (~" .. math.floor(gp/quantity) .. "GP per unit)", "RAID", CEPGP_LANGUAGE);
+				SendChatMessage("NOW DISTRIBUTING: x" .. quantity .. " " .. link, "RAID", CEPGP_LANGUAGE);
 			else
-				SendChatMessage("GP Value: " .. gp, "RAID", CEPGP_LANGUAGE);
+				SendChatMessage("NOW DISTRIBUTING: " .. link, "RAID", CEPGP_LANGUAGE);
 			end
-			SendChatMessage("Whisper me " .. CEPGP_keyword .. " for mainspec only", "RAID", CEPGP_LANGUAGE);
-			SendChatMessage("--------------------------", "RAID", CEPGP_LANGUAGE);
 		end
+		if quantity > 1 then
+			SendChatMessage("GP Value: " .. gp .. " (~" .. math.floor(gp/quantity) .. "GP per unit)", "RAID", CEPGP_LANGUAGE);
+		else
+			SendChatMessage("GP Value: " .. gp, "RAID", CEPGP_LANGUAGE);
+		end
+
+		SendChatMessage(CEPGP.Loot.Announcement, "RAID", CEPGP_LANGUAGE);
+		if not CEPGP.Loot.HideKeyphrases then
+			SendChatMessage(CEPGP_response_buttons[1][4] .. " : " .. CEPGP_response_buttons[1][2], "RAID", CEPGP_LANGUAGE);
+			if CEPGP_response_buttons[2][1] then
+				SendChatMessage(CEPGP_response_buttons[2][4] .. " : " .. CEPGP_response_buttons[2][2], "RAID", CEPGP_LANGUAGE);
+			end
+			if CEPGP_response_buttons[3][1] then
+				SendChatMessage(CEPGP_response_buttons[3][4] .. " : " .. CEPGP_response_buttons[3][2], "RAID", CEPGP_LANGUAGE);
+			end
+			if CEPGP_response_buttons[4][1] then
+				SendChatMessage(CEPGP_response_buttons[4][4] .. " : " .. CEPGP_response_buttons[4][2], "RAID", CEPGP_LANGUAGE);
+			end
+		end
+		SendChatMessage("--------------------------", "RAID", CEPGP_LANGUAGE);
+		
+		
+		local call = "CallItem;"..id..";"..gp;
+		local buttons = {};
+		if CEPGP_response_buttons[1][1] then
+			call = call .. ";" .. CEPGP_response_buttons[1][2];
+			buttons[1] = CEPGP_response_buttons[1][2];
+		else
+			call = call .. ";";
+		end
+		if CEPGP_response_buttons[2][1] then
+			call = call .. ";" .. CEPGP_response_buttons[2][2];
+			buttons[2] = CEPGP_response_buttons[2][2];
+		else
+			call = call .. ";";
+		end
+		if CEPGP_response_buttons[3][1] then
+			call = call .. ";" .. CEPGP_response_buttons[3][2];
+			buttons[3] = CEPGP_response_buttons[3][2];
+		else
+			call = call .. ";";
+		end
+		if CEPGP_response_buttons[4][1] then
+			call = call .. ";" .. CEPGP_response_buttons[4][2];
+			buttons[4] = CEPGP_response_buttons[4][2];
+		else
+			call = call .. ";";
+		end
+		call = call .. ";" .. tostring(CEPGP_response_time);
+		CEPGP_callItem(id, gp, buttons, CEPGP_response_time);
+		CEPGP_SendAddonMsg(call, "RAID");
+			
 		CEPGP_distribute:Show();
 		CEPGP_loot:Hide();
 		_G["CEPGP_distribute_item_name"]:SetText(link);

@@ -1,11 +1,12 @@
-function CEPGP_UpdateLootScrollBar(sort)
+function CEPGP_UpdateLootScrollBar(PRsort, sort)
 	local tempTable = {};
 	local count = 1;
 	for name, id in pairs(CEPGP_itemsTable) do
 		local EP, GP;
 		if CEPGP_roster[name] then
-			local index = CEPGP_getIndex(name, CEPGP_roster[name][1]);
+			local index = CEPGP_getIndex(name);
 			EP, GP = CEPGP_getEPGP(name, index);
+			GP = math.max(math.floor(GP), CEPGP.GP.Min);
 			tempTable[count] = {
 				[1] = name,
 				[2] = CEPGP_roster[name][2], --Class
@@ -13,43 +14,63 @@ function CEPGP_UpdateLootScrollBar(sort)
 				[4] = CEPGP_roster[name][4], --RankIndex
 				[5] = EP,
 				[6] = GP,
-				[7] = math.floor((tonumber(EP)/tonumber(GP))*100)/100,
+				[7] = math.floor((tonumber(EP)*100/tonumber(GP)))/100,
 				[8] = CEPGP_itemsTable[name][1] or "noitem",
 				[9] = CEPGP_itemsTable[name][2] or "noitem",
 				[10] = CEPGP_roster[name][7], --className in English
 				[11] = CEPGP_itemsTable[name][3] -- Loot response
 			};
 		else
-			EP = 0;
-			GP = BASEGP;
-			for i = 1, GetNumGroupMembers() do
-				if GetRaidRosterInfo(i) == name then
-					local class = select(5, GetRaidRosterInfo(i))
-					local rank = "Not in Guild";
-					local rankIndex = 11;
-					local classFile = select(6, GetRaidRosterInfo(i));
-					tempTable[count] = {
+			local index = CEPGP_getIndex(name);
+			if index then
+				local _, rank, rankIndex, _, class, _, _, _, _, _, classFileName = GetGuildRosterInfo(index);
+				EP, GP = CEPGP_getEPGP(name, index);
+				tempTable[count] = {
 					[1] = name,
 					[2] = class,
 					[3] = rank,
 					[4] = rankIndex,
 					[5] = EP,
 					[6] = GP,
-					[7] = math.floor((tonumber(EP)/tonumber(GP))*100)/100,
+					[7] = math.floor((tonumber(EP)*100/tonumber(GP)))/100,
 					[8] = CEPGP_itemsTable[name][1] or "noitem",
 					[9] = CEPGP_itemsTable[name][2] or "noitem",
-					[10] = classFile,
+					[10] = classFileName,
 					[11] = CEPGP_itemsTable[name][3] -- Loot response
 				};
+			else
+				EP = 0;
+				GP = BASEGP;
+				for i = 1, GetNumGroupMembers() do
+					if GetRaidRosterInfo(i) == name then
+						local class = select(5, GetRaidRosterInfo(i))
+						local rank = "Not in Guild";
+						local rankIndex = 11;
+						local classFile = select(6, GetRaidRosterInfo(i));
+						tempTable[count] = {
+						[1] = name,
+						[2] = class,
+						[3] = rank,
+						[4] = rankIndex,
+						[5] = EP,
+						[6] = GP,
+						[7] = math.floor((tonumber(EP)*100/tonumber(GP)))/100,
+						[8] = CEPGP_itemsTable[name][1] or "noitem",
+						[9] = CEPGP_itemsTable[name][2] or "noitem",
+						[10] = classFile,
+						[11] = CEPGP_itemsTable[name][3] -- Loot response
+					};
+					end
 				end
 			end
 		end		
 		count = count + 1;
 	end
-	if sort and CEPGP_PR_sort then
+	if PRsort and CEPGP_PR_sort then
 		tempTable = CEPGP_sortDistList(tempTable);
+	elseif sort then
+		tempTable = CEPGP_tSort(tempTable, CEPGP_criteria);
 	end
-	--tempTable = CEPGP_tSort(tempTable, CEPGP_criteria);
 	local kids = {_G["CEPGP_dist_scrollframe_container"]:GetChildren()};
 	for _, child in ipairs(kids) do
 		child:Hide();
@@ -65,6 +86,26 @@ function CEPGP_UpdateLootScrollBar(sort)
 		end
 		local response = tempTable[i][11];
 		tempTable[i][11] = CEPGP_response_buttons[tonumber(response)][2];
+		local EPcolour;
+		if CEPGP.Loot.MinReq[1] and CEPGP.Loot.MinReq[2] > tonumber(tempTable[i][5]) then
+			EPcolour = {
+				r = 1,
+				g = 0,
+				b = 0
+			};
+		else
+			EPcolour = RAID_CLASS_COLORS[string.upper(tempTable[i][10])];
+		end
+		
+		local colour = RAID_CLASS_COLORS[string.upper(tempTable[i][10])];
+		if not colour then
+			colour = {
+				r = 1,
+				g = 1,
+				b = 1
+			};
+		end
+		
 		if tempTable[i][8] ~= "noitem" or tempTable[i][9] ~= "noitem" then
 			if tempTable[i][8] ~= "noitem" then
 				local id = tonumber(tempTable[i][8]);
@@ -75,14 +116,7 @@ function CEPGP_UpdateLootScrollBar(sort)
 					item:ContinueOnItemLoad(function()
 						_, link, _, _, _, _, _, _, _, tex = GetItemInfo(id)
 						iString = CEPGP_getItemString(link);
-						local colour = RAID_CLASS_COLORS[string.upper(tempTable[i][10])];
-						if not colour then
-							colour = {
-							r = 1,
-							g = 1,
-							b = 1
-						};
-						end
+						
 						_G["LootDistButton" .. i]:Show();
 						_G["LootDistButton" .. i]:SetAttribute("response", response);
 						_G["LootDistButton" .. i]:SetAttribute("responseName", tempTable[i][11]);
@@ -95,7 +129,7 @@ function CEPGP_UpdateLootScrollBar(sort)
 						_G["LootDistButton" .. i .. "Response"]:SetText(tempTable[i][11]);
 						_G["LootDistButton" .. i .. "Response"]:SetTextColor(colour.r, colour.g, colour.b);
 						_G["LootDistButton" .. i .. "EP"]:SetText(tempTable[i][5]);
-						_G["LootDistButton" .. i .. "EP"]:SetTextColor(colour.r, colour.g, colour.b);
+						_G["LootDistButton" .. i .. "EP"]:SetTextColor(EPcolour.r, EPcolour.g, EPcolour.b);
 						_G["LootDistButton" .. i .. "GP"]:SetText(tempTable[i][6]);
 						_G["LootDistButton" .. i .. "GP"]:SetTextColor(colour.r, colour.g, colour.b);
 						_G["LootDistButton" .. i .. "PR"]:SetText(string.format("%.2f", tempTable[i][7]));
@@ -112,14 +146,7 @@ function CEPGP_UpdateLootScrollBar(sort)
 					end);
 				else
 					iString = CEPGP_getItemString(link);
-					local colour = RAID_CLASS_COLORS[string.upper(tempTable[i][10])];
-					if not colour then
-						colour = {
-						r = 1,
-						g = 1,
-						b = 1
-					};
-					end
+				
 					_G["LootDistButton" .. i]:Show();
 					_G["LootDistButton" .. i]:SetAttribute("response", response);
 					_G["LootDistButton" .. i]:SetAttribute("responseName", tempTable[i][11]);
@@ -132,7 +159,7 @@ function CEPGP_UpdateLootScrollBar(sort)
 					_G["LootDistButton" .. i .. "Response"]:SetText(tempTable[i][11]);
 					_G["LootDistButton" .. i .. "Response"]:SetTextColor(colour.r, colour.g, colour.b);
 					_G["LootDistButton" .. i .. "EP"]:SetText(tempTable[i][5]);
-					_G["LootDistButton" .. i .. "EP"]:SetTextColor(colour.r, colour.g, colour.b);
+					_G["LootDistButton" .. i .. "EP"]:SetTextColor(EPcolour.r, EPcolour.g, EPcolour.b);
 					_G["LootDistButton" .. i .. "GP"]:SetText(tempTable[i][6]);
 					_G["LootDistButton" .. i .. "GP"]:SetTextColor(colour.r, colour.g, colour.b);
 					_G["LootDistButton" .. i .. "PR"]:SetText(string.format("%.2f", tempTable[i][7]));
@@ -161,14 +188,7 @@ function CEPGP_UpdateLootScrollBar(sort)
 					item:ContinueOnItemLoad(function()
 						_, link, _, _, _, _, _, _, _, tex2 = GetItemInfo(id)
 						iString2 = CEPGP_getItemString(link);
-						local colour = RAID_CLASS_COLORS[string.upper(tempTable[i][10])];
-						if not colour then
-							colour = {
-							r = 1,
-							g = 1,
-							b = 1
-						};
-						end
+						
 						_G["LootDistButton" .. i]:Show();
 						_G["LootDistButton" .. i]:SetAttribute("response", response);
 						_G["LootDistButton" .. i]:SetAttribute("responseName", tempTable[i][11]);
@@ -181,7 +201,7 @@ function CEPGP_UpdateLootScrollBar(sort)
 						_G["LootDistButton" .. i .. "Response"]:SetText(tempTable[i][11]);
 						_G["LootDistButton" .. i .. "Response"]:SetTextColor(colour.r, colour.g, colour.b);
 						_G["LootDistButton" .. i .. "EP"]:SetText(tempTable[i][5]);
-						_G["LootDistButton" .. i .. "EP"]:SetTextColor(colour.r, colour.g, colour.b);
+						_G["LootDistButton" .. i .. "EP"]:SetTextColor(EPcolour.r, EPcolour.g, EPcolour.b);
 						_G["LootDistButton" .. i .. "GP"]:SetText(tempTable[i][6]);
 						_G["LootDistButton" .. i .. "GP"]:SetTextColor(colour.r, colour.g, colour.b);
 						_G["LootDistButton" .. i .. "PR"]:SetText(string.format("%.2f", tempTable[i][7]));
@@ -198,14 +218,7 @@ function CEPGP_UpdateLootScrollBar(sort)
 					end);
 				else
 					iString2 = CEPGP_getItemString(link);
-					local colour = RAID_CLASS_COLORS[string.upper(tempTable[i][10])];
-					if not colour then
-						colour = {
-						r = 1,
-						g = 1,
-						b = 1
-					};
-					end
+					
 					_G["LootDistButton" .. i]:Show();
 					_G["LootDistButton" .. i]:SetAttribute("response", response);
 					_G["LootDistButton" .. i]:SetAttribute("responseName", tempTable[i][11]);
@@ -218,7 +231,7 @@ function CEPGP_UpdateLootScrollBar(sort)
 					_G["LootDistButton" .. i .. "Response"]:SetText(tempTable[i][11]);
 					_G["LootDistButton" .. i .. "Response"]:SetTextColor(colour.r, colour.g, colour.b);
 					_G["LootDistButton" .. i .. "EP"]:SetText(tempTable[i][5]);
-					_G["LootDistButton" .. i .. "EP"]:SetTextColor(colour.r, colour.g, colour.b);
+					_G["LootDistButton" .. i .. "EP"]:SetTextColor(EPcolour.r, EPcolour.g, EPcolour.b);
 					_G["LootDistButton" .. i .. "GP"]:SetText(tempTable[i][6]);
 					_G["LootDistButton" .. i .. "GP"]:SetTextColor(colour.r, colour.g, colour.b);
 					_G["LootDistButton" .. i .. "PR"]:SetText(string.format("%.2f", tempTable[i][7]));
@@ -238,14 +251,7 @@ function CEPGP_UpdateLootScrollBar(sort)
 				_G["LootDistButton" .. i .. "Icon2"]:SetTexture(nil);
 			end
 		else --Recipient has no items in the corresponding slots
-			local colour = RAID_CLASS_COLORS[string.upper(tempTable[i][10])];
-			if not colour then
-				colour = {
-				r = 1,
-				g = 1,
-				b = 1
-			};
-			end
+			
 			_G["LootDistButton" .. i]:Show();
 			_G["LootDistButton" .. i]:SetAttribute("response", response);
 			_G["LootDistButton" .. i]:SetAttribute("responseName", tempTable[i][11]);
@@ -258,7 +264,7 @@ function CEPGP_UpdateLootScrollBar(sort)
 			_G["LootDistButton" .. i .. "Response"]:SetText(tempTable[i][11]);
 			_G["LootDistButton" .. i .. "Response"]:SetTextColor(colour.r, colour.g, colour.b);
 			_G["LootDistButton" .. i .. "EP"]:SetText(tempTable[i][5]);
-			_G["LootDistButton" .. i .. "EP"]:SetTextColor(colour.r, colour.g, colour.b);
+			_G["LootDistButton" .. i .. "EP"]:SetTextColor(EPcolour.r, EPcolour.g, EPcolour.b);
 			_G["LootDistButton" .. i .. "GP"]:SetText(tempTable[i][6]);
 			_G["LootDistButton" .. i .. "GP"]:SetTextColor(colour.r, colour.g, colour.b);
 			_G["LootDistButton" .. i .. "PR"]:SetText(string.format("%.2f", tempTable[i][7]));
@@ -280,11 +286,16 @@ function CEPGP_UpdateLootScrollBar(sort)
 end
 
 function CEPGP_UpdateGuildScrollBar()
+	CEPGP_Info.LastRun.GuildSB = GetTime();
+	local call = CEPGP_Info.LastRun.GuildSB;
+	local quit = false;
 	local tempTable = {};
+	local count = 0;
 	for name, v in pairs(CEPGP_roster) do
-		local index = CEPGP_getIndex(name, v[1]);
+		count = count + 1;
+		local index = CEPGP_getIndex(name);
 		local EP, GP = CEPGP_getEPGP(name, index)
-		tempTable[v[1]] = {
+		tempTable[count] = {
 			[1] = name,
 			[2] = v[2], --Class
 			[3] = v[3], --Rank
@@ -305,74 +316,64 @@ function CEPGP_UpdateGuildScrollBar()
 		--child:Hide();
 	end
 	local i = 0;
-	--for i = 1, CEPGP_ntgetn(tempTable) do
+
 	C_Timer.NewTicker(0.0001, function()
+		if quit then return; end
+		if CEPGP_Info.LastRun.GuildSB ~= call then
+			quit = true;
+			return;
+		end
 		i = i + 1;
-		if not _G["GuildButton" .. i] then
-			local frame = CreateFrame('Button', "GuildButton" .. i, _G["CEPGP_guild_scrollframe_container"], "GuildButtonTemplate");
-			if i > 1 then
-				_G["GuildButton" .. i]:SetPoint("TOPLEFT", _G["GuildButton" .. i-1], "BOTTOMLEFT", 0, -2);
-			else
-				_G["GuildButton" .. i]:SetPoint("TOPLEFT", _G["CEPGP_guild_scrollframe_container"], "TOPLEFT", 0, -10);
+		if #tempTable > 0 then
+			if not _G["GuildButton" .. i] then
+				local frame = CreateFrame('Button', "GuildButton" .. i, _G["CEPGP_guild_scrollframe_container"], "GuildButtonTemplate");
+				if i > 1 then
+					_G["GuildButton" .. i]:SetPoint("TOPLEFT", _G["GuildButton" .. i-1], "BOTTOMLEFT", 0, -2);
+				else
+					_G["GuildButton" .. i]:SetPoint("TOPLEFT", _G["CEPGP_guild_scrollframe_container"], "TOPLEFT", 0, -10);
+				end
 			end
+			local colour = RAID_CLASS_COLORS[string.upper(tempTable[i][8])];
+			if not colour then
+				colour = {
+				r = 1,
+				g = 1,
+				b = 1
+			};
+			end
+			_G["GuildButton" .. i]:Show();
+			_G["GuildButton" .. i .. "Info"]:SetText(tempTable[i][1]);
+			_G["GuildButton" .. i .. "Info"]:SetTextColor(colour.r, colour.g, colour.b);
+			_G["GuildButton" .. i .. "Class"]:SetText(tempTable[i][2]);
+			_G["GuildButton" .. i .. "Class"]:SetTextColor(colour.r, colour.g, colour.b);
+			_G["GuildButton" .. i .. "Rank"]:SetText(tempTable[i][3]);
+			_G["GuildButton" .. i .. "Rank"]:SetTextColor(colour.r, colour.g, colour.b);
+			_G["GuildButton" .. i .. "EP"]:SetText(tempTable[i][5]);
+			_G["GuildButton" .. i .. "EP"]:SetTextColor(colour.r, colour.g, colour.b);
+			_G["GuildButton" .. i .. "GP"]:SetText(tempTable[i][6]);
+			_G["GuildButton" .. i .. "GP"]:SetTextColor(colour.r, colour.g, colour.b);
+			_G["GuildButton" .. i .. "PR"]:SetText(string.format("%.2f", tempTable[i][7]));
+			_G["GuildButton" .. i .. "PR"]:SetTextColor(colour.r, colour.g, colour.b);
 		end
-		local colour = RAID_CLASS_COLORS[string.upper(tempTable[i][8])];
-		if not colour then
-			colour = {
-			r = 1,
-			g = 1,
-			b = 1
-		};
-		end
-		_G["GuildButton" .. i]:Show();
-		_G["GuildButton" .. i .. "Info"]:SetText(tempTable[i][1]);
-		_G["GuildButton" .. i .. "Info"]:SetTextColor(colour.r, colour.g, colour.b);
-		_G["GuildButton" .. i .. "Class"]:SetText(tempTable[i][2]);
-		_G["GuildButton" .. i .. "Class"]:SetTextColor(colour.r, colour.g, colour.b);
-		_G["GuildButton" .. i .. "Rank"]:SetText(tempTable[i][3]);
-		_G["GuildButton" .. i .. "Rank"]:SetTextColor(colour.r, colour.g, colour.b);
-		_G["GuildButton" .. i .. "EP"]:SetText(tempTable[i][5]);
-		_G["GuildButton" .. i .. "EP"]:SetTextColor(colour.r, colour.g, colour.b);
-		_G["GuildButton" .. i .. "GP"]:SetText(tempTable[i][6]);
-		_G["GuildButton" .. i .. "GP"]:SetTextColor(colour.r, colour.g, colour.b);
-		_G["GuildButton" .. i .. "PR"]:SetText(string.format("%.2f", tempTable[i][7]));
-		_G["GuildButton" .. i .. "PR"]:SetTextColor(colour.r, colour.g, colour.b);
 	end, #tempTable);
 end
 
 function CEPGP_UpdateRaidScrollBar()
+	CEPGP_Info.LastRun.RaidSB = GetTime();
+	local call = CEPGP_Info.LastRun.RaidSB;
 	local tempTable = {};
 	CEPGP_rosterUpdate("GROUP_ROSTER_UPDATE");
 	for i = 1, CEPGP_ntgetn(CEPGP_raidRoster) do
-		--[[local name = CEPGP_raidRoster[i][1];
-		local EP, GP;
-		if CEPGP_roster[name] then
-			local index = CEPGP_getIndex(name, CEPGP_roster[name][1]);
-			EP, GP = CEPGP_getEPGP(name, index);
-			if not EP then EP = 0; end
-			if not GP then GP = BASEGP; end
-			tempTable[i] = {
-				[1] = name,
-				[2] = CEPGP_roster[name][2], --Class
-				[3] = CEPGP_roster[name][3], --Rank
-				[4] = CEPGP_roster[name][4], --RankIndex
-				[5] = EP,
-				[6] = GP,
-				[7] = math.floor((EP/GP)*100)/100,
-				[8] = CEPGP_roster[name][7] --Class in English
-			};
-		else]]
-			tempTable[i] = {
-				[1] = CEPGP_raidRoster[i][1], --Name
-				[2] = CEPGP_raidRoster[i][2], --Class
-				[3] = CEPGP_raidRoster[i][3], --Rank
-				[4] = CEPGP_raidRoster[i][4], --RankIndex
-				[5] = CEPGP_raidRoster[i][5], --EP
-				[6] = CEPGP_raidRoster[i][6], --GP
-				[7] = CEPGP_raidRoster[i][7], --PR
-				[8] = CEPGP_raidRoster[i][8]  --Class in English
-			};
-		--end
+		tempTable[i] = {
+			[1] = CEPGP_raidRoster[i][1], --Name
+			[2] = CEPGP_raidRoster[i][2], --Class
+			[3] = CEPGP_raidRoster[i][3], --Rank
+			[4] = CEPGP_raidRoster[i][4], --RankIndex
+			[5] = CEPGP_raidRoster[i][5], --EP
+			[6] = CEPGP_raidRoster[i][6], --GP
+			[7] = CEPGP_raidRoster[i][7], --PR
+			[8] = CEPGP_raidRoster[i][8]  --Class in English
+		};
 		
 	end
 	tempTable = CEPGP_tSort(tempTable, CEPGP_criteria);
@@ -383,7 +384,11 @@ function CEPGP_UpdateRaidScrollBar()
 			child = nil;
 		end
 	end
-	for i = 1, CEPGP_ntgetn(CEPGP_raidRoster) do
+	for i = 1, CEPGP_ntgetn(tempTable) do
+		if CEPGP_Info.LastRun.RaidSB ~= call then
+			return;
+		end
+		if #tempTable ~= #CEPGP_raidRoster then return; end
 		if not _G["RaidButton" .. i] then
 			local frame = CreateFrame('Button', "RaidButton" .. i, _G["CEPGP_raid_scrollframe_container"], "RaidButtonTemplate");
 			if i > 1 then
@@ -475,13 +480,11 @@ function CEPGP_UpdateVersionScrollBar()
 		for i = 1, CEPGP_ntgetn(tempTable) do
 			_G["versionButton" .. i]:Show();
 			for x = 1, GetNumGroupMembers() do
-				if tempTable[x][1] == GetRaidRosterInfo(i) then
-					name = tempTable[x][1];
-					version = tempTable[x][2];
-					class = tempTable[x][3];
-					classFile = tempTable[x][4];
-				--	print(name);
-				--	print(class);
+				if tempTable[i][1] == GetRaidRosterInfo(x) then
+					name = tempTable[i][1];
+					version = tempTable[i][2];
+					class = tempTable[i][3];
+					classFile = tempTable[i][4];
 					local colour = RAID_CLASS_COLORS[classFile];
 					if not colour then
 						colour = {
@@ -703,14 +706,16 @@ function CEPGP_UpdateStandbyScrollBar()
 		end
 		local _, _, rank, rankIndex, oNote, _, classFile = CEPGP_getGuildInfo(CEPGP_standbyRoster[i][1]);
 		local online = true;
-		if CEPGP_standbyRoster[i][1] then
-			_, _, _, _, _, _, _, _, online = GetGuildRosterInfo(CEPGP_getIndex(CEPGP_standbyRoster[i][1]));
-		end
 		local name = CEPGP_standbyRoster[i][1];
-		local index = CEPGP_getIndex(name, CEPGP_roster[name][1]);
+		local index = CEPGP_getIndex(name);
 		local EP, GP = CEPGP_getEPGP(name, index);
 		if not EP then EP = 0; end
 		if not GP then GP = BASEGP; end
+		if name and index then
+			_, _, _, _, _, _, _, _, online = GetGuildRosterInfo(index);
+		else
+			online = false;
+		end
 		tempTable[i] = {
 			[1] = CEPGP_standbyRoster[i][1], --name
 			[2] = CEPGP_standbyRoster[i][2], --class
@@ -718,7 +723,7 @@ function CEPGP_UpdateStandbyScrollBar()
 			[4] = CEPGP_standbyRoster[i][4], --rankIndex
 			[5] = EP, --EP
 			[6] = GP, --GP
-			[7] = math.floor((tonumber(EP)/tonumber(GP))*100)/100,
+			[7] = math.floor((tonumber(EP)*100/tonumber(GP)))/100,
 			[8] = CEPGP_standbyRoster[i][8], --ClassFile
 			[9] = online --Online
 		};
@@ -773,66 +778,119 @@ function CEPGP_UpdateAttendanceScrollBar()
 		child:Hide();
 	end
 	local tempTable, standbyTable = {}, {};
-	local name, class, classFile, rank, index, total, week, fn, month, twoMon, threeMon;
+	local name, class, classFile, rank, rankIndex, index, total, week, fn, month, twoMon, threeMon;
 	local size;
 	local sbCount = 1;
 	local count = 1;
 	if CEPGP_snapshot then 
 		size = #CEPGP_raid_logs[CEPGP_snapshot]-1;
-	else
-		size = CEPGP_ntgetn(CEPGP_roster);
+	--else
+		--size = CEPGP_ntgetn(CEPGP_roster)-CEPGP_Info.NumExcluded;
 	end
-	for i = 1, size do
-		local standby = false;
-		if CEPGP_snapshot then
-			if type(CEPGP_raid_logs[CEPGP_snapshot][i+1]) == "table" then
-				name = CEPGP_raid_logs[CEPGP_snapshot][i+1][1];
-				standby = CEPGP_raid_logs[CEPGP_snapshot][i+1][2];
+	if CEPGP_snapshot then
+		for i = 1, size do
+			local standby = false;
+			if CEPGP_snapshot then
+				if type(CEPGP_raid_logs[CEPGP_snapshot][i+1]) == "table" then
+					name = CEPGP_raid_logs[CEPGP_snapshot][i+1][1];
+					standby = CEPGP_raid_logs[CEPGP_snapshot][i+1][2];
+				else
+					name = CEPGP_raid_logs[CEPGP_snapshot][i+1];
+				end
 			else
-				name = CEPGP_raid_logs[CEPGP_snapshot][i+1];
+				name = CEPGP_indexToName(i);
 			end
-		else
-			name = CEPGP_indexToName(i);
+			total, week, fn, month, twoMon, threeMon = CEPGP_calcAttendance(name);
+			index, class, rank, rankIndex, _, _, classFile = CEPGP_getGuildInfo(name);
+			if not index then
+				rank = "Non-Guild Member";
+				rankIndex = 11;
+			end
+			if standby then
+				standbyTable[sbCount] = {
+					[1] = name,
+					[2] = class,
+					[3] = rank,
+					[4] = total,
+					[5] = tostring(week),
+					[6] = tostring(fn),
+					[7] = tostring(month),
+					[8] = tostring(twoMon),
+					[9] = tostring(threeMon),
+					[10] = classFile,
+					[11] = standby,
+					[12] = rankIndex
+				}
+				sbCount = sbCount + 1;
+			else
+				tempTable[count] = {
+					[1] = name,
+					[2] = class,
+					[3] = rank,
+					[4] = total,
+					[5] = tostring(week),
+					[6] = tostring(fn),
+					[7] = tostring(month),
+					[8] = tostring(twoMon),
+					[9] = tostring(threeMon),
+					[10] = classFile,
+					[11] = false,
+					[12] = rankIndex
+				}
+				count = count + 1;
+			end
 		end
-		total, week, fn, month, twoMon, threeMon = CEPGP_calcAttendance(name);
-		index, class, rank, _, _, _, classFile = CEPGP_getGuildInfo(name);
-		if not index then
-			rank = "Non-Guild Member";
-		end
-		if standby then
-			standbyTable[sbCount] = {
-				[1] = name,
-				[2] = class,
-				[3] = rank,
-				[4] = total,
-				[5] = tostring(week),
-				[6] = tostring(fn),
-				[7] = tostring(month),
-				[8] = tostring(twoMon),
-				[9] = tostring(threeMon),
-				[10] = classFile,
-				[11] = standby
-			}
-			sbCount = sbCount + 1;
-		else
-			tempTable[count] = {
-				[1] = name,
-				[2] = class,
-				[3] = rank,
-				[4] = total,
-				[5] = tostring(week),
-				[6] = tostring(fn),
-				[7] = tostring(month),
-				[8] = tostring(twoMon),
-				[9] = tostring(threeMon),
-				[10] = classFile,
-				[11] = false
-			}
-			count = count + 1;
+	else
+		for name, v in pairs(CEPGP_roster) do
+			total, week, fn, month, twoMon, threeMon = CEPGP_calcAttendance(name);
+			index, class, rank, rankIndex, _, _, classFile = CEPGP_getGuildInfo(name);
+			if not index then
+				rank = "Non-Guild Member";
+			end
+			if standby then
+				standbyTable[sbCount] = {
+					[1] = name,
+					[2] = class,
+					[3] = rank,
+					[4] = total,
+					[5] = tostring(week),
+					[6] = tostring(fn),
+					[7] = tostring(month),
+					[8] = tostring(twoMon),
+					[9] = tostring(threeMon),
+					[10] = classFile,
+					[11] = standby,
+					[12] = rankIndex
+				}
+				sbCount = sbCount + 1;
+			else
+				tempTable[count] = {
+					[1] = name,
+					[2] = class,
+					[3] = rank,
+					[4] = total,
+					[5] = tostring(week),
+					[6] = tostring(fn),
+					[7] = tostring(month),
+					[8] = tostring(twoMon),
+					[9] = tostring(threeMon),
+					[10] = classFile,
+					[11] = false,
+					[12] = rankIndex
+				}
+				count = count + 1;
+			end
 		end
 	end
-	tempTable = CEPGP_tSort(tempTable, CEPGP_criteria);
-	standbyTable = CEPGP_tSort(standbyTable, CEPGP_criteria);
+	
+	if CEPGP_criteria == 4 then
+		tempTable = CEPGP_tSort(tempTable, 12);
+		standbyTable = CEPGP_tSort(standbyTable, 12);
+	else
+		tempTable = CEPGP_tSort(tempTable, CEPGP_criteria);
+		standbyTable = CEPGP_tSort(standbyTable, CEPGP_criteria);
+	end
+
 	local adjust = false;
 	if #standbyTable > 0 then
 		adjust = true;
@@ -1000,6 +1058,79 @@ function CEPGP_UpdateAttendanceScrollBar()
 			_G["StandbyAttendanceButton" .. i .. "Int90"]:SetTextColor(1-(standbyTable[i][9]/totals[5]), 1, 0);
 		else
 			_G["StandbyAttendanceButton" .. i .. "Int90"]:SetTextColor(1-(standbyTable[i][9]/totals[5]), (standbyTable[i][9]/totals[5])/1, 0);
+		end
+	end
+end
+
+function CEPGP_UpdateAltScrollBar()
+	local tempTable = {};
+	for name, _ in pairs(CEPGP.Alt.Links) do
+		table.insert(tempTable, name);
+	end
+	table.sort(tempTable);
+	
+	for _, main in ipairs(tempTable) do
+		local temp = {};
+		
+		for index, alt in ipairs(CEPGP.Alt.Links[main]) do
+			table.insert(temp, alt);
+		end
+		
+		table.sort(temp);
+		tempTable[main] = temp;
+	end
+	
+	local kids = {_G["CEPGP_options_alt_mangement_ScrollFrame_Container"]:GetChildren()};
+	for index, child in ipairs(kids) do
+		child:Hide();
+	end
+	for i, main in ipairs(tempTable) do
+		local main = tempTable[i];
+		local class = select(7, CEPGP_getGuildInfo(main));
+		local frame;
+		if #tempTable > 0 then
+			if not _G["AltFrame" .. i] then
+				frame = CreateFrame('Button', "AltFrame" .. i, _G["CEPGP_options_alt_mangement_ScrollFrame_Container"], "AltFrameTemplate");
+			else
+				frame = _G["AltFrame" .. i];
+			end
+			
+			local colour = RAID_CLASS_COLORS[class];
+			if not colour then
+				colour = {
+				r = 1,
+				g = 1,
+				b = 1
+			};
+			end
+			
+			local altText;
+			
+			for index, name in ipairs(tempTable[main]) do
+				local altClass = select(7, CEPGP_getGuildInfo(name));
+				if index == 1 then
+					altText = CEPGP_encodeClassString(altClass, name);
+				else
+					_G[frame:GetName() .. "AltName"]:SetText(altText .. ", " .. CEPGP_encodeClassString(altClass, name));
+					if _G[frame:GetName() .. "AltName"]:GetStringWidth() > 400 then
+						altText = altText .. ",\n" .. CEPGP_encodeClassString(altClass, name);
+					else
+						altText = altText .. ", " .. CEPGP_encodeClassString(altClass, name);
+					end
+				end
+			end
+			
+			frame:Show();
+			_G[frame:GetName() .. "MainName"]:SetText(main);
+			_G[frame:GetName() .. "MainName"]:SetTextColor(colour.r, colour.g, colour.b);
+			_G[frame:GetName() .. "AltName"]:SetText(altText);
+			frame:SetHeight(_G[frame:GetName() .. "AltName"]:GetStringHeight());
+			
+			if i > 1 then
+				frame:SetPoint("TOPLEFT", _G["AltFrame" .. i-1], "BOTTOMLEFT", 0, -20);
+			else
+				frame:SetPoint("TOPLEFT", _G["CEPGP_options_alt_mangement_ScrollFrame_Container"], "TOPLEFT", 0, -10);
+			end
 		end
 	end
 end

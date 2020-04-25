@@ -88,7 +88,7 @@ local function RecipePassesSearchFilter(recipeID)
 	if currentSearch == "" then return true end
 	
 	local name = DataStore:GetResultItemName(recipeID)
-	if name and string.find(strlower(name), currentSearch, 1, true) then
+	if name and string.find(strlower(name), strlower(currentSearch), 1, true) then
 		return true
 	end
 end

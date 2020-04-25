@@ -94,7 +94,6 @@ function ns:MenuItem_OnClick(frame, button)
 	menuIcons.CharactersIcon:Show()
 	menuIcons.BagsIcon:Show()
 	menuIcons.QuestsIcon:Show()
-	menuIcons.TalentsIcon:Show()
 	menuIcons.AuctionIcon:Show()
 	menuIcons.MailIcon:Show()
 --	menuIcons.SpellbookIcon:Show()
@@ -234,7 +233,6 @@ local function OnCharacterChange(self)
 	local menuIcons = parent.MenuIcons
 	EnableIcon(menuIcons.BagsIcon)
 	EnableIcon(menuIcons.QuestsIcon)
-	EnableIcon(menuIcons.TalentsIcon)
 	EnableIcon(menuIcons.AuctionIcon)
 	EnableIcon(menuIcons.MailIcon)
 --	EnableIcon(menuIcons.SpellbookIcon)
@@ -487,18 +485,6 @@ local function QuestsIcon_Initialize(self, level)
 	DDM_AddCloseMenu()
 end
 
-local function TalentsIcon_Initialize(self, level)
-	
-	local currentCharacterKey = ns:GetAltKey()
-	if not currentCharacterKey then return end
-	
-	DDM_AddTitle(format("%s / %s", TALENTS, DataStore:GetColoredCharacterName(currentCharacterKey)))
-	DDM_AddTitle(" ")
-	DDM_Add(TALENTS, 1, OnTalentChange, nil, nil)
-	-- DDM_Add(TALENT_SPEC_SECONDARY, 2, OnTalentChange, nil, nil)
-	DDM_AddCloseMenu()
-end
-
 local function AuctionIcon_Initialize(self, level)
 	local currentCharacterKey = ns:GetAltKey()
 	if not currentCharacterKey then return end
@@ -551,19 +537,6 @@ local function MailIcon_Initialize(self, level)
 	DDM_Add(MAIL_LABEL, nil, function() Altoholic:ToggleUI(); InterfaceOptionsFrame_OpenToCategory(AltoholicMailOptions) end)
 	if DataStore_Mails then
 		DDM_Add("DataStore Mails", nil, function() Altoholic:ToggleUI(); InterfaceOptionsFrame_OpenToCategory(DataStoreMailOptions) end)
-	end
-	
-	DDM_AddCloseMenu()
-end
-
-local function SpellbookIcon_Initialize(self, level)
-	local currentCharacterKey = ns:GetAltKey()
-	if not currentCharacterKey then return end
-	
-	DDM_AddTitle(format("%s / %s", SPELLBOOK, DataStore:GetColoredCharacterName(currentCharacterKey)))
-	                                                     
-	for index, spellTab in ipairs(DataStore:GetSpellTabs(currentCharacterKey)) do
-		DDM_Add(spellTab, spellTab, OnSpellTabChange)
 	end
 	
 	DDM_AddCloseMenu()
@@ -752,10 +725,8 @@ local menuIconCallbacks = {
 	CharactersIcon_Initialize,
 	BagsIcon_Initialize,
 	QuestsIcon_Initialize,
-	TalentsIcon_Initialize,
 	AuctionIcon_Initialize,
 	MailIcon_Initialize,
-	SpellbookIcon_Initialize,
 	ProfessionsIcon_Initialize,
 }
 

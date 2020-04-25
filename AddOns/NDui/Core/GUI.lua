@@ -92,7 +92,7 @@ local defaultSettings = {
 		InstanceAuras = true,
 		RaidDebuffScale = 1,
 		--SpecRaidPos = false,
-		RaidClassColor = false,
+		RaidHealthColor = 1,
 		HorizonRaid = false,
 		HorizonParty = false,
 		SimpleRaidScale = 10,
@@ -126,6 +126,8 @@ local defaultSettings = {
 		EnergyTicker = true,
 		UFTextScale = 1,
 		SmoothAmount = .3,
+		ToToT = false,
+		RaidTextScale = 1,
 
 		PlayerWidth = 245,
 		PlayerHeight = 24,
@@ -158,6 +160,7 @@ local defaultSettings = {
 		ChatWidth = 380,
 		ChatHeight = 190,
 		BlockStranger = false,
+		AllowFriends = true,
 	},
 	Map = {
 		Coord = true,
@@ -479,6 +482,10 @@ local function updateUFTextScale()
 	B:GetModule("UnitFrames"):UpdateTextScale()
 end
 
+local function updateRaidTextScale()
+	B:GetModule("UnitFrames"):UpdateRaidTextScale()
+end
+
 local function refreshRaidFrameIcons()
 	B:GetModule("UnitFrames"):RefreshRaidFrameIcons()
 end
@@ -592,11 +599,12 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{1, "UFs", "Portrait", L["UFs Portrait"]},
 		{1, "UFs", "ClassPower", L["UFs ClassPower"], true},
 		{1, "UFs", "PlayerDebuff", L["Player Debuff"]},
-		{1, "UFs", "ToTAuras", L["ToT Debuff"]},
+		{1, "UFs", "ToTAuras", L["ToT Debuff"], true},
 		{1, "UFs", "EnergyTicker", L["EnergyTicker"]},
+		{1, "UFs", "ToToT", "|cff00cc4c"..L["UFs ToToT"]},
+		{4, "UFs", "HealthColor", L["HealthColor"], true, {L["Default Dark"], L["ClassColorHP"], L["GradientHP"]}},
+		{3, "UFs", "UFTextScale", L["UFTextScale"], nil, {.8, 1.5, 2}, updateUFTextScale},
 		{3, "UFs", "SmoothAmount", "|cff00cc4c"..L["SmoothAmount"], true, {.15, .6, 2}, updateSmoothingAmount, L["SmoothAmountTip"]},
-		{4, "UFs", "HealthColor", L["HealthColor"], nil, {L["Default Dark"], L["ClassColorHP"], L["GradientHP"]}},
-		{3, "UFs", "UFTextScale", L["UFTextScale"], true, {.8, 2, 2}, updateUFTextScale},
 		{},--blank
 		{1, "UFs", "CombatText", "|cff00cc4c"..L["UFs CombatText"]},
 		{1, "UFs", "AutoAttack", L["CombatText AutoAttack"]},
@@ -614,16 +622,17 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{1, "UFs", "RaidBuffIndicator", "|cff00cc4c"..L["RaidBuffIndicator"], nil, setupBuffIndicator, nil, L["RaidBuffIndicatorTip"]},
 		{1, "UFs", "RaidClickSets", "|cff00cc4c"..L["Enable ClickSets"], true, setupClickCast},
 		{4, "UFs", "BuffIndicatorType", L["BuffIndicatorType"].."*", nil, {L["BI_Blocks"], L["BI_Icons"], L["BI_Numbers"]}, refreshRaidFrameIcons},
-		{3, "UFs", "BuffIndicatorScale", L["BuffIndicatorScale"].."*", true, {1, 2, 1}, refreshRaidFrameIcons},
+		{3, "UFs", "BuffIndicatorScale", L["BuffIndicatorScale"].."*", true, {.8, 2, 1}, refreshRaidFrameIcons},
 		{1, "UFs", "InstanceAuras", "|cff00cc4c"..L["Instance Auras"], nil, setupRaidDebuffs},
 		{1, "UFs", "AurasClickThrough", L["RaidAuras ClickThrough"], nil},
-		{3, "UFs", "RaidDebuffScale", L["RaidDebuffScale"].."*", true, {1, 2, 1}, refreshRaidFrameIcons},
+		{3, "UFs", "RaidDebuffScale", L["RaidDebuffScale"].."*", true, {.8, 2, 1}, refreshRaidFrameIcons},
 		{},--blank
-		{4, "UFs", "RaidHPMode", L["RaidHPMode"].."*", nil, {L["DisableRaidHP"], L["RaidHPPercent"], L["RaidHPCurrent"], L["RaidHPLost"]}, updateRaidNameText},
-		{3, "UFs", "NumGroups", L["Num Groups"], true, {4, 8, 0}},
 		{1, "UFs", "ShowTeamIndex", L["RaidFrame TeamIndex"]},
-		{1, "UFs", "RaidClassColor", L["ClassColor RaidFrame"], true},
-		{1, "UFs", "HorizonRaid", L["Horizon RaidFrame"]},
+		{1, "UFs", "HorizonRaid", L["Horizon RaidFrame"], true},
+		{4, "UFs", "RaidHealthColor", L["HealthColor"], nil, {L["Default Dark"], L["ClassColorHP"], L["GradientHP"]}},
+		{4, "UFs", "RaidHPMode", L["RaidHPMode"].."*", true, {L["DisableRaidHP"], L["RaidHPPercent"], L["RaidHPCurrent"], L["RaidHPLost"]}, updateRaidNameText},
+		{3, "UFs", "NumGroups", L["Num Groups"], nil, {4, 8, 0}},
+		{3, "UFs", "RaidTextScale", L["UFTextScale"], true, {.8, 1.5, 2}, updateRaidTextScale},
 		--{1, "UFs", "SpecRaidPos", L["Spec RaidPos"]},
 		{},--blank
 		{1, "UFs", "SimpleMode", "|cff00cc4c"..L["Simple RaidFrame"]},
@@ -719,8 +728,9 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Chat", "ChatItemLevel", "|cff00cc4c"..L["ShowChatItemLevel"], true},
 		{},--blank
 		{1, "Chat", "EnableFilter", "|cff00cc4c"..L["Enable Chatfilter"]},
+		{1, "Chat", "BlockAddonAlert", L["Block Addon Alert"], true},
+		{1, "Chat", "AllowFriends", L["AllowFriendsSpam"].."*", nil, nil, nil, L["AllowFriendsSpamTip"]},
 		{1, "Chat", "BlockStranger", "|cffff0000"..L["BlockStranger"].."*", nil, nil, nil, L["BlockStrangerTip"]},
-		{1, "Chat", "BlockAddonAlert", L["Block Addon Alert"]},
 		{2, "ACCOUNT", "ChatFilterWhiteList", "|cff00cc4c"..L["ChatFilterWhiteList"].."*", true, nil, updateFilterWhiteList, L["ChatFilterWhiteListTip"]},
 		{3, "Chat", "Matches", L["Keyword Match"].."*", nil, {1, 3, 0}},
 		{2, "ACCOUNT", "ChatFilterList", L["Filter List"].."*", true, nil, updateFilterList, L["FilterListTip"]},

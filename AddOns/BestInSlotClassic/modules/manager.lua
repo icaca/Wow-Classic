@@ -60,14 +60,14 @@ BIS_dataSpecs = {
                     ["SPEC_ICONS"] = { 132347, 136101, 134952 }, 
                     ["VALUE"] = { 1, 2, 3 },
                     ["ICON"] = { 135328 },
-                    ["MAGIC_RESISTANCE"] = { { 1, 4, nil, nil, nil, nil }, { 2, 4, nil, nil, nil, nil }, { 3, 4, nil, nil, nil, nil } },
+                    ["MAGIC_RESISTANCE"] = { { 1, 4, 5, nil, nil, nil }, { 2, 4, 5, nil, nil, nil }, { 3, 4, 5, nil, nil, nil } },
                     ["WEAPON_ICONS"] = { { 12940, 19364 }, { 19019, nil }, { 19019, nil } }
                 },                    
     [2] = { ["SPEC"] = { "Holy", "Protection", "Retribution (AP)", "Retribution (Spelladin)" },
                     ["SPEC_ICONS"] = { 135920, 135893, 135873, 135959 },
                     ["VALUE"] = { 1, 2, 3, 4 },
                     ["ICON"] = { 132325 },
-                    ["MAGIC_RESISTANCE"] = { { 1, 5, nil, nil, nil, nil }, { 2, 6, nil, nil, nil, nil }, { 3, 7, nil, nil, nil, nil }, { 4, 7, nil, nil, nil, nil } },
+                    ["MAGIC_RESISTANCE"] = { { 1, 5, 8, nil, nil, nil }, { 2, 6, 8, nil, nil, nil }, { 3, 7, 8, nil, nil, nil }, { 4, 7, 8, nil, nil, nil } },
                     ["WEAPON_ICONS"] = { { 19360, nil }, { 19360, nil }, { nil, 19364 }, { 19019, 19169 } }
                  },
     [3] = {  ["SPEC"] = { "Normal", "Melee Weave" },                     
@@ -152,37 +152,6 @@ BIS_specsFileToSpecs = {
     ["Unknown"] = { "Unknown" }
 };
 
-BIS_lookupSpec = {
-    ["WarriorArms"] = { { 1, 2, 3, 4, 7, 11 }, {{ 1, 2, 3 }, { 2, 3 }, { 1, 2 }, { 1, 2 }, { 2 }, { 1, 2, 3, 4 } } },
-    ["WarriorFury"] = { { 1, 2, 3, 4, 7, 11 }, {{ 1, 2, 3 }, { 2, 3 }, { 1, 2 }, { 1, 2 }, { 2 }, { 1, 2, 3, 4 } } },
-    ["WarriorProtection"] = { { 1, 2, 3, 4, 7, 11 }, {{ 1, 2, 3 }, { 2, 3 }, { 1, 2 }, { 1, 2 }, { 2 }, { 1, 2, 3, 4 } } },
-    ["WarriorFuryProtection"] = { { 1, 2, 3, 4, 7, 11 }, {{ 1, 2, 3 }, { 2, 3 }, { 1, 2 }, { 1, 2 }, { 2 }, { 1, 2, 3, 4 } } },
-    ["DruidFeralTank"] = { { 1, 2, 3, 4, 7, 11 }, {{ 1, 2, 3 }, { 2, 3 }, { 1, 2 }, { 1, 2 }, { 2 }, { 1, 2, 3, 4 } } },
-    ["DruidFeralDPS"] = { { 1, 2, 3, 4, 7, 11 }, {{ 1, 2, 3 }, { 2, 3 }, { 1, 2 }, { 1, 2 }, { 2 }, { 1, 2, 3, 4 } } },
-    ["DruidRestoration"] = { { 2, 5, 7, 11 }, {{ 1 }, { 1, 2 }, { 1 }, { 5 }} },
-    ["DruidBalance"] = { { 8, 9, 11 }, {{ 1, 2, 3 }, { 1 }, { 6 }} },
-    ["HunterBeastMastery"] = { { 1, 2, 3, 4, 7, 11 }, {{ 1, 2, 3 }, { 2, 3 }, { 1, 2 }, { 1, 2 }, { 2 }, { 1, 2, 3, 4 } } },
-    ["HunterMarksmanship"] = { { 1, 2, 3, 4, 7, 11 }, {{ 1, 2, 3 }, { 2, 3 }, { 1, 2 }, { 1, 2 }, { 2 }, { 1, 2, 3, 4 } } },
-    ["HunterSurvival"] = { { 1, 2, 3, 4, 7, 11 }, {{ 1, 2, 3 }, { 2, 3 }, { 1, 2 }, { 1, 2 }, { 2 }, { 1, 2, 3, 4 } } },
-    ["ShamanElementalCombat"] = { { 8, 9, 11 }, {{ 1, 2, 3 }, { 1 }, { 6 }} },
-    ["ShamanEnhancement"] = { { 1, 2, 3, 4, 7, 11 }, {{ 1, 2, 3 }, { 2, 3 }, { 1, 2 }, { 1, 2 }, { 2 }, { 1, 2, 3, 4 } } },
-    ["ShamanRestoration"] = { { 2, 5, 7, 11 }, {{ 1 }, { 1, 2 }, { 1 }, { 5 }} },
-    ["MageArcane"] = { { 8, 9, 11 }, {{ 1, 2, 3 }, { 1 }, { 6 }} },
-    ["MageFire"] = { { 8, 9, 11 }, {{ 1, 2, 3 }, { 1 }, { 6 }} },
-    ["MageFrost"] = { { 8, 9, 11 }, {{ 1, 2, 3 }, { 1 }, { 6 }} },
-    ["WarlockCurses"] = { { 8, 9, 11 }, {{ 1, 2, 3 }, { 1 }, { 6 }} },
-    ["WarlockSummoning"] = { { 8, 9, 11 }, {{ 1, 2, 3 }, { 1 }, { 6 }} },
-    ["WarlockDestruction"] = { { 8, 9, 11 }, {{ 1, 2, 3 }, { 1 }, { 6 }} },
-    ["PriestHybrid"] = { { 2, 5, 7, 11 }, {{ 1 }, { 1, 2 }, { 1 }, { 5 }} },
-    ["PriestShadow"] = { { 5, 8, 9, 11 }, {{ 1, 2 }, { 1, 2, 3 }, { 1 }, { 6 }} },
-    ["RogueSwords"] = { { 1, 2, 3, 4, 7, 11 }, {{ 1, 2, 3 }, { 2, 3 }, { 1, 2 }, { 1, 2 }, { 2 }, { 1, 2, 3, 4 } } },
-    ["RogueDaggers"] = { { 1, 2, 3, 4, 7, 11 }, {{ 1, 2, 3 }, { 2, 3 }, { 1, 2 }, { 1, 2 }, { 2 }, { 1, 2, 3, 4 } } },
-    ["PaladinHoly"] = { { 2, 5, 7, 11 }, {{ 1 }, { 1, 2 }, { 1 }, { 5 }} },
-    ["PaladinProtection"] = { { 1, 2, 3, 4, 7, 11 }, {{ 1, 2, 3 }, { 2, 3 }, { 1, 2 }, { 1, 2 }, { 2 }, { 1, 2, 3, 4 } } },
-    ["PaladinCombat"] = { { 1, 2, 3, 4, 7, 11 }, {{ 1, 2, 3 }, { 2, 3 }, { 1, 2 }, { 1, 2 }, { 2 }, { 1, 2, 3, 4 } } },
-    ["Unknown"] = { { }, { } }
-};
-
 local phases = { 
     ["NAME"] = { "Phase 1", "Phase 2 ("..PLAYER_V_PLAYER..")", "Phase 3 (BWL)", "Phase 4 ("..DUNGEON_FLOOR_ZULGURUB1 ..")", "Phase 5 (AQ)", "Phase 6 (Naxx)" }, 
     ["ICON"] = { 133066   , 132486   ,  134154   , 134085   , 136152   , 134514   },
@@ -258,6 +227,7 @@ local function ResetUI()
         end
         _G["frame_PVP"]:Show();
         _G["frame_WORLD_BOSS"]:Show();
+        _G["frame_SOULBOUND"]:Show();
         if raid then
             _G["frame_RAID"]:Show();
             _G["frame_DUNGEON"]:Hide();
@@ -268,6 +238,7 @@ local function ResetUI()
 
         _G["frame_PVP_ICON"]:SetDesaturated(not pvp);
         _G["frame_WORLD_BOSS_ICON"]:SetDesaturated(not worldBoss);
+        _G["frame_SOULBOUND_ICON"]:SetDesaturated(not BestInSlotClassicDB.filter.soulboundBis);
         if pvp then            
             for idx, value in pairs(pvpranks) do                    
                 _G["frame_PVP_RANK_"..value]:Show();
@@ -296,12 +267,12 @@ local function ResetUI()
         if oneHandIcon == nil then
             _G["frame_TWO_HANDS"]:Show();
             _G["frame_ONE_HAND"]:Hide();
-            BestInSlotClassicDB.options.twohands = true;
+            BestInSlotClassicDB.filter.twohands = true;
             twoHands = true;
         elseif twoHandsIcon == nil then
             _G["frame_TWO_HANDS"]:Hide();
             _G["frame_ONE_HAND"]:Show();
-            BestInSlotClassicDB.options.twohands = false;
+            BestInSlotClassicDB.filter.twohands = false;
             twoHands = false;
         end
 
@@ -325,6 +296,7 @@ local function ResetUI()
         _G["frame_DUNGEON"]:Hide();
         _G["frame_ONE_HAND"]:Hide();
         _G["frame_TWO_HANDS"]:Hide();
+        _G["frame_SOULBOUND"]:Hide();
         for idx, value in pairs(pvpranks) do                    
             _G["frame_PVP_RANK_"..pvpranks[idx]]:Hide();
         end        
@@ -548,25 +520,30 @@ end
 
 local function HandlePvPIcon(self)    
     pvp = not pvp;
-    BestInSlotClassicDB.options.pvp = pvp;    
+    BestInSlotClassicDB.filter.pvp = pvp;    
     Update();    
 end
 
 local function HandleRaidIcon(self)
     raid = not raid;
-    BestInSlotClassicDB.options.raid = raid;
+    BestInSlotClassicDB.filter.raid = raid;
     Update();
 end
 
 local function HandleTwoHandsIcon(self)    
     twoHands = not twoHands;
-    BestInSlotClassicDB.options.twohands = twoHands;
+    BestInSlotClassicDB.filter.twohands = twoHands;
     Update();
 end
 
 local function HandleWorldBossIcon(self)
     worldBoss = not worldBoss;
-    BestInSlotClassicDB.options.worldboss = worldBoss;    
+    BestInSlotClassicDB.filter.worldboss = worldBoss;    
+    Update();
+end
+
+local function HandleSoulboundIcon(self)
+    BestInSlotClassicDB.filter.soulboundBis = not BestInSlotClassicDB.filter.soulboundBis;
     Update();
 end
 
@@ -585,7 +562,7 @@ local function HandlePvpRankIcon(self)
         return;
     end
     selectedRank = rankIcon;
-    BestInSlotClassicDB.options.pvprank = selectedRank;
+    BestInSlotClassicDB.filter.pvprank = selectedRank;
     Update();
 end
 
@@ -644,6 +621,12 @@ function BIS:CreateTextFrame(name, parent, width, height, x, y, justify)
     return frame;
 end
 
+local function handleKey(self, event, arg1, ...)
+    if event == "ESCAPE" then
+        BIS:ShowManager();        
+    end
+end
+
 function BIS:ShowManager()        
     -- We load player info now because it can evolve regarding talents.
     -- There's also a bug that makes the num talent tab being at 0 after addon_loaded on start.
@@ -665,7 +648,7 @@ function BIS:ShowManager()
         end        
         selectedPhase = bis_currentPhaseId;
         selectedMagicResist = 1;        
-        if BestInSlotClassicDB.options.pvprank == nil then
+        if BestInSlotClassicDB.filter.pvprank == nil then
             if pvpRank == 0 then
                 selectedRank = 3;
             else                
@@ -681,7 +664,7 @@ function BIS:ShowManager()
                 end                
             end
         else
-            selectedRank = BestInSlotClassicDB.options.pvprank;
+            selectedRank = BestInSlotClassicDB.filter.pvprank;
         end        
         window = BIS:CreateWindow("BISManager", 1100, 750);        
         window.childFrame = {};
@@ -705,10 +688,10 @@ function BIS:ShowManager()
             BIS:CreateClickableIconFrame("frame_PHASE_"..phases.VALUE[idx], window, phase, 25, 25, 100 + ((idx - 1) * 25), -15, phases.ICON[idx], nil, HandlePhasesIcon, false);            
         end        
                              
-        raid = BestInSlotClassicDB.options.raid;
-        pvp = BestInSlotClassicDB.options.pvp;
-        twoHands = BestInSlotClassicDB.options.twohands;
-        worldBoss = BestInSlotClassicDB.options.worldboss;            
+        raid = BestInSlotClassicDB.filter.raid;
+        pvp = BestInSlotClassicDB.filter.pvp;
+        twoHands = BestInSlotClassicDB.filter.twohands;
+        worldBoss = BestInSlotClassicDB.filter.worldboss;            
 
         BIS:CreateClickableIconFrame("frame_RAID", window, RAID.." BIS", 16, 16, 500, -50, "Interface\\QuestFrame\\QuestTypeIcons", QUEST_TAG_TCOORDS[89], HandleRaidIcon, false);
         BIS:CreateClickableIconFrame("frame_DUNGEON", window, DUNGEONS.." BIS", 16, 16, 500, -50, "Interface\\QuestFrame\\QuestTypeIcons", QUEST_TAG_TCOORDS[81], HandleRaidIcon, false);
@@ -716,7 +699,7 @@ function BIS:ShowManager()
         BIS:CreateClickableIconFrame("frame_WORLD_BOSS", window, RAID_INFO_WORLD_BOSS, 16, 16, 525, -50, "Interface\\GROUPFRAME\\UI-Group-LeaderIcon", nil, HandleWorldBossIcon, not worldBoss);
 
         BIS:CreateClickableIconFrame("frame_ONE_HAND", window, INVTYPE_WEAPON , 16, 16, 550, -50, nil, nil, HandleTwoHandsIcon, false);
-        BIS:CreateClickableIconFrame("frame_TWO_HANDS", window, TWO_HANDED, 16, 16, 550, -50, nil, nil, HandleTwoHandsIcon, false);
+        BIS:CreateClickableIconFrame("frame_TWO_HANDS", window, TWO_HANDED, 16, 16, 550, -50, nil, nil, HandleTwoHandsIcon, false);        
 
         if faction == "Horde" then
             pvpIcon = iconHorde;            
@@ -725,6 +708,8 @@ function BIS:ShowManager()
         end                            
 
         BIS:CreateClickableIconFrame("frame_PVP", window, PLAYER_V_PLAYER, 16, 16, 575, -50, pvpIcon, nil, HandlePvPIcon, not pvp);
+
+        BIS:CreateClickableIconFrame("frame_SOULBOUND", window, ITEM_SOULBOUND, 16, 16, 600, -50, "Interface\\LootFrame\\LootToast", { 612/1024, 644/1024, 224/256, 256/256 }, HandleSoulboundIcon, not BestInSlotClassicDB.filter.soulboundBis);
 
         for idx, value in pairs(pvpranks) do            
             BIS:CreateClickableIconFrame("frame_PVP_RANK_"..value, window, GetPVPRankInfo(value).." (R"..(value-4)..")", 16, 16, 450 + ((idx - 1) * 25), -75, format("%s%02d","Interface\\PvPRankBadges\\PvPRank",value-4), nil, HandlePvpRankIcon, false);
@@ -821,9 +806,15 @@ function BIS:ShowManager()
     if visible then
         window:Hide();
         visible = false;
+        window:SetPropagateKeyboardInput(false);
+        window:EnableKeyboard(false);
+        window:SetScript("OnKeyDown", nil);
     else
         Update();
         window:Show();
+        window:EnableKeyboard(true);
+        window:SetScript("OnKeyDown", handleKey);
+        window:SetPropagateKeyboardInput(true)
         visible = true;
     end
 end

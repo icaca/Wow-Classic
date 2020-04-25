@@ -26,7 +26,7 @@ addon:Controller("AltoholicUI.RecipeRow", {
 				frame.CraftedItem.Count:Hide()
 			end
 			frame.CraftedItem:Show()
-		elseif profession == "Enchanting" then
+		elseif profession == DataStore:GetLocaleEnchantingName() then
             itemName = DataStore:GetResultItemName(recipeID); itemRarity = 4; maxMade = 1;
             frame.CraftedItem:SetIcon("Interface\\Icons\\Trade_Engraving.blp")
             frame.CraftedItem.itemID = nil

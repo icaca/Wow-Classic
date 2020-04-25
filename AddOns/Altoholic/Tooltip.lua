@@ -240,30 +240,57 @@ function addon:GetRecipeOwners(professionName, link, recipeLevel)
 		profession = DataStore:GetProfession(character, professionName)
 		isKnownByChar = nil
 		if profession then
-			DataStore:IterateRecipes(profession, 0, 0, function(recipeData)
-				local _, recipeID, isLearned = DataStore:GetRecipeInfo(recipeData)
-				local skillName = DataStore:GetResultItemName(recipeID)
-
-				if (skillName) and (string.lower(skillName) == string.lower(craftName)) and isLearned then
-					isKnownByChar = true
-					return true	-- stop iteration
-				end
-			end)
-
-			local coloredName = DataStore:GetColoredCharacterName(character)
-			
-			if isKnownByChar then
-				table.insert(know, coloredName)
-			else
-				local currentLevel = DataStore:GetProfessionInfo(DataStore:GetProfession(character, professionName))
-				if currentLevel > 0 then
-					if currentLevel < recipeLevel then
-						table.insert(willLearn, format("%s |r(%d)", coloredName, currentLevel))
-					else
-						table.insert(couldLearn, format("%s |r(%d)", coloredName, currentLevel))
-					end
-				end
-			end
+            local coloredName = DataStore:GetColoredCharacterName(character)
+            local currentLevel, maxLevel = DataStore:GetProfessionInfo(DataStore:GetProfession(character, professionName))
+            
+            -- Is the recipe Expert First Aid - Under Wraps or Expert Cookbook or the fishing book?
+            local itemID = GetItemInfoInstant(link)
+            if (itemID == 16084) or (itemID == 16072) or (itemID == 16083) then
+                if (currentLevel > 124) and (maxLevel == 150) then
+                    table.insert(couldLearn, format("%s |r(%d)", coloredName, currentLevel))
+                elseif (currentLevel < 125) then
+                    table.insert(willLearn, format("%s |r(%d)", coloredName, currentLevel))
+                else
+                    table.insert(know, coloredName)
+                end
+    		else
+            	DataStore:IterateRecipes(profession, 0, 0, function(recipeData)
+    				local _, recipeID, isLearned = DataStore:GetRecipeInfo(recipeData)
+    				local skillName = DataStore:GetResultItemName(recipeID)
+                    
+                    -- is the recipe Enchant Weapon - Healing Power or Enchant Weapon - Spell Power?
+                    -- These two recipes have a bug: they have an extra space between "Enchant" and "Weapon"
+                    -- I don't know if this is a Classic bug or if it existed in Vanilla
+                    
+                    if (itemID == 18260) then
+                        -- Healing power
+                        -- I don't do regex, found this code snippet on: https://scripters.boards.net/thread/85/remove-multiple-spaces
+                        skillName = skillName:gsub(" +"," ")
+                    end
+                    
+                    if (itemID == 18259) then
+                        -- Spell power
+                        skillName:gsub(" +"," ")
+                    end
+                    
+    				if (skillName) and (string.lower(skillName) == string.lower(craftName)) and isLearned then
+    					isKnownByChar = true
+    					return true	-- stop iteration
+    				end
+    			end)
+    			
+    			if isKnownByChar then
+    				table.insert(know, coloredName)
+    			else
+    				if currentLevel > 0 then
+    					if currentLevel < recipeLevel then
+    						table.insert(willLearn, format("%s |r(%d)", coloredName, currentLevel))
+    					else
+    						table.insert(couldLearn, format("%s |r(%d)", coloredName, currentLevel))
+    					end
+    				end
+    			end
+            end
 		end
 	end
 	
