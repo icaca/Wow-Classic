@@ -216,7 +216,8 @@
 
 	<!-- IconList, used by Pets & Achievements -->
 	<Button name="AltoIconListItemTemplate" hidden="true" virtual="true">
-		<Size x="34" y="34" />
+		<!-- <Size x="34" y="34" /> -->
+		<Size x="31" y="31" />
 		<Layers> 
 			<Layer level="BACKGROUND"> 
 				<Texture parentKey="Background">

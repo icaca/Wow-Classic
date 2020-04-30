@@ -120,7 +120,6 @@ local function UpdateDB()
 end
 
 -- *** Utility functions ***
-
 local function IsEnchanted(link)
 	if not link then return end
 	
@@ -174,7 +173,7 @@ local ContainerTypes = {
 				local startTime, duration, isEnabled = GetInventoryItemCooldown("player", slotID)
 				return startTime, duration, isEnabled
 			end,
-	},
+	}
 }
 
 -- *** Scanning functions ***
@@ -203,7 +202,7 @@ local function ScanContainer(bagID, containerType)
 		link = Container:GetLink(slotID, bagID)
 		if link then
 			bag.ids[index] = tonumber(link:match("item:(%d+)"))
-			
+
 			if IsEnchanted(link) then
 				bag.links[index] = link
 			end
@@ -258,8 +257,7 @@ local function ScanBankSlotsInfo()
 end
 
 local function ScanBag(bagID)
-    -- The keyring bagID is -2, so allow it!
-	if (bagID < -2) or (bagID == -1) then return end
+	if bagID < 0 then return end
 
 	local char = addon.ThisCharacter
 	local bag = char.Containers["Bag" .. bagID]
@@ -267,10 +265,7 @@ local function ScanBag(bagID)
 	if bagID == 0 then	-- Bag 0	
 		bag.icon = "Interface\\Buttons\\Button-Backpack-Up";
 		bag.link = nil;
-	elseif bagID == -2 then
-        bag.icon = "ICONS\\INV_Misc_Key_04.blp"
-        bag.link = nil
-    else						-- Bags 1 through 11
+	else						-- Bags 1 through 11
 		bag.icon = GetInventoryItemTexture("player", ContainerIDToInventoryID(bagID))
 		bag.link = GetInventoryItemLink("player", ContainerIDToInventoryID(bagID))
 		if bag.link then
@@ -421,6 +416,7 @@ local function _GetSlotInfo(bag, slotID)
 
 	local link = bag.links[slotID]
 	
+	-- return itemID, itemLink, itemCount
 	return bag.ids[slotID], link, bag.counts[slotID] or 1
 end
 
@@ -525,10 +521,6 @@ function addon:OnEnable()
 	for bagID = 0, NUM_BAG_SLOTS do
 		ScanBag(bagID)
 	end
-    
-    if HasKey() then
-        ScanBag(-2)
-    end
 	
 	addon:RegisterEvent("BAG_UPDATE", OnBagUpdate)
 	addon:RegisterEvent("BANKFRAME_OPENED", OnBankFrameOpened)

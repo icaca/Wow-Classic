@@ -67,7 +67,7 @@ local GatheringNodes = {			-- Add herb/ore possession info to Plants/Mines, than
 	[L["Stranglekelp"]]         =  3820,
 	[L["Sungrass"]]             =  8838,
 	[L["Wild Steelbloom"]]      =  3355,
-	[L["Wintersbite"]]          =  3819,	
+	[L["Wintersbite"]]          =  3819,
 }
 
 -- *** Utility functions ***
@@ -106,7 +106,7 @@ local cachedItemID, cachedCount, cachedTotal, cachedSource
 local cachedRecipeOwners
 
 local itemCounts = {}
-local itemCountsLabels = {	L["Bags"], L["Bank"], L["AH"], L["Equipped"], L["Mail"] }
+local itemCountsLabels = {	L["Bags"], L["Bank"], VOID_STORAGE, REAGENT_BANK, L["AH"], L["Equipped"], L["Mail"], CURRENCY }
 local counterLines = {}		-- list of lines containing a counter to display in the tooltip
 
 local function AddCounterLine(owner, counters)
@@ -145,10 +145,10 @@ local function GetRealmsList()
 end
 
 local function GetCharacterItemCount(character, searchedID)
-	itemCounts[1], itemCounts[2] = DataStore:GetContainerItemCount(character, searchedID)
-	itemCounts[3] = DataStore:GetAuctionHouseItemCount(character, searchedID)
-	itemCounts[4] = DataStore:GetInventoryItemCount(character, searchedID)
-	itemCounts[5] = DataStore:GetMailItemCount(character, searchedID)
+	itemCounts[1], itemCounts[2], itemCounts[3], itemCounts[4] = DataStore:GetContainerItemCount(character, searchedID)
+	itemCounts[5] = DataStore:GetAuctionHouseItemCount(character, searchedID)
+	itemCounts[6] = DataStore:GetInventoryItemCount(character, searchedID)
+	itemCounts[7] = DataStore:GetMailItemCount(character, searchedID)
 	
 	local charCount = 0
 	for _, v in pairs(itemCounts) do
@@ -171,7 +171,6 @@ local function GetCharacterItemCount(character, searchedID)
 		end
 		
 		local t = {}
-
 		for k, v in pairs(itemCounts) do
 			if v > 0 then	-- if there are more than 0 items in this container
 				table.insert(t, colors.white .. itemCountsLabels[k] .. ": "  .. colors.teal .. v)
@@ -223,9 +222,14 @@ local function GetItemCount(searchedID)
 end
 
 function addon:GetRecipeOwners(professionName, link, recipeLevel)
-	local craftName = GetCraftNameFromRecipeLink(link)
-	if not craftName then return end		-- still nothing usable ? then exit
-	   
+	local craftName
+	local spellID = addon:GetSpellIDFromRecipeLink(link)
+
+	if not spellID then		-- spell id unknown ? let's parse the tooltip
+		craftName = GetCraftNameFromRecipeLink(link)
+		if not craftName then return end		-- still nothing usable ? then exit
+	end
+	
 	local know = {}				-- list of alts who know this recipe
 	local couldLearn = {}		-- list of alts who could learn it
 	local willLearn = {}			-- list of alts who will be able to learn it later
@@ -238,59 +242,37 @@ function addon:GetRecipeOwners(professionName, link, recipeLevel)
 	local profession, isKnownByChar
 	for characterName, character in pairs(DataStore:GetCharacters()) do
 		profession = DataStore:GetProfession(character, professionName)
+
 		isKnownByChar = nil
 		if profession then
-            local coloredName = DataStore:GetColoredCharacterName(character)
-            local currentLevel, maxLevel = DataStore:GetProfessionInfo(DataStore:GetProfession(character, professionName))
-            
-            -- Is the recipe Expert First Aid - Under Wraps or Expert Cookbook or the fishing book?
-            local itemID = GetItemInfoInstant(link)
-            if (itemID == 16084) or (itemID == 16072) or (itemID == 16083) then
-                if (currentLevel > 124) and (maxLevel == 150) then
-                    table.insert(couldLearn, format("%s |r(%d)", coloredName, currentLevel))
-                elseif (currentLevel < 125) then
-                    table.insert(willLearn, format("%s |r(%d)", coloredName, currentLevel))
-                else
-                    table.insert(know, coloredName)
-                end
-    		else
-            	DataStore:IterateRecipes(profession, 0, 0, function(recipeData)
-    				local _, recipeID, isLearned = DataStore:GetRecipeInfo(recipeData)
-    				local skillName = DataStore:GetResultItemName(recipeID)
-                    
-                    -- is the recipe Enchant Weapon - Healing Power or Enchant Weapon - Spell Power?
-                    -- These two recipes have a bug: they have an extra space between "Enchant" and "Weapon"
-                    -- I don't know if this is a Classic bug or if it existed in Vanilla
-                    
-                    if (itemID == 18260) then
-                        -- Healing power
-                        -- I don't do regex, found this code snippet on: https://scripters.boards.net/thread/85/remove-multiple-spaces
-                        skillName = skillName:gsub(" +"," ")
-                    end
-                    
-                    if (itemID == 18259) then
-                        -- Spell power
-                        skillName:gsub(" +"," ")
-                    end
-                    
-    				if (skillName) and (string.lower(skillName) == string.lower(craftName)) and isLearned then
-    					isKnownByChar = true
-    					return true	-- stop iteration
-    				end
-    			end)
-    			
-    			if isKnownByChar then
-    				table.insert(know, coloredName)
-    			else
-    				if currentLevel > 0 then
-    					if currentLevel < recipeLevel then
-    						table.insert(willLearn, format("%s |r(%d)", coloredName, currentLevel))
-    					else
-    						table.insert(couldLearn, format("%s |r(%d)", coloredName, currentLevel))
-    					end
-    				end
-    			end
-            end
+			if spellID then			-- if spell id is known, just find its equivalent in the professions
+				isKnownByChar = DataStore:IsCraftKnown(profession, spellID)
+			else
+				DataStore:IterateRecipes(profession, 0, function(recipeData)
+					local _, recipeID, isLearned = DataStore:GetRecipeInfo(recipeData)
+					local skillName = GetSpellInfo(recipeID) or ""
+
+					if string.lower(skillName) == string.lower(craftName) and isLearned then
+						isKnownByChar = true
+						return true	-- stop iteration
+					end
+				end)
+			end
+
+			local coloredName = DataStore:GetColoredCharacterName(character)
+			
+			if isKnownByChar then
+				table.insert(know, coloredName)
+			else
+				local currentLevel = DataStore:GetProfessionInfo(DataStore:GetProfession(character, professionName))
+				if currentLevel > 0 then
+					if currentLevel < recipeLevel then
+						table.insert(willLearn, format("%s |r(%d)", coloredName, currentLevel))
+					else
+						table.insert(couldLearn, format("%s |r(%d)", coloredName, currentLevel))
+					end
+				end
+			end
 		end
 	end
 	

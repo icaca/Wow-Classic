@@ -106,6 +106,7 @@ local function Tradeskill_OnEnter(frame, skillName, showRecipeStats)
 	
 	local curRank, maxRank = DataStore:GetProfessionInfo(DataStore:GetProfession(character, skillName))
 	local profession = DataStore:GetProfession(character, skillName)
+
 	local tt = AltoTooltip
 	
 	tt:ClearLines()
@@ -127,17 +128,6 @@ local function Tradeskill_OnEnter(frame, skillName, showRecipeStats)
 			if numCategories == 0 then
 				tt:AddLine(format("%s: 0 %s", L["No data"], TRADESKILL_SERVICE_LEARN),1,1,1)
 			else
-				for i = 1, numCategories do
-					local _, name, rank, maxRank = DataStore:GetRecipeCategoryInfo(profession, i)
-					
-					if name and rank and maxRank then
-						local color = (maxRank == 0) and colors.red or colors.green
-						tt:AddDoubleLine(name, format("%s%s|r / %s%s", color, rank, color, maxRank))
-					-- else
-						-- tt:AddLine(name)
-					end
-				end
-			
 				local orange, yellow, green, grey = DataStore:GetNumRecipesByColor(profession)
 				
 				tt:AddLine(" ")
@@ -864,7 +854,7 @@ columns["BankSlots"] = {
 				if size ~= 0 then
 					tt:AddDoubleLine(FormatBagType(link, bagType), FormatBagSlots(size, free))
 				end
-			end  
+			end
 			tt:Show()
 		end,
 	GetTotal = function(line) return format("%s%s |r%s", colors.white, Characters:GetField(line, "bankSlots"), L["slots"]) end,
@@ -933,7 +923,7 @@ columns["Prof1"] = {
 			local rank, _, _, name = DataStore:GetProfession1(character)
 			local spellID = DataStore:GetProfessionSpellID(name)
 			local icon = spellID and format(TEXTURE_FONT, addon:GetSpellIcon(spellID), 18, 18) .. " " or ""
-            rank = rank or 0
+			
 			return format("%s%s%s", icon, GetSkillRankColor(rank), rank)
 		end,
 	OnEnter = function(frame)
@@ -965,18 +955,18 @@ columns["Prof2"] = {
 			local rank, _, _, name = DataStore:GetProfession2(character)
 			local spellID = DataStore:GetProfessionSpellID(name)
 			local icon = spellID and format(TEXTURE_FONT, addon:GetSpellIcon(spellID), 18, 18) .. " " or ""
-            rank = rank or 0
+			
 			return format("%s%s%s", icon, GetSkillRankColor(rank), rank)
 		end,
 	OnEnter = function(frame)
 			local character = frame:GetParent().character
 			local _, _, _, skillName = DataStore:GetProfession2(character)
-			Tradeskill_OnEnter(frame, DataStore:ConvertProfessionSecondaryNameToPrimary(skillName), true)
+			Tradeskill_OnEnter(frame, skillName, true)
 		end,
 	OnClick = function(frame, button)
 			local character = frame:GetParent().character
 			local _, _, _, skillName = DataStore:GetProfession2(character)
-			Tradeskill_OnClick(frame, DataStore:ConvertProfessionSecondaryNameToPrimary(skillName))
+			Tradeskill_OnClick(frame, skillName)
 		end,
 }
 
@@ -984,7 +974,7 @@ columns["ProfCooking"] = {
 	-- Header
 	headerWidth = 60,
 	headerLabel = "   " .. format(TEXTURE_FONT, addon:GetSpellIcon(2550), 18, 18),
-	tooltipTitle = DataStore:ConvertProfessionSecondaryNameToPrimary(GetSpellInfo(2550)),
+	tooltipTitle = GetSpellInfo(2550),
 	tooltipSubTitle = nil,
 	headerOnEnter = TradeskillHeader_OnEnter,
 	headerOnClick = function() SortView("ProfCooking") end,
@@ -995,14 +985,13 @@ columns["ProfCooking"] = {
 	JustifyH = "CENTER",
 	GetText = function(character)
 			local rank = DataStore:GetCookingRank(character)
-            rank = rank or 0
 			return format("%s%s", GetSkillRankColor(rank), rank)
 		end,
 	OnEnter = function(frame)
-			Tradeskill_OnEnter(frame, DataStore:ConvertProfessionSecondaryNameToPrimary(GetSpellInfo(2550)), true)
+			Tradeskill_OnEnter(frame, GetSpellInfo(2550), true)
 		end,
 	OnClick = function(frame, button)
-			Tradeskill_OnClick(frame, DataStore:ConvertProfessionSecondaryNameToPrimary(GetSpellInfo(2550)))
+			Tradeskill_OnClick(frame, GetSpellInfo(2550))
 		end,
 }
 
@@ -1010,7 +999,7 @@ columns["ProfFirstAid"] = {
 	-- Header
 	headerWidth = 60,
 	headerLabel = "   " .. format(TEXTURE_FONT, addon:GetSpellIcon(3273), 18, 18),
-	tooltipTitle = DataStore:ConvertProfessionSecondaryNameToPrimary(GetSpellInfo(3273)),
+	tooltipTitle = GetSpellInfo(3273),
 	tooltipSubTitle = nil,
 	headerOnEnter = TradeskillHeader_OnEnter,
 	headerOnClick = function() SortView("ProfFirstAid") end,
@@ -1021,14 +1010,13 @@ columns["ProfFirstAid"] = {
 	JustifyH = "CENTER",
 	GetText = function(character)
 			local rank = DataStore:GetFirstAidRank(character)
-            rank = rank or 0
 			return format("%s%s", GetSkillRankColor(rank), rank)
 		end,
 	OnEnter = function(frame)
-			Tradeskill_OnEnter(frame, DataStore:ConvertProfessionSecondaryNameToPrimary(GetSpellInfo(3273)), true)
+			Tradeskill_OnEnter(frame, GetSpellInfo(3273), true)
 		end,
 	OnClick = function(frame, button)
-			Tradeskill_OnClick(frame, DataStore:ConvertProfessionSecondaryNameToPrimary(GetSpellInfo(3273)))
+			Tradeskill_OnClick(frame, GetSpellInfo(3273))
 		end,
 }
 
@@ -1036,7 +1024,7 @@ columns["ProfFishing"] = {
 	-- Header
 	headerWidth = 60,
 	headerLabel = "   " .. format(TEXTURE_FONT, addon:GetSpellIcon(7733), 18, 18),
-	tooltipTitle = GetSpellInfo(18248),
+	tooltipTitle = GetSpellInfo(7733),
 	tooltipSubTitle = nil,
 	headerOnEnter = TradeskillHeader_OnEnter,
 	headerOnClick = function() SortView("ProfFishing") end,
@@ -1047,11 +1035,10 @@ columns["ProfFishing"] = {
 	JustifyH = "CENTER",
 	GetText = function(character)
 			local rank = DataStore:GetFishingRank(character)
-            rank = rank or 0
 			return format("%s%s", GetSkillRankColor(rank), rank)
 		end,
 	OnEnter = function(frame)
-			Tradeskill_OnEnter(frame, "Fishing", true)
+			Tradeskill_OnEnter(frame, GetSpellInfo(7733), true)
 		end,
 }
 

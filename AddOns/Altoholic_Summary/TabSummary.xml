@@ -9,12 +9,38 @@
 		<Layers>
 			<Layer level="OVERLAY">
 				<FontString parentKey="Totals" inherits="GameFontNormal" justifyH="RIGHT">
-					<Size x="400" y="24" />
+					<Size x="60" y="24" />
 					<Anchors>
 						<Anchor point="BOTTOMRIGHT">
-							<Offset x="30" y="13" />
+							<Offset x="-180" y="13" />
 						</Anchor>
 					</Anchors>
+				</FontString>
+				<FontString parentKey="TotalLv" inherits="GameFontNormal" justifyH="RIGHT">
+					<Size x="80" y="24" />
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset x="-100" y="13" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString parentKey="TotalGold" inherits="GameFontNormal" justifyH="RIGHT">
+					<Size x="80" y="24" />
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset x="-20" y="13" />
+						</Anchor>
+					</Anchors>
+					<Color r="255" g="255" b="255" />
+				</FontString>
+				<FontString parentKey="TotalPlayed" inherits="GameFontNormal" justifyH="RIGHT">
+					<Size x="80" y="24" />
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset x="60" y="13" />
+						</Anchor>
+					</Anchors>
+					<Color r="255" g="255" b="255" />
 				</FontString>
 			</Layer>
 		</Layers>
@@ -45,7 +71,7 @@
 					<Anchor point="TOPLEFT" x="300" y="-40" />
 				</Anchors>
 				<KeyValues>
-					<KeyValue key="iconFile" value="Interface\FriendsFrame\PlusManz-PlusManz.blp" />
+					<KeyValue key="iconFile" value="Interface\Addons\Altoholic_Summary\Textures\Achievement_GuildPerk_Everyones a Hero_rank2.tga" />
 				</KeyValues>
 			</Button>
 			<Button parentKey="FactionIcon" inherits="AltoTabSummaryIconTemplate" id="2">
@@ -53,7 +79,7 @@
 					<Anchor point="TOPLEFT" relativeKey="$parent.RealmsIcon" relativePoint="TOPRIGHT" x="5" y="0" />
 				</Anchors>
 				<KeyValues>
-					<KeyValue key="iconFile" value="Interface\PVPFrame\RandomPVPIcon.blp" />
+					<KeyValue key="iconFile" value="Interface\Addons\Altoholic_Summary\Textures\Achievement_BG_winWSG.tga" />
 				</KeyValues>
 			</Button>
 			<Button parentKey="LevelIcon" inherits="AltoTabSummaryIconTemplate" id="3">
@@ -61,7 +87,7 @@
 					<Anchor point="TOPLEFT" relativeKey="$parent.FactionIcon" relativePoint="TOPRIGHT" x="5" y="0" />
 				</Anchors>
 				<KeyValues>
-					<KeyValue key="iconFile" value="Interface\Icons\VAS_CharacterTransfer.blp" />
+					<KeyValue key="iconFile" value="Interface\Addons\Altoholic_Summary\Textures\Achievement_Level_60.tga" />
 				</KeyValues>
 			</Button>
 			<Button parentKey="ProfessionsIcon" inherits="AltoTabSummaryIconTemplate" id="4">
@@ -69,7 +95,7 @@
 					<Anchor point="TOPLEFT" relativeKey="$parent.LevelIcon" relativePoint="TOPRIGHT" x="5" y="0" />
 				</Anchors>
 				<KeyValues>
-					<KeyValue key="iconFile" value="Interface\Icons\Trade_Mining.blp" />
+					<KeyValue key="iconFile" value="Interface\Addons\Altoholic_Summary\Textures\Achievement_GuildPerk_WorkingOvertime.tga" />
 				</KeyValues>
 			</Button>
 			<Button parentKey="ClassIcon" inherits="AltoTabSummaryIconTemplate" id="5">
@@ -77,7 +103,7 @@
 					<Anchor point="TOPLEFT" relativeKey="$parent.ProfessionsIcon" relativePoint="TOPRIGHT" x="5" y="0" />
 				</Anchors>
 				<KeyValues>
-					<KeyValue key="iconFile" value="Interface\Icons\Spell_Fire_FireBolt.blp" />
+					<KeyValue key="iconFile" value="Interface\Addons\Altoholic_Summary\Textures\Achievement_Character_Gnome_Female.tga" />
 				</KeyValues>
 			</Button>
 			<Button parentKey="DataStoreOptionsIcon" inherits="AltoTabSummaryIconTemplate" id="7">
@@ -109,12 +135,12 @@
 				</Scripts>
 			</Button>
 			
-			<Button parentKey="RequestSharing" inherits="AltoButtonTemplate">
+			<Button parentKey="RequestSharing" inherits="AltoButtonTemplate" hidden="true">
 				<Anchors>
 					<Anchor point="TOPRIGHT" relativeKey="$parent.AltoholicOptionsIcon" relativePoint="TOPLEFT" x="-15" y="0" />
 				</Anchors>
 				<KeyValues>
-					<KeyValue key="iconFile" value="Interface\Icons\UI_Chat.blp" />
+					<KeyValue key="iconFile" value="Interface\Icons\Achievement_Reputation_01" />
 				</KeyValues>
 				<Scripts>
 					<OnEnter>
@@ -170,7 +196,7 @@
 				self.MenuItem2:SetText(L["Bag Usage"])
 				self.MenuItem3:SetText(SKILLS)
 				self.MenuItem4:SetText(L["Activity"])
-
+				
 				self.RequestSharing:SetText(L["Account Sharing"])
 				
 				self.ClassIcon:SetIcon(Altoholic:GetCharacterIcon())

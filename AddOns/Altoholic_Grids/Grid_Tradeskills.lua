@@ -15,9 +15,19 @@ local xPacks = {
 local OPTION_XPACK = "UI.Tabs.Grids.Tradeskills.CurrentXPack"
 local OPTION_TRADESKILL = "UI.Tabs.Grids.Tradeskills.CurrentTradeSkill"
 
+local currentDDMText
 local currentItemID
 local currentList
 local dropDownFrame
+
+local function OnXPackChange(self)
+	local currentXPack = self.value
+	
+	addon:SetOption(OPTION_XPACK, currentXPack)
+
+	AltoholicTabGrids:SetViewDDMText(xPacks[currentXPack])
+	AltoholicTabGrids:Update()
+end
 
 local function OnTradeSkillChange(self)
 	dropDownFrame:Close()
@@ -30,25 +40,36 @@ local function DropDown_Initialize(frame, level)
 	if not level then return end
 
 	local tradeskills = addon.TradeSkills.spellIDs
+	local currentXPack = addon:GetOption(OPTION_XPACK)
 	local currentTradeSkill = addon:GetOption(OPTION_TRADESKILL)
 	
-	local spell, icon
-	local firstSecondarySkill = addon.TradeSkills.firstSecondarySkillIndex
-	
-	for i = 1, (firstSecondarySkill - 1) do
-   		spell, _, icon = GetSpellInfo(tradeskills[i])
-        -- Excluding Mining Herbalism and Skinning, which have spell IDs: 8613 2575 2366
-        if (tradeskills[i] ~= 8613) and (tradeskills[i] ~= 2575) and (tradeskills[i] ~= 2366) then 
-			frame:AddButton(spell, i, OnTradeSkillChange, icon, (currentTradeSkill == i), level)
-        end
-	end
+	if level == 1 then
+		frame:AddCategoryButton(PRIMARY_SKILLS, 1, level)
+		frame:AddCategoryButton(SECONDARY_SKILLS, 2, level)
+		frame:AddTitle()
 		
-	for i = firstSecondarySkill, #tradeskills do
-		spell, _, icon = GetSpellInfo(tradeskills[i])
-        -- Exclude fishing
-        if (tradeskills[i] ~= 7733) then
-			frame:AddButton(spell, i, OnTradeSkillChange, icon, (currentTradeSkill == i), level)
-       end
+		-- XPack Selection
+		for i, xpack in pairs(xPacks) do
+			frame:AddButton(xpack, i, OnXPackChange, nil, (currentXPack == i))
+		end
+		frame:AddCloseMenu()
+	
+	elseif level == 2 then
+		local spell, icon, _
+		local firstSecondarySkill = addon.TradeSkills.firstSecondarySkillIndex
+	
+		if frame:GetCurrentOpenMenuValue() == 1 then				-- Primary professions
+			for i = 1, (firstSecondarySkill - 1) do
+				spell, _, icon = GetSpellInfo(tradeskills[i])
+				frame:AddButton(spell, i, OnTradeSkillChange, icon, (currentTradeSkill == i), level)
+			end
+		
+		elseif frame:GetCurrentOpenMenuValue() == 2 then		-- Secondary professions
+			for i = firstSecondarySkill, #tradeskills do
+				spell, _, icon = GetSpellInfo(tradeskills[i])
+				frame:AddButton(spell, i, OnTradeSkillChange, icon, (currentTradeSkill == i), level)
+			end
+		end
 	end
 end
 
@@ -105,8 +126,7 @@ local callbacks = {
 			end
 			
 			local prof = GetSpellInfo(tradeskills[currentTradeSkill])
-			AltoholicTabGrids:SetStatus(format("%s / %s", colors.green, prof))
-            AltoholicTabGrids:SetViewDDMText(prof)
+			AltoholicTabGrids:SetStatus(format("%s%s", colors.green, prof))
 		end,
 	OnUpdateComplete = function() end,
 	GetSize = function() return #currentList end,
@@ -154,8 +174,6 @@ local callbacks = {
 			local tradeskills = addon.TradeSkills.spellIDs
 			local profession = DataStore:GetProfession(character, GetSpellInfo(tradeskills[addon:GetOption(OPTION_TRADESKILL)]))			
 
-            if not profession then return end
-
 			if #profession.Crafts ~= 0 then
 				-- do not enable this yet .. working fine, but better if more filtering allowed. ==> filtering on rarity
 				
@@ -165,7 +183,7 @@ local callbacks = {
 					-- button.IconBorder:SetVertexColor(r, g, b, 0.5)
 					-- button.IconBorder:Show()
 				-- end
-                
+				
 				if DataStore:IsCraftKnown(profession, currentList[dataRowID]) then
 					vc = 1.0
 					text = icons.ready
@@ -202,4 +220,4 @@ local callbacks = {
 		end,
 }
 
-AltoholicTabGrids:RegisterGrid(3, callbacks)
+AltoholicTabGrids:RegisterGrid(4, callbacks)

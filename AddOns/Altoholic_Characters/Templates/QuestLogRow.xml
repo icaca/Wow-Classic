@@ -46,6 +46,19 @@
 					</OnClick>
 				</Scripts>
 			</Button>
+
+			<!--
+			<Button parentKey="Reward1" inherits="AltoGarrisonMissionRewardTemplate">
+				<Anchors>
+					<Anchor point="TOPRIGHT" x="-50" y="-4" />
+				</Anchors>
+			</Button>
+			<Button parentKey="Reward2" inherits="AltoGarrisonMissionRewardTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativeKey="$parent.Reward1" relativePoint="RIGHT" x="6" y="0"/>
+				</Anchors>
+			</Button>
+			-->
 		</Frames>
 		<HighlightTexture parentKey="Highlight" file="Interface\HelpFrame\HelpFrameButton-Highlight" alphaMode="ADD">
 			<Size x="560" y="39" />

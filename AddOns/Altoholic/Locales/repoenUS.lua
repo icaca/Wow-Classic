@@ -103,6 +103,26 @@ L["COLUMN_BIDS_SUBTITLE"] = "Number of bids placed at the Auction House"
 L["COLUMN_AUCTIONHOUSE_VISITED_TITLE"] = "Last Auction House Visit"
 L["COLUMN_AUCTIONHOUSE_VISITED_TITLE_SHORT"] = "Visited"
 L["COLUMN_AUCTIONHOUSE_VISITED_SUBTITLE"] = "Last time the Auction House was visited"
+ 
+-- *** Tab Summary / Artifacts ***
+ 
+L["COLUMN_ARTIFACT_RANK_TITLE"] = "Artifact Rank"
+L["COLUMN_ARTIFACT_RANK_TITLE_SHORT"] = "Rank"
+L["COLUMN_ARTIFACT_RANK_SUBTITLE"] = "Total artifact ranks purchased"
+
+L["COLUMN_ARTIFACT_POWER_TITLE"] = "Artifact Power"
+L["COLUMN_ARTIFACT_POWER_TITLE_SHORT"] = "Power"
+L["COLUMN_ARTIFACT_POWER_SUBTITLE"] = "Cost per level"
+ 
+L["COLUMN_ARTIFACT_KNOWLEDGE_TITLE"] = "Artifact Knowledge"
+L["COLUMN_ARTIFACT_KNOWLEDGE_TITLE_SHORT"] = "Knowledge"
+L["COLUMN_ARTIFACT_KNOWLEDGE_SUBTITLE"] = "Bonus per level"
+
+L["COLUMN_ARTIFACT_RESEARCH_TITLE"] = "Artifact Research Notes"
+L["COLUMN_ARTIFACT_RESEARCH_TITLE_SHORT"] = "Next Research"
+L["COLUMN_ARTIFACT_RESEARCH_SUBTITLE"] = "Time until the next note is ready"
+L["COLUMN_ARTIFACT_RESEARCH_DETAIL_1"] = "At least one note is ready for pickup"
+L["COLUMN_ARTIFACT_RESEARCH_DETAIL_2"] = "All notes are ready for pickup"
 
 
 -- *************************
@@ -144,8 +164,14 @@ L["ACCOUNT_WIDE"] = "Account Wide"
 
 
 
+
+
+
+
+
 L["ITEM_TYPE_RECIPE"] = "Recipe"
 L["ITEM_SUBTYPE_BOOK"] = "Book"
+
 
 
 -- Note: since 2.4.004 and the support of LibBabble, certain lines are commented, but remain there for clarity (especially those concerning the menu)
@@ -157,6 +183,9 @@ L["TIME_TO_NEXT_WARNING_TOOLTIP"] = "Minimum time before you get the next mail e
 L["Uncollected resources"] = true
 L["Last collected"] = true
 L["Max. uncollected resources in"] = true
+
+
+L["Death Knight"] = true
 
 -- note: these string are the ones found in item tooltips, make sure to respect the case when translating, and to distinguish them (like crit vs spell crit)
 L["Increases healing done by up to %d+"] = true

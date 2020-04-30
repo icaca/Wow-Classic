@@ -16,7 +16,7 @@ local currentAccount = THIS_ACCOUNT
 local currentRealm = GetRealmName()
 local currentAlt = UnitName("player")
 
-local SKILL_ANY = 4
+local SKILL_ANY = 0
 
 -- ** Icons Menus **
 local VIEW_BAGS = 1
@@ -94,9 +94,10 @@ function ns:MenuItem_OnClick(frame, button)
 	menuIcons.CharactersIcon:Show()
 	menuIcons.BagsIcon:Show()
 	menuIcons.QuestsIcon:Show()
+	menuIcons.TalentsIcon:Show()
 	menuIcons.AuctionIcon:Show()
 	menuIcons.MailIcon:Show()
---	menuIcons.SpellbookIcon:Show()
+	menuIcons.SpellbookIcon:Show()
 	menuIcons.ProfessionsIcon:Show()
 end
 
@@ -233,9 +234,10 @@ local function OnCharacterChange(self)
 	local menuIcons = parent.MenuIcons
 	EnableIcon(menuIcons.BagsIcon)
 	EnableIcon(menuIcons.QuestsIcon)
+	EnableIcon(menuIcons.TalentsIcon)
 	EnableIcon(menuIcons.AuctionIcon)
 	EnableIcon(menuIcons.MailIcon)
---	EnableIcon(menuIcons.SpellbookIcon)
+	EnableIcon(menuIcons.SpellbookIcon)
 	EnableIcon(menuIcons.ProfessionsIcon)
 	
 	DropDownList1:Hide()
@@ -257,7 +259,7 @@ local function OnContainerChange(self)
 		addon:ToggleOption(nil, "UI.Tabs.Characters.ViewBags")
 	elseif self.value == 2 then
 		addon:ToggleOption(nil, "UI.Tabs.Characters.ViewBank")
-	elseif self.value == 5 then
+	elseif self.value == 3 then
 		addon:ToggleOption(nil, "UI.Tabs.Characters.ViewBagsAllInOne")
 	end
 	
@@ -441,7 +443,7 @@ local function BagsIcon_Initialize(self, level)
 	DDM_Add(L["View"], nil, function() ns:ViewCharInfo(VIEW_BAGS) end)
 	DDM_Add(L["Bags"], 1, OnContainerChange, nil, addon:GetOption("UI.Tabs.Characters.ViewBags"))
 	DDM_Add(L["Bank"], 2, OnContainerChange, nil, addon:GetOption("UI.Tabs.Characters.ViewBank"))
-	DDM_Add(L["All-in-one"], 5, OnContainerChange, nil, addon:GetOption("UI.Tabs.Characters.ViewBagsAllInOne"))
+	DDM_Add(L["All-in-one"], 3, OnContainerChange, nil, addon:GetOption("UI.Tabs.Characters.ViewBagsAllInOne"))
 		
 	DDM_AddTitle(" ")
 	DDM_AddTitle("|r" ..RARITY)
@@ -482,6 +484,18 @@ local function QuestsIcon_Initialize(self, level)
 	if DataStore_Quests then
 		DDM_Add("DataStore Quests", nil, function() Altoholic:ToggleUI(); InterfaceOptionsFrame_OpenToCategory("DataStore_Quests") end)
 	end
+	DDM_AddCloseMenu()
+end
+
+local function TalentsIcon_Initialize(self, level)
+	
+	local currentCharacterKey = ns:GetAltKey()
+	if not currentCharacterKey then return end
+	
+	DDM_AddTitle(format("%s / %s", TALENTS, DataStore:GetColoredCharacterName(currentCharacterKey)))
+	DDM_AddTitle(" ")
+	DDM_Add(TALENTS, 1, OnTalentChange, nil, nil)
+	-- DDM_Add(TALENT_SPEC_SECONDARY, 2, OnTalentChange, nil, nil)
 	DDM_AddCloseMenu()
 end
 
@@ -542,6 +556,19 @@ local function MailIcon_Initialize(self, level)
 	DDM_AddCloseMenu()
 end
 
+local function SpellbookIcon_Initialize(self, level)
+	local currentCharacterKey = ns:GetAltKey()
+	if not currentCharacterKey then return end
+	
+	DDM_AddTitle(format("%s / %s", SPELLBOOK, DataStore:GetColoredCharacterName(currentCharacterKey)))
+	
+	for index, spellTab in ipairs(DataStore:GetSpellTabs(currentCharacterKey)) do
+		DDM_Add(spellTab, spellTab, OnSpellTabChange)
+	end
+	
+	DDM_AddCloseMenu()
+end
+
 local function ProfessionsIcon_Initialize(self, level)
 	if not DataStore_Crafts then return end
 	
@@ -572,7 +599,7 @@ local function ProfessionsIcon_Initialize(self, level)
 			DDM_Add(format("%s%s", colors.grey, PROFESSIONS_COOKING), nil, nil)
 		end
 		
-        -- First Aid
+		-- First Aid
 		rank = DataStore:GetFirstAidRank(currentCharacterKey)
 		if last and rank then
 			local info = UIDropDownMenu_CreateInfo()
@@ -586,8 +613,9 @@ local function ProfessionsIcon_Initialize(self, level)
 			
 		else
 			DDM_Add(format("%s%s", colors.grey, PROFESSIONS_FIRST_AID), nil, nil)
-		end	
-        
+		end		
+		
+		
 		-- Profession 1
 		rank, _, _, professionName = DataStore:GetProfession1(currentCharacterKey)
 		if last and rank and professionName then
@@ -651,7 +679,7 @@ local function ProfessionsIcon_Initialize(self, level)
 		local info = UIDropDownMenu_CreateInfo()
 
 		if UIDROPDOWNMENU_MENU_VALUE == "colors" then
-			for index = 0, 3 do 
+			for index = 1, 4 do 
 				info.text = recipes:GetRecipeColorName(index)
 				info.value = index
 				info.checked = (recipes:GetCurrentColor() == index)
@@ -675,9 +703,12 @@ local function ProfessionsIcon_Initialize(self, level)
 			local invSlots = {}
 			local profession = DataStore:GetProfession(currentCharacterKey, currentProfession)
 			
-			DataStore:IterateRecipes(profession, 0, 0, function(recipeData)
-				local color, recipeID = DataStore:GetRecipeInfo(recipeData)
-				local itemID = DataStore:GetCraftResultItem(recipeID)
+			--DataStore:IterateRecipes(profession, mainCategory, function(color, itemID, index) 
+			DataStore:IterateRecipes(profession, 0, function(color, itemID, index) 
+			
+			--DataStore:IterateRecipes(profession, 0, 0, function(recipeData)
+				--local color, recipeID = DataStore:GetRecipeInfo(recipeData)
+				--local itemID = DataStore:GetCraftResultItem(recipeID)
 				if not itemID then return end
 					
 				local _, _, _, _, _, itemType, _, _, itemEquipLoc = GetItemInfo(itemID)
@@ -709,24 +740,27 @@ local function ProfessionsIcon_Initialize(self, level)
 			local profession = DataStore:GetProfession(currentCharacterKey, UIDROPDOWNMENU_MENU_VALUE)
 			
 			for index = 1, DataStore:GetNumRecipeCategories(profession) do
-				local categoryID, name = DataStore:GetRecipeCategoryInfo(profession, index)
+				local name = DataStore:GetRecipeCategoryInfo(profession, index)
 				
 				info.text = name
 				info.value = format("%s,%d", UIDROPDOWNMENU_MENU_VALUE, index)		-- "Tailoring,1"
-				info.checked = ((recipes:GetCurrentProfession() == UIDROPDOWNMENU_MENU_VALUE) and (recipes:GetMainCategory() == index))
+				-- info.checked = ((recipes:GetCurrentProfession() == UIDROPDOWNMENU_MENU_VALUE) and (recipes:GetMainCategory() == index))
+				info.checked = false
 				info.func = OnProfessionCategoryChange
 				UIDropDownMenu_AddButton(info, level)	
 			end
 		end
-    end
+	end
 end
 
 local menuIconCallbacks = {
 	CharactersIcon_Initialize,
 	BagsIcon_Initialize,
 	QuestsIcon_Initialize,
+	TalentsIcon_Initialize,
 	AuctionIcon_Initialize,
 	MailIcon_Initialize,
+	SpellbookIcon_Initialize,
 	ProfessionsIcon_Initialize,
 }
 
@@ -751,7 +785,7 @@ function ns:OnLoad()
 	local bagIcon = ICON_VIEW_BAGS
 
 	-- bag icon gets better with more chars at lv max
-	local LVMax = 60
+	local LVMax = 110
 	local numLvMax = 0
 	for _, character in pairs(DataStore:GetCharacters()) do
 		if DataStore:GetCharacterLevel(character) >= LVMax then

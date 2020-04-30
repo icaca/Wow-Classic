@@ -61,14 +61,14 @@ local Factions = {
 			{ name = DataStore:GetFactionName(70), icon = "INV_Misc_ArmorKit_03" },		-- "Syndicate" 
 			{ name = DataStore:GetFactionName(59), icon = "INV_Ingot_Thorium" },		-- "Thorium Brotherhood" 
 			{ name = DataStore:GetFactionName(576), icon = "Achievement_Reputation_timbermaw" },		-- "Timbermaw Hold" 
+			{ name = DataStore:GetFactionName(922), icon = "Achievement_Zone_Ghostlands" },		-- "Tranquillien" 
 			{ name = DataStore:GetFactionName(589), icon = "Ability_Mount_PinkTiger" },		-- "Wintersaber Trainers" 
 			{ name = DataStore:GetFactionName(270), icon = "INV_Bijou_Green" },		-- "Zandalar Tribe" 
 		}
-	}
+	},
 }
 
-local CAT_GUILD = #Factions
-local CAT_ALLINONE = CAT_GUILD + 1
+local CAT_ALLINONE = #Factions + 1
 
 local VertexColors = {
 	[FACTION_STANDING_LABEL1] = { r = 0.4, g = 0.13, b = 0.13 },	-- hated
@@ -79,7 +79,6 @@ local VertexColors = {
 	[FACTION_STANDING_LABEL6] = { r = 0.0, g = 0.6, b = 0.6 },		-- honored
 	[FACTION_STANDING_LABEL7] = { r = 0.9, g = 0.3, b = 0.9 },		-- revered
 	[FACTION_STANDING_LABEL8] = { r = 1.0, g = 1.0, b = 1.0 },		-- exalted
-	[PARAGON_LABEL] = { r = 1.0, g = 1.0, b = 1.0 },					-- Paragon
 }
 
 local view
@@ -119,7 +118,6 @@ local function BuildView()
 			if not b.name then
 				DEFAULT_CHAT_FRAME:AddMessage(b.icon)
 			end
-			
 			
 			return a.name < b.name
 		end)
@@ -162,7 +160,7 @@ local function DropDown_Initialize(frame, level)
 	local currentFactionGroup = addon:GetOption(OPTION_FACTION)
 	
 	if level == 1 then
-		for xpackIndex = 1, (CAT_GUILD - 1) do
+		for xpackIndex = 1, (CAT_ALLINONE - 1) do
 			info.text = Factions[xpackIndex].name
 			info.hasArrow = 1
 			info.checked = (currentXPack == xpackIndex)
@@ -201,7 +199,7 @@ local callbacks = {
 			local currentXPack = addon:GetOption(OPTION_XPACK)
 			local currentFactionGroup = addon:GetOption(OPTION_FACTION)
 			
-            if (currentXPack == CAT_ALLINONE) then
+			if (currentXPack == CAT_ALLINONE) then
 				AltoholicTabGrids:SetStatus(L["All-in-one"])
 			else
 				AltoholicTabGrids:SetStatus(format("%s / %s", Factions[currentXPack].name, Factions[currentXPack][currentFactionGroup].name))

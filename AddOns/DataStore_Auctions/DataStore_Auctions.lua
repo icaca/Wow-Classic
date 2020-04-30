@@ -95,7 +95,7 @@ local PublicMethods = {
 	ClearAuctionEntries = _ClearAuctionEntries,
 }
 
--- maximum time left in seconds per auction type : [1] = max 30 minutes, [2] = 2 hours, [3] = 12 hours, [4] = more than 12, but max 24 hours
+-- maximum time left in seconds per auction type : [1] = max 30 minutes, [2] = 2 hours, [3] = 12 hours, [4] = more than 12, but max 48 hours
 -- info : http://www.wowwiki.com/API_GetAuctionItemTimeLeft
 local maxTimeLeft = { 30*60, 2*60*60, 12*60*60, 48*60*60 }
 
@@ -148,6 +148,10 @@ end
 -- *** Scanning functions ***
 local function ScanAuctions()
 	local AHZone = 0		-- 0 means faction AH
+	-- local zoneFaction = GetZonePVPInfo()	-- "friendly", "sanctuary", "contested" (PvP server) or nil (PvE server)
+	-- if ( zoneFaction ~= "friendly" ) and ( zoneFaction ~= "sanctuary" ) then
+		-- AHZone = 1			-- 1 means goblin AH
+	-- end
 	
 	local zoneID = C_Map.GetBestMapForUnit("player")
 	if zoneID == 161 or zoneID == 281 or zoneID == 673 then

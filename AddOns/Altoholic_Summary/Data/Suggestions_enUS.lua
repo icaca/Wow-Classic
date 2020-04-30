@@ -154,6 +154,7 @@ addon.Suggestions = {
 		{ 175, "Up to 175: Mine Iron and Gold\nDesolace, Ashenvale, Badlands, Arathi Highlands,\nAlterac Mountains, Stranglethorn Vale, Swamp of Sorrows" },
 		{ 250, "Up to 250: Mine Mithril and Truesilver\nBlasted Lands, Searing Gorge, Badlands, The Hinterlands,\nWestern Plaguelands, Azshara, Winterspring, Felwood, Stonetalon Mountains, Tanaris" },
 		{ 275, "Up to 275: Mine Thorium \nUn’goro Crater, Azshara, Winterspring, Blasted Lands\nSearing Gorge, Burning Steppes, Eastern Plaguelands, Western Plaguelands" },
+		{ 330, "Up to 330: Mine Fel Iron\nHellfire Peninsula, Zangarmarsh" },
 	},
 	[L["Herbalism"]] = {
 		{ 50, "Up to 50: Collect Silverleaf and Peacebloom\nAvailable in all starting zones" },
@@ -171,7 +172,7 @@ addon.Suggestions = {
 		{ 300, "Up to 300: Collect Plagueblooms\nEastern & Western Plaguelands, Felwood\nor Icecaps in Winterspring" },
 	},
 	[L["Skinning"]] = {
-		{ 525, "Up to 300: Divide your current skill level by 5,\nand skin mobs of that level" },
+		{ 525, "Up to 525: Divide your current skill level by 5,\nand skin mobs of that level" },
 	},
 
 	[L["Lockpicking"]] = {
@@ -208,7 +209,6 @@ addon.Suggestions = {
 		{ 300, "Up to 300: Azshara" },
 	},
 
-
 	-- suggested leveling zones, as defined by recommended quest levels. map id's : http://wowpedia.org/MapID
 	-- ["Leveling"] = {
 		-- { 10, "Up to 10: Any starting zone" },
@@ -231,4 +231,6 @@ addon.Suggestions = {
 		-- { 55, "Up to 55: " .. C_Map.GetMapInfo(201).name .. "\n" .. C_Map.GetMapInfo(281).name},
 		-- { 58, "Up to 58: " .. C_Map.GetMapInfo(19).name},
 		-- { 60, "Up to 60: " .. C_Map.GetMapInfo(32).name .. "\n" .. C_Map.GetMapInfo(241).name .. "\n" .. C_Map.GetMapInfo(261).name},
+
+	-- },
 }

@@ -94,8 +94,48 @@ local factions = {
 	{ id = 922, name = BF["Tranquillien"] },
 	{ id = 589, name = BF["Wintersaber Trainers"] },
 	{ id = 270, name = BF["Zandalar Tribe"] },
+	{ id = 1012, name = BF["Ashtongue Deathsworn"] },
+	{ id = 942, name = BF["Cenarion Expedition"] },
+	{ id = 933, name = BF["The Consortium"] },
+	{ id = 946, name = BF["Honor Hold"] },
+	{ id = 978, name = BF["Kurenai"] },
+	{ id = 941, name = BF["The Mag'har"] },
+	{ id = 1015, name = BF["Netherwing"] },
+	{ id = 1038, name = BF["Ogri'la"] },
+	{ id = 970, name = BF["Sporeggar"] },
+	{ id = 947, name = BF["Thrallmar"] },
+	{ id = 1011, name = BF["Lower City"] },
+	{ id = 1031, name = BF["Sha'tari Skyguard"] },
+	{ id = 1077, name = BF["Shattered Sun Offensive"] },
+	{ id = 932, name = BF["The Aldor"] },
+	{ id = 934, name = BF["The Scryers"] },
+	{ id = 935, name = BF["The Sha'tar"] },
+	{ id = 989, name = BF["Keepers of Time"] },
+	{ id = 990, name = BF["The Scale of the Sands"] },
+	{ id = 967, name = BF["The Violet Eye"] },
+	{ id = 1106, name = BF["Argent Crusade"] },
+	{ id = 1090, name = BF["Kirin Tor"] },
+	{ id = 1073, name = BF["The Kalu'ak"] },
+	{ id = 1091, name = BF["The Wyrmrest Accord"] },
+	{ id = 1098, name = BF["Knights of the Ebon Blade"] },
+	{ id = 1119, name = BF["The Sons of Hodir"] },
+	{ id = 1156, name = BF["The Ashen Verdict"] },
+	{ id = 1037, name = BF["Alliance Vanguard"] },
+	{ id = 1068, name = BF["Explorers' League"] },
+	{ id = 1126, name = BF["The Frostborn"] },
+	{ id = 1094, name = BF["The Silver Covenant"] },
+	{ id = 1050, name = BF["Valiance Expedition"] },
+	{ id = 1052, name = BF["Horde Expedition"] },
+	{ id = 1067, name = BF["The Hand of Vengeance"] },
+	{ id = 1124, name = BF["The Sunreavers"] },
+	{ id = 1064, name = BF["The Taunka"] },
+	{ id = 1085, name = BF["Warsong Offensive"] },
+	{ id = 1104, name = BF["Frenzyheart Tribe"] },
+	{ id = 1105, name = BF["The Oracles"] },
 	{ id = 469, name = BF["Alliance"] },
 	{ id = 67, name = BF["Horde"] },
+	{ id = 1134, name = BF["Gilneas"] },
+	{ id = 1133, name = BF["Bilgewater Cartel"] },
 }
 
 local FactionUIDsRev = {}
@@ -185,7 +225,7 @@ local function ScanReputations()
 		local name, _, _, _, _, earned, _, _, _, _, _, _, _, factionID = GetFactionInfo(i)
 		if (earned and earned > 0) then		-- new in 3.0.2, headers may have rep, ex: alliance vanguard + horde expedition
 			if FactionUIDsRev[name] then		-- is this a faction we're tracking ?
-				f[FactionUIDsRev[name]] = earned		
+				f[FactionUIDsRev[name]] = earned
 			end
 		end
 	end

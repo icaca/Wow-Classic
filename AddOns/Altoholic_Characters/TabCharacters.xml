@@ -51,15 +51,23 @@
 							<KeyValue key="iconFile" value="Interface\LFGFrame\LFGIcon-Quest" />
 						</KeyValues>
 					</Button>
-					<Button parentKey="AuctionIcon" inherits="AltoTabCharactersIconTemplate" id="4">
+					<Button parentKey="TalentsIcon" inherits="AltoTabCharactersIconTemplate" id="4">
 						<Anchors>
 							<Anchor point="TOPLEFT" relativeKey="$parent.QuestsIcon" relativePoint="TOPRIGHT" x="5" y="0" />
+						</Anchors>
+						<KeyValues>
+							<KeyValue key="iconFile" value="Interface\Addons\Altoholic_Summary\Textures\Spell_Nature_NatureGuardian.tga" />
+						</KeyValues>
+					</Button>
+					<Button parentKey="AuctionIcon" inherits="AltoTabCharactersIconTemplate" id="5">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeKey="$parent.TalentsIcon" relativePoint="TOPRIGHT" x="5" y="0" />
 						</Anchors>
 						<KeyValues>
 							<KeyValue key="iconFile" value="Interface\Icons\INV_Misc_Coin_01" />
 						</KeyValues>
 					</Button>
-					<Button parentKey="MailIcon" inherits="AltoTabCharactersIconTemplate" id="5">
+					<Button parentKey="MailIcon" inherits="AltoTabCharactersIconTemplate" id="6">
 						<Anchors>
 							<Anchor point="TOPLEFT" relativeKey="$parent.AuctionIcon" relativePoint="TOPRIGHT" x="5" y="0" />
 						</Anchors>
@@ -67,26 +75,27 @@
 							<KeyValue key="iconFile" value="Interface\Icons\INV_Misc_Note_01" />
 						</KeyValues>
 					</Button>
-			<!--		<Button parentKey="SpellbookIcon" inherits="AltoTabCharactersIconTemplate" id="7">
+					<Button parentKey="SpellbookIcon" inherits="AltoTabCharactersIconTemplate" id="7">
 						<Anchors>
 							<Anchor point="TOPLEFT" relativeKey="$parent.MailIcon" relativePoint="TOPRIGHT" x="5" y="0" />
 						</Anchors>
 						<KeyValues>
 							<KeyValue key="iconFile" value="Interface\Icons\INV_Misc_Book_09" />
 						</KeyValues>
-					</Button>-->
-					<Button parentKey="ProfessionsIcon" inherits="AltoTabCharactersIconTemplate" id="6">
+					</Button>
+					<Button parentKey="ProfessionsIcon" inherits="AltoTabCharactersIconTemplate" id="8">
 						<Anchors>
-							<Anchor point="TOPLEFT" relativeKey="$parent.MailIcon" relativePoint="TOPRIGHT" x="5" y="0" />
+							<Anchor point="TOPLEFT" relativeKey="$parent.SpellbookIcon" relativePoint="TOPRIGHT" x="5" y="0" />
 						</Anchors>
 						<KeyValues>
-							<KeyValue key="iconFile" value="Interface\Icons\Trade_Mining.blp" />
+							<KeyValue key="iconFile" value="Interface\Addons\Altoholic_Summary\Textures\Achievement_GuildPerk_WorkingOvertime.tga" />
 						</KeyValues>
 					</Button>
 				</Frames>
 			</Frame>
 	
 			<Frame parentKey="ContextualMenu" inherits="AltoContextualMenuTemplate" />
+			
 			<Frame parentKey="SortButtons" inherits="AltoSortButtonsContainerTemplate">
 				<KeyValues>
 					<KeyValue key="numButtons" value="4" type="number" />

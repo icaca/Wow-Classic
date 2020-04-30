@@ -8,22 +8,4 @@ L["BROADCAST_PROFS_ENABLED"] = "Les métiers connus de vos rerolls seront envoy�
 L["BROADCAST_PROFS_TITLE"] = "Envoi des liens"
 L["Professions"] = "Métiers"
 L["Secondary Skills"] = "Compétences secondaires"
-L["First Aid"] = "Secourisme"
-L["Cooking"] = "Cuisine"
---[[
-    Credit to Fylinss for writing up these translations
-]]
 
-L["Alchemy"] = "Alchimie"
-L["Blacksmithing"] = "Forge"
-L["Enchanting"] = "Enchantement"
-L["Engineering"] = "Ingénierie"
-L["Leatherworking"] = "Travail du cuir"
-L["Tailoring"] = "Couture"
-L["Skinning"] = "Dépeçage"
-L["Mining"] = "Minage"
-L["Herbalism"] = "Herboristerie"
-L["Smelting"] = "Minage"
-L["Fishing"] = "Pêche"
-L["Poisons"] = "Poisons"
-L["Beast_Training"] = "Dressage des bêtes"

@@ -61,7 +61,8 @@ addon:Controller("AltoholicUI.TabGuild", {
 	end,
 	MenuItem_Highlight = function(frame, id)
 		-- highlight the current menu item
-        local numItems = 1
+		local numItems = 1	-- number of menu items
+		
 		for i = 1, numItems do 
 			frame["MenuItem"..i]:UnlockHighlight()
 		end

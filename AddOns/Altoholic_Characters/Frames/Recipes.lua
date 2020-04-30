@@ -4,11 +4,11 @@ local colors = addon.Colors
 
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 
-local SKILL_GREY = 0
-local SKILL_GREEN = 1
+local SKILL_ANY = 0
+local SKILL_ORANGE = 1
 local SKILL_YELLOW = 2
-local SKILL_ORANGE = 3
-local SKILL_ANY = 4
+local SKILL_GREEN = 3
+local SKILL_GREY = 4
 
 local RecipeColors = { 
 	[SKILL_GREY] = colors.recipeGrey,
@@ -25,7 +25,6 @@ local RecipeColorNames = {
 
 local currentProfession
 local mainCategory
-local subCategory
 local currentColor = SKILL_ANY
 local currentSlots = ALL_INVENTORY_SLOTS
 local currentSearch = ""
@@ -39,11 +38,11 @@ local function SetStatus(character, professionName, mainCategory, numRecipes)
 	local text = ""
 	
 	if not allCategories then
-		local categoryName = select(2, DataStore:GetRecipeCategoryInfo(profession, mainCategory))
-        text = format("%s / %s", professionName, categoryName)
+		local categoryName = DataStore:GetRecipeCategoryInfo(profession, mainCategory)
+		text = format("%s / %s", professionName, categoryName)
 	else
 		text = professionName		-- full list, just display "Tailoring"
-    end
+	end
 
 	local status = format("%s|r / %s (%d %s)", DataStore:GetColoredCharacterName(character), text, numRecipes, TRADESKILL_SERVICE_LEARN)
 	AltoholicTabCharacters.Status:SetText(status)
@@ -54,11 +53,11 @@ local function RecipePassesColorFilter(color)
 	return ((currentColor == SKILL_ANY) or (currentColor == color))
 end
 
-local function RecipePassesSlotFilter(recipeID)
+local function RecipePassesSlotFilter(itemID)
 	if currentSlots == ALL_INVENTORY_SLOTS then return true end
 	
-	if recipeID then	-- on a data line, recipeID is numeric
-		local itemID = DataStore:GetCraftResultItem(recipeID)
+	-- if recipeID then	-- on a data line, recipeID is numeric
+		-- local itemID = DataStore:GetCraftResultItem(recipeID)
 		if itemID then
 			local _, _, _, _, _, itemType, _, _, itemEquipLoc = GetItemInfo(itemID)
 			
@@ -76,34 +75,34 @@ local function RecipePassesSlotFilter(recipeID)
 		else		-- enchants, like socket bracer, might not have an item id, so hide the line
 			return false
 		end
-	else
-		if currentSlots ~= NONEQUIPSLOT then
-			return false
-		end
-	end
+	-- else
+		-- if currentSlots ~= NONEQUIPSLOT then
+			-- return false
+		-- end
+	-- end
 end
 
-local function RecipePassesSearchFilter(recipeID)
+local function RecipePassesSearchFilter(itemID)
 	-- no search filter ? ok
 	if currentSearch == "" then return true end
 	
-	local name = DataStore:GetResultItemName(recipeID)
-	if name and string.find(strlower(name), strlower(currentSearch), 1, true) then
+	local name = GetItemInfo(itemID)
+	if name and string.find(strlower(name), currentSearch, 1, true) then
 		return true
 	end
 end
 
-local function GetRecipeList(character, professionName, mainCategory, subCategory)
+local function GetRecipeList(character, professionName, mainCategory)
 	local list = {}
 	
 	local profession = DataStore:GetProfession(character, professionName)
-	
-	DataStore:IterateRecipes(profession, mainCategory, 0, function(recipeData) 
-		local color, recipeID, isLearned = DataStore:GetRecipeInfo(recipeData)
-		 
-		if RecipePassesColorFilter(color) and RecipePassesSlotFilter(recipeID) and RecipePassesSearchFilter(recipeID) then
-			table.insert(list, recipeData)
+	DataStore:IterateRecipes(profession, mainCategory, function(color, itemID, index) 
+		
+		-- if RecipePassesColorFilter(color) and RecipePassesSlotFilter(recipeID) and RecipePassesSearchFilter(recipeID) then
+		if RecipePassesColorFilter(color) and RecipePassesSlotFilter(itemID) and RecipePassesSearchFilter(itemID) then
+			table.insert(list, index)
 		end
+		
 	end)
 	
 	return list
@@ -114,8 +113,6 @@ addon:Controller("AltoholicUI.Recipes", {
 	GetCurrentProfession = function(frame) return currentProfession end,
 	SetMainCategory = function(frame, cat) mainCategory = cat end,
 	GetMainCategory = function(frame) return mainCategory end,
-	SetSubCategory = function(frame, cat) subCategory = cat end,
-	GetSubCategory = function(frame) return subCategory end,
 	SetCurrentSlots = function(frame, slot) currentSlots = slot end,
 	GetCurrentSlots = function(frame) return currentSlots end,
 	SetCurrentColor = function(frame, color) currentColor = color end,
@@ -135,10 +132,11 @@ addon:Controller("AltoholicUI.Recipes", {
 		for rowIndex = 1, numRows do
 			local rowFrame = scrollFrame:GetRow(rowIndex)
 			local line = rowIndex + offset
-			       
+			
 			if line <= #recipeList then	-- if the line is visible
-				local color, recipeID, isLearned, recipeRank, totalRanks = DataStore:GetRecipeInfo(recipeList[line])
-				rowFrame:Update(currentProfession, recipeID, RecipeColors[color], isLearned, recipeRank, totalRanks)
+				local color, itemID = DataStore:GetRecipeInfo(character, currentProfession, recipeList[line])
+				
+				rowFrame:Update(itemID, RecipeColors[color])
 				rowFrame:Show()
 			else
 				rowFrame:Hide()

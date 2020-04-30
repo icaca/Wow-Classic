@@ -1,0 +1,22 @@
+lightweight tag 8c22183cb5436a250a93da9cf9d2a0025a9b3d1f v1.6.7
+Author:	Boshi Lian <farmer1992@gmail.com>
+Date:	Wed Apr 29 22:41:22 2020 -0700
+
+commit 8c22183cb5436a250a93da9cf9d2a0025a9b3d1f
+Author: Boshi Lian <farmer1992@gmail.com>
+Date:   Wed Apr 29 22:41:22 2020 -0700
+
+    introduce pasue
+
+commit 7c4612191fbfa869a7f2f06436321a27a95016f8
+Author: Boshi Lian <farmer1992@gmail.com>
+Date:   Wed Apr 29 20:00:49 2020 -0700
+
+    better bid frame szie
+
+commit 2cf010a4034dd6bd0a382f18f1313bf905fbb849
+Author: Boshi Lian <farmer1992@gmail.com>
+Date:   Wed Apr 29 19:24:34 2020 -0700
+
+    fix slidebar yield decimal
+

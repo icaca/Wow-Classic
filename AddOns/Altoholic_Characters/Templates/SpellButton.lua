@@ -10,29 +10,21 @@ addon:Controller("AltoholicUI.SpellButton", {
 		-- frame:Disable()
 		frame.Icon:SetDesaturated(true)
 	end,
-	SetSpell = function(frame, spellID, availableAt)
+	SetSpell = function(frame, spellID, rank)
 		if not spellID then return end
 
-		local name, info, icon = GetSpellInfo(spellID)
+		local name, _, icon = GetSpellInfo(spellID)
 		print()
 		if not name or not icon then return end	-- exit on invalid data
 		
 		frame.spellID = spellID
 		frame.SpellName:SetText(name)
 				
-		if availableAt == 0 then	-- 0 = already known
-			frame.SpellName:SetTextColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b)
-			frame.SubSpellName:SetText(info or "")
-			frame.SubSpellName:SetTextColor(0.50, 0.25, 0)
-			frame.Icon:SetDesaturated(false)
-			frame.Icon:SetVertexColor(1.0, 1.0, 1.0)
-		else
-			frame.SpellName:SetTextColor(0.4, 0.4, 0.4)
-			frame.SubSpellName:SetFormattedText(SPELLBOOK_AVAILABLE_AT, availableAt)
-			frame.SubSpellName:SetTextColor(0.4, 0.4, 0.4)
-			frame.Icon:SetDesaturated(true)
-			frame.Icon:SetVertexColor(0.4, 0.4, 0.4)
-		end
+		frame.SpellName:SetTextColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b)
+		frame.SubSpellName:SetText(rank or "")
+		frame.SubSpellName:SetTextColor(0.50, 0.25, 0)
+		frame.Icon:SetDesaturated(false)
+		frame.Icon:SetVertexColor(1.0, 1.0, 1.0)
 		
 		frame.Icon:SetWidth(30)
 		frame.Icon:SetHeight(30)

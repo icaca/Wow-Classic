@@ -147,7 +147,7 @@ local RealmScrollFrame_Desc = {
 		},
 		[GUILD_ITEM_LINE] = {
 			GetItemData = function(self, result)		-- GetItemData..just to avoid calling it GetItemInfo
-					local name = GetItemInfo(result.id)		
+					local name = GetItemInfo(result.id)
 			
 					-- return name, source, sourceID
 					return name, colors.teal .. result.location, 0 
@@ -665,7 +665,9 @@ local function BrowseCharacter(character)
 	local containers = DataStore:GetContainers(character)
 	if containers then
 		for containerName, container in pairs(containers) do
-			if (containerName == "Bag100") then
+			if string.sub(containerName, 1, string.len("VoidStorage")) == "VoidStorage" then
+				currentResultLocation = VOID_STORAGE
+			elseif (containerName == "Bag100") then
 				currentResultLocation = L["Bank"]
 			elseif (containerName == "Bag-2") then
 				currentResultLocation = KEYRING
@@ -683,6 +685,7 @@ local function BrowseCharacter(character)
 				
 				-- use the link before the id if there's one
 				if itemID then
+					-- VerifyItem(itemLink or itemID, itemCount, itemLink)
 					VerifyItem(itemID, itemCount, itemLink)
 				end
 			end
@@ -875,6 +878,13 @@ function ns:FindItem(searchType, searchSubType)
 	
 	if SearchLoots then
 		addon.Tabs.Search:SetMode("loots")
+		-- if addon:GetOption("UI.Tabs.Search.SortDescending") then 		-- descending sort ?
+			-- AltoholicTabSearch.SortButtons.Sort3.ascendingSort = true		-- say it's ascending now, it will be toggled
+			-- ns:SortResults(AltoholicTabSearch.SortButtons.Sort3, "iLvl")
+		-- else
+			-- AltoholicTabSearch.SortButtons.Sort3.ascendingSort = nil
+			-- ns:SortResults(AltoholicTabSearch.SortButtons.Sort3, "iLvl")
+		-- end
 	else
 		addon.Tabs.Search:SetMode("realm")
 	end
@@ -950,6 +960,14 @@ function ns:FindEquipmentUpgrade()
 	else
 		addon.Tabs.Search:SetMode("loots")
 	end
+	
+	-- if addon:GetOption("UI.Tabs.Search.SortDescending") then 		-- descending sort ?
+		-- AltoholicTabSearch.SortButtons.Sort8.ascendingSort = true		-- say it's ascending now, it will be toggled
+		-- ns:SortResults(AltoholicTabSearch.SortButtons.Sort8, "iLvl")
+	-- else
+		-- AltoholicTabSearch.SortButtons.Sort8.ascendingSort = nil
+		-- ns:SortResults(AltoholicTabSearch.SortButtons.Sort8, "iLvl")
+	-- end
 
 	ns:Update()
 end

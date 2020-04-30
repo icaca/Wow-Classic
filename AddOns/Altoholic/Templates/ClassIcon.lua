@@ -111,8 +111,10 @@ addon:Controller("AltoholicUI.ClassIcon", {
 		icon:SetAllPoints(frame)
 		
 		border:Show()
-		frame:SetWidth(34)
-		frame:SetHeight(34)
+		-- frame:SetWidth(34)
+		-- frame:SetHeight(34)
+		frame:SetWidth(31)
+		frame:SetHeight(31)
 		frame:Show()
 	end,
 	DrawTooltip = function(frame, character)

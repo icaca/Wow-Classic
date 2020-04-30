@@ -12,7 +12,6 @@ addon:Controller("AltoholicUI.SpellbookPanel", {
 		AltoholicTabCharacters.Status:SetText(format("%s|r / %s / %s", DataStore:GetColoredCharacterName(character), SPELLBOOK, currentSchool))
 		
 		local itemName, itemButton
-		local spellID, availableAt
 
 		local maxSpells = DataStore:GetNumSpells(character, currentSchool)
 		local offset = (currentPage-1) * SPELLS_PER_PAGE
@@ -20,10 +19,10 @@ addon:Controller("AltoholicUI.SpellbookPanel", {
 		
 		local index = 1
 		while index <= SPELLS_PER_PAGE do
-			spellID, availableAt = DataStore:GetSpellInfo(character, currentSchool, spellIndex)
+			local spellID, rank = DataStore:GetSpellInfo(character, currentSchool, spellIndex)
 			
 			if spellID then
-				frame["SpellIcon" .. index]:SetSpell(spellID, availableAt)
+				frame["SpellIcon" .. index]:SetSpell(spellID, rank)
 				frame["SpellIcon" .. index]:Show()
 				index = index + 1
 			end

@@ -5,7 +5,7 @@ local addon = _G[addonName]
 The methods below are slightly modified versions of Blizzard's own code to manage scroll frames.
 I wanted to clean my own code, to reduce the amount of named frames, which often make the code too specific and less flexible.
 By using parentKeys, it becomes easier to manage some bits in a generic way, for this I had to modify Blizzard's own UI templates (see .xml)
-Blizzard is using parentKeys in their newer UI elements, but older elements like scroll frames have not been updated,
+Blizzard is using parentKeys in their newer UI elements (ex: Garrison stuff), but older elements like scroll frames have not been updated,
 most likely for compatibility reasons.
 I thus had to redo the xml templates and their supporting code.
 --]]
@@ -160,7 +160,7 @@ addon:Controller("AltoholicUI.UIPanelScrollFrame", {
 	Update = function(frame, numItems, numToDisplay, buttonHeight)
 		-- My own FauxScrollFrame_Update() from SharedUIPanelTemplates.lua
 		-- If more than one screen full of skills then show the scrollbar
-		       
+		
 		numToDisplay = numToDisplay or frame.numRows
 		buttonHeight = buttonHeight or frame.rowHeight
 		
