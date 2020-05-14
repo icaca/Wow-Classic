@@ -12,6 +12,7 @@ local Print = ADDONSELF.print
 local calcavg = ADDONSELF.calcavg
 local GenExport = ADDONSELF.genexport
 local GenReport = ADDONSELF.genreport
+local SendToChatSlowly = ADDONSELF.sendchat
 local GetMoneyStringL = ADDONSELF.GetMoneyStringL
 
 local function GetRosterNumber()
@@ -253,7 +254,7 @@ function GUI:Init()
     do
         local bf = CreateFrame("Frame", nil, f)
         bf:SetWidth(290)
-        bf:SetHeight(280)
+        bf:SetHeight(310)
         bf:SetBackdrop({
             bgFile = "Interface\\FrameGeneral\\UI-Background-Marble",
             edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
@@ -399,6 +400,8 @@ function GUI:Init()
             local l = s:CreateFontString(nil, "OVERLAY", "GameFontNormal")
             l:SetPoint("RIGHT", s, "LEFT", -20, 1)
             l:SetText(L["Count down time"])
+            bf:SetWidth(math.max(bf:GetWidth(), l:GetStringWidth() + 220))
+
 
             s:SetPoint("TOPLEFT", bf, 40 + l:GetStringWidth(), -70)
 
@@ -427,6 +430,8 @@ function GUI:Init()
             local l = s:CreateFontString(nil, "OVERLAY", "GameFontNormal")
             l:SetPoint("RIGHT", s, "LEFT", -20, 1)
             l:SetText(L["Starting price"])
+            bf:SetWidth(math.max(bf:GetWidth(), l:GetStringWidth() + 220))
+
 
             s:SetPoint("TOPLEFT", bf, 40 + l:GetStringWidth(), -120)
 
@@ -542,6 +547,8 @@ function GUI:Init()
                     local l = s:CreateFontString(nil, "OVERLAY", "GameFontNormal")
                     l:SetPoint("RIGHT", s, "LEFT", -20, 1)
                     l:SetText(L["Bid increment"])
+
+                    bf:SetWidth(math.max(bf:GetWidth(), l:GetStringWidth() + 220))
         
                     s:SetPoint("TOPLEFT", bf, 40 + l:GetStringWidth(), -200)
         
@@ -619,6 +626,22 @@ function GUI:Init()
         end
 
         do
+            local b = CreateFrame("CheckButton", nil, bf, "UICheckButtonTemplate")
+            b:SetPoint("TOPLEFT", bf, 15, -230)
+    
+            b.text = b:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+            b.text:SetPoint("LEFT", b, "RIGHT", 0, 1)
+            b.text:SetText("/RA")
+
+            b:SetScript("OnClick", function() 
+                Database:SetConfig("bfusera", b:GetChecked())
+            end)
+            b:SetChecked(Database:GetConfigOrDefault("bfusera", true))            
+
+            bf.usera = b
+        end
+
+        do
             local ctx = nil
 
             local currentitem = function()
@@ -648,7 +671,7 @@ function GUI:Init()
             end
 
             local SendRaidMessage = function(text)
-                if UnitIsGroupLeader('player') or UnitIsGroupAssistant('player') then
+                if bf.usera:GetChecked() and (UnitIsGroupLeader('player') or UnitIsGroupAssistant('player')) then
                     SendChatMessage(text, "RAID_WARNING")
                 else
                     SendChatMessage(text, "RAID")
@@ -673,8 +696,9 @@ function GUI:Init()
                     ctx.currentwinner = playerName
                     ctx.currentprice = ask * 10000
                     ctx.countdown = bf.countdown:GetValue()
-
-                    SendRaidMessage(L["Bid accept"] .. " " .. item .. " " .. L["Current price"] .. " " .. GetMoneyStringL(ctx.currentprice) .. " " .. L["Bid price"] .. " " .. GetMoneyStringL(bidprice()) .. " ".. (ctx.pause and "" or L["Time left"] .. " " .. (SECOND_ONELETTER_ABBR:format(ctx.countdown))))
+                    
+                    -- L["Bid price"]
+                    SendRaidMessage(L["Bid accept"] .. " " .. item .. " " .. L["Current price"] .. " >>" .. GetMoneyStringL(ctx.currentprice) .. "<< ".. (ctx.pause and "" or L["Time left"] .. " " .. (SECOND_ONELETTER_ABBR:format(ctx.countdown))))
                 else
                     SendRaidMessage(L["Bid denied"] .. " " .. item .. " " .. L["Must bid higher than"] .. " " .. GetMoneyStringL(bid * 10000))
                 end
@@ -788,7 +812,7 @@ function GUI:Init()
 
                     local item = currentitem()
 
-                    SendRaidMessage(L["Start bid"] .. " " .. item .. " " .. L["Starting price"] .. " " .. GetMoneyStringL(ctx.currentprice) .. " " .. (ctx.pause and "" or L["Time left"] .. " " .. (SECOND_ONELETTER_ABBR:format(ctx.countdown))))
+                    SendRaidMessage(L["Start bid"] .. " " .. item .. " " .. L["Starting price"] .. " >>" .. GetMoneyStringL(ctx.currentprice) .. "<< " .. (ctx.pause and "" or L["Time left"] .. " " .. (SECOND_ONELETTER_ABBR:format(ctx.countdown))))
 
                     ctx.timer = C_Timer.NewTicker(1, function()
                         if ctx.pause then
@@ -803,7 +827,7 @@ function GUI:Init()
                             ctx.timer:Cancel()
 
                             if ctx.currentwinner then
-                                SendRaidMessage(item .. " " .. L["Hammer Price"] .. " " .. GetMoneyStringL(ctx.currentprice) .. " " .. L["Winner"] .. " " .. ctx.currentwinner)
+                                SendRaidMessage(item .. " " .. L["Hammer Price"] .. " >>" .. GetMoneyStringL(ctx.currentprice) .. "<< " .. L["Winner"] .. " " .. ctx.currentwinner)
                                 ctx.entry["beneficiary"] = ctx.currentwinner
                                 ctx.entry["cost"] = ctx.currentprice / 10000
                                 ctx.entry["lock"] = true
@@ -819,12 +843,12 @@ function GUI:Init()
                         end
 
                         local sendalert = ctx.countdown <= 5
-                        sendalert = sendalert or (ctx.countdown <= 15 and (ctx.countdown % 5 == 0))
-                        sendalert = sendalert or (ctx.countdown <= 30 and (ctx.countdown % 10 == 0))
-                        sendalert = sendalert or (ctx.countdown % 30 == 0)
+                        -- sendalert = sendalert or (ctx.countdown <= 15 and (ctx.countdown % 5 == 0))
+                        -- sendalert = sendalert or (ctx.countdown <= 30 and (ctx.countdown % 10 == 0))
+                        -- sendalert = sendalert or (ctx.countdown % 30 == 0)
 
                         if sendalert then
-                            SendRaidMessage(item .. " " .. L["Current price"] .. " " .. GetMoneyStringL(ctx.currentprice) .. " " .. L["Bid price"] .. " ".. GetMoneyStringL(bidprice()) .. " " .. L["Time left"] .. " " .. (SECOND_ONELETTER_ABBR:format(ctx.countdown)))
+                            SendRaidMessage(" " .. L["Current price"] .. " >>" .. GetMoneyStringL(ctx.currentprice) .. "<< " .. L["Time left"] .. " " .. (SECOND_ONELETTER_ABBR:format(ctx.countdown)))
                         end
                     end)
                 end)
@@ -866,7 +890,11 @@ function GUI:Init()
         end
 
         bf:Hide()
-        bf:SetScript("OnHide", bf.CancelBid)
+        bf:SetScript("OnHide", function() 
+            if GUI.mainframe:IsShown() then
+                bf.CancelBid()
+            end
+        end)
 
         self.bidframe = bf
     end
@@ -874,21 +902,22 @@ function GUI:Init()
     -- split member and editbox
     do
         local t = CreateFrame("EditBox", nil, f, "InputBoxTemplate")
-        t:SetWidth(50)
+        t:SetWidth(30)
         t:SetHeight(25)
         t:SetPoint("BOTTOMLEFT", f, 350, 95)
         t:SetAutoFocus(false)
-        t:SetMaxLetters(4)
+        t:SetMaxLetters(6)
         -- t:SetNumeric(true)
         t:SetScript("OnTextChanged", function() self:UpdateSummary() end)
         t:SetScript("OnChar", mustnumber)
+        t:SetScript("OnEnterPressed", t.ClearFocus)
+
 
         local b = CreateFrame("CheckButton", nil, f, "UICheckButtonTemplate")
-        b:SetPoint("RIGHT", t, 40, 0)
-
-        b.text = b:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-        b.text:SetPoint("LEFT", b, "RIGHT", 0, 1)
-        b.text:SetText(L["Input only"])
+        b:SetNormalTexture("Interface\\Buttons\\LockButton-UnLocked-Up")
+        b:SetPushedTexture("Interface\\Buttons\\LockButton-UnLocked-Down")
+        b:SetCheckedTexture("Interface\\Buttons\\LockButton-Locked-Up")
+        b:SetPoint("RIGHT", t, 30, 0)
 
         local tooltip = GUI.commtooltip
 
@@ -939,7 +968,11 @@ function GUI:Init()
         b.text:SetPoint("LEFT", b, "RIGHT", 0, 1)
         b:SetPoint("BOTTOMLEFT", f, 195, 60)
         b.text:SetText(L["Round per member credit down"])
-        b:SetScript("OnClick", function() GUI:UpdateSummary() end)
+        b:SetScript("OnClick", function() 
+            GUI:UpdateSummary() 
+            Database:SetConfig("rounddownchecked", b:GetChecked())
+        end)
+        b:SetChecked(Database:GetConfigOrDefault("rounddownchecked", false))
 
         self.rouddownCheck = b
     end
@@ -1123,29 +1156,58 @@ function GUI:Init()
             return data
         end
 
+        local lastchat = {}
+        local onraidchat = function(text, playerName)
+            playerName = strsplit("-", playerName)
+            lastchat[playerName] = time()
+
+            local min = playerName
+            for p in pairs(lastchat) do
+                if lastchat[p] < lastchat[min] then
+                    min = p
+                end
+            end
+
+            if #lastchat > 10 then
+                lastchat[min] = nil
+            end
+        end
+
+        RegEvent("CHAT_MSG_RAID_LEADER", onraidchat)
+        RegEvent("CHAT_MSG_RAID", onraidchat)
+
         local autoCompleteRaidRoster = function(text)
             local data = {}
+            local tmp = {}
 
             for i = 1, MAX_RAID_MEMBERS do
                 local name, _, subgroup, _, class = GetRaidRosterInfo(i)
 
                 if name then
-                    name = string.lower(name)
+                    local namelower = string.lower(name)
                     class = string.lower(class)
 
                     local b = text == ""
                     b = b or (text == "#ONFOCUS")
-                    b = b or (strfind(name, string.lower(text)))
+                    b = b or (strfind(namelower, string.lower(text)))
                     b = b or (tonumber(text) == subgroup)
                     b = b or (strfind(class, string.lower(text)))
 
                     if b then
-                        tinsert(data, {
-                            ["name"] = name,
-                            ["priority"] = LE_AUTOCOMPLETE_PRIORITY_IN_GROUP,
-                        })
+                        tinsert(tmp, name)
                     end
                 end
+            end
+
+            table.sort(tmp, function(a, b)
+                return (lastchat[a] or 0) > (lastchat[b] or 0)
+            end)
+
+            for _, name in pairs(tmp) do 
+                tinsert(data, {
+                    ["name"] = name,
+                    ["priority"] = LE_AUTOCOMPLETE_PRIORITY_IN_GROUP,
+                })
             end
 
             return data
@@ -1328,6 +1390,7 @@ function GUI:Init()
                 cellFrame.textBox:SetHeight(30)
                 cellFrame.textBox:SetAutoFocus(false)
                 cellFrame.textBox:SetScript("OnEscapePressed", cellFrame.textBox.ClearFocus)
+                cellFrame.textBox:SetScript("OnEnterPressed", cellFrame.textBox.ClearFocus)
                 popOnFocus(cellFrame.textBox)
 
                 if entry["lock"] then
@@ -1400,6 +1463,9 @@ function GUI:Init()
                 cellFrame.textBox:SetHeight(30)
                 cellFrame.textBox:SetAutoFocus(false)
                 cellFrame.textBox:SetScript("OnEscapePressed", cellFrame.textBox.ClearFocus)
+                cellFrame.textBox:SetScript("OnEnterPressed", cellFrame.textBox.ClearFocus)
+                cellFrame.textBox.raidledgerbeneficiary = true
+
                 AutoCompleteEditBox_SetAutoCompleteSource(cellFrame.textBox, autoCompleteRaidRoster)
                 popOnFocus(cellFrame.textBox)
 
@@ -1461,9 +1527,16 @@ function GUI:Init()
             },
             { 
                 costtype = "PROFIT_PERCENT",
-                text = " % " .. L["Net Profit"], 
+                text =  DIM_GREEN_FONT_COLOR:WrapTextInColorCode(" % " .. L["Net Profit"]), 
                 func = function() 
                     setCostType("PROFIT_PERCENT")
+                end, 
+            },
+            { 
+                costtype = "REVENUE_PERCENT",
+                text = LIGHTBLUE_FONT_COLOR:WrapTextInColorCode(" % " .. L["Revenue"]), 
+                func = function() 
+                    setCostType("REVENUE_PERCENT")
                 end, 
             },
             { 
@@ -1471,6 +1544,17 @@ function GUI:Init()
                 text = " * " .. L["Per Member credit"], 
                 func = function() 
                     setCostType("MUL_AVG")
+                end, 
+            },
+            { 
+                text = "", 
+                isTitle = true, 
+            },
+            {
+                text = CANCEL,
+                notCheckable = true,
+                func = function(self)
+                    CloseDropDownMenus()
                 end, 
             },
         }        
@@ -1487,6 +1571,8 @@ function GUI:Init()
                 cellFrame.textBox:SetAutoFocus(false)
                 cellFrame.textBox:SetMaxLetters(10)
                 cellFrame.textBox:SetScript("OnChar", mustnumber)
+                cellFrame.textBox:SetScript("OnEnterPressed", cellFrame.textBox.ClearFocus)
+                cellFrame.textBox:SetScript("OnEscapePressed", cellFrame.textBox.ClearFocus)
 
                 if entry["lock"] then
                     cellFrame.textBox:Disable()
@@ -1497,7 +1583,9 @@ function GUI:Init()
             local type = entry["costtype"] or "GOLD"
 
             if type == "PROFIT_PERCENT" then
-                cellFrame.text:SetText("%")
+                cellFrame.text:SetText(DIM_GREEN_FONT_COLOR:WrapTextInColorCode("%"))
+            elseif type == "REVENUE_PERCENT" then
+                cellFrame.text:SetText(LIGHTBLUE_FONT_COLOR:WrapTextInColorCode("%"))
             elseif type == "MUL_AVG" then
                 cellFrame.text:SetText("*")
             else
@@ -1583,8 +1671,6 @@ function GUI:Init()
         self.lootLogFrame.frame:SetPoint("TOPLEFT", f, "TOPLEFT", 30, -50)
 
         self.lootLogFrame:RegisterEvents({
-
-
             ["OnClick"] = function (rowFrame, cellFrame, data, cols, row, realrow, column, sttable, button, ...)
                 clearAllFocus()
                 local entry, idx = GetEntryFromUI(rowFrame, cellFrame, data, cols, row, realrow, column, sttable)
@@ -1622,6 +1708,17 @@ function GUI:Init()
                     ChatEdit_InsertLink(entry["detail"]["item"])
                 end
             end,
+
+            ["OnDoubleClick"] = function (rowFrame, cellFrame, data, cols, row, realrow, column, sttable, button, ...)
+                local item, idx = GetEntryFromUI(rowFrame, cellFrame, data, cols, row, realrow, column, sttable)
+
+                if not item then
+                    return
+                end
+
+                SendChatMessage(ADDONSELF.GenExportLine(item, item["costcache"], true), f.reportopt.channel)
+
+            end,
         })
     end
 
@@ -1629,61 +1726,267 @@ function GUI:Init()
     -- report btn
     do
         local b = CreateFrame("Button", nil, f, "GameMenuButtonTemplate")
-        b:SetWidth(120)
+        b:SetWidth(95)
         b:SetHeight(25)
         b:SetPoint("BOTTOMLEFT", 40, 15)
         b:SetText(RAID)
-        -- b:SetText(L["Report"] .. " :" .. RAID)
         b:RegisterForClicks("LeftButtonUp", "RightButtonUp")
-        local icon = b:CreateTexture(nil, 'ARTWORK')
-        icon:SetTexture("Interface\\ChatFrame\\UI-ChatIcon-ArmoryChat")
-        icon:SetPoint('TOPLEFT', 10, -5)
-        icon:SetSize(16, 16)
+        do
+            local icon = b:CreateTexture(nil, 'ARTWORK')
+            icon:SetTexture("Interface\\ChatFrame\\UI-ChatIcon-ArmoryChat")
+            icon:SetPoint('TOPLEFT', 10, -5)
+            icon:SetSize(16, 16)
+        end
 
-        local channel = "RAID"
+        local ba = CreateFrame("Button", nil, f, "GameMenuButtonTemplate")
+        ba:SetWidth(25)
+        ba:SetHeight(25)
+        ba:SetPoint("LEFT", b, "RIGHT", 0, 0)
+        ba:RegisterForClicks("LeftButtonUp", "RightButtonUp")
+        do
+            local icon = ba:CreateTexture(nil, 'ARTWORK')
+            icon:SetTexture("Interface\\ChatFrame\\ChatFrameExpandArrow")
+            icon:SetPoint('CENTER', 1, 0)
+            icon:SetSize(16, 16)
+        end
+
+        local optctx = {
+            channel = "RAID",
+            filterzero = Database:GetConfigOrDefault("filterzero", false),
+        }
+
+        f.reportopt = optctx
 
         local setReportChannel = function(self)
-            channel = self.arg1
+            optctx.channel = self.arg1
             b:SetText(self.value)
+            CloseDropDownMenus()
+        end
+    
+        local reportChannelChecked = function(self)
+            return self.arg1 == optctx.channel
         end
 
         local channelTypeMenu = {
-            {   
-                arg1 = "RAID",
-                text = RAID, 
-                func = setReportChannel, 
+            {
+                isTitle = true,
+                text = CHANNEL,
+                notCheckable = true,
+            }, -- 0
+            { 
+                text = CHANNEL, 
+                hasArrow = true,
+                notCheckable = true,
+                menuList = {
+                    {   
+                        arg1 = "RAID",
+                        text = RAID, 
+                        func = setReportChannel, 
+                        checked = reportChannelChecked,
+                    },
+                    {   
+                        arg1 = "GUILD",
+                        text = GUILD, 
+                        func = setReportChannel, 
+                        checked = reportChannelChecked,
+                    },
+                    {   
+                        arg1 = nil,
+                        text = L["Last used"], 
+                        func = setReportChannel, 
+                        checked = reportChannelChecked,
+                    },
+                } 
+            }, -- 1
+            {
+                isTitle = true,
+                text = L["Report"],
+                notCheckable = true,
             },
-            {   
-                arg1 = "GUILD",
-                text = GUILD, 
-                func = setReportChannel, 
+            {
+                text = L["Summary"], 
+                func = function()
+                    GenReport(Database:GetCurrentLedger()["items"], GUI:GetSplitNumber(), optctx.channel, {
+                        short = true,
+                        filterzero = optctx.filterzero,
+                        rounddown = GUI.rouddownCheck:GetChecked(),
+                    })
+                end, 
+                notCheckable = true,
             },
-            {   
-                arg1 = "YELL",
-                text = YELL, 
-                func = setReportChannel, 
+            {
+                text = L["Subgroup total"], 
+                func = function()
+
+                    local c = 0
+                    local groups = {}
+    
+                    for i = 1, MAX_RAID_MEMBERS do
+                        local name, _, subgroup = GetRaidRosterInfo(i)
+                        if name then
+                            groups[subgroup] = (groups[subgroup] or {
+                                members = {},
+                                assist = nil,
+                            })
+
+                            local rt = GetRaidTargetIndex("raid" .. i)
+                            if not groups[subgroup].assist and rt then
+                                groups[subgroup].assist = " {rt" .. i .. "} " .. UnitName("raid" .. i) .. " {rt" .. i .. "} "
+                            end
+                            
+                            groups[subgroup].members[name] = true
+                        end
+                    end
+    
+                    local specials = {}
+                    local _, avg = calcavg(Database:GetCurrentLedger()["items"], GUI:GetSplitNumber(), nil, function(entry, cost)
+                        local b = entry["beneficiary"]
+
+                        specials[b] = specials[b] or 0
+                        specials[b] = specials[b] + cost
+                    end, {
+                        rounddown = GUI.rouddownCheck:GetChecked(),
+                    })
+
+                    local lines = {}
+                    table.insert(lines, L["Per Member"] .. ": " .. GetMoneyStringL(avg))
+
+                    for i, g in pairs(groups) do
+
+                        local teamtotal = 0
+
+                        for m in pairs(g.members) do
+                            teamtotal = teamtotal + avg
+                            if specials[m] and specials[m] > 0 then
+                                teamtotal = teamtotal + specials[m]
+                            end
+                        end
+
+                        table.insert(lines, GROUP .. i .. " " .. (g.assist and g.assist or "") .. " " .. L["Subgroup total"] .. ": " .. GetMoneyStringL(teamtotal))
+
+                        for m in pairs(g.members) do
+                            if specials[m] and specials[m] > 0 then
+                                table.insert(lines, "  ... " .. m .. " " .. GetMoneyStringL(avg) .. " + " .. GetMoneyStringL(specials[m]) .. " = " .. GetMoneyStringL(avg + specials[m]))
+                            end
+                        end
+                    end
+
+                    table.insert(lines, L["Per Member"] .. ": " .. GetMoneyStringL(avg))
+    
+                    SendToChatSlowly(lines, optctx.channel)
+                end, 
+                notCheckable = true,
             },
-            {   
-                arg1 = nil,
-                text = L["Last used"], 
-                func = setReportChannel, 
+            {
+                text = L["0 credit items"], 
+                func = function()
+                    local items = Database:GetCurrentLedger()["items"]
+                    local lines = {}
+                    local countby = {}
+
+                    for _, item in pairs(items or {}) do
+                        local c = item["cost"] or 0
+                        local t = item["type"]
+                        local cnt = item["detail"]["count"] or 1
+
+                        if t == "CREDIT" and c == 0 then
+                            local i = item["detail"]["item"] or ""
+                            local cnt = item["detail"]["count"] or 1
+                            local d = item["detail"]["displayname"] or ""
+                            if not GetItemInfoFromHyperlink(i) then
+                                i = d
+                            end
+
+                            if i ~= "" then
+                                countby[i] = countby[i] or 0
+                                countby[i] = countby[i] + cnt
+                            end
+
+                        end
+                    end
+
+                    for i, c in pairs(countby) do
+                        table.insert(lines, i .. " * " .. c)
+                    end
+
+                    SendToChatSlowly(lines, optctx.channel)
+                end, 
+                notCheckable = true,
+            },
+            {
+                text = L["Credit"], 
+                func = function()
+                    local lines = {}
+                    local _, _, revenue = calcavg(Database:GetCurrentLedger()["items"], GUI:GetSplitNumber(), function(item, cost)
+
+                        if cost > 0 then
+                            table.insert(lines, ADDONSELF.GenExportLine(item, cost, true))
+                        end
+
+                    end, nil, {
+                        rounddown = GUI.rouddownCheck:GetChecked(),
+                    })
+
+                    revenue = GetMoneyStringL(revenue)
+                    table.insert(lines, L["Revenue"] .. ": " .. revenue)
+
+                    SendToChatSlowly(lines, optctx.channel)
+                    
+                end, 
+                notCheckable = true,
+            },
+            {
+                text = L["Debit"], 
+                func = function()
+                    GenReport(Database:GetCurrentLedger()["items"], GUI:GetSplitNumber(), optctx.channel, {
+                        expenseonly = true,
+                    })
+                end, 
+                notCheckable = true,
+            },
+            {
+                isTitle = true,
+                text = OPTIONS,
+                notCheckable = true,
+            },
+            {
+                text = FILTER .. " " .. L["0 credit items"], 
+                isNotRadio = true,
+                func = function(self)
+                    optctx.filterzero = not optctx.filterzero
+                    Database:SetConfig("filterzero", optctx.filterzero)
+                end, 
+                checked = function(self)
+                    return optctx.filterzero
+                end
+            },
+            { 
+                text = "", 
+                isTitle = true, 
+            },
+            {
+                text = CANCEL,
+                notCheckable = true,
+                func = function(self)
+                    CloseDropDownMenus()
+                end, 
             },
         }        
 
         b:SetScript("OnClick", function(self, button)
             if button == "RightButton" then
-
-                for _, m in pairs(channelTypeMenu) do
-                    m.checked = m.arg1 == channel
-                end
-
                 EasyMenu(channelTypeMenu, menuFrame, "cursor", 0 , 0, "MENU");
             else
-                GenReport(Database:GetCurrentLedger()["items"], GUI:GetSplitNumber(), channel, {
+                GenReport(Database:GetCurrentLedger()["items"], GUI:GetSplitNumber(), optctx.channel, {
                     short = IsControlKeyDown(),
+                    filterzero = optctx.filterzero,
                     rounddown = GUI.rouddownCheck:GetChecked(),
                 })
             end
+        end)
+
+        ba:SetScript("OnClick", function(self, button)
+            EasyMenu(channelTypeMenu, menuFrame, "cursor", 0 , 0, "MENU");
         end)
 
         local tooltip = GUI.commtooltip
@@ -1715,13 +2018,13 @@ function GUI:Init()
         b:SetScript("OnClick", function()
             if exportEditbox:GetParent():IsShown() then
                 lootLogFrame:Show()
-                countEdit:Show()
+                countEdit:Enable()
                 hidelockedCheck:Show()
                 exportEditbox:GetParent():Hide()
                 b:SetText(L["Export as text"])
             else
                 lootLogFrame:Hide()
-                countEdit:Hide()
+                countEdit:Disable()
                 hidelockedCheck:Hide()
                 exportEditbox:GetParent():Show()
                 b:SetText(L["Close text export"])
@@ -1750,21 +2053,6 @@ RegEvent("ADDON_LOADED", function()
     -- raid frame handler
 
     do
-        if _G.RaidFrame then
-            local b = CreateFrame("Button", nil, _G.RaidFrame, "UIPanelButtonTemplate")
-            b:SetWidth(100)
-            b:SetHeight(20)
-            b:SetPoint("TOPRIGHT", -25, 0)
-            b:SetText(L["Raid Ledger"])
-            b:SetScript("OnClick", function()
-                if GUI.mainframe:IsShown() then
-                    GUI.mainframe:Hide()
-                else
-                    GUI.mainframe:Show()
-                end
-            end)
-        end
-
         local hooked = false
 
         hooksecurefunc("RaidFrame_LoadUI", function()

@@ -195,21 +195,11 @@ function module.OnChatWhisper(event, ...)
 	end
 end
 
-function module:WhipserInvite()
+function module:WhisperInvite()
 	if not NDuiDB["Chat"]["Invite"] then return end
 	self:UpdateWhisperList()
 	B:RegisterEvent("CHAT_MSG_WHISPER", module.OnChatWhisper)
 	B:RegisterEvent("CHAT_MSG_BN_WHISPER", module.OnChatWhisper)
-end
-
--- Timestamp
-function module:UpdateTimestamp()
-	local greyStamp = DB.GreyColor.."[%H:%M:%S]|r "
-	if NDuiADB["Timestamp"] then
-		SetCVar("showTimestamps", greyStamp)
-	elseif GetCVar("showTimestamps") == greyStamp then
-		SetCVar("showTimestamps", "none")
-	end
 end
 
 -- Classcolor name
@@ -273,7 +263,6 @@ function module:OnLogin()
 	CombatLogQuickButtonFrame_CustomTexture:SetTexture(nil)
 
 	-- Add Elements
-	self:UpdateTimestamp()
 	self:UpdateClassColorName()
 	self:ChatWhisperSticky()
 	self:ChatFilter()
@@ -281,7 +270,7 @@ function module:OnLogin()
 	self:Chatbar()
 	self:ChatCopy()
 	self:UrlCopy()
-	self:WhipserInvite()
+	self:WhisperInvite()
 
 	-- Lock chatframe
 	if NDuiDB["Chat"]["Lock"] then
@@ -292,9 +281,12 @@ function module:OnLogin()
 
 	-- ProfanityFilter
 	if not BNFeaturesEnabledAndConnected() then return end
-	if not NDuiDB["Chat"]["Freedom"] then
-		SetCVar("profanityFilter", 1)
-	else
+	if NDuiDB["Chat"]["Freedom"] then
+		if GetCVar("portal") == "CN" then
+			ConsoleExec("portal TW")
+		end
 		SetCVar("profanityFilter", 0)
+	else
+		SetCVar("profanityFilter", 1)
 	end
 end

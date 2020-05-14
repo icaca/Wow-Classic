@@ -28,7 +28,7 @@
 ]]
 
 -- increment this value when default events are changed to deploy them to existing events
-ItemRack.EventsVersion = 15
+ItemRack.EventsVersion = 16
 
 -- default events, loaded when no events exist or ItemRack.EventsVersion is increased
 ItemRack.DefaultEvents = {
@@ -63,24 +63,25 @@ ItemRack.DefaultEvents = {
 	},
 	["Mounted"] = { Type = "Buff", Unequip = 1, Anymount = 1 },
 	["Drinking"] = { Type = "Buff", Unequip = 1, Buff = "Drink" },
-	["Evocation"] = { Type = "Buff", Unequip = 1, Buff = "Evocation" },
 
-	["Warrior Battle"] = { Type = "Stance", Stance = 1 },
-	["Warrior Defensive"] = { Type = "Stance", Stance = 2 },
-	["Warrior Berserker"] = { Type = "Stance", Stance = 3 },
+	["Evocation"] = { Class = "MAGE", Type = "Buff", Unequip = 1, Buff = "Evocation" },
 
-	["Priest Shadowform"] = { Type = "Stance", Unequip = 1, Stance = 1 },
+	["Warrior Battle"] = { Class = "WARRIOR", Type = "Stance", Stance = 1 },
+	["Warrior Defensive"] = { Class = "WARRIOR", Type = "Stance", Stance = 2 },
+	["Warrior Berserker"] = { Class = "WARRIOR", Type = "Stance", Stance = 3 },
 
-	["Druid Humanoid"] = { Type = "Stance", Stance = 0 },
-	["Druid Bear"] = { Type = "Stance", Stance = 1 },
-	["Druid Aquatic"] = { Type = "Stance", Stance = 2 },
-	["Druid Cat"] = { Type = "Stance", Stance = 3 },
-	["Druid Travel"] = { Type = "Stance", Stance = 4 },
-	["Druid Moonkin"] = { Type = "Stance", Stance = "Moonkin Form" },
+	["Priest Shadowform"] = { Class = "PRIEST", Type = "Stance", Unequip = 1, Stance = 1 },
 
-	["Rogue Stealth"] = { Type = "Stance", Unequip = 1, Stance = 1 },
+	["Druid Humanoid"] = { Class = "DRUID", Type = "Stance", Stance = 0 },
+	["Druid Bear"] = { Class = "DRUID", Type = "Stance", Stance = 1 },
+	["Druid Aquatic"] = { Class = "DRUID", Type = "Stance", Stance = 2 },
+	["Druid Cat"] = { Class = "DRUID", Type = "Stance", Stance = 3 },
+	["Druid Travel"] = { Class = "DRUID", Type = "Stance", Stance = 4 },
+	["Druid Moonkin"] = { Class = "DRUID", Type = "Stance", Stance = "Moonkin Form" },
 
-	["Shaman Ghostwolf"] = { Type = "Stance", Unequip = 1, Stance = 1 },
+	["Rogue Stealth"] = { Class = "ROGUE", Type = "Stance", Unequip = 1, Stance = 1 },
+
+	["Shaman Ghostwolf"] = { Class = "SHAMAN", Type = "Stance", Unequip = 1, Stance = 1 },
 
 	["Swimming"] = {
 		["Trigger"] = "MIRROR_TIMER_START",
@@ -99,12 +100,22 @@ ItemRack.DefaultEvents = {
 		Trigger = "UNIT_SPELLCAST_SUCCEEDED",
 		Script = "local spell = \"Name of spell\"\nlocal set = \"Name of set\"\nif arg1==\"player\" and arg2==spell then\n  EquipSet(set)\nend\n\n--[[This event will equip \"Name of set\" when \"Name of spell\" has finished casting.  Change the names for your own use.]]",
 	},
+
+	["Nefarian's Lair"] = {
+		Type = "Zone",
+		Unequip = 1,
+		Zones = {
+			["Nefarian's Lair"] = 1,
+		}
+	},
 }
 
 -- resetDefault to reload/update default events, resetAll to wipe all events and recreate them
 function ItemRack.LoadEvents(resetDefault,resetAll)
 
+	local _, playerClass = UnitClass("player")
 	local version = tonumber(ItemRackSettings.EventsVersion) or 0
+
 	if ItemRack.EventsVersion > version then
 		resetDefault = 1 -- force a load of default events (leaving custom ones intact)
 		ItemRackSettings.EventsVersion = ItemRack.EventsVersion
@@ -123,7 +134,11 @@ function ItemRack.LoadEvents(resetDefault,resetAll)
 
 	if resetDefault or resetAll then
 		for i in pairs(ItemRack.DefaultEvents) do
-			ItemRack.CopyDefaultEvent(i)
+			local eventClass = ItemRack.DefaultEvents[i].Class
+
+			if not eventClass or eventClass == playerClass then
+				ItemRack.CopyDefaultEvent(i)
+			end
 		end
 	end
 
@@ -201,8 +216,9 @@ end
 function ItemRack.InitEvents()
 	ItemRack.LoadEvents()
 
-	ItemRack.CreateTimer("EventsBuffTimer",ItemRack.ProcessBuffEvent,.50)
-	ItemRack.CreateTimer("EventsZoneTimer",ItemRack.ProcessZoneEvent,.33)
+	ItemRack.CreateTimer("EventsBuffTimer",ItemRack.ProcessBuffEvent,.15)
+	ItemRack.CreateTimer("EventsZoneTimer",ItemRack.ProcessZoneEvent,.16)
+	ItemRack.CreateTimer("CheckForMountedEvents",ItemRack.CheckForMountedEvents,.5,1)
 
 	if ItemRackButton20Queue then
 		ItemRackButton20Queue:SetTexture("Interface\\AddOns\\ItemRack\\ItemRackGear")
@@ -216,6 +232,7 @@ end
 function ItemRack.RegisterEvents()
 	local frame = ItemRackEventProcessingFrame
 	frame:UnregisterAllEvents()
+	ItemRack.StopTimer("CheckForMountedEvents")
 	ItemRack.ReflectEventsRunning()
 	if ItemRackUser.EnableEvents=="OFF" then
 		return
@@ -243,6 +260,8 @@ function ItemRack.RegisterEvents()
 			end
 		end
 	end
+	ItemRack.StartTimer("CheckForMountedEvents")
+
 	ItemRack.ProcessStanceEvent()
 	ItemRack.ProcessZoneEvent()
 	ItemRack.ProcessBuffEvent()
@@ -280,7 +299,8 @@ function ItemRack.ProcessingFrameOnEvent(self,event,...)
 		elseif event=="ZONE_CHANGED_NEW_AREA" and eventType=="Zone" then
 			startZone = 1
 		elseif eventType=="Script" and events[eventName].Trigger==event then
-			RunScript(events[eventName].Script)
+			local method = loadstring(events[eventName].Script)
+			pcall(method, ...)
 		end
 	end
 	if startStance then
@@ -365,6 +385,24 @@ function ItemRack.ProcessZoneEvent()
 	end
 	if setToEquip then
 		ItemRack.EquipSet(setToEquip)
+	end
+end
+
+--here we observe mounted status and raise an event should it change. UNIT_AURA event seems unreliable for this
+local _lastStateMounted = IsMounted() and not UnitOnTaxi("player")
+function ItemRack.CheckForMountedEvents()
+	if UnitIsDeadOrGhost("player") then
+		return
+	end
+
+	if ItemRackUser.EnableEvents=="OFF" then
+		return
+	end
+	
+	local isPlayerMounted = IsMounted() and not UnitOnTaxi("player")
+	if isPlayerMounted ~= _lastStateMounted then
+		_lastStateMounted = isPlayerMounted
+		ItemRack.ProcessBuffEvent()
 	end
 end
 

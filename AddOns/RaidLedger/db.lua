@@ -39,7 +39,7 @@ end
 function db:GetConfigOrDefault(key, def)
     local config = GetConfig()
 
-    if not config[key] then
+    if config[key] == nil then
         config[key] = def
     end
 
@@ -160,6 +160,24 @@ local function GetFilteritemsSet(s)
     end
 
     return set
+end
+
+function db:AddOrUpdateLoot(item, count, beneficiary, cost)
+    local itemName, itemLink, itemRarity, _, _, _, _, itemStackCount = GetItemInfo(item)
+
+    local ledger = self:GetCurrentLedger()
+    for _, entry in pairs(ledger["items"]) do
+        if entry.detail then
+            if entry.detail.item == itemLink and entry.cost == 0 and entry.detail.count == count then
+                entry.beneficiary = beneficiary
+                entry.cost = cost
+                self:OnLedgerItemsChange()
+                return
+            end
+        end
+    end
+
+    self:AddLoot(item, count, beneficiary, cost, true)
 end
 
 function db:AddLoot(item, count, beneficiary, cost, force)

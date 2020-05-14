@@ -4,4 +4,4 @@ if (not Loc) then
 	return 
 end 
 
-Loc ["STRING_PLUGIN_NAME"] = "Tiny Threat"
+Loc ["STRING_PLUGIN_NAME"] = "Mini Ameaca"

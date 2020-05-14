@@ -91,7 +91,6 @@ local defaultSettings = {
 		SimpleModeSortByRole = true,
 		InstanceAuras = true,
 		RaidDebuffScale = 1,
-		--SpecRaidPos = false,
 		RaidHealthColor = 1,
 		HorizonRaid = false,
 		HorizonParty = false,
@@ -278,7 +277,7 @@ local defaultSettings = {
 local accountSettings = {
 	ChatFilterList = "%*",
 	ChatFilterWhiteList = "",
-	Timestamp = true,
+	TimestampFormat = 4,
 	NameplateFilter = {[1]={}, [2]={}},
 	RaidDebuffs = {},
 	Changelog = {},
@@ -416,10 +415,6 @@ end
 
 local function updateClassColorName()
 	B:GetModule("Chat"):UpdateClassColorName()
-end
-
-local function updateTimestamp()
-	B:GetModule("Chat"):UpdateTimestamp()
 end
 
 local function updateWhisperList()
@@ -633,7 +628,6 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{4, "UFs", "RaidHPMode", L["RaidHPMode"].."*", true, {L["DisableRaidHP"], L["RaidHPPercent"], L["RaidHPCurrent"], L["RaidHPLost"]}, updateRaidNameText},
 		{3, "UFs", "NumGroups", L["Num Groups"], nil, {4, 8, 0}},
 		{3, "UFs", "RaidTextScale", L["UFTextScale"], true, {.8, 1.5, 2}, updateRaidTextScale},
-		--{1, "UFs", "SpecRaidPos", L["Spec RaidPos"]},
 		{},--blank
 		{1, "UFs", "SimpleMode", "|cff00cc4c"..L["Simple RaidFrame"]},
 		{1, "UFs", "SimpleModeSortByRole", L["SimpleMode SortByRole"], true},
@@ -718,14 +712,14 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{3, "Chat", "ChatWidth", L["LockChatWidth"].."*", nil, {200, 600, 0}, updateChatSize},
 		{3, "Chat", "ChatHeight", L["LockChatHeight"].."*", true, {100, 500, 0}, updateChatSize},
 		{},--blank
-		{1, "ACCOUNT", "ClassColorChat", L["ClassColorChat"].."*", nil, nil, updateClassColorName},
-		{1, "ACCOUNT", "Timestamp", L["Timestamp"], true, nil, updateTimestamp},
-		{1, "Chat", "Sticky", L["Chat Sticky"].."*", nil, nil, updateChatSticky},
-		{1, "Chat", "WhisperColor", L["Differ WhipserColor"].."*", true},
-		{1, "Chat", "Freedom", L["Language Filter"]},
-		{1, "Chat", "Oldname", L["Default Channel"], true},
+		{1, "Chat", "Oldname", L["Default Channel"]},
+		{1, "Chat", "Sticky", L["Chat Sticky"].."*", true, nil, updateChatSticky},
 		{1, "Chat", "Chatbar", L["ShowChatbar"]},
-		{1, "Chat", "ChatItemLevel", "|cff00cc4c"..L["ShowChatItemLevel"], true},
+		{1, "Chat", "WhisperColor", L["Differ WhisperColor"].."*", true},
+		{1, "Chat", "ChatItemLevel", L["ShowChatItemLevel"]},
+		{1, "Chat", "Freedom", L["Language Filter"]},
+		{4, "ACCOUNT", "TimestampFormat", L["TimestampFormat"].."*", true, {DISABLE, "03:27 PM", "03:27:32 PM", "15:27", "15:27:32"}},
+		{1, "ACCOUNT", "ClassColorChat", L["ClassColorChat"].."*", nil, nil, updateClassColorName},
 		{},--blank
 		{1, "Chat", "EnableFilter", "|cff00cc4c"..L["Enable Chatfilter"]},
 		{1, "Chat", "BlockAddonAlert", L["Block Addon Alert"], true},
@@ -1283,7 +1277,6 @@ local function createDataFrame()
 end
 
 local function OpenGUI()
-	if InCombatLockdown() then UIErrorsFrame:AddMessage(DB.InfoColor..ERR_NOT_IN_COMBAT) return end
 	if f then f:Show() return end
 
 	-- Main Frame
@@ -1414,6 +1407,7 @@ function G:OnLogin()
 	end)
 
 	gui:SetScript("OnClick", function()
+		if InCombatLockdown() then UIErrorsFrame:AddMessage(DB.InfoColor..ERR_NOT_IN_COMBAT) return end
 		OpenGUI()
 		HideUIPanel(GameMenuFrame)
 		PlaySound(SOUNDKIT.IG_MAINMENU_OPTION)
