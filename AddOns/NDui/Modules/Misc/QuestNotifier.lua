@@ -7,7 +7,7 @@ local completedQuest, initComplete = {}
 local strmatch, strfind, gsub, format = string.match, string.find, string.gsub, string.format
 local mod, tonumber, pairs, floor = mod, tonumber, pairs, math.floor
 local soundKitID = SOUNDKIT.ALARM_CLOCK_WARNING_3
-local QUEST_COMPLETE, LE_QUEST_TAG_TYPE_PROFESSION, LE_QUEST_FREQUENCY_DAILY = QUEST_COMPLETE, LE_QUEST_TAG_TYPE_PROFESSION, LE_QUEST_FREQUENCY_DAILY
+local QUEST_COMPLETE, LE_QUEST_FREQUENCY_DAILY = QUEST_COMPLETE, LE_QUEST_FREQUENCY_DAILY
 
 local function acceptText(link, daily)
 	if daily then
@@ -71,7 +71,7 @@ function M:FindQuestProgress(_, msg)
 	end
 end
 
-function M:FindQuestAccept(questLogIndex, questID)
+function M:FindQuestAccept(questLogIndex)
 	local name, _, _, _, _, _, frequency = GetQuestLogTitle(questLogIndex)
 	if name then
 		sendQuestMsg(acceptText(name, frequency == LE_QUEST_FREQUENCY_DAILY))
@@ -93,14 +93,15 @@ end
 
 function M:QuestNotifier()
 	if NDuiDB["Misc"]["QuestNotifier"] then
-		self:FindQuestComplete()
-		B:RegisterEvent("QUEST_ACCEPTED", self.FindQuestAccept)
-		B:RegisterEvent("QUEST_LOG_UPDATE", self.FindQuestComplete)
-		B:RegisterEvent("UI_INFO_MESSAGE", self.FindQuestProgress)
+		M:FindQuestComplete()
+		B:RegisterEvent("QUEST_ACCEPTED", M.FindQuestAccept)
+		B:RegisterEvent("QUEST_LOG_UPDATE", M.FindQuestComplete)
+		B:RegisterEvent("UI_INFO_MESSAGE", M.FindQuestProgress)
 	else
 		wipe(completedQuest)
-		B:UnregisterEvent("QUEST_ACCEPTED", self.FindQuestAccept)
-		B:UnregisterEvent("QUEST_LOG_UPDATE", self.FindQuestComplete)
-		B:UnregisterEvent("UI_INFO_MESSAGE", self.FindQuestProgress)
+		B:UnregisterEvent("QUEST_ACCEPTED", M.FindQuestAccept)
+		B:UnregisterEvent("QUEST_LOG_UPDATE", M.FindQuestComplete)
+		B:UnregisterEvent("UI_INFO_MESSAGE", M.FindQuestProgress)
 	end
 end
+M:RegisterMisc("QuestNotifier", M.QuestNotifier)

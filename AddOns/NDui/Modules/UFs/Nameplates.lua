@@ -3,14 +3,13 @@ local B, C, L, DB = unpack(ns)
 local UF = B:GetModule("UnitFrames")
 
 local _G = getfenv(0)
-local strmatch, tonumber, pairs, type, unpack, next, rad = string.match, tonumber, pairs, type, unpack, next, math.rad
-local UnitThreatSituation, UnitIsTapDenied, UnitPlayerControlled, UnitIsUnit = UnitThreatSituation, UnitIsTapDenied, UnitPlayerControlled, UnitIsUnit
+local strmatch, tonumber, pairs, unpack, rad = string.match, tonumber, pairs, unpack, math.rad
+local UnitIsTapDenied, UnitPlayerControlled, UnitIsUnit = UnitIsTapDenied, UnitPlayerControlled, UnitIsUnit
 local UnitReaction, UnitIsConnected, UnitIsPlayer, UnitSelectionColor = UnitReaction, UnitIsConnected, UnitIsPlayer, UnitSelectionColor
-local GetInstanceInfo, UnitClassification, UnitExists, InCombatLockdown = GetInstanceInfo, UnitClassification, UnitExists, InCombatLockdown
-local C_NamePlate_GetNamePlates = C_NamePlate.GetNamePlates
+local UnitClassification, UnitExists, InCombatLockdown = UnitClassification, UnitExists, InCombatLockdown
 local UnitGUID, GetPlayerInfoByGUID, Ambiguate, UnitName = UnitGUID, GetPlayerInfoByGUID, Ambiguate, UnitName
 local SetCVar, UIFrameFadeIn, UIFrameFadeOut = SetCVar, UIFrameFadeIn, UIFrameFadeOut
-local UNKNOWN, INTERRUPTED = UNKNOWN, INTERRUPTED
+local INTERRUPTED = INTERRUPTED
 
 -- Init
 function UF:UpdatePlateScale()
@@ -127,9 +126,10 @@ function UF.UpdateColor(element, unit)
 	end
 
 	if (not NDuiDB["Nameplate"]["TankMode"] or isCustomUnit or isPlayer) and UnitCanAttack(unit, "player") and isTargeting then
-		element.Shadow:SetBackdropBorderColor(1, 0, 0)
+		self.ThreatIndicator:SetBackdropBorderColor(1, 0, 0)
+		self.ThreatIndicator:Show()
 	else
-		element.Shadow:SetBackdropBorderColor(0, 0, 0)
+		self.ThreatIndicator:Hide()
 	end
 end
 
@@ -140,8 +140,11 @@ function UF:UpdateThreatColor(_, unit)
 end
 
 function UF:CreateThreatColor(self)
-	local frame = CreateFrame("Frame", nil, self)
-	self.ThreatIndicator = frame
+	local threatIndicator = B.CreateSD(self, 3, true)
+	threatIndicator:SetOutside(self.Health.backdrop, 3, 3)
+	threatIndicator:Hide()
+
+	self.ThreatIndicator = threatIndicator
 	self.ThreatIndicator.Override = UF.UpdateThreatColor
 end
 
@@ -195,20 +198,18 @@ function UF:AddTargetIndicator(self)
 	frame:SetAlpha(0)
 
 	frame.TopArrow = frame:CreateTexture(nil, "BACKGROUND", nil, -5)
-	frame.TopArrow:SetSize(40, 40)
+	frame.TopArrow:SetSize(50, 50)
 	frame.TopArrow:SetTexture(DB.arrowTex)
-	frame.TopArrow:SetPoint("BOTTOM", frame, "TOP", 0, 10)
+	frame.TopArrow:SetPoint("BOTTOM", frame, "TOP", 0, 20)
 
 	frame.RightArrow = frame:CreateTexture(nil, "BACKGROUND", nil, -5)
-	frame.RightArrow:SetSize(40, 40)
+	frame.RightArrow:SetSize(50, 50)
 	frame.RightArrow:SetTexture(DB.arrowTex)
 	frame.RightArrow:SetPoint("LEFT", frame, "RIGHT", 3, 0)
 	frame.RightArrow:SetRotation(rad(-90))
 
-	frame.Glow = CreateFrame("Frame", nil, frame)
-	frame.Glow:SetPoint("TOPLEFT", frame, -6, 6)
-	frame.Glow:SetPoint("BOTTOMRIGHT", frame, 6, -6)
-	frame.Glow:SetBackdrop({edgeFile = DB.glowTex, edgeSize = 5})
+	frame.Glow = B.CreateSD(frame, 5, true)
+	frame.Glow:SetOutside(self.Health.backdrop, 5, 5)
 	frame.Glow:SetBackdropBorderColor(1, 1, 1)
 	frame.Glow:SetFrameLevel(0)
 
@@ -413,8 +414,8 @@ function UF:AddCreatureIcon(self)
 
 	local icon = iconFrame:CreateTexture(nil, "ARTWORK")
 	icon:SetAtlas("VignetteKill")
-	icon:SetPoint("BOTTOMLEFT", self, "LEFT", 0, -4)
-	icon:SetSize(18, 18)
+	icon:SetPoint("BOTTOMLEFT", self, "LEFT", 0, -6)
+	icon:SetSize(24, 24)
 	icon:Hide()
 
 	self.creatureIcon = icon
@@ -483,17 +484,6 @@ function UF:MouseoverIndicator(self)
 	self.HighlightUpdater = f
 end
 
--- NazjatarFollowerXP
-function UF:AddFollowerXP(self)
-	local bar = CreateFrame("StatusBar", nil, self)
-	bar:SetSize(NDuiDB["Nameplate"]["PlateWidth"]*.75, NDuiDB["Nameplate"]["PlateHeight"])
-	bar:SetPoint("TOP", self.Castbar, "BOTTOM", 0, -5)
-	B.CreateSB(bar, false, 0, .7, 1)
-	bar.progressText = B.CreateFS(bar, 9)
-
-	self.NazjatarFollowerXP = bar
-end
-
 -- Interrupt info on castbars
 local guidToPlate = {}
 function UF:UpdateCastbarInterrupt(...)
@@ -521,11 +511,14 @@ function UF:CreatePlates()
 	self.mystyle = "nameplate"
 	self:SetSize(NDuiDB["Nameplate"]["PlateWidth"], NDuiDB["Nameplate"]["PlateHeight"])
 	self:SetPoint("CENTER")
+	self:SetScale(NDuiADB["UIScale"])
 
 	local health = CreateFrame("StatusBar", nil, self)
 	health:SetAllPoints()
-	B.CreateSB(health)
+	health:SetStatusBarTexture(DB.normTex)
+	health.backdrop = B.CreateBDFrame(health, nil, true) -- don't mess up with libs
 	B:SmoothBar(health)
+
 	self.Health = health
 	self.Health.frequentUpdates = true
 	self.Health.UpdateColor = UF.UpdateColor
@@ -535,9 +528,9 @@ function UF:CreatePlates()
 	UF:CreateRaidMark(self)
 	UF:CreatePrediction(self)
 	UF:CreateAuras(self)
-	--UF:CreateThreatColor(self)
+	UF:CreateThreatColor(self)
 
-	self.powerText = B.CreateFS(self, 15)
+	self.powerText = B.CreateFS(self, 22)
 	self.powerText:ClearAllPoints()
 	self.powerText:SetPoint("TOP", self.Castbar, "BOTTOM", 0, -4)
 	self:Tag(self.powerText, "[nppp]")
@@ -647,12 +640,15 @@ end
 function UF:ResizePlayerPlate()
 	local plate = _G.oUF_PlayerPlate
 	if plate then
-		plate:SetHeight(NDuiDB["Nameplate"]["PPHeight"])
-		plate.Power:SetHeight(NDuiDB["Nameplate"]["PPPHeight"])
+		local iconSize, margin = NDuiDB["Nameplate"]["PPIconSize"], 2
+		local pHeight, ppHeight = NDuiDB["Nameplate"]["PPHeight"], NDuiDB["Nameplate"]["PPPHeight"]
+		plate:SetSize(iconSize*5 + margin*4, pHeight + ppHeight + C.mult)
+		plate.Health:SetHeight(pHeight)
+		plate.Power:SetHeight(ppHeight)
 		local bars = plate.ClassPower
 		if bars then
 			for i = 1, 6 do
-				bars[i]:SetHeight(NDuiDB["Nameplate"]["PPHeight"])
+				bars[i]:SetHeight(pHeight)
 			end
 		end
 	end
@@ -670,15 +666,14 @@ end
 
 function UF:CreatePlayerPlate()
 	self.mystyle = "PlayerPlate"
-	local iconSize, margin = NDuiDB["Nameplate"]["PPIconSize"], 2
-	self:SetSize(iconSize*5 + margin*4, NDuiDB["Nameplate"]["PPHeight"])
 	self:EnableMouse(false)
-	self.iconSize = iconSize
+	local iconSize, margin = NDuiDB["Nameplate"]["PPIconSize"], 2
+	local pHeight, ppHeight = NDuiDB["Nameplate"]["PPHeight"], NDuiDB["Nameplate"]["PPPHeight"]
+	self:SetSize(iconSize*5 + margin*4, pHeight + ppHeight + C.mult)
 
 	UF:CreateHealthBar(self)
 	UF:CreatePowerBar(self)
 	UF:CreateClassPower(self)
-	UF:StaggerBar(self)
 	if NDuiDB["Auras"]["ClassAuras"] and not DB.isClassic then auras:CreateLumos(self) end
 	if not NDuiDB["Nameplate"]["ClassPowerOnly"] then UF:CreateEneryTicker(self) end
 

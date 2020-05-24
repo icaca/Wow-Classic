@@ -492,6 +492,8 @@ L["Use Second Trinket in KeyRelease"] = "使用第二個飾品在釋放按鍵"
 --[[Translation missing --]]
 L["Use Verbose Export Sequence Format"] = "Use Verbose Export Sequence Format"
 L["Use WLM Export Sequence Format"] = "使用WLM導出序列格式"
+--[[Translation missing --]]
+L["Version"] = "Version"
 L["Version="] = "版本="
 L["Website or forum URL where a player can get more information or ask questions about this macro."] = "網站或論壇網址.玩家可以獲取更多信息或詢問有關此巨集的問題."
 L[ [=[What are the preferred talents for this macro?

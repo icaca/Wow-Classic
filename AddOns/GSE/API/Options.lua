@@ -702,6 +702,16 @@ function GSE.GetOptionsTable()
             imageWidth = 120;
             imageHeight = 120;
           },
+          versionHeader = {
+            type = "header",
+            name = L["Version"],
+            order = 21,
+          },
+          versionDescription = {
+            type = "description",
+            name = "GSE: " .. GSE.VersionString,
+            order = 22,
+          },
           title5 = {
             type = "header",
             name = L["Supporters"],

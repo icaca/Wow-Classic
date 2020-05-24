@@ -5,7 +5,7 @@ if not C.Infobar.Friends then return end
 local module = B:GetModule("Infobar")
 local info = module:RegisterInfobar("Friends", C.Infobar.FriendsPos)
 
-local strfind, format, sort, wipe, unpack, tinsert = string.find, string.format, table.sort, table.wipe, unpack, table.insert
+local format, sort, wipe, unpack, tinsert = string.format, table.sort, table.wipe, unpack, table.insert
 local C_Timer_After = C_Timer.After
 local C_FriendList_GetNumFriends = C_FriendList.GetNumFriends
 local C_FriendList_GetNumOnlineFriends = C_FriendList.GetNumOnlineFriends
@@ -114,9 +114,8 @@ local function setupFriendsFrame()
 	friendsFrame:SetPoint("TOPLEFT", UIParent, 15, -30)
 	friendsFrame:SetClampedToScreen(true)
 	friendsFrame:SetFrameStrata("DIALOG")
-	B.CreateBD(friendsFrame, .7)
-	B.CreateSD(friendsFrame)
-	B.CreateTex(friendsFrame)
+	local bg = B.SetBD(friendsFrame)
+	bg:SetBackdropColor(0, 0, 0, .7)
 
 	friendsFrame:SetScript("OnLeave", function(self)
 		self:SetScript("OnUpdate", onUpdate)
@@ -287,7 +286,7 @@ local function createRoster(parent, i)
 	button.gameIcon:SetPoint("RIGHT", button, -8, 0)
 	button.gameIcon:SetSize(16, 16)
 	button.gameIcon:SetTexCoord(.17, .83, .17, .83)
-	B.CreateBD(B.CreateBG(button.gameIcon))
+	B.CreateBDFrame(button.gameIcon)
 
 	button:RegisterForClicks("AnyUp")
 	button:SetScript("OnClick", buttonOnClick)

@@ -1,17 +1,17 @@
 ﻿local _, ns = ...
-local B, C, L, DB, F = unpack(ns)
+local B, C, L, DB = unpack(ns)
 
 local module = B:RegisterModule("Bags")
 local cargBags = ns.cargBags
 
-local ipairs, strmatch, unpack, pairs, ceil = ipairs, string.match, unpack, pairs, math.ceil
+local ipairs, strmatch, unpack, ceil = ipairs, string.match, unpack, math.ceil
 local LE_ITEM_QUALITY_POOR, LE_ITEM_QUALITY_RARE = LE_ITEM_QUALITY_POOR, LE_ITEM_QUALITY_RARE
 local LE_ITEM_CLASS_WEAPON, LE_ITEM_CLASS_ARMOR, LE_ITEM_CLASS_QUIVER = LE_ITEM_CLASS_WEAPON, LE_ITEM_CLASS_ARMOR, LE_ITEM_CLASS_QUIVER
 local GetContainerNumSlots, GetContainerItemInfo, PickupContainerItem = GetContainerNumSlots, GetContainerItemInfo, PickupContainerItem
-local C_NewItems_IsNewItem, C_NewItems_RemoveNewItem, C_Timer_After = C_NewItems.IsNewItem, C_NewItems.RemoveNewItem, C_Timer.After
+local C_NewItems_IsNewItem, C_NewItems_RemoveNewItem = C_NewItems.IsNewItem, C_NewItems.RemoveNewItem
 local IsControlKeyDown, IsAltKeyDown, DeleteCursorItem = IsControlKeyDown, IsAltKeyDown, DeleteCursorItem
 local SortBankBags, SortBags, InCombatLockdown, ClearCursor = SortBankBags, SortBags, InCombatLockdown, ClearCursor
-local GetContainerItemID, GetContainerNumFreeSlots, SplitContainerItem = GetContainerItemID, GetContainerNumFreeSlots, SplitContainerItem
+local GetContainerItemID, SplitContainerItem = GetContainerItemID, SplitContainerItem
 local NUM_BAG_SLOTS = NUM_BAG_SLOTS or 4
 local NUM_BANKBAGSLOTS = NUM_BANKBAGSLOTS or 6
 
@@ -49,11 +49,10 @@ function module:CreateInfoFrame()
 	search.isGlobal = true
 	search:SetPoint("LEFT", 0, 5)
 	search:DisableDrawLayer("BACKGROUND")
-	local bg = B.CreateBG(search)
+	local bg = B.CreateBDFrame(search, 0)
 	bg:SetPoint("TOPLEFT", -5, -5)
 	bg:SetPoint("BOTTOMRIGHT", 5, 5)
-	B.CreateBD(bg, .3)
-	if F then F.CreateGradient(bg) end
+	B.CreateGradient(bg)
 
 	local tag = self:SpawnPlugin("TagDisplay", "[money]", infoFrame)
 	tag:SetFont(unpack(DB.Font))
@@ -65,7 +64,7 @@ function module:CreateBagBar(settings, columns)
 	local width, height = bagBar:LayoutButtons("grid", columns, 5, 5, -5)
 	bagBar:SetSize(width + 10, height + 10)
 	bagBar:SetPoint("TOPRIGHT", self, "BOTTOMRIGHT", 0, -5)
-	B.SetBackground(bagBar)
+	B.SetBD(bagBar)
 	bagBar.highlightFunction = highlightFunction
 	bagBar.isGlobal = true
 	bagBar:Hide()
@@ -159,79 +158,6 @@ function module:CreateSortButton(name)
 	return bu
 end
 
-local deleteEnable
-function module:CreateDeleteButton()
-	local enabledText = DB.InfoColor..L["DeleteMode Enabled"]
-
-	local bu = B.CreateButton(self, 24, 24, true, "Interface\\Buttons\\UI-GroupLoot-Pass-Up")
-	bu.Icon:SetPoint("TOPLEFT", 3, -2)
-	bu.Icon:SetPoint("BOTTOMRIGHT", -1, 2)
-	bu:SetScript("OnClick", function(self)
-		deleteEnable = not deleteEnable
-		if deleteEnable then
-			self:SetBackdropBorderColor(1, .8, 0)
-			self.text = enabledText
-		else
-			self:SetBackdropBorderColor(0, 0, 0)
-			self.text = nil
-		end
-		self:GetScript("OnEnter")(self)
-	end)
-	bu.title = L["ItemDeleteMode"]
-	B.AddTooltip(bu, "ANCHOR_TOP")
-
-	return bu
-end
-
-local function deleteButtonOnClick(self)
-	if not deleteEnable then return end
-
-	local texture, _, _, quality = GetContainerItemInfo(self.bagID, self.slotID)
-	if IsControlKeyDown() and IsAltKeyDown() and texture and (quality < LE_ITEM_QUALITY_RARE) then
-		PickupContainerItem(self.bagID, self.slotID)
-		DeleteCursorItem()
-	end
-end
-
-local favouriteEnable
-function module:CreateFavouriteButton()
-	local enabledText = DB.InfoColor..L["FavouriteMode Enabled"]
-
-	local bu = B.CreateButton(self, 24, 24, true, "Interface\\Common\\friendship-heart")
-	bu.Icon:SetPoint("TOPLEFT", -5, 0)
-	bu.Icon:SetPoint("BOTTOMRIGHT", 5, -5)
-	bu:SetScript("OnClick", function(self)
-		favouriteEnable = not favouriteEnable
-		if favouriteEnable then
-			self:SetBackdropBorderColor(1, .8, 0)
-			self.text = enabledText
-		else
-			self:SetBackdropBorderColor(0, 0, 0)
-			self.text = nil
-		end
-		self:GetScript("OnEnter")(self)
-	end)
-	bu.title = L["FavouriteMode"]
-	B.AddTooltip(bu, "ANCHOR_TOP")
-
-	return bu
-end
-
-local function favouriteOnClick(self)
-	if not favouriteEnable then return end
-
-	local texture, _, _, quality, _, _, _, _, _, itemID = GetContainerItemInfo(self.bagID, self.slotID)
-	if texture and quality > LE_ITEM_QUALITY_POOR then
-		if NDuiDB["Bags"]["FavouriteItems"][itemID] then
-			NDuiDB["Bags"]["FavouriteItems"][itemID] = nil
-		else
-			NDuiDB["Bags"]["FavouriteItems"][itemID] = true
-		end
-		ClearCursor()
-		module:UpdateAllBags()
-	end
-end
-
 function module:GetContainerEmptySlot(bagID)
 	local bagType = module.BagsType[bagID]
 	for slotID = 1, GetContainerNumSlots(bagID) do
@@ -283,9 +209,9 @@ function module:CreateFreeSlots()
 	slot:SetSize(self.iconSize, self.iconSize)
 	slot:SetHighlightTexture(DB.bdTex)
 	slot:GetHighlightTexture():SetVertexColor(1, 1, 1, .25)
-	local bg = B.CreateBG(slot)
-	B.CreateBD(bg, .3)
-	bg:SetBackdropColor(.3, .3, .3, .3)
+	slot:GetHighlightTexture():SetInside()
+	B.CreateBD(slot, .3)
+	slot:SetBackdropColor(.3, .3, .3, .3)
 	slot:SetScript("OnMouseUp", module.FreeSlotOnDrop)
 	slot:SetScript("OnReceiveDrag", module.FreeSlotOnDrop)
 	B.AddTooltip(slot, "ANCHOR_RIGHT", L["FreeSlots"])
@@ -300,12 +226,21 @@ function module:CreateFreeSlots()
 	self.freeSlot = slot
 end
 
+local toggleButtons = {}
+function module:SelectToggleButton(id)
+	for index, button in pairs(toggleButtons) do
+		if index ~= id then
+			button.__turnOff()
+		end
+	end
+end
+
+local splitEnable
 local function saveSplitCount(self)
 	local count = self:GetText() or ""
 	NDuiDB["Bags"]["SplitCount"] = tonumber(count) or 1
 end
 
-local splitEnable
 function module:CreateSplitButton()
 	local enabledText = DB.InfoColor..L["SplitMode Enabled"]
 
@@ -313,7 +248,7 @@ function module:CreateSplitButton()
 	splitFrame:SetSize(100, 50)
 	splitFrame:SetPoint("TOPRIGHT", self, "TOPLEFT", -5, 0)
 	B.CreateFS(splitFrame, 14, L["SplitCount"], "system", "TOP", 1, -5)
-	B.SetBackground(splitFrame)
+	B.SetBD(splitFrame)
 	splitFrame:Hide()
 	local editbox = B.CreateEditBox(splitFrame, 90, 20)
 	editbox:SetPoint("BOTTOMLEFT", 5, 5)
@@ -323,7 +258,14 @@ function module:CreateSplitButton()
 	local bu = B.CreateButton(self, 24, 24, true, "Interface\\HELPFRAME\\ReportLagIcon-AuctionHouse")
 	bu.Icon:SetPoint("TOPLEFT", -1, 3)
 	bu.Icon:SetPoint("BOTTOMRIGHT", 1, -3)
+	bu.__turnOff = function()
+		bu:SetBackdropBorderColor(0, 0, 0)
+		bu.text = nil
+		splitFrame:Hide()
+		splitEnable = nil
+	end
 	bu:SetScript("OnClick", function(self)
+		module:SelectToggleButton(1)
 		splitEnable = not splitEnable
 		if splitEnable then
 			self:SetBackdropBorderColor(1, .8, 0)
@@ -331,14 +273,15 @@ function module:CreateSplitButton()
 			splitFrame:Show()
 			editbox:SetText(NDuiDB["Bags"]["SplitCount"])
 		else
-			self:SetBackdropBorderColor(0, 0, 0)
-			self.text = nil
-			splitFrame:Hide()
+			self.__turnOff()
 		end
 		self:GetScript("OnEnter")(self)
 	end)
+	bu:SetScript("OnHide", bu.__turnOff)
 	bu.title = L["QuickSplit"]
 	B.AddTooltip(bu, "ANCHOR_TOP")
+
+	toggleButtons[1] = bu
 
 	return bu
 end
@@ -359,11 +302,150 @@ local function splitOnClick(self)
 	end
 end
 
+local favouriteEnable
+function module:CreateFavouriteButton()
+	local enabledText = DB.InfoColor..L["FavouriteMode Enabled"]
+
+	local bu = B.CreateButton(self, 24, 24, true, "Interface\\Common\\friendship-heart")
+	bu.Icon:SetPoint("TOPLEFT", -5, 0)
+	bu.Icon:SetPoint("BOTTOMRIGHT", 5, -5)
+	bu.__turnOff = function()
+		bu:SetBackdropBorderColor(0, 0, 0)
+		bu.text = nil
+		favouriteEnable = nil
+	end
+	bu:SetScript("OnClick", function(self)
+		module:SelectToggleButton(2)
+		favouriteEnable = not favouriteEnable
+		if favouriteEnable then
+			self:SetBackdropBorderColor(1, .8, 0)
+			self.text = enabledText
+		else
+			self.__turnOff()
+		end
+		self:GetScript("OnEnter")(self)
+	end)
+	bu:SetScript("OnHide", bu.__turnOff)
+	bu.title = L["FavouriteMode"]
+	B.AddTooltip(bu, "ANCHOR_TOP")
+
+	toggleButtons[2] = bu
+
+	return bu
+end
+
+local function favouriteOnClick(self)
+	if not favouriteEnable then return end
+
+	local texture, _, _, quality, _, _, _, _, _, itemID = GetContainerItemInfo(self.bagID, self.slotID)
+	if texture and quality > LE_ITEM_QUALITY_POOR then
+		if NDuiDB["Bags"]["FavouriteItems"][itemID] then
+			NDuiDB["Bags"]["FavouriteItems"][itemID] = nil
+		else
+			NDuiDB["Bags"]["FavouriteItems"][itemID] = true
+		end
+		ClearCursor()
+		module:UpdateAllBags()
+	end
+end
+
+local customJunkEnable
+function module:CreateJunkButton()
+	local enabledText = DB.InfoColor..L["JunkMode Enabled"]
+
+	local bu = B.CreateButton(self, 24, 24, true, "Interface\\BUTTONS\\UI-GroupLoot-Coin-Up")
+	bu.Icon:SetPoint("TOPLEFT", C.mult, -3)
+	bu.Icon:SetPoint("BOTTOMRIGHT", -C.mult, -3)
+	bu.__turnOff = function()
+		bu:SetBackdropBorderColor(0, 0, 0)
+		bu.text = nil
+		customJunkEnable = nil
+	end
+	bu:SetScript("OnClick", function(self)
+		module:SelectToggleButton(3)
+		customJunkEnable = not customJunkEnable
+		if customJunkEnable then
+			self:SetBackdropBorderColor(1, .8, 0)
+			self.text = enabledText
+		else
+			bu.__turnOff()
+		end
+		self:GetScript("OnEnter")(self)
+		module:UpdateAllBags()
+	end)
+	bu:SetScript("OnHide", bu.__turnOff)
+	bu.title = L["CustomJunkMode"]
+	B.AddTooltip(bu, "ANCHOR_TOP")
+
+	toggleButtons[3] = bu
+
+	return bu
+end
+
+local function customJunkOnClick(self)
+	if not customJunkEnable then return end
+
+	local texture, _, _, _, _, _, _, _, _, itemID = GetContainerItemInfo(self.bagID, self.slotID)
+	local price = select(11, GetItemInfo(itemID))
+	if texture and price > 0 then
+		if NDuiADB["CustomJunkList"][itemID] then
+			NDuiADB["CustomJunkList"][itemID] = nil
+		else
+			NDuiADB["CustomJunkList"][itemID] = true
+		end
+		ClearCursor()
+		module:UpdateAllBags()
+	end
+end
+
+local deleteEnable
+function module:CreateDeleteButton()
+	local enabledText = DB.InfoColor..L["DeleteMode Enabled"]
+
+	local bu = B.CreateButton(self, 24, 24, true, "Interface\\Buttons\\UI-GroupLoot-Pass-Up")
+	bu.Icon:SetPoint("TOPLEFT", 3, -2)
+	bu.Icon:SetPoint("BOTTOMRIGHT", -1, 2)
+	bu.__turnOff = function()
+		bu:SetBackdropBorderColor(0, 0, 0)
+		bu.text = nil
+		deleteEnable = nil
+	end
+	bu:SetScript("OnClick", function(self)
+		module:SelectToggleButton(4)
+		deleteEnable = not deleteEnable
+		if deleteEnable then
+			self:SetBackdropBorderColor(1, .8, 0)
+			self.text = enabledText
+		else
+			bu.__turnOff()
+		end
+		self:GetScript("OnEnter")(self)
+	end)
+	bu:SetScript("OnHide", bu.__turnOff)
+	bu.title = L["ItemDeleteMode"]
+	B.AddTooltip(bu, "ANCHOR_TOP")
+
+	toggleButtons[4] = bu
+
+	return bu
+end
+
+local function deleteButtonOnClick(self)
+	if not deleteEnable then return end
+
+	local texture, _, _, quality = GetContainerItemInfo(self.bagID, self.slotID)
+	if IsControlKeyDown() and IsAltKeyDown() and texture and (quality < LE_ITEM_QUALITY_RARE) then
+		PickupContainerItem(self.bagID, self.slotID)
+		DeleteCursorItem()
+	end
+end
+
 function module:ButtonOnClick(btn)
 	if btn ~= "LeftButton" then return end
-	deleteButtonOnClick(self)
-	favouriteOnClick(self)
 	splitOnClick(self)
+	favouriteOnClick(self)
+	customJunkOnClick(self)
+	deleteButtonOnClick(self)
 end
 
 function module:UpdateAllBags()
@@ -484,16 +566,17 @@ function module:OnLogin()
 		self:SetPushedTexture(nil)
 		self:SetHighlightTexture(DB.bdTex)
 		self:GetHighlightTexture():SetVertexColor(1, 1, 1, .25)
+		self:GetHighlightTexture():SetInside()
 		self:SetSize(iconSize, iconSize)
 
-		self.Icon:SetAllPoints()
+		self.Icon:SetInside()
 		self.Icon:SetTexCoord(unpack(DB.TexCoord))
-		self.Count:SetPoint("BOTTOMRIGHT", 1, 1)
+		self.Count:SetPoint("BOTTOMRIGHT", -1, 2)
 		self.Count:SetFont(unpack(DB.Font))
+		self.Cooldown:SetInside()
 
-		self.BG = B.CreateBG(self)
-		B.CreateBD(self.BG, .25)
-		self.BG:SetBackdropColor(.3, .3, .3, .3)
+		B.CreateBD(self, .3)
+		self:SetBackdropColor(.3, .3, .3, .3)
 
 		local parentFrame = CreateFrame("Frame", nil, self)
 		parentFrame:SetAllPoints()
@@ -509,12 +592,11 @@ function module:OnLogin()
 		self.Favourite:SetSize(30, 30)
 		self.Favourite:SetPoint("TOPLEFT", -12, 9)
 
-		self.Quest = B.CreateFS(self, 26, "!", "system", "LEFT", 2, 0)
-		self.iLvl = B.CreateFS(self, 12, "", false, "BOTTOMLEFT", 1, 1)
+		self.Quest = B.CreateFS(self, 30, "!", "system", "LEFT", 3, 0)
+		self.iLvl = B.CreateFS(self, 12, "", false, "BOTTOMLEFT", 1, 2)
 
 		if showNewItem then
-			self.glowFrame = B.CreateBG(self, 4)
-			self.glowFrame:SetSize(iconSize+8, iconSize+8)
+			self.glowFrame = B.CreateGlowFrame(self, iconSize)
 		end
 
 		self:HookScript("OnClick", module.ButtonOnClick)
@@ -548,7 +630,7 @@ function module:OnLogin()
 			end
 		end
 
-		if MerchantFrame:IsShown() and item.rarity == LE_ITEM_QUALITY_POOR and item.sellPrice > 0 then
+		if (MerchantFrame:IsShown() or customJunkEnable) and (item.rarity == LE_ITEM_QUALITY_POOR or NDuiADB["CustomJunkList"][item.id]) and item.sellPrice > 0 then
 			self.junkIcon:SetAlpha(1)
 		else
 			self.junkIcon:SetAlpha(0)
@@ -582,9 +664,9 @@ function module:OnLogin()
 		if NDuiDB["Bags"]["SpecialBagsColor"] then
 			local bagType = module.BagsType[item.bagID]
 			local color = bagTypeColor[bagType] or bagTypeColor[0]
-			self.BG:SetBackdropColor(unpack(color))
+			self:SetBackdropColor(unpack(color))
 		else
-			self.BG:SetBackdropColor(.3, .3, .3, .3)
+			self:SetBackdropColor(.3, .3, .3, .3)
 		end
 	end
 
@@ -592,13 +674,13 @@ function module:OnLogin()
 		self.Quest:SetAlpha(0)
 
 		if item.isQuestItem then
-			self.BG:SetBackdropBorderColor(.8, .8, 0)
+			self:SetBackdropBorderColor(.8, .8, 0)
 			self.Quest:SetAlpha(1)
 		elseif item.rarity and item.rarity > -1 then
 			local color = DB.QualityColors[item.rarity]
-			self.BG:SetBackdropBorderColor(color.r, color.g, color.b)
+			self:SetBackdropBorderColor(color.r, color.g, color.b)
 		else
-			self.BG:SetBackdropBorderColor(0, 0, 0)
+			self:SetBackdropBorderColor(0, 0, 0)
 		end
 	end
 
@@ -608,9 +690,9 @@ function module:OnLogin()
 
 		local columns = self.Settings.Columns
 		local offset = 38
-		local spacing = 5
+		local spacing = 3
 		local xOffset = 5
-		local yOffset = -offset + spacing
+		local yOffset = -offset + xOffset
 		local _, height = self:LayoutButtons("grid", columns, spacing, xOffset, yOffset)
 		local width = columns * (iconSize+spacing)-spacing
 		if self.freeSlot then
@@ -646,7 +728,7 @@ function module:OnLogin()
 		self:SetParent(settings.Parent or Backpack)
 		self:SetFrameStrata("HIGH")
 		self:SetClampedToScreen(true)
-		B.SetBackground(self)
+		B.SetBD(self)
 		B.CreateMF(self, settings.Parent, true)
 
 		local label
@@ -683,7 +765,8 @@ function module:OnLogin()
 			buttons[5] = module.CreateSortButton(self, name)
 			buttons[6] = module.CreateSplitButton(self)
 			buttons[7] = module.CreateFavouriteButton(self)
-			if deleteButton then buttons[8] = module.CreateDeleteButton(self) end
+			buttons[8] = module.CreateJunkButton(self)
+			if deleteButton then buttons[9] = module.CreateDeleteButton(self) end
 		elseif name == "Bank" then
 			module.CreateBagBar(self, settings, NUM_BANKBAGSLOTS)
 			buttons[2] = module.CreateBagToggle(self)
@@ -712,10 +795,10 @@ function module:OnLogin()
 		self:SetPushedTexture(nil)
 		self:SetHighlightTexture(DB.bdTex)
 		self:GetHighlightTexture():SetVertexColor(1, 1, 1, .25)
+		self:GetHighlightTexture():SetInside()
 
 		self:SetSize(iconSize, iconSize)
-		self.BG = B.CreateBG(self)
-		B.CreateBD(self.BG, 0)
+		B.CreateBD(self, .25)
 		self.Icon:SetAllPoints()
 		self.Icon:SetTexCoord(unpack(DB.TexCoord))
 	end
@@ -727,9 +810,9 @@ function module:OnLogin()
 		if not quality or quality == 1 then quality = 0 end
 		local color = DB.QualityColors[quality]
 		if not self.hidden and not self.notBought then
-			self.BG:SetBackdropBorderColor(color.r, color.g, color.b)
+			self:SetBackdropBorderColor(color.r, color.g, color.b)
 		else
-			self.BG:SetBackdropBorderColor(0, 0, 0)
+			self:SetBackdropBorderColor(0, 0, 0)
 		end
 
 		if classID == LE_ITEM_CLASS_CONTAINER then
@@ -765,11 +848,4 @@ function module:OnLogin()
 	end
 	local shiftUpdater = CreateFrame("Frame", nil, f.main)
 	shiftUpdater:SetScript("OnUpdate", onUpdate)
-
-	-- Override AuroraClassic
-	if F then
-		AuroraOptionsbags:SetAlpha(0)
-		AuroraOptionsbags:Disable()
-		AuroraConfig.bags = false
-	end
 end

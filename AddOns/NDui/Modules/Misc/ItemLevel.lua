@@ -1,12 +1,10 @@
 ﻿local _, ns = ...
-local B, C, L, DB, F = unpack(ns)
+local B, C, L, DB = unpack(ns)
 local M = B:GetModule("Misc")
 
 local pairs, select, next, wipe = pairs, select, next, wipe
 local UnitGUID, GetItemInfo = UnitGUID, GetItemInfo
-local GetContainerItemLink, GetInventoryItemLink = GetContainerItemLink, GetInventoryItemLink
-local EquipmentManager_UnpackLocation, EquipmentManager_GetItemInfoByLocation = EquipmentManager_UnpackLocation, EquipmentManager_GetItemInfoByLocation
-local C_Timer_After = C_Timer.After
+local GetInventoryItemLink = GetInventoryItemLink
 
 local inspectSlots = {
 	"Head",
@@ -44,23 +42,23 @@ function M:GetSlotAnchor(index)
 end
 
 function M:CreateItemTexture(slot, relF, x, y)
-	local icon = slot:CreateTexture(nil, "ARTWORK")
+	local icon = slot:CreateTexture()
 	icon:SetPoint(relF, x, y)
 	icon:SetSize(14, 14)
-	icon:SetTexCoord(unpack(DB.TexCoord))
-	icon.bg = B.CreateBG(icon)
-	B.CreateBD(icon.bg)
+	icon.bg = B.ReskinIcon(icon)
+	icon.bg:SetFrameLevel(3)
 	icon.bg:Hide()
 
 	return icon
 end
 
 function M:CreateColorBorder()
-	if F then return end
+	if NDuiDB["Skins"]["BlizzardSkins"] then return end
+
 	local frame = CreateFrame("Frame", nil, self)
 	frame:SetAllPoints()
-	frame:SetFrameLevel(5)
-	self.colorBG = B.CreateSD(frame, 4, 4)
+	self.colorBG = B.CreateSD(frame, 4, true)
+	self.colorBG:SetFrameLevel(5)
 end
 
 function M:CreateItemString(frame, strType)
@@ -189,10 +187,11 @@ function M:ShowItemLevel()
 	B:RegisterEvent("PLAYER_EQUIPMENT_CHANGED", M.ItemLevel_UpdatePlayer)
 
 	-- iLvl on InspectFrame
-	B:RegisterEvent("INSPECT_READY", self.ItemLevel_UpdateInspect)
+	B:RegisterEvent("INSPECT_READY", M.ItemLevel_UpdateInspect)
 
 	-- Update item quality
 	M.QualityUpdater = CreateFrame("Frame")
 	M.QualityUpdater:Hide()
 	M.QualityUpdater:SetScript("OnUpdate", M.RefreshButtonInfo)
 end
+M:RegisterMisc("GearInfo", M.ShowItemLevel)

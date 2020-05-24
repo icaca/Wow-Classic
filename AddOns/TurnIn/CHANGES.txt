@@ -1,0 +1,10 @@
+lightweight tag 1d2e4760bb8d7ec4bfb9eb7238a45d05bdc47dab 2.1.9-classic
+Author:	SabinDeus <sabin@sabindeus.com>
+Date:	Thu Sep 5 16:54:02 2019 -0400
+
+commit 1d2e4760bb8d7ec4bfb9eb7238a45d05bdc47dab
+Author: SabinDeus <sabin@sabindeus.com>
+Date:   Thu Sep 5 16:54:02 2019 -0400
+
+    TOC for Classic
+

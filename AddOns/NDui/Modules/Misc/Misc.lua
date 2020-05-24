@@ -3,17 +3,10 @@ local B, C, L, DB = unpack(ns)
 local M = B:RegisterModule("Misc")
 
 local _G = getfenv(0)
-local tostring, tonumber, pairs, select, random, strsplit = tostring, tonumber, pairs, select, math.random, string.split
+local tonumber = tonumber
 local InCombatLockdown, IsModifiedClick, IsAltKeyDown = InCombatLockdown, IsModifiedClick, IsAltKeyDown
-local GetNumArchaeologyRaces = GetNumArchaeologyRaces
-local GetNumArtifactsByRace = GetNumArtifactsByRace
-local GetArtifactInfoByRace = GetArtifactInfoByRace
-local GetArchaeologyRaceInfo = GetArchaeologyRaceInfo
 local GetNumAuctionItems, GetAuctionItemInfo = GetNumAuctionItems, GetAuctionItemInfo
 local FauxScrollFrame_GetOffset, SetMoneyFrameColor = FauxScrollFrame_GetOffset, SetMoneyFrameColor
-local EquipmentManager_UnequipItemInSlot = EquipmentManager_UnequipItemInSlot
-local EquipmentManager_RunAction = EquipmentManager_RunAction
-local GetInventoryItemTexture = GetInventoryItemTexture
 local GetItemInfo = GetItemInfo
 local BuyMerchantItem = BuyMerchantItem
 local GetMerchantItemLink = GetMerchantItemLink
@@ -21,34 +14,38 @@ local GetMerchantItemMaxStack = GetMerchantItemMaxStack
 local GetItemQualityColor = GetItemQualityColor
 local GetTime, GetCVarBool, SetCVar = GetTime, GetCVarBool, SetCVar
 local GetNumLootItems, LootSlot = GetNumLootItems, LootSlot
-local GetNumSavedInstances = GetNumSavedInstances
 local GetInstanceInfo = GetInstanceInfo
-local GetSavedInstanceInfo = GetSavedInstanceInfo
-local SetSavedInstanceExtend = SetSavedInstanceExtend
-local RequestRaidInfo, RaidInfoFrame_Update = RequestRaidInfo, RaidInfoFrame_Update
 local IsGuildMember, BNGetGameAccountInfoByGUID, C_FriendList_IsFriend = IsGuildMember, BNGetGameAccountInfoByGUID, C_FriendList.IsFriend
 
 --[[
 	Miscellaneous 各种有用没用的小玩意儿
 ]]
+local MISC_LIST = {}
+
+function M:RegisterMisc(name, func)
+	if not MISC_LIST[name] then
+		MISC_LIST[name] = func
+	end
+end
+
 function M:OnLogin()
-	self:LoginAnimation()
-	self:AddAlerts()
-	self:Expbar()
-	self:MailBox()
-	self:ShowItemLevel()
-	self:QuestNotifier()
+	for name, func in next, MISC_LIST do
+		if name and type(func) == "function" then
+			func()
+		end
+	end
+
+	-- Init
 	self:UIWidgetFrameMover()
 	self:MoveDurabilityFrame()
 	self:MoveTicketStatusFrame()
-	self:AlertFrame_Setup()
 	self:UpdateFasterLoot()
 	self:UpdateErrorBlocker()
 	self:TradeTargetInfo()
 	self:MenuButton_Add()
 	self:AutoDismount()
 	self:BidPriceHighlight()
-	self:TradeTabs()
+	self:BlockStrangerInvite()
 
 	-- Max camera distancee
 	if tonumber(GetCVar("cameraDistanceMaxZoomFactor")) ~= 2.6 then
@@ -443,4 +440,14 @@ function M:AutoDismount()
 		end
 	end
 	B:RegisterEvent("UI_ERROR_MESSAGE", updateEvent)
+end
+
+-- Block invite from strangers
+function M:BlockStrangerInvite()
+	B:RegisterEvent("PARTY_INVITE_REQUEST", function(_, _, _, _, _, _, _, guid)
+		if NDuiDB["Misc"]["BlockInvite"] and not (IsGuildMember(guid) or BNGetGameAccountInfoByGUID(guid) or C_FriendList_IsFriend(guid)) then
+			DeclineGroup()
+			StaticPopup_Hide("PARTY_INVITE")
+		end
+	end)
 end

@@ -5,17 +5,18 @@ if DB.Client ~= "zhCN" then return end
 local strsplit, pairs = string.split, pairs
 
 local hx = {
-	"语言过滤器更新；",
-	"更新各法术库；",
-	"更新部分副本的减益；",
-	"更新施法条跳数；",
-	"聊天时间戳调整；",
-	"控制台及本地文本更新，新增韩语支持；",
-	"姓名板的施法条微调；",
-	"小地图回收站更新，防止被部分奇葩插件影响；",
-	"添加登录logo动画显示；",
-	"团队工具调整；",
-	"微型菜单的材质跟随正式服。"
+	"基于正式服5.5.0版本重新移植；",
+	"AuroraClassic移除，相关功能可在控制台中调整；",
+	"移除大量无用的代码及功能；",
+	"控制台及本地文本更新；",
+	"团队工具更新；",
+	"版本检测更新；",
+	"各法术库更新；",
+	"易用性模块更新；",
+	"技能缺失提醒支持更多技能；",
+	"背包添加自定义垃圾分类按钮；",
+	"信息条更新，防止内存占用过大时造成的卡顿；",
+	"登录动画微调。",
 }
 
 local f
@@ -27,9 +28,7 @@ local function changelog()
 	f:SetScale(1.2)
 	f:SetFrameStrata("HIGH")
 	B.CreateMF(f)
-	B.CreateBD(f)
-	B.CreateSD(f)
-	B.CreateTex(f)
+	B.SetBD(f)
 	B.CreateFS(f, 30, "|cff0080ffNDui|rClassic", true, "TOPLEFT", 10, 26)
 	B.CreateFS(f, 14, DB.Version, true, "TOPRIGHT", -10, 14)
 	B.CreateFS(f, 16, L["Changelog"], true, "TOP", 0, -10)

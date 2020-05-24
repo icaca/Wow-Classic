@@ -3,17 +3,16 @@
 --------------------------------------
 
 --Only need layered realms here for now.
---Unfinished future stuff.
 NWB.usRealms = {
-	["Arugal"] = true,
-	["Benediction"] = true,
-	["Earthfury"] = true,
-	["Faerlina"] = true,
-	["Fairbanks"] = true,
-	["Herod"] = true,
-	["Pagle"] = true,
-	["Sulfuras"] = true,
-	["Whitemane"] = true,
+	--["Arugal"] = true,
+	--["Benediction"] = true,
+	--["Earthfury"] = true,
+	--["Faerlina"] = true,
+	--["Fairbanks"] = true,
+	--["Herod"] = true,
+	--["Pagle"] = true,
+	--["Sulfuras"] = true,
+	--["Whitemane"] = true,
 }
 
 NWB.euRealms = {
