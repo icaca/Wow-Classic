@@ -1,0 +1,11 @@
+## Interface: 11304
+## Title: Water Dispenser
+## Notes: Automatic fill trade-window 
+## Version: 1.10
+## Author: GPI / Erytheia-Razorfen
+## DefaultState: enabled
+## SavedVariablesPerCharacter: WaterDispenserDB
+LibGPIToolBox.lua
+LibGPIOptions.lua
+Localization.lua
+WaterDispenser.lua

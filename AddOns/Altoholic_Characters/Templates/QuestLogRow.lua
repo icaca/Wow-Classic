@@ -7,6 +7,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 addon:Controller("AltoholicUI.QuestLogRow", { "AltoholicUI.Formatter", function(formatter)
 	return {
 		SetName = function(frame, name, level)
+            if (not name) then name = "" end
 			frame.Name.Text:SetText(format("%s[%s%d%s] |r%s", colors.white, colors.cyan, level, colors.white, name))
 		end,
 		SetInfo = function(frame, isComplete, isDaily, groupSize, money)
@@ -39,25 +40,6 @@ addon:Controller("AltoholicUI.QuestLogRow", { "AltoholicUI.Formatter", function(
 			icon:Show()
 		end,
 		SetRewards = function(frame)
-			-- frame.Reward1:Hide()
-			-- frame.Reward2:Hide()
-			
-			-- local id = frame:GetID()
-			-- if id == 0 then return end
-
-			-- local character = addon.Tabs.Characters:GetAltKey()
-			-- local numRewards = DataStore:GetQuestLogNumRewards(character, id)
-			
-			-- local index = 2	-- simply to justify rewards to the right
-			-- for rewardIndex = 1, numRewards do
-				-- local rewardType, id, numItems = DataStore:GetQuestLogRewardInfo(character, id, rewardIndex)
-				
-				-- if rewardType == "r" then
-					-- local button = frame["Reward" ..index]
-					-- button:SetReward({ itemID = id, quantity = numItems })
-					-- index = index - 1
-				-- end
-			-- end
 		end,
 
 		Name_OnEnter = function(frame)

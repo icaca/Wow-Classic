@@ -1,0 +1,11 @@
+## Interface: 11304
+## Version: 0.1
+## Title: Ff
+## Author: cc
+## Notes: first plugin.
+## SavedVariables: Ff
+## OptionalDeps: Ace3
+## X-Embeds: Ace3
+
+embeds.xml
+Core.lua

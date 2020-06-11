@@ -1,3 +1,22 @@
+__ New in 3.41 - By Rottenbeer __
+* Fix individual slot queue toggle
+The addon currently tries to queue all slots and ignores the checkbox "Auto queue this slot"
+This will make it check the table to see if the box was actually ticked before queuing a slot.
+
+Thanks to blastehh
+__ New in 3.40 - By Rottenbeer __
+* version bump for curseforge
+
+__ New in 3.39 - By Rottenbeer __
+* ZoneEvents: check for subzones and indoor area changes
+
+__ New in 3.38 - By Rottenbeer __
+* Prevent unequipping sets that are not marked to unequip for buff events
+Thanks to davismj for the pull request
+
+__ New in 3.37 - By Rottenbeer __
+* Incremented release version to fix cyclic updates on curseforge
+
 __ New in 3.36 - By Rottenbeer __
 * Manual changelog on curseforge
 

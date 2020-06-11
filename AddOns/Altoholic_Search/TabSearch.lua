@@ -84,12 +84,6 @@ local categories = {
 		isCollapsed = true,
 	},
 	{
-		name = AUCTION_CATEGORY_BATTLE_PETS,
-		class = LE_ITEM_CLASS_BATTLEPET,
-		subClasses = { GetAuctionItemSubClasses(LE_ITEM_CLASS_BATTLEPET) },
-		isCollapsed = true,
-	},
-	{
 		name = AUCTION_CATEGORY_QUEST_ITEMS,
 		class = LE_ITEM_CLASS_QUESTITEM,
 		subClasses = { GetAuctionItemSubClasses(LE_ITEM_CLASS_QUESTITEM) },
@@ -299,6 +293,7 @@ function ns:DropDownLocation_Initialize()
 		info.value = i
 		info.func = function(self) 
 				UIDropDownMenu_SetSelectedValue(parent.SelectLocation, self.value)
+                addon:SetOption("UI.Tabs.Search.LocationRealm", UIDropDownMenu_GetSelectedValue(AltoholicTabSearch.SelectLocation))
 			end
 		info.checked = nil; 
 		info.icon = nil; 

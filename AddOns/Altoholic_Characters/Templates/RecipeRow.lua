@@ -3,20 +3,18 @@ local addon = _G[addonName]
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 
 addon:Controller("AltoholicUI.RecipeRow", {
-	Update = function(frame, itemID, color)
-		
+	Update = function(frame, profession, recipeID, color, isLearned, recipeRank, totalRanks)               
 		-- ** set the crafted item **
-		-- local craftedItemID, maxMade = DataStore:GetCraftResultItem(itemID)
-		local maxMade = 1
+		local craftedItemID, maxMade = DataStore:GetCraftResultItem(recipeID)
 		local itemName, itemLink, itemRarity
-		
-		if itemID then
-			frame.CraftedItem:SetIcon(GetItemIcon(itemID))
-			frame.CraftedItem.itemID = itemID
+
+		if craftedItemID then
+			frame.CraftedItem:SetIcon(GetItemIcon(craftedItemID))
+			frame.CraftedItem.itemID = craftedItemID
 			
-			itemName, itemLink, itemRarity = GetItemInfo(itemID)
-			
-			frame.CraftedItem.Icon:SetVertexColor(1, 1, 1)
+			itemName, itemLink, itemRarity = GetItemInfo(craftedItemID)
+			local vc = (isLearned) and 1 or 0.3
+			frame.CraftedItem.Icon:SetVertexColor(vc, vc, vc)
 			if itemRarity then
 				frame.CraftedItem:SetRarity(itemRarity)
 			end
@@ -28,22 +26,26 @@ addon:Controller("AltoholicUI.RecipeRow", {
 				frame.CraftedItem.Count:Hide()
 			end
 			frame.CraftedItem:Show()
-		else
+		elseif profession == DataStore:GetLocaleEnchantingName() then
+            itemName = DataStore:GetResultItemName(recipeID); itemRarity = 4; maxMade = 1;
+            frame.CraftedItem:SetIcon("Interface\\Icons\\Trade_Engraving.blp")
+            frame.CraftedItem.itemID = nil
+            frame.CraftedItem.Icon:SetVertexColor(1,1,1)
+            frame.CraftedItem:SetRarity(itemRarity)
+            frame.CraftedItem.Count:Hide()
+            frame.CraftedItem:Show()
+        else
 			frame.CraftedItem:Hide()
 		end
-		
-		-- ** set the recipe text **
-		local recipeText
-		
-		if itemName then
+			
+        if itemName then
 			local _, _, _, hexColor = GetItemQualityColor(itemRarity)
 			recipeText = format("|c%s%s", hexColor, itemName)
 		end
-	
-		frame.RecipeLink.Text:SetText(recipeText)
+        frame.RecipeLink.Text:SetText(recipeText)
 		
 		-- ** set the reagents **
-		local reagents = DataStore:GetCraftReagents(itemID)		-- reagents = "2996,2|2318,1|2320,1"
+		local reagents = DataStore:GetCraftReagents(recipeID)		-- reagents = "2996,2|2318,1|2320,1"
 		local index = 1
 		
 		if reagents then

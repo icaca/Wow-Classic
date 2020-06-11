@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Razorgore", "DBM-BWL", 1)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision("20200513172953")
+mod:SetRevision("20200603213000")
 mod:SetCreatureID(12435, 99999)--Bogus detection to prevent invalid kill detection if razorgore happens to die in phase 1
 mod:SetEncounterID(610)--BOSS_KILL is valid, but ENCOUNTER_END is not
 mod:DisableEEKillDetection()--So disable only EE
@@ -60,7 +60,7 @@ do
 			end
 			if self:AntiSpam(8, 1) then
 				if self.Options.SpecWarn22425moveto then
-					specWarnFireballVolley:Show(DBM_CORE_BREAK_LOS)
+					specWarnFireballVolley:Show(DBM_CORE_L.BREAK_LOS)
 					specWarnFireballVolley:Play("findshelter")
 				else
 					warnFireballVolley:Show()
@@ -135,7 +135,7 @@ function mod:OnSync(msg, name)
 		DBM:EndCombat(self)
 	elseif msg == "fireballVolley" and self:AntiSpam(8, 1) then
 		if self.Options.SpecWarn22425moveto then
-			specWarnFireballVolley:Show(DBM_CORE_BREAK_LOS)
+			specWarnFireballVolley:Show(DBM_CORE_L.BREAK_LOS)
 			specWarnFireballVolley:Play("findshelter")
 		else
 			warnFireballVolley:Show()

@@ -180,12 +180,12 @@ function ns:UpdateAuctions()
 			
 			_G[ entry..i.."Price" ]:SetText(addon:GetMoneyString(startPrice) .. "\n"  
 					.. colors.green .. BUYOUT .. ": " ..  addon:GetMoneyString(buyoutPrice))
-			
-			local itemButton = _G[ entry..i.."Item" ]
+                    
+            local itemButton = _G[ entry..i.."Item" ]
 			itemButton:SetIcon(GetItemIcon(itemID))			
 			itemButton:SetCount(count)
 			itemButton:SetID(index)
-	
+                    
 			_G[ entry..i ]:Show()
 		else
 			_G[ entry..i ]:Hide()
@@ -245,12 +245,12 @@ function ns:UpdateBids()
 			
 			_G[ entry..i.."Price" ]:SetText(colors.orange .. CURRENT_BID .. ": " .. addon:GetMoneyString(bidPrice) .. "\n"  
 					.. colors.green .. BUYOUT .. ": " ..  addon:GetMoneyString(buyoutPrice))
-			
+                    
 			local itemButton = _G[ entry..i.."Item" ]
 			itemButton:SetIcon(GetItemIcon(itemID))			
 			itemButton:SetCount(count)
 			itemButton:SetID(index)
-	
+            
 			_G[ entry..i ]:Show()
 		else
 			_G[ entry..i ]:Hide()

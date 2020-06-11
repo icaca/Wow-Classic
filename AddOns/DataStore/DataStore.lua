@@ -708,7 +708,7 @@ function addon:GetCharacterTable(module, name, realm, account)
 	if type(module) == "string" then
 		module = RegisteredModules[module]
 	end
-
+    if (type(module) ~= "table") then print("Error: module isn't a table. Its value is: ", module) end
 	assert(type(module) == "table")
 	return module.Characters[GetKey(name, realm, account)]
 end

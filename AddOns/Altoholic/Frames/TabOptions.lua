@@ -15,8 +15,8 @@ local addonList = {
 	"Altoholic_Grids",
 }
 
-local url1 = "http://wow.curse.com/downloads/wow-addons/details/altoholic.aspx"
-local url2 = "http://www.wowinterface.com/downloads/info8533-Altoholic.html"
+local url1 = "https://www.curseforge.com/wow/addons/altoholic/" 
+local url2 = "https://github.com/teelolws/Altoholic-Classic" 
 local url3 = "http://wow.curseforge.com/addons/altoholic/localization/"
 
 local help = {
@@ -61,7 +61,7 @@ local help = {
 			"Do I have to open all professions manually?",
 		},
 		answers = {
-			"Yes. Some advanced features require that you open the tradeskill pane once per profession.",
+			"Yes. On Classic, only your gathering professions and Fishing can be scanned when you login. You will need to open the crafting windows for all other professions.",
 		}
 	},
 	{	name = "Mails",
@@ -95,10 +95,10 @@ local support = {
 			"I have multiple Lua errors at login, should I report them all?",
 		},
 		answers = {
-			"Both Curse and WoWInterface have a ticket section, I also read comments and respond as often as I materially can, so feel free to report in one of these places.",
+ 			format("%s%s", "Please use the Issue Tracker on Github: ", colors.green..url2), 
 			format("%s\n\n%s\n%s\n%s\n%s\n%s\n", 
 				"A few things:",
-				colors.green.."1)|r Make sure you have the latest version of the add-on.\n",
+ 				colors.green.."1)|r Make sure you have the latest version of the add-on. Check for alpha builds on Github that address your issue.\n", 
 				colors.green.."2)|r If you suspect a conflict with another add-on, try to reproduce the issue with only Altoholic enabled. As the add-on deals with a lot of things, a conflict is always possible.\n",
 				colors.green.."3)|r Make sure your issue has not been reported by someone else.\n",
 				colors.green.."4)|r Never, ever, report that 'it does not work', this is the most useless sentence in the world! Be specific about what does not work.\n",
@@ -120,91 +120,9 @@ local support = {
 
 -- this content will be subject to frequent changes, do not bother translating it !!
 local whatsnew = {
-	{	name = "8.2.001 Changes",
+	{	name = "Classic version",
 		bulletedList = {
-			"Minor fixes.",
-			"Added new factions.",
-		},
-	},
-	{	name = "8.0.008 Changes",
-		bulletedList = {
-			"Added BfA factions. (Thanks AlexSUCF !!)",
-			"Added BfA currencies.",
-			"Added BfA emissary quests.",
-			"Some quest achievements for BfA were rearranged to better reflect a character's progress.",
-			"Fixed the percentage of rest xp for pandaren to now properly show 200% or 300% depending on the mode.",
-			"Reworked the way rest xp is displayed in the addon, there is now a tooltip giving more info about rest xp, including when an alt will be fully rested."
-		},
-	},
-	{	name = "8.0.007 Changes",
-		bulletedList = {
-			"Account Summary : Removed a test that prevented the herbalism & skinning tooltip from showing the proper per expansion information.",
-		},
-	},
-	{	name = "8.0.006 Changes",
-		bulletedList = {
-			"Restored the emissaries panel.",
-			"Fixed the 'All levels' filter in the account summary being limited to 110.",
-			"Added support for War Campaign Missions."
-		},
-	},
-	{	name = "8.0.005 Changes",
-		bulletedList = {
-			"Closed a lot of bugs from the Curse issues list, and implemented a lot of smaller fixes (thanks to all who contributed !).",
-			"Fixed guild bank counters being displayed in the tooltip for guild banks from other factions, when the options were set not to display them. (Thanks Leo!)",
-			"Reorganized several achievement categories (Thanks AlexSUCF !!)",
-			"Added Legion Fishing Masters reputations (Thanks AlexSUCF !!)",
-			"Search tab: Character level edit boxes now accept 3-digit values (Thanks AlexSUCF !!)",
-			"Fixed scanning of transmog sets (Thanks AlexSUCF !!)",
-			"Fixed several smaller issues (Thanks AlexSUCF !!)",
-			"DataStore_Agenda: fixed calendar scanning of events with an invalid 'calendar type'. This fixes the spam of events you were maybe getting at logon. Just open your calendar on the affected alts, and you will be fine.",
-			"Added support for paragon reputation levels (Thanks all4atlantis !!)",
-			"Fixed the auto-completion of alt's names on the same realm, this should fix the 'This character might be someone you don't know.' problem.",
-		},
-	},
-	{	name = "8.0.004 Changes",
-		bulletedList = {
-			"Fixed a Lua error when mousing over a recipe in the search panel. (Thanks KaraKaori !)",
-			"Archaelogy is back on its feet :)",
-			"Quick note about fishing: Fishing now seems to be seen as a series of recipes, like the other professions, even though there are no actual recipes.",
-			"This means you actually have to press the 'Fishing Skills' button in the profession UI to get its proper level.",
-			"Fixed the 'known by' tooltips, which did not properly left out 'unlearned' recipes.",
-			"Removed the last occurences of first aid in a few places.",
-			"Fixed a Lua error when visiting merchants selling recipes.",
-			"The amount of gold displayed in various places is now shown with a thousands' separator.",
-		},
-	},
-	{	name = "8.0.003 Changes",
-		bulletedList = {
-			"Slightly modified the 'totals' that appear at the bottom right so that it now fully belongs to the Summary tab.",
-			"Characters tab : the profession panel has been fully reworked.",
-			"Professions can now be filtered by categories, subcategories, color, inventory slot, learned/unlearned, and by their actual name.",
-			"Profession cooldowns should be ok, but I did not have enough material at hand for tangible testing. Please let me know if you notice anything weird.",
-			"Recipe tooltips like 'Could be learned by' etc.. should now be fully functioning again.",
-		},
-	},
-	{	name = "8.0.002 Changes",
-		bulletedList = {
-			"Fixed a Lua error in DataStore_Agenda.",
-			"Fixed DataStore_Containers not properly scanning some bank content.",
-			"Fixed DataStore_Agenda not properly scanning WotLK item cooldowns.",
-			"Fixed Item cooldowns breaking the agenda view.",
-			"Fixed the errors in the Agenda tab.",
-			"DataStore_Crafts: now properly scanning profession data, UI still being worked on.",
-			"Fixed several UI errors related to professions."
-		},
-	},
-	{	name = "8.0.001 Changes",
-		bulletedList = {
-			"Fixed a ton of Lua errors.",
-			"Summary tab : the artifact menu has been disabled, since no data can be retrieved anymore.",
-			"Summary tab : the first aid profession has been removed.",
-			"Note : Quests and professions are still being reworked."
-		},
-	},
-	{	name = "Earlier changes",
-		textLines = {
-			"Refer to |cFF00FF00changelog.txt",
+			"Fixes and code clean up for classic version.",
 		},
 	},
 }
@@ -387,7 +305,6 @@ function addon:SetupOptions()
 	f.ShowItemCount.Text:SetText(L["Show item count per character"])
 	f.ShowSimpleCount.Text:SetText(L["Show item count without details"])
 	f.ShowTotalItemCount.Text:SetText(L["Show total item count"])
-	f.ShowItemSellPrice.Text:SetText("Show item sell price")
 	f.ShowKnownRecipes.Text:SetText(L["Show recipes already known/learnable by"])
 	f.ShowItemID.Text:SetText(L["Show item ID and item level"])
 	f.ShowGatheringNodesCount.Text:SetText(L["Show counters on gathering nodes"])
@@ -474,6 +391,7 @@ function addon:RestoreOptionsToUI()
 	f.ShowItemSource:SetChecked(O["UI.Tooltip.ShowItemSource"])
 	f.ShowItemCount:SetChecked(O["UI.Tooltip.ShowItemCount"])
 	f.ShowTotalItemCount:SetChecked(O["UI.Tooltip.ShowTotalItemCount"])
+    f.ShowItemSellPrice.Text:SetText("Show item sell price")
 	f.ShowKnownRecipes:SetChecked(O["UI.Tooltip.ShowKnownRecipes"])
 	f.ShowItemID:SetChecked(O["UI.Tooltip.ShowItemID"])
 	f.ShowGatheringNodesCount:SetChecked(O["UI.Tooltip.ShowGatheringNodesCount"])

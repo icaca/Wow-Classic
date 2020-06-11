@@ -57,89 +57,49 @@ Default to an english text.
 
 
 
-local factions = {
-	{ id = 69, name = BF["Darnassus"] },
-	{ id = 930, name = BF["Exodar"] },
-	{ id = 54, name = BF["Gnomeregan"] },
-	{ id = 47, name = BF["Ironforge"] },
-	{ id = 72, name = BF["Stormwind"] },
-	{ id = 530, name = BF["Darkspear Trolls"] },
-	{ id = 76, name = BF["Orgrimmar"] },
-	{ id = 81, name = BF["Thunder Bluff"] },
-	{ id = 68, name = BF["Undercity"] },
-	{ id = 911, name = BF["Silvermoon City"] },
-	{ id = 509, name = BF["The League of Arathor"] },
-	{ id = 890, name = BF["Silverwing Sentinels"] },
-	{ id = 730, name = BF["Stormpike Guard"] },
-	{ id = 510, name = BF["The Defilers"] },
-	{ id = 889, name = BF["Warsong Outriders"] },
-	{ id = 729, name = BF["Frostwolf Clan"] },
-	{ id = 21, name = BF["Booty Bay"] },
-	{ id = 577, name = BF["Everlook"] },
-	{ id = 369, name = BF["Gadgetzan"] },
-	{ id = 470, name = BF["Ratchet"] },
-	{ id = 529, name = BF["Argent Dawn"] },
-	{ id = 87, name = BF["Bloodsail Buccaneers"] },
-	{ id = 910, name = BF["Brood of Nozdormu"] },
-	{ id = 609, name = BF["Cenarion Circle"] },
-	{ id = 909, name = BF["Darkmoon Faire"] },
-	{ id = 92, name = BF["Gelkis Clan Centaur"] },
-	{ id = 749, name = BF["Hydraxian Waterlords"] },
-	{ id = 93, name = BF["Magram Clan Centaur"] },
-	{ id = 349, name = BF["Ravenholdt"] },
-	{ id = 809, name = BF["Shen'dralar"] },
-	{ id = 70, name = BF["Syndicate"] },
-	{ id = 59, name = BF["Thorium Brotherhood"] },
-	{ id = 576, name = BF["Timbermaw Hold"] },
-	{ id = 922, name = BF["Tranquillien"] },
-	{ id = 589, name = BF["Wintersaber Trainers"] },
-	{ id = 270, name = BF["Zandalar Tribe"] },
-	{ id = 1012, name = BF["Ashtongue Deathsworn"] },
-	{ id = 942, name = BF["Cenarion Expedition"] },
-	{ id = 933, name = BF["The Consortium"] },
-	{ id = 946, name = BF["Honor Hold"] },
-	{ id = 978, name = BF["Kurenai"] },
-	{ id = 941, name = BF["The Mag'har"] },
-	{ id = 1015, name = BF["Netherwing"] },
-	{ id = 1038, name = BF["Ogri'la"] },
-	{ id = 970, name = BF["Sporeggar"] },
-	{ id = 947, name = BF["Thrallmar"] },
-	{ id = 1011, name = BF["Lower City"] },
-	{ id = 1031, name = BF["Sha'tari Skyguard"] },
-	{ id = 1077, name = BF["Shattered Sun Offensive"] },
-	{ id = 932, name = BF["The Aldor"] },
-	{ id = 934, name = BF["The Scryers"] },
-	{ id = 935, name = BF["The Sha'tar"] },
-	{ id = 989, name = BF["Keepers of Time"] },
-	{ id = 990, name = BF["The Scale of the Sands"] },
-	{ id = 967, name = BF["The Violet Eye"] },
-	{ id = 1106, name = BF["Argent Crusade"] },
-	{ id = 1090, name = BF["Kirin Tor"] },
-	{ id = 1073, name = BF["The Kalu'ak"] },
-	{ id = 1091, name = BF["The Wyrmrest Accord"] },
-	{ id = 1098, name = BF["Knights of the Ebon Blade"] },
-	{ id = 1119, name = BF["The Sons of Hodir"] },
-	{ id = 1156, name = BF["The Ashen Verdict"] },
-	{ id = 1037, name = BF["Alliance Vanguard"] },
-	{ id = 1068, name = BF["Explorers' League"] },
-	{ id = 1126, name = BF["The Frostborn"] },
-	{ id = 1094, name = BF["The Silver Covenant"] },
-	{ id = 1050, name = BF["Valiance Expedition"] },
-	{ id = 1052, name = BF["Horde Expedition"] },
-	{ id = 1067, name = BF["The Hand of Vengeance"] },
-	{ id = 1124, name = BF["The Sunreavers"] },
-	{ id = 1064, name = BF["The Taunka"] },
-	{ id = 1085, name = BF["Warsong Offensive"] },
-	{ id = 1104, name = BF["Frenzyheart Tribe"] },
-	{ id = 1105, name = BF["The Oracles"] },
-	{ id = 469, name = BF["Alliance"] },
-	{ id = 67, name = BF["Horde"] },
-	{ id = 1134, name = BF["Gilneas"] },
-	{ id = 1133, name = BF["Bilgewater Cartel"] },
+local factions = {                                     --UIDs:
+	{ id = 69, name = BF["Darnassus"] },               --1
+	{ id = 930, name = BF["Exodar"] },                 --2 
+	{ id = 54, name = BF["Gnomeregan"] },              --3
+	{ id = 47, name = BF["Ironforge"] },               --4
+	{ id = 72, name = BF["Stormwind"] },               --5
+	{ id = 530, name = BF["Darkspear Trolls"] },       --6
+	{ id = 76, name = BF["Orgrimmar"] },               --7
+	{ id = 81, name = BF["Thunder Bluff"] },           --8
+	{ id = 68, name = BF["Undercity"] },               --9
+	{ id = 911, name = BF["Silvermoon City"] },        --10
+	{ id = 509, name = BF["The League of Arathor"] },  --11
+	{ id = 890, name = BF["Silverwing Sentinels"] },   --12
+	{ id = 730, name = BF["Stormpike Guard"] },        --13
+	{ id = 510, name = BF["The Defilers"] },           --14
+	{ id = 889, name = BF["Warsong Outriders"] },      --15
+	{ id = 729, name = BF["Frostwolf Clan"] },         --16
+	{ id = 21, name = BF["Booty Bay"] },               --17
+	{ id = 577, name = BF["Everlook"] },               --18
+	{ id = 369, name = BF["Gadgetzan"] },              --19
+	{ id = 470, name = BF["Ratchet"] },                --20
+	{ id = 529, name = BF["Argent Dawn"] },            --21
+	{ id = 87, name = BF["Bloodsail Buccaneers"] },    --22
+	{ id = 910, name = BF["Brood of Nozdormu"] },      --23
+	{ id = 609, name = BF["Cenarion Circle"] },        --24
+	{ id = 909, name = BF["Darkmoon Faire"] },         --25 
+	{ id = 92, name = BF["Gelkis Clan Centaur"] },     --26
+	{ id = 749, name = BF["Hydraxian Waterlords"] },   --27
+	{ id = 93, name = BF["Magram Clan Centaur"] },     --28
+	{ id = 349, name = BF["Ravenholdt"] },             --29
+	{ id = 809, name = BF["Shen'dralar"] },            --30
+	{ id = 70, name = BF["Syndicate"] },               --31
+	{ id = 59, name = BF["Thorium Brotherhood"] },     --32
+	{ id = 576, name = BF["Timbermaw Hold"] },         --33
+	{ id = 922, name = BF["Tranquillien"] },           --34
+	{ id = 589, name = BF["Wintersaber Trainers"] },   --35
+	{ id = 270, name = BF["Zandalar Tribe"] },         --36
+	{ id = 469, name = BF["Alliance"] },               --37
+	{ id = 67, name = BF["Horde"] },                   --38
 }
 
-local FactionUIDsRev = {}
-local FactionIdToName = {}
+local FactionUIDsRev = {} -- key: name, value: UID
+local FactionIdToName = {} -- key: reputation ID, value: name
 
 for k, v in pairs(factions) do
 	if v.id and v.name then
@@ -223,9 +183,9 @@ local function ScanReputations()
 	
 	for i = 1, GetNumFactions() do		-- 2nd pass, data collection
 		local name, _, _, _, _, earned, _, _, _, _, _, _, _, factionID = GetFactionInfo(i)
-		if (earned and earned > 0) then		-- new in 3.0.2, headers may have rep, ex: alliance vanguard + horde expedition
+		if (earned ~= nil) then		-- new in 3.0.2, headers may have rep, ex: alliance vanguard + horde expedition
 			if FactionUIDsRev[name] then		-- is this a faction we're tracking ?
-				f[FactionUIDsRev[name]] = earned
+				f[FactionUIDsRev[name]] = earned		
 			end
 		end
 	end

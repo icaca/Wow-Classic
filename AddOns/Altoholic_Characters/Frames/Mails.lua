@@ -117,11 +117,11 @@ function ns:Update()
 			
 			local _, seconds = DataStore:GetMailExpiry(character, index)
 			_G[ entry..i.."Expiry" ]:SetText(format("%s:\n%s", msg, colors.white .. SecondsToTime(seconds)))
-			
-			local itemButton = _G[ entry..i.."Item" ]
+
+            local itemButton = _G[ entry..i.."Item" ]
 			itemButton:SetIcon(icon)			
 			itemButton:SetCount(count)
-
+            
 			-- trick: pass the index of the current item in the results table, required for the tooltip
 			itemButton:SetID(index)
 			_G[ entry..i ]:Show()

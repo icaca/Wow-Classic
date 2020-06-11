@@ -6,17 +6,13 @@ local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 
 local addonList = {
 	"DataStore",
-	-- "DataStore_Achievements",
 	"DataStore_Agenda",
 	"DataStore_Auctions",
 	"DataStore_Characters",
 	"DataStore_Containers",
 	"DataStore_Crafts",
-	-- "DataStore_Currencies",
-	-- "DataStore_Garrisons",
 	"DataStore_Inventory",
 	"DataStore_Mails",
-	-- "DataStore_Pets",
 	"DataStore_Quests",
 	"DataStore_Reputations",
 	"DataStore_Spells",

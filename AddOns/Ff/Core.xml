@@ -1,0 +1,4 @@
+<Ui xsi:schemaLocation="[url]http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+  <Frame name="MyFrame">
+  </Frame>
+</Ui>

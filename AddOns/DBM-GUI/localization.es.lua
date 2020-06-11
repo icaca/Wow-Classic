@@ -1,7 +1,7 @@
 if GetLocale() ~= "esES" and GetLocale() ~= "esMX" then return end
 
-if not DBM_GUI_Translations then DBM_GUI_Translations = {} end
-local L = DBM_GUI_Translations
+if not DBM_GUI_L then DBM_GUI_L = {} end
+local L = DBM_GUI_L
 
 L.MainFrame = "Deadly Boss Mods"
 
@@ -194,7 +194,7 @@ L.KeepBar2					= "(siempre que el módulo lo permita)"
 L.FadeBar					= "Desteñir barras de habilidades lejanas"
 
 -- Tab: Spec Warn Frame
-L.Panel_SpecWarnFrame		= "Avisos especiales"
+L.Panel_SpecWarnFrame		= "Avisos especiales de banda"
 L.Area_SpecWarn				= "Opciones de avisos especiales"
 L.SpecWarn_ClassColor		= "Usar colores de clase para avisos especiales"
 L.ShowSWarningsInChat 		= "Mostrar avisos especiales en el chat"
@@ -237,11 +237,11 @@ L.SWFAll					= "Cuando los avisos especiales usen cualquier sonido"
 L.SpecWarn_AlwaysVoice		= "Reproducir siempre todas las alertas de voz (ignora las opciones de jefe; útil para líderes de banda)"
 --TODO, maybe add URLS right to GUI panel on where to acquire 3rd party voice packs?
 L.Area_GetVEM				= "Descargar VEM Voice Pack"
-L.VEMDownload				= "|cFF73C2FBhttps://wow.curseforge.com/projects/dbm-voicepack-vem|r"
+L.VEMDownload				= "|cFF73C2FBhttps://curseforge.com/wow/addons/dbm-voicepack-vem|r"
 L.Area_BrowseOtherVP		= "Explorar otros paquetes de voz en Curse"
-L.BrowseOtherVPs			= "|cFF73C2FBhttps://wow.curseforge.com/search?search=dbm+voice|r"
+L.BrowseOtherVPs			= "|cFF73C2FBhttps://curseforge.com/wow/addons/search?search=dbm+voice|r"
 L.Area_BrowseOtherCT		= "Explorar otros paquetes de voz de cuenta atrás en Curse"
-L.BrowseOtherCTs			= "|cFF73C2FBhttps://wow.curseforge.com/search?search=dbm+count+pack|r"
+L.BrowseOtherCTs			= "|cFF73C2FBhttps://curseforge.com/wow/addons/search?search=dbm+count+pack|r"
 
 -- Tab: Event Sounds
 L.Panel_EventSounds			= "Sonidos de eventos"
@@ -259,10 +259,8 @@ L.EventFilterMythicMusic	= "Desactivar música personalizada de encuentros en di
 
 -- Tab: Global Filter
 L.Panel_SpamFilter			= "Filtros globales"
-L.Area_SpamFilter_Outgoing	= "Opciones de filtros globales"
 L.SpamBlockNoShowAnnounce	= "Ocultar anuncios generales y desactivar los sonidos asociados"
 L.SpamBlockNoShowTgtAnnounce= "Ocultar anuncios generales de objetivos y desactivar los sonidos asociados (la opción anterior anula esta)"
-L.SpamBlockNoSpecWarn		= "Ocultar avisos especiales y desactivar los sonidos asociados"
 L.SpamBlockNoSpecWarnText	= "Ocultar avisos especiales pero sí reproducir sonidos de paquetes de voces (la opción anterior anula esta)"
 L.SpamBlockNoShowTimers		= "Ocultar temporizadores de módulos"
 L.SpamBlockNoShowUTimers	= "Ocultar temporizadores de usuario"

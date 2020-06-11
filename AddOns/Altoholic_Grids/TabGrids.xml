@@ -59,7 +59,7 @@
 			<!-- Menu Icons -->
 			<Frame parentKey="ClassIcons" inherits="AltoClassIconsContainerTemplate">
 				<KeyValues>
-					<KeyValue key="numIcons" value="12" type="number" />
+					<KeyValue key="numIcons" value="10" type="number" />
 					<KeyValue key="iconTemplate" value="AltoTabGridsClassIconTemplate" />
 					<KeyValue key="tabName" value="Grids" />
 				</KeyValues>
@@ -83,34 +83,14 @@
 					<KeyValue key="iconFile" value="Interface\Icons\INV_BannerPVP_02" />
 				</KeyValues>
 			</Button>
-			<Button parentKey="Dailies" inherits="AltoTabGridsMenuIconTemplate" id="3">
+			<Button parentKey="TradeSkills" inherits="AltoTabGridsMenuIconTemplate" id="3">
 				<Anchors>
 					<Anchor point="BOTTOMLEFT" relativeKey="$parent.Factions" relativePoint="BOTTOMRIGHT" x="5" y="0" />
 				</Anchors>
 				<KeyValues>
-					<KeyValue key="iconFile" value="Interface\LFGFrame\LFGIcon-Quest" />
-				</KeyValues>
-			</Button>
-			<Button parentKey="TradeSkills" inherits="AltoTabGridsMenuIconTemplate" id="4">
-				<Anchors>
-					<Anchor point="BOTTOMLEFT" relativeKey="$parent.Dailies" relativePoint="BOTTOMRIGHT" x="5" y="0" />
-				</Anchors>
-				<KeyValues>
 					<KeyValue key="iconFile" value="Interface\Icons\Ability_Repair" />
-					<KeyValue key="text" value="TRADESKILLS" type="global" />
 				</KeyValues>
 			</Button>
-
-			<Button parentKey="Dungeons" inherits="AltoTabGridsMenuIconTemplate" id="5" hidden="true">
-				<Anchors>
-					<Anchor point="BOTTOMLEFT" relativeTo="AltoholicTabGrids" relativePoint="BOTTOMLEFT" x="30" y="200" />
-				</Anchors>
-				<KeyValues>
-					<KeyValue key="iconFile" value="Interface\Icons\inv_helmet_189" />
-					<KeyValue key="text" value="LOOKING_FOR_DUNGEON" type="global" />
-				</KeyValues>
-			</Button>
-			
 		</Frames>
 		<Scripts>
 			<OnLoad>

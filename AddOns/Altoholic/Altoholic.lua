@@ -1,5 +1,6 @@
 --[[	*** Altoholic ***
-Written by : Thaoky, EU-Marécages de Zangar
+Originally Written by : Thaoky, EU-Marécages de Zangar
+Altoholic-Classic ported and maintained by: Teelo, US-Jubei'thos
 --]]
 
 local addonName = ...
@@ -24,8 +25,7 @@ local function InitLocalization()
 
 	AltoholicFrameTab1:SetText(L["Summary"])
 	AltoholicFrameTab2:SetText(L["Characters"])
-	AltoholicFrameTab5:SetText(L["Agenda"])
-	AltoholicFrameTab6:SetText(L["Grids"])
+	AltoholicFrameTab5:SetText(L["Grids"])
 	
 	AltoAccountSharingName:SetText(L["Account Name"])
 	AltoAccountSharingText1:SetText(L["Send account sharing request to:"])
@@ -266,8 +266,7 @@ local function MerchantFrame_UpdateMerchantInfoHook()
 					local _, _, _, _, _, itemType, itemSubType = GetItemInfo(itemID)
 					
 					local r, g, b = 1, 1, 1
-					
-					-- also applies to garrison blueprints
+
 					if IsBOPItemKnown(itemID) then		-- recipe is bop and already known, useless to alts : red.
 						r, g, b = 1, 0, 0
 					elseif itemType == L["ITEM_TYPE_RECIPE"] and itemSubType ~= L["ITEM_SUBTYPE_BOOK"] then		-- is it a recipe ?
@@ -330,7 +329,7 @@ function addon:OnEnable()
 	Orig_MerchantFrame_UpdateMerchantInfo = MerchantFrame_UpdateMerchantInfo
 	MerchantFrame_UpdateMerchantInfo = MerchantFrame_UpdateMerchantInfoHook
 	
-	AltoholicFrameName:SetText(format("Altoholic Classic %s%s by %sThaoky", colors.white, addon.Version, colors.classMage))
+	AltoholicFrameName:SetText(format("Altoholic Classic %s%s", colors.white, addon.Version))
 
 	local realm = GetRealmName()
 	local player = UnitName("player")
@@ -506,10 +505,10 @@ function addon:GetIDFromLink(link)
 	end
 end
 
-function addon:GetSpellIDFromRecipeLink(link)
-	-- returns nil if recipe id is not in the DB, returns the spellID otherwise
-	local recipeID = addon:GetIDFromLink(link)
-	return LCI:GetRecipeLearnedSpell(recipeID)
+function addon:GetItemNameFromRecipeLink(link)
+    local isRecipe, craftName = string.match(GetItemInfo(link), "(%a+)\:%s(.+)")
+    if (isRecipe ~= "Recipe") then return nil end
+    return craftName
 end
 
 -- copied to formatter service
@@ -519,6 +518,7 @@ function addon:GetMoneyString(copper, color, noTexture)
 
 	local gold = floor( copper / 10000 );
 	copper = mod(copper, 10000)
+    
 	local silver = floor( copper / 100 );
 	copper = mod(copper, 100)
 	
@@ -699,17 +699,16 @@ function addon:DDM_Initialize(frame, func)
 	frame.initialize = func
 end
 
-local ICON_PATH = "Interface\\Addons\\Altoholic_Summary\\Textures\\"
-local ICON_CHARACTERS_ALLIANCE = ICON_PATH .. "Achievement_Character_Gnome_Female"
-local ICON_CHARACTERS_HORDE = ICON_PATH .. "Achievement_Character_Orc_Male"
+local ICON_CHARACTERS_ALLIANCE = "Interface\\Icons\\Achievement_Character_Dwarf_Male"
+local ICON_CHARACTERS_HORDE = "Interface\\Icons\\Achievement_Character_Troll_Male"
 -- mini Easter egg icons, if you read the code using these, please don't spoil it :)
-local ICON_CHARACTERS_MIDSUMMER = ICON_PATH .. "INV_Misc_Toy_07"
-local ICON_CHARACTERS_HALLOWSEND_ALLIANCE = ICON_PATH .. "INV_Mask_06"
-local ICON_CHARACTERS_HALLOWSEND_HORDE = ICON_PATH .. "INV_Mask_03"
-local ICON_CHARACTERS_DOTD_ALLIANCE = ICON_PATH .. "INV_Misc_Bone_HumanSkull_02"
-local ICON_CHARACTERS_DOTD_HORDE = ICON_PATH .. "INV_Misc_Bone_OrcSkull_01"
-local ICON_CHARACTERS_WINTERVEIL_ALLIANCE = ICON_PATH .. "Achievement_WorldEvent_LittleHelper"
-local ICON_CHARACTERS_WINTERVEIL_HORDE = ICON_PATH .. "Achievement_WorldEvent_XmasOgre"
+local ICON_CHARACTERS_MIDSUMMER = "Interface\\Icons\\INV_Misc_Toy_07"
+local ICON_CHARACTERS_HALLOWSEND_ALLIANCE = "Interface\\Icons\\INV_Mask_06"
+local ICON_CHARACTERS_HALLOWSEND_HORDE = "Interface\\Icons\\INV_Mask_03"
+local ICON_CHARACTERS_DOTD_ALLIANCE = "Interface\\Icons\\INV_Misc_Bone_HumanSkull_02"
+local ICON_CHARACTERS_DOTD_HORDE = "Interface\\Icons\\INV_Misc_Bone_OrcSkull_01"
+--local ICON_CHARACTERS_WINTERVEIL_ALLIANCE = "Interface\\Icons\\Achievement_WorldEvent_LittleHelper"
+--local ICON_CHARACTERS_WINTERVEIL_HORDE = "Interface\\Icons\\Achievement_WorldEvent_XmasOgre"
 
 function addon:GetCharacterIcon()
 	local faction = UnitFactionGroup("player")
@@ -717,9 +716,9 @@ function addon:GetCharacterIcon()
 	local icon = isAlliance and ICON_CHARACTERS_ALLIANCE or ICON_CHARACTERS_HORDE
 	local day = (tonumber(date("%m")) * 100) + tonumber(date("%d"))	-- ex: dec 15 = 1215, for easy tests below
 	
-	if (day >= 1215) or (day <= 102) then				-- winter veil
-		icon = isAlliance and ICON_CHARACTERS_WINTERVEIL_ALLIANCE or ICON_CHARACTERS_WINTERVEIL_HORDE
-	elseif (day >= 621) and (day <= 704) then			-- midsummer
+--	if (day >= 1215) or (day <= 102) then				-- winter veil
+--		icon = isAlliance and ICON_CHARACTERS_WINTERVEIL_ALLIANCE or ICON_CHARACTERS_WINTERVEIL_HORDE
+	if (day >= 621) and (day <= 704) then			-- midsummer
 		icon = ICON_CHARACTERS_MIDSUMMER
 	elseif (day >= 1018) and (day <= 1031) then		-- hallow's end
 		icon = isAlliance and ICON_CHARACTERS_HALLOWSEND_ALLIANCE or ICON_CHARACTERS_HALLOWSEND_HORDE

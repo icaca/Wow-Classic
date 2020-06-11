@@ -127,8 +127,11 @@
 						UIDropDownMenu_SetWidth(self, 150) 
 						UIDropDownMenu_SetButtonWidth(self, 20)
 						Altoholic:DDM_Initialize(self, Altoholic.Tabs.Search.DropDownLocation_Initialize)
-						UIDropDownMenu_SetSelectedValue(self, 2);
-						UIDropDownMenu_SetText(self, format("%s %s(%s)", L["This realm"], "|cFF00FF00", L["This faction"]))
+						UIDropDownMenu_SetSelectedValue(self, Altoholic:GetOption("UI.Tabs.Search.LocationRealm") or 2);
+                        local colors = Altoholic.Colors
+                        local text = {L["This character"], format("%s %s(%s)", L["This realm"], colors.green, L["This faction"]), format("%s %s(%s)", L["This realm"], colors.green, L["Both factions"]),	L["All realms"], L["All accounts"], L["Loot tables"]}
+                        text = text[Altoholic:GetOption("UI.Tabs.Search.LocationRealm") or 2]
+						UIDropDownMenu_SetText(self, text)
 					</OnLoad>
 				</Scripts>
 			</Frame>		

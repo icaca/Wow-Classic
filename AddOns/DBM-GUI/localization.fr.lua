@@ -1,6 +1,6 @@
 ﻿if GetLocale() ~= "frFR" then return end
-if not DBM_GUI_Translations then DBM_GUI_Translations = {} end
-local L = DBM_GUI_Translations
+if not DBM_GUI_L then DBM_GUI_L = {} end
+local L = DBM_GUI_L
 
 L.MainFrame = "Deadly Boss Mods"
 
@@ -157,7 +157,7 @@ L.BarSort					= "Arranger en fonction du temps restant"
 L.BarColorByType			= "Couleur par type"
 
 -- Tab: Spec Warn Frame
-L.Panel_SpecWarnFrame		= "Alertes spéciales"
+L.Panel_SpecWarnFrame		= "Alertes Raid spéciales"
 L.Area_SpecWarn				= "Options des alertes spéciales"
 L.SpecWarn_ClassColor		= "Utiliser des couleurs selon les classes pour les alertes spéciales"
 L.ShowSWarningsInChat 		= "Afficher les alertes spéciales dans la fenêtre de discussion"
@@ -195,7 +195,6 @@ L.SpecWarn_AlwaysVoice		= "Toujours jouer toutes les alertes vocales (Outrepasse
 L.Panel_SpamFilter			= "Filtres globaux et de spam"
 L.Area_SpamFilter_Outgoing	= "Options des filtres globaux"
 L.SpamBlockNoShowAnnounce	= "Ne pas afficher d'annonces ou jouer de sons d'alerte"
-L.SpamBlockNoSpecWarn		= "Ne pas afficher d'annonces ou jouer de sons d'alerte spéciales"
 L.SpamBlockNoShowTimers		= "Ne pas afficher les timers de module (Boss Mod/CM/LFG/Respawn)"
 L.SpamBlockNoShowUTimers	= "Ne pas afficher au joueur les timers envoyés (Personnalisés/Pull/Pause)"
 L.SpamBlockNoSetIcon		= "Ne pas placer d'icônes sur les cibles"

@@ -2,8 +2,6 @@ Hi, my name is Thaoky, and I'm an Altoholic :)
 
 Altoholic is an Ace 3 addon written for people who dedicate most of their time to leveling alts, and who want to have as much information as possible in one addon. The main feature of the addon is the search functionality which allows users to search their alts' bags or loot tables in an Auction-House-like frame (see screenshots). All this with multiple-realms support.
 
-Paypal donations accepted at : thaoky (dot) altoholic (at) yahoo (dot)com
-
 
 About the addon & the author
 

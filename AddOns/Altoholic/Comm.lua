@@ -20,7 +20,6 @@ local MSG_ACCOUNT_SHARING_ACK					= 8	-- a simple ACK message, confirms message 
 local CMD_DATASTORE_XFER			= 100
 local CMD_DATASTORE_CHAR_XFER		= 101		-- these 2 require a special treatment
 local CMD_DATASTORE_STAT_XFER		= 102
-local CMD_BANKTAB_XFER				= 103
 local CMD_REFDATA_XFER				= 104
 
 
@@ -29,7 +28,6 @@ local TOC_SEP = "|"	-- separator used between items
 -- TOC Item Types
 local TOC_SETREALM				= "1"
 local TOC_SETGUILD				= "2"
-local TOC_BANKTAB					= "3"
 local TOC_SETCHAR					= "4"
 local TOC_DATASTORE				= "5"
 local TOC_REFDATA					= "6"
@@ -67,8 +65,6 @@ Altoholic.Comm.Sharing.Callbacks = {
 
 	[CMD_DATASTORE_XFER] = "OnDataStoreReceived",
 	[CMD_DATASTORE_CHAR_XFER] = "OnDataStoreCharReceived",
-	[CMD_DATASTORE_STAT_XFER] = "OnDataStoreStatReceived",
-	[CMD_BANKTAB_XFER] = "OnGuildBankTabReceived",
 	[CMD_REFDATA_XFER] = "OnRefDataReceived",
 }
 
@@ -76,9 +72,11 @@ local compressionMode = 1
 local importedChars
 
 local function Whisper(player, messageType, ...)
+    --print("Sending whisper to: ", player, ", type: ", messageType, ", content:", ...)
 	local serializedData = Altoholic:Serialize(messageType, ...)
-	--DEFAULT_CHAT_FRAME:AddMessage(strlen(serializedData))
-	
+	--print("DEBUG - Sending to other player:")
+    --DEFAULT_CHAT_FRAME:AddMessage(serializedData)
+	--print("serialized: ", serializedData)
 	-- if compressionMode == 1 then				-- no comp
 		Altoholic:SendCommMessage("AltoShare", serializedData, "WHISPER", player)
 		
@@ -114,7 +112,7 @@ local function GetRequestee()
 	end
 
 	if player and strlen(player) > 0 then
-		return player
+		return player          
 	end
 end
 
@@ -138,23 +136,27 @@ end
 
 function Altoholic.Comm.Sharing:EmptyHandler(prefix, message, distribution, sender)
 	-- automatically reply that the option is disabled
+    --print("replying that option is disabled")
 	Whisper(sender, MSG_ACCOUNT_SHARING_REFUSEDDISABLED)
 end
 
 function Altoholic.Comm.Sharing:ActiveHandler(prefix, message, distribution, sender)
 	local success, msgType, msgData
-	
+	--print("message recieved, prefix: ", prefix, ", message: ", message, ", distribution: ", distribution, ", sender: ", sender)
 	if compressionMode == 1 then	
 		success, msgType, msgData = Altoholic:Deserialize(message)
 --	else
 --		local decompData = LibComp:Decompress(message)
 --		success, msgType, msgData = Altoholic:Deserialize(decompData)
 	end
-	
+	--print("success: ", success)
+    --print("msgType: ", msgType)
+    --print("msgData: ", msgData)
 	if not success then
 		self.SharingEnabled = nil
-		-- self:Print(msgType)
-		-- self:Print(string.sub(decompData, 1, 15))
+        --print("Debug: Sharing:Activehandler(...)")
+		 --self:Print(msgType)
+		 --self:Print(string.sub(decompData, 1, 15))
 		return
 	end
 	
@@ -169,7 +171,7 @@ function Altoholic.Comm.Sharing:ActiveHandler(prefix, message, distribution, sen
 end
 
 function Altoholic.Comm.Sharing:Request()
-
+    --print("Sharing button was clicked")
 	local account = AltoAccountSharing_AccNameEditBox:GetText()
 	if not account or strlen(account) == 0 then 		-- account name cannot be empty
 		Altoholic:Print("[" .. L["Account Name"] .. "] " .. L["This field |cFF00FF00cannot|r be left empty."])
@@ -182,7 +184,7 @@ function Altoholic.Comm.Sharing:Request()
 	if player then
 		self.SharingInProgress = true
 		-- AltoAccountSharing:Hide()
-		-- Altoholic:Print(format(L["Sending account sharing request to %s"], player))
+		Altoholic:Print(format(L["Sending account sharing request to %s"], player))
 		SetStatus(format("Getting table of content from %s", player))
 		Whisper(player, MSG_ACCOUNT_SHARING_REQUEST)
 	end
@@ -220,7 +222,6 @@ function Altoholic.Comm.Sharing:RequestNext(player)
 		elseif TocType == TOC_SETGUILD then
 			_, self.ClientGuildName = strsplit(TOC_SEP, TocData)
 			
-		elseif TocType == TOC_BANKTAB then
 		elseif TocType == TOC_SETCHAR then
 			_, self.ClientCharName = strsplit(TOC_SEP, TocData)
 			
@@ -258,7 +259,7 @@ function Altoholic.Comm.Sharing:RequestNext(player)
 end
 
 local function SharingRequestReceived_Handler(self, button, sender)
-	if not button then 
+    if not button then 
 		Whisper(sender, MSG_ACCOUNT_SHARING_REFUSED)
 		return 
 	end
@@ -271,7 +272,7 @@ local AUTH_ASK		= 2
 local AUTH_NEVER	= 3
 
 function Altoholic.Comm.Sharing:OnSharingRequest(sender, data)
-	self.SharingEnabled = nil
+    self.SharingEnabled = nil
 	
 	if InCombatLockdown() then
 		-- automatically reject if requestee is in combat
@@ -392,15 +393,9 @@ function Altoholic.Comm.Sharing:OnSendItemReceived(sender, data)
 	elseif TocType == TOC_SETGUILD then
 		_, self.ServerGuildName = strsplit(TOC_SEP, TocData)
 		Whisper(self.AuthorizedRecipient, MSG_ACCOUNT_SHARING_ACK)
-	elseif TocType == TOC_BANKTAB then
-		local _, _, tabID = strsplit(TOC_SEP, TocData)
-		tabID = tonumber(tabID)
-		local guild = DS:GetGuild(self.ServerGuildName, self.ServerRealmName)
-		Whisper(self.AuthorizedRecipient, CMD_BANKTAB_XFER, DS:GetGuildBankTab(guild, tabID))
-	elseif TocType == TOC_SETCHAR then		-- character ? send mandatory modules (char definition = DS_Char + DS_Stats)
+	elseif TocType == TOC_SETCHAR then		-- character ? send mandatory modules (char definition = DS_Char)
 		_, self.ServerCharacterName = strsplit(TOC_SEP, TocData)
 		Whisper(self.AuthorizedRecipient, CMD_DATASTORE_CHAR_XFER, DS:GetCharacterTable("DataStore_Characters", self.ServerCharacterName, self.ServerRealmName))
-		Whisper(self.AuthorizedRecipient, CMD_DATASTORE_STAT_XFER, DS:GetCharacterTable("DataStore_Stats", self.ServerCharacterName, self.ServerRealmName))
 	
 	elseif TocType == TOC_DATASTORE then	-- DS ? Send the appropriate DS module
 		local _, moduleID = strsplit(TOC_SEP, TocData)
@@ -440,7 +435,7 @@ function Altoholic.Comm.Sharing:OnDataStoreReceived(sender, data)
 	self:RequestNext(sender)
 end
 
-function Altoholic.Comm.Sharing:OnDataStoreCharReceived(sender, data)
+function Altoholic.Comm.Sharing:OnDataStoreCharReceived(sender, data)   
 	DataStore:ImportData("DataStore_Characters", data, self.ClientCharName, self.ClientRealmName, self.account)
 
 	-- temporarily deal with this here, will be changed when account sharing goes to  DataStore.
@@ -451,28 +446,11 @@ function Altoholic.Comm.Sharing:OnDataStoreCharReceived(sender, data)
 	importedChars[key].guild = data.guildName
 	
 	-- NO REQUEST NEXT HERE !!
-end
-
-function Altoholic.Comm.Sharing:OnDataStoreStatReceived(sender, data)
-	DataStore:ImportData("DataStore_Stats", data, self.ClientCharName, self.ClientRealmName, self.account)
-	-- Request next, to resume transfer after processing mandatory data
-	self:RequestNext(sender)
-end
-
-function Altoholic.Comm.Sharing:OnGuildBankTabReceived(sender, data)
-	local TocData = self.DestTOC[self.NetDestCurItem]
-	local _, _, tabID = strsplit(TOC_SEP, TocData)
-	tabID = tonumber(tabID)
-	
-	local DS = DataStore
-	local guild	= DS:GetGuild(self.ClientGuildName, self.ClientRealmName)
-	
-	DS:ImportGuildBankTab(guild, tabID, data)
-	self:RequestNext(sender)
+    self:RequestNext(sender)
 end
 
 function Altoholic.Comm.Sharing:OnRefDataReceived(sender, data)
-	local TocData = self.DestTOC[self.NetDestCurItem]
+    local TocData = self.DestTOC[self.NetDestCurItem]
 	local _, class = strsplit(TOC_SEP, TocData)
 	
 	DataStore:ImportClassReference(class, data)
@@ -482,36 +460,6 @@ end
 
 
 -- *** DataStore Event Handlers ***
-function addon:DATASTORE_BANKTAB_REQUESTED(event, sender, tabName)
-	if addon:GetOption("UI.Tabs.Guild.BankAutoUpdate") then
-		DataStore:SendBankTabToGuildMember(sender, tabName)
-		return
-	end
-
-	AltoMessageBox:SetHeight(130)
-	AltoMessageBox.Text:SetHeight(60)
-	AltoMessageBox:SetHandler(function(self, button, sender, tabName)
-			if not button then 
-				DataStore:RejectBankTabRequest(sender)
-			else
-				DataStore:SendBankTabToGuildMember(sender, tabName)
-			end
-		end, sender, tabName)
-	
-	AltoMessageBox:SetText(
-		format("%s\n\n%s",
-			format(L["%s%s|r has requested the bank tab %s%s|r\nSend this information ?"], colors.white, sender, colors.white, tabName),
-			format(L["%sWarning:|r make sure this user may view this information before accepting"], colors.white)
-		))
-	AltoMessageBox:Show()
-end
-
-function addon:DATASTORE_GUILD_MAIL_RECEIVED(event, sender, recipient)
-	if addon:GetOption("UI.Mail.GuildMailWarning") then
-		addon:Print(format(L["%s|r has received a mail from %s"], format("%s%s", colors.green, recipient), format("%s%s", colors.green, sender)))
-	end
-end
-
 function addon:DATASTORE_GLOBAL_MAIL_EXPIRY(event, threshold)
 	-- at least one mail has expired
 	
