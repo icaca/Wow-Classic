@@ -136,7 +136,7 @@ function NWB:OnCommReceived(commPrefix, string, distribution, sender)
 		NWB:doFlowerMsg(type, layer);
 	end
 	--Ignore data syncing for some recently out of date versions.
-	if (tonumber(remoteVersion) < 1.62) then
+	if (tonumber(remoteVersion) < 1.64) then
 		if (cmd == "requestData" and distribution == "GUILD") then
 			if (not NWB:getGuildDataStatus()) then
 				NWB:sendSettings("GUILD");
@@ -216,6 +216,7 @@ function NWB:sendData(distribution, target, prio)
 	else
 		data = NWB:createData(distribution);
 	end
+	--NWB:debug(data);
 	if (next(data) ~= nil) then
 		data = NWB.serializer:Serialize(data);
 		NWB.lastDataSent = GetServerTime();
@@ -459,6 +460,8 @@ function NWB:createDataLayered(distribution)
 			if (not data.layers[layer]) then
 				data.layers[layer] = {};
 			end
+			--NWB:validateCloseTimestamps(layer, "onyTimer");
+			--NWB:validateCloseTimestamps(layer, "onyYell");
 			data.layers[layer]['onyTimer'] = NWB.data.layers[layer].onyTimer;
 			--data.layers[layer]['onyTimerWho'] = NWB.data.layers[layer].onyTimerWho;
 			data.layers[layer]['onyYell'] = NWB.data.layers[layer].onyYell;
@@ -544,6 +547,18 @@ function NWB:createDataLayered(distribution)
 				data.layers[layer].layerMap.created = nil;
 			end
 		end
+		if (not foundTimer and NWB.data.layers[layer].lastSeenNPC
+				and NWB.data.layers[layer].lastSeenNPC > GetServerTime() - 3600) then
+			--If no timer data to share then check when we last saw a valid NPC in city for this layer.
+			--Trying to keep layers valid after long perios overnight when no timers drop, but not persist to long after server restarts.
+			if (not data.layers) then
+				data.layers = {};
+			end
+			if (not data.layers[layer]) then
+				data.layers[layer] = {};
+			end
+			data.layers[layer]['lastSeenNPC'] = NWB.data.layers[layer].lastSeenNPC;
+		end
 	end
 	if (not NWB.layeredSongflowers) then
 		for k, v in pairs(NWB.songFlowers) do
@@ -576,6 +591,44 @@ function NWB:createDataLayered(distribution)
 	--data['faction'] = NWB.faction;
 	data = NWB:convertKeys(data, true, distribution);
 	return data;
+end
+
+--For some reason timestamps sometimes get synced from 1 layer to another.
+--Until I find why I'm going to check for this happening before sending and accepting data.
+--This is not an ideal solution because maybe on rare occasions the same buff may drop on more than 1 layer at the same time.
+function NWB:validateCloseTimestamps(layer, key, timestamp)
+	local offset = 30;
+	if (string.match(key, "flower")) then
+		--Don't try and validate flower timers, they can often be close.
+		return true;
+	end
+	if (not timestamp) then
+		--If no timestamp then we're creating data and just check them against out own timers.
+		timestamp = NWB.data.layers[layer][key];
+		for k, v in pairs(NWB.data.layers) do
+			--Check other layers only.
+			if (k ~= layer) then
+				local diff = v[key] - timestamp;
+				--NWB:debug(k, diff);
+				if (diff < offset and diff > -offset) then
+					NWB:debug("Found matching timestamp", key, k, v[key], layer, timestamp);
+					return;
+				end
+			end
+		end
+	else
+		--If there is a timestamp then we're checking against the time we received from another player.
+		for k, v in pairs(NWB.data.layers) do
+			--Unlike above we have to check all layers here.
+			local diff = v[key] - timestamp;
+			if (diff < offset and diff > -offset) then
+				--NWB:debug("Found matching timestamp2", key, k, v[key], layer, timestamp);
+				return;
+			end
+		end
+	end
+	NWB:debug("Passed validation", layer, key, timestamp);
+	return true;
 end
 
 --Create settings for sending.
@@ -649,6 +702,7 @@ local validKeys = {
 	["dragon4"] = true,
 	["faction"] = true,
 	["GUID"] = true,
+	["lastSeenNPC"] = true,
 };
 
 function NWB:extractSettings(data, sender, distribution)
@@ -744,7 +798,7 @@ function NWB:receivedData(data, sender, distribution)
 			--Temp fix, this can be removed soon.
 			if ((not vv["rendTimer"] or vv["rendTimer"] == 0) and (not vv["onyTimer"] or vv["onyTimer"] == 0)
 					 and (not vv["nefTimer"] or vv["nefTimer"] == 0) and (not vv["onyNpcDied"] or vv["onyNpcDied"] == 0)
-					  and (not vv["nefNpcDied"] or vv["nefNpcDied"] == 0)) then
+					  and (not vv["nefNpcDied"] or vv["nefNpcDied"] == 0) and (not vv["lastSeenNPC"] or vv["lastSeenNPC"] == 0)) then
 				--Do nothing if all timers are 0, this is to fix a bug in last version with layerMaps causing old layer data
 				--to bounce back and forth between users, making it so layers with no timers keep being created after server
 				--restart and won't disappear.
@@ -857,7 +911,7 @@ function NWB:receivedData(data, sender, distribution)
 											if (not NWB.data.layers[layer][k] or not tonumber(NWB.data.layers[layer][k])) then
 												--Rare bug someone has corrupt data (not sure how and it's never happened to me, but been reported).
 												--This will correct it by resetting thier timestamp to 0.
-												NWB:debug("Local data error:", k, NWB.data[k])
+												NWB:debug("Local data error:", k, NWB.data[k]);
 												NWB.data.layers[layer][k] = 0;
 											end
 											--Make sure the key exists, stop a lua error in old versions if we add a new timer type.
@@ -867,11 +921,23 @@ function NWB:receivedData(data, sender, distribution)
 														and (GetServerTime() - NWB.data.layers[layer][k]) < 1500) then
 													--Don't overwrite songflower timers on layered realms.
 												else
-													if (string.match(k, "flower") and not (distribution == "GUILD" and (GetServerTime() - NWB.data.layers[layer][k]) > 15)) then
+													if (string.match(k, "flower") and not (distribution == "GUILD"
+														and (GetServerTime() - NWB.data.layers[layer][k]) > 15)) then
 														newFlowerData = true;
 													end
-													NWB.data.layers[layer][k] = v;
-													hasNewData = true;
+													if (NWB:validateCloseTimestamps(layer, k, v)) then
+														NWB.data.layers[layer][k] = v;
+														if (not string.match(k, "lastSeenNPC")) then
+															hasNewData = true;
+														end
+														if (string.match(k, "flower")) then
+															--Flowers can help layers persist when no other timers drop.
+															--Update created timestamp for the removeOldLayers() func.
+															NWB.data.layers[layer].created = GetServerTime();
+														end
+													else
+														--NWB:debug("Rejecting data ", layer, k, v);
+													end
 												end
 											end
 										end
@@ -1072,6 +1138,7 @@ local shortKeys = {
 	["B"] = "nefTimerWho",
 	["C"] = "nefSource",
 	["D"] = "nefNpcDied",
+	["E"] = "lastSeenNPC",
 	["f1"] = "flower1",
 	["f2"] = "flower2",
 	["f3"] = "flower3",
@@ -1143,6 +1210,7 @@ local hashKeys = {
 	["nefNpcDied"] = true,
 	["zanYell"] = true,
 	["zanYell2"] = true,
+	["lastSeenNPC"] = true,
 	["flower1"] = true,
 	["flower2"] = true,
 	["flower3"] = true,

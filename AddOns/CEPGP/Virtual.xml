@@ -82,7 +82,7 @@
 	
 	<Button name="LootDistButtonTemplate" virtual="true">
 		<Size>
-			<AbsDimension x="580" y="15"/>
+			<AbsDimension x="730" y="15"/>
 		</Size>
 		<Layers>
 			<Layer level="OVERLAY">
@@ -150,7 +150,7 @@
 					<Anchors>
 						<Anchor point="LEFT" relativePoint="LEFT" relativeTo="$parentClass">
 							<Offset>
-								<AbsDimension x="80" y="0"/>
+								<AbsDimension x="90" y="0"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -159,7 +159,7 @@
 					<Anchors>
 						<Anchor point="LEFT" relativePoint="LEFT" relativeTo="$parentRank">
 							<Offset>
-								<AbsDimension x="87.5" y="0"/>
+								<AbsDimension x="105" y="0"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -168,7 +168,7 @@
 					<Anchors>
 						<Anchor point="LEFT" relativePoint="LEFT" relativeTo="$parentResponse">
 							<Offset>
-								<AbsDimension x="87.5" y="0"/>
+								<AbsDimension x="90" y="0"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -177,7 +177,7 @@
 					<Anchors>
 						<Anchor point="RIGHT" relativePoint="LEFT" relativeTo="$parentEP">
 							<Offset>
-								<AbsDimension x="95" y="0"/>
+								<AbsDimension x="100" y="0"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -186,7 +186,16 @@
 					<Anchors>
 						<Anchor point="RIGHT" relativePoint="RIGHT" relativeTo="$parentGP">
 							<Offset>
-								<AbsDimension x="70" y="0"/>
+								<AbsDimension x="65" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentRoll" inherits="GameFontHighlight" justifyH="RIGHT">
+					<Anchors>
+						<Anchor point="RIGHT" relativePoint="RIGHT" relativeTo="$parentPR">
+							<Offset>
+								<AbsDimension x="65" y="0"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -200,10 +209,12 @@
 		<Scripts>
 			<OnLoad>
 				self:RegisterForClicks("LeftButtonDown");
+				self:SetWidth(_G[self:GetParent():GetName()]:GetWidth()-10);
 			</OnLoad>
 			<OnClick>
 				PlaySound(856);
 				if CEPGP_isML() == 0 or CEPGP_debugMode then
+					CEPGP_roll_award_confirm:Hide();
 					CEPGP_ListButton_OnClick(self:GetName());
 				end
 			</OnClick>
@@ -480,7 +491,7 @@
 	</Button>
 	<Button name="trafficButtonTemplate" virtual="true">
 		<Size>
-			<AbsDimension x="720" y="15"/>
+			<AbsDimension x="860" y="15"/>
 		</Size>
 		<Layers>
 			<Layer level="BORDER">
@@ -506,7 +517,7 @@
 					<Anchors>
 						<Anchor point="RIGHT" relativeTo="$parentName" relativePoint="LEFT">
 							<Offset>
-								<AbsDimension x="465" y="0"/>
+								<AbsDimension x="505" y="0"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -567,6 +578,7 @@
 					</Layer>
 				</Layers>
 			</Button>
+			
 			<Button name="$parentRemove" inherits="UiPanelCloseButton">
 				<Size>
 					<AbsDimension x="20" y="20" />
@@ -575,6 +587,28 @@
 					<Anchor point="RIGHT" relativePoint="RIGHT">
 						<Offset>
 							<AbsDimension x="0" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						PlaySound(799);
+						CEPGP_ListButton_OnClick(self:GetName());
+					</OnClick>
+					<OnHide>
+						local parent = self:GetParent();
+						parent:SetAttribute("delete_confirm", false);
+					</OnHide>
+				</Scripts>
+			</Button>
+			<Button name="$parentShare" inherits="GameMenuButtonTemplate" text="Share">
+				<Size>
+					<AbsDimension x="75" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="RIGHT" relativePoint="LEFT" relativeTo="$parentRemove">
+						<Offset>
+							<AbsDimension x="-12" y="0"/>
 						</Offset>
 					</Anchor>
 				</Anchors>

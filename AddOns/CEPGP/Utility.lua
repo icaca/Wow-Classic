@@ -1,8 +1,6 @@
 local L = CEPGP_Locale:GetLocale("CEPGP")
 
 function CEPGP_initialise()
-	UIDropDownMenu_Initialize(CEPGP_interface_options_forced_sync_rank, CEPGP_syncRankDropdown);
-	UIDropDownMenu_Initialize(CEPGP_interface_options_def_channel_dropdown, CEPGP_defChannelDropdown);
 	C_Timer.After(3, function()
 		_, _, _, CEPGP_ElvUI = GetAddOnInfo("ElvUI");
 		if not CEPGP_ElvUI then CEPGP_ElvUI = GetAddOnInfo("TukUI"); end
@@ -263,6 +261,11 @@ function CEPGP_initialise()
 				BossEP = EPVALS,
 			}
 		end
+		if not CEPGP.Decay then
+			CEPGP.Decay = {
+				Separate = false,
+			};
+		end
 		CEPGP.EP.AutoAward = CEPGP.EP.AutoAward or AUTOEP;
 		CEPGP.EP.BossEP = CEPGP.EP.BossEP or EPVALS;
 		if not CEPGP.GP then
@@ -411,9 +414,8 @@ function CEPGP_initialise()
 		CEPGP.Standby.Share = CEPGP.Standby.Share or CEPGP_standby_share;
 		
 		CEPGP_initInterfaceOptions();
-		--CEPGP_updateGuild();
-		GameTooltip:HookScript("OnTooltipSetItem", CEPGP_addGPTooltip);
-		hooksecurefunc("ChatFrame_OnHyperlinkShow", CEPGP_addGPHyperlink);	
+		hooksecurefunc("ChatFrame_OnHyperlinkShow", CEPGP_addGPHyperlink);
+		hooksecurefunc("GameTooltip_UpdateStyle", CEPGP_addGPTooltip);
 		
 		if not CEPGP_notice then
 			CEPGP_notice_frame:Show();
@@ -479,6 +481,41 @@ function CEPGP_initInterfaceOptions()
 	InterfaceOptions_AddCategory(panel.standby);
 	
 	_G["CEPGP_interface_options_version"]:SetText("Classic EPGP Version " .. CEPGP_Info.Version .. " " .. CEPGP_Info.Build);
+end
+
+function CEPGP_initDropdown(frame, initFunction, displayMode, level, menuList)
+	frame.menuList = menuList;
+
+	--securecall("UIDropDownMenu_InitializeHelper", frame);
+
+	-- Set the initialize function and call it.  The initFunction populates the dropdown list.
+	if ( initFunction ) then
+		UIDropDownMenu_SetInitializeFunction(frame, initFunction);
+		--initFunction(frame, level, frame.menuList);
+	end
+
+	--master frame
+	if(level == nil) then
+		level = 1;
+	end
+
+	local dropDownList = _G["DropDownList"..level];
+	dropDownList.dropdown = frame;
+	dropDownList.shouldRefresh = true;
+
+	UIDropDownMenu_SetDisplayMode(frame, displayMode);
+end
+
+function CEPGP_addResponse(player, response, roll)
+	
+	CEPGP_itemsTable[player] = {};
+	CEPGP_itemsTable[player][3] = response;
+	
+	if (CEPGP.Loot.PassRolls and response == 6) or response < 6 then
+		CEPGP_itemsTable[player][4] = roll;
+	end
+	
+	CEPGP_SendAddonMsg("!need;"..player..";"..CEPGP_DistID..";"..response..";"..roll, "RAID"); --!need;playername;itemID (of the item being distributed) is sent for sharing with raid assist
 end
 
 function CEPGP_calcGP(link, quantity, id)	
@@ -589,9 +626,9 @@ function CEPGP_calcGP(link, quantity, id)
 	end
 end
 
-function CEPGP_addGPTooltip(self)
-	if not CEPGP_gp_tooltips or not self:GetItem() or self:GetItem() == nil or self:GetItem() == "" then return; end
-	local _, link = self:GetItem();
+function CEPGP_addGPTooltip(frame)
+	if not CEPGP_gp_tooltips or not frame:GetItem() or frame:GetItem() == nil or frame:GetItem() == "" then return; end
+	local _, link = frame:GetItem();
 	local id = CEPGP_getItemID(CEPGP_getItemString(link));
 	if not CEPGP_itemExists(tonumber(id)) then return; end
 	local name = GetItemInfo(id);
@@ -599,11 +636,11 @@ function CEPGP_addGPTooltip(self)
 		local item = Item:CreateFromItemID(tonumber(id));
 		item:ContinueOnItemLoad(function()
 			local gp = CEPGP_calcGP(_, 1, id);
-			GameTooltip:AddLine("GP Value: " .. gp, {1,1,1});	
+			frame:AddLine("GP Value: " .. gp, {1,1,1});	
 		end);
 	else
 		local gp = CEPGP_calcGP(_, 1, id);
-		GameTooltip:AddLine("GP Value: " .. gp, {1,1,1});
+		frame:AddLine("GP Value: " .. gp, {1,1,1});
 	end
 	
 end
@@ -612,6 +649,9 @@ function CEPGP_addGPHyperlink(self, iString)
 	if not string.find(iString, "item:") or not CEPGP_gp_tooltips then return; end
 	local id = CEPGP_getItemID(iString);
 	local name = GetItemInfo(id);
+	for i = 1, ItemRefTooltip:NumLines() do
+		if string.find(_G["ItemRefTooltipTextLeft"..i]:GetText(), "GP Value:") then return end;
+	end
 	if not name and CEPGP_itemExists(tonumber(id)) then
 		local item = Item:CreateFromItemID(tonumber(id));
 		item:ContinueOnItemLoad(function()
@@ -626,16 +666,9 @@ function CEPGP_addGPHyperlink(self, iString)
 	end
 end
 
-function CEPGP_populateFrame(CEPGP_criteria, items)
-	local sorting = nil;
+function CEPGP_populateFrame(items)
 	local subframe = nil;
-	if CEPGP_criteria == "name" or CEPGP_criteria == "rank" then
-		SortGuildRoster(CEPGP_criteria);
-	elseif CEPGP_criteria == "group" or CEPGP_criteria == "EP" or CEPGP_criteria == "GP" or CEPGP_criteria == "PR" then
-		sorting = CEPGP_criteria;
-	else
-		sorting = "group";
-	end
+	
 	if CEPGP_mode == "loot" then
 		CEPGP_cleanTable();
 	elseif CEPGP_mode ~= "loot" then
@@ -1018,6 +1051,8 @@ function CEPGP_rosterUpdate(event)
 				local rankIndex = select(3, GetGuildRosterInfo(index));
 				
 				EP, GP = CEPGP_getEPGP(name, index);
+				local PR = math.floor((EP/GP)*100)/100;
+				
 				CEPGP_raidRoster[i] = {
 					[1] = name,
 					[2] = class,
@@ -1025,7 +1060,7 @@ function CEPGP_rosterUpdate(event)
 					[4] = rankIndex,
 					[5] = EP,
 					[6] = GP,
-					[7] = EP/GP,
+					[7] = PR,
 					[8] = classFileName
 				};
 			else
@@ -1490,13 +1525,13 @@ function CEPGP_updateGuild()
 	GuildRoster();
 end
 
-function CEPGP_tSort(t, index)
+function CEPGP_tSort(t, index, inverse)
 	if not t then return; end
 	if #t == 1 then return t; end
 		
 	for x = 1, #t do
 		for z = x+1, #t do
-			if CEPGP_critReverse then
+			if inverse then
 				if t[x][index] < t[z][index] then
 					local v = t[x];
 					t[x] = t[z];
@@ -1513,61 +1548,6 @@ function CEPGP_tSort(t, index)
 	end
 	
 	return t;
-	
-	--[[local t2 = {};
-	table.insert(t2, t[1]);
-	table.remove(t, 1);
-	local tSize = table.getn(t);
-	if tSize > 0 then
-		for x = 1, tSize do
-			local t2Size = table.getn(t2);
-			for y = 1, t2Size do
-				if y < t2Size and 
-				t[1][index] ~= nil then
-					if CEPGP_critReverse then
-						if (t[1][index] >= t2[y][index]) then
-							table.insert(t2, y, t[1]);
-							table.remove(t, 1);
-							break;
-						elseif (t[1][index] < t2[y][index]) and (t[1][index] >= t2[(y + 1)][index]) then
-							table.insert(t2, (y + 1), t[1]);
-							table.remove(t, 1);
-							break;
-						end
-					else
-						if (t[1][index] <= t2[y][index]) then
-							table.insert(t2, y, t[1]);
-							table.remove(t, 1);
-							break;
-						elseif (t[1][index] > t2[y][index]) and (t[1][index] <= t2[(y + 1)][index]) then
-							table.insert(t2, (y + 1), t[1]);
-							table.remove(t, 1);
-							break;
-						end
-					end
-				elseif y == t2Size and t[1][index] ~= nil then
-					if CEPGP_critReverse then
-						if t[1][index] > t2[y][index] then
-							table.insert(t2, y, t[1]);
-							table.remove(t, 1);
-						else
-							table.insert(t2, t[1]);
-							table.remove(t, 1);
-						end
-					else
-						if t[1][index] < t2[y][index] then
-							table.insert(t2, y, t[1]);
-							table.remove(t, 1);
-						else
-							table.insert(t2, t[1]);
-							table.remove(t, 1);
-						end
-					end
-				end
-			end
-		end
-	end
-	return t2;]]
 end
 
 function CEPGP_sortDistList(list)
@@ -1593,7 +1573,8 @@ function CEPGP_sortDistList(list)
 			[7] = list[i][7],
 			[8] = list[i][8],
 			[9] = list[i][9],
-			[10] = list[i][10]
+			[10] = list[i][10],
+			[12] = list[i][12]
 		}
 	end
 	for i = 1, 6 do
@@ -1621,7 +1602,8 @@ function CEPGP_sortDistList(list)
 				[8] = temp[i][x][8],
 				[9] = temp[i][x][9],
 				[10] = temp[i][x][10],
-				[11] = i
+				[11] = i,
+				[12] = temp[i][x][12]
 			};
 		end
 	end
@@ -1639,22 +1621,51 @@ function CEPGP_ntgetn(tbl)
 	return n;
 end
 
-function CEPGP_setCriteria(x, disp)
-	if CEPGP_criteria == x then
-		CEPGP_critReverse = not CEPGP_critReverse
-	end
-	CEPGP_criteria = x;
-	if not disp then return; end
-	if disp == "Raid" then
+function CEPGP_setCriteria(sortIndex, method)
+	if not method then return; end
+	
+	if method == "Raid" then
+		if CEPGP_Info.Sorting.Raid[1] == sortIndex then
+			CEPGP_Info.Sorting.Raid[2] = not CEPGP_Info.Sorting.Raid[2];
+		else
+			CEPGP_Info.Sorting.Raid[1] = sortIndex;
+		end
 		CEPGP_UpdateRaidScrollBar();
-	elseif disp == "Guild" then
+	elseif method == "Guild" then
+		if CEPGP_Info.Sorting.Guild[1] == sortIndex then
+			CEPGP_Info.Sorting.Guild[2] = not CEPGP_Info.Sorting.Guild[2];
+		else
+			CEPGP_Info.Sorting.Guild[1] = sortIndex;
+		end
 		CEPGP_UpdateGuildScrollBar();
-	elseif disp == "Loot" then
+	elseif method == "Loot" then
+		if CEPGP_Info.Sorting.Loot[1] == sortIndex then
+			CEPGP_Info.Sorting.Loot[2] = not CEPGP_Info.Sorting.Loot[2];
+		else
+			CEPGP_Info.Sorting.Loot[1] = sortIndex;
+		end
 		CEPGP_UpdateLootScrollBar(nil, true);
-	elseif disp == "Standby" then
+	elseif method == "Standby" then
+		if CEPGP_Info.Sorting.Standby[1] == sortIndex then
+			CEPGP_Info.Sorting.Standby[2] = not CEPGP_Info.Sorting.Standby[2];
+		else
+			CEPGP_Info.Sorting.Standby[1] = sortIndex;
+		end
 		CEPGP_UpdateStandbyScrollBar();
-	elseif disp == "Attendance" then
+	elseif method == "Attendance" then
+		if CEPGP_Info.Sorting.Attendance[1] == sortIndex then
+			CEPGP_Info.Sorting.Attendance[2] = not CEPGP_Info.Sorting.Attendance[2];
+		else
+			CEPGP_Info.Sorting.Attendance[1] = sortIndex;
+		end
 		CEPGP_UpdateAttendanceScrollBar();
+	elseif method == "Version" then
+		if CEPGP_Info.Sorting.Version[1] == sortIndex then
+			CEPGP_Info.Sorting.Version[2] = not CEPGP_Info.Sorting.Version[2];
+		else
+			CEPGP_Info.Sorting.Version[1] = sortIndex;
+		end
+		CEPGP_UpdateVersionScrollBar();
 	end
 end
 
@@ -1668,65 +1679,14 @@ function CEPGP_toggleBossConfigFrame(fName)
 	end
 end
 
-function CEPGP_UIDropDownMenu_Initialize(frame, initFunction, displayMode, level, menuList, search)
-	if ( not frame ) then
-		frame = self;
-	end
-	frame.menuList = menuList;
-
-	if ( frame:GetName() ~= UIDROPDOWNMENU_OPEN_MENU ) then
-		UIDROPDOWNMENU_MENU_LEVEL = 1;
-	end
-
-	-- Set the frame that's being intialized
-	UIDROPDOWNMENU_INIT_MENU = frame:GetName();
-
-	-- Hide all the buttons
-	local button, dropDownList;
-	for i = 1, UIDROPDOWNMENU_MAXLEVELS, 1 do
-		dropDownList = _G["DropDownList"..i];
-		if ( i >= UIDROPDOWNMENU_MENU_LEVEL or frame:GetName() ~= UIDROPDOWNMENU_OPEN_MENU ) then
-			dropDownList.numButtons = 0;
-			dropDownList.maxWidth = 0;
-			for j=1, UIDROPDOWNMENU_MAXBUTTONS, 1 do
-				button = _G["DropDownList"..i.."Button"..j];
-				button:Hide();
-			end
-			dropDownList:Hide();
-		end
-	end
-	frame:SetHeight(UIDROPDOWNMENU_BUTTON_HEIGHT * 2);
-	
-	-- Set the initialize function and call it.  The initFunction populates the dropdown list.
-	if ( initFunction ) then
-		frame.initialize = initFunction;
-		initFunction(level, frame.menuList, search);
-	end
-
-	-- Change appearance based on the displayMode
-	if ( displayMode == "MENU" ) then
-		_G[frame:GetName().."Left"]:Hide();
-		_G[frame:GetName().."Middle"]:Hide();
-		_G[frame:GetName().."Right"]:Hide();
-		_G[frame:GetName().."ButtonNormalTexture"]:SetTexture("");
-		_G[frame:GetName().."ButtonDisabledTexture"]:SetTexture("");
-		_G[frame:GetName().."ButtonPushedTexture"]:SetTexture("");
-		_G[frame:GetName().."ButtonHighlightTexture"]:SetTexture("");
-		_G[frame:GetName().."Button"]:ClearAllPoints();
-		_G[frame:GetName().."Button"]:SetPoint("LEFT", frame:GetName().."Text", "LEFT", -9, 0);
-		_G[frame:GetName().."Button"]:SetPoint("RIGHT", frame:GetName().."Text", "RIGHT", 6, 0);
-		frame.displayMode = "MENU";
-	end
-
-end
-
 function CEPGP_getDebugInfo()
 	local info = "<details><summary>Debug Info</summary><br />\n";
 	info = info .. "Version: " .. CEPGP_Info.Version .. " " .. CEPGP_Info.Build .. "<br />\n";
 	info = info .. "Locale: " .. GetLocale() .. "<br />\n";
 	info = info .. "Poll Rate: " .. CEPGP.PollRate .. "<br />\n";
-	info = info .. "GP Formula: (" .. COEF .. "x(" .. MOD_COEF .. "^<sup>((ilvl/26)+(rarity-4))</sup>)xSlot Modifier)x" .. MOD .. "<br />";
+	info = info .. "GP Formula: (" .. COEF .. "x(" .. MOD_COEF .. "^<sup>((ilvl/26)+(rarity-4))</sup>)xSlot Modifier)x" .. MOD .. "<br />\n";
 	info = info .. "Base GP: " .. BASEGP .. "<br />\n";
+	info = info .. "Traffic Entries: " .. #TRAFFIC .. "<br />\n";
 	if CEPGP_minGPDecayFactor then
 		info = info .. "Base GP Decay Factor: true<br />\n";
 	else
@@ -1778,6 +1738,21 @@ function CEPGP_getDebugInfo()
 		info = info .. "Suppress Loot Announcements: true<br />\n";
 	else
 		info = info .. "Suppress Loot Announcements: false<br />\n";
+	end
+	if CEPGP.Loot.PassRolls then
+		info = info .. "Roll for Passes: true<br />\n";
+	else
+		info = info .. "Roll for Passes: false<br />\n";
+	end
+	if CEPGP.Loot.RollAnnounce then
+		info = info .. "Announce Rolls: true<br />\n";
+	else
+		info = info .. "Announce Rolls: true<br />\n";
+	end
+	if CEPGP.Loot.ResolveRolls then
+		info = info .. "Resolve Duplicate Rolls: true<br />\n";
+	else
+		info = info .. "Resolve Duplicate Rolls: true<br />\n";
 	end
 	if CEPGP_minEP[1] then
 		info = info .. "Minimum EP: true, " .. CEPGP_minEP[2] .. "<br />\n";
@@ -2089,32 +2064,39 @@ function CEPGP_callItem(id, gp, buttons, timeout)
 	id = tonumber(id); -- Must be in a numerical format
 	local name, link, _, _, _, _, _, _, _, tex, _, classID, subClassID = GetItemInfo(id);
 	local iString;
+	CEPGP_Info.LastRun.ItemCall = GetTime();
+	local timestamp = CEPGP_Info.LastRun.ItemCall;
+	
+	local call;
+	local timer = timeout-1;
+	CEPGP_respond_timeout_string:Show();
+	CEPGP_distribute_time:Show();
+	CEPGP_respond_timeout_string:SetText("Time Remaining: " .. timer);
+	CEPGP_distribute_time:SetText("Time Remaining: " .. timer);
+	
 	if tonumber(timeout) > 0 then
-		local call;
-		local timer = timeout-1;
-		CEPGP_respond_timeout_string:Show();
-		CEPGP_respond_timeout_string:SetText("Time Remaining: " .. timer);
-		local ticker = function()
-			if not CEPGP_respond:IsVisible() then
-				call._remainingIterations = 0;
+		C_Timer.NewTicker(1, function()
+			if CEPGP_Info.LastRun.ItemCall ~= timestamp then
 				return;
 			end
-			timer = timer - 1;
-			CEPGP_respond_timeout_string:SetText("Time Remaining: " .. timer);
 			if timer == 0 then
+				CEPGP_distribute_time:SetText("Response Time Expired");
 				if not CEPGP_respond:IsVisible() then
 					return;
 				end
 				CEPGP_respond:Hide();
 				CEPGP_SendAddonMsg("LootRsp;6", "RAID");
+				return;
 			end
-		end
-		call = C_Timer.NewTicker(1, function()
-			ticker();
+			timer = timer - 1;
+			CEPGP_respond_timeout_string:SetText("Time Remaining: " .. timer);
+			CEPGP_distribute_time:SetText("Time Remaining: " .. timer);
 		end, timeout);
 	else
 		CEPGP_respond_timeout_string:Hide();
+		CEPGP_distribute_time:Hide();
 	end
+	
 	if not link and CEPGP_itemExists(id) then
 		local item = Item:CreateFromItemID(id);
 		item:ContinueOnItemLoad(function()
@@ -2271,6 +2253,11 @@ function CEPGP_toggleGPEdit(mode)
 		CEPGP_loot_options_min_EP_check:Enable();
 		CEPGP_loot_options_min_EP_amount:Enable();
 		CEPGP_loot_options_show_passes_check:Enable();
+		CEPGP_loot_options_enforce_PR_sorting_check:Enable();
+		CEPGP_loot_options_dist_raidwide_check:Enable();
+		CEPGP_loot_options_pass_roll_check:Enable();
+		CEPGP_loot_options_announce_roll_check:Enable();
+		CEPGP_loot_options_resolve_roll_check:Enable();
 		for k, v in pairs(SLOTWEIGHTS) do
 			if k ~= "ROBE" and k ~= "EXCEPTION" then
 				_G["CEPGP_options_" .. k .. "_weight"]:Enable();
@@ -2284,6 +2271,12 @@ function CEPGP_toggleGPEdit(mode)
 		CEPGP_loot_options_min_EP_check:Disable();
 		CEPGP_loot_options_min_EP_amount:Disable();
 		CEPGP_loot_options_show_passes_check:Disable();
+		CEPGP_loot_options_enforce_PR_sorting_check:Disable();
+		CEPGP_loot_options_dist_raidwide_check:Disable();
+		CEPGP_loot_options_pass_roll_check:Disable();
+		CEPGP_loot_options_announce_roll_check:Disable();
+		CEPGP_loot_options_resolve_roll_check:Disable();
+		
 		for k, v in pairs(SLOTWEIGHTS) do
 			if k ~= "ROBE" and k ~= "EXCEPTION" then
 				_G["CEPGP_options_" .. k .. "_weight"]:Disable();
@@ -2384,11 +2377,15 @@ function CEPGP_importStandings()
 					EP = frags[i+1];
 					GP = frags[i+2];
 					index = CEPGP_getIndex(name);
-					local rankIndex = select(3, GetGuildRosterInfo(index));
-					if not CEPGP.Exclusions[rankIndex+1] then
-						output:SetText(output:GetText() .. "\nProcessing record: " .. name);
-						GuildRosterSetOfficerNote(index, EP .. "," .. GP);
-						CEPGP_import_progress_scrollframe:SetVerticalScroll(CEPGP_import_progress_scrollframe:GetVerticalScroll()+12);
+					if index == nil then
+						output:SetText(output:GetText() .. "\nSkipping record: " .. name);
+					else
+						local rankIndex = select(3, GetGuildRosterInfo(index));
+						if not CEPGP.Exclusions[rankIndex+1] then
+							output:SetText(output:GetText() .. "\nProcessing record: " .. name);
+							GuildRosterSetOfficerNote(index, EP .. "," .. GP);
+							CEPGP_import_progress_scrollframe:SetVerticalScroll(CEPGP_import_progress_scrollframe:GetVerticalScroll()+12);
+						end
 					end
 				end
 			end
@@ -2609,9 +2606,10 @@ end
 
 function CEPGP_syncAltStandings(main)
 	if not main or not CEPGP.Alt.Links[main] then return; end
+	local mainIndex;
 	for k, alt in pairs(CEPGP.Alt.Links[main]) do
 		if CEPGP_roster[alt] then
-			local mainIndex = CEPGP_getIndex(main);
+			mainIndex = CEPGP_getIndex(main, CEPGP_roster[main] or nil);
 			
 			if CEPGP_charIsExcluded(main, mainIndex) then
 				CEPGP_print("Could not synchronise EPGP from " .. main .. " because they are in an excluded rank", true);

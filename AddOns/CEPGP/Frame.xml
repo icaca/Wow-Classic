@@ -87,6 +87,8 @@
 					<OnClick>
 						InterfaceOptionsFrame_Show();
 						InterfaceOptionsFrame_OpenToCategory("Classic EPGP");
+						--CEPGP_options:Show();
+						--CEPGP_interface_options:Show();
 					</OnClick>
 				</Scripts>
 			</Button>
@@ -401,11 +403,6 @@
 							</Anchor>
 						</Anchors>
 						<Scripts>
-							<OnLoad>
-								if not CanEditOfficerNote() then
-									self:Hide();
-								end
-							</OnLoad>
 							<OnClick>
 								PlaySound(799);
 								CEPGP_ListButton_OnClick(self:GetName());
@@ -417,8 +414,78 @@
 							<OnLeave>
 								GameTooltip:Hide();
 							</OnLeave>
+							<OnShow>
+								if CEPGP.Decay.Separate or not CanEditOfficerNote() then
+									self:Hide();
+								end
+							</OnShow>
 						</Scripts>
 					</Button>
+					<Button name="CEPGP_guild_decay_EP" inherits="GameMenuButtonTemplate" text="Decay Guild EP">
+						<Size>
+							<AbsDimension x="120" y="21" />
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="CEPGP_guild_add_EP">
+								<Offset>
+									<AbsDimension x="115" y="0" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								PlaySound(799);
+								CEPGP_ListButton_OnClick(self:GetName());
+							</OnClick>
+							<OnEnter>
+								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+								GameTooltip:SetText("Decay/inflate the EP for the whole guild.");
+							</OnEnter>
+							<OnLeave>
+								GameTooltip:Hide();
+							</OnLeave>
+							<OnShow>
+								if CanEditOfficerNote() and CEPGP.Decay.Separate then
+									self:Show();
+								elseif not CanEditOfficerNote() or not CEPGP.Decay.Separate then
+									self:Hide();
+								end
+							</OnShow>
+						</Scripts>
+					</Button>
+					<Button name="CEPGP_guild_decay_GP" inherits="GameMenuButtonTemplate" text="Decay Guild GP">
+						<Size>
+							<AbsDimension x="120" y="21" />
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="CEPGP_guild_decay_EP">
+								<Offset>
+									<AbsDimension x="115" y="0" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnShow>
+								if CanEditOfficerNote() and CEPGP.Decay.Separate then
+									self:Show();
+								elseif not CanEditOfficerNote() or not CEPGP.Decay.Separate then
+									self:Hide();
+								end
+							</OnShow>
+							<OnClick>
+								PlaySound(799);
+								CEPGP_ListButton_OnClick(self:GetName());
+							</OnClick>
+							<OnEnter>
+								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+								GameTooltip:SetText("Decay/inflate the GP for the whole guild.");
+							</OnEnter>
+							<OnLeave>
+								GameTooltip:Hide();
+							</OnLeave>
+						</Scripts>
+					</Button>
+
 					<Button name="CEPGP_guild_reset" inherits="GameMenuButtonTemplate" text="Reset All EPGP Standings">
 						<Size>
 							<AbsDimension x="160" y="21" />
@@ -677,7 +744,7 @@
 			</Frame>
 			<Frame name="CEPGP_distribute" inherits="CEPGPFrameTemplate">
 				<Size>
-					<AbsDimension x="580" y="435" />
+					<AbsDimension x="710" y="435" />
 				</Size>
 				<Layers>
 					<Layer level="OVERLAY">
@@ -727,6 +794,15 @@
 								<Anchor point="BOTTOM" relativeTo="CEPGP_distribute_GP_head">
 									<Offset>
 										<AbsDimension x="0" y="-15" />
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_time" inherits="GameFontNormal" hidden="true">
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT">
+									<Offset>
+										<AbsDimension x="10" y="20" />
 									</Offset>
 								</Anchor>
 							</Anchors>
@@ -785,9 +861,9 @@
 							<AbsDimension x="50" y="20" />
 						</Size>
 						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_distribute_raid_name">
+							<Anchor point="LEFT" relativePoint="LEFT" relativeTo="CEPGP_distribute_raid_name">
 								<Offset>
-									<AbsDimension x="30" y="0" />
+									<AbsDimension x="82.5" y="0" />
 								</Offset>
 							</Anchor>
 						</Anchors>
@@ -802,9 +878,9 @@
 							<AbsDimension x="50" y="20" />
 						</Size>
 						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_distribute_raid_class">
+							<Anchor point="LEFT" relativePoint="LEFT" relativeTo="CEPGP_distribute_raid_class">
 								<Offset>
-									<AbsDimension x="30" y="0" />
+									<AbsDimension x="90" y="0" />
 								</Offset>
 							</Anchor>
 						</Anchors>
@@ -819,9 +895,9 @@
 							<AbsDimension x="50" y="20" />
 						</Size>
 						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_distribute_raid_rank">
+							<Anchor point="LEFT" relativePoint="LEFT" relativeTo="CEPGP_distribute_raid_rank">
 								<Offset>
-									<AbsDimension x="50" y="0" />
+									<AbsDimension x="105" y="0" />
 								</Offset>
 							</Anchor>
 						</Anchors>
@@ -836,9 +912,9 @@
 							<AbsDimension x="50" y="20" />
 						</Size>
 						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_distribute_raid_response">
+							<Anchor point="LEFT" relativePoint="LEFT" relativeTo="CEPGP_distribute_raid_response">
 								<Offset>
-									<AbsDimension x="20" y="0" />
+									<AbsDimension x="85" y="0" />
 								</Offset>
 							</Anchor>
 						</Anchors>
@@ -853,9 +929,9 @@
 							<AbsDimension x="50" y="20" />
 						</Size>
 						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_distribute_raid_EP">
+							<Anchor point="RIGHT" relativePoint="RIGHT" relativeTo="CEPGP_distribute_raid_EP">
 								<Offset>
-									<AbsDimension x="30" y="0" />
+									<AbsDimension x="85" y="0" />
 								</Offset>
 							</Anchor>
 						</Anchors>
@@ -872,7 +948,7 @@
 						<Anchors>
 							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_distribute_raid_GP">
 								<Offset>
-									<AbsDimension x="20" y="0" />
+									<AbsDimension x="15" y="0" />
 								</Offset>
 							</Anchor>
 						</Anchors>
@@ -882,9 +958,26 @@
 							</OnClick>
 						</Scripts>
 					</Button>
+					<Button name="CEPGP_distribute_raid_roll" inherits="CEPGPHeaderButton" text="Roll">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_distribute_raid_PR">
+								<Offset>
+									<AbsDimension x="10" y="0" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								CEPGP_setCriteria(12, "Loot");
+							</OnClick>
+						</Scripts>
+					</Button>
 					<ScrollFrame name="DistScrollFrame" inherits="UIPanelScrollFrameTemplate">
 						<Size>
-							<AbsDimension x="550" y="320" />
+							<AbsDimension x="690" y="320" />
 						</Size>
 						<Anchors>
 							<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
@@ -896,19 +989,73 @@
 						<ScrollChild>
 							<Frame name="CEPGP_dist_scrollframe_container">
 								<Size>
-									<AbsDimension x="550" y="300" />
+									<AbsDimension x="690" y="300" />
 								</Size>
 							</Frame>
 						</ScrollChild>
 					</ScrollFrame>
+					<Button name="$parent_roll_award" inherits="GameMenuButtonTemplate" text="Award to Hightest Roller">
+						<Size>
+							<AbsDimension x="150" y="25" />
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOMRIGHT">
+								<Offset>
+									<AbsDimension x="0" y="12" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								PlaySound(799);
+								
+								local player, class, colouredName;
+								local highestRoll = 0;
+								local gp = math.floor(CEPGP_distribute_GP_value:GetText());
+								for name, v in pairs(CEPGP_itemsTable) do
+									if v[4] then
+										if v[4] > highestRoll then
+											player = name;
+											highestRoll = v[4];
+										end
+									end
+								end
+								
+								if highestRoll == 0 then return; end
+								
+								if CEPGP_roster[player] then
+									class = CEPGP_roster[player][7];
+								else
+									for index, v in ipairs(CEPGP_raidRoster) do
+										if v[1] == player then
+											class = v[8];
+											break;
+										end
+									end
+								end
+																
+								CEPGP_distPlayer = player;
+								
+								colouredName = CEPGP_encodeClassString(class, player);
+								
+								CEPGP_roll_award_confirm:Show();
+								CEPGP_roll_award_confirm_desc:SetText("Would you like to award " .. CEPGP_distItemLink .. "\nto " .. colouredName .. " for " .. gp .. "GP with a roll of " .. highestRoll .. "?");
+							</OnClick>
+						</Scripts>
+					</Button>
 				</Frames>
 				<Scripts>
 					<OnShow>
 						CEPGP_distributing_button:Show();
+						CEPGP_frame:SetWidth(CEPGP_frame:GetWidth()+150);
+						
+						self:SetPoint("BOTTOMLEFT", 20, 0);
 					</OnShow>
+					<OnHide>
+						CEPGP_frame:SetWidth(CEPGP_frame:GetWidth()-150);
+					</OnHide>
 				</Scripts>
 			</Frame>
-			
 		</Frames>
 		<Scripts>
 			<OnLoad>
@@ -928,6 +1075,7 @@
 				self:RegisterEvent("CHAT_MSG_BN_WHISPER");
 				self:RegisterEvent("GET_ITEM_INFO_RECEIVED");
 				self:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED");
+				self:RegisterEvent("PLAYER_ROLES_ASSIGNED");
 				self:RegisterEvent("ENCOUNTER_END");
 			</OnLoad>
 			<OnMouseDown>
@@ -1062,9 +1210,7 @@
 				</Anchors>
 				<Scripts>
 					<OnClick>
-						CEPGP_setCriteria(1);
-						CEPGP_groupVersion = CEPGP_tSort(CEPGP_groupVersion, 1);
-						CEPGP_UpdateVersionScrollBar();
+						CEPGP_setCriteria(1, "Version");
 					</OnClick>
 				</Scripts>
 			</Button>
@@ -1081,9 +1227,7 @@
 				</Anchors>
 				<Scripts>
 					<OnClick>
-						CEPGP_setCriteria(2);
-						CEPGP_groupVersion = CEPGP_tSort(CEPGP_groupVersion, 2);
-						CEPGP_UpdateVersionScrollBar();
+						CEPGP_setCriteria(2, "Version");
 					</OnClick>
 				</Scripts>
 			</Button>
@@ -1142,7 +1286,6 @@
 								};
 							end
 						end
-						CEPGP_groupVersion = CEPGP_tSort(CEPGP_groupVersion, 1);
 						CEPGP_UpdateVersionScrollBar();
 
 					</OnClick>
@@ -1183,7 +1326,6 @@
 								};
 							end
 						end
-						CEPGP_groupVersion = CEPGP_tSort(CEPGP_groupVersion, 1);
 						CEPGP_UpdateVersionScrollBar();
 					</OnClick>
 				</Scripts>
@@ -1564,6 +1706,383 @@
 		</Scripts>
 	</Frame>
 	
+	<Frame name="CEPGP_decay_popup" frameStrata="DIALOG" enableMouse="true" hidden="true" movable="true" clampedToScreen="true">
+		<Size>
+			<AbsDimension x="300" y="200"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11"/>
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32"/>
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32"/>
+			</EdgeSize>
+		</Backdrop>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture file="Interface\DialogFrame\UI-DialogBox-Header">
+					<Size>
+						<AbsDimension x="256" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="12"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_percent_text" inherits="GameFontNormal" text="Percent: ">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="12" y="-15"/>
+							</Offset>
+						</Anchor>
+						
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_fixed_text" inherits="GameFontNormal" text="Fixed Number: ">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_percent_text">
+							<Offset>
+								<AbsDimension x="0" y="-12"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_header" inherits="GameFontNormal" text="Decay">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_desc" inherits="GameFontNormal">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-60"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_reason_text" inherits="GameFontNormal" text="Reason (Optional)" />
+			</Layer>
+		</Layers>
+		<Frames>
+			<CheckButton name="$parent_fixed_check" inherits="UIOptionsCheckButtonTemplate">
+				<HitRectInsets>
+					<AbsInset left="0" right="0" top="0" bottom="0" />
+				</HitRectInsets>
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_fixed_text">
+						<Offset>
+							<AbsDimension x="5" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						if not self:GetChecked() then
+							self:SetChecked(true);
+						end
+						
+						CEPGP_decay_popup_percent_check:SetChecked(false);
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parent_percent_check" inherits="UIOptionsCheckButtonTemplate" checked="1">
+				<HitRectInsets>
+					<AbsInset left="0" right="0" top="0" bottom="0" />
+				</HitRectInsets>
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_percent_text">
+						<Offset>
+							<AbsDimension x="5" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						if not self:GetChecked() then
+							self:SetChecked(true);
+						end
+						
+						CEPGP_decay_popup_fixed_check:SetChecked(false);
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<EditBox name="$parent_amount" inherits="InputBoxTemplate" letters="15">
+				<Size>
+					<AbsDimension x="105" y="20" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="CEPGP_decay_popup_desc" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-5" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:SetAutoFocus(false);
+						self:SetText("0");
+					</OnLoad>
+					<OnEnterPressed>
+						self:ClearFocus();
+					</OnEnterPressed>
+				</Scripts>
+			</EditBox>
+			<EditBox name="$parent_reason" inherits="InputBoxTemplate">
+				<Size>
+					<AbsDimension x="210" y="20" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativePoint="BOTTOM" relativeTo="$parent_reason_text">
+						<Offset>
+							<AbsDimension x="0" y="-5" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:SetAutoFocus(false);
+					</OnLoad>
+					<OnEnterPressed>
+						self:ClearFocus();
+					</OnEnterPressed>
+				</Scripts>
+			</EditBox>
+			<Button name="$parent_cancel" inherits="GameMenuButtonTemplate" text="Cancel">
+				<Size>
+					<AbsDimension x="75" y="30"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-16" y="16"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						PlaySound(799);
+						HideUIPanel(CEPGP_decay_popup);
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_confirm" inherits="GameMenuButtonTemplate" text="Confirm">
+				<Size>
+					<AbsDimension x="75" y="30"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="16" y="16"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForDrag("LeftButton");
+				self:SetScale(0.66);
+			</OnLoad>
+			<OnDragStart>
+				self:StartMoving();
+			</OnDragStart>
+			<OnDragStop>
+				self:StopMovingOrSizing();
+			</OnDragStop>
+			<OnShow>
+				CEPGP_decay_popup_reason_text:SetPoint("TOP", CEPGP_decay_popup_amount, "BOTTOM", 0, -10);
+			</OnShow>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="CEPGP_award_raid_popup" frameStrata="DIALOG" enableMouse="true" hidden="true" movable="true" clampedToScreen="true">
+		<Size>
+			<AbsDimension x="300" y="200"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11"/>
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32"/>
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32"/>
+			</EdgeSize>
+		</Backdrop>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture file="Interface\DialogFrame\UI-DialogBox-Header">
+					<Size>
+						<AbsDimension x="256" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="12"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_standby_text" inherits="GameFontNormal" text="Award to Standby: ">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="12" y="-30"/>
+							</Offset>
+						</Anchor>
+						
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_header" inherits="GameFontNormal" text="Raid Moderation">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_desc" inherits="GameFontNormal" text="Adds/Subtracts an amount of EP for the entire raid">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-60"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_reason_text" inherits="GameFontNormal" text="Reason (Optional)" />
+			</Layer>
+		</Layers>
+		<Frames>
+			<CheckButton name="$parent_standby_check" inherits="UIOptionsCheckButtonTemplate">
+				<HitRectInsets>
+					<AbsInset left="0" right="0" top="0" bottom="0" />
+				</HitRectInsets>
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_standby_text">
+						<Offset>
+							<AbsDimension x="5" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<EditBox name="$parent_amount" inherits="InputBoxTemplate" letters="15">
+				<Size>
+					<AbsDimension x="105" y="20" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="CEPGP_award_raid_popup_desc" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-5" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:SetAutoFocus(false);
+						self:SetText("0");
+					</OnLoad>
+					<OnEnterPressed>
+						self:ClearFocus();
+					</OnEnterPressed>
+				</Scripts>
+			</EditBox>
+			<EditBox name="$parent_reason" inherits="InputBoxTemplate">
+				<Size>
+					<AbsDimension x="210" y="20" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativePoint="BOTTOM" relativeTo="$parent_reason_text">
+						<Offset>
+							<AbsDimension x="0" y="-5" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:SetAutoFocus(false);
+					</OnLoad>
+					<OnEnterPressed>
+						self:ClearFocus();
+					</OnEnterPressed>
+				</Scripts>
+			</EditBox>
+			<Button name="$parent_cancel" inherits="GameMenuButtonTemplate" text="Cancel">
+				<Size>
+					<AbsDimension x="75" y="30"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-16" y="16"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						PlaySound(799);
+						HideUIPanel(CEPGP_award_raid_popup);
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_confirm" inherits="GameMenuButtonTemplate" text="Confirm">
+				<Size>
+					<AbsDimension x="75" y="30"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="16" y="16"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForDrag("LeftButton");
+				self:SetScale(0.66);
+			</OnLoad>
+			<OnDragStart>
+				self:StartMoving();
+			</OnDragStart>
+			<OnDragStop>
+				self:StopMovingOrSizing();
+			</OnDragStop>
+			<OnShow>
+				CEPGP_award_raid_popup_reason_text:SetPoint("TOP", CEPGP_award_raid_popup_amount, "BOTTOM", 0, -10);
+			</OnShow>
+		</Scripts>
+	</Frame>
+	
 	<Frame name="CEPGP_save_guild_logs" frameStrata="DIALOG" enableMouse="true" parent="UIParent" hidden="true" movable="true" clampedToScreen="true">
 		<Size>
 			<AbsDimension x="300" y="175"/>
@@ -1759,9 +2278,12 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						CEPGP_UIDropDownMenu_Initialize(self, CEPGP_initRestoreDropdown);
 						UIDropDownMenu_SetWidth(self, 250);
+						CEPGP_initRestoreDropdown();
 					</OnShow>
+					<OnLoad>
+						CEPGP_initDropdown(self, CEPGP_initRestoreDropdown);
+					</OnLoad>
 				</Scripts>
 			</Button>
 			<Button name="CEPGP_guild_log_restore_cancel" inherits="GameMenuButtonTemplate" text="Cancel">
@@ -1798,8 +2320,11 @@
 						local record = UIDropDownMenu_GetSelectedName(CEPGP_restoreDropdown);
 						RECORDS[record] = nil;
 						CEPGP_print("Deleted log: " .. record);
-						CEPGP_UIDropDownMenu_Initialize(self, CEPGP_initRestoreDropdown);
+						CEPGP_initDropdown(self, CEPGP_initRestoreDropdown);
 					</OnClick>
+					<OnLoad>
+						CEPGP_initDropdown(self, CEPGP_initRestoreDropdown);
+					</OnLoad>
 				</Scripts>
 			</Button>
 			<Button name="CEPGP_guild_log_restore_confirm" inherits="GameMenuButtonTemplate" text="Confirm">
@@ -1821,8 +2346,10 @@
 							CEPGP_Info.IgnoreUpdates = false;
 							CEPGP_rosterUpdate("GUILD_ROSTER_UPDATE");
 							CEPGP_print("Guild EPGP standings have been restored from record [" .. name .. "]");
-							TRAFFIC[CEPGP_ntgetn(TRAFFIC)+1] = {"Guild", UnitName("player"), "Restored EPGP Standings from log [" .. name .. "]", "", "", "", "", "", time()};
-							CEPGP_ShareTraffic("Guild", UnitName("player"), "Restored EPGP Standings from log [" .. name .. "]");
+							CEPGP_addTraffic("Guild", UnitName("player"), "Restored EPGP Standings from log [" .. name .. "]");
+							if _G["CEPGP_traffic"]:IsVisible() then
+								CEPGP_UpdateTrafficScrollBar();
+							end
 						end
 						
 						CEPGP_Info.IgnoreUpdates = true;
@@ -2425,7 +2952,7 @@
 	
 	<Frame name="CEPGP_traffic" frameStrata="HIGH" enableMouse="true" parent="UIParent" hidden="true" movable="true" clampedToScreen="true">
 		<Size>
-			<AbsDimension x="800" y="480"/>
+			<AbsDimension x="950" y="480"/>
 		</Size>
 		<Anchors>
 			<Anchor point="CENTER"/>
@@ -2441,6 +2968,9 @@
 				<AbsValue val="32"/>
 			</EdgeSize>
 		</Backdrop>
+		<Attributes>
+			<Attribute name="page" type="int" value="0" />
+		</Attributes>
 		<Layers>
 			<Layer level="ARTWORK">
 				<Texture file="Interface\DialogFrame\UI-DialogBox-Header">
@@ -2491,6 +3021,13 @@
 				<FontString name="CEPGP_traffic_epa" inherits="GameFontNormalSmall" text="EP After" />
 				<FontString name="CEPGP_traffic_gpb" inherits="GameFontNormalSmall" text="GP Before /" />
 				<FontString name="CEPGP_traffic_gpa" inherits="GameFontNormalSmall" text="GP After" />
+				<FontString name="$parent_display" inherits="GameFontNormalSmall">
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT">
+							<AbsDimension x="0" y="-5" />
+						</Anchor>
+					</Anchors>
+				</FontString>
 			</Layer>
 		</Layers>
 		<Frames>
@@ -2518,12 +3055,12 @@
 					</OnTextChanged>
 				</Scripts>
 			</EditBox>
-			<Button name="CEPGP_traffic_clear" inherits="GameMenuButtonTemplate" text="Clear EPGP Traffic">
+			<Button name="CEPGP_traffic_clear_button" inherits="GameMenuButtonTemplate" text="Clear EPGP Traffic">
 				<Size>
-					<AbsDimension x="125" y="21" />
+					<AbsDimension x="150" y="21" />
 				</Size>
 				<Anchors>
-					<Anchor point="BOTTOM">
+					<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT">
 						<Offset>
 							<AbsDimension x="10" y="12" />
 						</Offset>
@@ -2548,6 +3085,244 @@
 					</OnHide>
 				</Scripts>
 			</Button>
+			<Button name="CEPGP_traffic_share" inherits="GameMenuButtonTemplate" text="Share All Entries">
+				<Size>
+					<AbsDimension x="125" y="21" />
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_traffic_clear_button">
+						<Offset>
+							<AbsDimension x="10" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<Texture name="$parent_share_info_texture" file="Interface/TUTORIALFRAME/TutorialFrame-QuestionMark.blp" alphaMode="ADD">
+							<Size>
+								<AbsDimension x="25" y="25" />
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT" />
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="$parent_share_info">
+						<Size>
+							<AbsDimension x="25" y="25" />
+						</Size>
+						<Anchors>
+							<Anchor point="CENTER" relativePoint="CENTER" relativeTo="$parent_share_info_texture" />
+						</Anchors>
+						<Scripts>
+							<OnEnter>
+								GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+								GameTooltip:SetText("|c000077BEWhy can't I share some traffic entries?|r\nSome traffic entries cannot be shared because they are missing information which was added in version 1.12.10.\nIf a traffic entry was added before you (or your loot master) started using this version, it cannot be shared.\n\nAnother reason why you can't share a certain traffic entry is because the entry might contain malformed data.\nThe best way to avoid this is to ensure that you and your loot master are running the latest version of CEPGP.\n\n|c00FF0000Why is this taking so long?|r\nTo try to avoid disconnecting you, CEPGP transmits traffic entries at a rate of approximately one log per 0.1 seconds. You currently have " .. #TRAFFIC .. " entries.");
+							</OnEnter>
+							<OnLeave>
+								GameTooltip:Hide();
+							</OnLeave>
+						</Scripts>
+					</Button>
+				</Frames>
+				<Scripts>
+					<OnClick>
+						PlaySound(799);
+						local success, failMsg = pcall(function()
+							self:Disable();
+							local i = #TRAFFIC;
+							local limit = #TRAFFIC;
+							if CEPGP_Info.SharingTraffic then return; end
+							
+							CEPGP_Info.SharingTraffic = true;
+							CEPGP_SendAddonMsg("CEPGP_TRAFFICSyncStart;"..limit, "GUILD");
+							
+							CEPGP_print("Sharing all traffic logs, please wait. This process will start in 10 seconds.");
+							CEPGP_traffic_share_status:SetText("Preparing to send traffic entries");
+							C_Timer.After(10, function()
+								C_Timer.NewTicker(0.1, function()
+									local ID, GUID;
+									local player, issuer, action, EPB, EPA, GPB, GPA, itemID, tStamp;
+									
+									if TRAFFIC[i][9] and TRAFFIC[i][10] and TRAFFIC[i][11] and tonumber(TRAFFIC[i][9]) ~= tonumber(TRAFFIC[i][10]) then
+										
+										player = TRAFFIC[i][1];
+										issuer = TRAFFIC[i][2];
+										action = TRAFFIC[i][3];
+										EPB = TRAFFIC[i][4] or "";
+										EPA = TRAFFIC[i][5] or "";
+										GPB = TRAFFIC[i][6] or "";
+										GPA = TRAFFIC[i][7] or "";
+										itemID = CEPGP_getItemID(CEPGP_getItemString(TRAFFIC[i][8])) or "";
+										tStamp = TRAFFIC[i][9];
+										ID = TRAFFIC[i][10];
+										GUID = TRAFFIC[i][11];
+										
+										
+										local str = player .. ";" .. issuer .. ";" .. action .. ";" .. EPB .. ";" .. EPA .. ";" .. GPB .. ";" .. GPA .. ";" .. itemID .. ";" .. tStamp .. ";" .. ID .. ";" .. GUID;
+										if #str > 255 then
+											CEPGP_print("Could not share traffic entry with ID " .. ID .. " / GUID " .. GUID .. ". Character limit exceeded!", true);
+											return;
+										end
+										CEPGP_SendAddonMsg("CEPGP_TRAFFIC;" .. player .. ";" .. issuer .. ";" .. action .. ";" .. EPB .. ";" .. EPA .. ";" .. GPB .. ";" .. GPA .. ";" .. itemID .. ";" .. tStamp .. ";" .. ID .. ";" .. GUID, "GUILD");
+										CEPGP_traffic_share_status:SetText(limit-(i-1) .. " entries sent");
+									end
+									i = i - 1;
+									if i == 1 then
+										CEPGP_Info.SharingTraffic = false;
+										
+										C_Timer.After(5, function()
+											CEPGP_SendAddonMsg("CEPGP_TRAFFICSyncStop", "GUILD");
+											CEPGP_traffic_share_status:SetText("Finished sending traffic entries");
+											CEPGP_print("Traffic logs have been shared");
+											self:Enable();
+										end);
+									end
+								end, limit);
+							end);
+						end);
+						
+						if not success then
+							CEPGP_print("Unable to share all traffic logs!", true);
+							CEPGP_print(failMsg);
+						end
+					</OnClick>
+				</Scripts>
+			</Button>
+			<EditBox name="CEPGP_traffic_share_status" inherits="InputBoxTemplate">
+				<Size>
+					<AbsDimension x="225" y="21" />
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_traffic_share">
+						<AbsDimension x="30" y="0" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:SetAutoFocus(false);
+						self:Disable();
+					</OnLoad>
+				</Scripts>
+			</EditBox>
+			<Button name="CEPGP_traffic_previous" inherits="GameMenuButtonTemplate">
+				<Size>
+					<AbsDimension x="115" y="21" />
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_traffic_share_status">
+						<Offset>
+							<AbsDimension x="10" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						CEPGP_Info.TrafficScope = math.min(CEPGP_Info.TrafficScope-500, #TRAFFIC);
+						CEPGP_UpdateTrafficScrollBar();
+						CEPGP_traffic_next:Enable();
+						
+						if 500 > #TRAFFIC - CEPGP_Info.TrafficScope then
+							CEPGP_traffic_next:SetText("Next");
+							CEPGP_traffic_next:Disable();							
+						elseif 500 > #TRAFFIC - (CEPGP_Info.TrafficScope+500) then
+							CEPGP_traffic_next:SetText("Last " .. #TRAFFIC - (CEPGP_Info.TrafficScope+500));
+						else
+							CEPGP_traffic_next:SetText("Next 500");
+						end
+						
+						if 500 > CEPGP_Info.TrafficScope then
+							CEPGP_traffic_previous:SetText("Previous");
+							CEPGP_traffic_previous:Disable();
+						elseif 500 > CEPGP_Info.TrafficScope - 500 then
+							CEPGP_traffic_previous:SetText("First 500");
+						else
+							CEPGP_traffic_previous:SetText("Previous 500");
+						end
+					</OnClick>
+					<OnShow>
+						if 500 > #TRAFFIC - CEPGP_Info.TrafficScope then
+							CEPGP_traffic_next:SetText("Next");
+							CEPGP_traffic_next:Disable();							
+						elseif 500 > #TRAFFIC - (CEPGP_Info.TrafficScope+500) then
+							CEPGP_traffic_next:SetText("Last " .. #TRAFFIC - (CEPGP_Info.TrafficScope+500));
+						else
+							CEPGP_traffic_next:SetText("Next 500");
+						end
+						
+						if 500 > CEPGP_Info.TrafficScope then
+							CEPGP_traffic_previous:SetText("Previous");
+							CEPGP_traffic_previous:Disable();
+						elseif 500 > CEPGP_Info.TrafficScope - 500 then
+							CEPGP_traffic_previous:SetText("First 500");
+						else
+							CEPGP_traffic_previous:SetText("Previous 500");
+						end
+					</OnShow>
+				</Scripts>
+			</Button>
+			<Button name="CEPGP_traffic_next" inherits="GameMenuButtonTemplate">
+				<Size>
+					<AbsDimension x="115" y="21" />
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_traffic_previous">
+						<Offset>
+							<AbsDimension x="0" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						CEPGP_Info.TrafficScope = math.min(CEPGP_Info.TrafficScope+500, #TRAFFIC);
+						CEPGP_UpdateTrafficScrollBar();
+						CEPGP_traffic_previous:Enable();
+						
+						local page = CEPGP_traffic:GetAttribute("page");
+						CEPGP_traffic:SetAttribute("page", page+1);
+						
+						if 500 > #TRAFFIC - CEPGP_Info.TrafficScope then
+							CEPGP_traffic_next:SetText("Next");
+							CEPGP_traffic_next:Disable();							
+						elseif 500 > #TRAFFIC - (CEPGP_Info.TrafficScope+500) then
+							CEPGP_traffic_next:SetText("Last " .. #TRAFFIC - (CEPGP_Info.TrafficScope+500));
+						else
+							CEPGP_traffic_next:SetText("Next 500");
+						end
+						
+						if 500 > CEPGP_Info.TrafficScope then
+							CEPGP_traffic_previous:SetText("Previous");
+							CEPGP_traffic_previous:Disable();
+						elseif 500 > CEPGP_Info.TrafficScope - 500 then
+							CEPGP_traffic_previous:SetText("First 500");
+						else
+							CEPGP_traffic_previous:SetText("Previous 500");
+						end
+					</OnClick>
+					<OnShow>
+						if 500 > #TRAFFIC - CEPGP_Info.TrafficScope then
+							CEPGP_traffic_next:SetText("Next");
+							CEPGP_traffic_next:Disable();							
+						elseif 500 > #TRAFFIC - (CEPGP_Info.TrafficScope+500) then
+							CEPGP_traffic_next:SetText("Last " .. #TRAFFIC - (CEPGP_Info.TrafficScope+500));
+						else
+							CEPGP_traffic_next:SetText("Next 500");
+						end
+						
+						if 500 > CEPGP_Info.TrafficScope then
+							CEPGP_traffic_previous:SetText("Previous");
+							CEPGP_traffic_previous:Disable();
+						elseif 500 > CEPGP_Info.TrafficScope - 500 then
+							CEPGP_traffic_previous:SetText("First 500");
+						else
+							CEPGP_traffic_previous:SetText("Previous 500");
+						end
+					</OnShow>
+				</Scripts>
+			</Button>
+			
 			<Button name="CEPGP_traffic_close" inherits="UIPanelCloseButton">
 				<Size>
 					<AbsDimension x="40" y="40" />
@@ -2568,7 +3343,7 @@
 			</Button>
 			<ScrollFrame name="trafficScrollFrame" inherits="UIPanelScrollFrameTemplate">
 				<Size>
-					<AbsDimension x="745" y="320"/>
+					<AbsDimension x="875" y="320"/>
 				</Size>
 				<Anchors>
 					<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
@@ -2592,7 +3367,7 @@
 				self:EnableKeyboard(true);
 				CEPGP_traffic_name:SetPoint("BOTTOMLEFT", trafficScrollFrame, "TOPLEFT", 7.5, 5);
 				CEPGP_traffic_issuer:SetPoint("LEFT", CEPGP_traffic_name, "LEFT", 100, 0);
-				CEPGP_traffic_action:SetPoint("LEFT", CEPGP_traffic_issuer, "LEFT", 335, 0);
+				CEPGP_traffic_action:SetPoint("LEFT", CEPGP_traffic_issuer, "LEFT", 375, 0);
 				CEPGP_traffic_epb:SetPoint("LEFT", CEPGP_traffic_action, "LEFT", 50, 0);
 				CEPGP_traffic_epa:SetPoint("LEFT", CEPGP_traffic_epb, "LEFT", 60, 0);
 				CEPGP_traffic_gpb:SetPoint("LEFT", CEPGP_traffic_epa, "LEFT", 50, 0);
@@ -2942,9 +3717,12 @@
 				</Anchors>
 				<Scripts>
 					<OnShow>
-						CEPGP_UIDropDownMenu_Initialize(self, CEPGP_attendanceDropdown);
+						CEPGP_attendanceDropdown();
 						UIDropDownMenu_SetWidth(self, 140);
 					</OnShow>
+					<OnLoad>
+						CEPGP_initDropdown(self, CEPGP_attendanceDropdown);
+					</OnLoad>
 				</Scripts>
 			</Button>
 			<Button name="CEPGP_attendance_record_view" inherits="GameMenuButtonTemplate" text="Filter by Snapshot">
@@ -3037,7 +3815,7 @@
 				</Anchors>
 				<Scripts>
 					<OnClick>
-						CEPGP_setCriteria(4, "Attendance");
+						CEPGP_setCriteria(12, "Attendance");
 					</OnClick>
 				</Scripts>
 			</Button>
@@ -3057,7 +3835,7 @@
 						self:SetText("Raids\nAttended");
 					</OnLoad>
 					<OnClick>
-						CEPGP_setCriteria(4, "Attendance");
+						CEPGP_setCriteria(12, "Attendance");
 					</OnClick>
 				</Scripts>
 			</Button>
@@ -3801,6 +4579,12 @@
 			<OnHide>
 				CEPGP_Info.IgnoreUpdates = false;
 			</OnHide>
+			<OnMouseDown>
+				self:StartMoving();
+			</OnMouseDown>
+			<OnMouseUp>
+				self:StopMovingOrSizing();
+			</OnMouseUp>
 		</Scripts>
 	</Frame>
 
@@ -3851,8 +4635,9 @@
 				<Scripts>
 					<OnClick>
 						PlaySound(799);
-						CEPGP_use = true;
+						CEPGP_Info.Active[1] = true;
 						CEPGP_confirmation:Hide();
+						CEPGP_Info.Active[2] = true;
 					</OnClick>
 				</Scripts>
 			</Button>
@@ -3870,8 +4655,9 @@
 				<Scripts>
 					<OnClick>
 						PlaySound(799);
-						CEPGP_use = false;
+						CEPGP_Info.Active[1] = false;
 						CEPGP_confirmation:Hide();
+						CEPGP_Info.Active[2] = true;
 					</OnClick>
 				</Scripts>
 			</Button>
@@ -4799,7 +5585,7 @@
 		</Scripts>
 	</Frame>
 
-	<Frame name="CEPGP_ep_award_confirm" parent="UIParent" hidden="true" enableMouse="true" frameStrata="DIALOG" movable="true" clampedToScreen="true">
+	<Frame name="CEPGP_roll_award_confirm" parent="UIParent" hidden="true" enableMouse="true" frameStrata="DIALOG" movable="true" clampedToScreen="true">
 		<Size>
 			<AbsDimension x="400" y="100" />
 		</Size>
@@ -4823,7 +5609,30 @@
 			<Attribute name="name" type="string" value="" />
 		</Attributes>
 		<Layers>
+			<Layer level="ARTWORK">
+				<Texture file="Interface\DialogFrame\UI-DialogBox-Header">
+					<Size>
+						<AbsDimension x="300" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="12"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
 			<Layer level="OVERLAY">
+				<FontString name="$parent_title" inherits="GameFontNormal" text="Award to Highest Roller">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
 				<FontString name="$parent_desc" inherits="GameFontNormal">
 					<Anchors>
 						<Anchor point="TOP">
@@ -4836,7 +5645,7 @@
 			</Layer>
 		</Layers>
 		<Frames>
-			<Button name="$parent_yes" inherits="GameMenuButtonTemplate" text="Yes">
+			<Button name="$parent_yes" inherits="GameMenuButtonTemplate" text="Give for Full Price">
 				<Size>
 					<AbsDimension x="100" y="31" />
 				</Size>
@@ -4850,8 +5659,35 @@
 				<Scripts>
 					<OnClick>
 						PlaySound(799);
-						CEPGP_handleCombat(CEPGP_ep_award_confirm:GetAttribute("name"), true, CEPGP_ep_award_confirm:GetAttribute("guid"));
-						CEPGP_ep_award_confirm:Hide();
+						CEPGP_roll_award_confirm:Hide();
+						CEPGP_award = true;
+						CEPGP_rate = 1;
+						CEPGP_distribute_popup:SetAttribute("responseName", "Highest Roll");
+						CEPGP_distGP = true;
+						CEPGP_distribute_popup_give();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_yes_free" inherits="GameMenuButtonTemplate" text="Give for Free">
+				<Size>
+					<AbsDimension x="100" y="31" />
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOM" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="10" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						PlaySound(799);
+						CEPGP_roll_award_confirm:Hide();
+						CEPGP_award = true;
+						CEPGP_rate = 1;
+						CEPGP_distribute_popup:SetAttribute("responseName", "Highest Roll (Free)");
+						CEPGP_distGP = false;
+						CEPGP_distribute_popup_give();
 					</OnClick>
 				</Scripts>
 			</Button>
@@ -4869,15 +5705,25 @@
 				<Scripts>
 					<OnClick>
 						PlaySound(799);
-						
-						CEPGP_ep_award_confirm:Hide();
+						CEPGP_roll_award_confirm:Hide();
+						CEPGP_distPlayer = "";
+						CEPGP_award = false;
 					</OnClick>
 				</Scripts>
 			</Button>
 		</Frames>
+		<Scripts>
+			<OnHide>
+				CEPGP_award = false;
+			</OnHide>
+		</Scripts>
 	</Frame>
-
+	
+	
 	<Frame name="CEPGP_interface_options" hidden="true">
+		<Anchors>
+			<Anchor point="TOPRIGHT" />
+		</Anchors>
 		<Layers>
 			<Layer level="OVERLAY">
 				<FontString name="$parent_version" inherits="GameFontNormalLarge" text="">
@@ -4897,6 +5743,7 @@
 				<FontString name="$parent_force_sync" inherits="GameFontNormal" text="Allow Forced Synchronisation from Rank:" />
 				<FontString name="$parent_def_channel_text" inherits="GameFontNormal" text="Reporting Channel:" />
 				<FontString name="$parent_poll_rate_text" inherits="GameFontNormal" text="Roster Polling Rate:" />
+				<FontString name="$parent_decay_independent_text" inherits="GameFontNormal" text="Decay EP and GP Independently:" />
 				<Texture name="$parent_poll_rate_info_texture" file="Interface/TUTORIALFRAME/TutorialFrame-QuestionMark.blp" alphaMode="ADD">
 					<Size>
 						<AbsDimension x="25" y="25" />
@@ -5006,6 +5853,7 @@
 				<Scripts>
 					<OnShow>
 						UIDropDownMenu_SetWidth(self, 140);
+						CEPGP_syncRankDropdown();
 					</OnShow>
 					<OnEnter>
 						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
@@ -5014,6 +5862,9 @@
 					<OnLeave>
 						GameTooltip:Hide();
 					</OnLeave>
+					<OnLoad>
+						CEPGP_initDropdown(self, CEPGP_syncRankDropdown);
+					</OnLoad>
 				</Scripts>
 			</Button>
 			<Button name="$parent_force_sync_button" inherits="GameMenuButtonTemplate" text="Force Synchronise">
@@ -5044,6 +5895,7 @@
 				<Scripts>
 					<OnShow>
 						UIDropDownMenu_SetWidth(self, 140);
+						CEPGP_defChannelDropdown();
 					</OnShow>
 					<OnEnter>
 						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
@@ -5052,6 +5904,9 @@
 					<OnLeave>
 						GameTooltip:Hide();
 					</OnLeave>
+					<OnLoad>
+						CEPGP_initDropdown(self, CEPGP_defChannelDropdown);
+					</OnLoad>
 				</Scripts>
 			</Button>
 			<Button name="$parent_poll_rate_info">
@@ -5121,6 +5976,47 @@
 					</OnEditFocusLost>
 				</Scripts>
 			</EditBox>
+			<CheckButton name="$parent_decay_independent_check" inherits="UIOptionsCheckButtonTemplate">
+				<HitRectInsets>
+					<AbsInset left="0" right="0" top="0" bottom="0" />
+				</HitRectInsets>
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_decay_independent_text">
+						<Offset>
+							<AbsDimension x="-5" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						if self:GetChecked() then
+							CEPGP.Decay.Separate = true;
+							CEPGP_guild_decay_EP:Show();
+							CEPGP_guild_decay_GP:Show();
+							CEPGP_guild_decay:Hide();
+							
+							CEPGP_print("EP and GP can now be decayed independently");
+						else
+							CEPGP.Decay.Separate = false;
+							CEPGP_guild_decay_EP:Hide();
+							CEPGP_guild_decay_GP:Hide();
+							CEPGP_guild_decay:Show();
+							
+							CEPGP_print("EP and GP will now decay simultaneously");
+						end
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+						GameTooltip:SetText("Allows your to decay EP and GP independently.");
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+					<OnShow>
+						self:SetChecked(CEPGP.Decay.Separate);
+					</OnShow>
+				</Scripts>
+			</CheckButton>
 		</Frames>
 		<Scripts>
 			<OnShow>
@@ -5129,6 +6025,7 @@
 				_G[frame .. "_force_sync"]:SetPoint("BOTTOMLEFT", self, "BOTTOMLEFT", 10, 20);
 				_G[frame .. "_def_channel_text"]:SetPoint("BOTTOMLEFT", _G[frame.."_force_sync"], "TOPLEFT", 0, 20);
 				_G[frame .. "_poll_rate_text"]:SetPoint("BOTTOMLEFT", _G[frame.."_def_channel_text"], "TOPLEFT", 0, 20);
+				_G[frame .. "_decay_independent_text"]:SetPoint("BOTTOMLEFT", _G[frame.."_poll_rate_text"], "TOPLEFT", 0, 20);
 				
 				_G[frame .. "_forced_sync_check"]:SetChecked(CEPGP.Sync[1]);
 				if CEPGP.Sync[1] then
@@ -5144,7 +6041,7 @@
 			</OnShow>
 		</Scripts>
 	</Frame>
-	
+
 	<Frame name="CEPGP_options_alt_mangement" hidden="true">
 		<Frames>
 			<ScrollFrame name="$parent_ScrollFrame" inherits="UIPanelScrollFrameTemplate">
@@ -8036,8 +8933,8 @@
 	
 	<Frame name="CEPGP_loot_options" hidden="true">
 		<Layers>
-			<Layer level="OVERLAY">
-				<FontString name="$parent_head" inherits="GameFontNormalLarge" text="Loot Distribution">
+			<Layer level="HIGH">
+				<FontString name="CEPGP_loot_options_head" inherits="GameFontNormalLarge" text="Loot Distribution">
 					<Anchors>
 						<Anchor point="TOP">
 							<Offset>
@@ -8046,1280 +8943,1425 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="$parent_timer_text" inherits="GameFontNormal" text="Timeout Duration: " />
-				<FontString name="$parent_raid_warning_text" inherits="GameFontNormal" text="Raid Warning on Announcement: " />
-				<FontString name="$parent_announce_text" inherits="GameFontNormal" text="Announcement Message: " />
-				<FontString name="$parent_hide_response_text" inherits="GameFontNormal" text="Hide Keyphrase Alternatives in Loot Announcement: " />
-				<FontString name="$parent_auto_pass" inherits="GameFontNormal" text="Auto Pass on Ineligible Items:" />
-				<FontString name="$parent_announcement_suppression" inherits="GameFontNormal" text="Suppress Loot Response Announcements: " />
-				<FontString name="$parent_min_EP_text" inherits="GameFontNormal" text="Require Minimum EP for Loot: " />
-				<FontString name="$parent_show_passes" inherits="GameFontNormal" text="Show Passes in Loot Distribution: " />
-				<FontString name="$parent_enforce_PR_sorting" inherits="GameFontNormal" text="Automate Sorting During Loot Distribution: " />
-				<FontString name="$parent_dist_raidwide_text" inherits="GameFontNormal" text="Raid Wide Loot Visibility:" />
-				<FontString name="$parent_min_threshold_text" inherits="GameFontNormal" text="Minimum Threshold for Auto Show:" />
-				<FontString name="$parent_channel_text" inherits="GameFontNormal" text="Loot Response Channel:" />
 			</Layer>
 		</Layers>
-		<Frames>			
-			<Frame name="$parent_1">
-				<Size>
-					<AbsDimension x="275" y="90" />
-				</Size>
+		<Frames>
+			<ScrollFrame name="$parent_scrollframe" inherits="UIPanelScrollFrameTemplate">
 				<Anchors>
-					<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
-						<AbsDimension x="12.5" y="-30" />
-					</Anchor>
+					<Anchor point="TOP" relativePoint="BOTTOM" relativeTo="CEPGP_loot_options_head" />
 				</Anchors>
-				<Layers>
-					<Layer level="OVERLAY">
-						<FontString name="$parent_string" inherits="GameFontNormal" text="Response 1">
-							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" />
-							</Anchors>
-						</FontString>
-						<FontString name="$parent_string_enabled" inherits="GameFontNormal" text="Enabled: ">
-							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string">
-									<AbsDimension x="0" y="-7" />
-								</Anchor>
-							</Anchors>
-						</FontString>
-						<FontString name="$parent_string_text" inherits="GameFontNormal" text="Button Text: ">
-							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_enabled">
-									<AbsDimension x="0" y="-7" />
-								</Anchor>
-							</Anchors>
-						</FontString>
-						<FontString name="$parent_string_discount" inherits="GameFontNormal" text="% GP Discount: ">
-							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_text">
-									<AbsDimension x="0" y="-7" />
-								</Anchor>
-							</Anchors>
-						</FontString>
-						<FontString name="$parent_string_whisper" inherits="GameFontNormal" text="Keyphrase Alternative: ">
-							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_discount">
-									<AbsDimension x="0" y="-7" />
-								</Anchor>
-							</Anchors>
-						</FontString>
-					</Layer>
-				</Layers>
-				<Frames>
-					<CheckButton name="$parent_enabled_check" inherits="UIOptionsCheckButtonTemplate" checked="true">
-						<HitRectInsets>
-							<AbsInset left="0" right="0" top="0" bottom="0" />
-						</HitRectInsets>
-						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_enabled">
-								<Offset>
-									<AbsDimension x="-5" y="0" />
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnLoad>
-								self:Disable();
-							</OnLoad>
-							<OnClick>
-							</OnClick>
-						</Scripts>
-					</CheckButton>
-					<EditBox name="$parent_text" inherits="InputBoxTemplate">
-						<Size>
-							<AbsDimension x="120" y="20" />
-						</Size>
-						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_text">
-								<Offset>
-									<AbsDimension x="15" y="0" />
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnLoad>
-								self:SetAutoFocus(false);
-								self:SetMaxLetters(15);
-							</OnLoad>
-							<OnEnterPressed>
-								self:ClearFocus();
-							</OnEnterPressed>
-							<OnEditFocusLost>
-								self:HighlightText(0,0);
-								local value = self:GetText();
-								local default = CEPGP_response_buttons[1][2];
-								if value == "" then
-									self:SetText(default);
-									CEPGP_print("Button text cannot be blank", true);
-									return;
-								elseif value == default then
-									return;
-								end
-								
-								CEPGP_response_buttons[1][2] = value;
-								CEPGP_print("Updated loot GUI button 1 text.");
-								CEPGP_loot_options_preview_1:SetText(value);
-							</OnEditFocusLost>
-						</Scripts>
-					</EditBox>
-					<EditBox name="$parent_discount" inherits="InputBoxTemplate">
-						<Size>
-							<AbsDimension x="120" y="20" />
-						</Size>
-						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_discount" numeric="true">
-								<Offset>
-									<AbsDimension x="15" y="0" />
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnLoad>
-								self:SetAutoFocus(false);
-								self:SetMaxLetters(3);
-							</OnLoad>
-							<OnEnterPressed>
-								self:ClearFocus();
-							</OnEnterPressed>
-							<OnEditFocusLost>
-								self:HighlightText(0,0);
-								local value = tonumber(self:GetText());
-								local default = CEPGP_response_buttons[1][3];
-								if not value or value == default then
-									self:SetText(default);
-									return;
-								end
-								CEPGP_response_buttons[1][3] = value;
-								CEPGP_print("Updated GP discount for button 1.");
-							</OnEditFocusLost>
-						</Scripts>
-					</EditBox>
-					<EditBox name="$parent_whisper_edit" inherits="InputBoxTemplate">
-						<Size>
-							<AbsDimension x="120" y="20" />
-						</Size>
-						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_whisper">
-								<Offset>
-									<AbsDimension x="15" y="0" />
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnLoad>
-								self:SetAutoFocus(false);
-								
-							</OnLoad>
-							<OnEnterPressed>
-								self:ClearFocus();
-							</OnEnterPressed>
-							<OnEditFocusLost>
-								self:HighlightText(0,0);
-								local value = self:GetText();
-								local default = CEPGP_response_buttons[1][4];
-								if value == "" then
-									self:SetText(default);
-									CEPGP_print("Response keyphrase cannot be blank", true);
-									return;
-								elseif value == default then
-									return;
-								end
-								
-								CEPGP_response_buttons[1][4] = value;
-								CEPGP_print("Updated response 1 keyphrase.");
-								
-							</OnEditFocusLost>
-						</Scripts>
-					</EditBox>
-				</Frames>
-			</Frame>
-			<Frame name="$parent_2">
-				<Size>
-					<AbsDimension x="275" y="110" />
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_1">
-						<AbsDimension x="0" y="-20" />
-					</Anchor>
-				</Anchors>
-				<Layers>
-					<Layer level="OVERLAY">
-						<FontString name="$parent_string" inherits="GameFontNormal" text="Response 2">
-							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" />
-							</Anchors>
-						</FontString>
-						<FontString name="$parent_string_enabled" inherits="GameFontNormal" text="Enabled: ">
-							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string">
-									<AbsDimension x="0" y="-7" />
-								</Anchor>
-							</Anchors>
-						</FontString>
-						<FontString name="$parent_string_text" inherits="GameFontNormal" text="Button Text: ">
-							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_enabled">
-									<AbsDimension x="0" y="-7" />
-								</Anchor>
-							</Anchors>
-						</FontString>
-						<FontString name="$parent_string_discount" inherits="GameFontNormal" text="% GP Discount: ">
-							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_text">
-									<AbsDimension x="0" y="-7" />
-								</Anchor>
-							</Anchors>
-						</FontString>
-						<FontString name="$parent_string_whisper" inherits="GameFontNormal" text="Keyphrase Alternative: ">
-							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_discount">
-									<AbsDimension x="0" y="-7" />
-								</Anchor>
-							</Anchors>
-						</FontString>
-					</Layer>
-				</Layers>
-				<Frames>
-					<CheckButton name="$parent_enabled_check" inherits="UIOptionsCheckButtonTemplate">
-						<HitRectInsets>
-							<AbsInset left="0" right="0" top="0" bottom="0" />
-						</HitRectInsets>
-						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_enabled">
-								<Offset>
-									<AbsDimension x="-5" y="0" />
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnClick>
-								if self:GetChecked() then
-									CEPGP_response_buttons[2][1] = true;
-									CEPGP_loot_options_preview_2:Show();
-									CEPGP_print("Loot GUI button 2 enabled.");
-								else
-									CEPGP_response_buttons[2][1] = false;
-									CEPGP_loot_options_preview_2:Hide();
-									CEPGP_print("Loot GUI button 2 disabled.");
-								end
-							</OnClick>
-						</Scripts>
-					</CheckButton>
-					<EditBox name="$parent_text" inherits="InputBoxTemplate">
-						<Size>
-							<AbsDimension x="120" y="20" />
-						</Size>
-						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_text">
-								<Offset>
-									<AbsDimension x="15" y="0" />
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnLoad>
-								self:SetAutoFocus(false);
-								self:SetMaxLetters(15);
-							</OnLoad>
-							<OnEnterPressed>
-								self:ClearFocus();
-							</OnEnterPressed>
-							<OnEditFocusLost>
-								self:HighlightText(0,0);
-								local value = self:GetText();
-								local default = CEPGP_response_buttons[2][2];
-								if value == "" then
-									self:SetText(default);
-									CEPGP_print("Button text cannot be blank", true);
-									return;
-								elseif value == default then
-									return;
-								end
-								
-								CEPGP_response_buttons[2][2] = value;
-								CEPGP_print("Updated loot GUI button 2 text.");
-								CEPGP_loot_options_preview_2:SetText(value);
-							</OnEditFocusLost>
-						</Scripts>
-					</EditBox>
-					<EditBox name="$parent_discount" inherits="InputBoxTemplate">
-						<Size>
-							<AbsDimension x="120" y="20" />
-						</Size>
-						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_discount" numeric="true">
-								<Offset>
-									<AbsDimension x="15" y="0" />
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnLoad>
-								self:SetAutoFocus(false);
-								self:SetMaxLetters(3);
-							</OnLoad>
-							<OnEnterPressed>
-								self:ClearFocus();
-							</OnEnterPressed>
-							<OnEditFocusLost>
-								self:HighlightText(0,0);
-								local value = tonumber(self:GetText());
-								local default = CEPGP_response_buttons[2][3];
-								if not value or value == default then
-									self:SetText(default);
-									return;
-								end
-								CEPGP_response_buttons[2][3] = value;
-								CEPGP_print("Updated GP discount for button 2.");
-							</OnEditFocusLost>
-						</Scripts>
-					</EditBox>
-					<EditBox name="$parent_whisper_edit" inherits="InputBoxTemplate">
-						<Size>
-							<AbsDimension x="120" y="20" />
-						</Size>
-						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_whisper">
-								<Offset>
-									<AbsDimension x="15" y="0" />
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnLoad>
-								self:SetAutoFocus(false);
-								
-							</OnLoad>
-							<OnEnterPressed>
-								self:ClearFocus();
-							</OnEnterPressed>
-							<OnEditFocusLost>
-								self:HighlightText(0,0);
-								local value = self:GetText();
-								local default = CEPGP_response_buttons[2][4];
-								if value == "" then
-									self:SetText(default);
-									CEPGP_print("Response keyphrase cannot be blank", true);
-									return;
-								elseif value == default then
-									return;
-								end
-								
-								CEPGP_response_buttons[2][4] = value;
-								CEPGP_print("Updated response 2 keyphrase.");
-								
-							</OnEditFocusLost>
-						</Scripts>
-					</EditBox>
-				</Frames>
-			</Frame>
-			<Frame name="$parent_3">
-				<Size>
-					<AbsDimension x="275" y="90" />
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parent_1">
-						<AbsDimension x="0" y="0" />
-					</Anchor>
-				</Anchors>
-				<Layers>
-					<Layer level="OVERLAY">
-						<FontString name="$parent_string" inherits="GameFontNormal" text="Response 3">
-							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" />
-							</Anchors>
-						</FontString>
-						<FontString name="$parent_string_enabled" inherits="GameFontNormal" text="Enabled: ">
-							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string">
-									<AbsDimension x="0" y="-7" />
-								</Anchor>
-							</Anchors>
-						</FontString>
-						<FontString name="$parent_string_text" inherits="GameFontNormal" text="Button Text: ">
-							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_enabled">
-									<AbsDimension x="0" y="-7" />
-								</Anchor>
-							</Anchors>
-						</FontString>
-						<FontString name="$parent_string_discount" inherits="GameFontNormal" text="% GP Discount: ">
-							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_text">
-									<AbsDimension x="0" y="-7" />
-								</Anchor>
-							</Anchors>
-						</FontString>
-						<FontString name="$parent_string_whisper" inherits="GameFontNormal" text="Keyphrase Alternative: ">
-							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_discount">
-									<AbsDimension x="0" y="-7" />
-								</Anchor>
-							</Anchors>
-						</FontString>
-					</Layer>
-				</Layers>
-				<Frames>
-					<CheckButton name="$parent_enabled_check" inherits="UIOptionsCheckButtonTemplate">
-						<HitRectInsets>
-							<AbsInset left="0" right="0" top="0" bottom="0" />
-						</HitRectInsets>
-						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_enabled">
-								<Offset>
-									<AbsDimension x="-5" y="0" />
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnClick>
-								if self:GetChecked() then
-									CEPGP_response_buttons[3][1] = true;
-									CEPGP_loot_options_preview_3:Show();
-									CEPGP_print("Loot GUI button 3 enabled.");
-								else
-									CEPGP_response_buttons[3][1] = false;
-									CEPGP_loot_options_preview_3:Hide();
-									CEPGP_print("Loot GUI button 3 disabled.");
-								end
-							</OnClick>
-						</Scripts>
-					</CheckButton>
-					<EditBox name="$parent_text" inherits="InputBoxTemplate">
-						<Size>
-							<AbsDimension x="120" y="20" />
-						</Size>
-						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_text">
-								<Offset>
-									<AbsDimension x="15" y="0" />
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnLoad>
-								self:SetAutoFocus(false);
-								self:SetMaxLetters(15);
-							</OnLoad>
-							<OnEnterPressed>
-								self:ClearFocus();
-							</OnEnterPressed>
-							<OnEditFocusLost>
-								self:HighlightText(0,0);
-								local value = self:GetText();
-								local default = CEPGP_response_buttons[3][2];
-								if value == "" then
-									self:SetText(default);
-									CEPGP_print("Button text cannot be blank", true);
-									return;
-								elseif value == default then
-									return;
-								end
-								CEPGP_response_buttons[3][2] = value;
-								CEPGP_print("Updated loot GUI button 3 text.");
-								CEPGP_loot_options_preview_3:SetText(value);
-							</OnEditFocusLost>
-						</Scripts>
-					</EditBox>
-					<EditBox name="$parent_discount" inherits="InputBoxTemplate">
-						<Size>
-							<AbsDimension x="120" y="20" />
-						</Size>
-						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_discount" numeric="true">
-								<Offset>
-									<AbsDimension x="15" y="0" />
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnLoad>
-								self:SetAutoFocus(false);
-								self:SetMaxLetters(3);
-							</OnLoad>
-							<OnEnterPressed>
-								self:ClearFocus();
-							</OnEnterPressed>
-							<OnEditFocusLost>
-								self:HighlightText(0,0);
-								local value = tonumber(self:GetText());
-								local default = CEPGP_response_buttons[3][3];
-								if not value or value == default then
-									self:SetText(default);
-									return;
-								end
-								CEPGP_response_buttons[3][3] = value;
-								CEPGP_print("Updated GP discount for button 3.");
-							</OnEditFocusLost>
-							<OnShow>
-								self:SetText(tostring(CEPGP_response_buttons[3][3]));
-							</OnShow>
-						</Scripts>
-					</EditBox>
-					<EditBox name="$parent_whisper_edit" inherits="InputBoxTemplate">
-						<Size>
-							<AbsDimension x="120" y="20" />
-						</Size>
-						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_whisper">
-								<Offset>
-									<AbsDimension x="15" y="0" />
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnLoad>
-								self:SetAutoFocus(false);
-								
-							</OnLoad>
-							<OnEnterPressed>
-								self:ClearFocus();
-							</OnEnterPressed>
-							<OnEditFocusLost>
-								self:HighlightText(0,0);
-								local value = self:GetText();
-								local default = CEPGP_response_buttons[3][4];
-								if value == "" then
-									self:SetText(default);
-									CEPGP_print("Response keyphrase cannot be blank", true);
-									return;
-								elseif value == default then
-									return;
-								end
-								
-								CEPGP_response_buttons[3][4] = value;
-								CEPGP_print("Updated response 3 keyphrase.");
-								
-							</OnEditFocusLost>
-						</Scripts>
-					</EditBox>
-				</Frames>
-			</Frame>
-			<Frame name="$parent_4">
-				<Size>
-					<AbsDimension x="275" y="110" />
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_3">
-						<AbsDimension x="0" y="-20" />
-					</Anchor>
-				</Anchors>
-				<Layers>
-					<Layer level="OVERLAY">
-						<FontString name="$parent_string" inherits="GameFontNormal" text="Response 4">
-							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" />
-							</Anchors>
-						</FontString>
-						<FontString name="$parent_string_enabled" inherits="GameFontNormal" text="Enabled: ">
-							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string">
-									<AbsDimension x="0" y="-7" />
-								</Anchor>
-							</Anchors>
-						</FontString>
-						<FontString name="$parent_string_text" inherits="GameFontNormal" text="Button Text: ">
-							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_enabled">
-									<AbsDimension x="0" y="-7" />
-								</Anchor>
-							</Anchors>
-						</FontString>
-						<FontString name="$parent_string_discount" inherits="GameFontNormal" text="% GP Discount: ">
-							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_text">
-									<AbsDimension x="0" y="-7" />
-								</Anchor>
-							</Anchors>
-						</FontString>
-						<FontString name="$parent_string_whisper" inherits="GameFontNormal" text="Keyphrase Alternative: ">
-							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_discount">
-									<AbsDimension x="0" y="-7" />
-								</Anchor>
-							</Anchors>
-						</FontString>
-					</Layer>
-				</Layers>
-				<Frames>
-					<CheckButton name="$parent_enabled_check" inherits="UIOptionsCheckButtonTemplate">
-						<HitRectInsets>
-							<AbsInset left="0" right="0" top="0" bottom="0" />
-						</HitRectInsets>
-						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_enabled">
-								<Offset>
-									<AbsDimension x="-5" y="0" />
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnClick>
-								if self:GetChecked() then
-									CEPGP_response_buttons[4][1] = true;
-									CEPGP_loot_options_preview_4:Show();
-									CEPGP_print("Loot GUI button 4 enabled.");
-								else
-									CEPGP_response_buttons[4][1] = false;
-									CEPGP_loot_options_preview_4:Hide();
-									CEPGP_print("Loot GUI button 4 disabled.");
-								end
-							</OnClick>
-						</Scripts>
-					</CheckButton>
-					<EditBox name="$parent_text" inherits="InputBoxTemplate">
-						<Size>
-							<AbsDimension x="120" y="20" />
-						</Size>
-						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_text">
-								<Offset>
-									<AbsDimension x="15" y="0" />
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnLoad>
-								self:SetAutoFocus(false);
-								self:SetMaxLetters(15);
-							</OnLoad>
-							<OnEnterPressed>
-								self:ClearFocus();
-							</OnEnterPressed>
-							<OnEditFocusLost>
-								self:HighlightText(0,0);
-								local value = self:GetText();
-								local default = CEPGP_response_buttons[4][2];
-								if value == "" then
-									self:SetText(default);
-									CEPGP_print("Button text cannot be blank", true);
-									return;
-								elseif value == default then
-									return;
-								end
-								CEPGP_response_buttons[4][2] = value;
-								CEPGP_print("Updated loot GUI button 4 text.");
-								CEPGP_loot_options_preview_4:SetText(value);
-							</OnEditFocusLost>
-						</Scripts>
-					</EditBox>
-					<EditBox name="$parent_discount" inherits="InputBoxTemplate">
-						<Size>
-							<AbsDimension x="120" y="20" />
-						</Size>
-						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_discount" numeric="true">
-								<Offset>
-									<AbsDimension x="15" y="0" />
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnLoad>
-								self:SetAutoFocus(false);
-								self:SetMaxLetters(3);
-							</OnLoad>
-							<OnEnterPressed>
-								self:ClearFocus();
-							</OnEnterPressed>
-							<OnEditFocusLost>
-								self:HighlightText(0,0);
-								local value = tonumber(self:GetText());
-								local default = CEPGP_response_buttons[4][3];
-								if not value or value == default then
-									self:SetText(default);
-									return;
-								end
-								CEPGP_response_buttons[4][3] = value;
-								CEPGP_print("Updated GP discount for button 4.");
-							</OnEditFocusLost>
-						</Scripts>
-					</EditBox>
-					<EditBox name="$parent_whisper_edit" inherits="InputBoxTemplate">
-						<Size>
-							<AbsDimension x="120" y="20" />
-						</Size>
-						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_whisper">
-								<Offset>
-									<AbsDimension x="15" y="0" />
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnLoad>
-								self:SetAutoFocus(false);
-								
-							</OnLoad>
-							<OnEnterPressed>
-								self:ClearFocus();
-							</OnEnterPressed>
-							<OnEditFocusLost>
-								self:HighlightText(0,0);
-								local value = self:GetText();
-								local default = CEPGP_response_buttons[4][4];
-								if value == "" then
-									self:SetText(default);
-									CEPGP_print("Response keyphrase cannot be blank", true);
-									return;
-								elseif value == default then
-									return;
-								end
-								
-								CEPGP_response_buttons[4][4] = value;
-								CEPGP_print("Updated response 4 keyphrase.");
-								
-							</OnEditFocusLost>
-						</Scripts>
-					</EditBox>
-				</Frames>
-			</Frame>
-			<Frame name="$parent_preview">
-				<Size>
-					<AbsDimension x="550" y="65" />
-				</Size>
-				<Anchors>
-					<Anchor point="BOTTOM" relativePoint="BOTTOM">
-						<AbsDimension x="0" y="0" />
-					</Anchor>
-				</Anchors>
-				<Layers>
-					<Layer level="OVERLAY">
-						<FontString name="$parent_string" inherits="GameFontNormal" text="Preview">
-							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="TOPLEFT" />
-							</Anchors>
-						</FontString>
-					</Layer>
-				</Layers>
-				<Frames>
-					<Button name="$parent_1" inherits="GameMenuButtonTemplate" text="">
-						<Size>
-							<AbsDimension x="100" y="31" />
-						</Size>
-						<Anchors>
-							<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT">
-								<Offset>
-									<AbsDimension x="60" y="10" />
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnClick>
-								PlaySound(799);
-							</OnClick>
-						</Scripts>
-					</Button>
-					<Button name="$parent_2" inherits="GameMenuButtonTemplate" text="">
-						<Size>
-							<AbsDimension x="100" y="31" />
-						</Size>
-						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_1">
-								<Offset>
-									<AbsDimension x="7.5" y="0" />
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnClick>
-								PlaySound(799);
-							</OnClick>
-						</Scripts>
-					</Button>
-					<Button name="$parent_3" inherits="GameMenuButtonTemplate" text="">
-						<Size>
-							<AbsDimension x="100" y="31" />
-						</Size>
-						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_2">
-								<Offset>
-									<AbsDimension x="7.5" y="0" />
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnClick>
-								PlaySound(799);
-							</OnClick>
-						</Scripts>
-					</Button>
-					<Button name="$parent_4" inherits="GameMenuButtonTemplate" text="">
-						<Size>
-							<AbsDimension x="100" y="31" />
-						</Size>
-						<Anchors>
-							<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_3">
-								<Offset>
-									<AbsDimension x="7.5" y="0" />
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnClick>
-								PlaySound(799);
-							</OnClick>
-						</Scripts>
-					</Button>
-				</Frames>
-			</Frame>
-			<EditBox name="$parent_timer_value" inherits="InputBoxTemplate" autofocus="false" numeric="true">
-				<Size>
-					<AbsDimension x="60" y="20" />
-				</Size>
-				<Anchors>
-					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_timer_text">
-						<AbsDimension x="10" y="0" />
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnEnter>
-						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-						GameTooltip:SetText("Loot Master Feature\nHow many seconds raid members have before they automatically pass on an item.\n0 = disabled (no auto passing)");
-					</OnEnter>
-					<OnLeave>
-						GameTooltip:Hide();
-					</OnLeave>
-					<OnEnterPressed>
-						self:ClearFocus();
-					</OnEnterPressed>
-					<OnEditFocusLost>
-						self:HighlightText(0,0);
-						local value = tonumber(self:GetText());
-						local default = CEPGP_response_time;
-						if not value or value == default then
-							self:SetText(tostring(CEPGP_response_time));
-							return;
-						end
-						if tonumber(value) then
-							CEPGP_response_time = tonumber(value);
-							if value == "0" then
-								CEPGP_print("Disabled loot timeout");
-							else
-								CEPGP_print("Updated loot timeout");
-							end
-						end
-					</OnEditFocusLost>
-					<OnShow>
-						self:SetText(tostring(CEPGP_response_time));
-					</OnShow>
-				</Scripts>
-			</EditBox>
-			<CheckButton name="CEPGP_options_raid_warning_check" inherits="UIOptionsCheckButtonTemplate">
-				<HitRectInsets>
-					<AbsInset left="0" right="0" top="0" bottom="0" />
-				</HitRectInsets>
-				<Anchors>
-					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_raid_warning_text">
-						<Offset>
-							<AbsDimension x="5" y="0" />
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						if self:GetChecked() then
-							CEPGP.Loot.RaidWarning = true;
-							CEPGP_print("Will now send raid warning when announcing loot");
-						else
-							CEPGP.Loot.RaidWarning = false;
-							CEPGP_print("No longer sending raid warning when announcing loot");
-						end
-					</OnClick>
-					<OnEnter>
-						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-						GameTooltip:SetText("When announcing loot, a raid warning will be sent out indicating what item is being distributed.");
-					</OnEnter>
-					<OnLeave>
-						GameTooltip:Hide();
-					</OnLeave>
-					<OnShow>
-						if CEPGP.Loot.RaidWarning then
-							self:SetChecked(true);
-						else
-							self:SetChecked(false);
-						end
-					</OnShow>
-				</Scripts>
-			</CheckButton>
-			<EditBox name="$parent_announce_edit" inherits="InputBoxTemplate" autofocus="false">
-				<Size>
-					<AbsDimension x="300" y="21" />
-				</Size>
-				<Anchors>
-					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_announce_text">
-						<AbsDimension x="10" y="0" />
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnEnter>
-						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-						GameTooltip:SetText("The message when each item is announced");
-					</OnEnter>
-					<OnLeave>
-						GameTooltip:Hide();
-					</OnLeave>
-					<OnEnterPressed>
-						self:ClearFocus();
-					</OnEnterPressed>
-					<OnEditFocusLost>
-						self:HighlightText(0,0);
-						local value = self:GetText();
-						local default = CEPGP.Loot.Announcement;
-						if value == default then
-							return;
-						end
-						CEPGP.Loot.Announcement = value;
-						CEPGP_print("Updated loot announcement message.");
-					</OnEditFocusLost>
-					<OnShow>
-						self:SetText(CEPGP.Loot.Announcement);
-					</OnShow>
-				</Scripts>
-			</EditBox>
-			<CheckButton name="$parent_hide_response_check" inherits="UIOptionsCheckButtonTemplate">
-				<HitRectInsets>
-					<AbsInset left="0" right="0" top="0" bottom="0" />
-				</HitRectInsets>
-				<Anchors>
-					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_hide_response_text">
-						<Offset>
-							<AbsDimension x="5" y="0" />
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						if self:GetChecked() then
-							CEPGP.Loot.HideKeyphrases = true;
-							CEPGP_print("Keyphrase alternatives will no longer be shown when announcing loot");
-						else
-							CEPGP.Loot.HideKeyphrases = false;
-							CEPGP_print("Keyphrase alternatives will now be shown when announcing loot");
-						end
-					</OnClick>
-					<OnEnter>
-						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-						GameTooltip:SetText("Prevents showing the keyphrase alternatives for each response in the loot announcement message.");
-					</OnEnter>
-					<OnLeave>
-						GameTooltip:Hide();
-					</OnLeave>
-					<OnShow>
-						self:SetChecked(CEPGP.Loot.HideKeyphrases);
-					</OnShow>
-				</Scripts>
-			</CheckButton>
-			<CheckButton name="CEPGP_options_auto_pass_check" inherits="UIOptionsCheckButtonTemplate">
-				<HitRectInsets>
-					<AbsInset left="0" right="0" top="0" bottom="0" />
-				</HitRectInsets>
-				<Anchors>
-					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_auto_pass">
-						<Offset>
-							<AbsDimension x="5" y="0" />
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						if self:GetChecked() then
-							CEPGP_auto_pass = true;
-							CEPGP.Loot.AutoPass = true;
-							CEPGP_print("Now passing on ineligible items.");
-						else
-							CEPGP_auto_pass = false;
-							CEPGP.Loot.AutoPass = false;
-							CEPGP_print("No longer passing on ineligible items.");
-						end
-					</OnClick>
-					<OnEnter>
-						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-						GameTooltip:SetText("Automatically pass on items when using the loot GUI if you cannot equip the item.");
-					</OnEnter>
-					<OnLeave>
-						GameTooltip:Hide();
-					</OnLeave>
-					<OnShow>
-						if CEPGP_auto_pass then
-							self:SetChecked(true);
-						else
-							self:SetChecked(false);
-						end
-					</OnShow>
-				</Scripts>
-			</CheckButton>
-			<CheckButton name="CEPGP_options_announcement_suppression_check" inherits="UIOptionsCheckButtonTemplate">
-				<HitRectInsets>
-					<AbsInset left="0" right="0" top="0" bottom="0" />
-				</HitRectInsets>
-				<Anchors>
-					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_announcement_suppression">
-						<Offset>
-							<AbsDimension x="-5" y="0" />
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						if self:GetChecked() then
-							CEPGP_suppress_announcements = true;
-							CEPGP.Loot.SuppressResponses = true;
-							CEPGP_print("Suppressing loot response announcements.");
-						else
-							CEPGP_suppress_announcements = false;
-							CEPGP.Loot.SuppressResponses = false;
-							CEPGP_print("Announcing all loot responses.");
-						end
-					</OnClick>
-					<OnEnter>
-						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-						GameTooltip:SetText("Loot Master Feature\nSuppress responses for loot in chat.\nExample: Player (class) needs.");
-					</OnEnter>
-					<OnLeave>
-						GameTooltip:Hide();
-					</OnLeave>
-					<OnShow>
-						if CEPGP_suppress_announcements then
-							self:SetChecked(true);
-						else
-							self:SetChecked(false);
-						end
-					</OnShow>
-				</Scripts>
-			</CheckButton>
-			<CheckButton name="$parent_min_EP_check" inherits="UIOptionsCheckButtonTemplate">
-				<HitRectInsets>
-					<AbsInset left="0" right="0" top="0" bottom="0" />
-				</HitRectInsets>
-				<Anchors>
-					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_min_EP_text">
-						<Offset>
-							<AbsDimension x="-5" y="0" />
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						if self:GetChecked() then
-							CEPGP_minEP[1] = true;
-							CEPGP.Loot.MinReq[1] = true;
-							CEPGP_print("Now requiring a minimum EP to request loot.");
-							CEPGP_loot_options_min_EP_amount:Show();
-						else
-							CEPGP_minEP[1] = false;
-							CEPGP.Loot.MinReq[1] = false;
-							CEPGP_print("No longer requiring a minimum EP to request loot.");
-							CEPGP_loot_options_min_EP_amount:Hide();
-						end
-					</OnClick>
-					<OnEnter>
-						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-						GameTooltip:SetText("Loot Master Feature\nIf enabled, shows when a player wants loot but has less than the required amount.");
-					</OnEnter>
-					<OnLeave>
-						GameTooltip:Hide();
-					</OnLeave>
-				</Scripts>
-			</CheckButton>
-			<EditBox name="$parent_min_EP_amount" inherits="InputBoxTemplate">
-				<Size>
-					<AbsDimension x="60" y="20" />
-				</Size>
-				<Anchors>
-					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_min_EP_check">
-						<AbsDimension x="10" y="0" />
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnLoad>
-						self:SetAutoFocus(false);
-					</OnLoad>
-					<OnEnterPressed>
-						self:ClearFocus();
-					</OnEnterPressed>
-					<OnEditFocusLost>
-						local value = self:GetText();
-						if not tonumber(value) or tonumber(value) == CEPGP_minEP[2] then
-							self:SetText(tostring(CEPGP_minEP[2]));
-							return;
-						end
-						CEPGP_minEP[2] = tonumber(self:GetText());
-						CEPGP.Loot.MinReq[2] = tonumber(self:GetText());
-						CEPGP_print("Players now require at least " .. CEPGP_minEP[2] .. " EP to request loot.");
-					</OnEditFocusLost>
-					<OnShow>
-						self:SetText(CEPGP_minEP[2]);
-					</OnShow>
-				</Scripts>
-			</EditBox>
-			<CheckButton name="$parent_show_passes_check" inherits="UIOptionsCheckButtonTemplate">
-				<HitRectInsets>
-					<AbsInset left="0" right="0" top="0" bottom="0" />
-				</HitRectInsets>
-				<Anchors>
-					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_show_passes">
-						<Offset>
-							<AbsDimension x="-5" y="0" />
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						if self:GetChecked() then
-							CEPGP_show_passes = true;
-							CEPGP.Loot.ShowPass = true;
-							CEPGP_print("Now showing pass responses in loot distribution");
-						else
-							CEPGP_show_passes = false;
-							CEPGP.Loot.ShowPass = false;
-							CEPGP_print("No longer showing pass responses in loot distribution");
-						end
-					</OnClick>
-					<OnEnter>
-						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-						GameTooltip:SetText("Loot Master Feature\nToggle whether or not you want players who pass on items to show up in the distribution window.");
-					</OnEnter>
-					<OnLeave>
-						GameTooltip:Hide();
-					</OnLeave>
-				</Scripts>
-			</CheckButton>
-			<CheckButton name="$parent_enforce_PR_sorting_check" inherits="UIOptionsCheckButtonTemplate">
-				<HitRectInsets>
-					<AbsInset left="0" right="0" top="0" bottom="0" />
-				</HitRectInsets>
-				<Anchors>
-					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_enforce_PR_sorting">
-						<Offset>
-							<AbsDimension x="-5" y="0" />
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						if self:GetChecked() then
-							CEPGP_PR_sort = true;
-							CEPGP.Loot.AutoSort = true;
-							CEPGP_print("Automated sorting for loot distribution enabled");
-						else
-							CEPGP_PR_sort = false;
-							CEPGP.Loot.AutoSort = false;
-							CEPGP_print("Automated sorting for loot distribution disabled");
-						end
-					</OnClick>
-					<OnEnter>
-						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-						GameTooltip:SetText("Automatically sort by response and then by priority when distributing loot");
-					</OnEnter>
-					<OnLeave>
-						GameTooltip:Hide();
-					</OnLeave>
-				</Scripts>
-			</CheckButton>
-			<CheckButton name="$parent_dist_raidwide_check" inherits="UIOptionsCheckButtonTemplate">
-				<HitRectInsets>
-					<AbsInset left="0" right="0" top="0" bottom="0" />
-				</HitRectInsets>
-				<Anchors>
-					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_dist_raidwide_text">
-						<Offset>
-							<AbsDimension x="-5" y="0" />
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						if self:GetChecked() then
-							CEPGP_raid_wide_dist = true;
-							CEPGP.Loot.RaidVisibility = true;
-							CEPGP_print("All raid members can now see item distribution window.");
-						else
-							CEPGP_raid_wide_dist = false;
-							CEPGP.Loot.RaidVisibility = false;
-							CEPGP_print("Only raid assists can now see the item distribution window.");
-							CEPGP_SendAddonMsg("RaidAssistLootClosed", "RAID");
-						end
-					</OnClick>
-					<OnEnter>
-						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-						GameTooltip:SetText("Loot Master Feature\nAllow all raid members to view the loot distribution window, not just raid assists.");
-					</OnEnter>
-					<OnLeave>
-						GameTooltip:Hide();
-					</OnLeave>
-					<OnShow>
-						if CEPGP_raid_wide_dist then
-							self:SetChecked(true);
-						else
-							self:SetChecked(false);
-						end
-					</OnShow>
-				</Scripts>
-			</CheckButton>
-			
-			
-			<Button name="CEPGP_min_threshold_dropdown" inherits="UIDropDownMenuTemplate">
-				<Anchors>
-					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_min_threshold_text">
-						<Offset>
-							<AbsDimension x="5" y="0" />
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnShow>
-						CEPGP_UIDropDownMenu_Initialize(self, CEPGP_minThresholdDropdown);
-						UIDropDownMenu_SetWidth(self, 140);
-					</OnShow>
-					<OnEnter>
-						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-						GameTooltip:SetText("Personal Feature\nSet the minimum item rarity for the CEPGP loot window to automatically show in raids.\nRequires that you are the master looter and are in a raid group.");
-					</OnEnter>
-					<OnLeave>
-						GameTooltip:Hide();
-					</OnLeave>
-				</Scripts>
-			</Button>
-			<Button name="CEPGP_loot_channel_dropdown" inherits="UIDropDownMenuTemplate">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_min_threshold_dropdown">
-						<Offset>
-							<AbsDimension x="0" y="0" />
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnShow>
-						CEPGP_UIDropDownMenu_Initialize(self, CEPGP_lootChannelDropdown);
-						UIDropDownMenu_SetWidth(self, 140);
-					</OnShow>
-					<OnEnter>
-						GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-						GameTooltip:SetText("Sets the channel that loot responses are sent to.\nExample: Player (class) needs.");
-					</OnEnter>
-					<OnLeave>
-						GameTooltip:Hide();
-					</OnLeave>
-				</Scripts>
-			</Button>
+				<ScrollChild>
+					<Frame name="$parent_container">
+						<Layers>
+							<Layer level="HIGH">
+								<FontString name="CEPGP_loot_options_timer_text" inherits="GameFontNormal" text="Timeout Duration: " />
+								<FontString name="CEPGP_loot_options_raid_warning_text" inherits="GameFontNormal" text="Raid Warning on Announcement: " />
+								<FontString name="CEPGP_loot_options_announce_text" inherits="GameFontNormal" text="Announcement Message: " />
+								<FontString name="CEPGP_loot_options_hide_response_text" inherits="GameFontNormal" text="Hide Keyphrase Alternatives in Loot Announcement: " />
+								<FontString name="CEPGP_loot_options_auto_pass" inherits="GameFontNormal" text="Auto Pass on Ineligible Items:" />
+								<FontString name="CEPGP_loot_options_announcement_suppression" inherits="GameFontNormal" text="Suppress Loot Response Announcements: " />
+								<FontString name="CEPGP_loot_options_min_EP_text" inherits="GameFontNormal" text="Require Minimum EP for Loot: " />
+								<FontString name="CEPGP_loot_options_show_passes" inherits="GameFontNormal" text="Show Passes in Loot Distribution: " />
+								<FontString name="CEPGP_loot_options_enforce_PR_sorting" inherits="GameFontNormal" text="Automate Sorting During Loot Distribution: " />
+								<FontString name="CEPGP_loot_options_dist_raidwide_text" inherits="GameFontNormal" text="Raid Wide Loot Visibility:" />
+								<FontString name="CEPGP_loot_options_min_threshold_text" inherits="GameFontNormal" text="Minimum Threshold for Auto Show:" />
+								<FontString name="CEPGP_loot_options_channel_text" inherits="GameFontNormal" text="Loot Response Channel:" />
+								<FontString name="CEPGP_loot_options_pass_roll_text" inherits="GameFontNormal" text="Auto Roll for Passes:" />
+								<FontString name="CEPGP_loot_options_announce_roll_text" inherits="GameFontNormal" text="Include Rolls in Response Announcements:" />
+								<FontString name="CEPGP_loot_options_resolve_roll_text" inherits="GameFontNormal" text="Auto Resolve Duplicate Rolls:" />
+							</Layer>
+						</Layers>
+						<Frames>
+							<Frame name="CEPGP_loot_options_1">
+								<Size>
+									<AbsDimension x="275" y="90" />
+								</Size>
+								<Anchors>
+									<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+										<AbsDimension x="12.5" y="-30" />
+									</Anchor>
+								</Anchors>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="$parent_string" inherits="GameFontNormal" text="Response 1">
+											<Anchors>
+												<Anchor point="TOPLEFT" relativePoint="TOPLEFT" />
+											</Anchors>
+										</FontString>
+										<FontString name="$parent_string_enabled" inherits="GameFontNormal" text="Enabled: ">
+											<Anchors>
+												<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string">
+													<AbsDimension x="0" y="-7" />
+												</Anchor>
+											</Anchors>
+										</FontString>
+										<FontString name="$parent_string_text" inherits="GameFontNormal" text="Button Text: ">
+											<Anchors>
+												<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_enabled">
+													<AbsDimension x="0" y="-7" />
+												</Anchor>
+											</Anchors>
+										</FontString>
+										<FontString name="$parent_string_discount" inherits="GameFontNormal" text="% GP Discount: ">
+											<Anchors>
+												<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_text">
+													<AbsDimension x="0" y="-7" />
+												</Anchor>
+											</Anchors>
+										</FontString>
+										<FontString name="$parent_string_whisper" inherits="GameFontNormal" text="Keyphrase Alternative: ">
+											<Anchors>
+												<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_discount">
+													<AbsDimension x="0" y="-7" />
+												</Anchor>
+											</Anchors>
+										</FontString>
+									</Layer>
+								</Layers>
+								<Frames>
+									<CheckButton name="$parent_enabled_check" inherits="UIOptionsCheckButtonTemplate" checked="true">
+										<HitRectInsets>
+											<AbsInset left="0" right="0" top="0" bottom="0" />
+										</HitRectInsets>
+										<Anchors>
+											<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_enabled">
+												<Offset>
+													<AbsDimension x="-5" y="0" />
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnLoad>
+												self:Disable();
+											</OnLoad>
+											<OnClick>
+											</OnClick>
+										</Scripts>
+									</CheckButton>
+									<EditBox name="$parent_text" inherits="InputBoxTemplate">
+										<Size>
+											<AbsDimension x="120" y="20" />
+										</Size>
+										<Anchors>
+											<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_text">
+												<Offset>
+													<AbsDimension x="15" y="0" />
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnLoad>
+												self:SetAutoFocus(false);
+												self:SetMaxLetters(15);
+											</OnLoad>
+											<OnEnterPressed>
+												self:ClearFocus();
+											</OnEnterPressed>
+											<OnEditFocusLost>
+												self:HighlightText(0,0);
+												local value = self:GetText();
+												local default = CEPGP_response_buttons[1][2];
+												if value == "" then
+													self:SetText(default);
+													CEPGP_print("Button text cannot be blank", true);
+													return;
+												elseif value == default then
+													return;
+												end
+												
+												CEPGP_response_buttons[1][2] = value;
+												CEPGP_print("Updated loot GUI button 1 text.");
+												CEPGP_loot_options_preview_1:SetText(value);
+											</OnEditFocusLost>
+										</Scripts>
+									</EditBox>
+									<EditBox name="$parent_discount" inherits="InputBoxTemplate">
+										<Size>
+											<AbsDimension x="120" y="20" />
+										</Size>
+										<Anchors>
+											<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_discount" numeric="true">
+												<Offset>
+													<AbsDimension x="15" y="0" />
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnLoad>
+												self:SetAutoFocus(false);
+												self:SetMaxLetters(3);
+											</OnLoad>
+											<OnEnterPressed>
+												self:ClearFocus();
+											</OnEnterPressed>
+											<OnEditFocusLost>
+												self:HighlightText(0,0);
+												local value = tonumber(self:GetText());
+												local default = CEPGP_response_buttons[1][3];
+												if not value or value == default then
+													self:SetText(default);
+													return;
+												end
+												CEPGP_response_buttons[1][3] = value;
+												CEPGP_print("Updated GP discount for button 1.");
+											</OnEditFocusLost>
+										</Scripts>
+									</EditBox>
+									<EditBox name="$parent_whisper_edit" inherits="InputBoxTemplate">
+										<Size>
+											<AbsDimension x="120" y="20" />
+										</Size>
+										<Anchors>
+											<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_whisper">
+												<Offset>
+													<AbsDimension x="15" y="0" />
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnLoad>
+												self:SetAutoFocus(false);
+												
+											</OnLoad>
+											<OnEnterPressed>
+												self:ClearFocus();
+											</OnEnterPressed>
+											<OnEditFocusLost>
+												self:HighlightText(0,0);
+												local value = self:GetText();
+												local default = CEPGP_response_buttons[1][4];
+												if value == "" then
+													self:SetText(default);
+													CEPGP_print("Response keyphrase cannot be blank", true);
+													return;
+												elseif value == default then
+													return;
+												end
+												
+												CEPGP_response_buttons[1][4] = value;
+												CEPGP_print("Updated response 1 keyphrase.");
+												
+											</OnEditFocusLost>
+										</Scripts>
+									</EditBox>
+								</Frames>
+							</Frame>
+							<Frame name="CEPGP_loot_options_2">
+								<Size>
+									<AbsDimension x="275" y="110" />
+								</Size>
+								<Anchors>
+									<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_loot_options_1">
+										<AbsDimension x="0" y="-20" />
+									</Anchor>
+								</Anchors>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="$parent_string" inherits="GameFontNormal" text="Response 2">
+											<Anchors>
+												<Anchor point="TOPLEFT" relativePoint="TOPLEFT" />
+											</Anchors>
+										</FontString>
+										<FontString name="$parent_string_enabled" inherits="GameFontNormal" text="Enabled: ">
+											<Anchors>
+												<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string">
+													<AbsDimension x="0" y="-7" />
+												</Anchor>
+											</Anchors>
+										</FontString>
+										<FontString name="$parent_string_text" inherits="GameFontNormal" text="Button Text: ">
+											<Anchors>
+												<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_enabled">
+													<AbsDimension x="0" y="-7" />
+												</Anchor>
+											</Anchors>
+										</FontString>
+										<FontString name="$parent_string_discount" inherits="GameFontNormal" text="% GP Discount: ">
+											<Anchors>
+												<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_text">
+													<AbsDimension x="0" y="-7" />
+												</Anchor>
+											</Anchors>
+										</FontString>
+										<FontString name="$parent_string_whisper" inherits="GameFontNormal" text="Keyphrase Alternative: ">
+											<Anchors>
+												<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_discount">
+													<AbsDimension x="0" y="-7" />
+												</Anchor>
+											</Anchors>
+										</FontString>
+									</Layer>
+								</Layers>
+								<Frames>
+									<CheckButton name="$parent_enabled_check" inherits="UIOptionsCheckButtonTemplate">
+										<HitRectInsets>
+											<AbsInset left="0" right="0" top="0" bottom="0" />
+										</HitRectInsets>
+										<Anchors>
+											<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_enabled">
+												<Offset>
+													<AbsDimension x="-5" y="0" />
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnClick>
+												if self:GetChecked() then
+													CEPGP_response_buttons[2][1] = true;
+													CEPGP_loot_options_preview_2:Show();
+													CEPGP_print("Loot GUI button 2 enabled.");
+												else
+													CEPGP_response_buttons[2][1] = false;
+													CEPGP_loot_options_preview_2:Hide();
+													CEPGP_print("Loot GUI button 2 disabled.");
+												end
+											</OnClick>
+										</Scripts>
+									</CheckButton>
+									<EditBox name="$parent_text" inherits="InputBoxTemplate">
+										<Size>
+											<AbsDimension x="120" y="20" />
+										</Size>
+										<Anchors>
+											<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_text">
+												<Offset>
+													<AbsDimension x="15" y="0" />
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnLoad>
+												self:SetAutoFocus(false);
+												self:SetMaxLetters(15);
+											</OnLoad>
+											<OnEnterPressed>
+												self:ClearFocus();
+											</OnEnterPressed>
+											<OnEditFocusLost>
+												self:HighlightText(0,0);
+												local value = self:GetText();
+												local default = CEPGP_response_buttons[2][2];
+												if value == "" then
+													self:SetText(default);
+													CEPGP_print("Button text cannot be blank", true);
+													return;
+												elseif value == default then
+													return;
+												end
+												
+												CEPGP_response_buttons[2][2] = value;
+												CEPGP_print("Updated loot GUI button 2 text.");
+												CEPGP_loot_options_preview_2:SetText(value);
+											</OnEditFocusLost>
+										</Scripts>
+									</EditBox>
+									<EditBox name="$parent_discount" inherits="InputBoxTemplate">
+										<Size>
+											<AbsDimension x="120" y="20" />
+										</Size>
+										<Anchors>
+											<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_discount" numeric="true">
+												<Offset>
+													<AbsDimension x="15" y="0" />
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnLoad>
+												self:SetAutoFocus(false);
+												self:SetMaxLetters(3);
+											</OnLoad>
+											<OnEnterPressed>
+												self:ClearFocus();
+											</OnEnterPressed>
+											<OnEditFocusLost>
+												self:HighlightText(0,0);
+												local value = tonumber(self:GetText());
+												local default = CEPGP_response_buttons[2][3];
+												if not value or value == default then
+													self:SetText(default);
+													return;
+												end
+												CEPGP_response_buttons[2][3] = value;
+												CEPGP_print("Updated GP discount for button 2.");
+											</OnEditFocusLost>
+										</Scripts>
+									</EditBox>
+									<EditBox name="$parent_whisper_edit" inherits="InputBoxTemplate">
+										<Size>
+											<AbsDimension x="120" y="20" />
+										</Size>
+										<Anchors>
+											<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_whisper">
+												<Offset>
+													<AbsDimension x="15" y="0" />
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnLoad>
+												self:SetAutoFocus(false);
+												
+											</OnLoad>
+											<OnEnterPressed>
+												self:ClearFocus();
+											</OnEnterPressed>
+											<OnEditFocusLost>
+												self:HighlightText(0,0);
+												local value = self:GetText();
+												local default = CEPGP_response_buttons[2][4];
+												if value == "" then
+													self:SetText(default);
+													CEPGP_print("Response keyphrase cannot be blank", true);
+													return;
+												elseif value == default then
+													return;
+												end
+												
+												CEPGP_response_buttons[2][4] = value;
+												CEPGP_print("Updated response 2 keyphrase.");
+												
+											</OnEditFocusLost>
+										</Scripts>
+									</EditBox>
+								</Frames>
+							</Frame>
+							<Frame name="CEPGP_loot_options_3">
+								<Size>
+									<AbsDimension x="275" y="90" />
+								</Size>
+								<Anchors>
+									<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="CEPGP_loot_options_1">
+										<AbsDimension x="0" y="0" />
+									</Anchor>
+								</Anchors>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="$parent_string" inherits="GameFontNormal" text="Response 3">
+											<Anchors>
+												<Anchor point="TOPLEFT" relativePoint="TOPLEFT" />
+											</Anchors>
+										</FontString>
+										<FontString name="$parent_string_enabled" inherits="GameFontNormal" text="Enabled: ">
+											<Anchors>
+												<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string">
+													<AbsDimension x="0" y="-7" />
+												</Anchor>
+											</Anchors>
+										</FontString>
+										<FontString name="$parent_string_text" inherits="GameFontNormal" text="Button Text: ">
+											<Anchors>
+												<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_enabled">
+													<AbsDimension x="0" y="-7" />
+												</Anchor>
+											</Anchors>
+										</FontString>
+										<FontString name="$parent_string_discount" inherits="GameFontNormal" text="% GP Discount: ">
+											<Anchors>
+												<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_text">
+													<AbsDimension x="0" y="-7" />
+												</Anchor>
+											</Anchors>
+										</FontString>
+										<FontString name="$parent_string_whisper" inherits="GameFontNormal" text="Keyphrase Alternative: ">
+											<Anchors>
+												<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_discount">
+													<AbsDimension x="0" y="-7" />
+												</Anchor>
+											</Anchors>
+										</FontString>
+									</Layer>
+								</Layers>
+								<Frames>
+									<CheckButton name="$parent_enabled_check" inherits="UIOptionsCheckButtonTemplate">
+										<HitRectInsets>
+											<AbsInset left="0" right="0" top="0" bottom="0" />
+										</HitRectInsets>
+										<Anchors>
+											<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_enabled">
+												<Offset>
+													<AbsDimension x="-5" y="0" />
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnClick>
+												if self:GetChecked() then
+													CEPGP_response_buttons[3][1] = true;
+													CEPGP_loot_options_preview_3:Show();
+													CEPGP_print("Loot GUI button 3 enabled.");
+												else
+													CEPGP_response_buttons[3][1] = false;
+													CEPGP_loot_options_preview_3:Hide();
+													CEPGP_print("Loot GUI button 3 disabled.");
+												end
+											</OnClick>
+										</Scripts>
+									</CheckButton>
+									<EditBox name="$parent_text" inherits="InputBoxTemplate">
+										<Size>
+											<AbsDimension x="120" y="20" />
+										</Size>
+										<Anchors>
+											<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_text">
+												<Offset>
+													<AbsDimension x="15" y="0" />
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnLoad>
+												self:SetAutoFocus(false);
+												self:SetMaxLetters(15);
+											</OnLoad>
+											<OnEnterPressed>
+												self:ClearFocus();
+											</OnEnterPressed>
+											<OnEditFocusLost>
+												self:HighlightText(0,0);
+												local value = self:GetText();
+												local default = CEPGP_response_buttons[3][2];
+												if value == "" then
+													self:SetText(default);
+													CEPGP_print("Button text cannot be blank", true);
+													return;
+												elseif value == default then
+													return;
+												end
+												CEPGP_response_buttons[3][2] = value;
+												CEPGP_print("Updated loot GUI button 3 text.");
+												CEPGP_loot_options_preview_3:SetText(value);
+											</OnEditFocusLost>
+										</Scripts>
+									</EditBox>
+									<EditBox name="$parent_discount" inherits="InputBoxTemplate">
+										<Size>
+											<AbsDimension x="120" y="20" />
+										</Size>
+										<Anchors>
+											<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_discount" numeric="true">
+												<Offset>
+													<AbsDimension x="15" y="0" />
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnLoad>
+												self:SetAutoFocus(false);
+												self:SetMaxLetters(3);
+											</OnLoad>
+											<OnEnterPressed>
+												self:ClearFocus();
+											</OnEnterPressed>
+											<OnEditFocusLost>
+												self:HighlightText(0,0);
+												local value = tonumber(self:GetText());
+												local default = CEPGP_response_buttons[3][3];
+												if not value or value == default then
+													self:SetText(default);
+													return;
+												end
+												CEPGP_response_buttons[3][3] = value;
+												CEPGP_print("Updated GP discount for button 3.");
+											</OnEditFocusLost>
+											<OnShow>
+												self:SetText(tostring(CEPGP_response_buttons[3][3]));
+											</OnShow>
+										</Scripts>
+									</EditBox>
+									<EditBox name="$parent_whisper_edit" inherits="InputBoxTemplate">
+										<Size>
+											<AbsDimension x="120" y="20" />
+										</Size>
+										<Anchors>
+											<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_whisper">
+												<Offset>
+													<AbsDimension x="15" y="0" />
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnLoad>
+												self:SetAutoFocus(false);
+												
+											</OnLoad>
+											<OnEnterPressed>
+												self:ClearFocus();
+											</OnEnterPressed>
+											<OnEditFocusLost>
+												self:HighlightText(0,0);
+												local value = self:GetText();
+												local default = CEPGP_response_buttons[3][4];
+												if value == "" then
+													self:SetText(default);
+													CEPGP_print("Response keyphrase cannot be blank", true);
+													return;
+												elseif value == default then
+													return;
+												end
+												
+												CEPGP_response_buttons[3][4] = value;
+												CEPGP_print("Updated response 3 keyphrase.");
+												
+											</OnEditFocusLost>
+										</Scripts>
+									</EditBox>
+								</Frames>
+							</Frame>
+							<Frame name="CEPGP_loot_options_4">
+								<Size>
+									<AbsDimension x="275" y="110" />
+								</Size>
+								<Anchors>
+									<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_loot_options_3">
+										<AbsDimension x="0" y="-20" />
+									</Anchor>
+								</Anchors>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="$parent_string" inherits="GameFontNormal" text="Response 4">
+											<Anchors>
+												<Anchor point="TOPLEFT" relativePoint="TOPLEFT" />
+											</Anchors>
+										</FontString>
+										<FontString name="$parent_string_enabled" inherits="GameFontNormal" text="Enabled: ">
+											<Anchors>
+												<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string">
+													<AbsDimension x="0" y="-7" />
+												</Anchor>
+											</Anchors>
+										</FontString>
+										<FontString name="$parent_string_text" inherits="GameFontNormal" text="Button Text: ">
+											<Anchors>
+												<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_enabled">
+													<AbsDimension x="0" y="-7" />
+												</Anchor>
+											</Anchors>
+										</FontString>
+										<FontString name="$parent_string_discount" inherits="GameFontNormal" text="% GP Discount: ">
+											<Anchors>
+												<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_text">
+													<AbsDimension x="0" y="-7" />
+												</Anchor>
+											</Anchors>
+										</FontString>
+										<FontString name="$parent_string_whisper" inherits="GameFontNormal" text="Keyphrase Alternative: ">
+											<Anchors>
+												<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_string_discount">
+													<AbsDimension x="0" y="-7" />
+												</Anchor>
+											</Anchors>
+										</FontString>
+									</Layer>
+								</Layers>
+								<Frames>
+									<CheckButton name="$parent_enabled_check" inherits="UIOptionsCheckButtonTemplate">
+										<HitRectInsets>
+											<AbsInset left="0" right="0" top="0" bottom="0" />
+										</HitRectInsets>
+										<Anchors>
+											<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_enabled">
+												<Offset>
+													<AbsDimension x="-5" y="0" />
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnClick>
+												if self:GetChecked() then
+													CEPGP_response_buttons[4][1] = true;
+													CEPGP_loot_options_preview_4:Show();
+													CEPGP_print("Loot GUI button 4 enabled.");
+												else
+													CEPGP_response_buttons[4][1] = false;
+													CEPGP_loot_options_preview_4:Hide();
+													CEPGP_print("Loot GUI button 4 disabled.");
+												end
+											</OnClick>
+										</Scripts>
+									</CheckButton>
+									<EditBox name="$parent_text" inherits="InputBoxTemplate">
+										<Size>
+											<AbsDimension x="120" y="20" />
+										</Size>
+										<Anchors>
+											<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_text">
+												<Offset>
+													<AbsDimension x="15" y="0" />
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnLoad>
+												self:SetAutoFocus(false);
+												self:SetMaxLetters(15);
+											</OnLoad>
+											<OnEnterPressed>
+												self:ClearFocus();
+											</OnEnterPressed>
+											<OnEditFocusLost>
+												self:HighlightText(0,0);
+												local value = self:GetText();
+												local default = CEPGP_response_buttons[4][2];
+												if value == "" then
+													self:SetText(default);
+													CEPGP_print("Button text cannot be blank", true);
+													return;
+												elseif value == default then
+													return;
+												end
+												CEPGP_response_buttons[4][2] = value;
+												CEPGP_print("Updated loot GUI button 4 text.");
+												CEPGP_loot_options_preview_4:SetText(value);
+											</OnEditFocusLost>
+										</Scripts>
+									</EditBox>
+									<EditBox name="$parent_discount" inherits="InputBoxTemplate">
+										<Size>
+											<AbsDimension x="120" y="20" />
+										</Size>
+										<Anchors>
+											<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_discount" numeric="true">
+												<Offset>
+													<AbsDimension x="15" y="0" />
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnLoad>
+												self:SetAutoFocus(false);
+												self:SetMaxLetters(3);
+											</OnLoad>
+											<OnEnterPressed>
+												self:ClearFocus();
+											</OnEnterPressed>
+											<OnEditFocusLost>
+												self:HighlightText(0,0);
+												local value = tonumber(self:GetText());
+												local default = CEPGP_response_buttons[4][3];
+												if not value or value == default then
+													self:SetText(default);
+													return;
+												end
+												CEPGP_response_buttons[4][3] = value;
+												CEPGP_print("Updated GP discount for button 4.");
+											</OnEditFocusLost>
+										</Scripts>
+									</EditBox>
+									<EditBox name="$parent_whisper_edit" inherits="InputBoxTemplate">
+										<Size>
+											<AbsDimension x="120" y="20" />
+										</Size>
+										<Anchors>
+											<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_string_whisper">
+												<Offset>
+													<AbsDimension x="15" y="0" />
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnLoad>
+												self:SetAutoFocus(false);
+												
+											</OnLoad>
+											<OnEnterPressed>
+												self:ClearFocus();
+											</OnEnterPressed>
+											<OnEditFocusLost>
+												self:HighlightText(0,0);
+												local value = self:GetText();
+												local default = CEPGP_response_buttons[4][4];
+												if value == "" then
+													self:SetText(default);
+													CEPGP_print("Response keyphrase cannot be blank", true);
+													return;
+												elseif value == default then
+													return;
+												end
+												
+												CEPGP_response_buttons[4][4] = value;
+												CEPGP_print("Updated response 4 keyphrase.");
+												
+											</OnEditFocusLost>
+										</Scripts>
+									</EditBox>
+								</Frames>
+							</Frame>
+							<Frame name="CEPGP_loot_options_preview">
+								<Size>
+									<AbsDimension x="550" y="65" />
+								</Size>
+								<Anchors>
+									<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_loot_options_2">
+										<AbsDimension x="0" y="0" />
+									</Anchor>
+								</Anchors>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="$parent_string" inherits="GameFontNormal" text="Preview">
+											<Anchors>
+												<Anchor point="TOPLEFT" relativePoint="TOPLEFT" />
+											</Anchors>
+										</FontString>
+									</Layer>
+								</Layers>
+								<Frames>
+									<Button name="$parent_1" inherits="GameMenuButtonTemplate" text="">
+										<Size>
+											<AbsDimension x="100" y="31" />
+										</Size>
+										<Anchors>
+											<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT">
+												<Offset>
+													<AbsDimension x="60" y="10" />
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnClick>
+												PlaySound(799);
+											</OnClick>
+										</Scripts>
+									</Button>
+									<Button name="$parent_2" inherits="GameMenuButtonTemplate" text="">
+										<Size>
+											<AbsDimension x="100" y="31" />
+										</Size>
+										<Anchors>
+											<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_1">
+												<Offset>
+													<AbsDimension x="7.5" y="0" />
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnClick>
+												PlaySound(799);
+											</OnClick>
+										</Scripts>
+									</Button>
+									<Button name="$parent_3" inherits="GameMenuButtonTemplate" text="">
+										<Size>
+											<AbsDimension x="100" y="31" />
+										</Size>
+										<Anchors>
+											<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_2">
+												<Offset>
+													<AbsDimension x="7.5" y="0" />
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnClick>
+												PlaySound(799);
+											</OnClick>
+										</Scripts>
+									</Button>
+									<Button name="$parent_4" inherits="GameMenuButtonTemplate" text="">
+										<Size>
+											<AbsDimension x="100" y="31" />
+										</Size>
+										<Anchors>
+											<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_3">
+												<Offset>
+													<AbsDimension x="7.5" y="0" />
+												</Offset>
+											</Anchor>
+										</Anchors>
+										<Scripts>
+											<OnClick>
+												PlaySound(799);
+											</OnClick>
+										</Scripts>
+									</Button>
+								</Frames>
+							</Frame>
+							<EditBox name="CEPGP_loot_options_timer_value" inherits="InputBoxTemplate" autofocus="false" numeric="true">
+								<Size>
+									<AbsDimension x="60" y="20" />
+								</Size>
+								<Anchors>
+									<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_timer_text">
+										<AbsDimension x="10" y="0" />
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnEnter>
+										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+										GameTooltip:SetText("Loot Master Feature\nHow many seconds raid members have before they automatically pass on an item.\n0 = disabled (no auto passing)");
+									</OnEnter>
+									<OnLeave>
+										GameTooltip:Hide();
+									</OnLeave>
+									<OnEnterPressed>
+										self:ClearFocus();
+									</OnEnterPressed>
+									<OnEditFocusLost>
+										self:HighlightText(0,0);
+										local value = tonumber(self:GetText());
+										local default = CEPGP_response_time;
+										if not value or value == default then
+											self:SetText(tostring(CEPGP_response_time));
+											return;
+										end
+										if tonumber(value) then
+											CEPGP_response_time = tonumber(value);
+											if value == "0" then
+												CEPGP_print("Disabled loot timeout");
+											else
+												CEPGP_print("Updated loot timeout");
+											end
+										end
+									</OnEditFocusLost>
+									<OnShow>
+										self:SetText(tostring(CEPGP_response_time));
+									</OnShow>
+								</Scripts>
+							</EditBox>
+							<CheckButton name="CEPGP_options_raid_warning_check" inherits="UIOptionsCheckButtonTemplate">
+								<HitRectInsets>
+									<AbsInset left="0" right="0" top="0" bottom="0" />
+								</HitRectInsets>
+								<Anchors>
+									<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_raid_warning_text">
+										<Offset>
+											<AbsDimension x="5" y="0" />
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnClick>
+										if self:GetChecked() then
+											CEPGP.Loot.RaidWarning = true;
+											CEPGP_print("Will now send raid warning when announcing loot");
+										else
+											CEPGP.Loot.RaidWarning = false;
+											CEPGP_print("No longer sending raid warning when announcing loot");
+										end
+									</OnClick>
+									<OnEnter>
+										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+										GameTooltip:SetText("When announcing loot, a raid warning will be sent out indicating what item is being distributed.");
+									</OnEnter>
+									<OnLeave>
+										GameTooltip:Hide();
+									</OnLeave>
+									<OnShow>
+										if CEPGP.Loot.RaidWarning then
+											self:SetChecked(true);
+										else
+											self:SetChecked(false);
+										end
+									</OnShow>
+								</Scripts>
+							</CheckButton>
+							<EditBox name="CEPGP_loot_options_announce_edit" inherits="InputBoxTemplate" autofocus="false">
+								<Size>
+									<AbsDimension x="300" y="21" />
+								</Size>
+								<Anchors>
+									<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_announce_text">
+										<AbsDimension x="10" y="0" />
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnEnter>
+										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+										GameTooltip:SetText("The message when each item is announced");
+									</OnEnter>
+									<OnLeave>
+										GameTooltip:Hide();
+									</OnLeave>
+									<OnEnterPressed>
+										self:ClearFocus();
+									</OnEnterPressed>
+									<OnEditFocusLost>
+										self:HighlightText(0,0);
+										local value = self:GetText();
+										local default = CEPGP.Loot.Announcement;
+										if value == default then
+											return;
+										end
+										CEPGP.Loot.Announcement = value;
+										CEPGP_print("Updated loot announcement message.");
+									</OnEditFocusLost>
+									<OnShow>
+										self:SetText(CEPGP.Loot.Announcement);
+									</OnShow>
+								</Scripts>
+							</EditBox>
+							<CheckButton name="CEPGP_loot_options_hide_response_check" inherits="UIOptionsCheckButtonTemplate">
+								<HitRectInsets>
+									<AbsInset left="0" right="0" top="0" bottom="0" />
+								</HitRectInsets>
+								<Anchors>
+									<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_hide_response_text">
+										<Offset>
+											<AbsDimension x="5" y="0" />
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnClick>
+										if self:GetChecked() then
+											CEPGP.Loot.HideKeyphrases = true;
+											CEPGP_print("Keyphrase alternatives will no longer be shown when announcing loot");
+										else
+											CEPGP.Loot.HideKeyphrases = false;
+											CEPGP_print("Keyphrase alternatives will now be shown when announcing loot");
+										end
+									</OnClick>
+									<OnEnter>
+										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+										GameTooltip:SetText("Prevents showing the keyphrase alternatives for each response in the loot announcement message.");
+									</OnEnter>
+									<OnLeave>
+										GameTooltip:Hide();
+									</OnLeave>
+									<OnShow>
+										self:SetChecked(CEPGP.Loot.HideKeyphrases);
+									</OnShow>
+								</Scripts>
+							</CheckButton>
+							<CheckButton name="CEPGP_options_auto_pass_check" inherits="UIOptionsCheckButtonTemplate">
+								<HitRectInsets>
+									<AbsInset left="0" right="0" top="0" bottom="0" />
+								</HitRectInsets>
+								<Anchors>
+									<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_auto_pass">
+										<Offset>
+											<AbsDimension x="5" y="0" />
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnClick>
+										if self:GetChecked() then
+											CEPGP_auto_pass = true;
+											CEPGP.Loot.AutoPass = true;
+											CEPGP_print("Now passing on ineligible items.");
+										else
+											CEPGP_auto_pass = false;
+											CEPGP.Loot.AutoPass = false;
+											CEPGP_print("No longer passing on ineligible items.");
+										end
+									</OnClick>
+									<OnEnter>
+										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+										GameTooltip:SetText("Automatically pass on items when using the loot GUI if you cannot equip the item.");
+									</OnEnter>
+									<OnLeave>
+										GameTooltip:Hide();
+									</OnLeave>
+									<OnShow>
+										if CEPGP_auto_pass then
+											self:SetChecked(true);
+										else
+											self:SetChecked(false);
+										end
+									</OnShow>
+								</Scripts>
+							</CheckButton>
+							<CheckButton name="CEPGP_options_announcement_suppression_check" inherits="UIOptionsCheckButtonTemplate">
+								<HitRectInsets>
+									<AbsInset left="0" right="0" top="0" bottom="0" />
+								</HitRectInsets>
+								<Anchors>
+									<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_announcement_suppression">
+										<Offset>
+											<AbsDimension x="-5" y="0" />
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnClick>
+										if self:GetChecked() then
+											CEPGP_suppress_announcements = true;
+											CEPGP.Loot.SuppressResponses = true;
+											CEPGP_print("Suppressing loot response announcements.");
+										else
+											CEPGP_suppress_announcements = false;
+											CEPGP.Loot.SuppressResponses = false;
+											CEPGP_print("Announcing all loot responses.");
+										end
+									</OnClick>
+									<OnEnter>
+										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+										GameTooltip:SetText("Loot Master Feature\nSuppress responses for loot in chat.\nExample: Player (class) needs.");
+									</OnEnter>
+									<OnLeave>
+										GameTooltip:Hide();
+									</OnLeave>
+									<OnShow>
+										if CEPGP_suppress_announcements then
+											self:SetChecked(true);
+										else
+											self:SetChecked(false);
+										end
+									</OnShow>
+								</Scripts>
+							</CheckButton>
+							<CheckButton name="CEPGP_loot_options_min_EP_check" inherits="UIOptionsCheckButtonTemplate">
+								<HitRectInsets>
+									<AbsInset left="0" right="0" top="0" bottom="0" />
+								</HitRectInsets>
+								<Anchors>
+									<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_min_EP_text">
+										<Offset>
+											<AbsDimension x="-5" y="0" />
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnClick>
+										if self:GetChecked() then
+											CEPGP_minEP[1] = true;
+											CEPGP.Loot.MinReq[1] = true;
+											CEPGP_print("Now requiring a minimum EP to request loot.");
+											CEPGP_loot_options_min_EP_amount:Show();
+										else
+											CEPGP_minEP[1] = false;
+											CEPGP.Loot.MinReq[1] = false;
+											CEPGP_print("No longer requiring a minimum EP to request loot.");
+											CEPGP_loot_options_min_EP_amount:Hide();
+										end
+									</OnClick>
+									<OnEnter>
+										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+										GameTooltip:SetText("Loot Master Feature\nIf enabled, shows when a player wants loot but has less than the required amount.");
+									</OnEnter>
+									<OnLeave>
+										GameTooltip:Hide();
+									</OnLeave>
+								</Scripts>
+							</CheckButton>
+							<EditBox name="CEPGP_loot_options_min_EP_amount" inherits="InputBoxTemplate">
+								<Size>
+									<AbsDimension x="60" y="20" />
+								</Size>
+								<Anchors>
+									<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_min_EP_check">
+										<AbsDimension x="10" y="0" />
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnLoad>
+										self:SetAutoFocus(false);
+									</OnLoad>
+									<OnEnterPressed>
+										self:ClearFocus();
+									</OnEnterPressed>
+									<OnEditFocusLost>
+										local value = self:GetText();
+										if not tonumber(value) or tonumber(value) == CEPGP_minEP[2] then
+											self:SetText(tostring(CEPGP_minEP[2]));
+											return;
+										end
+										CEPGP_minEP[2] = tonumber(self:GetText());
+										CEPGP.Loot.MinReq[2] = tonumber(self:GetText());
+										CEPGP_print("Players now require at least " .. CEPGP_minEP[2] .. " EP to request loot.");
+									</OnEditFocusLost>
+									<OnShow>
+										self:SetText(CEPGP_minEP[2]);
+									</OnShow>
+								</Scripts>
+							</EditBox>
+							<CheckButton name="CEPGP_loot_options_show_passes_check" inherits="UIOptionsCheckButtonTemplate">
+								<HitRectInsets>
+									<AbsInset left="0" right="0" top="0" bottom="0" />
+								</HitRectInsets>
+								<Anchors>
+									<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_show_passes">
+										<Offset>
+											<AbsDimension x="-5" y="0" />
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnClick>
+										if self:GetChecked() then
+											CEPGP_show_passes = true;
+											CEPGP.Loot.ShowPass = true;
+											CEPGP_print("Now showing pass responses in loot distribution");
+										else
+											CEPGP_show_passes = false;
+											CEPGP.Loot.ShowPass = false;
+											CEPGP_print("No longer showing pass responses in loot distribution");
+										end
+									</OnClick>
+									<OnEnter>
+										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+										GameTooltip:SetText("Loot Master Feature\nToggle whether or not you want players who pass on items to show up in the distribution window.");
+									</OnEnter>
+									<OnLeave>
+										GameTooltip:Hide();
+									</OnLeave>
+								</Scripts>
+							</CheckButton>
+							<CheckButton name="CEPGP_loot_options_enforce_PR_sorting_check" inherits="UIOptionsCheckButtonTemplate">
+								<HitRectInsets>
+									<AbsInset left="0" right="0" top="0" bottom="0" />
+								</HitRectInsets>
+								<Anchors>
+									<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_enforce_PR_sorting">
+										<Offset>
+											<AbsDimension x="-5" y="0" />
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnClick>
+										if self:GetChecked() then
+											CEPGP_PR_sort = true;
+											CEPGP.Loot.AutoSort = true;
+											CEPGP_print("Automated sorting for loot distribution enabled");
+										else
+											CEPGP_PR_sort = false;
+											CEPGP.Loot.AutoSort = false;
+											CEPGP_print("Automated sorting for loot distribution disabled");
+										end
+									</OnClick>
+									<OnEnter>
+										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+										GameTooltip:SetText("Automatically sort by response and then by priority when distributing loot");
+									</OnEnter>
+									<OnLeave>
+										GameTooltip:Hide();
+									</OnLeave>
+								</Scripts>
+							</CheckButton>
+							<CheckButton name="CEPGP_loot_options_dist_raidwide_check" inherits="UIOptionsCheckButtonTemplate">
+								<HitRectInsets>
+									<AbsInset left="0" right="0" top="0" bottom="0" />
+								</HitRectInsets>
+								<Anchors>
+									<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_dist_raidwide_text">
+										<Offset>
+											<AbsDimension x="-5" y="0" />
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnClick>
+										if self:GetChecked() then
+											CEPGP_raid_wide_dist = true;
+											CEPGP.Loot.RaidVisibility = true;
+											CEPGP_print("All raid members can now see item distribution window.");
+										else
+											CEPGP_raid_wide_dist = false;
+											CEPGP.Loot.RaidVisibility = false;
+											CEPGP_print("Only raid assists can now see the item distribution window.");
+											CEPGP_SendAddonMsg("RaidAssistLootClosed", "RAID");
+										end
+									</OnClick>
+									<OnEnter>
+										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+										GameTooltip:SetText("Loot Master Feature\nAllow all raid members to view the loot distribution window, not just raid assists.");
+									</OnEnter>
+									<OnLeave>
+										GameTooltip:Hide();
+									</OnLeave>
+									<OnShow>
+										if CEPGP_raid_wide_dist then
+											self:SetChecked(true);
+										else
+											self:SetChecked(false);
+										end
+									</OnShow>
+								</Scripts>
+							</CheckButton>
+							<CheckButton name="CEPGP_loot_options_pass_roll_check" inherits="UIOptionsCheckButtonTemplate">
+								<HitRectInsets>
+									<AbsInset left="0" right="0" top="0" bottom="0" />
+								</HitRectInsets>
+								<Anchors>
+									<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_pass_roll_text">
+										<Offset>
+											<AbsDimension x="-5" y="0" />
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnClick>
+										if self:GetChecked() then
+											CEPGP.Loot.PassRolls = true;
+											CEPGP_print("Rolls will now be recorded for players who have passed.");
+										else
+											CEPGP.Loot.PassRolls = false;
+											CEPGP_print("Rolls will no longer be recorded for players who have passed.");
+										end
+									</OnClick>
+									<OnEnter>
+										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+										GameTooltip:SetText("Roll for players who have passed on an item.\n|c00FF0000Note: If enabled, 'Award to Highest Roller' will also consider players who have passed on an item.|r");
+									</OnEnter>
+									<OnLeave>
+										GameTooltip:Hide();
+									</OnLeave>
+									<OnShow>
+										if CEPGP.Loot.PassRolls then
+											self:SetChecked(true);
+										else
+											self:SetChecked(false);
+										end
+									</OnShow>
+								</Scripts>
+							</CheckButton>
+							<CheckButton name="CEPGP_loot_options_announce_roll_check" inherits="UIOptionsCheckButtonTemplate">
+								<HitRectInsets>
+									<AbsInset left="0" right="0" top="0" bottom="0" />
+								</HitRectInsets>
+								<Anchors>
+									<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_announce_roll_text">
+										<Offset>
+											<AbsDimension x="-5" y="0" />
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnClick>
+										if self:GetChecked() then
+											CEPGP.Loot.RollAnnounce = true;
+											CEPGP_print("Rolls will now be announced when players respond for loot.");
+										else
+											CEPGP.Loot.RollAnnounce = false;
+											CEPGP_print("Rolls will no longer be announced when players respond for loot.");
+										end
+									</OnClick>
+									<OnEnter>
+										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+										GameTooltip:SetText("Includes the player's roll when announcing their loot response.");
+									</OnEnter>
+									<OnLeave>
+										GameTooltip:Hide();
+									</OnLeave>
+									<OnShow>
+										if CEPGP.Loot.RollAnnounce then
+											self:SetChecked(true);
+										else
+											self:SetChecked(false);
+										end
+									</OnShow>
+								</Scripts>
+							</CheckButton>
+							<CheckButton name="CEPGP_loot_options_resolve_roll_check" inherits="UIOptionsCheckButtonTemplate">
+								<HitRectInsets>
+									<AbsInset left="0" right="0" top="0" bottom="0" />
+								</HitRectInsets>
+								<Anchors>
+									<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_resolve_roll_text">
+										<Offset>
+											<AbsDimension x="-5" y="0" />
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnClick>
+										if self:GetChecked() then
+											CEPGP.Loot.ResolveRolls = true;
+											CEPGP_print("Duplicate rolls will now be automatically resolved.");
+										else
+											CEPGP.Loot.ResolveRolls = false;
+											CEPGP_print("Duplicate rolls are now permitted.");
+										end
+									</OnClick>
+									<OnEnter>
+										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+										GameTooltip:SetText("If CEPGP rolls the same number for multiple players, subsequent players will reroll until there are no duplicates.");
+									</OnEnter>
+									<OnLeave>
+										GameTooltip:Hide();
+									</OnLeave>
+									<OnShow>
+										if CEPGP.Loot.ResolveRolls then
+											self:SetChecked(true);
+										else
+											self:SetChecked(false);
+										end
+									</OnShow>
+								</Scripts>
+							</CheckButton>
+							
+							<Button name="CEPGP_min_threshold_dropdown" inherits="UIDropDownMenuTemplate">
+								<Anchors>
+									<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_min_threshold_text">
+										<Offset>
+											<AbsDimension x="5" y="0" />
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnShow>
+										CEPGP_minThresholdDropdown();
+										UIDropDownMenu_SetWidth(self, 140);
+									</OnShow>
+									<OnEnter>
+										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+										GameTooltip:SetText("Personal Feature\nSet the minimum item rarity for the CEPGP loot window to automatically show in raids.\nRequires that you are the master looter and are in a raid group.");
+									</OnEnter>
+									<OnLeave>
+										GameTooltip:Hide();
+									</OnLeave>
+									<OnLoad>
+										CEPGP_initDropdown(self, CEPGP_minThresholdDropdown);
+									</OnLoad>
+								</Scripts>
+							</Button>
+							<Button name="CEPGP_loot_channel_dropdown" inherits="UIDropDownMenuTemplate">
+								<Anchors>
+									<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_min_threshold_dropdown">
+										<Offset>
+											<AbsDimension x="0" y="0" />
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnShow>
+										CEPGP_lootChannelDropdown();
+										UIDropDownMenu_SetWidth(self, 140);
+									</OnShow>
+									<OnEnter>
+										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+										GameTooltip:SetText("Sets the channel that loot responses are sent to.\nExample: Player (class) needs.");
+									</OnEnter>
+									<OnLeave>
+										GameTooltip:Hide();
+									</OnLeave>
+									<OnLoad>
+										CEPGP_initDropdown(self, CEPGP_lootChannelDropdown);
+									</OnLoad>
+								</Scripts>
+							</Button>
+						</Frames>
+					</Frame>
+				</ScrollChild>
+			</ScrollFrame>
 		</Frames>		
 		<Scripts>
 			<OnShow>
-				CEPGP_loot_options_timer_text:SetPoint("TOPLEFT", "CEPGP_loot_options_2", "BOTTOMLEFT", 0, 10);
-				CEPGP_loot_options_raid_warning_text:SetPoint("TOPLEFT", "CEPGP_loot_options_timer_text", "BOTTOMLEFT", 0, -7);
-				CEPGP_loot_options_announce_text:SetPoint("TOPLEFT", "CEPGP_loot_options_raid_warning_text", "BOTTOMLEFT", 0, -7);
-				CEPGP_loot_options_hide_response_text:SetPoint("TOPLEFT", "CEPGP_loot_options_announce_text", "BOTTOMLEFT", 0, -7);
-				CEPGP_loot_options_auto_pass:SetPoint("TOPLEFT", "CEPGP_loot_options_hide_response_text", "BOTTOMLEFT", 0, -7);
-				CEPGP_loot_options_announcement_suppression:SetPoint("TOPLEFT", "CEPGP_loot_options_auto_pass", "BOTTOMLEFT", 0, -7);
-				CEPGP_loot_options_min_EP_text:SetPoint("TOPLEFT", "CEPGP_loot_options_announcement_suppression", "BOTTOMLEFT", 0, -7);
-				CEPGP_loot_options_show_passes:SetPoint("TOPLEFT", "CEPGP_loot_options_min_EP_text", "BOTTOMLEFT", 0, -7);
-				CEPGP_loot_options_enforce_PR_sorting:SetPoint("TOPLEFT", "CEPGP_loot_options_show_passes", "BOTTOMLEFT", 0, -7);
-				CEPGP_loot_options_dist_raidwide_text:SetPoint("TOPLEFT", "CEPGP_loot_options_enforce_PR_sorting", "BOTTOMLEFT", 0, -7);
+				local width = self:GetWidth();
+				local height = self:GetHeight();
+				
+				CEPGP_loot_options_scrollframe:SetWidth(width-40);
+				CEPGP_loot_options_scrollframe_container:SetWidth(width-40);
+				CEPGP_loot_options_scrollframe:SetHeight(height-20);
+				CEPGP_loot_options_scrollframe_container:SetHeight(height-20);
+				
+				CEPGP_loot_options_timer_text:SetPoint("TOPLEFT", "CEPGP_loot_options_preview", "BOTTOMLEFT", 0, -20);
+				CEPGP_loot_options_raid_warning_text:SetPoint("TOPLEFT", "CEPGP_loot_options_timer_text", "BOTTOMLEFT", 0, -10);
+				CEPGP_loot_options_announce_text:SetPoint("TOPLEFT", "CEPGP_loot_options_raid_warning_text", "BOTTOMLEFT", 0, -10);
+				CEPGP_loot_options_hide_response_text:SetPoint("TOPLEFT", "CEPGP_loot_options_announce_text", "BOTTOMLEFT", 0, -10);
+				CEPGP_loot_options_auto_pass:SetPoint("TOPLEFT", "CEPGP_loot_options_hide_response_text", "BOTTOMLEFT", 0, -10);
+				CEPGP_loot_options_announcement_suppression:SetPoint("TOPLEFT", "CEPGP_loot_options_auto_pass", "BOTTOMLEFT", 0, -10);
+				CEPGP_loot_options_min_EP_text:SetPoint("TOPLEFT", "CEPGP_loot_options_announcement_suppression", "BOTTOMLEFT", 0, -10);
+				CEPGP_loot_options_show_passes:SetPoint("TOPLEFT", "CEPGP_loot_options_min_EP_text", "BOTTOMLEFT", 0, -10);
+				CEPGP_loot_options_enforce_PR_sorting:SetPoint("TOPLEFT", "CEPGP_loot_options_show_passes", "BOTTOMLEFT", 0, -10);
+				CEPGP_loot_options_dist_raidwide_text:SetPoint("TOPLEFT", "CEPGP_loot_options_enforce_PR_sorting", "BOTTOMLEFT", 0, -10);
 				CEPGP_loot_options_min_threshold_text:SetPoint("TOPLEFT", "CEPGP_loot_options_dist_raidwide_text", "BOTTOMLEFT", 0, -10);
 				CEPGP_loot_options_channel_text:SetPoint("TOPLEFT", "CEPGP_loot_options_min_threshold_text", "BOTTOMLEFT", 0, -17.5);
+				CEPGP_loot_options_pass_roll_text:SetPoint("TOPLEFT", "CEPGP_loot_options_channel_text", "BOTTOMLEFT", 0, -17.5);
+				CEPGP_loot_options_announce_roll_text:SetPoint("TOPLEFT", "CEPGP_loot_options_pass_roll_text", "BOTTOMLEFT", 0, -10);
+				CEPGP_loot_options_resolve_roll_text:SetPoint("TOPLEFT", "CEPGP_loot_options_announce_roll_text", "BOTTOMLEFT", 0, -10);
 				
 				for i = 1, 4 do
 					local frame = _G[self:GetName() .. "_preview_" .. i];
@@ -9668,8 +10710,16 @@
 						if self:GetChecked() then
 							CEPGP_standby_share = true;
 							CEPGP.Standby.Share = true;
-							for _, t in pairs(CEPGP_standbyRoster) do
-								CEPGP_SendAddonMsg("StandbyListAdd;"..t[1]..";"..t[2]..";"..t[3]..";"..t[4]..";"..t[5]..";"..t[6]..";"..t[8], "RAID");
+							local limit = #CEPGP_standbyRoster;
+							local count = 1;
+							--for _, t in pairs(CEPGP_standbyRoster) do
+							if limit > 0 then
+								C_Timer.NewTicker(1, function()
+									local t = CEPGP_standbyRoster[count];
+									local message = "StandbyListAdd;"..t[1]..";"..t[2]..";"..t[3]..";"..t[4]..";"..t[5]..";"..t[6]..";"..t[8];
+									CEPGP_SendAddonMsg(message, "RAID");
+									count = count + 1;
+								end, limit);
 							end
 						else
 							CEPGP_standby_share = false;
@@ -9923,7 +10973,7 @@
 						</Anchors>
 						<Scripts>
 							<OnClick>
-								CEPGP_setCriteria(1);
+								CEPGP_setCriteria(1, "Standby");
 								CEPGP_standbyRoster = CEPGP_tSort(CEPGP_standbyRoster, 1);
 								CEPGP_UpdateStandbyScrollBar();
 							</OnClick>
@@ -9942,7 +10992,7 @@
 						</Anchors>
 						<Scripts>
 							<OnClick>
-								CEPGP_setCriteria(2);
+								CEPGP_setCriteria(2, "Standby");
 								CEPGP_standbyRoster = CEPGP_tSort(CEPGP_standbyRoster, 2);
 								CEPGP_UpdateStandbyScrollBar();
 							</OnClick>
@@ -9961,7 +11011,7 @@
 						</Anchors>
 						<Scripts>
 							<OnClick>
-								CEPGP_setCriteria(4);
+								CEPGP_setCriteria(4, "Standby");
 								CEPGP_standbyRoster = CEPGP_tSort(CEPGP_standbyRoster, 4);
 								CEPGP_UpdateStandbyScrollBar();
 							</OnClick>
@@ -9980,7 +11030,7 @@
 						</Anchors>
 						<Scripts>
 							<OnClick>
-								CEPGP_setCriteria(5);
+								CEPGP_setCriteria(5, "Standby");
 								CEPGP_standbyRoster = CEPGP_tSort(CEPGP_standbyRoster, 5);
 								CEPGP_UpdateStandbyScrollBar();
 							</OnClick>
@@ -9999,7 +11049,7 @@
 						</Anchors>
 						<Scripts>
 							<OnClick>
-								CEPGP_setCriteria(6);
+								CEPGP_setCriteria(6, "Standby");
 								CEPGP_standbyRoster = CEPGP_tSort(CEPGP_standbyRoster, 6);
 								CEPGP_UpdateStandbyScrollBar();
 							</OnClick>
@@ -10018,7 +11068,7 @@
 						</Anchors>
 						<Scripts>
 							<OnClick>
-								CEPGP_setCriteria(7);
+								CEPGP_setCriteria(7, "Standby");
 								CEPGP_standbyRoster = CEPGP_tSort(CEPGP_standbyRoster, 7);
 								CEPGP_UpdateStandbyScrollBar();
 							</OnClick>
@@ -10132,4 +11182,5 @@
 			</OnShow>
 		</Scripts>
 	</Frame>
+	
 </Ui>

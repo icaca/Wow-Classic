@@ -61,7 +61,7 @@ function CEPGP_LootFrame_Update()
 			break;
 		end
 	end
-	CEPGP_populateFrame(_, items, numLootItems);
+	CEPGP_populateFrame(items);
 end
 
 function CEPGP_announce(link, x, slotNum, quantity)

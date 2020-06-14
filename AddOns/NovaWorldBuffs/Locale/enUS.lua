@@ -16,6 +16,7 @@ L["Flask of Chromatic Resistance"] = "Flask of Chromatic Resistance";
 L["Supreme Power"] = "Supreme Power";
 L["Distilled Wisdom"] = "Distilled Wisdom";
 L["Chromatic Resistance"] = "Chromatic Resistance";
+L["Sap"] = "Sap";
 
 ---=====---
 ---Horde---

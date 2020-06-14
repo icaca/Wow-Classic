@@ -968,7 +968,6 @@ end
 --Post drop msg to guild chat, shared by all different addon comms so no overlap.
 local rendDropMsg, onyDropMsg, nefDropMsg = 0, 0, 0;
 function NWB:doBuffDropMsg(type, layer)
-	--local type, layer = strsplit(" ", data, 2);
 	local layerMsg = "";
 	if (tonumber(layer)) then
 		layerMsg = " (Layer " .. layer .. ")";
@@ -999,7 +998,6 @@ end
 
 local onyNpcKill, nefNpcKill = 0, 0;
 function NWB:doNpcKilledMsg(type, layer)
-	local type, layer = strsplit(" ", data, 2);
 	local layerMsg = "";
 	if (NWB.isLayered and tonumber(layer)) then
 		layerMsg = " (Layer " .. layer .. ")";
@@ -1116,6 +1114,7 @@ function NWB:combatLogEventUnfiltered(...)
 		end
 	elseif (subEvent == "SPELL_AURA_APPLIED" or subEvent == "SPELL_AURA_REFRESH") then
 		local unitType, _, _, _, zoneID, npcID = strsplit("-", sourceGUID);
+		local destUnitType, _, _, _, destZoneID, destNpcID = strsplit("-", destGUID);
 		zoneID = tonumber(zoneID);
 		if (destName == UnitName("player") and spellName == L["Warchief's Blessing"]) then
 			local expirationTime = NWB:getBuffDuration(L["Warchief's Blessing"], 1);
@@ -1183,6 +1182,10 @@ function NWB:combatLogEventUnfiltered(...)
 				end
 				NWB:playSound("soundsOnyDrop", "ony");
 			end
+		elseif (((NWB.faction == "Horde" and destNpcID == "14392") or (NWB.faction == "Alliance" and destNpcID == "14394"))
+				and spellName == L["Sap"]) then
+			NWB:debug("Ony NPC sapped by", sourceName);
+			--1591879446.983 SPELL_AURA_APPLIED false Player-4669-005B30C0 Tykot 1297 0 Creature-0-4671-1-73-3115-0000620672 Dustwind Harpy 68168 0 0 Sap 1 DEBUFF
 		elseif (destName == UnitName("player") and (spellName == L["Sayge's Dark Fortune of Agility"]
 				or spellName == L["Sayge's Dark Fortune of Spirit"] or spellName == L["Sayge's Dark Fortune of Stamina"]
 				or spellName == L["Sayge's Dark Fortune of Strength"] or spellName == L["Sayge's Dark Fortune of Armor"]
@@ -2010,6 +2013,11 @@ f:SetScript("OnEvent", function(self, event, ...)
 		end)
 	elseif (event == "PLAYER_ENTERING_WORLD") then
 		if (doLogon) then
+			--Refresh map stuff after login, loading them at initialize creates a bug with them not showing up until you move sometimes.
+			C_Timer.After(5, function()
+				NWB:refreshFelwoodMarkers();
+				NWB:refreshWorldbuffMarkers();
+			end)
 			GuildRoster();
 			if (NWB.db.global.logonPrint) then
 				C_Timer.After(10, function()
@@ -2031,10 +2039,6 @@ f:SetScript("OnEvent", function(self, event, ...)
 					RequestTimePlayed();
 				end
 			end)
-			--Temp debug.
-			if (NWB.isDebug) then
-				NWB:refreshWorldbuffMarkers();
-			end
 			doLogon = nil;
 		end
 		C_Timer.After(2, function()
@@ -2917,10 +2921,12 @@ f:SetScript('OnEvent', function(self, event, ...)
 						end
 					end
 				elseif (not NWB.db.global.mySongflowerOnly) then
-					--If buff is not ours.
-					if (bit.band(destFlags, COMBATLOG_OBJECT_REACTION_HOSTILE) == COMBATLOG_OBJECT_REACTION_HOSTILE) then
+					local pvpType = GetZonePVPInfo();
+					if (bit.band(destFlags, COMBATLOG_OBJECT_REACTION_HOSTILE) == COMBATLOG_OBJECT_REACTION_HOSTILE
+							and pvpType == "contested") then
 						return;
 					end
+					pvpType, isFFA, faction = GetZonePVPInfo();
 					local closestFlower = NWB:getClosestSongflower();
 					if (NWB.data[closestFlower]) then
 						NWB:songflowerPicked(closestFlower, destName);
@@ -3257,7 +3263,7 @@ end
 --Update timers for Felwood worldmap when the map is open.
 local mapSFFrames = {};
 function NWB:updateFelwoodWorldmapMarker(type)
-	if (NWB.layeredSongflowers and string.match(type, "flower")) then
+	if (NWB.isLayered and NWB.layeredSongflowers and string.match(type, "flower")) then
 		--Flowers are only updated once per second not every frame, and only when an icon is visible.
 		local count = 0;
 		local tooltipText = "";
@@ -3321,7 +3327,7 @@ function NWB:updateFelwoodWorldmapMarker(type)
 					--tooltipText = tooltipText .. "\n|Cffff2500"
 					--		.. NWB:getTimeFormat(NWB.data[type] + 1500) .. " " .. L["spawn"] .. " (expired) (Layer " .. count .. ")|r";
 					tooltipText = "|Cffff2500"
-							.. NWB:getTimeFormat(NWB.data[type] + 1500) .. " " .. L["spawn"] .. " (expired) (Layer " .. count .. ")|r\n" .. tooltipText
+							.. NWB:getTimeFormat(NWB.data.layers[k][type] + 1500) .. " " .. L["spawn"] .. " (expired) (Layer " .. count .. ")|r\n" .. tooltipText
 					frame.fs:SetText("|Cffff2500-" .. minutes .. ":" .. seconds);
 					frame:SetWidth(42);
 					frame:SetHeight(24);
@@ -3332,7 +3338,7 @@ function NWB:updateFelwoodWorldmapMarker(type)
 			    	local seconds = string.format("%02.f", math.floor(time - minutes * 60));
 			    	--tooltipText = tooltipText .. "\n" .. NWB:getTimeFormat(NWB.data[type] + 1500)
 			    	--		.. " " .. L["spawn"] .. " (Layer " .. count .. ")";
-			    	tooltipText = NWB:getTimeFormat(NWB.data[type] + 1500)
+			    	tooltipText = NWB:getTimeFormat(NWB.data.layers[k][type] + 1500)
 			    			.. " " .. L["spawn"] .. " (Layer " .. count .. ")\n" .. tooltipText
 					frame.fs:SetText(minutes .. ":" .. seconds);
 					frame:SetWidth(42);
@@ -4056,7 +4062,9 @@ function NWB:updateWorldbuffMarkers(type, layer)
 		if (time > 0 and not npcKilled) then
 	    	return timeStringShort;
 	  	end
-	  	_G[type .. layer .. "NWBWorldMap"].tooltip.fs:SetText("|CffDEDE42" .. _G[type .. layer .. "NWBWorldMap"].name);
+	  	if (not npcKilled) then
+	  		_G[type .. layer .. "NWBWorldMap"].tooltip.fs:SetText("|CffDEDE42" .. _G[type .. layer .. "NWBWorldMap"].name);
+	  	end
 		return L["noTimer"];
 	else
 		time = (NWB.data[type .. "Timer"] + NWB.db.global[type .. "RespawnTime"]) - GetServerTime();
@@ -5415,6 +5423,7 @@ function NWB:createNewLayer(zoneID, GUID)
 			nefNpcDied = 0,
 			created = GetServerTime(),
 			GUID = GUID or "none",
+			lastSeenNPC = 0,
 			flower1 = 0,
 			flower2 = 0,
 			flower3 = 0,
@@ -5790,6 +5799,9 @@ function NWB:setCurrentLayerText(unit)
 			end
 			NWB.lastKnownLayerTime = GetServerTime();
 			NWB:recalcMinimapLayerFrame();
+			--Update layer created time any time we target a NPC on this layer in capital city.
+			--To help layers persist better overnight but not after server restarts.
+			NWB.data.layers[k].lastSeenNPC = GetServerTime();
 			return;
 		end
 	end
@@ -6223,6 +6235,9 @@ function NWB:fixLayer(layer)
 	end
 	if (not tonumber(NWB.data.layers[layer]['nefYell2'])) then
 		NWB.data.layers[layer]['nefYell2'] = 0;
+	end
+	if (not tonumber(NWB.data.layers[layer]['lastSeenNPC'])) then
+		NWB.data.layers[layer]['lastSeenNPC'] = 0;
 	end
 	if (not tonumber(NWB.data.layers[layer]['flower1'])) then
 		NWB.data.layers[layer]['flower1'] = 0;

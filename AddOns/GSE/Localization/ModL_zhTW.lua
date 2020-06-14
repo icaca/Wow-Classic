@@ -350,6 +350,8 @@ L["Save"] = "保存"
 L["Save the changes made to this macro"] = "保存對此巨集所做的更改"
 --[[Translation missing --]]
 L["Scenario"] = "Scenario"
+--[[Translation missing --]]
+L["Scenario setting changed to Default."] = "Scenario setting changed to Default."
 L["Seed Initial Macro"] = "種子初始巨集"
 L["Select Other Version"] = "選擇其他版本"
 L["Send"] = "發送"
@@ -418,6 +420,8 @@ L["The version of this macro to use in Mythic Dungeons."] = "這個巨集的版�
 L["The version of this macro to use in Mythic+ Dungeons."] = "這個巨集的版本在神話地城+中使用."
 L["The version of this macro to use in normal dungeons."] = "這個巨集的版本在普通地城中使用。"
 L["The version of this macro to use in PVP."] = "要在PVP中使用的此巨集的版本."
+--[[Translation missing --]]
+L["The version of this macro to use in Scenarios."] = "The version of this macro to use in Scenarios."
 L["The version of this macro to use when in a party in the world."] = "在全世界中的隊伍中使用的這個巨集的版本。"
 L["The version of this macro to use when in time walking dungeons."] = "這個巨集的版本在隨機地城時使用."
 L["There are %i events in out of combat queue"] = "離開戰鬥的序列中有 %i 個事件"

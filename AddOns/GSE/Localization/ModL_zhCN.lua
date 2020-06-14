@@ -376,6 +376,8 @@ L["Save"] = "保存"
 L["Save the changes made to this macro"] = "Save the changes made to this macro"
 --[[Translation missing --]]
 L["Scenario"] = "Scenario"
+--[[Translation missing --]]
+L["Scenario setting changed to Default."] = "Scenario setting changed to Default."
 L["Seed Initial Macro"] = "种子初始宏"
 L["Select Other Version"] = "选择其他版本"
 L["Send"] = "发送"
@@ -462,6 +464,8 @@ L["The version of this macro to use in Mythic+ Dungeons."] = "The version of thi
 L["The version of this macro to use in normal dungeons."] = "The version of this macro to use in normal dungeons."
 --[[Translation missing --]]
 L["The version of this macro to use in PVP."] = "The version of this macro to use in PVP."
+--[[Translation missing --]]
+L["The version of this macro to use in Scenarios."] = "The version of this macro to use in Scenarios."
 --[[Translation missing --]]
 L["The version of this macro to use when in a party in the world."] = "The version of this macro to use when in a party in the world."
 --[[Translation missing --]]
