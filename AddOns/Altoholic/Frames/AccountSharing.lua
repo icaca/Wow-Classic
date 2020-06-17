@@ -165,6 +165,7 @@ local GUILD_HEADER_LINE				= 1
 local CHARACTER_HEADER_LINE		= 3
 local CHARACTER_DATASTORE_LINE	= 4
 local CLASS_REFDATA_LINE			= 5		-- only for available content, not for shared content view
+local CRAFT_REFDATA_LINE = 6
 
 local function isGuildShared(realm, name)
 	local sc = Altoholic.db.global.Sharing.SharedContent
@@ -391,6 +392,7 @@ local TOC_SETGUILD				= "2"
 local TOC_SETCHAR					= "4"
 local TOC_DATASTORE				= "5"
 local TOC_REFDATA					= "6"
+local TOC_CRAFT_REFDATA        = "7"
 
 function Altoholic.Sharing.Content:GetOptionalModuleName(index)
 	return optionalModules[index]
@@ -436,7 +438,11 @@ function Altoholic.Sharing.Content:GetSourceTOC()
 					if (module ~= "DataStore_Spells" and module ~= "DataStore_Talents") then
 					    if isCharacterDataShared(character, module) then
     						-- evaluate the size of transferred data
-	    					serializedData = Altoholic:Serialize(DS:GetCharacterTable(module, characterName, realm))
+                            local characterTable = DS:GetCharacterTable(module, characterName, realm)
+	    					if (module == "DataStore_Crafts") then
+                                characterTable = DS:CraftsPrepareCharacterTableForSharing(characterTable)
+                            end
+                            serializedData = Altoholic:Serialize(characterTable)
 		    				lastUpdate = DS:GetModuleLastUpdate(module, characterName, realm)
 					    end
 					
@@ -448,13 +454,14 @@ function Altoholic.Sharing.Content:GetSourceTOC()
 		end
 	end
 	
-	-- add reference here
-	-- whatever this is it doesn't work in classic
-	--for class, _ in pairs(DS:GetReferenceTable()) do
-	--	serializedData = Altoholic:Serialize(DS:GetClassReference(class))
-	--	table.insert(toc, format("%s|%s|%s", TOC_REFDATA, class, strlen(serializedData)))
-	--end
-	
+	-- share the crafting reference database
+    -- the structure is:
+    -- refDB -> ResultItems -> ID = {name = string, [itemID = int, maxmade = int]} the last two are not used by enchanting
+    -- -------> Reagents -> ID = string, where the string is a list joined using | characters 
+    --for k, v in pairs(DS:GetCraftsReferenceTable()) do
+    --    serializedData = Altoholic:Serialize(v)
+    --    table.insert(toc, format("%s|%s", TOC_CRAFT_REFDATA, k, strlen(serializedData)))
+    --end	
 	return toc
 end
 
@@ -577,6 +584,20 @@ local AvailableContentScrollFrame_Desc = {
 					return colors.lightBlue..date("%m/%d/%Y %H:%M", line.lastUpdate)
 				end,
 		},
+        [CRAFT_REFDATA_LINE] = {
+            GetText = function(self, line)
+                return "Datastore_Crafts Reference Data"
+            end,
+            GetOffset = function(self, line)
+                return 20
+            end,
+            DrawCollapseButton = function(self, line, entry)
+					_G[ entry.."Collapse" ]:Hide()
+				end,            
+            GetData = function(self, line)
+                return line.key
+            end,
+        },
 	},
 }
 
@@ -624,6 +645,8 @@ function Altoholic.Sharing.AvailableContent:BuildView()
 			if not DataStore:IsClassKnown(arg1) then		-- filter to only list classes that are not yet available
 				table.insert(self.view, { linetype = CLASS_REFDATA_LINE, class = arg1, size = tonumber(arg2), parentID = i } )
 			end
+        elseif tocType == TOC_CRAFT_REFDATA then
+            table.insert(self.view, {linetype = CRAFT_REFDATA_LINE, key = arg1, size = tonumber(arg2), parentID = i } )
 		end
 	end
 end

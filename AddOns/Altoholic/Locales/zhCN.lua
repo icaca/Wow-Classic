@@ -768,3 +768,8 @@ L[ [=[Your confirmation will still be required any time someone requests your in
 L["Zelemar the Wrathful"] = "愤怒者塞雷玛尔"
 L["Zone"] = "地区"
 
+L["will be returned upon expiry"] = "TRANSLATION MISSING"
+L["CLOSEST_RETURN_IN_PATTERN"] = "TRANSLATION MISSING %s" -- %s will be filled in by [# hours # minutes]
+L["CLOSEST_DELETION_IN_PATTERN"] = "TRANSLATION MISSING %s" -- ^
+L["MAIL_WILL_BE_DELETED_PATTERN"] = "|cFF00FF00%d|cFFFFFFFF will be |cFFFF0000deleted|cFFFFFFFF upon expiry"
+L["Mails found:"] = "TRANSLATION MISSING"

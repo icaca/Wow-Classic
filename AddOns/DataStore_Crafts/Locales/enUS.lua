@@ -25,4 +25,4 @@ L["Cooking"] = "Cooking"
 L["First Aid"] = "First Aid"
 L["Fishing"] = "Fishing"
 L["Poisons"] = "Poisons"
-L["Beast_Training"] = "Beast Training" -- I don't have a hunter, not sure what the actual name is!
+L["Beast_Training"] = "Beast Training"

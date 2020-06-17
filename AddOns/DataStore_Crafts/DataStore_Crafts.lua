@@ -47,6 +47,8 @@ local AddonDB_Defaults = {
 						Cooldowns = { ['*'] = nil },		-- list of active cooldowns
 					}
 				},
+                Prof1 = nil,
+                Prof2 = nil,
 			}
 		}
 	}
@@ -57,7 +59,6 @@ local ReferenceDB_Defaults = {
 		Reagents = {},		-- [recipeID] = "itemID1,count1 | itemID2,count2 | ..."
 		ResultItems = {},	-- [recipeID] = itemID
 		Recipes = {},		-- [recipeID] = 
-		RecipeCategoryNames = {},		-- [categoryID] = name
 	}
 }
 
@@ -256,27 +257,22 @@ end
 
 local function ScanRecipeCategories(profession, useCraftInstead)
     if (not useCraftInstead) and (#GetTradeSkillHeaders() == 0) then return end
-    
+
 	-- clear storage
 	profession.Categories = profession.Categories or {}
 	wipe(profession.Categories)
     
     if useCraftInstead then
-        table.insert(profession.Categories, {id = 1})
+        table.insert(profession.Categories, {id = 1, name = L["Enchanting"]})
         return
-    else
-        profession.Rank = select(2, GetTradeSkillLine())
-	    profession.MaxRank = select(3, GetTradeSkillLine())
     end
 	
-	local names = addon.ref.global.RecipeCategoryNames
-	             
 	-- loop through this profession's categories
 	for _, headerID in ipairs( GetTradeSkillHeaders() ) do
 
-		names[headerID] = GetTradeSkillInfo(headerID)
 		table.insert(profession.Categories, { 
-			id = headerID,   
+			["id"] = headerID,
+            ["name"] = GetTradeSkillInfo(headerID),   
 		})
 	end
 end
@@ -300,7 +296,7 @@ local function ScanRecipes(useCraftInstead)
     
     -- Update 2020/03/07: code gets to here when Poisons levels up, adding a catch to make it exit if poisons craft window is open             
 	if (not tradeskillName) or (tradeskillName == "UNKNOWN") or (tradeskillName == L["Poisons"]) then return end	-- may happen after a patch, or under extreme lag, so do not save anything to the db !
-                                   
+                               
 	local char = addon.ThisCharacter
 	local profession = char.Professions[tradeskillName]
     profession.Name = tradeskillName
@@ -311,7 +307,7 @@ local function ScanRecipes(useCraftInstead)
     if (useCraftInstead) then
         numRecipes = GetNumCrafts();
     else
-        numRecipes = GetNumTradeSkills(); --C_TradeSkillUI.GetAllRecipeIDs()
+        numRecipes = GetNumTradeSkills();
     end
     
 	if (not numRecipes) or (numRecipes == 0) then return end
@@ -643,6 +639,17 @@ end
 
 
 -- ** Mixins **
+local function _GetCraftsReferenceTable()
+    return addon.ref.global
+end
+
+local function _ImportCraftsReference(k, data)
+	assert(type(k) == "string")
+	assert(type(data) == "table")
+	
+	addon.ref.global[k] = data
+end
+
 local function _GetProfession(character, name)
 	if name then
 		return character.Professions[name]
@@ -679,13 +686,9 @@ local function _GetNumRecipeCategories(profession)
 	return (profession.Categories) and #profession.Categories or 0
 end
 
-local function GetCategoryName(id)
-	return addon.ref.global.RecipeCategoryNames[id]
-end
-
 local function _GetRecipeCategoryInfo(profession, index)
 	local category = profession.Categories[index]
-	return category.id, GetCategoryName(category.id), category.Rank, category.MaxRank
+	return category.id, category.name, category.Rank, category.MaxRank
 end
 
 local function _GetNumRecipeCategorySubItems(profession, index)
@@ -757,12 +760,13 @@ end
 
 local function _GetNumActiveCooldowns(profession)
 	assert(type(profession) == "table")		-- this is the pointer to a profession table, obtained through addon:GetProfession()
+    if not profession.Cooldowns then return 0 end
 	return #profession.Cooldowns
 end
 
 local function _ClearExpiredCooldowns(profession)
 	assert(type(profession) == "table")		-- this is the pointer to a profession table, obtained through addon:GetProfession()
-	
+	if not profession.Cooldowns then return end
 	for i = #profession.Cooldowns, 1, -1 do		-- from last to first, to avoid messing up indexes when removing entries
 		local _, expiresIn = _GetCraftCooldownInfo(profession, i)
 		if expiresIn <= 0 then		-- already expired ? remove it
@@ -894,6 +898,118 @@ local function _GetCraftResultItem(recipeID)
 	return itemID, maxMade
 end
 
+-- for use by Altoholic - Account Sharing
+-- will merge reference database data into the character table, creating a new table in the process, so the original variables aren't affected
+function _CraftsPrepareCharacterTableForSharing(characterTable)
+    local newTable = {}
+    if characterTable["Professions"] then
+        newTable["Professions"] = {}
+        for professionName, professionTable in pairs(characterTable["Professions"]) do
+            newTable.Professions[professionName] = {}
+            if professionTable["CurrentLevelName"] then
+                newTable.Professions[professionName].CurrentLevelName = professionTable["CurrentLevelName"]
+            end
+            if professionTable["Name"] then
+                newTable.Professions[professionName].Name = professionTable["Name"]
+            end
+            if professionTable["Rank"] then
+                newTable.Professions[professionName].Rank = professionTable["Rank"]
+            end
+            if professionTable["MaxRank"] then
+                newTable.Professions[professionName].MaxRank = professionTable["MaxRank"]
+            end
+            if professionTable["Categories"] then
+                newTable.Professions[professionName].Categories = {}
+                for categoryID, categoryTable in pairs(professionTable["Categories"]) do
+                    newTable.Professions[professionName].Categories[categoryID] = {}
+                    if categoryTable["id"] then
+                        newTable.Professions[professionName].Categories[categoryID].id = categoryTable["id"]
+                    end
+                    if categoryTable["name"] then
+                        newTable.Professions[professionName].Categories[categoryID].name = categoryTable["name"]
+                    end 
+                end
+            end
+            if professionTable["Crafts"] then
+                newTable.Professions[professionName].Crafts = {}
+                for categoryID, categoryTable in pairs(professionTable["Crafts"]) do
+                    newTable.Professions[professionName].Crafts[categoryID] = {}
+                    for craftID, craftTable in pairs(categoryTable) do
+                        newTable.Professions[professionName].Crafts[categoryID][craftID] = {}
+                        if craftTable["color"] then
+                            newTable.Professions[professionName].Crafts[categoryID][craftID].color = craftTable["color"]
+                        end
+                        if craftTable["isLearned"] then
+                            newTable.Professions[professionName].Crafts[categoryID][craftID].isLearned = craftTable["isLearned"]
+                        end
+                        if craftTable["recipeID"] then
+                            newTable.Professions[professionName].Crafts[categoryID][craftID].recipeID = craftTable["recipeID"]
+                            newTable.Professions[professionName].Crafts[categoryID][craftID].reagents = _GetCraftReagents(craftTable["recipeID"])
+                            local resultItems = addon.ref.global.ResultItems[craftTable["recipeID"]]
+                            if resultItems then
+                                newTable.Professions[professionName].Crafts[categoryID][craftID].resultItems = {}
+                                newTable.Professions[professionName].Crafts[categoryID][craftID].resultItems.name = resultItems.name
+                                newTable.Professions[professionName].Crafts[categoryID][craftID].resultItems.itemID = resultItems.itemID
+                                newTable.Professions[professionName].Crafts[categoryID][craftID].resultItems.maxMade = resultItems.maxMade
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+    if characterTable["Prof1"] then
+        newTable["Prof1"] = characterTable["Prof1"]
+    end
+    if characterTable["Prof2"] then
+        newTable["Prof2"] = characterTable["Prof2"]
+    end
+    if characterTable["lastUpdate"] then
+        newTable["lastUpdate"] = characterTable["lastUpdate"]
+    end
+    return newTable
+end
+
+function _CraftsProcessSharedCharacterTable(characterTable)
+    -- Character -> "Professions" -> each profession -> "Crafts" -> each categoryID -> {} nil out the "reagents" and "resultItems", moving them to the reference database
+    -- Check if the exact same entry is already in the reference database, change the recipeID to that if it is
+    -- This is basically an O(n^2) search, yuck. Slow and inefficient.
+    if characterTable["Professions"] then
+        for professionName, professionTable in pairs(characterTable["Professions"]) do
+            if professionTable["Crafts"] then
+                for categoryID, categoryTable in pairs(professionTable["Crafts"]) do
+                    for recipeIndex, recipeTable in pairs(categoryTable) do
+                        if recipeTable["recipeID"] then
+                            if recipeTable["reagents"] then
+                                -- this is just a string
+                                local found = false
+                                for reagentID, reagentString in pairs(addon.ref.global.Reagents) do
+                                    if reagentString == recipeTable["reagents"] then
+                                        recipeTable["recipeID"] = reagentID
+                                        found = true
+                                        break
+                                    end
+                                end
+                                if not found then
+                                    -- find a new recipeID that isn't already taken
+                                    local recipeID = 1
+                                    while (addon.ref.global.Reagents[recipeID] ~= nil) do
+                                        recipeID = recipeID + 1
+                                    end
+                                    recipeTable["recipeID"] = recipeID
+                                    addon.ref.global.Reagents[recipeID] = recipeTable["reagents"]
+                                    addon.ref.global.ResultItems[recipeID] = recipeTable["resultItems"]
+                                end
+                                recipeTable["reagents"] = nil
+                                recipeTable["resultItems"] = nil
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+end
 
 local PublicMethods = {
 	GetProfession = _GetProfession,
@@ -919,7 +1035,11 @@ local PublicMethods = {
     GetFirstAidRank = _GetFirstAidRank,
 	GetCraftReagents = _GetCraftReagents,
 	GetCraftResultItem = _GetCraftResultItem,
-    GetResultItemName = _GetResultItemName
+    GetResultItemName = _GetResultItemName,
+    GetCraftsReferenceTable = _GetCraftsReferenceTable,
+    ImportCraftsReference = _ImportCraftsReference,
+    CraftsPrepareCharacterTableForSharing = _CraftsPrepareCharacterTableForSharing,
+    CraftsProcessSharedCharacterTable = _CraftsProcessSharedCharacterTable,
 }
 
 function addon:OnInitialize()

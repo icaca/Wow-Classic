@@ -808,3 +808,8 @@ L[ [=[Your confirmation will still be required any time someone requests your in
 L["Zelemar the Wrathful"] = true
 L["Zone"] = true
 
+L["will be returned upon expiry"] = true
+L["CLOSEST_RETURN_IN_PATTERN"] = "Closest return in %s" -- %s will be filled in by [# hours # minutes]
+L["CLOSEST_DELETION_IN_PATTERN"] = "Closest deletion in %s" -- ^
+L["MAIL_WILL_BE_DELETED_PATTERN"] = "|cFF00FF00%d|cFFFFFFFF will be |cFFFF0000deleted|cFFFFFFFF upon expiry"
+L["Mails found:"] = true

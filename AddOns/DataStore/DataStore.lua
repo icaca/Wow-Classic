@@ -743,7 +743,11 @@ end
 function addon:ImportData(module, data, name, realm, account)
 	-- module can be either the module name (string) or the module table
 	-- ex: DS:ImportData("DataStore_Containers", ...) or DS:ImportData(DataStore_Containers, ...)
-	if type(module) == "string" then
+	local crafts = false
+    if type(module) == "string" then
+        if module == "DataStore_Crafts" then
+            crafts = true
+        end
 		module = RegisteredModules[module]
 	end
 
@@ -751,7 +755,10 @@ function addon:ImportData(module, data, name, realm, account)
 	-- change this, it shoudl be a COPYTABLE instead of an assignation, otherwise, ace DB wildcards are not applied
 	-- module.Characters[GetKey(name, realm, account)] = data
 	CopyTable(data, module.Characters[GetKey(name, realm, account)])
-
+    
+    if crafts then
+        addon:CraftsProcessSharedCharacterTable(module.Characters[GetKey(name, realm, account)])
+    end    
 end
 
 function addon:ImportCharacter(key, faction, guild)

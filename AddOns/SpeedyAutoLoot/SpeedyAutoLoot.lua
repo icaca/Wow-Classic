@@ -62,7 +62,7 @@ function AutoLoot:ShowLootFrame(show)
 			ElvLootFrame:SetParent(self)
 			self.isHidden = true
 		end
-	elseif LootFrame:IsEventRegistered("GOSSIP_CLOSED") then
+	elseif LootFrame:IsEventRegistered("LOOT_SLOT_CLEARED") then
 		LootFrame.page = 1;
 		if show then
 			LootFrame_Show(LootFrame)
@@ -116,7 +116,7 @@ function AutoLoot:OnEvent(e, ...)
 			return
 		end
 
-        self.isLooting = true
+		self.isLooting = true
 		if aL or (aL == nil and GetCVarBool("autoLootDefault") ~= IsModifiedClick("AUTOLOOTTOGGLE")) then
 			self:LootItems(numItems)
 		else

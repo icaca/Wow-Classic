@@ -111,48 +111,52 @@ local function AddRealm(AccountName, RealmName)
 		local characterFaction = DataStore:GetCharacterFaction(character)
 		local _, characterClass = DataStore:GetCharacterClass(character)
 
-		
-		if (characterLevel < minLevel) then shouldAddCharacter = false end
-		if (characterLevel > maxLevel) then shouldAddCharacter = false end
-		
-		if (factions == 1) and (characterFaction ~= FACTION_ALLIANCE) then
-			shouldAddCharacter = false
-		elseif (factions == 2) and (characterFaction ~= FACTION_HORDE) then
-			shouldAddCharacter = false
-		end
-		if (class ~= 0) and CLASS_SORT_ORDER[class] ~= characterClass then shouldAddCharacter = false end
-		if (tradeskill ~= 0) then 
-
-			-- primary profession
-			if tradeskill < addon.TradeSkills.AccountSummaryFirstSecondarySkillIndex then
-				local tradeskillID = addon.TradeSkills.AccountSummaryFiltersSpellIDs[tradeskill]
-				local _, _, _, name1 = DataStore:GetProfession1(character)
-				local _, _, _, name2 = DataStore:GetProfession2(character)
-				local prof1 = DataStore:GetProfessionSpellID(name1) or 0
-				local prof2 = DataStore:GetProfessionSpellID(name2) or 0
-				
-				if tradeskillID ~= prof1 and tradeskillID ~= prof2 then 
-					shouldAddCharacter = false 
-				end
-				
-			elseif tradeskill == firstSecondary then
-				local rank = DataStore:GetCookingRank(character) or 0
-				if rank == 0 then
-					shouldAddCharacter = false 
-				end
-
-			elseif tradeskill == firstSecondary+1 then
-				local rank = DataStore:GetFishingRank(character) or 0
-				if rank == 0 then
-					shouldAddCharacter = false 
-				end
-            elseif tradeskill == firstSecondary+2 then
-				local rank = DataStore:GetFirstAidRank(character) or 0
-				if rank == 0 then
-					shouldAddCharacter = false 
-				end    
-			end
-		end
+		if (not characterLevel) or (not characterFaction) or (not characterClass) then
+            -- this is a test for data corruption 
+            shouldAddCharacter = false
+        else            
+    		if (characterLevel < minLevel) then shouldAddCharacter = false end
+    		if (characterLevel > maxLevel) then shouldAddCharacter = false end
+    		
+    		if (factions == 1) and (characterFaction ~= FACTION_ALLIANCE) then
+    			shouldAddCharacter = false
+    		elseif (factions == 2) and (characterFaction ~= FACTION_HORDE) then
+    			shouldAddCharacter = false
+    		end
+    		if (class ~= 0) and CLASS_SORT_ORDER[class] ~= characterClass then shouldAddCharacter = false end
+    		if (tradeskill ~= 0) then 
+    
+    			-- primary profession
+    			if tradeskill < addon.TradeSkills.AccountSummaryFirstSecondarySkillIndex then
+    				local tradeskillID = addon.TradeSkills.AccountSummaryFiltersSpellIDs[tradeskill]
+    				local _, _, _, name1 = DataStore:GetProfession1(character)
+    				local _, _, _, name2 = DataStore:GetProfession2(character)
+    				local prof1 = DataStore:GetProfessionSpellID(name1) or 0
+    				local prof2 = DataStore:GetProfessionSpellID(name2) or 0
+    				
+    				if tradeskillID ~= prof1 and tradeskillID ~= prof2 then 
+    					shouldAddCharacter = false 
+    				end
+    				
+    			elseif tradeskill == firstSecondary then
+    				local rank = DataStore:GetCookingRank(character) or 0
+    				if rank == 0 then
+    					shouldAddCharacter = false 
+    				end
+    
+    			elseif tradeskill == firstSecondary+1 then
+    				local rank = DataStore:GetFishingRank(character) or 0
+    				if rank == 0 then
+    					shouldAddCharacter = false 
+    				end
+                elseif tradeskill == firstSecondary+2 then
+    				local rank = DataStore:GetFirstAidRank(character) or 0
+    				if rank == 0 then
+    					shouldAddCharacter = false 
+    				end    
+    			end
+    		end
+        end
 		
 		-- filters passed ?
 		if shouldAddCharacter then

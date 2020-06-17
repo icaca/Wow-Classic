@@ -640,7 +640,7 @@ function addon:GetRecipeLevel(link, tooltip)
 	
 	local tooltipName = tooltip:GetName()
 	
-	for i = tooltip:NumLines(), 2, -1 do			-- parse all tooltip lines, from last to second
+	for i = 2, tooltip:NumLines() do			-- parse all tooltip lines
 		local tooltipText = _G[tooltipName .. "TextLeft" .. i]:GetText()
 		if tooltipText then
 			local _, _, rLevel = string.find(tooltipText, "%((%d+)%)") -- find number enclosed in brackets

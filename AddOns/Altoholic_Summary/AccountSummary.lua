@@ -939,12 +939,12 @@ columns["Prof1"] = {
 	OnEnter = function(frame)
 			local character = frame:GetParent().character
 			local _, _, _, skillName = DataStore:GetProfession1(character)
-			Tradeskill_OnEnter(frame, skillName, true)
+			Tradeskill_OnEnter(frame, DataStore:ConvertProfessionSecondaryNameToPrimary(skillName), true)
 		end,
 	OnClick = function(frame, button)
 			local character = frame:GetParent().character
 			local _, _, _, skillName = DataStore:GetProfession1(character)
-			Tradeskill_OnClick(frame, skillName)
+			Tradeskill_OnClick(frame, DataStore:ConvertProfessionSecondaryNameToPrimary(skillName))
 		end,
 }
 
@@ -1051,7 +1051,7 @@ columns["ProfFishing"] = {
 			return format("%s%s", GetSkillRankColor(rank), rank)
 		end,
 	OnEnter = function(frame)
-			Tradeskill_OnEnter(frame, "Fishing", true)
+			Tradeskill_OnEnter(frame, L["Fishing"], true)
 		end,
 }
 
@@ -1100,7 +1100,7 @@ columns["Mails"] = {
 			
 			tt:AddDoubleLine(DataStore:GetColoredCharacterName(character), L["COLUMN_MAILS_TITLE"])
 			tt:AddLine(" ")
-			tt:AddLine(format("%sMails found: %s%d", colors.white, colors.green, num))
+			tt:AddLine(format("%s%s %s%d", colors.white, L["Mails found:"], colors.green, num))
 			
 			local numReturned, numDeleted, numExpired = 0, 0, 0
 			local closestReturn
@@ -1140,16 +1140,16 @@ columns["Mails"] = {
 			end
 
 			tt:AddLine(" ")
-			tt:AddLine(format("%s%d %swill be returned upon expiry", colors.green, numReturned, colors.white))
+			tt:AddLine(format("%s%d %s%s", colors.green, numReturned, colors.white, L["will be returned upon expiry"]))
 			if closestReturn then
-				tt:AddLine(format("%sClosest return in %s%s", colors.white, colors.green, SecondsToTime(closestReturn)))
+				tt:AddLine(format(colors.white..L["CLOSEST_RETURN_IN_PATTERN"], colors.green..SecondsToTime(closestReturn)))
 			end
 			
 			if numDeleted > 0 then
 				tt:AddLine(" ")
-				tt:AddLine(format("%s%d %swill be %sdeleted%s upon expiry", colors.green, numDeleted, colors.white, colors.red, colors.white))
+                tt:AddLine(format(L["MAIL_WILL_BE_DELETED_PATTERN"], numDeleted))
 				if closestDelete then
-					tt:AddLine(format("%sClosest deletion in %s%s", colors.white, colors.green, SecondsToTime(closestDelete)))
+					tt:AddLine(format(colors.white..L["CLOSEST_DELETION_IN_PATTERN"], colors.green..SecondsToTime(closestDelete)))
 				end
 			end
 			

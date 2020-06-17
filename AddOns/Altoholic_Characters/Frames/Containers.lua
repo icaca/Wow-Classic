@@ -15,7 +15,7 @@ local function UpdateBagIndices(bag, size)
 	-- ex: [2] = bagID = 0, from 13, to 16
 
 	local lowerLimit = 1
-
+    if not size then size = 0 end
 	while size > 0 do					-- as long as there are slots to process ..
 		table.insert(bagIndices, { bagID=bag, from=lowerLimit} )
 	

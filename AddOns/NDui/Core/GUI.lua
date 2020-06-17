@@ -3,7 +3,7 @@ local B, C, L, DB = unpack(ns)
 local G = B:RegisterModule("GUI")
 
 local tonumber, tostring, pairs, ipairs, next, select, type = tonumber, tostring, pairs, ipairs, next, select, type
-local tinsert, format, strsplit = table.insert, string.format, string.split
+local tinsert, format, strsplit, strfind = table.insert, string.format, string.split, string.find
 local cr, cg, cb = DB.r, DB.g, DB.b
 local guiTab, guiPage, f, dataFrame = {}, {}
 
@@ -89,7 +89,8 @@ local defaultSettings = {
 		RaidFrame = true,
 		NumGroups = 8,
 		SimpleMode = false,
-		SimpleModeSortByRole = true,
+		SMUnitsPerColumn = 20,
+		SMGroupByIndex = 1,
 		InstanceAuras = true,
 		RaidDebuffScale = 1,
 		RaidHealthColor = 1,
@@ -167,7 +168,7 @@ local defaultSettings = {
 		Clock = false,
 		CombatPulse = true,
 		MapScale = .7,
-		MinmapScale = 1.4,
+		MinimapScale = 1.4,
 		ShowRecycleBin = true,
 		WhoPings = true,
 		MapReveal = true,
@@ -216,13 +217,11 @@ local defaultSettings = {
 		Bigwigs = true,
 		TMW = true,
 		WeakAuras = true,
-		BarLine = true,
 		InfobarLine = true,
 		ChatLine = true,
 		MenuLine = true,
 		ClassLine = true,
 		Details = true,
-		QuestLogEx = true,
 		QuestTracker = true,
 		Recount = true,
 		ResetRecount = true,
@@ -495,6 +494,13 @@ local function refreshRaidFrameIcons()
 	B:GetModule("UnitFrames"):RefreshRaidFrameIcons()
 end
 
+local function updateSimpleModeGroupBy()
+	local UF = B:GetModule("UnitFrames")
+	if UF.UpdateSimpleModeHeader then
+		UF:UpdateSimpleModeHeader()
+	end
+end
+
 local function updateSmoothingAmount()
 	B:SetSmoothingAmount(NDuiDB["UFs"]["SmoothAmount"])
 end
@@ -636,7 +642,7 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{4, "UFs", "BuffIndicatorType", L["BuffIndicatorType"].."*", nil, {L["BI_Blocks"], L["BI_Icons"], L["BI_Numbers"]}, refreshRaidFrameIcons},
 		{3, "UFs", "BuffIndicatorScale", L["BuffIndicatorScale"].."*", true, {.8, 2, 1}, refreshRaidFrameIcons},
 		{1, "UFs", "InstanceAuras", "|cff00cc4c"..L["Instance Auras"], nil, setupRaidDebuffs},
-		{1, "UFs", "AurasClickThrough", L["RaidAuras ClickThrough"], nil},
+		{1, "UFs", "AurasClickThrough", L["RaidAuras ClickThrough"], nil, nil, nil, L["ClickThroughTip"]},
 		{3, "UFs", "RaidDebuffScale", L["RaidDebuffScale"].."*", true, {.8, 2, 1}, refreshRaidFrameIcons},
 		{},--blank
 		{1, "UFs", "ShowTeamIndex", L["RaidFrame TeamIndex"]},
@@ -646,8 +652,11 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{3, "UFs", "NumGroups", L["Num Groups"], nil, {4, 8, 0}},
 		{3, "UFs", "RaidTextScale", L["UFTextScale"], true, {.8, 1.5, 2}, updateRaidTextScale},
 		{},--blank
-		{1, "UFs", "SimpleMode", "|cff00cc4c"..L["Simple RaidFrame"]},
-		{1, "UFs", "SimpleModeSortByRole", L["SimpleMode SortByRole"], true},
+		{1, "UFs", "SimpleMode", "|cff00cc4c"..L["SimpleRaidFrame"], nil, nil, nil, L["SimpleRaidFrameTip"]},
+		{3, "UFs", "SMUnitsPerColumn", L["SimpleMode Column"], nil, {10, 40, 0}},
+		{4, "UFs", "SMGroupByIndex", L["SimpleMode GroupBy"].."*", true, {GROUP, CLASS}, updateSimpleModeGroupBy},
+		{nil, true},-- FIXME: dirty fix for now
+		{nil, true},
 	},
 	[5] = {
 		{1, "Nameplate", "Enable", "|cff00cc4c"..L["Enable Nameplate"], nil, setupNameplateFilter},
@@ -684,7 +693,7 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 	[6] = {
 		{1, "AuraWatch", "Enable", "|cff00cc4c"..L["Enable AuraWatch"], nil, setupAuraWatch},
 		{1, "AuraWatch", "WatchSpellRank", L["AuraWatch WatchSpellRank"]},
-		{1, "AuraWatch", "ClickThrough", L["AuraWatch ClickThrough"]},
+		{1, "AuraWatch", "ClickThrough", L["AuraWatch ClickThrough"], nil, nil, nil, L["ClickThroughTip"]},
 		{3, "AuraWatch", "IconScale", L["AuraWatch IconScale"], true, {.8, 2, 1}},
 		{},--blank
 		{1, "Nameplate", "ShowPlayerPlate", "|cff00cc4c"..L["Enable PlayerPlate"]},
@@ -761,7 +770,7 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Misc", "ExpRep", L["Show Expbar"], true},
 		{},--blank
 		{3, "Map", "MapScale", L["Map Scale"].."*", false, {.5, 1, 1}},
-		{3, "Map", "MinmapScale", L["Minimap Scale"].."*", true, {1, 2, 1}, updateMinimapScale},
+		{3, "Map", "MinimapScale", L["Minimap Scale"].."*", true, {1, 2, 1}, updateMinimapScale},
 	},
 	[10] = {
 		{1, "Skins", "BlizzardSkins", "|cff00cc4c"..L["BlizzardSkins"], nil, nil, nil, L["BlizzardSkinsTips"]},
@@ -773,12 +782,10 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{3, "Skins", "SkinAlpha", L["SkinAlpha"].."*", nil, {0, 1, 1}, updateSkinAlpha},
 		{3, "Skins", "FontScale", L["GlobalFontScale"], true, {.5, 1.5, 1}},
 		{},--blank
-
-		{1, "Skins", "BarLine", L["Bar Line"]},
+		{1, "Skins", "ClassLine", L["ClassColor Line"]},
 		{1, "Skins", "InfobarLine", L["Infobar Line"], true},
 		{1, "Skins", "ChatLine", L["Chat Line"]},
 		{1, "Skins", "MenuLine", L["Menu Line"], true},
-		{1, "Skins", "ClassLine", L["ClassColor Line"]},
 		{},--blank
 		{1, "Skins", "TradeSkills", L["EnhancedTradeSkills"]},
 		{1, "Skins", "QuestTracker", L["EnhancedQuestLog"], true, nil, nil, L["EnhancedQuestLogTips"]},
@@ -787,7 +794,6 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Skins", "Details", L["Details Skin"], nil, resetDetails},
 		{4, "Skins", "ToggleDirection", L["ToggleDirection"].."*", true, {L["LEFT"], L["RIGHT"], L["TOP"], L["BOTTOM"]}, updateToggleDirection},
 		{1, "Skins", "Recount", L["Recount Skin"]},
-		{1, "Skins", "QuestLogEx", L["QuestLogEx Skin"], true, nil, nil, L["ExtendedQuestLogAddons"]},
 		{1, "Skins", "DBM", L["DBM Skin"]},
 		{1, "Skins", "Bigwigs", L["Bigwigs Skin"], true},
 		{1, "Skins", "TMW", L["TMW Skin"]},
@@ -1012,9 +1018,11 @@ local function CreateOption(i)
 			end
 		-- Blank, no optType
 		else
-			local l = CreateFrame("Frame", nil, parent)
-			l:SetPoint("TOPLEFT", 25, -offset - 12)
-			B.CreateGF(l, 560, C.mult, "Horizontal", 1, 1, 1, .25, .25)
+			if not key then
+				local l = CreateFrame("Frame", nil, parent)
+				l:SetPoint("TOPLEFT", 25, -offset - 12)
+				B.CreateGF(l, 560, C.mult, "Horizontal", 1, 1, 1, .25, .25)
+			end
 			offset = offset + 35
 		end
 	end
@@ -1141,7 +1149,7 @@ local function importData()
 			NDuiDB[key][value] = toBoolean(arg1)
 		elseif arg1 == "EMPTYTABLE" then
 			NDuiDB[key][value] = {}
-		elseif arg1 == "r" or arg1 == "g" or arg1 == "b" then
+		elseif strfind(value, "Color") and (arg1 == "r" or arg1 == "g" or arg1 == "b") then
 			local color = select(4, strsplit(":", option))
 			if NDuiDB[key][value] then
 				NDuiDB[key][value][arg1] = tonumber(color)

@@ -31,7 +31,7 @@ local TOC_SETGUILD				= "2"
 local TOC_SETCHAR					= "4"
 local TOC_DATASTORE				= "5"
 local TOC_REFDATA					= "6"
-
+local TOC_CRAFTS_REFDATA        = "7"
 
 
 --[[	*** Protocol ***
@@ -400,11 +400,15 @@ function Altoholic.Comm.Sharing:OnSendItemReceived(sender, data)
 	elseif TocType == TOC_DATASTORE then	-- DS ? Send the appropriate DS module
 		local _, moduleID = strsplit(TOC_SEP, TocData)
 		local moduleName = Altoholic.Sharing.Content:GetOptionalModuleName(tonumber(moduleID))
-		Whisper(self.AuthorizedRecipient, CMD_DATASTORE_XFER, DS:GetCharacterTable(moduleName, self.ServerCharacterName, self.ServerRealmName))
+        local characterTable = DS:GetCharacterTable(moduleName, self.ServerCharacterName, self.ServerRealmName)
+	    if (moduleName == "DataStore_Crafts") then
+            characterTable = DS:CraftsPrepareCharacterTableForSharing(characterTable)
+        end
+		Whisper(self.AuthorizedRecipient, CMD_DATASTORE_XFER, characterTable)
 		
 	elseif TocType == TOC_REFDATA then
-		local _, class = strsplit(TOC_SEP, TocData)
-		Whisper(self.AuthorizedRecipient, CMD_REFDATA_XFER, DS:GetClassReference(class))
+		local _, key = strsplit(TOC_SEP, TocData)
+		Whisper(self.AuthorizedRecipient, CMD_REFDATA_XFER, key)
 	end
 end
 
@@ -451,9 +455,9 @@ end
 
 function Altoholic.Comm.Sharing:OnRefDataReceived(sender, data)
     local TocData = self.DestTOC[self.NetDestCurItem]
-	local _, class = strsplit(TOC_SEP, TocData)
+	local _, key = strsplit(TOC_SEP, TocData)
 	
-	DataStore:ImportClassReference(class, data)
+	DataStore:ImportCraftsReference(key, data)
 --	Altoholic:Print(format(L["Reference data received (%s) !"], class))
 	self:RequestNext(sender)
 end

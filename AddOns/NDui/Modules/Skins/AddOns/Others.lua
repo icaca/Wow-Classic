@@ -195,10 +195,18 @@ function S:ResetRecount()
 	Recount:BarsChanged()
 
 	Recount.db.profile.BarTexture = "normTex"
-	Recount.db.profile.Font = DEFAULT
+	Recount.db.profile.Font = nil
 	Recount:UpdateBarTextures()
 
 	NDuiDB["Skins"]["ResetRecount"] = false
+end
+
+function S:ResetRocountFont()
+	for _, row in pairs(Recount.MainWindow.Rows) do
+		local font, fontSize = row.LeftText:GetFont()
+		row.LeftText:SetFont(font, fontSize, DB.Font[3])
+		row.RightText:SetFont(font, fontSize, DB.Font[3])
+	end
 end
 
 function S:RecountSkin()
@@ -223,11 +231,15 @@ function S:RecountSkin()
 	if NDuiDB["Skins"]["ResetRecount"] then S:ResetRecount() end
 	hooksecurefunc(Recount, "ResetPositions", S.ResetRecount)
 
-	if NDuiDB["Skins"]["BlizzardSkins"] then
-		B.ReskinArrow(frame.LeftButton, "left")
-		B.ReskinArrow(frame.RightButton, "right")
-		B.ReskinClose(frame.CloseButton, "TOPRIGHT", frame.bg, "TOPRIGHT", -2, -2)
-	end
+	S:ResetRocountFont()
+	hooksecurefunc(Recount, "BarsChanged", S.ResetRocountFont)
+
+	B.ReskinArrow(frame.LeftButton, "left")
+	B.ReskinArrow(frame.RightButton, "right")
+	B.ReskinClose(frame.CloseButton, "TOPRIGHT", frame.bg, "TOPRIGHT", -2, -2)
+
+	-- Force to show window on init
+	Recount.MainWindow:Show()
 end
 
 function S:BindPad()
