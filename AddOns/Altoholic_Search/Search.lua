@@ -708,6 +708,18 @@ local function BrowseCharacter(character)
 			end
 		end
 	end
+    
+    if addon:GetOption("UI.Tabs.Search.IncludeAuctionHouseListings") then
+        currentResultLocation = "Auction House"
+        local num = DataStore:GetNumAuctions(character) or 0
+        for i = 1, num do
+            local isGoblin, itemID, count, name, price1, price2, timeLeft = DataStore:GetAuctionHouseItemInfo(character, "Auctions", i)
+            local _, itemLink = GetItemInfo(itemID)
+            if itemLink then
+                VerifyItem(itemLink, count, itemLink)
+            end
+        end
+    end
 		
 	if addon:GetOption("UI.Tabs.Search.IncludeKnownRecipes")			-- check known recipes ?
 		and (filters:GetFilterValue("itemType") == nil) 

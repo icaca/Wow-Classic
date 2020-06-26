@@ -4,8 +4,8 @@ _G[addonName] = LibStub("AceAddon-3.0"):NewAddon(addonName, "AceConsole-3.0", "A
 
 local addon = _G[addonName]
 
-addon.Version = "v1.13.019"
-addon.VersionNum = 113019
+addon.Version = "v1.13.020"
+addon.VersionNum = 113020
 
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 local commPrefix = addonName
@@ -98,6 +98,7 @@ local AddonDB_Defaults = {
 			["UI.Tabs.Search.IncludeNoMinLevel"] = true,				-- include items with no minimum level
 			["UI.Tabs.Search.IncludeMailboxItems"] = true,
 			["UI.Tabs.Search.IncludeKnownRecipes"] = true,
+            ["UI.Tabs.Search.IncludeAuctionHouseListings"] = true,
 			["UI.Tabs.Search.SortAscending"] = true,							-- ascending or descending sort order
 			TotalLoots = 0,					-- make at least one search in the loot tables to initialize these values
 			UnknownLoots = 0,

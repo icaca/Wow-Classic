@@ -138,7 +138,7 @@ addon:Controller("AltoholicUI.Recipes", {
 			       
 			if line <= #recipeList then	-- if the line is visible
 				local color, recipeID, isLearned, recipeRank, totalRanks = DataStore:GetRecipeInfo(recipeList[line])
-				rowFrame:Update(currentProfession, recipeID, RecipeColors[color], isLearned, recipeRank, totalRanks)
+				rowFrame:Update(currentProfession, recipeID, RecipeColors[tonumber(color)], isLearned, recipeRank, totalRanks)
 				rowFrame:Show()
 			else
 				rowFrame:Hide()

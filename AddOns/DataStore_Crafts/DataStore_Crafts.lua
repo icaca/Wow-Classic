@@ -721,17 +721,16 @@ local function _IterateRecipes(profession, mainCategory, subCategory, callback)
     end
          
 	-- mainCategory : category index (or 0 for all)
-	-- subCategory : sub-category index (or 0 for all)
 	local crafts = profession.Crafts
     
     -- bugfix for error thrown when the player hasn't registered this profession at all yet
 	if(profession.Categories == nil) then return; end
 
 	-- loop through categories
-	for _, catIndex in pairs(profession.Categories) do -- = 1, _GetNumRecipeCategories(profession) do
+	for catNum, catIndex in pairs(profession.Categories) do -- = 1, _GetNumRecipeCategories(profession) do
         local catID = catIndex.id
 		-- if there is no filter on main category, or if it is just the one we want to see
-		if (mainCategory == 0) or (mainCategory == catID) then
+		if (mainCategory == 0) or (mainCategory == catNum) then
             
 			local recipes = profession.Crafts[catID]
 			if type(recipes) == "table" then

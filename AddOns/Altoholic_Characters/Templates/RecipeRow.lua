@@ -26,6 +26,10 @@ addon:Controller("AltoholicUI.RecipeRow", {
 				frame.CraftedItem.Count:Hide()
 			end
 			frame.CraftedItem:Show()
+            if itemName then
+			    local _, _, _, hexColor = GetItemQualityColor(itemRarity)
+			    recipeText = format("|c%s%s", hexColor, itemName)
+		    end
 		elseif profession == DataStore:GetLocaleEnchantingName() then
             itemName = DataStore:GetResultItemName(recipeID); itemRarity = 4; maxMade = 1;
             frame.CraftedItem:SetIcon("Interface\\Icons\\Trade_Engraving.blp")
@@ -34,14 +38,11 @@ addon:Controller("AltoholicUI.RecipeRow", {
             frame.CraftedItem:SetRarity(itemRarity)
             frame.CraftedItem.Count:Hide()
             frame.CraftedItem:Show()
+            recipeText = format("%s%s", color, itemName)
         else
 			frame.CraftedItem:Hide()
 		end
 			
-        if itemName then
-			local _, _, _, hexColor = GetItemQualityColor(itemRarity)
-			recipeText = format("|c%s%s", hexColor, itemName)
-		end
         frame.RecipeLink.Text:SetText(recipeText)
 		
 		-- ** set the reagents **

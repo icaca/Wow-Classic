@@ -241,6 +241,7 @@ function addon:SetupOptions()
 	f.IncludeNoMinLevel.Text:SetText(L["Include items without level requirement"])
 	f.IncludeMailboxItems.Text:SetText(L["Include mailboxes"])
 	f.IncludeKnownRecipes.Text:SetText(L["Include known recipes"])
+    f.IncludeAuctionHouseListings.Text:SetText("Include Auction House listings")
 	L["AutoQuery server |cFFFF0000(disconnection risk)"] = nil
 	L["Sort loots in descending order"] = nil
 	L["Include items without level requirement"] = nil
@@ -371,6 +372,7 @@ function addon:RestoreOptionsToUI()
 	f.IncludeNoMinLevel:SetChecked(O["UI.Tabs.Search.IncludeNoMinLevel"])
 	f.IncludeMailboxItems:SetChecked(O["UI.Tabs.Search.IncludeMailboxItems"])
 	f.IncludeKnownRecipes:SetChecked(O["UI.Tabs.Search.IncludeKnownRecipes"])
+    f.IncludeAuctionHouseListings:SetChecked(O["UI.Tabs.Search.IncludeAuctionHouseListings"])
 
 	AltoholicSearchOptionsLootInfo:SetText(colors.green .. O.TotalLoots .. "|r " .. L["Loots"] .. " / " .. colors.green .. O.UnknownLoots .. "|r " .. L["Unknown"])
 	AltoholicSearchOptionsLootInfo:SetText(format("%s%s|r %s / %s%s|r %s", colors.green, O.TotalLoots, L["Loots"], colors.green, O.UnknownLoots, L["Unknown"]))

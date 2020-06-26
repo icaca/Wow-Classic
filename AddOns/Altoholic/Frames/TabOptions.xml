@@ -222,6 +222,14 @@
 					<KeyValue key="option" value="UI.Tabs.Search.IncludeKnownRecipes" />
 				</KeyValues>
 			</CheckButton>
+			<CheckButton parentKey="IncludeAuctionHouseListings" inherits="AltoToggleableOptionTemplate">
+				<Anchors> 
+					<Anchor point="TOP" relativeKey="$parent.IncludeKnownRecipes" relativePoint="BOTTOM" x="0" y="-10" />
+				</Anchors>
+				<KeyValues>
+					<KeyValue key="option" value="UI.Tabs.Search.IncludeAuctionHouseListings" />
+				</KeyValues>
+			</CheckButton>            
 		</Frames>
 	</Frame>
 
