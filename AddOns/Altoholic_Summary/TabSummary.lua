@@ -2,6 +2,10 @@ local addonName = "Altoholic"
 local addon = _G[addonName]
 local colors = addon.Colors
 
+if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then
+    return
+end
+
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 
 addon.Tabs.Summary = {}

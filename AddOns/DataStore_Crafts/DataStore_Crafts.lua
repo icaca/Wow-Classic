@@ -1,17 +1,15 @@
 --[[	*** DataStore_Crafts ***
 Written by : Thaoky, EU-Marécages de Zangar
 June 23rd, 2009
-
-======
-2020/03/04: 
-There was an issue that has been resolved where some characters would have the same profession showing for Slot 1 and Slot 2.
-To fix this, either delete the character and re-scan it, or run this macro:
-    /run for _,c in pairs(DataStore_Crafts.Characters) do if (c.Prof1==c.Prof2) then c.Prof2=nil end end
-======
 --]]
 if not DataStore then return end
 
 local addonName = "DataStore_Crafts"
+
+if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then
+    print("DataStore error: You are trying to run the Classic version of this addon on Retail.")
+    return
+end
 
 _G[addonName] = LibStub("AceAddon-3.0"):NewAddon(addonName, "AceConsole-3.0", "AceEvent-3.0", "AceComm-3.0", "AceSerializer-3.0", "AceTimer-3.0")
 
@@ -517,6 +515,26 @@ local function ClassicScanProfessionInfo(useCraftInstead)
     ScanTradeSkills(useCraftInstead)
 end
 
+local function checkForUnlearnedProfession()
+    local char = addon.ThisCharacter
+    for profIndex = 1, 2 do
+        local professionName = char["Prof"..profIndex]
+        if professionName then
+            local found = false
+            for i = 1, GetNumSkillLines() do
+                local skillName = GetSkillLineInfo(i)
+                if skillName == professionName then
+                    found = true
+                    break
+                end
+            end
+            if not found then
+                char["Prof"..profIndex] = nil
+            end
+        end
+    end
+end
+
 -- *** Event Handlers ***
 local function OnPlayerAlive()
     -- Grab the player's fishing and gathering skills from the Skills API
@@ -548,6 +566,8 @@ local function OnPlayerAlive()
             end
         end
     end
+    
+    checkForUnlearnedProfession()
 end
 
 local function OnTradeSkillClose()
@@ -1066,6 +1086,8 @@ function addon:OnEnable()
 	addon:RegisterEvent("CHAT_MSG_SKILL", OnChatMsgSkill)
 	addon:RegisterEvent("CHAT_MSG_SYSTEM", OnChatMsgSystem)
 	addon:RegisterEvent("TRADE_SKILL_DATA_SOURCE_CHANGED", OnDataSourceChanged)
+    
+    hooksecurefunc("AbandonSkill", checkForUnlearnedProfession)
 	
 --	addon:SetupOptions()
 	ClearExpiredProfessions()	-- automatically cleanup guild profession links that are from an older version

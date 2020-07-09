@@ -20,7 +20,7 @@
 				self:SetFrameLevel(level + 1)
 				self:RegisterForClicks("LeftButtonDown", "RightButtonDown")
 				
-				self:SetIcon("Interface\\Glues\\CharacterCreate\\UI-CharacterCreate-Classes")
+				self:SetIcon("Interface\\GLUES\\CHARACTERCREATE\\UI-CharacterCreate-Classes")
 			</OnLoad>
 			<OnLeave>
 				AltoTooltip:Hide()

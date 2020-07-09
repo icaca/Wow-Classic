@@ -10,6 +10,11 @@ _G[addonName] = LibStub("AceAddon-3.0"):NewAddon(addonName, "AceConsole-3.0", "A
 
 local addon = _G[addonName]
 
+if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then
+    print("DataStore error: You are trying to run the Classic version of this addon on Retail.")
+    return
+end
+
 local THIS_ACCOUNT = "Default"
 
 local AddonDB_Defaults = {

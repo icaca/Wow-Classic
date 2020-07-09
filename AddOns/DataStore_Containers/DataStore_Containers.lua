@@ -2,11 +2,7 @@
 Written by : Thaoky, EU-Marécages de Zangar
 June 21st, 2009
 
-This modules takes care of scanning & storing player bags, bank, & guild banks
-
-Extended services: 
-	- guild communication: at logon, sends guild bank tab info (last visit) to guildmates
-	- triggers events to manage transfers of guild bank tabs
+This modules takes care of scanning & storing player bags + bank
 --]]
 if not DataStore then return end
 
@@ -21,28 +17,6 @@ local MAIN_BANK_SLOTS = 100		-- bag id of the 28 main bank slots
 
 local AddonDB_Defaults = {
 	global = {
-		Guilds = {
-			['*'] = {			-- ["Account.Realm.Name"] 
-				money = nil,
-				faction = nil,
-				Tabs = {
-					['*'] = {		-- tabID = table index [1] to [6]
-						name = nil,
-						icon = nil,
-						visitedBy = "",
-						ClientTime = 0,				-- since epoch
-						ClientDate = nil,
-						ClientHour = nil,
-						ClientMinute = nil,
-						ServerHour = nil,
-						ServerMinute = nil,
-						ids = {},
-						links = {},
-						counts = {}
-					}
-				},
-			}
-		},
 		Characters = {
 			['*'] = {					-- ["Account.Realm.Name"] 
 				lastUpdate = nil,
@@ -90,18 +64,6 @@ local DBUpdaters = {
 						dest[k] = v
 					end
 				end
-			end
-		
-			-- This function moves guild bank tabs from the "Guilds/Guildkey" level to the "Guilds/Guildkey/Tabs" sub-table
-			for guildKey, guildTable in pairs(addon.db.global.Guilds) do
-				for tabID = 1, 8 do		-- convert the 8 tabs
-					if type(guildTable[tabID]) == "table" then
-						CopyTable(guildTable[tabID], guildTable.Tabs[tabID])
-						wipe(guildTable[tabID])
-						guildTable[tabID] = nil						
-					end
-				end
-				guildTable.money = 0
 			end
 		end,
 }
@@ -177,51 +139,103 @@ local ContainerTypes = {
 	},
 }
 
+local function detectBagChanges(originalBag, newBag)
+    local changes = {}
+
+    for slotID = 1, originalBag.size do
+        local itemID = originalBag.ids[slotID]
+        if itemID == nil then
+            -- slot was originally empty
+            if newBag.ids[slotID] ~= nil then
+                -- an item has been moved into this slot
+                table.insert(changes, {["changeType"] = "insert", ["slotID"] = slotID, ["itemID"] = newBag.ids[slotID], ["count"] = newBag.counts[slotID] })
+            end
+        else
+            -- slot originally had an item
+            if newBag.ids[slotID] == nil then
+                -- an item has been removed from this slot
+                table.insert(changes, {["changeType"] = "delete", ["slotID"] = slotID, ["itemID"] = itemID})
+            else
+                if (itemID ~= newBag.ids[slotID]) or (originalBag.counts[slotID] ~= newBag.counts[slotID]) then
+                    -- a different item is now in this slot OR its count changed
+                    table.insert(changes, { 
+                        ["changeType"] = "changed", 
+                        ["slotID"] = slotID, 
+                        ["originalItemID"] = itemID, 
+                        ["newItemID"] = newBag.ids[slotID], 
+                        ["originalCount"] = originalBag.counts[slotID], 
+                        ["newCount"] = newBag.counts[slotID], 
+                    } )
+                end
+            end
+        end
+    end
+
+    return changes
+end
+
 -- *** Scanning functions ***
+
 local function ScanContainer(bagID, containerType)
 	local Container = ContainerTypes[containerType]
 	
-	local bag = addon.ThisCharacter.Containers["Bag" .. bagID]
-	wipe(bag.cooldowns)		-- does not exist for a guild bank
-	wipe(bag.ids)				-- clean existing bag data
-	wipe(bag.counts)
-	wipe(bag.links)
+	local originalBag = addon.ThisCharacter.Containers["Bag" .. bagID]
+    
+    local newBag = {}
+    addon.ThisCharacter.Containers["Bag"..bagID] = newBag
+    newBag.cooldowns = {}
+    newBag.ids = {}
+    newBag.counts = {}
+    newBag.links = {}
+    newBag.icon = originalBag.icon
+    newBag.link = originalBag.link
 	
 	local link, count
 	local startTime, duration, isEnabled
 	
-	bag.size = Container:GetSize(bagID)
-	bag.freeslots, bag.bagtype = Container:GetFreeSlots(bagID)
+	newBag.size = Container:GetSize(bagID)
+	newBag.freeslots, newBag.bagtype = Container:GetFreeSlots(bagID)
 	
-	-- Scan from 1 to bagsize for normal bags or guild bank tabs, but from 40 to 67 for main bank slots
+	-- Scan from 1 to bagsize for normal bags, but from 40 to 67 for main bank slots
 	-- local baseIndex = (containerType == BANK) and 39 or 0
 	local baseIndex = 0
 	local index
 	
-	for slotID = baseIndex + 1, baseIndex + bag.size do
+	for slotID = baseIndex + 1, baseIndex + newBag.size do
 		index = slotID - baseIndex
 		link = Container:GetLink(slotID, bagID)
 		if link then
-			bag.ids[index] = tonumber(link:match("item:(%d+)"))
+			newBag.ids[index] = tonumber(link:match("item:(%d+)"))
 			
 			if IsEnchanted(link) then
-				bag.links[index] = link
+				newBag.links[index] = link
 			end
 		
 			count = Container:GetCount(slotID, bagID)
 			if count and count > 1  then
-				bag.counts[index] = count	-- only save the count if it's > 1 (to save some space since a count of 1 is extremely redundant)
+				newBag.counts[index] = count	-- only save the count if it's > 1 (to save some space since a count of 1 is extremely redundant)
 			end
 		end
 		
 		startTime, duration, isEnabled = Container:GetCooldown(slotID, bagID)
 		if startTime and startTime > 0 then
-			bag.cooldowns[index] = format("%s|%s|1", startTime, duration)
+			newBag.cooldowns[index] = format("%s|%s|1", startTime, duration)
 		end
 	end
 	
 	addon.ThisCharacter.lastUpdate = time()
 	addon:SendMessage("DATASTORE_CONTAINER_UPDATED", bagID, containerType)
+    
+    local changes = detectBagChanges(originalBag, newBag)
+    
+    -- detect if the table is empty
+    local next = next
+    if next(changes) == nil then
+        return nil
+    else
+        changes.bagID = bagID
+        return changes
+    end
 end
 
 local function ScanBagSlotsInfo()
@@ -280,10 +294,12 @@ local function ScanBag(bagID)
 			end
 		end
 	end
-	ScanContainer(bagID, BAGS)
+    local changes = ScanContainer(bagID, BAGS)
 	ScanBagSlotsInfo()
+    return changes
 end
 
+local bagUpdateQueue = {}
 -- *** Event Handlers ***
 local function OnBagUpdate(event, bag)
 	if bag < 0 then
@@ -294,7 +310,20 @@ local function OnBagUpdate(event, bag)
 		return
 	end
 
-	ScanBag(bag)
+    table.insert(bagUpdateQueue, bag)
+end
+
+local function OnBagUpdateDelayed(event)
+    if #bagUpdateQueue == 0 then return end
+
+    for _, v in ipairs(bagUpdateQueue) do
+        local changes = ScanBag(v)
+        if changes then
+            addon:SendMessage("DATASTORE_CONTAINER_CHANGES_SINGLE", changes)
+        end        
+    end
+    
+    wipe(bagUpdateQueue)
 end
 
 local function OnBankFrameClosed()
@@ -308,7 +337,10 @@ local function OnPlayerBankSlotsChanged(event, slotID)
 	if (slotID >= 29) and (slotID <= 35) then
 		ScanBag(slotID - 24)		-- bagID for bank bags goes from 5 to 11, so slotID - 24
 	else
-		ScanContainer(MAIN_BANK_SLOTS, BANK)
+        local changes = ScanContainer(MAIN_BANK_SLOTS, BANK) 
+        if changes then
+            addon:SendMessage("DATASTORE_CONTAINER_CHANGES_SINGLE", changes)
+        end
 		ScanBankSlotsInfo()
 	end
 end
@@ -327,11 +359,13 @@ end
 local function OnAuctionMultiSellStart()
 	-- if a multi sell starts, unregister bag updates.
 	addon:UnregisterEvent("BAG_UPDATE")
+    addon:UnregisterEvent("BAG_UPDATE_DELAYED")
 end
 
 local function OnAuctionMultiSellUpdate(event, current, total)
 	if current == total then	-- ex: multisell = 8 items, if we're on the 8th, resume bag updates.
 		addon:RegisterEvent("BAG_UPDATE", OnBagUpdate)
+        addon:RegisterEvent("BAG_UPDATE_DELAYED", OnBagUpdateDelayed)
 	end
 end
 
@@ -341,6 +375,7 @@ local function OnAuctionHouseClosed()
 	addon:UnregisterEvent("AUCTION_HOUSE_CLOSED")
 	
 	addon:RegisterEvent("BAG_UPDATE", OnBagUpdate)	-- just in case things went wrong
+    addon:RegisterEvent("BAG_UPDATE_DELAYED", OnBagUpdateDelayed)
 end
 
 local function OnAuctionHouseShow()
@@ -364,8 +399,8 @@ local function _GetContainers(character)
 end
 
 local BagTypeStrings = {
-	-- [1] = "Quiver",
-	-- [2] = "Ammo Pouch",
+	[1] = "Quiver",
+	[2] = "Ammo Pouch",
 	[4] = GetItemSubClassInfo(LE_ITEM_CLASS_CONTAINER, 1), -- "Soul Bag",
 	[8] = GetItemSubClassInfo(LE_ITEM_CLASS_CONTAINER, 7), -- "Leatherworking Bag",
 	[16] = GetItemSubClassInfo(LE_ITEM_CLASS_CONTAINER, 8), -- "Inscription Bag",
@@ -487,6 +522,49 @@ local function _GetNumFreeBankSlots(character)
 	return character.numFreeBankSlots
 end
 
+local function _ImportBagChanges(character, changes)
+    -- first, integrity checks...
+    if not character then return end
+    if not changes then return end
+    if type(changes) ~= "table" then return end
+    if not changes.bagID then return end
+    local container = _GetContainer(character, changes.bagID) 
+    if not container then return end
+    
+    for _, change in pairs(changes) do
+        if type(change) == "table" then
+            if change.changeType == "insert" then
+                if change.slotID and change.itemID then
+                    local existingItem = container.ids[change.slotID]
+                    container.ids[change.slotID] = change.itemID
+                    local item = Item:CreateFromItemID(change.itemID)
+                    item:ContinueOnItemLoad(function()
+	                    container.links[change.slotID] = item:GetItemLink()
+                    end)
+                    container.counts[change.slotID] = change.count
+                end
+            elseif change.changeType == "delete" then
+                if change.slotID and change.itemID then
+                    local existingItem = container.ids[change.slotID]
+                    container.ids[change.slotID] = nil
+                    container.links[change.slotID] = nil
+                    container.counts[change.slotID] = nil
+                end
+            elseif change.changeType == "changed" then
+                if change.slotID and change.originalItemID and change.newItemID then
+                    local existingItem = container.ids[change.slotID]
+                    container.ids[change.slotID] = change.newItemID
+                    local item = Item:CreateFromItemID(change.newItemID)
+                    item:ContinueOnItemLoad(function()
+	                    container.links[change.slotID] = item:GetItemLink()
+                    end)
+                    container.counts[change.slotID] = change.newCount
+                end
+            end
+        end
+    end
+end
+
 local PublicMethods = {
 	GetContainer = _GetContainer,
 	GetContainers = _GetContainers,
@@ -500,6 +578,7 @@ local PublicMethods = {
 	GetNumFreeBagSlots = _GetNumFreeBagSlots,
 	GetNumBankSlots = _GetNumBankSlots,
 	GetNumFreeBankSlots = _GetNumFreeBankSlots,
+    ImportBagChanges = _ImportBagChanges,
 }
 
 function addon:OnInitialize()
@@ -518,6 +597,7 @@ function addon:OnInitialize()
 	DataStore:SetCharacterBasedMethod("GetNumFreeBagSlots")
 	DataStore:SetCharacterBasedMethod("GetNumBankSlots")
 	DataStore:SetCharacterBasedMethod("GetNumFreeBankSlots")
+    DataStore:SetCharacterBasedMethod("ImportBagChanges")
 end
 
 function addon:OnEnable()
@@ -531,6 +611,7 @@ function addon:OnEnable()
     end
 	
 	addon:RegisterEvent("BAG_UPDATE", OnBagUpdate)
+    addon:RegisterEvent("BAG_UPDATE_DELAYED", OnBagUpdateDelayed)
 	addon:RegisterEvent("BANKFRAME_OPENED", OnBankFrameOpened)
 	
 	-- disable bag updates during multi sell at the AH
@@ -539,6 +620,7 @@ end
 
 function addon:OnDisable()
 	addon:UnregisterEvent("BAG_UPDATE")
+    addon:UnregisterEvent("BAG_UPDATE_DELAYED")
 	addon:UnregisterEvent("BANKFRAME_OPENED")
 	addon:UnregisterEvent("AUCTION_HOUSE_SHOW")
 end

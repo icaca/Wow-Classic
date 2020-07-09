@@ -17,6 +17,11 @@ local addonName, addon = ...
 DataStore = LibStub("AceAddon-3.0"):NewAddon(addon, addonName, "AceConsole-3.0", "AceEvent-3.0", "AceComm-3.0", "AceSerializer-3.0")
 addon.Version = "v" .. GetAddOnMetadata(addonName, "Version")
 
+if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then
+    print("DataStore error: You are trying to run the Classic version of this addon on Retail.")
+    return
+end
+
 local THIS_ACCOUNT = "Default"
 local THIS_REALM = GetRealmName()
 local THIS_CHAR = UnitName("player")

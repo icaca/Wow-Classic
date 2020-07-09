@@ -82,10 +82,10 @@
 						local result = Altoholic.Search:GetResult(id)
 						
 						if result.linetype == 3 then
-							link = Altoholic:GetRecipeLink(result.spellID, result.professionName)
+							link = nil
 						elseif result.linetype == 4 then
 							local LTL = LibStub("LibTradeLinks-1.0")
-							link = Altoholic:GetRecipeLink(result.spellID, LTL:GetSkillName(result.skillID))
+							link = nil
 						end
 
 						if link then
@@ -110,10 +110,10 @@
 								local result = Altoholic.Search:GetResult(id)
 								
 								if result.linetype == 3 then
-									link = Altoholic:GetRecipeLink(result.spellID, result.professionName)
+									link = nil
 								elseif result.linetype == 4 then
 									local LTL = LibStub("LibTradeLinks-1.0")
-									link = Altoholic:GetRecipeLink(result.spellID, LTL:GetSkillName(result.skillID))
+									link = nil
 								end
 								
 								if not link then return end

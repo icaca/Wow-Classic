@@ -72,34 +72,8 @@ local compressionMode = 1
 local importedChars
 
 local function Whisper(player, messageType, ...)
-    --print("Sending whisper to: ", player, ", type: ", messageType, ", content:", ...)
 	local serializedData = Altoholic:Serialize(messageType, ...)
-	--print("DEBUG - Sending to other player:")
-    --DEFAULT_CHAT_FRAME:AddMessage(serializedData)
-	--print("serialized: ", serializedData)
-	-- if compressionMode == 1 then				-- no comp
-		Altoholic:SendCommMessage("AltoShare", serializedData, "WHISPER", player)
-		
-	-- elseif compressionMode == 2 then		-- comp huff
-		-- local compData = LibComp:CompressHuffman(serializedData)
-		
-		-- local ser, comp
-		-- ser = strlen(serializedData)
-		-- comp = strlen(compData)
-		-- DEFAULT_CHAT_FRAME:AddMessage(format("Compression (%d/%d) : %2.1f", ser, comp, (comp/ser)*100))
-		
-		-- Altoholic:SendCommMessage("AltoShare", compData, "WHISPER", player)
-
-	-- elseif compressionMode == 3 then		-- comp lzw
-		-- local compData = LibComp:CompressLZW(serializedData)
-		
-		-- local ser, comp
-		-- ser = strlen(serializedData)
-		-- comp = strlen(compData)
-		-- DEFAULT_CHAT_FRAME:AddMessage(format("Compression (%d/%d) : %2.1f", ser, comp, (comp/ser)*100))
-		
-		-- Altoholic:SendCommMessage("AltoShare", compData, "WHISPER", player)
-	-- end
+	Altoholic:SendCommMessage("AltoShare", serializedData, "WHISPER", player)
 end
 
 local function GetRequestee()

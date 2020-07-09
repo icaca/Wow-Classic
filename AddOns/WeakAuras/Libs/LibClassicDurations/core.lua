@@ -19,7 +19,7 @@ Usage example 1:
 --]================]
 if WOW_PROJECT_ID ~= WOW_PROJECT_CLASSIC then return end
 
-local MAJOR, MINOR = "LibClassicDurations", 57
+local MAJOR, MINOR = "LibClassicDurations", 61
 local lib = LibStub:NewLibrary(MAJOR, MINOR)
 if not lib then return end
 
@@ -178,12 +178,12 @@ end
 -- OLD GUIDs PURGE
 --------------------------
 
-local function purgeOldGUIDs()
+local function purgeOldGUIDsArgs(dataTable, accessTimes)
     local now = time()
     local deleted = {}
-    for guid, lastAccessTime in pairs(guidAccessTimes) do
+    for guid, lastAccessTime in pairs(accessTimes) do
         if lastAccessTime + PURGE_THRESHOLD < now then
-            guids[guid] = nil
+            dataTable[guid] = nil
             nameplateUnitMap[guid] = nil
             buffCacheValid[guid] = nil
             buffCache[guid] = nil
@@ -193,8 +193,12 @@ local function purgeOldGUIDs()
         end
     end
     for _, guid in ipairs(deleted) do
-        guidAccessTimes[guid] = nil
+        accessTimes[guid] = nil
     end
+end
+
+local function purgeOldGUIDs()
+    purgeOldGUIDsArgs(guids, guidAccessTimes)
 end
 if lib.purgeTicker then
     lib.purgeTicker:Cancel()
@@ -203,44 +207,45 @@ lib.purgeTicker = C_Timer.NewTicker( PURGE_INTERVAL, purgeOldGUIDs)
 
 ------------------------------------
 -- Restore data if using standalone
-if IsAddOnLoaded("LibClassicDurations") then
-    f:RegisterEvent("PLAYER_LOGIN")
-    f:RegisterEvent("PLAYER_LOGOUT")
-    local function MergeTable(t1, t2)
-        if not t2 then return false end
-        for k,v in pairs(t2) do
-            if type(v) == "table" then
-                if t1[k] == nil then
-                    t1[k] = CopyTable(v)
-                else
-                    MergeTable(t1[k], v)
-                end
-            -- elseif v == "__REMOVED__" then
-                -- t1[k] = nil
-            else
-                t1[k] = v
-            end
-        end
-        return t1
-    end
-    function f:PLAYER_LOGIN()
-        if LCD_Data and LCD_GUIDAccess then
-            local curSessionData = lib.guids
-            lib.guids = LCD_Data
-            guids = lib.guids -- update upvalue
-            MergeTable(guids, curSessionData)
+f:RegisterEvent("PLAYER_LOGIN")
+function f:PLAYER_LOGIN()
+    if LCD_Data and LCD_GUIDAccess then
+        purgeOldGUIDsArgs(LCD_Data, LCD_GUIDAccess)
 
-            local curSessionAccessTimes = lib.guidAccessTimes
-            lib.guidAccessTimes = LCD_GUIDAccess
-            guidAccessTimes = lib.guidAccessTimes -- update upvalue
-            MergeTable(guidAccessTimes, curSessionAccessTimes)
+        local function MergeTable(t1, t2)
+            if not t2 then return false end
+            for k,v in pairs(t2) do
+                if type(v) == "table" then
+                    if t1[k] == nil then
+                        t1[k] = CopyTable(v)
+                    else
+                        MergeTable(t1[k], v)
+                    end
+                else
+                    t1[k] = v
+                end
+            end
+            return t1
         end
+
+        local curSessionData = lib.guids
+        lib.guids = LCD_Data
+        guids = lib.guids -- update upvalue
+        MergeTable(guids, curSessionData)
+
+        local curSessionAccessTimes = lib.guidAccessTimes
+        lib.guidAccessTimes = LCD_GUIDAccess
+        guidAccessTimes = lib.guidAccessTimes -- update upvalue
+        MergeTable(guidAccessTimes, curSessionAccessTimes)
     end
+
+    f:RegisterEvent("PLAYER_LOGOUT")
     function f:PLAYER_LOGOUT()
         LCD_Data = guids
         LCD_GUIDAccess = guidAccessTimes
     end
 end
+
 
 --------------------------
 -- DIMINISHING RETURNS
@@ -500,9 +505,11 @@ end
 local rollbackTable = setmetatable({}, { __mode="v" })
 local function ProcIndirectRefresh(eventType, spellName, srcGUID, srcFlags, dstGUID, dstFlags, dstName, isCrit)
     if indirectRefreshSpells[spellName] then
-        local refreshTable = indirectRefreshSpells[spellName]
+        local targetSpells = indirectRefreshSpells[spellName]
+
+        for targetSpellID, refreshTable in pairs(targetSpells) do
         if refreshTable.events[eventType] then
-            local targetSpellID = refreshTable.targetSpellID
+
 
             local condition = refreshTable.condition
             if condition then
@@ -534,6 +541,7 @@ local function ProcIndirectRefresh(eventType, spellName, srcGUID, srcFlags, dstG
                     rollbackTable[srcGUID][dstGUID][targetSpellID] = {now, oldStartTime}
                 end
             end
+        end
         end
     end
 end

@@ -4,8 +4,13 @@ _G[addonName] = LibStub("AceAddon-3.0"):NewAddon(addonName, "AceConsole-3.0", "A
 
 local addon = _G[addonName]
 
-addon.Version = "v1.13.020"
-addon.VersionNum = 113020
+addon.Version = "v1.13.022"
+addon.VersionNum = 113022
+
+if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then
+    print("Altoholic error: You are trying to run the Classic version of this addon on Retail.")
+    return
+end
 
 local L = LibStub("AceLocale-3.0"):GetLocale(addonName)
 local commPrefix = addonName

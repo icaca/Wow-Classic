@@ -171,9 +171,7 @@ local RealmScrollFrame_Desc = {
 		},
 		[PLAYER_CRAFT_LINE] = {
 			GetItemData = function(self, result, line)
-					local source = addon:GetRecipeLink(result.spellID, result.professionName)
-					
-					return GetSpellInfo(result.spellID), source, line
+					return DataStore:GetResultItemName(result.spellID), result.professionName, line
 				end,
 			GetItemTexture = function(self, result)
 					local itemID = DataStore:GetCraftResultItem(result.spellID)
@@ -204,9 +202,8 @@ local RealmScrollFrame_Desc = {
 			GetItemData = function(self, result, line)
 					-- return name, source, sourceID
 					local profession = LTL:GetSkillName(result.skillID)
-					local source = addon:GetRecipeLink(result.spellID, profession)
 					
-					return GetSpellInfo(result.spellID), source, line
+					return DataStore:GetResultItemName(result.spellID), result.professionName, line
 				end,
 			GetItemTexture = function(self, result)
 					local itemID = DataStore:GetCraftResultItem(result.spellID)
@@ -649,8 +646,8 @@ local function VerifyItem(item, itemCount, itemLink)
 	end
 end
 
-local function CraftMatchFound(spellID, value)
-	local name = GetSpellInfo(spellID)
+local function CraftMatchFound(recipeID, value)
+	local name = DataStore:GetResultItemName(recipeID)
 	if name and string.find(strlower(name), value, 1, true) then
 		return true
 	end
@@ -731,14 +728,14 @@ local function BrowseCharacter(character)
 			for professionName, profession in pairs(professions) do
 			
 				DataStore:IterateRecipes(profession, 0, 0, function(recipeData)
-					local _, spellID, isLearned = DataStore:GetRecipeInfo(recipeData)
-					if isLearned and CraftMatchFound(spellID, currentValue) then
+					local _, recipeID, isLearned = DataStore:GetRecipeInfo(recipeData)
+					if isLearned and CraftMatchFound(recipeID, currentValue) then
 						ns:AddResult(	{
 							linetype = PLAYER_CRAFT_LINE,
 							char = currentResultKey,
 							professionName = professionName,
 							profession = profession,
-							spellID = spellID
+							spellID = recipeID
 						} )
 					end
 				end)

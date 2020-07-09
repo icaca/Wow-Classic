@@ -1,12 +1,12 @@
-tag a62f6ea104e9b6bafbf032e3a3e23f077579653f v1.2-release
+tag 4c43964121f3e5edda3feb86b66b13efc12ef459 v1.3-release
 Author:	cloudbells <chriszmn@gmail.com>
-Date:	Thu May 28 19:04:19 2020 +0200
+Date:	Wed Jul 8 12:05:44 2020 +0200
 
-Updated for phase 4
+Game version 1.13.5
 
-commit e903daaabed45fbe57742e82ce7a1701683a659b
+commit 4596e25541c6fa04a5f3860c817f09aabb2cb18a
 Author: cloudbells <chriszmn@gmail.com>
-Date:   Thu May 28 19:00:00 2020 +0200
+Date:   Wed Jul 8 12:04:17 2020 +0200
 
-    Updated interface version
+    Game version 1.13.5
 
