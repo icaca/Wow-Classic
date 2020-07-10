@@ -422,7 +422,7 @@ Supports multiple entries, separated by commas
 	L["Ignore Dead"] = "Не учитывать мёртвые цели"
 	L["Ignore Disconnected"] = "Не учитывать игроков не в сети"
 	--[[Translation missing --]]
-	L["Ignore out of checking range."] = "Ignore out of checking range."
+	L["Ignore out of checking range"] = "Ignore out of checking range"
 	L["Ignore Self"] = "Не учитывать себя"
 	L["Ignore self"] = "Не учитывать себя"
 	L["Ignored"] = "Игнорируется"

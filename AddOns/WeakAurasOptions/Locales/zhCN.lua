@@ -301,14 +301,10 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["Filter by Class"] = "根据职业过滤"
 	L["Filter by Group Role"] = "根据团队职责过滤"
 	L["Filter by Nameplate Type"] = "根据姓名版类型过滤"
-	--[[Translation missing --]]
 	L[ [=[Filter formats: 'Name', 'Name-Realm', '-Realm'.
 
 Supports multiple entries, separated by commas
-]=] ] = [=[Filter formats: 'Name', 'Name-Realm', '-Realm'.
-
-Supports multiple entries, separated by commas
-]=]
+]=] ] = "过滤格式：'名称'，'名称-服务器'，'-服务器'。支持多个条目，由英文逗号分隔。"
 	L["Finish"] = "结束"
 	L["Fire Orb"] = "火焰宝珠"
 	L["Font"] = "字体"
@@ -392,7 +388,7 @@ Supports multiple entries, separated by commas
 	L["Ignore Dead"] = "忽略已死亡"
 	L["Ignore Disconnected"] = "忽略已离线"
 	--[[Translation missing --]]
-	L["Ignore out of checking range."] = "Ignore out of checking range."
+	L["Ignore out of checking range"] = "Ignore out of checking range"
 	L["Ignore Self"] = "忽略自身"
 	L["Ignore self"] = "忽略自身"
 	L["Ignored"] = "被忽略"
@@ -709,8 +705,7 @@ Supports multiple entries, separated by commas
 	L["Use Tooltip Information"] = "使用鼠标提示信息"
 	L["Used in Auras:"] = "在下列光环中被使用："
 	L["Used in auras:"] = "在下列光环中被使用："
-	--[[Translation missing --]]
-	L["Uses UnitIsVisible() to check if in range. This is polled every second."] = "Uses UnitIsVisible() to check if in range. This is polled every second."
+	L["Uses UnitIsVisible() to check if in range. This is polled every second."] = "使用UnitIsVisible()检查是否在范围内，每秒检查一次。"
 	L["Value %i"] = "值 %i"
 	L["Values are in normalized rgba format."] = "数值为标准化的 RGBA 格式"
 	L["Values:"] = "值："

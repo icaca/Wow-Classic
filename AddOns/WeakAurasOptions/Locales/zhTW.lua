@@ -387,7 +387,7 @@ Supports multiple entries, separated by commas
 	L["Ignore all Updates"] = "忽略所有更新"
 	L["Ignore Dead"] = "忽略死者"
 	L["Ignore Disconnected"] = "忽略離線者"
-	L["Ignore out of checking range."] = "忽略超出範圍檢查。"
+	L["Ignore out of checking range"] = "忽略超出檢查範圍"
 	L["Ignore Self"] = "忽略自己"
 	L["Ignore self"] = "忽略自己"
 	L["Ignored"] = "忽略"
