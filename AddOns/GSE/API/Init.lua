@@ -6,7 +6,7 @@ GSE.Static = {}
 GSE.VersionString = GetAddOnMetadata("GSE", "Version");
 
 --[===[@debug@
-if GSE.VersionString == "2.5.9" then
+if GSE.VersionString == "2.5.10" then
   GSE.VersionString = "2.5.24-18-g95ecb41"
 end
 --@end-debug@]===]
