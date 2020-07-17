@@ -65,6 +65,7 @@ function Lib.DefineClass(name, superclass, ...)
 		superStatic = {},
 		superclass = superclass,
 		abstract = abstract,
+		isStaticReference = false,
 	}
 	while superclass do
 		for key, value in pairs(private.classInfo[superclass].static) do
@@ -184,7 +185,14 @@ private.CLASS_MT = {
 		if RESERVED_KEYS[key] then
 			error("Reserved word: "..tostring(key), 2)
 		end
-		if type(value) == "function" then
+		local isMethod = type(value) == "function"
+		if classInfo.isStaticReference then
+			-- we are defining a static class function, not a class method
+			assert(isMethod)
+			classInfo.isStaticReference = false
+			isMethod = false
+		end
+		if isMethod then
 			-- We wrap class methods so that within them, the instance appears to be of the defining class
 			classInfo.static[key] = function(inst, ...)
 				local instInfo = private.instInfo[inst]
@@ -205,15 +213,22 @@ private.CLASS_MT = {
 		end
 	end,
 	__index = function(self, key)
+		local classInfo = private.classInfo[self]
+		assert(not classInfo.isStaticReference)
 		-- check if it's the special __isa method which all classes implicitly have
 		if key == "__isa" then
 			return private.ClassIsA
 		elseif key == "__name" then
-			return private.classInfo[self].name
+			return classInfo.name
 		elseif key == "__super" then
-			return private.classInfo[self].superclass
+			return classInfo.superclass
+		elseif key == "__static" then
+			classInfo.isStaticReference = true
+			return self
+		elseif classInfo.static[key] ~= nil then
+			return classInfo.static[key]
 		end
-		error("Class type is write-only", 2)
+		error(format("Invalid static class key (%s)", tostring(key)), 2)
 	end,
 	__tostring = function(self)
 		return "class:"..private.classInfo[self].name
@@ -236,6 +251,7 @@ private.CLASS_MT = {
 			str = private.classInfo[self].name..":"..instStr,
 			isClassLookup = {},
 			hasSuperclass = hasSuperclass,
+			currentClass = nil,
 		}
 		if not hasSuperclass then
 			-- set the static members directly on this object for better performance
@@ -284,8 +300,11 @@ end
 
 function private.InstAs(inst, targetClass)
 	local instInfo = private.instInfo[inst]
-	if not targetClass or not instInfo.isClassLookup[targetClass] then
-		error(format("Object (%s) is not an instance of the requested class (%s)!", tostring(inst), tostring(targetClass)), 2)
+	instInfo.currentClass = targetClass
+	if not targetClass then
+		error(format("Requested class does not exist!"), 2)
+	elseif not instInfo.isClassLookup[targetClass] then
+		error(format("Object is not an instance of the requested class (%s)!", tostring(targetClass)), 2)
 	end
 	-- For classes with no superclass, we don't go through the __index metamethod, so can't use __as
 	if not instInfo.hasSuperclass then
@@ -295,7 +314,6 @@ function private.InstAs(inst, targetClass)
 	if not instInfo.methodClass then
 		error("The superclass can only be referenced within a class method.", 2)
 	end
-	instInfo.currentClass = targetClass
 	return inst
 end
 

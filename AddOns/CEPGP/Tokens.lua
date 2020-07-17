@@ -55,7 +55,7 @@ CEPGP_tokens = {
 		["Weaponmainhand"] = {
 			[20890] = 70	-- Ornate Hilt
 		},
-		["TwoHweapon"] = {
+		["2HWeapon"] = {
 			[21237] = 79	-- Imperial Qiraji Regalia -- Can also be a one-handed weapon
 		},
 		["Feet"] = {
@@ -69,6 +69,10 @@ CEPGP_tokens = {
 		["Legs"] = {
 			[20927] = 81,	-- Ouro's Intact Hide
 			[20931] = 81	-- Skin of the Great Sandworm
+		},
+		["Head"] = {
+			[20930] = 81,	--	Vek'lord's Diadem
+			[20926] = 81	--	Vek'nilash's Circlet
 		}
 	},
 

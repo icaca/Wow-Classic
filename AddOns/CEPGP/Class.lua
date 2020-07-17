@@ -22,6 +22,7 @@ CEPGP_classes = {
 		"Guns",
 		"Bows",
 		"Crossbows",
+		"Daggers",
 		"One-Handed Axes",
 		"Two-Handed Axes",
 		"Fist Weapons",

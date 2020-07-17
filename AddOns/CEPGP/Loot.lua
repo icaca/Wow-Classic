@@ -61,7 +61,7 @@ function CEPGP_LootFrame_Update()
 			break;
 		end
 	end
-	CEPGP_populateFrame(_, items, numLootItems);
+	CEPGP_populateFrame(items);
 end
 
 function CEPGP_announce(link, x, slotNum, quantity)
@@ -106,28 +106,28 @@ function CEPGP_announce(link, x, slotNum, quantity)
 		if rank > 0 then
 			if quantity > 1 then
 				if CEPGP.Loot.RaidWarning then
-					SendChatMessage("正在分配: x" .. quantity .. " " .. link, "RAID_WARNING", CEPGP_LANGUAGE);
+					SendChatMessage("NOW DISTRIBUTING: x" .. quantity .. " " .. link, "RAID_WARNING", CEPGP_LANGUAGE);
 				else
-					SendChatMessage("正在分配: x" .. quantity .. " " .. link, "RAID", CEPGP_LANGUAGE);
+					SendChatMessage("NOW DISTRIBUTING: x" .. quantity .. " " .. link, "RAID", CEPGP_LANGUAGE);
 				end
 			else
 				if CEPGP.Loot.RaidWarning then
-					SendChatMessage("正在分配: " .. link, "RAID_WARNING", CEPGP_LANGUAGE);
+					SendChatMessage("NOW DISTRIBUTING: " .. link, "RAID_WARNING", CEPGP_LANGUAGE);
 				else
-					SendChatMessage("正在分配: " .. link, "RAID", CEPGP_LANGUAGE);
+					SendChatMessage("NOW DISTRIBUTING: " .. link, "RAID", CEPGP_LANGUAGE);
 				end
 			end
 		else
 			if quantity > 1 then
-				SendChatMessage("正在分配: x" .. quantity .. " " .. link, "RAID", CEPGP_LANGUAGE);
+				SendChatMessage("NOW DISTRIBUTING: x" .. quantity .. " " .. link, "RAID", CEPGP_LANGUAGE);
 			else
-				SendChatMessage("正在分配: " .. link, "RAID", CEPGP_LANGUAGE);
+				SendChatMessage("NOW DISTRIBUTING: " .. link, "RAID", CEPGP_LANGUAGE);
 			end
 		end
 		if quantity > 1 then
-			SendChatMessage("GP值: " .. gp .. " (~" .. math.floor(gp/quantity) .. "GP per unit)", "RAID", CEPGP_LANGUAGE);
+			SendChatMessage("GP Value: " .. gp .. " (~" .. math.floor(gp/quantity) .. "GP per unit)", "RAID", CEPGP_LANGUAGE);
 		else
-			SendChatMessage("GP值: " .. gp, "RAID", CEPGP_LANGUAGE);
+			SendChatMessage("GP Value: " .. gp, "RAID", CEPGP_LANGUAGE);
 		end
 
 		SendChatMessage(CEPGP.Loot.Announcement, "RAID", CEPGP_LANGUAGE);
@@ -143,6 +143,23 @@ function CEPGP_announce(link, x, slotNum, quantity)
 				SendChatMessage(CEPGP_response_buttons[4][4] .. " : " .. CEPGP_response_buttons[4][2], "RAID", CEPGP_LANGUAGE);
 			end
 		end
+		
+		local keywords = {};
+	
+		for label, v in pairs(CEPGP.Loot.ExtraKeywords.Keywords) do
+			local entry = {};
+			for key, disc in pairs(v) do
+				entry = {[1] = label, [2] = key, [3] = disc};
+			end
+			table.insert(keywords, entry);
+		end
+		
+		keywords = CEPGP_tSort(keywords, 3, true);
+		
+		for k, v in ipairs(keywords) do
+			SendChatMessage(v[1] .. " : " .. v[2], "RAID", CEPGP_LANGUAGE);
+		end
+	
 		SendChatMessage("--------------------------", "RAID", CEPGP_LANGUAGE);
 		
 		
@@ -185,9 +202,9 @@ function CEPGP_announce(link, x, slotNum, quantity)
 		_G["CEPGP_distribute_item_tex"]:SetScript('OnLeave', function() GameTooltip:Hide() end);
 		_G["CEPGP_distribute_GP_value"]:SetText(gp);
 	elseif GetLootMethod() == "master" then
-		CEPGP_print("你不是队长分配.", 1);
+		CEPGP_print("You are not the Loot Master.", 1);
 		return;
 	elseif GetLootMethod() ~= "master" then
-		CEPGP_print("当前物品分配不是队长分配", 1);
+		CEPGP_print("The loot method is not Master Looter", 1);
 	end
 end

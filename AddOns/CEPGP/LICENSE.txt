@@ -1,0 +1,21 @@
+Classic EPGP License
+
+The contents of this addon, excluding third-party resources, are copyrighted by the author with all rights reserved.
+
+Definitions:
+1. "The Software" refers to CEPGP (Classic EPGP).
+2. "Dependent Code" refers to the requirement of having CEPGP listed as a dependency in the AddOn .toc (table of contents) file.
+
+The author of this addon hereby grants you the following rights:
+
+1. You may download this addon and run it for the intended purpose as an AddOn for World of Warcraft®.
+2. You may make modifications to the software for private use only, you may not publish or distribute any modified portion of the software.
+3. You may produce independent AddOns which use the software as dependent code for the purposes of:
+	a. Making use of functions provided by the software or
+	b. Modifying the behaviour of the software
+4. Do not modify the name of this addon, including the addon folders.
+5. This copyright notice shall be included in all copies or substantial portions of the Software.
+
+All rights not explicitly addressed in this license are reserved by the copyright holder.
+
+By using the software you are acknowledging that you understand and agree with the above terms and conditions.

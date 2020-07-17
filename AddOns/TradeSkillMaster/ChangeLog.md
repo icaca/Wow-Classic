@@ -1,7 +1,5 @@
-## v4.9.33 Changes
+## v4.9.37 Changes
 
-* [All] Updated hard-coded vendor sell prices for crafting mats
-* [All] Fixed issue with Accounting incorrectly reporting unique items which couldn't be retrieved from the mail
-* [Retail] Fixed errors when using the queue with a garrison profession open
+* [Classic] TOC bump for 1.13.5
 
 [Known Issues](http://support.tradeskillmaster.com/display/KB/TSM4+Currently+Known+Issues)
