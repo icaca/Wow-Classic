@@ -811,5 +811,5 @@ L["Zone"] = true
 L["will be returned upon expiry"] = true
 L["CLOSEST_RETURN_IN_PATTERN"] = "Closest return in %s" -- %s will be filled in by [# hours # minutes]
 L["CLOSEST_DELETION_IN_PATTERN"] = "Closest deletion in %s" -- ^
-L["MAIL_WILL_BE_DELETED_PATTERN"] = "|cFF00FF00%d|cFFFFFFFF will be |cFFFF0000deleted|cFFFFFFFF upon expiry"
+L["MAIL_WILL_BE_DELETED_PATTERN"] = "|cFF00FF00%d|cFFFFFFFF will be |cFFFF0000deleted|cFFFFFFFF upon expiry" -- %d will be filled by the quantity that will be deleted
 L["Mails found:"] = true

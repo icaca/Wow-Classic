@@ -17,7 +17,10 @@ local AUTH_ASK		= 2
 local AUTH_NEVER	= 3
 
 local function FirstCap(s)
-	return strupper(s:sub(1,1)) .. strlower(s:sub(2))	-- first letter in cap, the rest lowercase
+	-- return strupper(s:sub(1,1)) .. strlower(s:sub(2))	-- first letter in cap, the rest lowercase
+    -- did not work with korean characters
+    local output = s:gsub("[A-Z]", string.lower)
+    return output:gsub("^[a-z]", string.upper)
 end
 
 local function GetNumClients()
@@ -869,6 +872,26 @@ local function ongoingAddButtonClicked()
     updateOngoingScrollFrame()
 end
 
+local function OnChatMessageSystem(event, text, ...)
+    local errorPattern = ERR_CHAT_PLAYER_NOT_FOUND_S -- In English: No player named '%s' is currently playing.
+    errorPattern = string.format(errorPattern, "(.+)") -- No player named '(.+)' is currently playing.
+    
+    local playerName = text:match(errorPattern)
+    if (not playerName) or (playerName == "") then return end
+    
+    local realmName
+    playerName, realmName = strsplit("-", playerName)
+    
+    for entry = 1, addon:GetOption("UI.Sharing.Ongoing.NumTargets") do
+        if (string.lower(playerName) == string.lower(addon:GetOption("UI.Sharing.Ongoing.Target"..entry..".Character"))) 
+                and (string.lower(realmName) == string.lower(addon:GetOption("UI.Sharing.Ongoing.Target"..entry..".Realm"))) then
+            _G["AltoholicFrameOngoingAltListEntry"..entry.."Check"]:SetChecked(false)
+            print("Altoholic: Disabling ongoing account sharing for player: "..playerName)
+            break
+        end
+    end
+end
+
 local function initialization()
     AltoAccountSharingOngoingDisclaimer:SetText("Share the entire database using the other tab FIRST.\nActivate this on ALL characters, pointing at each other.\nThe scroll bar isn't implemented yet.")
     AltoAccountSharingOngoingText1:SetText("Character name to share to.")
@@ -882,6 +905,7 @@ local function initialization()
     
     addon:RegisterMessage("DATASTORE_CONTAINER_CHANGES_SINGLE", OnContainerChangesSingleReceived)
     addon:RegisterComm("AltoOngoing", OngoingCommHandler)
+    addon:RegisterEvent("CHAT_MSG_SYSTEM", OnChatMessageSystem)
     
     if not addon:GetOption("UI.Sharing.Ongoing.NumTargets") then
         addon:SetOption("UI.Sharing.Ongoing.NumTargets", 0)

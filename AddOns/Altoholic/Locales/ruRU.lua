@@ -829,8 +829,8 @@ L[ [=[Your confirmation will still be required any time someone requests your in
 L["Zelemar the Wrathful"] = "Зелемар Гневный"
 L["Zone"] = "Зона"
 
-L["will be returned upon expiry"] = "TRANSLATION MISSING"
-L["CLOSEST_RETURN_IN_PATTERN"] = "TRANSLATION MISSING %s" -- %s will be filled in by [# hours # minutes]
-L["CLOSEST_DELETION_IN_PATTERN"] = "TRANSLATION MISSING %s" -- ^
-L["MAIL_WILL_BE_DELETED_PATTERN"] = "|cFF00FF00%d|cFFFFFFFF will be |cFFFF0000deleted|cFFFFFFFF upon expiry"
-L["Mails found:"] = "TRANSLATION MISSING"
+L["will be returned upon expiry"] = "будет возвращено по истечении срока"
+L["CLOSEST_RETURN_IN_PATTERN"] = "Следующий возврат через %s"   -- might need revision after current update  (1.13-022)
+L["CLOSEST_DELETION_IN_PATTERN"] = "Следующее удаление через %s" -- might need revision after current update  (1.13-022)
+L["MAIL_WILL_BE_DELETED_PATTERN"] = "|cFF00FF00%d|cFFFFFFFF будет |cFFFF0000удалено|cFFFFFFFF по истечении срока"
+L["Mails found:"] = "Обнаружены письма:"

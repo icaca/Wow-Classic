@@ -757,7 +757,7 @@ function addon:ImportData(module, data, name, realm, account)
 	end
 
 	assert(type(module) == "table")
-	-- change this, it shoudl be a COPYTABLE instead of an assignation, otherwise, ace DB wildcards are not applied
+	-- change this, it should be a COPYTABLE instead of an assignation, otherwise, ace DB wildcards are not applied
 	-- module.Characters[GetKey(name, realm, account)] = data
 	CopyTable(data, module.Characters[GetKey(name, realm, account)])
     
