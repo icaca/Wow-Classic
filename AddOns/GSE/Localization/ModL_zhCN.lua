@@ -42,10 +42,8 @@ L["A new version of %s has been added."] = "已添加新版本的 %s ."
 L["A sequence collision has occured. "] = "发生了一个序列冲突. "
 L["A sequence collision has occured.  Extra versions of this macro have been loaded.  Manage the sequence to determine how to use them "] = "发生了一个序列冲突.  已加载此宏的其他版本.  管理序列器以确认如何使用它们 "
 L["A sequence collision has occured.  Your local version of "] = "发生了一个序列冲突.   你的本地版本 "
---[[Translation missing --]]
-L["About"] = "About"
---[[Translation missing --]]
-L["About GSE"] = "About GSE"
+L["About"] = "关于"
+L["About GSE"] = "关于 GSE"
 L["Actions"] = "动作"
 L["Active Version: "] = "活动版本: "
 L["Addin Version %s contained versions for the following macros:"] = "加载版本 %s 包含于以下宏:"

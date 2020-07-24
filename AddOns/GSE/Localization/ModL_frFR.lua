@@ -6,34 +6,21 @@ end
 local L = LibStub("AceLocale-3.0"):NewLocale("GSE", "frFR")
 
 -- Options translation
---[[Translation missing --]]
-L["  The Alternative ClassID is "] = "  The Alternative ClassID is "
+L["  The Alternative ClassID is "] = "La ClassID alternative est"
 --[[Translation missing --]]
 L[" Deleted Orphaned Macro "] = " Deleted Orphaned Macro "
---[[Translation missing --]]
-L[" from "] = " from "
---[[Translation missing --]]
-L[" has been added as a new version and set to active.  Please review if this is as expected."] = " has been added as a new version and set to active.  Please review if this is as expected."
---[[Translation missing --]]
-L[" is not available.  Unable to translate sequence "] = " is not available.  Unable to translate sequence "
---[[Translation missing --]]
-L[" macros per Account.  You currently have "] = " macros per Account.  You currently have "
---[[Translation missing --]]
-L[" macros per character.  You currently have "] = " macros per character.  You currently have "
---[[Translation missing --]]
-L[" saved as version "] = " saved as version "
---[[Translation missing --]]
-L[" sent"] = " sent"
---[[Translation missing --]]
-L[" tried to overwrite the version already loaded from "] = " tried to overwrite the version already loaded from "
---[[Translation missing --]]
-L[" was imported as a new macro."] = " was imported as a new macro."
---[[Translation missing --]]
-L[" was imported with the following errors."] = " was imported with the following errors."
---[[Translation missing --]]
-L[" was updated to new version."] = " was updated to new version."
---[[Translation missing --]]
-L[". This version was not loaded."] = ". This version was not loaded."
+L[" from "] = "de"
+L[" has been added as a new version and set to active.  Please review if this is as expected."] = "a été ajouté comme une nouvelle version et a été activé. Veuillez vérifier que c'est voulu."
+L[" is not available.  Unable to translate sequence "] = "n'est pas disponible. Impossible de traduire la séquence"
+L[" macros per Account.  You currently have "] = "macros par compte. Vous en avez actuellement"
+L[" macros per character.  You currently have "] = "macros par compte. Vous en avez actuellement"
+L[" saved as version "] = "sauvez sous la version"
+L[" sent"] = "envoyé"
+L[" tried to overwrite the version already loaded from "] = "a essayé d'écraser la version déjà chargé depuis"
+L[" was imported as a new macro."] = "a été importé comme une nouvelle macro."
+L[" was imported with the following errors."] = "a été importé avec les erreurs suivantes."
+L[" was updated to new version."] = "a été mis à jour sous une nouvelle version."
+L[". This version was not loaded."] = ". Cette version n'était pas chargé."
 --[[Translation missing --]]
 L["/gs |r to get started."] = "/gs |r to get started."
 --[[Translation missing --]]
@@ -46,26 +33,20 @@ L["/gs help|r to get started."] = "/gs help|r to get started."
 L["/gs listall|r will produce a list of all available macros with some help information."] = "/gs listall|r will produce a list of all available macros with some help information."
 --[[Translation missing --]]
 L["/gs showspec|r will show your current Specialisation and the SPECID needed to tag any existing macros."] = "/gs showspec|r will show your current Specialisation and the SPECID needed to tag any existing macros."
---[[Translation missing --]]
-L["/gs|r again."] = "/gs|r again."
---[[Translation missing --]]
-L["/gs|r will list any macros available to your spec.  This will also add any macros available for your current spec to the macro interface."] = "/gs|r will list any macros available to your spec.  This will also add any macros available for your current spec to the macro interface."
+L["/gs|r again."] = "/gs|r encore."
+L["/gs|r will list any macros available to your spec.  This will also add any macros available for your current spec to the macro interface."] = "/gs|r liste toutes les macros disponibles pour ta spécialisation et les met dans l'interface de macro."
 --[[Translation missing --]]
 L[":|r The Sequence Translator allows you to use GS-E on other languages than enUS.  It will translate sequences to match your language.  If you also have the Sequence Editor you can translate sequences between languages.  The GS-E Sequence Translator is available on curse.com"] = ":|r The Sequence Translator allows you to use GS-E on other languages than enUS.  It will translate sequences to match your language.  If you also have the Sequence Editor you can translate sequences between languages.  The GS-E Sequence Translator is available on curse.com"
 --[[Translation missing --]]
 L[":|r To get started "] = ":|r To get started "
---[[Translation missing --]]
-L[":|r You cannot delete the only copy of a sequence."] = ":|r You cannot delete the only copy of a sequence."
---[[Translation missing --]]
-L[":|r Your current Specialisation is "] = ":|r Your current Specialisation is "
+L[":|r You cannot delete the only copy of a sequence."] = ":|r vous ne pouvez pas supprimer la seule copie de la séquence."
+L[":|r Your current Specialisation is "] = ":|r Tu spécialisation actuelle est"
 --[[Translation missing --]]
 L["|cffff0000GS-E:|r Gnome Sequencer - Enhanced Options"] = "|cffff0000GS-E:|r Gnome Sequencer - Enhanced Options"
---[[Translation missing --]]
-L["|r Incomplete Sequence Definition - This sequence has no further information "] = "|r Incomplete Sequence Definition - This sequence has no further information "
+L["|r Incomplete Sequence Definition - This sequence has no further information "] = "|r Définition de la séquence incomplète - Cette séquence n'a pas d'autres informations"
 --[[Translation missing --]]
 L["|r.  As a result this macro was not created.  Please delete some macros and reenter "] = "|r.  As a result this macro was not created.  Please delete some macros and reenter "
---[[Translation missing --]]
-L["|r.  You can also have a  maximum of "] = "|r.  You can also have a  maximum of "
+L["|r.  You can also have a  maximum of "] = "|r. Vous pouvez également avoir un maximum de"
 --[[Translation missing --]]
 L["<DEBUG> |r "] = "<DEBUG> |r "
 --[[Translation missing --]]
@@ -78,48 +59,33 @@ L["A sequence collision has occured. "] = "A sequence collision has occured. "
 L["A sequence collision has occured.  Extra versions of this macro have been loaded.  Manage the sequence to determine how to use them "] = "A sequence collision has occured.  Extra versions of this macro have been loaded.  Manage the sequence to determine how to use them "
 --[[Translation missing --]]
 L["A sequence collision has occured.  Your local version of "] = "A sequence collision has occured.  Your local version of "
---[[Translation missing --]]
-L["About"] = "About"
---[[Translation missing --]]
-L["About GSE"] = "About GSE"
---[[Translation missing --]]
+L["About"] = "A propos"
+L["About GSE"] = "A propos de GSE"
 L["Actions"] = "Actions"
---[[Translation missing --]]
-L["Active Version: "] = "Active Version: "
+L["Active Version: "] = "Version active:"
 --[[Translation missing --]]
 L["Addin Version %s contained versions for the following macros:"] = "Addin Version %s contained versions for the following macros:"
 --[[Translation missing --]]
 L["All macros are now stored as upper case names.  You may need to re-add your old macros to your action bars."] = "All macros are now stored as upper case names.  You may need to re-add your old macros to your action bars."
---[[Translation missing --]]
-L["Alt Keys."] = "Alt Keys."
---[[Translation missing --]]
-L["Any Alt Key"] = "Any Alt Key"
---[[Translation missing --]]
-L["Any Control Key"] = "Any Control Key"
---[[Translation missing --]]
-L["Any Shift Key"] = "Any Shift Key"
---[[Translation missing --]]
-L["Are you sure you want to delete %s?  This will delete the macro and all versions.  This action cannot be undone."] = "Are you sure you want to delete %s?  This will delete the macro and all versions.  This action cannot be undone."
---[[Translation missing --]]
-L["Arena"] = "Arena"
---[[Translation missing --]]
-L["Arena setting changed to Default."] = "Arena setting changed to Default."
+L["Alt Keys."] = "touches Alt."
+L["Any Alt Key"] = "N'importe quelle touche Alt"
+L["Any Control Key"] = "N'importe quelle touche Control"
+L["Any Shift Key"] = "N'importe quelle touche Shift"
+L["Are you sure you want to delete %s?  This will delete the macro and all versions.  This action cannot be undone."] = "Etes vous sûr de vouloir supprimer %s? La macro et toutes ses versions seront supprimées. Cette action ne peut pas être annulé."
+L["Arena"] = "Arène"
+L["Arena setting changed to Default."] = "Les paramètres par défaut de l'Arène ont été appliqué."
 --[[Translation missing --]]
 L["As GS-E is updated, there may be left over macros that no longer relate to sequences.  This will check for these automatically on logout.  Alternatively this check can be run via /gs cleanorphans"] = "As GS-E is updated, there may be left over macros that no longer relate to sequences.  This will check for these automatically on logout.  Alternatively this check can be run via /gs cleanorphans"
---[[Translation missing --]]
-L["Author"] = "Author"
---[[Translation missing --]]
-L["Author Colour"] = "Author Colour"
+L["Author"] = "Auteur"
+L["Author Colour"] = "Couleur de l'auteur"
 --[[Translation missing --]]
 L["Auto Create Class Macro Stubs"] = "Auto Create Class Macro Stubs"
 --[[Translation missing --]]
 L["Auto Create Global Macro Stubs"] = "Auto Create Global Macro Stubs"
 --[[Translation missing --]]
 L["Automatically Create Macro Icon"] = "Automatically Create Macro Icon"
---[[Translation missing --]]
-L["Available Addons"] = "Available Addons"
---[[Translation missing --]]
-L["Belt"] = "Belt"
+L["Available Addons"] = "Addons disponibles"
+L["Belt"] = "Ceinture"
 --[[Translation missing --]]
 L["Blizzard Functions Colour"] = "Blizzard Functions Colour"
 --[[Translation missing --]]
@@ -128,14 +94,10 @@ L["By setting the default Icon for all macros to be the QuestionMark, the macro 
 L["By setting this value the Sequence Editor will show every macro for every class."] = "By setting this value the Sequence Editor will show every macro for every class."
 --[[Translation missing --]]
 L["By setting this value the Sequence Editor will show every macro for your class.  Turning this off will only show the class macros for your current specialisation."] = "By setting this value the Sequence Editor will show every macro for your class.  Turning this off will only show the class macros for your current specialisation."
---[[Translation missing --]]
-L["Cancel"] = "Cancel"
---[[Translation missing --]]
-L["CheckMacroCreated"] = "Check Macro Created"
---[[Translation missing --]]
-L["Choose import action:"] = "Choose import action:"
---[[Translation missing --]]
-L["Choose Language"] = "Choose Language"
+L["Cancel"] = "Annulé"
+L["CheckMacroCreated"] = "Vérifiez la macro créée"
+L["Choose import action:"] = "Choisissez comment importer:"
+L["Choose Language"] = "Choisissiez votre langage"
 --[[Translation missing --]]
 L["Classwide Macro"] = "Classwide Macro"
 --[[Translation missing --]]
@@ -146,17 +108,14 @@ L["Clear Common Keybindings"] = "Clear Common Keybindings"
 L["Clear Errors"] = "Clear Errors"
 --[[Translation missing --]]
 L["Clear Keybindings"] = "Clear Keybindings"
---[[Translation missing --]]
-L["Close"] = "Close"
+L["Close"] = "Fermer"
 --[[Translation missing --]]
 L["Close to Maximum Macros.|r  You can have a maximum of "] = "Close to Maximum Macros.|r  You can have a maximum of "
 --[[Translation missing --]]
 L["Close to Maximum Personal Macros.|r  You can have a maximum of "] = "Close to Maximum Personal Macros.|r  You can have a maximum of "
---[[Translation missing --]]
-L["Colour"] = "Colour"
+L["Colour"] = "Couleur"
 --[[Translation missing --]]
 L["Colour and Accessibility Options"] = "Colour and Accessibility Options"
---[[Translation missing --]]
 L["Combat"] = "Combat"
 --[[Translation missing --]]
 L["Command Colour"] = "Command Colour"
@@ -168,7 +127,6 @@ L["Compress"] = "Compress"
 L["Compress Sequence from Forums"] = "Compress Sequence from Forums"
 --[[Translation missing --]]
 L["Conditionals Colour"] = "Conditionals Colour"
---[[Translation missing --]]
 L["Configuration"] = "Configuration"
 --[[Translation missing --]]
 L["Continue"] = "Continue"
@@ -206,10 +164,8 @@ L["Decompress"] = "Decompress"
 L["Default Import Action"] = "Default Import Action"
 --[[Translation missing --]]
 L["Default Version"] = "Default Version"
---[[Translation missing --]]
-L["Delete"] = "Delete"
---[[Translation missing --]]
-L["Delete Icon"] = "Delete Icon"
+L["Delete"] = "Supprimer"
+L["Delete Icon"] = "Supprimer l'icône"
 --[[Translation missing --]]
 L["Delete Orphaned Macros on Logout"] = "Delete Orphaned Macros on Logout"
 --[[Translation missing --]]
@@ -596,8 +552,7 @@ L["Raid"] = "Raid"
 L["Raid setting changed to Default."] = "Raid setting changed to Default."
 --[[Translation missing --]]
 L["Random - It will select .... a spell, any spell"] = "Random - It will select .... a spell, any spell"
---[[Translation missing --]]
-L["Rank"] = "Rank"
+L["Rank"] = "Rang"
 --[[Translation missing --]]
 L["Ready to Send"] = "Ready to Send"
 --[[Translation missing --]]
@@ -612,20 +567,15 @@ L["Record the spells and items you use into a new macro."] = "Record the spells 
 L["Registered Addons"] = "Registered Addons"
 --[[Translation missing --]]
 L["Rename New Macro"] = "Rename New Macro"
---[[Translation missing --]]
-L["Replace"] = "Replace"
---[[Translation missing --]]
-L["Require Target to use"] = "Require Target to use"
+L["Replace"] = "Remplacer"
+L["Require Target to use"] = "A besoin d'une cible pour être utilisé"
 --[[Translation missing --]]
 L["Reset Macro when out of combat"] = "Reset Macro when out of combat"
---[[Translation missing --]]
-L["Reset this macro when you exit combat."] = "Reset this macro when you exit combat."
---[[Translation missing --]]
-L["Resets"] = "Resets"
+L["Reset this macro when you exit combat."] = "Réinitialiser la macro en sortant de combat."
+L["Resets"] = "Réinitialiser"
 --[[Translation missing --]]
 L["Resets macros back to the initial state when out of combat."] = "Resets macros back to the initial state when out of combat."
---[[Translation missing --]]
-L["Resume"] = "Resume"
+L["Resume"] = "Reprendre"
 --[[Translation missing --]]
 L["Right Alt Key"] = "Right Alt Key"
 --[[Translation missing --]]
@@ -634,14 +584,11 @@ L["Right Control Key"] = "Right Control Key"
 L["Right Mouse Button"] = "Right Mouse Button"
 --[[Translation missing --]]
 L["Right Shift Key"] = "Right Shift Key"
---[[Translation missing --]]
-L["Ring 1"] = "Ring 1"
---[[Translation missing --]]
-L["Ring 2"] = "Ring 2"
+L["Ring 1"] = "Anneau 1"
+L["Ring 2"] = "Anneau 2"
 --[[Translation missing --]]
 L["Running"] = "Running"
---[[Translation missing --]]
-L["Save"] = "Save"
+L["Save"] = "Sauvegarder"
 --[[Translation missing --]]
 L["Save the changes made to this macro"] = "Save the changes made to this macro"
 --[[Translation missing --]]
@@ -650,10 +597,8 @@ L["Scenario"] = "Scenario"
 L["Scenario setting changed to Default."] = "Scenario setting changed to Default."
 --[[Translation missing --]]
 L["Seed Initial Macro"] = "Seed Initial Macro"
---[[Translation missing --]]
-L["Select Other Version"] = "Select Other Version"
---[[Translation missing --]]
-L["Send"] = "Send"
+L["Select Other Version"] = "Selectionner une autre version"
+L["Send"] = "Envoyer"
 --[[Translation missing --]]
 L["Send this macro to another GSE player who is on the same server as you are."] = "Send this macro to another GSE player who is on the same server as you are."
 --[[Translation missing --]]
@@ -724,8 +669,7 @@ L["String Colour"] = "String Colour"
 L["Supporters"] = "Supporters"
 --[[Translation missing --]]
 L["Talents"] = "Talents"
---[[Translation missing --]]
-L["Target"] = "Target"
+L["Target"] = "Cible"
 --[[Translation missing --]]
 L["Target language "] = "Target language "
 --[[Translation missing --]]
@@ -744,8 +688,7 @@ L["The GSE Out of Combat queue is %s"] = "The GSE Out of Combat queue is %s"
 L["The GUI has not been loaded.  Please activate this plugin amongst WoW's addons to use the GSE GUI."] = "The GUI has not been loaded.  Please activate this plugin amongst WoW's addons to use the GSE GUI."
 --[[Translation missing --]]
 L["The Macro Translator will translate an English sequence to your local language for execution.  It can also be used to translate a sequence into a different language.  It is also used for syntax based colour markup of Sequences in the editor."] = "The Macro Translator will translate an English sequence to your local language for execution.  It can also be used to translate a sequence into a different language.  It is also used for syntax based colour markup of Sequences in the editor."
---[[Translation missing --]]
-L["The main lines of the macro."] = "The main lines of the macro."
+L["The main lines of the macro."] = "Les lignes principales de la macro."
 --[[Translation missing --]]
 L["The milliseconds being used in key click delay."] = "The milliseconds being used in key click delay."
 --[[Translation missing --]]
@@ -942,8 +885,7 @@ L["When loading or creating a sequence, if it is a global or the macro has an un
 L["When loading or creating a sequence, if it is a macro of the same class automatically create the Macro Stub"] = "When loading or creating a sequence, if it is a macro of the same class automatically create the Macro Stub"
 --[[Translation missing --]]
 L["When you log into a class without any macros, prompt to load the sample macros."] = "When you log into a class without any macros, prompt to load the sample macros."
---[[Translation missing --]]
-L["Yes"] = "Yes"
+L["Yes"] = "Oui"
 --[[Translation missing --]]
 L["You cannot delete the Default version of this macro.  Please choose another version to be the Default on the Configuration tab."] = "You cannot delete the Default version of this macro.  Please choose another version to be the Default on the Configuration tab."
 --[[Translation missing --]]
