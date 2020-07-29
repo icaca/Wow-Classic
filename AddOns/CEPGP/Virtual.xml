@@ -213,13 +213,55 @@
 			</OnLoad>
 			<OnClick>
 				PlaySound(856);
-				if CEPGP_isML() == 0 or CEPGP_debugMode then
+				if CEPGP_isML() == 0 or CEPGP_Info.Debug then
 					CEPGP_roll_award_confirm:Hide();
 					CEPGP_ListButton_OnClick(self:GetName(), button);
 				end
 			</OnClick>
 		</Scripts>
 		<HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD"/>
+	</Button>
+	<Button name="LootBagButtonTemplate" virtual="true">
+		<Size y="15" />
+		<Attributes>
+			<Attribute name="GUID" type="string" value="" />
+		</Attributes>
+		<Frames>
+			<CheckButton name="$parentCheck" inherits="UIOptionsCheckButtonTemplate">
+				<HitRectInsets>
+					<AbsInset left="0" right="0" top="0" bottom="0" />
+				</HitRectInsets>
+				<Anchors>
+					<Anchor point="LEFT" />
+				</Anchors>
+			</CheckButton>
+			<Button name="$parentItem">
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentCheck" />
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<Texture name="$parentIcon">
+							<Size x="15" y="15" />
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentCheck" />
+							</Anchors>
+						</Texture>
+						<FontString name="$parentName" inherits="GameFontHighlight" justifyH="LEFT">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentIcon" />
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnShow>
+				local parent = self:GetParent();
+				self:SetWidth(parent:GetWidth());
+			</OnShow>
+		</Scripts>
 	</Button>
 	<Button name="GuildButtonTemplate" virtual="true">
 		<Size>

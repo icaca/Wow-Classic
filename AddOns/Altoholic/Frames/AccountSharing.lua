@@ -651,6 +651,10 @@ function Altoholic.Sharing.AvailableContent:BuildView()
         elseif tocType == TOC_CRAFT_REFDATA then
             table.insert(self.view, {linetype = CRAFT_REFDATA_LINE, key = arg1, size = tonumber(arg2), parentID = i } )
 		end
+        
+        if AltoAccountSharing_CheckAll:GetChecked() then
+            AvailableContentCheckedItems[i] = true
+        end
 	end
 end
 

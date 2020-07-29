@@ -13,9 +13,13 @@ The addon is entirely GUI based and the frame is designed to only appear automat
 
 ## Functionality
 
-* Either /cepgp or /cep can be used as a valid command call
-* show - Shows the cepgp window
-* version - Allows you to check if each raid member is running the addon - and if so, what version of the addon they are using
+|	Command					|	Action														|
+|---------------------------|---------------------------------------------------------------|
+|	/cep show				|	Shows the main CEPGP window									|
+|	/cep version			|	Queries all guild and raid members for their addon version	|
+|	/cep config				|	Opens the CEPGP options window								|
+|	/cep traffic			|	Opens the CEPGP traffic window								|
+|	/cep changelog			|	Shows the latest CEPGP changelog							|
 
 **Note: cepgp is a context sensitive addon and elements will be visible when they are relevent**
 

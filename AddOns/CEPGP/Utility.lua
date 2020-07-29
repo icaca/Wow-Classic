@@ -344,6 +344,10 @@ function CEPGP_initialise()
 			end
 		end
 		
+		if type(CEPGP_raid_wide_dist) == "boolean" then
+			CEPGP_raid_wide_dist = {[1] = true, [2] = CEPGP_raid_wide_dist};
+		end
+		
 		if not CEPGP.Loot then
 			CEPGP.Loot = {
 				Announcement = "Whisper me for loot",
@@ -352,7 +356,7 @@ function CEPGP_initialise()
 				Keyword = CEPGP_keyword,
 				MinThreshold = CEPGP_min_threshold,
 				MinReq = CEPGP_minEP,
-				RaidVisibility = CEPGP_raid_wide_dist,
+				RaidVisibility = {[1] = true, [2] = CEPGP_raid_wide_dist[2]},
 				ShowPass = CEPGP_show_passes,
 				SuppressResponses = CEPGP_suppress_announcements,
 				GUI = {
@@ -367,6 +371,10 @@ function CEPGP_initialise()
 		CEPGP.Loot.MinThreshold = CEPGP.Loot.MinThreshold or CEPGP_min_threshold;
 		CEPGP.Loot.MinReq = CEPGP.Loot.MinReq or CEPGP_minEP;
 		CEPGP.Loot.RaidVisibility = CEPGP.Loot.RaidVisibility or CEPGP_raid_wide_dist;
+		
+		if type(CEPGP.Loot.RaidVisibility) == "boolean" then
+			CEPGP.Loot.RaidVisibility = {[1] = true, [2] = CEPGP.Loot.RaidVisibility};
+		end
 		
 		if not CEPGP.Loot.GUI then
 			CEPGP.Loot.GUI = {
@@ -425,7 +433,7 @@ function CEPGP_initialise()
 			CEPGP_notice_frame:Show();
 		end
 		
-		if IsInRaid("player") and CEPGP_isML() == 0 then
+		if IsInRaid() and CEPGP_isML() == 0 then
 			_G["CEPGP_confirmation"]:Show();
 		end
 		
@@ -441,7 +449,7 @@ function CEPGP_initialise()
 			
 			DEFAULT_CHAT_FRAME:AddMessage("|c00FFC100Classic EPGP Version: " .. CEPGP_Info.Version .. " " .. CEPGP_Info.Build .. " Loaded|r");
 			if CEPGP.ChangelogVersion ~= CEPGP_Info.Version then
-				CEPGP_print("A new version has been installed. The changelog can be viewed in CEPGP options.");
+				CEPGP_print("A new version has been installed. The changelog can be viewed in CEPGP options or type /cep changelog.");
 				CEPGP.ChangelogVersion = CEPGP_Info.Version;
 			end
 			
@@ -465,7 +473,7 @@ function CEPGP_initInterfaceOptions()
 	panel.ep.name = "EP Management";
 	panel.ep.parent = panel.main.name;
 	
-	panel.gp = _G["CEPGP_gp_options"];
+	panel.gp = _G["CEPGP_GP_options"];
 	panel.gp.name = "GP Management";
 	panel.gp.parent = panel.main.name;
 	
@@ -516,15 +524,81 @@ function CEPGP_initDropdown(frame, initFunction, displayMode, level, menuList)
 end
 
 function CEPGP_addResponse(player, response, roll)
-	local reason = CEPGP_getResponse(response) or response;
+	if response and not tonumber(response) then
+		response = CEPGP_getResponseIndex(response);
+	end
 	CEPGP_itemsTable[player] = {};
-	CEPGP_itemsTable[player][3] = reason;
+	CEPGP_itemsTable[player][3] = response;
 	
-	if CEPGP_getResponse(response) or (CEPGP.Loot.PassRolls and response == 6) or response < 6 then
+	if CEPGP_indexToLabel(response) or CEPGP_getResponse(response) or CEPGP_getResponseIndex(response) or (CEPGP.Loot.PassRolls and response == 6) or response < 6 then
 		CEPGP_itemsTable[player][4] = roll;
 	end
 	
-	CEPGP_SendAddonMsg("!need;"..player..";"..CEPGP_DistID..";"..reason..";"..roll, "RAID"); --!need;playername;itemID (of the item being distributed) is sent for sharing with raid assist
+	local message = "!need;"..player..";"..CEPGP_DistID..";"..response..";"..roll;
+	
+		--	Shares the loot distribution results with the raid / assists
+	if CEPGP.Loot.RaidVisibility[2] and not CEPGP.Loot.DelayResponses then
+		CEPGP_SendAddonMsg(message, "RAID");
+	elseif CEPGP.Loot.RaidVisibility[1] and not CEPGP.Loot.DelayResponses then
+		CEPGP_messageGroup(message, "assists");
+		if player == UnitName("player") then
+			CEPGP_respond:Hide();
+		end
+	end
+	
+	if ((CEPGP_ntgetn(CEPGP_itemsTable) == CEPGP_GetNumOnlineGroupMembers()) or (CEPGP_Info.LootRespondants == CEPGP_GetNumOnlineGroupMembers())) and CEPGP.Loot.DelayResponses then
+		CEPGP_announceResponses();
+	end
+end
+
+function CEPGP_GetNumOnlineGroupMembers()
+	local count = 0;
+	local limit = GetNumGroupMembers();
+	for i = 1, limit do
+		local online = select(8, GetRaidRosterInfo(i));
+		if online then count = count + 1; end
+	end
+	return count;
+end
+
+function CEPGP_announceResponses()
+	local responses = {};
+		
+	for _, label in ipairs(CEPGP_Info.LootSchema) do
+		responses[label] = {};
+	end
+	
+	for name, v in pairs(CEPGP_itemsTable) do
+		local label = CEPGP_Info.LootSchema[v[3]];
+		table.insert(responses[label], name);
+	end
+	
+	for label, _ in pairs(responses) do
+		responses[label] = CEPGP_tSort(responses[label], nil, false);
+	end
+	
+	for _, label in ipairs(CEPGP_Info.LootSchema) do
+		local msg = label .. ": ";
+		for index, name in ipairs(responses[label]) do
+			if CEPGP_itemsTable[name][3] ~= 5 and CEPGP_itemsTable[name][3] ~= 6 then	--	Ensures that misc responses and passes are not announced
+				if #(msg .. ", " .. name) > 254 then
+					SendChatMessage(msg, "RAID", CEPGP_LANGUAGE);
+					msg = label .. " (Continued): " .. name;
+				else
+					msg = msg .. name .. ((index < #responses[label]) and ", " or "");
+				end
+				local message = "!need;"..name..";"..CEPGP_DistID..";"..CEPGP_itemsTable[name][3]..";"..CEPGP_itemsTable[name][4];
+				if CEPGP.Loot.RaidVisibility[2] and CEPGP.Loot.DelayResponses then
+					CEPGP_SendAddonMsg(message, "RAID");
+				elseif CEPGP.Loot.RaidVisibility[1] and CEPGP.Loot.DelayResponses then
+					CEPGP_messageGroup(message, "assists");
+				end
+			end
+		end
+		if label ~= "" and label ~= "Pass" and msg ~= label .. ": " then
+			SendChatMessage(msg, "RAID", CEPGP_LANGUAGE);
+		end
+	end
 end
 
 function CEPGP_getDiscount(label)
@@ -537,13 +611,48 @@ function CEPGP_getDiscount(label)
 	end
 end
 
+function CEPGP_indexToLabel(index)
+	if CEPGP.Loot.GUI.Buttons[index] then
+		return CEPGP.Loot.GUI.Buttons[index][2];
+	else
+		return CEPGP_Info.LootSchema[index];
+	end
+end
+
 function CEPGP_getResponse(keyword)
-	if not keyword then return false; end
+	if not keyword then return end
+	for index, v in ipairs(CEPGP.Loot.GUI.Buttons) do
+		if keyword == index then
+			return v[2];
+		end
+	end
 	for label, v in pairs(CEPGP.Loot.ExtraKeywords.Keywords) do
 		for key, _ in pairs(v) do
 			if string.lower(keyword) == string.lower(key) then
 				return label;
 			end
+		end
+	end
+end
+
+function CEPGP_getResponseIndex(keyword)
+	if not keyword then return; end
+	for index, v in ipairs(CEPGP.Loot.GUI.Buttons) do
+		if string.lower(keyword) == string.lower(v[4]) then
+			return index;
+		end
+	end
+end
+
+function CEPGP_getLabelIndex(_label)
+	for index, v in ipairs(CEPGP.Loot.GUI.Buttons) do
+		if _label == v[2] then
+			return index;
+		end
+	end
+	for index, label in ipairs(CEPGP_Info.LootSchema) do
+		if _label == label then
+			return index;
 		end
 	end
 end
@@ -581,7 +690,7 @@ function CEPGP_calcGP(link, quantity, id)
 			if classID == 2 and subClassID == 19 then slot = "INVTYPE_WAND" end;
 			if classID == 2 and (subClassID == 2 or subClassID == 3 or subClassID == 18) then slot = "INVTYPE_RANGED" end;
 			
-			if CEPGP_debugMode then
+			if CEPGP_Info.Debug then
 				local quality = rarity == 0 and "Poor" or rarity == 1 and "Common" or rarity == 2 and "Uncommon" or rarity == 3 and "Rare" or rarity == 4 and "Epic" or "Legendary";
 				CEPGP_print("Name: " .. name);
 				CEPGP_print("Rarity: " .. quality);
@@ -634,7 +743,7 @@ function CEPGP_calcGP(link, quantity, id)
 		if classID == 2 and (subClassID == 2 or subClassID == 3 or subClassID == 18) then slot = "INVTYPE_RANGED" end;
 		
 		
-		if CEPGP_debugMode then
+		if CEPGP_Info.Debug then
 			local quality = rarity == 0 and "Poor" or rarity == 1 and "Common" or rarity == 2 and "Uncommon" or rarity == 3 and "Rare" or rarity == 4 and "Epic" or "Legendary";
 			CEPGP_print("Name: " .. name);
 			CEPGP_print("Rarity: " .. quality);
@@ -1013,7 +1122,7 @@ function CEPGP_rosterUpdate(event)
 		end, limit);
 		
 	elseif event == "GROUP_ROSTER_UPDATE" then
-		if IsInRaid("player") then
+		if IsInRaid() then
 			_G["CEPGP_button_raid"]:Show();
 		else
 			_G["CEPGP_button_raid"]:Hide();
@@ -1043,7 +1152,7 @@ function CEPGP_rosterUpdate(event)
 				CEPGP_toggleFrame("CEPGP_guild");
 				
 			end
-			if _G["CEPGP_guild"]:IsVisible() then
+			if _G["CEPGP_raid"]:IsVisible() then
 				CEPGP_UpdateRaidScrollBar();
 			end
 		end
@@ -1556,10 +1665,10 @@ function CEPGP_updateGuild()
 	GuildRoster();
 end
 
-function CEPGP_tSort(t, index, inverse)
+function CEPGP_tSort(_t, index, inverse)
+	local t = _t;
 	if not t then return; end
 	if #t == 1 then return t; end
-	
 	if index then	--	2 dimensional table
 		for x = 1, #t do
 			for z = x+1, #t do
@@ -1603,47 +1712,19 @@ function CEPGP_sortDistList(list)
 		[6] = {}
 	};
 	
-	local keyMap = {}
-	for label, v in pairs(CEPGP.Loot.ExtraKeywords.Keywords) do
-		for _, disc in pairs(v) do
-			local entry = {[1] = label, [2] = disc};
-			table.insert(keyMap, entry);
-		end
+	for i = 7, #CEPGP_Info.LootSchema+7 do
+		temp[i] = {};
 	end
 	
-	keyMap = CEPGP_tSort(keyMap, 2, true);
-	
 	local function getKeyIndex(key)
-		for index, v in pairs(keyMap) do
-			if v[1] == key then
+		for index, label in pairs(CEPGP_Info.LootSchema) do
+			if label == key then
 				return index;
 			end
 		end
 	end
-	
-	for k, v in ipairs(keyMap) do
-		table.insert(temp, {});
-	end
-	
 	for i = 1, #list do
-		if tonumber(list[i][11]) and tonumber(list[i][11]) <= 6 then
-			local index = tonumber(list[i][11]);
-			--if not temp[index] then temp[index] = {}; end
-			local entry = {
-				[1] = list[i][1],
-				[2] = list[i][2],
-				[3] = list[i][3],
-				[4] = list[i][4],
-				[5] = list[i][5],
-				[6] = list[i][6],
-				[7] = list[i][7],
-				[8] = list[i][8],
-				[9] = list[i][9],
-				[10] = list[i][10],
-				[12] = list[i][12]
-			}
-			table.insert(temp[index], entry);
-		elseif CEPGP.Loot.ExtraKeywords.Keywords[list[i][11]] then
+		if CEPGP_Info.LootSchema[tonumber(list[i][11])] then
 			local entry = {
 				[1] = list[i][1],
 				[2] = list[i][2],
@@ -1658,8 +1739,9 @@ function CEPGP_sortDistList(list)
 				[11] = list[i][11],
 				[12] = list[i][12]
 			};
-			local index = getKeyIndex(list[i][11]);
-			table.insert(temp[index+6], entry);
+			--local index = getKeyIndex(list[i][11]);
+			local index = tonumber(list[i][11]);
+			table.insert(temp[index], entry);
 		end
 	end
 	for i = 1, #temp do
@@ -1812,7 +1894,7 @@ function CEPGP_getDebugInfo()
 	else
 		info = info .. "Auto Pass on Ineligible Items: false<br />\n";
 	end
-	if CEPGP_raid_wide_dist then
+	if CEPGP_raid_wide_dist[2] then
 		info = info .. "Full Raid Loot Visibility: true<br />\n";
 	else
 		info = info .. "Full Raid Loot Visibility: false<br />\n";
@@ -1938,20 +2020,20 @@ function CEPGP_getPlayerClass(name, index)
 	end
 	if index then
 		_, _, _, _, _, _, _, _, _, _, classFileName = GetGuildRosterInfo(index);
-		return class, RAID_CLASS_COLORS[classFileName];
+		return class, CEPGP_Info.ClassColours[classFileName];
 	else
 		index = CEPGP_getIndex(name);
 		if not index then
 			return nil;
 		else
 			_, _, _, _, _, _, _, _, _, _, classFileName = GetGuildRosterInfo(index);
-			return class, RAID_CLASS_COLORS[classFileName];
+			return class, CEPGP_Info.ClassColours[classFileName];
 		end
 	end
 end
 
 function CEPGP_recordAttendance()
-	if not UnitInRaid("player") and not CEPGP_debugMode then
+	if not UnitInRaid("player") and not CEPGP_Info.Debug then
 		CEPGP_print("You are not in a raid group", true);
 		return;
 	end
@@ -2147,8 +2229,32 @@ function CEPGP_calcAttIntervals()
 	return week, fn, mon, twoMon, threeMon;
 end
 
+function CEPGP_getTradeableItems()
+	local items = {};
+	for bagID = 0, 4 do
+		local numSlots = GetContainerNumSlots(bagID);
+		if numSlots > 0 then	--	If no bag is present, this returns 0
+			for slotID = 1, numSlots do
+				if GetContainerItemInfo(bagID, slotID) then
+					local itemID = GetContainerItemID(bagID, slotID);
+					local location = ItemLocation:CreateFromBagAndSlot(bagID, slotID);
+					local isBound = C_Item.IsBound(location);
+					local itemGUID;
+					if not isBound then
+						itemGUID = C_Item.GetItemGUID(location);
+						print(itemGUID);
+						table.insert(items, {[1] = itemID, [2] = itemGUID});
+					end
+				end					
+			end
+		end
+	end
+	return items;
+end
+
 function CEPGP_callItem(id, gp, buttons, timeout)
 	if not id then return; end
+	CEPGP_itemsTable = {};
 	id = tonumber(id); -- Must be in a numerical format
 	local name, link, _, _, _, _, _, _, _, tex, _, classID, subClassID = GetItemInfo(id);
 	local iString;
@@ -2163,8 +2269,15 @@ function CEPGP_callItem(id, gp, buttons, timeout)
 	CEPGP_distribute_time:SetText("Time Remaining: " .. timer);
 	
 	if tonumber(timeout) > 0 then
-		C_Timer.NewTicker(1, function()
+		local callback;
+		callback = C_Timer.NewTicker(1, function()
 			if CEPGP_Info.LastRun.ItemCall ~= timestamp then
+				callback._remainingIterations = 1;
+				return;
+			end
+			if (CEPGP_ntgetn(CEPGP_itemsTable) == CEPGP_GetNumOnlineGroupMembers()) or (CEPGP_Info.LootRespondants == CEPGP_GetNumOnlineGroupMembers()) then
+				CEPGP_distribute_time:SetText("All Responses Received");
+				callback._remainingIterations = 1;
 				return;
 			end
 			if timer == 0 then
@@ -2342,7 +2455,7 @@ function CEPGP_toggleGPEdit(mode)
 		CEPGP_loot_options_min_EP_amount:Enable();
 		CEPGP_loot_options_show_passes_check:Enable();
 		CEPGP_loot_options_enforce_PR_sorting_check:Enable();
-		CEPGP_loot_options_dist_raidwide_check:Enable();
+		CEPGP_loot_options_dist_assist_check:Enable();
 		CEPGP_loot_options_pass_roll_check:Enable();
 		CEPGP_loot_options_announce_roll_check:Enable();
 		CEPGP_loot_options_resolve_roll_check:Enable();
@@ -2360,7 +2473,7 @@ function CEPGP_toggleGPEdit(mode)
 		CEPGP_loot_options_min_EP_amount:Disable();
 		CEPGP_loot_options_show_passes_check:Disable();
 		CEPGP_loot_options_enforce_PR_sorting_check:Disable();
-		CEPGP_loot_options_dist_raidwide_check:Disable();
+		CEPGP_loot_options_dist_assist_check:Disable();
 		CEPGP_loot_options_pass_roll_check:Disable();
 		CEPGP_loot_options_announce_roll_check:Disable();
 		CEPGP_loot_options_resolve_roll_check:Disable();

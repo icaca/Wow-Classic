@@ -4,8 +4,8 @@ _G[addonName] = LibStub("AceAddon-3.0"):NewAddon(addonName, "AceConsole-3.0", "A
 
 local addon = _G[addonName]
 
-addon.Version = "v1.13.023"
-addon.VersionNum = 113023
+addon.Version = "v1.13.024"
+addon.VersionNum = 113024
 
 if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then
     print("Altoholic error: You are trying to run the Classic version of this addon on Retail.")

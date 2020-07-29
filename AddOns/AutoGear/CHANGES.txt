@@ -1,0 +1,44 @@
+tag 849a6da10768c88ffecddd8d6bef0acbd091d58c 2020-02-15-release
+Author:	AlexFolland <lexlexlex@gmail.com>
+Date:	Sat Feb 15 14:44:23 2020 -0800
+
+2020-02-15-release
+
+commit c08be579c562de23b56050bc4e284d3bf1b7be6e
+Author: James Turnbull <james@lovedthanlost.net>
+Date:   Tue Feb 11 22:13:05 2020 -0500
+
+    Fixed formatting
+
+commit c08be579c562de23b56050bc4e284d3bf1b7be6e
+Author: James Turnbull <james@lovedthanlost.net>
+Date:   Tue Feb 11 22:13:05 2020 -0500
+
+    Fixed formatting
+
+commit 9ae2d5ab2006ad9ae6a488c0a4f21ef7761e08cf
+Author: Eric Folland <ericfolland@gmail.com>
+Date:   Sun Feb 2 12:19:19 2020 -0800
+
+    increased int to spirit ratio for resto druid
+
+commit a71998bc57b6e5d3a6cb02f9c5d687ecd673d6e1
+Author: Eric Folland <ericfolland@gmail.com>
+Date:   Sun Feb 2 12:19:19 2020 -0800
+
+    increased int to spirit ratio for resto druid
+
+commit 692683f05088034f357b62706e437169b11f2d55
+Author: Eric Folland <ericfolland@gmail.com>
+Date:   Fri Jan 31 16:24:39 2020 -0800
+
+    fix for counting healing as damage
+
+commit 3e749b624a0201a1f188d603329b3e3d7bbb1ed1
+Author: Eric Folland <ericfolland@gmail.com>
+Date:   Sun Jan 26 18:43:04 2020 -0800
+
+    Update AutoGear.lua
+    
+    Slight fire mage classic weights adjustment
+

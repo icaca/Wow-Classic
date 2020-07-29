@@ -57,7 +57,7 @@
 				</Anchors>
 				<Scripts>
 					<OnLoad>
-						if not UnitInRaid("player") or CEPGP_debugMode then
+						if not UnitInRaid("player") or CEPGP_Info.Debug then
 							self:Hide();
 						end
 					</OnLoad>
@@ -105,7 +105,7 @@
 				</Anchors>
 				<Scripts>
 					<OnLoad>
-						if not UnitInRaid("player") or CEPGP_debugMode then
+						if not UnitInRaid("player") or CEPGP_Info.Debug then
 							self:Hide();
 						end
 					</OnLoad>
@@ -141,11 +141,7 @@
 					<AbsDimension x="125" y="22" />
 				</Size>
 				<Anchors>
-					<Anchor point="TOPRIGHT" relativeTo="CEPGP_frame">
-						<Offset>
-							<AbsDimension x="-10" y="-32.5" />
-						</Offset>
-					</Anchor>
+					<Anchor point="TOPRIGHT" x="-10" y="-32.5" />
 				</Anchors>
 				<Scripts>
 					<OnClick>
@@ -1047,6 +1043,11 @@
 				<Scripts>
 					<OnShow>
 						CEPGP_distributing_button:Show();
+						if CEPGP_isML() ~= 0 then
+							CEPGP_distribute_roll_award:Hide();
+						else
+							CEPGP_distribute_roll_award:Show();
+						end
 						CEPGP_frame:SetWidth(CEPGP_frame:GetWidth()+150);
 						
 						self:SetPoint("BOTTOMLEFT", 20, 0);
@@ -1068,6 +1069,7 @@
 				self:RegisterEvent("GROUP_ROSTER_UPDATE");
 				self:RegisterEvent("CHAT_MSG_MONSTER_EMOTE");
 				self:RegisterEvent("CHAT_MSG_ADDON");
+				self:RegisterEvent("CHAT_MSG_ADDON_LOGGED");
 				self:RegisterEvent("PLAYER_REGEN_DISABLED");
 				self:RegisterEvent("CHAT_MSG_MONSTER_YELL");
 				self:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED");
@@ -1469,15 +1471,15 @@
 		<Scripts>
 			<OnLoad>
 				self:RegisterEvent("UI_ERROR_MESSAGE");
-				self:RegisterEvent("CHAT_MSG_LOOT");
 				self:RegisterForDrag("LeftButton");
 			</OnLoad>
 			<OnShow>
 			</OnShow>
 			<OnEvent>
-				local msg = select(1, ...);
-				local name = select(5, ...);
-				CEPGP_distribute_popup_OnEvent(event, msg, name);
+				if CEPGP_distPlayer ~= "" then
+					local eCode = select(1, ...);
+					CEPGP_distribute_popup_OnEvent(eCode);
+				end
 			</OnEvent>
 			<OnHide>
 				CEPGP_distribute_popup_title:SetText("");
@@ -4143,7 +4145,8 @@
 				<Scripts>
 					<OnClick>
 						PlaySound(799);
-						CEPGP_SendAddonMsg("LootRsp;1", "RAID");
+						CEPGP_Info.LootGUID = CEPGP_Info.LootGUID or "";	<!--	Useful for if the loot master doesn't have the latest version	-->
+						CEPGP_SendAddonMsg("LootRsp;1;" .. CEPGP_Info.LootGUID, "RAID");
 						CEPGP_respond:Hide();
 					</OnClick>
 				</Scripts>
@@ -4162,7 +4165,8 @@
 				<Scripts>
 					<OnClick>
 						PlaySound(799);
-						CEPGP_SendAddonMsg("LootRsp;2", "RAID");
+						CEPGP_Info.LootGUID = CEPGP_Info.LootGUID or "";
+						CEPGP_SendAddonMsg("LootRsp;2;" .. CEPGP_Info.LootGUID, "RAID");
 						CEPGP_respond:Hide();
 					</OnClick>
 				</Scripts>
@@ -4181,7 +4185,8 @@
 				<Scripts>
 					<OnClick>
 						PlaySound(799);
-						CEPGP_SendAddonMsg("LootRsp;3", "RAID");
+						CEPGP_Info.LootGUID = CEPGP_Info.LootGUID or "";
+						CEPGP_SendAddonMsg("LootRsp;3;" .. CEPGP_Info.LootGUID, "RAID");
 						CEPGP_respond:Hide();
 					</OnClick>
 				</Scripts>
@@ -4200,7 +4205,8 @@
 				<Scripts>
 					<OnClick>
 						PlaySound(799);
-						CEPGP_SendAddonMsg("LootRsp;4", "RAID");
+						CEPGP_Info.LootGUID = CEPGP_Info.LootGUID or "";
+						CEPGP_SendAddonMsg("LootRsp;4;" .. CEPGP_Info.LootGUID, "RAID");
 						CEPGP_respond:Hide();
 					</OnClick>
 				</Scripts>
@@ -5720,6 +5726,7 @@
 	</Frame>
 	
 	<Frame name="CEPGP_changelog" hidden="true" enableMouse="true" frameStrata="DIALOG" movable="true" clampedToScreen="true">
+		<Size y="250" />>
 		<Anchors>
 			<Anchor point="CENTER" />
 		</Anchors>
@@ -5738,7 +5745,7 @@
 		<Layers>
 			<Layer level="OVERLAY">
 				<FontString name="$parent_heading" inherits="GameFontNormal" />
-				<FontString name="$parent_content" inherits="GameFontNormalSmall" justifyH="LEFT"/>
+				<FontString name="$parent_content" inherits="GameFontNormalSmall" justifyH="LEFT" />
 			</Layer>
 		</Layers>
 		<Frames>
@@ -5773,7 +5780,7 @@
 				heading:SetPoint("TOP", 0, -20);
 				content:SetPoint("TOPLEFT", 20, -40);
 				heading:SetText("Classic EPGP Version " .. CEPGP_Info.Version .. " " .. CEPGP_Info.Build .. " Changelog");
-				local info = "- The license for CEPGP has changed\nThe license can be found in World of Warcraft\\_classic_\\Interface\\AddOns\\CEPGP\\License.txt\n\nNew Feature\n- Extra responses for loot can now be added in Loot Distribution options\n\nBugfixes/Changes\n- Updated interface version\n- Comms module will now check and resend failed messages\n- Corrected token slot for Imperial Qiraji Regalia\n- Added Vek'lor's Diadem and Vek'nilash's Circlet to token table\n- Rewrote the traffic sharing module with significant optimisations\n- Resolved duplicate check for loot responses\n- Hunters will no longer auto pass on daggers\n- Raid window will now update properly when EPGP standings change\n- Standby list should now be correctly recorded when taking an attendance snapshot";
+				local info = "- Responses can now be delayed until all responses have been received\n- Players can now opt to auto show the loot distribution window on item announcement\n- Refactored comms resending module\n- Resolved an issue where the response window would not appear when loot is announced\n- CEPGP should no longer spam 'you are not in a raid group' in battlegrounds\n- Corrected a typo preventing traffic sharing\n- Loot Masters can now choose if raid assists can see distribution\n- Optimised sharing of loot distribution\n- Resolved a bug where GP would be awarded even if a player already had a unique item or if their inventory was full\n- Corrected an issue preventing players from seeing themself in loot distribution\n- Response timer will now be included with loot announcements\n- Corrected an issue preventing awarding by highest roll\n- CEPGP now relies on an internal class colour reference\n- Corrected an issue where saved variables weren't reflecting the loot button setup\n- Corrected an issue preventing whisper responses from working\n- Prior responses should no longer show up on new distributions\n- Reworked comms processing\n- Updated ReadMe\n- Corrected typos";
 				content:SetText(info);
 				self:SetWidth(content:GetStringWidth()+40);
 				self:SetHeight(heading:GetStringHeight() + content:GetStringHeight() + 50);
@@ -8475,7 +8482,7 @@
 		</Scripts>
 	</Frame>
 	
-	<Frame name="CEPGP_gp_options" hidden="true">
+	<Frame name="CEPGP_GP_options" hidden="true">
 		<Anchors>
 			<Anchor point="TOPLEFT" relativePoint="TOPLEFT" />
 		</Anchors>
@@ -9105,10 +9112,12 @@
 								<FontString name="CEPGP_loot_options_hide_response_text" inherits="GameFontNormal" text="Hide Keyphrase Alternatives in Loot Announcement: " />
 								<FontString name="CEPGP_loot_options_auto_pass" inherits="GameFontNormal" text="Auto Pass on Ineligible Items:" />
 								<FontString name="CEPGP_loot_options_announcement_suppression" inherits="GameFontNormal" text="Suppress Loot Response Announcements: " />
+								<FontString name="CEPGP_loot_options_announcement_delay" inherits="GameFontNormal" text="Delay Loot Response Announcements: " />
 								<FontString name="CEPGP_loot_options_min_EP_text" inherits="GameFontNormal" text="Require Minimum EP for Loot: " />
 								<FontString name="CEPGP_loot_options_show_passes" inherits="GameFontNormal" text="Show Passes in Loot Distribution: " />
 								<FontString name="CEPGP_loot_options_enforce_PR_sorting" inherits="GameFontNormal" text="Automate Sorting During Loot Distribution: " />
-								<FontString name="CEPGP_loot_options_dist_raidwide_text" inherits="GameFontNormal" text="Raid Wide Loot Visibility:" />
+								<FontString name="CEPGP_loot_options_dist_raidwide_text" inherits="GameFontNormal" text="Allow Others to See Loot Distribution:" />
+								<FontString name="CEPGP_loot_options_autoshow_text" inherits="GameFontNormal" text="Auto Show Loot Distribution:" />
 								<FontString name="CEPGP_loot_options_min_threshold_text" inherits="GameFontNormal" text="Minimum Threshold for Auto Show:" />
 								<FontString name="CEPGP_loot_options_channel_text" inherits="GameFontNormal" text="Loot Response Channel:" />
 								<FontString name="CEPGP_loot_options_pass_roll_text" inherits="GameFontNormal" text="Auto Roll for Passes:" />
@@ -9215,6 +9224,7 @@
 												end
 												
 												CEPGP_response_buttons[1][2] = value;
+												CEPGP.Loot.GUI.Buttons[1][2] = value;
 												CEPGP_print("Updated loot GUI button 1 text.");
 												CEPGP_loot_options_preview_1:SetText(value);
 											</OnEditFocusLost>
@@ -9253,6 +9263,7 @@
 													return;
 												end
 												CEPGP_response_buttons[1][3] = value;
+												CEPGP.Loot.GUI.Buttons[1][3] = value;
 												CEPGP_print("Updated GP discount for button 1.");
 											</OnEditFocusLost>
 										</Scripts>
@@ -9306,6 +9317,7 @@
 												end
 												
 												CEPGP_response_buttons[1][4] = value;
+												CEPGP.Loot.GUI.Buttons[1][4] = value;
 												CEPGP_print("Updated response 1 keyphrase.");
 												
 											</OnEditFocusLost>
@@ -9375,10 +9387,12 @@
 											<OnClick>
 												if self:GetChecked() then
 													CEPGP_response_buttons[2][1] = true;
+													CEPGP.Loot.GUI.Buttons[2][1] = true;
 													CEPGP_loot_options_preview_2:Show();
 													CEPGP_print("Loot GUI button 2 enabled.");
 												else
 													CEPGP_response_buttons[2][1] = false;
+													CEPGP.Loot.GUI.Buttons[2][1] = false;
 													CEPGP_loot_options_preview_2:Hide();
 													CEPGP_print("Loot GUI button 2 disabled.");
 												end
@@ -9417,6 +9431,7 @@
 												end
 												
 												CEPGP_response_buttons[2][2] = value;
+												CEPGP.Loot.GUI.Buttons[2][2] = value;
 												CEPGP_print("Updated loot GUI button 2 text.");
 												CEPGP_loot_options_preview_2:SetText(value);
 											</OnEditFocusLost>
@@ -9455,6 +9470,7 @@
 													return;
 												end
 												CEPGP_response_buttons[2][3] = value;
+												CEPGP.Loot.GUI.Buttons[2][3] = value;
 												CEPGP_print("Updated GP discount for button 2.");
 											</OnEditFocusLost>
 										</Scripts>
@@ -9508,6 +9524,7 @@
 												end
 												
 												CEPGP_response_buttons[2][4] = value;
+												CEPGP.Loot.GUI.Buttons[2][4] = value;
 												CEPGP_print("Updated response 2 keyphrase.");
 												
 											</OnEditFocusLost>
@@ -9577,10 +9594,12 @@
 											<OnClick>
 												if self:GetChecked() then
 													CEPGP_response_buttons[3][1] = true;
+													CEPGP.Loot.GUI.Buttons[3][1] = true;
 													CEPGP_loot_options_preview_3:Show();
 													CEPGP_print("Loot GUI button 3 enabled.");
 												else
 													CEPGP_response_buttons[3][1] = false;
+													CEPGP.Loot.GUI.Buttons[3][1] = false;
 													CEPGP_loot_options_preview_3:Hide();
 													CEPGP_print("Loot GUI button 3 disabled.");
 												end
@@ -9618,6 +9637,7 @@
 													return;
 												end
 												CEPGP_response_buttons[3][2] = value;
+												CEPGP.Loot.GUI.Buttons[3][2] = value;
 												CEPGP_print("Updated loot GUI button 3 text.");
 												CEPGP_loot_options_preview_3:SetText(value);
 											</OnEditFocusLost>
@@ -9656,6 +9676,7 @@
 													return;
 												end
 												CEPGP_response_buttons[3][3] = value;
+												CEPGP.Loot.GUI.Buttons[3][3] = value;
 												CEPGP_print("Updated GP discount for button 3.");
 											</OnEditFocusLost>
 											<OnShow>
@@ -9712,6 +9733,7 @@
 												end
 												
 												CEPGP_response_buttons[3][4] = value;
+												CEPGP.Loot.GUI.Buttons[3][4] = value;
 												CEPGP_print("Updated response 3 keyphrase.");
 												
 											</OnEditFocusLost>
@@ -9781,10 +9803,12 @@
 											<OnClick>
 												if self:GetChecked() then
 													CEPGP_response_buttons[4][1] = true;
+													CEPGP.Loot.GUI.Buttons[4][1] = true;
 													CEPGP_loot_options_preview_4:Show();
 													CEPGP_print("Loot GUI button 4 enabled.");
 												else
 													CEPGP_response_buttons[4][1] = false;
+													CEPGP.Loot.GUI.Buttons[4][1] = false;
 													CEPGP_loot_options_preview_4:Hide();
 													CEPGP_print("Loot GUI button 4 disabled.");
 												end
@@ -9822,6 +9846,7 @@
 													return;
 												end
 												CEPGP_response_buttons[4][2] = value;
+												CEPGP.Loot.GUI.Buttons[4][2] = value;
 												CEPGP_print("Updated loot GUI button 4 text.");
 												CEPGP_loot_options_preview_4:SetText(value);
 											</OnEditFocusLost>
@@ -9860,6 +9885,7 @@
 													return;
 												end
 												CEPGP_response_buttons[4][3] = value;
+												CEPGP.Loot.GUI.Buttons[4][3] = value;
 												CEPGP_print("Updated GP discount for button 4.");
 											</OnEditFocusLost>
 										</Scripts>
@@ -9913,6 +9939,7 @@
 												end
 												
 												CEPGP_response_buttons[4][4] = value;
+												CEPGP.Loot.GUI.Buttons[4][4] = value;
 												CEPGP_print("Updated response 4 keyphrase.");
 												
 											</OnEditFocusLost>
@@ -10363,6 +10390,7 @@
 										end
 										if tonumber(value) then
 											CEPGP_response_time = tonumber(value);
+											CEPGP.Loot.GUI.Timer = tonumber(value);
 											if value == "0" then
 												CEPGP_print("Disabled loot timeout");
 											else
@@ -10558,6 +10586,34 @@
 									</OnShow>
 								</Scripts>
 							</CheckButton>
+							<CheckButton name="CEPGP_options_announcement_delay_check" inherits="UIOptionsCheckButtonTemplate">
+								<HitRectInsets>
+									<AbsInset left="0" right="0" top="0" bottom="0" />
+								</HitRectInsets>
+								<Anchors>
+									<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_announcement_delay">
+										<Offset>
+											<AbsDimension x="-5" y="0" />
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Scripts>
+									<OnClick>
+										CEPGP.Loot.DelayResponses = self:GetChecked();
+									</OnClick>
+									<OnEnter>
+										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+										GameTooltip:SetText("Loot Master Feature\nDelays announcing loot responses until everyone has responded");
+									</OnEnter>
+									<OnLeave>
+										GameTooltip:Hide();
+									</OnLeave>
+									<OnShow>
+										self:SetChecked(CEPGP.Loot.DelayResponses);
+									</OnShow>
+								</Scripts>
+							</CheckButton>
+
 							<CheckButton name="CEPGP_loot_options_min_EP_check" inherits="UIOptionsCheckButtonTemplate">
 								<HitRectInsets>
 									<AbsInset left="0" right="0" top="0" bottom="0" />
@@ -10687,44 +10743,118 @@
 									</OnLeave>
 								</Scripts>
 							</CheckButton>
-							<CheckButton name="CEPGP_loot_options_dist_raidwide_check" inherits="UIOptionsCheckButtonTemplate">
+							<CheckButton name="CEPGP_loot_options_dist_assist_check" inherits="UIOptionsCheckButtonTemplate">
 								<HitRectInsets>
 									<AbsInset left="0" right="0" top="0" bottom="0" />
 								</HitRectInsets>
 								<Anchors>
 									<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_dist_raidwide_text">
 										<Offset>
-											<AbsDimension x="-5" y="0" />
+											<AbsDimension x="10" y="0" />
 										</Offset>
 									</Anchor>
 								</Anchors>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="$parent_string" inherits="GameFontNormal" text="Assists">
+											<Anchors>
+												<Anchor point="LEFT" relativePoint="RIGHT"/>
+											</Anchors>
+										</FontString>
+									</Layer>
+								</Layers>
 								<Scripts>
 									<OnClick>
 										if self:GetChecked() then
-											CEPGP_raid_wide_dist = true;
-											CEPGP.Loot.RaidVisibility = true;
-											CEPGP_print("All raid members can now see item distribution window.");
+											CEPGP_raid_wide_dist[1] = true;
+											CEPGP.Loot.RaidVisibility[1] = true;
+											
+											CEPGP_loot_options_dist_raidwide_check:Show();
 										else
-											CEPGP_raid_wide_dist = false;
-											CEPGP.Loot.RaidVisibility = false;
-											CEPGP_print("Only raid assists can now see the item distribution window.");
-											CEPGP_SendAddonMsg("RaidAssistLootClosed", "RAID");
+											CEPGP_raid_wide_dist[1] = false;
+											CEPGP.Loot.RaidVisibility[1] = false;
+											CEPGP_messageGroup("RaidAssistLootClosed", "assists");
+											
+											CEPGP_loot_options_dist_raidwide_check:SetChecked(false);
+											CEPGP.Loot.RaidVisibility[2] = false;
+											CEPGP_loot_options_dist_raidwide_check:Hide();
 										end
 									</OnClick>
 									<OnEnter>
 										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
-										GameTooltip:SetText("Loot Master Feature\nAllow all raid members to view the loot distribution window, not just raid assists.");
+										GameTooltip:SetText("Loot Master Feature\nAllow raid assists to view the loot distribution window.");
 									</OnEnter>
 									<OnLeave>
 										GameTooltip:Hide();
 									</OnLeave>
 									<OnShow>
-										if CEPGP_raid_wide_dist then
+										if CEPGP_raid_wide_dist[1] then
 											self:SetChecked(true);
 										else
 											self:SetChecked(false);
+											CEPGP_loot_options_dist_raidwide_check:Hide();
 										end
 									</OnShow>
+								</Scripts>
+							</CheckButton>
+							<CheckButton name="CEPGP_loot_options_dist_raidwide_check" inherits="UIOptionsCheckButtonTemplate">
+								<HitRectInsets>
+									<AbsInset left="0" right="0" top="0" bottom="0" />
+								</HitRectInsets>
+								<Anchors>
+									<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_dist_assist_check_string">
+										<Offset>
+											<AbsDimension x="10" y="0" />
+										</Offset>
+									</Anchor>
+								</Anchors>
+								<Layers>
+									<Layer level="OVERLAY">
+										<FontString name="$parent_string" inherits="GameFontNormal" text="Raid-Wide">
+											<Anchors>
+												<Anchor point="LEFT" relativePoint="RIGHT" />
+											</Anchors>
+										</FontString>
+									</Layer>
+								</Layers>
+								<Scripts>
+									<OnClick>
+										if self:GetChecked() then
+											CEPGP_raid_wide_dist[2] = true;
+											CEPGP.Loot.RaidVisibility[2] = true;
+										else
+											CEPGP_raid_wide_dist[2] = false;
+											CEPGP.Loot.RaidVisibility[2] = false;
+											CEPGP_SendAddonMsg("RaidAssistLootClosed", "RAID");
+										end
+									</OnClick>
+									<OnEnter>
+										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+										GameTooltip:SetText("Loot Master Feature\nAllow all raid members to view the loot distribution window.");
+									</OnEnter>
+									<OnLeave>
+										GameTooltip:Hide();
+									</OnLeave>
+								</Scripts>
+							</CheckButton>
+							<CheckButton name="CEPGP_loot_options_autoshow_check" inherits="UIOptionsCheckButtonTemplate">
+								<HitRectInsets>
+									<AbsInset left="0" right="0" top="0" bottom="0" />
+								</HitRectInsets>
+								<Anchors>
+									<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="CEPGP_loot_options_autoshow_text" x="-5" />
+								</Anchors>
+								<Scripts>
+									<OnShow>
+										self:SetChecked(CEPGP.Loot.AutoShow);
+									</OnShow>
+									<OnClick>
+										CEPGP.Loot.AutoShow = self:GetChecked();
+									</OnClick>
+									<OnEnter>
+										GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT");
+										GameTooltip:SetText("Personal Feature\nIf your loot master has 'Raid Wide Loot Visibility' enabled (or you're a raid assist) and you turn this feature on then CEPGP will automatically open\nto the loot distribution window when an item is announced.");
+									</OnEnter>
 								</Scripts>
 							</CheckButton>
 							<CheckButton name="CEPGP_loot_options_pass_roll_check" inherits="UIOptionsCheckButtonTemplate">
@@ -10933,11 +11063,13 @@
 				CEPGP_loot_options_hide_response_text:SetPoint("TOPLEFT", "CEPGP_loot_options_announce_text", "BOTTOMLEFT", 0, -10);
 				CEPGP_loot_options_auto_pass:SetPoint("TOPLEFT", "CEPGP_loot_options_hide_response_text", "BOTTOMLEFT", 0, -10);
 				CEPGP_loot_options_announcement_suppression:SetPoint("TOPLEFT", "CEPGP_loot_options_auto_pass", "BOTTOMLEFT", 0, -10);
-				CEPGP_loot_options_min_EP_text:SetPoint("TOPLEFT", "CEPGP_loot_options_announcement_suppression", "BOTTOMLEFT", 0, -10);
+				CEPGP_loot_options_announcement_delay:SetPoint("TOPLEFT", "CEPGP_loot_options_announcement_suppression", "BOTTOMLEFT", 0, -10);
+				CEPGP_loot_options_min_EP_text:SetPoint("TOPLEFT", "CEPGP_loot_options_announcement_delay", "BOTTOMLEFT", 0, -10);
 				CEPGP_loot_options_show_passes:SetPoint("TOPLEFT", "CEPGP_loot_options_min_EP_text", "BOTTOMLEFT", 0, -10);
 				CEPGP_loot_options_enforce_PR_sorting:SetPoint("TOPLEFT", "CEPGP_loot_options_show_passes", "BOTTOMLEFT", 0, -10);
 				CEPGP_loot_options_dist_raidwide_text:SetPoint("TOPLEFT", "CEPGP_loot_options_enforce_PR_sorting", "BOTTOMLEFT", 0, -10);
-				CEPGP_loot_options_min_threshold_text:SetPoint("TOPLEFT", "CEPGP_loot_options_dist_raidwide_text", "BOTTOMLEFT", 0, -10);
+				CEPGP_loot_options_autoshow_text:SetPoint("TOPLEFT", "CEPGP_loot_options_dist_raidwide_text", "BOTTOMLEFT", 0, -10);
+				CEPGP_loot_options_min_threshold_text:SetPoint("TOPLEFT", "CEPGP_loot_options_autoshow_text", "BOTTOMLEFT", 0, -10);
 				CEPGP_loot_options_channel_text:SetPoint("TOPLEFT", "CEPGP_loot_options_min_threshold_text", "BOTTOMLEFT", 0, -17.5);
 				CEPGP_loot_options_pass_roll_text:SetPoint("TOPLEFT", "CEPGP_loot_options_channel_text", "BOTTOMLEFT", 0, -17.5);
 				CEPGP_loot_options_announce_roll_text:SetPoint("TOPLEFT", "CEPGP_loot_options_pass_roll_text", "BOTTOMLEFT", 0, -10);
@@ -10974,7 +11106,9 @@
 				end
 				CEPGP_loot_options_show_passes_check:SetChecked(CEPGP.Loot.ShowPass);
 				CEPGP_loot_options_enforce_PR_sorting_check:SetChecked(CEPGP.Loot.AutoSort);
-				CEPGP_loot_options_dist_raidwide_check:SetChecked(CEPGP.Loot.RaidVisibility);
+				CEPGP_loot_options_dist_assist_check:SetChecked(CEPGP.Loot.RaidVisibility[1]);
+				CEPGP_loot_options_dist_raidwide_check:SetChecked(CEPGP.Loot.RaidVisibility[2]);
+				
 			</OnShow>
 		</Scripts>
 	</Frame>

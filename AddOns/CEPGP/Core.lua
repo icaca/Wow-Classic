@@ -1,6 +1,6 @@
 --[[ Globals ]]--
 
-CEPGP_VERSION = "1.12.19.Release"
+CEPGP_VERSION = "1.12.21.Release"
 SLASH_CEPGP1 = "/CEPGP";
 SLASH_CEPGP2 = "/cep";
 CEPGP_VERSION_NOTIFIED = false;
@@ -13,7 +13,6 @@ CEPGP_target = nil;
 CEPGP_DistID = nil;
 CEPGP_distSlot = nil;
 CEPGP_distItemLink = nil;
-CEPGP_debugMode = false;
 CEPGP_critReverse = false; --Criteria reverse
 CEPGP_distributing = false;
 CEPGP_overwritelog = false;
@@ -60,7 +59,7 @@ CEPGP_standby_manual = false;
 CEPGP_notice = false;
 CEPGP_loot_GUI = false;
 CEPGP_auto_pass = false;
-CEPGP_raid_wide_dist = false;
+CEPGP_raid_wide_dist = {[1] = true, [2] = false};
 CEPGP_gp_tooltips = false;
 CEPGP_suppress_announcements = false;
 STANDBYPERCENT = 100;
@@ -81,8 +80,9 @@ CEPGP_show_passes = false;
 CEPGP_PR_sort = true;
 
 CEPGP_Info = {
-	Version = 				"1.12.19",
+	Version = 				"1.12.21",
 	Build = 				"Release",
+	Debug =					false,
 	Active = 				{false, false},	--	Active state, queried for current raid
 	SharingTraffic = 		false,
 	ImportingTraffic = 		false,
@@ -110,11 +110,71 @@ CEPGP_Info = {
 	TrafficImport = 		{},
 	TrafficScope = 			1,
 	LastRun = {
+		DistSB =			0,
 		GuildSB = 			0,
 		RaidSB = 			0,
 		TrafficSB = 		0,
 		VersionSB = 		0,
 		ItemCall = 			time()
+	},
+	LootGUID = "",
+	LootRespondants = 0,
+	LootSchema = {},
+	ClassColours = {
+		["DRUID"] = {
+			r = 1,
+			g = 0.49,
+			b = 0.04,
+			colorStr = "#FF7D0A"
+		},
+		["HUNTER"] = {
+			r = 0.67,
+			g = 0.83,
+			b = 0.45,
+			colorStr = "#A9D271"
+		},
+		["MAGE"] = {
+			r = 0.25,
+			g = 0.78,
+			b = 0.92,
+			colorStr = "#40C7EB"
+		},
+		["PALADIN"] = {
+			r = 0.96,
+			g = 0.55,
+			b = 0.73,
+			colorStr = "#F58CBA"
+		},
+		["PRIEST"] = {
+			r = 1,
+			g = 1,
+			b = 1,
+			colorStr = "#FFFFFF"
+		},
+		["ROGUE"] = {
+			r = 1,
+			g = 0.96,
+			b = 0.41,
+			colorStr = "#FFF569"
+		},
+		["SHAMAN"] = {
+			r = 0,
+			g = 0.44,
+			b = 0.87,
+			colorStr = "#0070DE"
+		},
+		["WARLOCK"] = {
+			r = 0.53,
+			g = 0.53,
+			b = 0.93,
+			colorStr = "#8787ED"
+		},
+		["WARRIOR"] = {
+			r = 0.78,
+			g = 0.61,
+			b = 0.43,
+			colorStr = "#C79C6E"
+		}
 	}
 };
 
@@ -177,13 +237,15 @@ CEPGP = {
 	Loot = {
 		Announcement = 		"Whisper me for loot",
 		AutoPass = 			CEPGP_auto_pass,
+		AutoShow =			false,
 		AutoSort = 			CEPGP_PR_sort,
+		DelayResponses =	false,
 		ExtraKeywords = 	{Keywords = {}},
 		Keyword = 			CEPGP_keyword,
 		HideKeyphrases = 	false,
 		MinThreshold = 		CEPGP_min_threshold,
 		MinReq = 			CEPGP_minEP,
-		RaidVisibility = 	CEPGP_raid_wide_dist,
+		RaidVisibility = 	{[1] = true, [2] = CEPGP_raid_wide_dist[2]},
 		RaidWarning = 		false,
 		ShowPass = 			CEPGP_show_passes,
 		SuppressResponses = CEPGP_suppress_announcements,
@@ -253,13 +315,13 @@ function CEPGP_OnEvent(event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, ar
 		return;
 		
 	elseif event == "PARTY_LOOT_METHOD_CHANGED" or event == "PLAYER_ROLES_ASSIGNED" then
-		if GetLootMethod() == "master" and IsInRaid("player") and (CEPGP_isML() == 0 or CEPGP_debugMode) and not CEPGP_Info.Active[2] then
+		if GetLootMethod() == "master" and IsInRaid() and (CEPGP_isML() == 0 or CEPGP_Info.Debug) and not CEPGP_Info.Active[2] then
 			_G["CEPGP_confirmation"]:Show();
 		else
 			_G["CEPGP_confirmation"]:Hide();
 		end
 		
-		if GetLootMethod() ~= "master" or not IsInRaid("player") or CEPGP_isML() ~= 0 then
+		if GetLootMethod() ~= "master" or not IsInRaid() or CEPGP_isML() ~= 0 then
 			CEPGP_Info.Active[1] = false;
 			CEPGP_Info.Active[2] = false;	--	Whenever the loot method, loot master or group type is changed, this will enable the check again
 		end
@@ -319,7 +381,7 @@ function CEPGP_OnEvent(event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, ar
 		return;
 	end
 	
-	if CEPGP_Info.Active[1] or CEPGP_debugMode then --EPGP and loot distribution related 
+	if CEPGP_Info.Active[1] or CEPGP_Info.Debug then --EPGP and loot distribution related 
 		--	An encounter has been defeated
 		local function handleEncounter(event, arg1, arg5)
 			
@@ -356,14 +418,27 @@ function SlashCmdList.CEPGP(msg, editbox)
 		CEPGP_print("Classic EPGP Usage");
 		CEPGP_print("|cFF80FF80show|r - |cFFFF8080Manually shows the CEPGP window|r");
 		CEPGP_print("|cFF80FF80version|r - |cFFFF8080Checks the version of the addon everyone in your raid is running|r");
+		CEPGP_print("|cFF80FF80options or config|r - |cFFFF8080Opens the configuration menu for CEPGP|r");
+		CEPGP_print("|cFF80FF80traffic|r - |cFFFF8080Opens the CEPGP traffic window|r");
+		CEPGP_print("|cFF80FF80changelog|r - |cFFFF8080Shows the latest changelog|r");
 	
-	elseif msg == "show" then
+	elseif msg == "show" or msg == "open" then
 		CEPGP_populateFrame();
 		ShowUIPanel(CEPGP_frame);
 		CEPGP_toggleFrame("");
 		CEPGP_updateGuild();
 	
-	elseif msg == "version" then
+	elseif msg == "options" or msg == "opt" or msg == "config" or msg == "conf" then
+		InterfaceOptionsFrame_Show();
+		InterfaceOptionsFrame_OpenToCategory("Classic EPGP");
+		
+	elseif msg == "change" or msg == "changelog" then
+		ShowUIPanel(CEPGP_changelog);
+		
+	elseif msg == "traffic" then
+		ShowUIPanel(CEPGP_traffic);
+	
+	elseif msg == "version" or msg == "ver" then
 		CEPGP_vInfo = {};
 		CEPGP_vSearch = "GUILD";
 		CEPGP_SendAddonMsg("version-check", "GUILD");
@@ -396,8 +471,8 @@ function SlashCmdList.CEPGP(msg, editbox)
 		CEPGP_print("Current channel to report: " .. getCurChannel());
 		
 	elseif strfind(msg, "debugmode") then
-		CEPGP_debugMode = not CEPGP_debugMode;
-		if CEPGP_debugMode then
+		CEPGP_Info.Debug = not CEPGP_Info.Debug;
+		if CEPGP_Info.Debug then
 			CEPGP_print("Debug Mode Enabled");
 		else
 			CEPGP_print("Debug Mode Disabled");
@@ -406,7 +481,7 @@ function SlashCmdList.CEPGP(msg, editbox)
 	elseif strfind(msg, "debug") then
 		CEPGP_debuginfo:Show();
 	
-	else	
+	else
 		CEPGP_print("|cFF80FF80" .. msg .. "|r |cFFFF8080is not a valid request. Type /CEPGP to check addon usage|r", true);
 	end
 end
@@ -414,19 +489,19 @@ end
 --[[ LOOT COUNCIL FUNCTIONS ]]--
 
 function CEPGP_RaidAssistLootClosed()
-		HideUIPanel(CEPGP_distribute_popup);
-		HideUIPanel(CEPGP_distributing_button);
-		HideUIPanel(CEPGP_loot_distributing);
-		HideUIPanel(CEPGP_distributing_button);
-		CEPGP_distribute_item_tex:SetBackdrop(nil);
-		_G["CEPGP_distribute_item_tex"]:SetScript('OnEnter', function() end);
-		_G["CEPGP_distribute_item_name_frame"]:SetScript('OnClick', function() end);
+	HideUIPanel(CEPGP_distribute_popup);
+	HideUIPanel(CEPGP_distributing_button);
+	HideUIPanel(CEPGP_loot_distributing);
+	HideUIPanel(CEPGP_frame);
+	CEPGP_distribute_item_tex:SetBackdrop(nil);
+	_G["CEPGP_distribute_item_tex"]:SetScript('OnEnter', function() end);
+	_G["CEPGP_distribute_item_name_frame"]:SetScript('OnClick', function() end);
+	CEPGP_UpdateLootScrollBar();
 end
 
 function CEPGP_RaidAssistLootDist(link, gp, raidwide) --raidwide refers to whether or not the ML would like everyone in the raid to be able to see the distribution window
 	if ((UnitIsGroupLeader("player") or UnitIsGroupAssistant("player")) and CEPGP_isML ~= 0) or raidwide then --Only returns true if the unit is raid ASSIST, not raid leader
 		ShowUIPanel(CEPGP_distributing_button);
-		CEPGP_itemsTable = {};
 		CEPGP_UpdateLootScrollBar();
 		local name, iString, _, _, _, _, _, _, slot, tex = GetItemInfo(CEPGP_DistID);
 		CEPGP_distSlot = slot;
@@ -467,6 +542,11 @@ function CEPGP_RaidAssistLootDist(link, gp, raidwide) --raidwide refers to wheth
 			_G["CEPGP_distribute_item_tex"]:SetScript('OnLeave', function() GameTooltip:Hide() end);
 			_G["CEPGP_distribute_GP_value"]:SetText(gp);
 		end
+	end
+	
+	if raidwide and CEPGP.Loot.AutoShow then
+		ShowUIPanel(CEPGP_frame);
+		CEPGP_toggleFrame("CEPGP_distribute");
 	end
 end
 

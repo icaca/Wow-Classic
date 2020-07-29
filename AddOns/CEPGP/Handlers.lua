@@ -1,24 +1,20 @@
 local L = CEPGP_Locale:GetLocale("CEPGP")
 
-function CEPGP_handleComms(event, arg1, arg2, response)
+function CEPGP_handleComms(event, arg1, arg2, response, lootGUID)
 	--	arg1 - message | arg2 - sender
 	if arg1 then
-		for i = 1, 4 do
-			if string.lower(arg1) == string.lower(CEPGP_response_buttons[i][4]) then
-				response = i;
-				break;
-			end
-		end
+		response = CEPGP_getLabelIndex(CEPGP_getResponse(arg1));
 	end
 	response = tonumber(response);
 	--if not response then response = arg1; end
 	if not response and (arg1 ~= "!info" and arg1 ~= "!infoclass" and arg1 ~= "!infoguild" and arg1 ~= "!inforaid") then
 		response = arg1;
 	end
-	local reason = CEPGP_response_buttons[response] and CEPGP_response_buttons[response][2] or CEPGP_getResponse(response);
+	local reason = CEPGP_response_buttons[response] and CEPGP_response_buttons[response][2] or CEPGP_Info.LootSchema[response] or CEPGP_getResponse(CEPGP_getResponseIndex(response));
 	local index = CEPGP_getIndex(arg2);
 
 	if event == "CHAT_MSG_WHISPER" and response then
+		if (lootGUID ~= CEPGP_Info.LootGUID and lootGUID ~= "") and not arg1 then return; end
 		local roll = math.ceil(math.random(1,100));
 		
 		if CEPGP.Loot.ResolveRolls then
@@ -44,12 +40,11 @@ function CEPGP_handleComms(event, arg1, arg2, response)
 		for name, _ in pairs(CEPGP_itemsTable) do
 			if name == arg2 then return; end
 		end
-		
-		if CEPGP_debugMode then
+		CEPGP_Info.LootRespondants = CEPGP_Info.LootRespondants + 1;
+		if CEPGP_Info.Debug then
 			CEPGP_print(arg2 .. " registered (" .. CEPGP_keyword .. ")");
 		end
 		local _, _, _, _, _, _, _, _, slot = GetItemInfo(CEPGP_DistID);
-		
 		if not slot and CEPGP_itemExists(CEPGP_DistID) then
 			local item = Item:CreateFromItemID(CEPGP_DistID);
 			item:ContinueOnItemLoad(function()
@@ -65,11 +60,11 @@ function CEPGP_handleComms(event, arg1, arg2, response)
 					class = select(5, GetGuildRosterInfo(index));
 					inGuild = true; 
 				end
-				if CEPGP_getResponse(arg1) or (CEPGP_show_passes and response == 6) or response < 6 then
+				if CEPGP_getResponse(arg1) or CEPGP_getResponseIndex(arg1) or (CEPGP_show_passes and response == 6) or response < 6 then
 					CEPGP_SendAddonMsg(arg2..";distslot;"..CEPGP_distSlot, "RAID");
 				end
 				if inGuild and not CEPGP_suppress_announcements then
-					if CEPGP_getResponse(arg1) or response < 5 then	-- 5 means they're not using the addon or they're using an outdated version that doesn't support responses
+					if (CEPGP_getResponse(arg1) or CEPGP_getResponseIndex(arg1) or response < 5) and not CEPGP.Loot.DelayResponses then	-- 5 means they're not using the addon or they're using an outdated version that doesn't support responses
 						if CEPGP.Loot.RollAnnounce then
 							CEPGP_sendChatMessage(arg2 .. " (" .. class .. ") needs (" .. reason .. "). (" .. math.floor((EP/GP)*100)/100 .. " PR) (Rolled " .. roll .. ")", CEPGP_lootChannel);
 						else
@@ -83,7 +78,7 @@ function CEPGP_handleComms(event, arg1, arg2, response)
 							_, _, _, _, class = GetRaidRosterInfo(i);
 						end
 					end
-					if CEPGP_getResponse(arg1) or response < 5 then
+					if (CEPGP_getResponse(arg1) or CEPGP_getResponseIndex(arg1) or response < 5) and not CEPGP.Loot.DelayResponses then
 						if CEPGP.Loot.RollAnnounce then
 							CEPGP_sendChatMessage(arg2 .. " (" .. class .. ") needs (" .. reason .. "). (Non-guild member) (Rolled " .. roll .. ")", CEPGP_lootChannel);
 						else
@@ -91,7 +86,7 @@ function CEPGP_handleComms(event, arg1, arg2, response)
 						end
 					end
 				end
-				if CEPGP_getResponse(arg1) or (CEPGP_show_passes and response == 6) or response < 6 then --If you are the master looter
+				if CEPGP_getResponse(arg1) or CEPGP_getResponseIndex(arg1) or (CEPGP_show_passes and response == 6) or response < 6 then --If you are the master looter
 					CEPGP_addResponse(arg2, response, roll);
 				end
 				CEPGP_UpdateLootScrollBar(true);
@@ -113,11 +108,11 @@ function CEPGP_handleComms(event, arg1, arg2, response)
 						inGuild = true; 
 					end
 				end
-			if CEPGP_getResponse(arg1) or (CEPGP_show_passes and response == 6) or response < 6 then
+			if CEPGP_getResponse(arg1) or CEPGP_getResponseIndex(arg1) or (CEPGP_show_passes and response == 6) or response < 6 then
 				CEPGP_SendAddonMsg(arg2..";distslot;"..CEPGP_distSlot, "RAID");
 			end
 			if inGuild and not CEPGP_suppress_announcements then
-				if CEPGP_getResponse(arg1) or response < 5 then
+				if (CEPGP_getResponse(arg1) or CEPGP_getResponseIndex(arg1) or response < 5) and not CEPGP.Loot.DelayResponses then
 					if CEPGP.Loot.RollAnnounce then
 						CEPGP_sendChatMessage(arg2 .. " (" .. class .. ") needs (" .. reason .. "). (" .. math.floor((EP/GP)*100)/100 .. " PR) (Rolled " .. roll .. ")", CEPGP_lootChannel);
 					else
@@ -131,7 +126,7 @@ function CEPGP_handleComms(event, arg1, arg2, response)
 						_, _, _, _, class = GetRaidRosterInfo(i);
 					end
 				end
-				if CEPGP_getResponse(arg1) or response < 5 then
+				if (CEPGP_getResponse(arg1) or CEPGP_getResponseIndex(arg1) or response < 5) and not CEPGP.Loot.DelayResponses then
 					if CEPGP.Loot.RollAnnounce then
 						CEPGP_sendChatMessage(arg2 .. " (" .. class .. ") needs (" .. reason .. "). (Non-guild member) (Rolled " .. roll .. ")", CEPGP_lootChannel);
 					else
@@ -139,7 +134,7 @@ function CEPGP_handleComms(event, arg1, arg2, response)
 					end
 				end
 			end
-			if CEPGP_getResponse(arg1) or (CEPGP_show_passes and response == 6) or response < 6 then --If you are the master looter
+			if CEPGP_getResponse(arg1) or CEPGP_getResponseIndex(arg1) or (CEPGP_show_passes and response == 6) or response < 6 then
 				CEPGP_addResponse(arg2, response, roll);
 			end
 			CEPGP_UpdateLootScrollBar(true);
@@ -267,7 +262,7 @@ function CEPGP_handleComms(event, arg1, arg2, response)
 end
 
 function CEPGP_handleCombat(name)
-	if (((GetLootMethod() == "master" and CEPGP_isML() == 0) or (GetLootMethod() == "group" and UnitIsGroupLeader("player"))) and CEPGP_ntgetn(CEPGP_roster) > 0) or CEPGP_debugMode then
+	if (((GetLootMethod() == "master" and CEPGP_isML() == 0) or (GetLootMethod() == "group" and UnitIsGroupLeader("player"))) and CEPGP_ntgetn(CEPGP_roster) > 0) or CEPGP_Info.Debug then
 		local localName = L[name];
 		local EP = EPVALS[name];
 		local plurals = name == "The Four Horsemen" or name == "Silithid Royalty" or name == "Twin Emperors";
@@ -313,6 +308,7 @@ function CEPGP_handleLoot(event, arg1, arg2)
 		if CEPGP_isML() == 0 then
 			CEPGP_SendAddonMsg("LootClosed;", "RAID");
 		end
+		CEPGP_DistID = nil;
 		CEPGP_distributing = false;
 		CEPGP_toggleGPEdit(true);
 		CEPGP_distItemLink = nil;
@@ -321,7 +317,11 @@ function CEPGP_handleLoot(event, arg1, arg2)
 		if CEPGP_mode == "loot" then
 			CEPGP_cleanTable();
 			if CEPGP_isML() == 0 then
-				CEPGP_SendAddonMsg("RaidAssistLootClosed", "RAID");
+				if CEPGP.Loot.RaidVisibility[2] then
+					CEPGP_SendAddonMsg("RaidAssistLootClosed;", "RAID");
+				elseif CEPGP.Loot.RaidVisibility[1] then
+					CEPGP_messageGroup("RaidAssistLootClosed", "assists");
+				end
 			end
 			HideUIPanel(CEPGP_frame);
 		end
@@ -350,7 +350,7 @@ function CEPGP_handleLoot(event, arg1, arg2)
 			CEPGP_UpdateLootScrollBar();
 		end
 		
-	elseif event == "LOOT_OPENED" then --and (UnitInRaid("player") or CEPGP_debugMode) then
+	elseif event == "LOOT_OPENED" then --and (UnitInRaid("player") or CEPGP_Info.Debug) then
 		CEPGP_Info.IgnoreUpdates = true;	--	Prevents the CEPGP roster from rebuilding while distributing loot
 		CEPGP_LootFrame_Update();
 		ShowUIPanel(CEPGP_button_loot_dist);
@@ -359,7 +359,7 @@ function CEPGP_handleLoot(event, arg1, arg2)
 		if CEPGP_distributing and arg1 == CEPGP_lootSlot then --Confirms that an item is currently being distributed and that the item taken is the one in question
 			
 			if CEPGP_isML() == 0 then
-				CEPGP_SendAddonMsg("LootClosed;", "RAID");
+				CEPGP_SendAddonMsg("RaidAssistLootClosed;", "RAID");
 			end
 			
 			local player = CEPGP_distPlayer;
@@ -385,7 +385,11 @@ function CEPGP_handleLoot(event, arg1, arg2)
 			local callback = function()				
 				if player ~= "" and award then
 					if CEPGP_isML() == 0 then
-						CEPGP_SendAddonMsg("RaidAssistLootClosed", "RAID");
+						if CEPGP.Loot.RaidVisibility[2] then
+							CEPGP_SendAddonMsg("RaidAssistLootClosed;", "RAID");
+						elseif CEPGP.Loot.RaidVisibility[1] then
+							CEPGP_messageGroup("RaidAssistLootClosed", "assists");
+						end
 						CEPGP_SendAddonMsg("LootClosed;", "RAID");
 					end
 					if response == "" then response = nil; end

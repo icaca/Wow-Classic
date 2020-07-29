@@ -3,11 +3,15 @@ local L = CEPGP_Locale:GetLocale("CEPGP")
 function CEPGP_IncAddonMsg(message, sender)
 	local args = CEPGP_split(message, ";"); -- The broken down message, delimited by semi-colons
 	if sender == UnitName("player") then
-		for index, msg in pairs(CEPGP_Info.MessageStack) do
-			if message == msg[1] then
-				CEPGP_Info.MessageStack[index] = nil;
+		for i = 1, #CEPGP_Info.MessageStack do
+			if CEPGP_Info.MessageStack[i] == message then
+				table.remove(CEPGP_Info.MessageStack, i);
 			end
 		end
+	end
+	
+	if args[1] == "table" then
+		return;
 	end
 	
 	if args[1] == "message" and args[2] == UnitName("player") then
@@ -16,6 +20,9 @@ function CEPGP_IncAddonMsg(message, sender)
 	
 	if args[1] == "CEPGP_setDistID" then
 		CEPGP_DistID = args[2];
+		
+	elseif args[1] == "CEPGP_setLootGUID" then
+		CEPGP_Info.LootGUID = args[2];
 	
 	elseif args[1] == UnitName("player") and args[2] == "distslot" then
 		--Recipient should see this
@@ -75,7 +82,7 @@ function CEPGP_IncAddonMsg(message, sender)
 			[1] = itemID,
 			[2] = itemID2,
 			[3] = response,
-			[4] = roll
+			[4] = tonumber(roll)
 		};
 		CEPGP_UpdateLootScrollBar(true);
 	end
@@ -127,22 +134,23 @@ function CEPGP_IncAddonMsg(message, sender)
 		end
 		
 		
-		--Raid assists receiving !need responses in the format of !need;playername;itemID (of item being distributed)
 	elseif args[1] == "!need" then
 		if args[2] == UnitName("player") then
 			CEPGP_respond:Hide();
-		else
-			local player = args2;
-			local response = tonumber(args[4]) or CEPGP_getResponse(args[4]);
-			local roll = args[5];
-			if (response and (not tonumber(response)) or tonumber(response) > 6) or (CEPGP_show_passes and response == 6) or response < 6 then
-				CEPGP_itemsTable[args[2]] = {};
-				CEPGP_itemsTable[args[2]][3] = response;
-				if roll then
-					CEPGP_itemsTable[args[2]][4] = roll;
-				end
-				CEPGP_UpdateLootScrollBar(sort);
+		end
+		local player = args[2];
+		local response = tonumber(args[4]) or CEPGP_getResponse(args[4]) or CEPGP_getResponseIndex(args[4]) or CEPGP_indexToLabel(args[4]);
+		local roll = args[5];
+		if sender ~= UnitName("player") then
+			CEPGP_Info.LootRespondants = CEPGP_Info.LootRespondants + 1;
+		end
+		if (CEPGP_show_passes and response == 6) or response ~= 6 then
+			CEPGP_itemsTable[args[2]] = {};
+			CEPGP_itemsTable[args[2]][3] = response;
+			if roll then
+				CEPGP_itemsTable[args[2]][4] = tonumber(roll);
 			end
+			CEPGP_UpdateLootScrollBar(sort);
 		end
 		
 	elseif args[1] == "LootClosed" then
@@ -194,7 +202,10 @@ function CEPGP_IncAddonMsg(message, sender)
 	elseif args[1] == "!info" and args[2] == UnitName("player") then--strfind(message, "!info"..UnitName("player")) then
 		CEPGP_print(args[3]);
 		
-		
+	elseif args[1] == "lootschema" then
+		for i = 2, #args, 2 do
+			CEPGP_Info.LootSchema[tonumber(args[i])] = args[i+1];
+		end
 		
 		--[[	IMPORTS		]]--
 	
@@ -384,10 +395,10 @@ function CEPGP_IncAddonMsg(message, sender)
 												else
 													CEPGP_SendAddonMsg(target..";impresponse;CEPGP_auto_pass;false", lane);
 												end
-												if CEPGP_raid_wide_dist then
-													CEPGP_SendAddonMsg(target..";impresponse;CEPGP_raid_wide_dist;true", lane);
+												if CEPGP_raid_wide_dist[2] then
+													--CEPGP_SendAddonMsg(target..";impresponse;CEPGP_raid_wide_dist[2];true", lane);
 												else
-													CEPGP_SendAddonMsg(target..";impresponse;CEPGP_raid_wide_dist;false", lane);
+													--CEPGP_SendAddonMsg(target..";impresponse;CEPGP_raid_wide_dist[2];false", lane);
 												end
 												if CEPGP_suppress_announcements then
 													CEPGP_SendAddonMsg(target..";impresponse;CEPGP_suppress_announcements;true", lane);
@@ -715,14 +726,14 @@ function CEPGP_IncAddonMsg(message, sender)
 				CEPGP.Loot.AutoPass = false;
 			end
 		
-			elseif option == "CEPGP_raid_wide_dist" then
-				if args[4] == "true" then
-					CEPGP_raid_wide_dist = true;
+			--elseif option == "CEPGP_raid_wide_dist[2]" then
+				--[[if args[4] == "true" then
+					CEPGP_raid_wide_dist[2] = true;
 					CEPGP.Loot.RaidVisibility = true;
 				else
-					CEPGP_raid_wide_dist = false;
+					CEPGP_raid_wide_dist[2] = false;
 					CEPGP.Loot.RaidVisibility = false;
-				end
+				end]]
 			
 			elseif option == "CEPGP_suppress_announcements" then
 				if args[4] == "true" then
@@ -793,7 +804,8 @@ function CEPGP_IncAddonMsg(message, sender)
 		
 	elseif strfind(message, "MainSpec") or args[1] == "LootRsp" then
 		local response = args[2];
-		CEPGP_handleComms("CHAT_MSG_WHISPER", nil, sender, response);	
+		local GUID = args[3];
+		CEPGP_handleComms("CHAT_MSG_WHISPER", nil, sender, response, GUID);
 	
 	elseif args[1] == "CEPGP_TRAFFICSyncStart" and sender ~= UnitName("player") then
 		CEPGP_Info.SharingTraffic = true;
@@ -811,7 +823,7 @@ function CEPGP_IncAddonMsg(message, sender)
 					if not sigs[v[10]] then
 						sigs[v[10]] = {[1] = v[11]};
 					else
-						table.insert(sigs[10], v[11]);
+						table.insert(sigs[v[10]], v[11]);
 					end
 				end
 			end
@@ -1124,55 +1136,103 @@ function CEPGP_IncAddonMsg(message, sender)
 	end
 end
 
-function CEPGP_SendAddonMsg(message, channel)
-
+function CEPGP_SendAddonMsg(message, channel, player, logged)
+	
+	local conditions = {
+		["CallItem"] = function(id)
+			return (id == CEPGP_DistID and CEPGP_distributing);
+		end,
+		["LootClosed"] = function()
+			return CEPGP_frame:IsVisible();
+		end,
+		["RaidAssistLootDist"] = function()
+			return CEPGP_distributing;
+		end,
+		["RaidAssistLootClosed"] = function()
+			return not CEPGP_distributing;
+		end,
+		["IgnoreUpdates"] = function(state)
+			return CEPGP_Info.IgnoreUpdates == state;
+		end,
+		["LootRsp"] = function(GUID)
+			if #CEPGP_Info.LootGUID > 0 then
+				return GUID == CEPGP_Info.LootGUID;
+			elseif CEPGP_Info.LootGUID == "" then
+				return true;
+			else
+				return false;
+			end
+		end,
+		["CEPGP_setLootGUID"] = function(GUID)
+			return GUID == CEPGP_Info.LootGUID;
+		end
+	}
+	
+	local function send()
+		local sent = true;
+		local args = CEPGP_split(message, ";");
+		if conditions[args[1]] then
+			local func = conditions[args[1]];
+			if args[1] == "LootRsp" then args[2] = args[3]; end
+			if not func(args[2]) then
+				for i = 1, #CEPGP_Info.MessageStack do
+					if CEPGP_Info.MessageStack[i] == message then
+						table.remove(CEPGP_Info.MessageStack, i);
+						return;
+					end
+				end
+			end
+		end
+		
+		if channel == "GUILD" and IsInGuild() then
+			sent = C_ChatInfo.SendAddonMessage("CEPGP", message, "GUILD");
+		elseif (channel == "RAID" or not channel) and IsInRaid() then --Player is in a raid group
+			sent = C_ChatInfo.SendAddonMessage("CEPGP", message, "RAID");
+		elseif channel == "WHISPER" and player and logged then
+			sent = C_ChatInfo.SendAddonMessageLogged("CEPGP", message, "WHISPER", player);
+		elseif channel == "WHISPER" and player then
+			sent = C_ChatInfo.SendAddonMessage("CEPGP", message, "WHISPER", player);
+		elseif GetNumGroupMembers() > 0 and not IsInRaid() then --Player is in a party but not a raid
+			sent = C_ChatInfo.SendAddonMessage("CEPGP", message, "PARTY");
+		elseif IsInGuild() then --If channel is not specified then assume guild
+			sent = C_ChatInfo.SendAddonMessage("CEPGP", message, "GUILD");
+		end
+		if not sent and ((channel == "GUILD" and IsInGuild()) or (channel == "RAID" and IsInRaid())) then
+			send();
+		end
+	end
+	
 	local function hasSent()
-		for index, msg in ipairs(CEPGP_Info.MessageStack) do
-			if msg[1] == message then
+		for i = 1, #CEPGP_Info.MessageStack do
+			if CEPGP_Info.MessageStack[i] == message then
 				return false;
 			end
 		end
 		return true;
 	end
 	
-	local function send()
-			--	Changed from C_ChatInfo.SendAddonMessage to C_ChatInfo.SendAddonMessageLogged in 1.12.17 Alpha 5
-		if channel == "GUILD" and IsInGuild() then
-			C_ChatInfo.SendAddonMessage("CEPGP", message, "GUILD");
-		elseif (channel == "RAID" or not channel) and IsInRaid("player") then --Player is in a raid group
-			C_ChatInfo.SendAddonMessage("CEPGP", message, "RAID");
-		elseif GetNumGroupMembers() > 0 and not IsInRaid("player") then --Player is in a party but not a raid
-			C_ChatInfo.SendAddonMessage("CEPGP", message, "PARTY");
-		elseif IsInGuild() then --If channel is not specified then assume guild
-			C_ChatInfo.SendAddonMessage("CEPGP", message, "GUILD");
-		end
+
+	if not hasSent() then return; end
+	
+	if channel ~= "WHISPER" then
+		table.insert(CEPGP_Info.MessageStack, message);
 	end
 	
-	
-	if #CEPGP_Info.MessageStack == 0 then
-		table.insert(CEPGP_Info.MessageStack, {message, channel});
-		send();
-	else
-		for _, msg in ipairs(CEPGP_Info.MessageStack) do
-			if message == msg[1] then
-				return;
-			end
-		end
-		table.insert(CEPGP_Info.MessageStack, {message, channel});
-		send();
-	end
+	send();
 	
 	local callback;
 	
-	C_Timer.After(2, function()
+	--		Necessary to include as the sent bool for SendAddonMessage returns true even if a message is throttled
+	C_Timer.After(0.1, function()
 		callback = C_Timer.NewTicker(1, function()
 			if hasSent() then
 				callback._remainingIterations = 1;
 			else
+				callback._remainingIterations = 2;
 				send();
-				callback._remainingIterations = 2;			
 			end
 		end, 1);
+		
 	end);
 end
 
@@ -1210,4 +1270,43 @@ function CEPGP_ShareTraffic(ID, GUID)
 		CEPGP_print(failMsg);
 	end
 	
+end
+
+	--	group = party|assists
+function CEPGP_messageGroup(msg, group, logged)
+	if group == "party" then
+		if not IsInGroup() then
+			return;
+		end
+		local names = {};
+		for i = 1, GetNumGroupMembers() do
+			local player = select(1, GetRaidRosterInfo(i));
+			local online = select(8, GetRaidRosterInfo(i));
+			if online then
+				table.insert(names, player);
+			end
+		end
+		for _, name in ipairs(names) do
+			CEPGP_SendAddonMsg(msg, "WHISPER", name, logged);
+		end
+		
+	elseif group == "assists" then
+		if not IsInRaid() then
+			return;
+		end
+		local names = {};
+		for i = 1, GetNumGroupMembers() do
+			--	rank : 1 = assist, 2  = leader
+			local player, rank = GetRaidRosterInfo(i);
+			local leader = (rank == 2);
+			local assist = (rank == 1);
+			local online = select(8, GetRaidRosterInfo(i));
+			if player ~= UnitName("player") and (leader or assist) and online then
+				table.insert(names, player);
+			end
+		end
+		for _, name in ipairs(names) do
+			CEPGP_SendAddonMsg(msg, "WHISPER", name, logged);
+		end
+	end
 end
