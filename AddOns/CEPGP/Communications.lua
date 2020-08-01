@@ -135,20 +135,20 @@ function CEPGP_IncAddonMsg(message, sender)
 		
 		
 	elseif args[1] == "!need" then
-		if args[2] == UnitName("player") then
+		local player = args[2];
+		if player == UnitName("player") then
 			CEPGP_respond:Hide();
 		end
-		local player = args[2];
 		local response = tonumber(args[4]) or CEPGP_getResponse(args[4]) or CEPGP_getResponseIndex(args[4]) or CEPGP_indexToLabel(args[4]);
 		local roll = args[5];
 		if sender ~= UnitName("player") then
 			CEPGP_Info.LootRespondants = CEPGP_Info.LootRespondants + 1;
 		end
-		if (CEPGP_show_passes and response == 6) or response ~= 6 then
-			CEPGP_itemsTable[args[2]] = {};
-			CEPGP_itemsTable[args[2]][3] = response;
+		if sender ~= UnitName("player") and ((CEPGP_show_passes and response == 6) or response ~= 6) then
+			CEPGP_itemsTable[player] = {};
+			CEPGP_itemsTable[player][3] = response;
 			if roll then
-				CEPGP_itemsTable[args[2]][4] = tonumber(roll);
+				CEPGP_itemsTable[player][4] = tonumber(roll);
 			end
 			CEPGP_UpdateLootScrollBar(sort);
 		end
@@ -804,7 +804,7 @@ function CEPGP_IncAddonMsg(message, sender)
 		
 	elseif strfind(message, "MainSpec") or args[1] == "LootRsp" then
 		local response = args[2];
-		local GUID = args[3];
+		local GUID = args[3] or "";
 		CEPGP_handleComms("CHAT_MSG_WHISPER", nil, sender, response, GUID);
 	
 	elseif args[1] == "CEPGP_TRAFFICSyncStart" and sender ~= UnitName("player") then
@@ -1183,7 +1183,6 @@ function CEPGP_SendAddonMsg(message, channel, player, logged)
 				end
 			end
 		end
-		
 		if channel == "GUILD" and IsInGuild() then
 			sent = C_ChatInfo.SendAddonMessage("CEPGP", message, "GUILD");
 		elseif (channel == "RAID" or not channel) and IsInRaid() then --Player is in a raid group

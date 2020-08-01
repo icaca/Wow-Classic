@@ -359,7 +359,12 @@ function CEPGP_handleLoot(event, arg1, arg2)
 		if CEPGP_distributing and arg1 == CEPGP_lootSlot then --Confirms that an item is currently being distributed and that the item taken is the one in question
 			
 			if CEPGP_isML() == 0 then
-				CEPGP_SendAddonMsg("RaidAssistLootClosed;", "RAID");
+				if CEPGP.Loot.RaidVisibility[2] then
+					CEPGP_SendAddonMsg("RaidAssistLootClosed;", "RAID");
+				elseif CEPGP.Loot.RaidVisibility[1] then
+					CEPGP_messageGroup("RaidAssistLootClosed", "assists");
+				end
+				CEPGP_SendAddonMsg("LootClosed;", "RAID");
 			end
 			
 			local player = CEPGP_distPlayer;
@@ -384,14 +389,6 @@ function CEPGP_handleLoot(event, arg1, arg2)
 			
 			local callback = function()				
 				if player ~= "" and award then
-					if CEPGP_isML() == 0 then
-						if CEPGP.Loot.RaidVisibility[2] then
-							CEPGP_SendAddonMsg("RaidAssistLootClosed;", "RAID");
-						elseif CEPGP.Loot.RaidVisibility[1] then
-							CEPGP_messageGroup("RaidAssistLootClosed", "assists");
-						end
-						CEPGP_SendAddonMsg("LootClosed;", "RAID");
-					end
 					if response == "" then response = nil; end
 					
 					if distGP then

@@ -237,194 +237,8 @@ function CEPGP_initialise()
 				end
 			end
 		end
-		
-		CEPGP.Attendance = CEPGP.Attendance or CEPGP_raid_logs;
-		CEPGP.Backups = CEPGP.Backups or RECORDS;
-		CEPGP.Channel = CEPGP.Channel or CHANNEL;
-		CEPGP.Exclusions = CEPGP.Exclusions or {false,false,false,false,false,false,false,false,false,false};
-		CEPGP.LootChannel = CEPGP.LootChannel or CEPGP_lootChannel;
-		CEPGP.Notice = CEPGP.Notice or CEPGP_notice;
-		CEPGP.Overrides = CEPGP.Overrides or OVERRIDE_INDEX;
-		CEPGP.PollRate = CEPGP.PollRate or 0.0001;
-		CEPGP.Sync = CEPGP.Sync or {ALLOW_FORCED_SYNC, CEPGP_force_sync_rank};
-		CEPGP.Traffic = CEPGP.Traffic or TRAFFIC;
-		if not CEPGP.Alt then
-			CEPGP.Alt = {
-				Links = {},
-				BlockAwards = false,
-				SyncEP = true,
-				SyncGP = true,
-			}
-		end
-		CEPGP.Alt.Links = CEPGP.Alt.Links or {};
-		if not CEPGP.EP then
-			CEPGP.EP = {
-				AutoAward = AUTOEP,
-				BossEP = EPVALS,
-			}
-		end
-		if not CEPGP.Decay then
-			CEPGP.Decay = {
-				Separate = false,
-			};
-		end
-		CEPGP.EP.AutoAward = CEPGP.EP.AutoAward or AUTOEP;
-		CEPGP.EP.BossEP = CEPGP.EP.BossEP or EPVALS;
-		if not CEPGP.GP then
-			CEPGP.GP = {
-				Base = 4.83,
-				DecayFactor = false,
-				Min = 1,
-				Mod = 1,
-				Multiplier = 2,
-				SlotWeights = {
-					["2HWEAPON"] = 2,
-					["WEAPONMAINHAND"] = 1.5,
-					["WEAPON"] = 1.5,
-					["WEAPONOFFHAND"] = 0.5,
-					["HOLDABLE"] = 0.5,
-					["SHIELD"] = 0.5,
-					["WAND"] = 0.5,
-					["RANGED"] = 2,
-					["RELIC"] = 0.5,
-					["HEAD"] = 1,
-					["NECK"] = 0.5,
-					["SHOULDER"] = 0.75,
-					["CLOAK"] = 0.5,
-					["CHEST"] = 1,
-					["ROBE"] = 1,
-					["WRIST"] = 0.5,
-					["HAND"] = 0.75,
-					["WAIST"] = 0.75,
-					["LEGS"] = 1,
-					["FEET"] = 0.75,
-					["FINGER"] = 0.5,
-					["TRINKET"] = 0.75,
-					["EXCEPTION"] = 1
-				},
-				Tooltips = false,
-			}
-		end
-		CEPGP.GP.Base = COEF or CEPGP.GP.Base or 4.83;
-		CEPGP.GP.Min = BASEGP or CEPGP.GP.Min or 1;
-		CEPGP.GP.Mod = MOD or CEPGP.GP.Mod or 1;
-		CEPGP.GP.Multiplier = MOD_COEF or CEPGP.GP.Multiplier or 2;
-		
-		local slotDefault = {
-			["2HWEAPON"] = 2,
-			["WEAPONMAINHAND"] = 1.5,
-			["WEAPON"] = 1.5,
-			["WEAPONOFFHAND"] = 0.5,
-			["HOLDABLE"] = 0.5,
-			["SHIELD"] = 0.5,
-			["WAND"] = 0.5,
-			["RANGED"] = 2,
-			["RELIC"] = 0.5,
-			["HEAD"] = 1,
-			["NECK"] = 0.5,
-			["SHOULDER"] = 0.75,
-			["CLOAK"] = 0.5,
-			["CHEST"] = 1,
-			["ROBE"] = 1,
-			["WRIST"] = 0.5,
-			["HAND"] = 0.75,
-			["WAIST"] = 0.75,
-			["LEGS"] = 1,
-			["FEET"] = 0.75,
-			["FINGER"] = 0.5,
-			["TRINKET"] = 0.75,
-			["EXCEPTION"] = 1
-		};
-		
-		CEPGP.GP.SlotWeights = CEPGP.GP.SlotWeights or {};
-		
-		for k, v in pairs(slotDefault) do
-			if not CEPGP.GP.SlotWeights[k] then
-				CEPGP.GP.SlotWeights[k] = v;
-			end
-		end
-		
-		if type(CEPGP_raid_wide_dist) == "boolean" then
-			CEPGP_raid_wide_dist = {[1] = true, [2] = CEPGP_raid_wide_dist};
-		end
-		
-		if not CEPGP.Loot then
-			CEPGP.Loot = {
-				Announcement = "Whisper me for loot",
-				AutoPass = CEPGP_auto_pass,
-				AutoSort = CEPGP_PR_sort,
-				Keyword = CEPGP_keyword,
-				MinThreshold = CEPGP_min_threshold,
-				MinReq = CEPGP_minEP,
-				RaidVisibility = {[1] = true, [2] = CEPGP_raid_wide_dist[2]},
-				ShowPass = CEPGP_show_passes,
-				SuppressResponses = CEPGP_suppress_announcements,
-				GUI = {
-					Buttons = CEPGP_response_buttons,
-					Enabled = CEPGP_loot_GUI,
-					Timer = CEPGP_response_time
-				}
-			}
-		end
-		CEPGP.Loot.Announcement = CEPGP.Loot.Announcement or "Whisper me for loot";
-		CEPGP.Loot.Keyword = CEPGP.Loot.Keyword or CEPGP_keyword;
-		CEPGP.Loot.MinThreshold = CEPGP.Loot.MinThreshold or CEPGP_min_threshold;
-		CEPGP.Loot.MinReq = CEPGP.Loot.MinReq or CEPGP_minEP;
-		CEPGP.Loot.RaidVisibility = CEPGP.Loot.RaidVisibility or CEPGP_raid_wide_dist;
-		
-		if type(CEPGP.Loot.RaidVisibility) == "boolean" then
-			CEPGP.Loot.RaidVisibility = {[1] = true, [2] = CEPGP.Loot.RaidVisibility};
-		end
-		
-		if not CEPGP.Loot.GUI then
-			CEPGP.Loot.GUI = {
-				Buttons = CEPGP_response_buttons,
-				Enabled = CEPGP_loot_GUI,
-				Timer = CEPGP_response_time
-			}
-		end
-		
-		CEPGP.Loot.GUI.Buttons = CEPGP.Loot.GUI.Buttons or CEPGP_response_buttons or {[1]={true, "Main Spec", 0, "Need"},[2]={false, "Off Spec", 0, "Greed"},[3]={false, "Disenchant", 0, "Disenchant"},[4]={false, "Minor Upgrade", 0, "Minor"},[5]={false, "", 0},[6]={false, "Pass", 100}};
-		for i = 1, 4 do
-			if CEPGP_response_buttons[i][2] == "" or not CEPGP_response_buttons[i][2] then
-				CEPGP_response_buttons[i][2] = i == 1 and "Main Spec" or i == 2 and "Off Spec" or i == 3 and "Disenchant" or i == 4 and "Minor Upgrade";
-			end
-			if CEPGP_response_buttons[i][4] == "" or not CEPGP_response_buttons[i][4] then
-				CEPGP_response_buttons[i][4] = i == 1 and "Need" or i == 2 and "Greed" or i == 3 and "Disenchant" or i == 4 and "Minor";
-			end
-			
-			if CEPGP.Loot.GUI.Buttons[i][2] == "" or not CEPGP.Loot.GUI.Buttons[i][2] then
-				CEPGP.Loot.GUI.Buttons[i][2] = i == 1 and "Main Spec" or i == 2 and "Off Spec" or i == 3 and "Disenchant" or i == 4 and "Minor Upgrade";
-			end
-			if CEPGP.Loot.GUI.Buttons[i][4] == "" or not CEPGP.Loot.GUI.Buttons[i][4] then
-				CEPGP.Loot.GUI.Buttons[i][4] = i == 1 and "Need" or i == 2 and "Greed" or i == 3 and "Disenchant" or i == 4 and "Minor";
-			end
-		end
-		CEPGP.Loot.GUI.Timer = CEPGP.Loot.GUI.Timer or CEPGP_response_time;
-		CEPGP.Loot.ExtraKeywords = CEPGP.Loot.ExtraKeywords or {};
-		CEPGP.Loot.ExtraKeywords.Keywords = CEPGP.Loot.ExtraKeywords.Keywords or {};
-		
-		if not CEPGP.Standby then
-			Standby = {
-				AcceptWhispers = CEPGP_standby_accept_whispers,
-				ByRank = CEPGP_standby_byrank,
-				Enabled = STANDBYEP,
-				Keyword = CEPGP_standby_whisper_msg,
-				Manual = CEPGP_standby_manual,
-				Offline = STANDBYOFFLINE,
-				Percent = STANDBYPERCENT,
-				Ranks = STANDBYRANKS,
-				Roster = CEPGP_standbyRoster,
-				Share = CEPGP_standby_share,
-			}
-		end
-		
-		CEPGP.Standby.Keyword = CEPGP.Standby.Keyword or CEPGP_standby_whisper_msg;
-		CEPGP.Standby.Percent = CEPGP.Standby.Percent or STANDBYPERCENT;
-		CEPGP.Standby.Ranks = CEPGP.Standby.Ranks or STANDBYRANKS;
-		CEPGP.Standby.Roster = CEPGP.Standby.Roster or CEPGP_standbyRoster;
-		CEPGP.Standby.Share = CEPGP.Standby.Share or CEPGP_standby_share;
-		
+
+		CEPGP_initSavedVars();
 		CEPGP_initInterfaceOptions();
 		hooksecurefunc("ChatFrame_OnHyperlinkShow", CEPGP_addGPHyperlink);
 		hooksecurefunc("GameTooltip_UpdateStyle", CEPGP_addGPTooltip);
@@ -458,6 +272,126 @@ function CEPGP_initialise()
 			end
 		end);
 	end);
+end
+
+function CEPGP_initSavedVars()
+	
+	--[[	Structure Conversions	]]--
+	
+	if type(CEPGP_raid_wide_dist) == "boolean" then
+		CEPGP_raid_wide_dist = {[1] = true, [2] = CEPGP_raid_wide_dist};
+	end
+	
+	--[[	General Vars	]]--
+	
+	CEPGP.Channel = CEPGP.Channel or CHANNEL or "Guild";
+	CEPGP.Exclusions = CEPGP.Exclusions or {false,false,false,false,false,false,false,false,false,false};
+	CEPGP.Notice = CEPGP.Notice or CEPGP_notice;
+	CEPGP.PollRate = CEPGP.PollRate or 0.0001;
+	CEPGP.Sync = CEPGP.Sync or {ALLOW_FORCED_SYNC, CEPGP_force_sync_rank} or {false, 1};
+	CEPGP.Decay = CEPGP.Decay or {Separate = false};
+	
+	--[[	Guild Frame		]]--
+	
+	CEPGP.Attendance = CEPGP.Attendance or CEPGP_raid_logs or {};
+	CEPGP.Backups = CEPGP.Backups or RECORDS or {};
+	CEPGP.Traffic = CEPGP.Traffic or TRAFFIC or {};
+	
+	--[[	EP States	]]--
+	
+	for bossName, EP in pairs(CEPGP_EncounterInfo.Bosses) do
+		CEPGP.EP.BossEP[bossName] = CEPGP.EP.BossEP[bossName] or EPVALS[bossName] or EP;
+	end
+	
+	--[[	GP States	]]--
+	
+	local slotDefaults = {
+		["2HWEAPON"] = 2,
+		["WEAPONMAINHAND"] = 1.5,
+		["WEAPON"] = 1.5,
+		["WEAPONOFFHAND"] = 0.5,
+		["HOLDABLE"] = 0.5,
+		["SHIELD"] = 0.5,
+		["WAND"] = 0.5,
+		["RANGED"] = 2,
+		["RELIC"] = 0.5,
+		["HEAD"] = 1,
+		["NECK"] = 0.5,
+		["SHOULDER"] = 0.75,
+		["CLOAK"] = 0.5,
+		["CHEST"] = 1,
+		["ROBE"] = 1,
+		["WRIST"] = 0.5,
+		["HAND"] = 0.75,
+		["WAIST"] = 0.75,
+		["LEGS"] = 1,
+		["FEET"] = 0.75,
+		["FINGER"] = 0.5,
+		["TRINKET"] = 0.75,
+		["EXCEPTION"] = 1
+	};
+	
+	CEPGP.GP.Base = COEF or CEPGP.GP.Base or 4.83;
+	CEPGP.GP.Min = BASEGP or CEPGP.GP.Min or 1;
+	CEPGP.GP.Mod = MOD or CEPGP.GP.Mod or 1;
+	CEPGP.GP.Multiplier = MOD_COEF or CEPGP.GP.Multiplier or 2;
+	CEPGP.GP.SlotWeights = CEPGP.GP.SlotWeights or SLOTWEIGHTS or {};
+	
+	for slot, weight in pairs(slotDefaults) do
+		CEPGP.GP.SlotWeights[slot] = CEPGP.GP.SlotWeights[slot] or SLOTWEIGHTS[slot] or slotDefaults[slot];
+	end
+	
+	CEPGP.Overrides = CEPGP.Overrides or OVERRIDE_INDEX or {};
+	
+	--[[	Loot Management	]]--
+	
+	CEPGP.LootChannel = CEPGP.LootChannel or CEPGP_lootChannel or "Raid";
+	
+	CEPGP.Loot = CEPGP.Loot or {};
+	
+	CEPGP.Loot.Announcement = CEPGP.Loot.Announcement or "Whisper me for loot";
+	CEPGP.Loot.Keyword = CEPGP.Loot.Keyword or CEPGP_keyword;
+	CEPGP.Loot.MinThreshold = CEPGP.Loot.MinThreshold or CEPGP_min_threshold or 2;
+	CEPGP.Loot.MinReq = CEPGP.Loot.MinReq or CEPGP_minEP or {false, 0};
+	CEPGP.Loot.RaidVisibility = CEPGP.Loot.RaidVisibility or {[1] = true, [2] = CEPGP_raid_wide_dist[2]};
+	
+	CEPGP.Loot.GUI = CEPGP.Loot.GUI or {};
+	
+	CEPGP.Loot.GUI.Buttons[1][1] = true;
+	CEPGP.Loot.GUI.Buttons[1][2] = CEPGP.Loot.GUI.Buttons[1][2] or CEPGP_response_buttons[1][2] or "Main Spec";
+	CEPGP.Loot.GUI.Buttons[1][3] = CEPGP.Loot.GUI.Buttons[1][3] or CEPGP_response_buttons[1][3] or 0;
+	CEPGP.Loot.GUI.Buttons[1][4] = CEPGP.Loot.GUI.Buttons[1][4] or CEPGP_response_buttons[1][4] or "Need";
+	
+	CEPGP.Loot.GUI.Buttons[2][2] = CEPGP.Loot.GUI.Buttons[2][2] or CEPGP_response_buttons[2][2] or "Off Spec";
+	CEPGP.Loot.GUI.Buttons[2][3] = CEPGP.Loot.GUI.Buttons[2][3] or CEPGP_response_buttons[2][3] or 0;
+	CEPGP.Loot.GUI.Buttons[2][4] = CEPGP.Loot.GUI.Buttons[2][4] or CEPGP_response_buttons[2][4] or "Greed";
+	
+	CEPGP.Loot.GUI.Buttons[3][2] = CEPGP.Loot.GUI.Buttons[3][2] or CEPGP_response_buttons[3][2] or "Disenchant";
+	CEPGP.Loot.GUI.Buttons[3][3] = CEPGP.Loot.GUI.Buttons[3][3] or CEPGP_response_buttons[3][3] or 0;
+	CEPGP.Loot.GUI.Buttons[3][4] = CEPGP.Loot.GUI.Buttons[3][4] or CEPGP_response_buttons[3][4] or "Disenchant";
+	
+	CEPGP.Loot.GUI.Buttons[4][2] = CEPGP.Loot.GUI.Buttons[4][2] or CEPGP_response_buttons[4][2] or "Minor Upgrade";
+	CEPGP.Loot.GUI.Buttons[4][3] = CEPGP.Loot.GUI.Buttons[4][3] or CEPGP_response_buttons[4][3] or 0;
+	CEPGP.Loot.GUI.Buttons[4][4] = CEPGP.Loot.GUI.Buttons[4][4] or CEPGP_response_buttons[4][4] or "Minor";
+	
+	CEPGP.Loot.GUI.Timer = CEPGP.Loot.GUI.Timer or CEPGP_response_time or 0;
+	
+	CEPGP.Loot.ExtraKeywords = CEPGP.Loot.ExtraKeywords or {};
+	CEPGP.Loot.ExtraKeywords.Keywords = CEPGP.Loot.ExtraKeywords.Keywords or {};
+	
+	--[[	Alt Management	]]--
+	
+	CEPGP.Alt.Links = CEPGP.Alt.Links or {};
+	
+	--[[	Standby Settings	]]--
+	
+	CEPGP.Standby = CEPGP.Standby or {};
+	
+	CEPGP.Standby.Keyword = CEPGP.Standby.Keyword or CEPGP_standby_whisper_msg or "!standby";
+	CEPGP.Standby.Percent = CEPGP.Standby.Percent or STANDBYPERCENT or 100;
+	CEPGP.Standby.Ranks = CEPGP.Standby.Ranks or STANDBYRANKS or {};
+	CEPGP.Standby.Roster = CEPGP.Standby.Roster or CEPGP_standbyRoster or {};
+	
 end
 
 function CEPGP_initInterfaceOptions()
@@ -612,11 +546,7 @@ function CEPGP_getDiscount(label)
 end
 
 function CEPGP_indexToLabel(index)
-	if CEPGP.Loot.GUI.Buttons[index] then
-		return CEPGP.Loot.GUI.Buttons[index][2];
-	else
-		return CEPGP_Info.LootSchema[index];
-	end
+	return CEPGP_Info.LootSchema[index];
 end
 
 function CEPGP_getResponse(keyword)

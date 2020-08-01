@@ -1,11 +1,11 @@
-if GetLocale() ~= "ptBR" then return end
+if GetLocale() ~= "esMX" then return end
 local L
 
 -- Lord Kazzak (Badlands)
 L = DBM:GetModLocalization("KazzakClassic")
 
 L:SetGeneralLocalization{
-	name = "Lorde Kazzak"
+	name = "Lord Kazzak"
 }
 
 L:SetMiscLocalization({
@@ -31,18 +31,18 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization({
-	Pull		= "A paz é um sonho efêmero! Que os PESADELOS reinem soberanos!"
+	Pull		= "¡La paz no es más que un sueño fugaz! ¡Que reine la PESADILLA!"
 })
 
 -- Ysondre (Feralas)
 L = DBM:GetModLocalization("Ysondre")
 
 L:SetGeneralLocalization{
-	name = "Ysondra"
+	name = "Ysondre"
 }
 
 L:SetMiscLocalization({
-	Pull		= "Os fios da VIDA foram cortados! Os Sonhadores serão vingados!"
+	Pull		= "¡Los hilos de la VIDA se han roto! ¡Tenemos que vengar a los Soñadores!"
 })
 
 -- Lethon (Hinterlands)
@@ -53,7 +53,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization({
-	Pull		= "Eu sinto as TREVAS no coração de vocês. Não há descanso para os perversos!"
+	Pull		= "Puedo sentir la SOMBRA en sus corazones. ¡No puede haber descanso para los malos!" --Does not have one :\
 })
 
 -- Emeriss (Duskwood)
@@ -64,5 +64,5 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization({
-	Pull		= "A esperança é uma DOENÇA da alma! Estas terras definharão até a morte!"
+	Pull		= "¡La esperanza es una ENFERMEDAD del alma! ¡Esta tierra se marchitará y morirá!"
 })
