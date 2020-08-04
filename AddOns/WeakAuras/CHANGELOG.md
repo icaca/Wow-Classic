@@ -1,27 +1,50 @@
-# [2.17.12](https://github.com/WeakAuras/WeakAuras2/tree/2.17.12) (2020-07-11)
+# [2.18.0](https://github.com/WeakAuras/WeakAuras2/tree/2.18.0) (2020-07-28)
 
-[Full Changelog](https://github.com/WeakAuras/WeakAuras2/compare/2.17.11...2.17.12)
+[Full Changelog](https://github.com/WeakAuras/WeakAuras2/compare/2.17.12...2.18.0)
 
 ## Highlights
 
- - more fixes for threat trigger in classic
-- rename blacklist features
-- add more basic shape textures 
+ - Add LibSerialize 
 
 ## Commits
 
-InfusOnWoW (5):
+InfusOnWoW (21):
 
-- Make localization easier
-- Rename Blacklist features
-- Fix WeakAuras.WA_Utf8Sub() if the size is equal to the string length
-- Add more basic shape textures
-- Fix %t with "none" formatter
+- Fix error if state contains a non-table value for additionalProgress
+- Remove left over code that would taint max
+- SubText: Fix a few issues with the text offset
+- Fix wrong test for type of pickedDisplay
+- Add xOffset, yOffset to SubText properties
+- Fix min/max progress settings for overlays and ticks
+- Fix Expanding trigger functions if multiple auras are selected
+- Fix fetching of ownRealm.
+- Fix anchoring of dynamic groups
+- Fix Apply Template
+- Fix more regressions in the Options
+- CLEU: Fix trigger settings
+- BuffTrigger2: useUnitName Fix Options size
+- Fix setting of trigger types on the non-first trigger
+- Fix if moving a aura into a group with the new options visible
+- Combat Log: Fixes suffix event
+- Options Refactoring
+- Fix Abbreviate's slider allowing half-chars
+- Fix Has Vehicle UI Load options
+- Text Format Options: Make more resilent
+- Fix Big Number formatting options
 
-mrbuds (4):
+asakawa (1):
 
-- fix division per 0 in threat trigger
-- Add "Exact Spell Match" option to "Queued Action" trigger, fixes #2264
-- update build.yml for 1.13.5
-- Use threat value and calculted total threat as value & total (#2262)
+- Set the wrap mode on all the textures in the TexturePicker window so they don't repeat at the edges
+
+emptyrivers (1):
+
+- Add LibSerialize (#2235)
+
+mrbuds (1):
+
+- fix MoverSizer alignYFrom
+
+nullKomplex (1):
+
+- Fix AdditionalProgress when not a table pt. 2
 
