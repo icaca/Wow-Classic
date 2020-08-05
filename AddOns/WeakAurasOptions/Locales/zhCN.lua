@@ -90,8 +90,7 @@ local L = WeakAuras.L
 	L["Animations"] = "动画"
 	L["Any of"] = "任意的"
 	L["Apply Template"] = "应用模板"
-	--[[Translation missing --]]
-	L["Arc Length"] = "Arc Length"
+	L["Arc Length"] = "弧长"
 	L["Arcane Orb"] = "奥术宝珠"
 	L["At a position a bit left of Left HUD position."] = "在左侧HUD偏左一点的位置。"
 	L["At a position a bit left of Right HUD position"] = "在右侧HUD偏左一点的位置。"
@@ -182,8 +181,7 @@ local L = WeakAuras.L
 	L["Copy"] = "拷贝"
 	L["Copy settings..."] = "拷贝设置"
 	L["Copy to all auras"] = "拷贝至所有的光环"
-	--[[Translation missing --]]
-	L["Copy URL"] = "Copy URL"
+	L["Copy URL"] = "复制 URL"
 	L["Count"] = "计数 "
 	L["Counts the number of matches over all units."] = "计算所有单位上匹配的数量"
 	L["Creating buttons: "] = "创建按钮:"
@@ -551,8 +549,7 @@ Supports multiple entries, separated by commas
 	L["Separator text"] = "分隔符文本"
 	L["Set Parent to Anchor"] = "将父框架置于锚点"
 	L["Set Thumbnail Icon"] = "设置缩略图标"
-	--[[Translation missing --]]
-	L["Set tooltip description"] = "Set tooltip description"
+	L["Set tooltip description"] = "设置鼠标提示描述"
 	L["Sets the anchored frame as the aura's parent, causing the aura to inherit attributes such as visibility and scale."] = "将锚点框体设置为光环的父框体，使得光环继承锚点框体的一些属性（例如：可见性和缩放）"
 	L["Settings"] = "设置"
 	L["Shadow Color"] = "阴影颜色"

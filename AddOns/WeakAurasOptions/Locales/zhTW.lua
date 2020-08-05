@@ -91,8 +91,7 @@ local L = WeakAuras.L
 	L["Animations"] = "動畫"
 	L["Any of"] = "任何的"
 	L["Apply Template"] = "套用範本"
-	--[[Translation missing --]]
-	L["Arc Length"] = "Arc Length"
+	L["Arc Length"] = "弧長"
 	L["Arcane Orb"] = "祕法光球"
 	L["At a position a bit left of Left HUD position."] = "比左方 HUD 更左一點的位置"
 	L["At a position a bit left of Right HUD position"] = "比右方 HUD 更右一點的位置"
@@ -184,8 +183,7 @@ local L = WeakAuras.L
 	L["Copy"] = "複製"
 	L["Copy settings..."] = "複製設定..."
 	L["Copy to all auras"] = "複製到全部的光環"
-	--[[Translation missing --]]
-	L["Copy URL"] = "Copy URL"
+	L["Copy URL"] = "複製 URL"
 	L["Count"] = "數量"
 	L["Counts the number of matches over all units."] = "計算所有單位中符合的數量。"
 	L["Creating buttons: "] = "建立按鈕: "
@@ -554,8 +552,7 @@ Supports multiple entries, separated by commas
 	L["Separator text"] = "分隔線文字"
 	L["Set Parent to Anchor"] = "對齊到上一層"
 	L["Set Thumbnail Icon"] = "設定縮圖圖示"
-	--[[Translation missing --]]
-	L["Set tooltip description"] = "Set tooltip description"
+	L["Set tooltip description"] = "設定滑鼠提示說明"
 	L["Sets the anchored frame as the aura's parent, causing the aura to inherit attributes such as visibility and scale."] = "將對齊到的框架設為提醒效果的上一層框架，讓提醒效果能夠繼承像是顯示和縮放大小等屬性。"
 	L["Settings"] = "設定"
 	L["Shadow Color"] = "陰影顏色"
