@@ -557,7 +557,7 @@ function CEPGP_syncRankChange(self, arg1, arg2, checked)
 		--UIDropDownMenu_SetSelectedValue(CEPGP_interface_options_forced_sync_rank, self.value);
 		CEPGP_force_sync_rank = self.value;
 		CEPGP.Sync[2] = self.value;
-		CEPGP_print("Updated forced synchronisation rank");
+		CEPGP_print("Updated configuration management status");
 	end
 end
 
@@ -598,14 +598,14 @@ function CEPGP_minThresholdDropdown(frame, level, menuList)
 		};
 		local entry = UIDropDownMenu_AddButton(info);
 	end
-	UIDropDownMenu_SetSelectedName(CEPGP_min_threshold_dropdown, rarity[CEPGP_min_threshold]);
-	--UIDropDownMenu_SetSelectedValue(CEPGP_min_threshold_dropdown, CEPGP_min_threshold);
+	UIDropDownMenu_SetSelectedName(CEPGP_min_threshold_dropdown, rarity[CEPGP.Loot.MinThreshold]);
+	--UIDropDownMenu_SetSelectedValue(CEPGP.Loot.MinThreshold_dropdown, CEPGP.Loot.MinThreshold);
 end
 
 function CEPGP_minThresholdChange(self, value)
 	UIDropDownMenu_SetSelectedName(CEPGP_min_threshold_dropdown, self:GetText());
-	--UIDropDownMenu_SetSelectedValue(CEPGP_min_threshold_dropdown, self.value);
-	CEPGP_min_threshold = self.value;
+	--UIDropDownMenu_SetSelectedValue(CEPGP.Loot.MinThreshold_dropdown, self.value);
+	CEPGP.Loot.MinThreshold = self.value;
 	CEPGP_print("Minimum auto show threshold is now set to " .. self:GetText());
 end
 
@@ -659,7 +659,7 @@ function CEPGP_lootChannelDropdown(frame, level, menuList)
 		local entry = UIDropDownMenu_AddButton(info);
 	end
 	for i = 1, #channels do
-		if string.lower(CEPGP_lootChannel) == string.lower(channels[i]) then
+		if string.lower(CEPGP.LootChannel) == string.lower(channels[i]) then
 			UIDropDownMenu_SetSelectedName(CEPGP_loot_channel_dropdown, channels[i]);
 			--UIDropDownMenu_SetSelectedValue(CEPGP_loot_channel_dropdown, i);
 		end
@@ -669,6 +669,6 @@ end
 function CEPGP_lootChannelChange(self, value)
 	UIDropDownMenu_SetSelectedName(CEPGP_loot_channel_dropdown, self:GetText());
 	--UIDropDownMenu_SetSelectedValue(CEPGP_loot_channel_dropdown, self.value);
-	CEPGP_lootChannel = self:GetText();
-	CEPGP_print("Loot response channel set to \"" .. CEPGP_lootChannel .. "\".");
+	CEPGP.LootChannel = self:GetText();
+	CEPGP_print("Loot response channel set to \"" .. CEPGP.LootChannel .. "\".");
 end

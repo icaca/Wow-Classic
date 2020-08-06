@@ -52,7 +52,7 @@ function CEPGP_LootFrame_Update()
 		end
 	end
 	for k, v in pairs(items) do -- k = loot slot number, v is the table result
-		if (UnitInRaid("player") or CEPGP_Info.Debug) and (v[3] >= CEPGP_min_threshold) or (CEPGP_inOverride(v[2]) or CEPGP_inOverride(v[4])) then
+		if (UnitInRaid("player") or CEPGP_Info.Debug) and (v[3] >= CEPGP.Loot.MinThreshold) or (CEPGP_inOverride(v[2]) or CEPGP_inOverride(v[4])) then
 			if CEPGP_isML() == 0 then
 				CEPGP_frame:Show();
 				CEPGP_mode = "loot";
@@ -94,7 +94,7 @@ function CEPGP_announce(link, x, slotNum, quantity)
 		local schema = "lootschema";
 		local temp = {};	--	Only used if schema needs to be separated due to length
 		for index, response in ipairs(CEPGP_Info.LootSchema) do
-			if #(schema .. index .. ";" .. response) > 254 then
+			if #(schema .. index .. ";" .. response) > 249 then
 				table.insert(temp, schema);
 				schema = "lootschema;" .. index .. ";" .. response;
 		   else
@@ -240,8 +240,8 @@ function CEPGP_announce(link, x, slotNum, quantity)
 		else
 			call = call .. ";";
 		end
-		call = call .. ";" .. tostring(CEPGP_response_time);
-		CEPGP_callItem(id, gp, buttons, CEPGP_response_time);
+		call = call .. ";" .. tostring(CEPGP.Loot.GUI.Timer);
+		CEPGP_callItem(id, gp, buttons, CEPGP.Loot.GUI.Timer);
 		CEPGP_SendAddonMsg(call, "RAID");
 			
 		CEPGP_distribute:Show();

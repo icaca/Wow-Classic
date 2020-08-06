@@ -1,6 +1,6 @@
 --[[ Globals ]]--
 
-CEPGP_VERSION = "1.12.22.Release"
+CEPGP_VERSION = "1.12.23.Release"
 SLASH_CEPGP1 = "/CEPGP";
 SLASH_CEPGP2 = "/cep";
 CEPGP_VERSION_NOTIFIED = false;
@@ -80,7 +80,7 @@ CEPGP_show_passes = false;
 CEPGP_PR_sort = true;
 
 CEPGP_Info = {
-	Version = 				"1.12.22",
+	Version = 				"1.12.23",
 	Build = 				"Release",
 	Debug =					false,
 	Active = 				{false, false},	--	Active state, queried for current raid
@@ -208,7 +208,7 @@ CEPGP = {
 							Min = 1,
 							Mod = 1,
 							Multiplier = 2,
-								SlotWeights = {
+							SlotWeights = {
 								["2HWEAPON"] = 2,
 								["WEAPONMAINHAND"] = 1.5,
 								["WEAPON"] = 1.5,
@@ -231,6 +231,15 @@ CEPGP = {
 								["FEET"] = 0.75,
 								["FINGER"] = 0.5,
 								["TRINKET"] = 0.75
+							},
+							RaidModifiers = {
+								["Molten Core"] = 100,
+								["Onyxia's Lair"] = 100,
+								["Blackwing Lair"] = 100,
+								["Zul'Gurub"] = 100,
+								["The Ruins of Ahn'Qiraj"] = 100,
+								["The Temple of Ahn'Qiraj"] = 100,
+								["Naxxramas"] = 100
 							},
 							Tooltips = false,
 	},
@@ -373,10 +382,9 @@ function CEPGP_OnEvent(event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, ar
 	
 	elseif (event == "CHAT_MSG_ADDON") or (event == "CHAT_MSG_ADDON_LOGGED") then
 		if (arg1 == "CEPGP")then
-			if string.find(arg4, "-") then
-				arg4 = string.sub(arg4, 0, string.find(arg4, "-")-1);
-			end
-			CEPGP_IncAddonMsg(arg2, arg4);
+			local channel = arg3;
+			local player = arg5;
+			CEPGP_IncAddonMsg(arg2, arg5, arg3);
 		end
 		return;
 	end

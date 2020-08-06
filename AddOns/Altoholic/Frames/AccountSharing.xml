@@ -524,7 +524,7 @@
 	</Frame>
     
     <!-- moved from Altoholic.xml, the account sharing frame -->     
-<Frame name="AltoAccountSharing" toplevel="true" parent="UIParent" hidden="true">
+    <Frame name="AltoAccountSharing" toplevel="true" parent="UIParent" hidden="true" movable="true">
 		<Size x="800" y="300" />
 		<Anchors>
 			<Anchor point="CENTER" x="0" y="20" />
@@ -698,7 +698,17 @@
         					</OnClick>
         				</Scripts>
         			</Button>
-
+        			<Button name="AltoAccountSharing_CloseButton" inherits="UIPanelCloseButton">
+        				<Anchors>
+        					<Anchor relativePoint="TOPRIGHT" x="-36" y="-4" />
+        				</Anchors>
+        				<Scripts>
+        					<OnClick>
+        						AltoAccountSharing:Hide()
+        						Altoholic:ToggleUI()
+        					</OnClick>
+        				</Scripts>
+        			</Button>
         			<Button name="AltoAccountSharing_ToggleAll">
         				<Size x="16" y="16" />
         				<Anchors>
@@ -791,20 +801,6 @@
 
                 <Frames>
                     <Button name="AltoAccountSharing_AddOngoingButton" inherits="UIPanelButtonTemplate">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         				<Size x="140" y="24" />
         				<Anchors>
         					<Anchor point="TOPLEFT" relativeTo="AltoAccountSharing" relativePoint="TOPLEFT" x="100" y="-150" />
@@ -891,6 +887,19 @@
                 </Scripts>                
 			</Button>
 		</Frames>
+        <Scripts>
+            <OnLoad inherit="prepend">
+                self:RegisterForDrag("LeftButton")
+            </OnLoad>
+            <OnDragStart>
+                 if not self.isLocked then
+                  self:StartMoving()
+                 end
+            </OnDragStart>
+            <OnDragStop>
+                 self:StopMovingOrSizing()
+            </OnDragStop>
+        </Scripts>
 	</Frame>
         
 	<!--	Account Sharing / Available content	-->

@@ -66,12 +66,24 @@ function CEPGP_initialise()
 		AUTOEP["Princess Yauj"] = nil;
 		EPVALS["Highlord Mograine"] = nil;
 		AUTOEP["Highlord Mograine"] = nil;
-		EPVALS["Thane Kor'thazz"] = nil;
-		AUTOEP["Thane Kor'thazz"] = nil;
+		EPVALS["Thane Korth'azz"] = nil;
+		AUTOEP["Thane Korth'azz"] = nil;
 		EPVALS["Lady Blaumeux"] = nil;
 		AUTOEP["Lady Blaumeux"] = nil;
 		EPVALS["Sir Zeliek"] = nil;
 		AUTOEP["Sir Zeliek"] = nil;
+		EPVALS["Renataki"] = nil;
+		AUTOEP["Renataki"] = nil;
+		EPVALS["Wushoolay"] = nil;
+		AUTOEP["Wushoolay"] = nil;
+		EPVALS["Gri'lek"] = nil;
+		AUTOEP["Gri'lek"] = nil;
+		EPVALS["Hazza'rah"] = nil;
+		AUTOEP["Hazza'rah"] = nil;
+		EPVALS["Doom Lord Kazzak"] = nil;
+		AUTOEP["Doom Lord Kazzak"] = nil;
+		EPVALS["The Edge of Madness"] = nil;
+		AUTOEP["The Edge of Madness"] = nil;
 		
 		local channels = {
 			[1] = "Party",
@@ -86,8 +98,8 @@ function CEPGP_initialise()
 				CEPGP_print("Your reporting channel has changed, please make sure it is set to the correct setting!");
 			--end);
 		end
-		if not CEPGP_tContains(channels, CEPGP_lootChannel) then
-			CEPGP_lootChannel = channels[2];
+		if not CEPGP_tContains(channels, CEPGP.LootChannel) then
+			CEPGP.LootChannel = channels[2];
 			--C_Timer.After(5, function()
 				CEPGP_print("Your loot reporting channel has changed, please make sure it is set to the correct setting!");
 			--end);
@@ -197,6 +209,7 @@ function CEPGP_initialise()
 		tinsert(UISpecialFrames, "CEPGP_traffic");
 		tinsert(UISpecialFrames, "CEPGP_changelog");
 		tinsert(UISpecialFrames, "CEPGP_license");
+		tinsert(UISpecialFrames, "CEPGP_raid_modifiers");
 		
 		CEPGP_SendAddonMsg("version-check", "GUILD");
 		for i, t in ipairs(bossNames) do
@@ -303,6 +316,42 @@ function CEPGP_initSavedVars()
 		CEPGP.EP.BossEP[bossName] = CEPGP.EP.BossEP[bossName] or EPVALS[bossName] or EP;
 	end
 	
+	CEPGP.EP.BossEP["Edge of Madness"] = CEPGP.EP.BossEP["Edge of Madness"] or CEPGP.EP.BossEP["The Edge of Madness"] or CEPGP.EP.BossEP["Renataki"] or CEPGP_EncounterInfo.Bosses["Edge of Madness"];
+	CEPGP.EP.BossEP["Lord Kazzak"] = CEPGP.EP.BossEP["Doom Lord Kazzak"] or CEPGP.EP.BossEP["Lord Kazzak"] or CEPGP_EncounterInfo.Bosses["Lord Kazzak"];
+	CEPGP.EP.BossEP["The Twin Emperors"] = CEPGP.EP.BossEP["The Twin Emperors"] or CEPGP.EP.BossEP["Twin Emperors"] or CEPGP_EncounterInfo.Bosses["The Twin Emperors"];
+	CEPGP.EP.BossEP["The Silithid Royalty"] = CEPGP.EP.BossEP["The Silithid Royalty"] or CEPGP.EP.BossEP["Silithid Royalty"] or CEPGP_EncounterInfo.Bosses["The Silithid Royalty"];
+	
+	CEPGP.EP.BossEP["Renataki"] = nil;
+	CEPGP.EP.BossEP["Wushoolay"] = nil;
+	CEPGP.EP.BossEP["Gri'lek"] = nil;
+	CEPGP.EP.BossEP["Hazza'rah"] = nil;
+	CEPGP.EP.BossEP["Doom Lord Kazzak"] = nil;
+	CEPGP.EP.BossEP["The Edge of Madness"] = nil;
+	
+	CEPGP.EP.AutoAward["Renataki"] = nil;
+	CEPGP.EP.AutoAward["Wushoolay"] = nil;
+	CEPGP.EP.AutoAward["Gri'lek"] = nil;
+	CEPGP.EP.AutoAward["Hazza'rah"] = nil;
+	CEPGP.EP.AutoAward["Doom Lord Kazzak"] = nil;
+	CEPGP.EP.AutoAward["The Edge of Madness"] = nil;
+	
+	CEPGP.EP.BossEP["Silithid Royalty"] = nil;
+	CEPGP.EP.BossEP["Twin Emperors"] = nil;
+	
+	CEPGP.EP.AutoAward["Silithid Royalty"] = nil;
+	CEPGP.EP.AutoAward["Twin Emperors"] = nil;
+	
+	CEPGP.EP.BossEP["Highlord Mograine"] = nil;
+	CEPGP.EP.BossEP["Thane Korth'azz"] = nil;
+	CEPGP.EP.BossEP["Lady Blaumeux"] = nil;
+	CEPGP.EP.BossEP["Sir Zeliek"] = nil;
+	
+	CEPGP.EP.AutoAward["Highlord Mograine"] = nil;
+	CEPGP.EP.AutoAward["Thane Korth'azz"] = nil;
+	CEPGP.EP.AutoAward["Lady Blaumeux"] = nil;
+	CEPGP.EP.AutoAward["Sir Zeliek"] = nil;
+	
+	
 	--[[	GP States	]]--
 	
 	local slotDefaults = {
@@ -331,17 +380,35 @@ function CEPGP_initSavedVars()
 		["EXCEPTION"] = 1
 	};
 	
-	CEPGP.GP.Base = COEF or CEPGP.GP.Base or 4.83;
-	CEPGP.GP.Min = BASEGP or CEPGP.GP.Min or 1;
-	CEPGP.GP.Mod = MOD or CEPGP.GP.Mod or 1;
-	CEPGP.GP.Multiplier = MOD_COEF or CEPGP.GP.Multiplier or 2;
+	CEPGP.GP.Base = CEPGP.GP.Base or COEF or 4.83;
+	CEPGP.GP.Min = CEPGP.GP.Min or BASEGP or 1;
+	CEPGP.GP.Mod = CEPGP.GP.Mod or MOD or 1;
+	CEPGP.GP.Multiplier = CEPGP.GP.Multiplier or MOD_COEF or 2;
 	CEPGP.GP.SlotWeights = CEPGP.GP.SlotWeights or SLOTWEIGHTS or {};
 	
 	for slot, weight in pairs(slotDefaults) do
 		CEPGP.GP.SlotWeights[slot] = CEPGP.GP.SlotWeights[slot] or SLOTWEIGHTS[slot] or slotDefaults[slot];
 	end
 	
-	CEPGP.Overrides = CEPGP.Overrides or OVERRIDE_INDEX or {};
+	CEPGP.GP.SlotWeights["RANGEDRIGHT"] = nil;
+	
+	CEPGP.Overrides = OVERRIDE_INDEX or CEPGP.Overrides or {};
+	
+	CEPGP.GP.RaidModifiers = CEPGP.GP.RaidModifiers or {};
+	
+	local RaidModifiers = {
+		["Molten Core"] = 100,
+		["Onyxia's Lair"] = 100,
+		["Blackwing Lair"] = 100,
+		["Zul'Gurub"] = 100,
+		["The Ruins of Ahn'Qiraj"] = 100,
+		["The Temple of Ahn'Qiraj"] = 100,
+		["Naxxramas"] = 100
+	};
+	
+	for raid, val in pairs(RaidModifiers) do
+		CEPGP.GP.RaidModifiers[raid] = CEPGP.GP.RaidModifiers[raid] or val;
+	end
 	
 	--[[	Loot Management	]]--
 	
@@ -353,7 +420,7 @@ function CEPGP_initSavedVars()
 	CEPGP.Loot.Keyword = CEPGP.Loot.Keyword or CEPGP_keyword;
 	CEPGP.Loot.MinThreshold = CEPGP.Loot.MinThreshold or CEPGP_min_threshold or 2;
 	CEPGP.Loot.MinReq = CEPGP.Loot.MinReq or CEPGP_minEP or {false, 0};
-	CEPGP.Loot.RaidVisibility = CEPGP.Loot.RaidVisibility or {[1] = true, [2] = CEPGP_raid_wide_dist[2]};
+	CEPGP.Loot.RaidVisibility = (type(CEPGP.Loot.RaidVisibility) == "boolean" and {[1] = true, [2] = CEPGP_raid_wide_dist[2]}) or CEPGP.Loot.RaidVisibility or CEPGP_raid_wide_dist or {[1] = false, [2] = false};
 	
 	CEPGP.Loot.GUI = CEPGP.Loot.GUI or {};
 	
@@ -432,6 +499,44 @@ function CEPGP_initInterfaceOptions()
 	InterfaceOptions_AddCategory(panel.standby);
 	
 	_G["CEPGP_interface_options_version"]:SetText("Classic EPGP Version " .. CEPGP_Info.Version .. " " .. CEPGP_Info.Build);
+	
+	local varMap = {
+		["Alt"] = 				"Alt Management",
+		["Channel"] = 			"EPGP Modification Reporting Channel",
+		["Decay"] = 			"Decay Configuration",
+		["EP"] = 				"EP Management",
+		["GP"] = 				"GP Management",
+		["Loot"] = 				"Loot Management",
+		["LootChannel"] = 		"Loot Response Reporting Channel",
+		["Overrides"] = 		"GP Overrides",
+		["Standby"] =			"Standby Configuration"
+	}
+	
+	local importFrame = CEPGP_settings_import_sf_container;
+	
+	local temp = {};
+	
+	for base, _ in pairs(varMap) do
+		table.insert(temp, base);
+	end
+	
+	table.sort(temp);
+	
+	for i = 1, #temp do
+		local frame;
+		local base = varMap[temp[i]];
+		if not _G["ImportCheckButton_" .. i] then
+			frame = CreateFrame('CheckButton', "ImportCheckButton_" .. i, CEPGP_settings_import_sf_container, "ImportOptionCheckTemplate");
+			if i == 1 then
+				frame:SetPoint("TOPLEFT", CEPGP_settings_import_sf_container, "TOPLEFT", 5, -10);
+			else
+				frame:SetPoint("TOPLEFT", _G["ImportCheckButton_" .. i-1], "BOTTOMLEFT", 0, -2);
+			end
+		end
+		frame:SetAttribute("varName", temp[i]);		--	Couldn't think of a better generic name to reflect the name of a saved variable
+		frame:Show();
+		_G[frame:GetName() .. "_text"]:SetText(base);
+	end
 end
 
 function CEPGP_initDropdown(frame, initFunction, displayMode, level, menuList)
@@ -514,13 +619,22 @@ function CEPGP_announceResponses()
 	for _, label in ipairs(CEPGP_Info.LootSchema) do
 		local msg = label .. ": ";
 		for index, name in ipairs(responses[label]) do
+			local EP, GP, PR, roll;
 			if CEPGP_itemsTable[name][3] ~= 5 and CEPGP_itemsTable[name][3] ~= 6 then	--	Ensures that misc responses and passes are not announced
-				if #(msg .. ", " .. name) > 254 then
-					SendChatMessage(msg, "RAID", CEPGP_LANGUAGE);
-					msg = label .. " (Continued): " .. name;
-				else
-					msg = msg .. name .. ((index < #responses[label]) and ", " or "");
+				if CEPGP.Loot.DelayResponses and CEPGP.Loot.PRWithDelay then
+					EP, GP = CEPGP_getEPGP(name);
+					PR = math.floor((tonumber(EP)*100/tonumber(GP)))/100;
 				end
+				if CEPGP.Loot.DelayResponses and CEPGP.Loot.RollWithDelay then
+					roll = CEPGP_itemsTable[name][4];
+				end
+					if #(msg .. name .. (PR and " (PR " .. PR .. ")" or "") .. (roll and " (Roll " .. roll .. ")" or "")) > 249 then
+						SendChatMessage(msg, "RAID", CEPGP_LANGUAGE);
+						msg = label .. " (Continued): " .. name .. (PR and " (PR " .. PR .. ")" or "") .. (roll and " (Roll " .. roll .. ")" or "");
+					else
+						msg = msg .. name .. (PR and " (PR " .. PR .. ")" or "") .. (roll and " (Roll " .. roll .. ")" or "") .. ((index < #responses[label]) and ", " or "");
+					end
+				
 				local message = "!need;"..name..";"..CEPGP_DistID..";"..CEPGP_itemsTable[name][3]..";"..CEPGP_itemsTable[name][4];
 				if CEPGP.Loot.RaidVisibility[2] and CEPGP.Loot.DelayResponses then
 					CEPGP_SendAddonMsg(message, "RAID");
@@ -688,8 +802,19 @@ function CEPGP_calcGP(link, quantity, id)
 		slot = strsub(slot,strfind(slot,"INVTYPE_")+8,string.len(slot));
 		slot = SLOTWEIGHTS[slot];
 		
+		local raidScaling = 1;
+		
+		for raid, data in pairs(CEPGP_ItemDomain) do
+			for _, _id in pairs(data) do
+				if tonumber(id) == _id then
+					raidScaling = CEPGP.GP.RaidModifiers[raid]/100;
+					break;
+				end
+			end
+		end
+		
 		if ilvl and rarity and slot then
-			return math.floor((((COEF * (MOD_COEF^((ilvl/26) + (rarity-4))) * slot)*MOD)*quantity));
+			return math.floor((((COEF * (MOD_COEF^((ilvl/26) + (rarity-4))) * slot)*MOD)*quantity)*raidScaling);
 		else
 			return 0;
 		end
@@ -1268,17 +1393,42 @@ function CEPGP_standardiseString(str)
 	return result;
 end
 
+function CEPGP_refreshOptions()
+	if CEPGP_options_alt_mangement:IsVisible() then
+		CEPGP_options_alt_mangement:Hide();
+		CEPGP_options_alt_mangement:Show();
+		
+	elseif CEPGP_EP_options:IsVisible() then
+		CEPGP_EP_options:Hide();
+		CEPGP_EP_options:Show();
+		
+	elseif CEPGP_GP_options:IsVisible() then
+		CEPGP_GP_options:Hide();
+		CEPGP_GP_options:Show();
+		
+	elseif CEPGP_loot_options:IsVisible() then
+		CEPGP_loot_options:Hide();
+		CEPGP_loot_options:Show();
+		
+	elseif CEPGP_standby_options:IsVisible() then
+		CEPGP_standby_options:Hide();
+		CEPGP_standby_options:Show();
+		
+	end
+	
+end
+
 function CEPGP_toggleStandbyRanks(show)
-	if show and CEPGP_ntgetn(STANDBYRANKS) > 0 then
+	if show and CEPGP_ntgetn(CEPGP.Standby.Ranks) > 0 then
 		for i = 1, 10 do
-			STANDBYRANKS[i][1] = GuildControlGetRankName(i);
+			CEPGP.Standby.Ranks[i][1] = GuildControlGetRankName(i);
 		end
 		for i = 1, 10 do
-			if STANDBYRANKS[i][1] then
+			if CEPGP.Standby.Ranks[i][1] then
 				_G["CEPGP_options_standby_ep_rank_"..i]:Show();
-				_G["CEPGP_options_standby_ep_rank_"..i]:SetText(tostring(STANDBYRANKS[i][1]));
+				_G["CEPGP_options_standby_ep_rank_"..i]:SetText(tostring(CEPGP.Standby.Ranks[i][1]));
 				_G["CEPGP_options_standby_ep_check_rank_"..i]:Show();
-				if STANDBYRANKS[i][2] == true then
+				if CEPGP.Standby.Ranks[i][2] == true then
 					_G["CEPGP_options_standby_ep_check_rank_"..i]:SetChecked(true);
 				else
 					_G["CEPGP_options_standby_ep_check_rank_"..i]:SetChecked(false);
@@ -1860,8 +2010,8 @@ function CEPGP_getDebugInfo()
 		info = info .. "Minimum EP: false, " .. CEPGP_minEP[2] .. "<br />\n";
 	end
 	info = info .. "Reporting Channel: " .. CHANNEL .. "<br />\n";
-	info = info .. "Loot Response Channel: " .. CEPGP_lootChannel .. "<br />\n";
-	info = info .. "Minimum Threshold for Loot: " .. CEPGP_min_threshold .. "<br />\n";
+	info = info .. "Loot Response Channel: " .. CEPGP.LootChannel .. "<br />\n";
+	info = info .. "Minimum Threshold for Loot: " .. CEPGP.Loot.MinThreshold .. "<br />\n";
 	if ALLOW_FORCED_SYNC then
 		info = info .. "Allow Force Sync: true, " .. GuildControlGetRankName(CEPGP_force_sync_rank) .. "<br />\n";
 	else
@@ -2172,7 +2322,6 @@ function CEPGP_getTradeableItems()
 					local itemGUID;
 					if not isBound then
 						itemGUID = C_Item.GetItemGUID(location);
-						print(itemGUID);
 						table.insert(items, {[1] = itemID, [2] = itemGUID});
 					end
 				end					
@@ -2216,7 +2365,8 @@ function CEPGP_callItem(id, gp, buttons, timeout)
 					return;
 				end
 				CEPGP_respond:Hide();
-				CEPGP_SendAddonMsg("LootRsp;6", "RAID");
+				CEPGP_Info.LootGUID = CEPGP_Info.LootGUID or "";
+				CEPGP_SendAddonMsg("LootRsp;6;" .. CEPGP_Info.LootGUID, "RAID");
 				return;
 			end
 			timer = timer - 1;

@@ -1,7 +1,10 @@
 # Altoholic Classic - Fork by Teelo
 
-## [1.13.5.024c](https://github.com/teelolws/Altoholic-Classic/tree/1.13.5.024c) (2020-07-26)
-[Full Changelog](https://github.com/teelolws/Altoholic-Classic/compare/1.13.5.024b...1.13.5.024c) [Previous Releases](https://github.com/teelolws/Altoholic-Classic/releases)
+## [1.13.5.025](https://github.com/teelolws/Altoholic-Classic/tree/1.13.5.025) (2020-08-05)
+[Full Changelog](https://github.com/teelolws/Altoholic-Classic/compare/1.13.5.025BETA...1.13.5.025) [Previous Releases](https://github.com/teelolws/Altoholic-Classic/releases)
 
-- Update Altoholic.toc  
-- Removed debug code that wasn't working with the packager  
+- Made account sharing frame movable, added an X button.  
+- Delete test  
+- Testing classic webhook.  
+- Delete test  
+- Testing classic webhook.  

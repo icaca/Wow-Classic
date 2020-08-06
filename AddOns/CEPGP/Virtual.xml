@@ -263,6 +263,21 @@
 			</OnShow>
 		</Scripts>
 	</Button>
+	<CheckButton name="ImportOptionCheckTemplate" inherits="UIOptionsCheckButtonTemplate" virtual="true">
+		<Size x="21" y="21" />
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_text" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="LEFT" relativePoint="RIGHT" x="5" />
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnClick></OnClick>
+		</Scripts>
+	</CheckButton>
 	<Button name="GuildButtonTemplate" virtual="true">
 		<Size>
 			<AbsDimension x="580" y="15"/>
