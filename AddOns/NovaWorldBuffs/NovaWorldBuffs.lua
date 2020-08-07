@@ -3194,7 +3194,8 @@ f:SetScript('OnEvent', function(self, event, ...)
     	--otherPlayer is basically a waste of time here, since it's a pushed item not a looted item the team doesn't see it be looted.
     	--But I'll keep my looted item function in tact anyway, maybe I'll track some other item here in the future.
     	local _, _, zone = NWB.dragonLib:GetPlayerZonePosition();
-    	if (zone == 1448 and itemLink and itemLink.CreateFromItemLink) then
+    	--Some uers seem to have an addon that repaces the Item global so we have to check for Item.CreateFromItemLink.
+    	if (zone == 1448 and itemLink and Item.CreateFromItemLink) then
     		local item = Item:CreateFromItemLink(itemLink);
 			if (item) then
 				local itemID = item:GetItemID();
@@ -6606,7 +6607,7 @@ function NWB:mapCurrentLayer(unit)
 			for k, v in pairs(NWB.data.layers[NWB.lastKnownLayerMapID].layerMap) do
 				if (v == zone) then
 					--If we already have a zoneid with this mapid then don't overwrite it.
-					NWB:debug("mapid already known");
+					--NWB:debug("mapid already known");
 					return;
 				end
 			end
@@ -6670,12 +6671,12 @@ function NWB:resetLayerMaps()
 	--Theres a less than 1% chance each week to get the same layer id as last week.
 	--If it happe then a layermap not reset and last weeks layermap will be kept for this week.
 	--This just a fix for certain realms sometimes until I work out a way to auto deal with this issue.
-	if (NWB.db.global.wipeSingleLayer) then
+	--[[if (NWB.db.global.wipeSingleLayer) then
 		if (GetRealmName() == "Arugal" and NWB.data.layers and NWB.data.layers[130]) then
 			NWB.data.layers[130].layerMap = nil;
 		end
 		NWB.db.global.wipeSingleLayer = false;
-	end
+	end]]
 end
 
 --Version guild display.

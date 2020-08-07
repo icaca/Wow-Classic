@@ -2437,7 +2437,7 @@
 				</Texture>
 			</Layer>
 			<Layer level="OVERLAY">
-				<FontString name="CEPGP_settings_import_header" inherits="GameFontNormal" text="Overwrite Settings">
+				<FontString name="CEPGP_settings_import_header" inherits="GameFontNormal" text="Import Settings">
 					<Anchors>
 						<Anchor point="TOP">
 							<Offset>
@@ -5955,7 +5955,7 @@
 				heading:SetPoint("TOP", 0, -20);
 				content:SetPoint("TOPLEFT", 20, -40);
 				heading:SetText("Classic EPGP Version " .. CEPGP_Info.Version .. " " .. CEPGP_Info.Build .. " Changelog");
-				local info = "New Features:\n- Players can now choose which categories they would like to import when importing settings\n- Added PR and rolls as extra options to add when delaying response announcements\n- Loot masters can now apply a GP multiplier for all items in each raid\n\nBugfixes:\n- Corrected an issue preventing items from being announced\n- Corrected a synchronisation issue in the response buttons\n\nChanges:\n- Rewrote the import function\n- Rewrote the force synchronisation function\n- The force synchronisation feature has been reworded\n- Modified the channel for import/sync to reduce network load\n- Started work on variable conversion";
+				local info = "New Features:\n- Players can now choose which categories they would like to import when importing settings\n- Added PR and rolls as extra options to add when delaying response announcements\n- Loot masters can now apply a GP multiplier for all items in each raid\n\nBugfixes:\n- Corrected a typo preventing importing of overrides\n- Corrected a typo causing false errors to appear when importing response buttons\n- Corrected an issue preventing items from being announced\n- Corrected a synchronisation issue in the response buttons\n\nChanges:\n- Rewrote the import function\n- Rewrote the force synchronisation function\n- The force synchronisation feature has been reworded\n- Modified the channel for import/sync to reduce network load\n- Started work on variable conversion";
 				content:SetText(info);
 				self:SetWidth(content:GetStringWidth()+40);
 				self:SetHeight(heading:GetStringHeight() + content:GetStringHeight() + 50);

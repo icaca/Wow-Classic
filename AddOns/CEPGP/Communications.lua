@@ -622,7 +622,7 @@ function CEPGP_ExportConfig(option, player)
 	if player then channel = "WHISPER"; end
 
 	if option == "Overrides" then
-		if #CEPGP.Overrides == 0 then return; end
+		if CEPGP_ntgetn(CEPGP.Overrides) == 0 then return; end
 		
 		local Overrides = {};
 		
@@ -630,7 +630,7 @@ function CEPGP_ExportConfig(option, player)
 			table.insert(Overrides, {link, gp});
 		end
 		
-		local limit = #Overrides;
+		local limit = CEPGP_ntgetn(Overrides);
 		local i = 1;
 		C_Timer.NewTicker(0.1, function()
 			CEPGP_SendAddonMsg("ExportConfig;Overrides;" .. Overrides[i][1] .. ";" .. Overrides[i][2], channel, player);
@@ -845,7 +845,7 @@ function CEPGP_OverwriteOption(args, sender, channel)
 					local discount = sanitise(args[8]);
 					local keyword = sanitise(args[9]);
 					
-					if state then					
+					if text then					
 						CEPGP.Loot.GUI.Buttons[index][1] = state;
 						CEPGP_response_buttons[index][1] = state;
 						CEPGP.Loot.GUI.Buttons[index][2] = text;
