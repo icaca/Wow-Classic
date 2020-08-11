@@ -76,32 +76,6 @@ L:SetGeneralLocalization{
 	name = "Пламегор"
 }
 
-
------------------------
---  Vulnerabilities  --
------------------------
--- Chromaggus, Death Talon Overseer and Death Talon Wyrmguard
-L = DBM:GetModLocalization("TalonGuards")
-
-L:SetGeneralLocalization{
-	name = "Стражи Когтя Смерти"
-}
-L:SetWarningLocalization{
-	WarnVulnerable		= "Уязвимость к %s"
-}
-L:SetOptionLocalization{
-	WarnVulnerable		= "Показывать предупреждение об уязвимости к заклинаниям"
-}
-L:SetMiscLocalization{
-	Fire		= "Огню",
-	Nature		= "силам Природы",
-	Frost		= "магии Льда",
-	Shadow		= "Темной магии",
-	Arcane		= "Тайной магии",
-	Holy		= "Светлой магии"
-}
-
-
 ------------------
 --  Chromaggus  --
 ------------------
@@ -113,34 +87,16 @@ L:SetGeneralLocalization{
 L:SetWarningLocalization{
 	WarnBreathSoon	= "Скоро дыхание",
 	WarnBreath		= "%s",
-	WarnVulnerable	= "Уязвимость к %s",
 	WarnPhase2Soon	= "Скоро 2-ая фаза"
 }
 L:SetTimerLocalization{
-	TimerBreathCD	= "%s восстановление",
-	TimerBreath		= "Применение %s",
-	TimerVulnCD		= "Восстановление уязвимости"
+	TimerBreathCD	= "%s восстановление"
 }
 L:SetOptionLocalization{
 	WarnBreathSoon	= "Предварительное предупреждение Дыхания Хромаггуса",
 	WarnBreath		= "Показывать предупреждение о дыханиях Хромаггуса",
-	WarnVulnerable	= "Показывать предупреждение об уязвимости к заклинаниям",
 	TimerBreathCD	= "Показывать время восстановления дыханий",
-	TimerBreath		= "Показывать применение Дыхания",
-	TimerVulnCD		= "Показывать восстановление уязвимости",
 	WarnPhase2Soon	= "Предупреждать о второй фазе"
-}
-L:SetMiscLocalization{
-	Breath1		= "Первое Дыхание",
-	Breath2		= "Второе Дыхание",
-	VulnEmote	= "%s уходит, мерцая.",
-	Vuln		= "Уязвимость",
-	Fire		= "Огню",
-	Nature		= "силам Природы",
-	Frost		= "магии Льда",
-	Shadow		= "Темной магии",
-	Arcane		= "Тайной магии",
-	Holy		= "Светлой магии"
 }
 
 ----------------
@@ -152,26 +108,22 @@ L:SetGeneralLocalization{
 	name = "Нефариан"
 }
 L:SetWarningLocalization{
-	WarnAddsLeft		= "Осталось %d убийств",
 	WarnClassCallSoon	= "Скоро вызов класса",
 	WarnClassCall		= "Дебафф на %s",
 	WarnPhaseSoon		= "Скоро фаза %s",
-	WarnPhase			= "Фаза %s",
-	specwarnClassCall	= "Классовый зов на тебе!"
+	WarnPhase			= "Фаза %s"
 }
 L:SetTimerLocalization{
-	TimerClassCall		= "%s зов заканчивается"
+	TimerClassCall		= "%s зов"
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "Показывать таймер классовых вызовов",
 	WarnClassCallSoon	= "Предупреждение классовых вызовов",
 	WarnClassCall		= "Объявлять классовый вызов",
 	WarnPhaseSoon		= "Объявлять, когда следующая фаза скоро начнется",
-	WarnPhase			= "Объявлять смену фаз",
-	specwarnClassCall	= "Показывать специальное предупреждение, когда вы подвержены классовому зову"
+	WarnPhase			= "Объявлять смену фаз"
 }
 L:SetMiscLocalization{
-	YellP1		= "Да начнутся игры!",
 	YellP2		= "Браво, слуги мои! Смертные утрачивают мужество! Поглядим же, как они справятся с истинным Повелителем Черной горы!!!",
 	YellP3		= "Не может быть! Восстаньте, мои прислужники! Послужите господину еще раз!",
 	YellShaman	= "Шаманы, покажите, на что способны ваши тотемы!",

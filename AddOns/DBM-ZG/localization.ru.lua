@@ -39,7 +39,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization({
-	WarnSimulKill	= "Первый адд пал - воскрешение через ~15 сек."
+	WarnSimulKill	= "Первый адд пал - воскрешение через ~12 сек."
 })
 
 L:SetTimerLocalization({
@@ -52,12 +52,9 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	PriestDied	= "%s умирает.",
-	YellPhase2	= "Ширвалла, наполни меня своим ГНЕВОМ!",
-	YellKill	= "Хаккар больше не властен надо мной! Наконец-то я обрел покой!",
-	Thekal		= "Верховный жрец Текал",
-	Zath		= "Ревнитель Зат",
-	LorKhan		= "Ревнитель Лор'Кхан"
+	PriestDied	= "%s dies.",
+	YellPhase2	= "Shirvallah, fill me with your RAGE!",
+	YellKill	= "Hakkar binds me no more!  Peace at last!"
 })
 
 -------------------
@@ -88,8 +85,7 @@ L:SetGeneralLocalization{
 }
 L:SetMiscLocalization{
 	Bloodlord 	= "Мандокир Повелитель Крови",
-	Ohgan		= "Охган",
-	GazeYell	= "Я за тобой слежу"
+	Ohgan		= "Охган"
 }
 
 -------------------

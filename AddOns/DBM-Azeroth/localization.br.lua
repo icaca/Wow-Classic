@@ -31,7 +31,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization({
-	Pull		= "A paz é um sonho efêmero! Que os PESADELOS reinem soberanos!"
+	Pull		= "Peace is but a fleeting dream! Let the NIGHTMARE reign!"
 })
 
 -- Ysondre (Feralas)
@@ -42,7 +42,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization({
-	Pull		= "Os fios da VIDA foram cortados! Os Sonhadores serão vingados!"
+	Pull		= "The strands of LIFE have been severed! The Dreamers must be avenged!"
 })
 
 -- Lethon (Hinterlands)
@@ -53,7 +53,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization({
-	Pull		= "Eu sinto as TREVAS no coração de vocês. Não há descanso para os perversos!"
+--	Pull		= "The strands of LIFE have been severed! The Dreamers must be avenged!"--Does not have one :\
 })
 
 -- Emeriss (Duskwood)

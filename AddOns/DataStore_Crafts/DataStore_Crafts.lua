@@ -904,6 +904,7 @@ end
 -- will merge reference database data into the character table, creating a new table in the process, so the original variables aren't affected
 function _CraftsPrepareCharacterTableForSharing(characterTable)
     local newTable = {}
+    local oneTimeError = false
     if characterTable["Professions"] then
         newTable["Professions"] = {}
         for professionName, professionTable in pairs(characterTable["Professions"]) do
@@ -938,21 +939,27 @@ function _CraftsPrepareCharacterTableForSharing(characterTable)
                     newTable.Professions[professionName].Crafts[categoryID] = {}
                     for craftID, craftTable in pairs(categoryTable) do
                         newTable.Professions[professionName].Crafts[categoryID][craftID] = {}
-                        if craftTable["color"] then
-                            newTable.Professions[professionName].Crafts[categoryID][craftID].color = craftTable["color"]
-                        end
-                        if craftTable["isLearned"] then
-                            newTable.Professions[professionName].Crafts[categoryID][craftID].isLearned = craftTable["isLearned"]
-                        end
-                        if craftTable["recipeID"] then
-                            newTable.Professions[professionName].Crafts[categoryID][craftID].recipeID = craftTable["recipeID"]
-                            newTable.Professions[professionName].Crafts[categoryID][craftID].reagents = _GetCraftReagents(craftTable["recipeID"])
-                            local resultItems = addon.ref.global.ResultItems[craftTable["recipeID"]]
-                            if resultItems then
-                                newTable.Professions[professionName].Crafts[categoryID][craftID].resultItems = {}
-                                newTable.Professions[professionName].Crafts[categoryID][craftID].resultItems.name = resultItems.name
-                                newTable.Professions[professionName].Crafts[categoryID][craftID].resultItems.itemID = resultItems.itemID
-                                newTable.Professions[professionName].Crafts[categoryID][craftID].resultItems.maxMade = resultItems.maxMade
+                        if type(craftTable) == "number" then
+                            if not oneTimeError then
+                                print("Altoholic: Warning - you have outdated Profession data for one of your characters. Please log into your characters and open all their profession books.")
+                            end
+                        else
+                            if craftTable["color"] then
+                                newTable.Professions[professionName].Crafts[categoryID][craftID].color = craftTable["color"]
+                            end
+                            if craftTable["isLearned"] then
+                                newTable.Professions[professionName].Crafts[categoryID][craftID].isLearned = craftTable["isLearned"]
+                            end
+                            if craftTable["recipeID"] then
+                                newTable.Professions[professionName].Crafts[categoryID][craftID].recipeID = craftTable["recipeID"]
+                                newTable.Professions[professionName].Crafts[categoryID][craftID].reagents = _GetCraftReagents(craftTable["recipeID"])
+                                local resultItems = addon.ref.global.ResultItems[craftTable["recipeID"]]
+                                if resultItems then
+                                    newTable.Professions[professionName].Crafts[categoryID][craftID].resultItems = {}
+                                    newTable.Professions[professionName].Crafts[categoryID][craftID].resultItems.name = resultItems.name
+                                    newTable.Professions[professionName].Crafts[categoryID][craftID].resultItems.itemID = resultItems.itemID
+                                    newTable.Professions[professionName].Crafts[categoryID][craftID].resultItems.maxMade = resultItems.maxMade
+                                end
                             end
                         end
                     end

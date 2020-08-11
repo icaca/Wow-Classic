@@ -1220,3 +1220,36 @@ function CEPGP_UpdateKeywordScrollBar()
 		_G["keywordButton" .. i .. "Discount"]:SetTextColor(1, 1, 1);
 	end
 end
+
+function CEPGP_UpdateLogScrollBar()
+	
+	local call = CEPGP_Info.LastRun.LogSB;
+	local quit = false;
+
+	local logs = {};
+	for _, data in ipairs(CEPGP.Log) do
+		table.insert(logs, data);
+	end
+	
+	local frame = CEPGP_log_container;
+	local str = "";
+	CEPGP_log_container:SetText("Compiling message log. Please wait...");
+	for i = #logs, math.max(1, #logs-2000), -1 do
+		if call ~= CEPGP_Info.LastRun.LogSB then
+			timer._remainingIterations = 1;
+			return;
+		end
+		
+		local absTime =			logs[i][1];
+		local msgType =			logs[i][2];
+		local source =			logs[i][3];
+		local destination =		logs[i][4] or "Channel-Wide";
+		local content =			logs[i][5];
+		local channel = 		logs[i][6];
+
+		local state = (msgType == "attempt" and "|cFFF5B342Reattempting|r") or (msgType == "abandoned" and "|cFFFF0000Abandoned|r")	or (msgType == "received" and "|cFF03A9FCReceived|r") or (msgType == "sent" and "|cFF00FF00Sent|r");
+		str = str .. date("%H:%M:%S", absTime) .. ": Source: " .. source .. ", Scope: " .. destination .. ", Channel: " .. channel .. ", State: " .. state .. "\nContent: " .. content .. "\n\n";
+	end
+	CEPGP_log_container:SetText(str);
+end
+

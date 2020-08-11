@@ -51,9 +51,9 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	PriestDied	= "%s stirbt.",
-	YellPhase2	= "Shirvallah, erfülle mich mit deinem Zorn!",
-	YellKill	= "Hakkar kontrolliert mich nicht länger! Endlich Frieden!",
+	PriestDied	= "%s muere.",
+	YellPhase2	= "Shirvallah, ¡lléname de tu IRA!",
+	YellKill	= "¡Estoy libre de Hakkar! ¡Por fin tengo paz!",
 	Thekal		= "Hohepriester Thekal",
 	Zath		= "Zelot Zath",
 	LorKhan		= "Zelot Lor'Khan"
@@ -88,7 +88,7 @@ L:SetGeneralLocalization{
 L:SetMiscLocalization{
 	Bloodlord 	= "Blutfürst Mandokir",
 	Ohgan		= "Ohgan",
-	GazeYell	= "Ich behalte Euch im Auge"
+	GazeYell	= "Te estoy vigilando"
 }
 
 -------------------

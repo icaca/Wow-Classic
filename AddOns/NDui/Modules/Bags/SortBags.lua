@@ -2,6 +2,8 @@
 -- SortBags 0.1.2, shirsig
 -- https://github.com/shirsig/SortBags
 -----------------------------------------
+local _, ns = ...
+local B, C, L, DB = unpack(ns)
 
 local _G = getfenv(0)
 local select, pairs, ipairs, tonumber = select, pairs, ipairs, tonumber
@@ -15,8 +17,6 @@ local BANK_CONTAINER = BANK_CONTAINER or -1
 
 local Start, LT, Move, TooltipInfo, Sort, Stack, Initialize, ContainerClass, Item, itemCharges
 local CONTAINERS
-
-local sortTooltip = CreateFrame("GameTooltip", "SortBagsTooltip", nil, "GameTooltipTemplate")
 
 function _G.SortBags()
 	CONTAINERS = {0, 1, 2, 3, 4}
@@ -241,18 +241,18 @@ do
 end
 
 function TooltipInfo(container, position)
-	sortTooltip:SetOwner(UIParent, "ANCHOR_NONE")
-	sortTooltip:ClearLines()
+	B.ScanTip:SetOwner(UIParent, "ANCHOR_NONE")
+	B.ScanTip:ClearLines()
 
 	if container == BANK_CONTAINER then
-		sortTooltip:SetInventoryItem("player", BankButtonIDToInvSlotID(position))
+		B.ScanTip:SetInventoryItem("player", BankButtonIDToInvSlotID(position))
 	else
-		sortTooltip:SetBagItem(container, position)
+		B.ScanTip:SetBagItem(container, position)
 	end
 
 	local charges, usable, soulbound, quest, conjured
-	for i = 1, sortTooltip:NumLines() do
-		local text = _G[sortTooltip:GetName().."TextLeft"..i]:GetText()
+	for i = 1, B.ScanTip:NumLines() do
+		local text = _G["NDui_ScanTooltipTextLeft"..i]:GetText()
 
 		local _charges = itemCharges(text)
 		if _charges then

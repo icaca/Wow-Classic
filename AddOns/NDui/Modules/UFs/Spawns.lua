@@ -156,12 +156,13 @@ function UF:OnLogin()
 	local showTeamIndex = NDuiDB["UFs"]["ShowTeamIndex"]
 
 	if NDuiDB["Nameplate"]["Enable"] then
-		self:SetupCVars()
-		self:BlockAddons()
-		self:CreateUnitTable()
-		self:CreatePowerUnitTable()
-		self:AddInterruptInfo()
-		self:QuestIconCheck()
+		UF:SetupCVars()
+		UF:BlockAddons()
+		UF:CreateUnitTable()
+		UF:CreatePowerUnitTable()
+		UF:AddInterruptInfo()
+		UF:QuestIconCheck()
+		UF:RefreshPlateOnFactionChanged()
 
 		oUF:RegisterStyle("Nameplates", UF.CreatePlates)
 		oUF:SetActiveStyle("Nameplates")
@@ -172,13 +173,13 @@ function UF:OnLogin()
 		oUF:RegisterStyle("PlayerPlate", UF.CreatePlayerPlate)
 		oUF:SetActiveStyle("PlayerPlate")
 		local plate = oUF:Spawn("player", "oUF_PlayerPlate", true)
-		B.Mover(plate, L["PlayerNP"], "PlayerPlate", C.UFs.PlayerPlate, plate:GetWidth(), 20)
+		plate.mover = B.Mover(plate, L["PlayerNP"], "PlayerPlate", C.UFs.PlayerPlate)
 
 		UF:TogglePlayerPlateElements()
 	end
 
 	-- Default Clicksets for RaidFrame
-	self:DefaultClickSets()
+	UF:DefaultClickSets()
 
 	if NDuiDB["UFs"]["Enable"] then
 		-- Register

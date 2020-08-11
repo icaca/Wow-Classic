@@ -264,7 +264,7 @@ function CEPGP_handleCombat(name)
 	if (((GetLootMethod() == "master" and CEPGP_isML() == 0) or (GetLootMethod() == "group" and UnitIsGroupLeader("player"))) and CEPGP_ntgetn(CEPGP_roster) > 0) or CEPGP_Info.Debug then
 		local localName = L[name];
 		local EP = EPVALS[name];
-		local plurals = name == "The Four Horsemen" or name == "Silithid Royalty" or name == "Twin Emperors";
+		local plurals = name == "The Four Horsemen" or name == "The Silithid Royalty" or name == "The Twin Emperors";
 		local message = format(L["%s " .. (plurals and "have" or "has") .. " been defeated! %d EP has been awarded to the raid"], localName, EP);
 		local callback = function()
 			local function awardEP(localName, EP, message)

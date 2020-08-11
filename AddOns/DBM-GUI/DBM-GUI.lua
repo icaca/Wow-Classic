@@ -562,6 +562,7 @@ do
 			end)
 
 			function DBM_GUI:dbm_modProfilePanel_refresh()
+				resetButton:GetScript("OnShow")()
 				copyModProfile:GetScript("OnShow")()
 				copyModSoundProfile:GetScript("OnShow")()
 				copyModNoteProfile:GetScript("OnShow")()

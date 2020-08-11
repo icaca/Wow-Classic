@@ -1,4 +1,4 @@
-if GetLocale() ~= "esES" then return end
+if GetLocale() ~= "esES" and GetLocale() ~= "esMX" then return end
 local L
 
 -- Lord Kazzak (Badlands)
@@ -53,7 +53,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization({
-	Pull		= "Puedo sentir la SOMBRA en vuestros corazones. ¡No puede haber descanso para los malos!"
+	Pull		= "Puedo sentir la SOMBRA en sus corazones. ¡No puede haber descanso para los malos!" --Does not have one :\
 })
 
 -- Emeriss (Duskwood)

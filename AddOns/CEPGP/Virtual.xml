@@ -973,7 +973,25 @@
 		</Scripts>
 		<HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD"/>
 	</Button>
-	
+	<Button name="CEPGPLogButtonTemplate" virtual="true">
+		<Size y="21" />
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_ostime" inherits="GameFontHighlightSmall" justifyH="LEFT" />
+				<FontString name="$parent_message" inherits="GameFontHighlightSmall" justifyH="LEFT" />
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				local ostime = _G[self:GetName() .. "_ostime"];
+				local msg = _G[self:GetName() .. "_message"];
+				local parent = self:GetParent();
+				self:SetWidth(parent:GetWidth());
+				ostime:SetPoint("LEFT");
+				msg:SetPoint("LEFT", ostime, "RIGHT", 5, 0);
+			</OnLoad>
+		</Scripts>
+	</Button>
 	<EditBox name="epValInputBoxTemplate" inherits="InputBoxTemplate" numeric="true" virtual="true">
 		<Size>
 			<AbsDimension x="50" y="10" />
@@ -987,7 +1005,6 @@
 			</OnEnterPressed>
 			<OnEditFocusLost>
 				local L = CEPGP_Locale:GetLocale("CEPGP")
-
 				self:HighlightText(0,0);
 				local name = strsub(self:GetName(), 15, strfind(self:GetName(), "_EP")-1);
 				local value = self:GetText();

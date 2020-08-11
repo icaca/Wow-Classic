@@ -1092,6 +1092,114 @@
 		</Scripts>
 	</Frame>
 	
+	<Frame name="CEPGP_log" enableMouse="true" movable="true" clampedToScreen="true" hidden="true">
+		<Size x="600" y="350" />
+		<Anchors>
+			<Anchor point="CENTER" />
+		</Anchors>
+		<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<Color r="0" g="0" b="0" />
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture file="Interface\DialogFrame\UI-DialogBox-Header">
+					<Size>
+						<AbsDimension x="384" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="12"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_title" inherits="GameFontNormal" text="CEPGP Message Logging">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="CEPGP_log_close" inherits="UIPanelCloseButton">
+				<Size>
+					<AbsDimension x="30" y="30" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-3" y="-3" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						PlaySound(799);
+						CEPGP_log:Hide()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="CEPGP_log_update" inherits="GameMenuButtonTemplate" text="Update Log">
+				<Size x="75" y="21" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="10" y="-10" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						CEPGP_UpdateLogScrollBar();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<ScrollFrame inherits="UIPanelScrollFrameTemplate">
+				<Size x="545" y="300" />
+				<Anchors>
+					<Anchor point="TOPRIGHT" x="-32" y="-40" />
+				</Anchors>
+				<ScrollChild>
+					<EditBox name="CEPGP_log_container" autofocus="false" multiline="true">
+						<Size x="545" y="300" />
+						<Anchors>
+							<Anchor point="TOPLEFT" />
+						</Anchors>
+						<FontString inherits="GameFontNormalSmall"/>
+						<Scripts>
+							<OnLoad>
+								self:Disable();
+							</OnLoad>
+						</Scripts>
+					</EditBox>
+				</ScrollChild>
+			</ScrollFrame>
+		</Frames>
+		<Scripts>
+			<OnMouseDown>
+				self:StartMoving();
+			</OnMouseDown>
+			<OnMouseUp>
+				self:StopMovingOrSizing();
+			</OnMouseUp>
+			<OnShow>
+				CEPGP_UpdateLogScrollBar();
+			</OnShow>
+		</Scripts>
+	</Frame>
+	
 	<Frame name="CEPGP_version" enableMouse="true" hidden="true" movable="true" parent="UIParent" clampedToScreen="true">
 		<Size>
 			<AbsDimension x="450" y="450" />
@@ -2582,7 +2690,7 @@
 							return;
 						end
 						
-						if string.find(name, '[^a-zA-Z]') then
+						if CEPGP_ContainsIllegalChar(name) then
 							CEPGP_print("Found an invalid character (i.e. a space, comma, etc..) in the name you provided. Please remove the invalid character and try again.", true);
 							return;
 						end
@@ -5955,7 +6063,7 @@
 				heading:SetPoint("TOP", 0, -20);
 				content:SetPoint("TOPLEFT", 20, -40);
 				heading:SetText("Classic EPGP Version " .. CEPGP_Info.Version .. " " .. CEPGP_Info.Build .. " Changelog");
-				local info = "New Features:\n- Players can now choose which categories they would like to import when importing settings\n- Added PR and rolls as extra options to add when delaying response announcements\n- Loot masters can now apply a GP multiplier for all items in each raid\n\nBugfixes:\n- Corrected a typo preventing importing of overrides\n- Corrected a typo causing false errors to appear when importing response buttons\n- Corrected an issue preventing items from being announced\n- Corrected a synchronisation issue in the response buttons\n\nChanges:\n- Rewrote the import function\n- Rewrote the force synchronisation function\n- The force synchronisation feature has been reworded\n- Modified the channel for import/sync to reduce network load\n- Started work on variable conversion";
+				local info = "Bufixes:\n- Resolved a structural issue preventing loot from being announced on some clients\n- Resolved synchronisation issues between old and new variables\n- Resolved an issue preventing The Silithid Royalty EP and Auto Award status from being changed\n- Fixed a stack of initialisation issues\n- Players should no longer incorrectly get the message \"Guild roster is polling\" when attempting\nto execute actions\n- EP awards should no longer double up if both a main and alt are in the raid group\n\nChanges:\n- Added an addon message log for debugging purposes\n- Added exception catchers into the import/export functions\n- Added exception catchers to the EPGP modification functions";
 				content:SetText(info);
 				self:SetWidth(content:GetStringWidth()+40);
 				self:SetHeight(heading:GetStringHeight() + content:GetStringHeight() + 50);
@@ -6715,7 +6823,7 @@
 						CEPGP_SendAddonMsg("SyncStart", "GUILD");
 						CEPGP_print("Sending configuration to guild members - please wait...");
 						C_Timer.NewTicker(2, function()
-							CEPGP_ExportConfig(options[i]);
+							local continue = CEPGP_ExportConfig(options[i]);
 							if i == #options then
 								CEPGP_SendAddonMsg("SyncEnd", "GUILD");
 								self:Enable();
@@ -8574,7 +8682,7 @@
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="CEPGP_options_Silithid Royalty_val" inherits="GameFontNormal" parentArray="bosses" text="The Silithid Royalty">
+						<FontString name="CEPGP_options_The Silithid Royalty_val" inherits="GameFontNormal" parentArray="bosses" text="The Silithid Royalty">
 							<Color r="1" g="1" b="1"/>
 							<Anchors>
 								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Princess Huhuran_val">
@@ -8587,7 +8695,7 @@
 						<FontString name="CEPGP_options_Viscidus_val" inherits="GameFontNormal" parentArray="bosses" text="Viscidus">
 							<Color r="1" g="1" b="1"/>
 							<Anchors>
-								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_Silithid Royalty_val">
+								<Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="CEPGP_options_The Silithid Royalty_val">
 									<Offset>
 										<AbsDimension x="0" y="-10" />
 									</Offset>

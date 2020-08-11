@@ -5,19 +5,20 @@ C.themes["Blizzard_DebugTools"] = function()
 	-- EventTraceFrame
 	B.StripTextures(EventTraceFrame)
 	B.SetBD(EventTraceFrame)
-	B.ReskinClose(EventTraceFrameCloseButton)
+	B.ReskinClose(EventTraceFrameCloseButton, "TOPRIGHT", EventTraceFrame, "TOPRIGHT", -7, -7)
 
 	local bg, bu = EventTraceFrameScroll:GetRegions()
 	bg:Hide()
 	bu:SetAlpha(0)
-	bu:SetWidth(17)
+	bu:SetWidth(16)
 	bu.bg = B.CreateBDFrame(EventTraceFrame, 0)
 	bu.bg:SetAllPoints(bu)
 	B.CreateGradient(bu.bg)
 
 	-- Table Attribute Display
-
 	local function reskinTableAttribute(frame)
+		if frame.styled then return end
+
 		B.StripTextures(frame)
 		B.SetBD(frame)
 		B.ReskinClose(frame.CloseButton)
@@ -41,6 +42,8 @@ C.themes["Blizzard_DebugTools"] = function()
 		B.StripTextures(frame.ScrollFrameArt)
 		B.CreateBDFrame(frame.ScrollFrameArt, .25)
 		B.ReskinScroll(frame.LinesScrollFrame.ScrollBar)
+
+		frame.styled = true
 	end
 
 	reskinTableAttribute(TableAttributeDisplay)

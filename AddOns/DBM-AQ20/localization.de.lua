@@ -90,12 +90,3 @@ L:SetOptionLocalization{
 	WarnVulnerable	= "Verkünde Schwächen",
 	TimerVulnerable	= "Dauer der Schwächen anzeigen"
 }
-
-----------------
--- AQ20 Trash --
-----------------
-L = DBM:GetModLocalization("AQ20Trash")
-
-L:SetGeneralLocalization{
-	name = "AQ20 Trash"
-}

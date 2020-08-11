@@ -85,7 +85,7 @@ L:SetTimerLocalization{
 	timerShieldCD		= "Bouclier suivant"
 }
 L:SetOptionLocalization{
-	timerShieldCD		= "Afficher le timer pour le prochain bouclier de dégâts / Renvoi de la magie"
+	timerShieldCD		= "Afficher le timer pour le prochain bouclier de dégâts / réflexion"
 }
 
 ----------------
@@ -97,21 +97,21 @@ L:SetGeneralLocalization{
 	name = "Ragnaros"
 }
 L:SetWarningLocalization{
-	WarnSubmerge		= "Submergé",
-	WarnEmerge			= "Émergé"
+	WarnSubmerge		= "Submerger",
+	WarnEmerge			= "Émerger"
 }
 L:SetTimerLocalization{
-	TimerSubmerge		= "Submergé",
-	TimerEmerge			= "Émergé",
+	TimerSubmerge		= "Submerger",
+	TimerEmerge			= "Émerger",
 }
 L:SetOptionLocalization{
-	WarnSubmerge		= "Afficher un avertissement pour submergé",
-	TimerSubmerge		= "Afficher le timer pour submergé",
-	WarnEmerge			= "Afficher un avertissement pour émergé",
-	TimerEmerge			= "Afficher le timer pour émergé",
+	WarnSubmerge		= "Afficher un avertissement pour submerger",
+	TimerSubmerge		= "Afficher le timer pour submerger",
+	WarnEmerge			= "Afficher un avertissement pour émerger",
+	TimerEmerge			= "Afficher le timer pour émerger",
 }
 L:SetMiscLocalization{
-	Submerge	= "VENEZ, MES SERVITEURS ! DÉFENDEZ VOTRE MAÎTRE !",
+	Submerge	= "COME FORTH, MY SERVANTS! DEFEND YOUR MASTER!",
 	Pull		= "Impudents imbéciles ! Vous vous êtes précipités vers votre propre mort ! Voyez, à présent, le Maître remue !"
 }
 

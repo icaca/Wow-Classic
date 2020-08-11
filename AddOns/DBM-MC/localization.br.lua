@@ -97,29 +97,20 @@ L:SetGeneralLocalization{
 	name = "Ragnaros"
 }
 L:SetWarningLocalization{
-	WarnSubmerge		= "Submersão",
-	WarnEmerge			= "Emersão"
+	WarnSubmerge		= "Submergir",
+	WarnEmerge			= "Emergir"
 }
 L:SetTimerLocalization{
-	TimerSubmerge		= "Submersão",
-	TimerEmerge			= "Emersão",
+	TimerSubmerge		= "Submergir",
+	TimerEmerge			= "Emergir",
 }
 L:SetOptionLocalization{
-	WarnSubmerge		= "Mostrar aviso para submersão",
-	TimerSubmerge		= "Mostrar cronômetro para submersão",
-	WarnEmerge			= "Mostrar aviso para emersão",
-	TimerEmerge			= "Mostrar cronômetro para emersão",
+	WarnSubmerge		= "Mostrar aviso para submergir",
+	TimerSubmerge		= "Mostrar cronômetro para submergir",
+	WarnEmerge			= "Mostrar aviso para emergir",
+	TimerEmerge			= "Mostrar cronômetro para emergir",
 }
 L:SetMiscLocalization{
-	Submerge	= "VENHAM, MEUS SERVOS! DEFENDAM SEU SENHOR!",
+	Submerge	= "COME FORTH, MY SERVANTS! DEFEND YOUR MASTER!",
 	Pull		= "Vermes abusados! Vocês se precipitaram para suas mortes! Vejam agora, o amo se agita!"
-}
-
------------------
---  MC: Trash  --
------------------
-L = DBM:GetModLocalization("MCTrash")
-
-L:SetGeneralLocalization{
-	name = "ND: Lixo"
 }
