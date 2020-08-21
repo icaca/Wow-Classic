@@ -60,7 +60,8 @@ local Factions = {
 			{ name = DataStore:GetFactionName(809), icon = "inv_jewelry_talisman_10" },		-- "Shen'dralar" 
 			{ name = DataStore:GetFactionName(70), icon = "INV_Misc_ArmorKit_03" },		-- "Syndicate" 
 			{ name = DataStore:GetFactionName(59), icon = "INV_Ingot_Thorium" },		-- "Thorium Brotherhood" 
-			{ name = DataStore:GetFactionName(576), icon = "inv_misc_horn_01" },		-- "Timbermaw Hold" 
+			{ name = DataStore:GetFactionName(576), icon = "inv_misc_horn_01" },		-- "Timbermaw Hold"
+            { name = DataStore:GetFactionName(471), icon = "INV_Misc_Head_Dwarf_01" }, -- Wildhammer Clan
 			{ name = DataStore:GetFactionName(589), icon = "Ability_Mount_PinkTiger" },		-- "Wintersaber Trainers" 
 			{ name = DataStore:GetFactionName(270), icon = "INV_Bijou_Green" },		-- "Zandalar Tribe" 
 		}

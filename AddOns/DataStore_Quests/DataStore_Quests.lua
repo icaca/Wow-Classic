@@ -26,9 +26,13 @@ local AddonDB_Defaults = {
 			['*'] = {				-- ["Account.Realm.Name"]
 				lastUpdate = nil,
 				Quests = {},
+                QuestIDs = {},
 				QuestHeaders = {},
                 QuestTitles = {},
 				QuestTags = {},
+                QuestDescriptions = {},
+                GroupSizes = {},
+                Objectives = {},
 				Rewards = {},
 				Money = {},
 				Dailies = {},
@@ -245,18 +249,26 @@ end
 local function ScanQuests()
 	local char = addon.ThisCharacter
 	local quests = char.Quests
+    local questIDs = char.QuestIDs
+    local groupSizes = char.GroupSizes
 	local links = char.QuestLinks
 	local headers = char.QuestHeaders
 	local rewards = char.Rewards
 	local tags = char.QuestTags
 	local titles = char.QuestTitles
+    local descriptions = char.QuestDescriptions
+    local objectives = char.Objectives
 	local money = char.Money
 
 	wipe(quests)
+    wipe(questIDs)
+    wipe(groupSizes)
 	wipe(headers)
 	wipe(rewards)
 	wipe(tags)
 	wipe(titles)
+    wipe(descriptions)
+    wipe(objectives)
 	wipe(money)
 
 	local currentSelection = GetQuestLogSelection()		-- save the currently selected quest
@@ -269,15 +281,6 @@ local function ScanQuests()
 	for i = 1, GetNumQuestLogEntries() do
         local title, level, groupSize, isHeader, isCollapsed, isComplete, frequency, questID, startEvent, displayQuestID, 
 				isOnMap, hasLocalPOI, isTask, isBounty, isStory, isHidden = GetQuestLogTitle(i)
-        local groupSize = 1
-        if (questTag ~= nil) then
-            groupSize = 5
-        end
-        
-        
-        --, isHeader, isCollapsed, isComplete, frequency, questID, 
-       -- startEvent, displayQuestID, 
-		--		isOnMap, hasLocalPOI, isTask, isBounty, isStory, isHidden 
 
 		if isHeader then
 			table.insert(headers, title or "")
@@ -291,9 +294,9 @@ local function ScanQuests()
 			value = value + LShift(isBounty and 1 or 0, 3)					-- bit 3 : isBounty
 			value = value + LShift(isStory and 1 or 0, 4)					-- bit 4 : isStory
 			value = value + LShift(isHidden and 1 or 0, 5)					-- bit 5 : isHidden
-			value = value + LShift((groupSize == 0) and 1 or 0, 6)		-- bit 6 : isSolo
+			value = value + LShift(1, 6)		-- bit 6 : isSolo
 			-- bit 7 : unused, reserved
-			value = value + LShift(groupSize, 8)							-- bits 8-10 : groupSize, 3 bits, shouldn't exceed 5
+			value = value + LShift(1, 8)							-- bits 8-10 : groupSize, 3 bits, shouldn't exceed 5
 			value = value + LShift(lastHeaderIndex, 11)					-- bits 11-15 : index of the header (zone) to which this quest belongs
 			value = value + LShift(level, 16)								-- bits 16-23 : level
 			-- value = value + LShift(GetQuestLogRewardMoney(), 24)		-- bits 24+ : money
@@ -302,7 +305,11 @@ local function ScanQuests()
 			lastQuestIndex = lastQuestIndex + 1
 			
 			tags[lastQuestIndex] = GetQuestTagID(questID, isComplete, frequency)
+            questIDs[lastQuestIndex] = questID
+            groupSizes[lastQuestIndex] = groupSize
 			titles[lastQuestIndex] = title
+            _, descriptions[lastQuestIndex] = GetQuestLogQuestText()
+            objectives[lastQuestIndex] = C_QuestLog.GetQuestObjectives(questID)
 			money[lastQuestIndex] = GetQuestLogRewardMoney()
 
 			wipe(rewardsCache)
@@ -395,16 +402,30 @@ local function _GetQuestLogInfo(character, index)
 	local isSolo = TestBit(quest, 6)
 
 	local groupSize = bAnd(RShift(quest, 8), 7)			-- 3-bits mask
+    if character.GroupSizes then
+        groupSize = character.GroupSizes[index]
+    end
 	local headerIndex = bAnd(RShift(quest, 11), 31)		-- 5-bits mask
 	local level = bAnd(RShift(quest, 16), 255)			-- 8-bits mask
 	
 	local groupName = character.QuestHeaders[headerIndex]		-- This is most often the zone name, or the profession name
 	
 	local tag = character.QuestTags[index]
-	local questID = nil
+	local questID = 0
+    if character.QuestIDs then
+        questID = character.QuestIDs[index]
+    end
 	local questName = character.QuestTitles[index]
+    local questDescription = ""
+    if character.QuestDescriptions then
+        questDescription = character.QuestDescriptions[index]
+    end
+    local objectives = {}
+    if character.Objectives then
+        objectives = character.Objectives[index]
+    end
 	
-	return questName, questID, link, groupName, level, groupSize, tag, isComplete, isDaily, isTask, isBounty, isStory, isHidden, isSolo
+	return questName, questID, nil, groupName, level, groupSize, tag, isComplete, isDaily, isTask, isBounty, isStory, isHidden, isSolo, questDescription, objectives
 end
 
 local function _GetQuestHeaders(character)

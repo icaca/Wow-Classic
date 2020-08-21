@@ -21,7 +21,7 @@ addon:Controller("AltoholicUI.QuestLogRow", { "AltoholicUI.Formatter", function(
 			if moneyText ~= "" then table.insert(infos, moneyText) end
 			if isComplete then table.insert(infos, format("%s%s", colors.green, COMPLETE)) end
 			if isDaily then table.insert(infos, format("%s%s", colors.cyan, DAILY)) end
-			if (groupSize > 1) then table.insert(infos, format(GROUP_NUMBER, groupSize)) end
+			if (groupSize) then table.insert(infos, groupSize) end
 		
 			frame.Info:SetText(table.concat(infos,	" / "))
 		end,
@@ -33,7 +33,7 @@ addon:Controller("AltoholicUI.QuestLogRow", { "AltoholicUI.Formatter", function(
 			if tagCoords then
 				icon:SetTexture("Interface\\QuestFrame\\QuestTypeIcons")
 				icon:SetTexCoord(unpack(tagCoords))
-			else
+            else
 				icon:SetTexture("Interface\\LFGFrame\\LFGIcon-Quest")
 				icon:SetTexCoord(0, 1, 0, 1)
 			end
@@ -47,15 +47,28 @@ addon:Controller("AltoholicUI.QuestLogRow", { "AltoholicUI.Formatter", function(
 			if id == 0 then return end
 
 			local character = addon.Tabs.Characters:GetAltKey()
-			local questName, questID, link, _, level = DataStore:GetQuestLogInfo(character, id)
-			if not link then return end
+			local questName, questID, _, groupName, level, groupSize, tag, isComplete, isDaily, isTask, isBounty, isStory, isHidden, isSolo, questDescription, objectives = DataStore:GetQuestLogInfo(character, id)
 
+            -- On retail, we use GameTooltip:SetHyperlink and pass in the quest link
+            -- Now to recreate what it does...
 			GameTooltip:ClearLines()
 			GameTooltip:SetOwner(frame.Name, "ANCHOR_LEFT")
-			GameTooltip:SetHyperlink(link)
+			GameTooltip:AddLine(questName)
 			GameTooltip:AddLine(" ",1,1,1)
+            GameTooltip:AddLine(questDescription,1,1,1,true)
+            GameTooltip:AddLine(" ",1,1,1)
+            
+            if objectives then
+                if (#objectives > 0) then
+                    GameTooltip:AddLine(QUEST_TOOLTIP_REQUIREMENTS)
+                end
+                for _, objective in pairs(objectives) do
+                    GameTooltip:AddLine(objective.text,1,1,1)
+                end
+                GameTooltip:AddLine(" ",1,1,1)
+            end
 			
-			GameTooltip:AddDoubleLine(format("%s: %s%d", LEVEL, colors.teal, level), format("%s: %s%d", L["QuestID"], colors.teal, questID))
+            GameTooltip:AddDoubleLine(format("%s: %s%d", LEVEL, colors.teal, level), format("%s: %s%d", L["QuestID"], colors.teal, questID))
 			
 			local player = addon.Tabs.Characters:GetAlt()
 			addon:ListCharsOnQuest(questName, player, GameTooltip)

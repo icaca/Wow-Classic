@@ -1,55 +1,57 @@
 # Deadly Boss Mods Core
 
-## [1.13.55](https://github.com/DeadlyBossMods/DBM-Classic/tree/1.13.55) (2020-08-05)
-[Full Changelog](https://github.com/DeadlyBossMods/DBM-Classic/compare/1.13.54...1.13.55) [Previous Releases](https://github.com/DeadlyBossMods/DBM-Classic/releases)
+## [1.13.57](https://github.com/DeadlyBossMods/DBM-Classic/tree/1.13.57) (2020-08-18)
+[Full Changelog](https://github.com/DeadlyBossMods/DBM-Classic/compare/1.13.56...1.13.57) [Previous Releases](https://github.com/DeadlyBossMods/DBM-Classic/releases)
 
-- prepare new classic release with first batch of AQ fixes  
-- Improved submerge event on Ouro  
-    Added missing timers for initial sweep and blast to Ouro on engage and initial timer for sweep and blast after a submerge.  
-    NOTE: Ouro's Submerge does not have a timer. Check for yourselves on Warcraftlogs. I looked through 30 pulls. not a single one of them had submerge at same time. In fact the variance was so massive I can only conclude it truly is random. Some pulls with submerge as early as 70sec from engage and some with it as late as 3 minutes into fight. It's also worth noting that in most kills he didn't even submerge at all (likely because if the submerge window is 1-3 minutes, and kill is 1minute 30 seconds, there is a good change he died before submerge)  
-- Update localization.es.lua (#444)  
-- Update localization.br.lua (#443)  
-- Fix case  
-- Changed speed clear to require Huhuron do to fact that it's skipable and need to make sure it's included in full clear check. as a result of this change, this update will wipe previously recorded speed clears.  
-    Fixed a bug on Cthun where eye tentacle timer didn't cancel on phase 2 push  
-    Deleted whirlwind active timer on sartura. It was actually quite useless and inaccurate.  
-    Fixed Summon images firing two warnings on Skeram  
-    Fixed freeze warning icon on Viscidus to not be a green square  
-- Update localization.cn.lua (#442)  
-- Update koKR (Classic) (#441)  
-- Over deleted  
-- Standard game font will now be applied far more inteligently so that it's always set to correct one even if user swaps languages. Basically, the font itself is no longer saved in the option (when using one of standard game fonts) just a variable that says to apply standardFont font, to whatever it SHOULD be based on clients locales setting this session. So no more ????? warnings/timers when you change your language after DBMs initial setup (well, unless you are using a non standard font that doesn't support new language, can't do too much about that besides telling you to try other non default fonts til one works in your language)  
-- Changed discord urls to non vanity invite link  
-- Send boss name with the BWL enrage warnings (#440)  
-- aq/trash: add warning for cause insanity / mind control (#439)  
-- ported retail Fix for a bug that could cause yell scheduling to schedule invalid yells during a misusage  
-- Update localization.es.lua (#437)  
-- Update localization.fr.lua (#435)  
-    * Update localization.fr.lua  
-    * Update localization.fr.lua  
-    * Update localization.fr.lua  
-    Co-authored-by: QartemisT <63267788+QartemisT@users.noreply.github.com>  
-- Update localization.fr.lua (#436)  
-    * Update localization.fr.lua  
-    * Update localization.fr.lua  
-- aq/anubisath: add explode warning (#434)  
-    Co-authored-by: Adam <MysticalOS@users.noreply.github.com>  
-- Update localization.cn.lua (#433)  
-    Co-authored-by: Adam <MysticalOS@users.noreply.github.com>  
-- Fixed a bug where legacy mods calling StartCombat without an event type could throw errors  
-    Fixed a bug with profile drop downs throwing a lua error  
-- Update localization.cn.lua (#432)  
-- Update localization.es.lua (#431)  
-- Update localization.cn.lua (#429)  
-- Let weakened be localized any way localizers want, so long as it works.  
-- Set alpha revision for next cycle  
-- Create localization.br.lua (#421)  
-- Create localization.fr.lua (#422)  
-- Create localization.br.lua (#423)  
-- Update DBM-AQ20.toc (#424)  
-- Update localization.de.lua (#425)  
-    * Update localization.de.lua  
-    * Update localization.de.lua  
-- Create localization.fr.lua (#426)  
-- Update DBM-AQ40.toc (#427)  
-- Update zhTW (#428)  
+- Update localization.cn.lua (#477)  
+- Prep new classic release  
+- Infoframe should work with option, but the tentacles table needs to be a local variable. mod.vb doesn't support tables yet in sync methods so syncing it would cause errors, also wipe it on pull so lingering tentacles wouldn't show from previous pull after a wipe  
+- cthun/tentacle: fixup a couple errors, still not exposing infoframe (#478)  
+- Update localization.tw.lua (#475)  
+- Fix editbox backdrop (#474)  
+    The editbox already has a backdrop defined as part of InputBoxTemplate, this is causing a 2nd one to overlay on top, but outpositioned.  
+- Update koKR (Classic) (#472)  
+    * Update koKR (Classic)  
+- Fix a typo  
+- Fix checking wrong GUID on birth spell casts, which result in not finding tentacle IDs  
+- Fix tentical removal  
+- Update localization.cn.lua (#470)  
+- Fix incorrect GetShapeshiftFormID ID  
+- Tidy up some  
+- Tentacle Spawn Timer (#469)  
+- core: add tank to arms/ret spec role and check for tank stance in IsTank (#466)  
+- bump all of the tank option versions (#467)  
+- Odd that was missed in the PR, that wasn't something I introduced in last commit.  
+    Also added minsync revision to block syncs from the 2 or so alphas that may include mobname  
+- Few changes to Tentacle Infoframe  
+     - Tentacle name is now localized. Getting name from sender would be problematic if sender played different language from reciever  
+     - Removed unneeded local function. Since it was only called in one spot, didn't need to be split off.  
+     - Saved a few bytes with self over mod usage.  
+     - Put the arg names in OnSync handler and removed unnessesary shadowing of them while still having robust nil checks.  
+     - Moved all moving parts of infoframe into same section. locals are generally declared at top of mod but only if they are used in multiple parts of it (for example if infoframe has updates in multiple places), otherwise they belong with section they are use. Option locals being the exception since finding those at top of mod helps  maintenance/updating of mod options without digging through mod to find all of them. (Not all older mods are good examples of this, as many of them were written over a decade ago and just updated for classic.)  
+- core/IsHealer: allow any druid spec to be a healer but check for form (#468)  
+- AQ40 Add support for Stomach Tentacle health monitoring outside of it (#460)  
+- Remove unused  
+- Update localization.cn.lua (#462)  
+- Improve eye tentacle spawn detection/timers, Closes #463  
+- aq/cthun: delay the eye beam target scanner a little (#459)  
+- Update localization.ru.lua (#458)  
+- Update localization.es.lua (#457)  
+- Update localization.mx.lua (#456)  
+- Update localization.de.lua (#455)  
+- Update localization.fr.lua (#454)  
+- Apply new lower restrictions for max targets announcements can show before they begin target aggregation.  
+     - General announcements changed from 7 target cap to 6 (allowing up to a max of 2 pairs)  
+     - Special announcements changed from 7 target cap to 5 (maxing out on the size of a 5 man party)  
+- because of accuracy issues, cthun eye target features will be restricted to debug mode for dev testing only. Everyone else should not be shown inaccurate information  
+- Fixed PlaySound not having the no sound check  
+- Sync profile change from retail  
+    Changed icon for speed timers from a string to a number, since it's calling timer object directly, api expects it to be a number, not a string. it's only core that expects it to be a string  
+- Update localization.es.lua (#453)  
+- Update localization.mx.lua (#452)  
+- Fixed a bug that caused Whirlwind special warning to never show on Sartura. However, with the bug fixed, it should now be off by default since that's the expected behavior now  
+- Fix name  
+- Added frenzy dispel warning to Huhuran  
+    Removed Frenzy buff active timer.  
+- Update koKR (Classic) (#450)  
+- Explain the teleport timer at least for short term  

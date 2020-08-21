@@ -67,17 +67,17 @@
 							<KeyValue key="iconFile" value="Interface\Icons\INV_Misc_Note_01" />
 						</KeyValues>
 					</Button>
-			<!--		<Button parentKey="SpellbookIcon" inherits="AltoTabCharactersIconTemplate" id="7">
+					<Button parentKey="SpellbookIcon" inherits="AltoTabCharactersIconTemplate" id="7">
 						<Anchors>
 							<Anchor point="TOPLEFT" relativeKey="$parent.MailIcon" relativePoint="TOPRIGHT" x="5" y="0" />
 						</Anchors>
 						<KeyValues>
 							<KeyValue key="iconFile" value="Interface\Icons\INV_Misc_Book_09" />
 						</KeyValues>
-					</Button>-->
+					</Button>
 					<Button parentKey="ProfessionsIcon" inherits="AltoTabCharactersIconTemplate" id="6">
 						<Anchors>
-							<Anchor point="TOPLEFT" relativeKey="$parent.MailIcon" relativePoint="TOPRIGHT" x="5" y="0" />
+							<Anchor point="TOPLEFT" relativeKey="$parent.SpellbookIcon" relativePoint="TOPRIGHT" x="5" y="0" />
 						</Anchors>
 						<KeyValues>
 							<KeyValue key="iconFile" value="Interface\Icons\Trade_Mining.blp" />

@@ -273,6 +273,16 @@ function addon:GetRecipeOwners(professionName, link, recipeLevel)
                 if (itemID == 4408) then
                     craftName = GetItemInfo(4401)
                 end
+
+                -- is the game in French and the recipe an Enchanting recipe?
+                -- if so, change "Enchantement" to "Ench."
+                if (GetLocale() == "frFR") and (string.find(craftName, "Enchantement")) and (not string.find(craftName, "Grand sac d'enchantement")) then
+                    craftName = craftName:gsub("Enchantement", "Ench.")
+                    -- Also, for some reason the recipe demonslaying says "démon" while the spellbook says "démons"
+                    if itemID == 11208 then
+                        craftName = "Ench. d'arme (Tueur de démons)"
+                    end
+                end
             
             	DataStore:IterateRecipes(profession, 0, 0, function(recipeData)
     				local _, recipeID, isLearned = DataStore:GetRecipeInfo(recipeData)
@@ -292,6 +302,7 @@ function addon:GetRecipeOwners(professionName, link, recipeLevel)
                         -- Spell power
                         skillName:gsub(" +"," ")
                     end
+                    
     				if (skillName) and (string.lower(skillName) == string.lower(craftName)) and isLearned then
     					isKnownByChar = true
     					return true	-- stop iteration

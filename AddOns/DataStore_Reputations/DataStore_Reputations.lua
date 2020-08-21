@@ -58,16 +58,14 @@ Default to an english text.
 
 
 local factions = {                                     --UIDs:
-	{ id = 69, name = BF["Darnassus"] },               --1
-	{ id = 930, name = BF["Exodar"] },                 --2 
-	{ id = 54, name = BF["Gnomeregan"] },              --3
+	{ id = 69, name = BF["Darnassus"] },               --1 
+	{ id = 54, name = BF["Gnomeregan Exiles"] },              --3
 	{ id = 47, name = BF["Ironforge"] },               --4
 	{ id = 72, name = BF["Stormwind"] },               --5
 	{ id = 530, name = BF["Darkspear Trolls"] },       --6
 	{ id = 76, name = BF["Orgrimmar"] },               --7
 	{ id = 81, name = BF["Thunder Bluff"] },           --8
 	{ id = 68, name = BF["Undercity"] },               --9
-	{ id = 911, name = BF["Silvermoon City"] },        --10
 	{ id = 509, name = BF["The League of Arathor"] },  --11
 	{ id = 890, name = BF["Silverwing Sentinels"] },   --12
 	{ id = 730, name = BF["Stormpike Guard"] },        --13
@@ -91,11 +89,11 @@ local factions = {                                     --UIDs:
 	{ id = 70, name = BF["Syndicate"] },               --31
 	{ id = 59, name = BF["Thorium Brotherhood"] },     --32
 	{ id = 576, name = BF["Timbermaw Hold"] },         --33
-	{ id = 922, name = BF["Tranquillien"] },           --34
 	{ id = 589, name = BF["Wintersaber Trainers"] },   --35
 	{ id = 270, name = BF["Zandalar Tribe"] },         --36
 	{ id = 469, name = BF["Alliance"] },               --37
 	{ id = 67, name = BF["Horde"] },                   --38
+    { id = 471, name = BF["Wildhammer Clan"] }             --39
 }
 
 local FactionUIDsRev = {} -- key: name, value: UID

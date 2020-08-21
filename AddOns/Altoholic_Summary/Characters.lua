@@ -96,6 +96,14 @@ local function AddRealm(AccountName, RealmName)
 	local firstSecondary = addon.TradeSkills.AccountSummaryFirstSecondarySkillIndex
 	
 	local shouldAddCharacter = true
+    
+    if factions == 4 then
+        if UnitFactionGroup("player") == "Alliance" then
+            factions = 1
+        else
+            factions = 2
+        end
+    end
 	
 	-- 1) Add the realm name
 	table.insert(characterList, { linetype = INFO_REALM_LINE + realmOffset,

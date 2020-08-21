@@ -100,13 +100,13 @@ function ns:MenuItem_OnClick(frame, button)
 	menuIcons.QuestsIcon:Show()
 	menuIcons.AuctionIcon:Show()
 	menuIcons.MailIcon:Show()
---	menuIcons.SpellbookIcon:Show()
+	menuIcons.SpellbookIcon:Show()
 	menuIcons.ProfessionsIcon:Show()
 end
 
 function ns:ViewCharInfo(index)
 	index = index or self.value
-	
+
 	currentView = index
 	HideAll()
 	ns:SetMode(index)
@@ -121,6 +121,7 @@ function ns:ShowCharInfo(view)
 		
 	elseif view == VIEW_QUESTS then
 		AltoholicTabCharacters.QuestLog:Update()
+        
 	elseif view == VIEW_TALENTS then
 		AltoholicTabCharacters.Talents:Update()
 	
@@ -129,11 +130,13 @@ function ns:ShowCharInfo(view)
 		AltoholicFrameAuctions:Show()
 		addon.AuctionHouse:InvalidateView()
 		addon.AuctionHouse:Update()
+        
 	elseif view == VIEW_BIDS then
 		addon.AuctionHouse:SetListType("Bids")
 		AltoholicFrameAuctions:Show()
 		addon.AuctionHouse:InvalidateView()
 		addon.AuctionHouse:Update()
+        
 	elseif view == VIEW_MAILS then
 		AltoholicFrameMail:Show()
 		addon.Mail:BuildView()
@@ -239,7 +242,7 @@ local function OnCharacterChange(self)
 	EnableIcon(menuIcons.QuestsIcon)
 	EnableIcon(menuIcons.AuctionIcon)
 	EnableIcon(menuIcons.MailIcon)
---	EnableIcon(menuIcons.SpellbookIcon)
+	EnableIcon(menuIcons.SpellbookIcon)
 	EnableIcon(menuIcons.ProfessionsIcon)
 	
 	DropDownList1:Hide()
@@ -546,6 +549,17 @@ local function MailIcon_Initialize(self, level)
 	DDM_AddCloseMenu()
 end
 
+local function TalentsIcon_Initialize(self, level)
+	local currentCharacterKey = ns:GetAltKey()
+	if not currentCharacterKey then return end
+	
+	DDM_AddTitle(format("%s / %s", TALENTS, DataStore:GetColoredCharacterName(currentCharacterKey)))
+	DDM_AddTitle(" ")
+	DDM_Add(TALENTS, 1, OnTalentChange, nil, nil)
+	-- DDM_Add(TALENT_SPEC_SECONDARY, 2, OnTalentChange, nil, nil)
+	DDM_AddCloseMenu()
+end
+
 local function ProfessionsIcon_Initialize(self, level)
 	if not DataStore_Crafts then return end
 	
@@ -732,6 +746,7 @@ local menuIconCallbacks = {
 	AuctionIcon_Initialize,
 	MailIcon_Initialize,
 	ProfessionsIcon_Initialize,
+    TalentsIcon_Initialize,
 }
 
 function ns:Icon_OnEnter(frame)

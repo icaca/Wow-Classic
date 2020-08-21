@@ -83,7 +83,7 @@ local AddonDB_Defaults = {
 			["UI.Tabs.Summary.CurrentMode"] = 1,								-- current mode (1 = account summary, 2 = bags, ...)
 			["UI.Tabs.Summary.CurrentColumn"] = "Name",						-- current column (default = "Name")
 			["UI.Tabs.Summary.CurrentRealms"] = 2,								-- selected realms (current/all in current/all accounts)
-			["UI.Tabs.Summary.CurrentFactions"] = 3,							-- 1 = Alliance, 2 = Horde, 3 = Both
+			["UI.Tabs.Summary.CurrentFactions"] = 3,							-- 1 = Alliance, 2 = Horde, 3 = Both, 4 = Match the faction of the currently logged in character
 			["UI.Tabs.Summary.CurrentLevels"] = 1,								-- 1 = All
 			["UI.Tabs.Summary.CurrentLevelsMin"] = 1,							
 			["UI.Tabs.Summary.CurrentLevelsMax"] = 60,					
@@ -361,6 +361,7 @@ local tabList = {
 	"Search",
 	"Guild",
 	"Grids",
+    "Agenda",
 }
 
 local frameToID = {}

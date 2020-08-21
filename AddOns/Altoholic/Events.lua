@@ -28,12 +28,7 @@ local function GetEventExpiry(event)
 	timeTable.hour = tonumber(hour)
 	timeTable.min = tonumber(minute)
 
-	local gap = 0
-	if DataStore_Agenda then
-		gap = DataStore:GetClientServerTimeGap()
-	end
-	
-	return difftime(time(timeTable), time() + gap)	-- in seconds
+	return difftime(time(timeTable), time())	-- in seconds
 end
 
 -- ** Event Types **
@@ -215,22 +210,6 @@ local function ClearExpiredEvents()
 					end
 				end
 			end
-			
-			-- Other timers (like mysterious egg, etc..)
-			local num = DataStore:GetNumItemCooldowns(character) or 0
-			for i = 1, num do
-				if DataStore:HasItemCooldownExpired(character, i) then
-					DataStore:DeleteItemCooldown(character, i)
-				end
-			end
-			
-			-- Calendar events 
-			num = DataStore:GetNumCalendarEvents(character) or 0 
-			for i = 1, num do
-				if DataStore:HasCalendarEventExpired(character, i) then
-					DataStore:DeleteCalendarEvent(character, i)
-				end
-			end
 		end
 	end
 	
@@ -399,8 +378,6 @@ end
 function ns:BuildList()
 	eventList = eventList or {}
 	wipe(eventList)
-
-	local timeGap = DataStore:GetClientServerTimeGap() or 0
 	
 	for realm in pairs(DataStore:GetRealms()) do
 		for characterName, character in pairs(DataStore:GetCharacters(realm)) do
@@ -441,32 +418,9 @@ function ns:BuildList()
 			if dungeons then
 				for key, _ in pairs(dungeons) do
 					local reset, lastCheck = DataStore:GetSavedInstanceInfo(character, key)
-					local expires = reset + lastCheck + timeGap
+					local expires = reset + lastCheck
 					AddEvent(INSTANCE_LINE, date("%Y-%m-%d",expires), date("%H:%M",expires), characterName, realm, key)
 				end
-			end
-			
-			-- Calendar Events
-			local num = DataStore:GetNumCalendarEvents(character) or 0 
-			for i = 1, num do
-				local eventDate, eventTime = DataStore:GetCalendarEventInfo(character, i)
-				
-				-- TODO: do not add declined invitations
-				AddEvent(CALENDAR_LINE, eventDate, eventTime, characterName, realm, i)
-			end
-			
-			-- Other timers (like mysterious egg, etc..)
-			num = DataStore:GetNumItemCooldowns(character) or 0
-			for i = 1, num do
-				local _, lastCheck, duration = DataStore:GetItemCooldownInfo(character, i)
-				if duration == nil then
-					duration = 0
-				end
-				if lastCheck == nil then
-					lastCheck = 0
-				end
-				local expires = duration + lastCheck + timeGap
-				AddEvent(TIMER_LINE, date("%Y-%m-%d",expires), date("%H:%M",expires), characterName, realm, i)
 			end
 		end
 	end

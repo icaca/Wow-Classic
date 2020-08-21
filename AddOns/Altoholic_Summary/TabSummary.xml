@@ -94,6 +94,19 @@
 					</OnClick>
 				</Scripts>
 			</Button>
+            
+            <Button name="$parent_ResetAllFiltersButton" inherits="UIPanelButtonTemplate" text="Reset Filters">
+            	<Size x="100" y="20" />
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeKey="$parent.ClassIcon" relativePoint="TOPRIGHT" x="10" y="-8"/>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Altoholic.ResetAllFilters()
+                    </OnClick>
+                </Scripts>
+            </Button>
+            
 			<Button parentKey="AltoholicOptionsIcon" inherits="AltoTabSummaryIconTemplate" id="6">
 				<Anchors>
 					<Anchor point="TOPRIGHT" relativeKey="$parent.DataStoreOptionsIcon" relativePoint="TOPLEFT" x="-5" y="0" />
