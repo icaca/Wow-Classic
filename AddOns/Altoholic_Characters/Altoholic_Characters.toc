@@ -3,7 +3,7 @@
 ## Notes: Altoholic's Characters UI
 ## Author: Thaoky (EU-Marécages de Zangar)
 ## Version: v1.13.013
-## Dependencies: Altoholic, DataStore, DataStore_Characters
+## Dependencies: Altoholic, DataStore, DataStore_Characters, Blizzard_TalentUI
 ## LoadOnDemand: 1
 ## X-Category: Interface Enhancements
 

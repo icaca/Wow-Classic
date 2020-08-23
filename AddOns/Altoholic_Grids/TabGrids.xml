@@ -91,6 +91,15 @@
 					<KeyValue key="iconFile" value="Interface\Icons\Ability_Repair" />
 				</KeyValues>
 			</Button>
+            <Button parentKey="Keyring" inherits="AltoTabGridsMenuIconTemplate" id="4">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeKey="$parent.TradeSkills" relativePoint="BOTTOMRIGHT" x="5" y="0" />
+				</Anchors>
+				<KeyValues>
+					<KeyValue key="iconFile" value="Interface\Icons\INV_Misc_Key_14" />
+				</KeyValues>
+			</Button>
+            
 		</Frames>
 		<Scripts>
 			<OnLoad>
