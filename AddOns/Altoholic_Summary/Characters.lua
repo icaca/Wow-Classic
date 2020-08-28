@@ -221,7 +221,11 @@ local function BuildList()
 	local gold = format(GOLD_AMOUNT_TEXTURE_STRING, BreakUpLargeNumbers(floor( totalMoney / 10000 )), 13, 13)
 	local played = format("%s%sd", BreakUpLargeNumbers(floor(totalPlayed / 86400)), colors.gold)
 	
-	AltoholicTabSummary.Totals:SetText(format("%s: %s%s / %s%s / %s", L["Totals"], levels, colors.white, gold, colors.white, played))
+	AltoholicTabSummary.Totals:SetText(L["Totals"]..":")
+	AltoholicTabSummary.TotalsLevels:SetText(levels)
+    AltoholicTabSummary.TotalsGold:SetText(gold)
+    AltoholicTabSummary.TotalsPlayed:SetText(played)
+    --format("%s: %s%s / %s%s / %s", L["Totals"], levels, colors.white, gold, colors.white, played))
 end
 
 local function AddRealmView(AccountName, RealmName)

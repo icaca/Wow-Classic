@@ -34,7 +34,7 @@ TOWNSFOLK = {
         allianceIcon = [[Interface\Addons\TownsfolkTracker\Icons\AllianceFlightMaster.tga]],
         hordeIcon = [[Interface\Addons\TownsfolkTracker\Icons\HordeFlightMaster.tga]],
         neutralIcon = [[Interface\Addons\TownsfolkTracker\Icons\NeutralFlightMaster.tga]],
-        iconSize = 1.2,
+        iconSize = 1.1,
         points = TF_FLIGHTMASTERS,
     },
     [TF_FOOD_DRINK] = {
@@ -95,14 +95,14 @@ TOWNSFOLK = {
         title = L["Dungeon"],
         icon = [[Interface\MINIMAP\Dungeon]],
         groupIcon = [[Interface\Addons\TownsfolkTracker\Icons\InstanceGroup.tga]],
-        iconSize = 2.4,
+        iconSize = 2.2,
         points = TF_DUNGEONS,
     },
     [TF_RAID] = {
         title = L["Raid"],
         icon = [[Interface\MINIMAP\Raid]],
         groupIcon = [[Interface\Addons\TownsfolkTracker\Icons\InstanceGroup.tga]],
-        iconSize = 2.4,
+        iconSize = 2.2,
         points = TF_RAIDS,
     },
 };

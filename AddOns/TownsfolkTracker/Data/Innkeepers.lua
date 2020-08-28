@@ -24,7 +24,7 @@ TF_INNKEEPERS = {
     { zone = TF_ZONE.DARKSHORE, x = 0.3704, y = 0.4413, name = "Innkeeper Shaussiy", faction = TF_FACTION.ALLIANCE },
     { zone = TF_ZONE.MULGORE, x = 0.4662, y = 0.6110, name = "Innkeeper Kauth", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.THUNDER_BLUFF, x = 0.4582, y = 0.6471, name = "Innkeeper Pala", faction = TF_FACTION.HORDE },
-	{ zone = TF_ZONE.ARATHI_HIGHLANDS, x = 0.7384, y = 0.3247, name = "Innkeeper Adegwa", faction = TF_FACTION.HORDE },
+    { zone = TF_ZONE.ARATHI_HIGHLANDS, x = 0.7384, y = 0.3247, name = "Innkeeper Adegwa", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.BADLANDS, x = 0.0282, y = 0.4586, name = "Innkeeper Shul'kar", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.ELWYNN_FOREST, x = 0.4377, y = 0.6581, name = "Innkeeper Farley", faction = TF_FACTION.ALLIANCE },
     { zone = TF_ZONE.STORMWIND_CITY, x = 0.5261, y = 0.6571, name = "Innkeeper Allison", faction = TF_FACTION.ALLIANCE },

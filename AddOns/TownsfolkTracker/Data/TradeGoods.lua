@@ -117,7 +117,7 @@ TF_TRADE_GOOD_VENDORS = {
     { zone = TF_ZONE.THUNDER_BLUFF, x = 0.5579, y = 0.4702, name = "Sewa Mistrunner", tag = "Fishing Supplier", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.THUNDER_BLUFF, x = 0.5098, y = 0.5246, name = "Naal Mistrunner", tag = "Cooking Supplier", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.THUNDER_BLUFF, x = 0.3981, y = 0.5565, name = "Taur Stonehoof", tag = "Blacksmithing Supplies", faction = TF_FACTION.HORDE },
-	{ zone = TF_ZONE.ARATHI_HIGHLANDS, x = 0.7269, y = 0.3646, name = "Jun'ha", tag = "Tailoring Supplies", faction = TF_FACTION.HORDE },
+    { zone = TF_ZONE.ARATHI_HIGHLANDS, x = 0.7269, y = 0.3646, name = "Jun'ha", tag = "Tailoring Supplies", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.ARATHI_HIGHLANDS, x = 0.7488, y = 0.3460, name = "Tunkk", tag = "Leatherworking Supplies", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.ARATHI_HIGHLANDS, x = 0.7408, y = 0.3273, name = "Keena", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.ARATHI_HIGHLANDS, x = 0.4503, y = 0.4687, name = "Androd Fadran", tag = "Leatherworking Supplies", faction = TF_FACTION.ALLIANCE },
@@ -190,6 +190,8 @@ TF_TRADE_GOOD_VENDORS = {
     { zone = TF_ZONE.THE_HINTERLANDS, x = 0.3446, y = 0.3859, name = "Gigget Zipcoil" },
     { zone = TF_ZONE.THE_HINTERLANDS, x = 0.3433, y = 0.3776, name = "Ruppo Zipcoil", tag = "Engineering Supplies" },
     { zone = TF_ZONE.WESTERN_PLAGUELANDS, x = 0.4308, y = 0.8431, name = "Leonard Porter", tag = "Leatherworking Supplies", faction = TF_FACTION.ALLIANCE },
+    { zone = TF_ZONE.EASTERN_PLAGUELANDS, x = 0.8059, y = 0.5757, name = "Jase Farlane", tag = "Trade Supplies" },
+    { zone = TF_ZONE.EASTERN_PLAGUELANDS, x = 0.1445, y = 0.3348, name = "Augustus the Touched" },
     { zone = TF_ZONE.SWAMP_OF_SORROWS, x = 0.4539, y = 0.5689, name = "Rartar", tag = "Alchemy Supplies", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.SWAMP_OF_SORROWS, x = 0.4477, y = 0.5664, name = "Banalash", faction = TF_FACTION.HORDE },
 }

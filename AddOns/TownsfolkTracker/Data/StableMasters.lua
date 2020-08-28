@@ -23,7 +23,7 @@ TF_STABLE_MASTERS = {
     { zone = TF_ZONE.DARKSHORE, x = 0.3740, y = 0.4428, name = "Jaelysia", faction = TF_FACTION.ALLIANCE },
     { zone = TF_ZONE.MULGORE, x = 0.4676, y = 0.6036, name = "Seikwa", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.THUNDER_BLUFF, x = 0.4511, y = 0.6022, name = "Bulrug", faction = TF_FACTION.HORDE },
-	{ zone = TF_ZONE.ARATHI_HIGHLANDS, x = 0.7393, y = 0.3313, name = "Tharlidun", faction = TF_FACTION.HORDE },
+    { zone = TF_ZONE.ARATHI_HIGHLANDS, x = 0.7393, y = 0.3313, name = "Tharlidun", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.BADLANDS, x = 0.0367, y = 0.4759, name = "Greth", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.ELWYNN_FOREST, x = 0.4285, y = 0.6594, name = "Erma", faction = TF_FACTION.ALLIANCE },
     { zone = TF_ZONE.STORMWIND_CITY, x = 0.6147, y = 0.1716, name = "Jenova Stoneshield", faction = TF_FACTION.ALLIANCE },

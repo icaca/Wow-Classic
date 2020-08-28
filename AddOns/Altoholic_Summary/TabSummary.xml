@@ -9,10 +9,34 @@
 		<Layers>
 			<Layer level="OVERLAY">
 				<FontString parentKey="Totals" inherits="GameFontNormal" justifyH="RIGHT">
-					<Size x="400" y="24" />
+					<Size x="80" y="24" />
 					<Anchors>
 						<Anchor point="BOTTOMRIGHT">
-							<Offset x="30" y="13" />
+							<Offset x="-180" y="13" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+                <FontString parentKey="TotalsLevels" inherits="GameFontNormal" justifyH="RIGHT">
+					<Size x="80" y="24" />
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeKey="$parent.Totals" relativePoint="TOPRIGHT">
+							<Offset x="1" y="0" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+                <FontString parentKey="TotalsGold" inherits="GameFontNormal" justifyH="RIGHT">
+					<Size x="80" y="24" />
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeKey="$parent.TotalsLevels" relativePoint="TOPRIGHT">
+							<Offset x="1" y="0" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+                <FontString parentKey="TotalsPlayed" inherits="GameFontNormal" justifyH="RIGHT">
+					<Size x="80" y="24" />
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeKey="$parent.TotalsGold" relativePoint="TOPRIGHT">
+							<Offset x="1" y="0" />
 						</Anchor>
 					</Anchors>
 				</FontString>

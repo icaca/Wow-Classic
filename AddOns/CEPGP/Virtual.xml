@@ -213,7 +213,7 @@
 			</OnLoad>
 			<OnClick>
 				PlaySound(856);
-				if CEPGP_isML() == 0 or CEPGP_Info.Debug then
+				if CEPGP_isML() == 0 or CEPGP_debugMode then
 					CEPGP_roll_award_confirm:Hide();
 					CEPGP_ListButton_OnClick(self:GetName(), button);
 				end
@@ -221,63 +221,6 @@
 		</Scripts>
 		<HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD"/>
 	</Button>
-	<Button name="LootBagButtonTemplate" virtual="true">
-		<Size y="15" />
-		<Attributes>
-			<Attribute name="GUID" type="string" value="" />
-		</Attributes>
-		<Frames>
-			<CheckButton name="$parentCheck" inherits="UIOptionsCheckButtonTemplate">
-				<HitRectInsets>
-					<AbsInset left="0" right="0" top="0" bottom="0" />
-				</HitRectInsets>
-				<Anchors>
-					<Anchor point="LEFT" />
-				</Anchors>
-			</CheckButton>
-			<Button name="$parentItem">
-				<Anchors>
-					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentCheck" />
-				</Anchors>
-				<Layers>
-					<Layer level="OVERLAY">
-						<Texture name="$parentIcon">
-							<Size x="15" y="15" />
-							<Anchors>
-								<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentCheck" />
-							</Anchors>
-						</Texture>
-						<FontString name="$parentName" inherits="GameFontHighlight" justifyH="LEFT">
-							<Anchors>
-								<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentIcon" />
-							</Anchors>
-						</FontString>
-					</Layer>
-				</Layers>
-			</Button>
-		</Frames>
-		<Scripts>
-			<OnShow>
-				local parent = self:GetParent();
-				self:SetWidth(parent:GetWidth());
-			</OnShow>
-		</Scripts>
-	</Button>
-	<CheckButton name="ImportOptionCheckTemplate" inherits="UIOptionsCheckButtonTemplate" virtual="true">
-		<Size x="21" y="21" />
-		<Layers>
-			<Layer level="OVERLAY">
-				<FontString name="$parent_text" inherits="GameFontNormalSmall" justifyH="LEFT">
-					<Anchors>
-						<Anchor point="LEFT" relativePoint="RIGHT" x="5" />
-					</Anchors>
-				</FontString>
-			</Layer>
-		</Layers>
-		<Scripts>
-			<OnClick></OnClick>
-		</Scripts>
-	</CheckButton>
 	<Button name="GuildButtonTemplate" virtual="true">
 		<Size>
 			<AbsDimension x="580" y="15"/>
@@ -973,25 +916,7 @@
 		</Scripts>
 		<HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD"/>
 	</Button>
-	<Button name="CEPGPLogButtonTemplate" virtual="true">
-		<Size y="21" />
-		<Layers>
-			<Layer level="OVERLAY">
-				<FontString name="$parent_ostime" inherits="GameFontHighlightSmall" justifyH="LEFT" />
-				<FontString name="$parent_message" inherits="GameFontHighlightSmall" justifyH="LEFT" />
-			</Layer>
-		</Layers>
-		<Scripts>
-			<OnLoad>
-				local ostime = _G[self:GetName() .. "_ostime"];
-				local msg = _G[self:GetName() .. "_message"];
-				local parent = self:GetParent();
-				self:SetWidth(parent:GetWidth());
-				ostime:SetPoint("LEFT");
-				msg:SetPoint("LEFT", ostime, "RIGHT", 5, 0);
-			</OnLoad>
-		</Scripts>
-	</Button>
+	
 	<EditBox name="epValInputBoxTemplate" inherits="InputBoxTemplate" numeric="true" virtual="true">
 		<Size>
 			<AbsDimension x="50" y="10" />
@@ -1005,6 +930,7 @@
 			</OnEnterPressed>
 			<OnEditFocusLost>
 				local L = CEPGP_Locale:GetLocale("CEPGP")
+
 				self:HighlightText(0,0);
 				local name = strsub(self:GetName(), 15, strfind(self:GetName(), "_EP")-1);
 				local value = self:GetText();

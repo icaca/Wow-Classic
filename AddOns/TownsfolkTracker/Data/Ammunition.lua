@@ -53,7 +53,8 @@ TF_AMMUNITION_VENDORS = {
     { zone = TF_ZONE.DARNASSUS, x = 0.6473, y = 0.5297, name = "Ellandrieth", tag = "General Goods Vendor", faction = TF_FACTION.ALLIANCE },
     { zone = TF_ZONE.DARNASSUS, x = 0.6327, y = 0.6627, name = "Landria", tag = "Bow Merchant", faction = TF_FACTION.ALLIANCE },
     { zone = TF_ZONE.DARNASSUS, x = 0.6267, y = 0.6558, name = "Turian", faction = TF_FACTION.ALLIANCE },
-    { zone = TF_ZONE.DARKSHORE, x = 0.3745, y = 0.4050, name = "Dalmond", tag = "General Goods", faction = TF_FACTION.ALLIANCE },    { zone = TF_ZONE.DARNASSUS, x = 0.6177, y = 0.4223, name = "Sildanair", class = TF_CLASS.WARRIOR, faction = TF_FACTION.ALLIANCE },
+    { zone = TF_ZONE.DARKSHORE, x = 0.3745, y = 0.4050, name = "Dalmond", tag = "General Goods", faction = TF_FACTION.ALLIANCE },
+    { zone = TF_ZONE.DARNASSUS, x = 0.6177, y = 0.4223, name = "Sildanair", class = TF_CLASS.WARRIOR, faction = TF_FACTION.ALLIANCE },
     { zone = TF_ZONE.MULGORE, x = 0.4586, y = 0.5766, name = "Moorat Longstride", tag = "General Goods", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.MULGORE, x = 0.4530, y = 0.7652, name = "Kawnie Softbreeze", tag = "General Goods", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.THUNDER_BLUFF, x = 0.3890, y = 0.6471, name = "Kuruk", tag = "General Goods Vendor", faction = TF_FACTION.HORDE },
@@ -64,6 +65,7 @@ TF_AMMUNITION_VENDORS = {
     { zone = TF_ZONE.ARATHI_HIGHLANDS, x = 0.7412, y = 0.3238, name = "Graud", tag = "General Goods", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.ARATHI_HIGHLANDS, x = 0.4644, y = 0.4760, name = "Vikki Lonsav", tag = "General Goods", faction = TF_FACTION.ALLIANCE },
     { zone = TF_ZONE.BADLANDS, x = 0.0312, y = 0.4594, name = "Grawl", tag = "General Goods", faction = TF_FACTION.HORDE },
+    { zone = TF_ZONE.SEARING_GORGE, x = 0.3880, y = 0.2850, name = "Master Smith Burninate" },
     { zone = TF_ZONE.ELWYNN_FOREST, x = 0.4396, y = 0.6592, name = "Brog Hamfist", tag = "General Supplies", faction = TF_FACTION.ALLIANCE },
     { zone = TF_ZONE.ELWYNN_FOREST, x = 0.4748, y = 0.4156, name = "Brother Danil", tag = "General Supplies", faction = TF_FACTION.ALLIANCE },
     { zone = TF_ZONE.ELWYNN_FOREST, x = 0.8329, y = 0.6609, name = "Rallic Finn", tag = "Bowyer", faction = TF_FACTION.ALLIANCE },
@@ -89,4 +91,5 @@ TF_AMMUNITION_VENDORS = {
     { zone = TF_ZONE.THE_HINTERLANDS, x = 0.7685, y = 0.8140, name = "Renn'az", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.DESOLACE, x = 0.2493, y = 0.7185, name = "Tukk", tag = "General Goods Vendor", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.FELWOOD, x = 0.3475, y = 0.5323, name = "Bale", tag = "General Goods", faction = TF_FACTION.HORDE },
+    { zone = TF_ZONE.UNGORO_CRATER, x = 0.4327, y = 0.0773, name = "Nergal", tag = "General Goods Vendor" },
 }

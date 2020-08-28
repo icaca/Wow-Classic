@@ -51,6 +51,7 @@ local AddonDB_Defaults = {
 						sender = nil,
 						daysLeft = 0,
 						returned = nil,
+                        itemID = nil,
 					}
 				},
 				MailCache = {				-- same structure as "Mail", but serves as a cache for mails sent by a guildmate, until the mail actually arrives in the real mailbox (1h delay)
@@ -64,6 +65,8 @@ local AddonDB_Defaults = {
 						subject = nil,
 						sender = nil,
 						daysLeft = 0,
+                        returned = nil,
+                        itemID = nil,
 					}
 				},
 			}
@@ -135,7 +138,7 @@ local function SendGuildMail(recipient, subject, body, index)
 end
 
 -- *** Scanning functions ***
-local function SaveAttachments(character, index, sender, days, wasReturned)
+local function SaveAttachments(character, index, sender, days, wasReturned, mailCache)
 	-- saves attachments of a given mail index into a given character mailbox
 	
 	-- index nil = sent mail => different methods
@@ -153,16 +156,29 @@ local function SaveAttachments(character, index, sender, days, wasReturned)
 		end
 		
 		if item then
-			table.insert(character.Mails, {
-				["icon"] = icon,
-				["itemID"] = itemID,
-				["count"] = count,
-				["sender"] = sender,
-				["link"] = link,
-				lastCheck = time(),
-				daysLeft = days,
-				returned = wasReturned,
-			} )
+            if mailCache then
+    			table.insert(character.MailCache, {
+    				["icon"] = icon,
+    				["itemID"] = itemID,
+    				["count"] = count,
+    				["sender"] = sender,
+    				["link"] = link,
+    				lastCheck = time(),
+    				daysLeft = days,
+    				returned = wasReturned,
+    			} )
+            else
+    			table.insert(character.Mails, {
+    				["icon"] = icon,
+    				["itemID"] = itemID,
+    				["count"] = count,
+    				["sender"] = sender,
+    				["link"] = link,
+    				lastCheck = time(),
+    				daysLeft = days,
+    				returned = wasReturned,
+    			} )
+            end
 		end
 	end
 end
@@ -170,7 +186,18 @@ end
 local function ScanMailbox()
 	local character = addon.ThisCharacter
 	wipe(character.Mails)
-	wipe(character.MailCache)	-- fully clear the mail cache, since the mailbox will now be properly scanned
+
+    local cache = character.MailCache
+	-- check the cache, and clean entries that are about to be replaced in the scan
+	for i = #cache, 1, -1 do
+		if cache[i].lastCheck then
+			local age = time() - cache[i].lastCheck
+			
+			if age > 3600 then		-- if older than 1 hour, delete this entry
+				table.remove(cache, i)
+			end
+		end
+	end
 	
 	local numItems = GetInboxNumItems();
 	if numItems == 0 then
@@ -180,7 +207,7 @@ local function ScanMailbox()
 	for i = 1, numItems do
 		local _, stationaryIcon, mailSender, mailSubject, mailMoney, _, days, numAttachments, _, wasReturned = GetInboxHeaderInfo(i);
 		if numAttachments then	-- treat attachments as separate entries
-			SaveAttachments(character, i, mailSender, days, wasReturned)
+			SaveAttachments(character, i, mailSender, days, wasReturned, false)
 		end
 
 		local inboxText
@@ -502,12 +529,12 @@ local Orig_SendMail = SendMail
 local function SendOwnMail(characterKey, subject, body)
 	local character = addon.db.global.Characters[characterKey]
 	
-	SaveAttachments(character, nil, UnitName("player"), MAIL_EXPIRY)
-	
+	SaveAttachments(character, nil, UnitName("player"), MAIL_EXPIRY, false, true)
+
 	-- .. then save the mail itself + gold if any
 	local moneySent = GetSendMailMoney()
 	if (moneySent > 0) or (strlen(body) > 0) then
-		table.insert(character.Mails, {
+		table.insert(character.MailCache, {
 			money = moneySent,
 			icon = (moneySent > 0) and ICON_COIN or ICON_NOTE,
 			text = body,
@@ -567,14 +594,14 @@ local function ReturnOwnMail(characterKey, index, mailSubject, mailMoney, statio
 	local character = addon.db.global.Characters[characterKey]
 
 	if numAttachments then	-- treat attachments as separate entries
-		SaveAttachments(character, index, UnitName("player"), MAIL_EXPIRY, true)
+		SaveAttachments(character, index, UnitName("player"), MAIL_EXPIRY, true, true)
 	end
 
 	local inboxText = GetInboxText(index)		-- this marks the mail as read, no problem here since the mail is returned anyway
 	
 	if (mailMoney > 0) or inboxText then			-- if there's money or text .. save the entry
 		
-		table.insert(character.Mails, {
+		table.insert(character.MailCache, {
 			icon = (mailMoney > 0) and ICON_COIN or stationaryIcon,
 			money = mailMoney,
 			text = inboxText,

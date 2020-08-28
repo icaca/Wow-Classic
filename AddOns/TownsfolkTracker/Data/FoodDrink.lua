@@ -73,7 +73,7 @@ TF_FOOD_DRINK_VENDORS = {
     { zone = TF_ZONE.THUNDER_BLUFF, x = 0.4144, y = 0.5319, name = "Fyr Mistrunner", tag = "Bread Vendor", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.THUNDER_BLUFF, x = 0.4735, y = 0.4250, name = "Nan Mistrunner", tag = "Fruit Vendor", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.THUNDER_BLUFF, x = 0.5230, y = 0.4777, name = "Kaga Mistrunner", tag = "Meat Vendor", faction = TF_FACTION.HORDE },
-	{ zone = TF_ZONE.ARATHI_HIGHLANDS, x = 0.7418, y = 0.3395, name = "Uttnar", tag = "Butcher", faction = TF_FACTION.HORDE },
+    { zone = TF_ZONE.ARATHI_HIGHLANDS, x = 0.7418, y = 0.3395, name = "Uttnar", tag = "Butcher", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.ARATHI_HIGHLANDS, x = 0.7384, y = 0.3247, name = "Innkeeper Adegwa", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.ARATHI_HIGHLANDS, x = 0.7412, y = 0.3238, name = "Graud", tag = "General Goods", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.ARATHI_HIGHLANDS, x = 0.7421, y = 0.2929, name = "Kosco Copperpinch", tag = "Smokywood Pastures" },
@@ -138,6 +138,9 @@ TF_FOOD_DRINK_VENDORS = {
     { zone = TF_ZONE.THE_HINTERLANDS, x = 0.1436, y = 0.4230, name = "Truk Wildbeard", tag = "Bartender", faction = TF_FACTION.ALLIANCE },
     { zone = TF_ZONE.THE_HINTERLANDS, x = 0.1366, y = 0.4172, name = "Innkeeper Thulfram", wanders = true, faction = TF_FACTION.ALLIANCE },
     { zone = TF_ZONE.THE_HINTERLANDS, x = 0.7814, y = 0.8138, name = "Lard", faction = TF_FACTION.HORDE },
+    { zone = TF_ZONE.WESTERN_PLAGUELANDS, x = 0.6954, y = 0.7955, name = "Baker Masterson" },
+    { zone = TF_ZONE.SEARING_GORGE, x = 0.3880, y = 0.2850, name = "Master Smith Burninate" },
     { zone = TF_ZONE.SWAMP_OF_SORROWS, x = 0.4652, y = 0.5428, name = "Thultash", faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.FELWOOD, x = 0.3475, y = 0.5323, name = "Bale", tag = "General Goods", faction = TF_FACTION.HORDE },
+    { zone = TF_ZONE.UNGORO_CRATER, x = 0.4327, y = 0.0773, name = "Nergal", tag = "General Goods Vendor" },
 }

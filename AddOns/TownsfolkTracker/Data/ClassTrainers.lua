@@ -94,7 +94,7 @@ TF_CLASS_TRAINERS = {
     { zone = TF_ZONE.IRONFORGE, x = 0.2472, y = 0.0814, name = "High Priest Rohan", class = TF_CLASS.PRIEST, faction = TF_FACTION.ALLIANCE },
     { zone = TF_ZONE.IRONFORGE, x = 0.2441, y = 0.0917, name = "Braenna Flintcrag", class = TF_CLASS.PRIEST, faction = TF_FACTION.ALLIANCE },
     { zone = TF_ZONE.IRONFORGE, x = 0.2521, y = 0.1078, name = "Toldren Deepiron", class = TF_CLASS.PRIEST, faction = TF_FACTION.ALLIANCE },
-    { zone = TF_ZONE.IRONFORGE, x = 0.2410, y = 0.0841, name = "Theodrus Frostbeard",class = TF_CLASS.PRIEST,  faction = TF_FACTION.ALLIANCE },
+    { zone = TF_ZONE.IRONFORGE, x = 0.2410, y = 0.0841, name = "Theodrus Frostbeard", class = TF_CLASS.PRIEST, faction = TF_FACTION.ALLIANCE },
     { zone = TF_ZONE.IRONFORGE, x = 0.2718, y = 0.0858, name = "Dink", class = TF_CLASS.MAGE, faction = TF_FACTION.ALLIANCE },
     { zone = TF_ZONE.IRONFORGE, x = 0.2727, y = 0.0831, name = "Bink", class = TF_CLASS.MAGE, faction = TF_FACTION.ALLIANCE },
     { zone = TF_ZONE.IRONFORGE, x = 0.2630, y = 0.0676, name = "Juli Stormkettle", class = TF_CLASS.MAGE, faction = TF_FACTION.ALLIANCE },

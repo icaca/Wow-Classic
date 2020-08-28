@@ -1,6 +1,6 @@
 --[[
     Townsfolk Tracker
-]]--
+]] --
 TownsfolkTracker = LibStub("AceAddon-3.0"):NewAddon("TownsfolkTracker", "AceEvent-3.0")
 local Maps = LibStub("HereBeDragons-2.0")
 local Pins = LibStub("HereBeDragons-Pins-2.0")
@@ -18,11 +18,11 @@ local InterfaceOptionsFrame, InterfaceOptionsFrame_OpenToCategory = InterfaceOpt
 -- Map button
 local setMapButtonTooltip = function(tooltip)
     tooltip:AddLine(L["Townsfolk Tracker"]);
-    tooltip:AddDoubleLine(L["Click"]..":", L["Choose Townsfolk"], 0.25, 0.78, 0.92, 1, 1, 1)
-    tooltip:AddDoubleLine(L["Right Click"]..":", L["Open Options"], 0.25, 0.78, 0.92, 1, 1, 1)
+    tooltip:AddDoubleLine(L["Click"] .. ":", L["Choose Townsfolk"], 0.25, 0.78, 0.92, 1, 1, 1)
+    tooltip:AddDoubleLine(L["Right Click"] .. ":", L["Open Options"], 0.25, 0.78, 0.92, 1, 1, 1)
 end
 
-local handleMapButtonClick = function (self, button)
+local handleMapButtonClick = function(self, button)
     if button == "RightButton" then
         if not InterfaceOptionsFrame:IsShown() then
             InterfaceOptionsFrame_OpenToCategory("Townsfolk Tracker")
@@ -50,6 +50,8 @@ SLASH_TOWNSFOLK3 = '/tt'
 SlashCmdList["TOWNSFOLK"] = function(msg)
     InterfaceOptionsFrame_OpenToCategory("Townsfolk Tracker")
 end
+
+TownsfolkTracker.iconsCreated = false
 
 -- Initialize addon
 function TownsfolkTracker:OnInitialize()
@@ -124,7 +126,27 @@ end
 function TownsfolkTracker:ResetTracking(info)
     --noinspection GlobalCreationOutsideO
     tfTrackingList = TownsfolkUtil_CopyTable(TF_DEFAULT_TRACKING)
-    DEFAULT_CHAT_FRAME:AddMessage("|cffffd000"..L["Townsfolk Tracker"].."|r - "..L["Tracking list reset."])
+    DEFAULT_CHAT_FRAME:AddMessage("|cffffd000" .. L["Townsfolk Tracker"] .. "|r - " .. L["Tracking list reset."])
+    self:DrawMapIcons()
+end
+
+function TownsfolkTracker:GetMapIconScale(info)
+    return self.db.profile.mapScale
+end
+
+function TownsfolkTracker:SetMapIconScale(info, value)
+    self.db.profile.mapScale = value
+    TownsfolkTracker:CreateIcons()
+    self:DrawMapIcons()
+end
+
+function TownsfolkTracker:GetMinimapIconScale(info)
+    return self.db.profile.minimapScale
+end
+
+function TownsfolkTracker:SetMinimapIconScale(info, value)
+    self.db.profile.minimapScale = value
+    TownsfolkTracker:CreateIcons()
     self:DrawMapIcons()
 end
 
@@ -137,7 +159,7 @@ function TownsfolkTracker:OnEnable()
 
     -- Register events
     self:RegisterEvent("PLAYER_ENTERING_WORLD")
-    Maps.RegisterCallback("TownsfolkTracker", "PlayerZoneChanged", function (event, currentPlayerUiMapID, currentPlayerUiMapType)
+    Maps.RegisterCallback("TownsfolkTracker", "PlayerZoneChanged", function(event, currentPlayerUiMapID, currentPlayerUiMapType)
         TownsfolkTracker:DrawDungeonMinimapIcons(currentPlayerUiMapID)
     end)
 end
@@ -194,7 +216,7 @@ function TownsfolkTracker:GenerateTooltip(title, point, folktype, inside, prefix
     if (TownsfolkUtil_IsInstanceType(folktype)) then
         local name = L[point.name]
         if (prefix) then
-            name = L[prefix]..": "..name
+            name = L[prefix] .. ": " .. name
         end
         GameTooltip:SetText(name)
 
@@ -205,19 +227,22 @@ function TownsfolkTracker:GenerateTooltip(title, point, folktype, inside, prefix
             if (playerLevel < point.minLevel) then
                 r, g, b = 1, 0, 0
             end
-            GameTooltip:AddDoubleLine(L["Required Level"]..":", point.minLevel, 0.8, 0.8, 0.8, r, g, b)
+            GameTooltip:AddDoubleLine(L["Required Level"] .. ":", point.minLevel, 0.8, 0.8, 0.8, r, g, b)
         end
         -- instance rec level
         if (point.recommendedLevel) then
             local recommendedLevel, r, g, b = self:GetRecommendedLevel(point.recommendedLevel)
-            GameTooltip:AddDoubleLine(L["Recommended Level"]..":", recommendedLevel, 0.8, 0.8, 0.8, r, g, b)
+            GameTooltip:AddDoubleLine(L["Recommended Level"] .. ":", recommendedLevel, 0.8, 0.8, 0.8, r, g, b)
         end
         -- instance raid size
         if (point.raidSize) then
-            GameTooltip:AddDoubleLine(L["Raid Size"]..":", point.raidSize, 0.8, 0.8, 0.8, 1, 1, 1)
+            GameTooltip:AddDoubleLine(L["Raid Size"] .. ":", point.raidSize, 0.8, 0.8, 0.8, 1, 1, 1)
+        end
+        if (point.attunement) then
+            TownsfolkUtil_DungeonAttunement(point.attunement, true)
         end
         if (point.entrance and not inside or point.group) then
-            GameTooltip:AddLine("("..L["Cave Entrance"]..")", 0.6, 0.6, 0.6);
+            GameTooltip:AddLine("(" .. L["Cave Entrance"] .. ")", 0.6, 0.6, 0.6);
         end
 
         -- instance groups
@@ -228,6 +253,9 @@ function TownsfolkTracker:GenerateTooltip(title, point, folktype, inside, prefix
                 for _, dungeon in pairs(point.group.dungeons) do
                     local recommendedLevel, r, g, b = self:GetRecommendedLevel(dungeon.recommendedLevel)
                     GameTooltip:AddDoubleLine(L[dungeon.name], format(L["Lv %s"], recommendedLevel), 0.8, 0.8, 0.8, r, g, b)
+                    if (dungeon.attunement) then
+                        TownsfolkUtil_DungeonAttunement(dungeon.attunement, false)
+                    end
                 end
             end
 
@@ -236,6 +264,9 @@ function TownsfolkTracker:GenerateTooltip(title, point, folktype, inside, prefix
                 GameTooltip:AddLine(L["Raids"], 0.07, 0.647, 0.137)
                 for _, raid in pairs(point.group.raids) do
                     GameTooltip:AddDoubleLine(L[raid.name], format(L["%d Players"], raid.raidSize), 0.8, 0.8, 0.8, 1, 1, 1)
+                    if (raid.attunement) then
+                        TownsfolkUtil_DungeonAttunement(raid.attunement, false)
+                    end
                 end
             end
         end
@@ -252,18 +283,18 @@ function TownsfolkTracker:GenerateTooltip(title, point, folktype, inside, prefix
         end
         -- npc tag
         if (point.tag) then
-            GameTooltip:AddLine("<"..L[point.tag]..">", 0.8, 0.8, 0.8)
+            GameTooltip:AddLine("<" .. L[point.tag] .. ">", 0.8, 0.8, 0.8)
         end
         -- profession level
         if ((point.level or point.branch) and point.profession) then
-            GameTooltip:AddLine("<"..L[TownsfolkUtil_GetTrainerTag(point.profession, point.level, point.branch)]..">", 0.8, 0.8, 0.8)
+            GameTooltip:AddLine("<" .. L[TownsfolkUtil_GetTrainerTag(point.profession, point.level, point.branch)] .. ">", 0.8, 0.8, 0.8)
         end
         -- wanders a path
         if (point.wanders) then
-            GameTooltip:AddLine("("..L["Wanders this path"]..")", 0.6, 0.6, 0.6)
+            GameTooltip:AddLine("(" .. L["Wanders this path"] .. ")", 0.6, 0.6, 0.6)
         end
         if (point.temporary) then
-            GameTooltip:AddLine("("..L["Not always here"]..")", 0.6, 0.6, 0.6)
+            GameTooltip:AddLine("(" .. L["Not always here"] .. ")", 0.6, 0.6, 0.6)
         end
     end
 end
@@ -274,21 +305,25 @@ function TownsfolkTracker:CreateMapMarker(iconType, point, townsfolk, folktype, 
 
     -- marker size
     if (iconType == TF_ATLAS_ICON) then
+        -- world map
         local size = 10
         if (point.iconSize) then
             size = size * point.iconSize
         elseif (townsfolk.iconSize) then
             size = size * townsfolk.iconSize
         end
+        size = size * TownsfolkTracker:GetMapIconScale();
         marker:SetWidth(size)
         marker:SetHeight(size)
     else
+        -- minimap
         local size = 12
         if (point.iconSize) then
             size = size * point.iconSize
         elseif (townsfolk.iconSize) then
             size = size * townsfolk.iconSize
         end
+        size = size * TownsfolkTracker:GetMinimapIconScale();
         marker:SetWidth(size)
         marker:SetHeight(size)
     end
@@ -344,6 +379,10 @@ function TownsfolkTracker:CreateIcons()
                         -- FIXME: temp condition
                         if (dungeon.zone) then
                             dungeon.entranceNode = self:CreateMapMarker(TF_MINIMAP_ICON, dungeon, townsfolk, folktype, true, point.group.prefix and point.name)
+
+                            if (dungeon.altEntrance) then
+                                dungeon.entranceNodeAlt = self:CreateMapMarker(TF_MINIMAP_ICON, dungeon, townsfolk, folktype, true, point.group.prefix and point.name)
+                            end
                         end
                     end
                 end
@@ -356,13 +395,21 @@ function TownsfolkTracker:CreateIcons()
                     end
                 end
             end
-            point.mapNode = self:CreateMapMarker(TF_ATLAS_ICON, point, townsfolk, folktype)
+
+            if (not point.hideAtlas) then
+                point.mapNode = self:CreateMapMarker(TF_ATLAS_ICON, point, townsfolk, folktype)
+            end
+
             if (point.altEntrance) then
                 point.minimapNodeAlt = self:CreateMapMarker(TF_MINIMAP_ICON, point, townsfolk, folktype)
-                point.mapNodeAlt = self:CreateMapMarker(TF_ATLAS_ICON, point, townsfolk, folktype)
+                if (not point.hideAtlas) then
+                    point.mapNodeAlt = self:CreateMapMarker(TF_ATLAS_ICON, point, townsfolk, folktype)
+                end
             end
         end
     end
+
+    self.iconsCreated = true
 end
 
 function TownsfolkTracker:DrawMapIcons()
@@ -396,7 +443,7 @@ function TownsfolkTracker:DrawMapIcons()
                 -- only show based on valid restrictions
                 if (displayIcon) then
                     -- minimap icons
-                    Pins:AddMinimapIconMap("TownsfolkTracker", point.minimapNode, point.zone, point.x, point.y, true, false)
+                    Pins:AddMinimapIconMap("TownsfolkTracker", point.minimapNode, point.zone, point.x, point.y, true, point.pinMinimap or false)
                     if (TownsfolkUtil_IsInstanceType(folktype) and point.altEntrance) then
                         Pins:AddMinimapIconMap("TownsfolkTracker", point.minimapNodeAlt, point.altEntrance.zone, point.altEntrance.x, point.altEntrance.y, true, false)
                     end
@@ -407,8 +454,10 @@ function TownsfolkTracker:DrawMapIcons()
                         if (TownsfolkUtil_IsInstanceType(folktype) and self:IsShowInstanceOnWorldMap(nil)) then
                             worldMapShowFlag = HBD_PINS_WORLDMAP_SHOW_WORLD
                         end
-                        Pins:AddWorldMapIconMap("TownsfolkTracker", point.mapNode, point.zone, point.x, point.y, worldMapShowFlag)
-                        if (TownsfolkUtil_IsInstanceType(folktype) and point.altEntrance) then
+                        if (not point.hideAtlas) then
+                            Pins:AddWorldMapIconMap("TownsfolkTracker", point.mapNode, point.zone, point.x, point.y, worldMapShowFlag)
+                        end
+                        if (TownsfolkUtil_IsInstanceType(folktype) and point.altEntrance and not point.hideAtlas) then
                             Pins:AddWorldMapIconMap("TownsfolkTracker", point.mapNodeAlt, point.altEntrance.zone, point.altEntrance.x, point.altEntrance.y, HBD_PINS_WORLDMAP_SHOW_PARENT)
                         end
                     end
@@ -426,30 +475,46 @@ local INSTANCE_DISTANCE = 0.025
 
 -- runs when player changes maps
 function TownsfolkTracker:DrawDungeonMinimapIcons(mapId)
+    -- don't try to draw icons before they're created
+    if not self.iconsCreated then
+        return
+    end
+
     local x, y = Maps:GetPlayerZonePosition()
     Pins:RemoveAllMinimapIcons("TownsfolkTrackerInternal")
     for folktype, townsfolk in pairs(TOWNSFOLK) do
         -- we're only interested in instances
         if tfTrackingList[folktype] and TownsfolkUtil_IsInstanceType(folktype) then
             for _, point in pairs(townsfolk.points) do
+                local instance_distance = point.distance or INSTANCE_DISTANCE
                 -- point is in the same map as player
                 if (point.entrance and mapId == point.entrance.zone) then
                     -- find the distance
                     local distance, deltaX, deltaY = Maps:GetWorldDistance(mapId, x, y, point.entrance.x, point.entrance.y)
-                    if (distance <= INSTANCE_DISTANCE) then
+                    if (distance <= instance_distance and point.entranceNode) then
                         Pins:AddMinimapIconMap("TownsfolkTrackerInternal", point.entranceNode, point.entrance.zone, point.entrance.x, point.entrance.y, true, true)
+                    end
+                    if (distance <= instance_distance and point.entranceNodeAlt) then
+                        Pins:AddMinimapIconMap("TownsfolkTrackerInternal", point.entranceNodeAlt, point.altEntrance.zone, point.altEntrance.x, point.altEntrance.y, true, true)
                     end
                 end
                 if (point.group) then
                     -- group dungeon entrances
                     if (point.group.dungeons) then
                         for _, dungeon in pairs(point.group.dungeons) do
-                            -- FIXME: temp condition
-                            if (dungeon.entranceNode and mapId == dungeon.zone) then
+                            instance_distance = dungeon.distance or instance_distance
+                            if (mapId == dungeon.zone) then
                                 -- find the distance
                                 local distance, deltaX, deltaY = Maps:GetWorldDistance(mapId, x, y, dungeon.x, dungeon.y)
-                                if (distance <= INSTANCE_DISTANCE) then
+                                if (distance <= instance_distance) then
                                     Pins:AddMinimapIconMap("TownsfolkTrackerInternal", dungeon.entranceNode, dungeon.zone, dungeon.x, dungeon.y, true, true)
+                                end
+                            end
+                            if (dungeon.entranceNodeAlt and mapId == dungeon.zone) then
+                                -- find the distance
+                                local distance, deltaX, deltaY = Maps:GetWorldDistance(mapId, x, y, dungeon.altEntrance.x, dungeon.altEntrance.y)
+                                if (distance <= instance_distance and dungeon.entranceNodeAlt) then
+                                    Pins:AddMinimapIconMap("TownsfolkTrackerInternal", dungeon.entranceNodeAlt, dungeon.altEntrance.zone, dungeon.altEntrance.x, dungeon.altEntrance.y, true, true)
                                 end
                             end
                         end
@@ -457,11 +522,11 @@ function TownsfolkTracker:DrawDungeonMinimapIcons(mapId)
                     -- group raid entrances
                     if (point.group.raids) then
                         for _, raid in pairs(point.group.raids) do
-                            -- FIXME: temp condition
-                            if (raid.entranceNode and mapId == raid.zone) then
+                            instance_distance = raid.distance or instance_distance
+                            if (mapId == raid.zone) then
                                 -- find the distance
                                 local distance, deltaX, deltaY = Maps:GetWorldDistance(mapId, x, y, raid.x, raid.y)
-                                if (distance <= INSTANCE_DISTANCE) then
+                                if (distance <= instance_distance) then
                                     Pins:AddMinimapIconMap("TownsfolkTrackerInternal", raid.entranceNode, raid.zone, raid.x, raid.y, true, true)
                                 end
                             end
@@ -495,9 +560,9 @@ function TownsfolkTracker:CreateTrackerList()
                     allChecked = false
                 end
             end
-            info.text, info.checked, info.icon, info.isNotRadio, info.arg1, info.func = " "..L["All"], allChecked, [[Interface\Addons\TownsfolkTracker\Icons\Empty.tga]], true, "ALL", self.SetValue
+            info.text, info.checked, info.icon, info.isNotRadio, info.arg1, info.func = " " .. L["All"], allChecked, [[Interface\Addons\TownsfolkTracker\Icons\Empty.tga]], true, "ALL", self.SetValue
             Lib_UIDropDownMenu_AddButton(info)
-            info.text, info.checked, info.arg1 = " "..L["None"], noneChecked, ""
+            info.text, info.checked, info.arg1 = " " .. L["None"], noneChecked, ""
             Lib_UIDropDownMenu_AddButton(info)
 
             Lib_UIDropDownMenu_AddSeparator({})
@@ -508,7 +573,7 @@ function TownsfolkTracker:CreateTrackerList()
             info = Lib_UIDropDownMenu_CreateInfo()
             for folktype, townsfolk in TownsfolkUtil_PairsByKeys(TOWNSFOLK) do
                 if not TownsfolkUtil_IsInstanceType(folktype) then
-                    info.text = " "..townsfolk.title
+                    info.text = " " .. townsfolk.title
                     info.icon = folktype ~= TF_PROFESSION_TRAINER and townsfolk.icon or nil
                     if (folktype == TF_PROFESSION_TRAINER) then
                         info.checked = allProfessions
@@ -530,7 +595,7 @@ function TownsfolkTracker:CreateTrackerList()
             local info = Lib_UIDropDownMenu_CreateInfo()
             for folktype, townsfolk in TownsfolkUtil_PairsByKeys(TOWNSFOLK) do
                 if TownsfolkUtil_IsInstanceType(folktype) then
-                    info.text = " "..townsfolk.title
+                    info.text = " " .. townsfolk.title
                     info.icon = townsfolk.icon
                     info.checked = tfTrackingList[folktype] or false
                     info.isNotRadio = true
@@ -546,7 +611,7 @@ function TownsfolkTracker:CreateTrackerList()
                 Lib_UIDropDownMenu_AddButton(TownsfolkUtil_MenuLabel(L["Primary Professions"]), level)
                 local info = Lib_UIDropDownMenu_CreateInfo()
                 for _, profType in pairs(TF_PRIMARY_PROFESSION) do
-                    info.text = " "..L[profType]
+                    info.text = " " .. L[profType]
                     info.icon = TOWNSFOLK[TF_PROFESSION_TRAINER].icon
                     info.checked = tfTrackingList[profType] or false
                     info.isNotRadio = true
@@ -561,7 +626,7 @@ function TownsfolkTracker:CreateTrackerList()
                 Lib_UIDropDownMenu_AddButton(TownsfolkUtil_MenuLabel(L["Secondary Professions"]), level)
                 local info = Lib_UIDropDownMenu_CreateInfo()
                 for _, profType in pairs(TF_SECONDARY_PROFESSION) do
-                    info.text = " "..L[profType]
+                    info.text = " " .. L[profType]
                     info.icon = TOWNSFOLK[TF_PROFESSION_TRAINER].icon
                     info.checked = tfTrackingList[profType] or false
                     info.isNotRadio = true
@@ -576,7 +641,7 @@ function TownsfolkTracker:CreateTrackerList()
                 Lib_UIDropDownMenu_AddButton(TownsfolkUtil_MenuLabel(L["Other Training"]), level)
                 local info = Lib_UIDropDownMenu_CreateInfo()
                 for _, profType in pairs(TF_ALT_TRAINING) do
-                    info.text = " "..L[profType]
+                    info.text = " " .. L[profType]
                     info.icon = TOWNSFOLK[TF_PROFESSION_TRAINER].icon
                     info.checked = tfTrackingList[profType] or false
                     info.isNotRadio = true
@@ -659,7 +724,7 @@ function TownsfolkTracker:RegisterMapButton()
 end
 
 function TownsfolkTracker:DebugLocale()
-    for _, townsfolk in pairs (TOWNSFOLK) do
+    for _, townsfolk in pairs(TOWNSFOLK) do
         for _, point in pairs(townsfolk.points) do
             local x
             if (point.name) then x = L[point.name] end

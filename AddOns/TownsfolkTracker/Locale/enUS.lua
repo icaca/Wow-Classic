@@ -55,7 +55,7 @@ L["Cave Entrance"] = true
 
 --[[
     NPC Names
-]]--
+]] --
 
 -- NPC Tags
 -- Classes
@@ -97,6 +97,7 @@ L["Expert Leatherworker"] = true
 L["Artisan Leatherworker"] = true
 L["Master Leatherworker"] = true
 L["Master Dragonscale Leatherworker"] = true
+L["Master Elemental Leatherworker"] = true
 L["Master Tribal Leatherworker"] = true
 L["Apprentice Blacksmith"] = true
 L["Journeyman Blacksmith"] = true
@@ -129,6 +130,7 @@ L["General Goods"] = true
 L["General Goods Merchant"] = true
 L["General Goods Vendor"] = true
 L["Traveling Merchant"] = true
+L["Trade Supplies"] = true
 L["Bowyer"] = true
 L["Superior Bowyer"] = true
 L["Fletcher"] = true
@@ -346,6 +348,8 @@ L["Vikki Lonsav"] = true
 L["Chylina"] = true
 L["Zanara"] = true
 L["Renn'az"] = true
+L["Master Smith Burninate"] = true
+L["Nergal"] = true
 
 -- Auctioneers
 L["Auctioneer Grimful"] = true
@@ -527,6 +531,7 @@ L["Truk Wildbeard"] = true
 L["Thultash"] = true
 L["Ogg'marr"] = true
 L["Bale"] = true
+L["Baker Masterson"] = true
 
 -- Flight Masters
 L["Devrak"] = true
@@ -575,6 +580,11 @@ L["Breyk"] = true
 L["Shardi"] = true
 L["Brakkar"] = true
 L["Gorkas"] = true
+L["Georgia"] = true
+L["Khaelyn Steelwing"] = true
+L["Grisha"] = true
+L["Lanie Reed"] = true
+L["Gryfe"] = true
 
 -- Innkeepers
 L["Innkeeper Gryshka"] = true
@@ -841,6 +851,8 @@ L["Ghok'kah"] = true
 L["Mystic Yayo'jin"] = true
 L["Katoom the Angler"] = true
 L["Otho Moji'ko"] = true
+L["Jase Farlane"] = true
+L["Augustus the Touched"] = true
 
 -- Repairs
 L["Alexandre Lefevre"] = true
@@ -1070,6 +1082,9 @@ L["Zulrg"] = true
 L["Altsoba Ragetotem"] = true
 L["Smith Slagtree"] = true
 L["Wallace the Blind"] = true
+L["Magnus Frostwake"] = true
+L["Graw Cornerstone"] = true
+L["Gibbert"] = true
 
 -- Stable Masters
 L["Sikwa"] = true
@@ -1592,6 +1607,7 @@ L["Nat Pagle"] = true
 L["Karolek"] = true
 L["Kamari"] = true
 L["Thuwd"] = true
+L["Sarah Tanner"] = true
 
 -- Transportation Zones
 L["Skull Rock, Durotar"] = true
@@ -1627,9 +1643,13 @@ L["Zul'Farrak"] = true
 L["Maraudon"] = true
 L["The Temple of Atal'Hakkar"] = true
 L["Blackrock Depths"] = true
+L["Blackrock Spire"] = true
 L["Lower Blackrock Spire"] = true
 L["Upper Blackrock Spire"] = true
 L["Dire Maul"] = true
+L["East"] = true
+L["West"] = true
+L["North"] = true
 L["Scholomance"] = true
 L["Stratholme"] = true
 L["Lv %s"] = true
@@ -1645,9 +1665,21 @@ L["Temple of Ahn'Qiraj"] = true
 L["Naxxramas"] = true
 L["%d Players"] = true
 
+-- Attunement Items
+L["Requires %s"] = true
+L["Complete %s"] = true
+L["The Scarlet Key"] = true
+L["Skeleton Key"] = true
+L["Seal of Ascension"] = true
+L["Attunement to the Core"] = true
+L["Blackhand's Command"] = true
+L["Drakefire Amulet"] = true
+L["Crescent Key"] = true
+L["The Dread Citadel - Naxxramas"] = true
+
 --[[
     Options
-]]--
+]] --
 L["Townsfolk Tracker"] = true
 L["Click"] = true
 L["Choose Townsfolk"] = true
@@ -1671,3 +1703,7 @@ L["Toggles the display of dungeons and raids on the fully zoomed out world map."
 L["Reset Tracking"] = true
 L["Tracking menu bugged after an update? Click here to reset it to the default."] = true
 L["Tracking list reset."] = true
+L["World Map Tracker Scale"] = true
+L["Changes the scale of townsfolk icons on the world map."] = true
+L["Minimap Tracker Scale"] = true
+L["Changes the scale of townsfolk icons on the minimap."] = true

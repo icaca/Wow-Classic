@@ -1,3 +1,5 @@
+local L = LibStub("AceLocale-3.0"):GetLocale("TownsfolkTracker")
+
 -- Lua APIs
 local pairs, table = pairs, table
 
@@ -40,6 +42,38 @@ function TownsfolkUtil_GetPlayerDungeonRecommendation(playerLevel, lowLevelBound
         return 2
     end
     return 3
+end
+
+function TownsfolkUtil_DungeonAttunement(attunement, alwaysShow)
+    local r, g, b = 1, 0, 0
+    if (attunement.item) then
+        local count = GetItemCount(attunement.item, false, false)
+        if (count == 0 or alwaysShow) then
+            if (count > 0) then
+                g, b = 1, 1
+            end
+            GameTooltip:AddLine(format("  " .. L["Requires %s"], L[attunement.name]), r, g, b)
+        end
+    end
+    if (attunement.quest) then
+        local complete = false
+        if (type(attunement.quest) == "number") then
+            complete = IsQuestComplete(attunement.quest)
+        else
+            for questId in pairs(attunement.quest) do
+                if (not complete) then
+                    complete = IsQuestComplete(questId)
+                end
+            end
+        end
+
+        if (not complete or alwaysShow) then
+            if (complete) then
+                g, b = 1, 1
+            end
+            GameTooltip:AddLine(format("  " .. L["Complete %s"], L[attunement.name]), r, g, b)
+        end
+    end
 end
 
 function TownsfolkUtil_IsInstanceType(folktype)
@@ -90,7 +124,7 @@ function TownsfolkUtil_GetTrainerTitle(trainerType)
     elseif (trainerType == TF_PROFESSION.RIDING) then
         return "Riding Instructor"
     else
-        return trainerType.." Trainer"
+        return trainerType .. " Trainer"
     end
 end
 
@@ -119,9 +153,9 @@ function TownsfolkUtil_GetTrainerTag(trainerType, expertise, branch)
     end
 
     if (branch) then
-        return expertise.." "..branch.." "..profession
+        return expertise .. " " .. branch .. " " .. profession
     else
-        return expertise.." "..profession
+        return expertise .. " " .. profession
     end
 end
 

@@ -77,6 +77,7 @@ TF_PROFESSION_BRANCH = {
     GOBLIN = 'Goblin',
     GNOME = 'Gnome',
     DRAGONSCALE = 'Dragonscale',
+    ELEMENTAL = 'Elemental',
     TRIBAL = 'Tribal',
 }
 

@@ -187,6 +187,7 @@ TF_PROFESSION_TRAINERS = {
     { zone = TF_ZONE.THUNDER_BLUFF, x = 0.3938, y = 0.5510, name = "Karn Stonehoof", profession = TF_PROFESSION.BLACKSMITHING, level = TF_TRAINING_LEVEL.EXPERT, faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.ARATHI_HIGHLANDS, x = 0.7408, y = 0.3382, name = "Slagg", tag = "Superior Butcher", profession = TF_PROFESSION.COOKING, faction = TF_FACTION.HORDE },
     { zone = TF_ZONE.BADLANDS, x = 0.6270, y = 0.5742, name = "Thorkaf Dragoneye", profession = TF_PROFESSION.LEATHERWORKING, level = TF_TRAINING_LEVEL.MASTER, branch = TF_PROFESSION_BRANCH.DRAGONSCALE, faction = TF_FACTION.HORDE },
+    { zone = TF_ZONE.SEARING_GORGE, x = 0.6356, y = 0.7597, name = "Sarah Tanner", profession = TF_PROFESSION.LEATHERWORKING, level = TF_TRAINING_LEVEL.MASTER, branch = TF_PROFESSION_BRANCH.ELEMENTAL, faction = TF_FACTION.ALLIANCE },
     { zone = TF_ZONE.ELWYNN_FOREST, x = 0.4437, y = 0.6599, name = "Tomas", profession = TF_PROFESSION.COOKING, faction = TF_FACTION.ALLIANCE },
     { zone = TF_ZONE.ELWYNN_FOREST, x = 0.4339, y = 0.6555, name = "Michelle Belle", profession = TF_PROFESSION.FIRST_AID, faction = TF_FACTION.ALLIANCE },
     { zone = TF_ZONE.ELWYNN_FOREST, x = 0.4171, y = 0.6555, name = "Smith Argus", profession = TF_PROFESSION.BLACKSMITHING, level = TF_TRAINING_LEVEL.JOURNEYMAN, faction = TF_FACTION.ALLIANCE },

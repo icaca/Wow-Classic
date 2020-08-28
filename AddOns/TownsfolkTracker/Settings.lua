@@ -60,10 +60,36 @@ TF_SETTINGS_MENU = {
             set = "ToggleShowAllClassTrainers",
             order = 2,
         },
+        mapScale = {
+            type = "range",
+            name = L["World Map Tracker Scale"],
+            desc = L["Changes the scale of townsfolk icons on the world map."],
+            min = 0.5,
+            max = 2,
+            step = 0.01,
+            bigStep = 0.1,
+            get = "GetMapIconScale",
+            set = "SetMapIconScale",
+            isPercent = true,
+            order = 3,
+        },
+        minimapScale = {
+            type = "range",
+            name = L["Minimap Tracker Scale"],
+            desc = L["Changes the scale of townsfolk icons on the minimap."],
+            min = 0.5,
+            max = 2,
+            step = 0.01,
+            bigStep = 0.1,
+            get = "GetMinimapIconScale",
+            set = "SetMinimapIconScale",
+            isPercent = true,
+            order = 4,
+        },
         worldDesc = {
             name = L["WorldMapDescription"],
             type = "description",
-            order = 3,
+            order = 5,
         },
         useWorldMap = {
             type = "toggle",
@@ -72,7 +98,7 @@ TF_SETTINGS_MENU = {
             width = "full",
             get = "IsUseWorldMap",
             set = "ToggleUseWorldMap",
-            order = 4,
+            order = 6,
         },
         showMapButton = {
             type = "toggle",
@@ -84,7 +110,7 @@ TF_SETTINGS_MENU = {
             disabled = function()
                 return not TownsfolkTracker.db.profile.useWorldMap
             end,
-            order = 5,
+            order = 7,
         },
         showInstancesOnWorld = {
             type = "toggle",
@@ -96,26 +122,28 @@ TF_SETTINGS_MENU = {
             disabled = function()
                 return not TownsfolkTracker.db.profile.useWorldMap
             end,
-            order = 6,
+            order = 8,
         },
         resetTracking = {
             type = "execute",
             name = L["Reset Tracking"],
             desc = L["Tracking menu bugged after an update? Click here to reset it to the default."],
             func = "ResetTracking",
-            order = 7,
+            order = 9,
         }
     },
 }
 
 -- Settings Defaults
 TF_SETTINGS_DEFAULTS = {
-    profile =  {
+    profile = {
         showMinimapButton = true,
         showMapButton = true,
         showAllClassTrainers = false,
         showInstanceOnWorldMap = true,
         minimapPos = 315,
         useWorldMap = true,
+        mapScale = 1.0,
+        minimapScale = 1.0,
     },
 }
