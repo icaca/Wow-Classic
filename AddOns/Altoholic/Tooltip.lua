@@ -389,6 +389,7 @@ local function ShowGatheringNodeCounters()
 	
 	WriteCounterLines(GameTooltip)
 	WriteTotal(GameTooltip)
+    return true
 end
 
 local function ProcessTooltip(tooltip, link)
@@ -494,8 +495,9 @@ end
 
 -- ** GameTooltip hooks **
 local function OnGameTooltipShow(tooltip, ...)
-	ShowGatheringNodeCounters()
-	GameTooltip:Show()
+	if ShowGatheringNodeCounters() then
+	   GameTooltip:Show()
+    end
 end
 
 local updateTooltip = TOOLTIP_UPDATE_TIME
@@ -509,8 +511,9 @@ local function OnGameTooltipUpdate(tooltip, elapsed)
 	updateTooltip = TOOLTIP_UPDATE_TIME;
 
     if not gatheringNodeWasShown then
-        ShowGatheringNodeCounters()
-        GameTooltip:Show()
+        if ShowGatheringNodeCounters() then
+            GameTooltip:Show()
+        end
     end
 end
 

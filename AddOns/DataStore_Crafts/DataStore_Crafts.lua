@@ -542,10 +542,10 @@ local function OnPlayerAlive()
     for i = 1, GetNumSkillLines() do
         local name, _, _, skillLevel, _, _, maxSkillLevel = GetSkillLineInfo(i)
         if (name == L["Fishing"]) then
-            if (not addon.ThisCharacter.Professions["Fishing"]) then addon.ThisCharacter.Professions["Fishing"] = {} end
-            char.Professions["Fishing"].Rank = skillLevel
-            char.Professions["Fishing"].Name = name
-            char.Professions["Fishing"].MaxRank = maxSkillLevel
+            if (not char.Professions[L["Fishing"]]) then char.Professions[L["Fishing"]] = {} end
+            char.Professions[L["Fishing"]].Rank = skillLevel
+            char.Professions[L["Fishing"]].Name = name
+            char.Professions[L["Fishing"]].MaxRank = maxSkillLevel
             char.lastUpdate = time()
         end
         for _, s in ipairs({L["Herbalism"], L["Skinning"], L["Mining"]}) do
@@ -867,7 +867,7 @@ local function _GetFirstAidRank(character)
 end
 
 local function _GetFishingRank(character)
-	local profession = _GetProfession(character, "Fishing")
+	local profession = _GetProfession(character, L["Fishing"])
 	if profession then
 		return _GetProfessionInfo(profession)
 	end

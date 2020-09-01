@@ -8,4 +8,4 @@ L["BROADCAST_PROFS_ENABLED"] = "Los vínculos de profesión conocidos de tus alt
 L["BROADCAST_PROFS_TITLE"] = "Transmisión de Vínculos de Profesión"
 L["Professions"] = "Profesiones"
 L["Secondary Skills"] = "Habilidades secundarias"
-
+L["Fishing"] = "Pesca"

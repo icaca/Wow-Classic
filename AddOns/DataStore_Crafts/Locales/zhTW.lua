@@ -8,4 +8,4 @@ L["BROADCAST_PROFS_ENABLED"] = "你角色已知的專業鏈接將在你上線的
 L["BROADCAST_PROFS_TITLE"] = "廣播專業聯繫"
 L["Professions"] = "專業技能"
 L["Secondary Skills"] = "次要技能"
-
+L["Fishing"] = "釣魚"
