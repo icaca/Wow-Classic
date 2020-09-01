@@ -1,6 +1,9 @@
 function CEPGP_UpdateLootScrollBar(PRsort, sort)
 	local tempTable = {};
 	local count = 1;
+	CEPGP_Info.LastRun.DistSB = GetTime();
+	local call = CEPGP_Info.LastRun.DistSB;
+	local quit = false;
 	for name, _ in pairs(CEPGP_itemsTable) do
 		local roll = math.ceil(math.random(0, 100));
 		local EP, GP;
@@ -51,19 +54,19 @@ function CEPGP_UpdateLootScrollBar(PRsort, sort)
 						local rankIndex = 11;
 						local classFile = select(6, GetRaidRosterInfo(i));
 						tempTable[count] = {
-						[1] = name,
-						[2] = class,
-						[3] = rank,
-						[4] = rankIndex,
-						[5] = EP,
-						[6] = GP,
-						[7] = math.floor((tonumber(EP)*100/tonumber(GP)))/100,
-						[8] = CEPGP_itemsTable[name][1] or "noitem",
-						[9] = CEPGP_itemsTable[name][2] or "noitem",
-						[10] = classFile,
-						[11] = CEPGP_itemsTable[name][3], -- Loot response
-						[12] = CEPGP_itemsTable[name][4]
-					};
+							[1] = name,
+							[2] = class,
+							[3] = rank,
+							[4] = rankIndex,
+							[5] = EP,
+							[6] = GP,
+							[7] = math.floor((tonumber(EP)*100/tonumber(GP)))/100,
+							[8] = CEPGP_itemsTable[name][1] or "noitem",
+							[9] = CEPGP_itemsTable[name][2] or "noitem",
+							[10] = classFile,
+							[11] = CEPGP_itemsTable[name][3], -- Loot response
+							[12] = CEPGP_itemsTable[name][4]
+						};
 					end
 				end
 			end
@@ -81,6 +84,11 @@ function CEPGP_UpdateLootScrollBar(PRsort, sort)
 		child:Hide();
 	end
 	for i = 1, #tempTable do
+		if quit then return; end
+		if CEPGP_Info.LastRun.DistSB ~= call then
+			quit = true;
+			return;
+		end
 		if not _G["LootDistButton" .. i] then
 			local frame = CreateFrame('Button', "LootDistButton" .. i, _G["CEPGP_dist_scrollframe_container"], "LootDistButtonTemplate");
 			if i > 1 then
@@ -91,7 +99,7 @@ function CEPGP_UpdateLootScrollBar(PRsort, sort)
 		end
 		--tempTable[i][11] = (CEPGP_response_buttons[tonumber(tempTable[i][11])] and CEPGP_response_buttons[tonumber(tempTable[i][11])][2]) or tempTable[i][11];
 		local response = tempTable[i][11];
-		local reason = CEPGP_response_buttons[response] and CEPGP_response_buttons[response][2] or tempTable[i][11];
+		local reason = CEPGP_Info.LootSchema[tempTable[i][11]];
 		local EPcolour;
 		if CEPGP.Loot.MinReq[1] and CEPGP.Loot.MinReq[2] > tonumber(tempTable[i][5]) then
 			EPcolour = {
@@ -100,10 +108,10 @@ function CEPGP_UpdateLootScrollBar(PRsort, sort)
 				b = 0
 			};
 		else
-			EPcolour = RAID_CLASS_COLORS[string.upper(tempTable[i][10])];
+			EPcolour = CEPGP_Info.ClassColours[string.upper(tempTable[i][10])];
 		end
 		
-		local colour = RAID_CLASS_COLORS[string.upper(tempTable[i][10])];
+		local colour = CEPGP_Info.ClassColours[string.upper(tempTable[i][10])];
 		if not colour then
 			colour = {
 				r = 1,
@@ -349,7 +357,7 @@ function CEPGP_UpdateGuildScrollBar()
 					_G["GuildButton" .. i]:SetPoint("TOPLEFT", _G["CEPGP_guild_scrollframe_container"], "TOPLEFT", 0, -10);
 				end
 			end
-			local colour = RAID_CLASS_COLORS[string.upper(tempTable[i][8])];
+			local colour = CEPGP_Info.ClassColours[string.upper(tempTable[i][8])];
 			if not colour then
 				colour = {
 				r = 1,
@@ -400,10 +408,10 @@ function CEPGP_UpdateRaidScrollBar()
 		end
 	end
 	for i = 1, CEPGP_ntgetn(tempTable) do
-		if CEPGP_Info.LastRun.RaidSB ~= call then
+		if CEPGP_Info.LastRun.RaidSB ~= call or #tempTable ~= #CEPGP_raidRoster then
 			return;
 		end
-		if #tempTable ~= #CEPGP_raidRoster then return; end
+		
 		if not _G["RaidButton" .. i] then
 			local frame = CreateFrame('Button', "RaidButton" .. i, _G["CEPGP_raid_scrollframe_container"], "RaidButtonTemplate");
 			if i > 1 then
@@ -412,7 +420,7 @@ function CEPGP_UpdateRaidScrollBar()
 				_G["RaidButton" .. i]:SetPoint("TOPLEFT", _G["CEPGP_raid_scrollframe_container"], "TOPLEFT", 0, -10);
 			end
 		end
-		local colour = RAID_CLASS_COLORS[string.upper(tempTable[i][8])];
+		local colour = CEPGP_Info.ClassColours[string.upper(tempTable[i][8])];
 		if not colour then
 			colour = {
 			r = 1,
@@ -470,21 +478,22 @@ function CEPGP_UpdateVersionScrollBar()
 	
 	tempTable = CEPGP_tSort(tempTable, CEPGP_Info.Sorting.Version[1], CEPGP_Info.Sorting.Version[2]);
 	
-	if CEPGP_vSearch == "GUILD" then
-		for i = 1, #tempTable do
-			if call ~= CEPGP_Info.LastRun.VersionSB then return; end
-			if not _G["versionButton" .. i] then
-				local frame = CreateFrame('Button', "versionButton" .. i, _G["CEPGP_version_scrollframe_container"], "versionButtonTemplate"); -- Creates version frames if needed
-				if i > 1 then
-					_G["versionButton" .. i]:SetPoint("TOPLEFT", _G["versionButton" .. i-1], "BOTTOMLEFT", 0, -2);
-				else
-					_G["versionButton" .. i]:SetPoint("TOPLEFT", _G["CEPGP_version_scrollframe_container"], "TOPLEFT", 5, -6);
-				end
+	
+	for i = 1, #tempTable do
+		if call ~= CEPGP_Info.LastRun.VersionSB then return; end
+		if not _G["versionButton" .. i] then
+			local frame = CreateFrame('Button', "versionButton" .. i, _G["CEPGP_version_scrollframe_container"], "versionButtonTemplate"); -- Creates version frames if needed
+			if i > 1 then
+				_G["versionButton" .. i]:SetPoint("TOPLEFT", _G["versionButton" .. i-1], "BOTTOMLEFT", 0, -2);
+			else
+				_G["versionButton" .. i]:SetPoint("TOPLEFT", _G["CEPGP_version_scrollframe_container"], "TOPLEFT", 5, -6);
 			end
-			_G["versionButton" .. i]:Show();
+		end
+		_G["versionButton" .. i]:Show();
+		if CEPGP_vSearch == "GUILD" then
 			local name = tempTable[i][1];
 			local classFile = tempTable[i][4];
-			local colour = RAID_CLASS_COLORS[classFile];
+			local colour = CEPGP_Info.ClassColours[classFile];
 			if not colour then
 				colour = {
 				r = 1,
@@ -496,18 +505,14 @@ function CEPGP_UpdateVersionScrollBar()
 			_G["versionButton" .. i .. "name"]:SetTextColor(colour.r, colour.g, colour.b);
 			_G["versionButton" .. i .. "version"]:SetText(tempTable[i][2]);
 			_G["versionButton" .. i .. "version"]:SetTextColor(colour.r, colour.g, colour.b);
-		end
-	else
-		for i = 1, CEPGP_ntgetn(tempTable) do
-			if call ~= CEPGP_Info.LastRun.VersionSB then return; end
-			_G["versionButton" .. i]:Show();
+		else
 			for x = 1, GetNumGroupMembers() do
 				if tempTable[i][1] == GetRaidRosterInfo(x) then
 					name = tempTable[i][1];
 					version = tempTable[i][2];
 					class = tempTable[i][3];
 					classFile = tempTable[i][4];
-					local colour = RAID_CLASS_COLORS[classFile];
+					local colour = CEPGP_Info.ClassColours[classFile];
 					if not colour then
 						colour = {
 						r = 1,
@@ -519,7 +524,6 @@ function CEPGP_UpdateVersionScrollBar()
 					_G["versionButton" .. i .. "name"]:SetTextColor(colour.r, colour.g, colour.b);
 					_G["versionButton" .. i .. "version"]:SetText(version);
 					_G["versionButton" .. i .. "version"]:SetTextColor(colour.r, colour.g, colour.b);
-					break;
 				end
 			end
 		end
@@ -778,7 +782,7 @@ function CEPGP_UpdateStandbyScrollBar()
 		};
 		local colour;
 		if tempTable[i][9] then
-			colour = RAID_CLASS_COLORS[tempTable[i][8]];
+			colour = CEPGP_Info.ClassColours[tempTable[i][8]];
 			_G["StandbyButton" .. i]:SetScript('OnEnter', function() end);
 		else
 			colour = {
@@ -788,7 +792,7 @@ function CEPGP_UpdateStandbyScrollBar()
 			};
 			_G["StandbyButton" .. i]:SetScript('OnEnter', function()
 				GameTooltip:SetOwner(_G["StandbyButton" .. i], "ANCHOR_TOPLEFT");
-				GameTooltip:SetText("Player Offline");
+				GameTooltip:SetText("玩家离线");
 			end);
 			_G["StandbyButton" .. i]:SetScript('OnLeave', function()
 				GameTooltip:Hide()
@@ -971,7 +975,7 @@ function CEPGP_UpdateAttendanceScrollBar()
 			avg = math.floor(avg*100)/100;
 		end
 		if tempTable[i][10] then
-			colour = RAID_CLASS_COLORS[tempTable[i][10]];
+			colour = CEPGP_Info.ClassColours[tempTable[i][10]];
 		end
 		if not colour then
 			colour = {
@@ -1044,7 +1048,7 @@ function CEPGP_UpdateAttendanceScrollBar()
 		local avg = standbyTable[i][4]/#CEPGP_raid_logs;
 		avg = math.floor(avg*100)/100;
 		if standbyTable[i][10] then
-			colour = RAID_CLASS_COLORS[standbyTable[i][10]];
+			colour = CEPGP_Info.ClassColours[standbyTable[i][10]];
 		end
 		if not colour then
 			colour = {
@@ -1139,7 +1143,7 @@ function CEPGP_UpdateAltScrollBar()
 				frame = _G["AltFrame" .. i];
 			end
 			
-			local colour = RAID_CLASS_COLORS[class];
+			local colour = CEPGP_Info.ClassColours[class];
 			if not colour then
 				colour = {
 				r = 1,
@@ -1216,3 +1220,36 @@ function CEPGP_UpdateKeywordScrollBar()
 		_G["keywordButton" .. i .. "Discount"]:SetTextColor(1, 1, 1);
 	end
 end
+
+function CEPGP_UpdateLogScrollBar()
+	
+	local call = CEPGP_Info.LastRun.LogSB;
+	local quit = false;
+
+	local logs = {};
+	for _, data in ipairs(CEPGP.Log) do
+		table.insert(logs, data);
+	end
+	
+	local frame = CEPGP_log_container;
+	local str = "";
+	CEPGP_log_container:SetText("Compiling message log. Please wait...");
+	for i = #logs, math.max(1, #logs-2000), -1 do
+		if call ~= CEPGP_Info.LastRun.LogSB then
+			timer._remainingIterations = 1;
+			return;
+		end
+		
+		local absTime =			logs[i][1];
+		local msgType =			logs[i][2];
+		local source =			logs[i][3];
+		local destination =		logs[i][4] or "Channel-Wide";
+		local content =			logs[i][5];
+		local channel = 		logs[i][6];
+
+		local state = (msgType == "attempt" and "|cFFF5B342Reattempting|r") or (msgType == "abandoned" and "|cFFFF0000Abandoned|r")	or (msgType == "received" and "|cFF03A9FCReceived|r") or (msgType == "sent" and "|cFF00FF00Sent|r");
+		str = str .. date("%H:%M:%S", absTime) .. ": Source: " .. source .. ", Scope: " .. destination .. ", Channel: " .. channel .. ", State: " .. state .. "\nContent: " .. content .. "\n\n";
+	end
+	CEPGP_log_container:SetText(str);
+end
+

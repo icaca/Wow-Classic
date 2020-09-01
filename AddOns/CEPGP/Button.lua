@@ -38,7 +38,7 @@ function CEPGP_ListButton_OnClick(obj, button)
 			local entry = #TRAFFIC - (500-id) - (page*500);
 			if frame:GetAttribute("delete_confirm") == "true" then
 				table.remove(TRAFFIC, tonumber(entry));
-				CEPGP_print("Traffic entry " .. entry .. " purged.");
+				CEPGP_print("EPGP详情目录 " .. entry .. " 清除.");
 				CEPGP_UpdateTrafficScrollBar();
 			else
 				local function verify(tLog)
@@ -50,12 +50,12 @@ function CEPGP_ListButton_OnClick(obj, button)
 				if verify(TRAFFIC[entry]) then
 					CEPGP_print("您正试图清除以下条目：");
 					if TRAFFIC[entry][8] and string.find(TRAFFIC[entry][8], "item:") then -- If an item is associated with the log
-						CEPGP_print("Issuer: " .. TRAFFIC[entry][2] .. ", Action: " .. TRAFFIC[entry][3] .. ", Item: " .. TRAFFIC[entry][8] .. " |c006969FF, Recipient: " .. TRAFFIC[entry][1] .. "|r");
+						CEPGP_print("管理者: " .. TRAFFIC[entry][2] .. ", 动作: " .. TRAFFIC[entry][3] .. ", 装备: " .. TRAFFIC[entry][8] .. " |c006969FF, 玩家: " .. TRAFFIC[entry][1] .. "|r");
 					else
-						CEPGP_print("Issuer: " .. TRAFFIC[entry][2] .. ", Action: " .. TRAFFIC[entry][3] .. ", Recipient: " .. TRAFFIC[entry][1]);
+						CEPGP_print("管理者: " .. TRAFFIC[entry][2] .. ", 动作: " .. TRAFFIC[entry][3] .. ", 玩家: " .. TRAFFIC[entry][1]);
 					end
 				else
-					CEPGP_print("您试图清除共享条目.");
+					CEPGP_print("您试图清除EPGP详情目录.");
 				end
 				CEPGP_print("此操作无法撤消。若要继续，请再次按“删除”按钮。");
 				frame:SetAttribute("delete_confirm", "true");
@@ -122,7 +122,7 @@ function CEPGP_ListButton_OnClick(obj, button)
 				end
 			end
 			if changes then
-				CEPGP_print("更新EPGP的排除会阶");
+				CEPGP_print("更新的EPGP会阶排除");
 				CEPGP_roster = {};
 				CEPGP_Info.NumExcluded = 0;
 				CEPGP_rosterUpdate("GUILD_ROSTER_UPDATE");
@@ -138,7 +138,7 @@ function CEPGP_ListButton_OnClick(obj, button)
 			return;
 		end
 		
-		if obj == "CEPGP_standby_ep_list_add" and (CanEditOfficerNote() or CEPGP_debugMode) then
+		if obj == "CEPGP_standby_ep_list_add" and (CanEditOfficerNote() or CEPGP_Info.Debug) then
 			ShowUIPanel(CEPGP_context_popup);
 			CEPGP_context_popup_EP_check:Hide();
 			CEPGP_context_popup_GP_check:Hide();
@@ -214,7 +214,7 @@ function CEPGP_ListButton_OnClick(obj, button)
 			CEPGP_UpdateStandbyScrollBar();
 		end
 		
-		if not CanEditOfficerNote() and not CEPGP_debugMode then
+		if not CanEditOfficerNote() and not CEPGP_Info.Debug then
 			CEPGP_print("你没有权限修改EPGP", 1);
 			return;
 		end
@@ -225,8 +225,9 @@ function CEPGP_ListButton_OnClick(obj, button)
 			if _G[obj]:GetAttribute("response") then
 				local attr = _G[obj]:GetAttribute("response");
 				response = _G[obj]:GetAttribute("responseName");
+				response = CEPGP_indexToLabel(response);
 				reason = CEPGP_response_buttons[attr] and CEPGP_response_buttons[attr][2] or response;
-				discount = (CEPGP.Loot.ExtraKeywords.Keywords[attr] and CEPGP_getDiscount(attr)) or (CEPGP_response_buttons[attr] and CEPGP_response_buttons[attr][3]);
+				discount = (CEPGP.Loot.ExtraKeywords.Keywords[attr] and CEPGP_getDiscount(attr)) or (CEPGP_response_buttons[attr] and CEPGP_response_buttons[attr][3]) or CEPGP_getDiscount(CEPGP_indexToLabel(attr));
 				CEPGP_distribute_popup:SetAttribute("responseName", reason);
 				CEPGP_distribute_popup:SetAttribute("response", attr);
 			else
@@ -319,7 +320,7 @@ function CEPGP_ListButton_OnClick(obj, button)
 			CEPGP_context_popup_EP_check:SetChecked(1);
 			CEPGP_context_popup_GP_check:SetChecked(nil);
 			CEPGP_context_popup_header:SetText("公会成员EP调节");
-			CEPGP_context_popup_title:SetText("修改EP：" .. name);
+			CEPGP_context_popup_title:SetText("修改EP： " .. name);
 			CEPGP_context_popup_desc:SetText("加/减EP");
 			CEPGP_context_amount:SetText("0");
 			CEPGP_context_popup_confirm:SetScript('OnClick', function()
@@ -415,7 +416,7 @@ function CEPGP_ListButton_OnClick(obj, button)
 		elseif strfind(obj, "RaidButton") then --A player from the raid menu is clicked (awards EP)
 			local name = _G[_G[obj]:GetName() .. "Info"]:GetText();
 			if not CEPGP_getGuildInfo(name) then
-				CEPGP_print(name .. " is not a guild member - Cannot award EP or GP", true);
+				CEPGP_print(name .. " 不是公会成员-不能授予EP或GP", true);
 				return;
 			end
 			ShowUIPanel(CEPGP_context_popup);
@@ -432,7 +433,7 @@ function CEPGP_ListButton_OnClick(obj, button)
 			CEPGP_context_amount:SetText("0");
 			CEPGP_context_popup_confirm:SetScript('OnClick', function()
 				if string.find(CEPGP_context_amount:GetText(), '[^0-9%-]') then
-					CEPGP_print("Enter a valid number", true);
+					CEPGP_print("输入有效数字", true);
 				else
 					PlaySound(799);
 					HideUIPanel(CEPGP_context_popup);
@@ -491,15 +492,22 @@ function CEPGP_distribute_popup_give()
 	CEPGP_distPlayer = "";
 end
 
-function CEPGP_distribute_popup_OnEvent(event, msg, name)
+function CEPGP_distribute_popup_OnEvent(eCode)
+	
+	--[[	Error Codes:
+		2		Player's inventory is full
+		22		Player already has one of the unique item
+	]]
+	
 	if CEPGP_distributing then
-		if event == "UI_ERROR_MESSAGE" and arg1 == "物品栏已满。" and CEPGP_distPlayer ~= "" then
+		if eCode == 2 then
 			CEPGP_print(CEPGP_distPlayer .. "的物品栏已满。", 1);
 			CEPGP_distribute_popup:Hide();
 			CEPGP_distPlayer = "";
 			CEPGP_award = false;
-		elseif event == "UI_ERROR_MESSAGE" and arg1 == "你不能再携带这件装备了。" and CEPGP_distPlayer ~= "" then
-			CEPGP_print(CEPGP_distPlayer .. "不能再带这件唯一属性的装备了", 1);
+			
+		elseif eCode == 22 then
+			CEPGP_print(CEPGP_distPlayer .. " 不能再带这件唯一属性的装备了", 1);
 			CEPGP_distribute_popup:Hide();
 			CEPGP_distPlayer = "";
 			CEPGP_award = false;
@@ -549,7 +557,7 @@ function CEPGP_syncRankChange(self, arg1, arg2, checked)
 		--UIDropDownMenu_SetSelectedValue(CEPGP_interface_options_forced_sync_rank, self.value);
 		CEPGP_force_sync_rank = self.value;
 		CEPGP.Sync[2] = self.value;
-		CEPGP_print("Updated forced synchronisation rank");
+		CEPGP_print("更新的配置管理状态");
 	end
 end
 
@@ -590,14 +598,14 @@ function CEPGP_minThresholdDropdown(frame, level, menuList)
 		};
 		local entry = UIDropDownMenu_AddButton(info);
 	end
-	UIDropDownMenu_SetSelectedName(CEPGP_min_threshold_dropdown, rarity[CEPGP_min_threshold]);
-	--UIDropDownMenu_SetSelectedValue(CEPGP_min_threshold_dropdown, CEPGP_min_threshold);
+	UIDropDownMenu_SetSelectedName(CEPGP_min_threshold_dropdown, rarity[CEPGP.Loot.MinThreshold]);
+	--UIDropDownMenu_SetSelectedValue(CEPGP.Loot.MinThreshold_dropdown, CEPGP.Loot.MinThreshold);
 end
 
 function CEPGP_minThresholdChange(self, value)
 	UIDropDownMenu_SetSelectedName(CEPGP_min_threshold_dropdown, self:GetText());
-	--UIDropDownMenu_SetSelectedValue(CEPGP_min_threshold_dropdown, self.value);
-	CEPGP_min_threshold = self.value;
+	--UIDropDownMenu_SetSelectedValue(CEPGP.Loot.MinThreshold_dropdown, self.value);
+	CEPGP.Loot.MinThreshold = self.value;
 	CEPGP_print("最小自动显示阈值现在设置为" .. self:GetText());
 end
 
@@ -651,7 +659,7 @@ function CEPGP_lootChannelDropdown(frame, level, menuList)
 		local entry = UIDropDownMenu_AddButton(info);
 	end
 	for i = 1, #channels do
-		if string.lower(CEPGP_lootChannel) == string.lower(channels[i]) then
+		if string.lower(CEPGP.LootChannel) == string.lower(channels[i]) then
 			UIDropDownMenu_SetSelectedName(CEPGP_loot_channel_dropdown, channels[i]);
 			--UIDropDownMenu_SetSelectedValue(CEPGP_loot_channel_dropdown, i);
 		end
@@ -661,6 +669,6 @@ end
 function CEPGP_lootChannelChange(self, value)
 	UIDropDownMenu_SetSelectedName(CEPGP_loot_channel_dropdown, self:GetText());
 	--UIDropDownMenu_SetSelectedValue(CEPGP_loot_channel_dropdown, self.value);
-	CEPGP_lootChannel = self:GetText();
-	CEPGP_print("战利品响应通道设置为 \"" .. CEPGP_lootChannel .. "\".");
+	CEPGP.LootChannel = self:GetText();
+	CEPGP_print("战利品响应通道设置为 \"" .. CEPGP.LootChannel .. "\".");
 end
