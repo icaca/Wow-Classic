@@ -48,27 +48,9 @@ local categories = {
 		isCollapsed = true,
 	},
 	{
-		name = AUCTION_CATEGORY_GEMS,
-		class = LE_ITEM_CLASS_GEM,
-		subClasses = { GetAuctionItemSubClasses(LE_ITEM_CLASS_GEM) },
-		isCollapsed = true,
-	},
-	{
-		name = AUCTION_CATEGORY_ITEM_ENHANCEMENT,
-		class = LE_ITEM_CLASS_ITEM_ENHANCEMENT,
-		subClasses = { GetAuctionItemSubClasses(LE_ITEM_CLASS_ITEM_ENHANCEMENT) },
-		isCollapsed = true,
-	},
-	{
 		name = AUCTION_CATEGORY_CONSUMABLES,
 		class = LE_ITEM_CLASS_CONSUMABLE,
 		subClasses = { GetAuctionItemSubClasses(LE_ITEM_CLASS_CONSUMABLE) },
-		isCollapsed = true,
-	},
-	{
-		name = AUCTION_CATEGORY_GLYPHS,
-		class = LE_ITEM_CLASS_GLYPH,
-		subClasses = { GetAuctionItemSubClasses(LE_ITEM_CLASS_GLYPH) },
 		isCollapsed = true,
 	},
 	{
@@ -78,9 +60,27 @@ local categories = {
 		isCollapsed = true,
 	},
 	{
+		name = AUCTION_CATEGORY_PROJECTILE,
+		class = LE_ITEM_CLASS_PROJECTILE,
+		subClasses = { GetAuctionItemSubClasses(LE_ITEM_CLASS_PROJECTILE) },
+		isCollapsed = true,
+	},
+	{
+		name = AUCTION_CATEGORY_QUIVER,
+		class = LE_ITEM_CLASS_QUIVER,
+		subClasses = { GetAuctionItemSubClasses(LE_ITEM_CLASS_QUIVER) },
+		isCollapsed = true,
+	},
+	{
 		name = AUCTION_CATEGORY_RECIPES,
 		class = LE_ITEM_CLASS_RECIPE,
 		subClasses = { GetAuctionItemSubClasses(LE_ITEM_CLASS_RECIPE) },
+		isCollapsed = true,
+	},
+	{
+		name = AUCTION_CATEGORY_REAGENT,
+		class = LE_ITEM_CLASS_REAGENT,
+		subClasses = { GetAuctionItemSubClasses(LE_ITEM_CLASS_REAGENT) },
 		isCollapsed = true,
 	},
 	{

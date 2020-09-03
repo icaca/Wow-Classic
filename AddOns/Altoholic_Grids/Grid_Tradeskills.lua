@@ -120,7 +120,7 @@ local callbacks = {
 				return
 			end
 			
-			currentItemID = DataStore:GetCraftResultItem(spellID)
+			currentItemID = LCI:GetCraftResultItem(spellID)
 			local orange, yellow, green, grey = LCL:GetCraftLevels(spellID)
 			
 			if orange then
@@ -179,7 +179,7 @@ local callbacks = {
 			button.id = currentItemID
 		end,
 	OnEnter = function(self) 
-			self.link = nil
+			self.link = select(2, GetItemInfo(self.id))
 			addon:Item_OnEnter(self) 
 		end,
 	OnClick = function(self, button)
