@@ -618,19 +618,14 @@ local MYTHIC_KEYSTONE = 138019
 
 local function VerifyItem(item, itemCount, itemLink)
 	if type(item) == "string" then		-- convert a link to its item id, only data saved
-	
-		if item:match("|Hkeystone:") then
-			item = MYTHIC_KEYSTONE			-- mythic keystones are actually all using the same item id
-		else
-			item = tonumber(item:match("item:(%d+)"))
-		end	
+		item = tonumber(item:match("item:(%d+)"))	
 	end
 	
 	if type(itemLink) ~= "string" then              -- a link is not a link - delete it
 		itemLink = nil
 	end
 	
-	filters:SetSearchedItem(item, (item ~= MYTHIC_KEYSTONE) and itemLink or nil)
+	filters:SetSearchedItem(item, itemLink)
 	-- local isOK = filters:ItemPassesFilters((item == 138019))	-- debug item 
 	local isOK = filters:ItemPassesFilters()
 	

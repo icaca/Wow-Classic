@@ -3,6 +3,7 @@
 	<Script file="Grid_Reputations.lua"></Script>
 	<Script file="Grid_Tradeskills.lua"></Script>
     <Script file="Grid_Keyring.lua"></Script>
+    <Script file="Grid_Attunements.lua"></Script>
 	
 	<Frame name="AltoholicFrameGrids" parent="AltoholicTabGrids" hidden="true">
 		<Size x="615" y="306" />

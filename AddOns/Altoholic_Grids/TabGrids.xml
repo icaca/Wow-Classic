@@ -99,6 +99,14 @@
 					<KeyValue key="iconFile" value="Interface\Icons\INV_Misc_Key_14" />
 				</KeyValues>
 			</Button>
+			<Button parentKey="Attunements" inherits="AltoTabGridsMenuIconTemplate" id="5">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="AltoholicTabGrids" relativePoint="BOTTOMLEFT" x="30" y="200" />
+				</Anchors>
+				<KeyValues>
+					<KeyValue key="iconFile" value="Interface\Icons\INV_Misc_PunchCards_Prismatic" />
+				</KeyValues>
+			</Button>
             
 		</Frames>
 		<Scripts>

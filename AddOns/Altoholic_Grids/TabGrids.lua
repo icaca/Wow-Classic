@@ -16,7 +16,9 @@ addon:Controller("AltoholicUI.TabGrids", {
 		frame.Equipment.text = L["Equipment"]
 		frame.Factions.text = L["Reputations"]
         frame.TradeSkills.text = "Trade Skills"
-		
+        frame.Keyring.text = KEYRING
+        frame.Attunements.text = RELIC_TOOLTIP_ATTUNED_FOR
+        		
 		frame.SelectRealm:RegisterClassEvent("RealmChanged", function()
 				frame.Status:SetText("")
 				frame:Update()

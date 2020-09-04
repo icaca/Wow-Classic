@@ -71,9 +71,9 @@ local function showRealDate(curseDate)
 end
 
 DBM = {
-	Revision = parseCurseDate("20200829144948"),
-	DisplayVersion = "1.13.58", -- the string that is shown as version
-	ReleaseRevision = releaseDate(2020, 8, 29) -- the date of the latest stable version that is available, optionally pass hours, minutes, and seconds for multiple releases in one day
+	Revision = parseCurseDate("20200904151806"),
+	DisplayVersion = "1.13.59", -- the string that is shown as version
+	ReleaseRevision = releaseDate(2020, 9, 4) -- the date of the latest stable version that is available, optionally pass hours, minutes, and seconds for multiple releases in one day
 }
 DBM.HighestRelease = DBM.ReleaseRevision --Updated if newer version is detected, used by update nags to reflect critical fixes user is missing on boss pulls
 
@@ -295,6 +295,8 @@ DBM.DefaultOptions = {
 	DebugLevel = 1,
 	WorldBossAlert = true,
 	WorldBuffAlert = true,
+	BadTimerAlert = false,
+	BadIDAlert = false,
 	AutoAcceptFriendInvite = false,
 	AutoAcceptGuildInvite = false,
 	FakeBWVersion = false,
@@ -6549,7 +6551,15 @@ end
 --Future proofing EJ_GetSectionInfo compat layer to make it easier updatable.
 function DBM:EJ_GetSectionInfo(sectionID)
 	return "EJ_GetSectionInfo"
---	local info = EJ_GetSectionInfo(sectionID);
+--	local info = EJ_GetSectionInfo(sectionID)
+--	if not info then
+--		if DBM.Options.BadIDAlert then
+--			AddMsg("|cffff0000Invalid call to EJ_GetSectionInfo for sectionID: |r"..sectionID..". Please report this bug")
+--		else
+--			DBM:Debug("|cffff0000Invalid call to EJ_GetSectionInfo for sectionID: |r"..sectionID)
+--		end
+--		return nil
+--	end
 --	local flag1, flag2, flag3, flag4;
 --	local flags = GetSectionIconFlags(sectionID);
 --	if flags then
@@ -6562,7 +6572,11 @@ end
 function DBM:GetSpellInfo(spellId)
 	local name, rank, icon, castingTime, minRange, maxRange, returnedSpellId  = GetSpellInfo(spellId)
 	if not returnedSpellId then--Bad request all together
-		DBM:Debug("|cffff0000Invalid call to GetSpellInfo for spellID: |r"..spellId)
+		if DBM.Options.BadIDAlert then
+			AddMsg("|cffff0000Invalid call to GetSpellInfo for spellID: |r"..spellId..". Please report this bug")
+		else
+			DBM:Debug("|cffff0000Invalid call to GetSpellInfo for spellID: |r"..spellId)
+		end
 		return nil
 	else--Good request, return now
 		return name, rank, icon, castingTime, minRange, maxRange, returnedSpellId
@@ -10172,14 +10186,18 @@ do
 		if not self.option or self.mod.Options[self.option] then
 			if self.type and (self.type == "cdcount" or self.type == "nextcount") and not self.allowdouble then--remove previous timer.
 				for i = #self.startedTimers, 1, -1 do
-					if DBM.Options.DebugMode and DBM.Options.DebugLevel > 1 then
+					if DBM.Options.BadTimerAlert or DBM.Options.DebugMode and DBM.Options.DebugLevel > 1 then
 						local bar = DBM.Bars:GetBar(self.startedTimers[i])
 						if bar then
 							local remaining = ("%.1f"):format(bar.timer)
 							local ttext = _G[bar.frame:GetName().."BarName"]:GetText() or ""
 							ttext = ttext.."("..self.id..")"
 							if bar.timer > 0.2 then
-								DBM:Debug("Timer "..ttext.. " refreshed before expired. Remaining time is : "..remaining, 2)
+								if DBM.Options.BadTimerAlert and bar.timer >= 2 then--If greater than 2 seconds off, report this out of debug mode to all users
+									AddMsg("Timer "..ttext.. " refreshed before expired. Remaining time is : "..remaining..". Please report this bug", 2)
+								else
+									DBM:Debug("Timer "..ttext.. " refreshed before expired. Remaining time is : "..remaining, 2)
+								end
 							end
 						end
 					end
@@ -10241,7 +10259,7 @@ do
 					end
 				end
 			end
-			if DBM.Options.DebugMode and DBM.Options.DebugLevel > 1 then
+			if DBM.Options.BadTimerAlert or DBM.Options.DebugMode and DBM.Options.DebugLevel > 1 then
 				if not self.type or (self.type ~= "target" and self.type ~= "active" and self.type ~= "fades" and self.type ~= "ai") then
 					local bar = DBM.Bars:GetBar(id)
 					if bar then
@@ -10249,7 +10267,11 @@ do
 						local ttext = _G[bar.frame:GetName().."BarName"]:GetText() or ""
 						ttext = ttext.."("..self.id..")"
 						if bar.timer > 0.2 then
-							DBM:Debug("Timer "..ttext.. " refreshed before expired. Remaining time is : "..remaining, 2)
+							if DBM.Options.BadTimerAlert and bar.timer >= 2 then--If greater than 2 seconds off, report this out of debug mode to all users
+								AddMsg("Timer "..ttext.. " refreshed before expired. Remaining time is : "..remaining..". Please report this bug", 2)
+							else
+								DBM:Debug("Timer "..ttext.. " refreshed before expired. Remaining time is : "..remaining, 2)
+							end
 						end
 					end
 				end
@@ -10284,7 +10306,7 @@ do
 			msg = msg:gsub(">.-<", stripServerName)
 			bar:SetText(msg, self.inlineIcon)
 			--ID: Internal DBM timer ID
-			--msg: Timer Text
+			--msg: Timer Text (Do not use msg has an event trigger, it varies language to language or based on user timer options. Use this to DISPLAY only (such as timer replacement UI). use spellId field 99% of time
 			--timer: Raw timer value (number).
 			--Icon: Texture Path for Icon
 			--type: Timer type (Cooldowns: cd, cdcount, nextcount, nextsource, cdspecial, nextspecial, stage, ai. Durations: target, active, fades, roleplay. Casting: cast)
@@ -11419,7 +11441,7 @@ end
 
 function bossModPrototype:SetRevision(revision)
 	revision = parseCurseDate(revision or "")
-	if not revision or revision == "20200829144948" then
+	if not revision or revision == "20200904151806" then
 		-- bad revision: either forgot the svn keyword or using github
 		revision = DBM.Revision
 	end

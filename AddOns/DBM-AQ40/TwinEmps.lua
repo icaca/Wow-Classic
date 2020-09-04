@@ -1,14 +1,15 @@
 local mod	= DBM:NewMod("TwinEmpsAQ", "DBM-AQ40", 1)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision("20200828175100")
+mod:SetRevision("20200903211036")
 mod:SetCreatureID(15276, 15275)
 mod:SetEncounterID(715)
 --mod:SetModelID(15778)--Renders too close
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED 799 800 26613 26607",
+	"SPELL_AURA_APPLIED 799 800 26613 26607 804",
+	"SPELL_AURA_REMOVED 804",
 	"SPELL_CAST_SUCCESS 802 804"--26613
 )
 
@@ -28,15 +29,27 @@ local timerMutateBugCD		= mod:NewCDTimer(11, 802, nil, false, nil, 1)--11-16
 
 local berserkTimer			= mod:NewBerserkTimer(900)
 
+mod:AddNamePlateOption("NPAuraOnMutateBug", 802)
+
 function mod:OnCombatStart(delay)
 	--timerStrikeCD:Start(14.2-delay)
 	berserkTimer:Start()
 	timerTeleport:Start(-delay)
+	if self.Options.NPAuraOnMutateBug then
+		DBM:FireEvent("BossMod_EnableHostileNameplates")
+	end
+end
+
+function mod:OnCombatEnd()
+	if self.Options.NPAuraOnMutateBug then
+		DBM.Nameplate:Hide(true, nil, nil, nil, true, true)
+	end
 end
 
 --pull:30.6, 35.2, 37.8, 40.1, 36.5, 36.6, 37.7, 31.9, 31.7, 38.8, 32.9, 30.4, 40.2, 30.6, 37.6, 35.4, 32.9, 34.2, 35.3, 36.5, 30.4, 29.2, 34.3, 32.8, 40.0, 35.4, 36.5, 35.3
 do
 	local TwinTeleport, UnbalancingStrike, Blizzard = DBM:GetSpellInfo(799), DBM:GetSpellInfo(26613), DBM:GetSpellInfo(26607)
+	local MutateBug, ExplodeBug = DBM:GetSpellInfo(802), DBM:GetSpellInfo(804)
 	function mod:SPELL_AURA_APPLIED(args)
 		--if args:IsSpellID(799, 800) and self:AntiSpam(5, 1) then
 		if args.spellName == TwinTeleport and self:AntiSpam(5, 1) then
@@ -53,12 +66,19 @@ do
 		elseif args.spellName == Blizzard and args:IsPlayer() and args:IsSrcTypeHostile() then
 			specWarnGTFO:Show(args.spellName)
 			specWarnGTFO:Play("watchfeet")
+		elseif args.spellName == ExplodeBug then
+			if self.Options.NPAuraOnMutateBug then
+				DBM.Nameplate:Show(true, args.destGUID, 804, 135826, 4)
+			end
 		end
 	end
-end
-
-do
-	local MutateBug, ExplodeBug = DBM:GetSpellInfo(802), DBM:GetSpellInfo(804)
+	function mod:SPELL_AURA_REMOVED(args)
+		if args.spellName == ExplodeBug then
+			if self.Options.NPAuraOnMutateBug then
+				DBM.Nameplate:Hide(true, args.destGUID, 804, 135826)
+			end
+		end
+	end
 	function mod:SPELL_CAST_SUCCESS(args)
 		--if args.spellId == 802 then
 		if args.spellName == MutateBug then
