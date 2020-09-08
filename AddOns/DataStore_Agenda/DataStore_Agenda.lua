@@ -62,6 +62,8 @@ local function ScanDungeonIDs()
             dungeonBosses[key][bossName] = isKilled
         end
 	end
+    
+    addon.ThisCharacter.lastUpdate = time()
 end
 
 -- *** Event Handlers ***
