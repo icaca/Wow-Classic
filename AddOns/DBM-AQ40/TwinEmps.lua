@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("TwinEmpsAQ", "DBM-AQ40", 1)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision("20200903211036")
+mod:SetRevision("20200905204739")
 mod:SetCreatureID(15276, 15275)
 mod:SetEncounterID(715)
 --mod:SetModelID(15778)--Renders too close
@@ -16,10 +16,10 @@ mod:RegisterEventsInCombat(
 --Add warning for classic to actually swap for strike? boss taunt immune though.
 local warnStrike			= mod:NewTargetNoFilterAnnounce(26613, 3, nil, "Tank|Healer", 2)
 local warnTeleport			= mod:NewSpellAnnounce(800, 3)
-local warnExplodeBug		= mod:NewSpellAnnounce(804, 2, nil, false)
 local warnMutateBug			= mod:NewSpellAnnounce(802, 2, nil, false)
 
 local specWarnStrike		= mod:NewSpecialWarningDefensive(26613, nil, nil, nil, 1, 2)
+local specWarnExplodeBug	= mod:NewSpecialWarningMove(804, nil, nil, nil, 1, 2)
 local specWarnGTFO			= mod:NewSpecialWarningGTFO(26607, nil, nil, nil, 8, 2)
 
 local timerTeleport			= mod:NewCDTimer(29.2, 800, nil, nil, nil, 6, nil, nil, true, 1, 4)--29.2-40.2
@@ -70,6 +70,14 @@ do
 			if self.Options.NPAuraOnMutateBug then
 				DBM.Nameplate:Show(true, args.destGUID, 804, 135826, 4)
 			end
+			for i = 1, 40 do
+				local GUID = UnitGUID("nameplate"..i)
+				if GUID and GUID == args.destGUID then--Bug is in nameplate range
+					specWarnExplodeBug:Show()
+					specWarnExplodeBug:Play("runaway")
+					break
+				end
+			end
 		end
 	end
 	function mod:SPELL_AURA_REMOVED(args)
@@ -86,7 +94,6 @@ do
 			timerMutateBugCD:Start()
 		--elseif args.spellId == 804 then
 		elseif args.spellName == ExplodeBug then
-			warnExplodeBug:Show()
 			timerExplodeBugCD:Start()
 --		elseif spellId == 26613 then
 			--timerStrikeCD:Start()

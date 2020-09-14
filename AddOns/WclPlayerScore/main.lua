@@ -137,6 +137,8 @@ GameTooltip:HookScript("OnTooltipSetUnit", function(self)
 		local dstr = load_data(WP_MouseoverName)
 		if dstr then
 			GameTooltip:AddLine("                          ")
+			GameTooltip:AddLine("                          ")
+			GameTooltip:AddLine("                          ")
 			GameTooltip:AddLine("|cFFFFFF00WCL 评分 " .. dstr, 255, 209, 0)
 			GameTooltip:Show()
 		end

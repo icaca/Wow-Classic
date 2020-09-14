@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Viscidus", "DBM-AQ40", 1)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision("20200902164433")
+mod:SetRevision("20200905140102")
 mod:SetCreatureID(15299)
 mod:SetEncounterID(713)
 mod:SetModelID(15686)
@@ -129,7 +129,7 @@ do
 			creatureID = DBM:GetCIDFromGUID(destGUID)
 			creatureIDCache[destGUID] = creatureID
 		end
-		if not self.vb.Frozen and frostSpellSchools[spellSchool] and creatureID == 15299 then
+		if not self.vb.Frozen and frostSpellSchools[tonumber(spellSchool)] and creatureID == 15299 then
 			hits = hits - 1
 		end
 		if self.vb.Frozen and creatureID == 15667 then
@@ -161,7 +161,7 @@ do
 		--RANGE_DAMAGE,Player-4395-00282794,"Anshlun-Whitemane",0x511,0x0,Creature-0-4400-189-11806-4542-00006BB674,"High Inquisitor Fairbanks",0x10a48,0x0,5019,"Shoot",
 		--Count all wand hits as frost, since we can't get school out of them
 		--RANGED melee hits don't count for shattering, it's left out on purpose
-		if (self.vb.Frozen and spellName == Shoot) and creatureID == 15299 then
+		if not self.vb.Frozen and spellName == Shoot and creatureID == 15299 then
 			hits = hits - 1
 		end
 		if self.vb.Frozen and creatureID == 15667 then
