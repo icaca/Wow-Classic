@@ -131,7 +131,28 @@ local function AddRealm(AccountName, RealmName)
     		elseif (factions == 2) and (characterFaction ~= "Horde") then
     			shouldAddCharacter = false
     		end
-    		if (class ~= 0) and CLASS_SORT_ORDER[class] ~= characterClass then shouldAddCharacter = false end
+    		if (class ~= 0) then
+                if type(class) == "number" then
+                    if CLASS_SORT_ORDER[class] ~= characterClass then 
+                        shouldAddCharacter = false
+                    end 
+                else
+                    local armorClasses = {
+                        ["Cloth"] = {"MAGE", "PRIEST", "WARLOCK"},
+                        ["Leather"] = {"DRUID", "ROGUE"},
+                        ["Mail"] = {"HUNTER", "SHAMAN"},
+                        ["Plate"] = {"PALADIN", "WARRIOR"},
+                    }
+                    local classes = armorClasses[class]
+                    local found = false
+                    for _, class in pairs(classes) do
+                        if class == characterClass then
+                            found = true
+                        end
+                    end
+                    if not found then shouldAddCharacter = false end
+                end
+            end
     		if (tradeskill ~= 0) then 
     
     			-- primary profession
