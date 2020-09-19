@@ -299,7 +299,7 @@ end
 local lookupMethods = { __index = function(self, key)
 	return function(self, arg1, ...)
 		if not RegisteredMethods[key] then
-			print(format("DataStore : method <%s> is missing.", key))			-- enable this in Debug only, there's a risk that this function gets called unexpectedly
+			--print(format("DataStore : method <%s> is missing.", key))			-- enable this in Debug only, there's a risk that this function gets called unexpectedly
 			return
 		end
 

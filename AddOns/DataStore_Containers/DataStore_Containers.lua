@@ -132,8 +132,8 @@ local ContainerTypes = {
 				-- return GetInventoryItemCount("player", slotID)
 				return select(2, GetContainerItemInfo(-1, slotID))
 			end,
-		GetCooldown = function(self, slotID)
-				local startTime, duration, isEnabled = GetInventoryItemCooldown("player", slotID)
+		GetCooldown = function(self, slotID, bagID)
+				local startTime, duration, isEnabled = GetContainerItemCooldown(bagID, slotID)
 				return startTime, duration, isEnabled
 			end,
 	},
