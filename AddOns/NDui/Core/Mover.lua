@@ -257,17 +257,13 @@ local function CreateConsole()
 	header:SetSize(212, 30)
 	header:SetPoint("TOP")
 	B.CreateMF(header, f)
-	local tips = DB.InfoColor.."|nCTRL +"..DB.RightButton..L["Reset anchor"].."|nSHIFT +"..DB.RightButton..L["Hide panel"]
-	header.title = L["Tips"]
-	B.AddTooltip(header, "ANCHOR_TOP", tips)
-	local tex = header:CreateTexture()
-	tex:SetSize(40, 40)
-	tex:SetPoint("TOPRIGHT", 2, 5)
-	tex:SetTexture("Interface\\Common\\Help-i")
+
+	local helpInfo = B.CreateHelpInfo(header, "|nCTRL +"..DB.RightButton..L["Reset anchor"].."|nSHIFT +"..DB.RightButton..L["Hide panel"])
+	helpInfo:SetPoint("TOPRIGHT", 2, 5)
 
 	local frame = CreateFrame("Frame", nil, f)
 	frame:SetSize(212, 73)
-	frame:SetPoint("TOP", f, "BOTTOM", 0, -2)
+	frame:SetPoint("TOP", f, "BOTTOM", 0, -3)
 	B.SetBD(frame)
 	f.__trimText = B.CreateFS(frame, 12, NONE, "system", "BOTTOM", 0, 5)
 

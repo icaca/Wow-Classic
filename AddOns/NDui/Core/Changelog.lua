@@ -5,21 +5,25 @@ if DB.Client ~= "zhCN" then return end
 local strsplit, pairs = string.split, pairs
 
 local hx = {
-	"修正战士怒吼技能的缺失提示；",
-	"更新LCC和LCD；",
-	"冬泉谷魂能道具相关归类为消耗品；",
-	"背包图标元素更新；",
-	"添加选项以调整姓名板法术过滤；",
-	"个人资源条及其选项更新；",
-	"更新部分技能监控；",
-	"Buff框体微调；",
-	"Details及部分界面美化微调；",
-	"移除宝石相关信息；",
-	"修正目标框体的能量值偏移；",
-	"添加友方姓名板名字模式，默认关闭；",
-	"头像的团队标记位置调整；",
-	"添加选项以调整目标框体的每行法术图标数量；",
-	"部分箭头及关闭按钮的材质更新；",
+	"背包整理更新；",
+	"界面美化更新；",
+	"技能监控及其控制台更新；",
+	"LibHealComm更新v92；",
+	"治疗预估的颜色调整；",
+	"姓名板名字模式过滤调整；",
+	"更新调整部分API；",
+	"添加额外动作条功能；",
+	"动作条缩放调整，防止缩放后无法用箭头移动；",
+	"动作条冷却模块调整；",
+	"快速快捷键模式更新；",
+	"设置向导的外观调整；",
+	"提高施法条的层级；",
+	"交易及处于拍卖行时自动开关背包；",
+	"个人资源条及其选项，添加独立设置页面；",
+	"移除连击点满星高亮，现在使用红色替代；",
+	"聊天窗口更新；",
+	"信息条公会及好友模块更新；",
+	"设置导入导出调整；",
 	"控制台及本地文本更新。",
 }
 
@@ -29,13 +33,11 @@ local function changelog()
 
 	f = CreateFrame("Frame", "NDuiChangeLog", UIParent)
 	f:SetPoint("CENTER")
-	f:SetScale(1.2)
 	f:SetFrameStrata("HIGH")
 	B.CreateMF(f)
 	B.SetBD(f)
-	B.CreateFS(f, 30, "|cff0080ffNDui|rClassic", true, "TOPLEFT", 10, 26)
-	B.CreateFS(f, 14, DB.Version, true, "TOPRIGHT", -10, 14)
-	B.CreateFS(f, 16, L["Changelog"], true, "TOP", 0, -10)
+	B.CreateFS(f, 18, DB.Version.." "..L["Changelog"], true, "TOP", 0, -10)
+	B.CreateWatermark(f)
 	local ll = CreateFrame("Frame", nil, f)
 	ll:SetPoint("TOP", -50, -35)
 	B.CreateGF(ll, 100, 1, "Horizontal", .7, .7, .7, 0, .7)
@@ -46,11 +48,11 @@ local function changelog()
 	lr:SetFrameStrata("HIGH")
 	local offset = 0
 	for n, t in pairs(hx) do
-		B.CreateFS(f, 12, n..": "..t, false, "TOPLEFT", 15, -(50 + offset))
-		offset = offset + 20
+		B.CreateFS(f, 14, n..": "..t, false, "TOPLEFT", 15, -(50 + offset))
+		offset = offset + 24
 	end
-	f:SetSize(400, 60 + offset)
-	local close = B.CreateButton(f, 16, 16, "X")
+	f:SetSize(480, 60 + offset)
+	local close = B.CreateButton(f, 16, 16, true, DB.closeTex)
 	close:SetPoint("TOPRIGHT", -10, -10)
 	close:SetScript("OnClick", function() f:Hide() end)
 end

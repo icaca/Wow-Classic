@@ -416,9 +416,11 @@ function UF:CreateCastBar(self)
 	B.CreateSB(cb, true, .3, .7, 1)
 
 	if mystyle == "player" then
+		cb:SetFrameLevel(10)
 		cb:SetSize(NDuiDB["UFs"]["PlayerCBWidth"], NDuiDB["UFs"]["PlayerCBHeight"])
 		createBarMover(cb, L["Player Castbar"], "PlayerCB", C.UFs.Playercb)
 	elseif mystyle == "target" then
+		cb:SetFrameLevel(10)
 		cb:SetSize(NDuiDB["UFs"]["TargetCBWidth"], NDuiDB["UFs"]["TargetCBHeight"])
 		createBarMover(cb, L["Target Castbar"], "TargetCB", C.UFs.Targetcb)
 	elseif mystyle == "nameplate" then
@@ -785,7 +787,7 @@ end
 -- Class Powers
 local barWidth, barHeight = unpack(C.UFs.BarSize)
 
-function UF.PostUpdateClassPower(element, cur, max, diff)
+function UF.PostUpdateClassPower(element, cur, max, diff, powerType)
 	if not cur or cur == 0 then
 		for i = 1, 6 do
 			element[i].bg:Hide()
@@ -804,38 +806,18 @@ function UF.PostUpdateClassPower(element, cur, max, diff)
 			element[i].bg:Hide()
 		end
 	end
-end
 
-function UF:OnUpdateRunes(elapsed)
-	local duration = self.duration + elapsed
-	self.duration = duration
-	self:SetValue(duration)
-
-	if self.timer then
-		local remain = self.runeDuration - duration
-		if remain > 0 then
-			self.timer:SetText(B.FormatTime(remain))
-		else
-			self.timer:SetText(nil)
+	element.thisColor = cur == max and 1 or 2
+	if not element.prevColor or element.prevColor ~= element.thisColor then
+		local r, g, b = 1, 0, 0
+		if element.thisColor == 2 then
+			local color = element.__owner.colors.power[powerType]
+			r, g, b = color[1], color[2], color[3]
 		end
-	end
-end
-
-function UF.PostUpdateRunes(element, runemap)
-	for index, runeID in next, runemap do
-		local rune = element[index]
-		local start, duration, runeReady = GetRuneCooldown(runeID)
-		if rune:IsShown() then
-			if runeReady then
-				rune:SetAlpha(1)
-				rune:SetScript("OnUpdate", nil)
-				if rune.timer then rune.timer:SetText(nil) end
-			elseif start then
-				rune:SetAlpha(.6)
-				rune.runeDuration = duration
-				rune:SetScript("OnUpdate", UF.OnUpdateRunes)
-			end
+		for i = 1, #element do
+			element[i]:SetStatusBarColor(r, g, b)
 		end
+		element.prevColor = element.thisColor
 	end
 end
 
@@ -868,12 +850,6 @@ function UF:CreateClassPower(self)
 		bars[i].bg:SetAllPoints(bars[i])
 		bars[i].bg:SetTexture(DB.normTex)
 		bars[i].bg.multiplier = .25
-
-		if NDuiDB["Nameplate"]["ShowPlayerPlate"] then
-			bars[i].glow = CreateFrame("Frame", nil, bars[i])
-			bars[i].glow:SetPoint("TOPLEFT", -3, 2)
-			bars[i].glow:SetPoint("BOTTOMRIGHT", 3, -2)
-		end
 	end
 
 	bars.PostUpdate = UF.PostUpdateClassPower
@@ -918,7 +894,7 @@ function UF:CreatePrediction(self)
 	myBar:SetPoint("BOTTOM", self.Health, "BOTTOM")
 	myBar:SetPoint("LEFT", self.Health:GetStatusBarTexture(), "RIGHT")
 	myBar:SetStatusBarTexture(DB.normTex)
-	myBar:SetStatusBarColor(0, 1, .5, .5)
+	myBar:SetStatusBarColor(0, 1, 0, .5)
 	myBar:Hide()
 
 	local otherBar = CreateFrame("StatusBar", nil, self)
@@ -927,7 +903,7 @@ function UF:CreatePrediction(self)
 	otherBar:SetPoint("BOTTOM", self.Health, "BOTTOM")
 	otherBar:SetPoint("LEFT", myBar:GetStatusBarTexture(), "RIGHT")
 	otherBar:SetStatusBarTexture(DB.normTex)
-	otherBar:SetStatusBarColor(0, 1, 0, .5)
+	otherBar:SetStatusBarColor(0, 1, 1, .5)
 	otherBar:Hide()
 
 	self.HealthPrediction = {

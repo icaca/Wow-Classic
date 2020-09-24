@@ -348,6 +348,7 @@ function AuctionHouseWrapper.QueryAuctionItems(name, minLevel, maxLevel, page, u
 	if not canSendQuery or (getAll and not canSendGetAll) or not private.CheckAllIdle() then
 		return
 	end
+	print(name, minLevel, maxLevel, page, usable, quality, getAll, exact, #filterData)
 	return private.wrappers.QueryAuctionItems:Start(name, minLevel, maxLevel, page, usable, quality, getAll, exact, filterData)
 end
 

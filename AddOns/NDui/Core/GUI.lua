@@ -8,7 +8,7 @@ local cr, cg, cb = DB.r, DB.g, DB.b
 local guiTab, guiPage, f, dataFrame = {}, {}
 
 -- Default Settings
-local defaultSettings = {
+G.DefaultSettings = {
 	BFA = false,
 	Mover = {},
 	InternalCD = {},
@@ -33,6 +33,11 @@ local defaultSettings = {
 		BindType = 1,
 		OverrideWA = false,
 		MicroMenu = true,
+		CustomBar = false,
+		CustomBarFader = false,
+		CustomBarButtonSize = 34,
+		CustomBarNumButtons = 12,
+		CustomBarNumPerRow = 12,
 	},
 	Bags = {
 		Enable = true,
@@ -62,8 +67,6 @@ local defaultSettings = {
 	},
 	Auras = {
 		Reminder = true,
-		Totems = false,
-		DestroyTotems = true,
 		ClassAuras = false,
 		ReverseBuffs = false,
 		BuffSize = 30,
@@ -150,6 +153,7 @@ local defaultSettings = {
 	Chat = {
 		Sticky = false,
 		Lock = true,
+		ShowBG = true,
 		Invite = true,
 		Freedom = true,
 		Keyword = "raid",
@@ -207,7 +211,8 @@ local defaultSettings = {
 		InsecureColor = {r=1, g=0, b=0},
 		--OffTankColor = {r=.2, g=.7, b=.5},
 		--DPSRevertThreat = false,
-		PPHideOOC = true,
+		PPFadeout = true,
+		PPFadeoutAlpha = 0,
 		NameplateClassPower = false,
 		NameTextSize = 14,
 		HealthTextSize = 16,
@@ -289,7 +294,7 @@ local defaultSettings = {
 	},
 }
 
-local accountSettings = {
+G.AccountSettings = {
 	ChatFilterList = "%*",
 	ChatFilterWhiteList = "",
 	TimestampFormat = 4,
@@ -363,8 +368,8 @@ loader:SetScript("OnEvent", function(self, _, addon)
 		NDuiDB["BFA"] = true
 	end
 
-	InitialSettings(defaultSettings, NDuiDB, true)
-	InitialSettings(accountSettings, NDuiADB)
+	InitialSettings(G.DefaultSettings, NDuiDB, true)
+	InitialSettings(G.AccountSettings, NDuiADB)
 	B:SetupUIScale(true)
 	DB.normTex = textureList[NDuiADB["TexStyle"]]
 
@@ -421,6 +426,24 @@ local function updateActionbarScale()
 	B:GetModule("Actionbar"):UpdateAllScale()
 end
 
+local function updateCustomBar()
+	B:GetModule("Actionbar"):UpdateCustomBar()
+end
+
+local function updateBuffFrame()
+	local A = B:GetModule("Auras")
+	A:UpdateOptions()
+	A:UpdateHeader(A.BuffFrame)
+	A.BuffFrame.mover:SetSize(A.BuffFrame:GetSize())
+end
+
+local function updateDebuffFrame()
+	local A = B:GetModule("Auras")
+	A:UpdateOptions()
+	A:UpdateHeader(A.DebuffFrame)
+	A.DebuffFrame.mover:SetSize(A.DebuffFrame:GetSize())
+end
+
 local function updateReminder()
 	B:GetModule("Auras"):InitReminder()
 end
@@ -449,6 +472,10 @@ local function updateChatSize()
 	B:GetModule("Chat"):UpdateChatSize()
 end
 
+local function toggleChatBackground()
+	B:GetModule("Chat"):ToggleChatBackground()
+end
+
 local function updateToggleDirection()
 	B:GetModule("Skins"):RefreshToggleDirection()
 end
@@ -471,6 +498,14 @@ end
 
 local function refreshNameplates()
 	B:GetModule("UnitFrames"):RefreshAllPlates()
+end
+
+local function togglePlatePower()
+	B:GetModule("UnitFrames"):TogglePlatePower()
+end
+
+local function togglePlateVisibility()
+	B:GetModule("UnitFrames"):TogglePlateVisibility()
 end
 
 local function updatePlateScale()
@@ -565,12 +600,13 @@ local function resetDetails()
 end
 
 -- Config
-local tabList = {
+G.TabList = {
 	L["Actionbar"],
 	L["Bags"],
 	L["Unitframes"],
 	L["RaidFrame"],
 	L["Nameplate"],
+	L["PlayerPlate"],
 	L["Auras"],
 	L["Raid Tools"],
 	L["ChatFrame"],
@@ -581,24 +617,29 @@ local tabList = {
 	L["UI Settings"],
 }
 
-local optionList = { -- type, key, value, name, horizon, doubleline
+G.OptionList = { -- type, key, value, name, horizon, doubleline
 	[1] = {
 		{1, "Actionbar", "Enable", "|cff00cc4c"..L["Enable Actionbar"]},
 		{1, "Actionbar", "MicroMenu", L["Micromenu"], true},
-		{},--blank
 		{1, "Actionbar", "Bar4Fade", L["Bar4 Fade"]},
 		{1, "Actionbar", "Bar5Fade", L["Bar5 Fade"], true},
 		{4, "Actionbar", "Style", L["Actionbar Style"], false, {L["BarStyle1"], L["BarStyle2"], L["BarStyle3"], L["BarStyle4"], L["BarStyle5"]}},
-		{3, "Actionbar", "Scale", L["Actionbar Scale"].."*", true, {.8, 1.5, .1}, updateActionbarScale},
+		{3, "Actionbar", "Scale", L["Actionbar Scale"].."*", true, {.8, 1.5, .01}, updateActionbarScale},
+		{},--blank
+		{1, "Actionbar", "CustomBar", "|cff00cc4c"..L["Enable CustomBar"], nil, nil, nil, L["CustomBarTip"]},
+		{1, "Actionbar", "CustomBarFader", L["CustomBarFader"]},
+		{3, "Actionbar", "CustomBarButtonSize", L["CustomBarButtonSize"].."*", true, {24, 60, 1}, updateCustomBar},
+		{3, "Actionbar", "CustomBarNumButtons", L["CustomBarNumButtons"].."*", nil, {1, 12, 1}, updateCustomBar},
+		{3, "Actionbar", "CustomBarNumPerRow", L["CustomBarNumPerRow"].."*", true, {1, 12, 1}, updateCustomBar},
+		{},--blank
+		{1, "Actionbar", "Cooldown", "|cff00cc4c"..L["Show Cooldown"]},
+		{1, "Actionbar", "DecimalCD", L["Decimal Cooldown"].."*"},
+		{1, "Actionbar", "OverrideWA", L["HideCooldownOnWA"].."*", true},
 		{},--blank
 		{1, "Actionbar", "Hotkeys", L["Actionbar Hotkey"]},
 		{1, "Actionbar", "Macro", L["Actionbar Macro"], true},
 		{1, "Actionbar", "Count", L["Actionbar Item Counts"]},
 		{1, "Actionbar", "Classcolor", L["ClassColor BG"], true},
-		{},--blank
-		{1, "Actionbar", "Cooldown", "|cff00cc4c"..L["Show Cooldown"]},
-		{1, "Actionbar", "DecimalCD", L["Decimal Cooldown"].."*"},
-		{1, "Actionbar", "OverrideWA", L["HideCooldownOnWA"], true},
 	},
 	[2] = {
 		{1, "Bags", "Enable", "|cff00cc4c"..L["Enable Bags"]},
@@ -707,33 +748,36 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{3, "Nameplate", "AuraSize", L["Auras Size"].."*", true, {18, 40, 1}, refreshNameplates},
 	},
 	[6] = {
-		{1, "AuraWatch", "Enable", "|cff00cc4c"..L["Enable AuraWatch"], nil, setupAuraWatch},
-		{1, "AuraWatch", "WatchSpellRank", L["AuraWatch WatchSpellRank"]},
-		{1, "AuraWatch", "ClickThrough", L["AuraWatch ClickThrough"], nil, nil, nil, L["ClickThroughTip"]},
-		{3, "AuraWatch", "IconScale", L["AuraWatch IconScale"], true, {.8, 2, .1}},
-		{},--blank
 		{1, "Nameplate", "ShowPlayerPlate", "|cff00cc4c"..L["Enable PlayerPlate"]},
+		{},--blank
 		--{1, "Auras", "ClassAuras", L["Enable ClassAuras"], true},
 		{1, "Nameplate", "NameplateClassPower", L["Nameplate ClassPower"]},
-		{1, "Nameplate", "ClassPowerOnly", L["Nameplate ClassPowerOnly"], true},
-		{1, "Nameplate", "PPPowerText", L["PlayerPlate PowerText"]},
-		{1, "Nameplate", "PPHideOOC", L["Fadeout OOC"], true},
+		{1, "Nameplate", "PPFadeout", L["PlayerPlate Fadeout"].."*", true, nil, togglePlateVisibility},
+		{1, "Nameplate", "ClassPowerOnly", L["Nameplate ClassPowerOnly"], nil},
+		{1, "Nameplate", "PPPowerText", L["PlayerPlate PowerText"].."*", nil, nil, togglePlatePower},
+		{3, "Nameplate", "PPFadeoutAlpha", L["PlayerPlate FadeoutAlpha"].."*", true, {0, .5, .05}, togglePlateVisibility},
+		{},--blank
 		{3, "Nameplate", "PPWidth", L["PlayerPlate HPWidth"].."*", false, {150, 300, 1}, refreshNameplates},
 		{3, "Nameplate", "PPBarHeight", L["PlayerPlate CPHeight"].."*", true, {5, 15, 1}, refreshNameplates},
 		{3, "Nameplate", "PPHealthHeight", L["PlayerPlate HPHeight"].."*", false, {5, 15, 1}, refreshNameplates},
 		{3, "Nameplate", "PPPowerHeight", L["PlayerPlate MPHeight"].."*", true, {5, 15, 1}, refreshNameplates},
-		{},--blank
-		{1, "Auras", "Reminder", L["Enable Reminder"].."*", nil, nil, updateReminder, L["ReminderTip"]},
-		--{1, "Auras", "Totems", L["Enable Totems"]},
-		{},--blank
-		{1, "Auras", "ReverseBuffs", L["ReverseBuffs"]},
-		{1, "Auras", "ReverseDebuffs", L["ReverseDebuffs"], true},
-		{3, "Auras", "BuffSize", L["BuffSize"], nil, {24, 50, 1}},
-		{3, "Auras", "DebuffSize", L["DebuffSize"], true, {24, 50, 1}},
-		{3, "Auras", "BuffsPerRow", L["BuffsPerRow"], nil, {10, 20, 1}},
-		{3, "Auras", "DebuffsPerRow", L["DebuffsPerRow"], true, {10, 16, 1}},
 	},
 	[7] = {
+		{1, "AuraWatch", "Enable", "|cff00cc4c"..L["Enable AuraWatch"], nil, setupAuraWatch},
+		{1, "AuraWatch", "WatchSpellRank", L["AuraWatch WatchSpellRank"], nil, nil, nil, L["WatchSpellRankTip"]},
+		{1, "AuraWatch", "ClickThrough", L["AuraWatch ClickThrough"], nil, nil, nil, L["ClickThroughTip"]},
+		{3, "AuraWatch", "IconScale", L["AuraWatch IconScale"], true, {.8, 2, .1}},
+		{},--blank
+		{1, "Auras", "Reminder", L["Enable Reminder"].."*", nil, nil, updateReminder, L["ReminderTip"]},
+		{},--blank
+		{1, "Auras", "ReverseBuffs", L["ReverseBuffs"].."*", nil, nil, updateBuffFrame},
+		{1, "Auras", "ReverseDebuffs", L["ReverseDebuffs"].."*", true, nil, updateDebuffFrame},
+		{3, "Auras", "BuffSize", L["BuffSize"].."*", nil, {24, 50, 1}, updateBuffFrame},
+		{3, "Auras", "DebuffSize", L["DebuffSize"].."*", true, {24, 50, 1}, updateDebuffFrame},
+		{3, "Auras", "BuffsPerRow", L["BuffsPerRow"].."*", nil, {10, 20, 1}, updateBuffFrame},
+		{3, "Auras", "DebuffsPerRow", L["DebuffsPerRow"].."*", true, {10, 16, 1}, updateDebuffFrame},
+	},
+	[8] = {
 		{1, "Misc", "RaidTool", "|cff00cc4c"..L["Raid Manger"]},
 		{1, "Misc", "RMRune", L["Runes Check"].."*"},
 		{1, "Misc", "EasyMarking", L["Easy Mark"].."*"},
@@ -750,8 +794,9 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		--{},--blank
 		--{1, "Misc", "PlacedItemAlert", L["Placed Item Alert"].."*"}, -- fix me: need more data
 	},
-	[8] = {
+	[9] = {
 		{1, "Chat", "Lock", "|cff00cc4c"..L["Lock Chat"]},
+		{1, "Chat", "ShowBG", L["ShowChatBackground"].."*", true, nil, toggleChatBackground},
 		{3, "Chat", "ChatWidth", L["LockChatWidth"].."*", nil, {200, 600, 1}, updateChatSize},
 		{3, "Chat", "ChatHeight", L["LockChatHeight"].."*", true, {100, 500, 1}, updateChatSize},
 		{},--blank
@@ -776,7 +821,7 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Chat", "GuildInvite", L["Guild Invite Only"].."*"},
 		{2, "Chat", "Keyword", L["Whisper Keyword"].."*", true, nil, updateWhisperList},
 	},
-	[9] = {
+	[10] = {
 		{1, "Map", "Coord", L["Map Coords"]},
 		{1, "Map", "MapFader", L["MapFader"].."*", true, nil, updateMapFader},
 		{},--blank
@@ -789,7 +834,7 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{3, "Map", "MapScale", L["Map Scale"].."*", false, {.5, 1, .1}},
 		{3, "Map", "MinimapScale", L["Minimap Scale"].."*", true, {1, 2, .1}, updateMinimapScale},
 	},
-	[10] = {
+	[11] = {
 		{1, "Skins", "BlizzardSkins", "|cff00cc4c"..L["BlizzardSkins"], nil, nil, nil, L["BlizzardSkinsTips"]},
 		{1, "Skins", "FlatMode", L["FlatMode"], true},
 		{1, "Skins", "DefaultBags", L["DefaultBags"], nil, nil, nil, L["DefaultBagsTips"]},
@@ -816,7 +861,7 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Skins", "TMW", L["TMW Skin"]},
 		{1, "Skins", "WeakAuras", L["WeakAuras Skin"], true},
 	},
-	[11] = {
+	[12] = {
 		{1, "Tooltip", "CombatHide", L["Hide Tooltip"].."*"},
 		{1, "Tooltip", "Cursor", L["Follow Cursor"].."*"},
 		{1, "Tooltip", "ClassColor", L["Classcolor Border"].."*"},
@@ -831,7 +876,7 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Tooltip", "TargetBy", L["Show TargetedBy"].."*"},
 		{1, "Tooltip", "HideAllID", "|cff00cc4c"..L["HideAllID"], true},
 	},
-	[12] = {
+	[13] = {
 		{1, "Misc", "ItemLevel", "|cff00cc4c"..L["Show ItemQuality"]},
 		{1, "Misc", "ShowItemLevel", L["Show ItemLevel"].."*", true},
 		{},--blank
@@ -844,7 +889,7 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Misc", "TradeTabs", L["TradeTabs"], nil, nil, nil, L["TradeTabsTips"]},
 		{1, "Misc", "InstantDelete", L["InstantDelete"].."*", true},
 	},
-	[13] = {
+	[14] = {
 		{1, "ACCOUNT", "VersionCheck", L["Version Check"]},
 		{1, "ACCOUNT", "DisableInfobars", L["DisableInfobars"], true},
 		{},--blank
@@ -857,7 +902,7 @@ local optionList = { -- type, key, value, name, horizon, doubleline
 }
 
 local function SelectTab(i)
-	for num = 1, #tabList do
+	for num = 1, #G.TabList do
 		if num == i then
 			guiTab[num]:SetBackdropColor(cr, cg, cb, .3)
 			guiTab[num].checked = true
@@ -917,7 +962,7 @@ end
 local function CreateOption(i)
 	local parent, offset = guiPage[i].child, 20
 
-	for _, option in pairs(optionList[i]) do
+	for _, option in pairs(G.OptionList[i]) do
 		local optType, key, value, name, horizon, data, callback, tooltip = unpack(option)
 		-- Checkboxes
 		if optType == 1 then
@@ -979,7 +1024,7 @@ local function CreateOption(i)
 				offset = offset + 70
 			end
 			local s = B.CreateSlider(parent, name, min, max, step, x, y)
-			s.__default = (key == "ACCOUNT" and accountSettings[value]) or defaultSettings[key][value]
+			s.__default = (key == "ACCOUNT" and G.AccountSettings[value]) or G.DefaultSettings[key][value]
 			s:SetValue(NDUI_VARIABLE(key, value))
 			s:SetScript("OnValueChanged", function(_, v)
 				local current = B:Round(tonumber(v), 2)
@@ -1056,7 +1101,7 @@ local bloodlustFilter = {
 	[264689] = true
 }
 
-local function exportData()
+function G:ExportGUIData()
 	local text = "NDuiSettings:"..DB.Version..":"..DB.MyName..":"..DB.MyClass
 	for KEY, VALUE in pairs(NDuiDB) do
 		if type(VALUE) == "table" then
@@ -1094,7 +1139,7 @@ local function exportData()
 						end
 					end
 				else
-					if NDuiDB[KEY][key] ~= defaultSettings[KEY][key] then
+					if NDuiDB[KEY][key] ~= G.DefaultSettings[KEY][key] then -- don't export default settings
 						text = text..";"..KEY..":"..key..":"..tostring(value)
 					end
 				end
@@ -1149,7 +1194,21 @@ local function toBoolean(value)
 	end
 end
 
-local function importData()
+local function reloadDefaultSettings()
+	for i, j in pairs(G.DefaultSettings) do
+		if type(j) == "table" then
+			if not NDuiDB[i] then NDuiDB[i] = {} end
+			for k, v in pairs(j) do
+				NDuiDB[i][k] = v
+			end
+		else
+			NDuiDB[i] = j
+		end
+	end
+	NDuiDB["BFA"] = true -- don't empty data on next loading
+end
+
+function G:ImportGUIData()
 	local profile = dataFrame.editBox:GetText()
 	if B:IsBase64(profile) then profile = B:Decode(profile) end
 	local options = {strsplit(";", profile)}
@@ -1158,6 +1217,9 @@ local function importData()
 		UIErrorsFrame:AddMessage(DB.InfoColor..L["Import data error"])
 		return
 	end
+
+	-- we don't export default settings, so need to reload it
+	reloadDefaultSettings()
 
 	for i = 2, #options do
 		local option = options[i]
@@ -1245,8 +1307,6 @@ local function importData()
 			end
 		end
 	end
-
-	ReloadUI()
 end
 
 local function updateTooltip()
@@ -1297,7 +1357,8 @@ local function createDataFrame()
 		button1 = YES,
 		button2 = NO,
 		OnAccept = function()
-			importData()
+			G:ImportGUIData()
+			ReloadUI()
 		end,
 		whileDead = 1,
 	}
@@ -1355,7 +1416,7 @@ local function OpenGUI()
 		StaticPopup_Show("RELOAD_NDUI")
 	end)
 
-	for i, name in pairs(tabList) do
+	for i, name in pairs(G.TabList) do
 		guiTab[i] = CreateTab(f, i, name)
 
 		guiPage[i] = CreateFrame("ScrollFrame", nil, f, "UIPanelScrollFrameTemplate")
@@ -1405,37 +1466,22 @@ local function OpenGUI()
 		createDataFrame()
 		dataFrame.Header:SetText(L["Export Header"])
 		dataFrame.text:SetText(OKAY)
-		exportData()
+		G:ExportGUIData()
 	end)
 
-	local optTip = CreateFrame("Button", nil, f)
-	optTip:SetPoint("TOPLEFT", 20, -5)
-	optTip:SetSize(45, 45)
-	optTip.Icon = optTip:CreateTexture(nil, "ARTWORK")
-	optTip.Icon:SetAllPoints()
-	optTip.Icon:SetTexture(616343)
-	optTip:SetHighlightTexture(616343)
-	optTip:SetScript("OnEnter", function()
-		GameTooltip:ClearLines()
-		GameTooltip:SetOwner(f, "ANCHOR_NONE")
-		GameTooltip:SetPoint("TOPRIGHT", f, "TOPLEFT", -5, -3)
-		GameTooltip:AddLine(L["Tips"])
-		GameTooltip:AddLine(L["Option* Tips"], .6,.8,1, 1)
-		GameTooltip:Show()
-	end)
-	optTip:SetScript("OnLeave", B.HideTooltip)
+	local helpInfo = B.CreateHelpInfo(f, L["Option* Tips"])
+	helpInfo:SetPoint("TOPLEFT", 20, -5)
 
 	local credit = CreateFrame("Button", nil, f)
 	credit:SetPoint("TOPRIGHT", -20, -5)
-	credit:SetSize(45, 45)
+	credit:SetSize(40, 40)
 	credit.Icon = credit:CreateTexture(nil, "ARTWORK")
 	credit.Icon:SetAllPoints()
 	credit.Icon:SetTexture(DB.creditTex)
 	credit:SetHighlightTexture(DB.creditTex)
 	credit:SetScript("OnEnter", function()
 		GameTooltip:ClearLines()
-		GameTooltip:SetOwner(f, "ANCHOR_NONE")
-		GameTooltip:SetPoint("TOPLEFT", f, "TOPRIGHT", 5, -3)
+		GameTooltip:SetOwner(credit, "ANCHOR_BOTTOMRIGHT")
 		GameTooltip:AddLine("Credits:")
 		GameTooltip:AddLine(GetAddOnMetadata("NDui", "X-Credits"), .6,.8,1, 1)
 		GameTooltip:Show()

@@ -2,20 +2,22 @@ local _, ns = ...
 local B, C, L, DB = unpack(ns)
 local module = B:RegisterModule("Chat")
 
-local maxLines = 1024
-local fontOutline
-local maxWidth, maxHeight = UIParent:GetWidth(), UIParent:GetHeight()
+local _G = _G
 local tostring, pairs, ipairs, strsub, strlower = tostring, pairs, ipairs, string.sub, string.lower
 local IsInGroup, IsInRaid, IsInGuild, IsShiftKeyDown, IsControlKeyDown = IsInGroup, IsInRaid, IsInGuild, IsShiftKeyDown, IsControlKeyDown
 local ChatEdit_UpdateHeader, GetChannelList, GetCVar, SetCVar, Ambiguate = ChatEdit_UpdateHeader, GetChannelList, GetCVar, SetCVar, Ambiguate
 local GetNumGuildMembers, GetGuildRosterInfo, IsGuildMember, UnitIsGroupLeader, UnitIsGroupAssistant, InviteToGroup = GetNumGuildMembers, GetGuildRosterInfo, IsGuildMember, UnitIsGroupLeader, UnitIsGroupAssistant, InviteToGroup
 local BNGetFriendInfoByID, BNGetGameAccountInfo, CanCooperateWithGameAccount, BNInviteFriend, BNFeaturesEnabledAndConnected = BNGetFriendInfoByID, BNGetGameAccountInfo, CanCooperateWithGameAccount, BNInviteFriend, BNFeaturesEnabledAndConnected
+local GeneralDockManager = GeneralDockManager
+
+local maxLines = 1024
+local fontOutline, isBattleNet
 
 function module:TabSetAlpha(alpha)
-	if alpha ~= 1 and (not self.isDocked or GeneralDockManager.selected:GetID() == self:GetID()) then
+	if self.glow:IsShown() and alpha ~= 1 then
 		self:SetAlpha(1)
-	elseif alpha < .6 then
-		self:SetAlpha(.6)
+	elseif alpha < .4 then
+		self:SetAlpha(.4)
 	end
 end
 
@@ -36,24 +38,20 @@ function module:UpdateChatSize()
 		ChatFrame1:Show()
 	end
 	ChatFrame1:ClearAllPoints()
-	ChatFrame1:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 0, 28)
+	ChatFrame1:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 0, 30)
 	ChatFrame1:SetWidth(NDuiDB["Chat"]["ChatWidth"])
 	ChatFrame1:SetHeight(NDuiDB["Chat"]["ChatHeight"])
-	local bg = ChatFrame1.gradientBG
-	if bg then
-		bg:SetHeight(NDuiDB["Chat"]["ChatHeight"] + 30)
-	end
 
 	isScaling = false
 end
 
 function module:SkinChat()
-	if not self or (self and self.styled) then return end
+	if not self or self.styled then return end
 
 	local name = self:GetName()
 	local fontSize = select(2, self:GetFont())
 	self:SetClampRectInsets(0, 0, 0, 0)
-	self:SetMaxResize(maxWidth, maxHeight)
+	self:SetMaxResize(DB.ScreenWidth, DB.ScreenHeight)
 	self:SetMinResize(100, 50)
 	self:SetFont(DB.Font[1], fontSize, fontOutline)
 	self:SetShadowColor(0, 0, 0, 0)
@@ -62,6 +60,10 @@ function module:SkinChat()
 	if self:GetMaxLines() < maxLines then
 		self:SetMaxLines(maxLines)
 	end
+
+	self.__background = B.SetBD(self.Background)
+	self.__background:SetPoint("BOTTOMRIGHT", 26, -7)
+	self.__background:SetShown(NDuiDB["Chat"]["ShowBG"])
 
 	local eb = _G[name.."EditBox"]
 	eb:SetAltArrowKeyMode(false)
@@ -79,14 +81,11 @@ function module:SkinChat()
 
 	local tab = _G[name.."Tab"]
 	tab:SetAlpha(1)
-	local tabFs = tab:GetFontString()
-	tabFs:SetFont(DB.Font[1], DB.Font[2]+2, fontOutline)
-	tabFs:SetShadowColor(0, 0, 0, 0)
-	tabFs:SetTextColor(1, .8, 0)
+	tab.Text:SetFont(DB.Font[1], DB.Font[2]+2, fontOutline)
+	tab.Text:SetShadowColor(0, 0, 0, 0)
 	B.StripTextures(tab, 7)
 	hooksecurefunc(tab, "SetAlpha", module.TabSetAlpha)
 
-	--if NDuiDB["Chat"]["Lock"] then B.StripTextures(self) end
 	B.HideObject(self.buttonFrame)
 	--B.HideObject(self.ScrollBar)
 	B.HideObject(self.ScrollToBottomButton)
@@ -94,6 +93,15 @@ function module:SkinChat()
 	self.oldAlpha = self.oldAlpha or 0 -- fix blizz error, need reviewed
 
 	self.styled = true
+end
+
+function module:ToggleChatBackground()
+	for _, chatFrameName in ipairs(CHAT_FRAMES) do
+		local frame = _G[chatFrameName]
+		if frame.__background then
+			frame.__background:SetShown(NDuiDB["Chat"]["ShowBG"])
+		end
+	end
 end
 
 -- Swith channels by Tab
@@ -227,34 +235,30 @@ function module:ChatWhisperSticky()
 	end
 end
 
+-- Tab colors
 function module:UpdateTabColors(selected)
-	if selected then
-		self:GetFontString():SetTextColor(1, .8, 0)
+	if self.glow:IsShown() then
+		if isBattleNet then
+			self.Text:SetTextColor(0, 1, .96)
+		else
+			self.Text:SetTextColor(1, .5, 1)
+		end
+	elseif selected then
+		self.Text:SetTextColor(1, .8, 0)
 	else
-		self:GetFontString():SetTextColor(.5, .5, .5)
+		self.Text:SetTextColor(.5, .5, .5)
 	end
 end
 
-function module:ChatFrameBackground()
-	if not NDuiDB["Chat"]["Lock"] then return end
-	if not NDuiDB["Skins"]["ChatLine"] then return end
-
-	local cr, cg, cb = 0, 0, 0
-	if NDuiDB["Skins"]["ClassLine"] then cr, cg, cb = DB.r, DB.g, DB.b end
-
-	local Linfobar = CreateFrame("Frame", nil, UIParent)
-	Linfobar:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 0, 3)
-	B.CreateGF(Linfobar, 450, ChatFrame1:GetHeight() + 30, "Horizontal", 0, 0, 0, .5, 0)
-	local Linfobar1 = CreateFrame("Frame", nil, Linfobar)
-	Linfobar1:SetPoint("BOTTOM", Linfobar, "TOP")
-	B.CreateGF(Linfobar1, 450, C.mult, "Horizontal", cr, cg, cb, .7, 0)
-	local Linfobar2 = CreateFrame("Frame", nil, Linfobar)
-	Linfobar2:SetPoint("BOTTOM", Linfobar, "BOTTOM", 0, 18)
-	B.CreateGF(Linfobar2, 450, C.mult, "Horizontal", cr, cg, cb, .7, 0)
-	local Linfobar3 = CreateFrame("Frame", nil, Linfobar)
-	Linfobar3:SetPoint("TOP", Linfobar, "BOTTOM")
-	B.CreateGF(Linfobar3, 450, C.mult, "Horizontal", cr, cg, cb, .7, 0)
-	ChatFrame1.gradientBG = Linfobar
+function module:UpdateTabEventColors(event)
+	local tab = _G[self:GetName().."Tab"]
+	if event == "CHAT_MSG_WHISPER" then
+		isBattleNet = nil
+		FCFTab_UpdateColors(tab, GeneralDockManager.selected:GetID() == tab:GetID())
+	elseif event == "CHAT_MSG_BN_WHISPER" then
+		isBattleNet = true
+		FCFTab_UpdateColors(tab, GeneralDockManager.selected:GetID() == tab:GetID())
+	end
 end
 
 function module:OnLogin()
@@ -265,7 +269,7 @@ function module:OnLogin()
 	end
 
 	hooksecurefunc("FCF_OpenTemporaryWindow", function()
-		for _, chatFrameName in next, CHAT_FRAMES do
+		for _, chatFrameName in ipairs(CHAT_FRAMES) do
 			local frame = _G[chatFrameName]
 			if frame.isTemporary then
 				self.SkinChat(frame)
@@ -274,6 +278,7 @@ function module:OnLogin()
 	end)
 
 	hooksecurefunc("FCFTab_UpdateColors", self.UpdateTabColors)
+	hooksecurefunc("FloatingChatFrame_OnEvent", self.UpdateTabEventColors)
 
 	-- Font size
 	for i = 1, 15 do
@@ -294,7 +299,6 @@ function module:OnLogin()
 	self:ChatCopy()
 	self:UrlCopy()
 	self:WhisperInvite()
-	self:ChatFrameBackground()
 
 	-- Lock chatframe
 	if NDuiDB["Chat"]["Lock"] then

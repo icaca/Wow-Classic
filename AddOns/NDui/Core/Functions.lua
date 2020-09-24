@@ -433,12 +433,6 @@ do
 		self:SetScript("OnLeave", B.HideTooltip)
 	end
 
-	-- Frame
-	function B:Scale(x)
-		local mult = C.mult
-		return mult * floor(x / mult + .5)
-	end
-
 	-- Glow parent
 	function B:CreateGlowFrame(size)
 		local frame = CreateFrame("Frame", nil, self)
@@ -483,7 +477,7 @@ do
 
 		self.Shadow = CreateFrame("Frame", nil, frame)
 		self.Shadow:SetOutside(self, size or 4, size or 4)
-		self.Shadow:SetBackdrop({edgeFile = DB.glowTex, edgeSize = B:Scale(size or 5)})
+		self.Shadow:SetBackdrop({edgeFile = DB.glowTex, edgeSize = size or 5})
 		self.Shadow:SetBackdropBorderColor(0, 0, 0, size and 1 or .4)
 		self.Shadow:SetFrameLevel(1)
 
@@ -547,17 +541,17 @@ do
 			borders.CENTER = frame:CreateTexture(nil, "BACKGROUND", nil, -1)
 			borders.CENTER:SetTexture(DB.bdTex)
 
-			borders.TOP:Point("BOTTOMLEFT", borders.CENTER, "TOPLEFT", C.mult, -C.mult)
-			borders.TOP:Point("BOTTOMRIGHT", borders.CENTER, "TOPRIGHT", -C.mult, -C.mult)
+			borders.TOP:SetPoint("BOTTOMLEFT", borders.CENTER, "TOPLEFT", C.mult, -C.mult)
+			borders.TOP:SetPoint("BOTTOMRIGHT", borders.CENTER, "TOPRIGHT", -C.mult, -C.mult)
 
-			borders.BOTTOM:Point("TOPLEFT", borders.CENTER, "BOTTOMLEFT", C.mult, C.mult)
-			borders.BOTTOM:Point("TOPRIGHT", borders.CENTER, "BOTTOMRIGHT", -C.mult, C.mult)
+			borders.BOTTOM:SetPoint("TOPLEFT", borders.CENTER, "BOTTOMLEFT", C.mult, C.mult)
+			borders.BOTTOM:SetPoint("TOPRIGHT", borders.CENTER, "BOTTOMRIGHT", -C.mult, C.mult)
 
-			borders.LEFT:Point("TOPRIGHT", borders.TOP, "TOPLEFT", 0, 0)
-			borders.LEFT:Point("BOTTOMRIGHT", borders.BOTTOM, "BOTTOMLEFT", 0, 0)
+			borders.LEFT:SetPoint("TOPRIGHT", borders.TOP, "TOPLEFT", 0, 0)
+			borders.LEFT:SetPoint("BOTTOMRIGHT", borders.BOTTOM, "BOTTOMLEFT", 0, 0)
 
-			borders.RIGHT:Point("TOPLEFT", borders.TOP, "TOPRIGHT", 0, 0)
-			borders.RIGHT:Point("BOTTOMLEFT", borders.BOTTOM, "BOTTOMRIGHT", 0, 0)
+			borders.RIGHT:SetPoint("TOPLEFT", borders.TOP, "TOPRIGHT", 0, 0)
+			borders.RIGHT:SetPoint("BOTTOMLEFT", borders.BOTTOM, "BOTTOMRIGHT", 0, 0)
 
 			hooksecurefunc(frame, "SetBackdropColor", B.SetBackdropColor_Hook)
 			hooksecurefunc(frame, "SetBackdropBorderColor", B.SetBackdropBorderColor_Hook)
@@ -659,6 +653,30 @@ do
 		bu:GetHighlightTexture():SetTexCoord(0, .5, 0, .5)
 
 		return bu
+	end
+
+	function B:CreateHelpInfo(tooltip)
+		local bu = CreateFrame("Button", nil, self)
+		bu:SetSize(40, 40)
+		bu.Icon = bu:CreateTexture(nil, "ARTWORK")
+		bu.Icon:SetAllPoints()
+		bu.Icon:SetTexture(616343)
+		bu:SetHighlightTexture(616343)
+		if tooltip then
+			bu.title = L["Tips"]
+			B.AddTooltip(bu, "ANCHOR_BOTTOMLEFT", tooltip, "info")
+		end
+
+		return bu
+	end
+
+	function B:CreateWatermark()
+		local logo = self:CreateTexture(nil, "BACKGROUND")
+		logo:SetPoint("BOTTOMRIGHT", 10, 0)
+		logo:SetTexture(DB.logoTex)
+		logo:SetTexCoord(0, 1, 0, .75)
+		logo:SetSize(200, 75)
+		logo:SetAlpha(.3)
 	end
 
 	-- Handle statusbar
@@ -1019,6 +1037,7 @@ do
 		bg:SetPoint("TOPLEFT", 4, -4)
 		bg:SetPoint("BOTTOMRIGHT", -4, 4)
 		B.CreateGradient(bg)
+		self.bg = bg
 
 		local ch = self:GetCheckedTexture()
 		ch:SetTexture("Interface\\Buttons\\UI-CheckBox-Check")
@@ -1152,9 +1171,9 @@ do
 		B.StripTextures(self)
 		local bg = B.SetBD(self, x, y, x2, y2)
 		local frameName = self.GetName and self:GetName()
-		local portrait = self.portrait or _G[frameName.."Portrait"]
+		local portrait = self.PortraitTexture or self.portrait or (frameName and _G[frameName.."Portrait"])
 		if portrait then portrait:SetAlpha(0) end
-		local closeButton = self.CloseButton or _G[frameName.."CloseButton"]
+		local closeButton = self.CloseButton or (frameName and _G[frameName.."CloseButton"])
 		if closeButton then
 			B.ReskinClose(closeButton)
 			closeButton:ClearAllPoints()
@@ -1544,17 +1563,6 @@ do
 		end
 	end
 
-	local function Point(frame, arg1, arg2, arg3, arg4, arg5, ...)
-		if arg2 == nil then arg2 = frame:GetParent() end
-
-		if type(arg2) == "number" then arg2 = B:Scale(arg2) end
-		if type(arg3) == "number" then arg3 = B:Scale(arg3) end
-		if type(arg4) == "number" then arg4 = B:Scale(arg4) end
-		if type(arg5) == "number" then arg5 = B:Scale(arg5) end
-
-		frame:SetPoint(arg1, arg2, arg3, arg4, arg5, ...)
-	end
-
 	local function SetInside(frame, anchor, xOffset, yOffset, anchor2)
 		xOffset = xOffset or C.mult
 		yOffset = yOffset or C.mult
@@ -1562,8 +1570,8 @@ do
 
 		DisablePixelSnap(frame)
 		frame:ClearAllPoints()
-		frame:Point("TOPLEFT", anchor, "TOPLEFT", xOffset, -yOffset)
-		frame:Point("BOTTOMRIGHT", anchor2 or anchor, "BOTTOMRIGHT", -xOffset, yOffset)
+		frame:SetPoint("TOPLEFT", anchor, "TOPLEFT", xOffset, -yOffset)
+		frame:SetPoint("BOTTOMRIGHT", anchor2 or anchor, "BOTTOMRIGHT", -xOffset, yOffset)
 	end
 
 	local function SetOutside(frame, anchor, xOffset, yOffset, anchor2)
@@ -1573,13 +1581,12 @@ do
 
 		DisablePixelSnap(frame)
 		frame:ClearAllPoints()
-		frame:Point("TOPLEFT", anchor, "TOPLEFT", -xOffset, yOffset)
-		frame:Point("BOTTOMRIGHT", anchor2 or anchor, "BOTTOMRIGHT", xOffset, -yOffset)
+		frame:SetPoint("TOPLEFT", anchor, "TOPLEFT", -xOffset, yOffset)
+		frame:SetPoint("BOTTOMRIGHT", anchor2 or anchor, "BOTTOMRIGHT", xOffset, -yOffset)
 	end
 
 	local function addapi(object)
 		local mt = getmetatable(object).__index
-		if not object.Point then mt.Point = Point end
 		if not object.SetInside then mt.SetInside = SetInside end
 		if not object.SetOutside then mt.SetOutside = SetOutside end
 		if not object.DisabledPixelSnap then
