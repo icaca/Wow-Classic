@@ -1,9 +1,10 @@
-## v4.10.3 Changes
+## v4.10.6 Changes
 
-* Welcome to TradeSkillMaster 4.10! Full changelog: http://support.tradeskillmaster.com/display/KB/Change+Log
-* The Import Summary dialog now supports deselecting subgroups which you don't want imported
-* The SaleRate price source is now limited to the last 180 days
-* Fixed various errors at login
-* Fixed error when deleting old Accounting data
+* Added apperance option to show total gold instead of player gold at the top of TSM windows
+* Fixed some disenchanting ratios
+* Fixed issue with Bank UI not updating the group tree when switching tabs
+* [Retail] Fixed issues when the reagent bank hasn't been purchased
+* [Classic] Fixed issue with Vendoring buying not buying the correct amount
+* [Classic] Fixed issue with Sniper not finding auctions under 1c per item
 
 [Known Issues](http://support.tradeskillmaster.com/display/KB/TSM4+Currently+Known+Issues)

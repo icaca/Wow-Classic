@@ -1074,7 +1074,7 @@ function private.UpdateMerchant()
 end
 
 function private.CheckFieldValue(key, value)
-	if value == -1 or value == "" then
+	if value == -1 then
 		return
 	end
 	assert(value >= 0 and value <= FIELD_INFO[key].maxValue)
