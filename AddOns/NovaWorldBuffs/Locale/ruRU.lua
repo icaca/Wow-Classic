@@ -170,7 +170,7 @@ L["Resist Fire"] = "Сопротивление огню"; -- LBRS fire resist bu
 L["Blessing of Blackfathom"] = "Благословение Черных Глубин";
 
 L["zan"] = "Зандалар";
-L["zanFirstYellMsg"] = "Зандалар будет бафнут через 30 секунд.";
+L["zanFirstYellMsg"] = "Зандалар будет бафнут через %s секунд.";
 L["zanBuffDropped"] = "Дух Зандалара (Хаккар) был бафнут.";
 L["singleSongflowerMsg"] = "Песнецвет в локации: %s заспавнится в %s."; -- Songflower at Bloodvenom Post spawns at 1pm.
 L["spawn"] = ""; --Used in Felwood map marker tooltip (03:46pm spawn). (blank for russian on purpose)

@@ -11,7 +11,7 @@
 ---The rest of people online reply with only their settings (settings are small enough to be one single msg).
 ---Settings are important because they decide which one person online will send guild chat msgs in NWB:sendGuildMsg() for timers etc.
 ---Layermaps are only sent on every second sync.
----Data is compressed for party/raid/guild but cannot be compressed for yell because of a Blizzard filter blocking yell special characters.
+---Data is compressed for all channels using LibDeflate on the highest compression setting.
 ---When sending our data table for any channel I replace all the keys with single character strings to reduce size, see shortKeys below.
 ---Also when sending over yell channel I replace epoch timestamps with a shorter hash before sending.
 ---The timestamp hash is only used on yell, on other channels we let LibDeflate compress them.
@@ -29,9 +29,6 @@ function NWB:OnCommReceived(commPrefix, string, distribution, sender)
 	--if (NWB.isDebug) then
 	--	return;
 	--end
-	if (UnitName("player") == "Delvara") then
-		return;
-	end
 	if (distribution == "GUILD" and commPrefix == NWB.commPrefix) then
 		--Temp bug fix test.
 		local tempSender = sender;
@@ -127,29 +124,31 @@ function NWB:OnCommReceived(commPrefix, string, distribution, sender)
 		end
 		return;
 	end
-	if (cmd == "drop" and not (NWB.db.global.receiveGuildDataOnly and distribution ~= "GUILD")) then
-		--NWB:debug("drop inc", sender, data);
-		--Buff drop seen by someone in org.
-		local type, layer = strsplit(" ", data, 2);
-		NWB:doBuffDropMsg(type, layer);
-	elseif ((cmd == "yell" or cmd == "yell2") and not (NWB.db.global.receiveGuildDataOnly and distribution ~= "GUILD")) then
-		--NWB:debug("yell inc", sender, data);
-		--Yell msg seen by someone in org.
-		local type, layer = strsplit(" ", data, 2);
-		NWB:doFirstYell(type, layer);
-	elseif ((cmd == "npcKilled" or cmd == "npcKilled2") and not (NWB.db.global.receiveGuildDataOnly and distribution ~= "GUILD")) then
-		--NWB:debug("npc killed inc", sender, data);
-		--Npc killed seen by someone in org.
-		local type, layer = strsplit(" ", data, 2);
-		NWB:doNpcKilledMsg(type, layer);
-	elseif ((cmd == "flower" or cmd == "flower2") and not (NWB.db.global.receiveGuildDataOnly and distribution ~= "GUILD")) then
-		--NWB:debug("flower inc", sender, data);
-		--Flower picked.
-		local type, layer = strsplit(" ", data, 2);
-		NWB:doFlowerMsg(type, layer);
+	if (distribution == "GUILD" or distribution == "PARTY" or distribution == "RAID") then
+		if (cmd == "drop" and not (NWB.db.global.receiveGuildDataOnly and distribution ~= "GUILD")) then
+			--NWB:debug("drop inc", sender, data);
+			--Buff drop seen by someone in org.
+			local type, layer = strsplit(" ", data, 2);
+			NWB:doBuffDropMsg(type, layer);
+		elseif ((cmd == "yell" or cmd == "yell2") and not (NWB.db.global.receiveGuildDataOnly and distribution ~= "GUILD")) then
+			--NWB:debug("yell inc", sender, data);
+			--Yell msg seen by someone in org.
+			local type, layer, arg = strsplit(" ", data, 3);
+			NWB:doFirstYell(type, layer, nil, distribution, arg);
+		elseif ((cmd == "npcKilled" or cmd == "npcKilled2") and not (NWB.db.global.receiveGuildDataOnly and distribution ~= "GUILD")) then
+			--NWB:debug("npc killed inc", sender, data);
+			--Npc killed seen by someone in org.
+			local type, layer = strsplit(" ", data, 2);
+			NWB:doNpcKilledMsg(type, layer);
+		elseif ((cmd == "flower" or cmd == "flower2") and not (NWB.db.global.receiveGuildDataOnly and distribution ~= "GUILD")) then
+			--NWB:debug("flower inc", sender, data);
+			--Flower picked.
+			local type, layer = strsplit(" ", data, 2);
+			NWB:doFlowerMsg(type, layer);
+		end
 	end
 	--Ignore data syncing for some recently out of date versions.
-	if (tonumber(remoteVersion) < 1.76) then
+	if (tonumber(remoteVersion) < 1.76 or (GetLocale() == "frFR" and tonumber(remoteVersion) < 1.80)) then
 		if (cmd == "requestData" and distribution == "GUILD") then
 			if (not NWB:getGuildDataStatus()) then
 				NWB:sendSettings("GUILD");
@@ -357,15 +356,18 @@ function NWB:sendBuffDropped(distribution, type, target, layer)
 end
 
 --Send first yell msg.
-function NWB:sendYell(distribution, type, target, layer)
+function NWB:sendYell(distribution, type, target, layer, arg)
 	if (NWB.sharedLayerBuffs) then
 		layer = nil;
 	end
-	if (tonumber(layer)) then
-		NWB:sendComm(distribution, "yell2 " .. version .. " " .. type .. " " .. layer, target);
-		--Temporary send both msgs until next version so people don't get lua error on old versions.
-		--The yell2 msg will be changed to yell and the 2nd msg without layer will be removed.
-		NWB:sendComm(distribution, "yell " .. version .. " " .. type, target);
+	if (arg) then
+		if (tonumber(layer)) then
+			NWB:sendComm(distribution, "yell " .. version .. " " .. type .. " " .. layer .. " " .. arg, target);
+		else
+			NWB:sendComm(distribution, "yell " .. version .. " " .. type .. " 0 " .. arg, target);
+		end
+	elseif (tonumber(layer)) then
+		NWB:sendComm(distribution, "yell " .. version .. " " .. type .. " " .. layer, target);
 	else
 		NWB:sendComm(distribution, "yell " .. version .. " " .. type, target);
 	end
@@ -374,8 +376,7 @@ end
 --Send npc killed msg.
 function NWB:sendNpcKilled(distribution, type, target, layer)
 	if (tonumber(layer)) then
-		NWB:sendComm(distribution, "npcKilled2 " .. version .. " " .. type .. " " .. layer, target);
-		NWB:sendComm(distribution, "npcKilled " .. version .. " " .. type, target);
+		NWB:sendComm(distribution, "npcKilled " .. version .. " " .. type .. " " .. layer, target);
 	else
 		NWB:sendComm(distribution, "npcKilled " .. version .. " " .. type, target);
 	end
@@ -385,8 +386,7 @@ end
 function NWB:sendFlower(distribution, type, target, layer)
 	NWB:debug("sending flower", type, layer);
 	if (tonumber(layer)) then
-		NWB:sendComm(distribution, "flower2 " .. version .. " " .. type .. " " .. layer, target);
-		NWB:sendComm(distribution, "flower " .. version .. " " .. type, target);
+		NWB:sendComm(distribution, "flower " .. version .. " " .. type .. " " .. layer, target);
 	else
 		NWB:sendComm(distribution, "flower " .. version .. " " .. type, target);
 	end
@@ -441,24 +441,24 @@ function NWB:createData(distribution, noLogs)
 	end
 	if (NWB.data.rendTimer > (GetServerTime() - NWB.db.global.rendRespawnTime)) then
 		data['rendTimer'] = NWB.data.rendTimer;
-		data['rendTimerWho'] = NWB.data.rendTimerWho;
+		--data['rendTimerWho'] = NWB.data.rendTimerWho;
 		data['rendYell'] = NWB.data.rendYell or 0;
-		data['rendYell2'] = NWB.data.rendYell2 or 0;
-		data['rendSource'] = NWB.data.rendSource;
+		--data['rendYell2'] = NWB.data.rendYell2 or 0;
+		--data['rendSource'] = NWB.data.rendSource;
 	end
 	if (NWB.data.onyTimer > (GetServerTime() - NWB.db.global.onyRespawnTime)) then
 		data['onyTimer'] = NWB.data.onyTimer;
-		data['onyTimerWho'] = NWB.data.onyTimerWho;
+		--data['onyTimerWho'] = NWB.data.onyTimerWho;
 		data['onyYell'] = NWB.data.onyYell or 0;
-		data['onyYell2'] = NWB.data.onyYell2 or 0;
-		data['onySource'] = NWB.data.onySource;
+		--data['onyYell2'] = NWB.data.onyYell2 or 0;
+		--data['onySource'] = NWB.data.onySource;
 	end
 	if (NWB.data.nefTimer > (GetServerTime() - NWB.db.global.nefRespawnTime)) then
 		data['nefTimer'] = NWB.data.nefTimer;
-		data['nefTimerWho'] = NWB.data.nefTimerWho;
+		--data['nefTimerWho'] = NWB.data.nefTimerWho;
 		data['nefYell'] = NWB.data.nefYell or 0;
-		data['nefYell2'] = NWB.data.nefYell2 or 0;
-		data['nefSource'] = NWB.data.nefSource;
+		--data['nefYell2'] = NWB.data.nefYell2 or 0;
+		--data['nefSource'] = NWB.data.nefSource;
 	end
 	if ((NWB.data.onyNpcDied > NWB.data.onyTimer) and
 			(NWB.data.onyNpcDied > (GetServerTime() - NWB.db.global.onyRespawnTime))) then
@@ -466,7 +466,7 @@ function NWB:createData(distribution, noLogs)
 	end
 	if ((NWB.data.nefNpcDied > NWB.data.nefTimer) and
 			(NWB.data.nefNpcDied > (GetServerTime() - NWB.db.global.nefRespawnTime))) then
-		data['nefNpcDied'] = NWB.data.nefNpcDied;
+		--data['nefNpcDied'] = NWB.data.nefNpcDied;
 	end
 	for k, v in pairs(NWB.songFlowers) do
 		--Add currently active songflower timers.
@@ -613,12 +613,12 @@ function NWB:createDataLayered(distribution, noLayerMap, noLogs)
 			if (not data.layers[layer]) then
 				data.layers[layer] = {};
 			end
-			data.layers[layer]['nefNpcDied'] = NWB.data.layers[layer].nefNpcDied;
+			--data.layers[layer]['nefNpcDied'] = NWB.data.layers[layer].nefNpcDied;
 			--if (NWB.data.layers[layer].GUID and not NWB.cnRealms[NWB.realm] and not NWB.twRealms[NWB.realm]
 			--		and not NWB.krRealms[NWB.realm]) then
 			--	data.layers[layer]['GUID'] = NWB.data.layers[layer].GUID;
 			--end
-			foundTimer = true;
+			--foundTimer = true;
 		end
 		if (NWB.layeredSongflowers) then
 			for k, v in pairs(NWB.songFlowers) do
@@ -1126,6 +1126,9 @@ function NWB:receivedData(dataReceived, sender, distribution)
 														newFlowerData = true;
 													end
 													NWB:timerLog(k, v, layer);
+													if (k == "onyNpcDied" or k == "nefNpcDied") then
+														NWB:receivedNpcDied(k, v, distribution, layer);
+													end
 													if (NWB:validateCloseTimestamps(layer, k, v)) then
 														NWB.data.layers[layer][k] = v;
 														if (not string.match(k, "lastSeenNPC")) then
@@ -1204,10 +1207,15 @@ function NWB:receivedData(dataReceived, sender, distribution)
 							if (string.match(k, "flower") and not (distribution == "GUILD" and (GetServerTime() - NWB.data[k]) > 15)) then
 								newFlowerData = true;
 							end
-							NWB.data[k] = v;
-							hasNewData = true;
-							if (not NWB.isLayered) then
-								NWB:timerLog(k, v, nil, nil, nil, distribution);
+							if (k == "onyNpcDied" or k == "nefNpcDied") then
+								NWB:receivedNpcDied(k, v, distribution);
+							end
+							if (k ~= "nefNpcDied") then
+								NWB.data[k] = v;
+								hasNewData = true;
+								if (not NWB.isLayered) then
+									NWB:timerLog(k, v, nil, nil, nil, distribution);
+								end
 							end
 						end
 					end
@@ -1260,6 +1268,72 @@ function NWB:receivedData(dataReceived, sender, distribution)
 			string = string .. " " .. L["noActiveTimers"] .. ".";
 		end
 		NWB:print(string);
+	end
+end
+
+NWB.receivedNpcDiedCooldown = {};
+function NWB:receivedNpcDied(type, timestamp, distribution, layer)
+	if (tonumber(timestamp) and timestamp > 0) then
+		local timeAgo = GetServerTime() - timestamp;
+		if (timeAgo < 1800 and (not NWB.receivedNpcDiedCooldown[type] or (GetServerTime() - NWB.receivedNpcDiedCooldown[type]) > 600)) then
+			local typeString = "Unknown";
+			local dataPrefix;
+			if (NWB.isLayered and layer) then
+				dataPrefix = NWB.data.layers[layer];
+			else
+				dataPrefix = NWB.data;
+			end
+			if (type == "onyNpcDied") then
+				--If it's within a few minutes of ony drop don't alert.
+				if ((GetServerTime() - dataPrefix.onyTimer) < 600) then
+					return;
+				end
+				--If the timer is within a short time from our last timer then return to avoid more alerts incase no new buff is dropped.
+				--Checking it's a newer timestamp is already done when data is received.
+				--This is just a backup incase things ever change there.
+				if (dataPrefix.onyNpcDied and (timestamp - dataPrefix.onyNpcDied)  < 60) then
+					return;
+				end
+				typeString = "Onyxia";
+			elseif (type == "nefNpcDied") then
+				if ((GetServerTime() - dataPrefix.nefTimer) < 600) then
+					return;
+				end
+				if (dataPrefix.nefNpcDied and (timestamp - dataPrefix.nefNpcDied)  < 60) then
+					return;
+				end
+				typeString = "Nefarian";
+			end
+			NWB.receivedNpcDiedCooldown[type] = GetServerTime();
+			if (GetServerTime() - NWB.loadTime < 5) then
+				--Small delay at logon to let the UI load properly.
+				C_Timer.After(5, function()
+					local timeAgoString =  NWB:getTimeString(timeAgo, true);
+					local msg = "New recently killed " .. typeString .. " NPC timer received, died " .. timeAgoString .. " ago.";
+					if (NWB.db.global.middleNpcKilled) then
+						local colorTable = {r = self.db.global.middleColorR, g = self.db.global.middleColorG, 
+								b = self.db.global.middleColorB, id = 41, sticky = 0};
+						RaidNotice_AddMessage(RaidWarningFrame, msg, colorTable, 5);
+					end
+					if (NWB.db.global.chatNpcKilled) then
+						NWB:print(msg);
+					end
+					NWB:playSound("soundsNpcKilled", "timer");
+				end)
+			else
+				local timeAgoString =  NWB:getTimeString(timeAgo, true);
+				local msg = "New recently killed " .. typeString .. " NPC timer received, died " .. timeAgoString .. " ago.";
+				if (NWB.db.global.middleNpcKilled) then
+					local colorTable = {r = self.db.global.middleColorR, g = self.db.global.middleColorG, 
+							b = self.db.global.middleColorB, id = 41, sticky = 0};
+					RaidNotice_AddMessage(RaidWarningFrame, msg, colorTable, 5);
+				end
+				if (NWB.db.global.chatNpcKilled) then
+					NWB:print(msg);
+				end
+				NWB:playSound("soundsNpcKilled", "timer");
+			end
+		end
 	end
 end
 

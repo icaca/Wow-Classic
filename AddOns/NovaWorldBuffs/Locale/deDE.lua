@@ -171,7 +171,7 @@ L["Resist Fire"] = "Feuer widerstehen"; -- LBRS fire resist buff.
 L["Blessing of Blackfathom"] = "Segen von Blackfathom";
 
 L["zan"] = "Zandalar";
-L["zanFirstYellMsg"] = "Zandalar Buff in 27 Sekunden.";
+L["zanFirstYellMsg"] = "Zandalar Buff in %s Sekunden.";
 L["zanBuffDropped"] = "Geist von Zandalar (Hakkar) Buff wurde gewirkt.";
 L["singleSongflowerMsg"] = "Liedblume %s zu pflücken um %s."; -- Songflower at Bloodvenom Post spawns at 1pm.
 L["spawn"] = "Spawn"; --Used in Felwood map marker tooltip (03:46pm spawn).

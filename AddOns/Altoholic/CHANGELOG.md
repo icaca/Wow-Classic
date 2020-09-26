@@ -1,7 +1,8 @@
 # Altoholic Classic - Fork by Teelo
 
-## [Classic-v1.13.5-044](https://github.com/teelolws/Altoholic-Classic/tree/Classic-v1.13.5-044) (2020-09-18)
-[Full Changelog](https://github.com/teelolws/Altoholic-Classic/compare/Classic-v1.13.5-043...Classic-v1.13.5-044) [Previous Releases](https://github.com/teelolws/Altoholic-Classic/releases)
+## [Classic-v1.13.5-045](https://github.com/teelolws/Altoholic-Classic/tree/Classic-v1.13.5-045) (2020-09-24)
+[Full Changelog](https://github.com/teelolws/Altoholic-Classic/compare/Classic-v1.13.5-044...Classic-v1.13.5-045) [Previous Releases](https://github.com/teelolws/Altoholic-Classic/releases)
 
-- Classic-v1.13.5-044  
-- Add Salt Shaker cooldown to Agenda  
+- Update Altoholic.toc  
+- Transmute recipe tooltip fix  
+- Mooncloth cooldown should be labelled as Mooncloth, not Tailoring.  

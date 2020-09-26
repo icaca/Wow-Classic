@@ -175,7 +175,7 @@ L["Resist Fire"] = "상층 화염저항"; -- LBRS fire resist buff.
 L["Blessing of Blackfathom"] = "검은심연의 축복";
  
 L["zan"] = "잔달라";
-L["zanFirstYellMsg"] = "잔달라버프 30초 전!!";
+L["zanFirstYellMsg"] = "잔달라버프 %s초 전!!";
 L["zanBuffDropped"] = "잔달라버프 끝!!";
 L["singleSongflowerMsg"] = "%s의 노래꽃 %s 재생성"; -- Songflower at Bloodvenom Post spawns at 1pm.
 L["spawn"] = "재생성"; --Used in Felwood map marker tooltip (03:46pm spawn).

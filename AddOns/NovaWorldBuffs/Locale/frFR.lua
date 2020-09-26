@@ -55,17 +55,17 @@ L["NEFARIAN IS SLAIN"] = "NEFARIAN A ÉTÉ TUÉ";
 --Alliance Onyxia buff NPC.
 L["Major Mattingly"] = "Major Mattingly";
 --Alliance Onyxia buff NPC first yell string (part of his first yell msg before before buff).
---L["history has been made"] = "";
+L["history has been made"] = "Citoyens et alliés de Stormwind, ce jour est historique";
 --Alliance Onyxia buff NPC second yell string (part of his second yell msg before before buff).
---L["Onyxia, hangs from the arches"] = "";
+L["Onyxia, hangs from the arches"] = "La terrible Onyxia est accrochée";
 
 
 --Alliance Nefarian buff NPC.
-L["Field Marshal Afrasiabi"] = "Grand maréchal Afrasiabi";
+L["Grand maréchal Afrasiabi"] = "Grand maréchal Afrasiabi";
 --Alliance Nefarian buff NPC first yell string (part of his first yell msg before before buff).
---L["the Lord of Blackrock is slain"] = "";
+L["the Lord of Blackrock is slain"] = "le seigneur du clan Blackrock";
 --Alliance Nefarian buff NPC second yell string (part of his second yell msg before before buff).
---L["Revel in the rallying cry"] = "";
+L["Revel in the rallying cry"] = "Ralliez-vous autour de votre champion";
 
 ---===========----
 ---NPC's killed---
@@ -171,7 +171,7 @@ L["Resist Fire"] = "Résistance au Feu"; -- LBRS fire resist buff.
 L["Blessing of Blackfathom"] = "Bénédiction de Brassenoire";
 
 L["zan"] = "Zandalar";
-L["zanFirstYellMsg"] = "Zandalar va être posé dans 30 secondes.";
+L["zanFirstYellMsg"] = "Zandalar va être posé dans %s secondes.";
 L["zanBuffDropped"] = "Esprit des Zandalar (Hakkar) a été posé.";
 L["singleSongflowerMsg"] = "La Songflower prise à %s va apparaître dans %s.";
 L["spawn"] = "spawn"; --Used in Felwood map marker tooltip (03:46pm spawn).
@@ -526,3 +526,27 @@ L["time"] = "time"; --Singular - This shows how many timers you got a buff. Exam
 L["times"] = "times"; --Plural - This shows how many timers you got a buff. Example: (5 times)
 
 L["Blackrock Mountain"] = "Mont Blackrock";
+
+L["onyxiaNpcRespawnHorde"] = "Le PNJ Onyxia (Runthak) va réapparaître aléatoirement dans les deux prochaines minutes.";
+L["nefarianNpcRespawnHorde"] = "Le PNJ Nefarian (Saurfang) va réapparaître aléatoirement dans les deux prochaines minutes.";
+L["onyxiaNpcRespawnAlliance"] = "Le PNJ Onyxia (Mattingly) va réapparaître aléatoirement dans les deux prochaines minutes.";
+L["nefarianNpcRespawnAlliance"] = "Le PNJ Nefarian (Afrasiabi) va réapparaître aléatoirement dans les deux prochaines minutes.";
+
+L["onyxiaNpcKilledHordeWithTimer2"] = "Le PNJ d'Onyxia (Runthak) a été tué il y a %s, réapparition dans %s.";
+L["nefarianNpcKilledHordeWithTimer2"] = "Le PNJ de Nefarian (Saurfang) a été tué il y a %s, réapparition dans %s.";
+L["onyxiaNpcKilledAllianceWithTimer2"] = "Le PNJ d'Onyxia (Mattingly) a été tué il y a %s, réapparition dans %s.";
+L["nefarianNpcKilledAllianceWithTimer2"] = "Le PNJ de Nefarian (Afrasiabi) a été tué il y a %s, réapparition dans %s.";
+
+L["soundsNpcKilledTitle"] = "PNJ tué";
+L["soundsNpcKilledDesc"] = "Son à jouter lorsqu'un PNJ permettant un buff est tué afin de reinitialiser le timer.";
+
+L["autoDmfBuffCharsText"] = "Configuration par personnage pour la foire de sombrelune:";
+
+L["middleNpcKilledTitle"] = "PNJ tué";
+L["middleNpcKilledDesc"] = "Afficher un message ressemblant à un avertissement raid au milieu de l'écran quand un NPC Ony ou Nefa est tué afin réinitialiser le timer.";
+
+L["chatNpcKilledTitle"] = "PNJ tué";
+L["chatNpcKilledDesc"] = "Afficher un message dans la fenêtre de discussion lorsqu'un PNJ Ony ou Nefa est tué afin de réinitialiser le timer.";
+
+L["flashNpcKilledTitle"] = "Flash PNJ tué";
+L["flashNpcKilledDesc"] = "Faire clignoter le client du jeu quand un PNJ buff est tué?";

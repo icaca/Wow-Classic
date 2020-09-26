@@ -287,6 +287,14 @@ NWB.options = {
 			get = "getChatZan",
 			set = "setChatZan",
 		},
+		chatNpcKilled = {
+			type = "toggle",
+			name = L["chatNpcKilledTitle"],
+			desc = L["chatNpcKilledDesc"],
+			order = 38,
+			get = "getChatNpcKilled",
+			set = "setChatNpcKilled",
+		},
 		middleWarningHeader = {
 			type = "header",
 			name = L["middleWarningHeaderDesc"],
@@ -371,6 +379,14 @@ NWB.options = {
 			order = 50,
 			get = "getMiddleHideBattlegrounds",
 			set = "setMiddleHideBattlegrounds",
+		},
+		middleNpcKilled = {
+			type = "toggle",
+			name = L["middleNpcKilledTitle"],
+			desc = L["middleNpcKilledDesc"],
+			order = 51,
+			get = "getMiddleNpcKilled",
+			set = "setMiddleNpcKilled",
 		},
 		guildWarningHeader = {
 			type = "header",
@@ -768,6 +784,17 @@ NWB.options = {
 			get = "getSoundsZanDrop",
 			set = "setSoundsZanDrop",
 		},
+		soundsNpcKilled = {
+			type = "select",
+			name = L["soundsNpcKilledTitle"],
+			desc = L["soundsNpcKilledDesc"],
+			values = function()
+				return NWB:getSounds("npcKilled");
+			end,
+			order = 124,
+			get = "getSoundsNpcKilled",
+			set = "setSoundsNpcKilled",
+		},
 		flashHeader = {
 			type = "header",
 			name = L["flashHeaderDesc"],
@@ -796,6 +823,14 @@ NWB.options = {
 			order = 133,
 			get = "getFlashFirstYellZan",
 			set = "setFlashFirstYellZan",
+		},
+		flashNpcKilled = {
+			type = "toggle",
+			name = L["flashNpcKilledTitle"],
+			desc = L["flashNpcKilledDesc"],
+			order = 134,
+			get = "getFlashNpcKilled",
+			set = "setFlashNpcKilled",
 		},
 		dispelsHeader = {
 			type = "header",
@@ -915,6 +950,38 @@ NWB.options = {
 			get = "getAutoBwlPortal",
 			set = "setAutoBwlPortal",
 		},
+		--[[autoDmfBuffCharsText = {
+			type = "description",
+			name = function()
+				local buffs = {
+					["Damage"] = L["Sayge's Dark Fortune of Damage"],
+					["Agility"] = L["Sayge's Dark Fortune of Agility"],
+					["Intelligence"] = L["Sayge's Dark Fortune of Intelligence"],
+					["Spirit"] = L["Sayge's Dark Fortune of Spirit"],
+					["Stamina"] = L["Sayge's Dark Fortune of Stamina"],
+					["Strength"] = L["Sayge's Dark Fortune of Strength"],
+					["Armor"] = L["Sayge's Dark Fortune of Armor"],
+					["Resistance"] = L["Sayge's Dark Fortune of Resistance"],
+				};
+				local text = NWB.prefixColor .. L["autoDmfBuffCharsText"] .. "\n";
+				if (NWB.data.dmfBuffSettings and next(NWB.data.dmfBuffSettings)) then
+					for k, v in NWB:pairsByKeys(NWB.data.layers) do
+						local classColorHex = "FFFFFFFF";
+						if (NWB.data.myChars[k]) then
+							_, _, _, classColorHex = GetClassColor(NWB.data.myChars[k].englishClass);
+						end
+						text = text .. "|c" .. classColorHex .. k .. " |cFFFFFFFF->|CffDEDE42 " .. buffs[v] .. "\n";
+					end
+					text = text .. "All other alts using " .. buffs[NWB.db.global.autoDmfBuffType] .. ".";
+				else
+					text = text .. "|CffDEDE42No character specific buffs set yet, all alts using "
+							.. buffs[NWB.db.global.autoDmfBuffType] .. ".";
+				end
+				return text;
+			end,
+			fontSize = "medium",
+			order = 168,
+		},]]
 	},
 };
 
@@ -969,6 +1036,7 @@ NWB.optionDefaults = {
 		chat1 = true,
 		chat0 = true,
 		chatZan = false,
+		chatNpcKilled = true,
 		middle30 = true,
 		middle15 = false,
 		middle10 = true,
@@ -979,6 +1047,7 @@ NWB.optionDefaults = {
 		middleHideCombat = false,
 		middleHideRaid = false,
 		middleHideBattlegrounds = false,
+		middleNpcKilled = true,
 		--These are 1/0 instead of true/false to be smaller via addon comms.
 		guild10 = 1,
 		guild1 = 1,
@@ -1066,6 +1135,7 @@ NWB.optionDefaults = {
 		soundsOnyDrop = "NWB - Zelda",
 		soundsNefDrop = "NWB - Zelda",
 		soundsZanDrop = "NWB - Zelda",
+		soundsNpcKilled = "NWB - Pop",
 		showExpiredTimers = true,
 		expiredTimersDuration = 5,
 		minimapIcon = {["minimapPos"] = 160, ["hide"] = false},
@@ -1073,6 +1143,7 @@ NWB.optionDefaults = {
 		flashOneMin = true,
 		flashFirstYell = true,
 		flashFirstYellZan = true,
+		flashNpcKilled = true,
 		dispelsMine = true,
 		dispelsMineWBOnly = true,
 		dispelsAll = false,
@@ -1084,11 +1155,13 @@ NWB.optionDefaults = {
 		autoDireMaulBuff = true,
 		autoBwlPortal = true,
 		showBuffStats = false,
+		showBuffAllStats = false,
 		minimapLayerHover = false,
 		timerLogShowRend = true,
 		timerLogShowOny = true,
 		timerLogShowNef = true,
 		timerLogMergeLayers = true,
+		copyFormatDiscord = false,
 		
 		resetLayers4 = true, --Reset layers one time (sometimes needed when upgrading from old version.
 		resetSongflowers = true, --Reset songflowers one time.
@@ -1141,40 +1214,44 @@ function NWB:buildRealmFactionData()
 	};
 	--Create realm and faction tables if they don't exist.
 	if (not self.db.global[NWB.realm]) then
-			self.db.global[NWB.realm] = {};
+		self.db.global[NWB.realm] = {};
 	end
 	if (not self.db.global[NWB.realm][NWB.faction]) then
-			self.db.global[NWB.realm][NWB.faction] = {};
+		self.db.global[NWB.realm][NWB.faction] = {};
 	end
 	if (not self.db.global[NWB.realm][NWB.faction].myChars) then
-			self.db.global[NWB.realm][NWB.faction].myChars = {};
+		self.db.global[NWB.realm][NWB.faction].myChars = {};
 	end
 	if (not self.db.global[NWB.realm][NWB.faction].myChars[UnitName("player")]) then
-			self.db.global[NWB.realm][NWB.faction].myChars[UnitName("player")] = {};
+		self.db.global[NWB.realm][NWB.faction].myChars[UnitName("player")] = {};
 	end
 	if (not self.db.global[NWB.realm][NWB.faction].myChars[UnitName("player")].buffs) then
-			self.db.global[NWB.realm][NWB.faction].myChars[UnitName("player")].buffs = {};
+		self.db.global[NWB.realm][NWB.faction].myChars[UnitName("player")].buffs = {};
 	end
 	if (not self.db.global[NWB.realm][NWB.faction].myChars[UnitName("player")].rendCount) then
-			self.db.global[NWB.realm][NWB.faction].myChars[UnitName("player")].rendCount = 0;
+		self.db.global[NWB.realm][NWB.faction].myChars[UnitName("player")].rendCount = 0;
 	end
 	if (not self.db.global[NWB.realm][NWB.faction].myChars[UnitName("player")].onyCount) then
-			self.db.global[NWB.realm][NWB.faction].myChars[UnitName("player")].onyCount = 0;
+		self.db.global[NWB.realm][NWB.faction].myChars[UnitName("player")].onyCount = 0;
 	end
 	if (not self.db.global[NWB.realm][NWB.faction].myChars[UnitName("player")].nefCount) then
-			self.db.global[NWB.realm][NWB.faction].myChars[UnitName("player")].nefCount = 0;
+		self.db.global[NWB.realm][NWB.faction].myChars[UnitName("player")].nefCount = 0;
 	end
 	if (not self.db.global[NWB.realm][NWB.faction].myChars[UnitName("player")].zanCount) then
-			self.db.global[NWB.realm][NWB.faction].myChars[UnitName("player")].zanCount = 0;
+		self.db.global[NWB.realm][NWB.faction].myChars[UnitName("player")].zanCount = 0;
 	end
 	if (not self.db.global[NWB.realm][NWB.faction].layers) then
-			self.db.global[NWB.realm][NWB.faction].layers = {};
+		self.db.global[NWB.realm][NWB.faction].layers = {};
 	end
 	if (not self.db.global[NWB.realm][NWB.faction].layersDisabled) then
-			self.db.global[NWB.realm][NWB.faction].layersDisabled = {};
+		self.db.global[NWB.realm][NWB.faction].layersDisabled = {};
 	end
 	if (not self.db.global[NWB.realm][NWB.faction].timerLog) then
-			self.db.global[NWB.realm][NWB.faction].timerLog = {};
+		self.db.global[NWB.realm][NWB.faction].timerLog = {};
+	end
+	if (not self.db.global[NWB.realm][NWB.faction].dmfBuffSettings) then
+		--Enable after testing at the next DMF.
+		--self.db.global[NWB.realm][NWB.faction].dmfBuffSettings = {};
 	end
 	local localizedClass, englishClass = UnitClass("player");
 	self.db.global[NWB.realm][NWB.faction].myChars[UnitName("player")].localizedClass = localizedClass;
@@ -1371,16 +1448,7 @@ function NWB:getShowAllAlts(info)
 	return self.db.global.showAllAlts;
 end
 
---Flash minimized.
-function NWB:setFlashMinimized(info, value)
-	self.db.global.flashMinimized = value;
-end
-
-function NWB:getFlashMinimized(info)
-	return self.db.global.flashMinimized;
-end
-
---Flash minimized.
+--Flash one min warnings.
 function NWB:setFlashOneMin(info, value)
 	self.db.global.flashOneMin = value;
 end
@@ -1389,7 +1457,7 @@ function NWB:getFlashOneMin(info)
 	return self.db.global.flashOneMin;
 end
 
---Flash minimized.
+--Flash first yell.
 function NWB:setFlashFirstYell(info, value)
 	self.db.global.flashFirstYell = value;
 end
@@ -1398,13 +1466,22 @@ function NWB:getFlashFirstYell(info)
 	return self.db.global.flashFirstYell;
 end
 
---Flash minimized.
+--Flash first yell zandalar buff.
 function NWB:setFlashFirstYellZan(info, value)
 	self.db.global.flashFirstYellZan = value;
 end
 
 function NWB:getFlashFirstYellZan(info)
 	return self.db.global.flashFirstYellZan;
+end
+
+--Flash NPC killed.
+function NWB:setFlashNpcKilled(info, value)
+	self.db.global.flashNpcKilled = value;
+end
+
+function NWB:getFlashNpcKilled(info)
+	return self.db.global.flashNpcKilled;
 end
 
 --Minimap button
@@ -1496,6 +1573,15 @@ function NWB:getChatZan(info)
 	return self.db.global.chatZan;
 end
 
+--Chat NPC killed warning.
+function NWB:setChatNpcKilled(info, value)
+	self.db.global.chatNpcKilled = value;
+end
+
+function NWB:getChatNpcKilled(info)
+	return self.db.global.chatNpcKilled;
+end
+
 --Middle of the screen 30 minute warning.
 function NWB:setMiddle30(info, value)
 	self.db.global.middle30 = value;
@@ -1585,7 +1671,16 @@ end
 function NWB:getMiddleHideBattlegrounds(info)
 	return self.db.global.middleHideBattlegrounds;
 end
-		
+
+--Middle of the screen NPC killed warning.
+function NWB:setMiddleNpcKilled(info, value)
+	self.db.global.middleNpcKilled = value;
+end
+
+function NWB:getMiddleNpcKilled(info)
+	return self.db.global.middleNpcKilled;
+end
+
 --Guild 10 minute warning.
 function NWB:setGuild10(info, value)
 	if (value) then
@@ -2022,7 +2117,7 @@ end
 ------------
 
 local sounds = {
-	--Random snipets from youtube.
+	--Random snipets from youtube mostly.
 	["NWB - Zelda"] = "Interface\\AddOns\\NovaWorldBuffs\\Media\\Zelda.ogg",
 	["NWB - FF7"] = "Interface\\AddOns\\NovaWorldBuffs\\Media\\FF7.ogg",
 	["NWB - Bell"] = "Interface\\AddOns\\NovaWorldBuffs\\Media\\Bell.ogg",
@@ -2031,8 +2126,13 @@ local sounds = {
 	["NWB - Clock"] = "Interface\\AddOns\\NovaWorldBuffs\\Media\\Clock.ogg",
 	["NWB - Electronic"] = "Interface\\AddOns\\NovaWorldBuffs\\Media\\Electronic.ogg",
 	["NWB - Pop"] = "Interface\\AddOns\\NovaWorldBuffs\\Media\\Pop.ogg",
+	["NWB - Pop2"] = "Interface\\AddOns\\NovaWorldBuffs\\Media\\Pop2.ogg",
 	["NWB - Dink"] = "Interface\\AddOns\\NovaWorldBuffs\\Media\\Dink.ogg",
+	["NWB - MGS"] = "Interface\\AddOns\\NovaWorldBuffs\\Media\\MGS.ogg",
+	["NWB - MGS2"] = "Interface\\AddOns\\NovaWorldBuffs\\Media\\MGS2.ogg",
+	["NWB - WT"] = "Interface\\AddOns\\NovaWorldBuffs\\Media\\WT.ogg",
 }
+
 function NWB:registerSounds()
 	for k, v in pairs(sounds) do
 		NWB.LSM:Register("sound", k, v);
@@ -2193,6 +2293,17 @@ function NWB:getSoundsZanDrop(info)
 	return self.db.global.soundsZanDrop;
 end
 
+--NPC killed sound.
+function NWB:setSoundsNpcKilled(info, value)
+	self.db.global.soundsNpcKilled = value;
+	local soundFile = NWB.LSM:Fetch("sound", value);
+	PlaySoundFile(soundFile);
+end
+
+function NWB:getSoundsNpcKilled(info)
+	return self.db.global.soundsNpcKilled;
+end
+
 --My buffs dispelled.
 function NWB:setSoundsDispelsMine(info, value)
 	self.db.global.soundsDispelsMine = value;
@@ -2263,10 +2374,19 @@ end
 --Which DMF buff to get.
 function NWB:setAutoDmfBuffType(info, value)
 	self.db.global.autoDmfBuffType = value;
+	if (NWB.data.dmfBuffSettings and NWB.data.dmfBuffSettings[UnitName("player")]) then
+		NWB.data.dmfBuffSettings[UnitName("player")] = value;
+	else
+		self.db.global.autoDmfBuffType = value;
+	end
 end
 
 function NWB:getAutoDmfBuffType(info)
-	return self.db.global.autoDmfBuffType;
+	if (NWB.data.dmfBuffSettings and NWB.data.dmfBuffSettings[UnitName("player")]) then
+		return NWB.data.dmfBuffSettings[UnitName("player")];
+	else
+		return self.db.global.autoDmfBuffType;
+	end
 end
 
 --Auto get Dire Maul buff.

@@ -175,7 +175,7 @@ L["Resist Fire"] = "抵抗火焰"; -- LBRS fire resist buff.
 L["Blessing of Blackfathom"] = "黑暗深渊的祝福";
 
 L["zan"] = "赞达拉";
-L["zanFirstYellMsg"] = "赞达拉之魂Buff将于 30 秒后释放.";
+L["zanFirstYellMsg"] = "赞达拉之魂Buff将于 %s 秒后释放.";
 L["zanBuffDropped"] = "赞达拉之魂Buff(哈卡)已经释放.";
 L["singleSongflowerMsg"] = "位于 %s 的轻歌花将于 %s 后刷新."; -- Songflower at Bloodvenom Post spawns at 1pm.
 L["spawn"] = "刷新"; --Used in Felwood map marker tooltip (03:46pm spawn).
@@ -550,3 +550,27 @@ L["enableLayerButtonTooltip"] = "单击以重新启用此位面.\n此位面将�
 L["disableLayerButtonTooltip"] = "在服务器重启后,单击以禁用此位面.\n插件将忽略此位面并在稍后将其删除.";
 
 L["Blackrock Mountain"] = "黑石山";
+
+L["onyxiaNpcKilledHordeWithTimer2"] = "奥妮克希亚 NPC (伦萨克) 已于 %s 前被击杀,将于 %s 后刷新.";
+L["nefarianNpcKilledHordeWithTimer2"] = "奈法利安 NPC (萨鲁法尔大王) 已于 %s 前被击杀,将于 %s 后刷新.";
+L["onyxiaNpcKilledAllianceWithTimer2"] = "奥妮克希亚 NPC (玛丁雷少校) 已于 %s 前被击杀, 将于 %s 后刷新.";
+L["nefarianNpcKilledAllianceWithTimer2"] = "奈法利安 NPC (艾法希比元帅) 已于 %s 前被击杀, 将于 %s 后刷新.";
+
+L["onyxiaNpcRespawnHorde"] = "奥妮克希亚 NPC (伦萨克)将在接下来2分钟之内的任意时间刷新.";
+L["nefarianNpcRespawnHorde"] = "奈法利安 NPC (萨鲁法尔大王)将在接下来2分钟之内的任意时间刷新.";
+L["onyxiaNpcRespawnAlliance"] = "奥妮克希亚 NPC (玛丁雷少校)将在接下来2分钟之内的任意时间刷新.";
+L["nefarianNpcRespawnAlliance"] = "奈法利安 NPC (艾法希比元帅)将在接下来2分钟之内的任意时间刷新.";
+
+L["soundsNpcKilledTitle"] = "NPC被击杀提示音";
+L["soundsNpcKilledDesc"] = "当Buff NPC被击杀以重置计时器时,播放提示音.";
+
+L["autoDmfBuffCharsText"] = "暗夜马戏团角色专用Buff设置:";
+
+L["middleNpcKilledTitle"] = "NPC被击杀";
+L["middleNpcKilledDesc"] = "当奥妮克希亚或者奈法利安Buff NPC被击杀以重置计时器时,在屏幕中央发送一条团队警报样式的提示信息.";
+
+L["chatNpcKilledTitle"] = "NPC被击杀";
+L["chatNpcKilledDesc"] = "当奥妮克希亚或者奈法利安Buff NPC被击杀以重置计时器时,在聊天频道中发送一条提示信息.";
+
+L["flashNpcKilledTitle"] = "NPC被击杀后闪烁";
+L["flashNpcKilledDesc"] = "当一个Buff NPC被击杀后,闪烁魔兽世界图标?";

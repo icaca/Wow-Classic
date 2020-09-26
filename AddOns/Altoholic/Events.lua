@@ -389,7 +389,6 @@ function ns:BuildList()
 				for professionName, profession in pairs(professions) do
 					local supportsSharedCD
 					if professionName == GetSpellInfo(2259) or			-- alchemy
-						professionName == GetSpellInfo(3908) or 			-- tailoring
 						professionName == GetSpellInfo(2575) then			-- mining
 						supportsSharedCD = true		-- current profession supports shared cooldowns
 					end

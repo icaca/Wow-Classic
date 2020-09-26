@@ -76,10 +76,10 @@ L["onyxiaNpcKilledHorde"] = "Overlord Runthak has just been killed (Onyxia buff 
 L["onyxiaNpcKilledAlliance"] = "Major Mattingly has just been killed (Onyxia buff NPC).";
 L["nefarianNpcKilledHorde"] = "High Overlord Saurfang has just been killed (Nefarian buff NPC).";
 L["nefarianNpcKilledAlliance"] = "Field Marshal Afrasiabi has just been killed (Nefarian buff NPC).";
-L["onyxiaNpcKilledHordeWithTimer"] = "Onyxia NPC (Runthak) was killed %s ago no buff recorded since.";
-L["nefarianNpcKilledHordeWithTimer"] = "Nefarian NPC (Saurfang) was killed %s ago no buff recorded since.";
-L["onyxiaNpcKilledAllianceWithTimer"] = "Onyxia NPC (Mattingly) was killed %s ago no buff recorded since.";
-L["nefarianNpcKilledAllianceWithTimer"] = "Nefarian NPC (Afrasiabi) was killed %s ago no buff recorded since.";
+L["onyxiaNpcKilledHordeWithTimer"] = "Onyxia NPC (Runthak) was killed %s ago, no buff recorded since.";
+L["nefarianNpcKilledHordeWithTimer"] = "Nefarian NPC (Saurfang) was killed %s ago, no buff recorded since.";
+L["onyxiaNpcKilledAllianceWithTimer"] = "Onyxia NPC (Mattingly) was killed %s ago, no buff recorded since.";
+L["nefarianNpcKilledAllianceWithTimer"] = "Nefarian NPC (Afrasiabi) was killed %s ago, no buff recorded since.";
 L["anyNpcKilledWithTimer"] = "NPC was killed %s ago"; --Map timers tooltip msg.
 
 
@@ -175,7 +175,7 @@ L["Resist Fire"] = "Resist Fire"; -- LBRS fire resist buff.
 L["Blessing of Blackfathom"] = "Blessing of Blackfathom";
 
 L["zan"] = "Zandalar";
-L["zanFirstYellMsg"] = "Zandalar will drop in 30 seconds.";
+L["zanFirstYellMsg"] = "Zandalar will drop in %s seconds.";
 L["zanBuffDropped"] = "Spirit of Zandalar (Hakkar) has dropped.";
 L["singleSongflowerMsg"] = "Songflower at %s spawns in %s."; -- Songflower at Bloodvenom Post spawns at 1pm.
 L["spawn"] = "spawn"; --Used in Felwood map marker tooltip (03:46pm spawn).
@@ -553,3 +553,27 @@ L["minimapLayerHoverTitle"] = "Minimap Mouseover";
 L["minimapLayerHoverDesc"] = "Only show the minimap layer number frame when you hover the mouse over the minimap?";
 
 L["Blackrock Mountain"] = "Blackrock Mountain";
+
+L["soundsNpcKilledTitle"] = "NPC Killed";
+L["soundsNpcKilledDesc"] = "Sound to play when a buff NPC is killed to reset a timer.";
+
+L["autoDmfBuffCharsText"] = "Darkmoon Faire Character Specific Buff Settings:";
+
+L["middleNpcKilledTitle"] = "NPC Killed";
+L["middleNpcKilledDesc"] = "Show a raid warning style msg in the middle of the screen when an Ony or Nef NPC is killed for a buff reset.";
+
+L["chatNpcKilledTitle"] = "NPC Killed";
+L["chatNpcKilledDesc"] = "Print a msg in chat when an Ony or Nef NPC is killed for a buff reset.";
+
+L["onyxiaNpcRespawnHorde"] = "Onyxia NPC (Runthak) will respawn at a random time within the next 2 minutes.";
+L["nefarianNpcRespawnHorde"] = "Nefarian NPC (Saurfang) will respawn at a random time within the next 2 minutes.";
+L["onyxiaNpcRespawnAlliance"] = "Onyxia NPC (Mattingly) will respawn at a random time within the next 2 minutes.";
+L["nefarianNpcRespawnAlliance"] = "Nefarian NPC (Afrasiabi) will respawn at a random time within the next 2 minutes.";
+
+L["onyxiaNpcKilledHordeWithTimer2"] = "Onyxia NPC (Runthak) was killed %s ago, respawn in %s.";
+L["nefarianNpcKilledHordeWithTimer2"] = "Nefarian NPC (Saurfang) was killed %s ago, respawn in %s.";
+L["onyxiaNpcKilledAllianceWithTimer2"] = "Onyxia NPC (Mattingly) was killed %s ago, respawn in %s.";
+L["nefarianNpcKilledAllianceWithTimer2"] = "Nefarian NPC (Afrasiabi) was killed %s ago, respawn in %s.";
+
+L["flashNpcKilledTitle"] = "Flash NPC Killed";
+L["flashNpcKilledDesc"] = "Flash the wow client when a buff NPC is killed?";
