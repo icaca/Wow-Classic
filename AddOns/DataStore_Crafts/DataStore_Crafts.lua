@@ -443,6 +443,10 @@ local function ScanRecipes(useCraftInstead)
 end
 
 local function ScanTradeSkills(useCraftInstead)
+    if (not useCraftInstead) and ((not GetTradeSkillSubClassFilter(0)) or (not GetTradeSkillInvSlotFilter(0))) then
+        -- if the player has a trade skill window open but one of the filters are set, ignore it
+        return
+    end 
 	ScanRecipes(useCraftInstead)	
 	addon.ThisCharacter.lastUpdate = time()
 end
