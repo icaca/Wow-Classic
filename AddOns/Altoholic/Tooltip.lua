@@ -272,6 +272,7 @@ function addon:GetRecipeOwners(professionName, link, recipeLevel)
                 -- Special case for Mechanical Squirrel: get the name of the item it creates instead
                 if (itemID == 4408) then
                     craftName = GetItemInfo(4401)
+                    if not craftName then craftName = "" end
                 end
                 
                 -- Transmutes need to search for the item created
@@ -279,6 +280,7 @@ function addon:GetRecipeOwners(professionName, link, recipeLevel)
                 for recipeID, craftedItemID in pairs(transmuteRecipeIDs) do
                     if (itemID == recipeID) then
                         craftName = GetItemInfo(craftedItemID)
+                        if not craftName then craftName = "" end
                     end
                 end 
 
@@ -302,7 +304,6 @@ function addon:GetRecipeOwners(professionName, link, recipeLevel)
                     
                     if (itemID == 18260) then
                         -- Healing power
-                        -- I don't do regex, found this code snippet on: https://scripters.boards.net/thread/85/remove-multiple-spaces
                         skillName = skillName:gsub(" +"," ")
                     end
                     

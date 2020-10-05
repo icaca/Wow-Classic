@@ -141,37 +141,45 @@ NWB.options = {
 			get = "getColorizePrefixLinks",
 			set = "setColorizePrefixLinks",
 		},
-		showAllAlts = {
-			type = "toggle",
-			name = L["showAllAltsTitle"],
-			desc = L["showAllAltsDesc"],
-			order = 16,
-			get = "getShowAllAlts",
-			set = "setShowAllAlts",
-		},
 		minimapButton = {
 			type = "toggle",
 			name = L["minimapButtonTitle"],
 			desc = L["minimapButtonDesc"],
-			order = 20,
+			order = 16,
 			get = "getMinimapButton",
 			set = "setMinimapButton",
-		},
-		showBuffStats = {
-			type = "toggle",
-			name = L["showBuffStatsTitle"],
-			desc = L["showBuffStatsDesc"],
-			order = 21,
-			get = "getShowBuffStats",
-			set = "setShowBuffStats",
 		},
 		minimapLayerHover = {
 			type = "toggle",
 			name = L["minimapLayerHoverTitle"],
 			desc = L["minimapLayerHoverDesc"],
-			order = 22,
+			order = 17,
 			get = "getMinimapLayerHover",
 			set = "setMinimapLayerHover",
+		},
+		showBuffStats = {
+			type = "toggle",
+			name = L["showBuffStatsTitle"],
+			desc = L["showBuffStatsDesc"],
+			order = 18,
+			get = "getShowBuffStats",
+			set = "setShowBuffStats",
+		},
+		showAllAlts = {
+			type = "toggle",
+			name = L["showAllAltsTitle"],
+			desc = L["showAllAltsDesc"],
+			order = 19,
+			get = "getShowAllAlts",
+			set = "setShowAllAlts",
+		},
+		showUnbuffedAlts = {
+			type = "toggle",
+			name = L["showUnbuffedAltsTitle"],
+			desc = L["showUnbuffedAltsDesc"],
+			order = 20,
+			get = "getShowUnbuffedAlts",
+			set = "setShowUnbuffedAlts",
 		},
 		logonHeader = {
 			type = "header",
@@ -571,7 +579,7 @@ NWB.options = {
 		},
 		dmfText = {
 			type = "description",
-			name = "|CffDEDE42" .. L["dmfTextDesc"],
+			name = "|cFF9CD6DE" .. L["dmfTextDesc"],
 			fontSize = "medium",
 			order = 91,
 		},
@@ -606,7 +614,7 @@ NWB.options = {
 		},
 		guildChatFilterText = {
 			type = "description",
-			name = "|CffDEDE42".. L["guildChatFilterTextDesc"],
+			name = "|cFF9CD6DE".. L["guildChatFilterTextDesc"],
 			fontSize = "medium",
 			order = 101,
 		},
@@ -982,6 +990,60 @@ NWB.options = {
 			fontSize = "medium",
 			order = 168,
 		},]]
+		trimDataHeader = {
+			type = "header",
+			name = L["trimDataHeaderDesc"],
+			order = 180,
+		},
+		trimDataText = {
+			type = "description",
+			name = "|cFF9CD6DE".. L["trimDataTextDesc"],
+			fontSize = "medium",
+			order = 181,
+		},
+		trimDataBelowLevel = {
+			type = "range",
+			name = L["trimDataBelowLevelTitle"],
+			desc = L["trimDataBelowLevelDesc"],
+			order = 182,
+			get = "getTrimDataBelowLevel",
+			set = "setTrimDataBelowLevel",
+			min = 1,
+			max = 60,
+			softMin = 1,
+			softMax = 60,
+			step = 1,
+			width = "double",
+		},
+		trimDataBelowLevelButton = {
+			type = "execute",
+			name = L["trimDataBelowLevelButtonTitle"],
+			desc = L["trimDataBelowLevelButtonDesc"],
+			func = "removeCharsBelowLevel",
+			order = 183,
+			--width = 1.7,
+			confirm = function()
+				return string.format(L["trimDataBelowLevelButtonConfirm"], "|cFFFFFF00" .. NWB.db.global.trimDataBelowLevel .. "|r");
+			end,
+		},
+		trimDataText2 = {
+			type = "description",
+			name = "|cFF9CD6DE".. L["trimDataText2Desc"],
+			fontSize = "medium",
+			order = 184,
+		},
+		trimDataCharInput = {
+			type = "input",
+			name = L["trimDataCharInputTitle"],
+			desc = L["trimDataCharInputDesc"],
+			get = "getTrimDataCharInput",
+			set = "setTrimDataCharInput",
+			order = 185,
+			--width = 1.7,
+			confirm = function(self, input)
+				return string.format(L["trimDataCharInputConfirm"], "|cFFFFFF00" .. input .. "|r");
+			end,
+		},
 	},
 };
 
@@ -1162,6 +1224,8 @@ NWB.optionDefaults = {
 		timerLogShowNef = true,
 		timerLogMergeLayers = true,
 		copyFormatDiscord = false,
+		trimDataBelowLevel = 1,
+		showUnbuffedAlts = false,
 		
 		resetLayers4 = true, --Reset layers one time (sometimes needed when upgrading from old version.
 		resetSongflowers = true, --Reset songflowers one time.
@@ -1439,13 +1503,36 @@ function NWB:getColorizePrefixLinks(info)
 	return self.db.global.colorizePrefixLinks;
 end
 
---Show all alts in the buffs window.
+--Show buff stats.
+function NWB:setShowBuffStats(info, value)
+	self.db.global.showBuffStats = value;
+	NWB.showStatsButton:SetChecked(value);
+	NWB:recalcBuffListFrame(true);
+end
+
+function NWB:getShowBuffStats(info)
+	return self.db.global.showBuffStats;
+end
+
+--Show all alts with buff stats in the buffs window.
 function NWB:setShowAllAlts(info, value)
-	self.db.global.showAllAlts = value;
+	self.db.global.showBuffAllStats = value;
+	NWB.showStatsAllButton:SetChecked(value);
+	NWB:recalcBuffListFrame(true);
 end
 
 function NWB:getShowAllAlts(info)
-	return self.db.global.showAllAlts;
+	return self.db.global.showBuffAllStats;
+end
+
+--Show unbuffed alts in the buffs window.
+function NWB:setShowUnbuffedAlts(info, value)
+	self.db.global.showUnbuffedAlts = value;
+	NWB:recalcBuffListFrame(true);
+end
+
+function NWB:getShowUnbuffedAlts(info)
+	return self.db.global.showUnbuffedAlts;
 end
 
 --Flash one min warnings.
@@ -1498,16 +1585,6 @@ end
 
 function NWB:getMinimapButton(info)
 	return self.db.global.minimapButton;
-end
-
---Show buff stats.
-function NWB:setShowBuffStats(info, value)
-	self.db.global.showBuffStats = value;
-	NWB:recalcBuffListFrame();
-end
-
-function NWB:getShowBuffStats(info)
-	return self.db.global.showBuffStats;
 end
 
 --Chat 30 minute warning.
@@ -2419,4 +2496,22 @@ end
 
 function NWB:getMinimapLayerHover(info)
 	return self.db.global.minimapLayerHover;
+end
+
+--Trim data of characters below this level.
+function NWB:setTrimDataBelowLevel(info, value)
+	self.db.global.trimDataBelowLevel = value;
+end
+
+function NWB:getTrimDataBelowLevel(info)
+	return self.db.global.trimDataBelowLevel;
+end
+
+--Trim data for single char.
+function NWB:setTrimDataCharInput(info, value)
+	NWB:removeSingleChar(value);
+end
+
+function NWB:getTrimDataCharInput(info)
+
 end

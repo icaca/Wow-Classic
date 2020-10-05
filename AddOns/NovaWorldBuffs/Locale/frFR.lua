@@ -550,3 +550,33 @@ L["chatNpcKilledDesc"] = "Afficher un message dans la fenêtre de discussion lor
 
 L["flashNpcKilledTitle"] = "Flash PNJ tué";
 L["flashNpcKilledDesc"] = "Faire clignoter le client du jeu quand un PNJ buff est tué?";
+
+L["trimDataHeaderDesc"] = "Data Cleanup";
+
+L["flashNpcKilledTitle"] = "Flash NPC Killed";
+L["flashNpcKilledDesc"] = "Flash the wow client when a buff NPC is killed?";
+
+L["trimDataBelowLevelTitle"] = "Minimum Level To Remove";
+L["trimDataBelowLevelDesc"] = "Select minimum level of characters to remove from database.";
+
+L["trimDataBelowLevelButtonTitle"] = "Remove Characters";
+L["trimDataBelowLevelButtonDesc"] = "Click this button to remove all characters with the selected level and lower from this addon database. Note: This removes buff count data permanently.";
+
+L["trimDataTextDesc"] = "Remove multiple characters from buffs database:";
+L["trimDataText2Desc"] = "Remove one character from buffs database:";
+
+L["trimDataCharInputTitle"] = "Remove One Character Input";
+L["trimDataCharInputDesc"] = "Type a character here to remove, format as Name-Realm (Case sensitive). Note: This removes buff count data permanently.";
+
+L["trimDataBelowLevelButtonConfirm"] = "Are you sure you want to remove all characters below level %s from the database?";
+L["trimDataCharInputConfirm"] = "Are you sure you want to remove this character %s from the database?";
+
+L["trimDataMsg1"] = "Buff records have been reset."
+L["trimDataMsg2"] = "Removing all chars below level %s.";
+L["trimDataMsg3"] = "Removed: %s.";
+L["trimDataMsg4"] = "Done, no characters found.";
+L["trimDataMsg5"] = "Done, removed %s characters.";
+L["trimDataMsg6"] = "Please enter a valid Character-Name to delete from database.";
+L["trimDataMsg7"] = "This character name %s doesn't include a realm, please input Name-Realm.";
+L["trimDataMsg8"] = "Error removing %s from the database, character not found (name is case sensitive).";
+L["trimDataMsg9"] = "Removed %s from the database.";

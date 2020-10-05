@@ -1294,10 +1294,7 @@ function NWB:combatLogEventUnfiltered(...)
 		local _, _, zone = NWB.dragonLib:GetPlayerZonePosition();
 		local _, _, _, _, zoneID, npcID = strsplit("-", destGUID);
 		zoneID = tonumber(zoneID);
-		if ((zone == 1454 or zone == 1411) and destName == L["Overlord Runthak"]) then
-			if (NWB.faction ~= "Horde") then
-				return;
-			end
+		if ((zone == 1454 or zone == 1411) and destName == L["Overlord Runthak"] and NWB.faction == "Horde") then
 			local layerNum;
 			if (NWB.isLayered and NWB:GetLayerCount() == 2 and NWB.lastKnownLayerMapID and NWB.lastKnownLayerMapID > 0
 					and NWB.lastKnownLayer and NWB.lastKnownLayer > 0) then
@@ -1311,14 +1308,11 @@ function NWB:combatLogEventUnfiltered(...)
 			NWB:sendNpcKilled("GUILD", "ony", nil, layerNum);
 			--NWB:print(L["onyxiaNpcKilledHorde"]);
 			NWB:timerCleanup();
-			C_Timer.After(2, function()
+			C_Timer.After(1, function()
 				NWB:sendData("GUILD");
 				NWB:sendData("YELL"); --Yell is further than npc view range.
 			end)
-		elseif ((zone == 1454 or zone == 1411) and destName == L["High Overlord Saurfang"]) then
-			if (NWB.faction ~= "Horde") then
-				return;
-			end
+		elseif ((zone == 1454 or zone == 1411) and destName == L["High Overlord Saurfang"] and NWB.faction == "Horde") then
 			local layerNum;
 			if (NWB.isLayered and NWB:GetLayerCount() == 2 and NWB.lastKnownLayerMapID and NWB.lastKnownLayerMapID > 0
 					and NWB.lastKnownLayer and NWB.lastKnownLayer > 0) then
@@ -1332,14 +1326,11 @@ function NWB:combatLogEventUnfiltered(...)
 			NWB:sendNpcKilled("GUILD", "nef", nil, layerNum);
 			--NWB:print(L["nefarianNpcKilledHorde"]);
 			NWB:timerCleanup();
-			C_Timer.After(2, function()
+			C_Timer.After(1, function()
 				NWB:sendData("GUILD");
 				NWB:sendData("YELL"); --Yell is further than npc view range.
 			end)
-		elseif ((zone == 1453 or zone == 1429) and destName == L["Major Mattingly"]) then
-			if (NWB.faction ~= "Alliance") then
-				return;
-			end
+		elseif ((zone == 1453 or zone == 1429) and destName == L["Major Mattingly"] and NWB.faction == "Alliance") then
 			local layerNum;
 			if (NWB.isLayered and NWB:GetLayerCount() == 2 and NWB.lastKnownLayerMapID and NWB.lastKnownLayerMapID > 0
 					and NWB.lastKnownLayer and NWB.lastKnownLayer > 0) then
@@ -1353,14 +1344,11 @@ function NWB:combatLogEventUnfiltered(...)
 			NWB:sendNpcKilled("GUILD", "ony", nil, layerNum);
 			--NWB:print(L["onyxiaNpcKilledAlliance"]);
 			NWB:timerCleanup();
-			C_Timer.After(2, function()
+			C_Timer.After(1, function()
 				NWB:sendData("GUILD");
 				NWB:sendData("YELL"); --Yell is further than npc view range.
 			end)
-		elseif ((zone == 1453 or zone == 1429) and destName == L["Field Marshal Afrasiabi"]) then
-			if (NWB.faction ~= "Alliance") then
-				return;
-			end
+		elseif ((zone == 1453 or zone == 1429) and destName == L["Field Marshal Afrasiabi"] and NWB.faction == "Alliance") then
 			local layerNum;
 			if (NWB.isLayered and NWB:GetLayerCount() == 2 and NWB.lastKnownLayerMapID and NWB.lastKnownLayerMapID > 0
 					and NWB.lastKnownLayer and NWB.lastKnownLayer > 0) then
@@ -2758,8 +2746,12 @@ end
 end]]
 
 --Returns am/pm and lt/st format.
-function NWB:getTimeFormat(timeStamp, fullDate, abbreviate)
-	if (NWB.db.global.timeStampZone == "server") then
+function NWB:getTimeFormat(timeStamp, fullDate, abbreviate, forceServerTime, suffixST)
+	local suffix = "";
+	if (suffixST) then
+		suffix = " " .. L["serverTime"];
+	end
+	if (NWB.db.global.timeStampZone == "server" or forceServerTime) then
 		--This is ugly and shouldn't work, and probably doesn't work on some time difference.
 		--Need a better solution but all I can get from the wow client in server time is hour:mins, not date or full timestamp.
 		local data = date("*t", GetServerTime());
@@ -2791,19 +2783,19 @@ function NWB:getTimeFormat(timeStamp, fullDate, abbreviate)
 				elseif (date("%x", timeStamp) == date("%x", GetServerTime() - 86400)) then
 					string = "Yesterday";
 				end
-				return string .. " " .. gsub(string.lower(date("%I:%M%p", timeStamp)), "^0", "");
+				return string .. " " .. gsub(string.lower(date("%I:%M%p", timeStamp)), "^0", "") .. suffix;
 			else
-				return date("%a %b %d", timeStamp) .. " " .. gsub(string.lower(date("%I:%M%p", timeStamp)), "^0", "");
+				return date("%a %b %d", timeStamp) .. " " .. gsub(string.lower(date("%I:%M%p", timeStamp)), "^0", "") .. suffix;
 			end
 		else
-			return gsub(string.lower(date("%I:%M%p", timeStamp)), "^0", "");
+			return gsub(string.lower(date("%I:%M%p", timeStamp)), "^0", "") .. suffix;
 		end
 	else
 		if (fullDate) then
 			local dateFormat = NWB:getRegionTimeFormat();
-			return date(dateFormat .. " %H:%M:%S", timeStamp);
+			return date(dateFormat .. " %H:%M:%S", timeStamp) .. suffix;
 		else
-		 return date("%H:%M:%S", timeStamp);
+		 return date("%H:%M:%S", timeStamp) .. suffix;
 		end
 	end
 end
@@ -5595,6 +5587,11 @@ NWBbuffListFrameClose:SetFrameLevel(3);
 NWBbuffListFrameClose:SetScript("OnClick", function(self, arg)
 	NWBbuffListFrame:Hide();
 end)
+--This will be added in next version to adjust close buttons.
+--NWBbuffListFrameClose:GetNormalTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+--NWBbuffListFrameClose:GetHighlightTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+--NWBbuffListFrameClose:GetPushedTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+--NWBbuffListFrameClose:GetDisabledTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
 
 --Config button.
 local NWBbuffListFrameConfButton = CreateFrame("Button", "NWBbuffListFrameConfButton", NWBbuffListFrameClose, "UIPanelButtonTemplate");
@@ -5708,7 +5705,7 @@ function NWB:createShowStatsButton()
 		NWB.showStatsAllButton:SetPoint("TOPLEFT", 95, 1);
 		--So strange the way to set text is to append Text to the global frame name.
 		NWBShowStatsAllButtonText:SetText("All");
-		NWB.showStatsAllButton.tooltip = "Show all buffs you ever got (stats must be enabled).";
+		NWB.showStatsAllButton.tooltip = "Show all alts that have buff stats? (stats must be enabled).";
 		--NWB.showStatsAllButton:SetFrameStrata("HIGH");
 		NWB.showStatsAllButton:SetFrameLevel(4);
 		NWB.showStatsAllButton:SetWidth(24);
@@ -5886,14 +5883,16 @@ function NWB:recalcBuffListFrame(top)
 		if (type(v) == "table" and k ~= "minimapIcon") then --The only tables in db.global are realm names.
 			local realm = k;
 			for k, v in NWB:pairsByKeys(v) do --Iterate factions.
+				local faction = k;
 				local msg2 = "";
-				local coloredFaction = "";
+				--local coloredFaction = "";
 				--if (k == "Horde") then
 				--	coloredFaction = "|cffe50c11" .. k .. "|r";
 				--else
 				--	coloredFaction = "|cff4954e8" .. k .. "|r";
 				--end
-				msg2 = "|cff00ff00[" .. realm .. "]|r\n";
+				--msg2 = "|cff00ff00[" .. realm .. "]|r\n";
+				local realmString = "|cff00ff00[" .. realm .. "]|r\n";
 				--Have to check if the myChars table exists here.
 				--There was a lua error when much older versions upgraded to the buff tracking version.
 				--They had realmdata in thier db file without the myChars table and it won't create it until they log on that realm.
@@ -5927,11 +5926,13 @@ function NWB:recalcBuffListFrame(top)
 									if (v.type == "ony" or v.type == "nef") then
 										--If ony or nef then add them together, same buff.
 										local onyBuffCount, nefBuffCount = 0, 0;
-										if (NWB.data.myChars[charName]["onyCount"]) then
-											onyBuffCount = NWB.data.myChars[charName]["onyCount"];
+										if (NWB.db.global[realm][faction].myChars[charName]
+												and NWB.db.global[realm][faction].myChars[charName]["onyCount"]) then
+											onyBuffCount = NWB.db.global[realm][faction].myChars[charName]["onyCount"];
 										end
-										if (NWB.data.myChars[charName]["nefCount"]) then
-											nefBuffCount = NWB.data.myChars[charName]["nefCount"];
+										if (NWB.db.global[realm][faction].myChars[charName]
+												and NWB.db.global[realm][faction].myChars[charName]["nefCount"]) then
+											nefBuffCount = NWB.db.global[realm][faction].myChars[charName]["nefCount"];
 										end
 										buffCount = onyBuffCount + nefBuffCount;
 									end
@@ -5947,7 +5948,9 @@ function NWB:recalcBuffListFrame(top)
 								foundBuffs[v.type] = true;
 							end
 						end
-						if (NWB.db.global.showAllAlts or foundActiveBuff) then
+						--if (NWB.db.global.showAllAlts or foundActiveBuff) then
+						if (foundActiveBuff or NWB.db.global.showUnbuffedAlts) then
+						--if (foundActiveBuff) then
 						 	msg2 = msg2 .. msg3;
 						 	foundChars = true;
 						 	foundAnyBuff = true;
@@ -5957,7 +5960,7 @@ function NWB:recalcBuffListFrame(top)
 							for k, v in NWB:pairsByKeys(v) do
 								local key = string.gsub(k, "%Count", "")
 								if (buffTable[key] and not foundBuffs[key] and tonumber(v) and v > 0) then
-									if (not foundActiveBuff) then
+									if (not foundActiveBuff and not NWB.db.global.showUnbuffedAlts) then
 										msg2 = msg2 .. msg3;
 										foundActiveBuff = true;
 									end
@@ -5974,11 +5977,13 @@ function NWB:recalcBuffListFrame(top)
 										if (not onyCalc and not foundBuffs["ony"] and not foundBuffs["nef"]) then
 											--If ony or nef then add them together, same buff.
 											local onyBuffCount, nefBuffCount = 0, 0;
-											if (NWB.data.myChars[charName]["onyCount"]) then
-												onyBuffCount = NWB.data.myChars[charName]["onyCount"];
+											if (NWB.db.global[realm][faction].myChars[charName]
+													and NWB.db.global[realm][faction].myChars[charName]["onyCount"]) then
+												onyBuffCount = NWB.db.global[realm][faction].myChars[charName]["onyCount"];
 											end
-											if (NWB.data.myChars[charName]["nefCount"]) then
-												nefBuffCount = NWB.data.myChars[charName]["nefCount"];
+											if (NWB.db.global[realm][faction].myChars[charName]
+													and NWB.db.global[realm][faction].myChars[charName]["nefCount"]) then
+												nefBuffCount = NWB.db.global[realm][faction].myChars[charName]["nefCount"];
 											end
 											buffCount = onyBuffCount + nefBuffCount;
 											onyCalc = true;
@@ -6000,8 +6005,9 @@ function NWB:recalcBuffListFrame(top)
 							end
 						end
 					end
-					if (NWB.db.global.showAllAlts or foundAnyBuff) then
-						msg = msg .. msg2;
+					--if (NWB.db.global.showAllAlts or foundAnyBuff) then
+					if (foundAnyBuff) then
+						msg = msg ..realmString ..  msg2;
 						foundChars = true;
 						NWBbuffListFrame.fsCalc:SetText(msg2);
 						local width = NWBbuffListFrame.fsCalc:GetWidth() + 60;
@@ -6041,6 +6047,7 @@ function NWB:recalcBuffListFrame(top)
 end
 
 --Reset data if name changes, server xfer etc.
+--This only resets current "has buff" data and not overall buff count stats.
 function NWB:resetBuffData()
 	for k, v in NWB:pairsByKeys(NWB.db.global) do --Iterate realms.
 		local msg = "";
@@ -6056,7 +6063,83 @@ function NWB:resetBuffData()
 			end
 		end
 	end
-	NWB:print("Buff records have been reset.");
+	NWB:print(L["trimDataMsg1"]);
+	C_Timer.After(3, function()
+		NWB:syncBuffsWithCurrentDuration();
+	end)
+end
+
+--Delete full data for characters under a certain level.
+--This removes the entire character and all buff stats data from this addon.
+--For removing old alts from other servers and lvl 1 deleted chars etc.
+function NWB:removeCharsBelowLevel()
+	local level = NWB.db.global.trimDataBelowLevel;
+	NWB:print(string.format(L["trimDataMsg2"], level));
+	local found;
+	local count = 0;
+	for realm, v in NWB:pairsByKeys(NWB.db.global) do --Iterate realms.
+		local msg = "";
+		if (type(v) == "table" and realm ~= "minimapIcon") then --The only tables in db.global are realm names.
+			for k, v in NWB:pairsByKeys(v) do --Iterate factions.
+				local f = k;
+				if (v.myChars) then
+					for k, v in NWB:pairsByKeys(v.myChars) do --Iterate characters.
+						if (v.level and v.level <= level) then
+							NWB.db.global[realm][f].myChars[k] = nil;
+							count = count + 1;
+							print(NWB.chatColor .. string.format(L["trimDataMsg3"], k .. "-" .. realm));
+							found = true;
+						end
+					end
+				end
+			end
+		end
+	end
+	if (not found) then
+		NWB:print(L["trimDataMsg4"]);
+	else
+		NWB:print(string.format(L["trimDataMsg5"], count));
+	end
+	C_Timer.After(3, function()
+		NWB:syncBuffsWithCurrentDuration();
+	end)
+end
+
+function NWB:removeSingleChar(name)
+	if (not name or type(name) ~= "string" or name == "") then
+		NWB:print(L["trimDataMsg6"]);
+		return;
+	end
+	if (not string.match(name, "-")) then
+		NWB:print(string.format(L["trimDataMsg7"], name));
+		return;
+	end
+	--Normalize the realm name, removing spaces and '.
+	local nomalizedName = string.gsub(name, " ", "");
+	nomalizedName = string.gsub(nomalizedName, "'", "");
+	local level = NWB.db.global.trimDataBelowLevel;
+	local found;
+	for realm, v in NWB:pairsByKeys(NWB.db.global) do --Iterate realms.
+		local msg = "";
+		if (type(v) == "table" and realm ~= "minimapIcon") then --The only tables in db.global are realm names.
+			for k, v in NWB:pairsByKeys(v) do --Iterate factions.
+				local f = k;
+				if (v.myChars) then
+					for k, v in NWB:pairsByKeys(v.myChars) do --Iterate characters.
+						if ((k .. "-" .. realm) == nomalizedName) then
+							NWB.db.global[realm][f].myChars[k] = nil;
+							found = true;
+						end
+					end
+				end
+			end
+		end
+	end
+	if (not found) then
+		NWB:print(string.format(L["trimDataMsg8"], name));
+	else
+		NWB:print(string.format(L["trimDataMsg9"], name));
+	end
 	C_Timer.After(3, function()
 		NWB:syncBuffsWithCurrentDuration();
 	end)
@@ -6399,7 +6482,8 @@ function NWB:openCopyFrame()
 end
 
 function NWB:recalcCopyFrame()
-	local text = NWBlayerFrame.EditBox:GetText();
+	--local text = NWBlayerFrame.EditBox:GetText();
+	local text = NWB:recalclayerFrame(nil, true);
 	--Remove newline chars from start and end of string.
 	text = string.gsub(text, "^%s*(.-)%s*$", "%1");
 	if (NWB.db.global.copyFormatDiscord) then
@@ -6789,16 +6873,27 @@ function NWB:createEnabledLayerButton(count)
 	NWB["NWBEnableLayerButton" .. count].tooltip:Hide();
 end
 
-function NWB:recalclayerFrame(isLogon)
-	NWBlayerFrame.EditBox:SetText("\n\n");
+--NWB:getTimeFormat(timeStamp, fullDate, abbreviate, forceServerTime)
+--If copyPaste then it's a single calc for the copy paste frame and we use server time etc.
+function NWB:recalclayerFrame(isLogon, copyPaste)
+	local forceServerTime, suffixST;
+	if (copyPaste) then
+		forceServerTime = true;
+		suffixST = true;
+	end
+	--NWBlayerFrame.EditBox:SetText("\n\n");
 	local count = 0;
 	local foundTimers;
+	NWBlayerFrame.EditBox:SetText("");
+	local text = "\n\n";
 	table.sort(NWB.data.layers);
 	if (NWB.isLayered) then
 		for k, v in NWB:pairsByKeys(NWB.data.layers) do
 			foundTimers = true;
 			count = count + 1;
-			NWBlayerFrame.EditBox:Insert("\n|cff00ff00[Layer " .. count .. "]|r  |cFF989898(zone " .. k .. ")|r\n");
+			--NWBlayerFrame.EditBox:Insert("\n|cff00ff00[Layer " .. count .. "]|r  |cFF989898(zone " .. k .. ")|r\n");
+			text = text .. "\n|cff00ff00[Layer " .. count .. "]|r  |cFF989898(zone " .. k .. ")|r\n";
+			text = text .. NWB.chatColor;
 			if (not _G["NWBDisableLayerButton" .. count]) then
 				NWB:createDisableLayerButton(count);
 			end
@@ -6808,7 +6903,8 @@ function NWB:recalclayerFrame(isLogon)
 			end
 			_G["NWBDisableLayerButton" .. count]:Show();
 			--Set the button beside the layer text, count the lines in the edit box to find right position.
-			local _, lineCount = string.gsub(NWBlayerFrame.EditBox:GetText(), "\n", "");
+			--local _, lineCount = string.gsub(NWBlayerFrame.EditBox:GetText(), "\n", "");
+			local _, lineCount = string.gsub(text, "\n", "");
 			lineCount = lineCount - 1;
 			NWB["NWBDisableLayerButton" .. count]:SetPoint("TOPLEFT", 215, -(lineCount * 14.25));
 			--Set the layer ID this button will disable.
@@ -6818,13 +6914,14 @@ function NWB:recalclayerFrame(isLogon)
 				if (v.rendTimer > (GetServerTime() - NWB.db.global.rendRespawnTime)) then
 					msg = msg .. L["rend"] .. ": " .. NWB:getTimeString(NWB.db.global.rendRespawnTime - (GetServerTime() - v.rendTimer), true) .. ".";
 					if (NWB.db.global.showTimeStamp) then
-						local timeStamp = NWB:getTimeFormat(v.rendTimer + NWB.db.global.rendRespawnTime);
+						local timeStamp = NWB:getTimeFormat(v.rendTimer + NWB.db.global.rendRespawnTime, nil, nil, forceServerTime, suffixST);
 						msg = msg .. " (" .. timeStamp .. ")";
 					end
 				else
 					msg = msg .. L["rend"] .. ": " .. L["noCurrentTimer"] .. ".";
 				end
-				NWBlayerFrame.EditBox:Insert(NWB.chatColor .. msg .. "\n");
+				--NWBlayerFrame.EditBox:Insert(NWB.chatColor .. msg .. "\n");
+				text = text .. msg .. "\n";
 			end
 			msg = "";
 			if ((v.onyNpcDied > v.onyTimer) and
@@ -6848,13 +6945,14 @@ function NWB:recalclayerFrame(isLogon)
 			elseif (v.onyTimer > (GetServerTime() - NWB.db.global.onyRespawnTime)) then
 				msg = msg .. L["onyxia"] .. ": " .. NWB:getTimeString(NWB.db.global.onyRespawnTime - (GetServerTime() - v.onyTimer), true) .. ".";
 				if (NWB.db.global.showTimeStamp) then
-					local timeStamp = NWB:getTimeFormat(v.onyTimer + NWB.db.global.onyRespawnTime);
+					local timeStamp = NWB:getTimeFormat(v.onyTimer + NWB.db.global.onyRespawnTime, nil, nil, forceServerTime, suffixST);
 					msg = msg .. " (" .. timeStamp .. ")";
 				end
 			else
 				msg = msg .. L["onyxia"] .. ": " .. L["noCurrentTimer"] .. ".";
 			end
-			NWBlayerFrame.EditBox:Insert(NWB.chatColor .. msg .. "\n");
+			--NWBlayerFrame.EditBox:Insert(NWB.chatColor .. msg .. "\n");
+			text = text .. msg .. "\n";
 			msg = "";
 			if ((v.nefNpcDied > v.nefTimer) and
 					(v.nefNpcDied > (GetServerTime() - NWB.db.global.nefRespawnTime))) then
@@ -6877,13 +6975,14 @@ function NWB:recalclayerFrame(isLogon)
 			elseif (v.nefTimer > (GetServerTime() - NWB.db.global.nefRespawnTime)) then
 				msg = L["nefarian"] .. ": " .. NWB:getTimeString(NWB.db.global.nefRespawnTime - (GetServerTime() - v.nefTimer), true) .. ".";
 				if (NWB.db.global.showTimeStamp) then
-					local timeStamp = NWB:getTimeFormat(v.nefTimer + NWB.db.global.nefRespawnTime);
+					local timeStamp = NWB:getTimeFormat(v.nefTimer + NWB.db.global.nefRespawnTime, nil, nil, forceServerTime, suffixST);
 					msg = msg .. " (" .. timeStamp .. ")";
 				end
 			else
 				msg = msg .. L["nefarian"] .. ": " .. L["noCurrentTimer"] .. ".";
 			end
-			NWBlayerFrame.EditBox:Insert(NWB.chatColor .. msg .. "\n");
+			--NWBlayerFrame.EditBox:Insert(NWB.chatColor .. msg .. "\n");
+			text = text .. msg .. "\n";
 			if ((v.rendTimer + 3600) > (GetServerTime() - NWB.db.global.rendRespawnTime)
 					or (v.onyTimer + 3600) > (GetServerTime() - NWB.db.global.onyRespawnTime)
 					or (v.nefTimer + 3600) > (GetServerTime() - NWB.db.global.nefRespawnTime)) then
@@ -6894,7 +6993,8 @@ function NWB:recalclayerFrame(isLogon)
 		for k, v in NWB:pairsByKeys(NWB.data.layersDisabled) do
 			foundTimers = true;
 			count = count + 1;
-			NWBlayerFrame.EditBox:Insert("\n|cFF989898[Layer Disabled]  (zone " .. k .. ")|r\n");
+			--NWBlayerFrame.EditBox:Insert("\n|cFF989898[Layer Disabled]  (zone " .. k .. ")|r\n");
+			text = text .. "\n|cFF989898[Layer Disabled]  (zone " .. k .. ")|r\n";
 			if (not _G["NWBEnableLayerButton" .. count]) then
 				NWB:createEnabledLayerButton(count);
 			end
@@ -6904,7 +7004,8 @@ function NWB:recalclayerFrame(isLogon)
 			end
 			_G["NWBEnableLayerButton" .. count]:Show();
 			--Set the button beside the layer text, count the lines in the edit box to find right position.
-			local _, lineCount = string.gsub(NWBlayerFrame.EditBox:GetText(), "\n", "");
+			--local _, lineCount = string.gsub(NWBlayerFrame.EditBox:GetText(), "\n", "");
+			local _, lineCount = string.gsub(text, "\n", "");
 			lineCount = lineCount - 1;
 			NWB["NWBEnableLayerButton" .. count]:SetPoint("TOPLEFT", 215, -(lineCount * 14.25));
 			--Set the layer ID this button will enable.
@@ -6914,13 +7015,14 @@ function NWB:recalclayerFrame(isLogon)
 				if (v.rendTimer > (GetServerTime() - NWB.db.global.rendRespawnTime)) then
 					msg = msg .. L["rend"] .. ": " .. NWB:getTimeString(NWB.db.global.rendRespawnTime - (GetServerTime() - v.rendTimer), true) .. ".";
 					if (NWB.db.global.showTimeStamp) then
-						local timeStamp = NWB:getTimeFormat(v.rendTimer + NWB.db.global.rendRespawnTime);
+						local timeStamp = NWB:getTimeFormat(v.rendTimer + NWB.db.global.rendRespawnTime, nil, nil, forceServerTime, suffixST);
 						msg = msg .. " (" .. timeStamp .. ")";
 					end
 				else
 					msg = msg .. L["rend"] .. ": " .. L["noCurrentTimer"] .. ".";
 				end
-				NWBlayerFrame.EditBox:Insert(msg .. "\n");
+				--NWBlayerFrame.EditBox:Insert(msg .. "\n");
+				text = text .. msg .. "\n";
 			end
 			msg = "";
 			if ((v.onyNpcDied > v.onyTimer) and
@@ -6944,13 +7046,14 @@ function NWB:recalclayerFrame(isLogon)
 			elseif (v.onyTimer > (GetServerTime() - NWB.db.global.onyRespawnTime)) then
 				msg = msg .. L["onyxia"] .. ": " .. NWB:getTimeString(NWB.db.global.onyRespawnTime - (GetServerTime() - v.onyTimer), true) .. ".";
 				if (NWB.db.global.showTimeStamp) then
-					local timeStamp = NWB:getTimeFormat(v.onyTimer + NWB.db.global.onyRespawnTime);
+					local timeStamp = NWB:getTimeFormat(v.onyTimer + NWB.db.global.onyRespawnTime, nil, nil, forceServerTime, suffixST);
 					msg = msg .. " (" .. timeStamp .. ")";
 				end
 			else
 				msg = msg .. L["onyxia"] .. ": " .. L["noCurrentTimer"] .. ".";
 			end
-			NWBlayerFrame.EditBox:Insert(msg .. "\n");
+			--NWBlayerFrame.EditBox:Insert(msg .. "\n");
+			text = text .. msg .. "\n";
 			msg = "";
 			if ((v.nefNpcDied > v.nefTimer) and
 					(v.nefNpcDied > (GetServerTime() - NWB.db.global.nefRespawnTime))) then
@@ -6973,13 +7076,14 @@ function NWB:recalclayerFrame(isLogon)
 			elseif (v.nefTimer > (GetServerTime() - NWB.db.global.nefRespawnTime)) then
 				msg = L["nefarian"] .. ": " .. NWB:getTimeString(NWB.db.global.nefRespawnTime - (GetServerTime() - v.nefTimer), true) .. ".";
 				if (NWB.db.global.showTimeStamp) then
-					local timeStamp = NWB:getTimeFormat(v.nefTimer + NWB.db.global.nefRespawnTime);
+					local timeStamp = NWB:getTimeFormat(v.nefTimer + NWB.db.global.nefRespawnTime, nil, nil, forceServerTime, suffixST);
 					msg = msg .. " (" .. timeStamp .. ")";
 				end
 			else
 				msg = msg .. L["nefarian"] .. ": " .. L["noCurrentTimer"] .. ".";
 			end
-			NWBlayerFrame.EditBox:Insert(msg .. "\n");
+			--NWBlayerFrame.EditBox:Insert(msg .. "\n");
+			text = text .. msg .. "\n";
 			if ((v.rendTimer + 3600) > (GetServerTime() - NWB.db.global.rendRespawnTime)
 					or (v.onyTimer + 3600) > (GetServerTime() - NWB.db.global.onyRespawnTime)
 					or (v.nefTimer + 3600) > (GetServerTime() - NWB.db.global.nefRespawnTime)) then
@@ -6989,19 +7093,21 @@ function NWB:recalclayerFrame(isLogon)
 	else
 		foundTimers = true;
 		local msg = "";
-		NWBlayerFrame.EditBox:Insert("\n");
+		--NWBlayerFrame.EditBox:Insert("\n");
+		text = text .. "\n";
 		if (NWB.faction == "Horde" or NWB.db.global.allianceEnableRend) then
 			if (NWB.data.rendTimer > (GetServerTime() - NWB.db.global.rendRespawnTime)) then
 				msg = L["rend"] .. ": " .. NWB:getTimeString(NWB.db.global.rendRespawnTime - (GetServerTime() - NWB.data.rendTimer), true) .. ".";
 				if (NWB.db.global.showTimeStamp) then
-					local timeStamp = NWB:getTimeFormat(NWB.data.rendTimer + NWB.db.global.rendRespawnTime);
+					local timeStamp = NWB:getTimeFormat(NWB.data.rendTimer + NWB.db.global.rendRespawnTime, nil, nil, forceServerTime, suffixST);
 					msg = msg .. " (" .. timeStamp .. ")";
 				end
 			else
 				msg = L["rend"] .. ": " .. L["noCurrentTimer"] .. ".";
 			end
 			if ((not isLogon or NWB.db.global.logonRend) and not NWB.isLayered) then
-				NWBlayerFrame.EditBox:Insert(NWB.chatColor .. msg .. "\n");
+				--NWBlayerFrame.EditBox:Insert(NWB.chatColor .. msg .. "\n");
+				text = text .. msg .. "\n";
 			end
 		end
 		if ((NWB.data.onyNpcDied > NWB.data.onyTimer) and
@@ -7025,14 +7131,15 @@ function NWB:recalclayerFrame(isLogon)
 		elseif (NWB.data.onyTimer > (GetServerTime() - NWB.db.global.onyRespawnTime)) then
 			msg = L["onyxia"] .. ": " .. NWB:getTimeString(NWB.db.global.onyRespawnTime - (GetServerTime() - NWB.data.onyTimer), true) .. ".";
 			if (NWB.db.global.showTimeStamp) then
-				local timeStamp = NWB:getTimeFormat(NWB.data.onyTimer + NWB.db.global.onyRespawnTime);
+				local timeStamp = NWB:getTimeFormat(NWB.data.onyTimer + NWB.db.global.onyRespawnTime, nil, nil, forceServerTime, suffixST);
 				msg = msg .. " (" .. timeStamp .. ")";
 			end
 		else
 			msg = L["onyxia"] .. ": " .. L["noCurrentTimer"] .. ".";
 		end
 		if ((not isLogon or NWB.db.global.logonOny) and not NWB.isLayered) then
-			NWBlayerFrame.EditBox:Insert(NWB.chatColor .. msg .. "\n");
+			--NWBlayerFrame.EditBox:Insert(NWB.chatColor .. msg .. "\n");
+			text = text .. msg .. "\n";
 		end
 		if ((NWB.data.nefNpcDied > NWB.data.nefTimer) and
 				(NWB.data.nefNpcDied > (GetServerTime() - NWB.db.global.nefRespawnTime))) then
@@ -7055,18 +7162,31 @@ function NWB:recalclayerFrame(isLogon)
 		elseif (NWB.data.nefTimer > (GetServerTime() - NWB.db.global.nefRespawnTime)) then
 			msg = L["nefarian"] .. ": " .. NWB:getTimeString(NWB.db.global.nefRespawnTime - (GetServerTime() - NWB.data.nefTimer), true) .. ".";
 			if (NWB.db.global.showTimeStamp) then
-				local timeStamp = NWB:getTimeFormat(NWB.data.nefTimer + NWB.db.global.nefRespawnTime);
+				local timeStamp = NWB:getTimeFormat(NWB.data.nefTimer + NWB.db.global.nefRespawnTime, nil, nil, forceServerTime, suffixST);
 				msg = msg .. " (" .. timeStamp .. ")";
 			end
 		else
 			msg = L["nefarian"] .. ": " .. L["noCurrentTimer"] .. ".";
 		end
 		if ((not isLogon or NWB.db.global.logonNef) and not NWB.isLayered) then
-			NWBlayerFrame.EditBox:Insert(NWB.chatColor .. msg .. "\n");
+			--NWBlayerFrame.EditBox:Insert(NWB.chatColor .. msg .. "\n");
+			text = text .. msg .. "\n";
 		end
 	end
-	if (not foundTimers) then
-		NWBlayerFrame.EditBox:Insert(NWB.chatColor .. "\nNo current timers found.");
+	if (copyPaste) then
+		--Remove newline chars from start and end of string.
+		text = string.gsub(text, "^%s*(.-)%s*$", "%1");
+		if (not foundTimers) then
+			return NWB.chatColor .. "No current timers found.";
+		else
+			return NWB.chatColor .. text;
+		end
+	else
+		if (not foundTimers) then
+			NWBlayerFrame.EditBox:Insert(NWB.chatColor .. "\nNo current timers found.");
+		else
+			NWBlayerFrame.EditBox:Insert(NWB.chatColor .. text);
+		end
 	end
 	NWB:setCurrentLayerText();
 	local found;
