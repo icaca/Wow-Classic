@@ -5580,18 +5580,22 @@ end)
 
 --Top right X close button.
 local NWBbuffListFrameClose = CreateFrame("Button", "NWBbuffListFrameClose", NWBbuffListFrame, "UIPanelCloseButton");
-NWBbuffListFrameClose:SetPoint("TOPRIGHT", -5, 8.6);
+--[[NWBbuffListFrameClose:SetPoint("TOPRIGHT", -5, 8.6);
 NWBbuffListFrameClose:SetWidth(31);
-NWBbuffListFrameClose:SetHeight(31);
+NWBbuffListFrameClose:SetHeight(31);]]
+NWBbuffListFrameClose:SetPoint("TOPRIGHT", -12, 3.75);
+NWBbuffListFrameClose:SetWidth(20);
+NWBbuffListFrameClose:SetHeight(20);
 NWBbuffListFrameClose:SetFrameLevel(3);
 NWBbuffListFrameClose:SetScript("OnClick", function(self, arg)
 	NWBbuffListFrame:Hide();
 end)
---This will be added in next version to adjust close buttons.
---NWBbuffListFrameClose:GetNormalTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
---NWBbuffListFrameClose:GetHighlightTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
---NWBbuffListFrameClose:GetPushedTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
---NWBbuffListFrameClose:GetDisabledTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+--Adjust the X texture so it fits the entire frame and remove the empty clickable space around the close button.
+--Big thanks to Meorawr for this.
+NWBbuffListFrameClose:GetNormalTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+NWBbuffListFrameClose:GetHighlightTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+NWBbuffListFrameClose:GetPushedTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+NWBbuffListFrameClose:GetDisabledTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
 
 --Config button.
 local NWBbuffListFrameConfButton = CreateFrame("Button", "NWBbuffListFrameConfButton", NWBbuffListFrameClose, "UIPanelButtonTemplate");
@@ -5736,13 +5740,15 @@ function NWB:openBuffListFrame()
 			NWBbuffListFrameTimersButton:Show();
 		end
 		NWB:syncBuffsWithCurrentDuration();
-		NWBbuffListFrame:SetHeight(300);
+		--[[NWBbuffListFrame:SetHeight(300);
 		if (NWB.db.global.showBuffStats) then
 			--A little wider to fit the buff count.
 			NWBbuffListFrame:SetWidth(475);
 		else
 			NWBbuffListFrame:SetWidth(450);
-		end
+		end]]
+		NWBbuffListFrame:SetHeight(NWB.db.global.buffWindowHeight);
+		NWBbuffListFrame:SetWidth(NWB.db.global.buffWindowWidth);
 		local fontSize = false
 		NWBbuffListFrame.EditBox:SetFont(NWB.regionFont, 14);
 		NWB:recalcBuffListFrame();
@@ -5937,9 +5943,10 @@ function NWB:recalcBuffListFrame(top)
 										buffCount = onyBuffCount + nefBuffCount;
 									end
 									if (buffCount == 1) then
-										msg3 = msg3 .. " |cFFA0A0A0(" .. buffCount .. " " .. L["time"] .. ")|r|cFF9CD6DE.|r\n";
+										--msg3 = msg3 .. " |cFFA0A0A0(" .. buffCount .. " " .. L["time"] .. ")|r|cFF9CD6DE.|r\n";
+										msg3 = msg3 .. " |cFFA0A0A0" .. string.format(L["time"], buffCount) .. "|r|cFF9CD6DE.|r\n";
 									else
-										msg3 = msg3 .. " |cFFA0A0A0(" .. buffCount .. " " .. L["times"] .. ")|r|cFF9CD6DE.|r\n";
+										msg3 = msg3 .. " |cFFA0A0A0" .. string.format(L["times"], buffCount) .. "|r|cFF9CD6DE.|r\n";
 									end
 								else
 									msg3 = msg3 .. "|cFF9CD6DE" .. NWB:getTimeString(v.timeLeft, true) .. ".|r\n";
@@ -5994,9 +6001,9 @@ function NWB:recalcBuffListFrame(top)
 									if (not skip) then
 										msg2 = msg2 .. "        " .. icon .. " |cFFA0A0A0" .. buffName .. "  ";
 										if (v == 1) then
-											msg2 = msg2 .. " |cFFA0A0A0(" .. buffCount .. " " .. L["time"] .. ")|r|cFF9CD6DE.|r\n";
+											msg2 = msg2 .. " |cFFA0A0A0" .. string.format(L["time"], buffCount) .. "|r|cFF9CD6DE.|r\n";
 										else
-											msg2 = msg2 .. " |cFFA0A0A0(" .. buffCount .. " " .. L["times"] .. ")|r|cFF9CD6DE.|r\n";
+											msg2 = msg2 .. " |cFFA0A0A0" .. string.format(L["times"], buffCount) .. "|r|cFF9CD6DE.|r\n";
 										end
 										foundChars = true;
 								 		foundAnyBuff = true;
@@ -6251,12 +6258,22 @@ end)
 
 --Top right X close button.
 local NWBlayerFrameClose = CreateFrame("Button", "NWBlayerFrameClose", NWBlayerFrame, "UIPanelCloseButton");
-NWBlayerFrameClose:SetPoint("TOPRIGHT", -5, 8.6);
+--[[NWBlayerFrameClose:SetPoint("TOPRIGHT", -5, 8.6);
 NWBlayerFrameClose:SetWidth(31);
-NWBlayerFrameClose:SetHeight(31);
+NWBlayerFrameClose:SetHeight(31);]]
+NWBlayerFrameClose:SetPoint("TOPRIGHT", -12, 3.75);
+NWBlayerFrameClose:SetWidth(20);
+NWBlayerFrameClose:SetHeight(20);
+NWBlayerFrameClose:SetFrameLevel(3);
 NWBlayerFrameClose:SetScript("OnClick", function(self, arg)
 	NWBlayerFrame:Hide();
 end)
+--Adjust the X texture so it fits the entire frame and remove the empty clickable space around the close button.
+--Big thanks to Meorawr for this.
+NWBlayerFrameClose:GetNormalTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+NWBlayerFrameClose:GetHighlightTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+NWBlayerFrameClose:GetPushedTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+NWBlayerFrameClose:GetDisabledTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
 
 --Config button.
 local NWBlayerFrameConfButton = CreateFrame("Button", "NWBlayerFrameConfButton", NWBlayerFrameClose, "UIPanelButtonTemplate");
@@ -6363,13 +6380,23 @@ NWBCopyFrame:SetFrameStrata("HIGH");
 NWBCopyFrame.EditBox:SetAutoFocus(false);
 --Top right X close button.
 local NWBCopyFrameClose = CreateFrame("Button", "NWBCopyFrameClose", NWBCopyFrame, "UIPanelCloseButton");
-NWBCopyFrameClose:SetPoint("TOPRIGHT", -5, 8.6);
+--[[NWBCopyFrameClose:SetPoint("TOPRIGHT", -5, 8.6);
 NWBCopyFrameClose:SetWidth(31);
 NWBCopyFrameClose:SetHeight(31);
-NWBCopyFrameClose:SetFrameLevel(5);
+NWBCopyFrameClose:SetFrameLevel(5);]]
+NWBCopyFrameClose:SetPoint("TOPRIGHT", -12, 3.75);
+NWBCopyFrameClose:SetWidth(20);
+NWBCopyFrameClose:SetHeight(20);
+NWBCopyFrameClose:SetFrameLevel(3);
 NWBCopyFrameClose:SetScript("OnClick", function(self, arg)
 	NWBCopyFrame:Hide();
 end)
+--Adjust the X texture so it fits the entire frame and remove the empty clickable space around the close button.
+--Big thanks to Meorawr for this.
+NWBCopyFrameClose:GetNormalTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+NWBCopyFrameClose:GetHighlightTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+NWBCopyFrameClose:GetPushedTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+NWBCopyFrameClose:GetDisabledTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
 
 local NWBCopyDragFrame = CreateFrame("Frame", "NWBCopyDragFrame", NWBCopyFrame);
 NWBCopyDragFrame:SetToplevel(true);
@@ -6530,9 +6557,9 @@ function NWB:openLayerFrame()
 	if (NWBlayerFrame:IsShown()) then
 		NWBlayerFrame:Hide();
 	else
+		NWBlayerFrame:SetHeight(NWB.db.global.timerWindowHeight);
+		NWBlayerFrame:SetWidth(NWB.db.global.timerWindowWidth);
 		NWB:syncBuffsWithCurrentDuration();
-		NWBlayerFrame:SetHeight(300);
-		NWBlayerFrame:SetWidth(450);
 		local fontSize = false
 		NWBlayerFrame.EditBox:SetFont(NWB.regionFont, 14);
 		NWB:recalclayerFrame();
@@ -7183,7 +7210,7 @@ function NWB:recalclayerFrame(isLogon, copyPaste)
 		end
 	else
 		if (not foundTimers) then
-			NWBlayerFrame.EditBox:Insert(NWB.chatColor .. "\nNo current timers found.");
+			NWBlayerFrame.EditBox:Insert(NWB.chatColor .. "\n\n\nNo current timers found.");
 		else
 			NWBlayerFrame.EditBox:Insert(NWB.chatColor .. text);
 		end
@@ -7764,12 +7791,22 @@ end)
 
 --Top right X close button.
 local NWBLayerMapFrameClose = CreateFrame("Button", "NWBLayerMapFrameClose", NWBLayerMapFrame, "UIPanelCloseButton");
-NWBLayerMapFrameClose:SetPoint("TOPRIGHT", -5, 8.6);
+--[[NWBLayerMapFrameClose:SetPoint("TOPRIGHT", -5, 8.6);
 NWBLayerMapFrameClose:SetWidth(31);
-NWBLayerMapFrameClose:SetHeight(31);
+NWBLayerMapFrameClose:SetHeight(31);]]
+NWBLayerMapFrameClose:SetPoint("TOPRIGHT", -12, 3.75);
+NWBLayerMapFrameClose:SetWidth(20);
+NWBLayerMapFrameClose:SetHeight(20);
+NWBLayerMapFrameClose:SetFrameLevel(3);
 NWBLayerMapFrameClose:SetScript("OnClick", function(self, arg)
 	NWBLayerMapFrame:Hide();
 end)
+--Adjust the X texture so it fits the entire frame and remove the empty clickable space around the close button.
+--Big thanks to Meorawr for this.
+NWBLayerMapFrameClose:GetNormalTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+NWBLayerMapFrameClose:GetHighlightTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+NWBLayerMapFrameClose:GetPushedTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+NWBLayerMapFrameClose:GetDisabledTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
 
 function NWB:openLayerMapFrame()
 	if (not NWB.isLayered) then
@@ -8283,12 +8320,22 @@ end)
 
 --Top right X close button.
 local NWBVersionFrameClose = CreateFrame("Button", "NWBVersionFrameClose", NWBVersionFrame, "UIPanelCloseButton");
-NWBVersionFrameClose:SetPoint("TOPRIGHT", -5, 8.6);
+--[[NWBVersionFrameClose:SetPoint("TOPRIGHT", -5, 8.6);
 NWBVersionFrameClose:SetWidth(31);
-NWBVersionFrameClose:SetHeight(31);
+NWBVersionFrameClose:SetHeight(31);]]
+NWBVersionFrameClose:SetPoint("TOPRIGHT", -12, 3.75);
+NWBVersionFrameClose:SetWidth(20);
+NWBVersionFrameClose:SetHeight(20);
+NWBVersionFrameClose:SetFrameLevel(3);
 NWBVersionFrameClose:SetScript("OnClick", function(self, arg)
 	NWBVersionFrame:Hide();
 end)
+--Adjust the X texture so it fits the entire frame and remove the empty clickable space around the close button.
+--Big thanks to Meorawr for this.
+NWBVersionFrameClose:GetNormalTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+NWBVersionFrameClose:GetHighlightTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+NWBVersionFrameClose:GetPushedTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+NWBVersionFrameClose:GetDisabledTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
 
 function NWB:openVersionFrame()
 	NWBVersionFrame.fs:SetFont(NWB.regionFont, 14);
@@ -8376,7 +8423,7 @@ f:SetScript('OnEvent', function(self, event, ...)
 			if (NWB.data.dmfBuffSettings and NWB.data.dmfBuffSettings[UnitName("player")]) then
 				--If this character has it's own buff type set.
 				--Enable after testing at next DMF, don't want any mistakes with people getting wrong buff.
-				--buffType = NWB.data.dmfBuffSettings[UnitName("player")];
+				buffType = NWB.data.dmfBuffSettings[UnitName("player")];
 			end
 			if (GetLocale() == "enUS") then
 				--Make this an option to skip the fortune cookie later.

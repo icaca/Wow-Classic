@@ -533,8 +533,8 @@ L["showBuffStatsTitle"] = "Show Buff Stats";
 L["showBuffStatsDesc"] = "Show how many times you've gotten each world buff in the buffs window? Ony/Nef/Rend/Zand buffs have been recording since the buffs frame was put in, but the rest of the buffs only started recording now in version 1.65";
 
 L["buffResetButtonTooltip"] = "This will reset all buffs.\nBuff count data will not be reset."; --Reset button tooltip for the /buffs frame.
-L["time"] = "time"; --Singular - This shows how many timers you got a buff. Example: (1 time)
-L["times"] = "times"; --Plural - This shows how many timers you got a buff. Example: (5 times)
+L["time"] = "(%s time)"; --Singular - This shows how many timers you got a buff. Example: (1 time)
+L["times"] = "(%s times)"; --Plural - This shows how many timers you got a buff. Example: (5 times)
 L["flowerWarning"] = "Songflower picked on a realm with layered songflower timers enabled but you haven't targeted a NPC since arriving in Felwood so no timer could be recorded.";
 
 L["mmColorTitle"] = "Minimap Layer Color";
@@ -557,7 +557,7 @@ L["Blackrock Mountain"] = "Blackrock Mountain";
 L["soundsNpcKilledTitle"] = "NPC Killed";
 L["soundsNpcKilledDesc"] = "Sound to play when a buff NPC is killed to reset a timer.";
 
-L["autoDmfBuffCharsText"] = "Darkmoon Faire Character Specific Buff Settings:";
+L["autoDmfBuffCharsText"] = "Darkmoon Faire Character Specific Buff Settings";
 
 L["middleNpcKilledTitle"] = "NPC Killed";
 L["middleNpcKilledDesc"] = "Show a raid warning style msg in the middle of the screen when an Ony or Nef NPC is killed for a buff reset.";
@@ -580,8 +580,8 @@ L["flashNpcKilledDesc"] = "Flash the wow client when a buff NPC is killed?";
 
 L["trimDataHeaderDesc"] = "Data Cleanup";
 
-L["trimDataBelowLevelTitle"] = "Minimum Level To Remove";
-L["trimDataBelowLevelDesc"] = "Select minimum level of characters to remove from database.";
+L["trimDataBelowLevelTitle"] = "Maximum Level To Remove";
+L["trimDataBelowLevelDesc"] = "Select maximum level of characters to remove from database, all characters this level and below will be deleted.";
 
 L["trimDataBelowLevelButtonTitle"] = "Remove Characters";
 L["trimDataBelowLevelButtonDesc"] = "Click this button to remove all characters with the selected level and lower from this addon database. Note: This removes buff count data permanently.";
@@ -610,3 +610,18 @@ L["serverTimeShort"] = "st";
 
 L["showUnbuffedAltsTitle"] = "Show Unbuffed Alts";
 L["showUnbuffedAltsDesc"] = "Show alts without any buffs in the buffs window? This is so you can see what characters have no buffs if you would like.";
+
+L["timerWindowWidthTitle"] = "Timer Window Width";
+L["timerWindowWidthDesc"] = "How wide should the timer window be.";
+
+L["timerWindowHeightTitle"] = "Timer Window Height";
+L["timerWindowHeghtDesc"] = "How high should the timer window be.";
+
+L["buffWindowWidthTitle"] = "Buff Window Width";
+L["buffWindowWidthDesc"] = "How wide should the buff window be.";
+
+L["buffWindowHeightTitle"] = "Buff Window Height";
+L["buffWindowHeghtDesc"] = "How high should the buff window be.";
+
+L["dmfSettingsListTitle"] = "DMF Buffs List";
+L["dmfSettingsListDesc"] = "Click this to show a list of your alts DMF buff type settings.";

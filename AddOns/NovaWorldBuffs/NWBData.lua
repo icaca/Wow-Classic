@@ -1071,7 +1071,7 @@ function NWB:receivedData(dataReceived, sender, distribution)
 											if (not NWB.data.layers[layer][k] or not tonumber(NWB.data.layers[layer][k])) then
 												--Rare bug someone has corrupt data (not sure how and it's never happened to me, but been reported).
 												--This will correct it by resetting thier timestamp to 0.
-												NWB:debug("Local data error:", k, NWB.data[k]);
+												--NWB:debug("Local data error:", k, NWB.data[k]);
 												NWB.data.layers[layer][k] = 0;
 											end
 											if (enableLogging) then
@@ -1158,8 +1158,10 @@ function NWB:receivedData(dataReceived, sender, distribution)
 				if (v ~= nil) then
 					if (not NWB.data[k] or not tonumber(NWB.data[k])) then
 						--Rare bug someone has corrupt data (not sure how and it's never happened to me, but been reported).
+						--Can also be triggered if key that should be a string is somehow a number.
+						--Like if onyTimeWho is a number, not sure how this is possible but it happens on rare occasion.
 						--This will correct it by resetting thier timestamp to 0.
-						NWB:debug("Local data error:", k, NWB.data[k])
+						--NWB:debug("Local data error:", k, v, NWB.data[k])
 						NWB.data[k] = 0;
 					end
 					--Make sure the key exists, stop a lua error in old versions if we add a new timer type.
