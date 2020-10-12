@@ -218,7 +218,7 @@ local function ScanContainer(bagID, containerType)
 		end
 		
 		startTime, duration, isEnabled = Container:GetCooldown(slotID, bagID)
-		if startTime and startTime > 0 then
+		if startTime and startTime > 0 and startTime <= GetTime() then
 			newBag.cooldowns[index] = format("%s|%s|1", startTime, duration)
 		end
 	end
