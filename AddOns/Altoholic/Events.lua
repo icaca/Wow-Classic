@@ -420,8 +420,8 @@ function ns:BuildList()
                         if (DataStore:GetSlotInfo(container, slotID)) == 15846 then
                             local startTime, totalTime = DataStore:GetContainerCooldownInfo(container, slotID)
                             if startTime then
-                                local timeRemaining = totalTime + startTime - GetTime()
-                                AddEvent(TIMER_LINE, date("%Y-%m-%d", time() + timeRemaining), date("%H:%M", time() + timeRemaining), characterName, realm, 15846, select(2, GetItemInfo(15846)))
+                                local endTime = totalTime + startTime
+                                AddEvent(TIMER_LINE, date("%Y-%m-%d", endTime), date("%H:%M", endTime), characterName, realm, 15846, select(2, GetItemInfo(15846)))
                             end
                         end
                     end

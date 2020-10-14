@@ -33,21 +33,6 @@ wlmforumexportcheckbox:SetCallback("OnValueChanged", function (sel, object, valu
 end)
 wlmforumexportcheckbox:SetValue( GSEOptions.UseWLMExportFormat)
 
-local enforceCompatabilityCheckbox = AceGUI:Create("CheckBox")
-enforceCompatabilityCheckbox:SetType("checkbox")
-
-enforceCompatabilityCheckbox:SetLabel(L["Enforce GSE minimum version for this macro"])
-exportframe:AddChild(enforceCompatabilityCheckbox)
-enforceCompatabilityCheckbox:SetCallback("OnValueChanged", function (sel, object, value)
-  if value then
-    exportframe.sequence.EnforceCompatability = true
-  else
-    exportframe.sequence.EnforceCompatability = false
-  end
-  exportframe.sequence.GSEVersion = GSE.VersionString
-  GSE.GUIUpdateExportBox()
-end)
-
 local readOnlyCheckBox = AceGUI:Create("CheckBox")
 readOnlyCheckBox:SetType("checkbox")
 readOnlyCheckBox:SetLabel(L["Export Macro Read Only"])
@@ -87,7 +72,7 @@ exportframe.ExportSequenceBox = exportsequencebox
 
 function GSE.GUIUpdateExportBox()
   if wlmforumexportcheckbox:GetValue() then
-    local exporttext = "`" .. GSE.ExportSequence(GSE.GUIExportframe.sequence, exportframe.sequencename, GSEOptions.UseVerboseExportFormat, "ID", false) .."`"
+    local exporttext = "```\n" .. GSE.ExportSequence(GSE.GUIExportframe.sequence, exportframe.sequencename, GSEOptions.UseVerboseExportFormat, "ID", false) .."\n```\n\n"
     exporttext = exporttext .. GSE.ExportSequenceWLMFormat(GSE.GUIExportframe.sequence, exportframe.sequencename)
     GSE.GUIExportframe.ExportSequenceBox:SetText(exporttext)
   else
@@ -98,7 +83,10 @@ end
 function GSE.GUIExportSequence(classid, sequencename)
   GSE.GUIExportframe.classid = classid
   GSE.GUIExportframe.sequencename = sequencename
-  GSE.GUIExportframe.sequence = GSE.CloneSequence(GSELibrary[tonumber(exportframe.classid)][exportframe.sequencename])
+  GSE.GUIExportframe.sequence = GSE.CloneSequence(GSE.Library[tonumber(exportframe.classid)][exportframe.sequencename])
+  GSE.GUIExportframe.sequence.GSEVersion = GSE.VersionNumber
+  GSE.GUIExportframe.sequence.EnforceCompatability = true
+  GSE.GUIExportframe.sequence.TOC = tocversion
   GSE.GUIUpdateExportBox()
   GSE.GUIExportframe:Show()
 end

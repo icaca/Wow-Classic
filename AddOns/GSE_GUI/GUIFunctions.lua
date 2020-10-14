@@ -66,7 +66,7 @@ function GSE.GUILoadEditor(key, incomingframe, recordedstring)
     elements = GSE.split(key, ",")
     classid = tonumber(elements[1])
     sequenceName = elements[2]
-    sequence = GSE.CloneSequence(GSELibrary[classid][sequenceName], true)
+    sequence = GSE.CloneSequence(GSE.Library[classid][sequenceName], true)
     GSE.GUIEditFrame.NewSequence = false
   end
   GSE.GUIEditFrame:SetStatusText("GSE: " .. GSE.VersionString)
@@ -86,6 +86,15 @@ function GSE.GUILoadEditor(key, incomingframe, recordedstring)
   GSE.GUIEditFrame.Scenario = sequence.Scenario or sequence.Default
   GSE.GUIEditorPerformLayout(GSE.GUIEditFrame)
   GSE.GUIEditFrame.ContentContainer:SelectTab("config")
+  GSE.GUIEditFrame.tempVariables = {}
+  if not GSE.isEmpty(sequence.Variables) then
+    for k, value in pairs(sequence.Variables) do
+      local pair = {}
+      pair.key = k
+      pair.value = value
+      table.insert(GSE.GUIEditFrame.tempVariables, pair)
+    end
+  end
   incomingframe:Hide()
   if sequence.ReadOnly then
     GSE.GUIEditFrame.SaveButton:SetDisabled(true)

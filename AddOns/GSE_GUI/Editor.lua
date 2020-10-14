@@ -37,16 +37,33 @@ editframe.Scenario = 1
 editframe.ClassID = classid
 editframe.save = false
 editframe.SelectedTab = "group"
+editframe.tempVariables = {}
+editframe.variablecount = 0
 
-local fleft, fbottom, fwidth, fheight = editframe.frame:GetBoundsRect()
-editframe.Left = fleft
-editframe.Bottom = fbottom
-editframe.Width = fwidth
-editframe.Height = fheight
+if GSE.isEmpty(GSEOptions.editorHeight) then
+  GSEOptions.editorHeight = 745
+  GSEOptions.editorWidth = 765
+end
 
+editframe.Height = GSEOptions.editorHeight
+editframe.Width = GSEOptions.editorWidth
+if editframe.Height < 745 then
+  editframe.Height = 745
+  GSEOptions.editorHeight = editframe.Height
+end
+if editframe.Width < 765 then
+  editframe.Width = 765
+  GSEOptions.editorWidth = editframe.Width
+end
+editframe.frame:SetClampRectInsets(-10,-10,-10,-10)
+editframe.frame:SetHeight(GSEOptions.editorHeight)
+editframe.frame:SetWidth(GSEOptions.editorWidth)
 editframe:SetTitle(L["Sequence Editor"])
 --editframe:SetStatusText(L["Gnome Sequencer: Sequence Editor."])
 editframe:SetCallback("OnClose", function (self)
+  if not GSE.isEmpty(editframe.tempVariables) then
+    editframe.tempVariables = nil
+  end
   GSE.ClearTooltip(editframe)
   editframe:Hide();
   if editframe.save then
@@ -58,11 +75,23 @@ editframe:SetCallback("OnClose", function (self)
   end
 end)
 editframe:SetLayout("List")
-editframe.frame:SetScript("OnSizeChanged", function ()
-  editframe.Left, editframe.Bottom, editframe.Width, editframe.Height = editframe.frame:GetBoundsRect()
+editframe.frame:SetScript("OnSizeChanged", function (self, width, height)
+  editframe.Height = height
+  editframe.Width = width
   if editframe.Height > GetScreenHeight() then
     editframe.Height = GetScreenHeight() - 10
+    editframe:SetHeight(editframe.Height)
   end
+  if editframe.Height < 745 then
+    editframe.Height = 745
+    editframe:SetHeight(editframe.Height)
+  end
+  if editframe.Width < 765 then
+    editframe.Width = 765
+    editframe:SetWidth(editframe.Width)
+  end
+  GSEOptions.editorHeight = editframe.Height
+  GSEOptions.editorWidth = editframe.Width
   GSE.GUISelectEditorTab(editframe.ContentContainer, "Resize", editframe.SelectedTab)
   editframe:DoLayout()
 end)
@@ -77,7 +106,12 @@ function GSE.GUICreateEditorTabs()
       text=L["Configuration"],
       value="config"
     },
+    {
+      text=L["Variables"],
+      value="variables"
+    }
   }
+
   for k,v in ipairs(editframe.Sequence.MacroVersions) do
     local insline = {}
     insline.text = tostring(k)
@@ -121,7 +155,7 @@ function GSE.GUIEditorPerformLayout(frame)
   headerGroup:AddChild(nameeditbox)
 
   local spacerlabel = AceGUI:Create("Label")
-  spacerlabel:SetWidth(300)
+  spacerlabel:SetWidth(editframe.Width - 350)
   headerGroup:AddChild(spacerlabel)
 
   local iconpicker = AceGUI:Create("Icon")
@@ -194,12 +228,25 @@ function GSE.GUIEditorPerformLayout(frame)
   savebutton:SetText(L["Save"])
   savebutton:SetWidth(150)
   savebutton:SetCallback("OnClick", function()
+    local gameversion, build, date, tocversion = GetBuildInfo()
     editframe.Sequence.ManualIntervention = true
+    editframe.Sequence.GSEVersion = GSE.VersionNumber
+    editframe.Sequence.EnforceCompatability = true
+    editframe.Sequence.TOC = tocversion
+    local variables = {}
+    if not GSE.isEmpty(editframe.tempVariables) then
+      for index, pair in ipairs(editframe.tempVariables) do
+        --print("inserted", pair.key, pair.value)
+        variables[pair.key] = pair.value
+      end
+    end
+    editframe.Sequence.Variables = variables
     nameeditbox:SetText(string.upper(nameeditbox:GetText()))
     editframe.SequenceName = nameeditbox:GetText()
     GSE.GUIUpdateSequenceDefinition(editframe.ClassID, editframe.SequenceName, editframe.Sequence)
     editframe.save = true
   end)
+
   savebutton:SetCallback('OnEnter', function ()
     GSE.CreateToolTip(L["Save"], L["Save the changes made to this macro"], editframe)
   end)
@@ -675,7 +722,6 @@ function GSE:GUIDrawMetadataEditor(container)
 
   container:AddChild(scrollcontainer)
 end
-
 function GSE:GUIDrawMacroEditor(container, version)
   version = tonumber(version)
   if GSE.isEmpty(editframe.Sequence.MacroVersions[version]) then
@@ -698,7 +744,7 @@ function GSE:GUIDrawMacroEditor(container, version)
   local scrollcontainer = AceGUI:Create("SimpleGroup") -- "InlineGroup" is also good
   --scrollcontainer:SetFullWidth(true)
   --scrollcontainer:SetFullHeight(true) -- Probably?
-  scrollcontainer:SetWidth(editframe.Width - 200)
+  scrollcontainer:SetWidth(editframe.Width)
   scrollcontainer:SetHeight(editframe.Height - 260)
   scrollcontainer:SetLayout("Fill") -- Important!
 
@@ -707,11 +753,11 @@ function GSE:GUIDrawMacroEditor(container, version)
 
   local linegroup1 = AceGUI:Create("SimpleGroup")
   linegroup1:SetLayout("Flow")
-  linegroup1:SetWidth(editframe.Width - 100)
+  linegroup1:SetWidth(editframe.Width )
 
   local stepdropdown = AceGUI:Create("Dropdown")
   stepdropdown:SetLabel(L["Step Function"])
-  stepdropdown:SetWidth((editframe.Width - 210) * 0.48)
+  stepdropdown:SetWidth((editframe.Width ) * 0.48)
   stepdropdown:SetList({
     ["Sequential"] = L["Sequential (1 2 3 4)"],
     ["Priority"] = L["Priority List (1 12 123 1234)"],
@@ -778,13 +824,21 @@ function GSE:GUIDrawMacroEditor(container, version)
   contentcontainer:AddChild(linegroup1)
   local linegroup2 = AceGUI:Create("SimpleGroup")
   linegroup2:SetLayout("Flow")
-  linegroup2:SetWidth(editframe.Width - 100)
+  linegroup2:SetWidth(editframe.Width )
+
+  local smallbox = 2
+  local largebox = 8
+  if editframe.Height > 700 then
+    local framesize = editframe.Height / 700
+    smallbox = math.ceil(framesize * smallbox) + 2
+    largebox = math.ceil(framesize * largebox) + 8
+  end
 
   local KeyPressbox = AceGUI:Create("MultiLineEditBox")
   KeyPressbox:SetLabel(L["KeyPress"])
-  KeyPressbox:SetNumLines(2)
+  KeyPressbox:SetNumLines(smallbox)
   KeyPressbox:DisableButton(true)
-  KeyPressbox:SetWidth((editframe.Width - 210) * 0.48)
+  KeyPressbox:SetWidth((editframe.Width ) * 0.48)
   KeyPressbox.editBox:SetScript( "OnLeave",  function() GSE.GUIParseText(KeyPressbox) end)
   if not GSE.isEmpty(editframe.Sequence.MacroVersions[version].KeyPress) then
     KeyPressbox:SetText(table.concat(editframe.Sequence.MacroVersions[version].KeyPress, "\n"))
@@ -807,9 +861,9 @@ function GSE:GUIDrawMacroEditor(container, version)
 
   local PreMacro = AceGUI:Create("MultiLineEditBox")
   PreMacro:SetLabel(L["PreMacro"])
-  PreMacro:SetNumLines(2)
+  PreMacro:SetNumLines(smallbox)
   PreMacro:DisableButton(true)
-  PreMacro:SetWidth((editframe.Width - 210) * 0.48)
+  PreMacro:SetWidth((editframe.Width ) * 0.48)
   PreMacro.editBox:SetScript( "OnLeave",  function() GSE.GUIParseText(PreMacro) end)
   PreMacro:SetCallback('OnEnter', function ()
     GSE.CreateToolTip(L["PreMacro"], L["These lines are executed before the lines in the Sequence Box.  If an Inner Loop Limit is not set, these are executed only once.  \nIf an Inner Loop Limit has been set these are executed after the Sequence has been looped through the number of times.  \nThe Sequence will then go on to the Post Macro if it exists then back to the PreMacro."], editframe)
@@ -830,7 +884,7 @@ function GSE:GUIDrawMacroEditor(container, version)
 
   local spellbox = AceGUI:Create("MultiLineEditBox")
   spellbox:SetLabel(L["Sequence"])
-  spellbox:SetNumLines(8)
+  spellbox:SetNumLines(largebox)
   spellbox:DisableButton(true)
   spellbox:SetFullWidth(true)
   spellbox:SetCallback('OnEnter', function ()
@@ -857,13 +911,13 @@ function GSE:GUIDrawMacroEditor(container, version)
 
   local linegroup3 = AceGUI:Create("SimpleGroup")
   linegroup3:SetLayout("Flow")
-  linegroup3:SetWidth(editframe.Width - 100)
+  linegroup3:SetWidth(editframe.Width )
 
   local KeyReleasebox = AceGUI:Create("MultiLineEditBox")
   KeyReleasebox:SetLabel(L["KeyRelease"])
-  KeyReleasebox:SetNumLines(2)
+  KeyReleasebox:SetNumLines(smallbox)
   KeyReleasebox:DisableButton(true)
-  KeyReleasebox:SetWidth((editframe.Width - 210) * 0.48)
+  KeyReleasebox:SetWidth((editframe.Width ) * 0.48)
   KeyReleasebox.editBox:SetScript( "OnLeave",  function() GSE.GUIParseText(KeyPressbox) end)
   KeyReleasebox:SetCallback('OnEnter', function ()
     GSE.CreateToolTip(L["KeyRelease"], L["These lines are executed every time you click this macro.  They are evaluated by WOW after the line in the Sequence Box."], editframe)
@@ -885,9 +939,9 @@ function GSE:GUIDrawMacroEditor(container, version)
 
   local PostMacro = AceGUI:Create("MultiLineEditBox")
   PostMacro:SetLabel(L["PostMacro"])
-  PostMacro:SetNumLines(2)
+  PostMacro:SetNumLines(smallbox)
   PostMacro:DisableButton(true)
-  PostMacro:SetWidth((editframe.Width - 210) * 0.48)
+  PostMacro:SetWidth((editframe.Width ) * 0.48)
   PostMacro.editBox:SetScript( "OnLeave",  function() GSE.GUIParseText(PostMacro) end)
   linegroup3:AddChild(PostMacro)
   if not GSE.isEmpty(editframe.Sequence.MacroVersions[version].PostMacro) then
@@ -908,12 +962,15 @@ function GSE:GUIDrawMacroEditor(container, version)
   layoutcontainer:AddChild(scrollcontainer)
 
   local toolbarcontainer = AceGUI:Create("SimpleGroup") -- "InlineGroup" is also good
-  toolbarcontainer:SetWidth(85)
-
+  toolbarcontainer:SetWidth(editframe.Width)
+  toolbarcontainer:SetLayout("list")
   local heading2 = AceGUI:Create("Label")
-  heading2:SetText(L["Resets"])
+  heading2:SetText(L["Use"])
   toolbarcontainer:AddChild(heading2)
 
+  local toolbarrow1 = AceGUI:Create("SimpleGroup")
+  toolbarrow1:SetLayout("Flow")
+  toolbarrow1:SetWidth(editframe.Width )
   --local targetresetcheckbox = AceGUI:Create("CheckBox")
   --targetresetcheckbox:SetType("checkbox")
   --targetresetcheckbox:SetWidth(78)
@@ -932,7 +989,7 @@ function GSE:GUIDrawMacroEditor(container, version)
   combatresetcheckbox:SetWidth(78)
   combatresetcheckbox:SetTriState(true)
   combatresetcheckbox:SetLabel(L["Combat"])
-  toolbarcontainer:AddChild(combatresetcheckbox)
+  toolbarrow1:AddChild(combatresetcheckbox)
   combatresetcheckbox:SetValue(editframe.Sequence.MacroVersions[version].Combat)
   combatresetcheckbox:SetCallback("OnValueChanged", function (sel, object, value)
     editframe.Sequence.MacroVersions[version].Combat = value
@@ -944,14 +1001,14 @@ function GSE:GUIDrawMacroEditor(container, version)
     GSE.ClearTooltip(editframe)
   end)
 
-
   local headingspace1 = AceGUI:Create("Label")
   headingspace1:SetText(" ")
-  toolbarcontainer:AddChild(headingspace1)
-
   local heading1 = AceGUI:Create("Label")
-  heading1:SetText(L["Use"])
-  toolbarcontainer:AddChild(heading1)
+  heading1:SetText(L["Resets"])
+
+  local toolbarrow2 = AceGUI:Create("SimpleGroup")
+  toolbarrow2:SetLayout("Flow")
+  toolbarrow2:SetWidth(editframe.Width )
 
   local headcheckbox = AceGUI:Create("CheckBox")
   headcheckbox:SetType("checkbox")
@@ -969,7 +1026,7 @@ function GSE:GUIDrawMacroEditor(container, version)
     GSE.ClearTooltip(editframe)
   end)
 
-  toolbarcontainer:AddChild(headcheckbox)
+  toolbarrow2:AddChild(headcheckbox)
 
   local neckcheckbox = AceGUI:Create("CheckBox")
   neckcheckbox:SetType("checkbox")
@@ -986,7 +1043,7 @@ function GSE:GUIDrawMacroEditor(container, version)
   neckcheckbox:SetCallback('OnLeave', function ()
     GSE.ClearTooltip(editframe)
   end)
-  toolbarcontainer:AddChild(neckcheckbox)
+  toolbarrow2:AddChild(neckcheckbox)
 
   local beltcheckbox = AceGUI:Create("CheckBox")
   beltcheckbox:SetType("checkbox")
@@ -1003,7 +1060,7 @@ function GSE:GUIDrawMacroEditor(container, version)
   beltcheckbox:SetCallback('OnLeave', function ()
     GSE.ClearTooltip(editframe)
   end)
-  toolbarcontainer:AddChild(beltcheckbox)
+  toolbarrow2:AddChild(beltcheckbox)
 
   local ring1checkbox = AceGUI:Create("CheckBox")
   ring1checkbox:SetType("checkbox")
@@ -1020,7 +1077,7 @@ function GSE:GUIDrawMacroEditor(container, version)
     GSE.ClearTooltip(editframe)
   end)
   ring1checkbox:SetValue(editframe.Sequence.MacroVersions[version].Ring1)
-  toolbarcontainer:AddChild(ring1checkbox)
+  toolbarrow2:AddChild(ring1checkbox)
 
   local ring2checkbox = AceGUI:Create("CheckBox")
   ring2checkbox:SetType("checkbox")
@@ -1037,7 +1094,7 @@ function GSE:GUIDrawMacroEditor(container, version)
     GSE.CreateToolTip(L["Ring 2"], L["These tick boxes have three settings for each slot.  Gold = Definately use this item. Blank = Do not use this item automatically.  Silver = Either use or not based on my default settings store in GSE's Options."], editframe)
   end)
   ring2checkbox:SetValue(editframe.Sequence.MacroVersions[version].Ring2)
-  toolbarcontainer:AddChild(ring2checkbox)
+  toolbarrow2:AddChild(ring2checkbox)
 
   local trinket1checkbox = AceGUI:Create("CheckBox")
   trinket1checkbox:SetType("checkbox")
@@ -1051,7 +1108,7 @@ function GSE:GUIDrawMacroEditor(container, version)
   trinket1checkbox:SetCallback('OnEnter', function ()
     GSE.CreateToolTip(L["Trinket 1"], L["These tick boxes have three settings for each slot.  Gold = Definately use this item. Blank = Do not use this item automatically.  Silver = Either use or not based on my default settings store in GSE's Options."], editframe)
   end)
-  toolbarcontainer:AddChild(trinket1checkbox)
+  toolbarrow2:AddChild(trinket1checkbox)
 
   local trinket2checkbox = AceGUI:Create("CheckBox")
   trinket2checkbox:SetType("checkbox")
@@ -1065,9 +1122,187 @@ function GSE:GUIDrawMacroEditor(container, version)
     GSE.CreateToolTip(L["Trinket 2"], L["These tick boxes have three settings for each slot.  Gold = Definately use this item. Blank = Do not use this item automatically.  Silver = Either use or not based on my default settings store in GSE's Options."], editframe)
   end)
   trinket2checkbox:SetValue(editframe.Sequence.MacroVersions[version].Trinket2)
-  toolbarcontainer:AddChild(trinket2checkbox)
+  toolbarrow2:AddChild(trinket2checkbox)
 
-  layoutcontainer:AddChild(toolbarcontainer)
+  toolbarcontainer:AddChild(toolbarrow2)
+  toolbarcontainer:AddChild(headingspace1)
+  toolbarcontainer:AddChild(heading1)
+  toolbarcontainer:AddChild(toolbarrow1)
+  contentcontainer:AddChild(toolbarcontainer)
+  container:AddChild(layoutcontainer)
+end
+
+local function addKeyPairRow(container, rowWidth, key, value)
+  if GSE.isEmpty(editframe.variablecount) then
+    editframe.variablecount = 0
+    editframe.tempVariables = {}
+  end
+  --print("KEY/VAL", key, value)
+  if GSE.isEmpty(key) then
+    key = ""
+  end
+  if GSE.isEmpty(value) then
+    value = ""
+  end
+  -- if type(GSE.isEmpty(value)) ~= "string" then
+  --   value = ""
+  -- end
+  -- if type(GSE.isEmpty(key)) ~= "string" then
+  --   key = ""
+  -- end
+
+  editframe.variablecount = editframe.variablecount + 1
+  local row = editframe.variablecount
+  editframe.tempVariables[row] = {}
+  editframe.tempVariables[row]["key"] = key
+  editframe.tempVariables[row]["value"] = value
+
+  local linegroup1 = AceGUI:Create("SimpleGroup")
+  linegroup1:SetLayout("Flow")
+  linegroup1:SetWidth(rowWidth)
+  rowWidth = rowWidth - 50
+
+  local keyEditBox = AceGUI:Create("EditBox")
+  keyEditBox:SetLabel()
+  keyEditBox:SetWidth(rowWidth /2)
+  keyEditBox:SetText(key)
+  keyEditBox:SetCallback("OnTextChanged", function()
+    editframe.tempVariables[row]["key"] = keyEditBox:GetText()
+  end)
+  linegroup1:AddChild(keyEditBox)
+
+  local spacerlabel1 = AceGUI:Create("Label")
+  spacerlabel1:SetWidth(5)
+  linegroup1:AddChild(spacerlabel1)
+
+  local valueEditBox = AceGUI:Create("EditBox")
+  valueEditBox:SetLabel()
+  valueEditBox:SetWidth(rowWidth /2)
+  valueEditBox:SetText(value)
+  valueEditBox:SetCallback("OnTextChanged", function()
+    editframe.tempVariables[row]["value"] = valueEditBox:GetText()
+  end)
+  linegroup1:AddChild(valueEditBox)
+
+  local spacerlabel2 = AceGUI:Create("Label")
+  spacerlabel2:SetWidth(8)
+  linegroup1:AddChild(spacerlabel2)
+
+  -- local iconpicker = AceGUI:Create("Icon")
+  -- iconpicker:SetLabel(L["Macro Icon"])
+  -- iconpicker.frame:RegisterForDrag("LeftButton")
+  -- iconpicker.frame:SetScript("OnDragStart", function()
+  --   if not GSE.isEmpty(editframe.SequenceName) then
+  --     PickupMacro(editframe.SequenceName)
+  --   end
+  -- end)
+  -- iconpicker:SetImage(GSEOptions.DefaultDisabledMacroIcon)
+
+  local deleteRowButton = AceGUI:Create("Icon")
+  -- deleteRowButton:SetLabel(L["Delete"])
+  deleteRowButton:SetImageSize(20, 20)
+  deleteRowButton:SetWidth(20)
+  deleteRowButton:SetHeight(20)
+  deleteRowButton:SetImage("Interface\\Icons\\spell_chargenegative")
+
+  deleteRowButton:SetCallback("OnClick", function()
+    editframe.Sequence.Variables[editframe.tempVariables[row].key] = nil
+    table.remove(editframe.tempVariables[row])
+    linegroup1:ReleaseChildren()
+   end)
+  deleteRowButton:SetCallback('OnEnter', function ()
+    GSE.CreateToolTip(L["Delete Variable"], L["Delete this variable from the sequence."], editframe)
+  end)
+  deleteRowButton:SetCallback('OnLeave', function ()
+    GSE.ClearTooltip(editframe)
+  end)
+  linegroup1:AddChild(deleteRowButton)
+
+  container:AddChild(linegroup1)
+
+end
+
+function GSE:GUIDrawVariableEditor(container)
+
+  if GSE.isEmpty(editframe.Sequence.Variables) then
+    editframe.Sequence.Variables = {}
+  end
+  if not GSE.isEmpty(editframe.tempVariables) then
+    local variables = {}
+    for index, pair in ipairs(editframe.tempVariables) do
+      variables[pair.key] = pair.value
+      --print("inserted", pair.key, pair.value)
+    end
+    editframe.Sequence.Variables = variables
+  end
+  editframe.tempVariables = {}
+  editframe.variablecount = 0
+
+  local layoutcontainer = AceGUI:Create("SimpleGroup")
+  layoutcontainer:SetFullWidth(true)
+  layoutcontainer:SetHeight(editframe.Height - 300 )
+  layoutcontainer:SetLayout("Flow") -- Important!
+
+  local scrollcontainer = AceGUI:Create("SimpleGroup") -- "InlineGroup" is also good
+  scrollcontainer:SetFullWidth(true)
+  -- scrollcontainer:SetFullHeight(true) -- Probably?
+  -- scrollcontainer:SetWidth(editframe.Width )
+  scrollcontainer:SetHeight(editframe.Height - 300)
+  scrollcontainer:SetLayout("Fill") -- Important!
+
+  local contentcontainer = AceGUI:Create("ScrollFrame")
+  scrollcontainer:AddChild(contentcontainer)
+
+  local linegroup1 = AceGUI:Create("SimpleGroup")
+  linegroup1:SetLayout("Flow")
+  local columnWidth = editframe.Width - 55
+
+  linegroup1:SetWidth(editframe.Width - 50)
+
+
+  local nameLabel = AceGUI:Create("Heading")
+  nameLabel:SetText(L["Name"])
+  nameLabel:SetWidth((columnWidth /2) - 25 )
+  linegroup1:AddChild(nameLabel)
+
+  local spacerlabel1 = AceGUI:Create("Label")
+  spacerlabel1:SetWidth(5)
+  linegroup1:AddChild(spacerlabel1)
+
+  local valueLabel = AceGUI:Create("Heading")
+  valueLabel:SetText(L["Value"])
+  valueLabel:SetWidth((columnWidth /2) -25)
+  linegroup1:AddChild(valueLabel)
+
+  local spacerlabel2 = AceGUI:Create("Label")
+  spacerlabel2:SetWidth(5)
+  linegroup1:AddChild(spacerlabel2)
+
+  local delLabel = AceGUI:Create("Heading")
+  delLabel:SetText(L["Del"])
+  delLabel:SetWidth(25)
+  linegroup1:AddChild(delLabel)
+
+  contentcontainer:AddChild(linegroup1)
+  for key,value in pairs(editframe.Sequence.Variables) do
+    --GSE.Dump(editframe.Sequence.Variables)
+    --print("Creating pair", key, value)
+    addKeyPairRow(contentcontainer, columnWidth, key, value)
+  end
+
+  local addVariablsButton = AceGUI:Create("Button")
+  addVariablsButton:SetText(L["Add Variable"])
+  addVariablsButton:SetWidth(150)
+  addVariablsButton:SetCallback("OnClick", function()  addKeyPairRow(contentcontainer, columnWidth) end)
+  addVariablsButton:SetCallback('OnEnter', function ()
+    GSE.CreateToolTip(L["Add Variable"], L["Add a substitution variable for this macro.  This can either be a straight string swap or can be a function.  If a lua function the function needs to return a value."], editframe)
+  end)
+  addVariablsButton:SetCallback('OnLeave', function ()
+    GSE.ClearTooltip(editframe)
+  end)
+
+  layoutcontainer:AddChild(scrollcontainer)
+  layoutcontainer:AddChild(addVariablsButton)
   container:AddChild(layoutcontainer)
 end
 
@@ -1085,6 +1320,8 @@ function GSE.GUISelectEditorTab(container, event, group)
 
       GSE.GUIEditorPerformLayout(editframe)
       GSE.GUISelectEditorTab(container, event, table.getn(editframe.Sequence.MacroVersions))
+    elseif group == "variables" then
+      GSE:GUIDrawVariableEditor(container)
     else
       GSE:GUIDrawMacroEditor(container, group)
     end

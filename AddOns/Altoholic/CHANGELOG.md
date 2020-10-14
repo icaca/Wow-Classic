@@ -1,6 +1,8 @@
 # Altoholic Classic - Fork by Teelo
 
-## [Classic-v1.13.5-048](https://github.com/teelolws/Altoholic-Classic/tree/Classic-v1.13.5-048) (2020-10-11)
-[Full Changelog](https://github.com/teelolws/Altoholic-Classic/compare/Classic-v1.13.5-047...Classic-v1.13.5-048) [Previous Releases](https://github.com/teelolws/Altoholic-Classic/releases)
+## [Classic-v1.13.5-049](https://github.com/teelolws/Altoholic-Classic/tree/Classic-v1.13.5-049) (2020-10-14)
+[Full Changelog](https://github.com/teelolws/Altoholic-Classic/compare/Classic-v1.13.5-048...Classic-v1.13.5-049) [Previous Releases](https://github.com/teelolws/Altoholic-Classic/releases)
 
-- Workaround for item cooldown bug discovered in Blizzards Code.  
+- Fix for Salt Shaker showing wrong event time after a system reboot  
+- Fix for Salt Shaker showing wrong event time after a system reboot  
+- Update Altoholic.toc  

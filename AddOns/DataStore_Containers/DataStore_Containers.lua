@@ -174,7 +174,33 @@ local function detectBagChanges(originalBag, newBag)
     return changes
 end
 
+-- Credit to Arkoniel and Eliot from the WoW Addons discord for this code.
+-- Something to do with the time returned by GetItemCooldown being bugged if your machine has been fully restarted since using the item
+local function GetCooldownLeft(start, duration)
+    if start < GetTime() then
+        local cdEndTime = start + duration
+        local cdLeftDuration = cdEndTime - GetTime()        
+        return cdLeftDuration
+    end
+    local time = time()
+    local startupTime = time - GetTime()    
+    local cdTime = (2 ^ 32) / 1000 - start
+    local cdStartTime = startupTime - cdTime
+    local cdEndTime = cdStartTime + duration
+    local cdLeftDuration = cdEndTime - time    
+    return cdLeftDuration
+end
+
 -- *** Scanning functions ***
+-- This is a fix for item cooldown icons displaying incorrectly when the computer has been rebooted
+-- Not really relevant to DataStore, just thought it would be helpful to leave it here anyway
+-- Basically a bugfix for problems on Blizzards end
+hooksecurefunc( getmetatable(CreateFrame("Cooldown")).__index, "SetCooldown", function(s,c,d,r)
+    if c < GetTime() then return end
+    local e = (GetTime() + ( (2^32) / 1000  - c ))
+    s:SetCooldownUNIX(time()-e,d, 1/1000)
+end)
+
 
 local function ScanContainer(bagID, containerType)
 	local Container = ContainerTypes[containerType]
@@ -218,7 +244,9 @@ local function ScanContainer(bagID, containerType)
 		end
 		
 		startTime, duration, isEnabled = Container:GetCooldown(slotID, bagID)
-		if startTime and startTime > 0 and startTime <= GetTime() then
+        
+		if startTime and startTime > 0 then
+            startTime = time() + GetCooldownLeft(startTime, duration) - duration
 			newBag.cooldowns[index] = format("%s|%s|1", startTime, duration)
 		end
 	end

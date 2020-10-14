@@ -1,6 +1,6 @@
+local addonName = ...
 local AutoLoot = CreateFrame("Frame")
-SpeedyAutoLootDB = SpeedyAutoLootDB or {}
-SpeedyAutoLootDB.global = SpeedyAutoLootDB.global or {}
+local Settings = {}
 
 local SetCVar = SetCVar or C_CVar.SetCVar
 local GetCVarBool = GetCVarBool or C_CVar.GetCVarBool
@@ -92,14 +92,18 @@ function AutoLoot:LootItems(numItems)
 		self:PlayInventoryFullSound()
 	end
 
-	if IsFishingLoot() and not SpeedyAutoLootDB.global.fishingSoundDisabled then
+	if IsFishingLoot() and not Settings.global.fishingSoundDisabled then
 		PlaySound(SOUNDKIT.FISHING_REEL_IN, self.audioChannel)
 	end
 end
 
 function AutoLoot:OnEvent(e, ...)
-    if e == "PLAYER_LOGIN" then
-		if SpeedyAutoLootDB.global.alwaysEnableAutoLoot then
+	if e == "ADDON_LOADED" and ... == addonName then
+		SpeedyAutoLootDB = SpeedyAutoLootDB or {}
+		Settings = SpeedyAutoLootDB
+		Settings.global = Settings.global or {}
+    elseif e == "PLAYER_LOGIN" then
+		if Settings.global.alwaysEnableAutoLoot then
 			SetCVar("autoLootDefault",1)
 		end
 
@@ -137,8 +141,8 @@ function AutoLoot:OnEvent(e, ...)
 end
 
 function AutoLoot:PlayInventoryFullSound()
-	if SpeedyAutoLootDB.global.enableSound and not self.isItemLocked then
-		PlaySound(SpeedyAutoLootDB.global.InventoryFullSound, self.audioChannel)
+	if Settings.global.enableSound and not self.isItemLocked then
+		PlaySound(Settings.global.InventoryFullSound, self.audioChannel)
 	end
 end
 
@@ -172,42 +176,42 @@ function AutoLoot:Help(msg)
 			print("  |cff58C6FA/sal set (SoundID) -|r  |cffEEE4AESet a Sound (SoundID), Default:  /sal set 44321|r")
 		end
 	elseif cmd == "fish" then
-		if not SpeedyAutoLootDB.global.fishingSoundDisabled then
-			SpeedyAutoLootDB.global.fishingSoundDisabled = true
+		if not Settings.global.fishingSoundDisabled then
+			Settings.global.fishingSoundDisabled = true
 			print(fName.."|cffB6B6B6Fishing reel in sound disabled.")
 		else
-			SpeedyAutoLootDB.global.fishingSoundDisabled = false
+			Settings.global.fishingSoundDisabled = false
 			print(fName.."|cff37DB33Fishing reel in sound enabled.")
 		end
 	elseif cmd == "auto" then
-		if SpeedyAutoLootDB.global.alwaysEnableAutoLoot then
-			SpeedyAutoLootDB.global.alwaysEnableAutoLoot = false
+		if Settings.global.alwaysEnableAutoLoot then
+			Settings.global.alwaysEnableAutoLoot = false
 			print(fName.."|cffB6B6B6Auto Loot for all Characters disabled.")
 			SetCVar("autoLootDefault",0)
 		else
-			SpeedyAutoLootDB.global.alwaysEnableAutoLoot = true
+			Settings.global.alwaysEnableAutoLoot = true
 			print(fName.."|cff37DB33Auto Loot for all Characters enabled.")
 			SetCVar("autoLootDefault",1)
 		end
 	elseif cmd == "sound" then
-		if SpeedyAutoLootDB.global.enableSound then
-			SpeedyAutoLootDB.global.enableSound = false
+		if Settings.global.enableSound then
+			Settings.global.enableSound = false
 			print(fName.."|cffB6B6B6Don't play a sound when inventory is full.")
 		else
-			if not SpeedyAutoLootDB.global.InventoryFullSound then
+			if not Settings.global.InventoryFullSound then
 				if self.isClassic then
-					SpeedyAutoLootDB.global.InventoryFullSound = 139
+					Settings.global.InventoryFullSound = 139
 				else
-					SpeedyAutoLootDB.global.InventoryFullSound = 44321
+					Settings.global.InventoryFullSound = 44321
 				end
 			end
-			SpeedyAutoLootDB.global.enableSound = true
+			Settings.global.enableSound = true
 			print(fName.."|cff37DB33Play a sound when inventory is full.")
 		end
 	elseif cmd == "set" and args ~= "" then
 		local SoundID = tonumber(args:match("%d+"))
 		if SoundID then
-			SpeedyAutoLootDB.global.InventoryFullSound = tonumber(args:match("%d+"))
+			Settings.global.InventoryFullSound = tonumber(args:match("%d+"))
 			PlaySound(SoundID, self.audioChannel)
 			print(fName.."Set Sound|r |cff37DB33"..SoundID.."|r")
 		end
@@ -221,7 +225,7 @@ function AutoLoot:OnLoad()
 		self:OnEvent(...)
 	end)
 
-	for _,e in next, ({	"PLAYER_LOGIN", "LOOT_READY", "LOOT_OPENED", "LOOT_CLOSED", "UI_ERROR_MESSAGE" }) do
+	for _,e in next, ({	"ADDON_LOADED", "PLAYER_LOGIN", "LOOT_READY", "LOOT_OPENED", "LOOT_CLOSED", "UI_ERROR_MESSAGE" }) do
 		self:RegisterEvent(e)
 	end
 

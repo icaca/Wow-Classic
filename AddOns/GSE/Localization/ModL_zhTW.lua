@@ -46,6 +46,10 @@ L["About"] = "關於"
 L["About GSE"] = "關於 GSE"
 L["Actions"] = "動作"
 L["Active Version: "] = "活動版本:"
+--[[Translation missing --]]
+L["Add a substitution variable for this macro.  This can either be a straight string swap or can be a function.  If a lua function the function needs to return a value."] = "Add a substitution variable for this macro.  This can either be a straight string swap or can be a function.  If a lua function the function needs to return a value."
+--[[Translation missing --]]
+L["Add Variable"] = "Add Variable"
 L["Addin Version %s contained versions for the following macros:"] = "加載版本 %s 包含於以下巨集:"
 L["All macros are now stored as upper case names.  You may need to re-add your old macros to your action bars."] = "所有的巨集現在被儲存為大寫.你也許需要重新添加舊的巨集到動作欄."
 L["Alt Keys."] = "Alt鍵."
@@ -109,14 +113,24 @@ L["Debug Output Options"] = "調試輸出設置"
 L["Debug Sequence Execution"] = "調試序列執行"
 --[[Translation missing --]]
 L["Decompress"] = "Decompress"
+--[[Translation missing --]]
+L["Default Editor Height"] = "Default Editor Height"
+--[[Translation missing --]]
+L["Default Editor Width"] = "Default Editor Width"
 L["Default Import Action"] = "默認導入動作"
 L["Default Version"] = "默認版本"
+--[[Translation missing --]]
+L["Del"] = "Del"
 L["Delete"] = "刪除"
 L["Delete Icon"] = "刪除圖標"
 L["Delete Orphaned Macros on Logout"] = "登出時刪除獨立的巨集"
 L["Delete this macro.  This is not able to be undone."] = "刪除此巨集。 這是無法取消的。"
+--[[Translation missing --]]
+L["Delete this variable from the sequence."] = "Delete this variable from the sequence."
 L[ [=[Delete this verion of the macro.  This can be undone by closing this window and not saving the change.  
 This is different to the Delete button below which will delete this entire macro.]=] ] = "刪除此版本的巨集. 關閉此窗口而不保存更改可以取消此操作. 這與下面的刪除按鈕不同.刪除按鈕將刪除整個巨集。"
+--[[Translation missing --]]
+L["Delete Variable"] = "Delete Variable"
 L["Delete Version"] = "刪除版本"
 L["Different helpTxt"] = "不同的幫助腳本"
 L["Disable"] = "禁用"
@@ -206,6 +220,10 @@ L["Hide Minimap Icon"] = "隱藏迷你地圖標"
 L["Hide Minimap Icon for LibDataBroker (LDB) data text."] = "隱藏LibDataBroker（LDB）資料夾的迷你地圖圖標。"
 L["Hides the message that GSE is loaded."] = "隱藏GSE加載的信息."
 L["History"] = "歷史"
+--[[Translation missing --]]
+L["How many pixels high should the Editor start at.  Defaults to 700"] = "How many pixels high should the Editor start at.  Defaults to 700"
+--[[Translation missing --]]
+L["How many pixels wide should the Editor start at.  Defaults to 700"] = "How many pixels wide should the Editor start at.  Defaults to 700"
 L["Icon Colour"] = "圖標顏色"
 L["If you load Gnome Sequencer - Enhanced and the Sequence Editor and want to create new macros from scratch, this will enable a first cut sequenced template that you can load into the editor as a starting point.  This enables a Hello World macro called Draik01.  You will need to do a /console reloadui after this for this to take effect."] = "如果你加載Gnome Sequencer - Enhanced(侏儒序列器-增強) 和Sequence Editor(序列編輯器) 並希望從頭開始創建新的巨集, 這將啟用一個初始序列模板,你可以加載到編輯器作為起點. 它會啟動一個名為Draik01的巨集作為Hellow World巨集. 你需要輸入/console reloadui 之後使之生效."
 L["Ignore"] = "忽略"
@@ -265,6 +283,8 @@ L["Mythic"] = "史詩難度"
 L["Mythic setting changed to Default."] = "Mythic setting changed to Default."
 L["Mythic+"] = "史詩難度+"
 L["Mythic+ setting changed to Default."] = "史詩難度+設置更改為默認."
+--[[Translation missing --]]
+L["Name"] = "Name"
 L["Neck"] = "頸部"
 L["New"] = "新"
 L["New Sequence Name"] = "新序列名稱"
@@ -365,6 +385,8 @@ L["Sequence Debugger"] = "序列調試器"
 L["Sequence Editor"] = "序列編輯器"
 L["Sequence Name"] = "序列名稱"
 L["Sequence Name %s is in Use. Please choose a different name."] = "序列名稱 %s 已被使用.請選擇一個不同的名稱."
+--[[Translation missing --]]
+L["Sequence Named %s was not specifically designed for this version of the game.  It may need adjustments."] = "Sequence Named %s was not specifically designed for this version of the game.  It may need adjustments."
 L["Sequence Saved as version "] = "保存序列版本為"
 L["Sequence specID set to current spec of "] = "序列天賦ID設置為當前天賦"
 --[[Translation missing --]]
@@ -496,6 +518,10 @@ L["Use Second Trinket in KeyRelease"] = "使用第二個飾品在釋放按鍵"
 --[[Translation missing --]]
 L["Use Verbose Export Sequence Format"] = "Use Verbose Export Sequence Format"
 L["Use WLM Export Sequence Format"] = "使用WLM導出序列格式"
+--[[Translation missing --]]
+L["Value"] = "Value"
+--[[Translation missing --]]
+L["Variables"] = "Variables"
 --[[Translation missing --]]
 L["Version"] = "Version"
 L["Version="] = "版本="
