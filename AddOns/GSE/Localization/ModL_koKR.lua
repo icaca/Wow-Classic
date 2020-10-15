@@ -947,6 +947,8 @@ L["Version"] = "Version"
 --[[Translation missing --]]
 L["Version="] = "Version="
 --[[Translation missing --]]
+L["WARNING ONLY"] = "WARNING ONLY"
+--[[Translation missing --]]
 L["Website or forum URL where a player can get more information or ask questions about this macro."] = "Website or forum URL where a player can get more information or ask questions about this macro."
 --[[Translation missing --]]
 L[ [=[What are the preferred talents for this macro?

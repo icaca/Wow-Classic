@@ -525,6 +525,8 @@ L["Variables"] = "Variables"
 --[[Translation missing --]]
 L["Version"] = "Version"
 L["Version="] = "版本="
+--[[Translation missing --]]
+L["WARNING ONLY"] = "WARNING ONLY"
 L["Website or forum URL where a player can get more information or ask questions about this macro."] = "網站或論壇網址.玩家可以獲取更多信息或詢問有關此巨集的問題."
 L[ [=[What are the preferred talents for this macro?
 '1,2,3,1,2,3,1' means First row choose the first talent, Second row choose the second talent etc]=] ] = "這個巨集的首選天賦是什麼？ '1,2,3,1,2,3,1'表示第一排選擇第一天賦，第二排選擇第二天賦等"
