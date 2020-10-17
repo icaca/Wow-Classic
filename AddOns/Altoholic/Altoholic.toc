@@ -9,7 +9,7 @@
 ## Notes-koKR: 부캐들(alts)의 정보들을 제공해 줍니다.
 
 ## Author: Thaoky (EU-Marécages de Zangar) + Teelo (US-Jubei'thos)
-## Version: Classic-v1.13.5-049
+## Version: Classic-v1.13.5-050
 ## X-Category: Inventory, Tradeskill, Mail
 ## X-Localizations: enUS, frFR, zhCN, zhTW, deDE, koKR, esES, esMX, ruRU
 ## X-Website: https://www.curseforge.com/wow/addons/altoholic-classic

@@ -3,7 +3,7 @@ local Consts = Addon.Consts
 local DB = Addon.DB
 local DTL = Addon.Libs.DTL
 local L = Addon.Libs.L
-local LE_ITEM_QUALITY_POOR = _G.LE_ITEM_QUALITY_POOR
+local ItemQuality = Addon.ItemQuality
 
 local function isBindsWhenEquipped(item)
   if not DTL:ScanBagSlot(item.Bag, item.Slot) then
@@ -21,9 +21,9 @@ end
 Addon.Filters:Add(Addon.Dejunker, {
   Run = function(_, item)
     if
-      DB.Profile.IgnoreBindsWhenEquipped and
+      DB.Profile.sell.ignore.bindsWhenEquipped and
       item.Class ~= Consts.RECIPE_CLASS and
-      item.Quality ~= LE_ITEM_QUALITY_POOR
+      item.Quality ~= ItemQuality.Poor
     then
       return isBindsWhenEquipped(item)
     end
@@ -36,9 +36,9 @@ Addon.Filters:Add(Addon.Dejunker, {
 Addon.Filters:Add(Addon.Destroyer, {
   Run = function(_, item)
     if
-      DB.Profile.DestroyIgnoreBindsWhenEquipped and
+      DB.Profile.destroy.ignore.bindsWhenEquipped and
       item.Class ~= Consts.RECIPE_CLASS and
-      item.Quality ~= LE_ITEM_QUALITY_POOR
+      item.Quality ~= ItemQuality.Poor
     then
       return isBindsWhenEquipped(item)
     end

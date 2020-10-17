@@ -92,6 +92,8 @@ L["By setting this value the Sequence Editor will show every macro for your clas
 L["Cancel"] = "Abbrechen"
 L["CheckMacroCreated"] = "Überprüfe das erstellte Makro"
 --[[Translation missing --]]
+L["Checks to see if you have a Heart of Azeroth equipped and if so will insert '/cast Heart Essence' into the macro.  If not your macro will skip this line."] = "Checks to see if you have a Heart of Azeroth equipped and if so will insert '/cast Heart Essence' into the macro.  If not your macro will skip this line."
+--[[Translation missing --]]
 L["Choose import action:"] = "Choose import action:"
 L["Choose Language"] = "Wähle die Sprache"
 L["Classwide Macro"] = "Klassenweites Makro"
@@ -336,6 +338,8 @@ L["Macro Icon"] = "Makrobild "
 L["Macro Import Successful."] = "Import des Makros erfolgreich."
 L["Macro Reset"] = "Makro zurücksetzen"
 L["Macro unable to be imported."] = "Das Makro kann nicht importiert werden."
+--[[Translation missing --]]
+L["Macro Variables"] = "Macro Variables"
 L["Macro Version %d deleted."] = "Version %d des Makros gelöscht."
 L["Make Active"] = "aktivieren"
 --[[Translation missing --]]
@@ -465,6 +469,8 @@ L["Reset this macro when you exit combat."] = "Reset this macro when you exit co
 L["Resets"] = "zurücksetzen"
 L["Resets macros back to the initial state when out of combat."] = "Außerhalb des Kampfes wird das Makro in den Ausgangszustand zurückgesetzt"
 L["Resume"] = "Wiederaufnehmen"
+--[[Translation missing --]]
+L["Returns your current Global Cooldown value accounting for your haste if that stat is present."] = "Returns your current Global Cooldown value accounting for your haste if that stat is present."
 L["Right Alt Key"] = "Rechte Alt Taste"
 L["Right Control Key"] = "Rechte STRG Taste"
 L["Right Mouse Button"] = "Rechte Maustaste"
@@ -530,6 +536,8 @@ L["Store output of debug messages in a Global Variable that can be referrenced b
 L["String Colour"] = "String Colour"
 --[[Translation missing --]]
 L["Supporters"] = "Supporters"
+--[[Translation missing --]]
+L["System Variables"] = "System Variables"
 L["Talents"] = "Talente"
 L["Target"] = "Ziel"
 L["Target language "] = "Zielsprache"

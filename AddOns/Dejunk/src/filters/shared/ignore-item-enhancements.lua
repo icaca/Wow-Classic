@@ -2,15 +2,15 @@ local _, Addon = ...
 local Consts = Addon.Consts
 local DB = Addon.DB
 local L = Addon.Libs.L
-local LE_ITEM_QUALITY_POOR = _G.LE_ITEM_QUALITY_POOR
+local ItemQuality = Addon.ItemQuality
 
 -- Dejunker
 Addon.Filters:Add(Addon.Dejunker, {
   Run = function(_, item)
     if
-      DB.Profile.IgnoreItemEnhancements and
+      DB.Profile.sell.ignore.itemEnhancements and
       item.Class == Consts.ITEM_ENHANCEMENT_CLASS and
-      item.Quality ~= LE_ITEM_QUALITY_POOR
+      item.Quality ~= ItemQuality.Poor
     then
       return "NOT_JUNK", L.REASON_IGNORE_ITEM_ENHANCEMENTS_TEXT
     end
@@ -23,9 +23,9 @@ Addon.Filters:Add(Addon.Dejunker, {
 Addon.Filters:Add(Addon.Destroyer, {
   Run = function(_, item)
     if
-      DB.Profile.DestroyIgnoreItemEnhancements and
+      DB.Profile.destroy.ignore.itemEnhancements and
       item.Class == Consts.ITEM_ENHANCEMENT_CLASS and
-      item.Quality ~= LE_ITEM_QUALITY_POOR
+      item.Quality ~= ItemQuality.Poor
     then
       return "NOT_JUNK", L.REASON_IGNORE_ITEM_ENHANCEMENTS_TEXT
     end

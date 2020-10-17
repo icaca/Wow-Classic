@@ -137,6 +137,8 @@ L["Cancel"] = "Cancel"
 --[[Translation missing --]]
 L["CheckMacroCreated"] = "Check Macro Created"
 --[[Translation missing --]]
+L["Checks to see if you have a Heart of Azeroth equipped and if so will insert '/cast Heart Essence' into the macro.  If not your macro will skip this line."] = "Checks to see if you have a Heart of Azeroth equipped and if so will insert '/cast Heart Essence' into the macro.  If not your macro will skip this line."
+--[[Translation missing --]]
 L["Choose import action:"] = "Choose import action:"
 --[[Translation missing --]]
 L["Choose Language"] = "Choose Language"
@@ -473,6 +475,8 @@ L["Macro Reset"] = "Macro Reset"
 --[[Translation missing --]]
 L["Macro unable to be imported."] = "Macro unable to be imported."
 --[[Translation missing --]]
+L["Macro Variables"] = "Macro Variables"
+--[[Translation missing --]]
 L["Macro Version %d deleted."] = "Macro Version %d deleted."
 --[[Translation missing --]]
 L["Make Active"] = "Make Active"
@@ -647,6 +651,8 @@ L["Resets macros back to the initial state when out of combat."] = "Resets macro
 --[[Translation missing --]]
 L["Resume"] = "Resume"
 --[[Translation missing --]]
+L["Returns your current Global Cooldown value accounting for your haste if that stat is present."] = "Returns your current Global Cooldown value accounting for your haste if that stat is present."
+--[[Translation missing --]]
 L["Right Alt Key"] = "Right Alt Key"
 --[[Translation missing --]]
 L["Right Control Key"] = "Right Control Key"
@@ -744,6 +750,8 @@ L["Store output of debug messages in a Global Variable that can be referrenced b
 L["String Colour"] = "String Colour"
 --[[Translation missing --]]
 L["Supporters"] = "Supporters"
+--[[Translation missing --]]
+L["System Variables"] = "System Variables"
 --[[Translation missing --]]
 L["Talents"] = "Talents"
 --[[Translation missing --]]

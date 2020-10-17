@@ -73,6 +73,8 @@ L["By setting this value the Sequence Editor will show every macro for every cla
 L["By setting this value the Sequence Editor will show every macro for your class.  Turning this off will only show the class macros for your current specialisation."] = "勾选此项,序列编辑器将显示职业的全部专精的宏.否则只显示当前专精的宏."
 L["Cancel"] = "撤销/取消"
 L["CheckMacroCreated"] = "检测已创建宏"
+--[[Translation missing --]]
+L["Checks to see if you have a Heart of Azeroth equipped and if so will insert '/cast Heart Essence' into the macro.  If not your macro will skip this line."] = "Checks to see if you have a Heart of Azeroth equipped and if so will insert '/cast Heart Essence' into the macro.  If not your macro will skip this line."
 L["Choose import action:"] = "选择导入动作:"
 L["Choose Language"] = "选择语言"
 L["Classwide Macro"] = "职业通用宏"
@@ -280,6 +282,8 @@ L["Macro Icon"] = "宏图标"
 L["Macro Import Successful."] = "宏导入成功."
 L["Macro Reset"] = "宏重置"
 L["Macro unable to be imported."] = "无法导入宏."
+--[[Translation missing --]]
+L["Macro Variables"] = "Macro Variables"
 L["Macro Version %d deleted."] = "宏版本%d 已删除."
 L["Make Active"] = "使它活动"
 L["Manage Versions"] = "管理版本"
@@ -382,6 +386,8 @@ L["Reset this macro when you exit combat."] = "Reset this macro when you exit co
 L["Resets"] = "重置"
 L["Resets macros back to the initial state when out of combat."] = "在退出战斗时宏重置为初始状态."
 L["Resume"] = "恢复"
+--[[Translation missing --]]
+L["Returns your current Global Cooldown value accounting for your haste if that stat is present."] = "Returns your current Global Cooldown value accounting for your haste if that stat is present."
 L["Right Alt Key"] = "右Alt键"
 L["Right Control Key"] = "右Ctrl键"
 L["Right Mouse Button"] = "鼠标右键"
@@ -438,6 +444,8 @@ L["Store output of debug messages in a Global Variable that can be referrenced b
 L["String Colour"] = "字符串颜色"
 --[[Translation missing --]]
 L["Supporters"] = "Supporters"
+--[[Translation missing --]]
+L["System Variables"] = "System Variables"
 L["Talents"] = "天赋"
 L["Target"] = "目标"
 L["Target language "] = "目标语言 "

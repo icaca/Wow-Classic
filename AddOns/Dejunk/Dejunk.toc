@@ -1,12 +1,12 @@
-## Interface: 80300
+## Interface: 90001
 ## Title: Dejunk
 ## Author: Dethanyel
-## Version: 8.3.4
+## Version: 9.0.0-alpha
 ## Notes: Customizable junk selling and destroying.
 ## X-DethsDBLib: DEJUNK_ADDON_SV
 ## SavedVariables: DEJUNK_ADDON_SV
 ## OptionalDeps: DethsColorLib, DethsDBLib, DethsTooltipLib
-## X-Curse-Project-ID: 257636
+## X-Curse-Project-ID: 413260
 ## X-WoWI-ID: 25313
 
 
@@ -46,14 +46,19 @@ src\events\events.lua
 src\events\event-manager.lua
 
 # Lists
+src\lists\list_mixins.lua
 src\lists\lists.lua
 src\lists\list-helper.lua
 
 # General
 src\bags.lua
+src\commands.lua
 src\consts.lua
-src\db.lua
 src\utils.lua
+
+# DB
+src\db\db.lua
+src\db\reformat-db.lua
 
 # Services
 src\services\confirmer.lua
@@ -106,6 +111,7 @@ src\ui\groups\general.lua
 src\ui\groups\sell.lua
 src\ui\groups\destroy.lua
 src\ui\groups\lists.lua
+src\ui\groups\commands.lua
 src\ui\groups\profiles.lua
 
 src\ui\widgets\widgets.lua

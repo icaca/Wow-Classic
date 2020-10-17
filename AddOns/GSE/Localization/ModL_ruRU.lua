@@ -100,6 +100,8 @@ L["Cancel"] = "Отменить"
 --[[Translation missing --]]
 L["CheckMacroCreated"] = "Check Macro Created"
 --[[Translation missing --]]
+L["Checks to see if you have a Heart of Azeroth equipped and if so will insert '/cast Heart Essence' into the macro.  If not your macro will skip this line."] = "Checks to see if you have a Heart of Azeroth equipped and if so will insert '/cast Heart Essence' into the macro.  If not your macro will skip this line."
+--[[Translation missing --]]
 L["Choose import action:"] = "Choose import action:"
 L["Choose Language"] = "Выберите Язык"
 --[[Translation missing --]]
@@ -377,6 +379,8 @@ L["Macro Reset"] = "Сброс Макро"
 --[[Translation missing --]]
 L["Macro unable to be imported."] = "Macro unable to be imported."
 --[[Translation missing --]]
+L["Macro Variables"] = "Macro Variables"
+--[[Translation missing --]]
 L["Macro Version %d deleted."] = "Macro Version %d deleted."
 --[[Translation missing --]]
 L["Make Active"] = "Make Active"
@@ -531,6 +535,8 @@ L["Reset this macro when you exit combat."] = "Reset this macro when you exit co
 L["Resets"] = "Сбросы"
 L["Resets macros back to the initial state when out of combat."] = "Сбрасывает макросы обратно в исходное состояние, когда они находятся вне боя."
 L["Resume"] = "Продолжить"
+--[[Translation missing --]]
+L["Returns your current Global Cooldown value accounting for your haste if that stat is present."] = "Returns your current Global Cooldown value accounting for your haste if that stat is present."
 L["Right Alt Key"] = "Правая клавиша Alt"
 L["Right Control Key"] = "Правая клавиша Control"
 L["Right Mouse Button"] = "Правая кнопка мыши"
@@ -613,6 +619,8 @@ L["Store output of debug messages in a Global Variable that can be referrenced b
 L["String Colour"] = "String Colour"
 --[[Translation missing --]]
 L["Supporters"] = "Supporters"
+--[[Translation missing --]]
+L["System Variables"] = "System Variables"
 L["Talents"] = "Таланты"
 L["Target"] = "Цель"
 --[[Translation missing --]]

@@ -73,6 +73,8 @@ L["By setting this value the Sequence Editor will show every macro for every cla
 L["By setting this value the Sequence Editor will show every macro for your class.  Turning this off will only show the class macros for your current specialisation."] = "Ao marcar esta opção, o Editor de Sequências irá mostrar cada macro da sua classe. Desmarcando isso irá mostrar apenas as macros para a especialização atual da sua classe."
 L["Cancel"] = "Cancelar"
 L["CheckMacroCreated"] = "Checar Macro Criada"
+--[[Translation missing --]]
+L["Checks to see if you have a Heart of Azeroth equipped and if so will insert '/cast Heart Essence' into the macro.  If not your macro will skip this line."] = "Checks to see if you have a Heart of Azeroth equipped and if so will insert '/cast Heart Essence' into the macro.  If not your macro will skip this line."
 L["Choose import action:"] = "Escolha a ação de importação:"
 L["Choose Language"] = "Escolha o Idioma"
 L["Classwide Macro"] = "Macro Para-Todas-as-Classes"
@@ -248,6 +250,8 @@ L["Macro Icon"] = "Ícone da Macro"
 L["Macro Import Successful."] = "Importação de Macro com Sucesso."
 L["Macro Reset"] = "Redefinir Macro"
 L["Macro unable to be imported."] = "Não foi possível importar a macro."
+--[[Translation missing --]]
+L["Macro Variables"] = "Macro Variables"
 L["Macro Version %d deleted."] = "Versão %d da Macro apagada."
 L["Make Active"] = "Tornar Ativa"
 L["Manage Versions"] = "Gerenciar Versões"
@@ -377,6 +381,8 @@ L["Resets"] = "Reiniciar"
 L["Resets macros back to the initial state when out of combat."] = "Resets macros back to the initial state when out of combat."
 L["Resume"] = "Resumo"
 --[[Translation missing --]]
+L["Returns your current Global Cooldown value accounting for your haste if that stat is present."] = "Returns your current Global Cooldown value accounting for your haste if that stat is present."
+--[[Translation missing --]]
 L["Right Alt Key"] = "Right Alt Key"
 --[[Translation missing --]]
 L["Right Control Key"] = "Right Control Key"
@@ -454,6 +460,8 @@ L["Store output of debug messages in a Global Variable that can be referrenced b
 L["String Colour"] = "Cor do Código"
 --[[Translation missing --]]
 L["Supporters"] = "Supporters"
+--[[Translation missing --]]
+L["System Variables"] = "System Variables"
 L["Talents"] = "Talentos"
 L["Target"] = "Alvo"
 L["Target language "] = "Linguagem do Alvo"
