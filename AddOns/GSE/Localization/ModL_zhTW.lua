@@ -554,6 +554,8 @@ L["You need to reload the User Interface for the change in StepFunction to take 
 L["You need to reload the User Interface to complete this task.  Would you like to do this now?"] = "你需要重新加載用戶界面以完成此任務. 你現在想這樣做嗎?"
 L["Your ClassID is "] = "你的 Class ID 是"
 L["Your current Specialisation is "] = "你當前的專精是"
+--[[Translation missing --]]
+L["Your sequence name was longer than 27 characters.  It has been shortened from %s to %s so that your macro will work."] = "Your sequence name was longer than 27 characters.  It has been shortened from %s to %s so that your macro will work."
 
 
 

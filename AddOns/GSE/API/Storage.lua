@@ -193,6 +193,11 @@ function GSE.PerformMergeAction(action, classid, sequenceName, newSequence)
 end
 
 function GSE.OOCPerformMergeAction(action, classid, sequenceName, newSequence)
+    if sequenceName:len() > 28 then
+        local tempseqName = sequenceName:sub(1,28)
+        GSE.Print(string.format(L["Your sequence name was longer than 27 characters.  It has been shortened from %s to %s so that your macro will work."], sequenceName, tempseqName), "GSE Storage")
+        sequenceName = tempseqName
+    end
     if action == "MERGE" then
         for k, v in ipairs(newSequence.MacroVersions) do
             GSE.PrintDebugMessage("adding " .. k, "Storage")
@@ -768,9 +773,11 @@ function GSE.OOCUpdateSequence(name, sequence)
     if GSE.isEmpty(name) then
         return
     end
+    if GSE.isEmpty(GSE.Library[GSE.GetCurrentClassID()][name]) then
+        return
+    end
     if pcall(GSE.CheckSequence, sequence) then
-        local variables = GSE.Library[GSE.GetCurrentClassID()][name].Variables
-        if GSE.isEmpty(variables) then
+        if GSE.isEmpty(GSE.Library[GSE.GetCurrentClassID()][name].Variables) then
             GSE.PrintDebugMessage("Sequence " .. name .. " has no variables", Statics.DebugModules["Storage"] )
         else
             GSE.PrintDebugMessage("Sequence " .. name .. " has variables", Statics.DebugModules["Storage"] )
@@ -787,7 +794,7 @@ function GSE.OOCUpdateSequence(name, sequence)
         end
         local gsebutton = _G[name]
         -- Only translate a sequence if the option to use the translator is on, there is a translator available and the sequence matches the current class
-        tempseq = GSE.TranslateSequence(tempseq, name, "STRING")
+        tempseq = GSE.TranslateSequence(tempseq, name, "STRING", true)
         tempseq = GSE.UnEscapeSequence(tempseq)
         local executionseq = {}
         local pmcount = 0

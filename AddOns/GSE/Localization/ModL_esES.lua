@@ -992,6 +992,8 @@ L["You need to reload the User Interface to complete this task.  Would you like 
 L["Your ClassID is "] = "Your ClassID is "
 --[[Translation missing --]]
 L["Your current Specialisation is "] = "Your current Specialisation is "
+--[[Translation missing --]]
+L["Your sequence name was longer than 27 characters.  It has been shortened from %s to %s so that your macro will work."] = "Your sequence name was longer than 27 characters.  It has been shortened from %s to %s so that your macro will work."
 
 
 

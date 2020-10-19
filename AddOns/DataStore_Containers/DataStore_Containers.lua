@@ -177,7 +177,7 @@ end
 -- Credit to Arkoniel and Eliot from the WoW Addons discord for this code.
 -- Something to do with the time returned by GetItemCooldown being bugged if your machine has been fully restarted since using the item
 local function GetCooldownLeft(start, duration)
-    if start < GetTime() then
+    if start <= GetTime()+1 then
         local cdEndTime = start + duration
         local cdLeftDuration = cdEndTime - GetTime()        
         return cdLeftDuration
@@ -196,7 +196,7 @@ end
 -- Not really relevant to DataStore, just thought it would be helpful to leave it here anyway
 -- Basically a bugfix for problems on Blizzards end
 hooksecurefunc( getmetatable(CreateFrame("Cooldown")).__index, "SetCooldown", function(s,c,d,r)
-    if c < GetTime() then return end
+    if c <= GetTime()+1 then return end
     local e = (GetTime() + ( (2^32) / 1000  - c ))
     s:SetCooldownUNIX(time()-e,d, 1/1000)
 end)
