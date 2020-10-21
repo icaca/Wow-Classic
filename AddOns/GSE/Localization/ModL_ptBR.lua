@@ -105,6 +105,10 @@ L["Create Macro"] = "Criar Macro"
 L[ [=[Create or remove a Macro stub in /macro that can be dragged to your action bar so that you can use this macro.
 GSE can store an unlimited number of macros however WOW's /macro interface can only store a limited number of macros.]=] ] = "Cria ou remove um esboço de macro em /macro que pode ser arrastado para sua barra de ação para que você possa usar essa macro. O GSE pode armazenar um número ilimitado de macros, no entanto, a interface de /macro do WOW pode armazenar apenas um número limitado destas."
 L["Creating New Sequence."] = "Criando Uma Nova Sequência."
+--[[Translation missing --]]
+L["Current GCD"] = "Current GCD"
+--[[Translation missing --]]
+L["Current GCD: %s"] = "Current GCD: %s"
 L["Debug"] = "Depurar"
 L["Debug Mode Options"] = "Opções do Modo de Depuração"
 L["Debug Output Options"] = "Opções de Saída da Depuração"

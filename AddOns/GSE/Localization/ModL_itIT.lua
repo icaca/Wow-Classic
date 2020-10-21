@@ -174,6 +174,10 @@ L[ [=[Create or remove a Macro stub in /macro that can be dragged to your action
 GSE can store an unlimited number of macros however WOW's /macro interface can only store a limited number of macros.]=] ] = [=[Create or remove a Macro stub in /macro that can be dragged to your action bar so that you can use this macro.
 GSE can store an unlimited number of macros however WOW's /macro interface can only store a limited number of macros.]=]
 L["Creating New Sequence."] = "Creando nuova Sequenza"
+--[[Translation missing --]]
+L["Current GCD"] = "Current GCD"
+--[[Translation missing --]]
+L["Current GCD: %s"] = "Current GCD: %s"
 L["Debug"] = "Debug"
 --[[Translation missing --]]
 L["Debug Mode Options"] = "Debug Mode Options"

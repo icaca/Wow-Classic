@@ -24,7 +24,5 @@ L["ITEM_WILL_NOT_BE_SOLD"] = "Cet objet ne sera pas vendu."
 L["RARE_TEXT"] = "Rare"
 L["SELL_ALL_TOOLTIP"] = "Vendre tous les objets de cette qualité."
 L["SELL_TEXT"] = "Vendre"
-L["SILENT_MODE_TEXT"] = "Mode silencieux"
 L["UNCOMMON_TEXT"] = "Inhabituel"
-L["VERBOSE_MODE_TOOLTIP"] = "Activer les messages supplémentaires Dejunk dans la fenêtre de discussion lors de la vente et la destruction d'objets."
 

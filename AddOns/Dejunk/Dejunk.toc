@@ -1,7 +1,7 @@
 ## Interface: 90001
 ## Title: Dejunk
 ## Author: Dethanyel
-## Version: 9.0.1-beta
+## Version: 9.0.2-beta
 ## Notes: Customizable junk selling and destroying.
 ## X-DethsDBLib: DEJUNK_ADDON_SV
 ## SavedVariables: DEJUNK_ADDON_SV
@@ -52,6 +52,7 @@ src\lists\list-helper.lua
 
 # General
 src\bags.lua
+src\chat.lua
 src\commands.lua
 src\consts.lua
 src\utils.lua

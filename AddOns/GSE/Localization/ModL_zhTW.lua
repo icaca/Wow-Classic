@@ -109,6 +109,10 @@ L["Create Macro"] = "創建巨集"
 L[ [=[Create or remove a Macro stub in /macro that can be dragged to your action bar so that you can use this macro.
 GSE can store an unlimited number of macros however WOW's /macro interface can only store a limited number of macros.]=] ] = "在 /巨集 中創建或刪除可以拖動到操作欄的巨集存根.以便您可以使用此巨集. GSE可以存儲無限數量的巨集，但是WOW /巨集 接口只能存儲有限數量的巨集。"
 L["Creating New Sequence."] = "創建新序列."
+--[[Translation missing --]]
+L["Current GCD"] = "Current GCD"
+--[[Translation missing --]]
+L["Current GCD: %s"] = "Current GCD: %s"
 L["Debug"] = "調試"
 L["Debug Mode Options"] = "調試模式設置"
 L["Debug Output Options"] = "調試輸出設置"

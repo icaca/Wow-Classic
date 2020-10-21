@@ -150,6 +150,10 @@ GSE can store an unlimited number of macros however WOW's /macro interface can o
 GSE can store an unlimited number of macros however WOW's /macro interface can only store a limited number of macros.]=]
 --[[Translation missing --]]
 L["Creating New Sequence."] = "Creating New Sequence."
+--[[Translation missing --]]
+L["Current GCD"] = "Current GCD"
+--[[Translation missing --]]
+L["Current GCD: %s"] = "Current GCD: %s"
 L["Debug"] = "Отладка"
 L["Debug Mode Options"] = "Параметры Режима Отладки"
 --[[Translation missing --]]
