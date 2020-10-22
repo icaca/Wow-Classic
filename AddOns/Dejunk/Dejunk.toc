@@ -1,7 +1,7 @@
 ## Interface: 90001
 ## Title: Dejunk
 ## Author: Dethanyel
-## Version: 9.0.2-beta
+## Version: 9.0.3
 ## Notes: Customizable junk selling and destroying.
 ## X-DethsDBLib: DEJUNK_ADDON_SV
 ## SavedVariables: DEJUNK_ADDON_SV
