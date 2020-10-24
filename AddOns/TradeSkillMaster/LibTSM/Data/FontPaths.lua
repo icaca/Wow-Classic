@@ -32,31 +32,31 @@ local FONT_PATHS = {
 	BodyRegular = {
 		roman = "Interface\\Addons\\TradeSkillMaster\\Media\\Montserrat-Regular.ttf",
 		korean = "Fonts\\2002.ttf",
-		chinese = "Fonts\\ARHei.ttf",
+		chinese = "Fonts\\ARKai_C.ttf",
 		russian = "Interface\\Addons\\TradeSkillMaster\\Media\\Montserrat-Regular.ttf",
 	},
 	BodyMedium = {
 		roman = "Interface\\Addons\\TradeSkillMaster\\Media\\Montserrat-Medium.ttf",
 		korean = "Fonts\\2002.ttf",
-		chinese = "Fonts\\ARHei.ttf",
+		chinese = "Fonts\\ARKai_C.ttf",
 		russian = "Interface\\Addons\\TradeSkillMaster\\Media\\Montserrat-Medium.ttf",
 	},
 	BodyBold = {
 		roman = "Interface\\Addons\\TradeSkillMaster\\Media\\Montserrat-Bold.ttf",
 		korean = "Fonts\\2002.ttf",
-		chinese = "Fonts\\ARHei.ttf",
+		chinese = "Fonts\\ARKai_C.ttf",
 		russian = "Interface\\Addons\\TradeSkillMaster\\Media\\Montserrat-Bold.ttf",
 	},
 	Item = {
 		roman = "Fonts\\FRIZQT__.ttf",
 		korean = "Fonts\\2002.ttf",
-		chinese = "Fonts\\ARHei.ttf",
+		chinese = "Fonts\\ARKai_C.ttf",
 		russian = "Fonts\\FRIZQT___CYR.ttf",
 	},
 	Table = {
 		roman = "Interface\\Addons\\TradeSkillMaster\\Media\\Roboto-Medium.ttf",
 		korean = "Fonts\\2002.ttf",
-		chinese = "Fonts\\ARHei.ttf",
+		chinese = "Fonts\\ARKai_C.ttf",
 		russian = "Interface\\Addons\\TradeSkillMaster\\Media\\Roboto-Medium.ttf",
 	},
 }
