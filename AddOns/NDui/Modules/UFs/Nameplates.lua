@@ -7,7 +7,7 @@ local strmatch, tonumber, pairs, unpack, rad = string.match, tonumber, pairs, un
 local UnitThreatSituation, UnitIsTapDenied, UnitPlayerControlled, UnitIsUnit = UnitThreatSituation, UnitIsTapDenied, UnitPlayerControlled, UnitIsUnit
 local UnitReaction, UnitIsConnected, UnitIsPlayer, UnitSelectionColor = UnitReaction, UnitIsConnected, UnitIsPlayer, UnitSelectionColor
 local UnitClassification, UnitExists, InCombatLockdown = UnitClassification, UnitExists, InCombatLockdown
-local UnitGUID, GetPlayerInfoByGUID, Ambiguate, UnitName = UnitGUID, GetPlayerInfoByGUID, Ambiguate, UnitName
+local UnitGUID, GetPlayerInfoByGUID, Ambiguate, UnitName, UnitHealth, UnitHealthMax = UnitGUID, GetPlayerInfoByGUID, Ambiguate, UnitName, UnitHealth, UnitHealthMax
 local SetCVar, UIFrameFadeIn, UIFrameFadeOut = SetCVar, UIFrameFadeIn, UIFrameFadeOut
 local C_NamePlate_GetNamePlateForUnit = C_NamePlate.GetNamePlateForUnit
 local INTERRUPTED = INTERRUPTED
@@ -18,15 +18,6 @@ function UF:UpdatePlateScale()
 	SetCVar("namePlateMaxScale", NDuiDB["Nameplate"]["MinScale"])
 end
 
-function UF:UpdatePlateAlpha()
-	SetCVar("nameplateMinAlpha", GetCVarDefault("nameplateMinAlpha"))
-	SetCVar("nameplateMaxAlpha", GetCVarDefault("nameplateMaxAlpha"))
-end
-
-function UF:UpdatePlateRange()
-	SetCVar("nameplateMaxDistance", GetCVarDefault("nameplateMaxDistance"))
-end
-
 function UF:UpdatePlateSpacing()
 	SetCVar("nameplateOverlapV", NDuiDB["Nameplate"]["VerticalSpacing"])
 end
@@ -34,8 +25,6 @@ end
 function UF:SetupCVars()
 	SetCVar("nameplateOverlapH", .8)
 	UF:UpdatePlateSpacing()
-	UF:UpdatePlateRange()
-	UF:UpdatePlateAlpha()
 	SetCVar("nameplateSelectedAlpha", 1)
 
 	UF:UpdatePlateScale()
@@ -102,6 +91,8 @@ function UF:UpdateColor(_, unit)
 	local secureColor = NDuiDB["Nameplate"]["SecureColor"]
 	local transColor = NDuiDB["Nameplate"]["TransColor"]
 	local insecureColor = NDuiDB["Nameplate"]["InsecureColor"]
+	local executeRatio = NDuiDB["Nameplate"]["ExecuteRatio"]
+	local healthPerc = UnitHealth(unit) / (UnitHealthMax(unit) + .0001) * 100
 	local r, g, b
 
 	if not UnitIsConnected(unit) then
@@ -149,6 +140,12 @@ function UF:UpdateColor(_, unit)
 		end
 	else
 		self.ThreatIndicator:Hide()
+	end
+
+	if executeRatio > 0 and healthPerc <= executeRatio then
+		self.nameText:SetTextColor(1, 0, 0)
+	else
+		self.nameText:SetTextColor(1, 1, 1)
 	end
 end
 

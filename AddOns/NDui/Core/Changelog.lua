@@ -5,25 +5,23 @@ if DB.Client ~= "zhCN" then return end
 local strsplit, pairs = string.split, pairs
 
 local hx = {
-	"背包整理更新；",
-	"界面美化更新；",
-	"技能监控及其控制台更新；",
-	"LibHealComm更新v92；",
-	"治疗预估的颜色调整；",
-	"姓名板名字模式过滤调整；",
-	"更新调整部分API；",
-	"添加额外动作条功能；",
-	"动作条缩放调整，防止缩放后无法用箭头移动；",
-	"动作条冷却模块调整；",
-	"快速快捷键模式更新；",
-	"设置向导的外观调整；",
-	"提高施法条的层级；",
-	"交易及处于拍卖行时自动开关背包；",
-	"个人资源条及其选项，添加独立设置页面；",
-	"移除连击点满星高亮，现在使用红色替代；",
-	"聊天窗口更新；",
-	"信息条公会及好友模块更新；",
-	"设置导入导出调整；",
+	"信息条好友及公会模块优化；",
+	"登录动画的音效频道调整；",
+	"添加选项以调整聊天窗口背景；",
+	"聊天标签的密语颜色提醒调整；",
+	"团队框体的刷新频率范围调整；",
+	"更新技能监控；",
+	"LCC更新；",
+	"添加选项以关闭姿态动作条；",
+	"修正其他语系下动作条物品失效的问题；",
+	"更新邮箱助手；",
+	"WA美化更新对异形图标的裁剪；",
+	"移除部分失效的选项；",
+	"动作条快速绑定支持鼠标中键；",
+	"姓名板添加斩杀指示，当血量低于阈值时染色其名字；",
+	"小地图的点击提示忽略玩家自身；",
+	"添加选项以调整简易战斗信息字号；",
+	"添加选项以关闭世界地图增强；",
 	"控制台及本地文本更新。",
 }
 
@@ -38,14 +36,12 @@ local function changelog()
 	B.SetBD(f)
 	B.CreateFS(f, 18, DB.Version.." "..L["Changelog"], true, "TOP", 0, -10)
 	B.CreateWatermark(f)
-	local ll = CreateFrame("Frame", nil, f)
+
+	local ll = B.SetGradient(f, "H", .7, .7, .7, 0, .5, 100, C.mult)
 	ll:SetPoint("TOP", -50, -35)
-	B.CreateGF(ll, 100, 1, "Horizontal", .7, .7, .7, 0, .7)
-	ll:SetFrameStrata("HIGH")
-	local lr = CreateFrame("Frame", nil, f)
+	local lr = B.SetGradient(f, "H", .7, .7, .7, .5, 0, 100, C.mult)
 	lr:SetPoint("TOP", 50, -35)
-	B.CreateGF(lr, 100, 1, "Horizontal", .7, .7, .7, .7, 0)
-	lr:SetFrameStrata("HIGH")
+
 	local offset = 0
 	for n, t in pairs(hx) do
 		B.CreateFS(f, 14, n..": "..t, false, "TOPLEFT", 15, -(50 + offset))

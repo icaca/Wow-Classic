@@ -442,14 +442,22 @@ do
 		return frame
 	end
 
-	-- Gradient Frame
-	function B:CreateGF(w, h, o, r, g, b, a1, a2)
-		self:SetSize(w, h)
-		self:SetFrameStrata("BACKGROUND")
-		local gf = self:CreateTexture(nil, "BACKGROUND")
-		gf:SetAllPoints()
-		gf:SetTexture(DB.normTex)
-		gf:SetGradientAlpha(o, r, g, b, a1, r, g, b, a2)
+	-- Gradient texture
+	local orientationAbbr = {
+		["V"] = "Vertical",
+		["H"] = "Horizontal",
+	}
+	function B:SetGradient(orientation, r, g, b, a1, a2, width, height)
+		orientation = orientationAbbr[orientation]
+		if not orientation then return end
+
+		local tex = self:CreateTexture(nil, "BACKGROUND")
+		tex:SetTexture(DB.bdTex)
+		tex:SetGradientAlpha(orientation, r, g, b, a1, r, g, b, a2)
+		if width then tex:SetWidth(width) end
+		if height then tex:SetHeight(height) end
+
+		return tex
 	end
 
 	-- Background texture
@@ -1084,7 +1092,7 @@ do
 	end
 
 	-- Handle slider
-	function B:ReskinSlider(verticle)
+	function B:ReskinSlider(vertical)
 		self:SetBackdrop(nil)
 		B.StripTextures(self)
 
@@ -1096,7 +1104,7 @@ do
 		local thumb = self:GetThumbTexture()
 		thumb:SetTexture(DB.sparkTex)
 		thumb:SetBlendMode("ADD")
-		if verticle then thumb:SetRotation(rad(90)) end
+		if vertical then thumb:SetRotation(rad(90)) end
 	end
 
 	-- Handle collapse

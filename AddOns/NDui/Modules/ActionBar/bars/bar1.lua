@@ -10,9 +10,10 @@ local margin, padding = C.Bars.margin, C.Bars.padding
 
 local function UpdateActionbarScale(bar)
 	local frame = _G["NDui_Action"..bar]
+	if not frame then return end
+
 	local size = frame.buttonSize * NDuiDB["Actionbar"]["Scale"]
 	frame:SetFrameSize(size)
-
 	for _, button in pairs(frame.buttonList) do
 		button:SetSize(size, size)
 	end
@@ -32,7 +33,7 @@ function Bar:UpdateAllScale()
 	UpdateActionbarScale("BarStance")
 end
 
-local REAGENTS_STRING = gsub(SPELL_REAGENTS, HEADER_COLON.."(.+)", "").."(.+)"
+local REAGENTS_STRING = SPELL_REAGENTS.."(.+)"
 
 function Bar:GetActionCount(action)
 	B.ScanTip:SetOwner(UIParent, "ANCHOR_NONE")

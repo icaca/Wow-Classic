@@ -38,6 +38,7 @@ G.DefaultSettings = {
 		CustomBarButtonSize = 34,
 		CustomBarNumButtons = 12,
 		CustomBarNumPerRow = 12,
+		ShowStance = true,
 	},
 	Bags = {
 		Enable = true,
@@ -109,6 +110,7 @@ G.DefaultSettings = {
 		HotsDots = true,
 		AutoAttack = true,
 		FCTOverHealing = false,
+		FCTFontSize = 18,
 		PetCombatText = true,
 		RaidClickSets = false,
 		ShowTeamIndex = false,
@@ -133,7 +135,7 @@ G.DefaultSettings = {
 		ToToT = false,
 		RaidTextScale = 1,
 		FrequentHealth = false,
-		HealthFrequency = .25,
+		HealthFrequency = .2,
 		TargetAurasPerRow = 9,
 
 		PlayerWidth = 245,
@@ -153,7 +155,6 @@ G.DefaultSettings = {
 	Chat = {
 		Sticky = false,
 		Lock = true,
-		ShowBG = true,
 		Invite = true,
 		Freedom = true,
 		Keyword = "raid",
@@ -170,9 +171,10 @@ G.DefaultSettings = {
 		ChatHeight = 190,
 		BlockStranger = false,
 		AllowFriends = true,
+		ChatBGType = 2,
 	},
 	Map = {
-		Coord = true,
+		DisableMap = false,
 		Clock = false,
 		CombatPulse = true,
 		MapScale = .7,
@@ -191,7 +193,6 @@ G.DefaultSettings = {
 		HostileCC = true,
 		TankMode = false,
 		TargetIndicator = 5,
-		Distance = 42,
 		PlateWidth = 190,
 		PlateHeight = 8,
 		CustomUnitColor = true,
@@ -217,11 +218,11 @@ G.DefaultSettings = {
 		NameTextSize = 14,
 		HealthTextSize = 16,
 		MinScale = 1,
-		MinAlpha = 1,
 		ColorBorder = false,
 		QuestIndicator = true,
 		ClassPowerOnly = false,
 		NameOnlyMode = false,
+		ExecuteRatio = 0,
 	},
 	Skins = {
 		DBM = true,
@@ -230,7 +231,7 @@ G.DefaultSettings = {
 		TMW = true,
 		WeakAuras = true,
 		InfobarLine = true,
-		ChatLine = true,
+		ChatbarLine = true,
 		MenuLine = true,
 		ClassLine = true,
 		Details = true,
@@ -321,16 +322,15 @@ G.AccountSettings = {
 	KeystoneInfo = {},
 	AutoBubbles = false,
 	DisableInfobars = false,
-	ClassColorChat = true,
 	ContactList = {},
 	CustomJunkList = {},
 }
 
 -- Initial settings
-local textureList = {
-	[1] = DB.normTex,
-	[2] = DB.gradTex,
-	[3] = DB.flatTex,
+G.TextureList = {
+	[1] = {texture = DB.normTex, name = L["Highlight"]},
+	[2] = {texture = DB.gradTex, name = L["Gradient"]},
+	[3] = {texture = DB.flatTex, name = L["Flat"]},
 }
 
 local function InitialSettings(source, target, fullClean)
@@ -371,7 +371,10 @@ loader:SetScript("OnEvent", function(self, _, addon)
 	InitialSettings(G.DefaultSettings, NDuiDB, true)
 	InitialSettings(G.AccountSettings, NDuiADB)
 	B:SetupUIScale(true)
-	DB.normTex = textureList[NDuiADB["TexStyle"]]
+	if not G.TextureList[NDuiADB["TexStyle"]] then
+		NDuiADB["TexStyle"] = 2 -- reset value if not exists
+	end
+	DB.normTex = G.TextureList[NDuiADB["TexStyle"]].texture
 
 	self:UnregisterAllEvents()
 end)
@@ -430,6 +433,13 @@ local function updateCustomBar()
 	B:GetModule("Actionbar"):UpdateCustomBar()
 end
 
+local function updateHotkeys()
+	local Bar = B:GetModule("Actionbar")
+	for _, button in pairs(Bar.buttons) do
+		ActionButton_UpdateHotkeys(button, button.buttonType)
+	end
+end
+
 local function updateBuffFrame()
 	local A = B:GetModule("Auras")
 	A:UpdateOptions()
@@ -450,10 +460,6 @@ end
 
 local function updateChatSticky()
 	B:GetModule("Chat"):ChatWhisperSticky()
-end
-
-local function updateClassColorName()
-	B:GetModule("Chat"):UpdateClassColorName()
 end
 
 local function updateWhisperList()
@@ -484,10 +490,6 @@ local function updatePlateSpacing()
 	B:GetModule("UnitFrames"):UpdatePlateSpacing()
 end
 
-local function updatePlateRange()
-	B:GetModule("UnitFrames"):UpdatePlateRange()
-end
-
 local function updateCustomUnitList()
 	B:GetModule("UnitFrames"):CreateUnitTable()
 end
@@ -510,10 +512,6 @@ end
 
 local function updatePlateScale()
 	B:GetModule("UnitFrames"):UpdatePlateScale()
-end
-
-local function updatePlateAlpha()
-	B:GetModule("UnitFrames"):UpdatePlateAlpha()
 end
 
 local function updateRaidNameText()
@@ -599,6 +597,13 @@ local function resetDetails()
 	StaticPopup_Show("RESET_DETAILS")
 end
 
+local function AddTextureToOption(parent, index)
+	local tex = parent[index]:CreateTexture()
+	tex:SetInside(nil, 4, 4)
+	tex:SetTexture(G.TextureList[index].texture)
+	tex:SetVertexColor(cr, cg, cb)
+end
+
 -- Config
 G.TabList = {
 	L["Actionbar"],
@@ -620,7 +625,9 @@ G.TabList = {
 G.OptionList = { -- type, key, value, name, horizon, doubleline
 	[1] = {
 		{1, "Actionbar", "Enable", "|cff00cc4c"..L["Enable Actionbar"]},
-		{1, "Actionbar", "MicroMenu", L["Micromenu"], true},
+		{},--blank
+		{1, "Actionbar", "MicroMenu", L["Micromenu"]},
+		{1, "Actionbar", "ShowStance", L["ShowStanceBar"], true},
 		{1, "Actionbar", "Bar4Fade", L["Bar4 Fade"]},
 		{1, "Actionbar", "Bar5Fade", L["Bar5 Fade"], true},
 		{4, "Actionbar", "Style", L["Actionbar Style"], false, {L["BarStyle1"], L["BarStyle2"], L["BarStyle3"], L["BarStyle4"], L["BarStyle5"]}},
@@ -636,7 +643,7 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Actionbar", "DecimalCD", L["Decimal Cooldown"].."*"},
 		{1, "Actionbar", "OverrideWA", L["HideCooldownOnWA"].."*", true},
 		{},--blank
-		{1, "Actionbar", "Hotkeys", L["Actionbar Hotkey"]},
+		{1, "Actionbar", "Hotkeys", L["Actionbar Hotkey"].."*", nil, nil, updateHotkeys},
 		{1, "Actionbar", "Macro", L["Actionbar Macro"], true},
 		{1, "Actionbar", "Count", L["Actionbar Item Counts"]},
 		{1, "Actionbar", "Classcolor", L["ClassColor BG"], true},
@@ -678,10 +685,11 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{3, "UFs", "SmoothAmount", "|cff00cc4c"..L["SmoothAmount"].."*", true, {.15, .6, .05}, updateSmoothingAmount, L["SmoothAmountTip"]},
 		{},--blank
 		{1, "UFs", "CombatText", "|cff00cc4c"..L["UFs CombatText"]},
-		{1, "UFs", "AutoAttack", L["CombatText AutoAttack"]},
-		{1, "UFs", "PetCombatText", L["CombatText ShowPets"], true},
-		{1, "UFs", "HotsDots", L["CombatText HotsDots"]},
-		{1, "UFs", "FCTOverHealing", L["CombatText OverHealing"], true},
+		{1, "UFs", "AutoAttack", L["CombatText AutoAttack"].."*"},
+		{1, "UFs", "PetCombatText", L["CombatText ShowPets"].."*", true},
+		{1, "UFs", "HotsDots", L["CombatText HotsDots"].."*"},
+		{1, "UFs", "FCTOverHealing", L["CombatText OverHealing"].."*"},
+		{3, "UFs", "FCTFontSize", L["FCTFontSize"].."*", true, {12, 40, 1}},
 	},
 	[4] = {
 		{1, "UFs", "RaidFrame", "|cff00cc4c"..L["UFs RaidFrame"], nil, setupRaidFrame, nil, L["RaidFrameTip"]},
@@ -705,7 +713,7 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{3, "UFs", "NumGroups", L["Num Groups"], nil, {4, 8, 1}},
 		{1, "UFs", "FrequentHealth", "|cff00cc4c"..L["FrequentHealth"].."*", true, nil, updateRaidHealthMethod, L["FrequentHealthTip"]},
 		{3, "UFs", "RaidTextScale", L["UFTextScale"].."*", nil, {.8, 1.5, .05}, updateRaidTextScale},
-		{3, "UFs", "HealthFrequency", L["HealthFrequency"].."*", true, {.1, .5, .05}, updateRaidHealthMethod, L["HealthFrequencyTip"]},
+		{3, "UFs", "HealthFrequency", L["HealthFrequency"].."*", true, {.01, .2, .01}, updateRaidHealthMethod, L["HealthFrequencyTip"]},
 		{},--blank
 		{1, "UFs", "SimpleMode", "|cff00cc4c"..L["SimpleRaidFrame"], nil, nil, nil, L["SimpleRaidFrameTip"]},
 		{3, "UFs", "SMUnitsPerColumn", L["SimpleMode Column"], nil, {10, 40, 1}},
@@ -736,10 +744,9 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		--{1, "Nameplate", "DPSRevertThreat", L["DPS Revert Threat"].."*", true},
 		--{5, "Nameplate", "OffTankColor", L["OffTank Color"].."*", 3},
 		{},--blank
+		{3, "Nameplate", "ExecuteRatio", "|cffff0000"..L["ExecuteRatio"].."*", nil, {0, 90, 1}, nil, L["ExecuteRatioTip"]},
 		{3, "Nameplate", "VerticalSpacing", L["NP VerticalSpacing"].."*", false, {.5, 1.5, .1}, updatePlateSpacing},
-		--{3, "Nameplate", "Distance", L["Nameplate Distance"].."*", true, {20, 100, 1}, updatePlateRange},
 		{3, "Nameplate", "MinScale", L["Nameplate MinScale"].."*", true, {.5, 1, .1}, updatePlateScale},
-		--{3, "Nameplate", "MinAlpha", L["Nameplate MinAlpha"].."*", true, {.5, 1, 1}, updatePlateAlpha},
 		{3, "Nameplate", "PlateWidth", L["NP Width"].."*", false, {50, 250, 1}, refreshNameplates},
 		{3, "Nameplate", "PlateHeight", L["NP Height"].."*", true, {5, 30, 1}, refreshNameplates},
 		{3, "Nameplate", "NameTextSize", L["NameTextSize"].."*", false, {10, 30, 1}, refreshNameplates},
@@ -796,7 +803,6 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 	},
 	[9] = {
 		{1, "Chat", "Lock", "|cff00cc4c"..L["Lock Chat"]},
-		{1, "Chat", "ShowBG", L["ShowChatBackground"].."*", true, nil, toggleChatBackground},
 		{3, "Chat", "ChatWidth", L["LockChatWidth"].."*", nil, {200, 600, 1}, updateChatSize},
 		{3, "Chat", "ChatHeight", L["LockChatHeight"].."*", true, {100, 500, 1}, updateChatSize},
 		{},--blank
@@ -805,9 +811,9 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Chat", "Chatbar", L["ShowChatbar"]},
 		{1, "Chat", "WhisperColor", L["Differ WhisperColor"].."*", true},
 		{1, "Chat", "ChatItemLevel", L["ShowChatItemLevel"]},
-		{1, "Chat", "Freedom", L["Language Filter"]},
-		{4, "ACCOUNT", "TimestampFormat", L["TimestampFormat"].."*", true, {DISABLE, "03:27 PM", "03:27:32 PM", "15:27", "15:27:32"}},
-		{1, "ACCOUNT", "ClassColorChat", L["ClassColorChat"].."*", nil, nil, updateClassColorName},
+		{1, "Chat", "Freedom", L["Language Filter"], true},
+		{4, "ACCOUNT", "TimestampFormat", L["TimestampFormat"].."*", nil, {DISABLE, "03:27 PM", "03:27:32 PM", "15:27", "15:27:32"}},
+		{4, "Chat", "ChatBGType", L["ChatBGType"].."*", true, {DISABLE, L["Default Dark"], L["Gradient"]}, toggleChatBackground},
 		{},--blank
 		{1, "Chat", "EnableFilter", "|cff00cc4c"..L["Enable Chatfilter"]},
 		{1, "Chat", "BlockAddonAlert", L["Block Addon Alert"], true},
@@ -822,16 +828,15 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{2, "Chat", "Keyword", L["Whisper Keyword"].."*", true, nil, updateWhisperList},
 	},
 	[10] = {
-		{1, "Map", "Coord", L["Map Coords"]},
-		{1, "Map", "MapFader", L["MapFader"].."*", true, nil, updateMapFader},
+		{1, "Map", "DisableMap", "|cffff0000"..L["DisableMap"], nil, nil, nil, L["DisableMapTip"]},
+		{1, "Map", "MapFader", L["MapFader"].."*", nil, nil, updateMapFader},
+		{3, "Map", "MapScale", L["Map Scale"], true, {.5, 1, .1}},
 		{},--blank
 		{1, "Map", "Clock", L["Minimap Clock"].."*", nil, nil, showMinimapClock},
 		{1, "Map", "CombatPulse", L["Minimap Pulse"]},
 		{1, "Map", "WhoPings", L["Show WhoPings"], true},
 		{1, "Map", "ShowRecycleBin", L["Show RecycleBin"]},
-		{1, "Misc", "ExpRep", L["Show Expbar"], true},
-		{},--blank
-		{3, "Map", "MapScale", L["Map Scale"].."*", false, {.5, 1, .1}},
+		{1, "Misc", "ExpRep", L["Show Expbar"]},
 		{3, "Map", "MinimapScale", L["Minimap Scale"].."*", true, {1, 2, .1}, updateMinimapScale},
 	},
 	[11] = {
@@ -846,7 +851,7 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{},--blank
 		{1, "Skins", "ClassLine", L["ClassColor Line"]},
 		{1, "Skins", "InfobarLine", L["Infobar Line"], true},
-		{1, "Skins", "ChatLine", L["Chat Line"]},
+		{1, "Skins", "ChatbarLine", L["Chat Line"]},
 		{1, "Skins", "MenuLine", L["Menu Line"], true},
 		{},--blank
 		{1, "Skins", "TradeSkills", L["EnhancedTradeSkills"]},
@@ -896,7 +901,7 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{3, "ACCOUNT", "UIScale", L["Setup UIScale"], false, {.4, 1.15, .01}},
 		{1, "ACCOUNT", "LockUIScale", "|cff00cc4c"..L["Lock UIScale"], true},
 		{},--blank
-		{4, "ACCOUNT", "TexStyle", L["Texture Style"], false, {L["Highlight"], L["Gradient"], L["Flat"]}},
+		{4, "ACCOUNT", "TexStyle", L["Texture Style"], false, {}},
 		{4, "ACCOUNT", "NumberFormat", L["Numberize"], true, {L["Number Type1"], L["Number Type2"], L["Number Type3"]}},
 	},
 }
@@ -1039,6 +1044,12 @@ local function CreateOption(i)
 			end
 		-- Dropdown
 		elseif optType == 4 then
+			if value == "TexStyle" then
+				for _, v in ipairs(G.TextureList) do
+					tinsert(data, v.name)
+				end
+			end
+
 			local dd = B.CreateDropDown(parent, 200, 28, data)
 			if horizon then
 				dd:SetPoint("TOPLEFT", 345, -offset + 45)
@@ -1065,6 +1076,9 @@ local function CreateOption(i)
 					NDUI_VARIABLE(key, value, i)
 					if callback then callback() end
 				end)
+				if value == "TexStyle" then
+					AddTextureToOption(opt, i) -- texture preview
+				end
 			end
 
 			B.CreateFS(dd, 14, name, "system", "CENTER", 0, 25)
@@ -1081,9 +1095,8 @@ local function CreateOption(i)
 		-- Blank, no optType
 		else
 			if not key then
-				local l = CreateFrame("Frame", nil, parent)
-				l:SetPoint("TOPLEFT", 25, -offset - 12)
-				B.CreateGF(l, 560, C.mult, "Horizontal", 1, 1, 1, .25, .25)
+				local line = B.SetGradient(parent, "H", 1, 1, 1, .25, .25, 560, C.mult)
+				line:SetPoint("TOPLEFT", 25, -offset - 12)
 			end
 			offset = offset + 35
 		end

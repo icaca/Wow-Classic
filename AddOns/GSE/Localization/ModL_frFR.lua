@@ -68,6 +68,8 @@ L["Add a substitution variable for this macro.  This can either be a straight st
 --[[Translation missing --]]
 L["Add Variable"] = "Add Variable"
 --[[Translation missing --]]
+L["Add WeakAura"] = "Add WeakAura"
+--[[Translation missing --]]
 L["Addin Version %s contained versions for the following macros:"] = "Addin Version %s contained versions for the following macros:"
 --[[Translation missing --]]
 L["All macros are now stored as upper case names.  You may need to re-add your old macros to your action bars."] = "All macros are now stored as upper case names.  You may need to re-add your old macros to your action bars."
@@ -80,6 +82,8 @@ L["Arena"] = "Arène"
 L["Arena setting changed to Default."] = "Les paramètres par défaut de l'Arène ont été appliqué."
 --[[Translation missing --]]
 L["As GS-E is updated, there may be left over macros that no longer relate to sequences.  This will check for these automatically on logout.  Alternatively this check can be run via /gs cleanorphans"] = "As GS-E is updated, there may be left over macros that no longer relate to sequences.  This will check for these automatically on logout.  Alternatively this check can be run via /gs cleanorphans"
+--[[Translation missing --]]
+L["Auras included in GSE Macros"] = "Auras included in GSE Macros"
 L["Author"] = "Auteur"
 L["Author Colour"] = "Couleur de l'auteur"
 --[[Translation missing --]]
@@ -193,9 +197,13 @@ L[ [=[Delete this verion of the macro.  This can be undone by closing this windo
 This is different to the Delete button below which will delete this entire macro.]=] ] = [=[Delete this verion of the macro.  This can be undone by closing this window and not saving the change.  
 This is different to the Delete button below which will delete this entire macro.]=]
 --[[Translation missing --]]
+L["Delete this WeakAura from the sequence."] = "Delete this WeakAura from the sequence."
+--[[Translation missing --]]
 L["Delete Variable"] = "Delete Variable"
 --[[Translation missing --]]
 L["Delete Version"] = "Delete Version"
+--[[Translation missing --]]
+L["Delete WeakAura"] = "Delete WeakAura"
 --[[Translation missing --]]
 L["Different helpTxt"] = "Different helpTxt"
 --[[Translation missing --]]
@@ -417,7 +425,11 @@ L["Like a /castsequence macro, it cycles through a series of commands when the b
 --[[Translation missing --]]
 L["Load"] = "Load"
 --[[Translation missing --]]
+L["Load or update this WeakAura into WeakAuras."] = "Load or update this WeakAura into WeakAuras."
+--[[Translation missing --]]
 L["Load Sequence"] = "Load Sequence"
+--[[Translation missing --]]
+L["Load WeakAura"] = "Load WeakAura"
 --[[Translation missing --]]
 L["Local Macro"] = "Local Macro"
 --[[Translation missing --]]
@@ -903,6 +915,14 @@ L["Version"] = "Version"
 L["Version="] = "Version="
 --[[Translation missing --]]
 L["WARNING ONLY"] = "WARNING ONLY"
+--[[Translation missing --]]
+L["WeakAuras"] = "WeakAuras"
+--[[Translation missing --]]
+L["WeakAuras is a mod that watches for certain conditions and actions and they alerts the player to them occuring.  These are included for convenience and still need to be copied from here and imported to the WeakAuras mod via the command /wa."] = "WeakAuras is a mod that watches for certain conditions and actions and they alerts the player to them occuring.  These are included for convenience and still need to be copied from here and imported to the WeakAuras mod via the command /wa."
+--[[Translation missing --]]
+L["WeakAuras was not found."] = "WeakAuras was not found."
+--[[Translation missing --]]
+L["WeakAuras was not found.  Reported error was %s"] = "WeakAuras was not found.  Reported error was %s"
 --[[Translation missing --]]
 L["Website or forum URL where a player can get more information or ask questions about this macro."] = "Website or forum URL where a player can get more information or ask questions about this macro."
 --[[Translation missing --]]

@@ -78,8 +78,6 @@ function module:UpdateMapID()
 end
 
 function module:SetupCoords()
-	if not NDuiDB["Map"]["Coord"] then return end
-
 	playerCoords = B.CreateFS(WorldMapFrame, 14, "", false, "TOPLEFT", 60, -6)
 	cursorCoords = B.CreateFS(WorldMapFrame, 14, "", false, "TOPLEFT", 180, -6)
 
@@ -103,7 +101,47 @@ function module:UpdateMapAnchor()
 	if not self.isMaximized then B.RestoreMF(self) end
 end
 
+local function isMouseOverMap()
+	return not WorldMapFrame:IsMouseOver()
+end
+
+function module:MapFader()
+	if NDuiDB["Map"]["MapFader"] then
+		PlayerMovementFrameFader.AddDeferredFrame(WorldMapFrame, .5, 1, .5, isMouseOverMap)
+	else
+		PlayerMovementFrameFader.RemoveFrame(WorldMapFrame)
+	end
+end
+
+function module:MapPartyDots()
+	local WorldMapUnitPin, WorldMapUnitPinSizes
+	local partyTexture = "Interface\\OptionsFrame\\VoiceChat-Record"
+
+	local function setPinTexture(self)
+		self:SetPinTexture("raid", partyTexture)
+		self:SetPinTexture("party", partyTexture)
+	end
+
+	-- Set group icon textures
+	for pin in WorldMapFrame:EnumeratePinsByTemplate("GroupMembersPinTemplate") do
+		WorldMapUnitPin = pin
+		WorldMapUnitPinSizes = pin.dataProvider:GetUnitPinSizesTable()
+		setPinTexture(WorldMapUnitPin)
+		hooksecurefunc(WorldMapUnitPin, "UpdateAppearanceData", setPinTexture)
+		break
+	end
+
+	-- Set party icon size and enable class colors
+	WorldMapUnitPinSizes.player = 22
+	WorldMapUnitPinSizes.party = 12
+	WorldMapUnitPin:SetAppearanceField("party", "useClassColor", true)
+	WorldMapUnitPin:SetAppearanceField("raid", "useClassColor", true)
+	WorldMapUnitPin:SynchronizePinSizes()
+end
+
 function module:SetupWorldMap()
+	if NDuiDB["Map"]["DisableMap"] then return end
+	if IsAddOnLoaded("Mapster") then return end
 	if IsAddOnLoaded("Leatrix_Maps") then return end
 
 	-- Fix worldmap cursor when scaling
@@ -146,50 +184,12 @@ function module:SetupWorldMap()
 	tinsert(UISpecialFrames, "WorldMapFrame")
 
 	self:MapPartyDots()
-end
-
-local function isMouseOverMap()
-	return not WorldMapFrame:IsMouseOver()
-end
-
-function module:MapFader()
-	if NDuiDB["Map"]["MapFader"] then
-		PlayerMovementFrameFader.AddDeferredFrame(WorldMapFrame, .5, 1, .5, isMouseOverMap)
-	else
-		PlayerMovementFrameFader.RemoveFrame(WorldMapFrame)
-	end
-end
-
-function module:MapPartyDots()
-	local WorldMapUnitPin, WorldMapUnitPinSizes
-	local partyTexture = "Interface\\OptionsFrame\\VoiceChat-Record"
-
-	local function setPinTexture(self)
-		self:SetPinTexture("raid", partyTexture)
-		self:SetPinTexture("party", partyTexture)
-	end
-
-	-- Set group icon textures
-	for pin in WorldMapFrame:EnumeratePinsByTemplate("GroupMembersPinTemplate") do
-		WorldMapUnitPin = pin
-		WorldMapUnitPinSizes = pin.dataProvider:GetUnitPinSizesTable()
-		setPinTexture(WorldMapUnitPin)
-		hooksecurefunc(WorldMapUnitPin, "UpdateAppearanceData", setPinTexture)
-		break
-	end
-
-	-- Set party icon size and enable class colors
-	WorldMapUnitPinSizes.player = 22
-	WorldMapUnitPinSizes.party = 12
-	WorldMapUnitPin:SetAppearanceField("party", "useClassColor", true)
-	WorldMapUnitPin:SetAppearanceField("raid", "useClassColor", true)
-	WorldMapUnitPin:SynchronizePinSizes()
+	self:SetupCoords()
+	self:MapFader()
+	self:MapReveal()
 end
 
 function module:OnLogin()
 	self:SetupWorldMap()
-	self:SetupCoords()
 	self:SetupMinimap()
-	self:MapReveal()
-	self:MapFader()
 end

@@ -50,6 +50,8 @@ L["Active Version: "] = "Versão Ativa: "
 L["Add a substitution variable for this macro.  This can either be a straight string swap or can be a function.  If a lua function the function needs to return a value."] = "Add a substitution variable for this macro.  This can either be a straight string swap or can be a function.  If a lua function the function needs to return a value."
 --[[Translation missing --]]
 L["Add Variable"] = "Add Variable"
+--[[Translation missing --]]
+L["Add WeakAura"] = "Add WeakAura"
 L["Addin Version %s contained versions for the following macros:"] = "A versão %s adicionada continha versões para as seguintes macros:"
 L["All macros are now stored as upper case names.  You may need to re-add your old macros to your action bars."] = "Todas as macros agora são armazenadas com nomes em maiúsculas. Pode ser necessário adicionar novamente as macros antigas às barras de ação."
 L["Alt Keys."] = "Teclas Alt."
@@ -60,6 +62,8 @@ L["Are you sure you want to delete %s?  This will delete the macro and all versi
 L["Arena"] = "Arena"
 L["Arena setting changed to Default."] = "Configuração de Arena alterada para o Padrão."
 L["As GS-E is updated, there may be left over macros that no longer relate to sequences.  This will check for these automatically on logout.  Alternatively this check can be run via /gs cleanorphans"] = "À medida que o GS-E é atualizado, pode haver sobras de macros que não estão mais relacionadas às sequências. Este recurso irá checar isso automaticamente no logout. Como alternativa, essa verificação pode ser executada via /gs cleanorphans"
+--[[Translation missing --]]
+L["Auras included in GSE Macros"] = "Auras included in GSE Macros"
 L["Author"] = "Autor"
 L["Author Colour"] = "Cor do Autor"
 L["Auto Create Class Macro Stubs"] = "Criar Esboços de Macro para Classes Automaticamente"
@@ -131,8 +135,12 @@ L["Delete this variable from the sequence."] = "Delete this variable from the se
 L[ [=[Delete this verion of the macro.  This can be undone by closing this window and not saving the change.  
 This is different to the Delete button below which will delete this entire macro.]=] ] = "Apagar esta versão da macro. Isso pode ser desfeito fechando esta janela e não salvando a alteração. Isto é diferente do botão Apagar abaixo, o qual exclui toda a macro."
 --[[Translation missing --]]
+L["Delete this WeakAura from the sequence."] = "Delete this WeakAura from the sequence."
+--[[Translation missing --]]
 L["Delete Variable"] = "Delete Variable"
 L["Delete Version"] = "Apagar Versão"
+--[[Translation missing --]]
+L["Delete WeakAura"] = "Delete WeakAura"
 L["Different helpTxt"] = "helpTxt Diferente"
 L["Disable"] = "Desabilitar"
 L["Disable Editor"] = "Desabilitar Editor"
@@ -245,7 +253,11 @@ L["Left Shift Key"] = "Tecla Shift Esquerda"
 L["Legacy GS/GSE1 Macro"] = "Macro Legado de GS/GSE1"
 L["Like a /castsequence macro, it cycles through a series of commands when the button is pushed. However, unlike castsequence, it uses macro text for the commands instead of spells, and it advances every time the button is pushed instead of stopping when it can't cast something."] = "Como uma macro /castsequence, ele percorre uma série de comandos quando o botão é pressionado. No entanto, diferentemente da castsequence, ele usa o texto da macro para os comandos, em vez de feitiços, e avança toda vez que o botão é pressionado em vez de parar quando não é possível executar algo."
 L["Load"] = "Carregar"
+--[[Translation missing --]]
+L["Load or update this WeakAura into WeakAuras."] = "Load or update this WeakAura into WeakAuras."
 L["Load Sequence"] = "Carregar Sequência"
+--[[Translation missing --]]
+L["Load WeakAura"] = "Load WeakAura"
 L["Local Macro"] = "Macro Local"
 L["Macro Collection to Import."] = "Coleção de Macro para Importar."
 L["Macro found by the name %sPVP%s. Rename this macro to a different name to be able to use it.  WOW has a global object called PVP that is referenced instead of this macro."] = "Macro encontrada pelo nome%sPVP%s. Renomeie essa macro para um nome diferente para poder usá-la. O WOW possui um objeto global chamado PVP que é referenciado em vez dessa macro."
@@ -647,6 +659,14 @@ L["Version"] = "Version"
 L["Version="] = "Versão="
 --[[Translation missing --]]
 L["WARNING ONLY"] = "WARNING ONLY"
+--[[Translation missing --]]
+L["WeakAuras"] = "WeakAuras"
+--[[Translation missing --]]
+L["WeakAuras is a mod that watches for certain conditions and actions and they alerts the player to them occuring.  These are included for convenience and still need to be copied from here and imported to the WeakAuras mod via the command /wa."] = "WeakAuras is a mod that watches for certain conditions and actions and they alerts the player to them occuring.  These are included for convenience and still need to be copied from here and imported to the WeakAuras mod via the command /wa."
+--[[Translation missing --]]
+L["WeakAuras was not found."] = "WeakAuras was not found."
+--[[Translation missing --]]
+L["WeakAuras was not found.  Reported error was %s"] = "WeakAuras was not found.  Reported error was %s"
 --[[Translation missing --]]
 L["Website or forum URL where a player can get more information or ask questions about this macro."] = "Website or forum URL where a player can get more information or ask questions about this macro."
 --[[Translation missing --]]

@@ -1,6 +1,7 @@
 local _, ns = ...
 local B, C, L, DB = unpack(ns)
 local module = B:RegisterModule("Chat")
+local cr, cg, cb = DB.r, DB.g, DB.b
 
 local _G = _G
 local tostring, pairs, ipairs, strsub, strlower = tostring, pairs, ipairs, string.sub, string.lower
@@ -11,7 +12,7 @@ local BNGetFriendInfoByID, BNGetGameAccountInfo, CanCooperateWithGameAccount, BN
 local GeneralDockManager = GeneralDockManager
 
 local maxLines = 1024
-local fontOutline, isBattleNet
+local fontOutline
 
 function module:TabSetAlpha(alpha)
 	if self.glow:IsShown() and alpha ~= 1 then
@@ -45,6 +46,30 @@ function module:UpdateChatSize()
 	isScaling = false
 end
 
+local function BlackBackground(self)
+	local frame = B.SetBD(self.Background)
+	frame:SetPoint("BOTTOMRIGHT", 26, -7)
+	frame:SetShown(NDuiDB["Chat"]["ChatBGType"] == 2)
+
+	return frame
+end
+
+local function GradientBackground(self)
+	local frame = CreateFrame("Frame", nil, self)
+	frame:SetPoint("TOPLEFT", self.Background)
+	frame:SetPoint("BOTTOMRIGHT", 26, -7)
+	frame:SetFrameLevel(0)
+	frame:SetShown(NDuiDB["Chat"]["ChatBGType"] == 3)
+
+	local tex = B.SetGradient(frame, "H", 0, 0, 0, .5, 0)
+	tex:SetOutside()
+	local line = B.SetGradient(frame, "H", cr, cg, cb, .5, 0, nil, C.mult)
+	line:SetPoint("BOTTOMLEFT", frame, "TOPLEFT")
+	line:SetPoint("BOTTOMRIGHT", frame, "TOPRIGHT")
+
+	return frame
+end
+
 function module:SkinChat()
 	if not self or self.styled then return end
 
@@ -61,9 +86,8 @@ function module:SkinChat()
 		self:SetMaxLines(maxLines)
 	end
 
-	self.__background = B.SetBD(self.Background)
-	self.__background:SetPoint("BOTTOMRIGHT", 26, -7)
-	self.__background:SetShown(NDuiDB["Chat"]["ShowBG"])
+	self.__background = BlackBackground(self)
+	self.__gradient = GradientBackground(self)
 
 	local eb = _G[name.."EditBox"]
 	eb:SetAltArrowKeyMode(false)
@@ -99,7 +123,10 @@ function module:ToggleChatBackground()
 	for _, chatFrameName in ipairs(CHAT_FRAMES) do
 		local frame = _G[chatFrameName]
 		if frame.__background then
-			frame.__background:SetShown(NDuiDB["Chat"]["ShowBG"])
+			frame.__background:SetShown(NDuiDB["Chat"]["ChatBGType"] == 2)
+		end
+		if frame.__gradient then
+			frame.__gradient:SetShown(NDuiDB["Chat"]["ChatBGType"] == 3)
 		end
 	end
 end
@@ -215,15 +242,6 @@ function module:WhisperInvite()
 	B:RegisterEvent("CHAT_MSG_BN_WHISPER", module.OnChatWhisper)
 end
 
--- Classcolor name
-function module:UpdateClassColorName()
-	if NDuiADB["ClassColorChat"] then
-		SetCVar("chatClassColorOverride", "0")
-	else
-		SetCVar("chatClassColorOverride", "1")
-	end
-end
-
 -- Sticky whisper
 function module:ChatWhisperSticky()
 	if NDuiDB["Chat"]["Sticky"] then
@@ -237,27 +255,31 @@ end
 
 -- Tab colors
 function module:UpdateTabColors(selected)
-	if self.glow:IsShown() then
-		if isBattleNet then
-			self.Text:SetTextColor(0, 1, .96)
-		else
-			self.Text:SetTextColor(1, .5, 1)
-		end
-	elseif selected then
+	if selected then
 		self.Text:SetTextColor(1, .8, 0)
+		self.whisperIndex = 0
 	else
 		self.Text:SetTextColor(.5, .5, .5)
+	end
+
+	if self.whisperIndex == 1 then
+		self.glow:SetVertexColor(1, .5, 1)
+	elseif self.whisperIndex == 2 then
+		self.glow:SetVertexColor(0, 1, .96)
+	else
+		self.glow:SetVertexColor(1, .8, 0)
 	end
 end
 
 function module:UpdateTabEventColors(event)
 	local tab = _G[self:GetName().."Tab"]
+	local selected = GeneralDockManager.selected:GetID() == tab:GetID()
 	if event == "CHAT_MSG_WHISPER" then
-		isBattleNet = nil
-		FCFTab_UpdateColors(tab, GeneralDockManager.selected:GetID() == tab:GetID())
+		tab.whisperIndex = 1
+		module.UpdateTabColors(tab, selected)
 	elseif event == "CHAT_MSG_BN_WHISPER" then
-		isBattleNet = true
-		FCFTab_UpdateColors(tab, GeneralDockManager.selected:GetID() == tab:GetID())
+		tab.whisperIndex = 2
+		module.UpdateTabColors(tab, selected)
 	end
 end
 
@@ -291,7 +313,6 @@ function module:OnLogin()
 	CombatLogQuickButtonFrame_CustomTexture:SetTexture(nil)
 
 	-- Add Elements
-	self:UpdateClassColorName()
 	self:ChatWhisperSticky()
 	self:ChatFilter()
 	self:ChannelRename()
@@ -302,9 +323,9 @@ function module:OnLogin()
 
 	-- Lock chatframe
 	if NDuiDB["Chat"]["Lock"] then
-		self:UpdateChatSize()
 		hooksecurefunc("FCF_SavePositionAndDimensions", self.UpdateChatSize)
 		B:RegisterEvent("UI_SCALE_CHANGED", self.UpdateChatSize)
+		self:UpdateChatSize()
 	end
 
 	-- ProfanityFilter
