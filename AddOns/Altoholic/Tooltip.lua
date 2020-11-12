@@ -428,13 +428,13 @@ local function ProcessTooltip(tooltip, link)
 		(cachedItemID and (itemID ~= cachedItemID)) then
 
 		cachedRecipeOwners = nil
-		
+		cachedItemID = itemID			-- we have searched this ID ..
+        
 		-- these are the cpu intensive parts of the update .. so do them only if necessary
 		cachedSource = nil
 		if addon:GetOption("UI.Tooltip.ShowItemSource") then
 			local domain, subDomain = addon.Loots:GetSource(itemID)
 			
-			cachedItemID = itemID			-- we have searched this ID ..
 			if domain then
 				subDomain = (subDomain) and format(", %s", subDomain) or ""
 				cachedSource = format("%s: %s%s", colors.gold..L["Source"], colors.teal..domain, subDomain)
@@ -504,6 +504,7 @@ end
 
 -- ** GameTooltip hooks **
 local function OnGameTooltipShow(tooltip, ...)
+    if GameTooltip:GetItem() then return end
 	if ShowGatheringNodeCounters() then
 	   GameTooltip:Show()
     end

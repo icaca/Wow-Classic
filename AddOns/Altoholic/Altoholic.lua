@@ -719,7 +719,7 @@ local ICON_CHARACTERS_HORDE = "Interface\\Icons\\Achievement_Character_Troll_Mal
 -- mini Easter egg icons, if you read the code using these, please don't spoil it :)
 local ICON_CHARACTERS_HALLOWSEND_ALLIANCE = "Interface\\Icons\\INV_Mask_01"
 local ICON_CHARACTERS_HALLOWSEND_HORDE = "Interface\\Icons\\INV_Mask_02"
-local ICON_CHARACTERS_DOTD_ALLIANCE = "Interface\\Icons\\INV_Misc_Bone_HumanSkull_02"
+local ICON_CHARACTERS_DOTD_ALLIANCE = "Interface\\Icons\\INV_Misc_Bone_HumanSkull_01"
 local ICON_CHARACTERS_DOTD_HORDE = "Interface\\Icons\\INV_Misc_Bone_OrcSkull_01"
 
 function addon:GetCharacterIcon()

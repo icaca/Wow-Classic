@@ -847,3 +847,5 @@ L["CLOSEST_RETURN_IN_PATTERN"] = "Le plus proche renvoi sera dans %s" -- %s will
 L["CLOSEST_DELETION_IN_PATTERN"] = "La suppression la plus proche sera dans %s" -- ^
 L["MAIL_WILL_BE_DELETED_PATTERN"] = "|cFF00FF00%d|cFFFFFFFF sera |cFFFF0000supprimé|cFFFFFFFF à expiration"
 L["Mails found:"] = "Courriers trouvés"
+
+L["MAIL_HAS_EXPIRED_PATTERN"] = "%s%d %sont expiré!" -- The %s's change the colour, the %s is a number quantity. So, eg: |red|21 |white|have expired!

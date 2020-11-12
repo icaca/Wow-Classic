@@ -1155,7 +1155,7 @@ columns["Mails"] = {
 			
 			if numExpired > 0 then
 				tt:AddLine(" ")
-				tt:AddLine(format("%s%d %shave expired !", colors.red, numExpired, colors.white))
+				tt:AddLine(format(L["MAIL_HAS_EXPIRED_PATTERN"], colors.red, numExpired, colors.white))
 			end
 			
 			tt:Show()

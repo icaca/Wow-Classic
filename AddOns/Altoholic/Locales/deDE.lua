@@ -834,3 +834,4 @@ L["CLOSEST_RETURN_IN_PATTERN"] = "TRANSLATION MISSING %s" -- %s will be filled i
 L["CLOSEST_DELETION_IN_PATTERN"] = "TRANSLATION MISSING %s" -- ^
 L["MAIL_WILL_BE_DELETED_PATTERN"] = "|cFF00FF00%d|cFFFFFFFF will be |cFFFF0000deleted|cFFFFFFFF upon expiry"
 L["Mails found:"] = "TRANSLATION MISSING"
+L["MAIL_HAS_EXPIRED_PATTERN"] = "TRANSLATION MISSING %s%d%s" -- The %s's change the colour, the %s is a number quantity. So, eg: |red|21 |white|have expired!

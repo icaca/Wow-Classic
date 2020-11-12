@@ -38,11 +38,13 @@ local CALENDAR_LINE = 3
 local CONNECTMMO_LINE = 4
 local TIMER_LINE = 5
 local SHARED_CD_LINE = 6		-- this type is used for shared cooldowns (alchemy, etc..) among others.
+local BATTLEGROUND_WEEKEND_LINE = 7
 
 local WARNING_TYPE_PROFESSION_CD = 1
 local WARNING_TYPE_DUNGEON_RESET = 2
 local WARNING_TYPE_CALENDAR_EVENT = 3
 local WARNING_TYPE_ITEM_TIMER = 4
+local WARNING_TYPE_BATTLEGROUND_WEEKEND = 5
 
 local eventToWarningType = {
 	[COOLDOWN_LINE] = WARNING_TYPE_PROFESSION_CD,
@@ -51,6 +53,7 @@ local eventToWarningType = {
 	[CONNECTMMO_LINE] = WARNING_TYPE_CALENDAR_EVENT,
 	[TIMER_LINE] = WARNING_TYPE_ITEM_TIMER,
 	[SHARED_CD_LINE] = WARNING_TYPE_PROFESSION_CD,
+    [BATTLEGROUND_WEEKEND_LINE] = WARNING_TYPE_BATTLEGROUND_WEEKEND,
 }
 
 local eventTypes = {
@@ -162,6 +165,13 @@ local eventTypes = {
 				return event.source, format("%s %s", COOLDOWN_REMAINING, addon:GetTimeString(expiresIn))
 			end,
 	},
+    [BATTLEGROUND_WEEKEND_LINE] = {
+        GetReadyNowWarning = function(self, event) end,
+        GetReadySoonWarning = function(self, event, minutes) end,
+        GetInfo = function(self, event)
+                return event.source, BONUS_HONOR 
+            end,
+    },
 }
 
 -- *** Utility functions ***
@@ -439,6 +449,25 @@ function ns:BuildList()
 			end
 		end
 	end
+    
+    -- Add the next/current battleground weekend
+    local wsgStart = 1584057600 -- March 13 2020
+    local abStart = 1584662400 -- March 20 2020
+    local avStart = 1585872000 -- April 3 2020
+    local currentDate = time()
+    local eventDuration = 4*24*60*60 -- 4 days
+    for bgStart, bgMapID in pairs({[wsgStart] = 3277, [abStart] = 3358, [avStart] = 2597}) do
+        local i = bgStart
+        while i < (currentDate + (7*24*60*60)) do
+            if (currentDate < i) or ((currentDate > i) and (currentDate < (i + eventDuration))) then
+                local key = DataStore:GetCharacter()
+                local account, realm, char = strsplit(".", key)
+                AddEvent(BATTLEGROUND_WEEKEND_LINE, date("%Y-%m-%d", i), date("%H:%M", i), char, realm, 0, C_Map.GetAreaInfo(bgMapID))
+                break
+            end
+            i = i + (28*24*60*60) -- 4 weeks
+        end
+    end
 	
 	-- sort by time
 	SortEvents()
