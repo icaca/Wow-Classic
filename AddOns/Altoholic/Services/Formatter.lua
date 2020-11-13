@@ -23,7 +23,7 @@ addon:Service("AltoholicUI.Formatter",  function()
                 local pattern = COPPER_AMOUNT_TEXTURE
                 pattern = pattern:gsub("%%d", "%%s")
 				copper = color..format(pattern, copper, 13, 13)
-                pattern = COPPER_AMOUNT_TEXTURE
+                pattern = SILVER_AMOUNT_TEXTURE
                 pattern = pattern:gsub("%%d", "%%s") 
 				silver = color..format(pattern, silver, 13, 13)
 				gold = color..format(GOLD_AMOUNT_TEXTURE_STRING, BreakUpLargeNumbers(gold), 13, 13)

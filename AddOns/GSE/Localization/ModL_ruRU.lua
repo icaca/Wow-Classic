@@ -260,7 +260,7 @@ L["GnomeSequencer-Enhanced"] = "GnomeSequencer-Enhanced"
 --[[Translation missing --]]
 L["GnomeSequencer-Enhanced loaded.|r  Type "] = "GnomeSequencer-Enhanced loaded.|r  Type "
 L["GSE"] = "GSE"
-L["GSE allows plugins to load Macro Collections as plugins.  You can reload a collection by pressing the button below."] = "GSE allows plugins to load Macro Collections as plugins.  Вы можете перезагрузить коллекцию, нажав на кнопку ниже."
+L["GSE allows plugins to load Macro Collections as plugins.  You can reload a collection by pressing the button below."] = "GSE позволяет загружать коллекции макросов как дополнения. Вы можете перезагрузить коллекцию, нажав кнопку ниже."
 L["GS-E can save all macros or only those versions that you have created locally.  Turning this off will cache all macros in your WTF\\GS-Core.lua variables file but will increase load times and potentially cause colissions."] = "GS-E может сохранить все макросы или только те версии, которые были созданы локально. При отключении будут записываться все макросы в WTF\\GS-Core.lua, но увеличит время загрузки и потенциально вызывать противоречия."
 --[[Translation missing --]]
 L["GSE has a LibDataBroker (LDB) data feed.  List Other GSE Users and their version when in a group on the tooltip to this feed."] = "GSE has a LibDataBroker (LDB) data feed.  List Other GSE Users and their version when in a group on the tooltip to this feed."
@@ -360,8 +360,7 @@ L["Left Shift Key"] = "Левая клавиша Shift "
 L["Legacy GS/GSE1 Macro"] = "Legacy GS/GSE1 Macro"
 --[[Translation missing --]]
 L["Like a /castsequence macro, it cycles through a series of commands when the button is pushed. However, unlike castsequence, it uses macro text for the commands instead of spells, and it advances every time the button is pushed instead of stopping when it can't cast something."] = "Like a /castsequence macro, it cycles through a series of commands when the button is pushed. However, unlike castsequence, it uses macro text for the commands instead of spells, and it advances every time the button is pushed instead of stopping when it can't cast something."
---[[Translation missing --]]
-L["Load"] = "Load"
+L["Load"] = "Загрузить"
 --[[Translation missing --]]
 L["Load or update this WeakAura into WeakAuras."] = "Load or update this WeakAura into WeakAuras."
 --[[Translation missing --]]
@@ -519,8 +518,7 @@ L["Received Sequence "] = "Received Sequence "
 L["Record"] = "Запись"
 L["Record Macro"] = "Запись Макроса"
 L["Record the spells and items you use into a new macro."] = "Запишите умения и предметы, которые вы используете, в новый макрос."
---[[Translation missing --]]
-L["Registered Addons"] = "Registered Addons"
+L["Registered Addons"] = "Зарегистрированные дополнения"
 --[[Translation missing --]]
 L["Rename New Macro"] = "Rename New Macro"
 --[[Translation missing --]]
@@ -591,6 +589,8 @@ L["Show GSE Users in LDB"] = "Show GSE Users in LDB"
 --[[Translation missing --]]
 L["Show OOC Queue in LDB"] = "Show OOC Queue in LDB"
 --[[Translation missing --]]
+L["Show the current value of this variable."] = "Show the current value of this variable."
+--[[Translation missing --]]
 L["Source Language "] = "Source Language "
 L["Specialisation / Class ID"] = "Специализация / ID класса"
 --[[Translation missing --]]
@@ -620,9 +620,13 @@ L["Target language "] = "Target language "
 --[[Translation missing --]]
 L["Target protection is currently %s"] = "Target protection is currently %s"
 --[[Translation missing --]]
+L["Test Variable"] = "Test Variable"
+--[[Translation missing --]]
 L["The author of this macro."] = "The author of this macro."
 --[[Translation missing --]]
 L["The command "] = "The command "
+--[[Translation missing --]]
+L["The current result of variable |cff0000ff~~%s~~|r is |cFF00D1FF%s|r"] = "The current result of variable |cff0000ff~~%s~~|r is |cFF00D1FF%s|r"
 --[[Translation missing --]]
 L["The Custom StepFunction Specified is not recognised and has been ignored."] = "The Custom StepFunction Specified is not recognised and has been ignored."
 --[[Translation missing --]]
@@ -667,8 +671,8 @@ L["The version of this macro to use when in time walking dungeons."] = "Верс
 L["There are %i events in out of combat queue"] = "There are %i events in out of combat queue"
 --[[Translation missing --]]
 L["There are no events in out of combat queue"] = "There are no events in out of combat queue"
---[[Translation missing --]]
-L["There are No Macros Loaded for this class.  Would you like to load the Sample Macro?"] = "There are No Macros Loaded for this class.  Would you like to load the Sample Macro?"
+L["There are No Macros Loaded for this class.  Would you like to load the Sample Macro?"] = [=[Для этого класса макросы не загружены. 
+Хотите загрузить образец макросов (Sample Macro)?]=]
 --[[Translation missing --]]
 L["There is an issue with sequence %s.  It has not been loaded to prevent the mod from failing."] = "There is an issue with sequence %s.  It has not been loaded to prevent the mod from failing."
 --[[Translation missing --]]

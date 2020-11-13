@@ -688,6 +688,8 @@ L["Show GSE Users in LDB"] = "Show GSE Users in LDB"
 --[[Translation missing --]]
 L["Show OOC Queue in LDB"] = "Show OOC Queue in LDB"
 --[[Translation missing --]]
+L["Show the current value of this variable."] = "Show the current value of this variable."
+--[[Translation missing --]]
 L["Source Language "] = "Source Language "
 --[[Translation missing --]]
 L["Specialisation / Class ID"] = "Specialisation / Class ID"
@@ -721,9 +723,13 @@ L["Target language "] = "Target language "
 --[[Translation missing --]]
 L["Target protection is currently %s"] = "Target protection is currently %s"
 --[[Translation missing --]]
+L["Test Variable"] = "Test Variable"
+--[[Translation missing --]]
 L["The author of this macro."] = "The author of this macro."
 --[[Translation missing --]]
 L["The command "] = "The command "
+--[[Translation missing --]]
+L["The current result of variable |cff0000ff~~%s~~|r is |cFF00D1FF%s|r"] = "The current result of variable |cff0000ff~~%s~~|r is |cFF00D1FF%s|r"
 --[[Translation missing --]]
 L["The Custom StepFunction Specified is not recognised and has been ignored."] = "The Custom StepFunction Specified is not recognised and has been ignored."
 --[[Translation missing --]]

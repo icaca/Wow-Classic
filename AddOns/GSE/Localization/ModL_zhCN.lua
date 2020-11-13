@@ -447,6 +447,8 @@ L["Show Class Macros in Editor"] = "在编辑器显示职业宏"
 L["Show Global Macros in Editor"] = "在编辑器显示全局宏"
 L["Show GSE Users in LDB"] = "在LDB中显示GSE用户"
 L["Show OOC Queue in LDB"] = "在LDB中显示OOC队列"
+--[[Translation missing --]]
+L["Show the current value of this variable."] = "Show the current value of this variable."
 L["Source Language "] = "源语言 "
 L["Specialisation / Class ID"] = "专精 / 职业 ID"
 L["Specialization Specific Macro"] = "专精特定宏"
@@ -467,8 +469,12 @@ L["Target"] = "目标"
 L["Target language "] = "目标语言 "
 L["Target protection is currently %s"] = "目标保护目前为 %s"
 --[[Translation missing --]]
+L["Test Variable"] = "Test Variable"
+--[[Translation missing --]]
 L["The author of this macro."] = "The author of this macro."
 L["The command "] = "命令 "
+--[[Translation missing --]]
+L["The current result of variable |cff0000ff~~%s~~|r is |cFF00D1FF%s|r"] = "The current result of variable |cff0000ff~~%s~~|r is |cFF00D1FF%s|r"
 L["The Custom StepFunction Specified is not recognised and has been ignored."] = "指定的自定义步骤方法无法识别,并已被忽略."
 --[[Translation missing --]]
 L["The following people donate monthly via Patreon for the ongoing maintenance and development of GSE.  Their support is greatly appreciated."] = "The following people donate monthly via Patreon for the ongoing maintenance and development of GSE.  Their support is greatly appreciated."
