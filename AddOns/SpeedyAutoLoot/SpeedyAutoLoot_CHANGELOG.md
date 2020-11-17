@@ -1,3 +1,9 @@
+### 2.0.33
+- Added TSM Destroy workaround to address an issue TSM has still not fixed if any fast loot addon is used.
+
+### 2.0.32
+- Fixed issue when 'Open Loot window at Mouse' was disabled while looting in combat.
+
 ### 2.0.31
 - toc bump
 
