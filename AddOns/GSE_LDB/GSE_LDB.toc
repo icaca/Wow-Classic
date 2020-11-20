@@ -1,8 +1,8 @@
-## Interface: 11304
+## Interface: 11306
 ## Title: |cff0000FFGSE2:|r |cFF00D1FFLDB|r
 ## Notes: LibDataBroker Plugin for GSE2
 ## Author: TimothyLuke
-## Version: 2.6.29
+## Version: 2.6.31
 ## Dependencies: GSE
 
 

@@ -5,8 +5,6 @@ local L = _G.LibStub('AceLocale-3.0'):NewLocale(AddonName, 'deDE')
 if not L then return end
 
 L["ADDED_ITEM_TO_LIST"] = "Gegenstand %s wurde zu %s hinzugefügt."
-L["AUTO_DESTROY_TEXT"] = "Automatisch Zerstören"
-L["AUTO_DESTROY_TOOLTIP"] = "Zerstöre Müllgegenstände regelmäßig, während dieses Fenster geschlossen ist."
 L["AUTO_REPAIR_TEXT"] = "Autom. reparieren"
 L["AUTO_REPAIR_TOOLTIP"] = "Repariert automatisch Gegenstände, sobald ein Händlerfenster geöffnet wird. |n|nPriorisiert Reparatur auf Gildenkosten, falls verfügbar."
 L["AUTO_SELL_TEXT"] = "Autom. verkaufen"
@@ -27,8 +25,6 @@ L["DELETE_PROFILE_POPUP"] = "Bist du sicher, dass du das Profil %s löschen will
 L["DELETE_TEXT"] = "Löschen"
 L["DESTROY_ALL_TOOLTIP"] = "Zerstöre alle Gegenstände dieser Qualität."
 L["DESTROY_TOYS_ALREADY_COLLECTED_TEXT"] = "Bereits gesammelte Spielzeuge zerstören"
-L["DESTROYED_ITEM"] = "1 Müllgegenstand zerstört."
-L["DESTROYED_ITEMS"] = "%s Müllgegenstände zerstört."
 L["EPIC_TEXT"] = "Episch"
 L["EXCLUSIONS_TEXT"] = "Behalten"
 L["EXPORT_PROFILE_TEXT"] = "Profil exportieren"

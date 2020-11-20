@@ -5,8 +5,6 @@ local L = _G.LibStub('AceLocale-3.0'):NewLocale(AddonName, 'ptBR')
 if not L then return end
 
 L["ADDED_ITEM_TO_LIST"] = "Adicionado %s em %s."
-L["AUTO_DESTROY_TEXT"] = "Auto Destruir"
-L["AUTO_DESTROY_TOOLTIP"] = "Destrói itens \"lixo\" periodicamente enquanto esta janela está fechada."
 L["AUTO_REPAIR_TEXT"] = "Auto Reparar"
 L["AUTO_REPAIR_TOOLTIP"] = "Repara itens automaticamente ao abrir uma janela de mercador."
 L["AUTO_SELL_TEXT"] = "Auto Vender"
@@ -26,9 +24,7 @@ L["DESTROY_TEXT"] = "Destruir"
 L["DESTROY_TOYS_ALREADY_COLLECTED_TEXT"] = "Brinquedos Já Coletados."
 L["DESTROY_TOYS_ALREADY_COLLECTED_TOOLTIP"] = "Destruir brinquedos que você já tenha coletado.|n|nSomente se aplica aos brinquedos \"ligados\" que não podem ser vendidos."
 L["DESTROYABLES_TEXT"] = "Destrutíveis"
-L["DESTROYED_ITEM"] = "Destruir 1 item \"lixo\"."
 L["DESTROYED_ITEM_VERBOSE"] = "Destruído: %s."
-L["DESTROYED_ITEMS"] = "Destruído %s itens \"lixo\"."
 L["DESTROYED_ITEMS_VERBOSE"] = "Destruídos: %sx%s."
 L["DESTROYING_IN_PROGRESS"] = "Destruição já está em progresso."
 L["EPIC_TEXT"] = "Épico"

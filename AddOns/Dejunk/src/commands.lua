@@ -2,11 +2,10 @@ local _, Addon = ...
 local Bags = Addon.Bags
 local Chat = Addon.Chat
 local Commands = Addon.Commands
-local Dejunker = Addon.Dejunker
-local Destroyer = Addon.Destroyer
 local DTL = Addon.Libs.DTL
 local E = Addon.Events
 local EventManager = Addon.EventManager
+local ItemFrames = Addon.ItemFrames
 local L = Addon.Libs.L
 local LOCKED = _G.LOCKED
 local strlower = _G.strlower
@@ -64,7 +63,7 @@ local create = (function()
 end)()
 
 
--- Toggles the user interface.
+-- Toggles the options frame.
 Commands.toggle = create({
   sortIndex = -1,
   title = L.TOGGLE_TEXT,
@@ -74,30 +73,23 @@ Commands.toggle = create({
 })
 
 
--- Starts the dejunking process.
+-- Toggles the sell frame.
 Commands.sell = create({
   sortIndex = 1,
   title = L.SELL_TEXT,
   help = L.CMD_HELP_SELL,
   usage = "sell",
-  run = function()
-    local frame = _G.MerchantFrame
-    if frame and frame:IsShown() then
-      Dejunker:Start()
-    else
-      Chat:Print(L.CANNOT_SELL_WITHOUT_MERCHANT)
-    end
-  end
+  run = function() ItemFrames.Sell:Toggle() end
 })
 
 
--- Starts the destroying process.
+-- Toggles the destroy frame.
 Commands.destroy = create({
   sortIndex = 2,
   title = L.DESTROY_TEXT,
   help = L.CMD_HELP_DESTROY,
   usage = "destroy",
-  run = function() Destroyer:Start() end
+  run = function() ItemFrames.Destroy:Toggle() end
 })
 
 

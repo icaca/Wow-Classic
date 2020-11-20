@@ -4,8 +4,6 @@ local AddonName = ...
 local L = _G.LibStub('AceLocale-3.0'):NewLocale(AddonName, 'frFR')
 if not L then return end
 
-L["AUTO_DESTROY_TEXT"] = "Destruction automatique"
-L["AUTO_DESTROY_TOOLTIP"] = "Détruis les objets indésirables régulièrement pendant que cette fenêtre est fermée."
 L["AUTO_REPAIR_TEXT"] = "Réparation automatique"
 L["AUTO_REPAIR_TOOLTIP"] = "Répare automatiquement les objets lors de l'ouverture d'une fenêtre de marchand."
 L["AUTO_SELL_TEXT"] = "Vente automatique"

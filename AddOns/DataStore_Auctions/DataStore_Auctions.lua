@@ -102,7 +102,7 @@ local PublicMethods = {
 
 -- maximum time left in seconds per auction type : [1] = max 30 minutes, [2] = 2 hours, [3] = 12 hours, [4] = more than 12, but max 24 hours
 -- info : http://www.wowwiki.com/API_GetAuctionItemTimeLeft
-local maxTimeLeft = { 30*60, 2*60*60, 12*60*60, 48*60*60 }
+local maxTimeLeft = { 30*60, 2*60*60, 12*60*60, 24*60*60 }
 
 local function CheckExpiries()
 	local AHTypes = { "Auctions", "Bids" }
