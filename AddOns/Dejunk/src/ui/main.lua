@@ -69,7 +69,10 @@ function UI:Create()
   frame:SetHeight(660)
   frame.frame:SetMinResize(600, 500)
   frame:SetLayout("Flow")
-  frame:SetCallback("OnClose", function() EventManager:Fire(E.MainUIClosed) end)
+  frame:SetCallback("OnClose", function()
+    EventManager:Fire(E.MainUIClosed)
+    ItemFrames:ReshowHidden()
+  end)
   self.frame = frame
   self.widgetsToDisable = {}
   self.disabled = false
@@ -162,8 +165,8 @@ function UI:Create()
     { text = L.PROFILES_TEXT, value = "Profiles" }
   })
 
-  treeGroup:SetCallback("OnGroupSelected", function(self, event, key)
-    self:ReleaseChildren()
+  treeGroup:SetCallback("OnGroupSelected", function(this, event, key)
+    this:ReleaseChildren()
 
     local group = UI.Groups[key] or error(key .. " group not supported")
     local parent = AceGUI:Create(group.parent or "ScrollFrame")
@@ -175,7 +178,7 @@ function UI:Create()
     parent:ResumeLayout()
     parent:DoLayout()
 
-    self:AddChild(parent)
+    this:AddChild(parent)
   end)
 
   treeGroup:SelectByValue("General")

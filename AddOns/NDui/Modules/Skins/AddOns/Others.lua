@@ -4,7 +4,7 @@ local S = B:GetModule("Skins")
 
 function S:CharacterStatsClassic()
 	if not IsAddOnLoaded("CharacterStatsClassic") then return end
-	if not NDuiDB["Skins"]["BlizzardSkins"] then return end
+	if not C.db["Skins"]["BlizzardSkins"] then return end
 
 	local cr, cg, cb = DB.r, DB.g, DB.b
 	if CharacterStatsClassicDB.expandStat == nil then
@@ -74,7 +74,7 @@ function S:CharacterStatsClassic()
 	end
 
 	local function CreateStatLine(parent, index)
-		local frame = CreateFrame("Frame", nil, parent, "CharacterStatFrameTemplate")	
+		local frame = CreateFrame("Frame", nil, parent, "CharacterStatFrameTemplate")
 		frame:SetWidth(180)
 		frame:SetPoint("TOP", parent, "BOTTOM", 0, -2 - (index-1)*16)
 		frame.Background:SetShown(index%2 == 1)
@@ -157,7 +157,7 @@ end
 
 function S:WhatsTraining()
 	if not IsAddOnLoaded("WhatsTraining") then return end
-	if not NDuiDB["Skins"]["BlizzardSkins"] then return end
+	if not C.db["Skins"]["BlizzardSkins"] then return end
 
 	local done
 	SpellBookFrame:HookScript("OnShow", function()
@@ -198,7 +198,7 @@ function S:ResetRecount()
 	Recount.db.profile.Font = nil
 	Recount:UpdateBarTextures()
 
-	NDuiDB["Skins"]["ResetRecount"] = false
+	C.db["Skins"]["ResetRecount"] = false
 end
 
 function S:ResetRocountFont()
@@ -210,7 +210,7 @@ function S:ResetRocountFont()
 end
 
 function S:RecountSkin()
-	if not NDuiDB["Skins"]["Recount"] then return end
+	if not C.db["Skins"]["Recount"] then return end
 	if not IsAddOnLoaded("Recount") then return end
 
 	local frame = Recount_MainWindow
@@ -228,7 +228,7 @@ function S:RecountSkin()
 		Recount.MainWindow:Hide()
 	end)
 
-	if NDuiDB["Skins"]["ResetRecount"] then S:ResetRecount() end
+	if C.db["Skins"]["ResetRecount"] then S:ResetRecount() end
 	hooksecurefunc(Recount, "ResetPositions", S.ResetRecount)
 
 	S:ResetRocountFont()
@@ -244,7 +244,7 @@ end
 
 function S:BindPad()
 	if not IsAddOnLoaded("BindPad") then return end
-	if not NDuiDB["Skins"]["BlizzardSkins"] then return end
+	if not C.db["Skins"]["BlizzardSkins"] then return end
 
 	BindPadFrame.bg = B.ReskinPortraitFrame(BindPadFrame, 10, -10, -30, 70)
 	for i = 1, 4 do

@@ -57,7 +57,7 @@ do
 		elseif s > 3 then
 			return format("|cffffff00%d|r", s), s - floor(s)
 		else
-			if NDuiDB["Actionbar"]["DecimalCD"] then
+			if C.db["Actionbar"]["DecimalCD"] then
 				return format("|cffff0000%.1f|r", s), s - format("%.1f", s)
 			else
 				return format("|cffff0000%d|r", s + .5), s - floor(s)
@@ -169,6 +169,7 @@ do
 	local essenceDescription = GetSpellDescription(277253)
 	local ITEM_SPELL_TRIGGER_ONEQUIP = ITEM_SPELL_TRIGGER_ONEQUIP
 	local RETRIEVING_ITEM_INFO = RETRIEVING_ITEM_INFO
+
 	local tip = CreateFrame("GameTooltip", "NDui_ScanTooltip", nil, "GameTooltipTemplate")
 	B.ScanTip = tip
 
@@ -380,6 +381,59 @@ end
 
 -- UI widgets
 do
+	-- HelpTip
+	function B:HelpInfoAcknowledge()
+		self.__owner:Hide()
+		NDuiADB["Help"][self.__arg] = true
+		if self.__callback then self.__callback() end
+	end
+
+	local helpTipTable = {}
+	local pointInfo = {
+		["TOP"] = {relF = "BOTTOM", degree = 0, arrowX = 0, arrowY = -5, glowX = 0, glowY = -4},
+		["BOTTOM"] = {relF = "TOP", degree = 180, arrowX = 0, arrowY = 5, glowX = 0, glowY = 4},
+		["LEFT"] = {relF = "RIGHT", degree = 90, arrowX = 5, arrowY = 0, glowX = 4, glowY = 0},
+		["RIGHT"] = {relF = "LEFT", degree = 270, arrowX = -5, arrowY = 0, glowX = -4, glowY = 0},
+	}
+
+	function B:ShowHelpTip(parent, text, targetPoint, offsetX, offsetY, callback, callbackArg)
+		local info = helpTipTable[callbackArg]
+		if not info then
+			local anchorInfo = pointInfo[targetPoint]
+			info = CreateFrame("Frame", nil, parent, "MicroButtonAlertTemplate")
+			info:SetPoint(anchorInfo.relF, parent, targetPoint, offsetX or 0, offsetY or 0)
+			info.Text:SetText(text.."|n|n|n")
+			info.CloseButton:Hide()
+			info.okay = B.CreateButton(info, 110, 22, L["GotIt"], 14)
+			info.okay:SetPoint("BOTTOM", 0, 12)
+			info.okay.__owner = info
+			info.okay.__arg = callbackArg
+			info.okay.__callback = callback
+			info.okay:SetScript("OnClick", B.HelpInfoAcknowledge)
+
+			info.Arrow:ClearAllPoints()
+			info.Arrow:SetPoint("CENTER", info, anchorInfo.relF, anchorInfo.arrowX, anchorInfo.arrowY)
+
+			info.Arrow.Glow:ClearAllPoints()
+			info.Arrow.Glow:SetPoint("CENTER", info.Arrow.Arrow, "CENTER", anchorInfo.glowX, anchorInfo.glowY)
+			info.Arrow.Glow:SetRotation(rad(anchorInfo.degree))
+			info.Arrow.Arrow:SetRotation(rad(anchorInfo.degree))
+
+			helpTipTable[callbackArg] = info
+		end
+		info:Show()
+	end
+
+	function B:HideHelpTip(callbackArg)
+		local info = helpTipTable[callbackArg]
+		if info then
+			info:Hide()
+		end
+	end
+
+	-- Dropdown menu
+	B.EasyMenu = CreateFrame("Frame", "NDui_EasyMenu", UIParent, "UIDropDownMenuTemplate")
+
 	-- Fontstring
 	function B:CreateFS(size, text, color, anchor, x, y)
 		local fs = self:CreateFontString(nil, "OVERLAY")
@@ -465,7 +519,7 @@ do
 		if self.Tex then return end
 
 		local frame = self
-		if self:GetObjectType() == "Texture" then frame = self:GetParent() end
+		if self:IsObjectType("Texture") then frame = self:GetParent() end
 
 		self.Tex = frame:CreateTexture(nil, "BACKGROUND", nil, 1)
 		self.Tex:SetAllPoints(self)
@@ -477,11 +531,11 @@ do
 
 	-- Backdrop shadow
 	function B:CreateSD(size, override)
-		if not override and not NDuiDB["Skins"]["Shadow"] then return end
+		if not override and not C.db["Skins"]["Shadow"] then return end
 		if self.Shadow then return end
 
 		local frame = self
-		if self:GetObjectType() == "Texture" then frame = self:GetParent() end
+		if self:IsObjectType("Texture") then frame = self:GetParent() end
 
 		self.Shadow = CreateFrame("Frame", nil, frame)
 		self.Shadow:SetOutside(self, size or 4, size or 4)
@@ -573,7 +627,7 @@ do
 	function B:CreateBD(a)
 		self:SetBackdrop(nil)
 		B:PixelBorders(self)
-		B:SetBackdrop(self, a or NDuiDB["Skins"]["SkinAlpha"])
+		B:SetBackdrop(self, a or C.db["Skins"]["SkinAlpha"])
 		if not a then tinsert(C.frames, self) end
 	end
 
@@ -581,7 +635,7 @@ do
 		local tex = self:CreateTexture(nil, "BORDER")
 		tex:SetInside()
 		tex:SetTexture(DB.bdTex)
-		if NDuiDB["Skins"]["FlatMode"] then
+		if C.db["Skins"]["FlatMode"] then
 			tex:SetVertexColor(.3, .3, .3, .25)
 		else
 			tex:SetGradientAlpha("Vertical", 0, 0, 0, .5, .3, .3, .3, .3)
@@ -593,7 +647,7 @@ do
 	-- Handle frame
 	function B:CreateBDFrame(a, shadow)
 		local frame = self
-		if self:GetObjectType() == "Texture" then frame = self:GetParent() end
+		if self:IsObjectType("Texture") then frame = self:GetParent() end
 		local lvl = frame:GetFrameLevel()
 
 		local bg = CreateFrame("Frame", nil, frame)
@@ -713,7 +767,7 @@ do
 	local function Button_OnEnter(self)
 		if not self:IsEnabled() then return end
 
-		if NDuiDB["Skins"]["FlatMode"] then
+		if C.db["Skins"]["FlatMode"] then
 			self.bgTex:SetVertexColor(cr / 4, cg / 4, cb / 4)
 		else
 			self:SetBackdropColor(cr, cg, cb, .25)
@@ -721,7 +775,7 @@ do
 		self:SetBackdropBorderColor(cr, cg, cb)
 	end
 	local function Button_OnLeave(self)
-		if NDuiDB["Skins"]["FlatMode"] then
+		if C.db["Skins"]["FlatMode"] then
 			self.bgTex:SetVertexColor(.3, .3, .3, .25)
 		else
 			self:SetBackdropColor(0, 0, 0, 0)
@@ -794,7 +848,7 @@ do
 		self.bg:SetBackdropBorderColor(0, 0, 0)
 	end
 	local function Menu_OnMouseUp(self)
-		self.bg:SetBackdropColor(0, 0, 0, NDuiDB["Skins"]["SkinAlpha"])
+		self.bg:SetBackdropColor(0, 0, 0, C.db["Skins"]["SkinAlpha"])
 	end
 	local function Menu_OnMouseDown(self)
 		self.bg:SetBackdropColor(cr, cg, cb, .25)
@@ -1238,14 +1292,14 @@ do
 			tex:SetTexCoord(0, 1, 0, 1)
 		end
 	end
-	
+
 	function B:ReskinRotationButtons()
 		local name = self.GetName and self:GetName() or self
 		local leftButton = _G[name.."RotateRightButton"]
 		reskinRotation(leftButton, "left")
 		local rightButton = _G[name.."RotateLeftButton"]
 		reskinRotation(rightButton, "right")
-	
+
 		leftButton:SetPoint("TOPLEFT", 5, -5)
 		rightButton:ClearAllPoints()
 		rightButton:SetPoint("LEFT", leftButton, "RIGHT", 3, 0)
@@ -1467,6 +1521,14 @@ do
 		ColorPickerFrame:Show()
 	end
 
+	local function GetSwatchTexColor(tex)
+		local r, g, b = tex:GetVertexColor()
+		r = B:Round(r, 2)
+		g = B:Round(g, 2)
+		b = B:Round(b, 2)
+		return r, g, b
+	end
+
 	function B:CreateColorSwatch(name, color)
 		color = color or {r=1, g=1, b=1}
 
@@ -1478,6 +1540,7 @@ do
 		tex:SetInside()
 		tex:SetTexture(DB.bdTex)
 		tex:SetVertexColor(color.r, color.g, color.b)
+		tex.GetColor = GetSwatchTexColor
 
 		swatch.tex = tex
 		swatch.color = color

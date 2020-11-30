@@ -224,7 +224,7 @@ function M:RaidTool_ReadyCheck(parent)
 		rc:SetText("")
 		count, total = 0, 0
 	end
-	
+
 	local function updateReadyCheck(event)
 		if event == "READY_CHECK_FINISHED" then
 			if count == total then
@@ -361,14 +361,14 @@ function M:RaidTool_BuffChecker(parent)
 				end
 			end
 		end
-		if not NDuiDB["Misc"]["RMRune"] then NoBuff[numGroups] = {} end
+		if not C.db["Misc"]["RMRune"] then NoBuff[numGroups] = {} end
 
 		if #NoBuff[1] == 0 and #NoBuff[2] == 0 and #NoBuff[3] == 0 and #NoBuff[4] == 0 and #NoBuff[5] == 0 and #NoBuff[6] == 0 then
 			sendMsg(L["Buffs Ready"])
 		else
 			sendMsg(L["Raid Buff Check"])
 			for i = 1, 5 do sendResult(i) end
-			if NDuiDB["Misc"]["RMRune"] then sendResult(numGroups) end
+			if C.db["Misc"]["RMRune"] then sendResult(numGroups) end
 		end
 	end
 
@@ -412,7 +412,7 @@ function M:RaidTool_BuffChecker(parent)
 			if IsInGroup() and (UnitIsGroupLeader("player") or (UnitIsGroupAssistant("player") and IsInRaid())) then
 				if IsAddOnLoaded("DBM-Core") then
 					if reset then
-						SlashCmdList["DEADLYBOSSMODS"]("pull "..NDuiDB["Misc"]["DBMCount"])
+						SlashCmdList["DEADLYBOSSMODS"]("pull "..C.db["Misc"]["DBMCount"])
 					else
 						SlashCmdList["DEADLYBOSSMODS"]("pull 0")
 					end
@@ -420,7 +420,7 @@ function M:RaidTool_BuffChecker(parent)
 				elseif IsAddOnLoaded("BigWigs") then
 					if not SlashCmdList["BIGWIGSPULL"] then LoadAddOn("BigWigs_Plugins") end
 					if reset then
-						SlashCmdList["BIGWIGSPULL"](NDuiDB["Misc"]["DBMCount"])
+						SlashCmdList["BIGWIGSPULL"](C.db["Misc"]["DBMCount"])
 					else
 						SlashCmdList["BIGWIGSPULL"]("0")
 					end
@@ -516,7 +516,6 @@ function M:RaidTool_CreateMenu(parent)
 end
 
 function M:RaidTool_EasyMarker()
-	local menuFrame = CreateFrame("Frame", "NDui_EastMarking", UIParent, "UIDropDownMenuTemplate")
 	local menuList = {
 		{text = RAID_TARGET_NONE, func = function() SetRaidTarget("target", 0) end},
 		{text = B.HexRGB(1, .92, 0)..RAID_TARGET_1.." "..ICON_LIST[1].."12|t", func = function() SetRaidTarget("target", 1) end},
@@ -530,7 +529,7 @@ function M:RaidTool_EasyMarker()
 	}
 
 	WorldFrame:HookScript("OnMouseDown", function(_, btn)
-		if not NDuiDB["Misc"]["EasyMarking"] then return end
+		if not C.db["Misc"]["EasyMarking"] then return end
 
 		if btn == "LeftButton" and IsControlKeyDown() and UnitExists("mouseover") then
 			if not IsInGroup() or (IsInGroup() and not IsInRaid()) or UnitIsGroupLeader("player") or UnitIsGroupAssistant("player") then
@@ -542,7 +541,7 @@ function M:RaidTool_EasyMarker()
 						menuList[i+1].checked = false
 					end
 				end
-				EasyMenu(menuList, menuFrame, "cursor", 0, 0, "MENU", 1)
+				EasyMenu(menuList, B.EasyMenu, "cursor", 0, 0, "MENU", 1)
 			end
 		end
 	end)
@@ -557,7 +556,7 @@ function M:RaidTool_Misc()
 end
 
 function M:RaidTool_Init()
-	if not NDuiDB["Misc"]["RaidTool"] then return end
+	if not C.db["Misc"]["RaidTool"] then return end
 
 	local frame = M:RaidTool_Header()
 	--M:RaidTool_RoleCount(frame)

@@ -2,7 +2,7 @@ local _, ns = ...
 local B, C, L, DB = unpack(ns)
 
 tinsert(C.defaultThemes, function()
-	if not NDuiDB["Skins"]["Loot"] then return end
+	if not C.db["Skins"]["Loot"] then return end
 
 	LootFramePortraitOverlay:Hide()
 
@@ -109,7 +109,7 @@ tinsert(C.defaultThemes, function()
 				local icon = frame.IconFrame.Icon
 				icon:ClearAllPoints()
 				icon:SetPoint("BOTTOMLEFT", frame.Timer, "TOPLEFT", 0, 5)
-				
+
 				icon.bg = B.ReskinIcon(icon)
 				local bg = B.CreateBDFrame(frame, .25)
 				bg:SetPoint("TOPLEFT", icon.bg, "TOPRIGHT", 2, 0)

@@ -13,54 +13,35 @@ print("|cff70C0F5------------------------")
 local function ForceDefaultSettings()
 	SetCVar("autoLootDefault", 1)
 	SetCVar("alwaysCompareItems", 1)
-	SetCVar("useCompactPartyFrames", 1)
-	SetCVar("lootUnderMouse", 1)
 	SetCVar("autoSelfCast", 1)
-	SetCVar("nameplateShowEnemies", 1)
-	SetCVar("nameplateShowAll", 1)
-	SetCVar("nameplateMotion", 1)
+	SetCVar("lootUnderMouse", 1)
 	SetCVar("screenshotQuality", 10)
 	SetCVar("showTutorials", 0)
 	SetCVar("ActionButtonUseKeyDown", 1)
-	SetCVar("alwaysShowActionBars", 1)
 	SetCVar("lockActionBars", 1)
-	SetActionBarToggles(1, 1, 1, 1)
 	SetCVar("autoQuestWatch", 1)
 	SetCVar("overrideArchive", 0)
 	SetCVar("cameraDistanceMaxZoomFactor", 2.6)
 	SetCVar("chatClassColorOverride", 0)
+	SetActionBarToggles(1, 1, 1, 1)
+	if not InCombatLockdown() then
+		SetCVar("nameplateMotion", 1)
+		SetCVar("nameplateShowAll", 1)
+		SetCVar("nameplateShowEnemies", 1)
+		SetCVar("alwaysShowActionBars", 1)
+	end
 end
 
 local function ForceRaidFrame()
 	if InCombatLockdown() then return end
 	if not CompactUnitFrameProfiles then return end
+	SetCVar("useCompactPartyFrames", 1)
 	SetRaidProfileOption(CompactUnitFrameProfiles.selectedProfile, "useClassColors", true)
 	SetRaidProfileOption(CompactUnitFrameProfiles.selectedProfile, "displayPowerBar", true)
 	SetRaidProfileOption(CompactUnitFrameProfiles.selectedProfile, "displayBorder", false)
 	CompactUnitFrameProfiles_ApplyCurrentSettings()
 	CompactUnitFrameProfiles_UpdateCurrentPanel()
 end
-
-local function ForceChatSettings()
-	B:GetModule("Chat"):UpdateChatSize()
-
-	for i = 1, NUM_CHAT_WINDOWS do
-		local cf = _G["ChatFrame"..i]
-		ChatFrame_RemoveMessageGroup(cf, "CHANNEL")
-	end
-	FCF_SavePositionAndDimensions(ChatFrame1)
-
-	NDuiDB["Chat"]["Lock"] = true
-end
-
-StaticPopupDialogs["RELOAD_NDUI"] = {
-	text = L["ReloadUI Required"],
-	button1 = APPLY,
-	button2 = CLASS_TRIAL_THANKS_DIALOG_CLOSE_BUTTON,
-	OnAccept = function()
-		ReloadUI()
-	end,
-}
 
 -- DBM bars
 local function ForceDBMOptions()
@@ -279,7 +260,7 @@ local function YesTutor()
 	local lr = B.SetGradient(tutor, "H", .7, .7, .7, .5, 0, 80, C.mult)
 	lr:SetPoint("TOP", 40, -32)
 
-	local title = B.CreateFS(tutor, 14, "", true, "TOP", 0, -10)
+	local title = B.CreateFS(tutor, 16, "", true, "TOP", 0, -10)
 	local body = B.CreateFS(tutor, 14, "", false, "TOPLEFT", 20, -50)
 	body:SetPoint("BOTTOMRIGHT", -20, 50)
 	body:SetJustifyV("TOP")
@@ -293,20 +274,24 @@ local function YesTutor()
 	local apply = B.CreateButton(tutor, 50, 20, APPLY)
 	apply:SetPoint("BOTTOMRIGHT", -10, 10)
 
-	local titles = {L["Default Settings"], L["ChatFrame"], UI_SCALE, L["Skins"], L["Tips"]}
+	local titles = {L["Default Settings"], L["Skins"], L["Tips"]}
 	local function RefreshText(page)
 		title:SetText(titles[page])
 		body:SetText(L["Tutorial Page"..page])
-		foot:SetText(page.."/5")
+		foot:SetText(page.."/3")
 	end
 	RefreshText(1)
 
 	local currentPage = 1
-	pass:SetScript("OnClick", function()
-		if currentPage > 3 then pass:Hide() end
+	local function TurnNextPage()
 		currentPage = currentPage + 1
 		RefreshText(currentPage)
 		PlaySound(SOUNDKIT.IG_QUEST_LOG_OPEN)
+	end
+
+	pass:SetScript("OnClick", function()
+		pass:Hide()
+		TurnNextPage()
 	end)
 	apply:SetScript("OnClick", function()
 		if currentPage == 1 then
@@ -315,13 +300,6 @@ local function YesTutor()
 			UIErrorsFrame:AddMessage(DB.InfoColor..L["Default Settings Check"])
 			pass:Show()
 		elseif currentPage == 2 then
-			ForceChatSettings()
-			UIErrorsFrame:AddMessage(DB.InfoColor..L["Chat Settings Check"])
-		elseif currentPage == 3 then
-			NDuiADB["LockUIScale"] = true
-			B:SetupUIScale()
-			UIErrorsFrame:AddMessage(DB.InfoColor..L["UIScale Check"])
-		elseif currentPage == 4 then
 			NDuiADB["DBMRequest"] = true
 			NDuiADB["SkadaRequest"] = true
 			NDuiADB["BWRequest"] = true
@@ -329,16 +307,13 @@ local function YesTutor()
 			NDuiADB["ResetDetails"] = true
 			UIErrorsFrame:AddMessage(DB.InfoColor..L["Tutorial Complete"])
 			pass:Hide()
-		elseif currentPage == 5 then
-			NDuiDB["Tutorial"]["Complete"] = true
+		elseif currentPage == 3 then
+			C.db["Tutorial"]["Complete"] = true
 			tutor:Hide()
 			StaticPopup_Show("RELOAD_NDUI")
 			currentPage = 0
 		end
-
-		currentPage = currentPage + 1
-		RefreshText(currentPage)
-		PlaySound(SOUNDKIT.IG_QUEST_LOG_OPEN)
+		TurnNextPage()
 	end)
 end
 
@@ -360,24 +335,27 @@ local function HelloWorld()
 	local lr = B.SetGradient(welcome, "H", .7, .7, .7, .5, 0, 100, C.mult)
 	lr:SetPoint("TOP", 50, -35)
 
-	B.CreateFS(welcome, 14, L["Help Info1"], false, "TOPLEFT", 20, -50)
-	B.CreateFS(welcome, 14, L["Help Info2"], false, "TOPLEFT", 20, -70)
+	local intro = B.CreateFS(welcome, 14, "", false, "TOPLEFT", 20, -70)
+	intro:SetPoint("BOTTOMRIGHT", -20, 50)
+	intro:SetWordWrap(true)
+	intro:SetJustifyV("TOP")
+	intro:SetJustifyH("LEFT")
 
-	local c1, c2 = "|c00FFFF00", "|c0000FF00"
+	local c1, c2 = "|cffFFFF00", "|cff00FF00"
 	local lines = {
-		c1.." /ww "..c2..L["Help Info12"],
-		c1.." /bb "..c2..L["Help Info5"],
-		c1.." /mm "..c2..L["Help Info6"],
-		c1.." /rl "..c2..L["Help Info7"],
-		c1.." /ncl "..c2..L["Help Info9"],
+		c1.." /ww "..c2..L["Cmd ww intro"],
+		c1.." /bb "..c2..L["Cmd bb intro"],
+		c1.." /mm /mmm "..c2..L["Cmd mm intro"],
+		c1.." /rl "..c2..L["Cmd rl intro"],
+		c1.." /ncl "..c2..L["Cmd ncl intro"],
 	}
-	for index, line in pairs(lines) do
-		B.CreateFS(welcome, 14, line, false, "TOPLEFT", 20, -100-index*24)
+	local text = L["Help Intro"].."|n|n"
+	for _, line in pairs(lines) do
+		text = text.."|n|n"..line
 	end
-	B.CreateFS(welcome, 14, L["Help Info10"], false, "TOPLEFT", 20, -310)
-	B.CreateFS(welcome, 14, L["Help Info11"], false, "TOPLEFT", 20, -330)
+	intro:SetText(text)
 
-	if NDuiDB["Tutorial"]["Complete"] then
+	if C.db["Tutorial"]["Complete"] then
 		local close = B.CreateButton(welcome, 16, 16, true, DB.closeTex)
 		close:SetPoint("TOPRIGHT", -10, -10)
 		close:SetScript("OnClick", function()
@@ -402,5 +380,5 @@ function module:OnLogin()
 
 	-- Tutorial and settings
 	ForceAddonSkins()
-	if not NDuiDB["Tutorial"]["Complete"] then HelloWorld() end
+	if not C.db["Tutorial"]["Complete"] then HelloWorld() end
 end

@@ -3,7 +3,6 @@ local B, C, L, DB = unpack(ns)
 local M = B:RegisterModule("Misc")
 
 local _G = getfenv(0)
-local tonumber = tonumber
 local InCombatLockdown, IsModifiedClick, IsAltKeyDown = InCombatLockdown, IsModifiedClick, IsAltKeyDown
 local GetNumAuctionItems, GetAuctionItemInfo = GetNumAuctionItems, GetAuctionItemInfo
 local FauxScrollFrame_GetOffset, SetMoneyFrameColor = FauxScrollFrame_GetOffset, SetMoneyFrameColor
@@ -67,7 +66,7 @@ function M:OnLogin()
 
 	-- Instant delete
 	hooksecurefunc(StaticPopupDialogs["DELETE_GOOD_ITEM"], "OnShow", function(self)
-		if NDuiDB["Misc"]["InstantDelete"] then
+		if C.db["Misc"]["InstantDelete"] then
 			self.editBox:SetText(DELETE_ITEM_CONFIRM_STRING)
 		end
 	end)
@@ -149,7 +148,7 @@ function M:DoFasterLoot()
 end
 
 function M:UpdateFasterLoot()
-	if NDuiDB["Misc"]["FasterLoot"] then
+	if C.db["Misc"]["FasterLoot"] then
 		B:RegisterEvent("LOOT_READY", M.DoFasterLoot)
 	else
 		B:UnregisterEvent("LOOT_READY", M.DoFasterLoot)
@@ -201,7 +200,7 @@ function M:ErrorBlockerOnEvent(_, text)
 end
 
 function M:UpdateErrorBlocker()
-	if NDuiDB["Misc"]["HideErrors"] then
+	if C.db["Misc"]["HideErrors"] then
 		B:RegisterEvent("UI_ERROR_MESSAGE", M.ErrorBlockerOnEvent)
 	else
 		isRegistered = true
@@ -401,7 +400,7 @@ function M:MenuButton_Show(_, unit)
 end
 
 function M:MenuButton_Add()
-	if not NDuiDB["Misc"]["EnhancedMenu"] then return end
+	if not C.db["Misc"]["EnhancedMenu"] then return end
 
 	M.MenuButtonList = {
 		["name"] = COPY_NAME,
@@ -412,7 +411,7 @@ end
 
 -- Auto dismount and auto stand
 function M:AutoDismount()
-	if not NDuiDB["Misc"]["AutoDismount"] then return end
+	if not C.db["Misc"]["AutoDismount"] then return end
 
 	local standString = {
 		[ERR_LOOT_NOTSTANDING] = true,
@@ -440,7 +439,7 @@ end
 -- Block invite from strangers
 function M:BlockStrangerInvite()
 	B:RegisterEvent("PARTY_INVITE_REQUEST", function(_, _, _, _, _, _, _, guid)
-		if NDuiDB["Misc"]["BlockInvite"] and not (IsGuildMember(guid) or BNGetGameAccountInfoByGUID(guid) or C_FriendList_IsFriend(guid)) then
+		if C.db["Misc"]["BlockInvite"] and not (IsGuildMember(guid) or BNGetGameAccountInfoByGUID(guid) or C_FriendList_IsFriend(guid)) then
 			DeclineGroup()
 			StaticPopup_Hide("PARTY_INVITE")
 		end

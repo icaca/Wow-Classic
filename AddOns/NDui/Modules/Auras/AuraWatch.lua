@@ -37,7 +37,7 @@ local function DataAnalyze(v)
 end
 
 local function InsertData(index, target)
-	if NDuiDB["AuraWatchList"]["Switcher"][index] then
+	if C.db["AuraWatchList"]["Switcher"][index] then
 		wipe(target)
 	end
 
@@ -54,15 +54,15 @@ local function ConvertTable()
 	for i = 1, 10 do
 		myTable[i] = {}
 		if i < 10 then
-			local value = NDuiDB["AuraWatchList"][i]
+			local value = C.db["AuraWatchList"][i]
 			if value and next(value) then
 				for spellID, v in pairs(value) do
 					myTable[i][spellID] = DataAnalyze(v)
 				end
 			end
 		else
-			if next(NDuiDB["InternalCD"]) then
-				for spellID, v in pairs(NDuiDB["InternalCD"]) do
+			if next(C.db["InternalCD"]) then
+				for spellID, v in pairs(C.db["InternalCD"]) do
 					myTable[i][spellID] = DataAnalyze(v)
 				end
 			end
@@ -114,7 +114,7 @@ end
 
 local auraListByName = {}
 local function BuildNamesForSpellRank()
-	if not NDuiDB["AuraWatch"]["WatchSpellRank"] then return end
+	if not C.db["AuraWatch"]["WatchSpellRank"] then return end
 
 	for KEY, VALUE in pairs(AuraList) do
 		for spellID, value in pairs(VALUE.List) do
@@ -155,9 +155,11 @@ local function BuildUnitIDTable()
 end
 
 local function BuildCooldownTable()
+	wipe(cooldownTable)
+
 	for KEY, VALUE in pairs(AuraList) do
 		for spellID, value in pairs(VALUE.List) do
-			if value.SpellID or value.ItemID or value.SlotID or value.TotemID then
+			if value.SpellID and IsPlayerSpell(value.SpellID) or value.ItemID or value.SlotID or value.TotemID then
 				if not cooldownTable[KEY] then cooldownTable[KEY] = {} end
 				cooldownTable[KEY][spellID] = true
 			end
@@ -205,7 +207,7 @@ end
 
 -- Icon mode
 local function BuildICON(iconSize)
-	iconSize = iconSize * NDuiDB["AuraWatch"]["IconScale"]
+	iconSize = iconSize * C.db["AuraWatch"]["IconScale"]
 
 	local frame = CreateFrame("Frame", nil, PetBattleFrameHider)
 	frame:SetSize(iconSize, iconSize)
@@ -228,7 +230,7 @@ local function BuildICON(iconSize)
 
 	frame.glowFrame = B.CreateGlowFrame(frame, iconSize)
 
-	if not NDuiDB["AuraWatch"]["ClickThrough"] then enableTooltip(frame) end
+	if not C.db["AuraWatch"]["ClickThrough"] then enableTooltip(frame) end
 
 	frame:Hide()
 	return frame
@@ -256,7 +258,7 @@ local function BuildBAR(barWidth, iconSize)
 	frame.Spellname = B.CreateFS(frame.Statusbar, 14, "", false, "LEFT", 2, 8)
 	frame.Spellname:SetWidth(frame.Statusbar:GetWidth()*.6)
 	frame.Spellname:SetJustifyH("LEFT")
-	if not NDuiDB["AuraWatch"]["ClickThrough"] then enableTooltip(frame) end
+	if not C.db["AuraWatch"]["ClickThrough"] then enableTooltip(frame) end
 
 	frame:Hide()
 	return frame
@@ -315,6 +317,7 @@ local function InitSetup()
 	ConvertIntCDToNameTable()
 	BuildUnitIDTable()
 	BuildCooldownTable()
+	B:RegisterEvent("SPELLS_CHANGED", BuildCooldownTable)
 	BuildAura()
 	SetupAnchor()
 end
@@ -377,7 +380,7 @@ function A:AuraWatch_UpdateCD()
 			local group = AuraList[KEY]
 			local value = group.List[spellID]
 			if value then
-				if value.SpellID and IsPlayerSpell(value.SpellID) then
+				if value.SpellID then
 					local name, _, icon = GetSpellInfo(value.SpellID)
 					local start, duration = GetSpellCooldown(value.SpellID)
 					local charges, maxCharges, chargeStart, chargeDuration = GetSpellCharges(value.SpellID)
@@ -662,7 +665,7 @@ end
 
 -- Event
 function A.AuraWatch_OnEvent(event, ...)
-	if not NDuiDB["AuraWatch"]["Enable"] then
+	if not C.db["AuraWatch"]["Enable"] then
 		B:UnregisterEvent("PLAYER_ENTERING_WORLD", A.AuraWatch_OnEvent)
 		B:UnregisterEvent("COMBAT_LOG_EVENT_UNFILTERED", A.AuraWatch_OnEvent)
 		return

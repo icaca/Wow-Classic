@@ -13,6 +13,7 @@ DB.isClassic = select(4, GetBuildInfo()) < 20000
 -- Colors
 DB.MyName = UnitName("player")
 DB.MyRealm = GetRealmName()
+DB.MyFullName = DB.MyName.."-"..DB.MyRealm
 DB.MyClass = select(2, UnitClass("player"))
 DB.MyFaction = UnitFactionGroup("player")
 DB.ClassList = {}
@@ -61,6 +62,8 @@ DB.logoTex = Media.."Hutu\\logoClassic"
 DB.sortTex = Media.."SortIcon"
 DB.closeTex = Media.."Hutu\\close"
 DB.ArrowUp = Media.."Hutu\\arrow"
+DB.afdianTex = Media.."Hutu\\Afdian"
+DB.patreonTex = Media.."Hutu\\Patreon"
 DB.mailTex = "Interface\\Minimap\\Tracking\\Mailbox"
 DB.gearTex = "Interface\\WorldMap\\Gear_64"
 DB.eyeTex = "Interface\\Minimap\\Raid_Icon"		-- blue: \\Dungeon_Icon
@@ -202,6 +205,24 @@ DB.ReminderBuffs = {
 				[25289] = true,
 			},
 			depends = {6673, 5242, 6192, 11549, 11550, 11551, 25289},
+			combat = true,
+			instance = true,
+			pvp = true,
+		},
+	},
+	HUNTER = {
+		{	spells = {	-- 雄鹰守护
+				[13165] = true,
+			},
+			depend = 13165,
+			combat = true,
+			instance = true,
+			pvp = true,
+		},
+		{	spells = {	--- 强击光环
+				[20906] = true,
+			},
+			depend = 20906,
 			combat = true,
 			instance = true,
 			pvp = true,

@@ -7,7 +7,9 @@ local pairs, tonumber = pairs, tonumber
 local IsInRaid, IsInGroup, IsInInstance, IsInGuild = IsInRaid, IsInGroup, IsInInstance, IsInGuild
 local UnitInRaid, UnitInParty, SendChatMessage = UnitInRaid, UnitInParty, SendChatMessage
 local UnitName, Ambiguate, GetTime = UnitName, Ambiguate, GetTime
-local GetSpellLink, GetSpellInfo = GetSpellLink, GetSpellInfo
+local GetSpellLink, GetSpellInfo, GetSpellCooldown = GetSpellLink, GetSpellInfo, GetSpellCooldown
+local GetActionInfo, GetMacroSpell, GetMacroItem = GetActionInfo, GetMacroSpell, GetMacroItem
+local GetItemInfo, GetItemInfoFromHyperlink = GetItemInfo, GetItemInfoFromHyperlink
 local C_ChatInfo_SendAddonMessage = C_ChatInfo.SendAddonMessage
 local C_ChatInfo_RegisterAddonMessagePrefix = C_ChatInfo.RegisterAddonMessagePrefix
 
@@ -43,13 +45,13 @@ for spellID in pairs(spellBlackList) do
 end
 
 function M:IsAllyPet(sourceFlags)
-	if DB:IsMyPet(sourceFlags) or (not NDuiDB["Misc"]["OwnInterrupt"] and (sourceFlags == DB.PartyPetFlags or sourceFlags == DB.RaidPetFlags)) then
+	if DB:IsMyPet(sourceFlags) or (not C.db["Misc"]["OwnInterrupt"] and (sourceFlags == DB.PartyPetFlags or sourceFlags == DB.RaidPetFlags)) then
 		return true
 	end
 end
 
 function M:InterruptAlert_Update(...)
-	if NDuiDB["Misc"]["AlertInInstance"] and (not IsInInstance()) then return end
+	if C.db["Misc"]["AlertInInstance"] and (not IsInInstance()) then return end
 
 	local _, eventType, _, sourceGUID, sourceName, sourceFlags, _, _, destName, _, _, _, spellName, _, _, extraskillName, _, auraType = ...
 	if not sourceGUID or sourceName == destName then return end
@@ -58,11 +60,11 @@ function M:InterruptAlert_Update(...)
 		local infoText = infoType[eventType]
 		if infoText then
 			if infoText == L["BrokenSpell"] then
-				if not NDuiDB["Misc"]["BrokenSpell"] then return end
+				if not C.db["Misc"]["BrokenSpell"] then return end
 				if auraType and auraType == AURA_TYPE_BUFF or blackList[spellName] then return end
 				SendChatMessage(format(infoText, sourceName, extraskillName, destName, spellName), msgChannel())
 			else
-				if NDuiDB["Misc"]["OwnInterrupt"] and sourceName ~= DB.MyName and not M:IsAllyPet(sourceFlags) then return end
+				if C.db["Misc"]["OwnInterrupt"] and sourceName ~= DB.MyName and not M:IsAllyPet(sourceFlags) then return end
 				SendChatMessage(format(infoText, sourceName, spellName, destName, extraskillName), msgChannel())
 			end
 		end
@@ -78,7 +80,7 @@ function M:InterruptAlert_CheckGroup()
 end
 
 function M:InterruptAlert()
-	if NDuiDB["Misc"]["Interrupt"] then
+	if C.db["Misc"]["Interrupt"] then
 		self:InterruptAlert_CheckGroup()
 		B:RegisterEvent("GROUP_LEFT", self.InterruptAlert_CheckGroup)
 		B:RegisterEvent("GROUP_JOINED", self.InterruptAlert_CheckGroup)
@@ -108,19 +110,12 @@ function M:VersionCheck_Compare(new, old)
 	end
 end
 
-function M:VersionCheck_Create(text)
-	local frame = CreateFrame("Frame", nil, nil, "MicroButtonAlertTemplate")
-	frame:SetPoint("BOTTOMLEFT", ChatFrame1, "TOPLEFT", 20, 70)
-	frame.Text:SetText(text)
-	frame:Show()
-end
-
 local hasChecked
 function M:VersionCheck_Initial()
 	if not hasChecked then
 		if M:VersionCheck_Compare(NDuiADB["DetectVersion"], DB.Version) == "IsNew" then
 			local release = gsub(NDuiADB["DetectVersion"], "(%d+)$", "0")
-			M:VersionCheck_Create(format(L["Outdated NDui"], release))
+			B:ShowHelpTip(ChatFrame1, format(L["Outdated NDui"], release), "TOP", 0, 70, nil, "Version")
 		end
 
 		hasChecked = true
@@ -184,7 +179,7 @@ local itemList = {
 }
 
 function M:ItemAlert_Update(unit, _, spellID)
-	if not NDuiDB["Misc"]["PlacedItemAlert"] then return end
+	if not C.db["Misc"]["PlacedItemAlert"] then return end
 
 	if (UnitInRaid(unit) or UnitInParty(unit)) and spellID and itemList[spellID] and lastTime ~= GetTime() then
 		local who = UnitName(unit)
@@ -210,10 +205,137 @@ function M:PlacedItemAlert()
 	B:RegisterEvent("GROUP_JOINED", self.ItemAlert_CheckGroup)
 end
 
+-- Incompatible check
+local IncompatibleAddOns = {
+	["!!!163UI!!!"] = true,
+	["BigFoot"] = true,
+	["_ShiGuang"] = true,
+	["Aurora"] = true,
+	["AuroraClassic"] = true,
+	["ClassicQuestLog"] = true,
+	["QuestGuru"] = true,
+	["QuestLogEx"] = true,
+	["SexyMap"] = true,
+	["TrackingEye"] = true,
+}
+local AddonDependency = {
+	["BigFoot"] = "!!!Libs",
+}
+function M:CheckIncompatible()
+	local IncompatibleList = {}
+	for addon in pairs(IncompatibleAddOns) do
+		if IsAddOnLoaded(addon) then
+			tinsert(IncompatibleList, addon)
+		end
+	end
+
+	if #IncompatibleList > 0 then
+		local frame = CreateFrame("Frame", nil, UIParent)
+		frame:SetPoint("TOP", 0, -200)
+		frame:SetFrameStrata("HIGH")
+		B.CreateMF(frame)
+		B.SetBD(frame)
+		B.CreateFS(frame, 18, L["FoundIncompatibleAddon"], true, "TOPLEFT", 10, -10)
+		B.CreateWatermark(frame)
+
+		local offset = 0
+		for _, addon in pairs(IncompatibleList) do
+			B.CreateFS(frame, 14, addon, false, "TOPLEFT", 10, -(50 + offset))
+			offset = offset + 24
+		end
+		frame:SetSize(300, 100 + offset)
+
+		local close = B.CreateButton(frame, 16, 16, true, DB.closeTex)
+		close:SetPoint("TOPRIGHT", -10, -10)
+		close:SetScript("OnClick", function() frame:Hide() end)
+
+		local disable = B.CreateButton(frame, 150, 25, L["DisableIncompatibleAddon"])
+		disable:SetPoint("BOTTOM", 0, 10)
+		disable.text:SetTextColor(1, 0, 0)
+		disable:SetScript("OnClick", function()
+			for _, addon in pairs(IncompatibleList) do
+				DisableAddOn(addon, true)
+				if AddonDependency[addon] then
+					DisableAddOn(AddonDependency[addon], true)
+				end
+			end
+			ReloadUI()
+		end)
+	end
+end
+
+-- Send cooldown status
+local function GetRemainTime(second)
+	if second > 60 then
+		return format("%d:%.2d", second/60, second%60)
+	else
+		return format("%ds", second)
+	end
+end
+
+local lastCDSend = 0
+function M:SendCurrentSpell(thisTime, spellID)
+	local start, duration = GetSpellCooldown(spellID)
+	local spellName = GetSpellInfo(spellID)
+	if start and duration > 0 then
+		local remain = start + duration - thisTime
+		SendChatMessage(format(L["CooldownRemaining"], spellName, GetRemainTime(remain)), msgChannel())
+	else
+		SendChatMessage(format(L["CooldownCompleted"], spellName), msgChannel())
+	end
+end
+
+function M:SendCurrentItem(thisTime, itemID, itemLink)
+	local start, duration = GetItemCooldown(itemID)
+	if start and duration > 0 then
+		local remain = start + duration - thisTime
+		SendChatMessage(format(L["CooldownRemaining"], itemLink, GetRemainTime(remain)), msgChannel())
+	else
+		SendChatMessage(format(L["CooldownCompleted"], itemLink), msgChannel())
+	end
+end
+
+function M:AnalyzeButtonCooldown()
+	if not C.db["Misc"]["SendActionCD"] then return end
+	if not IsInGroup() then return end
+
+	local thisTime = GetTime()
+	if thisTime - lastCDSend < 1.5 then return end
+	lastCDSend = thisTime
+
+	local spellType, id = GetActionInfo(self.action)
+	if spellType == "spell" then
+		M:SendCurrentSpell(thisTime, id)
+	elseif spellType == "item" then
+		local itemName, itemLink = GetItemInfo(id)
+		M:SendCurrentItem(thisTime, id, itemLink or itemName)
+	elseif spellType == "macro" then
+		local spellID = GetMacroSpell(id)
+		local _, itemLink = GetMacroItem(id)
+		local itemID = itemLink and GetItemInfoFromHyperlink(itemLink)
+		if spellID then
+			M:SendCurrentSpell(thisTime, spellID)
+		elseif itemID then
+			M:SendCurrentItem(thisTime, itemID, itemLink)
+		end
+	end
+end
+
+function M:SendCDStatus()
+	if not C.db["Actionbar"]["Enable"] then return end
+
+	local Bar = B:GetModule("Actionbar")
+	for _, button in pairs(Bar.buttons) do
+		button:SetScript("OnMouseWheel", M.AnalyzeButtonCooldown)
+	end
+end
+
 -- Init
 function M:AddAlerts()
 	M:InterruptAlert()
 	M:VersionCheck()
 	M:PlacedItemAlert()
+	M:CheckIncompatible()
+	M:SendCDStatus()
 end
 M:RegisterMisc("Alerts", M.AddAlerts)

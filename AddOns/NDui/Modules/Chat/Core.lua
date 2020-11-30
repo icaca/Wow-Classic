@@ -5,11 +5,12 @@ local cr, cg, cb = DB.r, DB.g, DB.b
 
 local _G = _G
 local tostring, pairs, ipairs, strsub, strlower = tostring, pairs, ipairs, string.sub, string.lower
-local IsInGroup, IsInRaid, IsInGuild, IsShiftKeyDown, IsControlKeyDown = IsInGroup, IsInRaid, IsInGuild, IsShiftKeyDown, IsControlKeyDown
-local ChatEdit_UpdateHeader, GetChannelList, GetCVar, SetCVar, Ambiguate = ChatEdit_UpdateHeader, GetChannelList, GetCVar, SetCVar, Ambiguate
+local IsInGroup, IsInRaid, IsInGuild, IsShiftKeyDown, IsControlKeyDown, PlaySound = IsInGroup, IsInRaid, IsInGuild, IsShiftKeyDown, IsControlKeyDown, PlaySound
+local ChatEdit_UpdateHeader, GetChannelList, GetCVar, SetCVar, Ambiguate, GetTime = ChatEdit_UpdateHeader, GetChannelList, GetCVar, SetCVar, Ambiguate, GetTime
 local GetNumGuildMembers, GetGuildRosterInfo, IsGuildMember, UnitIsGroupLeader, UnitIsGroupAssistant, InviteToGroup = GetNumGuildMembers, GetGuildRosterInfo, IsGuildMember, UnitIsGroupLeader, UnitIsGroupAssistant, InviteToGroup
 local BNGetFriendInfoByID, BNGetGameAccountInfo, CanCooperateWithGameAccount, BNInviteFriend, BNFeaturesEnabledAndConnected = BNGetFriendInfoByID, BNGetGameAccountInfo, CanCooperateWithGameAccount, BNInviteFriend, BNFeaturesEnabledAndConnected
 local GeneralDockManager = GeneralDockManager
+local messageSoundID = SOUNDKIT.TELL_MESSAGE
 
 local maxLines = 1024
 local fontOutline
@@ -24,7 +25,7 @@ end
 
 local isScaling = false
 function module:UpdateChatSize()
-	if not NDuiDB["Chat"]["Lock"] then return end
+	if not C.db["Chat"]["Lock"] then return end
 	if isScaling then return end
 	isScaling = true
 
@@ -34,14 +35,10 @@ function module:UpdateChatSize()
 	if ChatFrame1.FontStringContainer then
 		ChatFrame1.FontStringContainer:SetOutside(ChatFrame1)
 	end
-	if ChatFrame1:IsShown() then
-		ChatFrame1:Hide()
-		ChatFrame1:Show()
-	end
 	ChatFrame1:ClearAllPoints()
 	ChatFrame1:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 0, 30)
-	ChatFrame1:SetWidth(NDuiDB["Chat"]["ChatWidth"])
-	ChatFrame1:SetHeight(NDuiDB["Chat"]["ChatHeight"])
+	ChatFrame1:SetWidth(C.db["Chat"]["ChatWidth"])
+	ChatFrame1:SetHeight(C.db["Chat"]["ChatHeight"])
 
 	isScaling = false
 end
@@ -49,7 +46,7 @@ end
 local function BlackBackground(self)
 	local frame = B.SetBD(self.Background)
 	frame:SetPoint("BOTTOMRIGHT", 26, -7)
-	frame:SetShown(NDuiDB["Chat"]["ChatBGType"] == 2)
+	frame:SetShown(C.db["Chat"]["ChatBGType"] == 2)
 
 	return frame
 end
@@ -59,7 +56,7 @@ local function GradientBackground(self)
 	frame:SetPoint("TOPLEFT", self.Background)
 	frame:SetPoint("BOTTOMRIGHT", 26, -7)
 	frame:SetFrameLevel(0)
-	frame:SetShown(NDuiDB["Chat"]["ChatBGType"] == 3)
+	frame:SetShown(C.db["Chat"]["ChatBGType"] == 3)
 
 	local tex = B.SetGradient(frame, "H", 0, 0, 0, .5, 0)
 	tex:SetOutside()
@@ -75,7 +72,6 @@ function module:SkinChat()
 
 	local name = self:GetName()
 	local fontSize = select(2, self:GetFont())
-	self:SetClampRectInsets(0, 0, 0, 0)
 	self:SetMaxResize(DB.ScreenWidth, DB.ScreenHeight)
 	self:SetMinResize(100, 50)
 	self:SetFont(DB.Font[1], fontSize, fontOutline)
@@ -123,10 +119,10 @@ function module:ToggleChatBackground()
 	for _, chatFrameName in ipairs(CHAT_FRAMES) do
 		local frame = _G[chatFrameName]
 		if frame.__background then
-			frame.__background:SetShown(NDuiDB["Chat"]["ChatBGType"] == 2)
+			frame.__background:SetShown(C.db["Chat"]["ChatBGType"] == 2)
 		end
 		if frame.__gradient then
-			frame.__gradient:SetShown(NDuiDB["Chat"]["ChatBGType"] == 3)
+			frame.__gradient:SetShown(C.db["Chat"]["ChatBGType"] == 3)
 		end
 	end
 end
@@ -178,6 +174,10 @@ hooksecurefunc("ChatEdit_CustomTabPressed", module.UpdateTabChannelSwitch)
 
 -- Quick Scroll
 function module:QuickMouseScroll(dir)
+	if not NDuiADB["Help"]["ChatScroll"] then
+		B:ShowHelpTip(ChatFrame1, L["ChatScrollHelp"], "RIGHT", 20, 0, nil, "ChatScroll")
+	end
+
 	if dir > 0 then
 		if IsShiftKeyDown() then
 			self:ScrollToTop()
@@ -199,7 +199,7 @@ hooksecurefunc("FloatingChatFrame_OnMouseScroll", module.QuickMouseScroll)
 -- Autoinvite by whisper
 local whisperList = {}
 function module:UpdateWhisperList()
-	B.SplitList(whisperList, NDuiDB["Chat"]["Keyword"], true)
+	B.SplitList(whisperList, C.db["Chat"]["Keyword"], true)
 end
 
 function module:IsUnitInGuild(unitName)
@@ -222,12 +222,12 @@ function module.OnChatWhisper(event, ...)
 				local gameID = select(6, BNGetFriendInfoByID(presenceID))
 				if gameID then
 					local _, charName, _, realmName = BNGetGameAccountInfo(gameID)
-					if CanCooperateWithGameAccount(gameID) and (not NDuiDB["Chat"]["GuildInvite"] or module:IsUnitInGuild(charName.."-"..realmName)) then
+					if CanCooperateWithGameAccount(gameID) and (not C.db["Chat"]["GuildInvite"] or module:IsUnitInGuild(charName.."-"..realmName)) then
 						BNInviteFriend(gameID)
 					end
 				end
 			else
-				if not NDuiDB["Chat"]["GuildInvite"] or IsGuildMember(guid) then
+				if not C.db["Chat"]["GuildInvite"] or IsGuildMember(guid) then
 					InviteToGroup(author)
 				end
 			end
@@ -236,15 +236,15 @@ function module.OnChatWhisper(event, ...)
 end
 
 function module:WhisperInvite()
-	if not NDuiDB["Chat"]["Invite"] then return end
-	self:UpdateWhisperList()
+	if not C.db["Chat"]["Invite"] then return end
+	module:UpdateWhisperList()
 	B:RegisterEvent("CHAT_MSG_WHISPER", module.OnChatWhisper)
 	B:RegisterEvent("CHAT_MSG_BN_WHISPER", module.OnChatWhisper)
 end
 
 -- Sticky whisper
 function module:ChatWhisperSticky()
-	if NDuiDB["Chat"]["Sticky"] then
+	if C.db["Chat"]["Sticky"] then
 		ChatTypeInfo["WHISPER"].sticky = 1
 		ChatTypeInfo["BN_WHISPER"].sticky = 1
 	else
@@ -283,24 +283,41 @@ function module:UpdateTabEventColors(event)
 	end
 end
 
+local whisperEvents = {
+	["CHAT_MSG_WHISPER"] = true,
+	["CHAT_MSG_BN_WHISPER"] = true,
+}
+function module:PlayWhisperSound(event)
+	if whisperEvents[event] then
+		local currentTime = GetTime()
+		if not self.soundTimer or currentTime > self.soundTimer then
+			PlaySound(messageSoundID, "master")
+		end
+		self.soundTimer = currentTime + 5
+	end
+end
+
 function module:OnLogin()
-	fontOutline = NDuiDB["Skins"]["FontOutline"] and "OUTLINE" or ""
+	fontOutline = C.db["Skins"]["FontOutline"] and "OUTLINE" or ""
 
 	for i = 1, NUM_CHAT_WINDOWS do
-		self.SkinChat(_G["ChatFrame"..i])
+		local chatframe = _G["ChatFrame"..i]
+		module.SkinChat(chatframe)
+		ChatFrame_RemoveMessageGroup(chatframe, "CHANNEL")
 	end
 
 	hooksecurefunc("FCF_OpenTemporaryWindow", function()
 		for _, chatFrameName in ipairs(CHAT_FRAMES) do
 			local frame = _G[chatFrameName]
 			if frame.isTemporary then
-				self.SkinChat(frame)
+				module.SkinChat(frame)
 			end
 		end
 	end)
 
-	hooksecurefunc("FCFTab_UpdateColors", self.UpdateTabColors)
-	hooksecurefunc("FloatingChatFrame_OnEvent", self.UpdateTabEventColors)
+	hooksecurefunc("FCFTab_UpdateColors", module.UpdateTabColors)
+	hooksecurefunc("FloatingChatFrame_OnEvent", module.UpdateTabEventColors)
+	hooksecurefunc("ChatFrame_ConfigEventHandler", module.PlayWhisperSound)
 
 	-- Font size
 	for i = 1, 15 do
@@ -313,24 +330,25 @@ function module:OnLogin()
 	CombatLogQuickButtonFrame_CustomTexture:SetTexture(nil)
 
 	-- Add Elements
-	self:ChatWhisperSticky()
-	self:ChatFilter()
-	self:ChannelRename()
-	self:Chatbar()
-	self:ChatCopy()
-	self:UrlCopy()
-	self:WhisperInvite()
+	module:ChatWhisperSticky()
+	module:ChatFilter()
+	module:ChannelRename()
+	module:Chatbar()
+	module:ChatCopy()
+	module:UrlCopy()
+	module:WhisperInvite()
 
 	-- Lock chatframe
-	if NDuiDB["Chat"]["Lock"] then
-		hooksecurefunc("FCF_SavePositionAndDimensions", self.UpdateChatSize)
-		B:RegisterEvent("UI_SCALE_CHANGED", self.UpdateChatSize)
-		self:UpdateChatSize()
+	if C.db["Chat"]["Lock"] then
+		module:UpdateChatSize()
+		B:RegisterEvent("UI_SCALE_CHANGED", module.UpdateChatSize)
+		hooksecurefunc("FCF_SavePositionAndDimensions", module.UpdateChatSize)
+		FCF_SavePositionAndDimensions(ChatFrame1)
 	end
 
 	-- ProfanityFilter
 	if not BNFeaturesEnabledAndConnected() then return end
-	if NDuiDB["Chat"]["Freedom"] then
+	if C.db["Chat"]["Freedom"] then
 		if GetCVar("portal") == "CN" then
 			ConsoleExec("portal TW")
 		end

@@ -11,6 +11,7 @@ local Widgets = Addon.UI.Widgets
     text = string,
     fullWidth = boolean,
     width = number,
+    height = number,
     onClick = function,
     onEnter = function,
     onLeave = function
@@ -21,6 +22,7 @@ function Widgets:Button(options)
   button:SetText(options.text)
   button:SetFullWidth(options.fullWidth)
   if options.width then button:SetWidth(options.width) end
+  if options.height then button:SetHeight(options.height) end
   button:SetCallback("OnClick", options.onClick)
   button:SetCallback("OnEnter", options.onEnter)
   button:SetCallback("OnLeave", options.onLeave)
@@ -49,8 +51,8 @@ function Widgets:CheckBox(options)
   end)
 
   if options.tooltip then
-    checkBox:SetCallback("OnEnter", function(self)
-      GameTooltip:SetOwner(self.checkbg, "ANCHOR_TOP")
+    checkBox:SetCallback("OnEnter", function(this)
+      GameTooltip:SetOwner(this.checkbg, "ANCHOR_TOP")
       GameTooltip:SetText(options.label, 1.0, 0.82, 0)
       GameTooltip:AddLine(options.tooltip, 1, 1, 1, true)
       GameTooltip:Show()
@@ -103,14 +105,14 @@ function Widgets:CheckBoxSlider(options)
   slider:SetLabel(options.slider.label)
   slider:SetValue(options.slider.value)
   slider:SetDisabled(not options.checkBox.get())
-  slider:SetCallback("OnValueChanged", function(self, event, value)
-    options.slider.onValueChanged(self, event, value)
-    self.editbox:ClearFocus()
+  slider:SetCallback("OnValueChanged", function(this, event, value)
+    options.slider.onValueChanged(this, event, value)
+    this.editbox:ClearFocus()
   end)
 
   if options.slider.tooltip then
-    slider:SetCallback("OnEnter", function(self)
-      GameTooltip:SetOwner(self.label, "ANCHOR_TOP")
+    slider:SetCallback("OnEnter", function(this)
+      GameTooltip:SetOwner(this.label, "ANCHOR_TOP")
       GameTooltip:SetText(options.slider.label, 1.0, 0.82, 0)
       GameTooltip:AddLine(options.slider.tooltip, 1, 1, 1, true)
       GameTooltip:Show()
@@ -155,8 +157,8 @@ function Widgets:Dropdown(options)
   dropdown:SetCallback("OnValueChanged", options.onValueChanged)
 
   if options.tooltip then
-    dropdown:SetCallback("OnEnter", function(self)
-      GameTooltip:SetOwner(self.label, "ANCHOR_TOPLEFT")
+    dropdown:SetCallback("OnEnter", function(this)
+      GameTooltip:SetOwner(this.label, "ANCHOR_TOPLEFT")
       GameTooltip:SetText(options.label, 1.0, 0.82, 0)
       GameTooltip:AddLine(options.tooltip, 1, 1, 1, true)
       GameTooltip:Show()
@@ -313,6 +315,12 @@ end
 
   options = {
     parent = widget,
+    title = string,
+    data = {
+      lists = table,
+      items = table,
+      handleItem = function
+    }
   }
 ]]
 function Widgets:ItemFrame(options)
@@ -324,7 +332,11 @@ function Widgets:ItemFrame(options)
 
   local itemFrame = AceGUI:Create("Dejunk_ItemFrame")
   itemFrame:SetFullWidth(true)
-  parent:AddChild(itemFrame)
 
+  if options.data then
+    itemFrame:SetData(options.data)
+  end
+
+  parent:AddChild(itemFrame)
   return itemFrame
 end

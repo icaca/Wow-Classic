@@ -48,11 +48,11 @@ local chatLines, prevLineID, filterResult = {}, 0, false
 function module:GetFilterResult(event, msg, name, flag, guid)
 	if name == DB.MyName or (event == "CHAT_MSG_WHISPER" and flag == "GM") or flag == "DEV" then
 		return
-	elseif guid and NDuiDB["Chat"]["AllowFriends"] and (IsGuildMember(guid) or BNGetGameAccountInfoByGUID(guid) or C_FriendList_IsFriend(guid) or IsGUIDInGroup(guid)) then
+	elseif guid and C.db["Chat"]["AllowFriends"] and (IsGuildMember(guid) or BNGetGameAccountInfoByGUID(guid) or C_FriendList_IsFriend(guid) or IsGUIDInGroup(guid)) then
 		return
 	end
 
-	if NDuiDB["Chat"]["BlockStranger"] and event == "CHAT_MSG_WHISPER" then return true end -- Block strangers
+	if C.db["Chat"]["BlockStranger"] and event == "CHAT_MSG_WHISPER" then return true end -- Block strangers
 
 	if C.BadBoys[name] and C.BadBoys[name] >= 5 then return true end
 
@@ -92,7 +92,7 @@ function module:GetFilterResult(event, msg, name, flag, guid)
 		end
 	end
 
-	if matches >= NDuiDB["Chat"]["Matches"] then
+	if matches >= C.db["Chat"]["Matches"] then
 		return true
 	end
 
@@ -172,22 +172,6 @@ local function isItemHasLevel(link)
 	end
 end
 
-local function GetSocketTexture(socket, count)
-	return strrep("|TInterface\\ItemSocketingFrame\\UI-EmptySocket-"..socket..":0|t", count)
-end
-
-local function isItemHasGem(link)
-	local text = ""
-	local stats = GetItemStats(link)
-	for stat, count in pairs(stats) do
-		local socket = strmatch(stat, "EMPTY_SOCKET_(%S+)")
-		if socket then
-			text = text..GetSocketTexture(socket, count)
-		end
-	end
-	return text
-end
-
 local itemCache = {}
 local function convertItemLevel(link)
 	if itemCache[link] then return itemCache[link] end
@@ -196,7 +180,6 @@ local function convertItemLevel(link)
 	if itemLink then
 		local name, itemLevel = isItemHasLevel(itemLink)
 		if name and itemLevel then
-		--	link = gsub(link, "|h%[(.-)%]|h", "|h["..name.."("..itemLevel..isItemHasGem(itemLink)..")]|h") -- there is no gems in classic
 			link = gsub(link, "|h%[(.-)%]|h", "|h["..name.."("..itemLevel..")]|h")
 			itemCache[link] = link
 		end
@@ -210,7 +193,7 @@ function module:UpdateChatItemLevel(_, msg, ...)
 end
 
 function module:ChatFilter()
-	if NDuiDB["Chat"]["EnableFilter"] then
+	if C.db["Chat"]["EnableFilter"] then
 		self:UpdateFilterList()
 		self:UpdateFilterWhiteList()
 		ChatFrame_AddMessageEventFilter("CHAT_MSG_CHANNEL", self.UpdateChatFilter)
@@ -221,7 +204,7 @@ function module:ChatFilter()
 		ChatFrame_AddMessageEventFilter("CHAT_MSG_TEXT_EMOTE", self.UpdateChatFilter)
 	end
 
-	if NDuiDB["Chat"]["BlockAddonAlert"] then
+	if C.db["Chat"]["BlockAddonAlert"] then
 		ChatFrame_AddMessageEventFilter("CHAT_MSG_SAY", self.UpdateAddOnBlocker)
 		ChatFrame_AddMessageEventFilter("CHAT_MSG_WHISPER", self.UpdateAddOnBlocker)
 		ChatFrame_AddMessageEventFilter("CHAT_MSG_EMOTE", self.UpdateAddOnBlocker)
@@ -234,7 +217,7 @@ function module:ChatFilter()
 		ChatFrame_AddMessageEventFilter("CHAT_MSG_CHANNEL", self.UpdateAddOnBlocker)
 	end
 
-	if NDuiDB["Chat"]["ChatItemLevel"] then
+	if C.db["Chat"]["ChatItemLevel"] then
 		ChatFrame_AddMessageEventFilter("CHAT_MSG_LOOT", self.UpdateChatItemLevel)
 		ChatFrame_AddMessageEventFilter("CHAT_MSG_CHANNEL", self.UpdateChatItemLevel)
 		ChatFrame_AddMessageEventFilter("CHAT_MSG_SAY", self.UpdateChatItemLevel)
