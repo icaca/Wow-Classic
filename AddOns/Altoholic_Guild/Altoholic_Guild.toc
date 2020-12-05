@@ -1,4 +1,4 @@
-## Interface: 11305
+## Interface: 11306
 ## Title: Altoholic_Guild
 ## Notes: Altoholic's Guild UI
 ## Author: Thaoky (EU-Marécages de Zangar)

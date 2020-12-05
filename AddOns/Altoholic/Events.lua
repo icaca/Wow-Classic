@@ -458,7 +458,7 @@ function ns:BuildList()
     local eventDuration = 4*24*60*60 -- 4 days
     for bgStart, bgMapID in pairs({[wsgStart] = 3277, [abStart] = 3358, [avStart] = 2597}) do
         local i = bgStart
-        while i < (currentDate + (7*24*60*60)) do
+        while i < (currentDate + (4*7*24*60*60)) do
             if (currentDate < i) or ((currentDate > i) and (currentDate < (i + eventDuration))) then
                 local key = DataStore:GetCharacter()
                 local account, realm, char = strsplit(".", key)

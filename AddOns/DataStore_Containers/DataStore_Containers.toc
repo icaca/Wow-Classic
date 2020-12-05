@@ -1,4 +1,4 @@
-## Interface: 11305
+## Interface: 11306
 ## Title: DataStore_Containers
 ## Notes: Stores information about character bags, bank, and guild banks
 ## Author: Thaoky (EU-Marécages de Zangar)

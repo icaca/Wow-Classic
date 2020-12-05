@@ -1,4 +1,4 @@
-## Interface: 11305
+## Interface: 11306
 ## Title: DataStore_Crafts
 ## Notes: Stores information about professions & crafts
 ## Author: Thaoky (EU-Marécages de Zangar)

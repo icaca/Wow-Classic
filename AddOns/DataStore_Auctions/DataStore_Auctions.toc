@@ -1,4 +1,4 @@
-## Interface: 11305
+## Interface: 11306
 ## Title: DataStore_Auctions
 ## Notes: Stores information about character auctions and bids
 ## Author: Thaoky (EU-Marécages de Zangar)

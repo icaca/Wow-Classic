@@ -603,44 +603,7 @@ local function OnItemRefTooltipCleared(tooltip, ...)
 	isTooltipDone = nil
 end
 
--- install a pre-/post-hook on the given tooltip's method
--- simplified version of LibExtraTip's hooking
-local function InstallHook(tooltip, method, prehook, posthook)
-	local orig = tooltip[method]
-	local stub = function(...)
-		if prehook then prehook(...) end
-		local a,b,c,d,e,f,g,h,i,j,k = orig(...)
-		if posthook then posthook(...) end
-		return a,b,c,d,e,f,g,h,i,j,k
-	end
-	tooltip[method] = stub
-end
-
 function addon:InitTooltip()
-	-- hooking config, format: MethodName = { prehook, posthook }
-	local tooltipMethodHooks = {
-		SetQuestItem = {
-			function(self,type,index) storedLink = GetQuestItemLink(type,index) end,
-			nil
-		},
-		SetQuestLogItem = {
-			function(self,type,index) storedLink = GetQuestLogItemLink(type,index) end,
-			nil
-		},
-		SetCraftItem = {
-			function(self, recipeID, reagentIndex)
-				if recipeID and reagentIndex then
-					storedLink = GetCraftReagentItemLink(recipeID, reagentIndex)
-				end
-			end,
-			nil
-		},
-	}
-	-- install all method hooks
-	for m, hooks in pairs(tooltipMethodHooks) do
-		InstallHook(GameTooltip, m, hooks[1], hooks[2])
-	end
-
 	-- script hooks
 	GameTooltip:HookScript("OnShow", OnGameTooltipShow)
     GameTooltip:HookScript("OnUpdate", OnGameTooltipUpdate)

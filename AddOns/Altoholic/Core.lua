@@ -5,6 +5,7 @@ _G[addonName] = LibStub("AceAddon-3.0"):NewAddon(addonName, "AceConsole-3.0", "A
 local addon = _G[addonName]
 
 addon.Version = GetAddOnMetadata("Altoholic", "Version")
+if addon.Version == "\064project-version\064" then addon.Version = "Developer" end
 
 if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then
     print("Altoholic error: You are trying to run the Classic version of this addon on Retail.")
