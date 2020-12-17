@@ -19,9 +19,14 @@
     DejunkBindings_OpenLootables()
   </Binding>
 
+  <!-- Start selling -->
+  <Binding name="DEJUNK_START_SELLING" header="DEJUNK_HEADER_SELL" category="BINDING_CATEGORY_DEJUNK">
+    DejunkBindings_StartSelling()
+  </Binding>
+
   <!-- Sell next item -->
-  <Binding name="DEJUNK_SELL_NEXT_ITEM" header="DEJUNK_HEADER_SELL" category="BINDING_CATEGORY_DEJUNK">
-    DejunkBindings_HandleNextItem("Dejunker")
+  <Binding name="DEJUNK_SELL_NEXT_ITEM" category="BINDING_CATEGORY_DEJUNK">
+    DejunkBindings_SellNextItem()
   </Binding>
 
   <!-- Add/rem sell inclusions -->
@@ -40,9 +45,14 @@
     DejunkBindings_RemoveFromList("sell", "exclusions")
   </Binding>
 
+  <!-- Start destroying -->
+  <Binding name="DEJUNK_START_DESTROYING" header="DEJUNK_HEADER_DESTROY" category="BINDING_CATEGORY_DEJUNK">
+    DejunkBindings_StartDestroying()
+  </Binding>
+
   <!-- Destroy next item -->
-  <Binding name="DEJUNK_DESTROY_NEXT_ITEM" header="DEJUNK_HEADER_DESTROY" category="BINDING_CATEGORY_DEJUNK">
-    DejunkBindings_HandleNextItem("Destroyer")
+  <Binding name="DEJUNK_DESTROY_NEXT_ITEM" category="BINDING_CATEGORY_DEJUNK">
+    DejunkBindings_DestroyNextItem()
   </Binding>
 
   <!-- Add/rem destroy inclusions -->

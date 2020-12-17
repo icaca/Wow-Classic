@@ -321,6 +321,8 @@ L["GSE Macro"] = "GSE Macro"
 --[[Translation missing --]]
 L["GS-E Plugins"] = "GS-E Plugins"
 --[[Translation missing --]]
+L["GSE stores the base spell and asks WoW to use that ability.  WoW will then choose the current version of the spell.  This toggle switches between showing the Base Spell or the Current Spell."] = "GSE stores the base spell and asks WoW to use that ability.  WoW will then choose the current version of the spell.  This toggle switches between showing the Base Spell or the Current Spell."
+--[[Translation missing --]]
 L["GSE Users"] = "GSE Users"
 --[[Translation missing --]]
 L["GSE Version: %s"] = "GSE Version: %s"
@@ -680,6 +682,8 @@ L["Shift Keys."] = "Shift Keys."
 L["Show All Macros in Editor"] = "Show All Macros in Editor"
 --[[Translation missing --]]
 L["Show Class Macros in Editor"] = "Show Class Macros in Editor"
+--[[Translation missing --]]
+L["Show Current Spells"] = "Show Current Spells"
 --[[Translation missing --]]
 L["Show Global Macros in Editor"] = "Show Global Macros in Editor"
 --[[Translation missing --]]

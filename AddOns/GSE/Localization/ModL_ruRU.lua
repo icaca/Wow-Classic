@@ -275,6 +275,8 @@ L["GSE is out of date. You can download the newest version from https://www.curs
 L["GSE Macro"] = "GSE Macro"
 L["GS-E Plugins"] = "GS-E Плагины"
 --[[Translation missing --]]
+L["GSE stores the base spell and asks WoW to use that ability.  WoW will then choose the current version of the spell.  This toggle switches between showing the Base Spell or the Current Spell."] = "GSE stores the base spell and asks WoW to use that ability.  WoW will then choose the current version of the spell.  This toggle switches between showing the Base Spell or the Current Spell."
+--[[Translation missing --]]
 L["GSE Users"] = "GSE Users"
 --[[Translation missing --]]
 L["GSE Version: %s"] = "GSE Version: %s"
@@ -582,6 +584,8 @@ L["Set Default Icon QuestionMark"] = "Set Default Icon QuestionMark"
 L["Shift Keys."] = "Клавиши Shift."
 L["Show All Macros in Editor"] = "Показать Все макросы в редакторе"
 L["Show Class Macros in Editor"] = "Показать макросы класса в редакторе"
+--[[Translation missing --]]
+L["Show Current Spells"] = "Show Current Spells"
 --[[Translation missing --]]
 L["Show Global Macros in Editor"] = "Show Global Macros in Editor"
 --[[Translation missing --]]

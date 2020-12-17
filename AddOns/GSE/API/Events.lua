@@ -114,11 +114,12 @@ function GSE:ZONE_CHANGED_NEW_AREA()
     else
         GSE.inArena = false
     end
-    if type == "scenario" then
+    if type == "scenario" or difficulty == 167 or difficulty == 152 then
         GSE.inScenario = true
     else
         GSE.inScenario = false
     end
+
 
     GSE.PrintDebugMessage("PVP: " .. tostring(GSE.PVPFlag) .. " inMythic: " .. tostring(GSE.inMythic) .. " inRaid: " ..
                               tostring(GSE.inRaid) .. " inDungeon " .. tostring(GSE.inDungeon) .. " inHeroic " ..
@@ -454,6 +455,8 @@ function GSE:ProcessOOCQueue()
                 GSE.OOCCheckMacroCreated(v.sequencename, v.create)
             elseif v.action == "MergeSequence" then
                 GSE.OOCPerformMergeAction(v.mergeaction, v.classid, v.sequencename, v.newSequence)
+            elseif v.action == "FinishReload" then
+                GSE.UnsavedOptions.ReloadQueued = nil
             end
             GSE.OOCQueue[k] = nil
         end

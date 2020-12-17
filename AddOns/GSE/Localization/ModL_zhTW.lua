@@ -208,6 +208,8 @@ L["GSE is out of date. You can download the newest version from https://mods.cur
 L["GSE is out of date. You can download the newest version from https://www.curseforge.com/wow/addons/gse-gnome-sequencer-enhanced-advanced-macros."] = "GSE is out of date. You can download the newest version from https://www.curseforge.com/wow/addons/gse-gnome-sequencer-enhanced-advanced-macros."
 L["GSE Macro"] = "GSE 巨集"
 L["GS-E Plugins"] = "GS-E 插件"
+--[[Translation missing --]]
+L["GSE stores the base spell and asks WoW to use that ability.  WoW will then choose the current version of the spell.  This toggle switches between showing the Base Spell or the Current Spell."] = "GSE stores the base spell and asks WoW to use that ability.  WoW will then choose the current version of the spell.  This toggle switches between showing the Base Spell or the Current Spell."
 L["GSE Users"] = "GSE 用戶"
 L["GSE Version: %s"] = "GSE 版本: %s"
 L[ [=[GSE was originally forked from GnomeSequencer written by semlar.  It was enhanced by TImothyLuke to include a lot of configuration and boilerplate functionality with a GUI added.  The enhancements pushed the limits of what the original code could handle and was rewritten from scratch into GSE.
@@ -419,6 +421,8 @@ L["Set Default Icon QuestionMark"] = "設置默認圖標為問號"
 L["Shift Keys."] = "Shift鍵."
 L["Show All Macros in Editor"] = "在編輯器顯示全部巨集"
 L["Show Class Macros in Editor"] = "在編輯器顯示職業巨集"
+--[[Translation missing --]]
+L["Show Current Spells"] = "Show Current Spells"
 L["Show Global Macros in Editor"] = "在編輯器顯示全局巨集"
 L["Show GSE Users in LDB"] = "在LDB中顯示GSE用戶"
 L["Show OOC Queue in LDB"] = "在LDB中顯示OOC隊列"

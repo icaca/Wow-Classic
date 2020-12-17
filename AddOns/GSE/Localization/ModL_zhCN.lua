@@ -217,6 +217,8 @@ L["GSE is out of date. You can download the newest version from https://mods.cur
 L["GSE is out of date. You can download the newest version from https://www.curseforge.com/wow/addons/gse-gnome-sequencer-enhanced-advanced-macros."] = "GSE is out of date. You can download the newest version from https://www.curseforge.com/wow/addons/gse-gnome-sequencer-enhanced-advanced-macros."
 L["GSE Macro"] = "GSE 宏"
 L["GS-E Plugins"] = "GS-E 插件"
+--[[Translation missing --]]
+L["GSE stores the base spell and asks WoW to use that ability.  WoW will then choose the current version of the spell.  This toggle switches between showing the Base Spell or the Current Spell."] = "GSE stores the base spell and asks WoW to use that ability.  WoW will then choose the current version of the spell.  This toggle switches between showing the Base Spell or the Current Spell."
 L["GSE Users"] = "GSE 用户"
 L["GSE Version: %s"] = "GSE 版本: %s"
 --[[Translation missing --]]
@@ -444,6 +446,8 @@ L["Set Default Icon QuestionMark"] = "设置默认图标为问号"
 L["Shift Keys."] = "Shift键."
 L["Show All Macros in Editor"] = "在编辑器显示全部宏"
 L["Show Class Macros in Editor"] = "在编辑器显示职业宏"
+--[[Translation missing --]]
+L["Show Current Spells"] = "Show Current Spells"
 L["Show Global Macros in Editor"] = "在编辑器显示全局宏"
 L["Show GSE Users in LDB"] = "在LDB中显示GSE用户"
 L["Show OOC Queue in LDB"] = "在LDB中显示OOC队列"

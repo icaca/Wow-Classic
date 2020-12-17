@@ -196,6 +196,8 @@ L["GSE is out of date. You can download the newest version from https://mods.cur
 L["GSE is out of date. You can download the newest version from https://www.curseforge.com/wow/addons/gse-gnome-sequencer-enhanced-advanced-macros."] = "Seu GSE está desatualizado. Você pode baixar a versão mais recente em https://www.curseforge.com/wow/addons/gse-gnome-sequencer-enhanced-advanced-macros"
 L["GSE Macro"] = "Macro GSE"
 L["GS-E Plugins"] = "Plug-ins GS-E"
+--[[Translation missing --]]
+L["GSE stores the base spell and asks WoW to use that ability.  WoW will then choose the current version of the spell.  This toggle switches between showing the Base Spell or the Current Spell."] = "GSE stores the base spell and asks WoW to use that ability.  WoW will then choose the current version of the spell.  This toggle switches between showing the Base Spell or the Current Spell."
 L["GSE Users"] = "Usuários GSE"
 L["GSE Version: %s"] = "Versão do GSE: %s"
 L[ [=[GSE was originally forked from GnomeSequencer written by semlar.  It was enhanced by TImothyLuke to include a lot of configuration and boilerplate functionality with a GUI added.  The enhancements pushed the limits of what the original code could handle and was rewritten from scratch into GSE.
@@ -452,6 +454,8 @@ L["Shift Keys."] = "Shift Keys."
 L["Show All Macros in Editor"] = "Show All Macros in Editor"
 --[[Translation missing --]]
 L["Show Class Macros in Editor"] = "Show Class Macros in Editor"
+--[[Translation missing --]]
+L["Show Current Spells"] = "Show Current Spells"
 --[[Translation missing --]]
 L["Show Global Macros in Editor"] = "Show Global Macros in Editor"
 --[[Translation missing --]]

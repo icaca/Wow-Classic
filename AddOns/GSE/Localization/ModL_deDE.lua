@@ -260,6 +260,8 @@ L["GSE is out of date. You can download the newest version from https://mods.cur
 L["GSE is out of date. You can download the newest version from https://www.curseforge.com/wow/addons/gse-gnome-sequencer-enhanced-advanced-macros."] = "GSE is out of date. You can download the newest version from https://www.curseforge.com/wow/addons/gse-gnome-sequencer-enhanced-advanced-macros."
 L["GSE Macro"] = "GSE Makro"
 L["GS-E Plugins"] = "GSE Plugins"
+--[[Translation missing --]]
+L["GSE stores the base spell and asks WoW to use that ability.  WoW will then choose the current version of the spell.  This toggle switches between showing the Base Spell or the Current Spell."] = "GSE stores the base spell and asks WoW to use that ability.  WoW will then choose the current version of the spell.  This toggle switches between showing the Base Spell or the Current Spell."
 L["GSE Users"] = "GSE Benutzer"
 L["GSE Version: %s"] = "GSE VErsion: %s"
 --[[Translation missing --]]
@@ -530,6 +532,8 @@ L["Set Default Icon QuestionMark"] = "Fragezeichen als Standard Bild setzen"
 L["Shift Keys."] = "Umschalttasten."
 L["Show All Macros in Editor"] = "Zeige alle Makros im Editor"
 L["Show Class Macros in Editor"] = "Zeige Klassenmakros im Editor"
+--[[Translation missing --]]
+L["Show Current Spells"] = "Show Current Spells"
 L["Show Global Macros in Editor"] = "Zeige allgemeine Makros im Editor"
 L["Show GSE Users in LDB"] = "Zeigt die GSE Benutzer in LDB"
 --[[Translation missing --]]
