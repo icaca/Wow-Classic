@@ -21,9 +21,9 @@ local band = bit.band
 local select = select
 local tContains = tContains
 
-function AutoLoot:ProcessLoot(item, q)
+function AutoLoot:ProcessLoot(itemLink, itemQuantity)
     local total, free, bagFamily = 0
-    local itemFamily = GetItemFamily(item)
+    local itemFamily = GetItemFamily(itemLink)
     for i = BACKPACK_CONTAINER, NUM_BAG_SLOTS do
         free, bagFamily = GetContainerNumFreeSlots(i)
         if (not bagFamily or bagFamily == 0) or (itemFamily and band(itemFamily, bagFamily) > 0) then
@@ -34,15 +34,11 @@ function AutoLoot:ProcessLoot(item, q)
         return true
     end
 
-    local have = (GetItemCount(item) or 0)
-    if have > 0 then
-        local itemStackCount = (select(8,GetItemInfo(item)) or 0)
-        if itemStackCount > 1 then
-            while have > itemStackCount do
-                have = have - itemStackCount
-            end
-            local remain = itemStackCount - have
-            if remain >= q then
+    local inventoryItemCount = GetItemCount(itemLink)
+    if inventoryItemCount and inventoryItemCount > 0 then
+        local itemStackSize = select(8, GetItemInfo(itemLink))
+        if itemStackSize and itemStackSize > 1 then
+            if ( itemStackSize - (inventoryItemCount % itemStackSize) ) >= itemQuantity then
                 return true
             end
         end
@@ -193,7 +189,7 @@ function AutoLoot:OnEvent(e, ...)
 
         self:ShowLootFrame(false)
 
-        -- Workaround for TSM Destroy issue that TSM team won't fix.
+        -- Workaround for TSM Destroy issue
         if self.TSMLoaded and TSMDestroyBtn and TSMDestroyBtn:IsVisible() then
             C_Timer.NewTicker(0, function() SlashCmdList.TSM("destroy") end, 2)
         end
