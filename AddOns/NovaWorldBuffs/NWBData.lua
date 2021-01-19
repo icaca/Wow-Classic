@@ -160,6 +160,10 @@ function NWB:OnCommReceived(commPrefix, string, distribution, sender)
 			--Flower picked.
 			local type, layer = strsplit(" ", data, 2);
 			NWB:doFlowerMsg(type, layer);
+		elseif (cmd == "npcWalking" and distribution == "GUILD") then
+			--NWB:debug("npcwalking inc", sender, data);
+			local type, layer = strsplit(" ", data, 2);
+			NWB:doNpcWalkingMsg(type, layer, sender);
 		end
 	end
 	if (tonumber(remoteVersion) < 1.84) then
@@ -186,6 +190,9 @@ function NWB:OnCommReceived(commPrefix, string, distribution, sender)
 		--Only used once per logon.
 		NWB:receivedData(data, sender, distribution, elapsed);
 		NWB:sendSettings("GUILD");
+	elseif (cmd == "handIn" and distribution ~= "GUILD" and distribution ~= "PARTY" and distribution ~= "RAID") then
+		local type, layer = strsplit(" ", data, 2);
+		NWB:doHandIn(type, layer, sender);
 	end
 	NWB:versionCheck(remoteVersion);
 end
@@ -349,6 +356,7 @@ function NWB:sendSettings(distribution, target, prio)
 		NWB:sendComm(distribution, "settings " .. version .. " " .. self.k() .. " " .. data, target, prio);
 	end
 	--Temorary send both types so less duplicate guild chat msgs, remove in next version when more people are on the new serializer.
+	--This should be able to be disabled soon, I think the vast majority have upgraded by now.
 	NWB:sendSettingsOld(distribution, target, prio);
 end
 
@@ -430,6 +438,15 @@ function NWB:sendHandIn(distribution, type, target, layer)
 		NWB:sendComm(distribution, "handIn " .. version .. " " .. self.k() .. " " .. type .. " " .. layer, target);
 	elseif (NWB:isClassic()) then
 		NWB:sendComm(distribution, "handIn " .. version .. " " .. self.k() .. " " .. type, target);
+	end
+end
+
+--Send npc walking msg.
+function NWB:sendNpcWalking(distribution, type, target, layer)
+	if (tonumber(layer) and NWB:isClassic()) then
+		NWB:sendComm(distribution, "npcWalking " .. version .. " " .. self.k() .. " " .. type .. " " .. layer, target);
+	elseif (NWB:isClassic()) then
+		NWB:sendComm(distribution, "npcWalking " .. version .. " " .. self.k() .. " " .. type, target);
 	end
 end
 
@@ -888,6 +905,7 @@ function NWB:createSettings(distribution)
 			["guildCommand"] = NWB.db.global.guildCommand,
 			["guild10"] = NWB.db.global.guild10,
 			["guild1"] = NWB.db.global.guild1,
+			["guildNpcWalking"] = NWB.db.global.guildNpcWalking,
 		};
 	end
 	--data['faction'] = NWB.faction;
@@ -1459,6 +1477,7 @@ local shortKeys = {
 	["H"] = "timestamp",
 	["I"] = "layerID",
 	["J"] = "who",
+	["K"] = "guildNpcWalking",
 	["f1"] = "flower1",
 	["f2"] = "flower2",
 	["f3"] = "flower3",

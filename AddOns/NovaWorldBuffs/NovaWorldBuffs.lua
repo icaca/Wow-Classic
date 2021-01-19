@@ -816,6 +816,7 @@ function NWB:sendGuildMsg(msg, type, zoneName)
 		["guild5"] = "k",
 		["guild1"] = "l",
 		["guild0"] = "m",
+		["guildNpcWalking"] = "K",
 	};
 	local numTotalMembers = GetNumGuildMembers();
 	local onlineMembers = {};
@@ -1328,6 +1329,7 @@ local lastZanBuffGained = 0;
 local lastDmfBuffGained = 0;
 local speedtest = 0;
 local waitingCombatEnd, hideSummonPopup;
+local lastRendHandIn, lastOnyHandIn, lastNefHandIn, lastZanHandIn = 0, 0, 0, 0;
 function NWB:combatLogEventUnfiltered(...)
 	local timestamp, subEvent, hideCaster, sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, 
 			destName, destFlags, destRaidFlags, _, spellName = CombatLogGetCurrentEventInfo();
@@ -1467,6 +1469,7 @@ function NWB:combatLogEventUnfiltered(...)
 				else
 					NWB:setRendBuff("self", UnitName("player"), zoneID, sourceGUID);
 				end
+				NWB:debug("rend hand in delay", GetTime() - lastRendHandIn);
 			end
 		elseif (destName == UnitName("player") and spellName == L["Spirit of Zandalar"] and (GetServerTime() - lastZanBuffGained) > 1) then
 			--Zan buff has no sourceName or sourceGUID, not sure why.
@@ -1517,6 +1520,7 @@ function NWB:combatLogEventUnfiltered(...)
 					end
 					NWB:acceptSummon();
 				end
+				NWB:debug("nef hand in delay", GetTime() - lastNefHandIn);
 			end
 		--[[elseif (((NWB.faction == "Horde" and npcID == "14392") or (NWB.faction == "Alliance" and npcID == "14394"))
 				and destName == UnitName("player") and spellName == L["Rallying Cry of the Dragonslayer"]
@@ -1550,6 +1554,7 @@ function NWB:combatLogEventUnfiltered(...)
 					end
 					NWB:acceptSummon();
 				end
+				NWB:debug("ony hand in delay", GetTime() - lastOnyHandIn);
 			end
 		--[[elseif (((NWB.faction == "Horde" and destNpcID == "14392") or (NWB.faction == "Alliance" and destNpcID == "14394"))
 				and spellName == L["Sap"] and ((GetServerTime() - NWB.data.onyYell2) < 30 or (GetServerTime() - NWB.data.onyYell) < 30)) then
@@ -6429,9 +6434,8 @@ function NWB:removeSingleChar(name)
 		return;
 	end
 	--Normalize the realm name, removing spaces and '.
-	local nomalizedName = string.gsub(name, " ", "");
-	nomalizedName = string.gsub(nomalizedName, "'", "");
-	local level = NWB.db.global.trimDataBelowLevel;
+	--local nomalizedName = string.gsub(name, " ", "");
+	--nomalizedName = string.gsub(nomalizedName, "'", "");
 	local found;
 	for realm, v in NWB:pairsByKeys(NWB.db.global) do --Iterate realms.
 		local msg = "";
@@ -6440,7 +6444,7 @@ function NWB:removeSingleChar(name)
 				local f = k;
 				if (v.myChars) then
 					for k, v in NWB:pairsByKeys(v.myChars) do --Iterate characters.
-						if ((k .. "-" .. realm) == nomalizedName) then
+						if ((k .. "-" .. realm) == name) then
 							NWB.db.global[realm][f].myChars[k] = nil;
 							found = true;
 						end
@@ -6453,6 +6457,9 @@ function NWB:removeSingleChar(name)
 		NWB:print(string.format(L["trimDataMsg8"], name));
 	else
 		NWB:print(string.format(L["trimDataMsg9"], name));
+	end
+	if (name ==  UnitName("player") .. "-" .. GetRealmName()) then
+		NWB:buildRealmFactionData();
 	end
 	C_Timer.After(3, function()
 		NWB:syncBuffsWithCurrentDuration();
@@ -9141,6 +9148,7 @@ local CloseAllWindowsOriginal = CloseAllWindows;
 local ElvUIOrigAFK;
 local isPlayerMoving;
 local playerLastMoved = 0;
+local lastOnyWalkingAlert, lastNefWalkingAlert = 0, 0;
 f:SetScript("OnEvent", function(self, event, ...)
 	if (event == "GOSSIP_SHOW") then
 		local npcID;
@@ -9208,31 +9216,31 @@ f:SetScript("OnEvent", function(self, event, ...)
 			end
 			targetID = tonumber(targetID);
 			local currentSpeed = GetUnitSpeed("target");
+			local layerNum;
+			if (NWB.isLayered and NWB:GetLayerCount() == 2 and NWB.lastKnownLayerMapID and NWB.lastKnownLayerMapID > 0
+					and NWB.lastKnownLayer and NWB.lastKnownLayer > 0) then
+				layerNum = NWB.lastKnownLayer;
+			end
 			if (targetID and (npcID == 14392 or npcID == 14720) and targetID == npcID and currentSpeed < 1) then
 				--If current target is same as chat dialogue open and they aren't moving.
 				return;
 			end
 			if (zone == 1454 and npcID == 14392) then
-				local colorTable = {r = NWB.db.global.middleColorR, g = NWB.db.global.middleColorG, 
-						b = NWB.db.global.middleColorB, id = 41, sticky = 0};
-				local msg = L["onyNpcMoving"];
-				NWB:playSound("soundsNpcWalking", "all");
-				RaidNotice_AddMessage(RaidWarningFrame, NWB:stripColors(msg), colorTable, 5);
-				NWB:print(msg);
-				--Guild msgs will be enabled in a later update once I know this is 100% reliable.
-				if (NWB.db.global.walkingGuild) then
-					SendChatMessage("[WorldBuffs] " .. NWB:stripColors(msg), "guild");
+				if (NWB.db.global.guildNpcWalking == 1) then
+					NWB:doNpcWalkingMsg("ony", layerNum);
+					NWB:sendNpcWalking("GUILD", "ony", nil, layerNum);
+				end
+				if ((GetServerTime() - lastOnyWalkingAlert) > 40) then
+					NWB:walkingAlert("ony", layerNum)
 				end
 			end
 			if (zone == 1454 and npcID == 14720) then
-				local colorTable = {r = NWB.db.global.middleColorR, g = NWB.db.global.middleColorG, 
-						b = NWB.db.global.middleColorB, id = 41, sticky = 0};
-				local msg = L["nefNpcMoving"];
-				NWB:playSound("soundsNpcWalking", "all");
-				RaidNotice_AddMessage(RaidWarningFrame, NWB:stripColors(msg), colorTable, 5);
-				NWB:print(msg);
-				if (NWB.db.global.walkingGuild) then
-					SendChatMessage("[WorldBuffs] " .. NWB:stripColors(msg), "guild");
+				if (NWB.db.global.guildNpcWalking == 1) then
+					NWB:doNpcWalkingMsg("nef", layerNum);
+					NWB:sendNpcWalking("GUILD", "nef", nil, layerNum);
+				end
+				if ((GetServerTime() - lastNefWalkingAlert) > 40) then
+					NWB:walkingAlert("nef", layerNum)
 				end
 			end
 		end)
@@ -9243,6 +9251,147 @@ f:SetScript("OnEvent", function(self, event, ...)
 		playerLastMoved = GetTime();
 	end
 end)
+
+function NWB:testwalk()
+	if (NWB.db.global.guildNpcWalking == 1) then
+		NWB:doNpcWalkingMsg("ony", layerNum);
+		NWB:sendNpcWalking("GUILD", "ony", nil, layerNum);
+	end
+	if ((GetServerTime() - lastOnyWalkingAlert) > 40) then
+		NWB:walkingAlert("ony", layer)
+	end
+end
+
+local onyNpcWalking, nefNpcWalking = 0, 0;
+function NWB:doNpcWalkingMsg(type, layer, sender)
+	local realm;
+	if (sender and string.match(sender, "-")) then
+		sender, realm = strsplit("-", sender, 2);
+	end
+	local loadWait = GetServerTime() - NWB.loadTime;
+	local msg = "";
+	local layerMsg = "";
+	if (NWB.isLayered and tonumber(layer)) then
+		layerMsg = " (Layer " .. layer .. ")";
+	end
+	if (type == "ony") then
+		msg = L["onyNpcMoving"] .. layerMsg;
+	elseif (type == "nef") then
+		msg = L["nefNpcMoving"] .. layerMsg;
+	else
+		return;
+	end
+	if (loadWait > 5 and NWB.db.global.guildNpcWalking == 1 and type == "ony") then
+		if ((GetServerTime() - lastOnyWalkingAlert) > 40) then
+			NWB:walkingAlert("ony", layer, sender)
+			NWB:sendGuildMsg(msg, "guildNpcWalking");
+		end
+	elseif (loadWait > 5 and NWB.db.global.guildNpcWalking == 1 and type == "nef") then
+		if ((GetServerTime() - lastNefWalkingAlert) > 40) then
+			NWB:walkingAlert("nef", layer, sender)
+			NWB:sendGuildMsg(msg, "guildNpcWalking");
+		end
+	end
+end
+
+--ony 29.923999999999
+--rend 10.306999999972
+function NWB:walkingAlert(type, layer, sender)
+	local realm;
+	if (sender and string.match(sender, "-")) then
+		sender, realm = strsplit("-", sender, 2);
+	end
+	local msg = "";
+	local layerMsg = "";
+	if (NWB.isLayered and tonumber(layer)) then
+		layerMsg = " (Layer " .. layer .. ")";
+	end
+	if (type == "ony") then
+		msg = L["onyNpcMoving"] .. layerMsg;
+		lastOnyWalkingAlert = GetServerTime();
+	elseif (type == "nef") then
+		msg = L["nefNpcMoving"] .. layerMsg;
+		lastNefWalkingAlert = GetServerTime();
+	else
+		return;
+	end
+	local colorTable = {r = NWB.db.global.middleColorR, g = NWB.db.global.middleColorG, 
+			b = NWB.db.global.middleColorB, id = 41, sticky = 0};
+	NWB:playSound("soundsNpcWalking", "all");
+	NWB:startFlash("flashNpcWalking");
+	RaidNotice_AddMessage(RaidWarningFrame, NWB:stripColors(msg), colorTable, 5);
+	local senderMsg = "";
+	if (sender) then
+		senderMsg = " (" .. sender .. ")";
+	end
+	NWB:print(msg .. senderMsg);
+end
+
+function NWB:doHandIn(id, layer, sender)
+	if (NWB.db.global.handInMsg) then
+		local realm, onCooldown;
+		if (sender and string.match(sender, "-")) then
+			sender, realm = strsplit("-", sender, 2);
+		end
+		local msg, type, questType = "", "", "";
+		if (id == "4974") then
+			type = "rend";
+			msg = "Rend";
+		elseif (id == "7491") then
+			type = "ony";
+			msg = "Onyxia";
+		elseif (id == "7784") then
+			type = "nef";
+			msg = "Nefarian";
+		elseif (id == "7496") then
+			type = "ony";
+			msg = "Onyxia";
+		elseif (id == "7782") then
+			type = "nef";
+			msg = "Nefarian";
+		elseif (id == "8183") then
+			type = "zan";
+			msg = "Zandalar";
+		else
+			return;
+		end
+		if (type == "rend" or type == "ony" or type == "nef") then
+			local time = (NWB.data[type .. "Timer"] + NWB.db.global[type .. "RespawnTime"]) - GetServerTime();
+			if (time > 0) then
+				onCooldown = true;
+			end
+		end
+		if ((type == "rend" and (GetTime() - lastRendHandIn) < 120)
+				or (type == "ony" and type == "ony" and (GetTime() - lastOnyHandIn) < 120)
+				or (type == "nef" and (GetTime() - lastNefHandIn) < 120)
+				or (type == "zan" and (GetTime() - lastZanHandIn) < 60)) then
+			return;
+		end
+		if (id == "4974") then
+			lastRendHandIn = GetTime();
+		elseif (id == "7491") then
+			lastOnyHandIn = GetTime();
+		elseif (id == "7784") then
+			lastNefHandIn = GetTime();
+		elseif (id == "7496") then
+			lastOnyHandIn = GetTime();
+		elseif (id == "7782") then
+			lastNefHandIn = GetTime();
+		elseif (id == "8183") then
+			lastZanHandIn = GetTime();
+		end
+		msg = msg .. " quest handed in by " .. sender .. ".";
+		--NWB:debug("Hand in:", sender, type, questType);
+		if (NWB.db.global.middleHandInMsg) then
+			if (NWB.db.global.middleHandInMsgWhenOnCooldown or not onCooldown) then
+				local colorTable = {r = NWB.db.global.middleColorR, g = NWB.db.global.middleColorG, 
+					b = NWB.db.global.middleColorB, id = 41, sticky = 0};
+				RaidNotice_AddMessage(RaidWarningFrame, NWB:stripColors(msg), colorTable, 5);
+			end
+		end
+		NWB:print(msg);
+	end
+end
 
 --Record a time if we manually closed the dialogue by pressing escape so no false alert.
 f:SetScript("OnKeyDown", function(self, key)

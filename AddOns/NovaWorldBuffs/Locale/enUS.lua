@@ -156,7 +156,7 @@ L["hourShort"] = "h"; --Used in short timers like 1h30m (single letter only, usu
 L["dayShort"] = "d"; --Used in short timers like 1d8h (single letter only, usually the first letter of days).
 L["startsIn"] = "Starts in %s"; --"Starts in 1hour".
 L["endsIn"] = "Ends in %s"; --"Ends in 1hour".
-L["versionOutOfDate"] = "Nova World Buffs is out of date, please update at https://www.curseforge.com/wow/addons/nova-world-buffs or twitch.";
+L["versionOutOfDate"] = "Nova World Buffs is out of date, please update at https://www.curseforge.com/wow/addons/nova-world-buffs";
 L["Your Current World Buffs"] = "Current World Buffs";
 L["Options"] = "Options";
 

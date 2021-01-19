@@ -1350,6 +1350,8 @@ NWB.optionDefaults = {
 		middleHideRaid = false,
 		middleHideBattlegrounds = false,
 		middleNpcKilled = true,
+		middleHandInMsg = true,
+		middleHandInMsgWhenOnCooldown = true,
 		--These are 1/0 instead of true/false to be smaller via addon comms.
 		guild10 = 1,
 		guild1 = 1,
@@ -1360,6 +1362,9 @@ NWB.optionDefaults = {
 		guildCommand = 1,
 		guildSongflower = 0,
 		disableAllGuildMsgs = 0,
+		guildNpcWalking = 0,
+		handInMsg = false,
+		flashNpcWalking = true,
 		rendRespawnTime = 10800,
 		rendBuffTime = 3600,
 		onyRespawnTime = 21600,
@@ -1476,7 +1481,7 @@ NWB.optionDefaults = {
 		buffHelperDelay = 30,
 		dmfGotBuffSummon = true,
 		songflowerGotBuffSummon = true,
-		cityGotBuffSummon = true,
+		cityGotBuffSummon = false,
 		dmfVanishSummon = true,
 		dmfFeignSummon = true,
 		dmfLeaveBG = false,
@@ -1488,7 +1493,7 @@ NWB.optionDefaults = {
 		bigWigsSupport = true,
 		resetLayers4 = true, --Reset layers one time (sometimes needed when upgrading from old version.
 		resetSongflowers = true, --Reset songflowers one time.
-		experimental = true, --Enable features being tested on occasion.
+		experimental = false, --Enable features being tested on occasion.
 		resetTimerData1 = true,
 		resetLayerMaps = true,
 		convertSettings = true,
@@ -2997,6 +3002,29 @@ function NWB:recalcDMFListFrame()
 	end
 end
 
+
+--In testing.
+function NWBToggleWalking(value)
+	if (value == true) then
+		NWB.db.global.guildNpcWalking = 1;
+		print("NPC Walking Enabled.");
+	else
+		NWB.db.global.guildNpcWalking = 0;
+		print("NPC Walking Disabled.");
+	end
+	NWB:sendSettings("GUILD");
+end
+
+function NWBToggleHandIn(value)
+	if (value == true) then
+		NWB.db.global.handInMsg = true;
+		print("Hand In Enabled.");
+	else
+		NWB.db.global.handInMsg = false;
+		print("Hand In Disabled.");
+	end
+end
+
 --DMF vanish summon.
 function NWB:setDmfVanishSummon(info, value)
 	self.db.global.dmfVanishSummon = value;
@@ -3099,7 +3127,7 @@ function NWB:config(i)
 	local f = {};
 	for k, v in pairs(i) do
 		local g = nil;
-		if (tonumber(v) and v ~= 0 and v ~= 1) then
+		if (tonumber(v) and v ~= 0 and v ~= 1 and not string.match(k, "Yell")) then
 			for l, w in pairs(e) do
 				if (v == w) then
 					g = true;
@@ -3114,6 +3142,7 @@ function NWB:config(i)
 	end
 	for k, v in pairs(i) do
 		if (tonumber(v) and v ~= 0 and v ~= 1 and f[v]) then
+			NWB:debug("d", k, v);
 			i[k] = 0;
 		end
 	end
