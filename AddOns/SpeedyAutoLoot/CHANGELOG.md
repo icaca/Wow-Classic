@@ -1,3 +1,10 @@
+### 2.0.40
+- Fix C_Var missing from classic
+### 2.0.39
+- Optimization
+### 2.0.38
+- Optimizations
+
 ### 2.0.37
 - Optimization
 

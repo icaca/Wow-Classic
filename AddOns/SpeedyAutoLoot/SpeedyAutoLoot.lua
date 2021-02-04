@@ -2,36 +2,25 @@ local addonName = ...
 local AutoLoot = CreateFrame("Frame")
 local Settings = {}
 
-local SetCVar = SetCVar or C_CVar.SetCVar
-local GetCVarBool = GetCVarBool or C_CVar.GetCVarBool
 local BACKPACK_CONTAINER, LOOT_SLOT_ITEM, NUM_BAG_SLOTS = BACKPACK_CONTAINER, LOOT_SLOT_ITEM, NUM_BAG_SLOTS
 local GetContainerNumFreeSlots = GetContainerNumFreeSlots
-local GetCursorPosition = GetCursorPosition
 local GetItemCount = GetItemCount
 local GetItemInfo = GetItemInfo
 local GetLootSlotInfo = GetLootSlotInfo
 local GetLootSlotLink = GetLootSlotLink
 local GetLootSlotType = GetLootSlotType
-local GetNumLootItems = GetNumLootItems
-local IsFishingLoot = IsFishingLoot
-local IsModifiedClick = IsModifiedClick
-local LootSlot = LootSlot
-local PlaySound = PlaySound
 local band = bit.band
 local select = select
-local tContains = tContains
 
-function AutoLoot:ProcessLoot(itemLink, itemQuantity)
-    local total, free, bagFamily = 0
+function AutoLoot:ProcessLootItem(itemLink, itemQuantity)
     local itemFamily = GetItemFamily(itemLink)
     for i = BACKPACK_CONTAINER, NUM_BAG_SLOTS do
-        free, bagFamily = GetContainerNumFreeSlots(i)
+        local free, bagFamily = GetContainerNumFreeSlots(i)
         if (not bagFamily or bagFamily == 0) or (itemFamily and band(itemFamily, bagFamily) > 0) then
-            total = total + free
+            if free > 0 then
+                return true
+            end
         end
-    end
-    if total > 0 then
-        return true
     end
 
     local inventoryItemCount = GetItemCount(itemLink)
@@ -43,85 +32,8 @@ function AutoLoot:ProcessLoot(itemLink, itemQuantity)
             end
         end
     end
+
     return false
-end
-
-function AutoLoot:ShowDefaultLootFrame()
-    self = _G.LootFrame
-    self.page = 1;
-    -- ShowUIPanel inside LootFrame_Show is protected so we need to do some handling for combat, thanks Blizzard.
-    if not InCombatLockdown() then
-        LootFrame_Show(self)
-        return
-    end
-    self.numLootItems = GetNumLootItems();
-
-    if GetCVarBool("lootUnderMouse") then
-        self:Show();
-        -- position loot window under mouse cursor
-        local x, y = GetCursorPosition();
-        x = x / self:GetEffectiveScale();
-        y = y / self:GetEffectiveScale();
-
-        local posX = x - 175;
-        local posY = y + 25;
-
-        if (self.numLootItems > 0) then
-            posX = x - 40;
-            posY = y + 55;
-            posY = posY + 40;
-        end
-
-        if( posY < 350 ) then
-            posY = 350;
-        end
-
-        self:ClearAllPoints();
-        self:SetPoint("TOPLEFT", nil, "BOTTOMLEFT", posX, posY);
-        self:GetCenter();
-        self:Raise();
-    else
-        self:Show()
-        -- Better than nothing
-        self:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 20, -125);
-    end
-
-    LootFrame_Update();
-    LootFramePortraitOverlay:SetTexture("Interface\\TargetingFrame\\TargetDead");
-end
-
-function AutoLoot:ShowLootFrame(show)
-    if self.ElvUI then
-        if show then
-            ElvLootFrame:SetParent(ElvLootFrameHolder)
-            ElvLootFrame:SetFrameStrata("HIGH")
-            self.isHidden = false
-
-            if GetCVarBool("lootUnderMouse") then
-                local x, y = GetCursorPosition()
-                x = x / ElvLootFrame:GetEffectiveScale()
-                y = y / ElvLootFrame:GetEffectiveScale()
-
-                ElvLootFrame:ClearAllPoints()
-                ElvLootFrame:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", x - 40, y + (yoffset or 20))
-                ElvLootFrame:GetCenter()
-                ElvLootFrame:Raise()
-            else
-                ElvLootFrame:ClearAllPoints()
-                ElvLootFrame:SetPoint("TOPLEFT", ElvLootFrameHolder, "TOPLEFT")
-            end
-        else
-            ElvLootFrame:SetParent(self)
-            self.isHidden = true
-        end
-    elseif LootFrame:IsEventRegistered("LOOT_SLOT_CLEARED") then
-        if show then
-            self:ShowDefaultLootFrame()
-            self.isHidden = false
-        else
-            self.isHidden = true
-        end
-    end
 end
 
 function AutoLoot:LootItems(numItems)
@@ -133,7 +45,7 @@ function AutoLoot:LootItems(numItems)
         if locked or (quality and quality >= lootThreshold) then
             self.isItemLocked = true
         else
-            if slotType ~= LOOT_SLOT_ITEM or (not self.isClassic and isQuestItem) or self:ProcessLoot(itemLink, quantity) then
+            if slotType ~= LOOT_SLOT_ITEM or (not self.isClassic and isQuestItem) or self:ProcessLootItem(itemLink, quantity) then
                 numItems = numItems - 1
                 LootSlot(i)
             end
@@ -209,7 +121,7 @@ function AutoLoot:PlayInventoryFullSound()
     end
 end
 
-local AddMessage = function(...) _G.DEFAULT_CHAT_FRAME:AddMessage(...) end
+local function AddMessage(...) _G.DEFAULT_CHAT_FRAME:AddMessage(strjoin(" ", tostringall(...))) end
 function AutoLoot:Help(msg)
     local fName = "|cffEEE4AESpeedy AutoLoot:|r "
     local _, _, cmd, args = string.find(msg, "%s?(%w+)%s?(.*)")
@@ -225,25 +137,22 @@ function AutoLoot:Help(msg)
         end
     elseif cmd == "fish" then
         if not Settings.global.fishingSoundDisabled then
-            Settings.global.fishingSoundDisabled = true
             AddMessage(fName.."|cffB6B6B6Fishing reel in sound disabled.")
         else
-            Settings.global.fishingSoundDisabled = false
             AddMessage(fName.."|cff37DB33Fishing reel in sound enabled.")
         end
+        Settings.global.fishingSoundDisabled = not Settings.global.fishingSoundDisabled
     elseif cmd == "auto" then
         if Settings.global.alwaysEnableAutoLoot then
-            Settings.global.alwaysEnableAutoLoot = false
             AddMessage(fName.."|cffB6B6B6Auto Loot for all Characters disabled.")
             SetCVar("autoLootDefault",0)
         else
-            Settings.global.alwaysEnableAutoLoot = true
             AddMessage(fName.."|cff37DB33Auto Loot for all Characters enabled.")
             SetCVar("autoLootDefault",1)
         end
+        Settings.global.alwaysEnableAutoLoot = not Settings.global.alwaysEnableAutoLoot
     elseif cmd == "sound" then
         if Settings.global.enableSound then
-            Settings.global.enableSound = false
             AddMessage(fName.."|cffB6B6B6Don't play a sound when inventory is full.")
         else
             if not Settings.global.InventoryFullSound then
@@ -253,9 +162,9 @@ function AutoLoot:Help(msg)
                     Settings.global.InventoryFullSound = 44321
                 end
             end
-            Settings.global.enableSound = true
             AddMessage(fName.."|cff37DB33Play a sound when inventory is full.")
         end
+        Settings.global.enableSound = not Settings.global.enableSound
     elseif cmd == "set" and args ~= "" then
         local SoundID = tonumber(args:match("%d+"))
         if SoundID then
@@ -269,16 +178,14 @@ end
 function AutoLoot:OnLoad()
     self:SetToplevel(true)
     self:Hide()
-    self:SetScript("OnEvent", function(_,...)
-        self:OnEvent(...)
-    end)
+    self:SetScript("OnEvent", self.OnEvent)
 
-    for _,e in next, ({	"ADDON_LOADED", "PLAYER_LOGIN", "LOOT_READY", "LOOT_OPENED", "LOOT_CLOSED", "UI_ERROR_MESSAGE" }) do
+    for _, e in pairs({ "ADDON_LOADED", "PLAYER_LOGIN", "LOOT_READY", "LOOT_OPENED", "LOOT_CLOSED", "UI_ERROR_MESSAGE" }) do
         self:RegisterEvent(e)
     end
 
     self.audioChannel = "master"
-    self.isClassic = (WOW_PROJECT_ID == WOW_PROJECT_CLASSIC)
+    self.isClassic = (WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE)
 
     if self.isClassic then
         self:RegisterEvent("LOOT_BIND_CONFIRM")
@@ -288,8 +195,86 @@ function AutoLoot:OnLoad()
     LootFrame:UnregisterEvent('LOOT_OPENED')
 end
 
+function AutoLoot:ShowDefaultLootFrame()
+    self = _G.LootFrame
+    self.page = 1;
+    -- ShowUIPanel inside LootFrame_Show is protected so we need to do some handling for combat, thanks Blizzard.
+    if not InCombatLockdown() then
+        LootFrame_Show(self)
+        return
+    end
+    self.numLootItems = GetNumLootItems();
+
+    if GetCVarBool("lootUnderMouse") then
+        self:Show();
+        -- position loot window under mouse cursor
+        local x, y = GetCursorPosition();
+        x = x / self:GetEffectiveScale();
+        y = y / self:GetEffectiveScale();
+
+        local posX = x - 175;
+        local posY = y + 25;
+
+        if (self.numLootItems > 0) then
+            posX = x - 40;
+            posY = y + 55;
+            posY = posY + 40;
+        end
+
+        if( posY < 350 ) then
+            posY = 350;
+        end
+
+        self:ClearAllPoints();
+        self:SetPoint("TOPLEFT", nil, "BOTTOMLEFT", posX, posY);
+        self:GetCenter();
+        self:Raise();
+    else
+        self:Show()
+        -- Better than nothing
+        self:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 20, -125);
+    end
+
+    LootFrame_Update();
+    LootFramePortraitOverlay:SetTexture("Interface\\TargetingFrame\\TargetDead");
+end
+
+function AutoLoot:ShowLootFrame(show)
+    if self.ElvUI then
+        if show then
+            ElvLootFrame:SetParent(ElvLootFrameHolder)
+            ElvLootFrame:SetFrameStrata("HIGH")
+            self.isHidden = false
+
+            if GetCVarBool("lootUnderMouse") then
+                local x, y = GetCursorPosition()
+                x = x / ElvLootFrame:GetEffectiveScale()
+                y = y / ElvLootFrame:GetEffectiveScale()
+
+                ElvLootFrame:ClearAllPoints()
+                ElvLootFrame:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", x - 40, y + 20)
+                ElvLootFrame:GetCenter()
+                ElvLootFrame:Raise()
+            else
+                ElvLootFrame:ClearAllPoints()
+                ElvLootFrame:SetPoint("TOPLEFT", ElvLootFrameHolder, "TOPLEFT")
+            end
+        else
+            ElvLootFrame:SetParent(self)
+            self.isHidden = true
+        end
+    elseif LootFrame:IsEventRegistered("LOOT_SLOT_CLEARED") then
+        if show then
+            self:ShowDefaultLootFrame()
+            self.isHidden = false
+        else
+            self.isHidden = true
+        end
+    end
+end
+
 SLASH_SPEEDYAUTOLOOT1, SLASH_SPEEDYAUTOLOOT2, SLASH_SPEEDYAUTOLOOT3  = "/sal", "/speedyloot", "/speedyautoloot"
-SlashCmdList["SPEEDYAUTOLOOT"] = function(...)
+function SlashCmdList.SPEEDYAUTOLOOT(...)
     AutoLoot:Help(...)
 end
 
