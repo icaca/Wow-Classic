@@ -12,7 +12,6 @@ G.DefaultSettings = {
 	Mover = {},
 	InternalCD = {},
 	AuraWatchMover = {},
-	RaidClickSets = {},
 	TempAnchor = {},
 	AuraWatchList = {
 		Switcher = {},
@@ -223,6 +222,8 @@ G.DefaultSettings = {
 		ClassPowerOnly = false,
 		NameOnlyMode = false,
 		ExecuteRatio = 0,
+		ColoredTarget = false,
+		TargetColor = {r=0, g=.6, b=1},
 	},
 	Skins = {
 		DBM = true,
@@ -310,7 +311,7 @@ G.AccountSettings = {
 	GuildSortOrder = true,
 	DetectVersion = DB.Version,
 	ResetDetails = true,
-	LockUIScale = true,
+	LockUIScale = false,
 	UIScale = .71,
 	NumberFormat = 1,
 	VersionCheck = true,
@@ -319,6 +320,7 @@ G.AccountSettings = {
 	BWRequest = false,
 	RaidAuraWatch = {},
 	CornerBuffs = {},
+	RaidClickSets = {},
 	TexStyle = 2,
 	KeystoneInfo = {},
 	AutoBubbles = false,
@@ -328,6 +330,7 @@ G.AccountSettings = {
 	ProfileIndex = {},
 	ProfileNames = {},
 	Help = {},
+	CustomTex = "",
 }
 
 -- Initial settings
@@ -389,10 +392,14 @@ loader:SetScript("OnEvent", function(self, _, addon)
 	InitialSettings(G.DefaultSettings, C.db, true)
 
 	B:SetupUIScale(true)
-	if not G.TextureList[NDuiADB["TexStyle"]] then
-		NDuiADB["TexStyle"] = 2 -- reset value if not exists
+	if NDuiADB["CustomTex"] ~= "" then
+		DB.normTex = "Interface\\"..NDuiADB["CustomTex"]
+	else
+		if not G.TextureList[NDuiADB["TexStyle"]] then
+			NDuiADB["TexStyle"] = 2 -- reset value if not exists
+		end
+		DB.normTex = G.TextureList[NDuiADB["TexStyle"]].texture
 	end
-	DB.normTex = G.TextureList[NDuiADB["TexStyle"]].texture
 
 	self:UnregisterAllEvents()
 end)
@@ -631,7 +638,7 @@ G.TabList = {
 	L["Bags"],
 	L["Unitframes"],
 	L["RaidFrame"],
-	L["Nameplate"],
+	NewFeatureTag..L["Nameplate"],
 	L["PlayerPlate"],
 	L["Auras"],
 	L["Raid Tools"],
@@ -640,8 +647,8 @@ G.TabList = {
 	L["Skins"],
 	L["Tooltip"],
 	L["Misc"],
-	L["UI Settings"],
-	NewFeatureTag..L["Profile"],
+	NewFeatureTag..L["UI Settings"],
+	L["Profile"],
 }
 
 G.OptionList = { -- type, key, value, name, horizon, doubleline
@@ -664,7 +671,7 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Actionbar", "Cooldown", HeaderTag..L["Show Cooldown"]},
 		{1, "Actionbar", "OverrideWA", L["HideCooldownOnWA"].."*", true},
 		{1, "Actionbar", "DecimalCD", L["Decimal Cooldown"].."*"},
-		{1, "Misc", "SendActionCD", NewFeatureTag..L["SendActionCD"].."*", true, nil, nil, L["SendActionCDTip"]},
+		{1, "Misc", "SendActionCD", L["SendActionCD"].."*", true, nil, nil, L["SendActionCDTip"]},
 		{},--blank
 		{1, "Actionbar", "Hotkeys", L["Actionbar Hotkey"].."*", nil, nil, updateHotkeys},
 		{1, "Actionbar", "Macro", L["Actionbar Macro"], true},
@@ -725,7 +732,7 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "UFs", "RaidClickSets", HeaderTag..L["Enable ClickSets"], true, setupClickCast},
 		{4, "UFs", "BuffIndicatorType", L["BuffIndicatorType"].."*", nil, {L["BI_Blocks"], L["BI_Icons"], L["BI_Numbers"]}, refreshRaidFrameIcons},
 		{3, "UFs", "BuffIndicatorScale", L["BuffIndicatorScale"].."*", true, {.8, 2, .1}, refreshRaidFrameIcons},
-		{1, "UFs", "InstanceAuras", HeaderTag..L["Instance Auras"], nil, setupRaidDebuffs},
+		{1, "UFs", "InstanceAuras", HeaderTag..L["Instance Auras"], nil, setupRaidDebuffs, nil, L["InstanceAurasTip"]},
 		{1, "UFs", "AurasClickThrough", L["RaidAuras ClickThrough"], nil, nil, nil, L["ClickThroughTip"]},
 		{3, "UFs", "RaidDebuffScale", L["RaidDebuffScale"].."*", true, {.8, 2, .1}, refreshRaidFrameIcons},
 		{},--blank
@@ -748,18 +755,22 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Nameplate", "Enable", HeaderTag..L["Enable Nameplate"], nil, setupNameplateFilter},
 		{1, "Nameplate", "NameOnlyMode", L["NameOnlyMode"].."*", true, nil, nil, L["NameOnlyModeTip"]},
 		{},--blank
-		{4, "Nameplate", "AuraFilter", L["NameplateAuraFilter"].."*", nil, {L["BlackNWhite"], L["PlayerOnly"], L["IncludeCrowdControl"]}, refreshNameplates},
-		{4, "Nameplate", "TargetIndicator", L["TargetIndicator"].."*", true, {DISABLE, L["TopArrow"], L["RightArrow"], L["TargetGlow"], L["TopNGlow"], L["RightNGlow"]}, refreshNameplates},
 		{1, "Nameplate", "FriendlyCC", L["Friendly CC"].."*"},
-		{1, "Nameplate", "HostileCC", L["Hostile CC"].."*", true},
+		{1, "Nameplate", "HostileCC", L["Hostile CC"].."*"},
+		{4, "Nameplate", "AuraFilter", L["NameplateAuraFilter"].."*", true, {L["BlackNWhite"], L["PlayerOnly"], L["IncludeCrowdControl"]}, refreshNameplates},
 		{1, "Nameplate", "FullHealth", L["Show FullHealth"].."*", nil, nil, refreshNameplates},
 		{1, "Nameplate", "ColorBorder", L["ColorBorder"].."*", true, nil, refreshNameplates},
 		{1, "Nameplate", "QuestIndicator", L["QuestIndicator"], nil, nil, nil, L["QuestIndicatorAddOns"]},
+		{},--blank
+		{1, "Nameplate", "ColoredTarget", NewFeatureTag..HeaderTag..L["ColoredTarget"].."*", nil, nil, nil, L["ColoredTargetTip"]},
+		{5, "Nameplate", "TargetColor", NewFeatureTag..L["TargetNP Color"].."*"},
+		{4, "Nameplate", "TargetIndicator", L["TargetIndicator"].."*", true, {DISABLE, L["TopArrow"], L["RightArrow"], L["TargetGlow"], L["TopNGlow"], L["RightNGlow"]}, refreshNameplates},
 		{},--blank
 		{1, "Nameplate", "CustomUnitColor", HeaderTag..L["CustomUnitColor"].."*", nil, nil, updateCustomUnitList, L["CustomUnitColorTip"]},
 		{5, "Nameplate", "CustomColor", L["Custom Color"].."*", 2},
 		{2, "Nameplate", "UnitList", L["UnitColor List"].."*", nil, nil, updateCustomUnitList, L["CustomUnitTips"]},
 		{2, "Nameplate", "ShowPowerList", L["ShowPowerList"].."*", true, nil, updatePowerUnitList, L["CustomUnitTips"]},
+		{},--blank
 		{1, "Nameplate", "TankMode", HeaderTag..L["Tank Mode"].."*", nil, nil, nil, L["TankModeTip"]},
 		{5, "Nameplate", "SecureColor", L["Secure Color"].."*"},
 		{5, "Nameplate", "TransColor", L["Trans Color"].."*", 1},
@@ -788,9 +799,9 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{3, "Nameplate", "PPFadeoutAlpha", L["PlayerPlate FadeoutAlpha"].."*", true, {0, .5, .05}, togglePlateVisibility},
 		{},--blank
 		{3, "Nameplate", "PPWidth", L["PlayerPlate HPWidth"].."*", false, {150, 300, 1}, refreshNameplates},
-		{3, "Nameplate", "PPBarHeight", L["PlayerPlate CPHeight"].."*", true, {5, 15, 1}, refreshNameplates},
-		{3, "Nameplate", "PPHealthHeight", L["PlayerPlate HPHeight"].."*", false, {5, 15, 1}, refreshNameplates},
-		{3, "Nameplate", "PPPowerHeight", L["PlayerPlate MPHeight"].."*", true, {5, 15, 1}, refreshNameplates},
+		{3, "Nameplate", "PPBarHeight", L["PlayerPlate CPHeight"].."*", true, {2, 15, 1}, refreshNameplates},
+		{3, "Nameplate", "PPHealthHeight", L["PlayerPlate HPHeight"].."*", false, {2, 15, 1}, refreshNameplates},
+		{3, "Nameplate", "PPPowerHeight", L["PlayerPlate MPHeight"].."*", true, {2, 15, 1}, refreshNameplates},
 	},
 	[7] = {
 		{1, "AuraWatch", "Enable", HeaderTag..L["Enable AuraWatch"], nil, setupAuraWatch},
@@ -811,7 +822,7 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Misc", "RaidTool", HeaderTag..L["Raid Manger"]},
 		{1, "Misc", "RMRune", L["Runes Check"].."*"},
 		{1, "Misc", "EasyMarking", L["Easy Mark"].."*"},
-		{2, "Misc", "DBMCount", L["Countdown Sec"].."*", true},
+		{2, "Misc", "DBMCount", L["DBMCount"].."*", true, nil, nil, L["DBMCountTip"]},
 		{},--blank
 		{1, "Misc", "QuestNotifier", HeaderTag..L["QuestNotifier"].."*", nil, nil, updateQuestNotifier},
 		{1, "Misc", "QuestProgress", L["QuestProgress"].."*"},
@@ -848,11 +859,11 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{},--blank
 		{1, "Chat", "Invite", HeaderTag..L["Whisper Invite"]},
 		{1, "Chat", "GuildInvite", L["Guild Invite Only"].."*"},
-		{2, "Chat", "Keyword", L["Whisper Keyword"].."*", true, nil, updateWhisperList},
+		{2, "Chat", "Keyword", L["Whisper Keyword"].."*", true, nil, updateWhisperList, L["WhisperKeywordTip"]},
 	},
 	[10] = {
 		{1, "Map", "DisableMap", "|cffff0000"..L["DisableMap"], nil, nil, nil, L["DisableMapTip"]},
-		{1, "Map", "MapRevealGlow", NewFeatureTag..L["MapRevealGlow"].."*", nil, nil, nil, L["MapRevealGlowTip"]},
+		{1, "Map", "MapRevealGlow", L["MapRevealGlow"].."*", nil, nil, nil, L["MapRevealGlowTip"]},
 		{1, "Map", "MapFader", L["MapFader"].."*", nil, nil, updateMapFader},
 		{3, "Map", "MapScale", L["Map Scale"], true, {.5, 1, .1}},
 		{},--blank
@@ -927,6 +938,7 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{},--blank
 		{4, "ACCOUNT", "TexStyle", L["Texture Style"], false, {}},
 		{4, "ACCOUNT", "NumberFormat", L["Numberize"], true, {L["Number Type1"], L["Number Type2"], L["Number Type3"]}},
+		{2, "ACCOUNT", "CustomTex", NewFeatureTag..L["CustomTex"], nil, nil, nil, L["CustomTexTip"]},
 	},
 	[15] = {
 	},
@@ -1038,12 +1050,12 @@ local function CreateOption(i)
 				NDUI_VARIABLE(key, value, eb:GetText())
 				if callback then callback() end
 			end)
+
+			B.CreateFS(eb, 14, name, "system", "CENTER", 0, 25)
 			eb.title = L["Tips"]
 			local tip = L["EditBox Tip"]
 			if tooltip then tip = tooltip.."|n"..tip end
 			B.AddTooltip(eb, "ANCHOR_RIGHT", tip, "info")
-
-			B.CreateFS(eb, 14, name, "system", "CENTER", 0, 25)
 		-- Slider
 		elseif optType == 3 then
 			local min, max, step = unpack(data)
@@ -1110,14 +1122,15 @@ local function CreateOption(i)
 			B.CreateFS(dd, 14, name, "system", "CENTER", 0, 25)
 		-- Colorswatch
 		elseif optType == 5 then
-			local f = B.CreateColorSwatch(parent, name, NDUI_VARIABLE(key, value))
+			local swatch = B.CreateColorSwatch(parent, name, NDUI_VARIABLE(key, value))
 			local width = 25 + (horizon or 0)*155
 			if horizon then
-				f:SetPoint("TOPLEFT", width, -offset + 30)
+				swatch:SetPoint("TOPLEFT", width, -offset + 30)
 			else
-				f:SetPoint("TOPLEFT", width, -offset - 5)
+				swatch:SetPoint("TOPLEFT", width, -offset - 5)
 				offset = offset + 35
 			end
+			swatch.__default = (key == "ACCOUNT" and G.AccountSettings[value]) or G.DefaultSettings[key][value]
 		-- Blank, no optType
 		else
 			if not key then
@@ -1149,7 +1162,7 @@ local function CreateContactBox(parent, text, url, index)
 end
 
 local donationList = {
-	["afdian"] = "33578473, normanvon, y368413, EK, msylgj, 夜丨灬清寒, akakai, reisen410, 其实你很帥, 萨菲尔, Antares, RyanZ, fldqw, Mario, 时光旧予, 食铁骑兵, 爱蕾丝的基总, 施然, 命运镇魂曲, 不可语上, Leo, 忘川, 刘翰承, 悟空海外党, cncj, 暗月, 汪某人, 黑手, iraq120, 嗜血, 我又不是妖怪，以及部分未备注名字的用户。",
+	["afdian"] = "33578473, normanvon, y368413, EK, msylgj, 夜丨灬清寒, akakai, reisen410, 其实你很帥, 萨菲尔, Antares, RyanZ, fldqw, Mario, 时光旧予, 食铁骑兵, 爱蕾丝的基总, 施然, 命运镇魂曲, 不可语上, Leo, 忘川, 刘翰承, 悟空海外党, cncj, 暗月, 汪某人, 黑手, iraq120, 嗜血未冷, 我又不是妖怪，养乐多，无人知晓，秋末旷夜，以及部分未备注名字的用户。",
 	["Patreon"] = "Quentin, Julian Neigefind, silenkin, imba Villain, Zeyu Zhu.",
 }
 local function CreateDonationIcon(parent, texture, name, xOffset)

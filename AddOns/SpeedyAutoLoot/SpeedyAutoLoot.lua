@@ -27,7 +27,7 @@ function AutoLoot:ProcessLootItem(itemLink, itemQuantity)
     if inventoryItemCount and inventoryItemCount > 0 then
         local itemStackSize = select(8, GetItemInfo(itemLink))
         if itemStackSize and itemStackSize > 1 then
-            if ( itemStackSize - (inventoryItemCount % itemStackSize) ) >= itemQuantity then
+            if ( ( itemStackSize - inventoryItemCount ) % itemStackSize ) >= itemQuantity then
                 return true
             end
         end

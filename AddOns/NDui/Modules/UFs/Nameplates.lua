@@ -100,12 +100,15 @@ function UF:UpdateColor(_, unit)
 	local insecureColor = C.db["Nameplate"]["InsecureColor"]
 	local executeRatio = C.db["Nameplate"]["ExecuteRatio"]
 	local healthPerc = UnitHealth(unit) / (UnitHealthMax(unit) + .0001) * 100
+	local targetColor = C.db["Nameplate"]["TargetColor"]
 	local r, g, b
 
 	if not UnitIsConnected(unit) then
 		r, g, b = .7, .7, .7
 	else
-		if isCustomUnit then
+		if C.db["Nameplate"]["ColoredTarget"] and UnitIsUnit(unit, "target") then
+			r, g, b = targetColor.r, targetColor.g, targetColor.b
+		elseif isCustomUnit then
 			r, g, b = customColor.r, customColor.g, customColor.b
 		elseif isPlayer and isFriendly then
 			if C.db["Nameplate"]["FriendlyCC"] then
@@ -174,12 +177,17 @@ end
 -- Target indicator
 function UF:UpdateTargetChange()
 	local element = self.TargetIndicator
-	if C.db["Nameplate"]["TargetIndicator"] == 1 then return end
+	local unit = self.unit
 
-	if UnitIsUnit(self.unit, "target") and not UnitIsUnit(self.unit, "player") then
-		element:Show()
-	else
-		element:Hide()
+	if C.db["Nameplate"]["TargetIndicator"] ~= 1 then
+		if UnitIsUnit(unit, "target") and not UnitIsUnit(unit, "player") then
+			element:Show()
+		else
+			element:Hide()
+		end
+	end
+	if C.db["Nameplate"]["ColoredTarget"] then
+		UF.UpdateThreatColor(self, _, unit)
 	end
 end
 
@@ -252,8 +260,8 @@ function UF:AddTargetIndicator(self)
 	frame.RightArrow:SetPoint("LEFT", frame, "RIGHT", 3, 0)
 	frame.RightArrow:SetRotation(rad(-90))
 
-	frame.Glow = B.CreateSD(frame, 5, true)
-	frame.Glow:SetOutside(self.Health.backdrop, 5, 5)
+	frame.Glow = B.CreateSD(frame, 8, true)
+	frame.Glow:SetOutside(self.Health.backdrop, 8, 8)
 	frame.Glow:SetBackdropBorderColor(1, 1, 1)
 	frame.Glow:SetFrameLevel(0)
 
@@ -656,12 +664,18 @@ function UF:UpdateNameplateAuras()
 end
 
 function UF:RefreshNameplats()
+	local plateHeight = C.db["Nameplate"]["PlateHeight"]
+	local nameTextSize = C.db["Nameplate"]["NameTextSize"]
+	local iconSize = plateHeight*2 + 5
+
 	for nameplate in pairs(platesList) do
-		nameplate:SetSize(C.db["Nameplate"]["PlateWidth"], C.db["Nameplate"]["PlateHeight"])
-		nameplate.nameText:SetFont(DB.Font[1], C.db["Nameplate"]["NameTextSize"], DB.Font[3])
-		nameplate.npcTitle:SetFont(DB.Font[1], C.db["Nameplate"]["NameTextSize"]-1, DB.Font[3])
-		nameplate.Castbar.Time:SetFont(DB.Font[1], C.db["Nameplate"]["NameTextSize"], DB.Font[3])
-		nameplate.Castbar.Text:SetFont(DB.Font[1], C.db["Nameplate"]["NameTextSize"], DB.Font[3])
+		nameplate:SetSize(C.db["Nameplate"]["PlateWidth"], plateHeight)
+		nameplate.nameText:SetFont(DB.Font[1], nameTextSize, DB.Font[3])
+		nameplate.npcTitle:SetFont(DB.Font[1], nameTextSize-1, DB.Font[3])
+		nameplate.Castbar.Icon:SetSize(iconSize, iconSize)
+		nameplate.Castbar:SetHeight(plateHeight)
+		nameplate.Castbar.Time:SetFont(DB.Font[1], nameTextSize, DB.Font[3])
+		nameplate.Castbar.Text:SetFont(DB.Font[1], nameTextSize, DB.Font[3])
 		nameplate.healthValue:SetFont(DB.Font[1], C.db["Nameplate"]["HealthTextSize"], DB.Font[3])
 		nameplate.healthValue:UpdateTag()
 		UF.UpdateNameplateAuras(nameplate)
@@ -706,7 +720,6 @@ function UF:UpdatePlateByType()
 		title:Show()
 
 		raidtarget:SetPoint("TOP", title, "BOTTOM", 0, -5)
-		raidtarget:SetParent(self)
 		classify:Hide()
 		if questIcon then questIcon:SetPoint("LEFT", name, "RIGHT", -1, 0) end
 	else
@@ -724,8 +737,7 @@ function UF:UpdatePlateByType()
 		hpval:Show()
 		title:Hide()
 
-		raidtarget:SetPoint("RIGHT", self, "LEFT", -3, 0)
-		raidtarget:SetParent(self.Health)
+		raidtarget:SetPoint("BOTTOMRIGHT", self, "TOPLEFT", 0, 3)
 		classify:Show()
 		if questIcon then questIcon:SetPoint("LEFT", self, "RIGHT", -1, 0) end
 	end

@@ -1,3 +1,5 @@
+### 2.0.41
+- Fix a small stealthy bracket mistake.
 ### 2.0.40
 - Fix C_Var missing from classic
 ### 2.0.39
