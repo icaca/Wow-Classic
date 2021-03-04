@@ -1,0 +1,13 @@
+## Interface: 11305
+## Title: [Lib] Scorpio
+## Author: kurapica125@outlook.com
+## Version: c055
+## Notes: Scorpio Addon FrameWork
+## URL: http://github.com/kurapica/Scorpio
+## Dependencies: PLoop
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: Scorpio_DB
+## SavedVariablesPerCharacter: Scorpio_DB_Char
+
+Scorpio.xml
