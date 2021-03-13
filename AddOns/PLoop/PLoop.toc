@@ -1,7 +1,7 @@
-## Interface: 11305
+## Interface: 11306
 ## Title: [Lib] PLoop
 ## Author: kurapica125@outlook.com
-## Version: c260
+## Version: c269
 ## Notes: Prototype Lua object-oriented program system
 ## URL: http://github.com/kurapica/PLoop
 ## DefaultState: Enabled

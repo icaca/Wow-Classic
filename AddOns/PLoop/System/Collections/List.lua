@@ -137,7 +137,8 @@ PLoop(function(_ENV)
             __Arguments__{ Callable, System.Any/nil, System.Any/nil }
             function Extend(self, iter, obj, idx)
                 local ins   = self.Insert
-                for _, item in iter, obj, idx do
+                for key, item in iter, obj, idx do
+                    if item == nil then item = key end
                     local ret, msg = valid(lsttype, item, true)
                     if not msg then ins(self, item) end
                 end
@@ -161,7 +162,10 @@ PLoop(function(_ENV)
             __Arguments__{ Callable, System.Any/nil, System.Any/nil }
             function Extend(self, iter, obj, idx)
                 local ins   = self.Insert
-                for _, item in iter, obj, idx do ins(self, item) end
+                for key, item in iter, obj, idx do
+                    if item == nil then item = key end
+                    ins(self, item)
+                end
                 return self
             end
         end
@@ -331,21 +335,11 @@ PLoop(function(_ENV)
         local rycIdleworkers
 
         if Platform.MULTI_OS_THREAD then
-            export { Context }
-
-            getIdleworkers      = function()
-                -- Disable the recycle in multi os thread
-                -- local context   = Context.Current
-                -- return context and context[ListStreamWorker]
-            end
-
-            rycIdleworkers      = function(worker)
-                -- local context   = Context.Current
-                -- if context then context[ListStreamWorker] = worker end
-            end
+            getIdleworkers      = Toolset.fakefunc
+            rycIdleworkers      = Toolset.fakefunc
         else
             -- Keep idle workers for re-usage
-            export { idleworkers= {} }
+            local idleworkers   = {}
             getIdleworkers      = function() return tremove(idleworkers) end
             rycIdleworkers      = function(worker) tinsert(idleworkers, worker) end
         end
@@ -582,10 +576,24 @@ PLoop(function(_ENV)
             return self
         end
 
+        __Arguments__{ Table }
+        function Map(self, map)
+            if self[FLD_MAPACTITON] then return ListStreamWorker(self):Map(feature) end
+            self[FLD_MAPACTITON] = function(item) if map[item] ~= nil then return map[item] else return item end end
+            return self
+        end
+
         __Arguments__{ Callable }
         function Filter(self, func)
             if self[FLD_FILTERACTN] or self[FLD_MAPACTITON] then return ListStreamWorker(self):Filter(func) end
             self[FLD_FILTERACTN] = func
+            return self
+        end
+
+        __Arguments__{ Table }
+        function Filter(self, filter)
+            if self[FLD_FILTERACTN] or self[FLD_MAPACTITON] then return ListStreamWorker(self):Filter(func) end
+            self[FLD_FILTERACTN] = function(item) return filter[item] end
             return self
         end
 
@@ -675,12 +683,18 @@ PLoop(function(_ENV)
         __Arguments__{ Callable }
         function Map(self, func) return ListStreamWorker(self):Map(func) end
 
+        __Arguments__{ Table }
+        function Map(self, map) return ListStreamWorker(self):Map(map) end
+
         __Arguments__{ String }
         function Map(self, feature) return ListStreamWorker(self):Map(feature) end
 
         --- Used to filter the items with a check function
         __Arguments__{ Callable }
         function Filter(self, func) return ListStreamWorker(self):Filter(func) end
+
+        __Arguments__{ Table }
+        function Filter(self, filter) return ListStreamWorker(self):Filter(filter) end
 
         __Arguments__{ String, System.Any/nil }
         function Filter(self, feature, value) return ListStreamWorker(self):Filter(feature, value) end
@@ -843,4 +857,40 @@ PLoop(function(_ENV)
             return sum
         end
     end)
+
+    -----------------------------------------------------------------------
+    --                       Serialization Extend                        --
+    -----------------------------------------------------------------------
+    export {
+        isListType              = Class.IsSubType,
+        isstruct                = Struct.Validate,
+        getstructcategory       = Struct.GetStructCategory,
+        pairs                   = pairs,
+        type                    = type,
+        floor                   = math.floor,
+
+        Serialization
+    }
+
+    --- Whether the data is a list object
+    __Static__() function Serialization.IsArrayData(data)
+        -- Check the data type
+        local objField          = data[Serialization.ObjectTypeField]
+        if objField then return isListType(objField, IIndexedList) or isstruct(objField) and getstructcategory(objField) == "ARRAY" or false end
+
+        -- Check the data
+        local count             = #data
+
+        for k in pairs(data) do
+            if type(k) ~= "number" or (floor(k) ~= k or k < 0 or k > count) then
+                return false
+            end
+        end
+
+        for i = 1, count do
+            if data[i] == nil then return false end
+        end
+
+        return true
+    end
 end)

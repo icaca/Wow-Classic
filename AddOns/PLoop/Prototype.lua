@@ -33,8 +33,8 @@
 -- Author       :   kurapica125@outlook.com                                  --
 -- URL          :   http://github.com/kurapica/PLoop                         --
 -- Create Date  :   2017/04/02                                               --
--- Update Date  :   2020/09/09                                               --
--- Version      :   1.6.21                                                   --
+-- Update Date  :   2021/02/23                                               --
+-- Version      :   1.6.29                                                   --
 --===========================================================================--
 
 -------------------------------------------------------------------------------
@@ -45,6 +45,7 @@ do
     --                      environment preparation                      --
     -----------------------------------------------------------------------
     local cerror, cformat       = error, string.format
+    local cdebug                = type(debug) == "table" and debug or nil -- Check the debug lib
     local _PLoopEnv             = setmetatable(
         {
             _G                  = _G,
@@ -101,13 +102,13 @@ do
             loadfile            = loadfile,
 
             -- Debug lib
-            debug               = debug or false,
-            debuginfo           = debug and debug.getinfo    or false,
-            getupvalue          = debug and debug.getupvalue or false,
-            getlocal            = debug and debug.getlocal   or false,
-            traceback           = debug and debug.traceback  or false,
-            setfenv             = setfenv or debug and debug.setfenv or false,
-            getfenv             = getfenv or debug and debug.getfenv or false,
+            debug               = cdebug or false,
+            debuginfo           = cdebug and cdebug.getinfo    or false,
+            getupvalue          = cdebug and cdebug.getupvalue or false,
+            getlocal            = cdebug and cdebug.getlocal   or false,
+            traceback           = cdebug and cdebug.traceback  or false,
+            setfenv             = setfenv or cdebug and cdebug.setfenv or false,
+            getfenv             = getfenv or cdebug and cdebug.getfenv or false,
             collectgarbage      = collectgarbage,
 
             -- Share API
@@ -277,6 +278,10 @@ do
         -- Default 40
         THREAD_POOL_MAX_SIZE                = 40,
 
+        --- Wether disable the default thread pool, so each context has its own
+        -- thread pool, should be actived for http servers.
+        ENABLE_CONTEXT_FEATURES             = false,
+
         --- Whehther active safe thread iterator so it will stop for dead coroutine
         -- On some platforms like Openresty call a dead wrap won't raise error but
         -- return the error message 'cannot resume dead coroutine'
@@ -289,6 +294,12 @@ do
         --- Use `this` keywords for all object methods
         -- Default false
         USE_THIS_FOR_OBJECT_METHODS         = false,
+
+        --- Whether use fake entity for data entity cache system, to avoid cache penetration
+        DATA_CACHE_USE_FAKE_ENTITY          = true,
+
+        --- The time out of the fake entities(second)
+        DATA_CACHE_FAKE_ENTITY_TIMEOUT      = 3600,
     }
 
     -- Special constraint
@@ -8089,7 +8100,8 @@ do
                 local info      = fromobj and _ICInfo[target] or getICTargetInfo(target)
                 if info and type(name) == "string" then
                     info        = info[fromobj and FLD_IC_OBJFTR or FLD_IC_TYPFTR]
-                    return info and info[name]
+                    info        = info and info[name]
+                    return info and info:GetFeature()
                 end
             end;
 
@@ -8106,7 +8118,12 @@ do
                 local info      = fromobj and _ICInfo[target] or getICTargetInfo(target)
                 if info then
                     local typftr= info[fromobj and FLD_IC_OBJFTR or FLD_IC_TYPFTR]
-                    if typftr then return function(self, n) return next(typftr, n) end, target end
+                    if typftr then
+                        return function(self, n)
+                            local name, ftr = next(typftr, n)
+                            if name then return name, ftr:GetFeature() end
+                        end, target
+                    end
                 end
                 return fakefunc, target
             end;
@@ -10386,6 +10403,28 @@ do
     event                       = prototype {
         __tostring              = "event",
         __index                 = {
+            --- Gets the event's owner
+            -- @static
+            -- @method  GetOwner
+            -- @owner   event
+            -- @param   target                      the target event
+            -- @return  owner
+            ["GetOwner"]        = function(self)
+                local info      = _EventInfo[self]
+                return info and info[FLD_EVENT_OWNER]
+            end;
+
+            --- Gets the event's name
+            -- @static
+            -- @method  GetName
+            -- @owner   event
+            -- @param   target                      the target event
+            -- @return  name
+            ["GetName"]         = function(self)
+                local info      = _EventInfo[self]
+                return info and info[FLD_EVENT_NAME]
+            end;
+
             --- Get the event delegate
             -- @static
             -- @method  Get
@@ -10437,6 +10476,14 @@ do
                     end
                 end
             end;
+
+            --- Get the feature itself
+            -- @static
+            -- @method  GetFeature()
+            -- @owner   event
+            -- @param   target                      the target event
+            -- @return  event
+            ["GetFeature"]      = function(self) return self end;
 
             --- Get the event change handler
             -- @static
@@ -10609,7 +10656,10 @@ do
             return "[event]" .. namespace.GetNamespaceName(info[FLD_EVENT_OWNER]) .. "." .. info[FLD_EVENT_NAME]
         end;
         __index                 = {
+            ["GetOwner"]        = event.GetOwner;
+            ["GetName"]         = event.GetName;
             ["Get"]             = event.Get;
+            ["GetFeature"]      = event.GetFeature;
             ["GetEventChangeHandler"] = event.GetEventChangeHandler;
             ["Invoke"]          = invokeEvent;
             ["IsShareable"]     = event.IsShareable;
@@ -11627,6 +11677,28 @@ do
     -----------------------------------------------------------------------
     property                    = prototype {
         __index                 = {
+            --- Gets the property's owner
+            -- @static
+            -- @method  GetOwner
+            -- @owner   property
+            -- @param   target                      the target property
+            -- @return  owner
+            ["GetOwner"]        = function(self)
+                local info      = _PropertyInfo[self]
+                return info and info[FLD_PROP_OWNER]
+            end;
+
+            --- Gets the property's name
+            -- @static
+            -- @method  GetName
+            -- @owner   property
+            -- @param   target                      the target property
+            -- @return  name
+            ["GetName"]         = function(self)
+                local info      = _PropertyInfo[self]
+                return info and info[FLD_PROP_NAME]
+            end;
+
             --- Get the property accessor, the accessor will be used by object to get/set value instead of the property itself
             -- @static
             -- @method  GetAccessor
@@ -11770,8 +11842,16 @@ do
                     genPropertyGet(info)
                 end
 
-                return { Get = info[FLD_PROP_RAWGET], Set = info[FLD_PROP_RAWSET] }
+                return { Get = info[FLD_PROP_RAWGET], Set = info[FLD_PROP_RAWSET], GetFeature = function() return self end }
             end;
+
+            --- Get the feature itself
+            -- @static
+            -- @method  GetFeature()
+            -- @owner   property
+            -- @param   target                      the target property
+            -- @return  property
+            ["GetFeature"]      = function(self) return self end;
 
             --- Get the property field if existed
             -- @static
@@ -12148,7 +12228,10 @@ do
             return "[property]" .. namespace.GetNamespaceName(info[FLD_PROP_OWNER]) .. "." .. info[FLD_PROP_NAME]
         end;
         __index                 = {
+            ["GetOwner"]        = property.GetOwner;
+            ["GetName"]         = property.GetName;
             ["GetAccessor"]     = property.GetAccessor;
+            ["GetFeature"]      = property.GetFeature;
             ["GetField"]        = property.GetField;
             ["IsGetClone"]      = property.IsGetClone;
             ["IsGetDeepClone"]  = property.IsGetDeepClone;
@@ -12874,13 +12957,13 @@ do
                             return unpack(map[fakefunc])
                         end
                     end
-                end or getlocal and -- Use Context
+                end or PLOOP_PLATFORM_SETTINGS.ENABLE_CONTEXT_FEATURES and -- Use Context
                 function(self, target, targettype, definition, owner, name, stack)
                     if targettype == ATTRTAR_FUNCTION or targettype == ATTRTAR_METHOD then
                         local root      = setmetatable({}, WEAK_KEY)
 
                         return function(...)
-                            local ctx   = Context.GetContextFromStack()
+                            local ctx   = Context.GetCurrentContext()
                             if not ctx then return target(...) end
 
                             local map   = ctx[__AutoCache__]
@@ -12911,7 +12994,7 @@ do
                             return unpack(map[fakefunc])
                         end
                     end
-                end,
+                end or fakefunc,
             ["AttributeTarget"] = ATTRTAR_CLASS + ATTRTAR_INTERFACE + ATTRTAR_METHOD + ATTRTAR_FUNCTION,
             ["Priority"]        = -1,  -- Magic but the AttributePriority is defined later
         },
@@ -13581,6 +13664,12 @@ do
     --- Represents class type
     __Sealed__() struct "System.ClassType"          { genTypeValidator(class)       }
 
+    --- Represent a property
+    __Sealed__() struct "System.PropertyType"       { genTypeValidator(property)    }
+
+    --- Represents an event
+    __Sealed__() struct "System.EventType"          { genTypeValidator(event)       }
+
     --- Represents any validation type
     __Sealed__() AnyType = struct "System.AnyType"  { function(val, onlyvalid) return not getprototypemethod(val, "ValidateValue") and (onlyvalid or "the %s is not a validation type") or nil end}
 
@@ -13980,7 +14069,17 @@ do
         -- @param   value
         -- @param   deep:boolean
         -- @param   safe:boolean    only need if there'd be recursive reference in the table
+        -- @return  the clone
         clone                   = clone,
+
+        --- Copy the values in the source to the target table
+        -- @param   src: the source table
+        -- @param   tar: the target table
+        -- @param   deep: whether check the deep level tables
+        -- @param   override: whether override the values in the target table
+        -- @param   safe: whether there could be the same table in teh source
+        -- @return  tar
+        copy                    = tblclone,
 
         --- load the snippets
         -- @param   chunk           the code
@@ -14039,8 +14138,8 @@ do
         --- A fake function that do nothing
         fakefunc                = fakefunc,
 
-        --- A function used to return an empty table
-        newtable                = function() return {} end,
+        --- A function used to return an empty table with weak settings
+        newtable                = function(weakKey, weakVal) return weakKey and setmetatable({}, weakVal and WEAK_ALL or WEAK_KEY) or weakVal and setmetatable({}, WEAK_VALUE) or {} end,
     }
 
     -----------------------------------------------------------------------
@@ -15630,15 +15729,13 @@ do
         --- Invoke the handlers with arguments
         -- @param   ...                         the arguments
         function Invoke(self, ...)
-            local ret           = self[0] and self[0](...) or false
             -- Any func return true means to stop all
-            if ret then return end
+            if self[0] and self[0](...) then return end
 
             -- Call the stacked handlers
-            for _, func in ipairs, self, 0 do
-                ret             = func(...)
-
-                if ret then return end
+            for i = 1, #self do
+                local func      = self[i]
+                if func and func(...) then return end
             end
 
             -- Call the final func
@@ -15648,7 +15745,10 @@ do
         --- Whether the delegate has no handler
         -- @return  boolean                     true if no handler in the delegate
         function IsEmpty(self)
-            return not (self[-1] or self[1] or self[0])
+            for i = -1, #self do
+                if self[i] then return false end
+            end
+            return true
         end
 
         --- Set the init function to the delegate
@@ -15714,11 +15814,23 @@ do
                 Attribute.AttachAttributes(func, ATTRTAR_FUNCTION, owner, name, 2)
             end
 
-            for _, f in ipairs, self, 0 do
-                if f == func then return self end
+            local slot
+
+            for i = 1, #self do
+                local f         = self[i]
+                if not f then
+                    slot        = i
+                elseif f == func then
+                    return self
+                end
             end
 
-            tinsert(self, func)
+            if slot then
+                self[slot]      = func
+            else
+                tinsert(self, func)
+            end
+
             OnChange(self)
             return self
         end
@@ -15727,9 +15839,9 @@ do
         -- @usage   obj.OnEvent = obj.OnEvent - func
         __Arguments__{ Function }
         function __sub(self, func)
-            for i, f in ipairs, self, 0 do
-                if f == func then
-                    tremove(self, i)
+            for i = 1, #self do
+                if self[i] == func then
+                    self[i] = false
                     OnChange(self)
                     break
                 end
@@ -16094,12 +16206,14 @@ do
             isclass             = Class.IsSubType,
             isinterface         = Interface.IsSubType,
             pcall               = pcall,
-            type                = type,
+
+            Context, IContext
         }
 
-        export { Context, IContext }
+        local customGetContext  = fakefunc
+        local customSaveContext = fakefunc
 
-        local getCurrentContext = getlocal and function(stack)
+        local getStackContext   = getlocal and function(stack)
             local n, v          = getlocal(stack, 1)
 
             while true do
@@ -16117,27 +16231,31 @@ do
             end
         end or fakefunc
 
-        -----------------------------------------------------------
-        --                     static method                     --
-        -----------------------------------------------------------
-        --- Retrieve the context object from the begin stack to the top stack
-        -- @param   stack                           the begin stack to check
-        __Static__()
-        function GetContextFromStack(stack)
-            local ok, ret       = pcall(getCurrentContext, (type(stack) == "number" and stack or 1) + 3)
+        local getCurrentContext = function()
+            local context       = customGetContext()
+            if context then return context end
+
+            local ok, ret       = pcall(getStackContext, 4)
             return ok and ret or nil
         end
 
         -----------------------------------------------------------
         --                   static property                     --
         -----------------------------------------------------------
-        __Static__()
-        --- the current context object
-        property "Current" {
-            get = function ()
-                local ok, ret   = pcall(getCurrentContext, 5)
-                return ok and ret or nil
-            end
+        --- The API used to save the current context
+        __Static__() property "SaveCurrentContext" {
+            type                = Function,
+            set                 = function(_, func) customSaveContext = func end,
+            get                 = function() return customSaveContext end,
+            require             = true,
+        }
+
+        --- The API used to get the current context
+        __Static__() property "GetCurrentContext" {
+            type                = Function,
+            set                 = function(_, func) customGetContext = func end,
+            get                 = function() return getCurrentContext end,
+            require             = true,
         }
 
         -----------------------------------------------------------
@@ -16145,16 +16263,19 @@ do
         -----------------------------------------------------------
         --- Process the operations under the context
         __Abstract__() function Process(self) end
+
+        -----------------------------------------------------------
+        --                      initializer                      --
+        -----------------------------------------------------------
+        __Sealed__()
+        local contextSaver      = interface { __init = function(self) return customSaveContext(self) end }
+        extend (contextSaver)
     end)
 
     --- Represents the interface of thread related context, which will
     -- cache all sharable datas in the same os-thread
     __Sealed__()
     interface "System.IContext" (function(_ENV)
-        export {
-            getcontext          = Context.GetContextFromStack,
-        }
-
         -----------------------------------------------------------
         --                       property                        --
         -----------------------------------------------------------
@@ -16163,14 +16284,11 @@ do
         -----------------------------------------------------------
         --                      initializer                      --
         -----------------------------------------------------------
-        if Platform.MULTI_OS_THREAD and getlocal then
-            function IContext(self)
-                if self.Context then return end
-                local context   = getcontext(5)
+        if Platform.ENABLE_CONTEXT_FEATURES then
+            export { getcontext = Context.GetCurrentContext }
 
-                if context then
-                    self.Context= context
-                end
+            function IContext(self)
+                self.Context    = self.Context or getcontext()
             end
         end
     end)

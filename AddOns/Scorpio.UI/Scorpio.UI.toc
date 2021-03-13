@@ -1,11 +1,11 @@
-## Interface: 11305
+## Interface: 11306
 ## Title: [Lib] Scorpio.UI
 ## Author: kurapica125@outlook.com
-## Version: v003
+## Version: c003
 ## Notes: Scorpio UI FrameWork
 ## URL: http://github.com/kurapica/Scorpio
 ## Dependencies: Scorpio
 ## DefaultState: Enabled
 ## LoadOnDemand: 1
 
-UI.xml
+Modules\UI.xml

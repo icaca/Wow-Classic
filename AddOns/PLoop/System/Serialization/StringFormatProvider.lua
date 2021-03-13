@@ -21,6 +21,7 @@ PLoop(function(_ENV)
         tostring                = tostring,
         next                    = next,
         select                  = select,
+        getmetatable            = getmetatable,
         floor                   = math.floor,
         tinsert                 = table.insert,
         tblconcat               = table.concat,
@@ -32,50 +33,16 @@ PLoop(function(_ENV)
         isanonymous             = Namespace.IsAnonymousNamespace,
         Serialize               = Serialization.Serialize,
         Deserialize             = Serialization.Deserialize,
-        isListType              = Class.IsSubType,
-        isstruct                = Struct.Validate,
-        getstructcategory       = Struct.GetStructCategory,
         getClass                = Class.GetObjectClass,
         getMetaMethod           = Class.GetMetaMethod,
+        isArray                 = Serialization.IsArrayData,
 
-        Serialization.Serializable, Serialization.SerializableType, List, IIndexedList, Toolset, Serialization
+        Serialization.Serializable, Serialization.SerializableType, List, Toolset, Serialization
     }
 
     -----------------------------------------------------------------------
     --                              prepare                              --
     -----------------------------------------------------------------------
-    function isArray(data)
-        -- Check the data type
-        local objField          = data[Serialization.ObjectTypeField]
-
-        if objField then
-            if isListType(objField, IIndexedList) then return true end
-            if isstruct(objField) then
-                local stype     = getstructcategory(objField)
-                if stype == "ARRAY" then
-                    return true
-                elseif stype == "MEMBER" or stype == "DICTIONARY" then
-                    return false
-                end
-            end
-        end
-
-        -- Check the data
-        local count             = #data
-
-        for k in pairs(data) do
-            if type(k) ~= "number" or (floor(k) ~= k or k < 0 or k > count) then
-                return false
-            end
-        end
-
-        for i = 1, count do
-            if data[i] == nil then return false end
-        end
-
-        return true
-    end
-
     function SerializeSimpleData(data)
         local dtType            = type(data)
 
@@ -108,6 +75,21 @@ PLoop(function(_ENV)
 
         if isarray then
             local count         = #data
+
+            local v             = data[0]
+            if v ~= nil then
+                if type(v) == "table" then
+                    write("[0]=")
+                    SerializeDataWithWriteNoIndent(v, write, objectTypeIgnored)
+                    if count > 0 then write(",") end
+                else
+                    if count > 0 then
+                        write(strformat("[0]=%s,", SerializeSimpleData(v)))
+                    else
+                        write(strformat("[0]=%s", SerializeSimpleData(v)))
+                    end
+                end
+            end
 
             for i = 1, count do
                 local v         = data[i]
@@ -171,6 +153,25 @@ PLoop(function(_ENV)
         if isarray then
             local subIndentChar = preIndentChar .. indentChar
             local count         = #data
+
+            local v             = data[0]
+            if v ~= nil then
+                if type(v) == "table" then
+                    write(strformat("%s[0] = ", subIndentChar))
+                    SerializeDataWithWrite(v, write, indentChar, subIndentChar, lineBreak, objectTypeIgnored)
+                    if count > 0 then
+                        write("," .. lineBreak)
+                    else
+                        write(lineBreak)
+                    end
+                else
+                    if count > 0 then
+                        write(strformat("%s[0] = %s,%s", subIndentChar, SerializeSimpleData(v), lineBreak))
+                    else
+                        write(strformat("%s[0] = %s%s", subIndentChar, SerializeSimpleData(v), lineBreak))
+                    end
+                end
+            end
 
             for i = 1, count do
                 local v     = data[i]
@@ -241,6 +242,21 @@ PLoop(function(_ENV)
         if isarray then
             local count         = #data
 
+            local v             = data[0]
+            if v ~= nil then
+                if type(v) == "table" then
+                    write(object, "[0]=")
+                    SerializeDataWithWriterNoIndent(v, write, object, objectTypeIgnored)
+                    if count > 0 then write(object, ",") end
+                else
+                    if count > 0 then
+                        write(object, strformat("[0]=%s,", SerializeSimpleData(v)))
+                    else
+                        write(object, strformat("[0]=%s", SerializeSimpleData(v)))
+                    end
+                end
+            end
+
             for i = 1, count do
                 local v         = data[i]
                 if type(v) == "table" and getmetatable(v) == nil then
@@ -303,6 +319,25 @@ PLoop(function(_ENV)
         if isarray then
             local subIndentChar = preIndentChar .. indentChar
             local count         = #data
+
+            local v             = data[0]
+            if v ~= nil then
+                if type(v) == "table" then
+                    write(object, strformat("%s[0] = ", subIndentChar))
+                    SerializeDataWithWriter(v, write, object, indentChar, subIndentChar, lineBreak, objectTypeIgnored)
+                    if count > 0 then
+                        write(object, "," .. lineBreak)
+                    else
+                        write(object, lineBreak)
+                    end
+                else
+                    if count > 0 then
+                        write(object, strformat("%s[0] = %s,%s", subIndentChar, SerializeSimpleData(v), lineBreak))
+                    else
+                        write(object, strformat("%s[0] = %s%s", subIndentChar, SerializeSimpleData(v), lineBreak))
+                    end
+                end
+            end
 
             for i = 1, count do
                 local v         = data[i]

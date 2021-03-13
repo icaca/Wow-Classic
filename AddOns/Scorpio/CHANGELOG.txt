@@ -1,3 +1,12 @@
+2021/01/11 v059
+	1. The UnitFrame System is finished and the Reactive For Style System is already done.
+
+2020/11/20 v057
+	1. Fix the code editor with "|".
+
+2020/11/19 v056
+	1. The code editor support UTF-8 now.
+
 2020/10/22 v55
 	1. The CodeEditor is improved, undo/redo is now all functional.
 
