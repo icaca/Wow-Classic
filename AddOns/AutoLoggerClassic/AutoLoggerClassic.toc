@@ -1,8 +1,8 @@
-## Interface: 11305
+## Interface: 11306
 ## Title: AutoLoggerClassic
 ## Notes: Automatically triggers combat logging on and off in raids.
 ## Author: cloudbells
-## Version: v1.3-release
+## Version: v1.4-release
 ## SavedVariablesPerCharacter: ALCOptions
 ## X-WoWI-ID: 25314
 
