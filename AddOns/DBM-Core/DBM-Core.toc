@@ -20,7 +20,7 @@
 ## X-Curse-Project-ID: 3358
 ## X-WoWI-ID: 24921
 ## X-Wago-ID: qv633o6b
-## Version: 1.13.70
+## Version: 1.13.71
 
 Libs\LibStub\LibStub.lua
 Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
