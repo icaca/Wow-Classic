@@ -694,18 +694,25 @@ __Abstract__() __Sealed__() class "UIObject"(function(_ENV)
     --- Gets the ui object's name or full name
     __Final__() function GetName(self, full)
         local name              = _NameMap[self[0]]
-        if full then
-            local globalUI      = _G[name]
-            if globalUI and (globalUI == self or IsSameUI(self, globalUI)) then
-                return name
+        if name then
+            if full then
+                local globalUI      = _G[name]
+                if globalUI and (globalUI == self or IsSameUI(self, globalUI)) then
+                    return name
+                else
+                    local parent    = self:GetParent()
+                    local pname     = parent and parent:GetName(true)
+                    name            = _PropertyChildName[self] or name
+                    if pname then return pname .. "." .. name end
+                end
             else
-                local parent    = self:GetParent()
-                local pname     = parent and parent:GetName(true)
-                name            = _PropertyChildName[self] or name
-                if pname then return pname .. "." .. name end
+                return name
             end
         else
-            return name
+            local getName           = self.GetName
+            if getName ~= GetName then
+                return getName(self)
+            end
         end
     end
 
@@ -1825,6 +1832,14 @@ local function clearStyle(frame)
     Continue() -- Smoothing the process
 end
 
+function ApplyFrameStyles(self, styles, debugname)
+    -- Apply the style settings
+    _CurrentStyleTarget                     = self
+    local ok, err                           = pcall(applyStylesOnFrame, self, styles)
+    if not ok then Error("[Scorpio.UI]Apply Style: %s - Failed: %s", debugname, tostring(err)) end
+    _CurrentStyleTarget                     = nil
+end
+
 __Service__(true)
 function ApplyStyleService()
     while true do
@@ -1859,10 +1874,11 @@ function ApplyStyleService()
                     _StyleQueue[frame]      = nil
 
                     -- Apply the style settings
-                    _CurrentStyleTarget     = frame
-                    local ok, err           = pcall(applyStylesOnFrame, frame, styles)
-                    if not ok then Error("[Scorpio.UI]Apply Style: %s - Failed: %s", debugname, tostring(err)) end
-                    _CurrentStyleTarget     = nil
+                    if frame:IsProtected() then
+                        NoCombat(ApplyFrameStyles, frame, styles, debugname)
+                    else
+                        ApplyFrameStyles(frame, styles, debugname)
+                    end
 
                     Continue() -- Smoothing the process
                 else

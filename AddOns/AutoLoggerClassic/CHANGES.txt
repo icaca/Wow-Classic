@@ -1,12 +1,12 @@
-tag 0f3818cd66aa427838164fab254a33dbf7c90b11 v1.4-release
+tag 8af858b5f7db96f8c2997d1e2561abac2da4af74 v1.6-release
 Author:	cloudbells <chriszmn@gmail.com>
-Date:	Fri Mar 26 12:37:13 2021 +0100
+Date:	Tue Apr 13 22:08:44 2021 +0200
 
-Game version 1.13.6
+WoWI fix
 
-commit 2be006b775aec19cdef1d7e9ed93e07ad0e25d15
+commit 86fd1986c11255c600b80217a6e45bfa12524116
 Author: cloudbells <chriszmn@gmail.com>
-Date:   Fri Mar 26 12:34:36 2021 +0100
+Date:   Tue Apr 13 17:50:20 2021 +0200
 
-    Game version 1.13.6
+    Advanced combat logging is under System, not Interface
 
