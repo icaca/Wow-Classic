@@ -1,12 +1,12 @@
-tag 8af858b5f7db96f8c2997d1e2561abac2da4af74 v1.6-release
+tag 7e67f649945ef71c160cd00576807284fa37f306 v1.7-release
 Author:	cloudbells <chriszmn@gmail.com>
-Date:	Tue Apr 13 22:08:44 2021 +0200
+Date:	Fri Apr 16 03:37:58 2021 +0200
 
-WoWI fix
+Stop logging when exiting desired map IDs
 
-commit 86fd1986c11255c600b80217a6e45bfa12524116
+commit 7617802f48b0093a56833e76caf6454f10c54f35
 Author: cloudbells <chriszmn@gmail.com>
-Date:   Tue Apr 13 17:50:20 2021 +0200
+Date:   Fri Apr 16 03:29:28 2021 +0200
 
-    Advanced combat logging is under System, not Interface
+    Stop logging when exiting desired map IDs
 
