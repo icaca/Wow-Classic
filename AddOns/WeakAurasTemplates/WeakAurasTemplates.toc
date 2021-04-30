@@ -1,7 +1,7 @@
-## Interface: 11306
+## Interface: 11307
 ## Title: WeakAuras Templates
 ## Author: The WeakAuras Team
-## Version: 3.2.3
+## Version: 3.3.0
 ## Notes: Templates for WeakAuras
 ## X-Category: Interface Enhancements
 ## Globe-Main: WeakAuras
