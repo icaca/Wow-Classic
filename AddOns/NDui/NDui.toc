@@ -1,9 +1,9 @@
-## Interface: 11306
+## Interface: 11307
 ## Title: |cff0080ffNDui|r Classic
 ## X-Credits: Elv, Freebaser, Haleth, Haste, Leatrix, lightspark, Loshine, Neavo, p3lim, Paopao001, Qulight, Ray, Rubgrsch, Tuller, zork.
 ## Author: Siweia
 ## Notes: More than a UI.
-## Version: 1.27.2
+## Version: 1.27.4
 ## X-Support: Classic
 ## X-Website: https://github.com/siweia/NDuiClassic
 ## SavedVariables: NDuiADB, NDuiPDB
