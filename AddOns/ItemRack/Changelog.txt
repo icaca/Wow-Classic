@@ -1,3 +1,15 @@
+__ New in 3.63 - By Rottenbeer __
+* Version bump for github releases
+
+__ New in 3.62 - By Rottenbeer __
+* Fix luacheck errors
+
+__ New in 3.61 - By Rottenbeer __
+* Test for github actions
+
+__ New in 3.60 - By Rottenbeer __
+* Package for bcc and classic
+
 __ New in 3.54 - By Rottenbeer __
 * Workaround for a startup race in AdiBags
 

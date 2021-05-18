@@ -95,7 +95,6 @@ L["IGNORE_COSMETIC_TOOLTIP"] = "忽略裝飾品以及通用裝甲像是外袍、
 L["IGNORE_EQUIPMENT_SETS_TEXT"] = "裝備套裝"
 L["IGNORE_EQUIPMENT_SETS_TOOLTIP"] = "忽略屬於裝備套裝的物品。"
 L["IGNORE_GEMS_TEXT"] = "珠寶"
-L["IGNORE_GEMS_TOOLTIP"] = "忽略切割的珠寶以及神兵聖物。"
 L["IGNORE_GLYPHS_TEXT"] = "銘文"
 L["IGNORE_GLYPHS_TOOLTIP"] = "忽略銘文。"
 L["IGNORE_ITEM_ENHANCEMENTS_TEXT"] = "物品增強"

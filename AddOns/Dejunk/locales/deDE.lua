@@ -74,7 +74,6 @@ L["IGNORE_COSMETIC_TOOLTIP"] = "Ignoriert kosmetische und generische Rüstungen 
 L["IGNORE_EQUIPMENT_SETS_TEXT"] = "Ausrüstungs-Sets"
 L["IGNORE_EQUIPMENT_SETS_TOOLTIP"] = "Ignoriert Gegenstände die zu Ausrüstungs-Sets gehören."
 L["IGNORE_GEMS_TEXT"] = "Edelsteine"
-L["IGNORE_GEMS_TOOLTIP"] = "Ignoriert geschliffene Edelsteine und Artefakt Relikte."
 L["IGNORE_GLYPHS_TEXT"] = "Glyphen"
 L["IGNORE_GLYPHS_TOOLTIP"] = "Ignoriert Glyphen."
 L["IGNORE_ITEM_ENHANCEMENTS_TEXT"] = "Gegenstandsverbesserungen"

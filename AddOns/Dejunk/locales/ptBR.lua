@@ -92,7 +92,6 @@ L["IGNORE_COSMETIC_TOOLTIP"] = "Ignora equipamentos cosméticos e genéricos, co
 L["IGNORE_EQUIPMENT_SETS_TEXT"] = "Conjunto de Equipamento"
 L["IGNORE_EQUIPMENT_SETS_TOOLTIP"] = "Ignorar itens pertencentes à conjunto de equipamento."
 L["IGNORE_GEMS_TEXT"] = "Gemas"
-L["IGNORE_GEMS_TOOLTIP"] = "Ignora gemas cortadas e relíquias de artefato."
 L["IGNORE_GLYPHS_TEXT"] = "Glifos"
 L["IGNORE_GLYPHS_TOOLTIP"] = "Ignorar glifos"
 L["IGNORE_ITEM_ENHANCEMENTS_TEXT"] = "Melhorias de Itens"

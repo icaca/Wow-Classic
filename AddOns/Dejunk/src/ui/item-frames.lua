@@ -89,7 +89,13 @@ function ItemFrameMixins:Create()
     fullWidth = true,
     height = 32,
     text = self.options.buttonText,
-    onClick = function() self.options.service:HandleNextItem() end,
+    onClick = function()
+      if #self.options.service:GetItems() == 0 then
+        self:Hide()
+      else
+        self.options.service:HandleNextItem()
+      end
+    end,
   })
 
   -- Set OnUpdate script.
@@ -119,11 +125,14 @@ function ItemFrameMixins:Create()
       )
     end
 
-    -- Disable button if Core:IsBusy() or no items.
-    self.button:SetDisabled(
-      Core:IsBusy() or
-      #self.options.service:GetItems() == 0
-    )
+    -- Update button.
+    if #self.options.service:GetItems() == 0 then
+      self.button:SetDisabled(false)
+      self.button:SetText(_G.CLOSE)
+    else
+      self.button:SetDisabled(Core:IsBusy())
+      self.button:SetText(self.options.buttonText)
+    end
   end)
 
   -- -- Hook CloseSpecialWindows to hide when ESC is pressed.

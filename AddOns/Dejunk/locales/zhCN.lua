@@ -95,7 +95,6 @@ L["IGNORE_COSMETIC_TOOLTIP"] = "忽略装饰品和外观型装备，例如战袍
 L["IGNORE_EQUIPMENT_SETS_TEXT"] = "装备方案"
 L["IGNORE_EQUIPMENT_SETS_TOOLTIP"] = "忽略属于装备方案的物品。"
 L["IGNORE_GEMS_TEXT"] = "宝石"
-L["IGNORE_GEMS_TOOLTIP"] = "忽略切割后的宝石和神器圣物。"
 L["IGNORE_GLYPHS_TEXT"] = "雕文"
 L["IGNORE_GLYPHS_TOOLTIP"] = "忽略雕文。"
 L["IGNORE_ITEM_ENHANCEMENTS_TEXT"] = "附魔物品"
