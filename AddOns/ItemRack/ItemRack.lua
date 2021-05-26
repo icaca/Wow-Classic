@@ -2,7 +2,18 @@ ItemRack = {}
 
 local _
 
-ItemRack.Version = "3.63"
+ItemRack.Version = "3.66"
+
+function ItemRack.IsClassic()
+	return WOW_PROJECT_ID == WOW_PROJECT_CLASSIC
+  end
+
+function ItemRack.IsBCC()
+	return WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC
+end
+
+local LDB = LibStub("LibDataBroker-1.1")
+local LDBIcon = LibStub("LibDBIcon-1.0")
 
 ItemRackUser = {
 	Sets = {}, -- user's sets
@@ -38,8 +49,7 @@ ItemRackSettings = {
 	AllowEmpty = "ON", -- allow empty slot as a choice in menus
 	HideTradables = "OFF", -- allow non-soulbound gear to appear in menu
 	AllowHidden = "ON", -- allow the ability to hide items/sets in the menu with alt+click
-	ShowMinimap = "ON", -- whether to show the minimap button
-	SquareMinimap = "OFF", -- whether to position minimap button as if on a square minimap
+	ShowMinimap = true, -- whether to show the minimap button
 	TrinketMenuMode = "OFF", -- whether to merge top/bottom trinkets to one menu (leftclick=top,rightclick=bottom)
 	AnotherOther = "OFF", -- whether to dock the merged trinket menu to bottom trinket
 	EquipToggle = "OFF", -- whether to toggle equipping a set when choosing to equip it
@@ -141,8 +151,6 @@ ItemRack.TooltipInfo = {
 
 ItemRack.BankOpen = nil -- 1 if bank is open, nil if not
 
-ItemRack.LastCurrentSet = nil -- last known current set
-
 ItemRack.EventHandlers = {}
 ItemRack.ExternalEventHandlers = {}
 
@@ -208,6 +216,7 @@ end
 function ItemRack.OnPlayerLogin()
 	-- Normally some of these methods cannot be called in combat without causing errors, but since we run these IMMEDIATELY
 	-- on PLAYER_LOGIN event we get a grace period where it allows us to run secure code in combat.
+	ItemRack.InitBroker()
 	ItemRack.InitEventHandlers()
 	ItemRack.InitTimers()
 	ItemRack.InitCore()
@@ -215,12 +224,8 @@ function ItemRack.OnPlayerLogin()
 	ItemRack.InitEvents()
 end
 
---@version-classic@
-local loader = CreateFrame("Frame") -- need a new temp frame here, ItemRackFrame is not created yet
---@end-version-classic@
---[====[@version-bcc@
 local loader = CreateFrame("Frame",nil, self, BackdropTemplateMixin and "BackdropTemplate") -- need a new temp frame here, ItemRackFrame is not created yet
---@end-version-bcc@]====]
+
 loader:RegisterEvent("PLAYER_LOGIN")
 loader:SetScript("OnEvent", ItemRack.OnPlayerLogin)
 
@@ -441,9 +446,7 @@ function ItemRack.InitCore()
 	ItemRack.CreateTimer("MenuMouseover",ItemRack.MenuMouseover,.25,1)
 	ItemRack.CreateTimer("TooltipUpdate",ItemRack.TooltipUpdate,1,1)
 	ItemRack.CreateTimer("CooldownUpdate",ItemRack.CooldownUpdate,1,1)
-	ItemRack.CreateTimer("MinimapDragging",ItemRack.MinimapDragging,0,1)
 	ItemRack.CreateTimer("LocksChanged",ItemRack.LocksChanged,.2)
-	ItemRack.CreateTimer("MinimapShine",ItemRack.MinimapShineUpdate,0,1)
 	ItemRack.CreateTimer("DelayedCombatQueue",ItemRack.DelayedCombatQueue,.1)
 
 	for i=-2,11 do
@@ -479,7 +482,6 @@ function ItemRack.InitCore()
 	ItemRackFrame:RegisterEvent("UNIT_SPELLCAST_FAILED")
 	--end
 	ItemRack.StartTimer("CooldownUpdate")
-	ItemRack.MoveMinimap()
 	ItemRack.ReflectAlpha()
 	ItemRack.SetSetBindings()
 
@@ -515,11 +517,8 @@ function ItemRack.UpdateCurrentSet()
 		ItemRackButton20Icon:SetTexture(texture)
 		ItemRackButton20Name:SetText(setname)
 	end
-	ItemRackMinimapIcon:SetTexture(texture)
-	if setname ~= ItemRack.LastCurrentSet then
-		ItemRack.MinimapShineFadeIn()
-		ItemRack.LastCurrentSet = setname
-	end
+	ItemRack.Broker.icon = texture
+	ItemRack.Broker.text = setname
 end
 
 --[[ Item info gathering ]]
@@ -793,7 +792,7 @@ end
 function ItemRack.IsSoulbound(bag,slot)
 	ItemRackTooltip:SetBagItem(bag,slot)
 	for i=2,5 do
-		text = _G["ItemRackTooltipTextLeft"..i]:GetText()
+		local text = _G["ItemRackTooltipTextLeft"..i]:GetText()
 		if text==ITEM_SOULBOUND or text==ITEM_BIND_QUEST or text==ITEM_CONJURED then
 			return 1
 		end
@@ -1023,7 +1022,7 @@ function ItemRack.BuildMenu(id,menuInclude,masqueGroup)
 		-- display outward from docking point
 		local col,row,xpos,ypos = 0,0,ItemRack.DockInfo[ItemRack.currentDock].xstart,ItemRack.DockInfo[ItemRack.currentDock].ystart
 		local max_cols = 1
-		local button
+		local button, icon
 
 		if ItemRackUser.SetMenuWrap=="ON" then
 			max_cols = ItemRackUser.SetMenuWrapValue
@@ -1189,12 +1188,7 @@ function ItemRack.CreateMenuButton(idx,itemID)
 	if itemID=="MENU" then return end
 	local button
 	if not _G["ItemRackMenu"..idx] then
-		--@version-classic@
 		button = CreateFrame("CheckButton","ItemRackMenu"..idx,ItemRackMenuFrame,"ActionButtonTemplate")
-		--@end-version-classic@
-		--[====[@version-bcc@
-		button = CreateFrame("CheckButton","ItemRackMenu"..idx,ItemRackMenuFrame,BackdropTemplateMixin and "ActionButtonTemplate")
-		--@end-version-bcc@]====]
 		button:SetID(idx)
 		button:SetFrameStrata("HIGH")
 --		button:SetFrameLevel(ItemRackMenuFrame:GetFrameLevel()+1)
@@ -1202,12 +1196,7 @@ function ItemRack.CreateMenuButton(idx,itemID)
 		button:SetScript("OnClick",ItemRack.MenuOnClick)
 		button:SetScript("OnEnter",ItemRack.MenuTooltip)
 		button:SetScript("OnLeave",ItemRack.ClearTooltip)
-		--@version-classic@
 		CreateFrame("Frame",nil,button,"ItemRackTimeTemplate")
-		--@end-version-classic@
-		--[====[@version-bcc@
-		CreateFrame("Frame",nil,button,BackdropTemplateMixin and "ItemRackTimeTemplate")
-		--@end-version-bcc@]====]
 
 		ItemRack.SetFont("ItemRackMenu"..idx)
 --		local font = button:CreateFontString("ItemRackMenu"..idx.."Time","OVERLAY","NumberFontNormal")
@@ -1713,6 +1702,7 @@ end
 
 function ItemRack.DockMenuToCharacterSheet(self)
 	local name = self:GetName()
+	local slot
 	for i=0,19 do
 		if name=="Character"..ItemRack.SlotInfo[i].name then
 			slot = i
@@ -1733,35 +1723,26 @@ end
 
 --[[ Minimap button ]]
 
-function ItemRack.MinimapDragging()
-	local xpos,ypos = GetCursorPosition()
-	local xmin,ymin = Minimap:GetLeft(), Minimap:GetBottom()
-
-	xpos = xmin-xpos/Minimap:GetEffectiveScale()+70
-	ypos = ypos/Minimap:GetEffectiveScale()-ymin-70
-
-	ItemRackSettings.IconPos = math.deg(math.atan2(ypos,xpos))
-	ItemRack.MoveMinimap()
+function ItemRack.InitBroker()
+	local texture = ItemRack.GetTextureBySlot(20)
+	texture = [[Interface\AddOns\ItemRack\ItemRackIcon]]
+	ItemRack.Broker = LDB:NewDataObject("ItemRack", {
+		type = "launcher",
+		text = "ItemRack",
+		icon = texture,
+		OnClick = ItemRack.MinimapOnClick,
+		OnTooltipShow = ItemRack.MinimapOnEnter,
+	})
+	ItemRackSettings.minimap = ItemRackSettings.minimap or { hide = false }
+	LDBIcon:Register("ItemRack", ItemRack.Broker, ItemRackSettings.minimap)
+	ItemRack.ShowMinimap()
 end
 
-function ItemRack.MoveMinimap()
-	if ItemRackSettings.ShowMinimap=="ON" then
-		local xpos,ypos
-		local angle = ItemRackSettings.IconPos or -100
-		if ItemRackSettings.SquareMinimap=="ON" then
-			-- brute force method until trig solution figured out - min/max a point on a circle beyond square
-			xpos = 110 * cos(angle)
-			ypos = 110 * sin(angle)
-			xpos = math.max(-82,math.min(xpos,84))
-			ypos = math.max(-86,math.min(ypos,82))
-		else
-			xpos = 80*cos(angle)
-			ypos = 80*sin(angle)
-		end
-		ItemRackMinimapFrame:SetPoint("TOPLEFT","Minimap","TOPLEFT",52-xpos,ypos-52)
-		ItemRackMinimapFrame:Show()
+function ItemRack.ShowMinimap()
+	if ItemRackSettings.ShowMinimap == "ON" then
+		LDBIcon:Show("ItemRack")
 	else
-		ItemRackMinimapFrame:Hide()
+		LDBIcon:Hide("ItemRack")
 	end
 end
 
@@ -1778,9 +1759,9 @@ function ItemRack.MinimapOnClick(self,button)
 		else
 			local xpos,ypos = GetCursorPosition()
 			if ypos>400 then
-				ItemRack.DockWindows("TOPRIGHT",ItemRackMinimapFrame,"BOTTOMRIGHT","VERTICAL")
+				ItemRack.DockWindows("TOPRIGHT",self,"BOTTOMRIGHT","VERTICAL")
 			else
-				ItemRack.DockWindows("BOTTOMRIGHT",ItemRackMinimapFrame,"TOPRIGHT","VERTICAL")
+				ItemRack.DockWindows("BOTTOMRIGHT",self,"TOPRIGHT","VERTICAL")
 			end
 			ItemRack.BuildMenu(20, nil, 4)
 		end
@@ -1789,30 +1770,14 @@ function ItemRack.MinimapOnClick(self,button)
 	end
 end
 
-function ItemRack.MinimapOnEnter(self)
-	if ItemRackSettings.MinimapTooltip=="ON" then
-		ItemRack.OnTooltip(self,"ItemRack","Left click: Select a set\nRight click: Open options\nAlt left click: Show hidden sets\nAlt right click: Toggle events\nShift click: Unequip this set")
-	end
-end
-
-
-function ItemRack.MinimapShineUpdate(elapsed)
-	ItemRack.MinimapShineAlpha = ItemRack.MinimapShineAlpha + (elapsed*2*ItemRack.MinimapShineDirection)
-	if ItemRack.MinimapShineAlpha < .1 then
-		ItemRack.StopTimer("MinimapShine")
-		ItemRackMinimapShine:Hide()
-	elseif ItemRack.MinimapShineAlpha > .9 then
-		ItemRack.MinimapShineDirection = -1
-	else
-		ItemRackMinimapShine:SetAlpha(ItemRack.MinimapShineAlpha)
-	end
-end
-
-function ItemRack.MinimapShineFadeIn()
-	ItemRack.MinimapShineAlpha = .1
-	ItemRack.MinimapShineDirection = 1
-	ItemRackMinimapShine:Show()
-	ItemRack.StartTimer("MinimapShine")
+function ItemRack.MinimapOnEnter(tooltip)
+	if ItemRackSettings.MinimapTooltip~="ON" then return end
+	tooltip:AddLine("ItemRack")
+	tooltip:AddLine("Left click: Select a set",.8,.8,.8,1)
+	tooltip:AddLine("Right click: Open options",.8,.8,.8,1)
+	tooltip:AddLine("Alt left click: Show hidden sets",.8,.8,.8,1)
+	tooltip:AddLine("Alt right click: Toggle events",.8,.8,.8,1)
+	tooltip:AddLine("Shift click: Unequip this set",.8,.8,.8,1)
 end
 
 --[[ Non-LoD options support ]]
@@ -1833,27 +1798,23 @@ function ItemRack.ToggleOptions(self,tab)
 end
 
 function ItemRack.ReflectLock(override)
-	--[====[@version-bcc@
-	Mixin(ItemRackMenuFrame, BackdropTemplateMixin)
-	--@end-version-bcc@]====]
+	if BackdropTemplateMixin then
+		Mixin(ItemRackMenuFrame, BackdropTemplateMixin)
+	end
+	ItemRackMenuFrame:SetBackdrop(
+		{
+			bgFile = "Interface/Tooltips/UI-Tooltip-Background",
+			edgeFile = "Interface/Tooltips/UI-Tooltip-Border",
+			tile = true, tileSize = 16, edgeSize = 16,
+			insets = { left = 4, right = 4, top = 4, bottom = 4 }
+		}
+	);
 	if ItemRackUser.Locked=="ON" or override then
 		ItemRackMenuFrame:EnableMouse(0)
-		--[====[@version-bcc@
-		ItemRackMenuFrame:SetBackdrop({bgFile = "Interface/Tooltips/UI-Tooltip-Background", 
-                                            edgeFile = "Interface/Tooltips/UI-Tooltip-Border", 
-                                            tile = true, tileSize = 16, edgeSize = 16, 
-                                            insets = { left = 4, right = 4, top = 4, bottom = 4 }});
-		--@end-version-bcc@]====]
 		ItemRackMenuFrame:SetBackdropBorderColor(0,0,0,0)
 		ItemRackMenuFrame:SetBackdropColor(0,0,0,0)
 	else
 		ItemRackMenuFrame:EnableMouse(1)
-		--[====[@version-bcc@
-		ItemRackMenuFrame:SetBackdrop({bgFile = "Interface/Tooltips/UI-Tooltip-Background", 
-                                            edgeFile = "Interface/Tooltips/UI-Tooltip-Border", 
-                                            tile = true, tileSize = 16, edgeSize = 16, 
-                                            insets = { left = 4, right = 4, top = 4, bottom = 4 }});
-		--@end-version-bcc@]====]
 		ItemRackMenuFrame:SetBackdropBorderColor(.3,.3,.3,1)
 		ItemRackMenuFrame:SetBackdropColor(1,1,1,1)
 	end
@@ -1878,6 +1839,9 @@ end
 
 function ItemRack.SetFont(button)
 	local item = _G[button.."Time"]
+	if not item then
+		return
+	end
 	if ItemRackSettings.LargeNumbers=="ON" then
 		item:SetFont("Fonts\\FRIZQT__.TTF",16,"OUTLINE")
 		item:SetTextColor(1,.82,0,1)
@@ -1951,12 +1915,7 @@ function ItemRack.SetSetBindings()
 		for i in pairs(ItemRackUser.Sets) do
 			if ItemRackUser.Sets[i].key then
 				buttonName = "ItemRack"..UnitName("player")..GetRealmName()..i
-				--@version-classic@
 				button = _G[buttonName] or CreateFrame("Button",buttonName,nil,"SecureActionButtonTemplate")
-				--@end-version-classic@
-				--[====[@version-bcc@
-				button = _G[buttonName] or CreateFrame("Button",buttonName,nil,BackdropTemplateMixin and "SecureActionButtonTemplate")
-				--@end-version-bcc@]====]
 				
 				button:SetAttribute("type","macro")
 				local macrotext = "/script ItemRack.RunSetBinding(\""..i.."\")\n"
@@ -1972,12 +1931,11 @@ function ItemRack.SetSetBindings()
 				SetBindingClick(ItemRackUser.Sets[i].key,buttonName)
 			end
 		end
-		--@version-classic@
-		AttemptToSaveBindings(GetCurrentBindingSet())
-		--@end-version-classic@
-		--[====[@version-bcc@
-		SaveBindings(GetCurrentBindingSet())
-		--@end-version-bcc@]====]
+		if ItemRack.IsClassic() then
+			AttemptToSaveBindings(GetCurrentBindingSet())
+		elseif ItemRack.IsBCC() then
+			SaveBindings(GetCurrentBindingSet())
+		end
 	else
 		ItemRack.Print("Cannot save hotkeys in combat, please try again out of combat!")
 	end
@@ -2089,7 +2047,7 @@ end
 -- pushes setname from bags/worn to bank
 function ItemRack.PutBankedSet(setname)
 	if SpellIsTargeting() or GetCursorInfo() then return end
-	local bag,slot,freeBag,freeSlot
+	local inv,bag,slot,freeBag,freeSlot
 	ItemRack.ClearLockList()
 	for _,i in pairs(ItemRackUser.Sets[setname].equip) do
 		if i~=0 then

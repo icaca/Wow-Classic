@@ -48,8 +48,10 @@ CEPGP_tokens = {
 			[20888] = 65,	-- Ceremonial Ring
 			[20884] = 65	-- Magisterial Ring
 		},
+		["Weapon"] = {
+			[20886] = 70	-- Spiked Hilt -- Exceptions apply - Paladin / Shaman weapon are main hand
+		},
 		["Weaponoffhand"] = {
-			[20886] = 70,	-- Spiked Hilt -- Exceptions apply - Paladin / Shaman weapon are main hand
 			[21232] = 79,	-- Imperial Qiraji Armaments -- Can also be a ranged weapon or shield
 		},
 		["Weaponmainhand"] = {

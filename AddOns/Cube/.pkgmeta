@@ -1,6 +1,0 @@
-package-as: Cube
-
-required-dependencies:
-    - Scorpio
-
-manual-changelog: CHANGELOG.txt

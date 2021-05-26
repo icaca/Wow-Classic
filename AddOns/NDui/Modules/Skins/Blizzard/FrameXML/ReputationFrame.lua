@@ -16,7 +16,7 @@ tinsert(C.defaultThemes, function()
 			if bar and not bar.styled then
 				B.StripTextures(bar)
 				bar:SetStatusBarTexture(DB.bdTex)
-				B.CreateBD(bar, .25)
+				B.CreateBDFrame(bar, .25)
 
 				local icon = check:GetRegions()
 				icon:SetTexture("Interface\\Buttons\\UI-CheckBox-SwordCheck")
@@ -33,7 +33,7 @@ tinsert(C.defaultThemes, function()
 	ReputationFrame:HookScript("OnEvent", UpdateFactionSkins)
 
 	for i = 1, NUM_FACTIONS_DISPLAYED do
-		B.ReskinExpandOrCollapse(_G["ReputationHeader"..i])
+		B.ReskinCollapse(_G["ReputationHeader"..i])
 	end
 
 	B.StripTextures(ReputationFrame)

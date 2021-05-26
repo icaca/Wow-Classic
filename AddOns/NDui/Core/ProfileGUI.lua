@@ -268,14 +268,14 @@ function G:UpdateCurrentProfile()
 			UpdateButtonStatus(bar.apply, false)
 			UpdateButtonStatus(bar.reset, true)
 			bar:SetBackdropColor(cr, cg, cb, .25)
-			bar.apply:SetBackdropBorderColor(1, .8, 0)
+			bar.apply.bg:SetBackdropBorderColor(1, .8, 0)
 		else
 			UpdateButtonStatus(bar.upload, true)
 			UpdateButtonStatus(bar.download, true)
 			UpdateButtonStatus(bar.apply, true)
 			UpdateButtonStatus(bar.reset, false)
 			bar:SetBackdropColor(0, 0, 0, .25)
-			bar.apply:SetBackdropBorderColor(0, 0, 0)
+			B.SetBorderColor(bar.apply.bg)
 		end
 	end
 end
@@ -390,6 +390,8 @@ function G:ExportGUIData()
 							for k, v in pairs(value) do
 								text = text..";"..KEY..":"..key..":"..k..":"..tostring(v)
 							end
+						elseif key == "IgnoreSpells" then
+							-- do nothing
 						else
 							for spellID, k in pairs(value) do
 								text = text..";"..KEY..":"..key..":"..spellID
@@ -517,6 +519,8 @@ function G:ImportGUIData()
 			if value == "Switcher" then
 				local index, state = select(3, strsplit(":", option))
 				C.db[key][value][tonumber(index)] = toBoolean(state)
+			elseif value == "IgnoreSpells" then
+				-- do nothing
 			else
 				local idType, spellID, unit, caster, stack, amount, timeless, combat, text, flash = select(4, strsplit(":", option))
 				value = tonumber(value)
@@ -586,7 +590,7 @@ function G:ImportGUIData()
 				NDuiADB[value][tonumber(index)] = name
 			end
 		elseif tonumber(arg1) then
-			if value == "DBMCount" then
+			if value == "DBMCount" or value == "StatOrder" then
 				C.db[key][value] = arg1
 			else
 				C.db[key][value] = tonumber(arg1)

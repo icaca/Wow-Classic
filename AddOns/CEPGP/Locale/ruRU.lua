@@ -1,4 +1,4 @@
-﻿local L = CEPGP_Locale:NewLocale("CEPGP", "ruRU")
+﻿local L = LibStub("AceLocale-3.0"):NewLocale("CEPGP", "ruRU");
 
 if not L then return end
 
@@ -10,7 +10,7 @@ L["Garr"] = "Гарр"
 L["Baron Geddon"] = "Барон Геддон"
 L["Shazzrah"] = "Шаззрах"
 L["Sulfuron Harbinger"] = "Предвестник Сульфурон"
-L["Golemagg the Incinerator"] = "Маг-лорд из клана Гордок"
+L["Golemagg the Incinerator"] = "Големагг Испепелитель"
 L["Majordomo Executus"] = "Мажордом Экзекутус"
 L["Ragnaros"] = "Рагнарос"
 L["Flamewaker Elite"] = "Поджигатель-гвардеец"

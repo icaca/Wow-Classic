@@ -67,7 +67,7 @@ function G:ClearEdit(element)
 end
 
 local function createPage(name)
-	local p = CreateFrame("Frame", nil, f)
+	local p = CreateFrame("Frame", nil, f, "BackdropTemplate")
 	p:SetPoint("TOPLEFT", 160, -70)
 	p:SetSize(620, 380)
 	B.CreateBD(p, .2)
@@ -222,7 +222,7 @@ local function CreatePanel()
 			name = L["TotemSlot"]..spellID
 		end
 
-		local bar = CreateFrame("Frame", nil, parent)
+		local bar = CreateFrame("Frame", nil, parent, "BackdropTemplate")
 		bar:SetSize(270, 30)
 		B.CreateBD(bar, .3)
 		barTable[index][spellID] = bar
@@ -274,7 +274,7 @@ local function CreatePanel()
 			name = GetItemInfo(itemID)
 		end
 
-		local bar = CreateFrame("Frame", nil, parent)
+		local bar = CreateFrame("Frame", nil, parent, "BackdropTemplate")
 		bar:SetSize(270, 30)
 		B.CreateBD(bar, .3)
 		barTable[index][intID] = bar
@@ -361,7 +361,7 @@ local function CreatePanel()
 		if not C.db["AuraWatchList"][i] then C.db["AuraWatchList"][i] = {} end
 		barTable[i] = {}
 
-		tabs[i] = CreateFrame("Button", "$parentTab"..i, f)
+		tabs[i] = CreateFrame("Button", "$parentTab"..i, f, "BackdropTemplate")
 		tabs[i]:SetPoint("TOPLEFT", 20, -40 - i*30)
 		tabs[i]:SetSize(130, 28)
 		B.CreateBD(tabs[i], .3)
@@ -379,7 +379,7 @@ local function CreatePanel()
 			end
 			Option[1] = G:CreateDropdown(tabs[i].Page, L["Type*"], 20, -30, {"AuraID", "SpellID", "SlotID", "TotemID"}, L["Type Intro"])
 			Option[2] = G:CreateEditbox(tabs[i].Page, "ID*", 140, -30, L["ID Intro"])
-			Option[3] = G:CreateDropdown(tabs[i].Page, L["Unit*"], 260, -30, {"player", "target", "pet"}, L["Unit Intro"])
+			Option[3] = G:CreateDropdown(tabs[i].Page, L["Unit*"], 260, -30, {"player", "target", "focus", "pet"}, L["Unit Intro"])
 			Option[4] = G:CreateDropdown(tabs[i].Page, L["Caster"], 380, -30, {"player", "target", "pet"}, L["Caster Intro"])
 			Option[5] = G:CreateEditbox(tabs[i].Page, L["Stack"], 500, -30, L["Stack Intro"])
 			Option[6] = G:CreateCheckBox(tabs[i].Page, L["Value"], 40, -95, L["Value Intro"])

@@ -1,7 +1,7 @@
 function CEPGP_LootFrame_Update()
 	local items = {};
 	local count = 0;
-	if CEPGP_ElvUI then
+	if CEPGP_Info.ElvUI then
 		local numLootItems = GetNumLootItems();
 		local texture, item, quantity, quality;
 		for index = 1, numLootItems do
@@ -55,7 +55,7 @@ function CEPGP_LootFrame_Update()
 		if (UnitInRaid("player") or CEPGP_Info.Debug) and (v[3] >= CEPGP.Loot.MinThreshold) or (CEPGP_inOverride(v[2]) or CEPGP_inOverride(v[4])) then
 			if CEPGP_isML() == 0 then
 				CEPGP_frame:Show();
-				CEPGP_mode = "loot";
+				CEPGP_Info.Mode = "loot";
 				CEPGP_toggleFrame("CEPGP_loot");
 			end
 			break;
@@ -65,17 +65,19 @@ function CEPGP_LootFrame_Update()
 end
 
 function CEPGP_announce(link, x, slotNum, quantity)
+
 	if (GetLootMethod() == "master" and CEPGP_isML() == 0) or CEPGP_Info.Debug then
 		local iString = CEPGP_getItemString(link);
 		local name, _, _, _, _, _, _, _, slot, tex = GetItemInfo(iString);
 		local id = CEPGP_getItemID(iString);
-		CEPGP_Info.LootGUID = id .. "-" .. GetTime();	--	Note: This is a custom GUID and is not the standard format provided by the client
+		CEPGP_Info.Loot.GUID = id .. "-" .. GetTime();	--	Note: This is a custom GUID and is not the standard format provided by the client
+		CEPGP_Info.Loot.Expired = false;
 		for i = 1, 4 do
-			CEPGP_Info.LootSchema[i] = CEPGP_response_buttons[i][2];
+			CEPGP_Info.LootSchema[i] = CEPGP.Loot.GUI.Buttons[i][2];
 		end
 		CEPGP_Info.LootSchema[5] = "";
 		CEPGP_Info.LootSchema[6] = "Pass";
-		CEPGP_Info.LootRespondants = 0;
+		CEPGP_Info.Loot.NumOnline = CEPGP_GetNumOnlineGroupMembers();
 		
 		local temp = {};
 		for label, v in pairs(CEPGP.Loot.ExtraKeywords.Keywords) do
@@ -103,35 +105,32 @@ function CEPGP_announce(link, x, slotNum, quantity)
 		end
 		table.insert(temp, schema);
 		
+		--if CEPGP.Loot.RaidVisibility[1] or CEPGP.Loot.RaidVisibility[2] then
 		for _, schema in ipairs(temp) do
-			if CEPGP.Loot.RaidVisibility[2] then
-				CEPGP_SendAddonMsg(schema, "RAID");
-			elseif CEPGP.Loot.RaidVisibility[1] then
-				CEPGP_messageGroup(schema, "assists");
-			end
+			CEPGP_addAddonMsg(schema, "RAID");
 		end
+		--end
 		
-		CEPGP_distributing = true;
+		CEPGP_Info.Loot.Distributing = true;
 		CEPGP_toggleGPEdit(false);
-		CEPGP_itemsTable = {};
-		CEPGP_distItemLink = link;
-		CEPGP_DistID = id;
-		CEPGP_SendAddonMsg("CEPGP_setDistID;" .. id, "RAID");
-		CEPGP_SendAddonMsg("CEPGP_setLootGUID;" .. CEPGP_Info.LootGUID, "RAID");
-		CEPGP_distSlot = slot;
-		gp = _G[CEPGP_mode..'itemGP'..x]:GetText();
-		CEPGP_lootSlot = slotNum;
-		CEPGP_responses = {};
+		CEPGP_Info.Loot.ItemsTable = {};
+		CEPGP_Info.Loot.DistributionID = id;
+		CEPGP_Info.Loot.Master = UnitName("player");
+		CEPGP_addAddonMsg("CEPGP_setDistID;" .. id, "RAID");
+		CEPGP_addAddonMsg("CEPGP_setLootGUID;" .. CEPGP_Info.Loot.GUID, "RAID");
+		CEPGP_Info.Loot.DistEquipSlot = slot;
+		gp = _G[CEPGP_Info.Mode..'itemGP'..x]:GetText();
+		CEPGP_Info.Loot.SlotNum = slotNum;
 		CEPGP_UpdateLootScrollBar();		
 		_G["CEPGP_respond_texture"]:SetTexture(tex);
 		_G["CEPGP_respond_texture_frame"]:SetScript('OnEnter', function()
-																GameTooltip:SetOwner(_G["CEPGP_respond_texture_frame"], "ANCHOR_TOPLEFT")
-																GameTooltip:SetHyperlink(iString);
-																GameTooltip:Show();
-															end);
+			GameTooltip:SetOwner(_G["CEPGP_respond_texture_frame"], "ANCHOR_TOPLEFT")
+			GameTooltip:SetHyperlink(iString);
+			GameTooltip:Show();
+		end);
 		_G["CEPGP_respond_texture_frame"]:SetScript('OnLeave', function()
-																GameTooltip:Hide();
-															end);
+			GameTooltip:Hide();
+		end);
 		_G["CEPGP_respond_item_name_frame"]:SetScript('OnClick', function() SetItemRef(iString, name); end);
 		_G["CEPGP_respond_item_name"]:SetText(link);
 		local rank = 0;
@@ -141,57 +140,60 @@ function CEPGP_announce(link, x, slotNum, quantity)
 			end
 		end
 		
+		local message = "RaidAssistLootDist;"..link..";"..gp..";true";
+		CEPGP_sendLootMessage(message);
+		
 		--	Messages are much faster when sent via the WHISPER channel, so a delay is needed so the distribution ID can be set in time
-		C_Timer.After(1, function()
-			if CEPGP.Loot.RaidVisibility[2] then
-				CEPGP_SendAddonMsg("RaidAssistLootDist;"..link..";"..gp..";true", "RAID");
+		--C_Timer.After(1, function()
+			--[[if CEPGP.Loot.RaidVisibility[2] then
+				CEPGP_addAddonMsg("RaidAssistLootDist;"..link..";"..gp..";true", "RAID");
 			elseif CEPGP.Loot.RaidVisibility[1] then
 				CEPGP_messageGroup("RaidAssistLootDist;"..link..";"..gp..";true", "assists");
-			end
-		end);
+			end]]
+		--end);
 		
-		SendChatMessage("--------------------------", "RAID", CEPGP_LANGUAGE);
+		SendChatMessage("--------------------------", "RAID", CEPGP_Info.Language);
 		if rank > 0 then
 			if quantity > 1 then
 				if CEPGP.Loot.RaidWarning then
-					SendChatMessage("正在分配: x" .. quantity .. " " .. link, "RAID_WARNING", CEPGP_LANGUAGE);
+					SendChatMessage("NOW DISTRIBUTING: x" .. quantity .. " " .. link, "RAID_WARNING", CEPGP_Info.Language);
 				else
-					SendChatMessage("正在分配: x" .. quantity .. " " .. link, "RAID", CEPGP_LANGUAGE);
+					SendChatMessage("NOW DISTRIBUTING: x" .. quantity .. " " .. link, "RAID", CEPGP_Info.Language);
 				end
 			else
 				if CEPGP.Loot.RaidWarning then
-					SendChatMessage("正在分配: " .. link, "RAID_WARNING", CEPGP_LANGUAGE);
+					SendChatMessage("NOW DISTRIBUTING: " .. link, "RAID_WARNING", CEPGP_Info.Language);
 				else
-					SendChatMessage("正在分配: " .. link, "RAID", CEPGP_LANGUAGE);
+					SendChatMessage("NOW DISTRIBUTING: " .. link, "RAID", CEPGP_Info.Language);
 				end
 			end
 		else
 			if quantity > 1 then
-				SendChatMessage("正在分配: x" .. quantity .. " " .. link, "RAID", CEPGP_LANGUAGE);
+				SendChatMessage("NOW DISTRIBUTING: x" .. quantity .. " " .. link, "RAID", CEPGP_Info.Language);
 			else
-				SendChatMessage("正在分配: " .. link, "RAID", CEPGP_LANGUAGE);
+				SendChatMessage("NOW DISTRIBUTING: " .. link, "RAID", CEPGP_Info.Language);
 			end
 		end
 		if quantity > 1 then
-			SendChatMessage("GP值: " .. gp .. " (~" .. math.floor(gp/quantity) .. "GP per unit)", "RAID", CEPGP_LANGUAGE);
+			SendChatMessage("GP Value: " .. gp .. " (~" .. math.floor(gp/quantity) .. "GP per unit)", "RAID", CEPGP_Info.Language);
 		else
-			SendChatMessage("GP值: " .. gp, "RAID", CEPGP_LANGUAGE);
+			SendChatMessage("GP Value: " .. gp, "RAID", CEPGP_Info.Language);
 		end
 		if CEPGP.Loot.GUI.Timer > 0 then
-			SendChatMessage("等待响应: " .. CEPGP.Loot.GUI.Timer .. (CEPGP.Loot.GUI.Timer > 1 and " 秒" or " 另外"), "RAID", CEPGP_LANGUAGE);
+			SendChatMessage("Time to respond: " .. CEPGP.Loot.GUI.Timer .. (CEPGP.Loot.GUI.Timer > 1 and " seconds" or " second"), "RAID", CEPGP_Info.Language);
 		end
 
-		SendChatMessage(CEPGP.Loot.Announcement, "RAID", CEPGP_LANGUAGE);
+		SendChatMessage(CEPGP.Loot.Announcement, "RAID", CEPGP_Info.Language);
 		if not CEPGP.Loot.HideKeyphrases then
-			SendChatMessage(CEPGP_response_buttons[1][4] .. " : " .. CEPGP_response_buttons[1][2], "RAID", CEPGP_LANGUAGE);
-			if CEPGP_response_buttons[2][1] then
-				SendChatMessage(CEPGP_response_buttons[2][4] .. " : " .. CEPGP_response_buttons[2][2], "RAID", CEPGP_LANGUAGE);
+			SendChatMessage(CEPGP.Loot.GUI.Buttons[1][4] .. " : " .. CEPGP.Loot.GUI.Buttons[1][2], "RAID", CEPGP_Info.Language);
+			if CEPGP.Loot.GUI.Buttons[2][1] then
+				SendChatMessage(CEPGP.Loot.GUI.Buttons[2][4] .. " : " .. CEPGP.Loot.GUI.Buttons[2][2], "RAID", CEPGP_Info.Language);
 			end
-			if CEPGP_response_buttons[3][1] then
-				SendChatMessage(CEPGP_response_buttons[3][4] .. " : " .. CEPGP_response_buttons[3][2], "RAID", CEPGP_LANGUAGE);
+			if CEPGP.Loot.GUI.Buttons[3][1] then
+				SendChatMessage(CEPGP.Loot.GUI.Buttons[3][4] .. " : " .. CEPGP.Loot.GUI.Buttons[3][2], "RAID", CEPGP_Info.Language);
 			end
-			if CEPGP_response_buttons[4][1] then
-				SendChatMessage(CEPGP_response_buttons[4][4] .. " : " .. CEPGP_response_buttons[4][2], "RAID", CEPGP_LANGUAGE);
+			if CEPGP.Loot.GUI.Buttons[4][1] then
+				SendChatMessage(CEPGP.Loot.GUI.Buttons[4][4] .. " : " .. CEPGP.Loot.GUI.Buttons[4][2], "RAID", CEPGP_Info.Language);
 			end
 		end
 		
@@ -208,41 +210,43 @@ function CEPGP_announce(link, x, slotNum, quantity)
 		keywords = CEPGP_tSort(keywords, 3, true);
 		
 		for k, v in ipairs(keywords) do
-			SendChatMessage(v[2] .. " : " .. v[1], "RAID", CEPGP_LANGUAGE);
+			SendChatMessage(v[2] .. " : " .. v[1], "RAID", CEPGP_Info.Language);
 		end
 	
-		SendChatMessage("--------------------------", "RAID", CEPGP_LANGUAGE);
+		SendChatMessage("--------------------------", "RAID", CEPGP_Info.Language);
 		
 		
 		local call = "CallItem;"..id..";"..gp;
 		local buttons = {};
-		if CEPGP_response_buttons[1][1] then
-			call = call .. ";" .. CEPGP_response_buttons[1][2];
-			buttons[1] = CEPGP_response_buttons[1][2];
+		if CEPGP.Loot.GUI.Buttons[1][1] then
+			call = call .. ";" .. CEPGP.Loot.GUI.Buttons[1][2];
+			buttons[1] = CEPGP.Loot.GUI.Buttons[1][2];
 		else
 			call = call .. ";";
 		end
-		if CEPGP_response_buttons[2][1] then
-			call = call .. ";" .. CEPGP_response_buttons[2][2];
-			buttons[2] = CEPGP_response_buttons[2][2];
+		if CEPGP.Loot.GUI.Buttons[2][1] then
+			call = call .. ";" .. CEPGP.Loot.GUI.Buttons[2][2];
+			buttons[2] = CEPGP.Loot.GUI.Buttons[2][2];
 		else
 			call = call .. ";";
 		end
-		if CEPGP_response_buttons[3][1] then
-			call = call .. ";" .. CEPGP_response_buttons[3][2];
-			buttons[3] = CEPGP_response_buttons[3][2];
+		if CEPGP.Loot.GUI.Buttons[3][1] then
+			call = call .. ";" .. CEPGP.Loot.GUI.Buttons[3][2];
+			buttons[3] = CEPGP.Loot.GUI.Buttons[3][2];
 		else
 			call = call .. ";";
 		end
-		if CEPGP_response_buttons[4][1] then
-			call = call .. ";" .. CEPGP_response_buttons[4][2];
-			buttons[4] = CEPGP_response_buttons[4][2];
+		if CEPGP.Loot.GUI.Buttons[4][1] then
+			call = call .. ";" .. CEPGP.Loot.GUI.Buttons[4][2];
+			buttons[4] = CEPGP.Loot.GUI.Buttons[4][2];
 		else
 			call = call .. ";";
 		end
-		call = call .. ";" .. tostring(CEPGP.Loot.GUI.Timer);
+		call = call .. ";" .. tostring(CEPGP.Loot.GUI.Timer) .. ";" .. CEPGP_Info.Loot.GUID;
 		CEPGP_callItem(id, gp, buttons, CEPGP.Loot.GUI.Timer);
-		CEPGP_SendAddonMsg(call, "RAID");
+		--CEPGP_addAddonMsg(call, "RAID");
+		CEPGP_addAddonMsg(call, "RAID");
+		
 			
 		CEPGP_distribute:Show();
 		CEPGP_loot:Hide();
@@ -253,10 +257,10 @@ function CEPGP_announce(link, x, slotNum, quantity)
 		_G["CEPGP_distribute_item_tex"]:SetScript('OnLeave', function() GameTooltip:Hide() end);
 		_G["CEPGP_distribute_GP_value"]:SetText(gp);
 	elseif GetLootMethod() == "master" then
-		CEPGP_print("你不是队长分配.", 1);
+		CEPGP_print("You are not the Loot Master.", 1);
 		return;
 	elseif GetLootMethod() ~= "master" then
-		CEPGP_print("当前物品分配不是队长分配", 1);
+		CEPGP_print("The loot method is not Master Looter", 1);
 	end
 end
 

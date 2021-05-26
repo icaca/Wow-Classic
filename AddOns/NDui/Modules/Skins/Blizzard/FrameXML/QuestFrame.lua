@@ -34,14 +34,9 @@ tinsert(C.defaultThemes, function()
 		ic:SetSize(40, 40)
 		ic:SetTexCoord(.08, .92, .08, .92)
 		ic:SetDrawLayer("OVERLAY")
-		B.CreateBD(bu, .25)
+		B.CreateBDFrame(bu, .25)
 		na:Hide()
 		co:SetDrawLayer("OVERLAY")
-
-		local line = CreateFrame("Frame", nil, bu)
-		line:SetSize(1, 40)
-		line:SetPoint("RIGHT", ic, 1, 0)
-		B.CreateBD(line)
 	end
 
 	QuestDetailScrollFrame:SetWidth(302) -- else these buttons get cut off
@@ -91,21 +86,9 @@ tinsert(C.defaultThemes, function()
 
 	-- [[ Quest NPC model ]]
 	B.StripTextures(QuestNPCModel)
+	B.SetBD(QuestNPCModel)
 	B.StripTextures(QuestNPCModelTextFrame)
-
-	local npcbd = B.SetBD(QuestNPCModel)
-	npcbd:ClearAllPoints()
-	npcbd:SetPoint("TOPLEFT", -1, 1)
-	npcbd:SetPoint("RIGHT", 2, 0)
-	npcbd:SetPoint("BOTTOM", QuestNPCModelTextScrollFrame)
-	npcbd:SetFrameLevel(0)
-
-	local npcLine = CreateFrame("Frame", nil, QuestNPCModel)
-	npcLine:SetPoint("BOTTOMLEFT", 0, -1)
-	npcLine:SetPoint("BOTTOMRIGHT", 1, -1)
-	npcLine:SetHeight(C.mult)
-	npcLine:SetFrameLevel(0)
-	B.CreateBD(npcLine, 0)
+	B.SetBD(QuestNPCModelTextFrame)
 
 	hooksecurefunc("QuestFrame_ShowQuestPortrait", function(parentFrame, _, _, _, _, x, y)
 		x = x + 5
@@ -138,8 +121,10 @@ tinsert(C.defaultThemes, function()
 	B.Reskin(QuestFrameExitButton)
 	B.ReskinScroll(QuestLogDetailScrollFrameScrollBar)
 	B.ReskinScroll(QuestLogListScrollFrameScrollBar)
+	B.StripTextures(QuestLogCount)
+	B.CreateBDFrame(QuestLogCount, .25)
 
-	B.ReskinExpandOrCollapse(QuestLogCollapseAllButton)
+	B.ReskinCollapse(QuestLogCollapseAllButton)
 	QuestLogCollapseAllButton:DisableDrawLayer("BACKGROUND")
 
 	B.StripTextures(QuestLogTrack)
@@ -152,7 +137,7 @@ tinsert(C.defaultThemes, function()
 		for i = 1, QUESTS_DISPLAYED, 1 do
 			local bu = _G["QuestLogTitle"..i]
 			if bu.isHeader and not bu.styled then
-				B.ReskinExpandOrCollapse(bu)
+				B.ReskinCollapse(bu)
 				bu.styled = true
 			end
 		end

@@ -1,4 +1,4 @@
-local L = CEPGP_Locale:NewLocale("CEPGP", "enUS", true, true)
+local L = LibStub("AceLocale-3.0"):NewLocale("CEPGP", "enUS", true, true);
 
 L["Onyxia"] = true
 L["Lucifron"] = true

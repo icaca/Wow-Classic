@@ -1,4 +1,4 @@
-local L = CEPGP_Locale:NewLocale("CEPGP", "zhCN")
+local L = LibStub("AceLocale-3.0"):NewLocale("CEPGP", "zhCN");
 
 if not L then return end
 
@@ -87,26 +87,26 @@ L["Taerar"] = "泰拉尔"
 
 
 L["Head"]="头部"
-L["项链"]="Neck"
-L["肩膀"]="Shoulder"
-L["披风"]="Cloak"
-L["胸甲"]="Chest"
-L["护腕"]="Wrist"
-L["手部"]="Hands"
-L["腰带"]="Waist"
-L["腿部"]="Legs"
-L["鞋子"]="Feet"
-L["戒指"]="Ring"
-L["饰品"]="Trinket"
-L["主手武器"]="MH Weapon"
-L["副手武器"]="OH Weapon"
-L["副手物品"]="Holdable OH"
-L["盾牌"]="Shield"
-L["远程武器"]="Ranged"
-L["魔杖"]="Wand"
-L["遗物"]="Relic"
-L["投掷武器"]="Throwing"
-L["双手武器"]="2H Weapon"
+L["Neck"]="项链"
+L["Shoulder"]="肩膀"
+L["Cloak"]="披风"
+L["Chest"]="胸甲"
+L["Wrist"]="护腕"
+L["Hands"]="手部"
+L["Waist"]="腰带"
+L["Legs"]="腿部"
+L["Feet"]="鞋子"
+L["Ring"]="戒指"
+L["Trinket"]="饰品"
+L["MH Weapon"]="主手武器"
+L["OH Weapon"]="副手武器"
+L["Holdable OH"]="副手物品"
+L["Shield"]="盾牌"
+L["Ranged"]="远程武器"
+L["Wand"]="魔杖"
+L["Relic"]="遗物"
+L["Throwing"]="投掷武器"
+L["2H Weapon"]="双手武器"
 
 
 L["Save Standings"]="保存列表"

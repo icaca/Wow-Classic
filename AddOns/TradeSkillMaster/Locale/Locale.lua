@@ -15941,7 +15941,7 @@ L["Custom price name %s is a reserved word which cannot be used."] = "Custom pri
 --[[Translation missing --]]
 L["Custom price names can only contain lowercase letters."] = "Custom price names can only contain lowercase letters."
 L["Custom Source"] = "自订来源"
-L["Custom source (%s)"] = "自订来源 (%s)"
+L["Custom source (%s)"] = "自定义源 (%s)"
 L["Custom Sources"] = "自定义源"
 --[[Translation missing --]]
 L["Custom sources allow you to create more advanced prices for use throughout the addon. You'll be able to use these new variables in the same way you can use the built-in price sources such as %s and %s."] = "Custom sources allow you to create more advanced prices for use throughout the addon. You'll be able to use these new variables in the same way you can use the built-in price sources such as %s and %s."
@@ -17430,7 +17430,7 @@ L["Adjust some general settings."] = "Adjust some general settings."
 L["Adjust the settings below to set how groups attached to this operation will be auctioned."] = "調整以下設置以設置如何拍賣與該操作關聯的群組。"
 L["Adjust the settings below to set how groups attached to this operation will be cancelled."] = "調整以下設置以設置如何取消此操作的群組。"
 L["Adjust the settings below to set how groups attached to this operation will be priced."] = "調整以下設置以設置該操作附加群組的定價方式。"
-L["Advanced Item Search"] = "進階項目搜索"
+L["Advanced Item Search"] = "進階物品搜尋"
 L["AH"] = "拍賣場"
 --[[Translation missing --]]
 L["AH (Crafting)"] = "AH (Crafting)"
@@ -17461,7 +17461,7 @@ L["All Item Classes"] = "所有物品類別"
 --[[Translation missing --]]
 L["All Other"] = "All Other"
 L["All Players"] = "所有玩家"
-L["All Professions"] = "所有專業"
+L["All Professions"] = "所有專業技能"
 --[[Translation missing --]]
 L["All Rarites"] = "All Rarites"
 --[[Translation missing --]]
@@ -17986,8 +17986,7 @@ L["Enter a value from %d - %d"] = "輸入%d - %d的值"
 L["Enter a value from %d - %d%%"] = "Enter a value from %d - %d%%"
 --[[Translation missing --]]
 L["Enter Filter"] = "Enter Filter"
---[[Translation missing --]]
-L["Enter Keyword"] = "Enter Keyword"
+L["Enter Keyword"] = "輸入關鍵字"
 --[[Translation missing --]]
 L["Enter name of logged-in character on other account"] = "Enter name of logged-in character on other account"
 --[[Translation missing --]]
@@ -18080,7 +18079,7 @@ L["Filter by keyword"] = "以關鍵字篩選"
 L["Filter by Keyword"] = "以關鍵字篩選"
 --[[Translation missing --]]
 L["Filter by Price Source"] = "Filter by Price Source"
-L["Filter by Profession"] = "以專業篩選"
+L["Filter by Profession"] = "以專業技能篩選"
 L["Filter group item lists based on the following price source"] = "以下列價格來源篩選群組物品清單"
 --[[Translation missing --]]
 L["Finding Selected Auction"] = "Finding Selected Auction"
@@ -18107,8 +18106,7 @@ L["Garrison"] = "Garrison"
 L["Gathering"] = "採集"
 --[[Translation missing --]]
 L["Gathering Search"] = "Gathering Search"
---[[Translation missing --]]
-L["Gathering Setup"] = "Gathering Setup"
+L["Gathering Setup"] = "採集設定"
 L["General Options"] = "常規選項"
 L["General Settings"] = "一般設定"
 --[[Translation missing --]]
@@ -18615,8 +18613,7 @@ L["Operation"] = "作業"
 L["Operations"] = "作業"
 --[[Translation missing --]]
 L["Options specific to Sniper are below."] = "Options specific to Sniper are below."
---[[Translation missing --]]
-L["Order Confirmation"] = "Order Confirmation"
+L["Order Confirmation"] = "訂單確認"
 --[[Translation missing --]]
 L["Orgrimmar"] = "Orgrimmar"
 --[[Translation missing --]]
@@ -18688,8 +18685,7 @@ L["Posts"] = "Posts"
 L["Potential"] = "Potential"
 --[[Translation missing --]]
 L["Prepare Bid"] = "Prepare Bid"
---[[Translation missing --]]
-L["Prepare Buy"] = "Prepare Buy"
+L["Prepare Buy"] = "準備購買"
 --[[Translation missing --]]
 L["Preparing..."] = "Preparing..."
 --[[Translation missing --]]
@@ -18702,8 +18698,7 @@ L["Prints out the version numbers of all installed modules"] = "Prints out the v
 L["Prints the slash command help listing"] = "Prints the slash command help listing"
 --[[Translation missing --]]
 L["Processing scan results..."] = "Processing scan results..."
---[[Translation missing --]]
-L["Profession"] = "Profession"
+L["Profession"] = "專業技能"
 --[[Translation missing --]]
 L["Profession Info"] = "Profession Info"
 --[[Translation missing --]]
@@ -18934,8 +18929,7 @@ L["Scanning (%d Items)"] = "Scanning (%d Items)"
 L["Scroll wheel direction"] = "Scroll wheel direction"
 --[[Translation missing --]]
 L["Scroll Wheel Options"] = "Scroll Wheel Options"
---[[Translation missing --]]
-L["Search"] = "Search"
+L["Search"] = "搜尋"
 L["Search %s operations"] = "搜尋 %s 作業"
 --[[Translation missing --]]
 L["Search Bags"] = "Search Bags"
@@ -18947,8 +18941,7 @@ L["Search Operations"] = "搜尋作業"
 L["Search Patterns"] = "搜尋品項"
 --[[Translation missing --]]
 L["Search Results"] = "Search Results"
---[[Translation missing --]]
-L["Search the auction house"] = "Search the auction house"
+L["Search the auction house"] = "搜尋拍賣場"
 L["Search Vendor"] = "搜尋賣主"
 --[[Translation missing --]]
 L["Select / Deselect All Groups"] = "Select / Deselect All Groups"
@@ -19299,8 +19292,7 @@ L["Total Inventory Quantity"] = "Total Inventory Quantity"
 --[[Translation missing --]]
 L["Total Items"] = "Total Items"
 L["Total Postage"] = "郵資"
---[[Translation missing --]]
-L["Total Price"] = "Total Price"
+L["Total Price"] = "總價"
 --[[Translation missing --]]
 L["Total Prices:"] = "Total Prices:"
 --[[Translation missing --]]
@@ -19375,8 +19367,7 @@ L["Undercutting blacklisted player."] = "Undercutting blacklisted player."
 L["Undercutting competition."] = "削價競爭"
 L["Ungrouped Items"] = "未被群組的物品"
 L["Ungrouped Items in Bags"] = "背包裡未被群組的物品"
---[[Translation missing --]]
-L["Unit Price"] = "Unit Price"
+L["Unit Price"] = "單價"
 --[[Translation missing --]]
 L["Unknown Item"] = "Unknown Item"
 --[[Translation missing --]]
@@ -19416,8 +19407,7 @@ L["Vendor"] = "供應商"
 L["Vendor Buy Price"] = "買價"
 --[[Translation missing --]]
 L["Vendor buy price"] = "Vendor buy price"
---[[Translation missing --]]
-L["Vendor Search"] = "Vendor Search"
+L["Vendor Search"] = "供應商搜尋"
 --[[Translation missing --]]
 L["Vendor Sell"] = "Vendor Sell"
 L["Vendor Sell Price"] = "賣價"

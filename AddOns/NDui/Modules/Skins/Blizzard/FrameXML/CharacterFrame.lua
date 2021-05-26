@@ -4,6 +4,10 @@ local B, C, L, DB = unpack(ns)
 tinsert(C.defaultThemes, function()
 	B.ReskinPortraitFrame(CharacterFrame, 15, -15, -35, 73)
 	B.ReskinRotationButtons(CharacterModelFrame)
+	B.ReskinDropDown(PlayerStatFrameLeftDropDown)
+	B.ReskinDropDown(PlayerStatFrameRightDropDown)
+	B.ReskinDropDown(PlayerTitleDropDown)
+	PlayerTitleDropDownText:SetPoint("LEFT", 27, 2)
 
 	local CHARACTERFRAME_SUBFRAMES = CHARACTERFRAME_SUBFRAMES or 5
 
@@ -17,15 +21,6 @@ tinsert(C.defaultThemes, function()
 		hl:SetPoint("TOPLEFT", tab.bg, C.mult, -C.mult)
 		hl:SetPoint("BOTTOMRIGHT", tab.bg, -C.mult, C.mult)
 	end
-
-	HonorFrameProgressBar:SetWidth(320)
-	HonorFrameProgressBar:SetStatusBarTexture(DB.bdTex)
-	B.CreateBDFrame(HonorFrameProgressBar, .25)
-	HonorFrameProgressBar:SetPoint("TOPLEFT", 22, -73)
-
-	local bg = B.CreateBDFrame(HonorFrame, .25)
-	bg:SetPoint("TOPLEFT", 21, -105)
-	bg:SetPoint("BOTTOMRIGHT", -41, 80)
 
 	B.StripTextures(PaperDollFrame)
 	B.StripTextures(CharacterAttributesFrame)
@@ -69,11 +64,22 @@ tinsert(C.defaultThemes, function()
 		icon:SetTexCoord(a+.2, c-.2, b+.018, d-.018)
 	end
 
+	-- needs review
+	for _, direc in pairs({"Left", "Right"}) do
+		for i = 1, 6 do
+			local frameName = "PlayerStatFrame"..direc..i
+			local label = _G[frameName.."Label"]
+			local text = _G[frameName.."StatText"]
+			label:SetFontObject(Game13Font)
+			text:SetFontObject(Game13Font)
+		end
+	end
+
 	-- SkillFrame
 	B.StripTextures(SkillFrame)
 	B.ReskinScroll(SkillListScrollFrameScrollBar)
 	B.Reskin(SkillFrameCancelButton)
-	B.ReskinExpandOrCollapse(SkillFrameCollapseAllButton)
+	B.ReskinCollapse(SkillFrameCollapseAllButton)
 	B.StripTextures(SkillFrameExpandButtonFrame)
 	B.ReskinScroll(SkillDetailScrollFrame.ScrollBar)
 	B.CreateBDFrame(SkillDetailScrollFrame, .25)
@@ -82,7 +88,7 @@ tinsert(C.defaultThemes, function()
 	B.CreateBDFrame(SkillDetailStatusBar, .25)
 
 	for i = 1, 12 do
-		B.ReskinExpandOrCollapse(_G["SkillTypeLabel"..i])
+		B.ReskinCollapse(_G["SkillTypeLabel"..i])
 		B.CreateBDFrame(_G["SkillRankFrame"..i], .25)
 		_G["SkillRankFrame"..i.."Border"]:SetAlpha(0)
 		_G["SkillRankFrame"..i.."Bar"]:SetTexture(DB.bdTex)
@@ -135,6 +141,12 @@ tinsert(C.defaultThemes, function()
 	PetPaperDollPetInfo:SetScript("OnEvent", updateHappiness)
 	PetPaperDollPetInfo:SetScript("OnShow", updateHappiness)
 
-	-- HonorFrame
-	B.StripTextures(HonorFrame)
+	-- PVP
+	B.StripTextures(PVPFrame)
+
+	for i = 1, 3 do
+		local tName = "PVPTeam"..i
+		B.StripTextures(_G[tName])
+		B.CreateBDFrame(_G[tName.."Background"], .25)
+	end
 end)

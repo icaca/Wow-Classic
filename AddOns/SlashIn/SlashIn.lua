@@ -1,9 +1,4 @@
 
-if WOW_PROJECT_ID ~= WOW_PROJECT_CLASSIC then
-	print("|cFF33FF99SlashIn|r: You're trying to run the Classic version of SlashIn on a live server.")
-	return
-end
-
 local CTimerAfter = C_Timer.After
 local print = print
 local tonumber = tonumber

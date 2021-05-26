@@ -128,7 +128,7 @@
 		</Frames>
 		<Layers>
 			<Layer level="OVERLAY">
-				<FontString name="$parentInfo" inherits="GameFontHighlight" justifyH="LEFT">
+				<FontString name="$parentInfo" inherits="GameFontHighlightSmall" justifyH="LEFT">
 					<Anchors>
 						<Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
 							<Offset>
@@ -137,7 +137,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="$parentClass" inherits="GameFontHighlight" justifyH="LEFT">
+				<FontString name="$parentClass" inherits="GameFontHighlightSmall" justifyH="LEFT">
 					<Anchors>
 						<Anchor point="LEFT" relativePoint="LEFT" relativeTo="$parentInfo">
 							<Offset>
@@ -146,7 +146,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="$parentRank" inherits="GameFontHighlight" justifyH="LEFT">
+				<FontString name="$parentRank" inherits="GameFontHighlightSmall" justifyH="LEFT">
 					<Anchors>
 						<Anchor point="LEFT" relativePoint="LEFT" relativeTo="$parentClass">
 							<Offset>
@@ -155,7 +155,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="$parentResponse" inherits="GameFontHighlight" justifyH="LEFT">
+				<FontString name="$parentResponse" inherits="GameFontHighlightSmall" justifyH="LEFT">
 					<Anchors>
 						<Anchor point="LEFT" relativePoint="LEFT" relativeTo="$parentRank">
 							<Offset>
@@ -164,7 +164,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="$parentEP" inherits="GameFontHighlight" justifyH="LEFT">
+				<FontString name="$parentEP" inherits="GameFontHighlightSmall" justifyH="LEFT">
 					<Anchors>
 						<Anchor point="LEFT" relativePoint="LEFT" relativeTo="$parentResponse">
 							<Offset>
@@ -173,7 +173,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="$parentGP" inherits="GameFontHighlight" justifyH="RIGHT">
+				<FontString name="$parentGP" inherits="GameFontHighlightSmall" justifyH="RIGHT">
 					<Anchors>
 						<Anchor point="RIGHT" relativePoint="LEFT" relativeTo="$parentEP">
 							<Offset>
@@ -182,7 +182,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="$parentPR" inherits="GameFontHighlight" justifyH="RIGHT">
+				<FontString name="$parentPR" inherits="GameFontHighlightSmall" justifyH="RIGHT">
 					<Anchors>
 						<Anchor point="RIGHT" relativePoint="RIGHT" relativeTo="$parentGP">
 							<Offset>
@@ -191,7 +191,7 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="$parentRoll" inherits="GameFontHighlight" justifyH="RIGHT">
+				<FontString name="$parentRoll" inherits="GameFontHighlightSmall" justifyH="RIGHT">
 					<Anchors>
 						<Anchor point="RIGHT" relativePoint="RIGHT" relativeTo="$parentPR">
 							<Offset>
@@ -282,6 +282,9 @@
 		<Size>
 			<AbsDimension x="580" y="15"/>
 		</Size>
+		<Attributes>
+			<Attribute name="excluded" type="boolean" value="false" />
+		</Attributes>
 		<Frames>
 		</Frames>
 		<Layers>
@@ -357,6 +360,9 @@
 		<Size>
 			<AbsDimension x="580" y="15"/>
 		</Size>
+		<Attributes>
+			<Attribute name="excluded" type="boolean" value="false" />
+		</Attributes>
 		<Frames>
 		</Frames>
 		<Layers>
@@ -535,10 +541,10 @@
 				if item then
 					if GetItemInfo(item) then
 						local link = CEPGP_getItemLink(GetItemInfoInstant(item));
-						if link and not OVERRIDE_INDEX[link] then
-							local gp = OVERRIDE_INDEX[item];
-							OVERRIDE_INDEX[item] = nil;
-							OVERRIDE_INDEX[link] = gp;
+						if link and not CEPGP.Overrides[link] then
+							local gp = CEPGP.Overrides[item];
+							CEPGP.Overrides[item] = nil;
+							CEPGP.Overrides[link] = gp;
 						end
 					end
 				end
@@ -679,6 +685,7 @@
 		</Frames>
 		<Attributes>
 			<Attribute name="delete_confirm" type="boolean" value="false" />
+			<Attribute name="id" type="number" value="false" />
 		</Attributes>
 		<Scripts>
 			<OnLoad>
@@ -695,7 +702,7 @@
 	</Button>
 	<Button name="StandbyButtonTemplate" virtual="true">
 		<Size>
-			<AbsDimension x="420" y="15"/>
+			<AbsDimension x="1" y="15"/>
 		</Size>
 		<Frames>
 			<Button name="$parentClose" inherits="UiPanelCloseButton">
@@ -782,6 +789,17 @@
 			<OnClick>
 				PlaySound(856);
 			</OnClick>
+			<OnShow>
+				self:SetWidth(self:GetParent():GetWidth());
+				local name = _G[self:GetName() .. "Info"];
+				local class = _G[self:GetName() .. "Class"];
+				local rank = _G[self:GetName() .. "Rank"];
+				local EP = _G[self:GetName() .. "EP"];
+				local GP = _G[self:GetName() .. "GP"];
+				local PR = _G[self:GetName() .. "PR"];
+				
+				local width = self:GetWidth();
+			</OnShow>
 		</Scripts>
 		<HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD"/>
 	</Button>
@@ -1004,17 +1022,16 @@
 				self:ClearFocus();
 			</OnEnterPressed>
 			<OnEditFocusLost>
-				local L = CEPGP_Locale:GetLocale("CEPGP")
+				local L = LibStub("AceLocale-3.0"):GetLocale("CEPGP");
 				self:HighlightText(0,0);
 				local name = strsub(self:GetName(), 15, strfind(self:GetName(), "_EP")-1);
 				local value = self:GetText();
 				if value == "" or not CEPGP_isNumber(value) then
-					self:SetText(tostring(EPVALS[name]));
-				elseif value == EPVALS[name] then
+					self:SetText(tostring(CEPGP.EP.BossEP[name]));
+				elseif value == CEPGP.EP.BossEP[name] then
 					return;
-				elseif EPVALS[name] ~= tonumber(value) then
+				elseif CEPGP.EP.BossEP[name] ~= tonumber(value) then
 					value = tonumber(value);
-					EPVALS[name] = value;
 					CEPGP.EP.BossEP[name] = value;
 					
 					local tName = _G["CEPGP_options_" .. name .. "_val"]:GetText();
@@ -1022,11 +1039,11 @@
 				end
 			</OnEditFocusLost>
 			<OnShow>
-				local L = CEPGP_Locale:GetLocale("CEPGP")
+				local L = LibStub("AceLocale-3.0"):GetLocale("CEPGP");
 
 				local name = strsub(self:GetName(), 15, strfind(self:GetName(), "_EP")-1);
 				local target = _G["CEPGP_options_" .. name .. "_val"];		
-				self:SetText(tostring(EPVALS[name]));
+				self:SetText(tostring(CEPGP.EP.BossEP[name]));
 				--self:SetPoint('LEFT', target, 'LEFT', 420, 0); --FontStrings justify to the left, so for the sake of structuring, it's better to set the relative anchor to left
 			</OnShow>
 		</Scripts>
@@ -1034,17 +1051,71 @@
 	
 	<EditBox name="slotWeightInputBoxTemplate" inherits="InputBoxTemplate" minvalue="0.0" virtual="true">
 		<Size>
-			<AbsDimension x="40" y="5" />
+			<AbsDimension x="50" y="5" />
 		</Size>
 		<HitRectInsets>
 			<AbsInset left="0" right="2" top="-5" bottom="0" />
 		</HitRectInsets>
+		<Attributes>
+			<Attribute name="topLevel" type="boolean" value="false" />
+		</Attributes>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_string" inherits="GameFontNormalSmall">
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT" y="10"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
 		<Scripts>
 			<OnLoad>
 				self:SetAutoFocus(false);
+				
+				local fString = _G[self:GetName() .. "_string"];
+				local slots = {
+					["HEAD"] =					"Head",
+					["NECK"] =					"Neck",
+					["SHOULDER"] =				"Shoulder",
+					["CLOAK"] =					"Cloak",
+					["CHEST"] =					"Chest",
+					["WRIST"] =					"Wrist",
+					["HAND"] =					"Hand",
+					["WAIST"] =					"Waist",
+					["LEGS"] =					"Legs",
+					["FEET"] =					"Feet",
+					["FINGER"] =				"Finger",
+					["TRINKET"] =				"Trinket",
+					["WEAPONMAINHAND"] =		"Main-Hand Weapon",
+					["WEAPONOFFHAND"] =			"Off-Hand Weapon",
+					["HOLDABLE"] =				"Holdable Off-Hand",
+					["WEAPON"] =				"One-Handed Weapon",
+					["SHIELD"] =				"Shield",
+					["WAND"] =					"Wand",
+					["RANGED"] =				"Ranged",
+					["RELIC"] =					"Relic",
+					["THROWN"] =				"Thrown",
+					["2HWEAPON"] =				"Two-Handed Weapon"
+				}
+				
 				local slot = strsub(self:GetName(), 15, strfind(self:GetName(), "_weight")-1);
-				self:SetPoint('LEFT', _G["CEPGP_options_slot_" .. slot], 'RIGHT', 10, 0);
+				
+				fString:SetText(slots[slot]);
+				
+				local topFrame = self:GetAttribute("topLevel");
+				
+				if topFrame then return; end
+				
+				local point, parent, relPoint, x, y = self:GetPoint();
+				y = y - fString:GetStringHeight();
+				
+				self:SetPoint(point, parent, relPoint, x, y);
 			</OnLoad>
+			<OnShow>
+				local slot = strsub(self:GetName(), 15, strfind(self:GetName(), "_weight")-1);
+				local value = CEPGP.GP.SlotWeights[slot];
+				self:SetText(value);
+			</OnShow>
 			<OnEnterPressed>
 				self:ClearFocus();
 			</OnEnterPressed>
@@ -1052,12 +1123,10 @@
 				self:HighlightText(0,0);
 				local slot = string.sub(self:GetName(), 15, string.find(self:GetName(), "_weight")-1);
 				local value = self:GetText();
-				if CEPGP_isNumber(self:GetText()) and SLOTWEIGHTS[slot] ~= tonumber(value) then
-					SLOTWEIGHTS[slot] = tonumber(value);
+				if CEPGP_isNumber(self:GetText()) and CEPGP.GP.SlotWeights[slot] ~= tonumber(value) then
 					CEPGP.GP.SlotWeights[slot] = tonumber(value);
-					CEPGP_print("Modifier for " .. string.lower(slot) .. " slot updated");
 				else
-					self:SetText(SLOTWEIGHTS[slot]);
+					self:SetText(CEPGP.GP.SlotWeights[slot]);
 				end
 			</OnEditFocusLost>
 		</Scripts>
@@ -1072,14 +1141,12 @@
 				self:RegisterForClicks('LeftButtonDown');
 			</OnLoad>
 			<OnClick>
-				local L = CEPGP_Locale:GetLocale("CEPGP")
+				local L = LibStub("AceLocale-3.0"):GetLocale("CEPGP");
 				
 				local name = strsub(self:GetName(), 15, strfind(self:GetName(), "_auto_check")-1);
 				if self:GetChecked() then
-					AUTOEP[name] = true;
 					CEPGP.EP.AutoAward[name] = true;
 				else
-					AUTOEP[name] = false;
 					CEPGP.EP.AutoAward[name] = false;
 				end
 				local tName = _G["CEPGP_options_" .. name .. "_val"]:GetText();
@@ -1088,39 +1155,227 @@
 			<OnShow>
 				local name = strsub(self:GetName(), 15, strfind(self:GetName(), "_auto_check")-1);
 				local target = _G["CEPGP_options_" .. name .. "_EP_value"];		
-				self:SetChecked(AUTOEP[name]);
+				self:SetChecked(CEPGP.EP.AutoAward[name]);
 				--self:SetPoint('LEFT', target, 'RIGHT', 15, 0);
 			</OnShow>
 		</Scripts>
 	</CheckButton>
 
-	<FontString name="SlotWeightFontTemplate" inherits="GameFontNormal" virtual="true">
-		<Color r="1" g="1" b="1"/>
-	</FontString>
-
 	<CheckButton name="StandbyEPRankCheckBox" inherits="UIOptionsCheckButtonTemplate" virtual="true">
 		<HitRectInsets>
 			<AbsInset left="0" right="0" top="0" bottom="0" />
 		</HitRectInsets>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parent_label" inherits="CEPGPOptionStringSmall" />
+			</Layer>
+		</Layers>
 		<Scripts>
 			<OnLoad>
 				self:RegisterForClicks('LeftButtonDown');
 			</OnLoad>
 			<OnClick>
 				local id = self:GetID();
-				if self:GetChecked() then 
-					STANDBYRANKS[id][2] = true;
-					CEPGP.Standby.Ranks[id][2] = true;
-				else
-					STANDBYRANKS[id][2] = false;
-					CEPGP.Standby.Ranks[id][2] = false;
-				end
+				CEPGP.Standby.Ranks[id] = self:GetChecked();
 			</OnClick>
 			<OnShow>
-				local target = _G["CEPGP_options_standby_ep_rank_" .. self:GetID()];
-				self:SetPoint("LEFT", target, "LEFT", 120, 0);
+				local id = self:GetID();
+				self:SetChecked(CEPGP.Standby.Ranks[id]);
 			</OnShow>
 		</Scripts>
 	</CheckButton>
 	
+	<CheckButton name="CEPGPRaidAssistCheckTemplate" inherits="UIOptionsCheckButtonTemplate" virtual="true">
+		<HitRectInsets>
+			<AbsInset left="0" right="0" top="0" bottom="0" />
+		</HitRectInsets>
+			<Layers>
+				<Layer level="OVERLAY">
+					<FontString name="$parent_label" inherits="GameFontNormalSmall">
+						<Color r="1" g="1" b="1" />
+						<Anchors>
+							<Anchor point="LEFT" relativePoint="RIGHT" />
+						</Anchors>
+					</FontString>
+				</Layer>
+			</Layers>
+		<Scripts>
+			<OnClick>
+				local id = self:GetID();
+				CEPGP.Loot.RaidVisibility[3][id] = self:GetChecked();
+			</OnClick>
+			<OnShow>
+				local id = self:GetID();
+				local rankName = GuildControlGetRankName(id+1);
+				local str = _G[self:GetName() .. "_label"];
+				
+				if rankName ~= "" then
+					str:SetText(rankName);
+					if CEPGP.Loot.RaidVisibility[3][id] or CEPGP.Loot.RaidVisibility[2] then
+						self:SetChecked(true);
+						if CEPGP.Loot.RaidVisibility[2] then
+							self:Disable();
+							_G[self:GetName() .. "_label"]:SetTextColor(0.5, 0.5, 0.5);
+						else
+							self:Enable();
+							_G[self:GetName() .. "_label"]:SetTextColor(1, 1, 1);
+						end
+					end
+				else
+					self:Hide();
+				end
+			</OnShow>
+		</Scripts>
+	</CheckButton>
+	
+	<CheckButton name="CEPGPSyncRankCheckTemplate" inherits="UIOptionsCheckButtonTemplate" virtual="true">
+		<HitRectInsets>
+			<AbsInset left="0" right="0" top="0" bottom="0" />
+		</HitRectInsets>
+			<Layers>
+				<Layer level="OVERLAY">
+					<FontString name="$parent_text" inherits="GameFontNormalSmall">
+						<Anchors>
+							<Anchor point="LEFT" relativePoint="RIGHT" />
+						</Anchors>
+					</FontString>
+				</Layer>
+			</Layers>
+		<Scripts>
+			<OnClick>
+				local id = self:GetID();
+				CEPGP.Sync[2][id] = self:GetChecked();
+				--CEPGP.Loot.RaidVisibility[3][id] = self:GetChecked();
+			</OnClick>
+			<OnShow>
+				local id = self:GetID();
+				local rankName = GuildControlGetRankName(id+1);
+				local str = _G[self:GetName() .. "_text"];
+				
+				if rankName ~= "" then
+					str:SetText(rankName);
+					self:SetChecked(CEPGP.Sync[2][id]);
+					--self:SetChecked(CEPGP.Loot.RaidVisibility[3][id]);
+				else
+					self:Hide();
+				end
+			</OnShow>
+		</Scripts>
+	</CheckButton>
+	
+	<FontString name="CEPGPOptionString" inherits="GameFontNormal" virtual="true">
+		<Color r="1" g="1" b="1"/>
+		<Anchors>
+			<Anchor point="LEFT" relativePoint="RIGHT" />
+		</Anchors>
+	</FontString>
+	
+	<FontString name="CEPGPOptionStringSmall" inherits="GameFontNormalSmall" virtual="true">
+		<Color r="1" g="1" b="1"/>
+		<Anchors>
+			<Anchor point="LEFT" relativePoint="RIGHT" />
+		</Anchors>
+	</FontString>
+	
+	<FontString name="CEPGPEditBoxOptionString" inherits="GameFontNormal" virtual="true">
+		<Color r="1" g="1" b="1"/>
+		<Anchors>
+			<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT" />
+		</Anchors>
+	</FontString>
+	
+	<FontString name="CEPGPEditBoxOptionStringSmall" inherits="GameFontNormalSmall" virtual="true">
+		<Color r="1" g="1" b="1"/>
+		<Anchors>
+			<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT" />
+		</Anchors>
+	</FontString>
+	
+	<Frame name="CEPGPInfoFrameTemplate" virtual="true">
+		<Size x="25" y="25" />
+		<Layers>
+			<Layer level="OVERLAY">
+				<Texture name="$parent_texture" file="Interface/TUTORIALFRAME/TutorialFrame-QuestionMark.blp" alphaMode="ADD">
+					<Size>
+						<AbsDimension x="25" y="25" />
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Frame>
+	
+	<Frame name="CEPGPBagItemTemplate" virtual="true">
+		<Size x="1" y="15" />
+		<Attributes>
+			<Attribute name="itemID" type="integer" value=""/>
+			<Attribute name="itemGUID" type="string" value=""/>
+		</Attributes>
+		<Frames>
+			<CheckButton name="$parent_check" inherits="UIOptionsCheckButtonTemplate">
+				<Size x="15" y="15" />
+				<Anchors>
+					<Anchor point="LEFT" />
+				</Anchors>
+				<Scripts>
+					<OnClick>
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<Button name="$parent_icon">
+				<Size x="15" y="15" />
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_check" x="5"/>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<Texture name="$parent_tex">
+							<Size>
+								<AbsDimension x="15" y="15"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER" />
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnEnter>
+						if not self:IsVisible() then return; end
+						
+						local _, link = GetItemInfo(self:GetAttribute("itemID"));
+						GameTooltip:SetOwner(self, "ANCHOR_BOTTOMLEFT")
+						GameTooltip:SetHyperlink(link);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="$parent_name">
+				<Size x="1" y="15" />
+				<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parent_icon" x="5" />
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parent_text" inherits="GameFontNormalSmall">
+							<Anchors>
+								<Anchor point="LEFT" />
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>						
+						local _, link = GetItemInfo(self:GetAttribute("itemID"));
+						SetItemRef(link);
+					</OnClick>
+					<OnShow>
+						self:SetWidth(_G[self:GetName() .. "_text"]:GetStringWidth());
+					</OnShow>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
 </Ui>

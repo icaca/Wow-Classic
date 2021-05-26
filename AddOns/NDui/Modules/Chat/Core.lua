@@ -90,7 +90,7 @@ function module:SkinChat()
 	eb:ClearAllPoints()
 	eb:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 4, 26)
 	eb:SetPoint("TOPRIGHT", self, "TOPRIGHT", -17, 50)
-	B.StripTextures(eb)
+	B.StripTextures(eb, 2)
 	B.SetBD(eb)
 
 	local lang = _G[name.."EditBoxLanguage"]
@@ -353,6 +353,10 @@ function module:OnLogin()
 	if C.db["Chat"]["Freedom"] then
 		if GetCVar("portal") == "CN" then
 			ConsoleExec("portal TW")
+
+			HelpFrame:HookScript("OnShow", function()
+				UIErrorsFrame:AddMessage(DB.InfoColor..L["LanguageFilterTip"])
+			end)
 		end
 		SetCVar("profanityFilter", 0)
 	else

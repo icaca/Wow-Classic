@@ -1,24 +1,11 @@
-local L = CEPGP_Locale:GetLocale("CEPGP");
+local L = LibStub("AceLocale-3.0"):GetLocale("CEPGP");
 
 function CEPGP_ListButton_OnClick(obj, button)
 	if button == "LeftButton" then
-		if strfind(obj, "CEPGP_guild_reset") then
-			CEPGP_context_popup_desc:SetPoint("TOP", CEPGP_context_popup_title, "BOTTOM", 0, -5);
-		else
-			CEPGP_context_popup_desc:SetPoint("TOP", CEPGP_context_popup_title, "BOTTOM", 0, -15);
-		end
-		if strfind(obj, "CEPGP_standby_ep_list_add") then
-			_G["CEPGP_context_reason"]:Hide();
-			_G["CEPGP_context_popup_reason"]:Hide();
-		else
-			_G["CEPGP_context_reason"]:Show();
-			_G["CEPGP_context_popup_reason"]:Show();
-		end
-		
 		if strfind(obj, "overrideButton") and strfind(obj, "Delete") then
 			
 			local name = _G[_G[obj]:GetParent():GetName() .. "item"]:GetText();
-			OVERRIDE_INDEX[name] = nil;
+			CEPGP.Overrides[name] = nil;
 			CEPGP_print(name .. " |c006969FFremoved from the GP override list");
 			CEPGP_UpdateOverrideScrollBar();
 			return;
@@ -34,11 +21,10 @@ function CEPGP_ListButton_OnClick(obj, button)
 		if strfind(obj, "TrafficButton") and strfind(obj, "Remove") then
 			local id = string.sub(obj, 14, string.find(obj, "Remove")-1);
 			local frame = _G["TrafficButton" .. id];
-			local page = CEPGP_traffic:GetAttribute("page");
-			local entry = #TRAFFIC - (500-id) - (page*500);
+			local entry = frame:GetAttribute("id");
 			if frame:GetAttribute("delete_confirm") == "true" then
-				table.remove(TRAFFIC, tonumber(entry));
-				CEPGP_print("EPGP详情目录 " .. entry .. " 清除.");
+				table.remove(CEPGP.Traffic, tonumber(entry));
+				CEPGP_print("Traffic entry " .. entry .. " purged.");
 				CEPGP_UpdateTrafficScrollBar();
 			else
 				local function verify(tLog)
@@ -47,17 +33,17 @@ function CEPGP_ListButton_OnClick(obj, button)
 					end
 					return true;
 				end
-				if verify(TRAFFIC[entry]) then
-					CEPGP_print("您正试图清除以下条目：");
-					if TRAFFIC[entry][8] and string.find(TRAFFIC[entry][8], "item:") then -- If an item is associated with the log
-						CEPGP_print("管理者: " .. TRAFFIC[entry][2] .. ", 动作: " .. TRAFFIC[entry][3] .. ", 装备: " .. TRAFFIC[entry][8] .. " |c006969FF, 玩家: " .. TRAFFIC[entry][1] .. "|r");
+				if verify(CEPGP.Traffic[entry]) then
+					CEPGP_print("You are attempting to purge the following entry:");
+					if CEPGP.Traffic[entry][8] and string.find(CEPGP.Traffic[entry][8], "item:") then -- If an item is associated with the log
+						CEPGP_print("Issuer: " .. CEPGP.Traffic[entry][2] .. ", Action: " .. CEPGP.Traffic[entry][3] .. ", Item: " .. CEPGP.Traffic[entry][8] .. " |c006969FF, Recipient: " .. CEPGP.Traffic[entry][1] .. "|r");
 					else
-						CEPGP_print("管理者: " .. TRAFFIC[entry][2] .. ", 动作: " .. TRAFFIC[entry][3] .. ", 玩家: " .. TRAFFIC[entry][1]);
+						CEPGP_print("Issuer: " .. CEPGP.Traffic[entry][2] .. ", Action: " .. CEPGP.Traffic[entry][3] .. ", Recipient: " .. CEPGP.Traffic[entry][1]);
 					end
 				else
-					CEPGP_print("您试图清除EPGP详情目录.");
+					CEPGP_print("You are attempting to purge a traffic entry.");
 				end
-				CEPGP_print("此操作无法撤消。若要继续，请再次按“删除”按钮。");
+				CEPGP_print("This action cannot be undone. To proceed, press the delete button again.");
 				frame:SetAttribute("delete_confirm", "true");
 			end
 			return;
@@ -65,10 +51,41 @@ function CEPGP_ListButton_OnClick(obj, button)
 		
 		if strfind(obj, "TrafficButton") and strfind(obj, "Share") then
 			local entry = tonumber(string.sub(obj, 14, string.find(obj, "Share")-1));
-			local ID, GUID = TRAFFIC[entry][10], TRAFFIC[entry][11];
+			local ID, GUID = CEPGP.Traffic[entry][10], CEPGP.Traffic[entry][11];
 			if ID and GUID then
 				CEPGP_ShareTraffic(ID, GUID);
 			end
+			return;
+		end
+		
+		if obj == "CEPGP_filter_rank_confirm" then
+			for i = 1, 10 do
+				CEPGP.Guild.Filter[i] = _G["CEPGP_filter_rank_" .. i .. "_check"]:GetChecked();
+			end
+			CEPGP_rosterUpdate("GUILD_ROSTER_UPDATE");
+			CEPGP_rank_filter:Hide();
+			return;
+		end
+		
+		--
+		--	The following should be only accessible to those with edit access (i.e. officers)
+		--
+		
+		if strfind(obj, "CEPGP_guild_reset") then
+			CEPGP_context_popup_desc:SetPoint("TOP", CEPGP_context_popup_title, "BOTTOM", 0, -5);
+		else
+			CEPGP_context_popup_desc:SetPoint("TOP", CEPGP_context_popup_title, "BOTTOM", 0, -15);
+		end
+		if strfind(obj, "CEPGP_standby_ep_list_add") then
+			_G["CEPGP_context_reason"]:Hide();
+			_G["CEPGP_context_popup_reason"]:Hide();
+		else
+			_G["CEPGP_context_reason"]:Show();
+			_G["CEPGP_context_popup_reason"]:Show();
+		end
+		
+		if not CanEditOfficerNote() and not CEPGP_Info.Debug then
+			CEPGP_print("You don't have access to modify EPGP", 1);
 			return;
 		end
 		
@@ -81,88 +98,95 @@ function CEPGP_ListButton_OnClick(obj, button)
 			_G["CEPGP_context_popup_GP_check_text"]:Hide();
 			CEPGP_context_popup_EP_check:SetChecked(1);
 			CEPGP_context_popup_GP_check:SetChecked(nil);
-			CEPGP_context_popup_header:SetText("替补EP调节");
-			CEPGP_context_popup_title:SetText("修改替补列表的EP");
-			CEPGP_context_popup_desc:SetText("加/减 EP");
+			CEPGP_context_popup_header:SetText("Standby EPGP Moderation");
+			CEPGP_context_popup_title:SetText("Modify EP for Standby List");
+			CEPGP_context_popup_desc:SetText("Add/Subtract EP");
 			CEPGP_context_amount:SetText("0");
 			CEPGP_context_popup_confirm:SetScript('OnClick', function()
-																if string.find(CEPGP_context_amount:GetText(), '[^0-9%-]') then
-																	CEPGP_print("输入有效数字", true);
-																else
-																	PlaySound(799);
-																	HideUIPanel(CEPGP_context_popup);
-																	if CEPGP_context_popup_EP_check:GetChecked() then
-																		CEPGP_addStandbyEP(tonumber(CEPGP_context_amount:GetText()), nil, CEPGP_context_reason:GetText());
-																	end
-																end
-															end);
+					if string.find(CEPGP_context_amount:GetText(), '[^0-9%-]') then
+						CEPGP_print("Enter a valid number", true);
+					else
+						PlaySound(799);
+						HideUIPanel(CEPGP_context_popup);
+						if CEPGP_context_popup_EP_check:GetChecked() then
+							CEPGP_addStandbyEP(tonumber(CEPGP_context_amount:GetText()), nil, CEPGP_context_reason:GetText());
+						end
+					end
+				end);
 			return;
 		
 		elseif strfind(obj, "StandbyButton") then
 			local name = _G[_G[_G[obj]:GetName()]:GetParent():GetName() .. "Info"]:GetText();
-			for i = 1, CEPGP_ntgetn(CEPGP_standbyRoster) do
-				if CEPGP_standbyRoster[i][1] == name then
-					table.remove(CEPGP_standbyRoster, i);
-					if CEPGP_isML() == 0 and CEPGP_standby_share then
-						CEPGP_SendAddonMsg("StandbyListRemove;" .. CEPGP_standbyRoster[i][1]);
+			for i = 1, CEPGP_ntgetn(CEPGP.Standby.Roster) do
+				if CEPGP.Standby.Roster[i][1] == name then
+					table.remove(CEPGP.Standby.Roster, i);
+					if CEPGP_isML() == 0 and CEPGP.Standby.Share then
+						CEPGP_addAddonMsg("StandbyListRemove;" .. CEPGP.Standby.Roster[i][1]);
 					end
 					break;
 				end
 			end
-			CEPGP_UpdateStandbyScrollBar();
+			if CEPGP_standby_options:IsVisible() then
+				CEPGP_UpdateStandbyScrollBar();
+			end
 			return;
 		end
 		
 		if obj == "CEPGP_exclude_rank_confirm" then
 			local changes = false;
 			for i = 1, 10 do
-				if CEPGP.Exclusions[i] ~= _G["CEPGP_exclude_rank_" .. i .. "_check"]:GetChecked() then
-					CEPGP.Exclusions[i] = not CEPGP.Exclusions[i];
+				if CEPGP.Guild.Exclusions[i] ~= _G["CEPGP_exclude_rank_" .. i .. "_check"]:GetChecked() then
+					CEPGP.Guild.Exclusions[i] = not CEPGP.Guild.Exclusions[i];
 					changes = true;
 				end
 			end
 			if changes then
-				CEPGP_print("更新的EPGP会阶排除");
-				CEPGP_roster = {};
-				CEPGP_Info.NumExcluded = 0;
+				CEPGP_print("Updated EPGP rank exclusions");
+				--CEPGP_Info.Guild.Roster = {};
 				CEPGP_rosterUpdate("GUILD_ROSTER_UPDATE");
-				
-				for i = 1, GetNumGuildMembers() do
-					local _, _, rankIndex = GetGuildRosterInfo(i);
-					if CEPGP.Exclusions[rankIndex+1] then
-						CEPGP_Info.NumExcluded = CEPGP_Info.NumExcluded + 1;
-					end
-				end
 			end
 			CEPGP_rank_exclude:Hide();
 			return;
 		end
 		
-		if obj == "CEPGP_standby_ep_list_add" and (CanEditOfficerNote() or CEPGP_Info.Debug) then
+		if obj == "CEPGP_standby_ep_list_add" then
+			if not CanEditOfficerNote() and not CEPGP_Info.Debug then
+				CEPGP_print("You cannot add players to standby because you cannot modify EPGP", 1);
+				return;
+			end
 			ShowUIPanel(CEPGP_context_popup);
 			CEPGP_context_popup_EP_check:Hide();
 			CEPGP_context_popup_GP_check:Hide();
 			_G["CEPGP_context_popup_EP_check_text"]:Hide();
 			_G["CEPGP_context_popup_GP_check_text"]:Hide();
-			CEPGP_context_popup_header:SetText("添加到替补");
+			CEPGP_context_popup_header:SetText("Add to Standby");
 			CEPGP_context_popup_title:Hide();
-			CEPGP_context_popup_desc:SetText("添加一个公会成员到替补");
+			CEPGP_context_popup_desc:SetText("Add a guild member to the standby list");
 			CEPGP_context_amount:SetText("");
 			CEPGP_context_popup_confirm:SetScript('OnClick', function()
-																PlaySound(799);
-																HideUIPanel(CEPGP_context_popup);
-																CEPGP_addToStandby(CEPGP_context_amount:GetText());
-															end);
+				PlaySound(799);
+				HideUIPanel(CEPGP_context_popup);
+				local name = CEPGP_context_amount:GetText();
+				CEPGP_addToStandby(name);
+			end);
+			return;
+		end
+
+		if obj == "CEPGP_standby_ep_list_addbyrank" then
+			if not CanEditOfficerNote() and not CEPGP_Info.Debug then
+				CEPGP_print("You cannot add players to standby because you cannot modify EPGP", 1);
+				return;
+			end
+			
+			CEPGP_standby_addRank:Show();
 			return;
 		end
 		
-		if obj == "CEPGP_standby_ep_list_addbyrank" then
-			CEPGP_standby_addRank:Show();
-		end
 		if obj == "CEPGP_standby_addRank_confirm" then
 			local function addRankToStandby()
 				local group = {};
 				local ranks = {};
+				local playerList = {};
 				
 				for i = 1, GetNumGroupMembers() do
 					local name = GetRaidRosterInfo(i);
@@ -175,13 +199,14 @@ function CEPGP_ListButton_OnClick(obj, button)
 						ranks[i] = false;
 					end
 				end
+				
 				for i = 1, GetNumGuildMembers() do
 					local name, _, rIndex = GetGuildRosterInfo(i);
 					name = Ambiguate(name, "all");
-					if ranks[rIndex+1] and not CEPGP_tContains(CEPGP_standbyRoster, name) and not CEPGP_tContains(group, name) and name ~= UnitName("player") then
+					if ranks[rIndex+1] and not CEPGP_tContains(CEPGP.Standby.Roster, name) and not CEPGP_tContains(group, name) and name ~= UnitName("player") then
 						local _, class, rank, _, oNote, _, classFile = CEPGP_getGuildInfo(name);
 						local EP,GP = CEPGP_getEPGP(name, i);
-						CEPGP_standbyRoster[#CEPGP_standbyRoster+1] = {
+						local entry = {
 							[1] = name,
 							[2] = class,
 							[3] = rank,
@@ -190,32 +215,29 @@ function CEPGP_ListButton_OnClick(obj, button)
 							[6] = GP,
 							[7] = math.floor((tonumber(EP)*100/tonumber(GP)))/100,
 							[8] = classFile
-						};
-						if CEPGP_standby_share then
-							CEPGP_SendAddonMsg("StandbyListAdd;"..name..";"..class..";"..rank..";"..rIndex..";"..EP..";"..GP..";"..classFile, "RAID");
-						end
+						}
+						table.insert(playerList, entry);
 					end
 				end
-				CEPGP_UpdateStandbyScrollBar();
+				
+				CEPGP_addToStandby(nil, playerList);
 			end
 			
-			if CEPGP_ntgetn(CEPGP_roster) < (GetNumGuildMembers() - CEPGP_Info.NumExcluded) and CEPGP_Info.Polling then
-				CEPGP_print("正在扫描公会名册。将很快将该会阶添加到替补列表");
+			--[[if CEPGP_ntgetn(CEPGP_Info.Guild.Roster) < GetNumGuildMembers() and CEPGP_Info.Guild.Polling then
+				CEPGP_print("Scanning guild roster. Will add rank to standby list soon");
 				local callback = function() addRankToStandby() end;
 				table.insert(CEPGP_Info.RosterStack, callback);
-			else
+			else]]
 				addRankToStandby();
-			end
+			--end
 			CEPGP_standby_addRank:Hide();
 			return;
 		end
 		if obj == "CEPGP_standby_ep_list_purge" then
-			CEPGP_standbyRoster = {};
-			CEPGP_UpdateStandbyScrollBar();
-		end
-		
-		if not CanEditOfficerNote() and not CEPGP_Info.Debug then
-			CEPGP_print("你没有权限修改EPGP", 1);
+			CEPGP.Standby.Roster = {};
+			if CEPGP_standby_options:IsVisible() then
+				CEPGP_UpdateStandbyScrollBar();
+			end
 			return;
 		end
 		
@@ -226,8 +248,8 @@ function CEPGP_ListButton_OnClick(obj, button)
 				local attr = _G[obj]:GetAttribute("response");
 				response = _G[obj]:GetAttribute("responseName");
 				response = CEPGP_indexToLabel(response);
-				reason = CEPGP_response_buttons[attr] and CEPGP_response_buttons[attr][2] or response;
-				discount = (CEPGP.Loot.ExtraKeywords.Keywords[attr] and CEPGP_getDiscount(attr)) or (CEPGP_response_buttons[attr] and CEPGP_response_buttons[attr][3]) or CEPGP_getDiscount(CEPGP_indexToLabel(attr));
+				reason = CEPGP.Loot.GUI.Buttons[attr] and CEPGP.Loot.GUI.Buttons[attr][2] or response;
+				discount = (CEPGP.Loot.ExtraKeywords.Keywords[attr] and CEPGP_getDiscount(attr)) or (CEPGP.Loot.GUI.Buttons[attr] and CEPGP.Loot.GUI.Buttons[attr][3]) or CEPGP_getDiscount(CEPGP_indexToLabel(attr));
 				CEPGP_distribute_popup:SetAttribute("responseName", reason);
 				CEPGP_distribute_popup:SetAttribute("response", attr);
 			else
@@ -236,12 +258,12 @@ function CEPGP_ListButton_OnClick(obj, button)
 				CEPGP_distribute_popup:SetAttribute("response", nil);
 			end
 			local gp = math.floor(CEPGP_distribute_GP_value:GetText());
-			local discGP = math.floor(gp*((discount)/100));
+			local discGP = math.floor(gp*((100-discount)/100));
 			local player = _G[_G[obj]:GetName() .. "Info"]:GetText();
 			local index = CEPGP_getIndex(player);
 			if index then
 				local rankIndex = select(3, GetGuildRosterInfo(index));
-				if CEPGP.Exclusions[rankIndex+1] then
+				if CEPGP_Info.Guild.Roster[player] and CEPGP_Info.Guild.Roster[player][9] then
 					discGP = 0;
 					discount = 100;
 					reason = "Exclusion List";
@@ -251,16 +273,16 @@ function CEPGP_ListButton_OnClick(obj, button)
 			ShowUIPanel(CEPGP_distribute_popup);
 			if reason then
 				if reason == "Exclusion List" then
-					CEPGP_distribute_popup_title:SetText(player .. " (排除列表)");
+					CEPGP_distribute_popup_title:SetText(player .. " (Exclusion List)");
 					CEPGP_distribute_popup_gp_full:Hide();
 					CEPGP_distribute_popup_gp:Show();
-					CEPGP_distribute_popup_gp:SetText("给予 " .. discGP .. "\n(" .. reason .. ")");
+					CEPGP_distribute_popup_gp:SetText("Give for " .. discGP .. "\n(" .. reason .. ")");
 				else
 					CEPGP_distribute_popup_title:SetText(player .. " (" .. reason .. ")");
 					CEPGP_distribute_popup_gp_full:Show();
-					CEPGP_distribute_popup_gp_full:SetText("给予 " .. gp .. "\n(全价)");
+					CEPGP_distribute_popup_gp_full:SetText("Give for " .. gp .. "\n(Standard Price)");
 					if discount ~= 0 then
-						CEPGP_distribute_popup_gp:SetText("给予 " .. discGP .. "\n(" .. reason .. ")");
+						CEPGP_distribute_popup_gp:SetText("Give for " .. discGP .. "\n(" .. reason .. ")");
 						CEPGP_distribute_popup_gp:Show();
 					else
 						CEPGP_distribute_popup_gp:Hide();
@@ -268,20 +290,20 @@ function CEPGP_ListButton_OnClick(obj, button)
 				end
 			else
 				CEPGP_distribute_popup_title:SetText(player);
-				CEPGP_distribute_popup_gp_full:SetText("给予 " .. gp .. "\n(全价)");
+				CEPGP_distribute_popup_gp_full:SetText("Give for " .. gp .. "\n(Standard Price)");
 				CEPGP_distribute_popup_gp:Hide();
 			end
 			
 			CEPGP_distribute_popup_gp:SetScript('OnClick', function()
-				CEPGP_distPlayer = _G[_G[obj]:GetName() .. "Info"]:GetText();
+				CEPGP_Info.DistTarget = player;
 				CEPGP_distribute_popup:SetID(CEPGP_distribute:GetID()); --CEPGP_distribute:GetID gets the ID of the LOOT SLOT. Not the player.
-				CEPGP_rate = (discount)/100;
+				CEPGP_Info.Loot.AwardRate = (100-discount)/100;
 				if reason == "Exclusion List" then
-					CEPGP_distGP = false;
+					CEPGP_Info.Loot.AwardGP = false;
 				else
-					CEPGP_distGP = true;
+					CEPGP_Info.Loot.AwardGP = true;
 				end
-				CEPGP_award = true;
+				CEPGP_Info.Loot.GiveWithEPGP = true;
 				PlaySound(799);
 				CEPGP_distribute_popup_give();
 			end);
@@ -289,20 +311,20 @@ function CEPGP_ListButton_OnClick(obj, button)
 				reason = "Full Price";
 				CEPGP_distribute_popup:SetAttribute("responseName", reason);
 				CEPGP_distribute_popup:SetAttribute("response", tonumber(_G[obj]:GetAttribute("response")));
-				CEPGP_distPlayer = _G[_G[obj]:GetName() .. "Info"]:GetText();
+				CEPGP_Info.DistTarget = _G[_G[obj]:GetName() .. "Info"]:GetText();
 				CEPGP_distribute_popup:SetID(CEPGP_distribute:GetID());
-				CEPGP_rate = 1;
-				CEPGP_distGP = true;
-				CEPGP_award = true;
+				CEPGP_Info.Loot.AwardRate = 1;
+				CEPGP_Info.Loot.AwardGP = true;
+				CEPGP_Info.Loot.GiveWithEPGP = true;
 				PlaySound(799);
 				CEPGP_distribute_popup_give();
 			end);
 			CEPGP_distribute_popup_free:SetScript('OnClick', function()
-				CEPGP_distPlayer = _G[_G[obj]:GetName() .. "Info"]:GetText();
+				CEPGP_Info.DistTarget = _G[_G[obj]:GetName() .. "Info"]:GetText();
 				CEPGP_distribute_popup:SetID(CEPGP_distribute:GetID());
-				CEPGP_rate = 1;
-				CEPGP_award = true;
-				CEPGP_distGP = false;
+				CEPGP_Info.Loot.AwardRate = 1;
+				CEPGP_Info.Loot.GiveWithEPGP = true;
+				CEPGP_Info.Loot.AwardGP = false;
 				PlaySound(799);
 				CEPGP_distribute_popup_give();
 			end);
@@ -310,7 +332,13 @@ function CEPGP_ListButton_OnClick(obj, button)
 		
 			--[[ Guild Menu ]]--
 		elseif strfind(obj, "GuildButton") then --A player from the guild menu is clicked (awards EP)
-			local name = _G[_G[obj]:GetName() .. "Info"]:GetText();
+			local frame = _G[obj];
+			local excluded = frame:GetAttribute("excluded");
+			local name = _G[obj.. "Info"]:GetText();
+			if excluded then
+				CEPGP_print("You cannot modify EPGP for " .. name .. " because their rank has been excluded");
+				return;
+			end
 			ShowUIPanel(CEPGP_context_popup);
 			ShowUIPanel(CEPGP_context_amount);
 			ShowUIPanel(CEPGP_context_popup_EP_check);
@@ -319,23 +347,26 @@ function CEPGP_ListButton_OnClick(obj, button)
 			_G["CEPGP_context_popup_GP_check_text"]:Show();
 			CEPGP_context_popup_EP_check:SetChecked(1);
 			CEPGP_context_popup_GP_check:SetChecked(nil);
-			CEPGP_context_popup_header:SetText("公会成员EP调节");
-			CEPGP_context_popup_title:SetText("修改EP： " .. name);
-			CEPGP_context_popup_desc:SetText("加/减EP");
+			CEPGP_context_popup_header:SetText("Guild Moderation");
+			CEPGP_context_popup_title:SetText("Modify EP/GP for " .. name);
+			CEPGP_context_popup_desc:SetText("Add/Subtract EP");
 			CEPGP_context_amount:SetText("0");
 			CEPGP_context_popup_confirm:SetScript('OnClick', function()
-																if string.find(CEPGP_context_amount:GetText(), '[^0-9%-]') then
-																	CEPGP_print("输入有效数字", true);
-																else
-																	PlaySound(799);
-																	HideUIPanel(CEPGP_context_popup);
-																	if CEPGP_context_popup_EP_check:GetChecked() then
-																		CEPGP_addEP(name, tonumber(CEPGP_context_amount:GetText()), CEPGP_context_reason:GetText());
-																	else
-																		CEPGP_addGP(name, tonumber(CEPGP_context_amount:GetText()), nil, nil, CEPGP_context_reason:GetText());
-																	end
-																end
-															end);
+				local amount = CEPGP_context_amount:GetText();
+				if string.find(amount, '[^0-9%-]') then
+					CEPGP_print("Enter a valid number", true);
+				elseif amount == "" then
+					return;
+				else
+					PlaySound(799);
+					HideUIPanel(CEPGP_context_popup);
+					if CEPGP_context_popup_EP_check:GetChecked() then
+						CEPGP_addEP(name, tonumber(CEPGP_context_amount:GetText()), CEPGP_context_reason:GetText());
+					else
+						CEPGP_addGP(name, tonumber(CEPGP_context_amount:GetText()), nil, nil, CEPGP_context_reason:GetText());
+					end
+				end
+			end);
 			return;
 			
 		elseif strfind(obj, "CEPGP_guild_add_EP") then --Click the Add Guild EP button in the Guild menu
@@ -347,19 +378,22 @@ function CEPGP_ListButton_OnClick(obj, button)
 			_G["CEPGP_context_popup_GP_check_text"]:Hide();
 			CEPGP_context_popup_EP_check:SetChecked(1);
 			CEPGP_context_popup_GP_check:SetChecked(nil);
-			CEPGP_context_popup_header:SetText("公会调节");
-			CEPGP_context_popup_title:SetText("修改公会EP");
-			CEPGP_context_popup_desc:SetText("为加减EP所有公会成员");
+			CEPGP_context_popup_header:SetText("Guild Moderation");
+			CEPGP_context_popup_title:SetText("Modify Guild EP");
+			CEPGP_context_popup_desc:SetText("Adds/Subtracts EP for all guild members");
 			CEPGP_context_amount:SetText("0");
 			CEPGP_context_popup_confirm:SetScript('OnClick', function()
-																if string.find(CEPGP_context_amount:GetText(), '[^0-9%-]') then
-																	CEPGP_print("输入有效数字", true);
-																else
-																	PlaySound(799);
-																	HideUIPanel(CEPGP_context_popup);
-																	CEPGP_addGuildEP(tonumber(CEPGP_context_amount:GetText()), CEPGP_context_reason:GetText());
-																end
-															end);
+				local amount = CEPGP_context_amount:GetText();
+				if string.find(amount, '[^0-9%-]') then
+					CEPGP_print("Enter a valid number", true);
+				elseif amount == "" then
+					return;
+				else
+					PlaySound(799);
+					HideUIPanel(CEPGP_context_popup);
+					CEPGP_addGuildEP(tonumber(CEPGP_context_amount:GetText()), CEPGP_context_reason:GetText());
+				end
+			end);
 			return;
 		
 		elseif strfind(obj, "CEPGP_guild_decay") then --Click the Decay Guild EPGP button in the Guild menu
@@ -368,15 +402,15 @@ function CEPGP_ListButton_OnClick(obj, button)
 			CEPGP_decay_popup_amount:SetText("0");
 			local EP, GP; -- Whether or not this is an EP or GP specific decay
 			if obj == "CEPGP_guild_decay_EP" then
-				CEPGP_decay_popup_header:SetText("衰变公会EP");
+				CEPGP_decay_popup_header:SetText("Decay Guild EP");
 				EP = true;
 			elseif obj == "CEPGP_guild_decay_GP" then
-				CEPGP_decay_popup_header:SetText("衰变公会GP");
+				CEPGP_decay_popup_header:SetText("Decay Guild GP");
 				GP = true;
 			else
-				CEPGP_decay_popup_header:SetText("衰变公会EPGP");
+				CEPGP_decay_popup_header:SetText("Decay Guild EPGP");
 			end
-			CEPGP_decay_popup_desc:SetText("正数衰减|负数膨胀");
+			CEPGP_decay_popup_desc:SetText("Positive numbers decay | Negative numbers inflate");
 			CEPGP_decay_popup_confirm:SetScript('OnClick', function()
 				local amount = CEPGP_decay_popup_amount:GetText();
 				local fixed = CEPGP_decay_popup_fixed_check:GetChecked();
@@ -388,7 +422,7 @@ function CEPGP_ListButton_OnClick(obj, button)
 					CEPGP_decay_popup:Hide();
 					CEPGP_decay(tonumber(amount), reason, EP, GP, fixed);
 				else
-					CEPGP_print("输入有效数字", true);
+					CEPGP_print("Enter a valid number", true);
 				end
 			end);
 			return;
@@ -402,21 +436,27 @@ function CEPGP_ListButton_OnClick(obj, button)
 			_G["CEPGP_context_popup_GP_check_text"]:Hide();
 			CEPGP_context_popup_EP_check:SetChecked(nil);
 			CEPGP_context_popup_GP_check:SetChecked(nil);
-			CEPGP_context_popup_header:SetText("公会EPGP重置");
-			CEPGP_context_popup_title:SetText("重置公会EPGP");
-			CEPGP_context_popup_desc:SetText("重置公会EPGP积分\n|c00FF0000你确定这就是你想做的吗？\n这是不可逆的！\n注意：这将向公会聊天频道报告|r");
+			CEPGP_context_popup_header:SetText("Guild Moderation");
+			CEPGP_context_popup_title:SetText("Reset Guild EPGP");
+			CEPGP_context_popup_desc:SetText("Resets the Guild EPGP standings\n|c00FF0000Are you sure that is what you want to do?\nthis cannot be reversed!|r");
 			CEPGP_context_popup_confirm:SetScript('OnClick', function()
-																PlaySound(799);
-																HideUIPanel(CEPGP_context_popup);
-																CEPGP_resetAll(CEPGP_context_reason:GetText());
-															end)
+				PlaySound(799);
+				HideUIPanel(CEPGP_context_popup);
+				CEPGP_resetAll(CEPGP_context_reason:GetText());
+			end)
 			return;
 			
 			--[[ Raid Menu ]]--
 		elseif strfind(obj, "RaidButton") then --A player from the raid menu is clicked (awards EP)
-			local name = _G[_G[obj]:GetName() .. "Info"]:GetText();
+			local frame = _G[obj];
+			local excluded = frame:GetAttribute("excluded");
+			local name = _G[obj.. "Info"]:GetText();
 			if not CEPGP_getGuildInfo(name) then
-				CEPGP_print(name .. " 不是公会成员-不能授予EP或GP", true);
+				CEPGP_print(name .. " is not a guild member - Cannot award EP or GP", true);
+				return;
+			end
+			if excluded then
+				CEPGP_print("You cannot modify EPGP for " .. name .. " because their rank has been excluded");
 				return;
 			end
 			ShowUIPanel(CEPGP_context_popup);
@@ -427,13 +467,16 @@ function CEPGP_ListButton_OnClick(obj, button)
 			_G["CEPGP_context_popup_GP_check_text"]:Show();
 			CEPGP_context_popup_EP_check:SetChecked(1);
 			CEPGP_context_popup_GP_check:SetChecked(nil);
-			CEPGP_context_popup_header:SetText("团队调整");
-			CEPGP_context_popup_title:SetText("修改EP/GP" .. name);
-			CEPGP_context_popup_desc:SetText("为整个团队添加/减去EP");
+			CEPGP_context_popup_header:SetText("Raid Moderation");
+			CEPGP_context_popup_title:SetText("Modify EP/GP for " .. name);
+			CEPGP_context_popup_desc:SetText("Add/Subtract EP");
 			CEPGP_context_amount:SetText("0");
 			CEPGP_context_popup_confirm:SetScript('OnClick', function()
-				if string.find(CEPGP_context_amount:GetText(), '[^0-9%-]') then
-					CEPGP_print("输入有效数字", true);
+				local amount = CEPGP_context_amount:GetText();
+				if string.find(amount, '[^0-9%-]') then
+					CEPGP_print("Enter a valid number", true);
+				elseif amount == "" then
+					return;
 				else
 					PlaySound(799);
 					HideUIPanel(CEPGP_context_popup);
@@ -453,8 +496,10 @@ function CEPGP_ListButton_OnClick(obj, button)
 				local standby = CEPGP_award_raid_popup_standby_check:GetChecked();
 				local amount = tonumber(CEPGP_award_raid_popup_amount:GetText());
 				local reason = CEPGP_award_raid_popup_reason:GetText();
-				if string.find(CEPGP_award_raid_popup_amount:GetText(), '[^0-9%-]') then
-					CEPGP_print("输入有效数字", true);
+				if string.find(amount, '[^0-9%-]') then
+					CEPGP_print("Enter a valid number", true);
+				elseif amount == "" then
+					return;
 				else
 					PlaySound(799);
 					CEPGP_award_raid_popup:Hide();
@@ -483,13 +528,13 @@ end
 
 function CEPGP_distribute_popup_give()
 	for i = 1, 40 do
-		if GetMasterLootCandidate(CEPGP_lootSlot, i) == CEPGP_distPlayer then
-			GiveMasterLoot(CEPGP_lootSlot, i);
+		if GetMasterLootCandidate(CEPGP_Info.Loot.SlotNum, i) == CEPGP_Info.DistTarget then
+			GiveMasterLoot(CEPGP_Info.Loot.SlotNum, i);
 			return;
 		end
 	end
-	CEPGP_print(CEPGP_distPlayer .. "不在战利品候选名单上", true);
-	CEPGP_distPlayer = "";
+	CEPGP_print(CEPGP_Info.DistTarget .. " is not on the candidate list for loot", true);
+	CEPGP_Info.DistTarget = "";
 end
 
 function CEPGP_distribute_popup_OnEvent(eCode)
@@ -499,18 +544,18 @@ function CEPGP_distribute_popup_OnEvent(eCode)
 		22		Player already has one of the unique item
 	]]
 	
-	if CEPGP_distributing then
+	if CEPGP_Info.Loot.Distributing then
 		if eCode == 2 then
-			CEPGP_print(CEPGP_distPlayer .. "的物品栏已满。", 1);
+			CEPGP_print(CEPGP_Info.DistTarget .. "'s inventory is full", 1);
 			CEPGP_distribute_popup:Hide();
-			CEPGP_distPlayer = "";
-			CEPGP_award = false;
+			CEPGP_Info.DistTarget = "";
+			CEPGP_Info.Loot.GiveWithEPGP = false;
 			
 		elseif eCode == 22 then
-			CEPGP_print(CEPGP_distPlayer .. " 不能再带这件唯一属性的装备了", 1);
+			CEPGP_print(CEPGP_Info.DistTarget .. " can't carry any more of this unique item", 1);
 			CEPGP_distribute_popup:Hide();
-			CEPGP_distPlayer = "";
-			CEPGP_award = false;
+			CEPGP_Info.DistTarget = "";
+			CEPGP_Info.Loot.GiveWithEPGP = false;
 		end
 	end
 end
@@ -518,7 +563,7 @@ end
 		--[[ Restore DropDown ]]--
 
 function CEPGP_initRestoreDropdown(frame, level, menuList)
-	for k, _ in pairs(RECORDS) do
+	for k, _ in pairs(CEPGP.Backups) do
 		local info = {text = k, func = CEPGP_restoreDropdownOnClick};
 		local entry = UIDropDownMenu_AddButton(info);
 	end
@@ -530,44 +575,13 @@ function CEPGP_restoreDropdownOnClick(self, arg1, arg2, checked)
 	end
 end
 
-		--[[ Sync Rank DropDown ]]--
-		
-function CEPGP_syncRankDropdown(frame, level, menuList)
-	local init = false;
-	for i = 1, 10, 1 do
-		if GuildControlGetRankName(i) ~= "" then
-			local info = {
-				text = GuildControlGetRankName(i),
-				value = i,
-				func = CEPGP_syncRankChange
-			}; --Value is used as the guild rank index as ranks can have identical names
-			UIDropDownMenu_AddButton(info);	--TAINTED
-			init = true;
-		end
-	end
-	if init then
-		UIDropDownMenu_SetSelectedName(CEPGP_interface_options_forced_sync_rank, GuildControlGetRankName(CEPGP_force_sync_rank));
-		--UIDropDownMenu_SetSelectedValue(CEPGP_interface_options_forced_sync_rank, CEPGP_force_sync_rank);
-	end
-end
-
-function CEPGP_syncRankChange(self, arg1, arg2, checked)
-	if (not checked) then
-		UIDropDownMenu_SetSelectedName(CEPGP_interface_options_forced_sync_rank, self:GetText());
-		--UIDropDownMenu_SetSelectedValue(CEPGP_interface_options_forced_sync_rank, self.value);
-		CEPGP_force_sync_rank = self.value;
-		CEPGP.Sync[2] = self.value;
-		CEPGP_print("更新的配置管理状态");
-	end
-end
-
 		--[[ Attendance DropDown ]]--
 		
 function CEPGP_attendanceDropdown(frame, level, menuList)
 	local info = {text = "Guild List", value = 0, func = CEPGP_attendanceChange};
 	local entry = UIDropDownMenu_AddButton(info);
-	for i = 1, CEPGP_ntgetn(CEPGP_raid_logs) do
-		local info = {text = date("%d/%m/%Y %H:%M", CEPGP_raid_logs[i][1]), value = i, func = CEPGP_attendanceChange};
+	for i = 1, CEPGP_ntgetn(CEPGP.Attendance) do
+		local info = {text = date("%d/%m/%Y %H:%M", CEPGP.Attendance[i][1]), value = i, func = CEPGP_attendanceChange};
 		local entry = UIDropDownMenu_AddButton(info);
 	end
 end
@@ -583,12 +597,12 @@ end
 
 function CEPGP_minThresholdDropdown(frame, level, menuList)
 	local rarity = {
-		[0] = "|cFF9D9D9D灰色|r",
-		[1] = "|cFFFFFFFF白色|r",
-		[2] = "|cFF1EFF00绿色|r",
-		[3] = "|cFF0070DD蓝色|r",
-		[4] = "|cFFA335EE紫色|r",
-		[5] = "|cFFFF8000橙色|r"
+		[0] = "|cFF9D9D9DPoor|r",
+		[1] = "|cFFFFFFFFCommon|r",
+		[2] = "|cFF1EFF00Uncommon|r",
+		[3] = "|cFF0070DDRare|r",
+		[4] = "|cFFA335EEEpic|r",
+		[5] = "|cFFFF8000Legendary|r"
 	};
 	for i = 0, 5 do
 		local info = {
@@ -606,7 +620,7 @@ function CEPGP_minThresholdChange(self, value)
 	UIDropDownMenu_SetSelectedName(CEPGP_min_threshold_dropdown, self:GetText());
 	--UIDropDownMenu_SetSelectedValue(CEPGP.Loot.MinThreshold_dropdown, self.value);
 	CEPGP.Loot.MinThreshold = self.value;
-	CEPGP_print("最小自动显示阈值现在设置为" .. self:GetText());
+	CEPGP_print("Minimum auto show threshold is now set to " .. self:GetText());
 end
 
 		--[[ Default Channel DropDown ]]--
@@ -627,7 +641,7 @@ function CEPGP_defChannelDropdown(frame, level, menuList)
 		local entry = UIDropDownMenu_AddButton(info);
 	end
 	for i = 1, #channels do
-		if string.lower(CHANNEL) == string.lower(channels[i]) then
+		if string.lower(CEPGP.Channel) == string.lower(channels[i]) then
 			UIDropDownMenu_SetSelectedName(CEPGP_interface_options_def_channel_dropdown, channels[i]);
 		end
 	end
@@ -636,9 +650,8 @@ end
 function CEPGP_defChannelChange(self, value)
 	UIDropDownMenu_SetSelectedName(CEPGP_interface_options_def_channel_dropdown, self:GetText());
 	--UIDropDownMenu_SetSelectedValue(CEPGP_interface_options_def_channel_dropdown, self.value);
-	CHANNEL = self:GetText();
 	CEPGP.Channel = self:GetText();
-	CEPGP_print("报告频道设为 \"" .. CHANNEL .. "\".");
+	CEPGP_print("Reporting channel set to \"" .. CEPGP.Channel .. "\".");
 end
 
 		--[[ Loot Response Channel DropDown ]]--
@@ -670,5 +683,5 @@ function CEPGP_lootChannelChange(self, value)
 	UIDropDownMenu_SetSelectedName(CEPGP_loot_channel_dropdown, self:GetText());
 	--UIDropDownMenu_SetSelectedValue(CEPGP_loot_channel_dropdown, self.value);
 	CEPGP.LootChannel = self:GetText();
-	CEPGP_print("战利品响应通道设置为 \"" .. CEPGP.LootChannel .. "\".");
+	CEPGP_print("Loot response channel set to \"" .. CEPGP.LootChannel .. "\".");
 end

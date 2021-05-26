@@ -13,7 +13,7 @@ local IsControlKeyDown, IsAltKeyDown, DeleteCursorItem = IsControlKeyDown, IsAlt
 local SortBankBags, SortBags, InCombatLockdown, ClearCursor = SortBankBags, SortBags, InCombatLockdown, ClearCursor
 local GetContainerItemID, SplitContainerItem = GetContainerItemID, SplitContainerItem
 local NUM_BAG_SLOTS = NUM_BAG_SLOTS or 4
-local NUM_BANKBAGSLOTS = NUM_BANKBAGSLOTS or 6
+local NUM_BANKBAGSLOTS = NUM_BANKBAGSLOTS or 7
 
 function module:UpdateAnchors(parent, bags)
 	if not parent:IsShown() then return end
@@ -51,10 +51,9 @@ function module:CreateInfoFrame()
 	search.isGlobal = true
 	search:SetPoint("LEFT", 0, 5)
 	search:DisableDrawLayer("BACKGROUND")
-	local bg = B.CreateBDFrame(search, 0)
+	local bg = B.CreateBDFrame(search, 0, true)
 	bg:SetPoint("TOPLEFT", -5, -5)
 	bg:SetPoint("BOTTOMRIGHT", 5, 5)
-	B.CreateGradient(bg)
 
 	local tag = self:SpawnPlugin("TagDisplay", "[money]", infoFrame)
 	tag:SetFont(unpack(DB.Font))
@@ -105,11 +104,11 @@ function module:CreateBagToggle()
 	bu:SetScript("OnClick", function()
 		ToggleFrame(self.BagBar)
 		if self.BagBar:IsShown() then
-			bu:SetBackdropBorderColor(1, .8, 0)
+			bu.bg:SetBackdropBorderColor(1, .8, 0)
 			PlaySound(SOUNDKIT.IG_BACKPACK_OPEN)
 			if self.keyring and self.keyring:IsShown() then self.keyToggle:Click() end
 		else
-			bu:SetBackdropBorderColor(0, 0, 0)
+			B.SetBorderColor(bu.bg)
 			PlaySound(SOUNDKIT.IG_BACKPACK_CLOSE)
 		end
 	end)
@@ -125,11 +124,11 @@ function module:CreateKeyToggle()
 	bu:SetScript("OnClick", function()
 		ToggleFrame(self.keyring)
 		if self.keyring:IsShown() then
-			bu:SetBackdropBorderColor(1, .8, 0)
+			bu.bg:SetBackdropBorderColor(1, .8, 0)
 			PlaySound(SOUNDKIT.KEY_RING_OPEN)
 			if self.BagBar and self.BagBar:IsShown() then self.bagToggle:Click() end
 		else
-			bu:SetBackdropBorderColor(0, 0, 0)
+			B.SetBorderColor(bu.bg)
 			PlaySound(SOUNDKIT.KEY_RING_CLOSE)
 		end
 	end)
@@ -143,6 +142,11 @@ end
 function module:CreateSortButton(name)
 	local bu = B.CreateButton(self, 24, 24, true, DB.sortTex)
 	bu:SetScript("OnClick", function()
+		if C.db["Bags"]["BagSortMode"] == 3 then
+			UIErrorsFrame:AddMessage(DB.InfoColor..L["BagSortDisabled"])
+			return
+		end
+
 		if InCombatLockdown() then
 			UIErrorsFrame:AddMessage(DB.InfoColor..ERR_NOT_IN_COMBAT)
 			return
@@ -207,7 +211,7 @@ function module:CreateFreeSlots()
 	local name = self.name
 	if not freeSlotContainer[name] then return end
 
-	local slot = CreateFrame("Button", name.."FreeSlot", self)
+	local slot = CreateFrame("Button", name.."FreeSlot", self, "BackdropTemplate")
 	slot:SetSize(self.iconSize, self.iconSize)
 	slot:SetHighlightTexture(DB.bdTex)
 	slot:GetHighlightTexture():SetVertexColor(1, 1, 1, .25)
@@ -261,7 +265,7 @@ function module:CreateSplitButton()
 	bu.Icon:SetPoint("TOPLEFT", -1, 3)
 	bu.Icon:SetPoint("BOTTOMRIGHT", 1, -3)
 	bu.__turnOff = function()
-		bu:SetBackdropBorderColor(0, 0, 0)
+		B.SetBorderColor(bu.bg)
 		bu.text = nil
 		splitFrame:Hide()
 		splitEnable = nil
@@ -270,7 +274,7 @@ function module:CreateSplitButton()
 		module:SelectToggleButton(1)
 		splitEnable = not splitEnable
 		if splitEnable then
-			self:SetBackdropBorderColor(1, .8, 0)
+			self.bg:SetBackdropBorderColor(1, .8, 0)
 			self.text = enabledText
 			splitFrame:Show()
 			editbox:SetText(C.db["Bags"]["SplitCount"])
@@ -312,7 +316,7 @@ function module:CreateFavouriteButton()
 	bu.Icon:SetPoint("TOPLEFT", -5, 0)
 	bu.Icon:SetPoint("BOTTOMRIGHT", 5, -5)
 	bu.__turnOff = function()
-		bu:SetBackdropBorderColor(0, 0, 0)
+		B.SetBorderColor(bu.bg)
 		bu.text = nil
 		favouriteEnable = nil
 	end
@@ -320,7 +324,7 @@ function module:CreateFavouriteButton()
 		module:SelectToggleButton(2)
 		favouriteEnable = not favouriteEnable
 		if favouriteEnable then
-			self:SetBackdropBorderColor(1, .8, 0)
+			self.bg:SetBackdropBorderColor(1, .8, 0)
 			self.text = enabledText
 		else
 			self.__turnOff()
@@ -368,7 +372,7 @@ function module:CreateJunkButton()
 	bu.Icon:SetPoint("TOPLEFT", C.mult, -3)
 	bu.Icon:SetPoint("BOTTOMRIGHT", -C.mult, -3)
 	bu.__turnOff = function()
-		bu:SetBackdropBorderColor(0, 0, 0)
+		B.SetBorderColor(bu.bg)
 		bu.text = nil
 		customJunkEnable = nil
 	end
@@ -381,7 +385,7 @@ function module:CreateJunkButton()
 		module:SelectToggleButton(3)
 		customJunkEnable = not customJunkEnable
 		if customJunkEnable then
-			self:SetBackdropBorderColor(1, .8, 0)
+			self.bg:SetBackdropBorderColor(1, .8, 0)
 			self.text = enabledText
 		else
 			bu.__turnOff()
@@ -422,7 +426,7 @@ function module:CreateDeleteButton()
 	bu.Icon:SetPoint("TOPLEFT", 3, -2)
 	bu.Icon:SetPoint("BOTTOMRIGHT", -1, 2)
 	bu.__turnOff = function()
-		bu:SetBackdropBorderColor(0, 0, 0)
+		bu.bg:SetBackdropBorderColor(0, 0, 0)
 		bu.text = nil
 		deleteEnable = nil
 	end
@@ -430,7 +434,7 @@ function module:CreateDeleteButton()
 		module:SelectToggleButton(4)
 		deleteEnable = not deleteEnable
 		if deleteEnable then
-			self:SetBackdropBorderColor(1, .8, 0)
+			self.bg:SetBackdropBorderColor(1, .8, 0)
 			self.text = enabledText
 		else
 			bu.__turnOff()
@@ -600,7 +604,6 @@ function module:OnLogin()
 		self.Favourite:SetSize(30, 30)
 		self.Favourite:SetPoint("TOPLEFT", -12, 9)
 
-		self.Quest = B.CreateFS(self, 26, "!", "system", "LEFT", 3, 0)
 		self.iLvl = B.CreateFS(self, 12, "", false, "BOTTOMLEFT", 1, 2)
 
 		if showNewItem then
@@ -697,11 +700,8 @@ function module:OnLogin()
 	end
 
 	function MyButton:OnUpdateQuest(item)
-		self.Quest:Hide()
-
 		if item.isQuestItem then
 			self:SetBackdropBorderColor(.8, .8, 0)
-			self.Quest:Show()
 		elseif item.rarity and item.rarity > -1 then
 			local color = DB.QualityColors[item.rarity]
 			self:SetBackdropBorderColor(color.r, color.g, color.b)
@@ -851,7 +851,7 @@ function module:OnLogin()
 	end
 
 	-- Sort order
-	SetSortBagsRightToLeft(not C.db["Bags"]["ReverseSort"])
+	SetSortBagsRightToLeft(C.db["Bags"]["BagSortMode"] == 1)
 	SetInsertItemsLeftToRight(false)
 
 	-- Init
@@ -865,7 +865,7 @@ function module:OnLogin()
 	B:RegisterEvent("AUCTION_HOUSE_CLOSED", module.CloseBags)
 
 	-- Fixes
-	BankFrame.GetRight = function() return f.bank:GetRight() end
+	--BankFrame.GetRight = function() return f.bank:GetRight() end	-- maybe useless for now
 	BankFrameItemButton_Update = B.Dummy
 
 	-- Shift key alert
