@@ -63,7 +63,7 @@ function CSC_PaperDollFrame_SetLabelAndText(statFrame, label, text, isPercentage
 		end
 
 		statFrame.Label:SetText(format(STAT_FORMAT, label));
-		statFrame.Label:SetWidth(statFrame:GetWidth() - 20);
+		statFrame.Label:SetWidth(statFrame:GetWidth());
 		statFrame.Label:SetHeight(statFrame:GetHeight());
 		statFrame.Label:SetJustifyH("LEFT");
 	end

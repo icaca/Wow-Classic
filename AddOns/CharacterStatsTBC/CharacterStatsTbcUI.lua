@@ -97,7 +97,7 @@ function UIConfig:InitializeStatsFrames(leftParentFrame, rightParentFrame)
 
         LeftStatsTable[i] = CreateFrame("Frame", nil, leftParentFrame, "StatFrameTemplate");
         LeftStatsTable[i]:SetPoint("LEFT", leftParentFrame, "TOPLEFT", 20, -actualOffset);
-        LeftStatsTable[i]:SetWidth(130);
+        LeftStatsTable[i]:SetWidth(110);
         LeftStatsTable[i].OnEnterCallback = LeftStatsTable[i]:GetScript("OnEnter");
         LeftStatsTable[i].Value = LeftStatsTable[i]:CreateFontString(nil, "BACKGROUND", "GameFontHighlightSmall");
         LeftStatsTable[i].Value:SetPoint("RIGHT", LeftStatsTable[i].Label, "RIGHT", 0, 0);
@@ -108,7 +108,7 @@ function UIConfig:InitializeStatsFrames(leftParentFrame, rightParentFrame)
 
         RightStatsTable[i] = CreateFrame("Frame", nil, rightParentFrame, "StatFrameTemplate");
         RightStatsTable[i]:SetPoint("LEFT", rightParentFrame, "TOPLEFT", 20, -actualOffset);
-        RightStatsTable[i]:SetWidth(130);
+        RightStatsTable[i]:SetWidth(110);
         RightStatsTable[i].OnEnterCallback = RightStatsTable[i]:GetScript("OnEnter");
         RightStatsTable[i].Value = RightStatsTable[i]:CreateFontString(nil, "BACKGROUND", "GameFontHighlightSmall");
         RightStatsTable[i].Value:SetPoint("RIGHT", RightStatsTable[i].Label, "RIGHT", 0, 0);
@@ -183,8 +183,21 @@ function UIConfig:InitializeSideStatsCategory(frameObject, accumulatedOffsetY, o
         frameObject.frames[i].Value:SetJustifyH("RIGHT");
         
         if i == 1 then
-            frameObject.frames[i].Label:SetText(frameObject.frameLabel);
-		    frameObject.frames[i].Label:SetJustifyH("LEFT");
+            frameObject.frames[i].Label = frameObject.frames[i]:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+            frameObject.frames[i].Label:SetText(frameObject.frameLabel)
+            frameObject.frames[i].Label:SetTextColor(1, 1, 1)
+            frameObject.frames[i].Label:SetPoint("CENTER", 0, 0)
+
+            frameObject.frames[i].BackgroundTex = frameObject.frames[i]:CreateTexture(nil, "ARTWORK");
+            frameObject.frames[i].BackgroundTex:SetAllPoints(frameObject.frames[i]);
+            frameObject.frames[i].BackgroundTex:SetTexture("Interface\\PaperDollInfoFrame\\PaperDollInfoPart1");
+            frameObject.frames[i].BackgroundTex:SetTexCoord(0, 0.193359375, 0.69921875, 0.736328125);
+        else
+            frameObject.frames[i].BackgroundTex = frameObject.frames[i]:CreateTexture(nil, "BACKGROUND");
+            frameObject.frames[i].BackgroundTex:SetAllPoints(frameObject.frames[i]);
+            local alpha = 0;
+            if i % 2 == 0 then alpha = 0.3 end
+            frameObject.frames[i].BackgroundTex:SetColorTexture(0.3, 0.2, 0, alpha);
         end
     end
     accumulatedOffset = accumulatedOffset + 10;
@@ -194,7 +207,7 @@ end
 
 function UIConfig:InitializeSideStatsCategories()
     local offsetStepY = 15;
-    local accumulatedOffsetY = 0;
+    local accumulatedOffsetY = 15;
     
     if UISettingsCharacter.showSideStatsMelee then
         accumulatedOffsetY = UIConfig:InitializeSideStatsCategory(SideCategoryStatsMelee, accumulatedOffsetY, offsetStepY);

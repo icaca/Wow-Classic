@@ -1246,6 +1246,8 @@ function CSC_SideFrame_SetSpellHitChance(statFrame, unit)
 		spellHitChance = 0;
 	end
 
+	spellHitChance = spellHitChance / 7; -- BUG ON BLIZZARD's side. returns 7 for each 1% hit. Dirty fix for now
+
 	local hitRatingBonus = GetCombatRatingBonus(CR_HIT_SPELL); -- hit rating in % (hit chance) (from gear sources, doesn't seem to include talents)
 	local totalHit = spellHitChance + hitRatingBonus;
 	CSC_PaperDollFrame_SetLabelAndText(statFrame, STAT_HIT_CHANCE, totalHit, true);
