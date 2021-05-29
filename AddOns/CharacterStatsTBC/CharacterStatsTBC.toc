@@ -1,6 +1,6 @@
 ## Interface: 20501
 ## Author: Peter Getov
-## Version: 1.0.0
+## Version: 1.1.0
 ## Title: |cff00aeffCharacterStatsTBC|r
 ## Notes: Advanced Character Stats
 ## DefaultState:  enabled

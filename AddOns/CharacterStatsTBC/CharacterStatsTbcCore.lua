@@ -111,36 +111,57 @@ function CSC_GetPlayerWeaponSkill(unit, weaponSlotId)
 	return totalWeaponSkill;
 end
 
-function CSC_GetPlayerMissChances(unit, playerHit, totalWeaponSkill)
-	local hitChance = playerHit;
-	local missChanceVsNPC = 5; -- Level 60 npcs with 300 def
+function CSC_GetPlayerMissChances(unit, playerHitChance)
+	local missChanceVsNPC = 5;
 	local missChanceVsBoss = 9;
-	local missChanceVsPlayer = 5; -- Level 60 player def is 300 base
+	local missChanceVsPlayer = 5;
+	
+	local hitChance = playerHitChance;
+	local level = UnitLevel(unit);
+	local bossLevel = 73;
+	local playerWeaponSkill = level * 5;
+	local bossDefense = bossLevel * 5;
 
-	if totalWeaponSkill then
-		local bossDefense = 315; -- level 63
-		local playerBossDeltaSkill = bossDefense - totalWeaponSkill;
-		
-		if (playerBossDeltaSkill > 10) then
-			if (hitChance >= 1) then
-				hitChance = hitChance - 1;
-			end
-
-			missChanceVsBoss = 5 + (playerBossDeltaSkill * 0.2);
-		else
-			missChanceVsBoss = 5 + (playerBossDeltaSkill * 0.1);
-		end
+	-- Boss (level 73)
+	if (bossDefense - playerWeaponSkill >= 11) then
+		missChanceVsBoss = 5 + (bossDefense - playerWeaponSkill) * 0.2;
+	end
+	if (bossDefense - playerWeaponSkill <= 10) then
+		missChanceVsBoss = 5 + (bossDefense - playerWeaponSkill) * 0.1;
 	end
 
-	local dwMissChanceVsNpc = math.max(0, (missChanceVsNPC*0.8 + 20) - playerHit);
-	local dwMissChanceVsBoss = math.max(0, (missChanceVsBoss*0.8 + 20) - hitChance);
-	local dwMissChanceVsPlayer = math.max(0, (missChanceVsPlayer*0.8 + 20) - playerHit);
+	local dwMissChanceVsNpc = math.max(missChanceVsNPC + 19 - hitChance);
+	local dwMissChanceVsBoss = math.max(missChanceVsBoss + 19 - hitChance);
+	local dwMissChanceVsPlayer = math.max(missChanceVsPlayer + 19 - hitChance);
 
-	missChanceVsNPC = math.max(0, missChanceVsNPC - playerHit);
+	missChanceVsNPC = math.max(0, missChanceVsNPC - hitChance);
 	missChanceVsBoss = math.max(0, missChanceVsBoss - hitChance);
-	missChanceVsPlayer = math.max(0, missChanceVsPlayer - playerHit);
+	missChanceVsPlayer = math.max(0, missChanceVsPlayer - hitChance);
 
 	return missChanceVsNPC, missChanceVsBoss, missChanceVsPlayer, dwMissChanceVsNpc, dwMissChanceVsBoss, dwMissChanceVsPlayer;
+end
+
+function CSC_GetPlayerCritCap(unit, ratingIndex)
+	local hitChance = GetHitModifier();
+	
+	if not hitChance then
+		hitChance = 0;
+	end
+
+	local hitRatingBonus = GetCombatRatingBonus(ratingIndex); -- hit rating in % (hit chance) (from gear sources, doesn't seem to include talents);
+	local totalHit = hitChance + hitRatingBonus;
+	local missChanceVsNPC, missChanceVsBoss, missChanceVsPlayer, dwMissChanceVsNpc, dwMissChanceVsBoss, dwMissChanceVsPlayer = CSC_GetPlayerMissChances(unit, totalHit);
+	
+	local playerWeaponSkill = UnitLevel(unit) * 5;
+	local bossDefense = 73 * 5;
+	local critSuppression = 4.8;
+	local dodgeChance = 5 + (bossDefense - playerWeaponSkill) * 0,1;
+	local glancingChance = math.max(0, 6 + (bossDefense - playerWeaponSkill) * 1.2);
+
+	local critCap = 100 - missChanceVsBoss - dodgeChance - glancingChance + critSuppression;
+	local dwCritCap = 100 - dwMissChanceVsBoss - dodgeChance - glancingChance + critSuppression;
+
+	return critCap, dwCritCap;
 end
 
 function CSC_GetAttackPowerFromArgentDawnItems(unit)
@@ -586,6 +607,7 @@ function CSC_PaperDollFrame_SetCritChance(statFrame, unit)
 
 	CSC_PaperDollFrame_SetLabelAndText(statFrame, MELEE_CRIT_CHANCE, critChance, true);
 	statFrame.critChance = critChance;
+	statFrame.unit = unit;
 end
 
 function CSC_PaperDollFrame_SetRangedCritChance(statFrame, unit)
@@ -595,10 +617,15 @@ function CSC_PaperDollFrame_SetRangedCritChance(statFrame, unit)
 		return;
 	end
 
-	local critChance = GetRangedCritChance();
+	statFrame:SetScript("OnEnter", CSC_CharacterRangedCritFrame_OnEnter)
+	statFrame:SetScript("OnLeave", function()
+		GameTooltip:Hide()
+    end)
 
-	statFrame.tooltip = HIGHLIGHT_FONT_COLOR_CODE..RANGED_CRIT_CHANCE.." "..format("%.2F%%", critChance)..FONT_COLOR_CODE_CLOSE;
-	statFrame.tooltip2 = format(CR_CRIT_RANGED_TOOLTIP, GetCombatRating(CR_CRIT_RANGED), GetCombatRatingBonus(CR_CRIT_RANGED));
+	local critChance = GetRangedCritChance();
+	statFrame.critChance = critChance;
+	statFrame.unit = unit;
+
 	CSC_PaperDollFrame_SetLabelAndText(statFrame, RANGED_CRIT_CHANCE, critChance, true);
 end
 
@@ -1145,6 +1172,48 @@ function CSC_PaperDollFrame_SetResilience(statFrame)
 end
 
 -- SIDE STATS FRAME ================================================================================================================================================================
+function CSC_SideFrame_SetMissChance(statFrame, unit, ratingIndex)
+	local playerLevel = UnitLevel(unit);
+	local hitChance = GetHitModifier();
+	
+	if not hitChance then
+		hitChance = 0;
+	end
+
+	local hitRatingBonus = GetCombatRatingBonus(ratingIndex); -- hit rating in % (hit chance) (from gear sources, doesn't seem to include talents);
+	local totalHit = hitChance + hitRatingBonus;
+	local missChanceVsNPC, missChanceVsBoss, missChanceVsPlayer, dwMissChanceVsNpc, dwMissChanceVsBoss, dwMissChanceVsPlayer = CSC_GetPlayerMissChances(unit, totalHit);
+
+	if (ratingIndex == CR_HIT_MELEE) then
+		statFrame.tooltip = format("Miss Chance vs Level 73 NPC/Boss: %.2F%%", missChanceVsBoss)..CSC_SYMBOL_TAB..format("(Dual wield: %.2F%%)", dwMissChanceVsBoss);
+		local missChanceNPCLineOne = format("Miss Chance vs Level %d NPC:     %.2F%%", playerLevel, missChanceVsNPC);
+		local missChanceNPCLineTwo = format("(Dual wield: %.2F%%)", dwMissChanceVsNpc);
+
+		local missChancePlayerLineOne = format("Miss Chance vs Level %d Player:  %.2F%%", playerLevel, missChanceVsPlayer);
+		local missChancePlayerLineTwo = format("(Dual wield: %.2F%%)", dwMissChanceVsPlayer);
+		statFrame.tooltip2 = missChanceNPCLineOne..CSC_SYMBOL_TAB..missChanceNPCLineTwo.."\n"..missChancePlayerLineOne..CSC_SYMBOL_TAB..missChancePlayerLineTwo;
+	else
+		statFrame.tooltip = format("Miss Chance vs Level 73 NPC/Boss: %.2F%%", missChanceVsBoss);
+		statFrame.tooltip2 = format("Miss Chance vs Level %d NPC: %.2F%%", playerLevel, missChanceVsNPC).."\n"..format("Miss Chance vs Level %d Player: %.2F%%", playerLevel, missChanceVsPlayer);
+	end
+
+	CSC_PaperDollFrame_SetLabelAndText(statFrame, "Miss Chance", missChanceVsBoss, true);
+end
+
+function CSC_SideFrame_SetCritCap(statFrame, unit, ratingIndex)
+	local critCap, dwCritCap = CSC_GetPlayerCritCap(unit, ratingIndex);
+
+	statFrame.tooltip = format("Crit cap vs Level 73 NPC/Boss: %.2F%%", critCap);
+	if (ratingIndex == CR_HIT_MELEE) then
+		local offhandItemId = GetInventoryItemID(unit, INVSLOT_OFFHAND);
+		if (offhandItemId) then
+			statFrame.tooltip2 = format("Dual wield crit cap: %.2F%%", dwCritCap);
+		end
+	end
+
+	CSC_PaperDollFrame_SetLabelAndText(statFrame, "Crit Cap", critCap, true);
+end
+
 -- Melee
 function CSC_SideFrame_SetMeleeHitChance(statFrame, unit)
 	

@@ -40,12 +40,12 @@ local RightStatsTable = { }
 
 local SideCategoryStatsMelee = { 
     frames = { };
-    numFrames = 5;
+    numFrames = 7;
     frameLabel = "Melee";
 };
 local SideCategoryStatsRanged = {
     frames = { };
-    numFrames = 5;
+    numFrames = 7;
     frameLabel = "Ranged";
 };
 local SideCategoryStatsSpell = { 
@@ -207,7 +207,7 @@ end
 
 function UIConfig:InitializeSideStatsCategories()
     local offsetStepY = 15;
-    local accumulatedOffsetY = 15;
+    local accumulatedOffsetY = 0;
     
     if UISettingsCharacter.showSideStatsMelee then
         accumulatedOffsetY = UIConfig:InitializeSideStatsCategory(SideCategoryStatsMelee, accumulatedOffsetY, offsetStepY);
@@ -233,16 +233,20 @@ function UIConfig:SetCharacterSideStats()
 
     if UISettingsCharacter.showSideStatsMelee and SideCategoryStatsMelee.frames[1] then
         CSC_SideFrame_SetMeleeHitChance(SideCategoryStatsMelee.frames[2], unit);
-        CSC_SideFrame_SetMeleeCritRating(SideCategoryStatsMelee.frames[3], unit);
-        CSC_SideFrame_SetMeleeHasteRating(SideCategoryStatsMelee.frames[4], unit);
-        CSC_SideFrame_SetArmorPenetration(SideCategoryStatsMelee.frames[5], unit);
+        CSC_SideFrame_SetMissChance(SideCategoryStatsMelee.frames[3], unit, CR_HIT_MELEE);
+        CSC_SideFrame_SetCritCap(SideCategoryStatsMelee.frames[4], unit, CR_HIT_MELEE);
+        CSC_SideFrame_SetMeleeCritRating(SideCategoryStatsMelee.frames[5], unit);
+        CSC_SideFrame_SetMeleeHasteRating(SideCategoryStatsMelee.frames[6], unit);
+        CSC_SideFrame_SetArmorPenetration(SideCategoryStatsMelee.frames[7], unit);
     end
 
     if UISettingsCharacter.showSideStatsRanged and SideCategoryStatsRanged.frames[1] then
         CSC_SideFrame_SetRangedHitChance(SideCategoryStatsRanged.frames[2], unit);
-        CSC_SideFrame_SetRangedCritRating(SideCategoryStatsRanged.frames[3], unit);
-        CSC_SideFrame_SetRangedHasteRating(SideCategoryStatsRanged.frames[4], unit);
-        CSC_SideFrame_SetArmorPenetration(SideCategoryStatsRanged.frames[5], unit);
+        CSC_SideFrame_SetMissChance(SideCategoryStatsRanged.frames[3], unit, CR_HIT_RANGED);
+        CSC_SideFrame_SetCritCap(SideCategoryStatsRanged.frames[4], unit, CR_HIT_RANGED);
+        CSC_SideFrame_SetRangedCritRating(SideCategoryStatsRanged.frames[5], unit);
+        CSC_SideFrame_SetRangedHasteRating(SideCategoryStatsRanged.frames[6], unit);
+        CSC_SideFrame_SetArmorPenetration(SideCategoryStatsRanged.frames[7], unit);
     end
 
     if UISettingsCharacter.showSideStatsSpell and SideCategoryStatsSpell.frames[1] then
@@ -316,11 +320,16 @@ function UIConfig:CreateMenu()
     UIConfig:InitializeStatsFrames(CSC_UIFrame.CharacterStatsPanel.leftStatsDropDown, CSC_UIFrame.CharacterStatsPanel.rightStatsDropDown);
     UIConfig:InitializeSideStatsFrame();
     UIConfig:UpdateStats();
+    UIConfig:UpdateSideStats();
 end
 
 function UIConfig:UpdateStats()
     UIConfig:SetCharacterStats(LeftStatsTable, statsDropdownList[UISettingsCharacter.selectedLeftStatsCategory]);
     UIConfig:SetCharacterStats(RightStatsTable, statsDropdownList[UISettingsCharacter.selectedRightStatsCategory]);
+end
+
+function UIConfig:UpdateSideStats()
+    if UISettingsCharacter.sideStatsFrameHidden or not CharacterFrame:IsVisible() then return end;
     UIConfig:SetCharacterSideStats();
 end
 
@@ -382,6 +391,7 @@ function UIConfig:ToggleSideStatsFrame()
     else 
         CSC_UIFrame.SideStatsFrame:Show();
         UISettingsCharacter.sideStatsFrameHidden = false;
+        CSC_UIFrame:UpdateSideStats();
     end
 end
 
@@ -466,6 +476,7 @@ local function CSC_ToggleCharacterPostHook(tab, onlyShow)
             CSC_UIFrame.CharacterStatsPanel:Show();
             CSC_UIFrame:UpdateStats();
         end
+        CSC_UIFrame:UpdateSideStats();
     else
         CSC_UIFrame.CharacterStatsPanel:Hide();
     end
