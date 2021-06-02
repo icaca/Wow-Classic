@@ -32,7 +32,10 @@ function BaudErrorFrame_OnLoad(self)
 	end
 	SLASH_BaudErrorFrame1 = "/bauderror"
 	SLASH_BaudErrorFrame2 = "/bef"
-	seterrorhandler(BaudErrorFrameHandler)
+
+	local old_seterrorhandler = seterrorhandler
+	old_seterrorhandler(BaudErrorFrameHandler)
+	seterrorhandler = function() end
 
 	local soundButton = CreateFrame("Frame", nil, BaudErrorFrame)
 	soundButton:SetSize(25, 25)
@@ -52,7 +55,7 @@ function BaudErrorFrame_OnLoad(self)
 	soundButton:SetScript("OnMouseUp", function(self)
 		BaudErrorFrameConfig.enableSound = not BaudErrorFrameConfig.enableSound
 		updateColor()
-		PlaySound(SOUNDKIT.U_CHAT_SCROLL_BUTTON, "Master")
+		PlaySound(48942, "Master")
 		self:GetScript("OnEnter")(self)
 	end)
 	soundButton:SetScript("OnShow", updateColor)
@@ -109,13 +112,13 @@ function BaudErrorFrameShowError(Error)
 	if not BaudErrorFrameConfig.enableSound then return end
 
 	if GetTime() > SoundTime then
-		PlaySound(SOUNDKIT.U_CHAT_SCROLL_BUTTON, "Master")
+		PlaySound(48942, "Master")
 		SoundTime = GetTime() + 1
 	end
 end
 
 function BaudErrorFrameAdd(Error, Retrace)
-	if Error:match("script ran too long") then return end
+	if Error:match("script ran too long") and not enableTaint then return end
 
 	for _, Value in pairs(ErrorList) do
 		if Value.Error == Error then
@@ -166,7 +169,6 @@ end
 local function colorStack(ret)
 	ret = tostring(ret) or "" -- Yes, it gets called with nonstring from somewhere /mikk
 	ret = ret:gsub("[%.I][%.n][%.t][%.e][%.r]face\\", "")
-	ret = ret:gsub("%.?%.?%.?\\?AddOns\\", "")
 	ret = ret:gsub("|([^chHr])", "||%1"):gsub("|$", "||") -- Pipes
 	ret = ret:gsub("<(.-)>", "|cffffd200<%1>|r") -- Things wrapped in <>
 	ret = ret:gsub("%[(.-)%]", "|cffffd200[%1]|r") -- Things wrapped in []
@@ -233,26 +235,23 @@ f:RegisterEvent("PLAYER_ENTERING_WORLD")
 f:SetScript("OnEvent", function()
 	f:UnregisterEvent("PLAYER_ENTERING_WORLD")
 
-	if IsAddOnLoaded("AuroraClassic") then
-		local F, C = unpack(AuroraClassic)
-		F.CreateBD(BaudErrorFrame)
-		F.CreateSD(BaudErrorFrame)
-		BaudErrorFrameListScrollBox:SetBackdrop(nil)
-		BaudErrorFrameListScrollBoxHighlightTexture:SetVertexColor(C.r, C.g, C.b, .25)
-		F.StripTextures(BaudErrorFrameDetailScrollBox)
-		F.CreateBDFrame(BaudErrorFrameDetailScrollBox, .25)
-		F.ReskinScroll(BaudErrorFrameListScrollBoxScrollBarScrollBar)
-		F.ReskinScroll(BaudErrorFrameDetailScrollFrameScrollBar)
-		F.Reskin(BaudErrorFrameClearButton)
-		F.Reskin(BaudErrorFrameCloseButton)
-		F.Reskin(BaudErrorFrameReloadUIButton)
-	end
-
 	if IsAddOnLoaded("NDui") then
 		local B, _, _, DB = unpack(NDui)
-		B.CreateMF(BaudErrorFrame)
 		if DB.isDeveloper then
 			RegisterTaintEvents(BaudErrorFrame)
 		end
+		B.CreateMF(BaudErrorFrame)
+		B.SetBD(BaudErrorFrame)
+
+		BaudErrorFrameBackground:SetAlpha(0)
+		BaudErrorFrameDetailScrollBoxBackground:SetAlpha(0)
+		BaudErrorFrameListScrollBoxHighlightTexture:SetVertexColor(DB.r, DB.g, DB.b, .25)
+		B.CreateBDFrame(BaudErrorFrameDetailScrollBox, .25)
+
+		B.ReskinScroll(BaudErrorFrameListScrollBoxScrollBarScrollBar)
+		B.ReskinScroll(BaudErrorFrameDetailScrollFrameScrollBar)
+		B.Reskin(BaudErrorFrameClearButton)
+		B.Reskin(BaudErrorFrameCloseButton)
+		B.Reskin(BaudErrorFrameReloadUIButton)
 	end
 end)
