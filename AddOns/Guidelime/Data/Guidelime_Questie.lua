@@ -201,7 +201,7 @@ function addon.getQuestPositionsQuestie(id, typ, index, filterZone)
 			list = {quest.Finisher}
 		end
 		if list ~= nil then
-			if addon.debugging then print("LIME: getQuestPositionsQuestie " .. typ .. " " .. id .. " " .. #list) end
+			--if addon.debugging then print("LIME: getQuestPositionsQuestie " .. typ .. " " .. id .. " " .. #list) end
 			for i = 1, #list do
 				local oi = (typ == "COMPLETE" and correctionsObjectiveOrder[id]) and correctionsObjectiveOrder[id][i] or i
 				if index == nil or index == 0 or index == oi then
@@ -210,6 +210,12 @@ function addon.getQuestPositionsQuestie(id, typ, index, filterZone)
 							table.insert(ids.npc, id2)
 							if objectives.npc[id2] == nil then objectives.npc[id2] = {} end
 							table.insert(objectives.npc[id2], oi)
+						end
+					elseif list[i].GameObject ~= nil then
+						for _, id2 in ipairs(list[i].GameObject) do
+							table.insert(ids.object, id2)
+							if objectives.object[id2] == nil then objectives.object[id2] = {} end
+							table.insert(objectives.object[id2], oi)
 						end
 					elseif list[i].Type == "monster" or list[i].Type == "item" or list[i].Type == "object" then
 						local type = list[i].Type == "monster" and "npc" or list[i].Type
@@ -420,4 +426,16 @@ function addon.getNPCPositionQuestie(id)
 			end
 		end
 	end
+end
+
+function addon.getNPCNameQuestie(id)
+	if id == nil or not checkQuestie() then return end
+	local npc = QuestieDB:GetNPC(id)
+	if npc ~= nil then return npc.name end
+end
+
+function addon.getObjectNameQuestie(id)
+	if id == nil or not checkQuestie() then return end
+	local object = QuestieDB:GetObject(id)
+	if object ~= nil then return object.name end
 end

@@ -95,7 +95,6 @@ addon.xp = UnitXP("player")
 addon.xpMax = UnitXPMax("player")
 addon.x, addon.y, addon.instance = HBD:GetPlayerWorldPosition()
 addon.face = GetPlayerFacing()
-addon.alive = true
 
 addon.guides = {}
 addon.dataLoaded = false
@@ -263,7 +262,7 @@ function addon.loadData()
 
 	addon.debugging = GuidelimeData.debugging
 	addon.dataSource = GuidelimeData.dataSource
-	if not addon["isDataSourceInstalled" .. addon.dataSource]() then addon.dataSource = "INTERNAL" end
+	if not addon["isDataSourceInstalled" .. addon.dataSource] or not addon["isDataSourceInstalled" .. addon.dataSource]() then addon.dataSource = "INTERNAL" end
 
 	if GuidelimeData.customGuides ~= nil then
 		for _, guide in pairs(GuidelimeData.customGuides) do
@@ -704,16 +703,12 @@ function addon.getQuestObjectiveText(id, objectives, indent, npcId, objectId)
 	end
 	local text = ""
 	if npcId ~= nil and (#objectives ~= 1 or objectiveList[objectives[1]] == nil or (objectiveList[objectives[1]].type ~= "npc" and objectiveList[objectives[1]].type ~= "monster")) then
-		if addon["creaturesDB_" .. GetLocale()] ~= nil and addon["creaturesDB_" .. GetLocale()][npcId] ~= nil then
-			text = (indent or "") .. "|T" .. addon.icons.monster .. ":12|t" .. addon["creaturesDB_" .. GetLocale()][npcId]
-		elseif npcId ~= nil and addon.creaturesDB[npcId] ~= nil then
-			text = (indent or "") .. "|T" .. addon.icons.monster .. ":12|t" .. addon.creaturesDB[npcId].name
+		if addon.getNPCName(npcId) ~= nil then
+			text = (indent or "") .. "|T" .. addon.icons.monster .. ":12|t" .. addon.getNPCName(npcId)
 		end
 	elseif objectId ~= nil and (#objectives ~= 1 or objectiveList[objectives[1]] == nil or objectiveList[objectives[1]].type ~= "object") then
-		if addon["objectsDB_" .. GetLocale()] ~= nil and addon["objectsDB_" .. GetLocale()][objectId] ~= nil then
-			text = (indent or "") .. "|T" .. addon.icons.object .. ":12|t" .. addon["objectsDB_" .. GetLocale()][objectId]
-		elseif objectId ~= nil and addon.objectsDB[objectId] ~= nil then
-			text = (indent or "") .. "|T" .. addon.icons.object .. ":12|t" .. addon.objectsDB[objectId].name
+		if addon.getObjectName(objectId) ~= nil then
+			text = (indent or "") .. "|T" .. addon.icons.object .. ":12|t" .. addon.getObjectName(objectId)
 		end
 	end
 	for _, i in ipairs(objectives) do
@@ -983,7 +978,7 @@ local function updateStepCompletion(i, completedIndexes)
 				element.completed = true
 			elseif element.completed and not element.lastGoto and element.attached == nil then
 				-- do not reactivate unless it is the last goto of the step
-			elseif addon.x ~= nil and addon.y ~= nil and element.wx ~= nil and element.wy ~= nil and addon.instance == element.instance and addon.alive and step.active then
+			elseif addon.x ~= nil and addon.y ~= nil and element.wx ~= nil and element.wy ~= nil and addon.instance == element.instance and addon.isAlive() and step.active then
 				local radius = element.radius * element.radius
 				-- add some hysteresis
 				if element.completed then radius = radius * addon.GOTO_HYSTERESIS_FACTOR end
@@ -1056,8 +1051,7 @@ local function updateStepAvailability(i, changedIndexes, scheduled)
 				element.available = false
 				scheduled.SKIP[element.questId] = true
 			end
-			if not element.completed then step.available = step.available and element.available end
-			if not element.completed then step.available = step.available or element.available end
+			if not element.completed then step.available = step.available or false or element.available	end
 		elseif element.t == "XP" or element.t == "REPUTATION" then
 			if not element.completed then step.available = true end			
 		end
@@ -1227,7 +1221,8 @@ function addon.updateStepsMapIcons()
 	local arrowElement
 	local highlight = true
 	for _, step in ipairs(addon.currentGuide.steps) do
-		if not step.skip and not step.completed and step.available then
+		if not step.skip and not step.completed and step.available and
+			(step.reputation == nil or addon.isRequiredReputation(step.reputation, step.repMin, step.repMax)) then
 			for _, element in ipairs(step.elements) do
 				if element.t == "GOTO" and step.active and not element.completed then
 					if element.specialLocation == "NEAREST_FLIGHT_POINT" and addon.x ~= nil and addon.y ~= nil then
@@ -1242,7 +1237,8 @@ function addon.updateStepsMapIcons()
 							highlight = false
 						end
 					end
-				elseif (element.t == "LOC" or element.t == "GOTO") and not element.completed and element.specialLocation == nil then
+				elseif (element.t == "LOC" or element.t == "GOTO") and 
+					not element.completed and element.specialLocation == nil and (element.attached == nil or not element.attached.completed) then
 					local found = true
 					if element.objectives ~= nil and element.attached ~= nil and element.attached.questId ~= nil then
 						local objectives = getQuestActiveObjectives(element.attached.questId, element.attached.objective)
@@ -1256,7 +1252,7 @@ function addon.updateStepsMapIcons()
 			end
 		end
 	end
-	if arrowElement or not addon.alive then 
+	if arrowElement or not addon.isAlive() then 
 		addon.showArrow(arrowElement) 
 	else 
 		addon.hideArrow() 
