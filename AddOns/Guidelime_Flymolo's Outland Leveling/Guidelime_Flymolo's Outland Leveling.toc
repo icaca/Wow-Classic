@@ -1,0 +1,38 @@
+## Title:Guidelime_Flymolo外域升级攻略
+## Author: Flymolo
+## Version: 0.9.7-PrePatch
+## Interface: 20501
+## Dependencies: Guidelime
+## Notes: Flymolo's Outland Leveling Guide
+## Notes: 汉化 by Pglterry
+
+Flymolo Alliance 58-61 - Part 1.lua
+Flymolo Alliance 58-61 - Part 2.lua
+Flymolo Alliance 61-63.lua
+Flymolo Alliance-Aldor 63-64.lua
+Flymolo Alliance-Scryers 63-64.lua
+Flymolo Alliance-Aldor 64-65.lua
+Flymolo Alliance-Scryers 64-65.lua
+Flymolo Alliance-Aldor 65-67.lua
+Flymolo Alliance-Scryers 65-67.lua
+Flymolo Alliance-Aldor 67.lua
+Flymolo Alliance-Scryers 67.lua
+Flymolo Alliance-Aldor 68.lua
+Flymolo Alliance-Scryers 68.lua
+Flymolo Alliance-Aldor 69.lua
+Flymolo Alliance-Scryers 69.lua
+Flymolo Horde 58-61 - Part 1.lua
+Flymolo Horde 58-61 - Part 2.lua
+Flymolo Horde 61-63.lua
+Flymolo Horde-Aldor 63-64.lua
+Flymolo Horde-Scryers 63-64.lua
+Flymolo Horde-Aldor 64-65.lua
+Flymolo Horde-Scryers 64-65.lua
+Flymolo Horde-Aldor 65-67.lua
+Flymolo Horde-Scryers 65-67.lua
+Flymolo Horde-Aldor 67.lua
+Flymolo Horde-Scryers 67.lua
+Flymolo Horde-Aldor 68.lua
+Flymolo Horde-Scryers 68.lua
+Flymolo Horde-Aldor 69.lua
+Flymolo Horde-Scryers 69.lua
