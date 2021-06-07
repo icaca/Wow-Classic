@@ -300,17 +300,18 @@ function addon.updateArrow()
 	
 	addon.arrowX, addon.arrowY = nil, nil
 	if GuidelimeDataChar.showArrow then
-		local corpse
-		if not addon.isAlive() then corpse = C_DeathInfo.GetCorpseMapPosition(HBD:GetPlayerZone()) end
-		if corpse ~= nil then
-			addon.arrowX, addon.arrowY = HBD:GetWorldCoordinatesFromZone(corpse.x, corpse.y, HBD:GetPlayerZone())
+		if not addon.isAlive() then
+			local corpse = HBD:GetPlayerZone() and C_DeathInfo.GetCorpseMapPosition(HBD:GetPlayerZone())
+			if corpse ~= nil then
+				addon.arrowX, addon.arrowY = HBD:GetWorldCoordinatesFromZone(corpse.x, corpse.y, HBD:GetPlayerZone())
+			end
 		elseif addon.arrowFrame.element ~= nil and addon.arrowFrame.element.wx ~= nil and addon.arrowFrame.element.wy ~= nil and addon.arrowFrame.element.instance == addon.instance then
 			addon.arrowX, addon.arrowY = addon.arrowFrame.element.wx, addon.arrowFrame.element.wy
 		end
 	end
 	
 	if addon.arrowX == nil or addon.arrowY == nil then 
-		addon.arrowFrame:Hide()
+		if addon.arrowFrame:IsShown() then addon.arrowFrame:Hide() end
 		return 
 	end
 	local angle = addon.face - math.atan2(addon.arrowX - addon.x, addon.arrowY - addon.y)
@@ -347,7 +348,7 @@ function addon.updateArrow()
 	if addon.arrowFrame.element and addon.arrowFrame.element.step then 
 		addon.updateStepText(addon.arrowFrame.element.step.index) 
 	end
-	addon.arrowFrame:Show()
+	if not addon.arrowFrame:IsShown() then addon.arrowFrame:Show() end
 end
 
 function addon.showArrow(element)

@@ -1,164 +1,163 @@
 Guidelime.registerGuide([[
 
-[N64-65 Flymolo's Alliance-Aldor Guide]
+[N64-65 【联盟】纳格兰-奥尔多]
 [D Flymolo's 外域升级导航 汉化 by Pglterry]
-[NX65-67 Flymolo's Alliance-Aldor Guide]
+[NX65-67 【联盟】刀锋山-奥尔多]
 [GA Alliance]
 
 导航由 *Flymolo* 编写，*Pglterry* 汉化[OC]
-Grind to [XP64 level 64].
-
-*NOTE* Save any *Oshu'gun Crystal Powder Samples* and *Obsidian Warbeads* that you find![O]
-*NOTE* Whenever you see a *Wild* Elekk (as opposed to any Elekk that does not have *Wild* in its name)kill and loot them until you have *3 pairs of Ivory Tusks.*[O]
-You may find *Kristen Dipswitch* and be able to do the quest *I'm Saved!* near *Nesingwary's Camp.* Be on the lookout for *Ganky Rottenfist* whenever you are in the area[OC].
-Accept [QA9854 Windroc Mastery].
-Accept [QA9857 Talbuk Mastery].
-Accept [QA9789 Clefthoof Mastery].
-Work on [QC9854][O], [QC9857][O] and [QC9789][O] throughout the next steps.
-Accept [QA9818 The Underneath].
-Accept [QA9800 A Rare Bean] and [QA9815 Muck Diving].
-Turn in [QT9818 The Underneath].\\Accept [QA9819 The Tortured Earth].
-Work on [QC9819][O] throughout the next steps. Be aware that there aren't very many places to find these so take advantage when you see them!
-
-Accept [QA9869 The Throne of the Elements].
-Accept [QA9936 Wanted: Giselda the Crone] and [QA9940 Wanted: Zorbo the Advisor].
-Turn in [QT9792 A Message to Telaar].
-Accept [QA9917 Do My Eyes Deceive Me].
-Accept [QA10113 The Nesingwary Safari].
-Accept [QA9874 Stopping the Spread].
-Accept [QA9878 Solving the Problem].
-[G54.2,76.1 Nagrand]Speak with *Caregiver Isel* and set your Hearthstone to [S Telaar].
-[G53.3,75.0 Nagrand]Head outside the inn.
-Go up the ramp and speak with *Furgu* to acquire the flight path.
-Accept [QA10109 I Must Have Them!]
-During the next steps, kill and loot *Dust Howlers* for [QC10109][O].
-[G60.8,72.0 Nagrand]At the back side of the hill you will find *Hunters* to kill and loot for [QC9917].
-[G64.2,72.4 Nagrand]Kill all the *Tortured Earth Spirits* you find here and along the east side of the hill for [QC9819] and then manually complete this step.
-Turn in [QT9917 Do My Eyes Deceive Me].\\Accept [QA9918 Not On My Watch!]
+刷怪到 [XP64 64级]
+*注：：* 收集到的 *沃舒古水晶尘样本* 、*黑曜石作战念珠* 留着，以后有用！[O]
+*注：* 击杀 *野生雷象* 收集3对 *象牙*，（注意是*野生*，不是其他类型雷象）[O]
+当你在*辛瓦里狩猎队营地*时，留意一个亡灵盗贼*甘克雷·骨拳*，他会去偷袭一个侏儒女 *克莉丝蒂·德米萨* ，帮助她可以接到任务 *我得救了！*[OC] 
+接受任务 [QA9854]
+接受任务 [QA9857]
+接受任务 [QA9789]
+接下来，专注于完成 [QC9854][O], [QC9857][O] 和 [QC9789][O] 这些野生动物广泛分布在纳格兰东部
+接受任务 [QA9818]
+接受任务 [QA9800] 和 [QA9815]
+提交任务 [QT9818]\\接受任务 [QA9819]
+去完成任务[QC9819][O]，这种石元素怪不是很多，看到了优先击杀！
+接受任务 [QA9869]
+接受任务 [QA9936] 和 [QA9940]
+提交任务 [QT9792]
+接受任务 [QA9917]
+接受任务 [QA10113]
+接受任务 [QA9874]
+接受任务 [QA9878]
+[G54.2,76.1 Nagrand]与 *看护者伊塞尔* 对话定炉石 [S 塔拉]
+[G53.3,75.0 Nagrand]到旅馆外面
+与 *菲尔古* 对话激活飞行点
+接受任务 [QA10109]
+接下来，打 *灰尘咆哮者*等元素完成 [QC10109][O]
+[G60.8,72.0 Nagrand]击杀山坡上的 *石拳猎手* 获得*石拳计划书* 完成任务 [QC9917]
+[G64.2,72.4 Nagrand]击杀这里和山丘东边的 *被折磨的地灵* 完成任务 [QC9819]，然后手动完成这一步
+提交任务 [QT9917]\\接受任务 [QA9918]
 [G62.4,69.1 Nagrand]
 [G62.2,70.2 Nagrand]
-[G62.6,71.3 Nagrand]Fight *Lump* until you can speak with him to complete [QC9918]
-[G64.2,72.4 Nagrand]Complete [QC9819].
-Turn in [QT9918 Not On My Watch!]\\Accept [QA9920 Mo'mor the Breaker].
-Turn in [QT9920 Mo'mor the Breaker].\\Accept [QA9921 The Ruins of Burning Blade].
-Accept [QA9923 HELP!]
-When you have the *Boulderfist Key*, unlock *Corki's Prison* to complete [QC9923][OC].
-Make certain you acquire 10 *Obsidian Warbeads* before leaving this area![OC]
-Kill and loot *Crushers* and *Mystics* to complete [QC9921] and find the *Boulderfist Key.*
-Complete [QC9923].
-
-Head north toward the *Nesingwary Safari* and complete [QC9857] and [QC9789] on the way. Find, kill and loot *Dust Howlers* to complete [QC10109].
-Turn in [QT9857 Talbuk Mastery].\\Accept [QA9858 Talbuk Mastery].
-Turn in [QT9789 Clefthoof Mastery].\\Accept [QA9850 Clefthoof Mastery].
-Turn in [QT10113 The Nesingwary Safari].
-In the area just north of *Nesingwary,* complete [QC9854].
-Turn in [QT9854 Windroc Mastery].\\Accept [QA9855 Windroc Mastery].
-Turn in [QT9819 The Tortured Earth].\\Accept [QA9821 Eating Damnation].
-Turn in [QT9869 The Throne of the Elements].
-[G54.2,20.0 Nagrand]Kill and loot all the *Enraged Crushers* you find in this area for [QC9821] and then manually complete this step.
-Hearth to [H Telaar].
-
-Turn in [QT9921 The Ruins of Burning Blade].\\Accept [QA9922 The Twin Clefts of Nagrand].
-Turn in [QT9923 HELP!]\\Accept [QA9924 Corki's Gone Missing Again!]
-During the next steps, kill and loot *Enraged Crushers* to work on [QC9821][OC].
-[G50.9,60.5 Nagrand]This waypoint is located in the only area where you can find *Ravenous Windrocs* for [QC9855]. Kill as many as you can find and then manually complete this step to move on.
-[G41.2,44.4 Nagrand]If the Alliance controls *Halaa,* accept [QA10076 Oshu'gun Crystal Powder]. Turn it in if you can.
+[G62.6,71.3 Nagrand]打服 *拉普*，直到他愿意跟你对话，完成任务 [QC9918]
+[G64.2,72.4 Nagrand]完成任务 [QC9819]
+提交任务 [QT9918]\\接受任务 [QA9920]
+提交任务 [QT9920]\\接受任务 [QA9921]
+接受任务 [QA9923]
+刷食人魔获得 *石拳钥匙* ，把 *考尔奇*解救出来完成任务 [QC9923][OC]
+离开这片区域前，确保身上有10个 *黑曜石作战念珠*！[OC]
+击杀*石拳打击者* 和 *石拳秘术师* 完成任务 [QC9921]，获得 *石拳钥匙*！
+完成任务 [QC9923]
+往北向 *辛瓦里狩猎队营地* 走，路上完成任务 [QC9857] 、[QC9789] ，击杀拾取 *灰尘咆哮者* 完成任务 [QC10109]
+提交任务 [QT9857]\\接受任务 [QA9858]
+提交任务 [QT9789]\\接受任务 [QA9850]
+提交任务 [QT10113]
+在 *辛瓦里狩猎队营地* 西边和北边区域完成任务 [QC9854]
+提交任务 [QT9854]\\接受任务 [QA9855]
+提交任务 [QT9819]\\接受任务 [QA9821]
+提交任务 [QT9869]
+[G54.2,20.0 Nagrand]在这边区域刷 *被激怒的碾压者* 完成任务 [QC9821]，然后手动完成这一步
+使用炉石返回 [H 塔拉]
+提交任务 [QT9921].\\接受任务 [QA9922].
+提交任务 [QT9923]\\接受任务 [QA9924]
+刷 *被激怒的碾压者* 完成任务 [QC9821][OC]
+[G50.9,60.5 Nagrand]现在你行进的路线是 *饥饿的风鹏* 唯一分布区域，在这里多刷几只或者完成 [QC9855]，然后手动完成这一步
+[G41.2,44.4 Nagrand]如果联盟控制了 *哈兰*，接受任务 [QA10076]\\尽量提交任务
 [G46.4,38.2 Nagrand]
-[G45.0,40.7 Nagrand]All around *Halaa,* kill and loot *Muck Spawn* to complete [QC9815].
+[G45.0,40.7 Nagrand]
+在 *哈兰* 周围击杀拾取 *泥泞爪牙* 完成任务 [QC9815][O]
 [G40.8,31.5 Nagrand]
 [G39.9,31.0 Nagrand]
 [G39.5,28.8 Nagrand]
-[G39.3,27.5 Nagrand]Unlock *Corki's Prison* to complete [QC9924].
-Stay in the cave and complete [QC9922].
+[G39.3,27.5 Nagrand]打开 *考尔奇的牢笼* 解救他完成任务 [QC9924]
+在洞穴里继续完成任务 [QC9922]
 [G40.8,31.5 Nagrand]
-Continue grinding in this area to get 20 *Crystal Powder Samples* IF you have AND you have not already turned in *Oshu'gun Crystal Powder.*
-If the Alliance controls *Halaa,* turn in [QT10076 Oshu'gun Crystal Powder].
-[G50.9,60.5 Nagrand]Complete [QC9855].
-Turn in [QT9924 Corki's Gone Missing Again!].
-Turn in [QT9922 The Twin Clefts of Nagrand].\\Accept [QA10108 Diplomatic Measures].
-Turn in [QT10109 I Must Have Them].
+继续在这里刷怪攒20个 *沃舒古水晶尘样本* 确保能提交 *沃舒古水晶尘* 任务
+完成任务 [QC9815]
+如果联盟控制了 *哈兰*，提交任务 [QT10076]
+[G50.9,60.5 Nagrand]完成任务 [QC9855]
+提交任务 [QT9924]
+提交任务 [QT9922]\\接受任务 [QA10108]
+提交任务 [QT10109]
 [G75.7,60.2 Nagrand]
 [G75.8,60.7 Nagrand]
-[G73.8,62.5 Nagrand]Speak with *Lantresor* (Select "I have killed many of your ogres...") to complete [QC10108].
-Turn in [QT10108 Diplomatic Measures].
-Accept [QA9927 Ruthless Cunning] and [QA9928 Armaments for Deception].
+[G73.8,62.5 Nagrand]与 *兰特瑞索·火刃* 对话完成任务 [QC10108]
+提交任务 [QT10108]
+接受任务 [QA9927]和[QA9928]
 [G70.0,76.4 Nagrand]
-Look for and open *Kil'sorrow Armaments* on the ground to complete [QC9928][O]. Use the *Warmaul Ogre Banner* from your inventory on everyone you kill to complete [QC9927][O].
-[G71.1,82.4 Nagrand]Kill *Giselda the Crone* to complete [QC9936].
-Complete [QC9928] and [QC9927].
-Turn in [QT9927 Ruthless Cunning] and [QT9928 Armaments for Deception].
-Accept [QA9931 Returning the Favor] and [QA9932 Body of Evidence].
+收集 *基尔索罗军备* 完成任务 [QC9928][O]。击杀 *基尔索罗兽人* 然后插上 *战槌食人魔军旗* 完成任务 [QC9927][O]
+[G71.1,82.4 Nagrand]击杀 *巫婆吉塞尔达* 完成任务 [QC9936]
+完成任务 [QC9928] 和 [QC9927]
+提交任务 [QT9927] 和 [QT9928]
+接受任务 [QA9931] 和 [QA9932]
 [G68.5,53.6 Nagrand]
 [G58.5,44.9 Nagrand]
-Head toward *Halaa* and kill any *Thorngrazers* and *Clefthoof Bulls* you see. [OC]
-[G50.8,30.7 Nagrand]From this waypoint all the way north to the mountains you can find *Dung* on the ground to complete [QC9800]. Continue killing *Clefthoof Bulls* and *Thorngrazers.*
+往 *哈兰* 方向，猎杀 *塔布羊食棘者* 和 *裂蹄公牛* [OC]
+[G50.8,30.7 Nagrand]从这往北到山脚下，从 *粪便* 中收集 *挖出来的卡拉果* 完成任务 [QC9800]。*为了方便找粪便可以把图形设置中的地表景观拉到最低*\\继续猎杀 *塔布羊食棘者* 和 *裂蹄公牛*
 [G55.4,19.6 Nagrand]
-On your way to the next step, follow the mountains and kill and loot *Enraged Crushers* to work on [QC9821][OC].
-[G46.4,18.3 Nagrand]Kill *Zorbo the Advisor.*
-Move throughout the camp and use your *Kil'sorrow Banner* on all the bodies of the Ogres you kill. Complete [QC9940] and [QC9931].
-[G46.6,24.6 Nagrand]Use the *Damp Woolen Blanket* from your inventory to complete [QC9932].
-Follow the mountains back toward *Throne of the Elements* and complete [QC9821].
-Turn in [QT9821 Eating Damnation].\\Accept [QA9849 Shattering the Veil].
-Turn in [QT9815 Muck Diving].
-Turn in [QT9800 A Rare Bean].\\Accept [QA9804 Agitated Spirits of Skysong].
-Head to the lake to complete [QC9804].
-Turn in [QT9804 Agitated Spirits of Skysong].\\Accept [QA9805 Blessing of Incineratus].
-As you travel around the lake, complete [QC9850][O] and [QC9858][O].
+去下个点的路上，沿着山脚击杀 *被激怒的碾压者* 完成任务 [QC9821][OC]
+[G46.4,18.3 Nagrand]击杀 [QC9940,1 顾问佐尔布]
+在营地里击杀食人魔，然后插上 *基尔索罗军旗*，完成任务 [QC9940] 和 [QC9931]
+[G46.6,24.6 Nagrand]对战槌篝火堆使用 *潮湿的毛毯* 完成任务 [QC9932]
+顺着山脚到 *元素王座* 沿路*完成任务* [QC9821][O] 
+提交任务 [QT9821]\\接受任务 [QA9849]
+提交任务 [QT9815]
+提交任务 [QT9800]\\接受任务 [QA9804]
+到湖里完成任务 [QC9804]
+提交任务 [QT9804]\\接受任务 [QA9805]
+沿着湖边完成任务 [QC9850][O] 和 [QC9858][O]
 [G52.3,28.0 Nagrand]
 [G49.1,35.5 Nagrand]
 [G55.2,46.2 Nagrand]
-Complete [QC9850] and [QC9858].
-Turn in [QT9855 Windroc Mastery].
-Turn in [QT9858 Talbuk Mastery].
-Turn in [QT9850 Clefthoof Mastery].
-[G72.4,50.5 Nagrand]*Inside the hut* use the *Living Fire* from your inventory [QC9805,1 Large Hut].
-[G70.8,51.2 Nagrand]*Inside the hut* use the *Living Fire* from your inventory [QC9805,2 Western Hut].
-[G71.3,53.2 Nagrand]*Inside the hut* use the *Living Fire* from your inventory [QC9805,3 Southern Hut].
-[G72.7,54.6 Nagrand]*Inside the hut* use the *Living Fire* from your inventory to complete [QC9805].
-Turn in [QT9931 Returning the Favor].
-Turn in [QT9932 Body of Evidence].\\Accept [QA9933 Message to Telaar].
-Grind to [XP65 level 65].
-Hearth to [H Telaar].
-Find *Huntress Kima* wandering around *Telaar* and accept [QA9956 The Ravaged Caravan].
-Accept [QA10476 Fierce Enemies].
-Turn in [QT10476 Fierce Enemies].
-*NOTE:* Obsidian Warbeads may be turned in for rep with both *Kurenai* and *The Consortium,* but you must gain *Friendly* with The Consortium before you can do so. You may choose to turn in all of your Warbeads here if you wish.
-Turn in [QT9940 Wanted: Zorbo the Advisor] and [QT9936 Wanted: Giselda the Crone].
-Turn in [QT9933 Message to Telaar].
-[G51.1,69.8 Nagrand]Accept [QA9913 The Consortium Needs You!]
+完成任务 [QC9850]和[QC9858]
+提交任务 [QT9855]
+提交任务 [QT9858]
+提交任务 [QT9850]
+[G72.4,50.5 Nagrand]使用 *活火* 在棚屋里点燃 [QC9805,1 大棚屋]
+[G70.8,51.2 Nagrand]使用 *活火* 在棚屋里点燃 [QC9805,2 西部棚屋]
+[G71.3,53.2 Nagrand]使用 *活火* 在棚屋里点燃 [QC9805,3 南部棚屋]
+[G72.7,54.6 Nagrand]使用 *活火* 在棚屋里点燃 完成任务 [QC9805]
+提交任务 [QT9931]
+提交任务 [QT9932]\\接受任务 [QA9933]
+刷怪到 [XP65 65级]
+使用炉石返回 [H 塔拉]
+找到在 *塔拉* 里走动的 *女猎手琪玛* 接受任务 [QA9956]
+接受任务 [QA10476]
+提交任务 [QT10476]
+*注:* *库雷尼* 和 *星界财团* 声望都可以通过交*黑曜石作战念珠*提升。但是 *星界财团* 必须已经是*友善*才能交。如果你想提升 *库雷尼* 声望，可以在这里交任务
+提交任务 [QT9940]和[QT9936]
+提交任务 [QT9933]
+[G51.1,69.8 Nagrand]接受任务 [QA9913]
 [G40.8,83.3 Nagrand]
-Target a *Shattered Rumbler* and then use *Gordawg's Boulder* from your inventory to kill it and spawn *Minions of Gurok.* Walk westward along the southern border of Nagrand killing *Minions* to complete [QC9849].
-
-Accept [QA9900 Gava'xi] and [QA9925 Matters of Security].
-Turn in [QT9913 The Consortium Needs You].\\Accept [QA9882 Stealing from Thieves].
-Accept [QA9914 A Head Full of Ivory]. Turn it in if you can.
-[G35.6,58.6 Nagrand]
-Find, kill and loot *Wild Elekk* for [QC9914][O].
-Kill and loot *Living Cyclone* throughout this area if you have not already received the item *Howling Wind.*[OC]
-[G33.9,61.8 Nagrand]Kill and loot *Vir'aani for [QC9882][O]. You can also find the *Crystal Fragments* on the ground.
-[G42.6,72.2 Nagrand]Kill *Gava'xi* to complete [QC9900].
-Stay near *Oshu'gun* and complete [QC9882] and [QC9925].
-Turn in [QT9882 Stealing from Thieves].
-Turn in [QT9900 Gava'xi] and [QT9925 Matters of Security].
-*Note:* If you have not completed *A Head Full of Ivory* you can drop it and move on.
-Turn in [QT9914 A Head Full of Ivory].
-If you have *Howling Wind* in your inventory, right click it to accept [QA9861 The Howling Wind]. Otherwise, manually complete this step and also manually complete anything to do with *Murkblood Corrupters* later on.
-Turn in [QT9849 Shattering the Veil].
-Turn in [QT9805 Blessing of Incineratus].\\Accept [QA9810 The Spirit Polluted].
-Turn in [QT9861 The Howling Wind].\\Accept [QA9862 Murkblood Corrupters].
+来到纳格兰南边的悬崖，朝西走，向 *破碎奔行者* 投掷 *戈达乌的石块*，然后击杀分裂出来的 *古罗克的爪牙* 完成任务 [QC9849]
+接受任务 [QA9900]和[QA9925]
+提交任务 [QT9913]\\接受任务 [QA9882]
+如果能接的话接受任务 [QA9914]
+[G35.6,58.6 Nagrand] 如果你已经完成 *象牙生意* 任务，跳过这个导航点
+杀 *野生雷象* 完成任务 [QC9914][O]
+如果 *呼嚎之风* 任务还没完成，在这片区域刷 *活体飓风* [O]
+[G33.9,61.8 Nagrand]
+击杀 *维尔埃尼掠夺者* 获得 *沃舒古水晶碎片* ，或者直接从地上收集，完成任务 [QC9882][O]
+击杀 *加瓦克希* 完成任务 [QC9900]
+在 *沃舒古* 周围完成任务 [QC9882] 和 [QC9925]
+提交任务 [QT9882]
+提交任务 [QT9900]和[QT9925]
+*注：*如果你还没完成 *象牙生意* 任务，可以放弃接着下一步了
+提交任务 [QT9914]
+查看背包里是否有 *呼嚎之风*，右键点击接受任务 [QA9861]。没有的话请手动跳过这一步，其后续 *暗血腐蚀者* 任务也手动跳过
+提交任务 [QT9849]
+提交任务 [QT9805]\\接受任务 [QA9810]
+提交任务 [QT9861]\\接受任务 [QA9862]
+[G46.8,26.8 Nagrand]
 [G39.5,26.6 Nagrand]
-[G33.0,50.5 Nagrand]Kill *Watoosun's Polluted Essence.* Complete [QC9810] and use the *Torch of Liquid Fire* in your inventory on *Sunspring Villagers* in the water near the docks to complete [QC9874].
-In the village, complete [QC9862] and [QC9878].
+[G33.0,50.5 Nagrand]击杀 *瓦图苏的污染精华* 完成任务 [QC9810]\\使用 *魔油火炬* 烧毁码头边的 *日泉村民的遗体* 完成任务 [QC9874]
+在 *日泉岗哨* 完成任务 [QC9862] 和 [QC9878]
 [G28.9,31.3 Nagrand]
-Head up the hill and loot *Telaar Supply Crates* off the ground to complete [QC9956 The Ravaged Caravan]. *Watch out for *Mountain Gronn!!!*
-Turn in [QT9862 Murkblood Corrupters].
-Turn in [QT9810 The Spirit Polluted].
-Hearth to [H Telaar].
-Turn in [QT9878 Solving the Problem].
-Turn in [QT9874 Stopping the Spread].
-Turn in [QT9956 The Ravaged Caravan].
-*NOTE:* The only quest item you need in your inventory is the *Letter to Kialon* and a *Fel Armament* if you have one. *Halaa Research Tokens* can be spent on PvP gear. All other quest items can be sold, dropped, or turned in for rep.
-Fly to [F Orebor Harborage].
+上山拾取地上的 *塔拉补给箱* 完成任务 [QC9956] *小心 山丘戈隆*
+提交任务 [QT9862]
+提交任务 [QT9810]
+使用炉石返回 [H 塔拉]
+提交任务 [QT9878]
+提交任务 [QT9874]
+提交任务 [QT9956]
+*注：*背包里需要留的任务物品只有 *给基亚隆的信* 和一个 *邪能装备* 。*哈兰研究勋章* 可以换PVP装备，其他物品能卖的卖，能交的交，没用的丢掉
+飞到 [F 奥雷柏尔营地]
 导航由 *Flymolo* 编写，*Pglterry* 汉化[OC]
 
 

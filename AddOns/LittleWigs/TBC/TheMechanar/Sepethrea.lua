@@ -21,8 +21,12 @@ local mobsFound = 0
 local L = mod:GetLocale()
 if L then
 	L.inferno = "Inferno"
-	L.inferno_desc = "Kael'thas Sunstrider calls down a pillar of flame, burning all players within 6 yards of the targeted area for Fire damage every second for 8 sec."
-	L.inferno_icon = "Spell_Fire_SelfDestruct"
+	L.inferno_desc = "Raging Flames surround themselves with an inferno for 8 sec, inflicting Fire damage to all players within 10 yards every second. While aflame, Raging Flames are unable to move or use abilities. When the inferno ends, Raging Flames choose a new target to pursue."
+	L.inferno_icon = "spell_fire_incinerate"
+
+	L.fixate = CL.fixate
+	L.fixate_desc = CL.fixate
+	L.fixate_icon = "spell_shadow_charm"
 end
 
 --------------------------------------------------------------------------------
@@ -33,12 +37,12 @@ function mod:GetOptions()
 	return {
 		35250, -- Dragon's Breath
 		35314, -- Arcane Blast
-		{41951, "SAY"}, -- Fixate
+		{"fixate", "SAY"}, -- Fixate
 		"inferno", -- Inferno
 		35312, -- Raging Flames (the trail of fire the adds leave behind them)
 	}, {
 		[35250] = "general",
-		[41951] = 35312, -- Raging Flames
+		["fixate"] = 35312, -- Raging Flames
 	}
 end
 
@@ -132,14 +136,14 @@ do
 	local fixatedTargets, isOnMe = mod:NewTargetList(), nil
 
 	local function showFixateMessage(self)
-		self:TargetMessageOld(41951, fixatedTargets, "yellow", "long")
+		self:TargetMessageOld("fixate", fixatedTargets, "yellow", "long", CL.fixate, false)
 		isOnMe = nil
 	end
 
 	local function fixateAnnounce(self, target, guid)
 		if self:Me(guid) and not isOnMe then
 			isOnMe = true
-			self:Say(41951)
+			self:Say("fixate", CL.fixate)
 		end
 
 		if #fixatedTargets > 0 and fixatedTargets[#fixatedTargets] == self:ColorName(target) then return end -- don't announce the same player twice

@@ -20,7 +20,7 @@ BigWigs:AddColors("Nethermancer Sepethrea", {
 	[35250] = {"blue","orange"},
 	[35312] = "blue",
 	[35314] = {"blue","red"},
-	[41951] = {"blue","yellow"},
+	["fixate"] = {"blue","yellow"},
 	["inferno"] = {"blue","cyan"},
 })
 

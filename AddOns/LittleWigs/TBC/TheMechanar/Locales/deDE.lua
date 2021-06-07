@@ -17,5 +17,5 @@ end
 L = BigWigs:NewBossLocale("Nethermancer Sepethrea", "deDE")
 if L then
 	L.inferno = "Inferno"
-	L.inferno_desc = "Kael'thas Sonnenwanderer löst eine Flammensäule aus, die allen Spielercharakteren innerhalb von 6 Metern vom Einschlagspunkt 8 Sek. lang pro Sekunde Feuerschaden zufügt."
+	L.inferno_desc = "Tobende Flammen umgeben sich 8 Sek. lang mit einem Inferno, das allen Spielercharakteren in einem Umkreis von 10 Metern pro Sekunde Feuerschaden zufügt. Die tobenden Flammen können sich nicht bewegen oder Fähigkeiten einsetzen, solange sie in Flammen stehen. Wenn das Inferno endet, verfolgen sie ein neues Ziel."
 end

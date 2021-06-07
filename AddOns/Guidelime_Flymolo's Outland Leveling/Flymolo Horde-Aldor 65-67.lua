@@ -16,7 +16,7 @@ Accept [QA10486 The Encroaching Wilderness].
 Accept [QA10489 Felling an Ancient Tree].
 [G53.3,55.4 Blades Edge Mountains]Speak with *Gholah* and set your Hearthstone to [S Thunderlord Stronghold].
 [G52.1,54.2 Blades Edge Mountains]Speak with *Unoke Tenderhoof* to acquire the flight path.
-[G51.7,61.4 Blades Edge Mountains]Complete [QC10486].
+Go anywhere in the nearby woods to complete [QC10486].
 Turn in [QT10486 The Encroaching Wilderness].\\Accept [QA10487 Dust from the Drakes].
 [G48.2,65.8 Blades Edge Mountains]
 [G37.3,70.5 Blades Edge Mountains]Kill and loot *Stronglimb Deeproot* - he walks all along this road (be aware there is an Alliance town just to the north) - to complete [QC10489].
@@ -33,15 +33,16 @@ Accept [QA10542 They Stole Me Hookah and Me Brews!]
 Kill and loot *Bloodmaul Brewmasters* or loot *Bloodmaul Brew Kegs* to complete [QC10542].
 Make sure you have *AT LEAST* 1 extra *Bloodmaul Brutebane Brew* in your inventory before leaving this area!
 Turn in [QT10542 They Stole Me Hookah and Me Brews!]\\Accept [QA10545 Bladespire Kegger].
-[G43.4,52.8 Blades Edge Mountains]Use the *Bloodmaul Brutebane Keg* from your inventory to place it on the ground and then pull *Bladespire Ogres* into it to complete [QC10545].
+[G43.4,52.8 Blades Edge Mountains]Use the *Bloodmaul Brutebane Keg* from your inventory and place it on the ground at a ranged distance away from *Bladespire Ogres.* When you place it at the correct distance away - and still out of combat - the Ogres will run to it and then attack you. This will compete [QC10545].
 Turn in [QT10545 Bladespire Kegger].\\Accept [QA10543 Grimnok and Korgaah, I Am For You!]
-[G43.4,52.8 Blades Edge Mountains]Kill and Loot *Bladespire Ogres* and *Bladespire Raptors* to find the *Thunderlord Clan Artifact.* Right click it to accept [QA10524 Thunderlord Clan Artifacts]. *NOTE:* Keep killing for as long as it takes to get this quest; it *SHOULD NOT* be skipped!!
+[G43.4,52.8 Blades Edge Mountains]
+Look for the *Thunderlord Clan Artifact* in your inventory. If it is not there, kill and Loot *Bladespire Ogres* and *Bladespire Raptors* to find it. Right click it to accept [QA10524 Thunderlord Clan Artifacts]. *NOTE:* Keep killing for as long as it takes to get this quest; it *SHOULD NOT* be skipped!!
 [G40.2,58.3 Blades Edge Mountains]Loot the [QC10524,2 Thunderlord Clan Drum].
 [G40.9,51.8 Blades Edge Mountains]
-[G41.5,52.6 Blades Edge Mountains]Loot the [QC10524,1 Thunderlord Clan Arrow].
+[G41.5,52.6 Blades Edge Mountains]On top of the stone, loot the [QC10524,1 Thunderlord Clan Arrow].
 [G41.2,46.6 Blades Edge Mountains]Complete [QC10524].
 [G42.8,46.7 Blades Edge Mountains]
-Head up the ramp. There may be an Ogre right at the top that you need to fight. *DO NOT* go past the next waypoint!!
+Head up the ramp. There may be an Ogre right at the top that you need to fight. *DO NOT* go past the next waypoint!![OC]
 [G43.4,46.4 Blades Edge Mountains]
 Stand here and use the *Bloodmaul Brutebane Brew* to draw *Korgaah* away from the elites. *MAKE CERTAIN* no Ogres are coming up behind you or it may draw them instead! Complete [QC10543,2 Korgaah slain].
 Complete [QC10503].
@@ -51,21 +52,20 @@ Turn in [QT10524 Thunderlord Clan Artifacts].\\Accept [QA10525 Vision Guide].
 Use the *Fiery Soul Fragment* in your inventory and complete [QC10525].
 Turn in [QT10525 Vision Guide].\\Accept [QA10526 The Thunderspike].
 Turn in [QT10503 The Bladespire Threat].\\Accept [QA10505 The Bloodmaul Ogres].
-[G49.1,72.5 Blades Edge Mountains]When you are full health, walk off the ledge.
+[G49.1,72.5 Blades Edge Mountains]When you are full health, walk off the ledge. Make certain you are at the correct ledge!!
 [G48.9,73.0 Blades Edge Mountains]Make sure you have enough health to walk off the next ledge.
 [G47.9,74.0 Blades Edge Mountains]
-[G45.5,80.2 Blades Edge Mountains]Head to the top of the ramp and complete [QC10543].
+[G45.5,80.2 Blades Edge Mountains]Head to the top of the ramp and complete [QC10543]. *Note:* You can pull the *Skirmisher* without pulling *Grimnok.*
 [G42.5,83.6 Blades Edge Mountains]
 Go to the back of the cave and loot *The Thunderspike.* This will spawn *Gor Grimgut* who is toughter than the other Ogres in the area. Kill and loot *Gor Grimgut* to complete [QC10526].
 Turn in [QT10543 Grimnok and Korgaah, I Am For You!]\\Accept [QA10544 A Curse Upon Both of Your Clans!]
 [G43.4,52.8 Blades Edge Mountains]Go to the entryways of 5 different buildings (the entries at the tops of ramps will NOT work) and use the *Wicked Strong Fetish* from your inventory to summon *Bladespire Evil Spirits.* Kill them to complete [QC10544,1 Bladespire Hold Building Cursed].
-[G46.5,77.8 Blades Edge Mountains]
-Use the *Wicked Strong Fetish* at the entryways of these two buildings to complete [QC10544].
+[G46.5,77.8 Blades Edge Mountains]Use the *Wicked Strong Fetish* at the entryways of these two buildings to complete [QC10544].
 Complete [QC10505].
 Grind to [XP66 level 66].
 Turn in [QT10544 A Curse Upon Both of Your Clans!]
 Hearth to [H Thunderlord Stronghold].
-Turn in [QT10526 The Thunderspike].\\Accept [QA10718 The Spirits Have Voices].
+Turn in [QT10526 The Thunderspike].\\Wait for the conversation to finish and then accept [QA10718 The Spirits Have Voices].
 Turn in [QT10505 The Bloodmaul Ogres].
 Turn in [QT10718 The Spirits Have Voices].\\Accept [QA10614 Whispers on the Wind].
 [G55.8,72.6 Blades Edge Mountains]
@@ -77,7 +77,7 @@ Accept [QA10860 Mok'Nathal Treats].
 Speak with *Matron Varah* again and set your Hearthstone to [S Mok'Nathal Village].
 Turn in [QT10614 Whispers on the Wind].\\Accept [QA10709 Reunion].
 [G76.3,65.8 Blades Edge Mountains]Speak with *Sky-Master Maxxor* to get the flight path.
-Kill and loot *Silkwing Larva* and *Mature Silkwings* to work on [QC10617][OC] and [QC10618][OC] on your way to the next step.
+Kill and loot *Silkwing Larva* and *Mature Silkwings* to work on [QC10617][O] and [QC10618][O] on your way to the next step.
 Kill and loot *Vekh'nir Keeneyes* to find a *Vekh'nir Crystal.*[OC]
 [G77.8,74.7 Blades Edge Mountains]Use the *Vekh'nir Crystal* in your inventory to complete [QC10565].
 Complete [QC10617] and [QC10618].
@@ -222,6 +222,5 @@ Accept [QA11047 The Apprentice's Request].
 Fly to [F Evergrove].
 Turn in [QT10748 Maxnar Must Die!]
 [G82.1,28.9 Blades Edge Mountains]Head up the road to Netherstorm.
-导航由 *Flymolo* 编写，*Pglterry* 汉化[OC]
 
 ]], "Flymolo's 外域升级导航")

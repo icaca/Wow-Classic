@@ -87,7 +87,7 @@ function mod:UpdateWaveTimers(id, text)
 end
 
 function mod:BossDeath(args)
-	self:Bar("wave", 45, CL.count:format(self:SpellName(147840), args.mobId == 17879 and 7 or 13), "INV_Misc_ShadowEgg") -- 30s + 15s
+	self:Bar("wave", 30, CL.count:format(self:SpellName(35353), args.mobId == 17879 and 7 or 13), "INV_Misc_ShadowEgg")
 end
 
 function mod:MedivhDies()

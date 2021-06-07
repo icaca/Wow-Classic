@@ -17,5 +17,5 @@ end
 L = BigWigs:NewBossLocale("Nethermancer Sepethrea", "ptBR")
 if L then
 	L.inferno = "Inferno"
-	L.inferno_desc = "Kael'thas Andassol evoca um pilar de fogo, queimando todos os jogadores em um raio de 6 metros da área alvejada e causando dano de fogo a cada segundo por 8 s."
+	L.inferno_desc = "A Chamas Enraivecidas se protegem com um incêndio por 8 s, causando dano de Fogo a todos os jogadores em um raio de 10 m a cada segundo. Durante o incêndio as Chamas Enraivecidas não podem se mover ou usar habilidades. Quando o incêndio termina, as Chamas Enraivecidas escolhem um novo alvo para perseguir."
 end

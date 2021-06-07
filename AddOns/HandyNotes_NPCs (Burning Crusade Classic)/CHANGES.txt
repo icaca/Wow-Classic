@@ -1,9 +1,19 @@
 ------------------------------------------------------------------------
-r12 | Caliaha | 2021-06-01 22:19:15 +0000 (Tue, 01 Jun 2021) | 2 lines
+r14 | Caliaha | 2021-06-06 22:38:25 +0000 (Sun, 06 Jun 2021) | 2 lines
 Changed paths:
    M /trunk/data.lua
+   M /trunk/itemData.lua
+   M /trunk/locales/deDE.lua
+   M /trunk/locales/enUS.lua
+   M /trunk/locales/esES.lua
+   M /trunk/locales/frFR.lua
+   M /trunk/locales/koKR.lua
+   M /trunk/locales/ptBR.lua
+   M /trunk/locales/ruRU.lua
+   M /trunk/locales/zhCN.lua
+   M /trunk/vendorData.lua
 
-Flagged reagent vendors
+Updated data
 
 ------------------------------------------------------------------------
 

@@ -17,5 +17,5 @@ end
 L = BigWigs:NewBossLocale("Nethermancer Sepethrea", "frFR")
 if L then
 	L.inferno = "Inferno"
-	L.inferno_desc = "Kael’thas Haut-Soleil invoque un pilier de flammes brûlant tous les personnages-joueurs se trouvant à moins de 6 mètres de la zone ciblée et infligeant des dégâts de Feu toutes les secondes pendant 8 s."
+	L.inferno_desc = "Les flammes violentes s’entourent d’un Inferno pendant 8 s et infligent des dégâts de Feu à tous les personnages-joueurs se trouvant à moins de 10 mètres toutes les secondes. Tant qu’elles sont englouties par les flammes, les flammes violentes ne peuvent pas se déplacer ni utiliser leurs techniques. Une fois l’Inferno éteint, les flammes violentes choisissent une nouvelle cible à poursuivre."
 end

@@ -66,7 +66,7 @@ Turn in [QT10516 The Trappings of a Vindicator].\\Accept [QA10517 Gorr'Dim, Your
 [G40.0,49.7 Blades Edge Mountains]Use the same strategy as before and kill the *Brutes!*
 [G39.3,49.0 Blades Edge Mountains]Use the *Keg* and *MOVE BACK* and complete [QC10517].
 Turn in [QT10517 Gorr'Dim, Your Time Has Come].
-Use the *Bloodmaul Brutebane Keg* and pull *Bladespire Ogres* into it while it is on the ground to complete [QC10512].
+Use the *Bloodmaul Brutebane Keg* from your inventory and place it on the ground at a ranged distance away from *Bladespire Ogres.* When you place it at the correct distance away - and still out of combat - the Ogres will run to it and then attack you. This will compete [QC10512].
 Complete [QC10504].
 Grind to [XP66 level 66].
 *Note:* If you have not trained your abilities for a few levels you should do that now so *DO NOT* use your hearthstone to get back to *Sylvanaar.*[OC]
@@ -215,7 +215,8 @@ Accept [QA11043 Building a Better Gryphon].
 [G60.2,68.8 Blades Edge Mountains]
 Speak with *Rally Zapnabber* and have him send you to *Razaan's Landing.*
 [G82.1,28.9 Blades Edge Mountains]Head up the road to Netherstorm.
-导航由 *Flymolo* 编写，*Pglterry* 汉化[OC]
+
+
 
 
 ]], "Flymolo's 外域升级导航")

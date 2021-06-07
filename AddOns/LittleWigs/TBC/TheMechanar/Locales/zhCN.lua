@@ -17,5 +17,5 @@ end
 L = BigWigs:NewBossLocale("Nethermancer Sepethrea", "zhCN")
 if L then
 	L.inferno = "地狱火"
-	L.inferno_desc = "凯尔萨斯·逐日者召唤一根火柱，灼烧指定区域6码范围内的所有玩家，每秒造成一次火焰伤害，持续8秒。"
+	L.inferno_desc = "狂怒烈焰用地狱火环绕自己，持续8秒，每秒对10码范围内的所有玩家造成火焰伤害。燃烧时，狂怒烈焰不能移动或使用任何技能。地狱火效果消失时，狂怒烈焰会选择一个新目标去追逐。"
 end
