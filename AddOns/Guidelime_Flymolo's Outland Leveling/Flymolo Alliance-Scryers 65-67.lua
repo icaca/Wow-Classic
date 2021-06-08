@@ -66,9 +66,9 @@ Turn in [QT10516 The Trappings of a Vindicator].\\Accept [QA10517 Gorr'Dim, Your
 [G40.0,49.7 Blades Edge Mountains]Use the same strategy as before and kill the *Brutes!*
 [G39.3,49.0 Blades Edge Mountains]Use the *Keg* and *MOVE BACK* and complete [QC10517].
 Turn in [QT10517 Gorr'Dim, Your Time Has Come].
-Use the *Bloodmaul Brutebane Keg* and pull *Bladespire Ogres* into it while it is on the ground to complete [QC10512].
+Use the *Bloodmaul Brutebane Keg* from your inventory and place it on the ground at a ranged distance away from *Bladespire Ogres.* When you place it at the correct distance away - and still out of combat - the Ogres will run to it and then attack you. This will compete [QC10512].
 Complete [QC10504].
-Grind to [XP66 level 66].
+
 *Note:* If you have not trained your abilities for a few levels you should do that now so *DO NOT* use your hearthstone to get back to *Sylvanaar.*[OC]
 [G42.1,74.6 Blades Edge Mountains]
 [G40.8,75.5 Blades Edge Mountains]
@@ -110,7 +110,6 @@ Accept [QA10682 A Time for Negotiation...]
 Turn in [QT10812].\\Accept [QA10819 Felsworn Gas Mask].
 [G60.1,40.1 Blades Edge Mountains]*Overseer Nuaar* is a Draenei who wanders between the *Wyrmcult* camps to the south and also the west. Find him and speak with him to complete [QC10682].
 Turn in [QT10682 A Time for Negotiation...]\\Accept [QA10713 ...and a Time for Action].
-*Note:* you will need *Costume Scraps* later so save any that you find![OC]
 Accept [QA10717 Poaching from Poachers].
 Kill and loot *Wyrmcult Poachers* to complete [QC10717]. Complete [QC10713].
 Check your inventory for the *Meeting Note.* Right click it to accept [QA10719 Did You Get The Note?] If you do not have it, continue killing and looting *Wyrmcults* until it drops.
@@ -167,20 +166,16 @@ Turn in [QT10894 Wyrmskull Watcher].\\Accept [QA10893 Longtail is the Lynchpin].
 [G44.7,32.0 Blades Edge Mountains]Complete [QC10893].
 Kill *Grishna* to receive the *Understanding Ravenspeech* buff to complete the next steps.[OC]
 [G40.2,23.0 Blades Edge Mountains][QC10607,4 Fourth Prophecy].
-Look for *Grishnath Orbs* on stands in this area! *You need to collect five of these!*[OC]
 [G40.7,18.7 Blades Edge Mountains][QC10607,3 Third Prophecy].
 [G40.4,18.1 Blades Edge Mountains]
 [G41.2,18.2 Blades Edge Mountains]
 [G42.4,21.7 Blades Edge Mountains]Head across the bridges and then down to the lower level of the tower for [QC10607,2 Second Prophecy].
 [G39.0,17.2 Blades Edge Mountains]Go back across the bridges and onto the other tower for [QC10607].
-Check your inventory for *Orb of the Grishna* (not to be confused with Grishnath Orb). Right click it to accept [QA10825 The Truth Unorbed]. If you do not have it, keep grinding *Grishna* until it drops!
-Stay in the area until you have collected *5 Grishnath Orbs* on stands near the huts.
-Kill and loot *Dire Ravens* during the next steps until you have collected *5 Dire Pinfeathers.][O]
+Check your inventory for *Orb of the Grishna.* Right click it to accept [QA10825 The Truth Unorbed]. If you do not have it, keep grinding *Grishna* until it drops!
 [G30.6,22.2 Blades Edge Mountains]Kill *Boulder'mok* until you have three *Grisly Totems*. Right-click *Gorgom's Altar* to summon *Gorgom.* When he dies, simply use the *Grisly Totems* three times to complete [QC10802].
 Complete [QC10803].
 [G32.8,34.3 Blades Edge Mountains]Use the *Blackwhelp Net* from your inventory on *Blackwhelps* to complete [QC10747]. *NOTE:* Blackwhelps fly around but also spawn when you get close to the eggs!
 Hearth to [H Evergrove].
-*Note:* Be certain to save your *Costume Scraps, Dire Pinfeathers, and Grishnath Orbs.*
 Turn in [QT10803 Slaughter at Boulder'mok].
 Turn in [QT10802 Gorgrom the Dragon-Eater].\\Accept [QA10818 Baron Sablemane Has Requested Your Presence].
 Turn in [QT10607 Whispers of the Raven God].

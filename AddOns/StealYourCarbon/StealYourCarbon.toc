@@ -1,0 +1,30 @@
+## Interface: 20501
+
+## Title: Steal Your Carbon
+## Notes: Automatically restock items from vendors and your bank
+## Author: Tekkub Stoutwrithe
+## X-Category: Inventory
+## X-Icon: Interface/Icons/INV_Qiraj_JewelGlyphed
+
+## SavedVariablesPerCharacter: StealYourCarbonDB
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Merchant: true
+## X-LoadOn-Bank: true
+## X-LoadOn-InterfaceOptions: Steal Your Carbon
+
+externals\events.lua
+externals\gsc.lua
+externals\itemid.lua
+externals\print.lua
+
+tekKonfig\tekKonfig.xml
+
+StealYourCarbon.lua
+Bank.lua
+VendorBuyer.lua
+WaterUpgrader.lua
+
+Config_Bags.lua
+Config_Restock.lua
+Config.lua
