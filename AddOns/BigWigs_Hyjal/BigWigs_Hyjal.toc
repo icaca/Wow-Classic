@@ -22,7 +22,7 @@
 ## Notes-ruRU: BigWigs Mount Hyjal Modules
 ## Notes-zhCN: BigWigs Mount Hyjal Modules
 ## Notes-zhTW: BigWigs Mount Hyjal Modules
-## Version: v26.1-classic
+## Version: v26.2-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

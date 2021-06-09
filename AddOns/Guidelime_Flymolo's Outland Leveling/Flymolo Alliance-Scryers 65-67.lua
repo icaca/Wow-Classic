@@ -1,215 +1,218 @@
 Guidelime.registerGuide([[
 
-[N65-67 Flymolo's Alliance-Scryers Guide]
+[N65-67 【联盟】刀锋山-占星者]
 [D Flymolo's 外域升级导航 汉化 by Pglterry]
-[NX67 Flymolo's Alliance-Scryers Guide]
+[NX67 【联盟】虚空风暴-占星者]
 [GA Alliance]
 
 导航由 *Flymolo* 编写，*Pglterry* 汉化[OC]
-Grind to [XP65 level 65].
-Accept [QA10927 Killing the Crawlers].
-Head into the cave and complete [QC10927] while you are there.
-Turn in [QT9794 No Time for Curiosity].
-Accept [QA10690 The Den Mother].
-Accept [QA10455 The Encroaching Wilderness].
-Turn in [QT10927 Killing the Crawlers].\\Accept [QA10502 The Bloodmaul Ogres].
-Accept [QA10555 Malaise].
-Accept [QA10510 Into the Draenethyst Mine].
-Accept [QA10511 Strange Brew].
-[G35.8,63.9 Blades Edge Mountains]Speak with Innkeeper Shaunessy and set your *Hearthstone* to [S Sylvanaar].
-Work on [QC10455][O] during the next steps.
+刷怪到 [XP65 65级]
+接受任务 [QA10927].
+进入洞穴完成任务 [QC10927]
+提交任务 [QT9794].
+接受任务 [QA10690].
+接受任务 [QA10455].
+提交任务 [QT10927].\\接受任务 [QA10502].
+接受任务 [QA10555].
+接受任务 [QA10510].
+接受任务 [QA10511].
+[G35.8,63.9 Blades Edge Mountains]与*旅店老板肖恩妮丝*对话定炉石 [S 希尔瓦纳].
+接下来，做任务 [QC10455][O]
 [G38.6,73.5 Blades Edge Mountains]
 [G42.4,81.4 Blades Edge Mountains]
-In this area, kill and loot *Bloodmaul Brewmasters* or loot *Bloodmaul Brew Kegs* to complete [QC10511][O].
+在这区域，击杀拾取 *血槌酿酒师* 或者拾取 *血槌酒桶* 完成任务 [QC10511][O]
 [G42.6,84.3 Blades Edge Mountains]
-Kill and loot *Bloodmaul Drudgers* in the cave and open *Draenethyst Mine Crystals* to complete [QC10510].
-Head out of the cave and complete [QC10502] and [QC10511].
+在洞穴里击杀拾取 *血槌苦力* ，收集 *德拉诺矿洞水晶* 完成任务 [QC10510]
+在洞穴外完成任务 [QC10502] 和 [QC10511].
 [G40.3,73.2 Blades Edge Mountains]
 [G36.8,75.8 Blades Edge Mountains]
-Head up the hill and kill and loot *Lashh'an* to complete [QC10555].
+上山击杀拾取 *拉什鸦人* 完成任务 [QC10555].
 [G34.8,76.5 Blades Edge Mountains]
-Head up the ramp and turn in [QT10555 Malaise].\\Accept [QA10556 Scratches].
+到树台子上提交任务 [QT10555].\\接受任务 [QA10556].
 [G35.2,77.3 Blades Edge Mountains]
-Use the *Fistful of Feathers* from your inventory to complete summon *Kaliri Totem.*
-Be aware that *Scratches* has a *10 minute* timer, but try to complete [QC10455][O] on your way to turn it in.
+使用 *一把羽毛* 在卡利图腾召唤 *卡利鸟的灵魂*
+注意这个任务有*10分钟*的时限，不过可以尝试在去提交的路上完成任务 [QC10455][O]
 [G37.0,65.6 Blades Edge Mountains][OC]
-Turn in [QT10556 Scratches].
-Complete [QC10455].
-Turn in [QT10511 Strange Brew].\\Accept [QA10512 Getting the Bladespire Tanked].
-Turn in [QT10510 Into the Draenethyst Mine].
-Turn in [QT10502 The Bloodmaul Ogres].\\Accept [QA10504 The Bladespire Ogres].
-Turn in [QT10455 The Encroaching Wilderness].\\Accept [QA10456 Marauding Wolves].
-[G37.8,61.5 Blades Edge Mountains]Speak with *Amerun Leafshade* to get the flight path.
+提交任务 [QT10556].
+完成任务 [QC10455].
+提交任务 [QT10511].\\接受任务 [QA10512].
+提交任务 [QT10510].
+提交任务 [QT10502].\\接受任务 [QA10504].
+提交任务 [QT10455].\\接受任务 [QA10456].
+[G37.8,61.5 Blades Edge Mountains]与 *埃莫伦·叶影* 对话激活飞行点
 [G42.2,65.5 Blades Edge Mountains]
 [G49.5,66.5 Blades Edge Mountains]
-*Note:* Be aware that this is the area where the *Horde* arrive in *Blades Edge Mountains.* This may be problematic on PvP servers and may also cause you to have to wait for *Rema* to respawn since she is right at the Horde entry point.[OC]
-Kill and loot *Thunderlord Dire Wolves* in this area to work on [QC10456][O].
-[G51.6,75.0 Blades Edge Mountains]Kill *Rema* to complete [QC10690].
-Complete [QC10456].
-Turn in [QT10456 Marauding Wolves].\\Accept [QA10457 Protecting Our Own].
+*注：* 里靠近*部落*在*刀锋山*的营地。在PVP服务器，当你在这个靠近部落营地的地方等*雷玛*刷新，可能会遇到些麻烦。[OC]
+在这区域做任务 [QC10456][O]，击杀拾取 *雷神恶狼*
+[G51.6,75.0 Blades Edge Mountains]击杀 *雷玛* 完成任务 [QC10690].
+完成任务 [QC10456].
+提交任务 [QT10456].\\接受任务 [QA10457].
 [G37.0,69.0 Blades Edge Mountains]
-Head out into the forest and right-click the *Grove Seedlings* on the ground to complete [QC10457].
-Turn in [QT10457 Protecting Our Own].\\Accept [QA10506 A Dire Situation].
-Turn in [QT10690 The Den Mother].
+到外面的森林点击地上的 *活木林树苗* 完成任务 [QC10457]
+提交任务 [QT10457].\\接受任务 [QA10506].
+提交任务 [QT10690].
 [G39.0,74.5 Blades Edge Mountains]
-[G43.5,74.7 Blades Edge Mountains]Use *Rina's Diminution Powder* from your inventory on 5 *Bloodmaul Dire Wolves* OR on the same Dire Wolf 5 times *(he will go back to normal within a minute of use).* 1You must be in *melee range* to do this. Complete [QC10506].
-*NOTE:* DO NOT use the *Keg* on the Ogres yet!!
-Accept [QA10516 The Trappings of a Vindicator].
+[G43.5,74.7 Blades Edge Mountains]对5只 *血槌巨狼* 使用 *莉娜的缩小粉尘* 或者在同一只狼身上使用5次（使用后狼会在1分钟内恢复原样）完成任务 [QC10506]。*你必须在近战范围对狼使用*
+*注：*现在不要对食人魔使用 *血槌酒桶* !
+接受任务 [QA10516].
 [G39.3,52.9  Blades Edge Mountains]
-Pull the *Bladespire Shamans* to get them away from the elites and then kill them.
-*NOTE:* DO NOT go past the next waypoint because you do not want to draw the elites!
-[G38.8,52.7 Blades Edge Mountains]Use the *Bloodmaul Brutebane Keg* in your inventory at this spot *AND MOVE BACK IMMEDIATELY!* It will draw *Droggam.* Pull him back away from the elites to kill and loot him for [QC10516,1 Vuuleen's Blade].
+把 *刀塔萨满祭司* 拉远离精英怪然后击杀他们。
+*注：* 不要去下个导航点因为你不会想去惹那儿的精英怪的！
+[G38.8,52.7 Blades Edge Mountains]在这里使用 *血槌酒桶* 然后*立即后退*，吸引 *德罗加姆* 过来，远离精英怪击杀他拾取 [QC10516,1 乌里恩之盾]
 [G42.2,58.1 Blades Edge Mountains]
-Pull the *Bladespire Brutes* to get them away from the elites and then kill them.
-[G42.4,58.9 Blades Edge Mountains]Use the *Bloodmaul Brutebane Keg* in your inventory at this spot*AND MOVE BACK IMMEDIATELY!* It will draw *Mugdorg.* Pull him back away from the elites to kill and loot him to complete [QC10516].
-Turn in [QT10516 The Trappings of a Vindicator].\\Accept [QA10517 Gorr'Dim, Your Time Has Come].
-[G40.0,49.7 Blades Edge Mountains]Use the same strategy as before and kill the *Brutes!*
-[G39.3,49.0 Blades Edge Mountains]Use the *Keg* and *MOVE BACK* and complete [QC10517].
-Turn in [QT10517 Gorr'Dim, Your Time Has Come].
-Use the *Bloodmaul Brutebane Keg* from your inventory and place it on the ground at a ranged distance away from *Bladespire Ogres.* When you place it at the correct distance away - and still out of combat - the Ogres will run to it and then attack you. This will compete [QC10512].
-Complete [QC10504].
-
-*Note:* If you have not trained your abilities for a few levels you should do that now so *DO NOT* use your hearthstone to get back to *Sylvanaar.*[OC]
+把 *刀塔蛮兵* 拉远离精英怪然后击杀他们。
+[G42.4,58.9 Blades Edge Mountains]在这里使用 *血槌酒桶* 然后*立即后退*，吸引 *玛戈多格* 过来，远离精英怪击杀他拾取完成任务 [QC10516]
+提交任务 [QT10516].\\接受任务 [QA10517].
+[G40.0,49.7 Blades Edge Mountains]使用之前的办法击杀 *刀塔蛮兵*！
+[G39.3,49.0 Blades Edge Mountains]使用 *血槌酒桶* ，后退回避，然后完成任务 [QC10517]
+提交任务 [QT10517].
+在距离 *血槌食人魔* 一段距离放下 *血槌酒桶*。只要距离合适，能在不进入战斗的情况下吸引它们过来喝酒然后才转头攻击你。重复完成 [QC10512]
+完成任务 [QC10504].
+*注：*如果你已经升了好几级但是一直没去训练师那儿学习新的技能，你应该去了。但是先别用炉石回 *希尔瓦纳* [OC]
 [G42.1,74.6 Blades Edge Mountains]
 [G40.8,75.5 Blades Edge Mountains]
-Turn in [QT10506 A Dire Situation].
-Turn in [QT10504 The Bladespire Ogres].
-Turn in [QT10512 Getting the Bladespire Tanked].
-*NOTE:* If you have not trained your abilities for a while AND your hearthstone is available, now would be an excellent time to train! Fly to *Shattrath* and use the teleports there to get back to your city of choice.
+提交任务 [QT10506].
+提交任务 [QT10504].
+提交任务 [QT10512].
+*注：*如果炉石没有CD,现在是好时机去训练师那儿学习新的技能！飞到  *沙塔斯城* ，使用传送门回主城学习吧。
 [G42.2,65.5 Blades Edge Mountains]
 [G55.3,73.1 Blades Edge Mountains]
-Accept [QA10557 Test Flight: The Zephyrium Capacitorium].
-NOTE: You may fall to your death on the test flights - it's a little random. Be ready to shield, levetate, or whatever else you can do to keep this from happening![OC]
-[G60.2,68.8 Blades Edge Mountains]Speak with *Rally Zapnabber* and complete [QC10557].
-Turn in [QT10557 Test Flight: The Zephyrium Capacitorium].\\Accept [QA10710 Test Flight: The Singing Ridge]. If the quest does not show up, pick up the remaining quests in the area and wait for three minutes.
-Accept [QA10609 What Came First, the Drake or the Egg].
-Speak with *Fizit "Doc" Clocktock* again to set your *Hearthstone* to [S Toshley's Station]
-Make certain to be well stalked with beverages because you will lose a lot of *mana* in the next area!![A Mage,Priest,Warlock,Paladin,Shaman,Hunter,Druid]
-[G61.1,70.4 Blades Edge Mountains]Speak with *Rip Pedalslam* to get the flight path.
-Right click to sign *Tally's Waiver* in your inventory.
-Accept [QA10608 Crystal Clear].
-[G60.2,68.8 Blades Edge Mountains]Speak with *Rally Zapnabber* and complete [QC10710].
-[G67.7,76.0 Blades Edge Mountains]If you *did not* land on *Singing Ridge* you can ignore and manually complete this waypoint.
-*NOTE:* Open *Nether Drake Eggs* and use the *Temporal Phase Modulator* from your inventory on the *Nether Whelp* that spawns. Kill and loot whatever it turns into. You may use the *Mudulator* more than one time if you cannot find the right kind of Drake. *BE AWARE* that all of these Drakes are nasty, do a lot of damage, and drain your mana very quickly!![OC]
-[G59.7,73.8 Blades Edge Mountains]Complete [QC10608] and [QC10609].
-Turn in [QT10608 Crystal Clear].
-Turn in [QT10710 Test Flight: The Singing Ridge].\\Accept [QA10711 Test Flight: Razaan's Landing].
-Turn in [QT10609 What Came First, the Drake or the Egg].
-[G60.2,68.8 Blades Edge Mountains]Speak with *Rally Zapnabber* and complete [QC10711].
-[G70.8,43.9 Blades Edge Mountains]From this waypoint, continue north and kill and loot *Fel Corrupters* until you receive the *Damaged Mask.* Right click it to accept [QA10810 Damaged Mask].
+接受任务 [QA10557].
+*注：* 虽然是概率事情，但你可能会在试飞任务中摔死--！准备好盾，漂浮术，等办法尽可能在发生坠落时保住小命！[OC]
+[G60.2,68.8 Blades Edge Mountains]与 *拉雷·萨普纳波* 对话完成任务 [QC10557]
+提交任务 [QT10557].\\接受任务 [QA10710]。如果没出现这个任务，先在这里把其它任务接了，等3分钟
+接受任务 [QA10609].
+与 *菲兹特·表针* 对话定炉石 [S 托什雷的基地]
+在下个区域的任务会让你消耗大量的蓝，一定要多喝饮料确保蓝量！[A Mage,Priest,Warlock,Paladin,Shaman,Hunter,Druid]
+[G61.1,70.4 Blades Edge Mountains]与 *里普·派兹拉姆* 对话激活飞行点
+使用背包里的 *塔利的声明* 签署声明
+接受任务 [QA10608].
+[G60.2,68.8 Blades Edge Mountains]与 *拉雷·萨普纳波* 对话完成任务 [QC10710].
+[G67.7,76.0 Blades Edge Mountains]如果你没有降落在*晶歌山脉*，手动跳过这个导航点
+*注：*打开 *虚空龙蛋* ，对孵化出来的*虚空幼龙* 使用 *时间定相调节器*，然后击杀拾取变出来的虚空幼龙。你要多次使用*调节器*去收集各类虚空幼龙精华。这些虚空幼龙伤害不低，还会快速抽蓝，要*小心*应对！[OC]
+[G59.7,73.8 Blades Edge Mountains]完成任务 [QC10608] 和 [QC10609].
+提交任务 [QT10608].
+提交任务 [QT10710].\\接受任务 [QA10711].
+提交任务 [QT10609].
+[G60.2,68.8 Blades Edge Mountains]与 *拉雷·萨普纳波* 对话完成任务 [QC10711].
+[G70.8,43.9 Blades Edge Mountains]从这个导航点，往北走击杀拾取 *邪能腐蚀者* 直到拾取 *损坏的面具*，点击接受任务 [QA10810]
 [G66.5,38.2 Blades Edge Mountains]
 
-Turn in [QT10810 Damaged Mask].\\Accept [QA10812 Mystery Mask].
-[G61.6,39.7 Blades Edge Mountains]Speak with *Fhyn Leafshadow* to get the flight path.
-Accept [QA10770 Little Embers] and [QA10771 From the Ashes].
-Accept [QA10795 A Date with Dorgok].
-Accept [QA10796 Crush the Bloodmaul Camp!]
-Accept [QA10753 Culling the Wild].
-Accept [QA10567 Creating the Pendant].
-Accept [QA10682 A Time for Negotiation...]
-Turn in [QT10812].\\Accept [QA10819 Felsworn Gas Mask].
-[G60.1,40.1 Blades Edge Mountains]*Overseer Nuaar* is a Draenei who wanders between the *Wyrmcult* camps to the south and also the west. Find him and speak with him to complete [QC10682].
-Turn in [QT10682 A Time for Negotiation...]\\Accept [QA10713 ...and a Time for Action].
-Accept [QA10717 Poaching from Poachers].
-Kill and loot *Wyrmcult Poachers* to complete [QC10717]. Complete [QC10713].
-Check your inventory for the *Meeting Note.* Right click it to accept [QA10719 Did You Get The Note?] If you do not have it, continue killing and looting *Wyrmcults* until it drops.
+提交任务 [QT10810].\\接受任务 [QA10812].
+[G61.6,39.7 Blades Edge Mountains]与 *菲恩·叶影* 对话激活飞行点
+接受任务 [QA10770] 和 [QA10771].
+接受任务 [QA10795].
+接受任务 [QA10796]
+接受任务 [QA10753].
+接受任务 [QA10567].
+接受任务 [QA10682]
+提交任务 [QT10812].\\接受任务 [QA10819].
+[G60.1,40.1 Blades Edge Mountains]*工头努埃尔*是一个在拜龙教营地南边和西边游荡的德莱尼人。找到他与他对话完成任务 [QC10682]
+提交任务 [QT10682]\\接受任务 [QA10713].
+接受任务 [QA10717].
+击杀拾取 *拜龙教* 完成任务 [QC10717] 和 [QC10713]
+查看背包里是否有 *会议记录*，右键点击接受任务 [QA10719]。如果还没有，继续击杀拾取*拜龙教*直到获取。
 [G61.9,30.0 Blades Edge Mountains]
 [G55.4,25.1 Blades Edge Mountains]
-[G55.1,24.3 Blades Edge Mountains]Head up the ramp. Kill *Dorgok* to complete [QC10795].
-Make certian to loot *Dorgok!* You must acquire *Gorgrom's Favor* from him!
-Complete [QC10796].
+[G55.1,24.3 Blades Edge Mountains]到山上石堡里击杀拾取 *多古克* 完成任务 [QC10795]
+确保从他身上拾取 *高格鲁姆的信物*！
+完成任务 [QC10796].
 [G58.6,30.5 Blades Edge Mountains]
-[G64.3,29.9 Blades Edge Mountains]Kill and loot *Ruuan'ok* until you have *6 Ruuan'ok Claws.*
-[G64.5,33.1 Blades Edge Mountains]Use the *Claws* to summon *Harbinger of the Raven.* Kill and loot him to complete [QC10567].
+[G64.3,29.9 Blades Edge Mountains]击杀拾取 *卢安鸦人* 直到获得6个 *卢安利爪*
+[G64.5,33.1 Blades Edge Mountains]使用 *卢安利爪* 召唤 *乌鸦预言者*，击杀拾取他完成任务 [QC10567]
 [G65.3,40.0 Blades Edge Mountains]
-Work on [QC10753][O] during the next steps.
+接着完成任务 [QC10753][O]
 [G72.1,41.2 Blades Edge Mountains]
-Equip the *Felsworn Gas Mask* from your inventory.[OC]
-Turn in [QT10819 Felsworn Gas Mask].\\Accept [QA10820 Deceive thy Enemy].
-Complete [QC10820].
-Turn in [QT10820 Deceive thy Enemy].
-[G71.7,29.1 Blades Edge Mountains]Complete [QC10753].
-[G71.7,22.4 Blades Edge Mountains]Right-click the *Fertile Volcanic Soil* to plant the seeds. [QC10771,1 Southern Volcanic Soil]
-[G71.7,20.4 Blades Edge Mountains]Right-click the *Fertile Volcanic Soil* to plant the seeds. [QC10771,2 Central Volcanic Soil]
-[G71.6,18.6 Blades Edge Mountains]Right-click the *Fertile Volcanic Soil* to plant the seeds and complete [QC10771].
-Complete [QC10770].
-Hearth to [H Toshley's Station].
-Turn in [QT10711 Test Flight: Razaan's Landing].\\Accept [QA10712 Test Flight: Ruuan Weald].
-[G60.2,68.8 Blades Edge Mountains]Speak with *Rally Zapnabber.* *MAKE CERTAIN* to use the *Nether-weather Vane* in your inventory while flying to Ruuan Weald!![QC10712]
-Turn in [QT10717 Poaching from Poachers].\\Accept [QA10747 Whelps of the Wyrmcult].
-Turn in [QT10713 ...and a Time for Action] and [QT10719 Did You Get The Note].\\Accept [QA10894 Wyrmskull Watcher].
-Turn in [QT10712 Test Flight: Ruuan Weald].
-Turn in [QT10567 Creating the Pendant].\\Accept [QA10607 Whispers of the Raven God].
-Speak with *Innkeeper Aelerya* to set your Hearthstone to [S Evergrove].
-Turn in [QT10753 Culling the Wild].
-Turn in [QT10796 Crush the Bloodmaul Camp!]
-Turn in [QT10795 A Date with Dorgok].
-Right-click *Gorgrom's Favor* in your inventory to accept [QA10797 Favor of the Gronn]. If you do not have *Gorgrom's Favor* you will need to go back and kill *Dorgok* again.
-Turn in [QT10797 Favor of the Gronn].\\Accept [QA10798 Pay the Baron a Visit].
-Turn in [QT10771 From the Ashes] and [QT10770 Little Embers].
+装备背包里的 *魔誓防毒面具* [OC]
+提交任务 [QT10819].\\接受任务 [QA10820].
+完成任务 [QC10820].
+提交任务 [QT10820].
+[G71.7,29.1 Blades Edge Mountains]完成任务 [QC10753].
+[G71.7,22.4 Blades Edge Mountains]右键点击 *肥沃的火山灰* 种植种子 [QC10771,1 南部火山灰]
+[G71.7,20.4 Blades Edge Mountains]右键点击 *肥沃的火山灰* 种植种子 [QC10771,2 中部火山灰]
+[G71.6,18.6 Blades Edge Mountains]右键点击 *肥沃的火山灰* 种植种子完成任务 [QC10771]
+完成任务 [QC10770].
+使用炉石返回 [H 托什雷的基地].
+提交任务 [QT10711].\\接受任务 [QA10712].
+[G60.2,68.8 Blades Edge Mountains]与 *拉雷·萨普纳波* 对话，记得起飞后使用*虚空风向标* [QC10712]
+提交任务 [QT10717].\\接受任务 [QA10747].
+提交任务 [QT10713] 和 [QT10719].\\接受任务 [QA10894].
+提交任务 [QT10712].
+提交任务 [QT10567].\\接受任务 [QA10607].
+与 *旅店老板埃蕾尔娅* 对话定炉石 [S 常青林]
+提交任务 [QT10753].
+提交任务 [QT10796]
+提交任务 [QT10795].
+右键点击 *高格鲁姆的信物* 接受任务 [QA10797]，如果你还没有这个物品需要回去击杀 *多古克* 拾取
+提交任务 [QT10797].\\接受任务 [QA10798].
+提交任务 [QT10771 和 [QT10770]
 
 [G59.2,42.4 Blades Edge Mountains]
 [G51.5,45.3 Blades Edge Mountains]
 [G51.1,43.1 Blades Edge Mountains]
-Turn in [QT10798 Pay the Baron a Visit].\\Accept [QA10799 Into the Churning Gulch].
-[G49.3,45.0 Blades Edge Mountains]Kill and loot *Young* and *Greater Crust Bursters* to complete [QC10799].
-Turn in [QT10799 Into the Churning Gulch].\\Accept [QA10800 Goodnight, Gronn].
+提交任务 [QT10798].\\接受任务 [QA10799].
+[G49.3,45.0 Blades Edge Mountains]击杀拾取 *硬壳穿地虫幼体* 和 *大型硬壳穿地虫* 完成任务 [QC10799]
+提交任务 [QT10799].\\接受任务 [QA10800].
 [G51.0,43.4 Blades Edge Mountains]
-[G60.8,47.7 Blades Edge Mountains]*From just out of aggro range,* use *Sablemane's Sleeping Powder* on *Grulloc* and grab the *Sack* to complete [QC10800].
-Turn in [QT10800 Goodnight, Gronn].\\Accept [QA10801 It's a Trap!]
+[G60.8,47.7 Blades Edge Mountains]在不会惊动 *格鲁洛克* 的距离使用 *萨博迈恩的催眠粉*，然后偷走 *格鲁洛克的包裹* 完成任务 [QC10800]
+提交任务 [QT10800].\\接受任务 [QA10801]
 [G51.0,43.4 Blades Edge Mountains]
 [G58.9,45.9 Blades Edge Mountains]
-Turn in [QT10801 It's a Trap!]\\Accept [QA10802 Gorgrom the Dragon-Eater].
-Accept [QA10803 Slaughter at Boulder'mok].
+提交任务 [QT10801]\\接受任务 [QA10802].
+接受任务 [QA10803].
 [G56.1,40.0 Blades Edge Mountains]
-Turn in [QT10894 Wyrmskull Watcher].\\Accept [QA10893 Longtail is the Lynchpin].
-[G44.7,32.0 Blades Edge Mountains]Complete [QC10893].
-Kill *Grishna* to receive the *Understanding Ravenspeech* buff to complete the next steps.[OC]
-[G40.2,23.0 Blades Edge Mountains][QC10607,4 Fourth Prophecy].
-[G40.7,18.7 Blades Edge Mountains][QC10607,3 Third Prophecy].
+提交任务 [QT10894].\\接受任务 [QA10893].
+[G44.7,32.0 Blades Edge Mountains]完成任务 [QC10893].
+击杀 *格里施纳的鸦人* 获得2分钟时长的Buff： *理解鸦语*[OC]
+[G40.2,23.0 Blades Edge Mountains][QC10607,获知第四个预言].
+
+[G40.7,18.7 Blades Edge Mountains][QC10607,获知第三个预言].
 [G40.4,18.1 Blades Edge Mountains]
 [G41.2,18.2 Blades Edge Mountains]
-[G42.4,21.7 Blades Edge Mountains]Head across the bridges and then down to the lower level of the tower for [QC10607,2 Second Prophecy].
-[G39.0,17.2 Blades Edge Mountains]Go back across the bridges and onto the other tower for [QC10607].
-Check your inventory for *Orb of the Grishna.* Right click it to accept [QA10825 The Truth Unorbed]. If you do not have it, keep grinding *Grishna* until it drops!
-[G30.6,22.2 Blades Edge Mountains]Kill *Boulder'mok* until you have three *Grisly Totems*. Right-click *Gorgom's Altar* to summon *Gorgom.* When he dies, simply use the *Grisly Totems* three times to complete [QC10802].
-Complete [QC10803].
-[G32.8,34.3 Blades Edge Mountains]Use the *Blackwhelp Net* from your inventory on *Blackwhelps* to complete [QC10747]. *NOTE:* Blackwhelps fly around but also spawn when you get close to the eggs!
-Hearth to [H Evergrove].
-Turn in [QT10803 Slaughter at Boulder'mok].
-Turn in [QT10802 Gorgrom the Dragon-Eater].\\Accept [QA10818 Baron Sablemane Has Requested Your Presence].
-Turn in [QT10607 Whispers of the Raven God].
-Turn in [QT10825 The Truth Unorbed].\\Accept [QA10829 Treebole Must Know].
-Turn in [QT10747 Whelps of the Wyrmcult].
+[G42.4,21.7 Blades Edge Mountains]传过吊桥到塔楼下面的一层 [QC10607,获知第二个预言]
+[G39.0,17.2 Blades Edge Mountains]从吊桥往回走直到另一个塔楼完成任务 [QC10607]
+查看背包里是否有*格里施纳宝珠*，右键点击接受任务 [QA10825]。如果还没有，击杀拾取 *格里施纳鸦人* 直到获取！
+
+
+击杀*砾石食人魔*获取3根*可怕的图腾* ，点击*高格鲁姆的祭坛*召唤*高格鲁姆*。等他死掉，在尸体边使用3次*可怕的图腾*完成任务 [QC10802]
+完成任务 [QC10803].
+[G32.8,34.3 Blades Edge Mountains]使用 *黑色龙崽之网* 捕获 *黑色龙崽* 完成任务 [QC10747].*注：*除了四处飞行的黑色龙崽，靠近龙蛋时也会孵化龙崽！
+使用炉石返回 [H 常青林].
+
+提交任务 [QT10803].
+提交任务 [QT10802].\\接受任务 [QA10818].
+提交任务 [QT10607].
+提交任务 [QT10825].\\接受任务 [QA10829].
+提交任务 [QT10747].
 [G58.9,42.6 Blades Edge Mountains]
-Turn in [QT10818 Baron Sablemane Has Requested Your Presence].
+提交任务 [QT10818].
 [G51.0,43.4 Blades Edge Mountains]
 [G58.9,45.9 Blades Edge Mountains]
 [G58.5,40.1 Blades Edge Mountains]
-Turn in [QT10893 Longtail is the Lynchpin].\\Accept [QA10722 Meeting at the Blackwing Coven].
-Turn in [QT10829 Treebole Must Know].\\Accept [QA10830 Exorcising the Trees].
-Finish collecting *5 Grishnath Orbs* and *5 Dire Pinfeathers.* Right click the orbs to make 5 *Exorcism Feathers.*
-Use the *Exorcism Feathers* on *Raven's Wood Leafbeards* and then kill *ONLY* the *Koi-Koi Spirits* that spawn to complete [QC10830].
-Turn in [QT10830].
+提交任务 [QT10893].\\接受任务 [QA10722].
+提交任务 [QT10829].\\接受任务 [QA10830].
+击杀*恶鸦*收集5根 *恐怖绒毛*。回*格里施纳*，从树屋的紫色珠子收集5颗 *格里施纳鸦人宝珠* 。
+使用*格里施纳鸦人宝珠*合成5根 *驱魔羽毛*。对 *乌鸦林叶须古树* 使用 *驱魔羽毛*，只需要击杀召唤出来的 *柯柯的灵魂* 完成任务 [QC10830]
+提交任务 [QT10830].
 [G32.0,33.7 Blades Edge Mountains]
-Combine your *Costume Scraps* and use the *Overseer Disguise.* Be aware that *Blessed* inside the cave will be able to see through your disguise!
+击杀*拜龙教*收集5个*衣服碎片*制作成*工头伪装服*，使用伪装服伪装成工头。小心，洞穴内的 “拜龙教赐福者” 将能看穿你的伪装
 [G32.7,34.9 Blades Edge Mountains]
-[G32.6,37.4 Blades Edge Mountains]Speak with *Kolphis Darkscale* and complete [QC10722].
+[G32.6,37.4 Blades Edge Mountains]与 *库尔菲斯·暗鳞* 对话完成任务 [QC10722]
 [G32.0,33.7 Blades Edge Mountains]
-Turn in [QT10722 Meeting at Blackwing Coven].\\Accept [QA10748 Maxnar Must Die!]
-[G56.0,39.9 Blades Edge Mountains]
+提交任务 [QT10722].\\接受任务 [QA10748]
+[G56.0,39.9 Blades Edge Mountains]*注：* 如果想要轻松点穿越洞穴，可以多做一件*工头伪装服*
 [G32.6,35.0 Blades Edge Mountains]
 [G32.8,36.7 Blades Edge Mountains]
 [G33.1,35.4 Blades Edge Mountains]
-[G33.9,35.5 Blades Edge Mountains]Complete [QC10748].
-Grind to [XP67 level 67].
-Hearth to [H Evergrove] if you can.
-Turn in [QT10748 Maxnar Must Die!]
-Fly to [F Toshley's Station].
-Accept [QA11043 Building a Better Gryphon].
+[G33.9,35.5 Blades Edge Mountains]完成任务 [QC10748].
+刷怪到 [XP67 67级].
+如果可以的话使用炉石返回 [H 常青林]
+提交任务 [QT10748]
+飞到 [F 托什雷的基地].
+接受任务 [QA11043].
 [G60.2,68.8 Blades Edge Mountains]
-Speak with *Rally Zapnabber* and have him send you to *Razaan's Landing.*
-[G82.1,28.9 Blades Edge Mountains]Head up the road to Netherstorm.
+与 *拉雷·萨普纳波* 对话，选择送你到 *拉扎安码头*
+[G82.1,28.9 Blades Edge Mountains]沿路前往 虚空风暴
 导航由 *Flymolo* 编写，*Pglterry* 汉化[OC]
 
 

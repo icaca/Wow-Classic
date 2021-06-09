@@ -22,7 +22,7 @@
 ## Notes-ruRU: BigWigs Blackwing Lair Modules
 ## Notes-zhCN: BigWigs 黑翼之巢模块。
 ## Notes-zhTW: BigWigs Blackwing Lair Modules
-## Version: v26.1-classic
+## Version: v26.2-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

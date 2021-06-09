@@ -1,226 +1,233 @@
 Guidelime.registerGuide([[
 
-[N65-67 Flymolo's Horde-Scryers Guide]
+[N65-67 【部落】刀锋山-占星者]
 [D Flymolo's 外域升级导航 汉化 by Pglterry]
-[NX67 Flymolo's Horde-Scryers Guide]
+[NX67 【部落】虚空风暴-占星者]
 [GA Horde]
 
 导航由 *Flymolo* 编写，*Pglterry* 汉化[OC]
-Grind to [XP65 level 65].
+刷怪到 [XP65 65级]
 
-Accept [QA10928 Killing the Crawlers].
-Continue north and complete [QC10928].
-Turn in [QT10928 Killing the Crawlers].\\Accept [QA10503 The Bladespire Threat].
-Turn in [QT9795 The Ogre Threat].
-Accept [QA10486 The Encroaching Wilderness].
-Accept [QA10489 Felling an Ancient Tree].
-[G53.3,55.4 Blades Edge Mountains]Speak with *Gholah* and set your Hearthstone to [S Thunderlord Stronghold].
-[G52.1,54.2 Blades Edge Mountains]Speak with *Unoke Tenderhoof* to acquire the flight path.
-Go anywhere in the nearby woods to complete [QC10486].
-Turn in [QT10486 The Encroaching Wilderness].\\Accept [QA10487 Dust from the Drakes].
+接受任务 [QA10928].
+一路向北完成任务 [QC10928].
+提交任务 [QT10928].\\接受任务 [QA10503].
+提交任务 [QT9795].
+接受任务 [QA10486].
+接受任务 [QA10489].
+[G53.3,55.4 Blades Edge Mountains]与 *苟拉尔* 对话定炉石 [S 雷神要塞].
+[G52.1,54.2 Blades Edge Mountains]与 *安努克·绿蹄* 对话激活飞行点
+在要塞外附近完成任务 [QC10486].
+提交任务 [QT10486].\\接受任务 [QA10487].
 [G48.2,65.8 Blades Edge Mountains]
-[G37.3,70.5 Blades Edge Mountains]Kill and loot *Stronglimb Deeproot* - he walks all along this road (be aware there is an Alliance town just to the north) - to complete [QC10489].
-Kill and loot *Fey Drakes* to complete [QC10487].
+[G37.3,70.5 Blades Edge Mountains]击杀拾取 *深根古树* 完成任务 [QC10489]。*他在这条南北向的路上徘徊(注意这里北部有一个联盟营地)*
+击杀拾取 *仙龙* 完成任务 [QC10487].
 [G42.2,65.6 Blades Edge Mountains]
-Turn in [QT10489 Felling an Ancient Tree].
-Turn in [QT10487 Dust from the Drakes].\\Accept [QA10488 Protecting Our Own].
-[G49.6,72.0 Blades Edge Mountains]Use *Gor'drek's Ointment* from your inventory on *Thunderlord Dire Wolves* as you go through this area to complete [QC10488].
-[G49.1,72.5 Blades Edge Mountains]When you are full health, walk off the ledge.
-[G48.9,73.0 Blades Edge Mountains]Make sure you have enough health to walk off the next ledge.
+提交任务 [QT10489].
+提交任务 [QT10487].\\接受任务 [QA10488].
+[G49.6,72.0 Blades Edge Mountains]穿越这片区域时，对 *雷神恶狼* 使用 *高德雷克的药膏* 完成任务 [QC10488].
+[G49.1,72.5 Blades Edge Mountains]保证满血状态走下山崖
+[G48.9,73.0 Blades Edge Mountains]确保有充足的血量走下下一个山崖
 [G48.2,73.3 Blades Edge Mountains]
-Accept [QA10542 They Stole Me Hookah and Me Brews!]
-[G42.2,81.3 Blades Edge Mountains]Pick up [QC10542,1 T'chali's Hookah].
-Kill and loot *Bloodmaul Brewmasters* or loot *Bloodmaul Brew Kegs* to complete [QC10542].
-Make sure you have *AT LEAST* 1 extra *Bloodmaul Brutebane Brew* in your inventory before leaving this area!
-Turn in [QT10542 They Stole Me Hookah and Me Brews!]\\Accept [QA10545 Bladespire Kegger].
-[G43.4,52.8 Blades Edge Mountains]Use the *Bloodmaul Brutebane Keg* from your inventory and place it on the ground at a ranged distance away from *Bladespire Ogres.* When you place it at the correct distance away - and still out of combat - the Ogres will run to it and then attack you. This will compete [QC10545].
-Turn in [QT10545 Bladespire Kegger].\\Accept [QA10543 Grimnok and Korgaah, I Am For You!]
+接受任务 [QA10542]
+[G42.2,81.3 Blades Edge Mountains]拾取 [QC10542,1 塔卡里的水烟袋].
+击杀拾取 *血槌酿酒师* 或者拾取 *血槌酒桶* 完成任务 [QC10542]
+离开这里时确保背包中*多带一瓶 血槌烈酒*！
+提交任务 [QT10542]\\接受任务 [QA10545].
+[G43.4,52.8 Blades Edge Mountains]在距离 *血槌食人魔* 一段距离放下 *血槌酒桶*。只要距离合适，能在不进入战斗的情况下吸引它们过来喝酒然后才转头攻击你。重复完成 [QC10545].
+提交任务 [QT10545].\\接受任务 [QA10543]
 [G43.4,52.8 Blades Edge Mountains]
-Look for the *Thunderlord Clan Artifact* in your inventory. If it is not there, kill and Loot *Bladespire Ogres* and *Bladespire Raptors* to find it. Right click it to accept [QA10524 Thunderlord Clan Artifacts]. *NOTE:* Keep killing for as long as it takes to get this quest; it *SHOULD NOT* be skipped!!
-[G40.2,58.3 Blades Edge Mountains]Loot the [QC10524,2 Thunderlord Clan Drum].
+查看背包里是否有 *雷神氏族神器* 。如果没有，刷 *刀塔食人魔* 和 *刀塔迅猛龙* 直到获取。右键点击接受任务 [QA10524]\\ *注：* *不要跳过*这个任务，一直刷怪直到获得任务物品！
+[G40.2,58.3 Blades Edge Mountains]拾取 [QC10524,2 雷神氏族战鼓].
 [G40.9,51.8 Blades Edge Mountains]
-[G41.5,52.6 Blades Edge Mountains]On top of the stone, loot the [QC10524,1 Thunderlord Clan Arrow].
-[G41.2,46.6 Blades Edge Mountains]Complete [QC10524].
+[G41.5,52.6 Blades Edge Mountains]在巨石顶上，拾取 [QC10524,1 雷神氏族箭矢].
+[G41.2,46.6 Blades Edge Mountains]完成任务 [QC10524].
 [G42.8,46.7 Blades Edge Mountains]
-Head up the ramp. There may be an Ogre right at the top that you need to fight. *DO NOT* go past the next waypoint!![OC]
+走上塔楼，这里可能要杀掉一个食人魔，*不要*跳过这个导航点！[OC]
 [G43.4,46.4 Blades Edge Mountains]
-Stand here and use the *Bloodmaul Brutebane Brew* to draw *Korgaah* away from the elites. *MAKE CERTAIN* no Ogres are coming up behind you or it may draw them instead! Complete [QC10543,2 Korgaah slain].
-Complete [QC10503].
+在这里使用 *血槌烈酒* 把 *库尔加* 吸引过来，远离精英怪。*确保*身后没有食人魔跟上来，否则酒也会吸引他们，完成 [QC10543,2 击杀 库尔加].
+完成任务 [QC10503].
 [G49.5,50.3 Blades Edge Mountains]
-Turn in [QT10488 Protecting Our Own].
-Turn in [QT10524 Thunderlord Clan Artifacts].\\Accept [QA10525 Vision Guide].
-Use the *Fiery Soul Fragment* in your inventory and complete [QC10525].
-Turn in [QT10525 Vision Guide].\\Accept [QA10526 The Thunderspike].
-Turn in [QT10503 The Bladespire Threat].\\Accept [QA10505 The Bloodmaul Ogres].
-[G49.1,72.5 Blades Edge Mountains]When you are full health, walk off the ledge. Make certain you are at the correct ledge!!
-[G48.9,73.0 Blades Edge Mountains]Make sure you have enough health to walk off the next ledge.
+提交任务 [QT10488].
+提交任务 [QT10524].\\接受任务 [QA1052].
+使用 *炽热灵魂碎块* 完成任务 [QC10525].
+提交任务 [QT10525].\\接受任务 [QA10526].
+提交任务 [QT10503].\\接受任务 [QA10505].
+[G49.1,72.5 Blades Edge Mountains]保证满血状态走下山崖，注意坐标从正确的山崖下去！
+[G48.9,73.0 Blades Edge Mountains]确保有充足的血量走下下一个山崖
 [G47.9,74.0 Blades Edge Mountains]
-[G45.5,80.2 Blades Edge Mountains]Head to the top of the ramp and complete [QC10543]. *Note:* You can pull the *Skirmisher* without pulling *Grimnok.*
+[G45.5,80.2 Blades Edge Mountains]到塔楼顶上完成任务 [QC10543] *注：* 你可以分开击杀 *血槌散兵* 和 *葛雷诺克*
 [G42.5,83.6 Blades Edge Mountains]
-Go to the back of the cave and loot *The Thunderspike.* This will spawn *Gor Grimgut* who is toughter than the other Ogres in the area. Kill and loot *Gor Grimgut* to complete [QC10526].
-Turn in [QT10543 Grimnok and Korgaah, I Am For You!]\\Accept [QA10544 A Curse Upon Both of Your Clans!]
-[G43.4,52.8 Blades Edge Mountains]Go to the entryways of 5 different buildings (the entries at the tops of ramps will NOT work) and use the *Wicked Strong Fetish* from your inventory to summon *Bladespire Evil Spirits.* Kill them to complete [QC10544,1 Bladespire Hold Building Cursed].
-[G46.5,77.8 Blades Edge Mountains]Use the *Wicked Strong Fetish* at the entryways of these two buildings to complete [QC10544].
-Complete [QC10505].
-Turn in [QT10544 A Curse Upon Both of Your Clans!]
-Hearth to [H Thunderlord Stronghold].
-Turn in [QT10526 The Thunderspike].\\Wait for the conversation to finish and then accept [QA10718 The Spirits Have Voices].
-Turn in [QT10505 The Bloodmaul Ogres].
-Turn in [QT10718 The Spirits Have Voices].\\Accept [QA10614 Whispers on the Wind].
+回到洞穴里拾取 *雷霆之刺* ，这会召唤比这区域其他食人魔都强大的 *古尔·火腹* ，击杀拾取 *古尔·火腹* 完成任务 [QC10526].
+提交任务 [QT10543]\\接受任务 [QA10544]
+[G43.4,52.8 Blades Edge Mountains]在5个建筑入口处使用 *邪恶雕像* 召唤 *刀塔邪灵*， 击杀它们完成 [QC10544,1 诅咒刀塔建筑]。*小坡上面的建筑物不管用*
+[G46.5,77.8 Blades Edge Mountains]在两个建筑入口处使用 *邪恶雕像* 完成任务 [QC10544]
+完成任务 [QC10505].
+
+提交任务 [QT10544]
+使用炉石返回 [H 雷神要塞].
+提交任务 [QT10526].\\等待交谈结束然后接受任务 [QA10718].
+提交任务 [QT10505].
+提交任务 [QT10718].\\接受任务 [QA10614].
 [G55.8,72.6 Blades Edge Mountains]
 [G60.9,55.5 Blades Edge Mountains]
-Accept [QA10565 The Stones of Vekh'nir].
-Accept [QA10618 The Softest Wings].
-Accept [QA10617 Silkwing Cocoons].
-Accept [QA10860 Mok'Nathal Treats].
-Speak with *Matron Varah* again and set your Hearthstone to [S Mok'Nathal Village].
-Turn in [QT10614 Whispers on the Wind].\\Accept [QA10709 Reunion].
-[G76.3,65.8 Blades Edge Mountains]Speak with *Sky-Master Maxxor* to get the flight path.
-Kill and loot *Silkwing Larva* and *Mature Silkwings* to work on [QC10617][O] and [QC10618][O] during the next steps.
-Kill and loot *Vekh'nir Keeneyes* to find a *Vekh'nir Crystal.*[OC]
-[G77.8,74.7 Blades Edge Mountains]Use the *Vekh'nir Crystal* in your inventory while standing on the "purple rune" to complete [QC10565].
-Turn in [QT10565 The Stones of Vekh'nir].\\Accept [QA10566 Trial and Error].
-Accept [QA10846 Understanding the Mok'Nathal].
+接受任务 [QA10565].
+接受任务 [QA10618].
+接受任务 [QA10617].
+接受任务 [QA10860].
+再次与 *瓦拉伊* 对话定炉石 [S 莫克纳萨村].
+提交任务 [QT10614].\\接受任务 [QA10709].
+[G76.3,65.8 Blades Edge Mountains]与 *飞行管理员玛克索* 对话激活飞行点
+接下来，做任务 [QC10617][O] 和 [QC10618][O]，击杀拾取 *丝翼幼虫* 和 *成年丝翼巨蛾*
+击杀 *维克鸦巢斥候* 拾取一个 *维克鸦巢水晶*[OC]
+[G77.8,74.7 Blades Edge Mountains]在*紫色的符文法阵*使用 *维克鸦巢水晶* 进行充能完成任务 [QC10565].
+
+提交任务 [QT10565].\\接受任务 [QA10566].
+接受任务 [QA10846].
+
+
 [G73.3,74.8 Blades Edge Mountains]
 [G70.0,73.3 Blades Edge Mountains]
-[G70.0,72.2 Blades Edge Mountains]Kill *Vekh* to complete [QC10846].
-Open *Dertrok's Wand Case* in your inventory. Kill and loot more *Vekh'nir* until you have *4 Infused Vekh'nir Crystals.* Then use all four wands on a *Dullgrom Dredger* to complete [QC10566]. *Note:* The first time you use a wand you need to be short distance BUT the *Dredger* will interrupt you so you need to keep him from hitting you. Also - he won't stay friendly for long.
-*Note:* If you have not trained your abilities for a few levels you should do that now so *DO NOT* use your hearthstone to get back to *Mok'Nathal Village.*[OC]
-Complete [QC10618] and [QC10617].
+[G70.0,72.2 Blades Edge Mountains]击杀 *维克* 完成任务 [QC10846].
 
-
-Turn in [QT10566 Trial and Error].\\Accept [QA10615 Ruuan Weald].
-Turn in [QT10846 Understanding the Mok'Nathal].\\Accept [QA10843 Since Time Forgotten...]
-Accept [QA10851 The Totems of my Enemy].
-Turn in [QT10618 The Softest Wings].
-Turn in [QT10617 Silkwing Cocoons].
-*NOTE:* If you have not trained your abilities for a while AND your hearthstone is available, now would be an excellent time to train! Fly to *Shattrath* and use the teleports there to get back to your city of choice.
-Kill and loot *Scalewing Serpents* and *Daggermaw Lashtails* to work on [QC10860][O] on the way to the next step.
-[G57.2,54.6 Blades Edge Mountains]Complete [QC10843].
-Continue killing and looting Ogres to complete [QC10851].
+打开背包里的 *德尔托克的魔杖箱* 获得4根魔杖。 击杀拾取 *维克鸦巢鸦人* 收集4个 *灌能的维克鸦巢水晶* 。然后对4个 *迟钝的挖掘者* 使用魔杖完成任务 [QC10566]。 *注：* 第一次需要靠近点对食人魔使用魔杖，他的攻击会打断你。所以要想办法阻止食人魔的打断。并且在控制食人魔一段时间后会脱控，要注意。
+*注：*如果你已经升了好几级但是一直没去训练师那儿学习新的技能，你应该去了。但是先别用炉石回 *莫克纳萨村.*[OC]
+完成任务 [QC10618] 和 [QC10617].
+提交任务 [QT10566].\\接受任务 [QA10615].
+提交任务 [QT10846].\\接受任务 [QA10843]
+接受任务 [QA10851].
+提交任务 [QT10618].
+提交任务 [QT10617].
+*注：*如果炉石没有CD,现在是好时机去训练师那儿学习新的技能！飞到 *沙塔斯城* 使用传送门回主城学习吧。
+接下来，做任务 [QC10860][O]，击杀拾取 *鳞翼飞蛇* 和 *刃喉鞭尾龙*
+[G57.2,54.6 Blades Edge Mountains]完成任务 [QC10843].
+继续击杀拾取 *刀塔食人魔* 完成任务 [QC10851].
 [G56.2,54.7 Blades Edge Mountains]
-[G54.3,53.9 Blades Edge Mountains]Walk off the ledge.
-Turn in [QT10709 Reunion].\\Accept [QA10714 On Spirit's Wings].
-Fly to [F Mok'Nathal Village].
-Turn in [QT10843 Since Time Forgotten].\\Accept [QA10845 Slay the Brood Mother].
-Turn in [QT10851 The Totems of My Enemy].\\Accept [QA10853 Spirit Calling].
+[G54.3,53.9 Blades Edge Mountains]走下山崖
+提交任务 [QT10709].\\接受任务 [QA10714].
+飞到 [F 莫克纳萨村].
+提交任务 [QT10843].\\接受任务 [QA10845].
+提交任务 [QT10851].\\接受任务 [QA10853].
 [G70.7,62.3 Blades Edge Mountains]
-[G67.1,76.6 Blades Edge Mountains]Use the *Spirit Calling Totem* from your inventory. Kill and loot *Lesser Nether Drakes* near the totem to complete [QC10853]. *NOTE:* Keep in mind that this totem only has *5 charges* so you cannot kill just one Drake per totem.
-In this same area, complete [QC10845].
-Head back toward *Mok'Nathal Village* and complete [QC10860].
-Turn in [QT10845 Slay the Brood Mother].
-Turn in [QT10853 Spirit Calling].\\Accept [QA10859 Gather the Orbs].
-Turn in [QT10860 Mok'Nathal Treats].
-[G70.8,43.9 Blades Edge Mountains]From this waypoint, continue north and kill and loot *Fel Corrupters* until you receive the *Damaged Mask.* Right click it to accept [QA10810 Damaged Mask].
+[G67.1,76.6 Blades Edge Mountains]使用 *灵魂召唤图腾* ，击杀拾取图腾附近的 *小型虚空幼龙* 完成任务 [QC10853]. *注：* 图腾只能 *充能5次* ，所以你不能每次插图腾只击杀一个虚空幼龙，否则不能收集满8个 *小型虚空幼龙之灵*
+在这边区域完成任务 [QC10845].
+返回 *莫克纳萨村*，沿路完成任务 [QC10860].
+提交任务 [QT10845].
+提交任务 [QT10853].\\接受任务 [QA10859].
+提交任务 [QT10860].
+[G70.8,43.9 Blades Edge Mountains]从这个导航点，往北走击杀拾取 *邪能腐蚀者* 直到获得 *损坏的面具*，点击接受任务 [QA10810].
 [G66.9,38.4 Blades Edge Mountains]
-[G67.0,41.3 Blades Edge Mountains]Stand in this spot and use the *Orb Collecting Totem* from your inventory 15 times or until you have completed [QC10859].
+[G67.0,41.3 Blades Edge Mountains]在这里使用15次 *宝珠收集图腾* 完成任务 [QC10859].
 
-Turn in [QT10810 Damaged Mask].\\Accept [QA10812 Mystery Mask].
-[G61.6,39.7 Blades Edge Mountains]Speak with *Fhyn Leafshadow* to get the flight path.
-Accept [QA10770 Little Embers] and [QA10771 From the Ashes].
-Accept [QA10753 Culling the Wild].
-Turn in [QT10615 Ruuan Weald].\\Accept [QA10567 Creating the Pendant].
-Accept [QA10682 A Time for Negotiation...]
-Turn in [QT10812].\\Accept [QA10819 Felsworn Gas Mask].
-[G60.1,40.1 Blades Edge Mountains]*Overseer Nuaar* is a Draenei who wanders between the *Wyrmcult* camps to the south and also the west. Find him and speak with him to complete [QC10682].
-Turn in [QT10682 A Time for Negotiation...]\\Accept [QA10713 ...and a Time for Action].
-Accept [QA10717 Poaching from Poachers].
-Kill and loot *Wyrmcult Poachers* to complete [QC10717]. Complete [QC10713].
-Check your inventory for the *Meeting Note.* Right click it to accept [QA10719 Did You Get The Note?] If you do not have it, continue killing and looting *Wyrmcults* until it drops.
+提交任务 [QT10810].\\接受任务 [QA10812].
+[G61.6,39.7 Blades Edge Mountains]与 *菲恩·叶影* 对话激活飞行点
+接受任务 [QA10770] 和 [QA10771].
+接受任务 [QA10753].
+提交任务 [QT10615].\\接受任务 [QA10567].
+接受任务 [QA10682]
+提交任务 [QT10812].\\接受任务 [QA10819].
+[G60.1,40.1 Blades Edge Mountains]*工头努埃尔*是一个在拜龙教营地南边和西边游荡的德莱尼人。找到他与他对话完成任务 [QC10682].
+提交任务 [QT10682]\\接受任务 [QA10713].
+接受任务 [QA10717]
+
+击杀拾取 *拜龙教* 完成任务 [QC10717] 和 [QC10713]
+查看背包里是否有 *会议记录*，右键点击接受任务 [QA10719]，如果还没有，继续击杀拾取*拜龙教*直到获取。
 [G61.6,29.7 Blades Edge Mountains]
-[G57.4,31.3 Blades Edge Mountains]Use *Rexxar's Whistle* from your inventory. You must be just out of aggro range and close enough to get a *Taskmaster* and a *Soothsayer* in the AoE circle to complete [QC10714].
+[G57.4,31.3 Blades Edge Mountains]你不能惊动 *血槌工头* 和 *血槌占卜师*，要在道具使用范围能覆盖两个怪的距离使用*雷克萨的哨子*，完成任务 [QC10714].
 [G59.2,32.2 Blades Edge Mountains]
 [G64.3,29.9 Blades Edge Mountains]
-Kill and loot *Ruuan'ok* until you have *6 Ruuan'ok Claws.*
-[G64.5,33.1 Blades Edge Mountains]Use the *Claws* to summon *Harbinger of the Raven.* Kill and loot him to complete [QC10567].
+击杀拾取 *卢安鸦人* 直到获得6个 *卢安利爪*
+[G64.5,33.1 Blades Edge Mountains]使用 *卢安利爪* 召唤 *乌鸦预言者*，击杀拾取他完成任务 [QC10567]
 [G65.3,40.0 Blades Edge Mountains]
-Work on [QC10753][O] during the next steps.
+接着完成任务 [QC10753][O]
 [G72.1,41.2 Blades Edge Mountains]
-Equip the *Felsworn Gas Mask* from your inventory.[OC]
-Turn in [QT10819 Felsworn Gas Mask].\\Accept [QA10820 Deceive thy Enemy].
-Complete [QC10820].
-Turn in [QT10820 Deceive thy Enemy].
-[G71.7,29.1 Blades Edge Mountains]Complete [QC10753].
-[G71.7,22.4 Blades Edge Mountains]Right-click the *Fertile Volcanic Soil* to plant the seeds. [QC10771,1 Southern Volcanic Soil]
-[G71.7,20.4 Blades Edge Mountains]Right-click the *Fertile Volcanic Soil* to plant the seeds. [QC10771,2 Central Volcanic Soil]
-[G71.6,18.6 Blades Edge Mountains]Right-click the *Fertile Volcanic Soil* to plant the seeds and complete [QC10771].
-Complete [QC10770].
-Hearth to [H Mok'Nathal Village].
-Turn in [QT10859 Gather the Orbs].\\Accept [QA10865 Inform Leoroxx!]
+装备背包里的 *魔誓防毒面具* [OC]
+提交任务 [QT10819].\\接受任务 [QA10820].
+完成任务 [QC10820].
+提交任务 [QT10820].
+[G71.7,29.1 Blades Edge Mountains]完成任务 [QC10753].
+[G71.7,22.4 Blades Edge Mountains]右键点击 *肥沃的火山灰* 种植种子 [QC10771,1 南部火山灰]
+[G71.7,20.4 Blades Edge Mountains]右键点击 *肥沃的火山灰* 种植种子 [QC10771,2 中部火山灰]
+[G71.6,18.6 Blades Edge Mountains]右键点击 *肥沃的火山灰* 种植种子完成任务 [QC10771]
+完成任务 [QC10770].
+使用炉石返回 [H 莫克纳萨村].
+提交任务 [QT10859].\\接受任务 [QA10865]
 
-Turn in [QT10865 Inform Leoroxx!]
-Fly to [F Thunderlord Stronghold].
-Turn in [QT10714 On Spirit's Wings].\\Accept [QA10783 Baron Sablemane].
+提交任务 [QT10865]
+飞到 [F 雷神要塞].
+提交任务 [QT10714].\\接受任务 [QA10783].
 [G51.2,43.4 Blades Edge Mountains]
-Turn in [QT10783 Baron Sablemane].\\Accept [QA10715 Into the Churning Gulch].
-[G49.3,45.0 Blades Edge Mountains]Kill and loot *Young* and *Greater Crust Bursters* to complete [QC10715].
-Turn in [QT10715 Into the Churning Gulch].\\Accept [QA10749 Baron Sablemane's Poison].
-Turn in [QT10749 Baron Sablemane's Poison].\\Accept [QA10720 The Smallest Creatures].
-Accept [QA10784 Crush the Bloodmaul Camp].
-[G56.5,29.4 Blades Edge Mountains]Use the *Kodohide Drum* from your inventory to control a *Marmot.*[OC]
-Use the Marmot's *Poison Keg* ability on the three kegs [L55.0,26.0 Blades Edge Mountains][L55.0,28.0 Blades Edge Mountains][L56.0,23.0 Blades Edge Mountains] to complete [QC10720]. *Notes:* You can stealth and use an acorn to draw Ogres away from your path. Be aware that your minimap will not move with you as a Marmot but the Kegs can all be seen as markers on the minimap from the starting point.
-Complete [QC10784].
-Turn in [QT10720 The Smallest Creatures].\\Accept [QA10721 A Boaring Time for Grulloc].
-Turn in [QT10784 Crush the Bloodmaul Camp].
+提交任务 [QT10783].\\接受任务 [QA10715].
+[G49.3,45.0 Blades Edge Mountains]击杀拾取 *硬壳穿地虫幼体* 和 *大型硬壳穿地虫* 完成任务 [QC10715].
+提交任务 [QT10715].\\接受任务 [QA10749].
+提交任务 [QT10749].\\接受任务 [QA10720].
+接受任务 [QA10784].
+[G56.5,29.4 Blades Edge Mountains]使用背包里的 *科多皮鼓* 控制一只 *土拨鼠*[OC]
+用土拨鼠的 *下毒* 技能对三只酒桶下毒 [L55.0,26.0 Blades Edge Mountains][L55.0,28.0 Blades Edge Mountains][L56.0,23.0 Blades Edge Mountains] 完成任务 [QC10720]\\ *注：* 你可以潜行或者*投掷橡果*把食人魔引开。注意当你控制土拨鼠后小地图不会跟随移动，但是所有酒桶的坐标点还是可以从小地图上看见的
+完成任务 [QC10784].
+提交任务 [QT10720].\\接受任务 [QA10721].
+提交任务 [QT10784].
 [G50.6,48.8 Blades Edge Mountains]
-[G60.8,47.7 Blades Edge Mountains]*From just out of aggro range,* use *Huffer's Whistle.* When Grulloc leaves, grab the *Sack* to complete [QC10721].
+[G60.8,47.7 Blades Edge Mountains]在不会惊动 *格鲁洛克* 的距离使用 *霍弗的哨子*，等格鲁洛克离开，偷走 *格鲁洛克的包裹* 完成任务 [QC10721].
 [G51.1,43.7 Blades Edge Mountains]
-Turn in [QT10721 A Boaring Time for Grulloc].\\Accept [QA10785 It's a Trap!]
-Turn in [QT10785 It's a Trap!]\\Accept [QA10723 Gorgrom the Dragon-Eater].
-Accept [QA10786 Slaughter at Boulder'mok].
-[G53.3,55.4 Blades Edge Mountains]Set your Hearthstone to [S Thunderlord Stronghold].
-Fly to [F Evergrove].
-Turn in [QT10717 Poaching from Poachers].\\Accept [QA10747 Whelps of the Wyrmcult].
-Turn in [QT10713 ...And a Time for Action] and [QT10719 Did You Get The Note?]\\Accept [QA10894 Wyrmskull Watcher].
-Turn in [QT10567 Creating the Pendant].\\Accept [QA10607 Whispers of the Raven God].
-Turn in [QT10753 Culling the Wild].
-Turn in [QT10770 Little Embers] and [QT10771 From the Ashes].
+提交任务 [QT10721].\\接受任务 [QA10785]
+提交任务 [QT10785]\\接受任务 [QA10723].
+接受任务 [QA10786].
+[G53.3,55.4 Blades Edge Mountains]定炉石 [S 雷神要塞].
+飞到 [F 常青林].
+提交任务 [QT10717].\\接受任务 [QA10747].
+提交任务 [QT10713] 和 [QT10719]\\接受任务 [QA10894].
+提交任务 [QT10567].\\接受任务 [QA10607].
+提交任务 [QT10753].
+提交任务 [QT10770] 和 [QT10771].
 
 [G56.1,40.0 Blades Edge Mountains]
-Turn in [QT10894 Wyrmskull Watcher].\\Accept [QA10893 Longtail is the Lynchpin].
-[G44.7,32.0 Blades Edge Mountains]Complete [QC10893].
-Kill *Grishna* to receive the *Understanding Ravenspeech* buff to complete the next steps. *You must be in melee range when they die!!*[O]
-[G40.2,23.0 Blades Edge Mountains][QC10607,4 Fourth Prophecy].
-[G40.7,18.7 Blades Edge Mountains][QC10607,3 Third Prophecy].
+提交任务 [QT10894].\\接受任务 [QA10893].
+[G44.7,32.0 Blades Edge Mountains]完成任务 [QC10893].
+击杀 *格里施纳的鸦人* 获得2分钟时长的Buff： *理解鸦语*，（当鸦人死的时候你要在近战范围才能获得Buff！）[O]
+[G40.2,23.0 Blades Edge Mountains][QC10607,获知第四个预言].
+
+[G40.7,18.7 Blades Edge Mountains][QC10607,获知第三个预言].
 [G40.4,18.1 Blades Edge Mountains]
 [G41.2,18.2 Blades Edge Mountains]
-[G42.4,21.7 Blades Edge Mountains]Head across the bridges and then down to the lower level of the tower for [QC10607,2 Second Prophecy].
-[G39.0,17.2 Blades Edge Mountains]Go back across the bridges and onto the other tower for [QC10607].
-Check your inventory for *Orb of the Grishna.* Right click it to accept [QA10825 The Truth Unorbed]. If you do not have it, keep grinding *Grishna* until it drops!
-[G30.6,22.2 Blades Edge Mountains]Kill *Boulder'mok* until you have three *Grisly Totems*. Right-click *Gorgom's Altar* to summon *Gorgom.* When he dies, simply use the *Grisly Totems* three times to complete [QC10723].
-Complete [QC10786].
-[G32.8,34.3 Blades Edge Mountains]Use the *Blackwhelp Net* from your inventory on *Blackwhelps* to complete [QC10747]. *NOTE:* Blackwhelps fly around but also spawn when you get close to the eggs!
-Hearth to [H Thunderlord Stronghold].
-Turn in [QT10786 Slaughter at Boulder'mok].
-Turn in [QT10723 Gorgrom the Dragon-Eater].
-Fly to [F Evergrove].
-Turn in [QT10825 The Truth Unorbed].\\Accept [QA10829 Treebole Must Know].
-Turn in [QT10747 Whelps of the Wyrmcult].
-Turn in [QT10607 Whispers of the Raven God].
+[G42.4,21.7 Blades Edge Mountains]传过吊桥到塔楼下面的一层 [QC10607,获知第二个预言]
+[G39.0,17.2 Blades Edge Mountains]从吊桥往回走直到另一个塔楼完成任务 [QC10607]
+查看背包里是否有*格里施纳宝珠*，右键点击接受任务 [QA10825]。如果还没有，击杀拾取 *格里施纳鸦人* 直到获取！
+
+
+[G30.6,22.2 Blades Edge Mountains]击杀*砾石食人魔*获取3根*可怕的图腾* ，点击*高格鲁姆的祭坛*召唤*高格鲁姆*。等他死掉，在尸体边使用3次*可怕的图腾*完成任务 [QC10723].
+完成任务 [QC10786].
+[G32.8,34.3 Blades Edge Mountains]使用 *黑色龙崽之网* 捕获 *黑色龙崽* 完成任务 [QC10747].*注：*除了四处飞行的黑色龙崽，靠近龙蛋时也会孵化龙崽！
+使用炉石返回 [H 雷神要塞].
+
+提交任务 [QT10786].
+提交任务 [QT10723].
+飞到 [F 常青林].
+提交任务 [QT10825].\\接受任务 [QA10829].
+提交任务 [QT10747].
+提交任务 [QT10607].
 [G56.6,40.1 Blades Edge Mountains]
-Turn in [QT10893 Longtail is the Lynchpin].\\Accept [QA10722 Meeting at the Blackwing Coven].
-Turn in [QT10829 Treebole Must Know].\\Accept [QA10830 Exorcising the Trees].
-Finish collecting *5 Grishnath Orbs* and *5 Dire Pinfeathers.* Right click the orbs to make *5 Exorcism Feathers.*
-Use the *Exorcism Feathers* on *Raven's Wood Leafbeards* and then kill *ONLY* the *Koi-Koi Spirits* that spawn to complete [QC10830].
-Turn in [QT10830].
+提交任务 [QT10893].\\接受任务 [QA10722].
+提交任务 [QT10829].\\接受任务 [QA10830].
+击杀*恶鸦*收集5根 *恐怖绒毛*。回*格里施纳*，从树屋的紫色珠子收集5颗 *格里施纳鸦人宝珠* 。
+使用*格里施纳鸦人宝珠*合成5根 *驱魔羽毛*。对 *乌鸦林叶须古树* 使用 *驱魔羽毛*，只需要击杀召唤出来的 *柯柯的灵魂* 完成任务 [QC10830].
+提交任务 [QT10830].
 [G32.0,33.7 Blades Edge Mountains]
-Combine your *Costume Scraps* and use the *Overseer Disguise.* Be aware that *Blessed* inside the cave will be able to see through your disguise!
+击杀*拜龙教*收集5个*衣服碎片*制作成*工头伪装服*，使用伪装服伪装成工头。小心，洞穴内的 “拜龙教赐福者” 将能看穿你的伪装
 [G32.7,34.9 Blades Edge Mountains]
-[G32.6,37.4 Blades Edge Mountains]Speak with *Kolphis Darkscale* and complete [QC10722].
+[G32.6,37.4 Blades Edge Mountains]与 *库尔菲斯·暗鳞* 对话完成任务 [QC10722]
 [G32.0,33.7 Blades Edge Mountains]
-Turn in [QT10722 Meeting at Blackwing Coven].\\Accept [QA10748 Maxnar Must Die!]
-[G56.0,39.9 Blades Edge Mountains]
+提交任务 [QT10722].\\接受任务 [QA10748]
+[G56.0,39.9 Blades Edge Mountains]*注：* 如果想要轻松点穿越洞穴，可以多做一件*工头伪装服*
 [G32.6,35.0 Blades Edge Mountains]
 [G32.8,36.7 Blades Edge Mountains]
 [G33.1,35.4 Blades Edge Mountains]
-[G33.9,35.5 Blades Edge Mountains]Complete [QC10748].
-Grind to [XP67 level 67].
-Hearth to [H Thunderlord Stronghold].
-Accept [QA11047 The Apprentice's Request].
-Fly to [F Evergrove].
-Turn in [QT10748 Maxnar Must Die!]
-[G82.1,28.9 Blades Edge Mountains]Head up the road to Netherstorm.
+[G33.9,35.5 Blades Edge Mountains]完成任务 [QC10748].
+刷怪到 [XP67 67级].
+使用炉石返回 [H 雷神要塞].
+接受任务 [QA11047].
+飞到 [F 常青林].
+提交任务 [QT10748]
+[G82.1,28.9 Blades Edge Mountains]沿路前往 虚空风暴
 导航由 *Flymolo* 编写，*Pglterry* 汉化[OC]
-
 
 ]], "Flymolo's 外域升级导航")

@@ -22,7 +22,7 @@
 ## Notes-ruRU: BigWigs Naxxramas Modules
 ## Notes-zhCN: BigWigs 纳克萨玛斯模块
 ## Notes-zhTW: BigWigs 納克薩瑪斯模組
-## Version: v26.1-classic
+## Version: v26.2-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

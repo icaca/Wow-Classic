@@ -9,14 +9,13 @@ Guidelime.registerGuide([[
 Grind to [XP67 level 67].
 
 Accept [QA10183 Off to Area 52]. If *Netherologist Coppernickels* on the bridge into Netherstorm is not offering this quest, check your quest log and *DROP* any "breadcrumb quest" that is completed in Netherstorm.
-Accept [QA10342 Securing the Shaleskin Shale].
+[G32.3,63.9 Netherstorm]*Manually* accept the quest *Securing the Shaleskin Shale* if *Boots* is alive. (If he is not alive, look for him when you come back to *Area 52.) Then manually complete this step.
+Accept [QA10265 Consortium Crystal Collection].
 Turn in [QT10183 Off to Area 52].\\Accept [QA10186 You're Hired].
 Accept [QA10189 Manaforge B'naar].
-Accept [QA10264 Assisting the Consortium].
 [G32.0,64.4 Netherstorm]Speak with *Innkeeper Remi Dodoso* and set your Hearthstone to [S Area 52].
-Turn in [QT10263 Assisting the Consortium].\\Accept [QA10265 Consortium Crystal Collection].
 Accept [QA10173 The Archmage's Staff].
-Kill and loot *Shaleskin Flayers* to work on [QC10342][OC] during the next steps.
+Kill and loot *Shaleskin Flayers* to work on [QC10342][O] during the next steps.
 [G31.7,58.3 Netherstorm]
 Accept [QA10190 Recharging the Batteries].
 Head into the ruins and collect *Etherlithium Matrix Crystals* off the ground to complete [QC10186].
@@ -24,11 +23,13 @@ Head into the ruins and collect *Etherlithium Matrix Crystals* off the ground to
 Turn in [QT10186 You're Hired].\\Accept [QA10225 Report to Engineering].
 Accept [QA10203 Invaluable Asset Zapping]
 Turn in [QT10225 Report to Engineering].\\Accept [QA10224 Essence for the Engines].
+[G37.6,74.9 Netherstorm]
 [G41.0,73.8 Netherstorm]Right click to "zap" the [QC10203,1 Hyper Rotational Dig-A-Matic].
+[G40.3,72.9 Netherstorm]Right click to "zap" the [QC10203,3 Multi-Spectrum Terrain Analyzer].
+[G40.9,72.6 Netherstorm]Use the *Conjuring Powder* from your inventory to summon *Ekkorash the Inquisitor.* Kill and loot her to complete [QC10173].
+[G41.4,71.9 Netherstorm]Zap the [QC10203,2 Servo-Pneumatic Dredging Claw].
 [G42.4,72.8 Netherstorm]Kill and loot *Pentatharon* to complete [QC10265].
 [G42.5,72.3 Netherstorm]Zap the [QC10203,4 Big Wagon Full of Explosives].
-[G41.4,71.9 Netherstorm]Zap the [QC10203,2 Servo-Pneumatic Dredging Claw].
-[G4039,72.6 Netherstorm]Use the *Conjuring Powder* from your inventory to summon *Ekkorash the Inquisitor.* Kill and loot her to complete [QC10173].
 [G40.3,72.9 Netherstorm]Complete [QC10203].
 Head back toward *Area 52* and complete [QC10342].
 [G34.3,70.0 Netherstorm]Kill and loot *Mana Wraiths* to work on [QC10224]. If you kill them all and have not completed the quest, manually complete this step and move on.
@@ -39,8 +40,10 @@ Accept [QA10206 Pick Your Part].
 Turn in [QT10173 The Archmage's Staff].\\Accept [QA10300 Rebuilding the Staff].
 Turn in [QT10265 Consortium Crystal Collection].\\Accept [QA10262 A Heap of Ethereals].
 Turn in [QT10342 Securing the Shaleskin Shale].\\Accept [QA10199 That Little Extra Kick].
+*Note:* If you have not yet found *Boots* alive, you no longer need to pick up his quests going forward.
+
 During the next steps, kill and loot *Nether Rays* to complete [QC10199][O].
-[G34.9,59.9 Netherstorm]You will need to use *Boom's Doom* from your inventory *several times* on *Dr. Boom* to kill him and complete [QC10221].
+[G34.9,59.9 Netherstorm]You will need to use *Boom's Doom* from your inventory *several times* on *Dr. Boom* to kill him and complete [QC10221]. *NOTES:* This quest is purely optional and can be skipped. Treat it like a mini-game. Avoid the *Boom Bots,* quickly throw the bomb and run away from what he throws back at you. Run out of range and wait for your bomb to recharge. Repeat.
 [G34.1,58.6 Netherstorm]Complete [QC10224].
 [G33.3,56.3 Netherstorm]Kill and loot the *Disembodied* to complete [QC10300].
 [G29.6,51.8 Netherstorm]From this point, continue west along the drop-off toward *Blades Edge Mountains* and south from the bridge if necessary to fight *Phase Hunters.* When their health is low, use the *Battery Recharging Blaster* from your inventoy on them and *only kill them once they become Drained Phase Hunters* to complete [QC10190].
@@ -85,7 +88,7 @@ Turn in [QT10198 Information Gathering].\\Accept [QA10330 Shutting Down Manaforg
 [G47.4,81.0 Netherstorm]
 [G49.0,81.5 Netherstorm]Clear the side with the Console. Kill and loot *Overseer Seylanna.* Use the *Coruu Control Console* and kill the *Technicians* to complete [QC10330].
 [G49.6,82.5 Netherstorm]
-[G51.0,82.4 Netherstorm]Kill and loot *Spellbinder Maryana* to complete [QC10188 The Sigil of Krasus].
+[G51.0,82.4 Netherstorm]Kill and loot *Spellbinder Maryana* who wanders this area to complete [QC10188 The Sigil of Krasus].
 Turn in [QT10330 Shutting Down Manaforge Coruu].\\Accept [QA10200 Return to Thalodien].
 Accept [QA10334 Needs More Cowbell].
 Accept [QA10331 Indispensable Tools].
@@ -100,18 +103,17 @@ Look for a *Kirin'Var Apprentice* in this area and kill and loot them to complet
 [G58.9,87.9 Netherstorm]Loot [QC10192,3 Krasus's Compendium - Chapter 3].
 [G58.8,88.4 Netherstorm]*Abjurist Belmara patrols this road. Find, kill and loot her to acuaire *Belmara's Tome.* Right click it to accept [QA10305 Abjurist Belmara].
 [G58.6,89.2 Netherstorm]Loot [QC10192,1 Krasus's Compendium - Chapter 1].
-[G57.5,89.6 Netherstorm]Loot [QC10192,2 Krasus's Compendium - Chapter 2].
 Complete [QC10184].
+[G57.5,89.6 Netherstorm]Loot [QC10192,2 Krasus's Compendium - Chapter 2].
 [G56.4,87.8 Netherstorm]Use *Luminrath's Mantle* in your inventory to complete [QC10306].
 [G55.7,87.2 Netherstorm]Loot the *Mana Bomb Fragment* to complete [QC10343].
 [G55.1,87.5 Netherstorm]Use *Cohlien's Cap* in your inventory to complete [QC10307].
 [G55.5,86.5 Netherstorm]Use *Belmara's Tome* in your inventory to complete [QC10305].
 Complete [QC10185].
-Turn in [QT10305 Abjurist Belmara].\\Turn in [QT10306 Conjurer Luminrath].\\Turn in [QT10307 Cohlien Frostweaver].
-Turn in [QT10184 Malevolent Remnants].\\Accept [QA10312 The Annals of Kirin'Var].
+Turn in [QT10305 Abjurist Belmara].\\Turn in [QT10306 Conjurer Luminrath].\\Turn in [QT10307 Cohlien Frostweaver].\\Turn in [QT10184 Malevolent Remnants].\\Accept [QA10312 The Annals of Kirin'Var].
 Turn in [QT10185 A Fate Worse Than Death].
-Use *Archmage Vargoth's Staff* in your inventory to turn in [QT10192 Krasus's Compendium].\\Accept [QA10301 Unlocking the Compendium].
 Turn in [QT10343 The Unending Invasion].\\Accept [QA10239 Potential Energy Source].
+Use *Archmage Vargoth's Staff* in your inventory to turn in [QT10192 Krasus's Compendium].\\Accept [QA10301 Unlocking the Compendium].
 Accept [QA10233 Torching Sunfury Hold].
 Turn in [QT10331 Indispensable Tools].\\Accept [QA10332 Master Smith Rhonsus].
 Hearth to [H Area 52].
@@ -132,11 +134,11 @@ Turn in [QT10182 Battle-Mage Dathric].
 Turn in [QT10312 The Annals of Kirin'var].\\Accept [QA10316 Searching for Evidence].
 Turn in [QT10240 Building a Perimeter].
 [G55.3,81.0 Netherstorm]
-Find, kill and loot a *Sunfury Flamekeeper* to acquire a *Flaming Torch.* Use the torch while standing next to *Ballistas and Tents* around the camp perimeter to complete [QC10233][O] during the next steps.
-[G55.9,78.8 Netherstorm]Kill and loot *Spellreaver Marathelle* to complete [QC10301].
+Find, kill and loot a *Sunfury Flamekeeper* to acquire a *Flaming Torch.* Use the torch while standing next to *Ballistas (giant crossbows on wheels) and Tents* around the camp perimeter to complete [QC10233][O] during the next steps.
+[G55.9,78.8 Netherstorm]Kill and loot *Spellreaver Marathelle* who wanders the area to complete [QC10301].
 Complete [QC10222].
 Complete [QC10233].
-[G57.3,78.6 Netherstorm]
+*NOTE:* Don't talk to *Bessy* yet. You're coming back to her in a few minutes.[OC]
 *DO NOT* accidently aggro the *Skeletal Stallions* in this barn when you turn in [QT10316 Searching for Evidence].\\Accept [QA10314 A Lingering Suspicion].
 Kill and loot *Tormented / Kirin'Var Ghosts* to complete [QC10314].
 Turn in [QT10222 The Sunfury Garrison].\\Accept [QA10223 Down With Daellis].
@@ -148,7 +150,7 @@ Clear out all mobs from here, across the bridge and up the street toward *Bessy*
 [G59.2,80.2 Netherstorm]
 [G59.8,80.3 Netherstorm]Loot the *Suspicious Outhouse* to complete [QC10319].
 Turn in [QT10334 Needs More Cowbell].
-The next quest is a group escort quest but is doable solo. The trick is to allow Bessy to walk out front and take the initial aggro. Then you must be careful to take enough aggro away from Bessy that she does not die. *This quest can be skipped if you do not want to do it.*
+The next quest is a group escort quest but is doable solo. The trick is to allow Bessy to walk out front and take the initial aggro. Then you must be careful to take enough aggro away from Bessy that she does not die.
 If you want to, accept [QA10337 When the Cows Come Home]. Otherwise, manually complete this step.
 Complete [QC10337].
 Turn in [QT10337 When the Cows Come Home].
@@ -159,7 +161,8 @@ Turn in [QT10266 Request for Assistance].\\Accept [QA10267 Rightful Repossession
 Turn in [QT10333 Help Mama Wheeler].\\Accept [QA10234 One Demon's Trash].
 Accept [QA10348 New Opportunities] and [QA10417 Run a Diagnostic!]
 Accept [QA10433 Keeping Up Appearances].
-[G49.2,58.2 Netherstorm]Kill *Engineers* and *Doomsmiths* and loot *Fel Reaver Parts* off the ground near the wreckage to complete [QC10232] and [QC10234].
+[G49.2,58.2 Netherstorm]Kill *Engineers* and *Doomsmiths* and loot *Fel Reaver Parts* off the ground near the wreckage to complete [QC10232] and [QC10234].*NOTE:* The *Fel Reaver Parts* are small, dark, and flat and very hard to spot!
+[G48.0,63.0 Netherstorm]
 [G56.0,63.8 Netherstorm]
 During the next steps, loot *Boxes of Surveying Equipment* off the ground to complete [QC10267][O].
 [G57.2,66.4 Netherstorm]Find, kill and loot *Summoner Kanthin* to complete [QC10209].
@@ -174,10 +177,11 @@ Accept [QA10924 Bloody Imp-ossible!]
 [G65.9,64.3 Netherstorm]Use *Zeppit's Crystal* in your inventory to summon *Zeppit.* Kill 10 *Warp Chasers* to complete [QC10924]. *NOTE:* You need to be near melee range of the *Warp Chasers* when they die or they won't count! Also - do not let your pet kill them!
 Turn in [QT10924 Bloody Imp-ossible!]
 Use *Archmage Vargoth's Staff* in your inventory. Turn in [QT10209 Summoner Kanthin's Prize].\\Accept [QA10176 Ar'kelos the Guardian].
+[G55.5,61.7 Netherstorm]
+[G51.5,64.7 Netherstorm]
+Turn in [QT10223 Down With Daellis].
 [G58.1,86.4 Netherstorm]Complete [QC10176].
 *Head to the top of the tower* to turn in [QT10176 Ar'kelos the Guardian].
-Turn in [QT10223 Down With Daellis].
-Grind until you are [XP68-62200 62,200 from level 68.]
 Hearth to [H Area 52].
 Turn in [QT10338 Shutting Down Manaforge Duro].
 Turn in [QT10341 Kick Them While They're Down].\\Accept [QA10202 A Defector].

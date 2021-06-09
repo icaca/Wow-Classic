@@ -22,7 +22,7 @@
 ## Notes-ruRU: BigWigs World Boss Modules
 ## Notes-zhCN: 世界首领模块。
 ## Notes-zhTW: BigWigs World Boss Modules
-## Version: v26.1-classic
+## Version: v26.2-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs
