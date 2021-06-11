@@ -235,7 +235,7 @@ Guidelime.registerGuide([[
 接受任务 [QA9797]
 接受任务 [QA9795]
 [G33.6,15.9 Nagrand]向南进入 *纳格兰*
-导航由 *Flymolo* 编写，*Pglterry* 汉化[OC]
+
 
 
 

@@ -2,7 +2,7 @@ Guidelime.registerGuide([[
 
 [N65-67 【部落】刀锋山-占星者]
 [D Flymolo's 外域升级导航 汉化 by Pglterry]
-[NX67 【部落】虚空风暴-占星者]
+[NX67 【部落】虚空风暴-占星者 -Part 1-]
 [GA Horde]
 
 导航由 *Flymolo* 编写，*Pglterry* 汉化[OC]
@@ -228,6 +228,6 @@ Guidelime.registerGuide([[
 飞到 [F 常青林].
 提交任务 [QT10748]
 [G82.1,28.9 Blades Edge Mountains]沿路前往 虚空风暴
-导航由 *Flymolo* 编写，*Pglterry* 汉化[OC]
+
 
 ]], "Flymolo's 外域升级导航")

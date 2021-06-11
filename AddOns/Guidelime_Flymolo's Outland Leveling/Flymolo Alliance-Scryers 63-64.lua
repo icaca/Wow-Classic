@@ -241,7 +241,7 @@ Guidelime.registerGuide([[
 接受任务 [QA9794]
 接受任务 [QA9792]
 飞到 [F 泰雷多尔]
-导航由 *Flymolo* 编写，*Pglterry* 汉化[OC]
+
 
 
 ]], "Flymolo's 外域升级导航")

@@ -244,7 +244,7 @@ In this area, kill 和 loot *Skithians* to get the *Prison Keys.* Search for the
 接受任务 [QA9797].
 接受任务 [QA9795].
 [G33.6,15.9 Nagrand] 向南进入 *纳格兰*
-导航由 *Flymolo* 编写，*Pglterry* 汉化[OC]												  
+												  
 
 
 ]], "Flymolo's 外域升级导航")

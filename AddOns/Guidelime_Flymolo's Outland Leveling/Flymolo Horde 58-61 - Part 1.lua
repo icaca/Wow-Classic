@@ -87,7 +87,7 @@ Guidelime.registerGuide([[
 接受任务 [QA9498][A Orc,Troll,Tauren,Undead]
 接受任务 [QA9499][A BloodElf]
 提交任务 [QT10835]\\接受任务 [QA10864]
-导航由 *Flymolo* 编写， *Pglterry* 汉化[OC]
+
 
 
 ]], "Flymolo's 外域升级导航")

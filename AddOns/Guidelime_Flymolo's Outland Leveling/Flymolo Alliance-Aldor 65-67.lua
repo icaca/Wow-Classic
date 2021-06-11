@@ -2,7 +2,7 @@ Guidelime.registerGuide([[
 
 [N65-67 【联盟】刀锋山-奥尔多]
 [D Flymolo's 外域升级导航 汉化 by Pglterry]
-[NX67 Flymolo's 【联盟】虚空风暴-奥尔多]
+[NX67 Flymolo's 【联盟】虚空风暴-奥尔多 -Part 1-]
 [GA Alliance]
 
 导航由 *Flymolo* 编写，*Pglterry* 汉化[OC]
@@ -80,21 +80,21 @@ Guidelime.registerGuide([[
 接受任务 [QA10557].
 *注：* 虽然是概率事情，但你可能会在试飞任务中摔死--！准备好盾，漂浮术，等办法尽可能在发生坠落时保住小命！[OC]
 [G60.2,68.8 Blades Edge Mountains]与 *拉雷·萨普纳波* 对话完成任务 [QC10557]
-提交任务 [QT10557].\\接受任务 [QA10710]。如果没出现这个任务，先在这里把其它任务接了，等3分钟
+提交任务 [QT10557].
 接受任务 [QA10609].
 与 *菲兹特·表针* 对话定炉石 [S 托什雷的基地]
 在下个区域的任务会让你消耗大量的蓝，一定要多喝饮料确保蓝量！[A Mage,Priest,Warlock,Paladin,Shaman,Hunter,Druid]
 [G61.1,70.4 Blades Edge Mountains]与 *里普·派兹拉姆* 对话激活飞行点
 使用背包里的 *塔利的声明* 签署声明
 接受任务 [QA10608].
-[G60.2,68.8 Blades Edge Mountains]与 *拉雷·萨普纳波* 对话完成任务 [QC10710].
+
 [G67.7,76.0 Blades Edge Mountains]如果你没有降落在*晶歌山脉*，手动跳过这个导航点
 *注：*打开 *虚空龙蛋* ，对孵化出来的*虚空幼龙* 使用 *时间定相调节器*，然后击杀拾取变出来的虚空幼龙。你要多次使用*调节器*去收集各类虚空幼龙精华。这些虚空幼龙伤害不低，还会快速抽蓝，要*小心*应对！[OC]
 [G59.7,73.8 Blades Edge Mountains]完成任务 [QC10608] 和 [QC10609].
 提交任务 [QT10608].
-提交任务 [QT10710].\\接受任务 [QA10711].
+
 提交任务 [QT10609].
-[G60.2,68.8 Blades Edge Mountains]与 *拉雷·萨普纳波* 对话完成任务 [QC10711].
+
 [G70.8,43.9 Blades Edge Mountains]从这个导航点，往北走击杀拾取 *邪能腐蚀者* 直到拾取 *损坏的面具*，点击接受任务 [QA10810]
 [G66.5,38.2 Blades Edge Mountains]
 
@@ -133,11 +133,11 @@ Guidelime.registerGuide([[
 [G71.6,18.6 Blades Edge Mountains]右键点击 *肥沃的火山灰* 种植种子完成任务 [QC10771]
 完成任务 [QC10770].
 使用炉石返回 [H 托什雷的基地].
-提交任务 [QT10711].\\接受任务 [QA10712].
-[G60.2,68.8 Blades Edge Mountains]与 *拉雷·萨普纳波* 对话，记得起飞后使用*虚空风向标* [QC10712]
-提交任务 [QT10717].\\接受任务 [QA10747].
+
+
+沿路去卢安荒野提交任务 [QT10717].\\接受任务 [QA10747].
 提交任务 [QT10713] 和 [QT10719].\\接受任务 [QA10894].
-提交任务 [QT10712].
+
 提交任务 [QT10567].\\接受任务 [QA10607].
 与 *旅店老板埃蕾尔娅* 对话定炉石 [S 常青林]
 提交任务 [QT10753].
@@ -213,7 +213,7 @@ Guidelime.registerGuide([[
 [G60.2,68.8 Blades Edge Mountains]
 与 *拉雷·萨普纳波* 对话，选择送你到 *拉扎安码头*
 [G82.1,28.9 Blades Edge Mountains]沿路前往 虚空风暴
-导航由 *Flymolo* 编写，*Pglterry* 汉化[OC]
+
 
 
 ]], "Flymolo's 外域升级导航")

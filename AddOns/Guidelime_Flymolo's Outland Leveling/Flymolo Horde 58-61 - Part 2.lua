@@ -139,7 +139,7 @@ Guidelime.registerGuide([[
 提交任务 [QT9472]
 提交任务 [QT9381 ]
 飞到 [F 沼泽鼠岗哨]
-导航由 *Flymolo* 编写， *Pglterry* 汉化[OC]
+
 
 
 ]], "Flymolo's 外域升级导航")

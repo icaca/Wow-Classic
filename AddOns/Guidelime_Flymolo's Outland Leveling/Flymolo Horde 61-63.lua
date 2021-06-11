@@ -167,7 +167,7 @@ Guidelime.registerGuide([[
 *大部分 刺杀贼 会选择 *占星者* ，战斗贼 和 敏锐贼 多倾向于选择 *奥尔多* [A Rogue]
 *不考虑专业技能, 你会发现 萨满 选择任何一方都不错*[A Shaman]
 *不考虑专业技能, 你会发现 德鲁伊 选择任何一方都不错*[A Druid]
-导航由 *Flymolo* 编写， *Pglterry* 汉化[OC]
+
 
 
 ]], "Flymolo's 外域升级导航")
