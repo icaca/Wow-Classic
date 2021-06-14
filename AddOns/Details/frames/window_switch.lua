@@ -436,6 +436,10 @@ do
 		if (#_detalhes.custom > all_switch.higher_counter) then
 			all_switch.higher_counter = #_detalhes.custom
 		end
+
+		--> update plugins
+
+
 		
 		all_switch:SetHeight ((all_switch.higher_counter * 17) + 20 + 16)
 		all_switch:SetWidth ((120 * 5) + (5 * 2) + (12*4))
@@ -445,25 +449,11 @@ do
 		all_switch.cursor_x, all_switch.cursor_y = floor (cursor_x), floor (cursor_y)
 		all_switch:SetScript ("OnUpdate", on_update_all_switch)
 		
-		--[=[
-		all_switch.wallpaper:SetTexture (_detalhes.tooltip.menus_bg_texture)
-		all_switch.wallpaper:SetTexCoord (unpack (_detalhes.tooltip.menus_bg_coords))
-		all_switch.wallpaper:SetVertexColor (unpack (_detalhes.tooltip.menus_bg_color))
-		all_switch.wallpaper:SetDesaturated (true)
-		--]=]
-		
-		--[=[
-		all_switch:SetBackdrop (_detalhes.tooltip_backdrop)
-		all_switch:SetBackdropColor (0.09019, 0.09019, 0.18823, 1)
-		all_switch:SetBackdropBorderColor (unpack (_detalhes.tooltip_border_color))
-		--]=]
-		
 		--updated colors (these colors are set inside the janela_principal file
 		all_switch:SetBackdrop (_detalhes.menu_backdrop_config.menus_backdrop)
 		all_switch:SetBackdropColor (unpack (_detalhes.menu_backdrop_config.menus_backdropcolor))
 		all_switch:SetBackdropBorderColor (unpack (_detalhes.menu_backdrop_config.menus_bordercolor))
-		
-	end) 
+	end)
 	
 ---------------------------------------------------------------------------------------------------------------------------	
 

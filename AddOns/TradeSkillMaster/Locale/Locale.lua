@@ -17943,8 +17943,7 @@ L["Enable restock"] = "Enable restock"
 L["Enable selling"] = "Enable selling"
 --[[Translation missing --]]
 L["Enable sending chat messages"] = "Enable sending chat messages"
---[[Translation missing --]]
-L["Enable TSM tooltips"] = "Enable TSM tooltips"
+L["Enable TSM tooltips"] = "開啟 TSM 提示框"
 --[[Translation missing --]]
 L["Enchant"] = "Enchant"
 L["Enchant Vellum"] = "附魔皮紙"
@@ -18170,8 +18169,7 @@ L["Imported group (%s) with %d items, %d operations, and %d custom sources."] = 
 L["Improved Import / Export."] = "Improved Import / Export."
 L["Inbox Settings"] = "收件設定"
 L["Include operations?"] = "包刮作業?"
---[[Translation missing --]]
-L["Include soulbound items"] = "Include soulbound items"
+L["Include soulbound items"] = "包含靈魂綁定的物品"
 L["Information"] = "資訊"
 --[[Translation missing --]]
 L["Invalid custom price source for %s. %s"] = "Invalid custom price source for %s. %s"
@@ -18741,8 +18739,7 @@ L["Reload UI (%02d)"] = "Reload UI (%02d)"
 --[[Translation missing --]]
 L["Reload UI (%d)"] = "Reload UI (%d)"
 L["Remove"] = "移除"
---[[Translation missing --]]
-L["Remove %d |4Item:Items"] = "Remove %d |4Item:Items"
+L["Remove %d |4Item:Items"] = "移除 %d 物品"
 L["Remove Data Older Than (Days)"] = "清除超過(天)的舊資料"
 --[[Translation missing --]]
 L["Remove this account sync and all synced data from this account"] = "Remove this account sync and all synced data from this account"
@@ -19181,8 +19178,7 @@ L["This will permanently delete the '%s' profile."] = "This will permanently del
 L["This will reset all groups and operations (if not stored globally) to be wiped from '%s'."] = "This will reset all groups and operations (if not stored globally) to be wiped from '%s'."
 --[[Translation missing --]]
 L["Time"] = "Time"
---[[Translation missing --]]
-L["Time Frame"] = "Time Frame"
+L["Time Frame"] = "時段"
 L["Time to Craft:"] = "製造時間:"
 --[[Translation missing --]]
 L["Tinker"] = "Tinker"
@@ -19196,12 +19192,10 @@ L["Toggles the TSM Banking UI if either the bank or guild bank is currently open
 L["Toggles the TSM Crafting UI."] = "Toggles the TSM Crafting UI."
 --[[Translation missing --]]
 L["Toggles the TSM Task List UI"] = "Toggles the TSM Task List UI"
---[[Translation missing --]]
-L["Tooltip Options"] = "Tooltip Options"
+L["Tooltip Options"] = "提示框選項"
 --[[Translation missing --]]
 L["Tooltip price format"] = "Tooltip price format"
---[[Translation missing --]]
-L["Tooltip Settings"] = "Tooltip Settings"
+L["Tooltip Settings"] = "提示框設定"
 --[[Translation missing --]]
 L["Top Buyers"] = "Top Buyers"
 L["Top Item"] = "最佳品項"
@@ -19277,8 +19271,7 @@ L["TUJ 3-Day Price"] = "TUJ 3-Day Price"
 L["TUJ Global Mean"] = "TUJ Global Mean"
 --[[Translation missing --]]
 L["TUJ Global Median"] = "TUJ Global Median"
---[[Translation missing --]]
-L["Type"] = "Type"
+L["Type"] = "類型"
 L["Unbalanced parentheses."] = "缺少括弧。"
 --[[Translation missing --]]
 L["Uncollected Only"] = "Uncollected Only"

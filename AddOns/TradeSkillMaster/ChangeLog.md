@@ -1,7 +1,6 @@
-## v4.10.42 Changes
+## v4.10.43 Changes
 
-* [BCC] Added missing gem/quest item AH categories
-* [BCC] Arena points support for vendoring
+* [BCC] Destroying will ignore items below required skill level
 * [BCC] Disenchanting material data fixes
 
 [Known Issues](http://support.tradeskillmaster.com/display/KB/TSM4+Currently+Known+Issues)

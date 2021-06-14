@@ -55,6 +55,14 @@ function PlayerProfessions.OnInitialize()
 	Event.Register("LEARNED_SPELL_IN_TAB", private.StartPlayerProfessionsThread)
 end
 
+function PlayerProfessions.GetProfessionSkill(player, profession)
+	return private.db:NewQuery()
+		:Select("level")
+		:Equal("player", player)
+		:Equal("profession", profession)
+		:GetFirstResultAndRelease()
+end
+
 function PlayerProfessions.CreateQuery()
 	return private.db:NewQuery()
 end

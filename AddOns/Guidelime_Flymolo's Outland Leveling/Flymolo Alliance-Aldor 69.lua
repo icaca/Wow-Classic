@@ -18,44 +18,43 @@ Guidelime.registerGuide([[
 接受任务 [QA10703]
 接受任务 [QA10642].
 接受任务 [QA10661]
-[G41.2,52.6 Shadowmoon Valley]Hang out in this area to attack *Infernal Attackers* as they spawn. You only need to hit them *one time* while they are still *above 30% health* to get credit! 完成任务 [QC10562].
+[G41.2,52.6 Shadowmoon Valley]在这区域攻击刷新出来的 *地狱火攻击者*，*你只需要在它们血量高于30%时攻击一下就行，*完成任务 [QC10562]
 提交任务 [QT10562]\\接受任务 [QA10563].
-During the next steps, kill *Chimaeras, Felboars and Scorchshell Pincers* to work on [QC10703][O].
-[G29.5,40.7 Shadowmoon Valley]In this area, loot *Ever-burning Ash* from the ground and kill and loot *Felfire Diemetradons* to 完成任务 [QC10642] and [QC10661].
+接下来，做任务[QC10703][O]，击杀 *奇美拉、野猪、灼壳蝎* 等野生动物
+[G29.5,40.7 Shadowmoon Valley]在这区域，拾取地上的 *永燃灰烬*，击杀拾取 *魔火双帆龙* 完成任务 [QC10642] 和 [QC10661]
 [G24.1,39.2 Shadowmoon Valley]
 *注：* 小心 *莫戈洛隆*！[OC]
-[G23.6,37.0 Shadowmoon Valley]Use the *Box o' Tricks* from your inventory and wait for the conversation to end to 完成任务 [QC10563].
+[G23.6,37.0 Shadowmoon Valley]使用背包里的 *伪装箱*，等待对话结束，完成任务 [QC10563]
 可以的话使用炉石回 [H 蛮锤要塞]
 提交任务 [QT10642].\\接受任务 [QA10643].
-Equip the *Spectrecles* from your inventory. Find and kill *Shadowmoon Harbingers* throughout the Stronghold to 完成任务 [QC10643].
+装备背包里的 *幽灵眼镜*，击杀在蛮锤要塞里游荡的 *影月先驱者* 完成任务 [QC10643]
 提交任务 [QT10643].\\接受任务 [QA10644].
 提交任务 [QT10661]\\接受任务 [QA10677].
 提交任务 [QT10563].\\接受任务 [QA10572].
 [G24.3,35.2 Shadowmoon Valley]
-[G22.3,35.5 Shadowmoon Valley]Loot the *Fel Reaver Armor Plating* to 完成任务 [QC10572,2 Fel Reaver Armor Plate].
-Check your inventory for the *Illidari-Bane Shard.* If you don't have it, find, kill and loot *Overseer Ripsaw* in this area to get it. Right click the shard to 接受任务 [QA10621].
-[G26.2,41.2 Shadowmoon Valley]Loot the *Fel Reaver Power Core* to 完成任务 [QC10572].
+[G22.3,35.5 Shadowmoon Valley]拾取 *魔能机甲护板* 获得 [QC10572,2 魔能机甲护板]
+查看背包里是否有 *伊利达雷斩除碎片*，右键点击接受任务 [QA10621]。如果没有的话在这区域击杀拾取 *工头雷普索* 拾取。
+[G26.2,41.2 Shadowmoon Valley]拾取 *魔能机甲核心* 完成任务 [QC10572]
 提交任务 [QT10572].\\接受任务 [QA10564]
-[G22.6,39.9 Shadowmoon Valley]Use the *Fel Bomb* from your inventory to 完成任务 [QC10564].
+[G22.6,39.9 Shadowmoon Valley]使用背包里的 *邪能炸弹* 完成任务 [QC10564]
 提交任务 [QT10621].
 提交任务 [QT10564]\\接受任务 [QA10573].
-
 提交任务 [QT10680].\\接受任务 [QA10458].
-[G44.7,46.3 Shadowmoon Valley]In this area, *stay OUT of the slime* and use the *Totem of Spirits* from your inventory (placing it on the ground) and kill nearby elementals to 完成任务 [QC10458].
+[G44.7,46.3 Shadowmoon Valley]在这区域，把 *灵魂图腾* 插在地上（不要进入绿色岩浆里），然后击杀附近的元素怪完成任务 [QC10458]
 提交任务 [QT10458].\\接受任务 [QA10480].
 在塔顶提交任务 [QT10573]\\接受任务 [QA10582].
-[G36.9,33.4 Shadowmoon Valley]In this area, kill and loot *Dark Conclave* mobs until you have 完成任务d [QC10569 The Sketh'lon Wreckage].
+[G36.9,33.4 Shadowmoon Valley]在这区域，击杀拾取 *黑暗教团鸦人* 直到完成任务 [QC10569]
 [G39.6,36.2 Shadowmoon Valley]
-Head down into *The Deathforge* and 完成任务 [QC10582].
+往下走，到 *死亡熔炉* 完成任务 [QC10582]
 提交任务 [QT10582].
 接受任务 [QA10583]和 [QA10585]
 [G40.3,36.2 Shadowmoon Valley]
 [G40.0,38.4 Shadowmoon Valley]
 [G36.5,41.5 Shadowmoon Valley]
-[G34.7,39.9 Shadowmoon Valley]"Speak" with *Flanis Swiftwing* and Reclaim Flanis's pack to 完成任务 [QC10583]
-Kill and loot *Deathforge Tinkerers* to acquire [QC10585,2 Elemental Displacer].
+[G34.7,39.9 Shadowmoon Valley]点击趴在地上的 *弗兰尼斯·迅翼* 并获得 *弗兰尼斯的背包* 完成任务 [QC10583]
+击杀拾取 *死亡熔炉杂役* 获取 [QC10585,2 元素置换器]
 [G37.4,39.3 Shadowmoon Valley]
-[G37.8,38.7 Shadowmoon Valley]Jump down, kill *Summoner Skartax,* use the *Elemental Displacer* from your inventory, and kill the *Infernal Oversoul* to 完成任务 [QC10585].
+[G37.8,38.7 Shadowmoon Valley]从这跳下去，击杀 *召唤者斯卡塔克斯*，使用背包里的 *元素置换器* 破坏召唤仪式，然后击杀 *地狱火的超灵* 完成任务 [QC10585]
 [G39.7,39.6 Shadowmoon Valley]
 [G40.7,39.2 Shadowmoon Valley]
 提交任务 [QT10583] 和 [QT10585]
@@ -68,86 +67,85 @@ Kill and loot *Deathforge Tinkerers* to acquire [QC10585,2 Elemental Displacer].
 
 提交任务 [QT10569].\\接受任务 [QA10759].
 提交任务 [QT10586]\\接受任务 [QA10589].
-[G24.8,31.1 Shadowmoon Valley]In this area, kill and loot *Mo'arg Weaponsmiths* to 完成任务 [QC10589].
+[G24.8,31.1 Shadowmoon Valley]在这区域，击杀拾取 *莫尔葛武器匠* 完成任务 [QC10589]
 提交任务 [QT10589].\\接受任务 [QA10766].
-[G25.3,36.3 Shadowmoon Valley]Step onto the platform to teleport!
+[G25.3,36.3 Shadowmoon Valley]进入传送装置进行传送！
 提交任务 [QT10766].\\接受任务 [QA10606].
-[G39.4,19.5 Shadowmoon Valley]Kill and loot *Doctor Gutrick* and then loot *The Doctor's Strongbox* to 完成任务 [QC10606].
+[G39.4,19.5 Shadowmoon Valley]击杀 *加特里克博士* 获得钥匙，拾取 *博士的保险箱* 完成任务 [QC10606]
 提交任务 [QT10606].\\接受任务 [QA10612].
 [G40.8,21.7 Shadowmoon Valley]
-Use any of the *Fel Reaver Control Consoles.* If you have a pet, you may need to dismiss it in order for this to work. Kill *Deathforged Infernals,* who just stand around and you can take out groups at a time, using the *Destroy Deathforged Infernal* button to 完成任务 [QC10612]. If you keep running you don't need to worry about killing mobs that attack you.
+随意使用一台 *魔能机甲控制台* 控制一个魔能机甲斥候，保持移动吸引一波怪然后使用 *摧毁死亡熔炉地狱火* 技能击杀 *死亡熔炉地狱火* 完成任务 [QC10612]\\如果你带有宠物，使用控制台前要先解散宠物。只要保持移动，也不必担心小怪的攻击
 提交任务 [QT10612].\\接受任务 [QA10744].
-Head back to the teleporter and return to Legion Hold.
+回传送装置处传送回 军团要塞
 [G36.1,57.2 Shadowmoon Valley]
 [G35.8,58.9 Shadowmoon Valley]
 提交任务 [QT10744].
 [G57.0,55.0 Shadowmoon Valley]
 [G62.4,63.3 Shadowmoon Valley]
-[G58.2,70.6 Shadowmoon Valley]Equip the *Spectracles* from your inventory to 提交任务 [QT10644 Teron Gorefiend - Lore and Legend].\\接受任务 [QA10635].
-[G58.3,52.6 Shadowmoon Valley]Kill and loot *Greater Felfire Diemetradons* to 完成任务 [QC10677].
-[G63.7,53.0 Shadowmoon Valley]With your *Spectracles* equipped, kill and loot *Clerics of Karabor* to 完成任务 [QC10635].
+[G58.2,70.6 Shadowmoon Valley]装备背包里的 *幽灵眼镜* 提交任务 [QT10644]\\接受任务 [QA10635].
+[G58.3,52.6 Shadowmoon Valley]击杀拾取 *大型魔火双帆龙* 完成任务 [QC10677]
+[G63.7,53.0 Shadowmoon Valley]装备 *幽灵眼镜*，击杀拾取 *卡拉波祭司* 完成任务 [QC10635]
 [G63.3,30.3 Shadowmoon Valley]与 *玛蒂克斯* 对话激活飞行点
 接受任务 [QA10826].
 如果可以的话提交任务 [QA10826]
-注： You may continue to 完成任务 *Sargeras* quests if you have the marks to do so.
+*注：*你可以反复提交 *萨格拉斯印记* 提升奥尔多声望
 接受任务 [QA10568].
 接受任务 [QA10619].
 接受任务 [QA10587].
 [G61.1,28.3 Shadowmoon Valley]与 *看护者奥鲁罗* 对话定炉石 [S 沙塔尔祭坛]
 [G61.2,38.1 Shadowmoon Valley]
-Head up the hill and 完成任务 [QC10619]. Kill and loot *Ashtongue Workers* and loot *Baa'ri Tablet Fragments* from the ground to 完成任务 [QC10568].
+沿路上山，击杀拾取 *灰舌工人*，或者拾取地上的 *巴尔里石板碎块* 完成任务 [QC10568]
 提交任务 [QT10619].\\接受任务 [QA10816].
 提交任务 [QT10568].\\接受任务 [QA10571].
 [G54.9,33.4 Shadowmoon Valley]
-[G57.2,33.0 Shadowmoon Valley]Kill and loot *Oronu the Elder* to 完成任务 [QC10571].
+[G57.2,33.0 Shadowmoon Valley]击杀拾取 *长者奥洛努* 完成任务 [QC10571]
 [G66.4,43.4 Shadowmoon Valley]
-[G67.6,37.7 Shadowmoon Valley]In this area, watch out for *Eyes of Kilrogg* and elite mobs while you 完成任务 [QC10816].
+[G67.6,37.7 Shadowmoon Valley]在这区域，完成任务 [QC10816]。要小心巡逻的 *基尔罗格之眼* 和精英怪
 [G66.5,42.8 Shadowmoon Valley]
-*注：* During the next steps, be aware that *Sunfury Blood Lords* can call other mobs into the fight!
-[G68.5,51.7 Shadowmoon Valley]In this area, watch out for *Netharel* while you kill and loot *Demon Hunter Suplicants* to 完成任务 [QC10587]. *注：* Be willing to team with a group in the area OR be prepared to wait for frontline respawns.
+*注：* 接下来的步奏，要小心 *日怒血领主*，他们会呼唤周围的怪过来攻击你！
+[G68.5,51.7 Shadowmoon Valley]在这区域，击杀拾取 *恶魔猎手学员* 完成任务 [QC10587]。*注：*这个任务最好是组队完成或者不要过于深入怪堆，只击杀外围刷新的怪。做任务时还要留意精英怪 *奈萨里尔*。
 使用炉石回 [H 沙塔尔祭坛].
 提交任务 [QT10816].
 提交任务 [QT10587].
 提交任务 [QT10571].\\接受任务 [QA10574].
 [G53.1,25.4 Shadowmoon Valley]
 [G56.0,21.6 Shadowmoon Valley]
-[G51.7,17.7 Shadowmoon Valley]Up the winding tunnel and to the right, kill the *Keeper of the Cistern.*
+[G51.7,17.7 Shadowmoon Valley]穿过蜿蜒曲折的洞穴，在分岔路口右转，击杀洞穴尽头的 *水池守护者*
 接受*护送任务* [QA10451]
-Follow *Wilda* on her rampage through the cave until you 完成任务 [QC10451].
-[G50.5,26.4 Shadowmoon Valley]Use the *Totem of Spirits* from your inventory while killing *Enraged Water Spirits* to 完成任务 [QC10480].
-[G49.9,23.0 Shadowmoon Valley]Destroy the totems (one at a time is easiest) and kill the elementals that spawn. Then kill and loot *Lakaan* to acquire [QC10574,3 Lakaan's Medallion Fragment].
+护送 *大地治愈者维尔达* 离开洞穴完成任务 [QC10451]
+[G50.5,26.4 Shadowmoon Valley]使用背包里的 *灵魂图腾*，击杀 *愤怒的水灵* 完成任务 [QC10480]
+[G49.9,23.0 Shadowmoon Valley]打掉图腾（逐个打掉比较容易）和召唤出来的元素怪，然后击杀拾取 *拉坎恩* 获得 [QC10574,3 拉坎恩的勋章碎片]
 [G47.9,34.7 Shadowmoon Valley]
-[G48.3,39.6 Shadowmoon Valley]Clear the area and then destroy the totems, the elementals that spawn, and kill and loot *Uylaru* to acquire [QC10574,4 Uylaru's Medallion Fragment].
+[G48.3,39.6 Shadowmoon Valley]清空周围区域，逐个打掉图腾和召唤出来的元素怪，然后击杀拾取 *乌拉鲁* 获得 [QC10574,4 乌拉鲁的勋章碎片]
 提交任务 [QT10451].
 提交任务 [QT10480].\\接受任务 [QA10481].
-Find *Parshah* walking along the road to 提交任务 [QT10759 Find the Deserter].\\接受任务 [QA10777].
-[G40.0,30.7 Shadowmoon Valley]Kill and loot *Asghar* who wanders this area to 完成任务 [QC10777].
+在这条南北向的道路上找到 *帕沙恩* 提交任务 [QT10759]\\接受任务 [QA10777].
+[G40.0,30.7 Shadowmoon Valley]击杀拾取在这区域漫游的 *阿斯迦* 完成任务 [QC10777]
 提交任务 [QT10777].\\接受任务 [QA10778].
-
 提交任务 [QT10677].\\接受任务 [QA10678]
-[G47.5,71.7 Shadowmoon Valley]Kill and loot *Eclipsians* until you acquire [QC10778,1 Lianthe's Key].
-Loot *Lianthe's Strongbox* to 完成任务 [QC10778].
+[G47.5,71.7 Shadowmoon Valley]击杀拾取 *日蚀血精灵* 直到获得 [QC10778,1 莉安丝的钥匙]
+拾取 *莉安丝的保险箱* 完成任务 [QC10778].
 [G53.2,57.0 Shadowmoon Valley]
-[G51.2,52.8 Shadowmoon Valley]Clear the area and then destroy the totems, the elementals that spawn, and kill and loot *Eykenen* to acquire [QC10574,1 Eykenen's Medallion Fragment].
+[G51.2,52.8 Shadowmoon Valley]清空周围区域，逐个打掉图腾和召唤出来的元素怪，然后击杀拾取 *埃肯尼* 获得 [QC10574,1 埃肯尼的勋章碎片]
 [G54.7,53.4 Shadowmoon Valley]
-During the next steps, use your *Totem of Spirits* while killing *Enraged Air Spirits* to work on [QC10481][O].
-[G58.2,70.7 Shadowmoon Valley]Use your *Spectracles* and 提交任务 [QT10635 Divination: Gorefiend's Cloak].
-*注：* You can pick up the other quests here for playing after level 70 so you don't need to come back to get them, but they will not be 完成任务d in this guide.
+接下来，做任务 [QC10481][O]，使用 *灵魂图腾*，击杀 *愤怒的气灵* 
+[G58.2,70.7 Shadowmoon Valley]装备 *幽灵眼镜* 提交任务 [QT10635]
+*注：* 你可以在这里接其它任务，这些任务不会在这个导航中完成，但70级后再回来全清任务时会方便一些。
 完成任务 [QC10481].
 [G56.6,69.7 Shadowmoon Valley]
 [G55.1,71.2 Shadowmoon Valley]
-[G57.1,73.6 Shadowmoon Valley]Destroy the totems, the elementals that spawn, and kill and loot *Haalum* to 完成任务 [QC10574].
+[G57.1,73.6 Shadowmoon Valley]逐个打掉图腾和召唤出来的元素怪，然后击杀拾取 *哈鲁姆* 完成任务 [QC10574]
 使用炉石回 [H 沙塔尔祭坛].
 提交任务 [QT10574].\\接受任务 [QA10575].
 [G63.3,43.4 Shadowmoon Valley]
-[G56.1,44.5 Shadowmoon Valley]Kill and loot *Felspine the Greater* to 完成任务 [QC10678]
-Under the Dreadwarden, 提交任务 [QT10575 The Warden's Cage].\\接受任务 [QA10622].
-[G58.1,48.6 Shadowmoon Valley]*Climb back out of the jail* and back through the gate.
+[G56.1,44.5 Shadowmoon Valley]击杀拾取 *魔脊龙* 完成任务 [QC10678]
+从 *恐惧典狱官* 站的地方下去，提交任务 [QT10575]\\接受任务 [QA10622].
+[G58.1,48.6 Shadowmoon Valley]从地牢斜坡上来上到城墙
 [G57.8,49.2 Shadowmoon Valley]
 完成任务 [QC10622].
 提交任务 [QT10622]\\接受任务 [QA10628]
-Head to the back of the jail and through the watery tunnel to 提交任务 [QT10628 Akama].
-You can 接受任务 the follow-up dungeon quest *Seer Udalo* to save yourself time later, but the quest will not be covered in this guide.
+回到地牢然后穿过水下洞穴提交任务 [QT10628]
+你可以接受 *禁魔监狱* 副本任务 *先知乌达鲁*，为将来节约时间，但是这个导航并不包含这个任务
 [G37.1,58.2 Shadowmoon Valley]与 *德雷格·掠云* 对话定炉石 [S 蛮锤要塞]
 提交任务 [QT10481].\\接受任务 [QA10513].
 完成任务 [QC10703].
@@ -156,22 +154,23 @@ You can 接受任务 the follow-up dungeon quest *Seer Udalo* to save yourself t
 [G49.5,20.7 Shadowmoon Valley]
 [G51.7,18.7 Shadowmoon Valley]
 提交任务 [QT10513].\\接受任务 [QA10514]
-[G52.2,17.7 Shadowmoon Valley]Clear this area of *Ravenous Flayers.* When the mounds spawn *(they look like little plants)* stand on top of them and use *Oronok's Boar Whistle* in your inventory. If a *Felboar* is close enough, it will dig up a tuber but you may need to protect it from attack. Gather the *Tubers* to 完成任务 [QC10514].
+
+[G52.2,17.7 Shadowmoon Valley]清空这区域的 *贪婪的剥石者*。站在长得像 *萝卜* 的植物上使用 *欧鲁诺克的野猪哨*。只要 *野猪* 接近 *“萝卜”*，就会把块茎挖出来，与此同时要保护野猪不受攻击。收集足够的 *影月块茎* 完成任务 [QC10514]
 提交任务 [QT10514]\\接受任务 [QA10515].
-During this quest, watch out for the *Ravenous Flayer Matriarch!!* She moves VERY quickly![OC]
-[G55.7,17.3 Shadowmoon Valley]"Open" *Ravenous Flayer Eggs* on the ground in this area to 完成任务 [QC10515].
+做下个任务时要注意 *贪婪的剥石者女王！* ，她的移动速度很快![OC]
+[G55.7,17.3 Shadowmoon Valley]在这区域，*摧毁* 地上的 *贪婪剥石者的卵* 完成任务 [QC10515]
 提交任务 [QT10515].\\接受任务 [QA10519].
-Speak with *Oronok* and choose *I am ready to hear your story, Oronok* and finish the conversation to 完成任务 [QC10519].
+与 *欧鲁诺克·裂心* 完成对话，完成任务 [QC10519]
 提交任务 [QT10519].
-The follow-up *Oronok* quests are not covered in this guide but you may want to take them to save time in end-game!
+本导航并不包含后续的 *欧鲁诺克* 系列任务，但是你可以提前接受任务为以后节约时间！
 使用炉石回 [H 蛮锤要塞].
 提交任务 [QT10703]
 提交任务 [QT10678].
-[G42.9,55.6 Shadowmoon Valley]Loot *Sketh'lon Feathers from the ground to 完成任务 [QC10780].
+[G42.9,55.6 Shadowmoon Valley]收集地上的 *斯克瑟隆羽毛* 完成任务 [QC10780]
 提交任务 [QT10780].\\接受任务 [QA10782].
-[G43.0,44.8 Shadowmoon Valley]Equip the *Unfinished Headpiece* from your inventory *AND* slot it on an action bar. *DON'T PANIC!* Multiple mobs will spawn but they are easy. Kill the mobs. Use the headpiece while *standing next to the altar* to 完成任务 [QC10782].
+[G43.0,44.8 Shadowmoon Valley]装备 *未完成的杖头*，并拖到动作栏。祭坛边有很多怪，但是 *不用担心*，这些怪很容易解决。解决怪后在 *祭坛边* 使用杖头充能完成任务 [QC10782]
 提交任务 [QT10782].\\接受任务 [QA10808].
-[G41.1,60.8 Shadowmoon Valley]Use the *Staff of Parshah* in your inventory to 完成任务 [QC10808].
+[G41.1,60.8 Shadowmoon Valley]使用背包里的 *帕沙恩的法杖* 完成任务 [QC10808]
 提交任务 [QT10808].
 如果现在你还没有到70级并且之前已经完成过 *虚空风暴* 导航（67 - 68级），我建议你在 *巴尔里废墟* 继续刷怪到 [XP70 70级]。如果你已经顺利升至70级，*恭喜!!!!!*\\非常感谢你选择使用 *Flymolo的外域升级导航!!*
 导航由 *Flymolo* 编写， *Pglterry* 汉化[OC]

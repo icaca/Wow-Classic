@@ -61,7 +61,7 @@ Guidelime.registerGuide([[
 使用 *先祖狼魂图腾* 召唤 *先祖狼魂* ，跟随它直到完成任务 *灵魂的指引*[OC]
 提交任务 [QT9410]\\接受任务 [QA9406]
 [G37.4,36.4 Hellfire Peninsula]
-[G40.0,37.3 Hellfire Peninsula]打软泥怪拾取 *埃雷利恩的背包* ,然后打开背包获得 *埃雷利恩的日记* 完成任务 [QC9374]
+[G40.0,37.3 Hellfire Peninsula]从刺树树枝上取得 *埃雷利恩的背包* ,然后打开背包获得 *埃雷利恩的日记* 完成任务 [QC9374]
 击杀拾取 *恐惧魔* 完成任务 [QC9366]
 [G45.5,33.9 Hellfire Peninsula]
 提交任务 [QT9406]

@@ -651,7 +651,11 @@ end
 
 function private.GetAppStatusTooltip()
 	local tooltipLines = TempTable.Acquire()
-	tinsert(tooltipLines, format(L["TSM Desktop App Status (%s)"], TSM.GetRegion().."-"..GetRealmName()))
+	local regionRealmName = TSM.GetRegion().."-"..GetRealmName()
+	if TSM.IsWowClassic() then
+		regionRealmName = regionRealmName.."-"..UnitFactionGroup("player")
+	end
+	tinsert(tooltipLines, format(L["TSM Desktop App Status (%s)"], regionRealmName))
 
 	local appUpdateAge = time() - TSM.GetAppUpdateTime()
 	if appUpdateAge < SECONDS_PER_HOUR then
