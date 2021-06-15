@@ -61,7 +61,7 @@ Guidelime.registerGuide([[
 使用 *先祖狼魂图腾* 召唤 *先祖狼魂* ，跟随它直到完成任务 *灵魂的指引*[OC]
 提交任务 [QT9410]\\接受任务 [QA9406]
 [G37.4,36.4 Hellfire Peninsula]
-[G40.0,37.3 Hellfire Peninsula]从刺树树枝上取得 *埃雷利恩的背包* ,然后打开背包获得 *埃雷利恩的日记* 完成任务 [QC9374]
+[G40.0,37.3 Hellfire Peninsula]打软泥怪拾取 *埃雷利恩的背包* ,然后打开背包获得 *埃雷利恩的日记* 完成任务 [QC9374]
 击杀拾取 *恐惧魔* 完成任务 [QC9366]
 [G45.5,33.9 Hellfire Peninsula]
 提交任务 [QT9406]
@@ -77,7 +77,7 @@ Guidelime.registerGuide([[
 [G33.5,65.8 Hellfire Peninsula]
 击杀拾取 *哈尔什鸦人* 完成任务 [QC9396][O]
 打开 *卡利鸟巢*，使用*空鸟笼* 捕捉 *雌性小卡利鸟* 完成任务 [QC9397][O] *注: 打开卡利鸟巢穴时可能会被攻击!!*
-来到[G25.7,78.6 Hellfire Peninsula]
+来到[G25.6,78.5 Hellfire Peninsula]
 在斜坡上找到并击杀 *亚维鲁* ，获得 *亚维鲁的宝珠* 右键点击接受任务 [QA9418]
 [G28.9,81.4 Hellfire Peninsula]
 点击 *哈尔什祭坛* 并击败 *埃拉纳斯*

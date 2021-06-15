@@ -82,7 +82,7 @@ Guidelime.registerGuide([[
 提交任务 [QT9563]\\接受任务 [QA9420]
 [G22.1,64.5 Hellfire Peninsula]在这里完成任务 [QC9385]
 在哈尔什巢穴刷 *卡利鸟* 完成 [QC9420][O]
-来到[G25.7,78.6 Hellfire Peninsula]
+来到[G25.6,78.5 Hellfire Peninsula]
 在斜坡上找到并击杀 *亚维鲁* ，获得 *亚维鲁的宝珠* 右键点击接受任务 [QA9418]
 [G28.9,81.4 Hellfire Peninsula]点击 *哈尔什祭坛* 并击败 *埃拉纳斯*
 提交任务 [QT9418]

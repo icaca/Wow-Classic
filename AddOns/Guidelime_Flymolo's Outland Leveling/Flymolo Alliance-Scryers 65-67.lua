@@ -145,7 +145,7 @@ Guidelime.registerGuide([[
 提交任务 [QT10795].
 右键点击 *高格鲁姆的信物* 接受任务 [QA10797]，如果你还没有这个物品需要回去击杀 *多古克* 拾取
 提交任务 [QT10797].\\接受任务 [QA10798].
-提交任务 [QT10771 和 [QT10770]
+提交任务 [QT10771] 和 [QT10770]
 
 [G59.2,42.4 Blades Edge Mountains]
 [G51.5,45.3 Blades Edge Mountains]
