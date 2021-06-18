@@ -45,7 +45,7 @@ Guidelime.registerGuide([[
 接受任务 [QA10412].
 到占星者平台提交任务 [QT10553]
 [G56.1,81.4 Shattrath City]与 *旅店老板海索恩* 对话定炉石 [S 沙塔斯城].
-
+[G49.6,64.3 Shattrath City]
 
 [G52.4,52.4 Shattrath City][A Hunter,Mage,Priest,Rogue,Warlock,Warrior,Shaman]
 点击传送门传送到 *奥格瑞玛*[A Hunter,Mage,Priest,Rogue,Warlock,Warrior,Shaman]
