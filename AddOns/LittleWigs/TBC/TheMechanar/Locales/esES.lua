@@ -18,4 +18,6 @@ L = BigWigs:NewBossLocale("Nethermancer Sepethrea", "esES") or BigWigs:NewBossLo
 if L then
 	L.inferno = "Infierno"
 	L.inferno_desc = "Las llamas enfurecidas se rodean a sí mismas con llamas infernales durante 8 s, lo que inflige daño de Fuego a todos los jugadores en un radio de 10 m cada segundo. Mientras el infierno está activo, las llamas enfurecidas no pueden moverse ni utilizar facultades. Cuando termina, las llamas enfurecidas eligen un nuevo objetivo al que perseguir."
+
+	L.fixate_desc = "Provoca que el taumaturgo se fije en un objetivo aleatorio."
 end

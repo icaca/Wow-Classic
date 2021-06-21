@@ -22,7 +22,7 @@
 ## Notes-ruRU: BigWigs Ahn'Qiraj Temple Modules
 ## Notes-zhCN: BigWigs 安其拉神殿模块。
 ## Notes-zhTW: BigWigs 安其拉神廟模組。
-## Version: v26.2-classic
+## Version: v27-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

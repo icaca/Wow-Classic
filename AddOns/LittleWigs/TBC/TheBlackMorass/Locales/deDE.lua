@@ -5,6 +5,7 @@ if L then
 	L.wave_desc = "Zeigt ungefähre Nachrichten für die Wellen an."
 
 	L.medivh = "Medivh"
+	L.rift = "Zeitriss"
 end
 
 L = BigWigs:NewBossLocale("Aeonus", "deDE")

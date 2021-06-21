@@ -18,4 +18,6 @@ L = BigWigs:NewBossLocale("Nethermancer Sepethrea", "itIT")
 if L then
 	L.inferno = "Inferno"
 	L.inferno_desc = "Le Fiamme Furenti vengono circondate da un inferno ardente per 8 s, infliggendo danni da fuoco a tutti i personaggi entro 10 m ogni secondo. In questo stato, le Fiamme Furenti non possono muoversi o usare abilità. Quando Inferno finisce, le Fiamme Furenti scelgono un nuovo bersaglio da inseguire."
+
+	L.fixate_desc = "Induce l'incantatore a prendere di mira un bersaglio casuale."
 end

@@ -22,7 +22,7 @@
 ## Notes-ruRU: BigWigs Karazhan Modules
 ## Notes-zhCN: BigWigs 卡拉赞模块
 ## Notes-zhTW: BigWigs 卡拉贊模組
-## Version: v26.2-classic
+## Version: v27-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

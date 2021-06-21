@@ -5,6 +5,7 @@ if L then
 	--L.wave_desc = "Announce approximate warning messages for the waves."
 
 	L.medivh = "메디브"
+	L.rift = "시간의 균열"
 end
 
 L = BigWigs:NewBossLocale("Aeonus", "koKR")

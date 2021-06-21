@@ -3,7 +3,7 @@
 ## Title: BiS Tracker
 ## Notes: Shows BiS items for every class, and where to get them.
 ## Author: Zentarg
-## Version: 4.8
+## Version: 4.9
 ## SavedVariablesPerCharacter: BiS_Settings
 ## SavedVariables: BiSTrackerDB
 
@@ -12,6 +12,7 @@ embeds.xml
 data\BiSData.lua
 
 core\Init.lua
+core\Localization.lua
 core\DB.lua
 core\ChatCommands.lua
 core\AceGUILayouts.lua

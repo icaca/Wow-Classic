@@ -20,7 +20,7 @@ public.isBC = WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC
 -- Generate our version variables
 --
 
-local BIGWIGS_VERSION = 26
+local BIGWIGS_VERSION = 27
 local BIGWIGS_RELEASE_STRING, BIGWIGS_VERSION_STRING = "", ""
 local versionQueryString, versionResponseString = "Q^%d^%s^%d^%s", "V^%d^%s^%d^%s"
 local customGuildName = false
@@ -35,7 +35,7 @@ do
 	local RELEASE = "RELEASE"
 
 	local releaseType = RELEASE
-	local myGitHash = "a0f1786" -- The ZIP packager will replace this with the Git hash.
+	local myGitHash = "a05f523" -- The ZIP packager will replace this with the Git hash.
 	local releaseString = ""
 	--[=[@alpha@
 	-- The following code will only be present in alpha ZIPs.
@@ -87,7 +87,7 @@ local next, tonumber, type, strsplit = next, tonumber, type, strsplit
 local SendAddonMessage, Ambiguate, CTimerAfter, CTimerNewTicker = C_ChatInfo.SendAddonMessage, Ambiguate, C_Timer.After, C_Timer.NewTicker
 local GetInstanceInfo, GetBestMapForUnit, GetMapInfo = GetInstanceInfo, C_Map.GetBestMapForUnit, C_Map.GetMapInfo
 local UnitName, UnitGUID = UnitName, UnitGUID
-local debugstack = debugstack
+local debugstack, print = debugstack, print
 
 -- Try to grab unhooked copies of critical funcs (hooked by some crappy addons)
 public.GetBestMapForUnit = GetBestMapForUnit
@@ -114,6 +114,7 @@ local highestFoundVersion = BIGWIGS_VERSION
 local highestFoundGuildVersion = BIGWIGS_GUILD_VERSION
 
 -- Loading
+local isMouseDown = true
 local loadOnCoreEnabled = {} -- BigWigs modulepacks that should load when a hostile zone is entered or the core is manually enabled, this would be the default plugins Bars, Messages etc
 local loadOnZone = {} -- BigWigs modulepack that should load on a specific zone
 local loadOnSlash = {} -- BigWigs modulepacks that can load from a chat command
@@ -163,7 +164,6 @@ do
 		[544] = bc, -- Magtheridon's Lair
 		[534] = bc, -- The Battle for Mount Hyjal
 		[564] = bc, -- Black Temple
-		[560] = bc, -- The Escape from Durnholde
 		[580] = bc, -- The Sunwell
 
 		--[[ LittleWigs: Classic ]]--
@@ -219,6 +219,12 @@ local EnableAddOn, GetAddOnEnableState, GetAddOnInfo, IsAddOnLoaded, LoadAddOn =
 local GetAddOnMetadata, IsInGroup, IsInRaid, UnitAffectingCombat = GetAddOnMetadata, IsInGroup, IsInRaid, UnitAffectingCombat
 local UnitIsDeadOrGhost, UnitSetRole = UnitIsDeadOrGhost, UnitSetRole
 
+local reqFuncAddons = {
+	BigWigs_Core = true,
+	BigWigs_Options = true,
+	BigWigs_Plugins = true,
+}
+
 local function IsAddOnEnabled(addon)
 	local character = UnitName("player")
 	return GetAddOnEnableState(character, addon) > 0
@@ -238,6 +244,13 @@ local function load(obj, index)
 			end
 		end
 		loadOnSlash[index] = nil
+	end
+
+	if reqFuncAddons[index] then
+		reqFuncAddons[index] = nil
+		if index == "BigWigs_Core" then
+			reqFuncAddons.BigWigs_Plugins = nil
+		end
 	end
 
 	EnableAddOn(index) -- Make sure it wasn't left disabled for whatever reason
@@ -299,8 +312,17 @@ local dataBroker = ldb:NewDataObject("BigWigs",
 )
 
 function dataBroker.OnClick(self, button)
+	-- If you are a dev and need the BigWigs options loaded to do something, please come talk to us on Discord about your use case
 	if button == "RightButton" then
-		loadCoreAndOpenOptions()
+		if isMouseDown then
+			loadCoreAndOpenOptions()
+		else
+			local trace = debugstack(2)
+			public.mstack = trace
+			sysprint("|cFFff0000WARNING!|r")
+			sysprint("One of your addons was prevented from force loading the BigWigs options.")
+			sysprint("Contact us on the BigWigs Discord about this, it should not be happening.")
+		end
 	end
 end
 
@@ -350,11 +372,6 @@ end
 --
 
 do
-	local reqFuncAddons = {
-		BigWigs_Core = true,
-		BigWigs_Options = true,
-		BigWigs_Plugins = true,
-	}
 	local loadOnInstanceAddons = {} -- Will contain all names of addons with an X-BigWigs-LoadOn-InstanceId directive
 	local loadOnWorldBoss = {} -- Addons that should load when targetting a specific mob
 	local extraMenus = {} -- Addons that contain extra zone menus to appear in the GUI
@@ -574,7 +591,21 @@ do
 end
 
 function mod:ADDON_LOADED(addon)
-	if addon ~= "BigWigs" then return end
+	if addon ~= "BigWigs" then
+		-- If you are a dev and need the BigWigs options loaded to do something, please come talk to us on Discord about your use case
+		if reqFuncAddons[addon] then
+			local trace = debugstack(2)
+			public.lstack = trace
+			sysprint("|cFFff0000WARNING!|r")
+			sysprint("One of your addons is force loading the BigWigs options.")
+			sysprint("Contact us on the BigWigs Discord about this, it should not be happening.")
+			reqFuncAddons = {}
+		end
+		return
+	end
+
+	--bwFrame:RegisterEvent("GLOBAL_MOUSE_DOWN")
+	--bwFrame:RegisterEvent("GLOBAL_MOUSE_UP")
 
 	bwFrame:RegisterEvent("ZONE_CHANGED")
 	bwFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
@@ -628,8 +659,20 @@ function mod:ADDON_LOADED(addon)
 		SetCVar("Sound_MaxCacheSizeInBytes", "67108864") -- Set the cache to the "Small (64MB)" setting as a minimum
 	end
 
-	bwFrame:UnregisterEvent("ADDON_LOADED")
-	self.ADDON_LOADED = nil
+	--bwFrame:UnregisterEvent("ADDON_LOADED")
+	--self.ADDON_LOADED = nil
+end
+
+function mod:GLOBAL_MOUSE_DOWN(button)
+	if button == "RightButton" then
+		isMouseDown = true
+	end
+end
+
+function mod:GLOBAL_MOUSE_UP(button)
+	if button == "RightButton" then
+		isMouseDown = false
+	end
 end
 
 -- We can't do our addon loading in ADDON_LOADED as the target addons may be registering that
@@ -809,6 +852,27 @@ do
 		delayedMessages[#delayedMessages+1] = ("BigWigs is missing translations for %s. Can you help? Visit git.io/vpBye or ask us on Discord for more info."):format(locales[L])
 	end
 
+	local myGitHash = "a05f523" -- The ZIP packager will replace this with the Git hash.
+	-- If we find "@" then we're running from Git directly.
+	if not strfind(myGitHash, "@", nil, true) then
+		local bType = ""
+		--[====[@version-classic@
+		bType = "c"
+		--@end-version-classic@]====]
+		--@version-bcc@
+		bType = "bcc"
+		--@end-version-bcc@
+		if public.isBC and bType == "c" then
+			delayedMessages[#delayedMessages+1] = "|cFFff0000WARNING!|r You've installed the wrong version of BigWigs."
+			delayedMessages[#delayedMessages+1] = "You are playing on Burning Crusade Classic, but have installed BigWigs for original Classic."
+			delayedMessages[#delayedMessages+1] = "We recommend avoiding unofficial addon updaters, and using the official CurseForge app to avoid such issues."
+		elseif public.isClassic and bType == "bcc" then
+			delayedMessages[#delayedMessages+1] = "|cFFff0000WARNING!|r You've installed the wrong version of BigWigs."
+			delayedMessages[#delayedMessages+1] = "You are playing on Classic, but have installed BigWigs for Burning Crusade Classic."
+			delayedMessages[#delayedMessages+1] = "We recommend avoiding unofficial addon updaters, and using the official CurseForge app to avoid such issues."
+		end
+	end
+
 	if #delayedMessages > 0 then
 		function mod:LOADING_SCREEN_DISABLED()
 			bwFrame:UnregisterEvent("LOADING_SCREEN_DISABLED")
@@ -908,13 +972,13 @@ do
 	local DBMdotDisplayVersion   -- "N.N.N" for a release and "N.N.N alpha" for the alpha duration.
 	local DBMdotReleaseRevision  -- Hardcoded time, manually changed every release, they use it to track the highest release version, a new DBM release is the only time it will change.
 	if public.isBC then
-		DBMdotRevision = "20210527040033"
-		DBMdotDisplayVersion = "2.5.4"
-		DBMdotReleaseRevision = "20210527000000"
+		DBMdotRevision = "20210614225835"
+		DBMdotDisplayVersion = "2.5.7"
+		DBMdotReleaseRevision = "20210614000000"
 	else
-		DBMdotRevision = "20210527035942"
-		DBMdotDisplayVersion = "1.13.73"
-		DBMdotReleaseRevision = "20210526000000"
+		DBMdotRevision = "20210614215858"
+		DBMdotDisplayVersion = "1.13.75"
+		DBMdotReleaseRevision = "20210614000000"
 	end
 
 	local timer, prevUpgradedUser = nil, nil

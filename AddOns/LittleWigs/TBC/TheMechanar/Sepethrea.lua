@@ -16,7 +16,7 @@ local mobCollector = {}
 local mobsFound = 0
 
 -------------------------------------------------------------------------------
---  Localization
+-- Localization
 
 local L = mod:GetLocale()
 if L then
@@ -25,7 +25,7 @@ if L then
 	L.inferno_icon = "spell_fire_incinerate"
 
 	L.fixate = CL.fixate
-	L.fixate_desc = CL.fixate
+	L.fixate_desc = "Causes the caster to fixate on a random target."
 	L.fixate_icon = "spell_shadow_charm"
 end
 
@@ -136,14 +136,14 @@ do
 	local fixatedTargets, isOnMe = mod:NewTargetList(), nil
 
 	local function showFixateMessage(self)
-		self:TargetMessageOld("fixate", fixatedTargets, "yellow", "long", CL.fixate, false)
+		self:TargetMessageOld("fixate", fixatedTargets, "yellow", "long", L.fixate, L.fixate_icon)
 		isOnMe = nil
 	end
 
 	local function fixateAnnounce(self, target, guid)
 		if self:Me(guid) and not isOnMe then
 			isOnMe = true
-			self:Say("fixate", CL.fixate)
+			self:Say("fixate", L.fixate)
 		end
 
 		if #fixatedTargets > 0 and fixatedTargets[#fixatedTargets] == self:ColorName(target) then return end -- don't announce the same player twice
