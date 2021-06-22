@@ -45,6 +45,7 @@ DB.QualityColors[LE_ITEM_QUALITY_COMMON] = {r = 0, g = 0, b = 0}
 -- Fonts
 DB.Font = {STANDARD_TEXT_FONT, 12, "OUTLINE"}
 DB.LineString = DB.GreyColor.."---------------"
+DB.NDuiString = "|cff0080ffNDui:|r"
 
 -- Textures
 local Media = "Interface\\Addons\\NDui\\Media\\"
@@ -188,8 +189,6 @@ DB.ReminderBuffs = {
 				[588] = true,
 			},
 			depend = 588,
-			combat = true,
-			instance = true,
 			pvp = true,
 		},
 	},
@@ -207,8 +206,6 @@ DB.ReminderBuffs = {
 				[467] = true,
 			},
 			depend = 467,
-			combat = true,
-			instance = true,
 			pvp = true,
 		},
 	},
@@ -217,7 +214,7 @@ DB.ReminderBuffs = {
 				[6673] = true,
 				[25289] = true,
 			},
-			depends = {6673, 5242, 6192, 11549, 11550, 11551, 25289},
+			depends = {6673, 5242, 6192, 11549, 11550, 11551, 25289, 2048},
 			combat = true,
 			instance = true,
 			pvp = true,
@@ -233,9 +230,20 @@ DB.ReminderBuffs = {
 			pvp = true,
 		},
 		{	spells = {	--- 强击光环
-				[20906] = true,
+				[19506] = true,
 			},
-			depend = 20906,
+			depend = 19506,
+			combat = true,
+			instance = true,
+			pvp = true,
+		},
+	},
+	WARLOCK = {
+		{	spells = {
+				[28176] = true,	-- 邪甲术
+				[706] = true,	-- 魔甲术
+			},
+			depend = 28176,
 			combat = true,
 			instance = true,
 			pvp = true,

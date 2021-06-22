@@ -22,7 +22,7 @@
 ## Notes-ruRU: BigWigs Tempest Keep Modules
 ## Notes-zhCN: BigWigs Tempest Keep Modules
 ## Notes-zhTW: BigWigs Tempest Keep Modules
-## Version: v27-classic
+## Version: v28-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

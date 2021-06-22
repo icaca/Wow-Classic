@@ -48,7 +48,7 @@ function mod:StolenSoul(args)
 end
 
 function mod:AvatarOfTheMartyred(args)
-	self:MessageOld("avatar", "red", "info", CL.spawned:format(self:SpellName(L.avatar)), args.spellId)
+	self:MessageOld("avatar", "red", "info", CL.spawned:format(L.avatar), args.spellId)
 end
 
 function mod:UNIT_HEALTH(event, unit)
@@ -56,6 +56,6 @@ function mod:UNIT_HEALTH(event, unit)
 	local hp = mod:GetHealth(unit)
 	if hp < 30 then
 		self:UnregisterEvent(event)
-		self:MessageOld("avatar", "yellow", nil, CL.soon:format(CL.spawning:format(self:SpellName(L.avatar))), 32424)
+		self:MessageOld("avatar", "yellow", nil, CL.soon:format(L.avatar), 32424)
 	end
 end

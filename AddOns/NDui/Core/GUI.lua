@@ -38,6 +38,9 @@ G.DefaultSettings = {
 		CustomBarNumPerRow = 12,
 		ShowStance = true,
 		EquipColor = false,
+		AspectBar = true,
+		AspectSize = 25,
+		VerticleAspect = true,
 	},
 	Bags = {
 		Enable = true,
@@ -190,7 +193,7 @@ G.DefaultSettings = {
 		ChatWidth = 380,
 		ChatHeight = 190,
 		BlockStranger = false,
-		AllowFriends = true,
+		BlockSpammer = false,
 		ChatBGType = 2,
 	},
 	Map = {
@@ -295,6 +298,8 @@ G.DefaultSettings = {
 	},
 	Misc = {
 		Mail = true,
+		MailSaver = false,
+		MailTarget = "",
 		ItemLevel = true,
 		GemNEnchant = true,
 		ShowItemLevel = true,
@@ -312,7 +317,7 @@ G.DefaultSettings = {
 		OnlyCompleteRing = false,
 		ExplosiveCache = {},
 		PlacedItemAlert = false,
-		EnhancedMenu = true,
+		MenuButton = true,
 		AutoDismount = true,
 		TradeTabs = true,
 		InstantDelete = true,
@@ -325,6 +330,7 @@ G.DefaultSettings = {
 		SendActionCD = false,
 		StatOrder = "12345",
 		ExpandStat = true,
+		PetHappiness = true,
 	},
 	Tutorial = {
 		Complete = false,
@@ -354,7 +360,7 @@ G.AccountSettings = {
 	SkadaRequest = false,
 	BWRequest = false,
 	RaidAuraWatch = {},
-	CornerBuffs = {},
+	CornerSpells = {},
 	RaidClickSets = {},
 	TexStyle = 2,
 	KeystoneInfo = {},
@@ -512,6 +518,14 @@ local function updateEquipColor()
 			Bar.UpdateEquipItemColor(button)
 		end
 	end
+end
+
+local function updateAspectStatus()
+	B:GetModule("Actionbar"):UpdateAspectStatus()
+end
+
+local function toggleAspectBar()
+	B:GetModule("Actionbar"):ToggleAspectBar()
 end
 
 local function updateBuffFrame()
@@ -672,6 +686,14 @@ local function updateErrorBlocker()
 	B:GetModule("Misc"):UpdateErrorBlocker()
 end
 
+local function toggleTaxiDismount()
+	B:GetModule("Misc"):ToggleTaxiDismount()
+end
+
+local function togglePetHappiness()
+	B:GetModule("Misc"):TogglePetHappiness()
+end
+
 local function updateSkinAlpha()
 	for _, frame in pairs(C.frames) do
 		frame:SetBackdropColor(0, 0, 0, C.db["Skins"]["SkinAlpha"])
@@ -706,17 +728,17 @@ local NewTag = "|TInterface\\OptionsFrame\\UI-OptionsFrame-NewFeatureIcon:0|t"
 G.TabList = {
 	NewTag..L["Actionbar"],
 	L["Bags"],
-	NewTag..L["Unitframes"],
+	L["Unitframes"],
 	L["RaidFrame"],
 	L["Nameplate"],
 	L["PlayerPlate"],
 	L["Auras"],
 	L["Raid Tools"],
-	L["ChatFrame"],
+	NewTag..L["ChatFrame"],
 	L["Maps"],
 	L["Skins"],
 	L["Tooltip"],
-	L["Misc"],
+	NewTag..L["Misc"],
 	L["UI Settings"],
 	L["Profile"],
 }
@@ -748,6 +770,10 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Actionbar", "Count", L["Actionbar Item Counts"]},
 		{1, "Actionbar", "Classcolor", L["ClassColor BG"], true},
 		{1, "Actionbar", "EquipColor", NewTag..L["EquipColor"].."*", nil, nil, updateEquipColor},
+		{},--blank
+		{1, "Actionbar", "AspectBar", NewTag..HeaderTag..L["AspectBar"].."*", nil, nil, toggleAspectBar},
+		{1, "Actionbar", "VerticleAspect", L["VerticleAspect"].."*", nil, nil, updateAspectStatus},
+		{3, "Actionbar", "AspectSize", L["AspectSize"].."*", true, {24, 60, 1}, updateAspectStatus},
 	},
 	[2] = {
 		{1, "Bags", "Enable", HeaderTag..L["Enable Bags"]},
@@ -774,7 +800,7 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "UFs", "SwingBar", L["UFs SwingBar"]},
 		{1, "UFs", "SwingTimer", L["UFs SwingTimer"], true, nil, nil, L["SwingTimer Tip"]},
 		{},--blank
-		{1, "UFs", "Arena", NewTag..HeaderTag..L["Arena Frame"]},
+		{1, "UFs", "Arena", HeaderTag..L["Arena Frame"]},
 		{1, "UFs", "ToToT", HeaderTag..L["UFs ToToT"], true},
 		{1, "UFs", "Portrait", L["UFs Portrait"]},
 		{1, "UFs", "ClassPower", L["UFs ClassPower"], true},
@@ -817,7 +843,7 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "UFs", "RaidClickSets", HeaderTag..L["Enable ClickSets"], nil, setupClickCast},
 		{1, "UFs", "ShowSolo", L["ShowSolo"].."*", nil, nil, updateAllHeaders, L["ShowSoloTip"]},
 		{1, "UFs", "ShowTeamIndex", L["RaidFrame TeamIndex"], true},
-		{1, "UFs", "SmartRaid", L["SmartRaid"].."*", nil, nil, updateAllHeaders, L["SmartRaidTip"]},
+		{1, "UFs", "SmartRaid", NewTag..L["SmartRaid"].."*", nil, nil, updateAllHeaders, L["SmartRaidTip"]},
 		{1, "UFs", "HorizonRaid", L["Horizon RaidFrame"], true},
 		{4, "UFs", "RaidHealthColor", L["HealthColor"].."*", nil, {L["Default Dark"], L["ClassColorHP"], L["GradientHP"]}, updateRaidTextScale},
 		{4, "UFs", "RaidHPMode", L["RaidHPMode"].."*", true, {L["DisableRaidHP"], L["RaidHPPercent"], L["RaidHPCurrent"], L["RaidHPLost"]}, updateRaidNameText},
@@ -942,7 +968,7 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{},--blank
 		{1, "Chat", "EnableFilter", HeaderTag..L["Enable Chatfilter"]},
 		{1, "Chat", "BlockAddonAlert", L["Block Addon Alert"], true},
-		{1, "Chat", "AllowFriends", L["AllowFriendsSpam"].."*", nil, nil, nil, L["AllowFriendsSpamTip"]},
+		{1, "Chat", "BlockSpammer", NewTag..L["BlockSpammer"].."*", nil, nil, nil, L["BlockSpammerTip"]},
 		{1, "Chat", "BlockStranger", "|cffff0000"..L["BlockStranger"].."*", nil, nil, nil, L["BlockStrangerTip"]},
 		{2, "ACCOUNT", "ChatFilterWhiteList", HeaderTag..L["ChatFilterWhiteList"].."*", true, nil, updateFilterWhiteList, L["ChatFilterWhiteListTip"]},
 		{3, "Chat", "Matches", L["Keyword Match"].."*", nil, {1, 3, 1}},
@@ -1018,11 +1044,12 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Misc", "HideErrors", L["Hide Error"].."*", true, nil, updateErrorBlocker},
 		{1, "Misc", "Mail", L["Mail Tool"]},
 		{1, "ACCOUNT", "AutoBubbles", L["AutoBubbles"], true},
-		{1, "Misc", "EnhancedMenu", L["TargetEnhancedMenu"], nil, nil, nil, L["MenuEnhancedTips"]},
-		{1, "Misc", "AutoDismount", L["AutoDismount"], true},
 		{1, "Misc", "TradeTabs", L["TradeTabs"], nil, nil, nil, L["TradeTabsTips"]},
 		{1, "Misc", "InstantDelete", L["InstantDelete"].."*", true},
 		{1, "Misc", "Focuser", L["Easy Focus"]},
+		{1, "Misc", "AutoDismount", NewTag..L["AutoDismount"].."*", true, nil, toggleTaxiDismount, L["AutoDismountTip"]},
+		{1, "Misc", "MenuButton", NewTag..L["MenuButton"], nil, nil, nil, L["MenuButtonTip"]},
+		{1, "Misc", "PetHappiness", NewTag..L["PetHappiness"].."*", true, nil, togglePetHappiness},
 	},
 	[14] = {
 		{1, "ACCOUNT", "VersionCheck", L["Version Check"]},

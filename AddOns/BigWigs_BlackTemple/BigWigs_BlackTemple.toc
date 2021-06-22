@@ -22,7 +22,7 @@
 ## Notes-ruRU: BigWigs Black Temple Modules
 ## Notes-zhCN: BigWigs 黑暗神殿模块
 ## Notes-zhTW: BigWigs 黑暗神廟模組
-## Version: v27-classic
+## Version: v28-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs
