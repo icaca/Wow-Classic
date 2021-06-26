@@ -38,7 +38,7 @@ function BiSTracker:ToggleMainFrame()
     end
 end
 
-BiSTracker.Version = 4.9
+BiSTracker.Version = 5.02
 
 BiSTracker.SelectedClass = ""
 BiSTracker.SelectedSetName = ""
@@ -150,6 +150,10 @@ function GetV1ItemObtainType(val)
     end
 end
 function GetItemFromV1DataSlot(slot)
+    local item = BiSTracker.Item:New(0, "", 0, "", "Kill", "0", "")
+    if (slot == nil) then
+        return item
+    end
     return BiSTracker.Item:New(slot.itemID, "", 0, slot.Obtain.Method, GetV1ItemObtainType(slot), slot.Obtain.Drop, slot.Obtain.Zone)
 end
 
@@ -197,6 +201,8 @@ function BiSTracker:Init()
                     GetItemFromV1DataSlot(item.Shoulder), 
                     GetItemFromV1DataSlot(item.Cloak), 
                     GetItemFromV1DataSlot(item.Chest), 
+                    GetItemFromV1DataSlot(nil),
+                    GetItemFromV1DataSlot(nil),
                     GetItemFromV1DataSlot(item.Wrist), 
                     GetItemFromV1DataSlot(item.Gloves), 
                     GetItemFromV1DataSlot(item.Waist), 
@@ -211,7 +217,8 @@ function BiSTracker:Init()
                     GetItemFromV1DataSlot(item.Ranged))
                 end
             end
-            BiSTracker.Settings.CustomSpecsData = nil;
+            BiSTracker.Settings.CustomSpecsData = nil
+            BiSTracker.Settings.CustomSpecs = nil
             BiS_Settings = BiSTracker.Settings
         elseif BiSTracker.Settings.Version < 4.5 then
             for key, value in pairs(BiSTracker.Settings.CustomSets) do
@@ -238,15 +245,15 @@ function BiSTracker:Init()
                 GetItemFromV2DataSlot(value.Slots.Relic)
                 )
             end
-        elseif BiSTracker.Settings.Version < 4.9 and BiSTracker.Settings.Locale == nil then
+        end
+        if (BiSTracker.Settings.Locale == nil) then
             BiSTracker.Settings.Locale = "enUS"
             if (BiSTracker.L[GetLocale()] ~= nil) then
-                BiSTracker.Settings.Locale = GetLocale()
+                BiS_Settings.Locale = GetLocale()
             end
         end
         BiS_Settings.Version = BiSTracker.Version
     end
-
     local _,englishClass,_ = UnitClass("player")
 
     BiSTracker.CurrentClass = englishClass:lower():gsub("^%l", string.upper)
