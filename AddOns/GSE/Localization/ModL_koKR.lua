@@ -58,7 +58,6 @@ L[":|r To get started "] = ":|r To get started "
 L[":|r You cannot delete the only copy of a sequence."] = ":|r You cannot delete the only copy of a sequence."
 --[[Translation missing --]]
 L[":|r Your current Specialisation is "] = ":|r Your current Specialisation is "
-L["|cffff0000GS-E:|r Gnome Sequencer - Enhanced Options"] = "|cffff0000GS-E:|r Gnome Sequencer - 고급 옵션"
 --[[Translation missing --]]
 L["|r Incomplete Sequence Definition - This sequence has no further information "] = "|r Incomplete Sequence Definition - This sequence has no further information "
 --[[Translation missing --]]
@@ -69,7 +68,9 @@ L["<DEBUG> |r "] = "<디버그> |r"
 --[[Translation missing --]]
 L["<SEQUENCEDEBUG> |r "] = "<SEQUENCEDEBUG> |r "
 --[[Translation missing --]]
-L["A new version of %s has been added."] = "A new version of %s has been added."
+L[ [=[A pause can be measured in either clicks or seconds.  It will either wait 5 clicks or 1.5 seconds.
+If using seconds, you can also wait for the GCD by entering ~~GCD~~ into the box.]=] ] = [=[A pause can be measured in either clicks or seconds.  It will either wait 5 clicks or 1.5 seconds.
+If using seconds, you can also wait for the GCD by entering ~~GCD~~ into the box.]=]
 --[[Translation missing --]]
 L["A sequence collision has occured. "] = "A sequence collision has occured. "
 --[[Translation missing --]]
@@ -81,7 +82,23 @@ L["About GSE"] = "GSE 정보"
 L["Actions"] = "행동"
 --[[Translation missing --]]
 L["Active Version: "] = "Active Version: "
+--[[Translation missing --]]
+L["Add a Loop Block."] = "Add a Loop Block."
+--[[Translation missing --]]
+L["Add a Pause Block."] = "Add a Pause Block."
+--[[Translation missing --]]
+L["Add a Repeat Block."] = "Add a Repeat Block."
 L["Add a substitution variable for this macro.  This can either be a straight string swap or can be a function.  If a lua function the function needs to return a value."] = "이 매크로에 대해 치환 변수를 추가합니다. 이는 정직한 문자열 교환이거나 함수일 수 있습니다. lua 함수인 경우 함수는 값을 반환해야 합니다."
+--[[Translation missing --]]
+L["Add Action"] = "Add Action"
+--[[Translation missing --]]
+L["Add an Action Block."] = "Add an Action Block."
+--[[Translation missing --]]
+L["Add Loop"] = "Add Loop"
+--[[Translation missing --]]
+L["Add Pause"] = "Add Pause"
+--[[Translation missing --]]
+L["Add Repeat"] = "Add Repeat"
 L["Add Variable"] = "변수 추가"
 L["Add WeakAura"] = "WeakAura 추가"
 --[[Translation missing --]]
@@ -109,6 +126,8 @@ L["Automatically Create Macro Icon"] = "매크로 아이콘 자동 생성"
 L["Available Addons"] = "Available Addons"
 L["Belt"] = "허리"
 L["Blizzard Functions Colour"] = "블리자드 함수 색상"
+--[[Translation missing --]]
+L["Block Type: %s"] = "Block Type: %s"
 L["By setting the default Icon for all macros to be the QuestionMark, the macro button on your toolbar will change every key hit."] = "모든 매크로의 기본 아이콘을 물음표로 설정하면 도구 모음의 매크로 버튼이 키 입력마다 변경됩니다."
 L["By setting this value the Sequence Editor will show every macro for every class."] = "이 값을 설정하면 시퀀스 편집기는 모든 직업에 대해 매크로를 모두 표시합니다."
 L["By setting this value the Sequence Editor will show every macro for your class.  Turning this off will only show the class macros for your current specialisation."] = "이 값을 설정하면 시퀀스 편집기에 직업 매크로가 모두 표시됩니다. 끄면 현재 전문화에 대한 직업 매크로만 표시됩니다."
@@ -124,6 +143,8 @@ L["Clear"] = "지우기"
 L["Clear Common Keybindings"] = "공통 단축키 설정 지우기"
 L["Clear Errors"] = "오류 지우기"
 L["Clear Keybindings"] = "단축키 설정 지우기"
+--[[Translation missing --]]
+L["Clicks"] = "Clicks"
 L["Close"] = "닫기"
 --[[Translation missing --]]
 L["Close to Maximum Macros.|r  You can have a maximum of "] = "Close to Maximum Macros.|r  You can have a maximum of "
@@ -133,6 +154,10 @@ L["Colour"] = "색상"
 L["Colour and Accessibility Options"] = "색상 및 접근성 옵션"
 L["Combat"] = "전투"
 L["Command Colour"] = "명령어 색상"
+--[[Translation missing --]]
+L["Compile"] = "Compile"
+--[[Translation missing --]]
+L["Compiled Template"] = "Compiled Template"
 L["Completely New GS Macro."] = "완전히 새로운 GS 매크로입니다."
 --[[Translation missing --]]
 L["Compress"] = "Compress"
@@ -170,8 +195,14 @@ L["Default Version"] = "기본값 버전"
 --[[Translation missing --]]
 L["Del"] = "Del"
 L["Delete"] = "삭제"
+--[[Translation missing --]]
+L["Delete Block"] = "Delete Block"
 L["Delete Icon"] = "아이콘 삭제"
 L["Delete Orphaned Macros on Logout"] = "접속 종료 시 고아 매크로 삭제"
+--[[Translation missing --]]
+L[ [=[Delete this Block from the sequence.  
+WARNING: If this is a loop this will delete all the blocks inside the loop as well.]=] ] = [=[Delete this Block from the sequence.  
+WARNING: If this is a loop this will delete all the blocks inside the loop as well.]=]
 L["Delete this macro.  This is not able to be undone."] = "이 매크로를 삭제합니다. 이는 취소할 수 없습니다."
 L["Delete this variable from the sequence."] = "시퀀스에서 이 변수를 삭제합니다."
 L[ [=[Delete this verion of the macro.  This can be undone by closing this window and not saving the change.  
@@ -194,6 +225,8 @@ L["Dungeon"] = "던전"
 --[[Translation missing --]]
 L["Dungeon setting changed to Default."] = "Dungeon setting changed to Default."
 L["Edit"] = "편집"
+--[[Translation missing --]]
+L["Edit this macro directly in Lua. WARNING: This may render the macro unable to operate and can crash your Game Session."] = "Edit this macro directly in Lua. WARNING: This may render the macro unable to operate and can crash your Game Session."
 L["Edit this macro.  To delete a macro, choose this edit option and then from inside hit the delete button."] = "이 매크로를 편집합니다. 매크로를 삭제하려면 이 편집 옵션을 선택한 다음 내부에서 삭제 버튼을 누르세요."
 L["Editor Colours"] = "편집기 색상"
 L["Emphasis Colour"] = "강조 색상"
@@ -210,6 +243,8 @@ L["Enable timing functions by using Click refresh speed as a pseudo timer."] = "
 L["Enforce GSE minimum version for this macro"] = "Enforce GSE minimum version for this macro"
 --[[Translation missing --]]
 L["Error found in version %i of %s."] = "Error found in version %i of %s."
+--[[Translation missing --]]
+L["Error processing Custom Pause Value.  You will need to recheck your macros."] = "Error processing Custom Pause Value.  You will need to recheck your macros."
 L["Export"] = "내보내기"
 L["Export a Sequence"] = "시퀀스 내보내기"
 L["Export Macro Read Only"] = "매크로 읽기 전용 내보내기"
@@ -225,16 +260,18 @@ L["FYou cannot delete this version of a sequence.  This version will be reloaded
 L["Gameplay Options"] = "게임 플레이 옵션"
 L["General"] = "일반"
 L["General Options"] = "일반 옵션"
+--[[Translation missing --]]
+L["Get Help"] = "Get Help"
+--[[Translation missing --]]
+L["Global"] = "Global"
 L["Global Macros are those that are valid for all classes.  GSE2 also imports unknown macros as Global.  This option will create a button for these macros so they can be called for any class.  Having all macros in this space is a performance loss hence having them saved with a the right specialisation is important."] = "전역 매크로는 모든 직업에 유효한 매크로입니다. GSE2는 알 수 없는 매크로도 Global로 가져옵니다. 이 옵션은 이러한 매크로에 대한 버튼을 생성하므로 모든 직업에 대해 호출할 수 있습니다. 이 자리에 모든 매크로가 있으면 성능이 저하되므로 올바른 전문화로 저장하는 것이 중요합니다."
 L["Gnome Sequencer: Compress a Sequence String."] = "Gnome Sequencer: 시퀀스 문자열을 압축합니다."
 L["Gnome Sequencer: Export a Sequence String."] = "Gnome Sequencer: 시퀀스 문자열을 내보냅니다."
-L["Gnome Sequencer: Import a Macro String."] = "Gnome Sequencer: 매크로 문자열을 가져옵니다."
 --[[Translation missing --]]
 L["Gnome Sequencer: Record your rotation to a macro."] = "Gnome Sequencer: Record your rotation to a macro."
 L["Gnome Sequencer: Sequence Debugger. Monitor the Execution of your Macro"] = "Gnome Sequencer: 시퀀스 디버거. 매크로 실행 모니터링"
 L["Gnome Sequencer: Sequence Editor."] = "Gnome Sequencer: 시퀀스 편집기."
 L["Gnome Sequencer: Sequence Version Manager"] = "Gnome Sequencer: 시퀀스 버전 관리자"
-L["Gnome Sequencer: Sequence Viewer"] = "Gnome Sequencer: 시퀀스 뷰어"
 --[[Translation missing --]]
 L["GnomeSequencer was originally written by semlar of wowinterface.com."] = "GnomeSequencer was originally written by semlar of wowinterface.com."
 --[[Translation missing --]]
@@ -252,11 +289,11 @@ L["GSE has a LibDataBroker (LDB) data feed.  Set this option to show queued Out 
 --[[Translation missing --]]
 L["GSE is a complete rewrite of that addon that allows you create a sequence of macros to be executed at the push of a button."] = "GSE is a complete rewrite of that addon that allows you create a sequence of macros to be executed at the push of a button."
 --[[Translation missing --]]
-L["GSE is out of date. You can download the newest version from https://mods.curse.com/addons/wow/gnomesequencer-enhanced."] = "GSE is out of date. You can download the newest version from https://mods.curse.com/addons/wow/gnomesequencer-enhanced."
---[[Translation missing --]]
 L["GSE is out of date. You can download the newest version from https://www.curseforge.com/wow/addons/gse-gnome-sequencer-enhanced-advanced-macros."] = "GSE is out of date. You can download the newest version from https://www.curseforge.com/wow/addons/gse-gnome-sequencer-enhanced-advanced-macros."
 L["GSE Macro"] = "GSE 매크로"
 L["GS-E Plugins"] = "GS-E 플러그인"
+--[[Translation missing --]]
+L["GSE Raw Editor"] = "GSE Raw Editor"
 L["GSE stores the base spell and asks WoW to use that ability.  WoW will then choose the current version of the spell.  This toggle switches between showing the Base Spell or the Current Spell."] = "GSE는 기본 주문을 저장하고 WoW에게 그 능력을 사용하도록 요청합니다. 그러면 WoW가 그 주문의 현재 버전을 선택합니다. 이 옵션은 기본 주문 또는 현재 주문 표시 사이를 전환합니다."
 L["GSE Users"] = "GSE 사용자"
 L["GSE Version: %s"] = "GSE 버전: %s"
@@ -267,14 +304,8 @@ GSE itself wouldn't be what it is without the efforts of the people who write ma
 GSE 자체는 매크로를 작성하는 사람들의 노력 없이는 그 자체가 될 수 없습니다. 이 모드(mod)를 작동하게 만드는 것들은 https://wowlazymacros.com에서 확인하세요. 이 커뮤니티를 만든 Lutechi에게 특별히 감사드립니다.]=]
 L["GSE: Import a Macro String."] = "GSE: 매크로 문자열을 가져옵니다."
 L["GSE: Left Click to open the Sequence Editor"] = "GSE: 좌클릭으로 시퀀스 편집기 열기"
---[[Translation missing --]]
-L["GS-E: Left Click to open the Sequence Editor"] = "GS-E: Left Click to open the Sequence Editor"
 L["GSE: Middle Click to open the Transmission Interface"] = "GSE: 휠클릭으로 전송 인터페이스 열기"
---[[Translation missing --]]
-L["GS-E: Middle Click to open the Transmission Interface"] = "GS-E: Middle Click to open the Transmission Interface"
 L["GSE: Right Click to open the Sequence Debugger"] = "GSE: 우클릭으로 시퀀스 디버거 열기"
---[[Translation missing --]]
-L["GS-E: Right Click to open the Sequence Debugger"] = "GS-E: Right Click to open the Sequence Debugger"
 L["Head"] = "머리"
 L["Help Colour"] = "도움말 색상"
 L["Help Information"] = "도움말 정보"
@@ -288,8 +319,14 @@ L["Hide Minimap Icon"] = "미니맵 아이콘 숨기기"
 L["Hide Minimap Icon for LibDataBroker (LDB) data text."] = "LibDataBroker (LDB) 데이터 문자에 대한 미니맵 아이콘을 숨깁니다."
 L["Hides the message that GSE is loaded."] = "GSE를 불러왔다는 메시지를 숨깁니다."
 L["History"] = "역사"
+--[[Translation missing --]]
+L["How many macro Clicks to pause for?"] = "How many macro Clicks to pause for?"
 L["How many pixels high should the Editor start at.  Defaults to 700"] = "편집기가 시작되어야 하는 픽셀 높이입니다. 기본값은 700입니다."
 L["How many pixels wide should the Editor start at.  Defaults to 700"] = "편집기가 시작되어야 하는 픽셀 너비입니다. 기본값은 700입니다."
+--[[Translation missing --]]
+L["How many seconds to pause for?"] = "How many seconds to pause for?"
+--[[Translation missing --]]
+L["How many times does this action repeat"] = "How many times does this action repeat"
 L["Icon Colour"] = "아이콘 색상"
 --[[Translation missing --]]
 L["If you load Gnome Sequencer - Enhanced and the Sequence Editor and want to create new macros from scratch, this will enable a first cut sequenced template that you can load into the editor as a starting point.  This enables a Hello World macro called Draik01.  You will need to do a /console reloadui after this for this to take effect."] = "If you load Gnome Sequencer - Enhanced and the Sequence Editor and want to create new macros from scratch, this will enable a first cut sequenced template that you can load into the editor as a starting point.  This enables a Hello World macro called Draik01.  You will need to do a /console reloadui after this for this to take effect."
@@ -310,6 +347,8 @@ L["Inner Loop Limit"] = "내부 반복 제한"
 L[ [=[Inner Loop Limit controls how many times the Sequence part of your macro executes 
 until it goes onto to the PostMacro and then resets to the PreMacro.]=] ] = "내부 반복 제한은 매크로의 시퀀스 부분이 후매크로로 이동한 다음 전매크로로 초기화될 때까지 실행되는 횟수를 제어합니다."
 L["Inner Loop Start"] = "내부 반복 시작"
+--[[Translation missing --]]
+L["Invalid value entered into pause block. Needs to be 'GCD' or a Number."] = "Invalid value entered into pause block. Needs to be 'GCD' or a Number."
 --[[Translation missing --]]
 L["KeyPress"] = "KeyPress"
 --[[Translation missing --]]
@@ -348,6 +387,8 @@ L["Manage Versions"] = "Manage Versions"
 --[[Translation missing --]]
 L["Matching helpTxt"] = "Matching helpTxt"
 --[[Translation missing --]]
+L["Measure"] = "Measure"
+--[[Translation missing --]]
 L["Merge"] = "Merge"
 --[[Translation missing --]]
 L["MergeSequence"] = "MergeSequence"
@@ -356,6 +397,14 @@ L["Millisecond click settings"] = "밀리초 클릭 설정"
 L["Mouse Button 4"] = "4번 마우스 버튼"
 L["Mouse Button 5"] = "5번 마우스 버튼"
 L["Mouse Buttons."] = "마우스 버튼입니다."
+--[[Translation missing --]]
+L["Move Down"] = "Move Down"
+--[[Translation missing --]]
+L["Move this block down one block."] = "Move this block down one block."
+--[[Translation missing --]]
+L["Move this block up one block."] = "Move this block up one block."
+--[[Translation missing --]]
+L["Move Up"] = "Move Up"
 --[[Translation missing --]]
 L["Moved %s to class %s."] = "Moved %s to class %s."
 L["MS Click Rate"] = "밀리초 클릭률"
@@ -397,6 +446,8 @@ L["Party"] = "파티"
 --[[Translation missing --]]
 L["Party setting changed to Default."] = "Party setting changed to Default."
 L["Pause"] = "중지"
+--[[Translation missing --]]
+L["Pause for the GCD."] = "Pause for the GCD."
 --[[Translation missing --]]
 L["Paused"] = "Paused"
 --[[Translation missing --]]
@@ -443,6 +494,8 @@ L["Random - It will select .... a spell, any spell"] = "무작위 - 주문, 임�
 --[[Translation missing --]]
 L["Rank"] = "Rank"
 --[[Translation missing --]]
+L["Raw Edit"] = "Raw Edit"
+--[[Translation missing --]]
 L["Ready to Send"] = "Ready to Send"
 --[[Translation missing --]]
 L["Received Sequence "] = "Received Sequence "
@@ -451,6 +504,8 @@ L["Record Macro"] = "매크로 기록"
 L["Record the spells and items you use into a new macro."] = "사용하는 주문과 아이템을 새 매크로에 기록합니다."
 L["Registered Addons"] = "등록된 애드온"
 L["Rename New Macro"] = "새 매크로 이름 바꾸기"
+--[[Translation missing --]]
+L["Repeat"] = "Repeat"
 --[[Translation missing --]]
 L["Replace"] = "Replace"
 --[[Translation missing --]]
@@ -462,6 +517,10 @@ L["Reset Macro when out of combat"] = "비전투 중 매크로 초기화"
 L["Reset this macro when you exit combat."] = "전투를 종료할 때 이 매크로를 초기화합니다."
 L["Resets"] = "초기화"
 L["Resets macros back to the initial state when out of combat."] = "전투에서 벗어날 때 매크로를 초기 상태로 재설정합니다."
+--[[Translation missing --]]
+L["Restricted"] = "Restricted"
+--[[Translation missing --]]
+L["RESTRICTED: Macro specifics disabled by author."] = "RESTRICTED: Macro specifics disabled by author."
 --[[Translation missing --]]
 L["Resume"] = "Resume"
 L["Returns your current Global Cooldown value accounting for your haste if that stat is present."] = "해당 능력치가 있는 경우 가속을 설명하는 현재 전역 재사용 대기시간 값을 반환합니다."
@@ -478,6 +537,8 @@ L["Save the changes made to this macro"] = "이 매크로에 대한 변경 사�
 L["Scenario"] = "시나리오"
 --[[Translation missing --]]
 L["Scenario setting changed to Default."] = "Scenario setting changed to Default."
+--[[Translation missing --]]
+L["Seconds"] = "Seconds"
 --[[Translation missing --]]
 L["Seed Initial Macro"] = "Seed Initial Macro"
 --[[Translation missing --]]
@@ -514,9 +575,13 @@ L["Shift Keys."] = "Shift Keys."
 L["Show All Macros in Editor"] = "모든 매크로 편집기에 표시"
 L["Show Class Macros in Editor"] = "직업 매크로 편집기에 표시"
 L["Show Current Spells"] = "현재 주문 표시"
+--[[Translation missing --]]
+L["Show Full Block Execution"] = "Show Full Block Execution"
 L["Show Global Macros in Editor"] = "전역 매크로 편집기에 표시"
 L["Show GSE Users in LDB"] = "GSE 사용자 LDB에 표시"
 L["Show OOC Queue in LDB"] = "비전투 중 대기열 LDB에 표시"
+--[[Translation missing --]]
+L["Show the compiled version of this macro."] = "Show the compiled version of this macro."
 --[[Translation missing --]]
 L["Show the current value of this variable."] = "Show the current value of this variable."
 --[[Translation missing --]]
@@ -534,6 +599,8 @@ L["Stop"] = "중지"
 L["Store Debug Messages"] = "디버그 메시지 저장"
 L["Store output of debug messages in a Global Variable that can be referrenced by other mods."] = "디버그 메시지의 출력을 다른 모드(mod)에서 참조할 수 있는 전역 변수에 저장합니다."
 L["String Colour"] = "문자열 색상"
+--[[Translation missing --]]
+L["Support GSE"] = "Support GSE"
 L["Supporters"] = "후원자"
 L["System Variables"] = "시스템 변수"
 L["Talents"] = "특성"
@@ -591,14 +658,6 @@ L["There are no events in out of combat queue"] = "There are no events in out of
 L["There are No Macros Loaded for this class.  Would you like to load the Sample Macro?"] = "이 직업에 대해 불러온 매크로가 없습니다. 맛보기 매크로를 불러올까요?"
 --[[Translation missing --]]
 L["There is an issue with sequence %s.  It has not been loaded to prevent the mod from failing."] = "There is an issue with sequence %s.  It has not been loaded to prevent the mod from failing."
---[[Translation missing --]]
-L[ [=[These lines are executed after the lines in the Sequence Box have been repeated Inner Loop Limit number of times.  If an Inner Loop Limit is not set, these are never executed as the sequence will never stop repeating.
-The Sequence will then go on to the PreMacro if it exists then back to the Sequence.]=] ] = [=[These lines are executed after the lines in the Sequence Box have been repeated Inner Loop Limit number of times.  If an Inner Loop Limit is not set, these are never executed as the sequence will never stop repeating.
-The Sequence will then go on to the PreMacro if it exists then back to the Sequence.]=]
---[[Translation missing --]]
-L[ [=[These lines are executed after the lines in the Sequence Box have been repeated Inner Loop Limit number of times.  If an Inner Loop Limit is not set, this box will be disabled as these are never executed as the sequence will never stop repeating.
-The Sequence will then go on to the PreMacro if it exists then back to the Sequence.]=] ] = [=[These lines are executed after the lines in the Sequence Box have been repeated Inner Loop Limit number of times.  If an Inner Loop Limit is not set, this box will be disabled as these are never executed as the sequence will never stop repeating.
-The Sequence will then go on to the PreMacro if it exists then back to the Sequence.]=]
 --[[Translation missing --]]
 L[ [=[These lines are executed after the lines in the Sequence Box have been repeated Inner Loop Limit number of times.
 The Sequence will then go on to the PreMacro if it exists then back to the Sequence.]=] ] = [=[These lines are executed after the lines in the Sequence Box have been repeated Inner Loop Limit number of times.
@@ -659,6 +718,8 @@ L["Trinket 2"] = "장신구 2"
 --[[Translation missing --]]
 L["Two sequences with unknown sources found."] = "Two sequences with unknown sources found."
 L["Unable to interpret sequence."] = "시퀀스를 해석할 수 없습니다."
+--[[Translation missing --]]
+L["Unable to process content.  Fix table and try again."] = "Unable to process content.  Fix table and try again."
 L["Unknown Author|r "] = "알 수 없는 작성자|r"
 L["Unknown Colour"] = "알 수 없음 색상"
 L["Update"] = "업데이트"
@@ -693,6 +754,8 @@ L["Version"] = "버전"
 L["Version="] = "버전="
 --[[Translation missing --]]
 L["WARNING ONLY"] = "WARNING ONLY"
+--[[Translation missing --]]
+L["was created in an older version of GSE.  It has been updated to the current version however may need to be checked manually."] = "was created in an older version of GSE.  It has been updated to the current version however may need to be checked manually."
 L["WeakAuras"] = "WeakAuras"
 --[[Translation missing --]]
 L["WeakAuras is a mod that watches for certain conditions and actions and they alerts the player to them occuring.  These are included for convenience and still need to be copied from here and imported to the WeakAuras mod via the command /wa."] = "WeakAuras is a mod that watches for certain conditions and actions and they alerts the player to them occuring.  These are included for convenience and still need to be copied from here and imported to the WeakAuras mod via the command /wa."
@@ -705,6 +768,8 @@ L[ [=[What are the preferred talents for this macro?
 '1,2,3,1,2,3,1' means First row choose the first talent, Second row choose the second talent etc]=] ] = "이 매크로에서 선호하는 특성은 무엇입니까? '1,2,3,1,2,3,1'은 첫 번째 줄은 첫 번째 특성, 두 번째 줄은 두 번째 특성 등을 선택함을 뜻합니다."
 L["What class or spec is this macro for?  If it is for all classes choose Global."] = "이 매크로는 어떤 직업 또는 전문화용입니까? 모든 직업에 해당하는 경우 Global을 고르세요."
 L["When creating a macro, if there is not a personal character macro space, create an account wide macro."] = "매크로를 만들 때 개인 캐릭터 매크로 공간이 없으면 계정 전체 매크로를 만듭니다."
+--[[Translation missing --]]
+L["When debugging the output of a sequence, show the full executed block in the Debugger Output."] = "When debugging the output of a sequence, show the full executed block in the Debugger Output."
 L["When exporting a sequence create a stub entry to import for WLM's Website."] = "시퀀스를 내보낼 때 WLM 웹사이트(wowlazymacros.com)용 가져오기 스텁(stub, 토막) 항목을 만듭니다."
 --[[Translation missing --]]
 L["When exporting a sequence use a human readable verbose form."] = "When exporting a sequence use a human readable verbose form."

@@ -10,6 +10,24 @@ local libC = LibStub:GetLibrary("LibCompress")
 local libCE = libC:GetAddonEncodeTable()
 local editkey = ""
 
+local addonSkinsEnabled = false
+
+if not GSE.isEmpty(ElvUI) then
+    local ElvPrivateDB = ElvPrivateDB
+    if ElvPrivateDB then
+        local myname = UnitName("player")
+        local profileKey
+		if ElvPrivateDB.profileKeys then
+			profileKey = ElvPrivateDB.profileKeys[myname..' - '..GetRealmName()]
+		end
+
+        if profileKey and ElvPrivateDB.profiles and ElvPrivateDB.profiles[profileKey] and ElvPrivateDB.profiles[profileKey].skins  then
+            if GSE.isEmpty(ElvPrivateDB.profiles[profileKey].skins.ace3Enable) or ElvPrivateDB.profiles[profileKey].skins.ace3Enable ~= false then
+                addonSkinsEnabled = true
+            end
+        end
+    end
+end
 
 local viewframe = AceGUI:Create("Frame")
 viewframe:SetTitle(L["Sequence Editor"])
@@ -26,8 +44,8 @@ viewframe.Height = 500
 viewframe.Width = 700
 
 viewframe:Hide()
-local sequenceboxtext = AceGUI:Create("MultiLineEditBox")
-local remotesequenceboxtext = AceGUI:Create("MultiLineEditBox")
+-- local sequenceboxtext = AceGUI:Create("MultiLineEditBox")
+-- local remotesequenceboxtext = AceGUI:Create("MultiLineEditBox")
 
 viewframe.panels = {}
 viewframe.SequenceName = ""
@@ -35,7 +53,7 @@ viewframe.ClassID = 0
 
 function viewframe:clearpanels(widget, selected)
   GSE.PrintDebugMessage("widget = " .. widget:GetKey(), "GUI")
-  for k,v in pairs(viewframe.panels) do
+  for k,_ in pairs(viewframe.panels) do
     GSE.PrintDebugMessage("k " .. k, "GUI")
     if k == widget:GetKey() then
       GSE.PrintDebugMessage ("matching key", "GUI")
@@ -46,14 +64,8 @@ function viewframe:clearpanels(widget, selected)
         viewframe.EditButton:SetDisabled(false)
         viewframe.ExportButton:SetDisabled(false)
         editkey = k
-        if elements[3] == "1" then
-          viewframe.EditButton:SetText(L["Delete"])
-          viewframe.editbuttonaction = 1
-          viewframe.ExportButton:SetDisabled(true)
-        else
-          viewframe.EditButton:SetText(L["Edit"])
-          viewframe.editbuttonaction = 0
-        end
+        viewframe.EditButton:SetText(L["Edit"])
+        viewframe.editbuttonaction = 0
       else
         viewframe.ClassID = 0
         viewframe.SequenceName = ""
@@ -79,6 +91,7 @@ function GSE.GUICreateSequencePanels(frame, container, key)
   local elements = GSE.split(key, ",")
   local classid = tonumber(elements[1])
   local sequencename = elements[2]
+  local readonly = elements[3]
   local fontName, fontHeight, fontFlags = GameFontNormal:GetFont()
   local font = GameFontNormal:GetFontObject()
   local fontlarge = GameFontNormalLarge:GetFontObject()
@@ -87,6 +100,7 @@ function GSE.GUICreateSequencePanels(frame, container, key)
   font:SetJustifyV("BOTTOM")
 
   local selpanel = AceGUI:Create("SelectablePanel")
+
   selpanel:SetKey(key)
   selpanel:SetFullWidth(true)
   selpanel:SetHeight(300)
@@ -105,6 +119,10 @@ function GSE.GUICreateSequencePanels(frame, container, key)
 
   local hlabel = AceGUI:Create("Label")
   hlabel:SetText(sequencename)
+  if readonly == "1" then
+    hlabel:SetText(sequencename .. "( "..L["Restricted"] ..")")
+  end
+
   --hlabel:SetFont(fontName, fontHeight + 4 , fontFlags)
   hlabel:SetFontObject(fontlarge)
   hlabel:SetColor(GSE.GUIGetColour(GSEOptions.KEYWORD))
@@ -113,10 +131,17 @@ function GSE.GUICreateSequencePanels(frame, container, key)
   local columngroup = AceGUI:Create("SimpleGroup")
   columngroup:SetFullWidth(true)
   columngroup:SetLayout("Flow")
+  if addonSkinsEnabled then
+    columngroup.frame:SetBackdrop(nil)
+  end
+
 
   local column1 = AceGUI:Create("SimpleGroup")
-  column1:SetWidth(560)
+  column1:SetWidth(viewframe.Width - 140)
   column1:SetLayout("List")
+  if addonSkinsEnabled then
+    column1.frame:SetBackdrop(nil)
+  end
 
 
   columngroup:AddChild(column1)
@@ -125,8 +150,8 @@ function GSE.GUICreateSequencePanels(frame, container, key)
 
   local helplabel = AceGUI:Create("Label")
   local helptext = L["No Help Information Available"]
-  if not GSE.isEmpty(GSE.Library[classid][sequencename].Help) then
-    helptext = GSE.Library[classid][sequencename].Help
+  if not GSE.isEmpty(GSE.Library[classid][sequencename].MetaData.Help) then
+    helptext = GSE.Library[classid][sequencename].MetaData.Help
   end
   helplabel:SetFullWidth(true)
   helplabel:SetFontObject(font)
@@ -134,6 +159,9 @@ function GSE.GUICreateSequencePanels(frame, container, key)
   column1:AddChild(helplabel)
 
   local row2 = AceGUI:Create("SimpleGroup")
+  if addonSkinsEnabled then
+    row2.frame:SetBackdrop(nil)
+  end
   row2:SetLayout("Flow")
   row2:SetFullWidth(true)
 
@@ -145,8 +173,8 @@ function GSE.GUICreateSequencePanels(frame, container, key)
   row2:AddChild(talentsHead)
 
   local talentslabel = AceGUI:Create("Label")
-  if not GSE.isEmpty(GSE.Library[classid][sequencename].Talents) then
-    talentslabel:SetText(GSE.Library[classid][sequencename].Talents)
+  if not GSE.isEmpty(GSE.Library[classid][sequencename].MetaData.Talents) then
+    talentslabel:SetText(GSE.Library[classid][sequencename].MetaData.Talents)
   end
   talentslabel:SetWidth(80)
   talentslabel:SetFontObject(font)
@@ -166,8 +194,8 @@ function GSE.GUICreateSequencePanels(frame, container, key)
 
   local urlval = "https://wowlazymacros.com"
   local urllabel = AceGUI:Create("InteractiveLabel")
-  if not GSE.isEmpty(GSE.Library[classid][sequencename].Helplink) then
-   urlval = GSE.Library[classid][sequencename].Helplink
+  if not GSE.isEmpty(GSE.Library[classid][sequencename].MetaData.Helplink) then
+   urlval = GSE.Library[classid][sequencename].MetaData.Helplink
   end
   urllabel:SetFontObject(font)
   urllabel:SetText(urlval)
@@ -184,7 +212,9 @@ function GSE.GUICreateSequencePanels(frame, container, key)
   column2:SetWidth(60)
   column2:SetLayout("List")
   columngroup:AddChild(column2)
-
+  if addonSkinsEnabled then
+    column2.frame:SetBackdrop(nil)
+  end
 
   local viewiconpicker = AceGUI:Create("Icon")
 
@@ -192,6 +222,8 @@ function GSE.GUICreateSequencePanels(frame, container, key)
   viewiconpicker.frame:SetScript("OnDragStart", function()
     PickupMacro(sequencename)
   end)
+  --viewiconpicker.frame:SetBackdrop(nil)
+
   selpanel.Icon = viewiconpicker
   viewiconpicker:SetImage(GSE.GetMacroIcon(classid, sequencename))
   viewiconpicker:SetImageSize(50,50)
@@ -221,7 +253,10 @@ function GSE.GUIViewerToolbar(container)
   local newbutton = AceGUI:Create("Button")
   newbutton:SetText(L["New"])
   newbutton:SetWidth(150)
-  newbutton:SetCallback("OnClick", function() GSE.GUILoadEditor(nil, viewframe)end)
+  newbutton:SetCallback("OnClick", function()
+    GSE.GUILoadEditor(nil, viewframe)
+    viewframe:Hide()
+  end)
   newbutton:SetCallback('OnEnter', function ()
     GSE.CreateToolTip(L["New"], L["Create a new macro."], viewframe)
   end)
@@ -238,6 +273,7 @@ function GSE.GUIViewerToolbar(container)
       GSE.GUIDeleteSequence(viewframe.ClassID, viewframe.SequenceName)
     else
       GSE.GUILoadEditor(editkey, viewframe)
+      viewframe:Hide()
     end
   end)
   updbutton:SetCallback('OnEnter', function ()
@@ -291,7 +327,7 @@ function GSE.GUIViewerToolbar(container)
   end)
   buttonGroup:AddChild(tranbutton)
 
-  disableSeqbutton = AceGUI:Create("Button")
+  local disableSeqbutton = AceGUI:Create("Button")
   disableSeqbutton:SetDisabled(true)
   disableSeqbutton:SetText(L["Create Icon"])
   disableSeqbutton:SetWidth(150)
@@ -330,7 +366,7 @@ function GSE.GUIViewerToolbar(container)
 
   buttonGroup:AddChild(recordwindowbutton)
   container:AddChild(buttonGroup)
-  sequenceboxtext = sequencebox
+  -- sequenceboxtext = sequencebox
 end
 
 function GSE.GUIViewerLayout(mcontainer)
@@ -363,6 +399,7 @@ function GSE.GUIViewerLayout(mcontainer)
         viewframe:SetWidth(viewframe.Width)
     end
     scrollcontainer:SetHeight(viewframe.Height - 130)
+    scrollcontainer:DoLayout()
     viewframe:DoLayout()
   end)
 
@@ -383,7 +420,7 @@ function GSE.GUIShowViewer()
   viewframe:ReleaseChildren()
   GSE.GUIViewerLayout(viewframe)
   local cclassid = -1
-  for k,v in GSE.pairsByKeys(names) do
+  for k,_ in GSE.pairsByKeys(names) do
     local elements = GSE.split(k, ",")
     local tclassid = tonumber(elements[1])
     if tclassid ~= cclassid then

@@ -43,7 +43,6 @@ L[":|r To get started "] = ":|r To get started "
 L[":|r You cannot delete the only copy of a sequence."] = ":|r You cannot delete the only copy of a sequence."
 --[[Translation missing --]]
 L[":|r Your current Specialisation is "] = ":|r Your current Specialisation is "
-L["|cffff0000GS-E:|r Gnome Sequencer - Enhanced Options"] = "|cffff0000GS-E:|r Gnome Sequencer - Расширенные Возможности."
 --[[Translation missing --]]
 L["|r Incomplete Sequence Definition - This sequence has no further information "] = "|r Incomplete Sequence Definition - This sequence has no further information "
 --[[Translation missing --]]
@@ -52,7 +51,10 @@ L["|r.  As a result this macro was not created.  Please delete some macros and r
 L["|r.  You can also have a  maximum of "] = "|r.  You can also have a  maximum of "
 L["<DEBUG> |r "] = "<DEBUG> |r "
 L["<SEQUENCEDEBUG> |r "] = "<SEQUENCEDEBUG> |r"
-L["A new version of %s has been added."] = "Добавлена ​​новая версия %s."
+--[[Translation missing --]]
+L[ [=[A pause can be measured in either clicks or seconds.  It will either wait 5 clicks or 1.5 seconds.
+If using seconds, you can also wait for the GCD by entering ~~GCD~~ into the box.]=] ] = [=[A pause can be measured in either clicks or seconds.  It will either wait 5 clicks or 1.5 seconds.
+If using seconds, you can also wait for the GCD by entering ~~GCD~~ into the box.]=]
 --[[Translation missing --]]
 L["A sequence collision has occured. "] = "A sequence collision has occured. "
 --[[Translation missing --]]
@@ -66,7 +68,23 @@ L["About GSE"] = "About GSE"
 L["Actions"] = "Действия"
 --[[Translation missing --]]
 L["Active Version: "] = "Active Version: "
+--[[Translation missing --]]
+L["Add a Loop Block."] = "Add a Loop Block."
+--[[Translation missing --]]
+L["Add a Pause Block."] = "Add a Pause Block."
+--[[Translation missing --]]
+L["Add a Repeat Block."] = "Add a Repeat Block."
 L["Add a substitution variable for this macro.  This can either be a straight string swap or can be a function.  If a lua function the function needs to return a value."] = "Добавьте подстановочную переменную для этого макроса. Это может быть либо прямая замена строк, либо функция. Если функция lua, функция должна возвращать значение."
+--[[Translation missing --]]
+L["Add Action"] = "Add Action"
+--[[Translation missing --]]
+L["Add an Action Block."] = "Add an Action Block."
+--[[Translation missing --]]
+L["Add Loop"] = "Add Loop"
+--[[Translation missing --]]
+L["Add Pause"] = "Add Pause"
+--[[Translation missing --]]
+L["Add Repeat"] = "Add Repeat"
 L["Add Variable"] = "Добавить переменную"
 --[[Translation missing --]]
 L["Add WeakAura"] = "Add WeakAura"
@@ -96,6 +114,8 @@ L["Available Addons"] = "Доступные Модификации"
 L["Belt"] = "Пояс"
 --[[Translation missing --]]
 L["Blizzard Functions Colour"] = "Blizzard Functions Colour"
+--[[Translation missing --]]
+L["Block Type: %s"] = "Block Type: %s"
 L["By setting the default Icon for all macros to be the QuestionMark, the macro button on your toolbar will change every key hit."] = "Иконка макроса на панели действий будет изменяться после каждого нажатия клавиши, по умолчанию для всех макросов установлен значок QuestionMark."
 L["By setting this value the Sequence Editor will show every macro for every class."] = "Установив это значение, Sequence Editor покажет каждый макрос для каждого класса."
 L["By setting this value the Sequence Editor will show every macro for your class.  Turning this off will only show the class macros for your current specialisation."] = "Установив это значение, Sequence Editor отобразит каждый макрос для вашего класса. Если вы отключите это, будут отображаться только макросы класса для вашей текущей специализации."
@@ -114,6 +134,8 @@ L["Clear Common Keybindings"] = "Clear Common Keybindings"
 L["Clear Errors"] = "Очистить Ошибки"
 --[[Translation missing --]]
 L["Clear Keybindings"] = "Clear Keybindings"
+--[[Translation missing --]]
+L["Clicks"] = "Clicks"
 L["Close"] = "Закрыть"
 --[[Translation missing --]]
 L["Close to Maximum Macros.|r  You can have a maximum of "] = "Close to Maximum Macros.|r  You can have a maximum of "
@@ -124,6 +146,10 @@ L["Colour and Accessibility Options"] = "Параметры цвета и спе
 L["Combat"] = "Бой"
 --[[Translation missing --]]
 L["Command Colour"] = "Command Colour"
+--[[Translation missing --]]
+L["Compile"] = "Compile"
+--[[Translation missing --]]
+L["Compiled Template"] = "Compiled Template"
 --[[Translation missing --]]
 L["Completely New GS Macro."] = "Completely New GS Macro."
 --[[Translation missing --]]
@@ -171,9 +197,15 @@ L["Default Import Action"] = "Default Import Action"
 L["Default Version"] = "По Умолчанию"
 L["Del"] = "Удалить"
 L["Delete"] = "Удалить"
+--[[Translation missing --]]
+L["Delete Block"] = "Delete Block"
 L["Delete Icon"] = "Удалить иконку"
 --[[Translation missing --]]
 L["Delete Orphaned Macros on Logout"] = "Delete Orphaned Macros on Logout"
+--[[Translation missing --]]
+L[ [=[Delete this Block from the sequence.  
+WARNING: If this is a loop this will delete all the blocks inside the loop as well.]=] ] = [=[Delete this Block from the sequence.  
+WARNING: If this is a loop this will delete all the blocks inside the loop as well.]=]
 L["Delete this macro.  This is not able to be undone."] = "Удалить этот макрос. Это не может быть отменено."
 L["Delete this variable from the sequence."] = "Удалите эту переменную из последовательности."
 --[[Translation missing --]]
@@ -202,6 +234,8 @@ L["Dungeon"] = "Обычный режим"
 --[[Translation missing --]]
 L["Dungeon setting changed to Default."] = "Dungeon setting changed to Default."
 L["Edit"] = "Редактировать"
+--[[Translation missing --]]
+L["Edit this macro directly in Lua. WARNING: This may render the macro unable to operate and can crash your Game Session."] = "Edit this macro directly in Lua. WARNING: This may render the macro unable to operate and can crash your Game Session."
 L["Edit this macro.  To delete a macro, choose this edit option and then from inside hit the delete button."] = [=[Отредактируйте этот макрос. 
 Чтобы удалить макрос, выберите этот параметр редактирования, а затем нажмите кнопку Удалить.]=]
 L["Editor Colours"] = "Цвета Редактора"
@@ -220,6 +254,8 @@ L["Enable timing functions by using Click refresh speed as a pseudo timer."] = "
 L["Enforce GSE minimum version for this macro"] = "Enforce GSE minimum version for this macro"
 --[[Translation missing --]]
 L["Error found in version %i of %s."] = "Error found in version %i of %s."
+--[[Translation missing --]]
+L["Error processing Custom Pause Value.  You will need to recheck your macros."] = "Error processing Custom Pause Value.  You will need to recheck your macros."
 L["Export"] = "Экспорт"
 L["Export a Sequence"] = "Экспорт последовательности"
 --[[Translation missing --]]
@@ -239,13 +275,15 @@ L["Gameplay Options"] = "Игровые Параметры"
 L["General"] = "Общие"
 L["General Options"] = "Общие Параметры"
 --[[Translation missing --]]
+L["Get Help"] = "Get Help"
+--[[Translation missing --]]
+L["Global"] = "Global"
+--[[Translation missing --]]
 L["Global Macros are those that are valid for all classes.  GSE2 also imports unknown macros as Global.  This option will create a button for these macros so they can be called for any class.  Having all macros in this space is a performance loss hence having them saved with a the right specialisation is important."] = "Global Macros are those that are valid for all classes.  GSE2 also imports unknown macros as Global.  This option will create a button for these macros so they can be called for any class.  Having all macros in this space is a performance loss hence having them saved with a the right specialisation is important."
 --[[Translation missing --]]
 L["Gnome Sequencer: Compress a Sequence String."] = "Gnome Sequencer: Compress a Sequence String."
 --[[Translation missing --]]
 L["Gnome Sequencer: Export a Sequence String."] = "Gnome Sequencer: Export a Sequence String."
---[[Translation missing --]]
-L["Gnome Sequencer: Import a Macro String."] = "Gnome Sequencer: Import a Macro String."
 --[[Translation missing --]]
 L["Gnome Sequencer: Record your rotation to a macro."] = "Gnome Sequencer: Record your rotation to a macro."
 --[[Translation missing --]]
@@ -254,7 +292,6 @@ L["Gnome Sequencer: Sequence Debugger. Monitor the Execution of your Macro"] = "
 L["Gnome Sequencer: Sequence Editor."] = "Gnome Sequencer: Sequence Editor."
 --[[Translation missing --]]
 L["Gnome Sequencer: Sequence Version Manager"] = "Gnome Sequencer: Sequence Version Manager"
-L["Gnome Sequencer: Sequence Viewer"] = "Gnome Sequencer: просмотр Последовательности"
 --[[Translation missing --]]
 L["GnomeSequencer was originally written by semlar of wowinterface.com."] = "GnomeSequencer was originally written by semlar of wowinterface.com."
 --[[Translation missing --]]
@@ -272,12 +309,12 @@ L["GSE has a LibDataBroker (LDB) data feed.  List Other GSE Users and their vers
 L["GSE has a LibDataBroker (LDB) data feed.  Set this option to show queued Out of Combat events in the tooltip."] = "GSE has a LibDataBroker (LDB) data feed.  Set this option to show queued Out of Combat events in the tooltip."
 L["GSE is a complete rewrite of that addon that allows you create a sequence of macros to be executed at the push of a button."] = "GSE - это полная перезапись этой модификации, которая позволяет вам создать последовательность макросов выполняющаяся одним нажатием кнопки."
 --[[Translation missing --]]
-L["GSE is out of date. You can download the newest version from https://mods.curse.com/addons/wow/gnomesequencer-enhanced."] = "GSE is out of date. You can download the newest version from https://mods.curse.com/addons/wow/gnomesequencer-enhanced."
---[[Translation missing --]]
 L["GSE is out of date. You can download the newest version from https://www.curseforge.com/wow/addons/gse-gnome-sequencer-enhanced-advanced-macros."] = "GSE is out of date. You can download the newest version from https://www.curseforge.com/wow/addons/gse-gnome-sequencer-enhanced-advanced-macros."
 --[[Translation missing --]]
 L["GSE Macro"] = "GSE Macro"
 L["GS-E Plugins"] = "GS-E Плагины"
+--[[Translation missing --]]
+L["GSE Raw Editor"] = "GSE Raw Editor"
 --[[Translation missing --]]
 L["GSE stores the base spell and asks WoW to use that ability.  WoW will then choose the current version of the spell.  This toggle switches between showing the Base Spell or the Current Spell."] = "GSE stores the base spell and asks WoW to use that ability.  WoW will then choose the current version of the spell.  This toggle switches between showing the Base Spell or the Current Spell."
 --[[Translation missing --]]
@@ -293,11 +330,8 @@ GSE itself wouldn't be what it is without the efforts of the people who write ma
 --[[Translation missing --]]
 L["GSE: Import a Macro String."] = "GSE: Import a Macro String."
 L["GSE: Left Click to open the Sequence Editor"] = "GSE: ЛКМ для открытия Редактора Последовательности"
-L["GS-E: Left Click to open the Sequence Editor"] = "GS-E: ЛКМ для открытия Редактора Последовательности"
 L["GSE: Middle Click to open the Transmission Interface"] = "GSE: СКМ для открытия интерфейса передачи"
-L["GS-E: Middle Click to open the Transmission Interface"] = "GS-E: СКМ для открытия интерфейса передачи"
 L["GSE: Right Click to open the Sequence Debugger"] = "GSE: ПКМ для открытия окна отладки"
-L["GS-E: Right Click to open the Sequence Debugger"] = "GS-E: ПКМ для открытия окна отладки"
 L["Head"] = "Голова"
 --[[Translation missing --]]
 L["Help Colour"] = "Help Colour"
@@ -315,9 +349,15 @@ L["Hides the message that GSE is loaded."] = "Скрывает сообщени�
 --[[Translation missing --]]
 L["History"] = "History"
 --[[Translation missing --]]
+L["How many macro Clicks to pause for?"] = "How many macro Clicks to pause for?"
+--[[Translation missing --]]
 L["How many pixels high should the Editor start at.  Defaults to 700"] = "How many pixels high should the Editor start at.  Defaults to 700"
 --[[Translation missing --]]
 L["How many pixels wide should the Editor start at.  Defaults to 700"] = "How many pixels wide should the Editor start at.  Defaults to 700"
+--[[Translation missing --]]
+L["How many seconds to pause for?"] = "How many seconds to pause for?"
+--[[Translation missing --]]
+L["How many times does this action repeat"] = "How many times does this action repeat"
 --[[Translation missing --]]
 L["Icon Colour"] = "Icon Colour"
 --[[Translation missing --]]
@@ -352,6 +392,8 @@ until it goes onto to the PostMacro and then resets to the PreMacro.]=] ] = [=[I
 until it goes onto to the PostMacro and then resets to the PreMacro.]=]
 --[[Translation missing --]]
 L["Inner Loop Start"] = "Inner Loop Start"
+--[[Translation missing --]]
+L["Invalid value entered into pause block. Needs to be 'GCD' or a Number."] = "Invalid value entered into pause block. Needs to be 'GCD' or a Number."
 L["KeyPress"] = "Нажатие клавиши"
 --[[Translation missing --]]
 L["KeyRelease"] = "KeyRelease"
@@ -397,6 +439,8 @@ L["Manage Versions"] = "Manage Versions"
 --[[Translation missing --]]
 L["Matching helpTxt"] = "Matching helpTxt"
 --[[Translation missing --]]
+L["Measure"] = "Measure"
+--[[Translation missing --]]
 L["Merge"] = "Merge"
 --[[Translation missing --]]
 L["MergeSequence"] = "MergeSequence"
@@ -406,6 +450,14 @@ L["Millisecond click settings"] = "Millisecond click settings"
 L["Mouse Button 4"] = "Кнопка мыши 4"
 L["Mouse Button 5"] = "Кнопка мыши 5"
 L["Mouse Buttons."] = "Кнопки мыши."
+--[[Translation missing --]]
+L["Move Down"] = "Move Down"
+--[[Translation missing --]]
+L["Move this block down one block."] = "Move this block down one block."
+--[[Translation missing --]]
+L["Move this block up one block."] = "Move this block up one block."
+--[[Translation missing --]]
+L["Move Up"] = "Move Up"
 --[[Translation missing --]]
 L["Moved %s to class %s."] = "Moved %s to class %s."
 --[[Translation missing --]]
@@ -454,6 +506,8 @@ L["Party"] = "Группа"
 --[[Translation missing --]]
 L["Party setting changed to Default."] = "Party setting changed to Default."
 L["Pause"] = "Пауза"
+--[[Translation missing --]]
+L["Pause for the GCD."] = "Pause for the GCD."
 --[[Translation missing --]]
 L["Paused"] = "Paused"
 --[[Translation missing --]]
@@ -518,6 +572,8 @@ L["Random - It will select .... a spell, any spell"] = "Random - It will select 
 --[[Translation missing --]]
 L["Rank"] = "Rank"
 --[[Translation missing --]]
+L["Raw Edit"] = "Raw Edit"
+--[[Translation missing --]]
 L["Ready to Send"] = "Ready to Send"
 --[[Translation missing --]]
 L["Received Sequence "] = "Received Sequence "
@@ -527,6 +583,8 @@ L["Record the spells and items you use into a new macro."] = "Запишите �
 L["Registered Addons"] = "Зарегистрированные дополнения"
 --[[Translation missing --]]
 L["Rename New Macro"] = "Rename New Macro"
+--[[Translation missing --]]
+L["Repeat"] = "Repeat"
 --[[Translation missing --]]
 L["Replace"] = "Replace"
 --[[Translation missing --]]
@@ -540,6 +598,10 @@ L["Reset Macro when out of combat"] = "Сбросить Макрос при вы
 L["Reset this macro when you exit combat."] = "Reset this macro when you exit combat."
 L["Resets"] = "Сбросы"
 L["Resets macros back to the initial state when out of combat."] = "Сбрасывает макросы обратно в исходное состояние, когда они находятся вне боя."
+--[[Translation missing --]]
+L["Restricted"] = "Restricted"
+--[[Translation missing --]]
+L["RESTRICTED: Macro specifics disabled by author."] = "RESTRICTED: Macro specifics disabled by author."
 L["Resume"] = "Продолжить"
 L["Returns your current Global Cooldown value accounting for your haste if that stat is present."] = "Возвращает ваше текущее глобальное значение перезарядки, учитывающее вашу скорость, если этот показатель присутствует."
 L["Right Alt Key"] = "Правая клавиша Alt"
@@ -555,6 +617,8 @@ L["Save the changes made to this macro"] = "Сохраните изменени�
 L["Scenario"] = "Сценарий"
 --[[Translation missing --]]
 L["Scenario setting changed to Default."] = "Scenario setting changed to Default."
+--[[Translation missing --]]
+L["Seconds"] = "Seconds"
 --[[Translation missing --]]
 L["Seed Initial Macro"] = "Seed Initial Macro"
 --[[Translation missing --]]
@@ -597,11 +661,15 @@ L["Show Class Macros in Editor"] = "Показать макросы класса
 --[[Translation missing --]]
 L["Show Current Spells"] = "Show Current Spells"
 --[[Translation missing --]]
+L["Show Full Block Execution"] = "Show Full Block Execution"
+--[[Translation missing --]]
 L["Show Global Macros in Editor"] = "Show Global Macros in Editor"
 --[[Translation missing --]]
 L["Show GSE Users in LDB"] = "Show GSE Users in LDB"
 --[[Translation missing --]]
 L["Show OOC Queue in LDB"] = "Show OOC Queue in LDB"
+--[[Translation missing --]]
+L["Show the compiled version of this macro."] = "Show the compiled version of this macro."
 --[[Translation missing --]]
 L["Show the current value of this variable."] = "Show the current value of this variable."
 --[[Translation missing --]]
@@ -624,6 +692,8 @@ L["Store Debug Messages"] = "Store Debug Messages"
 L["Store output of debug messages in a Global Variable that can be referrenced by other mods."] = "Store output of debug messages in a Global Variable that can be referrenced by other mods."
 --[[Translation missing --]]
 L["String Colour"] = "String Colour"
+--[[Translation missing --]]
+L["Support GSE"] = "Support GSE"
 --[[Translation missing --]]
 L["Supporters"] = "Supporters"
 L["System Variables"] = "Системные переменные"
@@ -689,14 +759,6 @@ L["There are No Macros Loaded for this class.  Would you like to load the Sample
 Хотите загрузить образец макросов (Sample Macro)?]=]
 --[[Translation missing --]]
 L["There is an issue with sequence %s.  It has not been loaded to prevent the mod from failing."] = "There is an issue with sequence %s.  It has not been loaded to prevent the mod from failing."
---[[Translation missing --]]
-L[ [=[These lines are executed after the lines in the Sequence Box have been repeated Inner Loop Limit number of times.  If an Inner Loop Limit is not set, these are never executed as the sequence will never stop repeating.
-The Sequence will then go on to the PreMacro if it exists then back to the Sequence.]=] ] = [=[These lines are executed after the lines in the Sequence Box have been repeated Inner Loop Limit number of times.  If an Inner Loop Limit is not set, these are never executed as the sequence will never stop repeating.
-The Sequence will then go on to the PreMacro if it exists then back to the Sequence.]=]
---[[Translation missing --]]
-L[ [=[These lines are executed after the lines in the Sequence Box have been repeated Inner Loop Limit number of times.  If an Inner Loop Limit is not set, this box will be disabled as these are never executed as the sequence will never stop repeating.
-The Sequence will then go on to the PreMacro if it exists then back to the Sequence.]=] ] = [=[These lines are executed after the lines in the Sequence Box have been repeated Inner Loop Limit number of times.  If an Inner Loop Limit is not set, this box will be disabled as these are never executed as the sequence will never stop repeating.
-The Sequence will then go on to the PreMacro if it exists then back to the Sequence.]=]
 --[[Translation missing --]]
 L[ [=[These lines are executed after the lines in the Sequence Box have been repeated Inner Loop Limit number of times.
 The Sequence will then go on to the PreMacro if it exists then back to the Sequence.]=] ] = [=[These lines are executed after the lines in the Sequence Box have been repeated Inner Loop Limit number of times.
@@ -770,6 +832,8 @@ L["Two sequences with unknown sources found."] = "Two sequences with unknown sou
 --[[Translation missing --]]
 L["Unable to interpret sequence."] = "Unable to interpret sequence."
 --[[Translation missing --]]
+L["Unable to process content.  Fix table and try again."] = "Unable to process content.  Fix table and try again."
+--[[Translation missing --]]
 L["Unknown Author|r "] = "Unknown Author|r "
 --[[Translation missing --]]
 L["Unknown Colour"] = "Unknown Colour"
@@ -819,6 +883,8 @@ L["Version="] = "Version="
 --[[Translation missing --]]
 L["WARNING ONLY"] = "WARNING ONLY"
 --[[Translation missing --]]
+L["was created in an older version of GSE.  It has been updated to the current version however may need to be checked manually."] = "was created in an older version of GSE.  It has been updated to the current version however may need to be checked manually."
+--[[Translation missing --]]
 L["WeakAuras"] = "WeakAuras"
 --[[Translation missing --]]
 L["WeakAuras is a mod that watches for certain conditions and actions and they alerts the player to them occuring.  These are included for convenience and still need to be copied from here and imported to the WeakAuras mod via the command /wa."] = "WeakAuras is a mod that watches for certain conditions and actions and they alerts the player to them occuring.  These are included for convenience and still need to be copied from here and imported to the WeakAuras mod via the command /wa."
@@ -834,6 +900,8 @@ L["What class or spec is this macro for?  If it is for all classes choose Global
 Если это для всех классов, выберите Global.]=]
 --[[Translation missing --]]
 L["When creating a macro, if there is not a personal character macro space, create an account wide macro."] = "When creating a macro, if there is not a personal character macro space, create an account wide macro."
+--[[Translation missing --]]
+L["When debugging the output of a sequence, show the full executed block in the Debugger Output."] = "When debugging the output of a sequence, show the full executed block in the Debugger Output."
 --[[Translation missing --]]
 L["When exporting a sequence create a stub entry to import for WLM's Website."] = "When exporting a sequence create a stub entry to import for WLM's Website."
 --[[Translation missing --]]

@@ -20,7 +20,7 @@ public.isBC = WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC
 -- Generate our version variables
 --
 
-local BIGWIGS_VERSION = 28
+local BIGWIGS_VERSION = 29
 local BIGWIGS_RELEASE_STRING, BIGWIGS_VERSION_STRING = "", ""
 local versionQueryString, versionResponseString = "Q^%d^%s^%d^%s", "V^%d^%s^%d^%s"
 local customGuildName = false
@@ -35,7 +35,7 @@ do
 	local RELEASE = "RELEASE"
 
 	local releaseType = RELEASE
-	local myGitHash = "5eccf63" -- The ZIP packager will replace this with the Git hash.
+	local myGitHash = "2d5a771" -- The ZIP packager will replace this with the Git hash.
 	local releaseString = ""
 	--[=[@alpha@
 	-- The following code will only be present in alpha ZIPs.
@@ -852,7 +852,7 @@ do
 		delayedMessages[#delayedMessages+1] = ("BigWigs is missing translations for %s. Can you help? Visit git.io/vpBye or ask us on Discord for more info."):format(locales[L])
 	end
 
-	local myGitHash = "5eccf63" -- The ZIP packager will replace this with the Git hash.
+	local myGitHash = "2d5a771" -- The ZIP packager will replace this with the Git hash.
 	-- If we find "@" then we're running from Git directly.
 	if not strfind(myGitHash, "@", nil, true) then
 		local bType = ""
@@ -1340,16 +1340,16 @@ SLASH_BigWigs1 = "/bw"
 SLASH_BigWigs2 = "/bigwigs"
 SlashCmdList.BigWigs = function()
 	-- If you are a dev and need the BigWigs options loaded to do something, please come talk to us on Discord about your use case
-	local trace = debugstack(2)
-	if strfind(trace, "[string \"*:OnEnterPressed\"]:1: in function <[string \"*:OnEnterPressed\"]:1>", nil, true) then
+	--local trace = debugstack(2)
+	--if strfind(trace, "[string \"*:OnEnterPressed\"]:1: in function <[string \"*:OnEnterPressed\"]:1>", nil, true) then
 		loadCoreAndOpenOptions()
-	else
-		public.stack = trace
-		sysprint("|cFFff0000WARNING!|r")
-		sysprint("One of your addons was prevented from force loading the BigWigs options.")
-		sysprint("Contact us on the BigWigs Discord about this, it should not be happening.")
-		return
-	end
+	--else
+	--	public.stack = trace
+	--	sysprint("|cFFff0000WARNING!|r")
+	--	sysprint("One of your addons was prevented from force loading the BigWigs options.")
+	--	sysprint("Contact us on the BigWigs Discord about this, it should not be happening.")
+	--	return
+	--end
 end
 
 SLASH_BigWigsVersion1 = "/bwv"

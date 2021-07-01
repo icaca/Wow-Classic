@@ -6,7 +6,7 @@ local Statics = GSE.Static
 function GSE.GetOptionsTable()
   local OptionsTable = {
     type = "group",
-    name = L["|cffff0000GS-E:|r Gnome Sequencer - Enhanced Options"],
+    name = "|cffff0000GSE:|r " .. L["Options"],
     args = {
       generalTab = {
         name = L["General"],
@@ -143,6 +143,14 @@ function GSE.GetOptionsTable()
             get = function(info) return GSEOptions.DefaultImportAction end,
             order = 320
           },
+          fullBlockDebug = {
+            name = L["Show Full Block Execution"],
+            desc = L["When debugging the output of a sequence, show the full executed block in the Debugger Output."],
+            type = "toggle",
+            set = function(info,val) GSEOptions.showFullBlockDebug = val end,
+            get = function(info) return GSEOptions.showFullBlockDebug and GSEOptions.showFullBlockDebug or false end,
+            order = 330
+          },
           UseVerboseExportFormat = {
             name = L["Use WLM Export Sequence Format"],
             desc = L["When exporting a sequence create a stub entry to import for WLM's Website."],
@@ -227,7 +235,7 @@ function GSE.GetOptionsTable()
             name = L["Require Target to use"],
             desc = L["This option prevents macros firing unless you have a target. Helps reduce mistaken targeting of other mobs/groups when your target dies."],
             type = "toggle",
-            set = function(info,val) GSEOptions.requireTarget = val GSE.ReloadSequences() end,
+            set = function(info,val) GSEOptions.requireTarget = val GSE.PerformReloadSequences() end,
             get = function(info) return GSEOptions.requireTarget end,
             order = 510
           },
@@ -235,7 +243,7 @@ function GSE.GetOptionsTable()
             name = L["Prevent Sound Errors"],
             desc = L["This option hide error sounds like \"That is out of range\" from being played while you are hitting a GS Macro.  This is the equivalent of /console Sound_EnableErrorSpeech lines within a Sequence.  Turning this on will trigger a Scam warning about running custom scripts."],
             type = "toggle",
-            set = function(info,val) GSEOptions.hideSoundErrors = val GSE.ReloadSequences() end,
+            set = function(info,val) GSEOptions.hideSoundErrors = val GSE.PerformReloadSequences() end,
             get = function(info) return GSEOptions.hideSoundErrors end,
             order = 520
           },
@@ -243,7 +251,7 @@ function GSE.GetOptionsTable()
             name = L["Prevent UI Errors"],
             desc = L["This option hides text error popups and dialogs and stack traces ingame.  This is the equivalent of /script UIErrorsFrame:Hide() in a KeyRelease.  Turning this on will trigger a Scam warning about running custom scripts."],
             type = "toggle",
-            set = function(info,val) GSEOptions.hideUIErrors = val GSE.ReloadSequences() end,
+            set = function(info,val) GSEOptions.hideUIErrors = val GSE.PerformReloadSequences() end,
             get = function(info) return GSEOptions.hideUIErrors end,
             order = 530
           },
@@ -251,7 +259,7 @@ function GSE.GetOptionsTable()
             name = L["Clear Errors"],
             desc = L["This option clears errors and stack traces ingame.  This is the equivalent of /run UIErrorsFrame:Clear() in a KeyRelease.  Turning this on will trigger a Scam warning about running custom scripts."],
             type = "toggle",
-            set = function(info,val) GSEOptions.clearUIErrors = val GSE.ReloadSequences() end,
+            set = function(info,val) GSEOptions.clearUIErrors = val GSE.PerformReloadSequences() end,
             get = function(info) return GSEOptions.clearUIErrors end,
             order = 540
           },
@@ -417,7 +425,7 @@ function GSE.GetOptionsTable()
           resetcontroltitle = {
             type = "header",
             name = L["Control Keys."],
-            order = 560
+            order = 570
           },
           resetAnyControlKey = {
             name = L["Any Control Key"],
@@ -443,7 +451,7 @@ function GSE.GetOptionsTable()
           resetshifttitle = {
             type = "header",
             name = L["Shift Keys."],
-            order = 570
+            order = 580
           },
           resetAnyShiftKey = {
             name = L["Any Shift Key"],
@@ -722,7 +730,7 @@ function GSE.GetOptionsTable()
             type = "description",
             name = L["GSE was originally forked from GnomeSequencer written by semlar.  It was enhanced by TImothyLuke to include a lot of configuration and boilerplate functionality with a GUI added.  The enhancements pushed the limits of what the original code could handle and was rewritten from scratch into GSE.\n\nGSE itself wouldn't be what it is without the efforts of the people who write macros with it.  Check out https://wowlazymacros.com for the things that make this mod work.  Special thanks to Lutechi for creating this community."],
             order = 20,
-            image = "Interface\\Addons\\GSE_GUI\\GSE2_Logo_Dark_512.tga",
+            image = "Interface\\Addons\\GSE_GUI\\Assets\\GSE_Logo_Dark_512.tga",
             imageWidth = 120;
             imageHeight = 120;
           },
@@ -735,6 +743,30 @@ function GSE.GetOptionsTable()
             type = "description",
             name = "GSE: " .. GSE.VersionString,
             order = 22,
+          },
+          documentation = {
+            type = "execute",
+            name = L["Get Help"],
+            order = 25,
+            image = "Interface\\Addons\\GSE_GUI\\Assets\\github.tga",
+            imageWidth = 120,
+            imageHeight = 120,
+            func = function()
+              StaticPopupDialogs['GSE_SEQUENCEHELP'].url = "https://github.com/TimothyLuke/GnomeSequencer-Enhanced/issues"
+              StaticPopup_Show('GSE_SEQUENCEHELP')
+            end
+          },
+          patreonlink = {
+            type = "execute",
+            name = L["Support GSE"],
+            order = 25,
+            image = "Interface\\Addons\\GSE_GUI\\Assets\\patreon.tga",
+            imageWidth = 120,
+            imageHeight = 120,
+            func = function()
+              StaticPopupDialogs['GSE_SEQUENCEHELP'].url = "https://www.patreon.com/TimothyLuke"
+              StaticPopup_Show('GSE_SEQUENCEHELP')
+            end
           },
           title5 = {
             type = "header",
@@ -808,7 +840,7 @@ function GSE.GetOptionsTable()
   -- Add Dynamic Content Container
 
   local ord = 900
-  for k,v in pairs(GSEOptions.AddInPacks) do
+  for _,v in pairs(GSEOptions.AddInPacks) do
     ord = ord + 1
     OptionsTable.args.pluginsTab.args[v.Name] = {
       name = v.Name,
@@ -823,7 +855,7 @@ function GSE.GetOptionsTable()
   end
 
   ord = 30
-  for k,v in pairs(GSEOptions.DebugModules) do
+  for k,_ in pairs(GSEOptions.DebugModules) do
     ord = ord + 1
     OptionsTable.args.debugTab.args[k] = {
       name = k,

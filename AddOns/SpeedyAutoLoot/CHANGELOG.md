@@ -1,3 +1,6 @@
+### 2.1.1
+- Shadowlands 9.1
+
 ### 2.1.0
 - Refactor
 

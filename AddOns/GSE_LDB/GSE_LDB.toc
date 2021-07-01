@@ -1,10 +1,10 @@
 ## Interface: 20501
 
 
-## Title: |cff0000FFGSE2:|r |cFF00D1FFLDB|r
-## Notes: LibDataBroker Plugin for GSE2
+## Title: |cff0000FFGSE:|r |cFF00D1FFLDB|r
+## Notes: LibDataBroker Plugin for GSE
 ## Author: TimothyLuke
-## Version: 2.6.55
+## Version: 3.0.08
 ## Dependencies: GSE
 
 

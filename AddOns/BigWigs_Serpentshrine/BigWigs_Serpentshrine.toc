@@ -22,7 +22,7 @@
 ## Notes-ruRU: BigWigs Serpentshrine Cavern Modules
 ## Notes-zhCN: BigWigs 毒蛇神殿模块
 ## Notes-zhTW: BigWigs 毒蛇神殿洞穴模組
-## Version: v28-classic
+## Version: v29-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

@@ -1,11 +1,11 @@
 ## Interface: 20501
 
 
-## Title: |cff0000FFGSE2:|r |cFF00D1FFGnome Sequencer Enhanced|r
+## Title: |cff0000FFGSE:|r |cFF00D1FFGnome Sequencer Enhanced|r
 ## Notes: Allows you to execute a sequence of macros without stopping on unusable spells.
 ## Author: TimothyLuke
-## Version: 2.6.55
-## SavedVariables: GSEOptions GSELibrary GSEStorage 
+## Version: 3.0.08
+## SavedVariables: GSEOptions GSELibrary GSEStorage GSE3Storage
 ## SavedVariablesPerCharacter: GSE_C GSELegacyLibraryBackup
 ## OptionalDeps: WeakAuras
 

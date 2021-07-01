@@ -97,7 +97,6 @@ L["You need to reload the User Interface for the change in StepFunction to take 
 L["You need to reload the User Interface to complete this task.  Would you like to do this now?"] = true
 L["Yes"] = true
 L["No"] = true
-L["|cffff0000GS-E:|r Gnome Sequencer - Enhanced Options"] = true
 L["General"] = true
 L["General Options"] = true
 L["Only Save Local Macros"] = true
@@ -601,3 +600,47 @@ L["These lines are executed after the lines in the Sequence Box have been repeat
 L["This box is disabled as no Inner Loop Limit has been set.  It will never be called without it."] = true
 --2.6.44
 L["%sMACRO VALIDATION ERROR|r - PostMacro found with invalid LoopLimit.  PostMacro will not be saved for version %s"] = true
+--3.0.0
+L["Block Type: %s"] = true
+L["Repeat"] = true
+L["How many times does this action repeat"] = true
+L["How many macro Clicks to pause for?"] = true
+L["How many seconds to pause for?"] = true
+L["Clicks"] = true
+L["Seconds"] = true
+L["Measure"] = true
+L["A pause can be measured in either clicks or seconds.  It will either wait 5 clicks or 1.5 seconds.\nIf using seconds, you can also wait for the GCD by entering ~~GCD~~ into the box."] = true
+L["Raw Edit"] = true
+L["Edit this macro directly in Lua. WARNING: This may render the macro unable to operate and can crash your Game Session."] = true
+L["Compile"] = true
+L["Unable to process content.  Fix table and try again."] = true
+L["GSE Raw Editor"] = true
+L["Global"] = true
+L["Move Up"] = true
+L["Move this block up one block."] = true
+L["Move Down"] = true
+L["Move this block down one block."] = true
+L["Delete Block"] = true
+L["Delete this Block from the sequence.  \nWARNING: If this is a loop this will delete all the blocks inside the loop as well."] = true
+L["Add Action"] = true
+L["Add an Action Block."] = true
+L["Add Loop"] = true
+L["Add a Loop Block."] = true
+L["Add Repeat"] = true
+L["Add a Repeat Block."] = true
+L["Add Pause"] = true
+L["Add a Pause Block."] = true
+L["Pause for the GCD."] = true
+L["Error processing Custom Pause Value.  You will need to recheck your macros."] = true
+L["was created in an older version of GSE.  It has been updated to the current version however may need to be checked manually."] = true
+L["Restricted"] = true
+L["RESTRICTED: Macro specifics disabled by author."] = true
+L["Invalid value entered into pause block. Needs to be 'GCD' or a Number."] = true
+L["Show Full Block Execution"] = true
+L["When debugging the output of a sequence, show the full executed block in the Debugger Output."] = true
+L["Support GSE"] = true
+L["Get Help"] = true
+
+-- 3.0.2
+L["Compiled Template"] = true
+L["Show the compiled version of this macro."] = true

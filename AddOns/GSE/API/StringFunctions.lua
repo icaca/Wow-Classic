@@ -1,41 +1,16 @@
 local GSE = GSE
 local Statics = GSE.Static
 
---- Remove WoW Text Markup from a sequence.
+--- Remove WoW Text Markup from a sequence.  Deprecated Use GSE.UnEscapeTableRecursive
 function GSE.UnEscapeSequence(sequence)
 
     local retseq = GSE.UnEscapeTable(sequence)
-    for k, v in pairs(sequence) do
-        if type(k) == "string" then
-            retseq[k] = v
-        end
-    end
-    if not GSE.isEmpty(sequence.KeyPress) then
-        retseq.KeyPress = GSE.UnEscapeTable(sequence.KeyPress)
-    end
-    if not GSE.isEmpty(sequence.KeyRelease) then
-        retseq.KeyRelease = GSE.UnEscapeTable(sequence.KeyRelease)
-    end
-    if not GSE.isEmpty(sequence.PreMacro) then
-        retseq.PreMacro = GSE.UnEscapeTable(sequence.PreMacro)
-    end
-    if not GSE.isEmpty(sequence.PostMacro) then
-        retseq.PostMacro = GSE.UnEscapeTable(sequence.PostMacro)
-    end
-
     return retseq
 end
 
+--- Deprecated Use GSE.UnEscapeTableRecursive instead
 function GSE.UnEscapeTable(tab)
-    local newtab = {}
-    for k, v in ipairs(tab) do
-        -- print (k .. " " .. v)
-        local cleanstring = GSE.UnEscapeString(v)
-        if not GSE.isEmpty(cleanstring) then
-            newtab[k] = cleanstring
-        end
-    end
-    return newtab
+    return GSE.UnEscapeTableRecursive(tab)
 end
 
 --- Remove WoW Text Markup from a string.
@@ -45,6 +20,25 @@ function GSE.UnEscapeString(str)
         str = string.gsub(str, k, v)
     end
     return str
+end
+
+function GSE.UnEscapeTableRecursive(tab)
+    for k, v in pairs(tab) do
+        if type(v) == 'table' then
+            tab[k] = GSE.UnEscapeTableRecursive(v)
+        elseif type(v) == 'string' then
+            tab[k] = GSE.UnEscapeString(v)
+        end
+    end
+
+    for k,v in ipairs(tab) do
+        if type(v) == 'table' then
+            tab[k] = GSE.UnEscapeTableRecursive(v)
+        elseif type(v) == 'string' then
+            tab[k] = GSE.UnEscapeString(v)
+        end
+    end
+    return tab
 end
 
 --- Add the lines of a string as individual entries.
@@ -58,7 +52,7 @@ end
 
 --- Convert a string to an array of lines.
 function GSE.SplitMeIntolines(str)
-    GSE.PrintDebugMessage("Entering GSTRSplitMeIntolines with : \n" .. str, GNOME)
+    --GSE.PrintDebugMessage("Entering GSTRSplitMeIntolines with : \n" .. str, GNOME)
     local t = {}
     local function helper(line)
         table.insert(t, line)
@@ -102,7 +96,7 @@ function GSE.FixQuotes(source)
 end
 
 function GSE.CleanStrings(source)
-    for k, v in pairs(Statics.CleanStrings) do
+    for _, v in pairs(Statics.CleanStrings) do
 
         if source == v then
             source = ""
@@ -181,7 +175,7 @@ function GSE.TrimWhiteSpace(str)
 end
 
 function GSE.Dump(node)
-    -- if type(node) == 'table' then
+
     --     local s = '{ \n'
     --     for k, v in pairs(node) do
     --         if type(k) ~= 'number' then
@@ -201,66 +195,70 @@ function GSE.Dump(node)
     --     return GSE.TranslateString(tostring(o) , "STRING", true)
     -- end
 
-    local cache, stack, output = {},{},{}
+    local cache, stack, output = {}, {}, {}
     local depth = 1
     local output_str = "{\n"
 
+    if GSE.isEmpty(node) then
+        output_str = "nil"
+    end
     while true do
         local size = 0
-        for k,v in pairs(node) do
-            size = size + 1
-        end
-
-        local cur_index = 1
-        for k,v in pairs(node) do
-            if (cache[node] == nil) or (cur_index >= cache[node]) then
-
-                if (string.find(output_str,"}",output_str:len())) then
-                    output_str = output_str .. ",\n"
-                elseif not (string.find(output_str,"\n",output_str:len())) then
-                    output_str = output_str .. "\n"
-                end
-
-                -- This is necessary for working with HUGE tables otherwise we run out of memory using concat on huge strings
-                table.insert(output,output_str)
-                output_str = ""
-
-                local key
-                if (type(k) == "number" or type(k) == "boolean") then
-                    key = "["..tostring(k).."]"
-                else
-                    key = "['"..tostring(k).."']"
-                end
-
-                if (type(v) == "number" or type(v) == "boolean") then
-                    output_str = output_str .. string.rep('\t',depth) .. key .. " = "..tostring(v)
-                elseif (type(v) == "table") then
-                    output_str = output_str .. string.rep('\t',depth) .. key .. " = {\n"
-                    table.insert(stack,node)
-                    table.insert(stack,v)
-                    cache[node] = cur_index+1
-                    break
-                else
-                    output_str = output_str .. string.rep('\t',depth) .. key .. " = '"..tostring(v).."'"
-                end
-
-                if (cur_index == size) then
-                    output_str = output_str .. "\n" .. string.rep('\t',depth-1) .. "}"
-                else
-                    output_str = output_str .. ","
-                end
-            else
-                -- close the table
-                if (cur_index == size) then
-                    output_str = output_str .. "\n" .. string.rep('\t',depth-1) .. "}"
-                end
+        if type(node) == 'table' then
+            for _, _ in pairs(node) do
+                size = size + 1
             end
 
-            cur_index = cur_index + 1
-        end
+            local cur_index = 1
+            for k, v in pairs(node) do
+                if (cache[node] == nil) or (cur_index >= cache[node]) then
 
+                    if (string.find(output_str, "}", output_str:len())) then
+                        output_str = output_str .. ",\n"
+                    elseif not (string.find(output_str, "\n", output_str:len())) then
+                        output_str = output_str .. "\n"
+                    end
+
+                    -- This is necessary for working with HUGE tables otherwise we run out of memory using concat on huge strings
+                    table.insert(output, output_str)
+                    output_str = ""
+
+                    local key
+                    if (type(k) == "number" or type(k) == "boolean") then
+                        key = "[" .. tostring(k) .. "]"
+                    else
+                        key = "[\"" .. tostring(k) .. "\"]"
+                    end
+
+                    if (type(v) == "number" or type(v) == "boolean") then
+                        output_str = output_str .. string.rep('\t', depth) .. key .. " = " .. tostring(v)
+                    elseif (type(v) == "table") then
+                        output_str = output_str .. string.rep('\t', depth) .. key .. " = {\n"
+                        table.insert(stack, node)
+                        table.insert(stack, v)
+                        cache[node] = cur_index + 1
+                        break
+                    else
+                        output_str = output_str .. string.rep('\t', depth) .. key .. " = \"" .. tostring(v) .. "\""
+                    end
+
+                    if (cur_index == size) then
+                        output_str = output_str .. "\n" .. string.rep('\t', depth - 1) .. "}"
+                    else
+                        output_str = output_str .. ","
+                    end
+                else
+                    -- close the table
+                    if (cur_index == size) then
+                        output_str = output_str .. "\n" .. string.rep('\t', depth - 1) .. "}"
+                    end
+                end
+
+                cur_index = cur_index + 1
+            end
+        end
         if (size == 0) then
-            output_str = output_str .. "\n" .. string.rep('\t',depth-1) .. "}"
+            output_str = output_str .. "\n" .. string.rep('\t', depth - 1) .. "}"
         end
 
         if (#stack > 0) then
@@ -273,7 +271,7 @@ function GSE.Dump(node)
     end
 
     -- This is necessary for working with HUGE tables otherwise we run out of memory using concat on huge strings
-    table.insert(output,output_str)
+    table.insert(output, output_str)
     output_str = table.concat(output)
     return output_str
 end
@@ -307,4 +305,9 @@ function GSE.DecodeTimeStamp(stamp)
     tab.hour = stamp:sub(11,2)
     tab.sec = stamp:sub(13,2)
     return tab
+end
+
+--- Check is the value is present and if it is actually a number.
+function GSE.isNaN(v)
+    return  type( v ) ~= "number" or GSE.isEmpty(v)
 end

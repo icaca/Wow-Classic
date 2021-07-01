@@ -1,10 +1,10 @@
 ## Interface: 20501
 
 
-## Title: |cff0000ffGSE2:|r |cFF00D1FFGUI|r
+## Title: |cff0000ffGSE:|r |cFF00D1FFGUI|r
 ## Notes: GSE GUI
 ## Author: TimothyLuke
-## Version: 2.6.55
+## Version: 3.0.08
 ## Dependencies: GSE
 
 
@@ -13,7 +13,6 @@ Import.lua
 Export.lua
 DebugWindow.lua
 Transmission.lua
-VersionManagement.lua
 Recorder.lua
 Editor.lua
 Viewer.lua
@@ -21,5 +20,6 @@ RemoteMacroBrowser.lua
 GUIFunctions.lua
 CompressSequence.lua
 MacroCompare.lua
-3_ParentFrame.lua
+MacroPreview.lua
+3_AdvancedEditor.lua
 Init.lua
