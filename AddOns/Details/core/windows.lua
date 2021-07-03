@@ -1000,9 +1000,9 @@
 		
 			self:ChangeIcon ([[Interface\GossipFrame\ActiveQuestIcon]])
 		
-			if (WaitForPluginFrame:IsShown() and WaitForPluginFrame:GetParent() == self.baseframe) then
-				self.waiting_pid = self:ScheduleTimer ("ExecDelayedPlugin1", 5, self)
-			end
+			--if (WaitForPluginFrame:IsShown() and WaitForPluginFrame:GetParent() == self.baseframe) then
+			--	self.waiting_pid = self:ScheduleTimer ("ExecDelayedPlugin1", 5, self)
+			--end
 		
 			WaitForPluginFrame:SetParent (self.baseframe)
 			WaitForPluginFrame:SetAllPoints (self.baseframe)

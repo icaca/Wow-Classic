@@ -28,7 +28,7 @@ L["/gs checkmacrosforerrors|r will loop through your macros and check for corrup
 --[[Translation missing --]]
 L["/gs cleanorphans|r will loop through your macros and delete any left over GS-E macros that no longer have a sequence to match them."] = "/gs cleanorphans|r will loop through your macros and delete any left over GS-E macros that no longer have a sequence to match them."
 --[[Translation missing --]]
-L["/gs help|r to get started."] = "/gs help|r to get started."
+L["/gs help|r to get started."] = "/gse help|r to get started."
 --[[Translation missing --]]
 L["/gs listall|r will produce a list of all available macros with some help information."] = "/gs listall|r will produce a list of all available macros with some help information."
 --[[Translation missing --]]
@@ -149,6 +149,8 @@ L["Command Colour"] = "Command Colour"
 --[[Translation missing --]]
 L["Compile"] = "Compile"
 --[[Translation missing --]]
+L["Compiled"] = "Compiled"
+--[[Translation missing --]]
 L["Compiled Template"] = "Compiled Template"
 --[[Translation missing --]]
 L["Completely New GS Macro."] = "Completely New GS Macro."
@@ -267,6 +269,8 @@ L["Extra Macro Versions of %s has been added."] = "Extra Macro Versions of %s ha
 L["Filter Macro Selection"] = "Filter Macro Selection"
 --[[Translation missing --]]
 L["Finished scanning for errors.  If no other messages then no errors were found."] = "Finished scanning for errors.  If no other messages then no errors were found."
+--[[Translation missing --]]
+L["FinishReload"] = "Finish Reload"
 --[[Translation missing --]]
 L["Format export for WLM Forums"] = "Format export for WLM Forums"
 --[[Translation missing --]]
@@ -392,6 +396,10 @@ until it goes onto to the PostMacro and then resets to the PreMacro.]=] ] = [=[I
 until it goes onto to the PostMacro and then resets to the PreMacro.]=]
 --[[Translation missing --]]
 L["Inner Loop Start"] = "Inner Loop Start"
+--[[Translation missing --]]
+L["Insert this block again after how many blocks."] = "Insert this block again after how many blocks."
+--[[Translation missing --]]
+L["Interval"] = "Interval"
 --[[Translation missing --]]
 L["Invalid value entered into pause block. Needs to be 'GCD' or a Number."] = "Invalid value entered into pause block. Needs to be 'GCD' or a Number."
 L["KeyPress"] = "Нажатие клавиши"

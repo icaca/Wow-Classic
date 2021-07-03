@@ -74,7 +74,7 @@ function GSE.OOCAddSequenceToCollection(sequenceName, sequence, classid)
             sequenceName), "Import GSE2")
     end
     -- check for version flags.
-    if sequence.MetaData.EnforceCompatability then
+    if sequence.MetaData.EnforceCompatability and not string.match(GSE.VersionString, "development") then
         if GSE.ParseVersion(sequence.MetaData.GSEVersion) > (GSE.VersionNumber) then
             GSE.Print(string.format(
                 L["This macro uses features that are not available in this version. You need to update GSE to %s in order to use this macro."],
@@ -509,8 +509,12 @@ function GSE.OOCUpdateSequence(name, sequence)
     if (GSE.isEmpty(sequence.InbuiltVariables.Combat) and GSEOptions.resetOOC) or sequence.InbuiltVariables.Combat then
         combatReset = true
     end
-
-    GSE.CreateGSE3Button(GSE.CompileTemplate(sequence), name, combatReset)
+    local compiledTemplate = GSE.CompileTemplate(sequence)
+    local actionCount = table.getn(compiledTemplate)
+    if actionCount > 255 then
+        GSE.Print(string.format(L["%s macro may cause a 'RestrictedExecution.lua:431' error as it has %s actions when compiled.  This get interesting when you go past 255 actions.  You may need to simplify this macro."], name,  actionCount), "MACRO ERROR")
+    end
+    GSE.CreateGSE3Button(compiledTemplate, name, combatReset)
 end
 
 --- This function dumps what is currently running on an existing button.
@@ -1218,63 +1222,59 @@ function GSE.ConvertGSE2(sequence, sequenceName)
     return returnSequence
 end
 
+local function processAction(action, metaData)
+    return GSE.processAction(action, metaData)
+end
+
 local function buildAction(action, metaData)
-    if GSEOptions.requireTarget then
+    if action.Type == Statics.Actions.Loop then
+        -- we have a loop within a loop
+        return processAction(action, metaData)
+    else
+        if GSEOptions.requireTarget then
 
-        -- See #20 prevent target hopping
-        table.insert(action, 1, "/stopmacro [@playertarget, noexists]")
-    end
+            -- See #20 prevent target hopping
+            table.insert(action, 1, "/stopmacro [@playertarget, noexists]")
+        end
 
-    if GSEOptions.hideSoundErrors then
-        -- Potentially change this to SetCVar("Sound_EnableSFX", 0)
-        table.insert(action, 1, "/console Sound_EnableErrorSpeech 0")
-        table.insert(action, 1, "/console Sound_EnableSFX 0")
-        table.insert(action, 1, '/run ers=GetCVar("Sound_EnableErrorSpeech");')
-        table.insert(action, 1, '/run sfx=GetCVar("Sound_EnableSFX");')
-    end
+        for k, v in ipairs(action) do
+            action[k] = GSE.TranslateString(v, "STRING", nil, true)
+        end
 
-    for k, v in ipairs(action) do
-        action[k] = GSE.TranslateString(v, "STRING", nil, true)
-    end
+        if not GSE.isEmpty(metaData) then
+            if metaData.Ring1 or (metaData.Ring1 == nil and GSEOptions.use11) then
+                table.insert(action, "/use [combat,nochanneling] 11")
+            end
+            if metaData.Ring2 or (metaData.Ring2 == nil and GSEOptions.use12) then
+                table.insert(action, "/use [combat,nochanneling] 12")
+            end
+            if metaData.Trinket1 or (metaData.Trinket1 == nil and GSEOptions.use13) then
+                table.insert(action, "/use [combat,nochanneling] 13")
+            end
+            if metaData.Trinket2 or (metaData.Trinket2 == nil and GSEOptions.use14) then
+                table.insert(action, "/use [combat,nochanneling] 14")
+            end
+            if metaData.Neck or (metaData.Neck == nil and GSEOptions.use2) then
+                table.insert(action, "/use [combat,nochanneling] 2")
+            end
+            if metaData.Head or (metaData.Head == nil and GSEOptions.use1) then
+                table.insert(action, "/use [combat,nochanneling] 1")
+            end
+            if metaData.Belt or (metaData.Belt == nil and GSEOptions.use6) then
+                table.insert(action, "/use [combat,nochanneling] 6")
+            end
+        end
+        if GSEOptions.hideUIErrors then
+            table.insert(action, "/script UIErrorsFrame:Hide();")
+            -- Potentially change this to UIErrorsFrame:Hide()
+        end
+        if GSEOptions.clearUIErrors then
+            -- Potentially change this to UIErrorsFrame:Clear()
+            table.insert(action, "/run UIErrorsFrame:Clear()")
+        end
 
-    if not GSE.isEmpty(metaData) then
-        if metaData.Ring1 or (metaData.Ring1 == nil and GSEOptions.use11) then
-            table.insert(action, "/use [combat,nochanneling] 11")
-        end
-        if metaData.Ring2 or (metaData.Ring2 == nil and GSEOptions.use12) then
-            table.insert(action, "/use [combat,nochanneling] 12")
-        end
-        if metaData.Trinket1 or (metaData.Trinket1 == nil and GSEOptions.use13) then
-            table.insert(action, "/use [combat,nochanneling] 13")
-        end
-        if metaData.Trinket2 or (metaData.Trinket2 == nil and GSEOptions.use14) then
-            table.insert(action, "/use [combat,nochanneling] 14")
-        end
-        if metaData.Neck or (metaData.Neck == nil and GSEOptions.use2) then
-            table.insert(action, "/use [combat,nochanneling] 2")
-        end
-        if metaData.Head or (metaData.Head == nil and GSEOptions.use1) then
-            table.insert(action, "/use [combat,nochanneling] 1")
-        end
-        if metaData.Belt or (metaData.Belt == nil and GSEOptions.use6) then
-            table.insert(action, "/use [combat,nochanneling] 6")
-        end
+        return table.concat(action, "\n")
     end
-    if GSEOptions.hideSoundErrors then
-        -- Potentially change this to SetCVar("Sound_EnableSFX", 1)
-        table.insert(action, "/run SetCVar(\"Sound_EnableSFX\",sfx);")
-        table.insert(action, "/run SetCVar(\"Sound_EnableErrorSpeech\",ers);")
-    end
-    if GSEOptions.hideUIErrors then
-        table.insert(action, "/script UIErrorsFrame:Hide();")
-        -- Potentially change this to UIErrorsFrame:Hide()
-    end
-    if GSEOptions.clearUIErrors then
-        -- Potentially change this to UIErrorsFrame:Clear()
-        table.insert(action, "/run UIErrorsFrame:Clear()")
-    end
-
-    return table.concat(action, "\n")
 end
 
 function GSE.CompileAction(action, template)
@@ -1294,17 +1294,26 @@ function GSE.CompileAction(action, template)
     return table.concat(GSE.UnEscapeTable(GSE.ProcessVariables(returnMacro, variables))[1], "\n")
 end
 
-local function processAction(action, metaData)
+function GSE.processAction(action, metaData)
 
     if action.Type == Statics.Actions.Loop then
-
         local actionList = {}
         -- setup the interation
         for _, v in ipairs(action) do
-            table.insert(actionList, buildAction(v, metaData))
+            local builtaction = GSE.processAction(v, metaData)
+            if type(builtaction) == "table" and GSE.isEmpty(builtaction.Interval) then
+                for _, j in ipairs(builtaction) do
+                    table.insert(actionList, j)
+                end
+            else
+                table.insert(actionList, builtaction)
+            end
         end
         local returnActions = {}
         local loop = tonumber(action.Repeat)
+        if GSE.isEmpty(loop) or loop < 1 then
+            loop = 1
+        end
         for _=1, loop do
             if action.StepFunction == Statics.Priority then
                 local limit = 1
@@ -1312,8 +1321,6 @@ local function processAction(action, metaData)
                 local looplimit = 0
                 for x=1, table.getn(actionList) do
                     looplimit = looplimit + x
-                    x = x + 1
-                    GSE.PrintDebugMessage("X is now " .. x, "Storage")
                 end
                 for _ = 1, looplimit do
                     table.insert(returnActions, actionList[step])
@@ -1334,18 +1341,31 @@ local function processAction(action, metaData)
 
         -- process repeats for the block
         local inserts = {}
+        local processedInserts = {}
         for k, v in ipairs(returnActions) do
             if type(v) == "table" then
-                local act = v[1]
-                local rep = v.Repeat
-                table.insert(inserts, {act, rep})
+                if GSE.isEmpty(processedInserts[v.Action]) then
+                    table.insert(inserts, {Action = v.Action, Interval = v.Interval, Start = k})
+                    processedInserts[v.Action] = {}
+                end
                 table.remove(returnActions, k)
             end
         end
 
-        for k, v in ipairs(inserts) do
-            for i = k, table.getn(returnActions), v[2] do
-                table.insert(returnActions, v[1], i)
+        -- print("num INserts", #inserts)
+        for _,v in ipairs(inserts) do
+
+            local insertcount = math.ceil((#returnActions - v["Start"]) / v["Start"])
+            local repeatCount = v["Interval"]
+            --print(#returnActions, repeatCount, insertcount)
+            for i=1, repeatCount do
+                local insertpos
+                if i > 1 then
+                    insertpos = repeatCount  + 1
+                else
+                    insertpos = repeatCount  +  i * insertcount + 1
+                end
+                table.insert(returnActions, insertpos , v["Action"])
             end
         end
 
@@ -1369,13 +1389,23 @@ local function processAction(action, metaData)
         end
         -- print(#PauseActions, GSE.Dump(action))
         return PauseActions
+    elseif action.Type == Statics.Actions.Repeat then
+        if GSE.isEmpty(action.Interval) then
+            if not GSE.isEmpty(action.Repeat) then
+                action.Interval = action.Repeat
+                action.Repeat = nil
+            else
+                action.Interval = 2
+            end
+        end
+        local returnAction = {
+            ["Action"] = buildAction(action, metaData),
+            ["Interval"] = action.Interval
+        }
+        return returnAction
+    -- elseif action.Type == Statics.Actions.If then
     elseif action.Type == Statics.Actions.Action then
         return buildAction(action, metaData)
-
-    elseif action.Type == Statics.Actions.Repeat then
-        return {buildAction(action, metaData), action["Interval"]}
-
-        -- elseif action.Type == Statics.Actions.If then
 
     end
 end
@@ -1443,8 +1473,8 @@ function GSE.CompileTemplate(macro)
     return GSE.UnEscapeTable(GSE.ProcessVariables(compiledMacro, variables)), template
 end
 
---- Build GSE3 Executable Buttons
-function GSE.CreateGSE3Button(macro, name, combatReset)
+local function PCallCreateGSE3Button(macro, name, combatReset)
+
     if GSE.isEmpty(macro) then
         print("Macro missing for ", name)
         return
@@ -1461,7 +1491,7 @@ function GSE.CreateGSE3Button(macro, name, combatReset)
         local gsebutton = CreateFrame('Button', name, nil, 'SecureActionButtonTemplate,SecureHandlerBaseTemplate')
         gsebutton:SetAttribute('type', 'macro')
         gsebutton:SetAttribute('step', 1)
-        gsebutton:UnwrapScript(gsebutton, 'OnClick')
+        -- gsebutton:UnwrapScript(gsebutton, 'OnClick')
         gsebutton.UpdateIcon = GSE.UpdateIcon
 
         gsebutton:SetAttribute("combatreset", combatReset)
@@ -1479,6 +1509,16 @@ function GSE.CreateGSE3Button(macro, name, combatReset)
     _G[name]:Execute('name, macros = self:GetName(), newtable([=======[' ..
                          strjoin(']=======],[=======[', unpack(macro)) .. ']=======])')
     GSE.UpdateIcon(_G[name], true)
+end
+
+--- Build GSE3 Executable Buttons
+function GSE.CreateGSE3Button(macro, name, combatReset)
+    local status, err = pcall(PCallCreateGSE3Button, macro, name, combatReset)
+    if err or not status then
+        GSE.Print(string.format("%s " ..
+                                    L["was unable to be programmed.  This macro will not fire until errors in the macro are corrected."],
+            name), "BROKEN MACRO")
+    end
 end
 
 --- Creates a string representation of the a Sequence that can be shared as a string.

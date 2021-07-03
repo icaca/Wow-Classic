@@ -438,8 +438,6 @@ do
 				button:Hide()
 			end
 
-			print("plugins buttons:", #all_switch.buttons[script_index])
-
 			--build raid plugins list
 			local raidPlugins = _detalhes.RaidTables:GetAvailablePlugins()
 			if (#raidPlugins >= 0) then

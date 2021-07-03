@@ -4,7 +4,7 @@
 ## Title: |cff0000ffGSE:|r |cFF00D1FFGUI|r
 ## Notes: GSE GUI
 ## Author: TimothyLuke
-## Version: 3.0.08
+## Version: 3.0.14
 ## Dependencies: GSE
 
 

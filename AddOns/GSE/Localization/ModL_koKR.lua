@@ -157,6 +157,8 @@ L["Command Colour"] = "명령어 색상"
 --[[Translation missing --]]
 L["Compile"] = "Compile"
 --[[Translation missing --]]
+L["Compiled"] = "Compiled"
+--[[Translation missing --]]
 L["Compiled Template"] = "Compiled Template"
 L["Completely New GS Macro."] = "완전히 새로운 GS 매크로입니다."
 --[[Translation missing --]]
@@ -254,6 +256,8 @@ L["Extra Macro Versions of %s has been added."] = "Extra Macro Versions of %s ha
 L["Filter Macro Selection"] = "매크로 선택 필터링"
 --[[Translation missing --]]
 L["Finished scanning for errors.  If no other messages then no errors were found."] = "Finished scanning for errors.  If no other messages then no errors were found."
+--[[Translation missing --]]
+L["FinishReload"] = "Finish Reload"
 L["Format export for WLM Forums"] = "WLM 포럼용 형식 내보내기"
 --[[Translation missing --]]
 L["FYou cannot delete this version of a sequence.  This version will be reloaded as it is contained in "] = "FYou cannot delete this version of a sequence.  This version will be reloaded as it is contained in "
@@ -347,6 +351,10 @@ L["Inner Loop Limit"] = "내부 반복 제한"
 L[ [=[Inner Loop Limit controls how many times the Sequence part of your macro executes 
 until it goes onto to the PostMacro and then resets to the PreMacro.]=] ] = "내부 반복 제한은 매크로의 시퀀스 부분이 후매크로로 이동한 다음 전매크로로 초기화될 때까지 실행되는 횟수를 제어합니다."
 L["Inner Loop Start"] = "내부 반복 시작"
+--[[Translation missing --]]
+L["Insert this block again after how many blocks."] = "Insert this block again after how many blocks."
+--[[Translation missing --]]
+L["Interval"] = "Interval"
 --[[Translation missing --]]
 L["Invalid value entered into pause block. Needs to be 'GCD' or a Number."] = "Invalid value entered into pause block. Needs to be 'GCD' or a Number."
 --[[Translation missing --]]

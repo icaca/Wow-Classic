@@ -122,6 +122,8 @@ L["Command Colour"] = "命令颜色"
 --[[Translation missing --]]
 L["Compile"] = "Compile"
 --[[Translation missing --]]
+L["Compiled"] = "Compiled"
+--[[Translation missing --]]
 L["Compiled Template"] = "Compiled Template"
 L["Completely New GS Macro."] = "全新的GS宏."
 --[[Translation missing --]]
@@ -226,6 +228,8 @@ L["Export this Macro."] = "Export this Macro."
 L["Extra Macro Versions of %s has been added."] = "额外宏版本 %s 已被添加."
 L["Filter Macro Selection"] = "宏过滤选择器"
 L["Finished scanning for errors.  If no other messages then no errors were found."] = "完成错误扫描.如果没有其他提示消息,则没有发现错误."
+--[[Translation missing --]]
+L["FinishReload"] = "Finish Reload"
 L["Format export for WLM Forums"] = "以WLM论坛格式导出"
 L["FYou cannot delete this version of a sequence.  This version will be reloaded as it is contained in "] = "F你不能删除此版本的序列.这个版本将被重新加载,因为它包含在 "
 L["Gameplay Options"] = "游戏选项"
@@ -321,6 +325,10 @@ L[ [=[Inner Loop Limit controls how many times the Sequence part of your macro e
 until it goes onto to the PostMacro and then resets to the PreMacro.]=] ] = [=[Inner Loop Limit controls how many times the Sequence part of your macro executes 
 until it goes onto to the PostMacro and then resets to the PreMacro.]=]
 L["Inner Loop Start"] = "内部循环开始"
+--[[Translation missing --]]
+L["Insert this block again after how many blocks."] = "Insert this block again after how many blocks."
+--[[Translation missing --]]
+L["Interval"] = "Interval"
 --[[Translation missing --]]
 L["Invalid value entered into pause block. Needs to be 'GCD' or a Number."] = "Invalid value entered into pause block. Needs to be 'GCD' or a Number."
 L["KeyPress"] = "按键按下"

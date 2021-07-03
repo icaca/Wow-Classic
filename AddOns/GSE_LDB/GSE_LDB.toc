@@ -4,7 +4,7 @@
 ## Title: |cff0000FFGSE:|r |cFF00D1FFLDB|r
 ## Notes: LibDataBroker Plugin for GSE
 ## Author: TimothyLuke
-## Version: 3.0.08
+## Version: 3.0.14
 ## Dependencies: GSE
 
 

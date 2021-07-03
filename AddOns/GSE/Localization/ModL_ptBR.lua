@@ -120,6 +120,8 @@ L["Command Colour"] = "Cor dos Comandos"
 --[[Translation missing --]]
 L["Compile"] = "Compile"
 --[[Translation missing --]]
+L["Compiled"] = "Compiled"
+--[[Translation missing --]]
 L["Compiled Template"] = "Compiled Template"
 L["Completely New GS Macro."] = "Macro GS Completamente Nova."
 L["Compress"] = "Comprimir"
@@ -207,6 +209,8 @@ L["Export this Macro."] = "Exportar esta Macro."
 L["Extra Macro Versions of %s has been added."] = "Versões Extra da Macro %s foram adicionadas."
 L["Filter Macro Selection"] = "Filtrar a Seleção de Macros"
 L["Finished scanning for errors.  If no other messages then no errors were found."] = "Verificação de erros concluída. Se não houver outras mensagens, então nenhum erro foi encontrado."
+--[[Translation missing --]]
+L["FinishReload"] = "Finish Reload"
 L["Format export for WLM Forums"] = "Formato de exportação para os Fóruns do WLM"
 L["FYou cannot delete this version of a sequence.  This version will be reloaded as it is contained in "] = "Você não pode apagar esta versão de uma sequência. Esta versão será recarregada assim como está incluída em "
 L["Gameplay Options"] = "Opções de Jogabilidade"
@@ -290,6 +294,10 @@ L["Inner Loop Limit"] = "Limite do Ciclo Interno"
 L[ [=[Inner Loop Limit controls how many times the Sequence part of your macro executes 
 until it goes onto to the PostMacro and then resets to the PreMacro.]=] ] = "O Limite do Ciclo Interno controla quantas vezes a parte da Sequência da sua macro executa até ir para a PósMacro e então reinicia para a PréMacro."
 L["Inner Loop Start"] = "Início do Ciclo Interno"
+--[[Translation missing --]]
+L["Insert this block again after how many blocks."] = "Insert this block again after how many blocks."
+--[[Translation missing --]]
+L["Interval"] = "Interval"
 --[[Translation missing --]]
 L["Invalid value entered into pause block. Needs to be 'GCD' or a Number."] = "Invalid value entered into pause block. Needs to be 'GCD' or a Number."
 L["KeyPress"] = "ApertarTecla"
