@@ -205,6 +205,16 @@ function private.RestockItem(itemString)
 			end
 		end
 	end
+	local level = CraftString.GetLevel(cheapestCraftString)
+	if level then
+		local relItemLevel, isAbs = ItemString.ParseLevel(ItemString.ToLevel(itemString))
+		if not isAbs then
+			local optionalMatItemString = ProfessionInfo.GetOptionalMatByRelItemLevel(relItemLevel)
+			if relItemLevel and optionalMatItemString then
+				private.optionalMatTemp[#private.optionalMatTemp + 1] = ItemString.ToId(optionalMatItemString)
+			end
+		end
+	end
 	local cheapestRecipeString = RecipeString.FromCraftString(cheapestCraftString, private.optionalMatTemp)
 	wipe(private.optionalMatTemp)
 	Queue.SetNum(cheapestRecipeString, floor(neededQuantity / TSM.Crafting.GetNumResult(cheapestCraftString)))

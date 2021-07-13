@@ -110,21 +110,21 @@ function CraftingTask.OnButtonClick(self)
 		local craftString = self._craftStrings[1]
 		local spellId = CraftString.GetSpellId(craftString)
 		local quantity = self._craftQuantity[craftString]
-		local numMin, numMax = nil, nil
+		local _, numMax = nil, nil
 		if TSM.IsWowClassic() then
 			if TSM.Crafting.ProfessionState.IsClassicCrafting() then
 				if TSM.IsWowBCClassic() then
-					numMin, numMax = GetCraftNumMade(spellId)
+					_, numMax = GetCraftNumMade(spellId)
 				else
-					numMin, numMax = 1, 1
+					_, numMax = 1, 1
 				end
 			else
-				numMin, numMax = GetTradeSkillNumMade(spellId)
+				_, numMax = GetTradeSkillNumMade(spellId)
 			end
 		else
-			numMin, numMax = C_TradeSkillUI.GetRecipeNumItemsProduced(spellId)
+			_, numMax = C_TradeSkillUI.GetRecipeNumItemsProduced(spellId)
 		end
-		if numMin ~= numMax then
+		if numMax and numMax > 1 then
 			-- need minimum this many repeats
 			quantity = ceil(quantity / numMax)
 		end
@@ -237,6 +237,7 @@ function private.ChatMsgLootEventHandler(_, msg)
 	assert(self)
 	local craftString = self._craftStrings[1]
 	self._craftQuantity[craftString] = self._craftQuantity[craftString] - quantity
+	Log.Info("Crafted %s (%d), remaining: %d", private.pendingItemString, quantity, self._craftQuantity[craftString])
 	if self._craftQuantity[craftString] <= 0 then
 		private.ClearPendingContext()
 	end

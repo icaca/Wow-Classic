@@ -1,12 +1,12 @@
-tag 13ab12daff825b1bb87458d82e4f375283e48355 v2.024(TBC)
+tag ad0dc62d80e6659996cf6fa1ddfaa1362bf84ce3 v2.025(TBC)
 Author:	max-ri <51713394+max-ri@users.noreply.github.com>
-Date:	Tue Jun 22 21:47:01 2021 +0200
+Date:	Tue Jul 6 17:51:00 2021 +0200
 
-v2.024(TBC)
+v2.025(TBC)
 
-commit 6f290d96d46d58eebf6130f0847cbc6d79cade52
+commit d426e89f8efd7ebf11ede8f22c9e0b652a82bbce
 Author: max-ri <51713394+max-ri@users.noreply.github.com>
-Date:   Tue Jun 22 21:47:01 2021 +0200
+Date:   Tue Jul 6 17:51:00 2021 +0200
 
-    v2.024(TBC)
+    v2.025(TBC)
 

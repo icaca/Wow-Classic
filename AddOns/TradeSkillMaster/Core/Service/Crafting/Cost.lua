@@ -149,6 +149,11 @@ function Cost.GetLowestCostByItem(itemString, optionalMats)
 	for _, craftString, hasCD, profession in TSM.Crafting.GetCraftStringByItem(baseItemString) do
 		if not private.currentMatProfession or not ProfessionInfo.IsOptionalMat(baseItemString) or private.currentMatProfession == profession then
 			local level = CraftString.GetLevel(craftString)
+			if level then
+				for _, optionalMatItemString in ipairs(optionalMats) do
+					level = level + (ProfessionInfo.GetCraftLevelIncreaseByOptionalMat(optionalMatItemString) or 0)
+				end
+			end
 			if level and not relItemLevel then
 				local isAbs = nil
 				relItemLevel, isAbs = ItemString.ParseLevel(ItemString.ToLevel(itemString))
@@ -213,6 +218,18 @@ function private.GetOptionalMats(itemString, resultTbl)
 	local levelOptionalMat = itemLevel and ProfessionInfo.GetOptionalMatByItemLevel(itemLevel) or nil
 	if levelOptionalMat then
 		tinsert(resultTbl, levelOptionalMat)
+	end
+	local relItemLevel, isAbs = ItemString.ParseLevel(ItemString.ToLevel(itemString))
+	if not isAbs then
+		local baseItemString = ItemString.GetBaseFast(itemString)
+		for _, craftString in TSM.Crafting.GetCraftStringByItem(baseItemString) do
+			local level = CraftString.GetLevel(craftString)
+			local optionalMatItemString = level and ProfessionInfo.GetOptionalMatByRelItemLevel(relItemLevel)
+			if relItemLevel and optionalMatItemString then
+				tinsert(resultTbl, optionalMatItemString)
+				relItemLevel = nil
+			end
+		end
 	end
 end
 

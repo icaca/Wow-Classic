@@ -621,7 +621,7 @@ local OPTIONAL_MAT_INFO = {
 	["i:173382"] = { absItemLevel = 168 }, -- Crafter's Mark II
 	["i:173383"] = { absItemLevel = 200 }, -- Crafter's Mark III
 	["i:173384"] = { absItemLevel = 230 }, -- Crafter's Mark of the Chained Isle
-	["i:185960"] = { relCraftLevel = 2 }, -- Vestige of Origins
+	["i:185960"] = { relItemLevels = { [74] = true, [87] = true }, relCraftLevel = 2 }, -- Vestige of Origins
 }
 local REL_ITEM_LEVEL_BY_RANK = {
 	[1] = 15,
@@ -668,6 +668,15 @@ end
 function ProfessionInfo.GetOptionalMatByItemLevel(itemLevel)
 	for itemString, info in pairs(OPTIONAL_MAT_INFO) do
 		if info.absItemLevel == itemLevel then
+			return itemString
+		end
+	end
+	return nil
+end
+
+function ProfessionInfo.GetOptionalMatByRelItemLevel(relItemLevel)
+	for itemString, info in pairs(OPTIONAL_MAT_INFO) do
+		if info.relItemLevels and info.relItemLevels[relItemLevel] then
 			return itemString
 		end
 	end

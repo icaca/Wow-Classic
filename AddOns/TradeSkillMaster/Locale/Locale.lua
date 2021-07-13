@@ -16262,10 +16262,8 @@ L["Accepting this item will cost: %s"] = "接受该物品将花费: %s"
 L["Account sync removed. Please delete the account sync from the other account as well."] = "帐户同步已移除，也请删除其他帐户同步信息。"
 L["Account Syncing"] = "账户同步中"
 L["Accounting"] = "会计"
---[[Translation missing --]]
-L["Active"] = "Active"
---[[Translation missing --]]
-L["Active Alt"] = "Active Alt"
+L["Active"] = "输入框/选项"
+L["Active Alt"] = "搜索框/小标题字体"
 L["Activity Type"] = "活动类型"
 L["Add"] = "新增"
 L["Add %d |4Item:Items"] = "添加%d个|4Item:Items"
@@ -16275,18 +16273,15 @@ L["Add account"] = "添加账户"
 L["Add More Operations"] = "添加更多操作"
 L["Add Operation"] = "添加操作"
 L["Add operation to groups"] = "为分组添加操作"
---[[Translation missing --]]
-L["Add Optional Reagents"] = "Add Optional Reagents"
---[[Translation missing --]]
-L["Add Reagent(s)"] = "Add Reagent(s)"
+L["Add Optional Reagents"] = "添加附加材料"
+L["Add Reagent(s)"] = "确认添加"
 L["Add subject & description (optional)"] = "添加主题及描述(可选)"
 L["Add Subject / Description"] = "添加主题/描述"
 L["Add to Mail"] = "添加至邮件"
 L["Added '%s' profile which was received from %s."] = "已添加从%s收到的'%s'档案。"
 L["Added %s to %s."] = "已添加 %s到%s。"
 L["Additional error suppressed"] = "已阻止的其他错误"
---[[Translation missing --]]
-L["Addon Optimisations."] = "Addon Optimisations."
+L["Addon Optimisations."] = "插件优化"
 L["Adjust how crafted items are restocked."] = "调整专业制品的补货方式"
 L["Adjust how items are mailed."] = "调整邮件的邮寄方式"
 L["Adjust how TSM values crafted items when calculating profit."] = "调整TSM在计算利润时如何评估制作的物品。"
@@ -16535,8 +16530,7 @@ L["Create new profile"] = "创建新配置"
 L["Create Profession Groups"] = "创建专业分组"
 L["CTRL"] = "CTRL"
 L["Current Price"] = "当前价"
---[[Translation missing --]]
-L["Custom"] = "Custom"
+L["Custom"] = "自定义"
 L["Custom Price"] = "自定义价格"
 L["Custom price name %s already exists."] = "自定义价格名称%s已存在。"
 L["Custom price name %s is a reserved word which cannot be used."] = "自定义价格名称 %s 是保留字段，无法使用"
@@ -16545,19 +16539,13 @@ L["Custom Source"] = "自订来源"
 L["Custom source (%s)"] = "自定义源 (%s)"
 L["Custom Sources"] = "自定义源"
 L["Custom sources allow you to create more advanced prices for use throughout the addon. You'll be able to use these new variables in the same way you can use the built-in price sources such as %s and %s."] = "自定义来源允许您创建在整个插件中使用的更高级的价格。您将能够以与使用内置价格来源（例如%s和%s）相同的方式来使用这些新变量。"
---[[Translation missing --]]
-L["Custom Theme"] = "Custom Theme"
---[[Translation missing --]]
-L["Custom Themes."] = "Custom Themes."
---[[Translation missing --]]
-L["DAILY PURCHASES"] = "DAILY PURCHASES"
---[[Translation missing --]]
-L["DAILY SALES"] = "DAILY SALES"
---[[Translation missing --]]
-L["Dalaran"] = "Dalaran"
+L["Custom Theme"] = "自定义主题"
+L["Custom Themes."] = "自定义主题"
+L["DAILY PURCHASES"] = "平均每天采购量"
+L["DAILY SALES"] = "平均每天销量"
+L["Dalaran"] = "达拉然"
 L["Dashboard"] = "总览"
---[[Translation missing --]]
-L["Default craft value method"] = "Default craft value method"
+L["Default craft value method"] = "默认专业制品价格方案"
 L["Default material cost method"] = "默认材料成本方式"
 L["Default Price"] = "默认价格"
 L["Default price configuration"] = "默认价格配置"
@@ -16567,17 +16555,13 @@ L["Delete Group?"] = "删除分组？"
 L["Delete Operation?"] = "删除操作？"
 L["Delete Operations"] = "删除操作"
 L["Delete Operations?"] = "删除操作？"
---[[Translation missing --]]
-L["Delete Profile?"] = "Delete Profile?"
+L["Delete Profile?"] = "是否删除配置？"
 L["Delete Record?"] = "删除记录？"
---[[Translation missing --]]
-L["Delete the profile"] = "Delete the profile"
---[[Translation missing --]]
-L["Deleting this group (%s) will also remove any sub-groups attached to this group."] = "Deleting this group (%s) will also remove any sub-groups attached to this group."
+L["Delete the profile"] = "删除配置"
+L["Deleting this group (%s) will also remove any sub-groups attached to this group."] = "删除该分组(%s)会移除该分组下所有次级分组"
 L["Deposit"] = "寄存"
 L["Deposit Cost"] = "寄存费用"
---[[Translation missing --]]
-L["Deposit reagents"] = "Deposit reagents"
+L["Deposit reagents"] = "存放到材料银行"
 L["Deselect All"] = "全部取消"
 L["Destroy Next"] = "分解下一个"
 L["Destroy Value"] = "分解价值"
@@ -16628,8 +16612,7 @@ L["Don't Post Items"] = "不发布物品"
 L["Don't prompt to record trades"] = "不立即记录交易"
 --[[Translation missing --]]
 L["Down"] = "Down"
---[[Translation missing --]]
-L["Duplicate the profile"] = "Duplicate the profile"
+L["Duplicate the profile"] = "复制配置"
 --[[Translation missing --]]
 L["Duration"] = "Duration"
 --[[Translation missing --]]
@@ -16677,8 +16660,7 @@ L["Estimated deliver time"] = "预计交货时间"
 L["Estimated Profit:"] = "预计利润："
 --[[Translation missing --]]
 L["Exact Match"] = "Exact Match"
---[[Translation missing --]]
-L["Example"] = "Example"
+L["Example"] = "示例"
 L["Example Item"] = "示例项目"
 --[[Translation missing --]]
 L["Example Tooltip"] = "Example Tooltip"
@@ -16701,11 +16683,9 @@ L["Expires Since Last Sale"] = "自上次销售起过期"
 L["Expiring Mails"] = "过期邮件"
 L["Exploration"] = "探测"
 L["Export"] = "导出"
---[[Translation missing --]]
-L["Export Custom Theme"] = "Export Custom Theme"
+L["Export Custom Theme"] = "导出自定义主题"
 L["Export String"] = "导出字符串"
---[[Translation missing --]]
-L["Export theme"] = "Export theme"
+L["Export theme"] = "导出主题"
 L["Export this group"] = "导出该组"
 L["Failed Auctions"] = "拍卖失败"
 L["Failed to bid on auction of %s (x%s) for %s."] = "无法为%s的%s（x%s）竞标出价。"
@@ -16738,8 +16718,7 @@ L["Fishing Reel In"] = "钓鱼卷轴"
 L["For more info, visit %s. For help, join us in Discord: %s."] = "更多信息，请到 %s。寻求帮助，请在Discord: %s 加入我们。"
 L["Forget Character"] = "遗忘角色"
 L["Found auction sound"] = "找到拍卖音效"
---[[Translation missing --]]
-L["Frame"] = "Frame"
+L["Frame"] = "框架色"
 L["Friends"] = "好友"
 L["From"] = "从"
 L["Full inventory"] = "全部库存"
@@ -16818,17 +16797,13 @@ L["Ignored Cooldowns"] = "忽略冷却"
 L["Ignored Items"] = "忽略物品"
 L["ilvl"] = "物品等级"
 L["Import"] = "导入"
---[[Translation missing --]]
-L["Import group"] = "Import group"
+L["Import group"] = "导入分组"
 L["Import Groups & Operations"] = "导入分组&操作"
---[[Translation missing --]]
-L["Import String"] = "Import String"
+L["Import String"] = "导入字符串"
 --[[Translation missing --]]
 L["Import Summary"] = "Import Summary"
---[[Translation missing --]]
-L["Import Theme"] = "Import Theme"
---[[Translation missing --]]
-L["Import theme"] = "Import theme"
+L["Import Theme"] = "导入主题"
+L["Import theme"] = "主题"
 --[[Translation missing --]]
 L["Imported Group"] = "Imported Group"
 --[[Translation missing --]]
@@ -16900,8 +16875,7 @@ L["Last Sold"] = "上次售出"
 L["LEAST GROUPS"] = "LEAST GROUPS"
 --[[Translation missing --]]
 L["LEAST ITEMS"] = "LEAST ITEMS"
---[[Translation missing --]]
-L["Ledger"] = "Ledger"
+L["Ledger"] = "账本"
 L["Level Up"] = "等级上升"
 --[[Translation missing --]]
 L["Limit"] = "Limit"
@@ -17156,8 +17130,7 @@ L["Open Task List"] = "打开任务列表"
 L["Opens the Destroying frame if there's stuff in your bags to be destroyed."] = "如果背包里有可以分解的东西则打开TSM分解窗口。"
 L["Operation"] = "操作"
 L["Operations"] = "操作"
---[[Translation missing --]]
-L["Optional Reagents"] = "Optional Reagents"
+L["Optional Reagents"] = "附加材料"
 --[[Translation missing --]]
 L["Options specific to Sniper are below."] = "Options specific to Sniper are below."
 --[[Translation missing --]]
@@ -17204,7 +17177,7 @@ L["Posting %d items for %s hours."] = "Posting %d items for %s hours."
 L["Posting %d stack(s) of %d for %s hours."] = "按%d堆叠%d且以%s小时发布"
 L["Posting at normal price."] = "正以正常价发布"
 L["Posting at whitelisted player's price."] = "正以白名单玩家价格发布"
-L["Posting at your current price."] = "正以当前价发布"
+L["Posting at your current price."] = "以当前价发布"
 L["Posting disabled."] = "禁用发布"
 L["Posting Options"] = "发布设置"
 L["Posting Price"] = "发布价格"
@@ -17216,10 +17189,8 @@ L["Prepare Buy"] = "准备购买"
 L["Preparing..."] = "正在准备..."
 --[[Translation missing --]]
 L["Prevent closing the Auction House with the esc key"] = "Prevent closing the Auction House with the esc key"
---[[Translation missing --]]
-L["Primary"] = "Primary"
---[[Translation missing --]]
-L["Primary Alt"] = "Primary Alt"
+L["Primary"] = "背景色"
+L["Primary Alt"] = "次级背景色"
 --[[Translation missing --]]
 L["Prints out the available price sources for use in custom prices"] = "Prints out the available price sources for use in custom prices"
 --[[Translation missing --]]
@@ -17235,8 +17206,7 @@ L["Profiles"] = "配置档"
 L["Profit"] = "利润"
 L["PROFIT"] = "利润"
 L["Profit (Total)"] = "利润（总计）"
---[[Translation missing --]]
-L["Prospect value"] = "Prospect value"
+L["Prospect value"] = "预期价格"
 L["Prospect Value"] = "预期价格"
 L["Purchase"] = "购买"
 L["Purchase / Sale Info"] = "购买/出售信息"
@@ -17260,8 +17230,7 @@ L["Quantity to move"] = "Quantity to move"
 L["Quest Added"] = "任务已添加"
 L["Quest Completed"] = "任务已完成"
 L["Quest Objectives Complete"] = "任务目标完成"
---[[Translation missing --]]
-L["Queue"] = "Queue"
+L["Queue"] = "加入队列"
 L["Quickly mail all excess disenchantable items to a character"] = "快速将所有多余的可分解物品邮寄给角色"
 L["Quickly mail all excess gold (limited to a certain amount) to a character"] = "快速将所有多余的金币（限制在一定数量）邮寄给角色"
 L["Raid Warning"] = "副本警告"
@@ -17325,8 +17294,7 @@ L["Replace %d existing operations?"] = "Replace %d existing operations?"
 L["Reply"] = "Reply"
 --[[Translation missing --]]
 L["Report Spam"] = "Report Spam"
---[[Translation missing --]]
-L["Reports"] = "Reports"
+L["Reports"] = "汇总"
 L["Repost threshold"] = "重新发布阈值"
 L["Required Level"] = "请求的等级"
 --[[Translation missing --]]
@@ -17513,8 +17481,7 @@ L["Set what is sold to a vendor."] = "Set what is sold to a vendor."
 L["Set what items are shown during a Shopping scan."] = "设置在购物扫描期间显示哪些项目。"
 L["Set what items are shown during a Sniper scan."] = "设置在“狙击”扫描过程中显示哪些项目。"
 L["Set your active profile or create a new one."] = "设置你当前启用的配置或创建一个新的"
---[[Translation missing --]]
-L["Settings"] = "Settings"
+L["Settings"] = "设置"
 L["Setup various sounds that play when doing Auctioning scans."] = "设置运行拍卖行扫描时播放的不同音效。"
 --[[Translation missing --]]
 L["SHIFT"] = "SHIFT"
@@ -17646,8 +17613,7 @@ L["Text (%s)"] = "文本 (%s)"
 L["The '%s' custom price source is invalid."] = "The '%s' custom price source is invalid."
 --[[Translation missing --]]
 L["The AH does not support specifying a copper value (only gold and silver)."] = "The AH does not support specifying a copper value (only gold and silver)."
---[[Translation missing --]]
-L["The Base Group contains all ungrouped items in the game. Use the search and filter controls to find items to add to other groups."] = "The Base Group contains all ungrouped items in the game. Use the search and filter controls to find items to add to other groups."
+L["The Base Group contains all ungrouped items in the game. Use the search and filter controls to find items to add to other groups."] = "基础分组包含游戏中所有未分组的物品。可以使用搜索功能来过滤查找那些要添加到其他组的物品。"
 --[[Translation missing --]]
 L["The buyout price for %s would be above the maximum allowed price. Skipping this item."] = "The buyout price for %s would be above the maximum allowed price. Skipping this item."
 L["The canlearn filter was ignored because the CanIMogIt addon was not found."] = "canlearn过滤被忽略，因为找不到CanIMogIt插件。"
@@ -17685,8 +17651,7 @@ L["The 'use smart average for purchase price' setting has been removed from TSM 
 L["The value must be greater than 0."] = "The value must be greater than 0."
 --[[Translation missing --]]
 L["The value was greater than the maximum allowed auction house price."] = "The value was greater than the maximum allowed auction house price."
---[[Translation missing --]]
-L["Themes"] = "Themes"
+L["Themes"] = "主题"
 --[[Translation missing --]]
 L["There is currently no profession open, so cannot create profession groups."] = "There is currently no profession open, so cannot create profession groups."
 --[[Translation missing --]]
@@ -17711,8 +17676,7 @@ L["This will permanently delete the '%s' profile."] = "此操作将永久删除'
 L["This will reset all groups and operations (if not stored globally) to be wiped from '%s'."] = "This will reset all groups and operations (if not stored globally) to be wiped from '%s'."
 L["Time"] = "时间"
 L["Time Frame"] = "时限"
---[[Translation missing --]]
-L["Time to Craft:"] = "Time to Craft:"
+L["Time to Craft:"] = "预计用时"
 --[[Translation missing --]]
 L["Tinker"] = "Tinker"
 L["To make it easier to use TSM across different characters, the groups you have selected in various UIs will now be persistent on a per-character basis and selected by default."] = "\"为了方便在不同的角色之间使用TSM，你在不同的用户界面中选择的分组现在将在每个角色的基础上保持，并且默认选择。\""
@@ -17825,8 +17789,7 @@ L["Use this list to manage what items you'd like TSM to ignore from destroying."
 L["Value"] = "Value"
 --[[Translation missing --]]
 L["Value must be between %d and %d."] = "Value must be between %d and %d."
---[[Translation missing --]]
-L["Value Price Source"] = "Value Price Source"
+L["Value Price Source"] = "价格数据来源（字符串）"
 --[[Translation missing --]]
 L["Values"] = "Values"
 --[[Translation missing --]]
@@ -17879,11 +17842,9 @@ L["Would send %s to %s with a COD of %s"] = "将通过COD邮件将%s发送给%s�
 L["WOW UI"] = "WOW UI"
 L["You are not on one of the listed characters."] = "你的角色不在列表中。"
 L["You can clear old Accounting data below to keep things running smoothly."] = "你可以清理过期账户数据，从而提升TSM运行表现。"
---[[Translation missing --]]
-L["You can import custom themes by pasting an import string into the box below."] = "You can import custom themes by pasting an import string into the box below."
+L["You can import custom themes by pasting an import string into the box below."] = "你可以在下面复制粘贴别人分享的字符串来使用别人做好的自定义主题配色"
 L["You can import groups by pasting an import string into the box below. Group import strings can be found at: https://tradeskillmaster.com/group-maker/all"] = "你可以通过字符串导入组别信息。成熟的组别字符串可以到 https://tradeskillmaster.com/group-maker/all 下载。"
---[[Translation missing --]]
-L["You can use the export string below to share this custom theme with others."] = "You can use the export string below to share this custom theme with others."
+L["You can use the export string below to share this custom theme with others."] = "你可以将下面的字符串发给其他人以分享你的自定义主题配色"
 L["You can use the export string below to share this group with others."] = "你可以利用下方的字符串与他人分享该组别信息。"
 L["You cannot use %s as part of this custom price."] = "你不能将%s作为自定义价格的一部分。"
 L["You cannot use %s within convert() as part of this custom price."] = "你不能在convert()函数中将%s作为自定义价格的一部分。"
