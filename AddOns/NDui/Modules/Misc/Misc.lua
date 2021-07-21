@@ -17,6 +17,7 @@ local GetInstanceInfo = GetInstanceInfo
 local IsGuildMember, BNGetGameAccountInfoByGUID, C_FriendList_IsFriend = IsGuildMember, BNGetGameAccountInfoByGUID, C_FriendList.IsFriend
 local UnitName, GetPetHappiness = UnitName, GetPetHappiness
 local UnitIsPlayer, GuildInvite, C_FriendList_AddFriend = UnitIsPlayer, GuildInvite, C_FriendList.AddFriend
+local TakeTaxiNode, IsMounted, Dismount, C_Timer_After = TakeTaxiNode, IsMounted, Dismount, C_Timer.After
 
 --[[
 	Miscellaneous 各种有用没用的小玩意儿
@@ -406,7 +407,8 @@ function M:QuickMenuButton()
 
 		local unit = dropdownMenu.unit
 		local isPlayer = unit and UnitIsPlayer(unit)
-		if not isPlayer and not dropdownMenu.chatType then
+		local isFriendMenu = dropdownMenu == FriendsDropDown -- menus on FriendsFrame
+		if not isPlayer and not dropdownMenu.chatType and not isFriendMenu then
 			frame:Hide()
 			return
 		end
@@ -422,18 +424,25 @@ function M:QuickMenuButton()
 end
 
 -- Auto dismount on Taxi
-local function dismountCheck()
-	if IsMounted() then
-		Dismount()
-	end
-end
-
 function M:ToggleTaxiDismount()
-	if C.db["Misc"]["AutoDismount"] then
-		B:RegisterEvent("TAXIMAP_OPENED", dismountCheck)
-	else
-		B:UnregisterEvent("TAXIMAP_OPENED", dismountCheck)
+	local lastTaxiIndex
+
+	local function retryTaxi()
+		if InCombatLockdown() then return end
+		if lastTaxiIndex then
+			TakeTaxiNode(lastTaxiIndex)
+			lastTaxiIndex = nil
+		end
 	end
+
+	hooksecurefunc("TakeTaxiNode", function(index)
+		if not C.db["Misc"]["AutoDismount"] then return end
+		if not IsMounted() then return end
+
+		Dismount()
+		lastTaxiIndex = index
+		C_Timer_After(.5, retryTaxi)
+	end)
 end
 
 -- Block invite from strangers

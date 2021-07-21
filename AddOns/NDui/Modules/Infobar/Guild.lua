@@ -85,7 +85,7 @@ function info:GuildPanel_UpdateButton(button)
 
 	local zonecolor = DB.GreyColor
 	if UnitInRaid(name) or UnitInParty(name) then
-		zonecolor = "|cff4c4cff"
+		zonecolor = DB.InfoColor
 	elseif GetRealZoneText() == zone then
 		zonecolor = "|cff4cff4c"
 	end
@@ -337,7 +337,7 @@ info.onLeave = function()
 end
 
 info.onMouseUp = function()
-	if InCombatLockdown() then UIErrorsFrame:AddMessage(DB.InfoColor..ERR_NOT_IN_COMBAT) return end
+	--if InCombatLockdown() then UIErrorsFrame:AddMessage(DB.InfoColor..ERR_NOT_IN_COMBAT) return end -- fix by LibShowUIPanel
 
 	if not IsInGuild() then return end
 	infoFrame:Hide()

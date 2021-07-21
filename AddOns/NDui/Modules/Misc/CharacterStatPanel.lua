@@ -73,7 +73,7 @@ local function UpdateCategoriesAnchor()
 	local prev
 	for _, frame in pairs(framesToSort) do
 		if not prev then
-			frame:SetPoint("TOP", 0, -105)
+			frame:SetPoint("TOP", 0, -70)
 		else
 			frame:SetPoint("TOP", prev, "BOTTOM")
 		end
@@ -160,10 +160,10 @@ local function CreatePlayerILvl(parent, category)
 	local frame = CreateFrame("Frame", "NDuiStatCategoryIlvl", parent)
 	frame:SetWidth(200)
 	frame:SetHeight(42 + 16)
-	frame:SetPoint("TOP", 0, -35)
+	frame:SetPoint("TOP")
 
 	local header = CreateFrame("Frame", "$parentHeader", frame, "CharacterStatFrameCategoryTemplate")
-	header:SetPoint("TOP")
+	header:SetPoint("TOP", 0, 10)
 	header.Background:Hide()
 	header.Title:SetText(category)
 	header.Title:SetTextColor(cr, cg, cb)
@@ -278,10 +278,10 @@ local function CreateStatHeader(parent, index, category)
 end
 
 local function ToggleMagicRes()
-	if C.db["Misc"]["ExpandStat"] then
+	if C.db["Misc"]["StatExpand"] then
 		CharacterResistanceFrame:ClearAllPoints()
-		CharacterResistanceFrame:SetPoint("TOPLEFT", M.StatPanel.child, 28, -5)
-		CharacterResistanceFrame:SetParent(M.StatPanel.child)
+		CharacterResistanceFrame:SetPoint("TOPLEFT", M.StatPanel2, 28, -25)
+		CharacterResistanceFrame:SetParent(M.StatPanel2)
 		CharacterModelFrame:SetSize(231, 320) -- size in retail
 
 		for i = 1, 5 do
@@ -308,7 +308,7 @@ local function ToggleMagicRes()
 end
 
 local function UpdateStats()
-	if not (M.StatPanel and M.StatPanel:IsShown()) then return end
+	if not (M.StatPanel2 and M.StatPanel2:IsShown()) then return end
 
 	for _, frame in pairs(categoryFrames) do
 		SetCharacterStats(frame.statsTable, frame.category)
@@ -316,29 +316,33 @@ local function UpdateStats()
 end
 
 local function ToggleStatPanel(texture)
-	if C.db["Misc"]["ExpandStat"] then
-		B.SetupArrow(texture, "down")
+	if C.db["Misc"]["StatExpand"] then
+		B.SetupArrow(texture, "left")
 		CharacterAttributesFrame:Hide()
-		M.StatPanel:Show()
+		M.StatPanel2:Show()
 	else
 		B.SetupArrow(texture, "right")
 		CharacterAttributesFrame:Show()
-		M.StatPanel:Hide()
+		M.StatPanel2:Hide()
 	end
 	ToggleMagicRes()
+end
+
+local function ExpandCharacterFrame(expand)
+	CharacterFrame:SetWidth(expand and 584 or 384)
 end
 
 function M:CharacterStatePanel()
 	if not C.db["Skins"]["BlizzardSkins"] then return end   -- disable if skins off, needs review
 
-	local statPanel = CreateFrame("Frame", "NDuiStatePanel", PaperDollFrame)
+	local statPanel = CreateFrame("Frame", "NDuiStatPanel", PaperDollFrame)
 	statPanel:SetSize(200, 422)
-	statPanel:SetPoint("TOPLEFT", PaperDollFrame, "TOPRIGHT", -32, -15-C.mult)
-	B.SetBD(statPanel)
-	M.StatPanel = statPanel
+	statPanel:SetPoint("TOPRIGHT", PaperDollFrame, "TOPRIGHT", -35, -16)
+	M.StatPanel2 = statPanel
 
 	local scrollFrame = CreateFrame("ScrollFrame", nil, statPanel, "UIPanelScrollFrameTemplate")
-	scrollFrame:SetAllPoints()
+	scrollFrame:SetPoint("TOPLEFT", 0, -60)
+	scrollFrame:SetPoint("BOTTOMRIGHT", 0, 2)
 	scrollFrame.ScrollBar:Hide()
 	scrollFrame.ScrollBar.Show = B.Dummy
 	local stat = CreateFrame("Frame", nil, scrollFrame)
@@ -373,6 +377,8 @@ function M:CharacterStatePanel()
 	-- Init
 	BuildListFromValue()
 	BuildValueFromList()
+	CharacterNameFrame:ClearAllPoints()
+	CharacterNameFrame:SetPoint("TOPLEFT", CharacterFrame, 130, -20)
 
 	-- Update data
 	hooksecurefunc("ToggleCharacter", UpdateStats)
@@ -384,11 +390,20 @@ function M:CharacterStatePanel()
 	B.ReskinArrow(bu, "right")
 
 	bu:SetScript("OnClick", function(self)
-		C.db["Misc"]["ExpandStat"] = not C.db["Misc"]["ExpandStat"]
+		C.db["Misc"]["StatExpand"] = not C.db["Misc"]["StatExpand"]
+		ExpandCharacterFrame(C.db["Misc"]["StatExpand"])
 		ToggleStatPanel(self.__texture)
 	end)
 
 	ToggleStatPanel(bu.__texture)
+
+	PaperDollFrame:HookScript("OnHide", function()
+		ExpandCharacterFrame()
+	end)
+
+	PaperDollFrame:HookScript("OnShow", function()
+		ExpandCharacterFrame(C.db["Misc"]["StatExpand"])
+	end)
 end
 
 M:RegisterMisc("StatPanel", M.CharacterStatePanel)

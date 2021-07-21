@@ -1,13 +1,13 @@
 ---@type l10n
 local l10n = QuestieLoader:ImportModule("l10n")
 
-l10n.questCategoryLookup['enUS']= {
+l10n.questCategoryLookup = {
     [-1] = "Epic",
     [-21] = "Wailing Caverns",
     [-22] = "Seasonal",
     [-23] = "Undercity",
     [-24] = "Herbalism",
-    [-25] = "Scarlet Monastery",
+    [-25] = "Battlegrounds",
     [-41] = "Uldaman",
     [-61] = "Warlock",
     [-81] = "Warrior",
@@ -36,4 +36,5 @@ l10n.questCategoryLookup['enUS']= {
     [-367] = "Reputation",
     [-368] = "Invasion",
     [-369] = "Midsummer",
+    [-370] = "Brewfest",
 };

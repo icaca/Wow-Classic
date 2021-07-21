@@ -10,11 +10,13 @@ local UnitFrame_OnEnter, UnitFrame_OnLeave = UnitFrame_OnEnter, UnitFrame_OnLeav
 
 -- Custom colors
 oUF.colors.smooth = {1, 0, 0, .85, .8, .45, .1, .1, .1}
-oUF.colors.power.MANA = {0, .4, 1}
-oUF.colors.power.SOUL_SHARDS = {.58, .51, .79}
-oUF.colors.power.HOLY_POWER = {.88, .88, .06}
-oUF.colors.power.CHI = {0, 1, .59}
-oUF.colors.power.ARCANE_CHARGES = {.41, .8, .94}
+oUF.colors.debuff.none = {0, 0, 0}
+
+local function ReplacePowerColor(name, index, color)
+	oUF.colors.power[name] = color
+	oUF.colors.power[index] = oUF.colors.power[name]
+end
+ReplacePowerColor("MANA", 0, {0, .4, 1})
 
 -- Various values
 local function retVal(self, val1, val2, val3, val4, val5)
@@ -559,6 +561,16 @@ function UF:CreateCastBar(self)
 	cb.PostCastNotInterruptible = B.PostUpdateInterruptible
 
 	self.Castbar = cb
+end
+
+function UF:ToggleCastBar(unit)
+	if not self or not unit then return end
+
+	if C.db["UFs"][unit.."CB"] and not self:IsElementEnabled("Castbar") then
+		self:EnableElement("Castbar")
+	elseif not C.db["UFs"][unit.."CB"] and self:IsElementEnabled("Castbar") then
+		self:DisableElement("Castbar")
+	end
 end
 
 local function reskinTimerBar(bar)
