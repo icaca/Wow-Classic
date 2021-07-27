@@ -306,12 +306,16 @@ L["Damage Shield"] = "피해 반사"
 L["Damage Shield Missed"] = "피해 보호막 적중 실패"
 L["Damage Split"] = "피해 분배"
 L["DBM Announce"] = "DBM 알림"
+--[[Translation missing --]]
+L["DBM Stage"] = "DBM Stage"
 L["DBM Timer"] = "DBM 타이머"
 L["Death Knight Rune"] = "죽음의 기사 룬"
 L["Debuff"] = "약화 효과"
 L["Debuff Class"] = "약화 효과 직업"
 L["Debuff Class Icon"] = "약화 효과 직업 아이콘"
 L["Debuff Type"] = "약화 효과 유형"
+--[[Translation missing --]]
+L["Defense"] = "Defense"
 L["Deflect"] = "튕김"
 L["Desaturate"] = "흑백"
 L["Desaturate Background"] = "흑백 배경"
@@ -396,6 +400,8 @@ L["Equipped"] = "장착함"
 L["Eredar Twins"] = "Eredar Twins"
 L["Error"] = "오류"
 L["Error Frame"] = "오류창"
+--[[Translation missing --]]
+L["Error in aura '%s' in %s. trigger. All States table contains a non table at key: '%s'."] = "Error in aura '%s' in %s. trigger. All States table contains a non table at key: '%s'."
 L["Error not receiving display information from %s"] = "%s 에서 표시 정보를 받지 못하는 오류"
 --[[Translation missing --]]
 L[ [=['ERROR: Anchoring %s': 
@@ -1169,6 +1175,8 @@ L["Terestian Illhoof"] = "Terestian Illhoof"
 --[[Translation missing --]]
 L["Teron Gorefiend"] = "Teron Gorefiend"
 L["Text"] = "문자"
+--[[Translation missing --]]
+L["Text-to-speech"] = "Text-to-speech"
 L["Thaddius"] = "타디우스"
 L["The aura has overwritten the global '%s', this might affect other auras."] = "aura가 전역 '%s'|1을;를; 덮어썼습니다, 다른 aura도 영향을 받습니다."
 --[[Translation missing --]]
