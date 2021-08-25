@@ -151,6 +151,7 @@ end
 function ProfessionUtil.GetNumCraftable(craftString, level)
 	local num, numAll = math.huge, math.huge
 	local spellId = CraftString.GetSpellId(craftString)
+	level = level or CraftString.GetLevel(craftString)
 	for i = 1, ProfessionUtil.GetNumMats(spellId, level) do
 		local matItemLink, _, _, quantity = ProfessionUtil.GetMatInfo(spellId, i, level)
 		local itemString = ItemString.Get(matItemLink)

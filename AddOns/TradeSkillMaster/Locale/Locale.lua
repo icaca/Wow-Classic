@@ -1206,7 +1206,7 @@ do
 		L["TSM does not have recent AuctionDB data. Would you like to run a full AH scan?"] = "TSM does not have recent AuctionDB data. Would you like to run a full AH scan?"
 		L["TSM doesn't currently have any AuctionDB pricing data for your realm. We recommend you download the TSM Desktop Application from %s to automatically update your AuctionDB data (and auto-backup your TSM settings)."] = "TSM doesn't currently have any AuctionDB pricing data for your realm. We recommend you download the TSM Desktop Application from %s to automatically update your AuctionDB data (and auto-backup your TSM settings)."
 		L["TSM failed to scan some auctions. Please rerun the scan."] = "TSM failed to scan some auctions. Please rerun the scan."
-		L["TSM is currently rebuilding its item cache which may cause FPS drops and result in TSM not being fully functional until this process is complete. This is normal and typically takes less than a minute."] = "TSM is currently rebuilding its item cache which may cause FPS drops and result in TSM not being fully functional until this process is complete. This is normal and typically takes less than a minute."
+		L["TSM is currently rebuilding its item cache which may cause FPS drops and result in TSM not being fully functional until this process is complete. This is normal and typically takes a few minutes."] = "TSM is currently rebuilding its item cache which may cause FPS drops and result in TSM not being fully functional until this process is complete. This is normal and typically takes a few minutes."
 		L["TSM is missing important information from the TSM Desktop Application. Please ensure the TSM Desktop Application is running and is properly configured."] = "TSM is missing important information from the TSM Desktop Application. Please ensure the TSM Desktop Application is running and is properly configured."
 		L["TSM is not yet ready to establish a new sync connection. Please try again later."] = "TSM is not yet ready to establish a new sync connection. Please try again later."
 		L["TSM will not undercut any players you add to your whitelist."] = "TSM will not undercut any players you add to your whitelist."
@@ -11040,10 +11040,8 @@ L = L or {}
 L["%d |4Group:Groups; Selected (%d |4Item:Items;)"] = "%d |4그룹:Groups; 선택됨 (%d |4아이템:Items;)"
 L["%d auctions"] = "%d 경매"
 L["%d Characters"] = "%d 캐릭터"
---[[Translation missing --]]
-L["%d Custom Sources"] = "%d Custom Sources"
---[[Translation missing --]]
-L["%d Faction-Realms"] = "%d Faction-Realms"
+L["%d Custom Sources"] = "%d 맞춤형 출처"
+L["%d Faction-Realms"] = "%d 진영-서버"
 L["%d groups"] = "%d 그룹"
 L["%d Groups"] = "%d 그룹"
 L["%d Groups Selected"] = "%d 그룹 선택됨"
@@ -11055,13 +11053,11 @@ L["%d Operations"] = "%d 작업"
 L["%d Players"] = "%d 캐릭터"
 L["%d Posted Auctions"] = "%d 등록중인 경매"
 L["%d Professions"] = "%d 전문 기술"
---[[Translation missing --]]
-L["%d Rarities"] = "%d Rarities"
+L["%d Rarities"] = "%d 희귀"
 L["%d Results"] = "%d 결과"
 L["%d Selected"] = "%d 선택됨"
 L["%d Sold Auctions"] = "%d 판매된 경매"
---[[Translation missing --]]
-L["%d Sources"] = "%d Sources"
+L["%d Sources"] = "%d 출처"
 L["%d Sub-Groups"] = "%d하위 그룹"
 L["%d subgroups included"] = "%d 하위 그룹이 포함됨"
 L["%d Types"] = "%d 타입"
@@ -11074,8 +11070,7 @@ L["%s (%s profit)"] = "%s (%s 이익)"
 L["%s ago"] = "%s 이전"
 L["%s Crafts"] = "%s 제작"
 L["%s group is already up to date."] = "%s 그룹은 이미 최신 상태입니다."
---[[Translation missing --]]
-L["%s group updated with %d items and %d materials."] = "%s group updated with %d items and %d materials."
+L["%s group updated with %d items and %d materials."] = "%s 그룹이 %d 아이템과 %d 재료로 업데이트 되었습니다."
 L["%s in guild vault"] = "%s 길드 은행"
 L["%s is a valid custom price but %s is an invalid item."] = "%s은(는) 유효한 사용자 가격이지만 %s은(는) 유효하지 않은 아이템입니다."
 L["%s is a valid custom price but did not give a value for %s."] = "%s은(는) 유효한 사용자 가격이지만 %s에 대한 가격은 없습니다."
@@ -11085,8 +11080,7 @@ L["%s is not a valid custom price and gave the following error: %s"] = "%s은(�
 L["%s Items Bought"] = "%s 아이템 구매됨"
 L["%s Items Cancelled"] = "%s 아이템 취소됨"
 L["%s Items Expired"] = "%s 아이템 만료됨"
---[[Translation missing --]]
-L["%s Items Resold"] = "%s Items Resold"
+L["%s Items Resold"] = "%s 아이템 재판매됨"
 L["%s Items Selected"] = "%s 아이템 선택됨"
 L["%s Items Sold"] = "%s 아이템 판매됨"
 L["%s Items Total"] = "전체 %s 아이템"
@@ -11094,35 +11088,29 @@ L["%s operation"] = "%s 작업"
 L["%s operations"] = "%s 작업들"
 L["%s Operations"] = "%s 작업"
 L["%s Posted Auctions"] = "%s건의 개시된 경매"
---[[Translation missing --]]
-L["%s Posted Auctions (Filtered)"] = "%s Posted Auctions (Filtered)"
+L["%s Posted Auctions (Filtered)"] = "%s건의 등록된 경매 (필터링됨)"
 L["%s previously had the max number of operations, so removed %s."] = "%s 에는 이미 최대의 작업이 있으므로, %s 는 제거되었습니다."
 L["%s removed."] = "%s 삭제됨."
 L["%s sent you %s"] = "%s 님이 당신에게 %s 아이템을 보냈습니다"
 L["%s sent you %s and %s"] = "%s 님이 당신에게 %s 그리고 %s 을(를) 보냈습니다."
 L["%s sent you a COD of %s for %s"] = "%s 님이 당신에게 %s 아이템을 골드 %s 으로 대금청구를 보냈습니다."
 L["%s sent you a message: %s"] = "%s 님이 메시지를 보냈습니다: %s"
---[[Translation missing --]]
-L["%s Sold Auctions"] = "%s Sold Auctions"
---[[Translation missing --]]
-L["%s Sold Auctions (Filtered)"] = "%s Sold Auctions (Filtered)"
+L["%s Sold Auctions"] = "%s건의 판매된 경매"
+L["%s Sold Auctions (Filtered)"] = "%s건의 판매된 경매 (필터링됨)"
 L["%s Total"] = "총 %s"
 L["%s total"] = "총 %s"
 L["%s Total Profit"] = "%s 전체 이익"
 L["%sDrag%s to move this button"] = "%s드레그%s : 미니맵 아이콘 이동"
---[[Translation missing --]]
-L["%sIMPORTANT:|r When Accounting data was last saved for this realm, it was too big for WoW to handle, so old data was automatically trimmed in order to avoid corruption of the saved variables. The last %s of purchase data has been preserved."] = "%sIMPORTANT:|r When Accounting data was last saved for this realm, it was too big for WoW to handle, so old data was automatically trimmed in order to avoid corruption of the saved variables. The last %s of purchase data has been preserved."
---[[Translation missing --]]
-L["%sIMPORTANT:|r When Accounting data was last saved for this realm, it was too big for WoW to handle, so old data was automatically trimmed in order to avoid corruption of the saved variables. The last %s of sale data has been preserved."] = "%sIMPORTANT:|r When Accounting data was last saved for this realm, it was too big for WoW to handle, so old data was automatically trimmed in order to avoid corruption of the saved variables. The last %s of sale data has been preserved."
-L["%sIMPORTANT:|r When TSM_Accounting last saved data for this realm, it was too big for WoW to handle, so old data was automatically trimmed in order to avoid corruption of the saved variables. The last %s of purchase data has been preserved."] = "%s중요:|r TSM_Accounting이 마지막으로 이 서버에 대한 데이터를 저장했을 때, 와우가 처리하기에는 그 데이터가 너무 커서, 저장된 변수의 변동을 방지하기위해 오래된 데이터가 트림되었습니다. 마지막 %s의 구매 데이터는 보존되었습니다."
-L["%sIMPORTANT:|r When TSM_Accounting last saved data for this realm, it was too big for WoW to handle, so old data was automatically trimmed in order to avoid corruption of the saved variables. The last %s of sale data has been preserved."] = "%s중요:|r TSM_Accounting이 마지막으로 이 서버에 대한 데이터를 저장했을 때, 와우가 처리하기에는 그 데이터가 너무 커서, 저장된 변수의 변동을 방지하기위해 오래된 데이터가 트림되었습니다. 마지막 %s의 판매 데이터는 보존되었습니다."
+L["%sIMPORTANT:|r When Accounting data was last saved for this realm, it was too big for WoW to handle, so old data was automatically trimmed in order to avoid corruption of the saved variables. The last %s of purchase data has been preserved."] = "%s중요:|r 회계 데이터가 이 서버에 대해 마지막으로 저장되었을 때 와우가 처리하기에는 너무 커서 저장된 변수의 손상을 방지하기 위해 오래된 데이터가 자동으로 잘렸습니다. 마지막 %s의 구매 데이터는 보존되었습니다."
+L["%sIMPORTANT:|r When Accounting data was last saved for this realm, it was too big for WoW to handle, so old data was automatically trimmed in order to avoid corruption of the saved variables. The last %s of sale data has been preserved."] = "%s중요:|r 회계 데이터가 이 서버에 대해 마지막으로 저장되었을 때 와우가 처리하기에는 너무 커서 저장된 변수의 손상을 방지하기 위해 오래된 데이터가 자동으로 잘렸습니다. 마지막 %s의 판매 데이터는 보존되었습니다."
+L["%sIMPORTANT:|r When TSM_Accounting last saved data for this realm, it was too big for WoW to handle, so old data was automatically trimmed in order to avoid corruption of the saved variables. The last %s of purchase data has been preserved."] = "%s중요:|r TSM_Accounting이 마지막으로 이 서버에 대한 데이터를 저장했을 때, 와우가 처리하기에는 그 데이터가 너무 커서, 저장된 변수의 변동을 방지하기위해 오래된 데이터가 자동으로 잘렸습니다. 마지막 %s의 구매 데이터는 보존되었습니다."
+L["%sIMPORTANT:|r When TSM_Accounting last saved data for this realm, it was too big for WoW to handle, so old data was automatically trimmed in order to avoid corruption of the saved variables. The last %s of sale data has been preserved."] = "%s중요:|r TSM_Accounting이 마지막으로 이 서버에 대한 데이터를 저장했을 때, 와우가 처리하기에는 그 데이터가 너무 커서, 저장된 변수의 변동을 방지하기위해 오래된 데이터가 자동으로 잘렸습니다. 마지막 %s의 판매 데이터는 보존되었습니다."
 L["%sLeft-Click%s to open the main window"] = "%s좌클릭%s : 설정창 열기"
 --[[Translation missing --]]
 L["%sLeft-Click|r to ignore an item for this session. Hold %sShift|r to ignore permanently. You can remove items from permanent ignore in the Vendoring settings."] = "%sLeft-Click|r to ignore an item for this session. Hold %sShift|r to ignore permanently. You can remove items from permanent ignore in the Vendoring settings."
 L["(%d - %d)"] = "(%d - %d)"
 L["(%d/500 Characters)"] = "(%d/500 글자)"
---[[Translation missing --]]
-L["(minimum 0 - maximum %d)"] = "(minimum 0 - maximum %d)"
+L["(minimum 0 - maximum %d)"] = "(최소 0 - 최대 %d)"
 L["1 Group"] = "1 그룹"
 L["1 Item"] = "1 아이템"
 L["1D"] = "1일"
@@ -11138,68 +11126,51 @@ L["A maximum of 1 convert() function is allowed."] = "convert() 함수가 허용
 L["A profile with that name already exists on the target account. Rename it first and try again."] = "대상 계정에 해당 이름의 프로필이 이미 존재합니다. 먼저 이름을 변경하고 다시 시도하세요."
 L["A profile with this name already exists."] = "해당 이름의 프로필이 대상 계정에 존재합니다."
 L["A scan is already in progress. Please stop that scan before starting another one."] = "스캔이 이미 진행 중입니다. 다른 스캔을 시작하려면 기존 검사를 중지하세요."
---[[Translation missing --]]
-L["A single craft makes %d and you only need to restock %d."] = "A single craft makes %d and you only need to restock %d."
+L["A single craft makes %d and you only need to restock %d."] = "한번의 제작으로 %d을 만들고 %d만 재보충하면 됩니다."
 L["Above max expires."] = "유효 기간 초과."
---[[Translation missing --]]
-L["Above max price. Not posting."] = "Above max price. Not posting."
---[[Translation missing --]]
-L["Above max price. Posting at max."] = "Above max price. Posting at max."
---[[Translation missing --]]
-L["Above max price. Posting at min."] = "Above max price. Posting at min."
---[[Translation missing --]]
-L["Above max price. Posting at normal."] = "Above max price. Posting at normal."
+L["Above max price. Not posting."] = "최대 가격 초과. 경매 등록 안함."
+L["Above max price. Posting at max."] = "최대 가격 초과. 최고가에 경매 등록."
+L["Above max price. Posting at min."] = "최대 가격 초과. 최저가에 경매 등록."
+L["Above max price. Posting at normal."] = "최대 가격 이상. 정상가에 경매 등록."
 L["Accept COD?"] = "대금 청구를 수락하시겠습니까?"
 L["Accepting this item will cost: %s"] = "이 아이템을 수취할려면 다음 비용이 필요합니다: %s"
---[[Translation missing --]]
-L["Account sync removed. Please delete the account sync from the other account as well."] = "Account sync removed. Please delete the account sync from the other account as well."
+L["Account sync removed. Please delete the account sync from the other account as well."] = "계정 동기화가 제거되었습니다. 다른 계정에서도 계정 동기화를 삭제하세요."
 L["Account Syncing"] = "계정 동기화"
 L["Accounting"] = "회계"
---[[Translation missing --]]
-L["Active"] = "Active"
---[[Translation missing --]]
-L["Active Alt"] = "Active Alt"
+L["Active"] = "활성화"
+L["Active Alt"] = "Alt 활성화"
 L["Activity Type"] = "활동 유형"
 L["Add"] = "추가"
---[[Translation missing --]]
-L["Add %d |4Item:Items"] = "Add %d |4Item:Items"
+L["Add %d |4Item:Items"] = "%d |4아이템:아이템 추가"
 L["Add %s Operation"] = "%s 작업 추가하기"
 L["Add a new custom source"] = "새로운 커스텀 소스 추가하기"
 L["Add account"] = "계정 추가하기"
 L["Add More Operations"] = "더 많은 작업 추가하기"
 L["Add Operation"] = "작업 추가하기"
 L["Add operation to groups"] = "그룹에 작업 추가하기"
---[[Translation missing --]]
-L["Add Optional Reagents"] = "Add Optional Reagents"
---[[Translation missing --]]
-L["Add Reagent(s)"] = "Add Reagent(s)"
+L["Add Optional Reagents"] = "선택적 재료 추가"
+L["Add Reagent(s)"] = "재료(들) 추가"
 L["Add subject & description (optional)"] = "제목 & 설명 추가하기 (선택)"
 L["Add Subject / Description"] = "제목 / 설명 추가 (선택)"
 L["Add to Mail"] = "메일에 추가하기"
 L["Added '%s' profile which was received from %s."] = "%s 에게 받은 '%s' 프로필이 추가되었습니다."
 L["Added %s to %s."] = "%s가 %s에 추가됨."
 L["Additional error suppressed"] = "추가적인 오류 표시 안 함"
---[[Translation missing --]]
-L["Addon Optimisations."] = "Addon Optimisations."
---[[Translation missing --]]
-L["Adjust how crafted items are restocked."] = "Adjust how crafted items are restocked."
+L["Addon Optimisations."] = "애드온 최적화."
+L["Adjust how crafted items are restocked."] = "제작된 아이템이 재보충되는 방식 조정."
 L["Adjust how items are mailed."] = "아이템이 우편으로 보내지는 방식 조정하기"
 L["Adjust how TSM values crafted items when calculating profit."] = "이익을 계산할 때 TSM이 값을 만드는 방식 조정"
 L["Adjust some general settings."] = "일반 설정 조정하기."
-L["Adjust the settings below to set how groups attached to this operation will be auctioned."] = "이 작업에 설정된 그룹이 어떻게 경매 될지 아래의 설정을 조정하세요."
---[[Translation missing --]]
-L["Adjust the settings below to set how groups attached to this operation will be cancelled."] = "Adjust the settings below to set how groups attached to this operation will be cancelled."
---[[Translation missing --]]
-L["Adjust the settings below to set how groups attached to this operation will be priced."] = "Adjust the settings below to set how groups attached to this operation will be priced."
+L["Adjust the settings below to set how groups attached to this operation will be auctioned."] = "아래의 설정을 조정하여 이 작업에 연결된 그룹이 경매되는 방식을 설정하세요."
+L["Adjust the settings below to set how groups attached to this operation will be cancelled."] = "아래의 설정을 조정하여 이 작업에 연결된 그룹이 취소되는 방식을 설정하세요."
+L["Adjust the settings below to set how groups attached to this operation will be priced."] = "아래의 설정을 조정하여 이 작업에 연결된 그룹의 가격 책정 방식을 설정하세요."
 L["Advanced Item Search"] = "고급 아이템 검색"
 L["AH"] = "경매장"
 L["AH (Crafting)"] = "경매 (제작)"
 L["AH (Disenchanting)"] = "경매 (마력 추출)"
 L["AH BUSY"] = "경매장 혼잡함"
---[[Translation missing --]]
-L["AHDB Minimum Bid"] = "AHDB Minimum Bid"
---[[Translation missing --]]
-L["AHDB Minimum Buyout"] = "AHDB Minimum Buyout"
+L["AHDB Minimum Bid"] = "경매장DB 입찰 최저가"
+L["AHDB Minimum Buyout"] = "경매장DB 즉시구입 최저가"
 L["Alarm Clock"] = "알람 시계"
 L["All"] = "전체"
 L["All Auctions"] = "전체 경매"
@@ -11207,8 +11178,7 @@ L["All Bought"] = "전체 매수"
 L["All Cancelled"] = "모두 취소됨"
 L["All Characters"] = "모든 케릭터"
 L["All Expired"] = "모두 만료됨"
---[[Translation missing --]]
-L["All Faction-Realms"] = "All Faction-Realms"
+L["All Faction-Realms"] = "모든 진영-서버"
 L["All Guilds"] = "모든 길드"
 L["All Item Classes"] = "모든 아이템 클래스"
 L["All Other"] = "다른 모든 것"
@@ -11217,20 +11187,14 @@ L["All Professions"] = "모든 전문 기술"
 L["All Rarites"] = "모든 품질"
 L["All Rarities"] = "모든 품질"
 L["All Selected"] = "모두 선택됨"
---[[Translation missing --]]
-L["All Slots"] = "All Slots"
---[[Translation missing --]]
-L["All Sold"] = "All Sold"
---[[Translation missing --]]
-L["All Sources"] = "All Sources"
+L["All Slots"] = "모든 칸"
+L["All Sold"] = "모두 판매"
+L["All Sources"] = "모든 출처"
 L["All Subclasses"] = "모든 하위 클래스"
 L["All Time"] = "전체 시간"
---[[Translation missing --]]
-L["All Types"] = "All Types"
---[[Translation missing --]]
-L["Allow partial stack"] = "Allow partial stack"
---[[Translation missing --]]
-L["Allows for testing of custom prices"] = "Allows for testing of custom prices"
+L["All Types"] = "모든 유형"
+L["Allow partial stack"] = "부분 묶음 허용"
+L["Allows for testing of custom prices"] = "사용자 가격 테스트 허용"
 L["ALT"] = "ALT"
 L["Alt Guild Bank"] = "부캐 길드 은행"
 L["Alts"] = "부캐"
@@ -11246,10 +11210,8 @@ L["Apply operation to group"] = "그룹에 작업을 적용하기"
 L["Are you sure you want to clear old accounting data?"] = "오래된 장부 데이터를 삭제하시겠습니까?"
 L["Are you sure you want to delete the selected operations?"] = "정말 선택된 작업을 삭제할까요?"
 L["Are you sure you want to delete this operation?"] = "정말로 선택된 작업을 지우시겠습니까?"
---[[Translation missing --]]
-L["At above max price and not undercut."] = "At above max price and not undercut."
---[[Translation missing --]]
-L["At normal price and not undercut."] = "At normal price and not undercut."
+L["At above max price and not undercut."] = "최고가 이상이고 상위입찰이 아닙니다."
+L["At normal price and not undercut."] = "정상가 이상이고 상위입찰이 아닙니다."
 L["Attachments"] = "첨부물"
 L["Auction"] = "경매"
 L["Auction duration"] = "경매 기간"
@@ -11261,47 +11223,30 @@ L["Auction Window Close"] = "경매장 창 끄기"
 L["Auction Window Open"] = "경매장 창 종료음"
 L["Auctionator - Auction Value"] = "Auctionator - 경매가"
 L["AuctionDB"] = "AuctionDB"
---[[Translation missing --]]
-L["AuctionDB - Historical Price (via TSM App)"] = "AuctionDB - Historical Price (via TSM App)"
---[[Translation missing --]]
-L["AuctionDB - Market Value"] = "AuctionDB - Market Value"
-L["AuctionDB - Minimum Buyout"] = "AuctionDB - 최소 즉시 구매"
---[[Translation missing --]]
-L["AuctionDB - Region Historical Price (via TSM App)"] = "AuctionDB - Region Historical Price (via TSM App)"
---[[Translation missing --]]
-L["AuctionDB - Region Market Value Average (via TSM App)"] = "AuctionDB - Region Market Value Average (via TSM App)"
---[[Translation missing --]]
-L["AuctionDB - Region Minimum Buyout Average (via TSM App)"] = "AuctionDB - Region Minimum Buyout Average (via TSM App)"
---[[Translation missing --]]
-L["AuctionDB - Region Sale Average (via TSM App)"] = "AuctionDB - Region Sale Average (via TSM App)"
---[[Translation missing --]]
-L["AuctionDB - Region Sale Rate (via TSM App)"] = "AuctionDB - Region Sale Rate (via TSM App)"
---[[Translation missing --]]
-L["AuctionDB - Region Sold Per Day (via TSM App)"] = "AuctionDB - Region Sold Per Day (via TSM App)"
---[[Translation missing --]]
-L["AuctionDB Realm Data is %s Old"] = "AuctionDB Realm Data is %s Old"
---[[Translation missing --]]
-L["AuctionDB Region Data is %s Old"] = "AuctionDB Region Data is %s Old"
+L["AuctionDB - Historical Price (via TSM App)"] = "경매DB - 과거 가격 (TSM 앱에 의한)"
+L["AuctionDB - Market Value"] = "경매DB - 상점가"
+L["AuctionDB - Minimum Buyout"] = "경매DB - 최저가 즉시구매"
+L["AuctionDB - Region Historical Price (via TSM App)"] = "경매장DB - 지역 과거 가격 (TSM 앱에 의한)"
+L["AuctionDB - Region Market Value Average (via TSM App)"] = "경매DB - 지역 시장가 평균 (TSM 앱에 의한)"
+L["AuctionDB - Region Minimum Buyout Average (via TSM App)"] = "경매DB - 지역 최저 구매가 평균 (TSM 앱에 의한)"
+L["AuctionDB - Region Sale Average (via TSM App)"] = "경매DB - 지역 판매가 평균 (TSM 앱에 의한)\""
+L["AuctionDB - Region Sale Rate (via TSM App)"] = "경매DB - 지역 판매율 (TSM 앱에 의한)"
+L["AuctionDB - Region Sold Per Day (via TSM App)"] = "경매DB - 지역 일일 판매 (TSM 앱에 의한)"
+L["AuctionDB Realm Data is %s Old"] = "경매DB 서버 데이터가 %s 이전"
+L["AuctionDB Region Data is %s Old"] = "경매DB 지역 데이터가 %s 이전"
 L["Auctioneer - Appraiser"] = "Auctioneer -  감정인"
 L["Auctioneer - Market Value"] = "Auctioneer - 시장가"
 L["Auctioneer - Minimum Buyout"] = "Auctioneer - 최소 구매가"
 L["Auctioning"] = "경매"
---[[Translation missing --]]
-L["Auctioning %s button"] = "Auctioning %s button"
---[[Translation missing --]]
-L["Auctioning Details"] = "Auctioning Details"
---[[Translation missing --]]
-L["Auctioning Log"] = "Auctioning Log"
---[[Translation missing --]]
-L["Auctioning Operation"] = "Auctioning Operation"
---[[Translation missing --]]
-L["Auctioning operation"] = "Auctioning operation"
---[[Translation missing --]]
-L["Auctioning operations control posting to and canceling from the AH."] = "Auctioning operations control posting to and canceling from the AH."
+L["Auctioning %s button"] = "경매 %s 버튼"
+L["Auctioning Details"] = "경매 세부사항"
+L["Auctioning Log"] = "경매 기록"
+L["Auctioning Operation"] = "경매 운영"
+L["Auctioning operation"] = "경매 운영"
+L["Auctioning operations control posting to and canceling from the AH."] = "경매 운영은 경매장에 대한 등록 및 취소를 제어합니다."
 L["Auctions"] = "경매"
 L["Auto Quest Complete"] = "자동 퀘스트 완료음"
---[[Translation missing --]]
-L["Auto-focus browse search input"] = "Auto-focus browse search input"
+L["Auto-focus browse search input"] = "자동초점 경매서핑 검색 입력"
 L["Average Earned per Day"] = "일 평균 획득 골드"
 L["Average Prices:"] = "평균 가격:"
 L["Average Profit per Day"] = "일 평균 이익"
@@ -11312,30 +11257,19 @@ L["Avg Sell Price"] = "평균 판매 가격"
 L["Back"] = "이전"
 L["Bag"] = "가방"
 L["Bags"] = "가방"
---[[Translation missing --]]
-L["Banking"] = "Banking"
+L["Banking"] = "은행"
 L["Banks"] = "은행"
 L["Base Group"] = "기본 그룹"
---[[Translation missing --]]
-L["Base Item"] = "Base Item"
---[[Translation missing --]]
-L["BBG 14-Day Price"] = "BBG 14-Day Price"
---[[Translation missing --]]
-L["BBG 3-Day Price"] = "BBG 3-Day Price"
---[[Translation missing --]]
-L["BBG Global Mean"] = "BBG Global Mean"
---[[Translation missing --]]
-L["BBG Global Median"] = "BBG Global Median"
---[[Translation missing --]]
-L["Below is a list of all available price sources, along with a brief description of what they represent."] = "Below is a list of all available price sources, along with a brief description of what they represent."
---[[Translation missing --]]
-L["Below min price. Posting at max."] = "Below min price. Posting at max."
---[[Translation missing --]]
-L["Below min price. Posting at min."] = "Below min price. Posting at min."
---[[Translation missing --]]
-L["Below min price. Posting at normal."] = "Below min price. Posting at normal."
---[[Translation missing --]]
-L["Below you can ignore this operation on certain characters or realms."] = "Below you can ignore this operation on certain characters or realms."
+L["Base Item"] = "기본 아이템"
+L["BBG 14-Day Price"] = "BBG 14일간 가격"
+L["BBG 3-Day Price"] = "BBG 3일간 가격"
+L["BBG Global Mean"] = "BBG 전체 평균"
+L["BBG Global Median"] = "BBG 전체 중앙값"
+L["Below is a list of all available price sources, along with a brief description of what they represent."] = "아래에서 사용 가능한 모든 가격 출처의 목록과 그에 해당하는 간략한 설명입니다."
+L["Below min price. Posting at max."] = "최저가 미만. 최고가에 경매 등록."
+L["Below min price. Posting at min."] = "최저가 미만. 최저가에 경매 등록."
+L["Below min price. Posting at normal."] = "최저가 미만. 정상가에 경매 등록."
+L["Below you can ignore this operation on certain characters or realms."] = "아래에서 특정 캐릭터 또는 서버에서 이 작업을 제외할 수 있습니다."
 L["Bid %d / %d"] = "입찰 %d / %d"
 L["Bid (item)"] = "입찰 (아이템)"
 L["Bid (stack)"] = "입찰 (묶음)"
@@ -11346,41 +11280,30 @@ L["Bid percent must be between 0 and 100."] = "입찰 퍼센트는 0 에서 100 
 L["Bid Price"] = "입찰가"
 L["Bid Sniper Paused"] = "입찰 Sniper 중지됨"
 L["Bid Sniper Running"] = "입찰 Sniper 실행중"
---[[Translation missing --]]
-L["Bidding Auction"] = "Bidding Auction"
+L["Bidding Auction"] = "경매 입찰"
 L["Blacklisted players"] = "블랙리스트된 플레이어"
---[[Translation missing --]]
-L["Bought"] = "Bought"
+L["Bought"] = "구매"
 --[[Translation missing --]]
 L["Bought %d of %s from %s for %s"] = "Bought %d of %s from %s for %s"
-L["Bought %sx%d for %s from %s"] = "%sx%d 아이템을 가격 %s 으로 %s 님으로부터 구매하였습니다."
---[[Translation missing --]]
-L["Bound Actions"] = "Bound Actions"
+L["Bought %sx%d for %s from %s"] = "%sx%d을 %s 가격으로 %s에게 구매"
+L["Bound Actions"] = "작업 배정"
 L["Browse"] = "경매 참관"
 L["Browse / Sniper"] = "살펴보기 / Sniper"
 L["BUSY"] = "혼잡"
 L["BUY"] = "구입"
 L["Buy"] = "구매"
---[[Translation missing --]]
-L["Buy %d / %d"] = "Buy %d / %d"
---[[Translation missing --]]
-L["Buy %d / %d (Confirming %d / %d)"] = "Buy %d / %d (Confirming %d / %d)"
---[[Translation missing --]]
-L["Buy Auction"] = "Buy Auction"
+L["Buy %d / %d"] = "%d / %d 구매"
+L["Buy %d / %d (Confirming %d / %d)"] = "%d / %d 구매(%d / %d 확인)"
+L["Buy Auction"] = "경매 구매"
 L["Buy Commodity"] = "상품 구매하기"
 L["Buy from AH"] = "경매장에서 구매"
---[[Translation missing --]]
-L["Buy from AH (Crafting)"] = "Buy from AH (Crafting)"
---[[Translation missing --]]
-L["Buy from AH (Disenchant)"] = "Buy from AH (Disenchant)"
+L["Buy from AH (Crafting)"] = "경매장에서 구매 (제작물)"
+L["Buy from AH (Disenchant)"] = "경매장에서 구매 (마력추출)"
 L["Buy from Vendor"] = "상인에게 구매"
---[[Translation missing --]]
-L["Buy Groups"] = "Buy Groups"
---[[Translation missing --]]
-L["Buy Options"] = "Buy Options"
+L["Buy Groups"] = "그룹 구매"
+L["Buy Options"] = "옵션 구매"
 L["Buyback All"] = "모두 되사기"
---[[Translation missing --]]
-L["Buyer/Seller"] = "Buyer/Seller"
+L["Buyer/Seller"] = "구매자/판매자"
 L["Buyout"] = "즉시 구입"
 L["Buyout (item)"] = "즉시 구입 (아이템)"
 L["Buyout (stack)"] = "즉시 구매 (묶음)"
@@ -11390,55 +11313,38 @@ L["Buyout Price"] = "즉시 구매 가격"
 L["Buyout Sniper Paused"] = "즉구 Sniper 중지됨"
 L["Buyout Sniper Running"] = "즉구 Sniper 가동중"
 L["Cancel"] = "취소하기"
---[[Translation missing --]]
-L["Cancel %d / %d"] = "Cancel %d / %d"
+L["Cancel %d / %d"] = "%d / %d 취소"
 L["Cancel Auction"] = "경매 취소하기"
 L["Cancel auctions with bids"] = "Cancel auctions with bids"
---[[Translation missing --]]
-L["Cancel or Post"] = "Cancel or Post"
+L["Cancel or Post"] = "취소 또는 등록"
 L["Cancel Scan"] = "스캔 취소"
---[[Translation missing --]]
-L["Cancel to repost higher"] = "Cancel to repost higher"
---[[Translation missing --]]
-L["Cancel undercut auctions"] = "Cancel undercut auctions"
---[[Translation missing --]]
-L["Canceled information"] = "Canceled information"
-L["Canceling"] = "취소하는 중"
---[[Translation missing --]]
-L["Canceling %d / %d"] = "Canceling %d / %d"
---[[Translation missing --]]
-L["Canceling %d Auctions..."] = "Canceling %d Auctions..."
---[[Translation missing --]]
-L["Canceling auction you've undercut."] = "Canceling auction you've undercut."
---[[Translation missing --]]
-L["Canceling disabled."] = "Canceling disabled."
+L["Cancel to repost higher"] = "상위 재등록을 위해 취소"
+L["Cancel undercut auctions"] = "상위입찰 경매 취소"
+L["Canceled information"] = "취소된 경매 정보"
+L["Canceling"] = "취소 중"
+L["Canceling %d / %d"] = "%d / %d 취소중"
+L["Canceling %d Auctions..."] = "%d 경매 취소 중..."
+L["Canceling auction you've undercut."] = "상위입찰된 경매를 취소합니다."
+L["Canceling disabled."] = "취소 불가."
 L["Canceling Options"] = "취소 설정"
---[[Translation missing --]]
-L["Canceling to repost at higher price."] = "Canceling to repost at higher price."
---[[Translation missing --]]
-L["Canceling to repost at reset price."] = "Canceling to repost at reset price."
---[[Translation missing --]]
-L["Canceling to repost higher."] = "Canceling to repost higher."
-L["Canceling undercut auctions and to repost higher."] = "언더컷한 경매 취소하고 더 높이 올리기"
-L["Canceling undercut auctions."] = "언더컷한 경매 취소하기"
+L["Canceling to repost at higher price."] = "상위 가격으로 재등록하기 위해 취소합니다."
+L["Canceling to repost at reset price."] = "재설정 가격으로 재등록하기 위해 취소합니다."
+L["Canceling to repost higher."] = "상위에 재등록하기 위해 취소합니다."
+L["Canceling undercut auctions and to repost higher."] = "상위입찰 경매를 취소하고 상위 가격으로 재등록합니다."
+L["Canceling undercut auctions."] = "상위입찰 경매를 취소합니다."
 L["Cancelled"] = "취소됨"
---[[Translation missing --]]
-L["Cancelled auction of %sx%d"] = "Cancelled auction of %sx%d"
---[[Translation missing --]]
-L["Cancelled Since Last Sale"] = "Cancelled Since Last Sale"
-L["Cancelled:"] = "취소하는 중..."
+L["Cancelled auction of %sx%d"] = "%sx%d의 경매가 취소됨"
+L["Cancelled Since Last Sale"] = "마지막 판매 이후 취소됨"
+L["Cancelled:"] = "취소 중:"
 L["Cancelling..."] = "취소하는중..."
 L["Cannot repair from the guild bank!"] = "길드 은행으로부터 수리할 수 없습니다!"
---[[Translation missing --]]
-L["Cannot use additional filters with /crafting or /disenchant."] = "Cannot use additional filters with /crafting or /disenchant."
+L["Cannot use additional filters with /crafting or /disenchant."] = "/crafting 또는 /disenchant와 함께 추가 필터를 사용할 수 없습니다."
 L["Can't load TSM tooltip while in combat"] = "전투중에는 TSM 툴팁을 불러올 수 없습니다"
 L["Cash Register"] = "금전 등록기음"
---[[Translation missing --]]
-L["Changes to the specified profile (i.e. '/tsm profile Default' changes to the 'Default' profile)"] = "Changes to the specified profile (i.e. '/tsm profile Default' changes to the 'Default' profile)"
+L["Changes to the specified profile (i.e. '/tsm profile Default' changes to the 'Default' profile)"] = "지정된 프로필로 변경 (예: '/tsm profile Default'는 '기본' 프로필로 변경)"
 L["Character"] = "캐릭터"
 L["Chat Tab"] = "채팅 탭"
---[[Translation missing --]]
-L["Cheapest auction below min price."] = "Cheapest auction below min price."
+L["Cheapest auction below min price."] = "최저가 이하의 가장 저렴한 경매."
 L["Clear All"] = "모두 지우기"
 L["Clear Data"] = "데이터 지우기"
 L["Clear Filters"] = "필터 해제"
@@ -11453,33 +11359,28 @@ L["Combining..."] = "합치는 중..."
 L["Completed full AH scan (%d auctions)!"] = "전체 경매장 스캔 완료 (%d 경매들)!"
 L["Confirm"] = "확인"
 L["Confirm complete sound"] = "확인 완료 알림음"
---[[Translation missing --]]
-L["Confirmation %s button"] = "Confirmation %s button"
+L["Confirmation %s button"] = "확인 %s 버튼"
 L["Confirming %d / %d"] = "%d / %d 확인중"
 L["Connected to %s"] = "%s 에 연결됨"
 L["Connecting to %s"] = "%s 에 연결하는 중"
 L["Contacts"] = "주소록"
---[[Translation missing --]]
-L["Contains auctions above your alert threshold!"] = "Contains auctions above your alert threshold!"
+L["Contains auctions above your alert threshold!"] = "알림 한계값을 초과하는 경매가 포함되어 있습니다!"
 L["Cooldown"] = "재사용 대기시간"
 L["Cooldowns"] = "재사용 대기시간"
 L["Copy Letter"] = "글자 복사하기"
 L["Cost"] = "비용"
 L["Could not create macro as you already have too many. Delete one of your existing macros and try again."] = "메크로 창이 가득 차 메크로를 만들 수 없습니다. 메크로 중 하나를 지우고 다시 시도 하세요."
---[[Translation missing --]]
-L["Could not find profile '%s'. Possible profiles: '%s'"] = "Could not find profile '%s'. Possible profiles: '%s'"
---[[Translation missing --]]
-L["Could not sell items due to not having free bag space available to split a stack of items."] = "Could not sell items due to not having free bag space available to split a stack of items."
+L["Could not find profile '%s'. Possible profiles: '%s'"] = "프로필 '%s'를 찾을 수 없습니다. 가능한 프로필: '%s'"
+L["Could not sell items due to not having free bag space available to split a stack of items."] = "아이템 묶음을 분할할 수 있은 가방 여유 공간이 없기 때문에 아이템을 판매할 수 없습니다."
 L["Craft"] = "제작"
 L["CRAFT"] = "제작"
 L["Craft (Profitable)"] = "제작 (이익)"
 L["Craft (Unprofitable)"] = "제작 (손해)"
 L["Craft All"] = "모두 제작"
 L["Craft Next"] = "다음 제작하기"
-L["Craft Value"] = "제작 값어치"
+L["Craft Value"] = "제작 가치"
 L["Crafted Items"] = "제작된 아이템"
---[[Translation missing --]]
-L["Crafter"] = "Crafter"
+L["Crafter"] = "제작자"
 L["Crafting"] = "제작"
 L["CRAFTING"] = "제작"
 --[[Translation missing --]]
@@ -18016,8 +17917,7 @@ L["Add account"] = "增加帳戶"
 L["Add More Operations"] = "增加更多作業"
 L["Add Operation"] = "增加作業"
 L["Add operation to groups"] = "增加作業到群組"
---[[Translation missing --]]
-L["Add Optional Reagents"] = "Add Optional Reagents"
+L["Add Optional Reagents"] = "加入額外材料"
 --[[Translation missing --]]
 L["Add Reagent(s)"] = "Add Reagent(s)"
 L["Add subject & description (optional)"] = "添加主題 & 說明 (可選)"
@@ -18666,8 +18566,7 @@ L["Failed to start sniper. No groups have a Sniper operation applied."] = "Faile
 --[[Translation missing --]]
 L["Favorite Scans"] = "Favorite Scans"
 L["Favorite Searches"] = "喜愛的搜索"
---[[Translation missing --]]
-L["Favorited Patterns"] = "Favorited Patterns"
+L["Favorited Patterns"] = "喜愛的菜色"
 --[[Translation missing --]]
 L["Filter by duration"] = "Filter by duration"
 L["Filter by groups"] = "以群組篩選"
@@ -19121,8 +19020,7 @@ L["No Professions"] = "No Professions"
 L["No profile specified. Possible profiles: '%s'"] = "No profile specified. Possible profiles: '%s'"
 --[[Translation missing --]]
 L["No Rarities"] = "No Rarities"
---[[Translation missing --]]
-L["No receipe selected"] = "No receipe selected"
+L["No receipe selected"] = "無選定的配方"
 --[[Translation missing --]]
 L["No recent AuctionDB scan data found."] = "No recent AuctionDB scan data found."
 L["No Sound"] = "無音效"

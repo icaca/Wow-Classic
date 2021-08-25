@@ -58,6 +58,7 @@ G.DefaultSettings = {
 		SplitCount = 1,
 		SpecialBagsColor = false,
 		iLvlToShow = 1,
+		MultiRows = false,
 
 		FilterJunk = true,
 		FilterAmmo = true,
@@ -198,6 +199,7 @@ G.DefaultSettings = {
 		BlockStranger = false,
 		BlockSpammer = false,
 		ChatBGType = 2,
+		WhisperSound = true,
 	},
 	Map = {
 		DisableMap = false,
@@ -316,6 +318,7 @@ G.DefaultSettings = {
 		OwnDispell = true,
 		InstAlertOnly = true,
 		BrokenAlert = false,
+		LoCAlert = false,
 		FasterLoot = true,
 		AutoQuest = false,
 		QuestNotification = false,
@@ -500,6 +503,10 @@ end
 
 local function updateBagStatus()
 	B:GetModule("Bags"):UpdateAllBags()
+end
+
+local function updateBagAnchor()
+	B:GetModule("Bags"):UpdateAllAnchors()
 end
 
 local function updateActionbarScale()
@@ -729,15 +736,15 @@ local NewTag = "|TInterface\\OptionsFrame\\UI-OptionsFrame-NewFeatureIcon:0|t"
 
 G.TabList = {
 	L["Actionbar"],
-	L["Bags"],
-	NewTag..L["Unitframes"],
+	NewTag..L["Bags"],
+	L["Unitframes"],
 	L["RaidFrame"],
 	L["Nameplate"],
 	L["PlayerPlate"],
 	L["Auras"],
 	NewTag..L["Raid Tools"],
-	L["ChatFrame"],
-	NewTag..L["Maps"],
+	NewTag..L["ChatFrame"],
+	L["Maps"],
 	L["Skins"],
 	L["Tooltip"],
 	NewTag..L["Misc"],
@@ -781,11 +788,12 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Bags", "Enable", HeaderTag..L["Enable Bags"]},
 		{},--blank
 		{1, "Bags", "ItemFilter", L["Bags ItemFilter"].."*", nil, setupBagFilter, updateBagStatus},
-		{1, "Bags", "GatherEmpty", L["Bags GatherEmpty"].."*", true, nil, updateBagStatus},
-		{1, "Bags", "SpecialBagsColor", L["SpecialBagsColor"].."*", nil, nil, updateBagStatus, L["SpecialBagsColorTip"]},
-		{1, "Bags", "DeleteButton", L["Bags DeleteButton"], true},
-		{1, "Bags", "BagsiLvl", L["Bags Itemlevel"].."*", nil, nil, updateBagStatus},
+		{1, "Bags", "MultiRows", NewTag..L["MultiRows"].."*", true, nil, updateBagAnchor, L["MultiRowsTip"]},
+		{1, "Bags", "GatherEmpty", L["Bags GatherEmpty"].."*", nil, nil, updateBagStatus},
+		{1, "Bags", "SpecialBagsColor", L["SpecialBagsColor"].."*", true, nil, updateBagStatus, L["SpecialBagsColorTip"]},
+		{1, "Bags", "DeleteButton", L["Bags DeleteButton"]},
 		{1, "Bags", "ShowNewItem", L["Bags ShowNewItem"], true},
+		{1, "Bags", "BagsiLvl", L["Bags Itemlevel"].."*", nil, nil, updateBagStatus},
 		{3, "Bags", "iLvlToShow", L["iLvlToShow"].."*", nil, {1, 500, 1}, nil, L["iLvlToShowTip"]},
 		{4, "Bags", "BagSortMode", L["BagSortMode"].."*", true, {L["Forward"], L["Backward"], DISABLE}, updateBagSortOrder},
 		{},--blank
@@ -797,7 +805,7 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 	[3] = {
 		{1, "UFs", "Enable", HeaderTag..L["Enable UFs"], nil, setupUnitFrame, nil, L["HideUFWarning"]},
 		{},--blank
-		{1, "UFs", "Castbars", NewTag..HeaderTag..L["UFs Castbar"], nil, setupCastbar},
+		{1, "UFs", "Castbars", HeaderTag..L["UFs Castbar"], nil, setupCastbar},
 		{1, "UFs", "LagString", L["Castbar LagString"], true},
 		{1, "UFs", "SwingBar", L["UFs SwingBar"]},
 		{1, "UFs", "SwingTimer", L["UFs SwingTimer"], true, nil, nil, L["SwingTimer Tip"]},
@@ -952,7 +960,8 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Misc", "DispellAlert", HeaderTag..L["DispellAlert"].."*", nil, nil, updateInterruptAlert},
 		{1, "Misc", "OwnDispell", L["OwnDispell"].."*", true},
 		{1, "Misc", "BrokenAlert", HeaderTag..L["BrokenAlert"].."*", nil, nil, updateInterruptAlert, L["BrokenAlertTip"]},
-		{1, "Misc", "InstAlertOnly", L["InstAlertOnly"].."*", true, nil, updateInterruptAlert, L["InstAlertOnlyTip"]},
+		{1, "Misc", "LoCAlert", NewTag..HeaderTag..L["LoCAlert"].."*", true, nil, updateInterruptAlert, L["LoCAlertTip"]},
+		{1, "Misc", "InstAlertOnly", L["InstAlertOnly"].."*", nil, nil, updateInterruptAlert, L["InstAlertOnlyTip"]},
 		--{},--blank
 		--{1, "Misc", "PlacedItemAlert", L["Placed Item Alert"].."*"}, -- fix me: need more data
 	},
@@ -967,6 +976,7 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Chat", "WhisperColor", L["Differ WhisperColor"].."*", true},
 		{1, "Chat", "ChatItemLevel", L["ShowChatItemLevel"]},
 		{1, "Chat", "Freedom", L["Language Filter"], true},
+		{1, "Chat", "WhisperSound", NewTag..L["WhisperSound"].."*", nil, nil, nil, L["WhisperSoundTip"]},
 		{4, "ACCOUNT", "TimestampFormat", L["TimestampFormat"].."*", nil, {DISABLE, "03:27 PM", "03:27:32 PM", "15:27", "15:27:32"}},
 		{4, "Chat", "ChatBGType", L["ChatBGType"].."*", true, {DISABLE, L["Default Dark"], L["Gradient"]}, toggleChatBackground},
 		{},--blank
@@ -989,7 +999,7 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{3, "Map", "MapScale", L["Map Scale"], true, {.5, 1, .1}},
 		{},--blank
 		{1, "Map", "Clock", L["Minimap Clock"].."*", nil, nil, showMinimapClock},
-		{1, "Map", "DiffFlag", NewTag..L["Minimap DiffFlag"], true, nil, nil, L["DiffFlagTip"]},
+		{1, "Map", "DiffFlag", L["Minimap DiffFlag"], true, nil, nil, L["DiffFlagTip"]},
 		{1, "Map", "CombatPulse", L["Minimap Pulse"]},
 		{1, "Map", "WhoPings", L["Show WhoPings"], true},
 		{1, "Map", "ShowRecycleBin", L["Show RecycleBin"]},
@@ -1053,8 +1063,9 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Misc", "InstantDelete", L["InstantDelete"].."*", true},
 		{1, "Misc", "Focuser", L["Easy Focus"]},
 		{1, "Misc", "PetHappiness", L["PetHappiness"].."*", true, nil, togglePetHappiness},
-		{1, "Misc", "MenuButton", NewTag..L["MenuButton"], nil, nil, nil, L["MenuButtonTip"]},
-		{1, "Misc", "AutoDismount", NewTag..L["AutoDismount"].."*", true, nil, nil, L["AutoDismountTip"]},
+		{1, "Misc", "MenuButton", L["MenuButton"], nil, nil, nil, L["MenuButtonTip"]},
+		{1, "Misc", "AutoDismount", L["AutoDismount"].."*", true, nil, nil, L["AutoDismountTip"]},
+		{1, "Misc", "BlockInvite", NewTag.."|cffff0000"..L["BlockInvite"].."*", nil, nil, nil, L["BlockInviteTip"]},
 	},
 	[14] = {
 		{1, "ACCOUNT", "VersionCheck", L["Version Check"]},
@@ -1293,7 +1304,7 @@ local function CreateContactBox(parent, text, url, index)
 end
 
 local donationList = {
-	["afdian"] = "33578473, normanvon, y368413, EK, msylgj, 夜丨灬清寒, akakai, reisen410, 其实你很帥, 萨菲尔, Antares, RyanZ, fldqw, Mario, 时光旧予, 食铁骑兵, 爱蕾丝的基总, 施然, 命运镇魂曲, 不可语上, Leo, 忘川, 刘翰承, 悟空海外党, cncj, 暗月, 汪某人, 黑手, iraq120, 嗜血未冷, 我又不是妖怪，养乐多，无人知晓，秋末旷夜-迪瑟洛克，Teo，莉拉斯塔萨，音尘绝，刺王杀驾，醉跌-凤凰之神，灬麦加灬-阿古斯，漂舟不系以及部分未备注名字的用户。",
+	["afdian"] = "33578473, normanvon, y368413, EK, msylgj, 夜丨灬清寒, akakai, reisen410, 其实你很帥, 萨菲尔, Antares, RyanZ, fldqw, Mario, 时光旧予, 食铁骑兵, 爱蕾丝的基总, 施然, 命运镇魂曲, 不可语上, Leo, 忘川, 刘翰承, 悟空海外党, cncj, 暗月, 汪某人, 黑手, iraq120, 嗜血未冷, 我又不是妖怪，养乐多，无人知晓，秋末旷夜-迪瑟洛克，Teo，莉拉斯塔萨，音尘绝，刺王杀驾，醉跌-凤凰之神，灬麦加灬-阿古斯，漂舟不系，朵小熙，山岸逢花以及部分未备注名字的用户。",
 	["Patreon"] = "Quentin, Julian Neigefind, silenkin, imba Villain, Zeyu Zhu, Kon Floros.",
 }
 local function CreateDonationIcon(parent, texture, name, xOffset)

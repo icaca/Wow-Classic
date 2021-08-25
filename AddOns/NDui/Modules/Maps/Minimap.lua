@@ -100,6 +100,13 @@ function module:ReskinRegions()
 			end
 		end
 	end)
+
+	-- LFG Icon
+	if MiniMapLFGFrame then
+		MiniMapLFGFrame:ClearAllPoints()
+		MiniMapLFGFrame:SetPoint("BOTTOMRIGHT", Minimap, 5, 15)
+		MiniMapLFGBorder:Hide()
+	end
 end
 
 function module:RecycleBin()
@@ -134,7 +141,6 @@ function module:RecycleBin()
 	local bin = CreateFrame("Frame", "RecycleBinFrame", UIParent)
 	bin:SetPoint("BOTTOMRIGHT", bu, "BOTTOMLEFT", -3, 10)
 	bin:SetSize(width, height)
-	bin:SetFrameStrata("TOOLTIP")
 	bin:Hide()
 
 	local tex = B.SetGradient(bin, "H", 0, 0, 0, 0, alpha, width, height)

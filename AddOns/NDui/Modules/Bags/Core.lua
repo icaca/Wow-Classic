@@ -16,36 +16,83 @@ local NUM_BAG_SLOTS = NUM_BAG_SLOTS or 4
 local NUM_BANKBAGSLOTS = NUM_BANKBAGSLOTS or 7
 local ITEM_STARTS_QUEST = ITEM_STARTS_QUEST
 
+local anchorCache = {}
 function module:UpdateAnchors(parent, bags)
 	if not parent:IsShown() then return end
 
-	local anchor = parent
+	wipe(anchorCache)
+
+	local index = 1
+	anchorCache[index] = parent
+
 	for _, bag in ipairs(bags) do
 		if bag:GetHeight() > 45 then
 			bag:Show()
+			index = index + 1
+
+			bag:ClearAllPoints()
+			if (index-1) % 4 == 0 and C.db["Bags"]["MultiRows"] then
+				bag:SetPoint("BOTTOMRIGHT", anchorCache[index-4], "BOTTOMLEFT", -5, 0)
+			else
+				bag:SetPoint("BOTTOMLEFT", anchorCache[index-1], "TOPLEFT", 0, 5)
+			end
+			anchorCache[index] = bag
 		else
 			bag:Hide()
-		end
-		if bag:IsShown() then
-			bag:SetPoint("BOTTOMLEFT", anchor, "TOPLEFT", 0, 5)
-			anchor = bag
 		end
 	end
 end
 
 local function highlightFunction(button, match)
-	button:SetAlpha(match and 1 or .3)
+	button.searchOverlay:SetShown(not match)
+end
+
+local function IsItemMatched(type, text)
+	if not type or type == "" then return end
+	return strmatch(type, text)
+end
+
+local BagSmartFilter = {
+	default = function(item, text)
+		text = strlower(text)
+		if text == "boe" then
+			return item.bindOn == "equip"
+		else
+			return IsItemMatched(item.subType, text) or IsItemMatched(item.equipLoc, text) or IsItemMatched(item.name, text)
+		end
+	end,
+	_default = "default",
+}
+
+local function ShowWidgetButtons(self)
+	for index, button in pairs(self.__owner.widgetButtons) do
+		if index ~= 1 then
+			button:Show()
+		end
+	end
+end
+
+local function HideWidgetButtons(self)
+	for index, button in pairs(self.__owner.widgetButtons) do
+		if index ~= 1 then
+			button:Hide()
+		end
+	end
 end
 
 function module:CreateInfoFrame()
 	local infoFrame = CreateFrame("Button", nil, self)
 	infoFrame:SetPoint("TOPLEFT", 10, 0)
-	infoFrame:SetSize(160, 32)
-	local icon = infoFrame:CreateTexture()
-	icon:SetSize(24, 24)
-	icon:SetPoint("LEFT")
-	icon:SetTexture("Interface\\Minimap\\Tracking\\None")
-	icon:SetTexCoord(1, 0, 0, 1)
+	infoFrame:SetSize(140, 32)
+	local icon = infoFrame:CreateTexture(nil, "ARTWORK")
+	icon:SetSize(20, 20)
+	icon:SetPoint("LEFT", 0, -1)
+	icon:SetTexture("Interface\\Common\\UI-Searchbox-Icon")
+	icon:SetVertexColor(DB.r, DB.g, DB.b)
+	local hl = infoFrame:CreateTexture(nil, "HIGHLIGHT")
+	hl:SetSize(20, 20)
+	hl:SetPoint("LEFT", 0, -1)
+	hl:SetTexture("Interface\\Common\\UI-Searchbox-Icon")
 
 	local search = self:SpawnPlugin("SearchBar", infoFrame)
 	search.highlightFunction = highlightFunction
@@ -55,16 +102,27 @@ function module:CreateInfoFrame()
 	local bg = B.CreateBDFrame(search, 0, true)
 	bg:SetPoint("TOPLEFT", -5, -5)
 	bg:SetPoint("BOTTOMRIGHT", 5, 5)
+	search.textFilters = BagSmartFilter
 
-	local tag = self:SpawnPlugin("TagDisplay", "[money]", infoFrame)
+	search.__owner = self
+	search:HookScript("OnShow", HideWidgetButtons)
+	search:HookScript("OnHide", ShowWidgetButtons)
+
+	local tag = self:SpawnPlugin("TagDisplay", "[money]", search)
 	tag:SetFont(unpack(DB.Font))
-	tag:SetPoint("LEFT", icon, "RIGHT", 5, 0)
+	tag:SetPoint("TOPRIGHT", self, -50, -8)
+
+	infoFrame.title = SEARCH
+	B.AddTooltip(infoFrame, "ANCHOR_TOPLEFT", DB.InfoColor..L["BagSearchTip"])
 end
 
 function module:CreateBagBar(settings, columns)
 	local bagBar = self:SpawnPlugin("BagBar", settings.Bags)
-	local width, height = bagBar:LayoutButtons("grid", columns, 5, 5, -5)
-	bagBar:SetSize(width + 10, height + 10)
+	local spacing = 3
+	local offset = 5
+	local _, height = bagBar:LayoutButtons("grid", columns, spacing, offset, -offset)
+	local width = columns * (self.iconSize + spacing)-spacing
+	bagBar:SetSize(width + offset*2, height + offset*2)
 	bagBar:SetPoint("TOPRIGHT", self, "BOTTOMRIGHT", 0, -5)
 	B.SetBD(bagBar)
 	bagBar.highlightFunction = highlightFunction
@@ -75,7 +133,7 @@ function module:CreateBagBar(settings, columns)
 end
 
 function module:CreateCloseButton()
-	local bu = B.CreateButton(self, 24, 24, true, "Interface\\RAIDFRAME\\ReadyCheck-NotReady")
+	local bu = B.CreateButton(self, 22, 22, true, "Interface\\RAIDFRAME\\ReadyCheck-NotReady")
 	bu:SetScript("OnClick", CloseAllBags)
 	bu.title = CLOSE
 	B.AddTooltip(bu, "ANCHOR_TOP")
@@ -84,7 +142,7 @@ function module:CreateCloseButton()
 end
 
 function module:CreateRestoreButton(f)
-	local bu = B.CreateButton(self, 24, 24, true, "Atlas:transmog-icon-revert")
+	local bu = B.CreateButton(self, 22, 22, true, "Atlas:transmog-icon-revert")
 	bu:SetScript("OnClick", function()
 		C.db["TempAnchor"][f.main:GetName()] = nil
 		C.db["TempAnchor"][f.bank:GetName()] = nil
@@ -101,7 +159,7 @@ function module:CreateRestoreButton(f)
 end
 
 function module:CreateBagToggle()
-	local bu = B.CreateButton(self, 24, 24, true, "Interface\\Buttons\\Button-Backpack-Up")
+	local bu = B.CreateButton(self, 22, 22, true, "Interface\\Buttons\\Button-Backpack-Up")
 	bu:SetScript("OnClick", function()
 		ToggleFrame(self.BagBar)
 		if self.BagBar:IsShown() then
@@ -121,7 +179,7 @@ function module:CreateBagToggle()
 end
 
 function module:CreateKeyToggle()
-	local bu = B.CreateButton(self, 24, 24, true, "Interface\\ICONS\\INV_Misc_Key_12")
+	local bu = B.CreateButton(self, 22, 22, true, "Interface\\ICONS\\INV_Misc_Key_12")
 	bu:SetScript("OnClick", function()
 		ToggleFrame(self.keyring)
 		if self.keyring:IsShown() then
@@ -141,7 +199,7 @@ function module:CreateKeyToggle()
 end
 
 function module:CreateSortButton(name)
-	local bu = B.CreateButton(self, 24, 24, true, DB.sortTex)
+	local bu = B.CreateButton(self, 22, 22, true, DB.sortTex)
 	bu:SetScript("OnClick", function()
 		if C.db["Bags"]["BagSortMode"] == 3 then
 			UIErrorsFrame:AddMessage(DB.InfoColor..L["BagSortDisabled"])
@@ -262,7 +320,7 @@ function module:CreateSplitButton()
 	editbox:SetJustifyH("CENTER")
 	editbox:SetScript("OnTextChanged", saveSplitCount)
 
-	local bu = B.CreateButton(self, 24, 24, true, "Interface\\HELPFRAME\\ReportLagIcon-AuctionHouse")
+	local bu = B.CreateButton(self, 22, 22, true, "Interface\\HELPFRAME\\ReportLagIcon-AuctionHouse")
 	bu.Icon:SetPoint("TOPLEFT", -1, 3)
 	bu.Icon:SetPoint("BOTTOMRIGHT", 1, -3)
 	bu.__turnOff = function()
@@ -313,7 +371,7 @@ local favouriteEnable
 function module:CreateFavouriteButton()
 	local enabledText = DB.InfoColor..L["FavouriteMode Enabled"]
 
-	local bu = B.CreateButton(self, 24, 24, true, "Interface\\Common\\friendship-heart")
+	local bu = B.CreateButton(self, 22, 22, true, "Interface\\Common\\friendship-heart")
 	bu.Icon:SetPoint("TOPLEFT", -5, 0)
 	bu.Icon:SetPoint("BOTTOMRIGHT", 5, -5)
 	bu.__turnOff = function()
@@ -369,7 +427,7 @@ local customJunkEnable
 function module:CreateJunkButton()
 	local enabledText = DB.InfoColor..L["JunkMode Enabled"]
 
-	local bu = B.CreateButton(self, 24, 24, true, "Interface\\BUTTONS\\UI-GroupLoot-Coin-Up")
+	local bu = B.CreateButton(self, 22, 22, true, "Interface\\BUTTONS\\UI-GroupLoot-Coin-Up")
 	bu.Icon:SetPoint("TOPLEFT", C.mult, -3)
 	bu.Icon:SetPoint("BOTTOMRIGHT", -C.mult, -3)
 	bu.__turnOff = function()
@@ -423,7 +481,7 @@ local deleteEnable
 function module:CreateDeleteButton()
 	local enabledText = DB.InfoColor..L["DeleteMode Enabled"]
 
-	local bu = B.CreateButton(self, 24, 24, true, "Interface\\Buttons\\UI-GroupLoot-Pass-Up")
+	local bu = B.CreateButton(self, 22, 22, true, "Interface\\Buttons\\UI-GroupLoot-Pass-Up")
 	bu.Icon:SetPoint("TOPLEFT", 3, -2)
 	bu.Icon:SetPoint("BOTTOMRIGHT", -1, 2)
 	bu.__turnOff = function()
@@ -646,19 +704,22 @@ function module:OnLogin()
 	end
 
 	local bagTypeColor = {
-		[-1] = {.67, .83, .45, .25},
-		[0] = {.3, .3, .3, .3},
-		[1] = {.53, .53, .93, .25},
-		[2] = {0, .5, 0, .25},
-		[3] = {0, .5, .8, .25},
+		[-1] = {.67, .83, .45, .25},-- 箭袋/弹药
+		[0] = {.3, .3, .3, .3},		-- 容器
+		[1] = {.53, .53, .93, .25}, -- 灵魂袋
+		[2] = {0, .5, 0, .25},		-- 草药袋
+		[3] = {.8, 0, .8, .25},		-- 附魔袋
+		[4] = {1, .8, 0, .25},		-- 工程袋
+		[5] = {0, .8, .8, .25},		-- 宝石袋
+		[6] = {.5, .4, 0, .25},		-- 矿石袋
+		[7] = {.8, .5, .5, .25},	-- 制皮包
+		[8] = {.8, .8, .8, .25},	-- 铭文包
+		[9] = {.4, .6, 1, .25},		-- 工具箱
+		[10] = {.8, 0, 0, .25},		-- 烹饪包
 	}
 
-	local iLvlItemClassIDs = {
-		[LE_ITEM_CLASS_ARMOR] = true,
-		[LE_ITEM_CLASS_WEAPON] = true,
-	}	
 	local function isItemNeedsLevel(item)
-		return item.link and item.level and item.rarity > 1 and iLvlItemClassIDs[item.classID]
+		return item.link and item.quality > 1 and module:IsItemHasLevel(item)
 	end
 
 	local function UpdatePawnArrow(self, item)
@@ -679,28 +740,27 @@ function module:OnLogin()
 		end
 
 		if self.JunkIcon then
-			if (MerchantFrame:IsShown() or customJunkEnable) and (item.rarity == LE_ITEM_QUALITY_POOR or NDuiADB["CustomJunkList"][item.id]) and item.sellPrice > 0 then
+			if (MerchantFrame:IsShown() or customJunkEnable) and (item.quality == LE_ITEM_QUALITY_POOR or NDuiADB["CustomJunkList"][item.id]) and item.hasPrice then
 				self.JunkIcon:Show()
 			else
 				self.JunkIcon:Hide()
 			end
 		end
 
-		if C.db["Bags"]["FavouriteItems"][item.id] then
+		if C.db["Bags"]["FavouriteItems"][item.id] and not C.db["Bags"]["ItemFilter"] then
 			self.Favourite:Show()
 		else
 			self.Favourite:Hide()
 		end
 
+		self.iLvl:SetText("")
 		if C.db["Bags"]["BagsiLvl"] and isItemNeedsLevel(item) then
-			--local level = B.GetItemLevel(item.link, item.bagID, item.slotID) or item.level
 			local level = item.level
-			if level < C.db["Bags"]["iLvlToShow"] then level = "" end
-			local color = DB.QualityColors[item.rarity]
-			self.iLvl:SetText(level)
-			self.iLvl:SetTextColor(color.r, color.g, color.b)
-		else
-			self.iLvl:SetText("")
+			if level and level > C.db["Bags"]["iLvlToShow"] then
+				local color = DB.QualityColors[item.quality]
+				self.iLvl:SetText(level)
+				self.iLvl:SetTextColor(color.r, color.g, color.b)
+			end
 		end
 
 		if self.glowFrame then
@@ -731,14 +791,19 @@ function module:OnLogin()
 	function MyButton:OnUpdateQuest(item)
 		if item.isQuestItem then
 			self:SetBackdropBorderColor(.8, .8, 0)
-		elseif item.rarity and item.rarity > -1 then
-			local color = DB.QualityColors[item.rarity]
+		elseif item.quality and item.quality > -1 then
+			local color = DB.QualityColors[item.quality]
 			self:SetBackdropBorderColor(color.r, color.g, color.b)
 		else
 			self:SetBackdropBorderColor(0, 0, 0)
 		end
 
 		self.Quest:SetShown(item.isQuestItem and module:IsAcceptableQuestItem(item.link))
+	end
+
+	function module:UpdateAllAnchors()
+		module:UpdateAnchors(f.main, ContainerGroups["Bag"])
+		module:UpdateAnchors(f.bank, ContainerGroups["Bank"])
 	end
 
 	function MyContainer:OnContentsChanged()
@@ -775,8 +840,7 @@ function module:OnLogin()
 		end
 		self:SetSize(width + xOffset*2, height + offset)
 
-		module:UpdateAnchors(f.main, ContainerGroups["Bag"])
-		module:UpdateAnchors(f.bank, ContainerGroups["Bank"])
+		module:UpdateAllAnchors()
 	end
 
 	function MyContainer:OnCreate(name, settings)
@@ -810,7 +874,9 @@ function module:OnLogin()
 		end
 		if label then B.CreateFS(self, 14, label, true, "TOPLEFT", 5, -8) return end
 
+		self.iconSize = iconSize
 		module.CreateInfoFrame(self)
+		module.CreateFreeSlots(self)
 
 		local buttons = {}
 		buttons[1] = module.CreateCloseButton(self)
@@ -834,16 +900,14 @@ function module:OnLogin()
 			local bu = buttons[i]
 			if not bu then break end
 			if i == 1 then
-				bu:SetPoint("TOPRIGHT", -5, -3)
+				bu:SetPoint("TOPRIGHT", -5, -5)
 			else
 				bu:SetPoint("RIGHT", buttons[i-1], "LEFT", -3, 0)
 			end
 		end
+		self.widgetButtons = buttons
 
 		self:HookScript("OnShow", B.RestoreMF)
-
-		self.iconSize = iconSize
-		module.CreateFreeSlots(self)
 	end
 
 	local BagButton = Backpack:GetClass("BagButton", true, "BagButton")
@@ -894,6 +958,20 @@ function module:OnLogin()
 	--B:RegisterEvent("TRADE_CLOSED", module.CloseBags)
 	B:RegisterEvent("AUCTION_HOUSE_SHOW", module.OpenBags)
 	B:RegisterEvent("AUCTION_HOUSE_CLOSED", module.CloseBags)
+
+	-- Update infobar slots
+	local INFO = B:GetModule("Infobar")
+	if INFO.modules then
+		for _, info in pairs(INFO.modules) do
+			if info.name == "Gold" then
+				Backpack.OnOpen = function()
+					if not NDuiADB["ShowSlots"] then return end
+					info:onEvent()
+				end
+				break
+			end
+		end
+	end
 
 	-- Fixes
 	BankFrame.GetRight = function() return f.bank:GetRight() end

@@ -1300,7 +1300,7 @@ function private.FSMCreate()
 			errStr = REQUIRES_LABEL.." "..toolsStr
 		elseif TSM.Crafting.ProfessionUtil.GetRemainingCooldown(context.selectedCraftString) then
 			errStr = L["On Cooldown"]
-		elseif TSM.Crafting.ProfessionUtil.GetNumCraftable(context.selectedCraftString) == 0 then
+		elseif TSM.Crafting.ProfessionUtil.GetNumCraftable(context.selectedCraftString, context.selectedCraftLevel) == 0 then
 			errStr = L["Missing Materials"]
 		else
 			canCraft = true
