@@ -17873,13 +17873,13 @@ L["(%d/500 Characters)"] = "(%d/500 字符)"
 L["(minimum 0 - maximum %d)"] = "(minimum 0 - maximum %d)"
 L["1 Group"] = "1 群組"
 L["1 Item"] = "1 物品"
-L["1D"] = "1D"
-L["1M"] = "1M"
-L["1W"] = "1W"
-L["1Y"] = "1Y"
-L["2Y"] = "2年"
-L["3M"] = "三個月"
-L["6M"] = "六個月"
+L["1D"] = "天"
+L["1M"] = "月"
+L["1W"] = "周"
+L["1Y"] = "年"
+L["2Y"] = "兩"
+L["3M"] = "季"
+L["6M"] = "半"
 --[[Translation missing --]]
 L["A brand new and improved user interface."] = "A brand new and improved user interface."
 L["A custom price of %s for %s evaluates to %s."] = "%s的自定義價格為%s到%s。"
@@ -17899,8 +17899,7 @@ L["Above max price. Posting at min."] = "Above max price. Posting at min."
 L["Above max price. Posting at normal."] = "Above max price. Posting at normal."
 --[[Translation missing --]]
 L["Accept COD?"] = "Accept COD?"
---[[Translation missing --]]
-L["Accepting this item will cost: %s"] = "Accepting this item will cost: %s"
+L["Accepting this item will cost: %s"] = "接受該物品將花費：%s"
 L["Account sync removed. Please delete the account sync from the other account as well."] = "帳戶同步已刪除。 請同時從另一個帳戶中刪除該帳戶同步。"
 L["Account Syncing"] = "帳戶同步"
 L["Accounting"] = "會計"
@@ -18009,8 +18008,8 @@ L["Are you sure you want to clear old accounting data?"] = "你確定要清除�
 --[[Translation missing --]]
 L["Are you sure you want to delete the selected operations?"] = "Are you sure you want to delete the selected operations?"
 L["Are you sure you want to delete this operation?"] = "你確定要刪除這個作業嗎?"
-L["At above max price and not undercut."] = "以高於最高價的價格購買，並且不能削價。"
-L["At normal price and not undercut."] = "價格正常且不削價。"
+L["At above max price and not undercut."] = "你的售價高於設定最高價格，但仍然是市場最低價"
+L["At normal price and not undercut."] = "你的售價是你設定的正常價格，同時也是市場最低價"
 L["Attachments"] = "附件"
 L["Auction"] = "拍賣"
 L["Auction duration"] = "拍賣時限"
@@ -18163,9 +18162,8 @@ L["Cancel auctions with bids"] = "Cancel auctions with bids"
 L["Cancel or Post"] = "Cancel or Post"
 --[[Translation missing --]]
 L["Cancel Scan"] = "Cancel Scan"
---[[Translation missing --]]
-L["Cancel to repost higher"] = "Cancel to repost higher"
-L["Cancel undercut auctions"] = "取消削價拍賣"
+L["Cancel to repost higher"] = "取消並以更高價格發佈"
+L["Cancel undercut auctions"] = "取消非最低價的拍賣"
 --[[Translation missing --]]
 L["Canceled information"] = "Canceled information"
 L["Canceling"] = "撤銷"
@@ -18184,10 +18182,8 @@ L["Canceling to repost at higher price."] = "Canceling to repost at higher price
 L["Canceling to repost at reset price."] = "Canceling to repost at reset price."
 --[[Translation missing --]]
 L["Canceling to repost higher."] = "Canceling to repost higher."
---[[Translation missing --]]
-L["Canceling undercut auctions and to repost higher."] = "Canceling undercut auctions and to repost higher."
---[[Translation missing --]]
-L["Canceling undercut auctions."] = "Canceling undercut auctions."
+L["Canceling undercut auctions and to repost higher."] = "取消非最低價的拍賣並以更有利潤的價格發佈"
+L["Canceling undercut auctions."] = "取消非最低價的拍賣（保證金不退）"
 L["Cancelled"] = "取消"
 --[[Translation missing --]]
 L["Cancelled auction of %sx%d"] = "Cancelled auction of %sx%d"
@@ -18270,12 +18266,10 @@ L["Crafting"] = "製造"
 L["CRAFTING"] = "CRAFTING"
 --[[Translation missing --]]
 L["Crafting %s button"] = "Crafting %s button"
---[[Translation missing --]]
-L["Crafting cost"] = "Crafting cost"
+L["Crafting cost"] = "製造成本"
 L["Crafting Cost"] = "製造成本"
 L["Crafting List"] = "製造清單"
---[[Translation missing --]]
-L["Crafting Material Cost"] = "Crafting Material Cost"
+L["Crafting Material Cost"] = "製造材料成本"
 --[[Translation missing --]]
 L["Crafting Mode"] = "Crafting Mode"
 L["Crafting operation"] = "製造作業"
@@ -18329,8 +18323,7 @@ L["Dalaran"] = "Dalaran"
 L["Dashboard"] = "儀錶板"
 --[[Translation missing --]]
 L["Default craft value method"] = "Default craft value method"
---[[Translation missing --]]
-L["Default material cost method"] = "Default material cost method"
+L["Default material cost method"] = "默認材料成本方案"
 --[[Translation missing --]]
 L["Default Price"] = "Default Price"
 L["Default price configuration"] = "預設價格配置"
@@ -18368,8 +18361,7 @@ L["Destroying will ignore %s permanently. You can remove it from the ignored lis
 --[[Translation missing --]]
 L["Destroying will ignore %s until you log out."] = "Destroying will ignore %s until you log out."
 L["Destroying..."] = "分解..."
---[[Translation missing --]]
-L["Detailed crafting cost"] = "Detailed crafting cost"
+L["Detailed crafting cost"] = "詳細製造成本"
 --[[Translation missing --]]
 L["Detailed destroy information"] = "Detailed destroy information"
 L["Details"] = "細節"
@@ -18434,8 +18426,7 @@ L["Done Posting"] = "完成發佈"
 --[[Translation missing --]]
 L["Done rebuilding item cache."] = "Done rebuilding item cache."
 L["Done Scanning"] = "完成掃瞄"
---[[Translation missing --]]
-L["Don't post after this many expires"] = "Don't post after this many expires"
+L["Don't post after this many expires"] = "多少次過期後就不再發佈"
 L["Don't Post Items"] = "不要發佈物品"
 --[[Translation missing --]]
 L["Don't prompt to record trades"] = "Don't prompt to record trades"
@@ -18675,8 +18666,7 @@ L["Hr"] = "Hr"
 L["Hrs"] = "Hrs"
 --[[Translation missing --]]
 L["If you have multiple profiles set up with operations, enabling this will cause all but the current profile's operations to be irreversibly lost."] = "If you have multiple profiles set up with operations, enabling this will cause all but the current profile's operations to be irreversibly lost."
---[[Translation missing --]]
-L["Ignore Auctions Below Min"] = "Ignore Auctions Below Min"
+L["Ignore Auctions Below Min"] = "忽略最低價以下的拍賣"
 --[[Translation missing --]]
 L["Ignore auctions by duration"] = "Ignore auctions by duration"
 L["Ignore Characters"] = "忽略角色"
@@ -18853,15 +18843,13 @@ L["Market Value"] = "Market Value"
 L["Market value"] = "Market value"
 L["Market value price source"] = "市值價格來源"
 L["Market Value Price Source"] = "市值價格來源"
---[[Translation missing --]]
-L["Mat cost"] = "Mat cost"
+L["Mat cost"] = "原材料成本"
 --[[Translation missing --]]
 L["Mat Price"] = "Mat Price"
 --[[Translation missing --]]
 L["Match stack size"] = "Match stack size"
 L["Match whitelisted players"] = "符合白名單玩家"
---[[Translation missing --]]
-L["Material Cost"] = "Material Cost"
+L["Material Cost"] = "原材料成本"
 --[[Translation missing --]]
 L["Material Price"] = "Material Price"
 L["Materials"] = "材料"
@@ -18923,18 +18911,16 @@ L["Min Buyout"] = "Min Buyout"
 L["Min buyout"] = "Min buyout"
 --[[Translation missing --]]
 L["Min number of expires"] = "Min number of expires"
---[[Translation missing --]]
-L["Min profit amount"] = "Min profit amount"
+L["Min profit amount"] = "最低利潤"
 --[[Translation missing --]]
 L["Min restock quantity"] = "Min restock quantity"
 --[[Translation missing --]]
 L["Min Sell Price"] = "Min Sell Price"
---[[Translation missing --]]
-L["Min/Normal/Max price"] = "Min/Normal/Max price"
-L["Min/Normal/Max Prices"] = "最低/一般/最高 拍賣價"
+L["Min/Normal/Max price"] = "最低/正常/最高 價格"
+L["Min/Normal/Max Prices"] = "最低/正常/最高 價格"
 --[[Translation missing --]]
 L["Minimum disenchant level"] = "Minimum disenchant level"
-L["Minimum price"] = "最低價格"
+L["Minimum price"] = "發佈的最低價格（提示：例如不要低於成本+拍賣行手續費）"
 --[[Translation missing --]]
 L["Minimum Rarity"] = "Minimum Rarity"
 L["Misplaced comma"] = "錯誤的逗號分隔"
@@ -19037,8 +19023,7 @@ L["None (Always Show)"] = "None (Always Show)"
 L["None Selected"] = "未選"
 --[[Translation missing --]]
 L["Nongroup to bank"] = "Nongroup to bank"
---[[Translation missing --]]
-L["Normal price"] = "Normal price"
+L["Normal price"] = "正常價格"
 --[[Translation missing --]]
 L["Not canceling auction at reset price."] = "Not canceling auction at reset price."
 --[[Translation missing --]]
@@ -19129,7 +19114,7 @@ L["Post"] = "發佈"
 L["Post / Cancel"] = "Post / Cancel"
 L["Post at Maximum Price"] = "以最高價格發佈"
 L["Post at Minimum Price"] = "以最低價格發佈"
-L["Post at Normal Price"] = "以一般價格發佈"
+L["Post at Normal Price"] = "以正常價格發佈"
 --[[Translation missing --]]
 L["Post Auction"] = "Post Auction"
 L["Post cap"] = "發佈上限"
@@ -19156,7 +19141,7 @@ L["Posting %d / %d"] = "Posting %d / %d"
 L["Posting %d items for %s hours."] = "Posting %d items for %s hours."
 --[[Translation missing --]]
 L["Posting %d stack(s) of %d for %s hours."] = "Posting %d stack(s) of %d for %s hours."
-L["Posting at normal price."] = "以一般價格發佈."
+L["Posting at normal price."] = "以正常價格發佈."
 --[[Translation missing --]]
 L["Posting at whitelisted player's price."] = "Posting at whitelisted player's price."
 L["Posting at your current price."] = "以你目前的價格發佈"
@@ -19314,8 +19299,7 @@ L["Replace %d existing operations?"] = "替代 %d 存在的作業?"
 L["Reply"] = "回覆"
 L["Report Spam"] = "垃圾信回報"
 L["Reports"] = "報告"
---[[Translation missing --]]
-L["Repost threshold"] = "Repost threshold"
+L["Repost threshold"] = "更高價格重新發佈的閾值"
 --[[Translation missing --]]
 L["Required Level"] = "Required Level"
 --[[Translation missing --]]
@@ -19722,8 +19706,7 @@ L["There is no Crafting operation applied to this item's TSM group (%s)."] = "Th
 L["This includes support for optional reagents for your recipes as well as legendary craft ranks."] = "This includes support for optional reagents for your recipes as well as legendary craft ranks."
 --[[Translation missing --]]
 L["This is not a valid profile name. Profile names must be at least one character long and may not contain '@' characters."] = "This is not a valid profile name. Profile names must be at least one character long and may not contain '@' characters."
---[[Translation missing --]]
-L["This item does not have a crafting cost. Check that all of its mats have mat prices."] = "This item does not have a crafting cost. Check that all of its mats have mat prices."
+L["This item does not have a crafting cost. Check that all of its mats have mat prices."] = "此物品沒有製造成本，請檢查所有材料是否有材料價格。"
 --[[Translation missing --]]
 L["This item is not in a TSM group."] = "This item is not in a TSM group."
 --[[Translation missing --]]
@@ -19844,12 +19827,12 @@ L["Type"] = "類型"
 L["Unbalanced parentheses."] = "缺少括弧。"
 --[[Translation missing --]]
 L["Uncollected Only"] = "Uncollected Only"
-L["Undercut amount"] = "削價金額"
+L["Undercut amount"] = "每次降價幅度"
 --[[Translation missing --]]
 L["Undercut by whitelisted player."] = "Undercut by whitelisted player."
 --[[Translation missing --]]
 L["Undercutting blacklisted player."] = "Undercutting blacklisted player."
-L["Undercutting competition."] = "削價競爭"
+L["Undercutting competition."] = "降價出售"
 L["Ungrouped Items"] = "未被群組的物品"
 L["Ungrouped Items in Bags"] = "背包裡未被群組的物品"
 L["Unit Price"] = "單價"
@@ -19948,9 +19931,8 @@ L["WARNING: Your minimum price for %s is below its vendorsell price (with AH cut
 L["We've added new price sources to give you even more flexibility in how you use TSM to manage your gold making. You can now reference NumInventory, SaleRate, and much more throughout the addon. SmartAvgBuy has also been moved from an option to its own separate price source."] = "We've added new price sources to give you even more flexibility in how you use TSM to manage your gold making. You can now reference NumInventory, SaleRate, and much more throughout the addon. SmartAvgBuy has also been moved from an option to its own separate price source."
 --[[Translation missing --]]
 L["We've added the option to customise the colour palette to your own preferences, including the ability to export a string to share with your friends to import."] = "We've added the option to customise the colour palette to your own preferences, including the ability to export a string to share with your friends to import."
---[[Translation missing --]]
-L["When above maximum:"] = "When above maximum:"
-L["When below minimum:"] = "當低於最低價格時:"
+L["When above maximum:"] = "當市場價高於你設定的最高價格時"
+L["When below minimum:"] = "當市場商品售價低於你設定的最低價格時："
 L["Whitelist"] = "白名單"
 L["Whitelisted characters"] = "白名單角色"
 --[[Translation missing --]]
@@ -19984,8 +19966,7 @@ L["You either already have at least your max restock quantity of this item or th
 L["You must reload your UI for these settings to take effect. Reload now?"] = "You must reload your UI for these settings to take effect. Reload now?"
 --[[Translation missing --]]
 L["You won an auction for %sx%d for %s"] = "You won an auction for %sx%d for %s"
---[[Translation missing --]]
-L["Your auction has not been undercut."] = "Your auction has not been undercut."
+L["Your auction has not been undercut."] = "此項商品是市場最低價格"
 --[[Translation missing --]]
 L["Your auction of %s expired"] = "Your auction of %s expired"
 L["Your auction of %s has sold for %s!"] = "你拍賣的 %s 已經售出共 %s !"
@@ -20003,7 +19984,7 @@ L["Your restock quantity is invalid. It must be between %d and %s."] = "Your res
 L["Your task list is currently empty."] = "您的任務列表當前為空。"
 --[[Translation missing --]]
 L["You've been phased which has caused the AH to stop working due to a bug on Blizzard's end. Please close and reopen the AH and restart Sniper."] = "You've been phased which has caused the AH to stop working due to a bug on Blizzard's end. Please close and reopen the AH and restart Sniper."
-L["You've been undercut."] = "你已經被削價了。"
+L["You've been undercut."] = "此項商品不是市場最低價格"
 	else
 		error("Unknown locale: "..tostring(locale))
 	end
