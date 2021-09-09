@@ -1,3 +1,6 @@
+### 2.1.3
+- toc update
+
 ### 2.1.2
 - Fix BoP confirm issue
 

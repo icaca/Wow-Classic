@@ -267,7 +267,7 @@ function module:RecycleBin()
 		if #buttons == 0 then return end
 
 		wipe(shownButtons)
-		for index, button in pairs(buttons) do
+		for _, button in pairs(buttons) do
 			if next(button) and button:IsShown() then -- fix for fuxking AHDB
 				tinsert(shownButtons, button)
 			end
@@ -336,8 +336,9 @@ function module:WhoPingsMyMap()
 end
 
 function module:UpdateMinimapScale()
-	local size = Minimap:GetWidth()
+	local size = C.db["Map"]["MinimapSize"]
 	local scale = C.db["Map"]["MinimapScale"]
+	Minimap:SetSize(size, size)
 	Minimap:SetScale(scale)
 	Minimap.mover:SetSize(size*scale, size*scale)
 end
