@@ -244,6 +244,7 @@ do
 		L["Back"] = "Back"
 		L["Bag"] = "Bag"
 		L["Bags"] = "Bags"
+		L["Bank"] = "Bank"
 		L["Banking"] = "Banking"
 		L["Banks"] = "Banks"
 		L["Base Group"] = "Base Group"

@@ -1,5 +1,7 @@
-## v4.11.12 Changes
+## v4.11.13 Changes
 
-* [BCC] Updated for patch 2.5.2
+* [Classic/BCC] Added Bank gathering source
+* [BCC] Implemented Guild Bank support
+* Some crafting/inventory optimisations
 
 [Known Issues](https://support.tradeskillmaster.com/en_US/known_issues)

@@ -1,4 +1,4 @@
-## Interface: 20501
+## Interface: 20502
 
 ## Title: BigWigs [|cffeda55fOnyxia|r]
 ## Title-deDE: BigWigs [|cffeda55fOnyxia|r]
@@ -22,7 +22,7 @@
 ## Notes-ptBR: BigWigs Onyxia Modules
 ## Notes-zhCN: 奥妮克希亚模块。
 ## Notes-zhTW: BigWigs Onyxia Modules
-## Version: v29-classic
+## Version: v31-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

@@ -1,4 +1,4 @@
-## Interface: 20501
+## Interface: 20502
 
 ## Title: BigWigs [|cffeda55fMolten Core|r]
 ## Title-deDE: BigWigs [|cffeda55fGeschmolzener Kern|r]
@@ -22,7 +22,7 @@
 ## Notes-ruRU: BigWigs Molten Core Modules
 ## Notes-zhCN: 熔火之心模块。
 ## Notes-zhTW: BigWigs Molten Core Modules
-## Version: v29-classic
+## Version: v31-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

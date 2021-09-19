@@ -1,4 +1,4 @@
-## Interface: 20501
+## Interface: 20502
 
 ## Title: BigWigs [|cffeda55fBlackwing Lair|r]
 ## Title-deDE: BigWigs [|cffeda55fPechschwingenhort|r]
@@ -22,7 +22,7 @@
 ## Notes-ruRU: BigWigs Blackwing Lair Modules
 ## Notes-zhCN: BigWigs 黑翼之巢模块。
 ## Notes-zhTW: BigWigs Blackwing Lair Modules
-## Version: v29-classic
+## Version: v31-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

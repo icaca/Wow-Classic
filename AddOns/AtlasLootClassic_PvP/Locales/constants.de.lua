@@ -16,6 +16,6 @@ AL["One-Handed"] = "Einhändig"
 AL["Open World"] = "Offene Welt"
 AL["PvP Ranks"] = "PvP Ränge"
 AL["Ranged"] = "Distanz"
-AL["Season %s"] = "Staffel %s"
+AL["Season %s"] = "Saison %s"
 AL["Two-Handed"] = "Zweihändig"
 
