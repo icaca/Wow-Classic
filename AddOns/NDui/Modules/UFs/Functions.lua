@@ -464,6 +464,10 @@ local function createBarMover(bar, text, value, anchor)
 	bar.mover = mover
 end
 
+local function updateSpellTarget(self, _, unit)
+	B.PostCastUpdate(self.Castbar, unit)
+end
+
 function UF:CreateCastBar(self)
 	local mystyle = self.mystyle
 	if mystyle ~= "nameplate" and not C.db["UFs"]["Castbars"] then return end
@@ -546,6 +550,8 @@ function UF:CreateCastBar(self)
 		spellTarget:SetJustifyH("LEFT")
 		spellTarget:SetPoint("TOPLEFT", name, "BOTTOMLEFT", 0, -2)
 		cb.spellTarget = spellTarget
+
+		self:RegisterEvent("UNIT_TARGET", updateSpellTarget)
 	end
 
 	if mystyle == "nameplate" or mystyle == "boss" or mystyle == "arena" then
@@ -1078,12 +1084,12 @@ function UF:CreatePrediction(self)
 	local mhpb = frame:CreateTexture(nil, "BORDER", nil, 5)
 	mhpb:SetWidth(1)
 	mhpb:SetTexture(DB.normTex)
-	mhpb:SetVertexColor(0, 1, .5, .5)
+	mhpb:SetVertexColor(0, 1, 0, .5)
 
 	local ohpb = frame:CreateTexture(nil, "BORDER", nil, 5)
 	ohpb:SetWidth(1)
 	ohpb:SetTexture(DB.normTex)
-	ohpb:SetVertexColor(0, 1, 0, .5)
+	ohpb:SetVertexColor(0, 1, 1, .5)
 
 	self.HealPredictionAndAbsorb = {
 		myBar = mhpb,

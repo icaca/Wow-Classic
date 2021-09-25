@@ -1,6 +1,9 @@
 local _, ns = ...
 local oUF = ns.oUF
 
+local myGUID = UnitGUID('player')
+local HealComm = LibStub("LibHealComm-4.0")
+
 local function UpdateFillBar(frame, previousTexture, bar, amount)
 	if amount == 0 then
 		bar:Hide()
@@ -25,9 +28,16 @@ local function Update(self, event, unit)
 	local hp = self.HealPredictionAndAbsorb
 	if(hp.PreUpdate) then hp:PreUpdate(unit) end
 
+	local guid = UnitGUID(unit)
+
 	local myIncomingHeal = UnitGetIncomingHeals(unit, 'player') or 0
 	local allIncomingHeal = UnitGetIncomingHeals(unit) or 0
+	local allHot = HealComm:GetHealAmount(guid, hp.healType) or 0
+	local myHot = (HealComm:GetHealAmount(guid, hp.healType, nil, myGUID) or 0) * (HealComm:GetHealModifier(myGUID) or 1)
 	local health, maxHealth = UnitHealth(unit), UnitHealthMax(unit)
+
+	allIncomingHeal = allIncomingHeal + allHot
+	myIncomingHeal = myIncomingHeal + myHot
 
 	if(health + allIncomingHeal > maxHealth * hp.maxOverflow) then
 		allIncomingHeal = maxHealth * hp.maxOverflow - health
@@ -62,10 +72,36 @@ local function Enable(self)
 	if(hp) then
 		hp.__owner = self
 		hp.ForceUpdate = ForceUpdate
+		hp.healType = hp.healType or HealComm.OVERTIME_AND_BOMB_HEALS
 
 		self:RegisterEvent('UNIT_HEAL_PREDICTION', Path)
 		self:RegisterEvent('UNIT_MAXHEALTH', Path)
 		self:RegisterEvent('UNIT_HEALTH', Path)
+
+		local function HealCommUpdate(...)
+			if self.HealPrediction and self:IsVisible() then
+				for i = 1, select('#', ...) do
+					if self.unit and UnitGUID(self.unit) == select(i, ...) then
+						Path(self, nil, self.unit)
+					end
+				end
+			end
+		end
+
+		local function HealComm_Heal_Update(event, casterGUID, spellID, healType, _, ...)
+			HealCommUpdate(...)
+		end
+
+		local function HealComm_Modified(event, guid)
+			HealCommUpdate(guid)
+		end
+
+		HealComm.RegisterCallback(hp, 'HealComm_HealStarted', HealComm_Heal_Update)
+		HealComm.RegisterCallback(hp, 'HealComm_HealUpdated', HealComm_Heal_Update)
+		HealComm.RegisterCallback(hp, 'HealComm_HealDelayed', HealComm_Heal_Update)
+		HealComm.RegisterCallback(hp, 'HealComm_HealStopped', HealComm_Heal_Update)
+		HealComm.RegisterCallback(hp, 'HealComm_ModifierChanged', HealComm_Modified)
+		HealComm.RegisterCallback(hp, 'HealComm_GUIDDisappeared', HealComm_Modified)
 
 		if(not hp.maxOverflow) then
 			hp.maxOverflow = 1.05
@@ -87,6 +123,13 @@ local function Disable(self)
 	if(hp) then
 		hp.myBar:Hide()
 		hp.otherBar:Hide()
+
+		HealComm.UnregisterCallback(hp, 'HealComm_HealStarted')
+		HealComm.UnregisterCallback(hp, 'HealComm_HealUpdated')
+		HealComm.UnregisterCallback(hp, 'HealComm_HealDelayed')
+		HealComm.UnregisterCallback(hp, 'HealComm_HealStopped')
+		HealComm.UnregisterCallback(hp, 'HealComm_ModifierChanged')
+		HealComm.UnregisterCallback(hp, 'HealComm_GUIDDisappeared')
 
 		self:UnregisterEvent('UNIT_HEAL_PREDICTION', Path)
 		self:UnregisterEvent('UNIT_MAXHEALTH', Path)
