@@ -69,8 +69,7 @@ AL["Cho'Rush the Observer"] = "Cho'Rush el Observador"
 AL["Chromaggus"] = "Chromaggus"
 AL["Class books"] = "Libros de clase"
 AL["Commander Springvale"] = "Comandante Vallefont"
---[[Translation missing --]]
---[[ AL["Conspicuous Urn"] = "Conspicuous Urn"--]] 
+AL["Conspicuous Urn"] = "Urna llamativa"
 AL["Cookie"] = "Cocinitas"
 AL["Crimson Hammersmith"] = "Forjamartillos Carmesí"
 AL["Crowd Pummeler 9-60"] = "Golpeamasa 9-60"
@@ -246,8 +245,7 @@ AL["Nekrum Gutchewer"] = "Nekrum Cometripas"
 AL["Nerub'enkan"] = "Nerub'enkan"
 AL["Noth the Plaguebringer"] = "Noth el Pesteador"
 AL["Noxxion"] = "Noxxion"
---[[Translation missing --]]
---[[ AL["Obsidian Sentinel"] = "Obsidian Sentinel"--]] 
+AL["Obsidian Sentinel"] = "Centinela obsidiana"
 AL["Odo the Blindwatcher"] = "Odo el Vigía Ciego"
 AL["Ogom the Wretched"] = "Ogom el Desdichado"
 AL["Ok'thor the Breaker"] = "Ok'thor el Rompedor"

@@ -9,13 +9,21 @@ AL["'%s' Vendor"] = "'%s' Vendedor"
 AL["Abyssal Dukes"] = "Duques abisales"
 AL["Abyssal Lords"] = "Lords abisales"
 AL["Abyssal Templars"] = "Templarios abisales"
+--[[Translation missing --]]
+--[[ AL["Ahune"] = "Ahune"--]] 
 AL["Avalanchion"] = "Avalanchion"
 AL["Azure Templar"] = "Templario azur"
 AL["Baron Charr"] = "Barón Charr"
 AL["Baron Kazum"] = "Barón Kazum"
 AL["Box of Chocolates"] = "Caja de bombones"
+--[[Translation missing --]]
+--[[ AL["Brewfest"] = "Brewfest"--]] 
 AL["Brightly Colored Egg"] = "Huevo de colores vivos"
+--[[Translation missing --]]
+--[[ AL["Burning Crusade"] = "Burning Crusade"--]] 
 AL["Childrens Week"] = "Semana de los Niños"
+--[[Translation missing --]]
+--[[ AL["Classic"] = "Classic"--]] 
 AL["Crimson Templar"] = "Templario Carmesí"
 AL["Drops"] = "Despoja"
 AL["Dungeon Set %s"] = "Conjunto de Mazmorra %s"
@@ -27,9 +35,13 @@ AL["Faction Mounts"] = "Monturas de facción"
 AL["Feast of Winter Veil"] = "El festín del Festival de Invierno"
 AL["Festive Gift"] = "Obsequio festivo"
 AL["First Prize"] = "Primer precio"
+--[[Translation missing --]]
+--[[ AL["Food"] = "Food"--]] 
 AL["Gaily Wrapped Present"] = "Regalo con envoltorio alegre"
 AL["Gently Shaken Gift"] = "Regalo ligeramente agitado"
 AL["Gift of Adoration"] = "Ofrenda de adoración"
+--[[Translation missing --]]
+--[[ AL["Graveyard - Headless Horseman"] = "Graveyard - Headless Horseman"--]] 
 AL["Gurubashi Arena"] = "Arena Gurubashi"
 AL["Hallow's End"] = "Halloween"
 AL["Harvest Festival"] = "Festival de la Cosecha"
