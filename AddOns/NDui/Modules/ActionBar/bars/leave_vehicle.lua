@@ -4,38 +4,26 @@ local Bar = B:GetModule("Actionbar")
 
 local _G = _G
 local tinsert = tinsert
+local UnitOnTaxi, TaxiRequestEarlyLanding, VehicleExit = UnitOnTaxi, TaxiRequestEarlyLanding, VehicleExit
 local cfg = C.Bars.leave_vehicle
-local margin, padding = C.Bars.margin, C.Bars.padding
+local padding = C.Bars.padding
 
-local function SetFrameSize(frame, size, num)
-	size = size or frame.buttonSize
-	num = num or frame.numButtons
+function Bar:UpdateVehicleButton()
+	local frame = _G["NDui_ActionBarExit"]
+	if not frame then return end
 
-	frame:SetWidth(num*size + (num-1)*margin + 2*padding)
-	frame:SetHeight(size + 2*padding)
-	if not frame.mover then
-		frame.mover = B.Mover(frame, L["LeaveVehicle"], "LeaveVehicle", frame.Pos)
-	else
-		frame.mover:SetSize(frame:GetSize())
-	end
-
-	if not frame.SetFrameSize then
-		frame.buttonSize = size
-		frame.numButtons = num
-		frame.SetFrameSize = SetFrameSize
-	end
+	local size = C.db["Actionbar"]["VehButtonSize"]
+	local framSize = size + 2*padding
+	frame.buttons[1]:SetSize(size, size)
+	frame:SetSize(framSize, framSize)
+	frame.mover:SetSize(framSize, framSize)
 end
 
 function Bar:CreateLeaveVehicle()
-	local num = 1
 	local buttonList = {}
 
 	local frame = CreateFrame("Frame", "NDui_ActionBarExit", UIParent)
-	if C.db["Actionbar"]["Style"] == 3 then
-		frame.Pos = {"BOTTOM", UIParent, "BOTTOM", 0, 130}
-	else
-		frame.Pos = {"BOTTOM", UIParent, "BOTTOM", 320, 100}
-	end
+	frame.mover = B.Mover(frame, L["LeaveVehicle"], "LeaveVehicle", {"BOTTOM", UIParent, "BOTTOM", 320, 100})
 
 	local button = CreateFrame("CheckButton", "NDui_LeaveVehicleButton", frame, "ActionButtonTemplate")
 	tinsert(buttonList, button)
@@ -56,14 +44,17 @@ function Bar:CreateLeaveVehicle()
 	end)
 
 	button:SetScript("OnClick", function()
-		if UnitOnTaxi("player") then TaxiRequestEarlyLanding() end
+		if UnitOnTaxi("player") then
+			TaxiRequestEarlyLanding()
+		else
+			VehicleExit()
+		end
 		button:SetChecked(true)
 	end)
 	button:SetScript("OnEnter", MainMenuBarVehicleLeaveButton_OnEnter)
 	button:SetScript("OnLeave", B.HideTooltip)
 
-	frame.buttonList = buttonList
-	SetFrameSize(frame, cfg.size, num)
+	frame.buttons = buttonList
 
 	if cfg.fader then
 		Bar.CreateButtonFrameFader(frame, buttonList, cfg.fader)

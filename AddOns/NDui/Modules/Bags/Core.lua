@@ -9,7 +9,7 @@ local LE_ITEM_QUALITY_POOR, LE_ITEM_QUALITY_RARE = LE_ITEM_QUALITY_POOR, LE_ITEM
 local LE_ITEM_CLASS_QUIVER, LE_ITEM_CLASS_CONTAINER = LE_ITEM_CLASS_QUIVER, LE_ITEM_CLASS_CONTAINER
 local GetContainerNumSlots, GetContainerItemInfo, PickupContainerItem = GetContainerNumSlots, GetContainerItemInfo, PickupContainerItem
 local C_NewItems_IsNewItem, C_NewItems_RemoveNewItem = C_NewItems.IsNewItem, C_NewItems.RemoveNewItem
-local IsControlKeyDown, IsAltKeyDown, DeleteCursorItem = IsControlKeyDown, IsAltKeyDown, DeleteCursorItem
+local IsControlKeyDown, IsAltKeyDown, IsShiftKeyDown, DeleteCursorItem = IsControlKeyDown, IsAltKeyDown, IsShiftKeyDown, DeleteCursorItem
 local SortBankBags, SortBags, InCombatLockdown, ClearCursor = SortBankBags, SortBags, InCombatLockdown, ClearCursor
 local GetContainerItemID, SplitContainerItem = GetContainerItemID, SplitContainerItem
 local NUM_BAG_SLOTS = NUM_BAG_SLOTS or 4
@@ -17,24 +17,55 @@ local NUM_BANKBAGSLOTS = NUM_BANKBAGSLOTS or 7
 local ITEM_STARTS_QUEST = ITEM_STARTS_QUEST
 
 local anchorCache = {}
-function module:UpdateAnchors(parent, bags)
-	if not parent:IsShown() then return end
 
+function module:UpdateBagsAnchor(parent, bags)
 	wipe(anchorCache)
 
 	local index = 1
+	local perRow = C.db["Bags"]["BagsPerRow"]
 	anchorCache[index] = parent
 
-	for _, bag in ipairs(bags) do
+	for i = 1, #bags do
+		local bag = bags[i]
 		if bag:GetHeight() > 45 then
 			bag:Show()
 			index = index + 1
 
 			bag:ClearAllPoints()
-			if (index-1) % 4 == 0 and C.db["Bags"]["MultiRows"] then
-				bag:SetPoint("BOTTOMRIGHT", anchorCache[index-4], "BOTTOMLEFT", -5, 0)
+			if (index-1) % perRow == 0 then
+				bag:SetPoint("BOTTOMRIGHT", anchorCache[index-perRow], "BOTTOMLEFT", -5, 0)
 			else
 				bag:SetPoint("BOTTOMLEFT", anchorCache[index-1], "TOPLEFT", 0, 5)
+			end
+			anchorCache[index] = bag
+		else
+			bag:Hide()
+		end
+	end
+end
+
+function module:UpdateBankAnchor(parent, bags)
+	wipe(anchorCache)
+
+	local index = 1
+	local perRow = C.db["Bags"]["BankPerRow"]
+	anchorCache[index] = parent
+
+	for i = 1, #bags do
+		local bag = bags[i]
+		if bag:GetHeight() > 45 then
+			bag:Show()
+			index = index + 1
+
+			bag:ClearAllPoints()
+			if index <= perRow then
+				bag:SetPoint("BOTTOMLEFT", anchorCache[index-1], "TOPLEFT", 0, 5)
+			elseif index == perRow+1 then
+				bag:SetPoint("TOPLEFT", anchorCache[index-1], "TOPRIGHT", 5, 0)
+			elseif (index-1) % perRow == 0 then
+				bag:SetPoint("TOPLEFT", anchorCache[index-perRow], "TOPRIGHT", 5, 0)
+			else
+				bag:SetPoint("TOPLEFT", anchorCache[index-1], "BOTTOMLEFT", 0, -5)
 			end
 			anchorCache[index] = bag
 		else
@@ -138,18 +169,23 @@ function module:CreateCollapseArrow()
 	self.widgetArrow = bu
 end
 
-function module:CreateBagBar(settings, columns)
-	local bagBar = self:SpawnPlugin("BagBar", settings.Bags)
+local function updateBagBar(bar)
 	local spacing = 3
 	local offset = 5
-	local _, height = bagBar:LayoutButtons("grid", columns, spacing, offset, -offset)
-	local width = columns * (self.iconSize + spacing)-spacing
-	bagBar:SetSize(width + offset*2, height + offset*2)
+	local width, height = bar:LayoutButtons("grid", bar.columns, spacing, offset, -offset)
+	bar:SetSize(width + offset*2, height + offset*2)
+end
+
+function module:CreateBagBar(settings, columns)
+	local bagBar = self:SpawnPlugin("BagBar", settings.Bags)
 	bagBar:SetPoint("TOPRIGHT", self, "BOTTOMRIGHT", 0, -5)
 	B.SetBD(bagBar)
 	bagBar.highlightFunction = highlightFunction
 	bagBar.isGlobal = true
 	bagBar:Hide()
+	bagBar.columns = columns
+	bagBar.UpdateAnchor = updateBagBar
+	bagBar:UpdateAnchor()
 
 	self.BagBar = bagBar
 end
@@ -161,9 +197,9 @@ local function CloseOrRestoreBags(self, btn)
 		C.db["TempAnchor"][bag:GetName()] = nil
 		C.db["TempAnchor"][bank:GetName()] = nil
 		bag:ClearAllPoints()
-		bag:SetPoint("BOTTOMRIGHT", -50, 320)
+		bag:SetPoint(unpack(bag.__anchor))
 		bank:ClearAllPoints()
-		bank:SetPoint("BOTTOMRIGHT", bag, "BOTTOMLEFT", -10, 0)
+		bank:SetPoint(unpack(bank.__anchor))
 		PlaySound(SOUNDKIT.IG_MINIMAP_OPEN)
 	else
 		CloseAllBags()
@@ -310,10 +346,11 @@ function module:CreateFreeSlots()
 	slot.__name = name
 
 	local tag = self:SpawnPlugin("TagDisplay", "[space]", slot)
-	tag:SetFont(DB.Font[1], DB.Font[2]+2, DB.Font[3])
+	tag:SetFont(DB.Font[1], C.db["Bags"]["FontSize"] + 2, DB.Font[3])
 	tag:SetTextColor(.6, .8, 1)
 	tag:SetPoint("CENTER", 1, 0)
 	tag.__name = name
+	slot.tag = tag
 
 	self.freeSlot = slot
 end
@@ -595,9 +632,6 @@ function module:OnLogin()
 	if not C.db["Bags"]["Enable"] then return end
 
 	-- Settings
-	local bagsScale = C.db["Bags"]["BagsScale"]
-	local bagsWidth = C.db["Bags"]["BagsWidth"]
-	local bankWidth = C.db["Bags"]["BankWidth"]
 	local iconSize = C.db["Bags"]["IconSize"]
 	local showNewItem = C.db["Bags"]["ShowNewItem"]
 	local hasPawn = IsAddOnLoaded("Pawn")
@@ -605,7 +639,6 @@ function module:OnLogin()
 	-- Init
 	local Backpack = cargBags:NewImplementation("NDui_Backpack")
 	Backpack:RegisterBlizzard()
-	Backpack:SetScale(bagsScale)
 	Backpack:HookScript("OnShow", function() PlaySound(SOUNDKIT.IG_BACKPACK_OPEN) end)
 	Backpack:HookScript("OnHide", function() PlaySound(SOUNDKIT.IG_BACKPACK_CLOSE) end)
 
@@ -620,10 +653,7 @@ function module:OnLogin()
 	local ContainerGroups = {["Bag"] = {}, ["Bank"] = {}}
 
 	local function AddNewContainer(bagType, index, name, filter)
-		local width = bagsWidth
-		if bagType == "Bank" then width = bankWidth end
-
-		local newContainer = MyContainer:New(name, {Columns = width, BagType = bagType})
+		local newContainer = MyContainer:New(name, {BagType = bagType})
 		newContainer:SetFilter(filter, true)
 		ContainerGroups[bagType][index] = newContainer
 	end
@@ -637,11 +667,12 @@ function module:OnLogin()
 		AddNewContainer("Bag", 4, "BagGoods", filters.bagGoods)
 		AddNewContainer("Bag", 6, "BagQuest", filters.bagQuest)
 
-		f.main = MyContainer:New("Bag", {Columns = bagsWidth, Bags = "bags"})
-		f.main:SetPoint("BOTTOMRIGHT", -50, 320)
+		f.main = MyContainer:New("Bag", {Bags = "bags", BagType = "Bag"})
+		f.main.__anchor = {"BOTTOMRIGHT", -50, 100}
+		f.main:SetPoint(unpack(f.main.__anchor))
 		f.main:SetFilter(filters.onlyBags, true)
 
-		local keyring = MyContainer:New("Keyring", {Columns = bagsWidth, Parent = f.main})
+		local keyring = MyContainer:New("Keyring", {BagType = "Bag", Parent = f.main})
 		keyring:SetFilter(filters.onlyKeyring, true)
 		keyring:SetPoint("TOPRIGHT", f.main, "BOTTOMRIGHT", 0, -5)
 		keyring:Hide()
@@ -655,8 +686,9 @@ function module:OnLogin()
 		AddNewContainer("Bank", 5, "BankGoods", filters.bankGoods)
 		AddNewContainer("Bank", 7, "BankQuest", filters.bankQuest)
 
-		f.bank = MyContainer:New("Bank", {Columns = bankWidth, Bags = "bank"})
-		f.bank:SetPoint("BOTTOMRIGHT", f.main, "BOTTOMLEFT", -10, 0)
+		f.bank = MyContainer:New("Bank", {Bags = "bank", BagType = "Bank"})
+		f.bank.__anchor = {"BOTTOMLEFT", 25, 50}
+		f.bank:SetPoint(unpack(f.bank.__anchor))
 		f.bank:SetFilter(filters.onlyBank, true)
 		f.bank:Hide()
 
@@ -675,6 +707,7 @@ function module:OnLogin()
 
 		if not initBagType then
 			module:UpdateAllBags() -- Initialize bagType
+			module:UpdateBagSize()
 			initBagType = true
 		end
 	end
@@ -697,7 +730,7 @@ function module:OnLogin()
 		self.Icon:SetInside()
 		self.Icon:SetTexCoord(unpack(DB.TexCoord))
 		self.Count:SetPoint("BOTTOMRIGHT", -1, 2)
-		self.Count:SetFont(unpack(DB.Font))
+		self.Count:SetFont(DB.Font[1], C.db["Bags"]["FontSize"], DB.Font[3])
 		self.Cooldown:SetInside()
 
 		B.CreateBD(self, .3)
@@ -713,7 +746,7 @@ function module:OnLogin()
 		self.Favourite:SetPoint("TOPLEFT", -12, 9)
 
 		self.Quest = B.CreateFS(self, 30, "!", "system", "LEFT", 3, 0)
-		self.iLvl = B.CreateFS(self, 12, "", false, "BOTTOMLEFT", 1, 2)
+		self.iLvl = B.CreateFS(self, C.db["Bags"]["FontSize"], "", false, "BOTTOMLEFT", 1, 2)
 
 		if showNewItem then
 			self.glowFrame = B.CreateGlowFrame(self, iconSize)
@@ -828,14 +861,22 @@ function module:OnLogin()
 	end
 
 	function module:UpdateAllAnchors()
-		module:UpdateAnchors(f.main, ContainerGroups["Bag"])
-		module:UpdateAnchors(f.bank, ContainerGroups["Bank"])
+		module:UpdateBagsAnchor(f.main, ContainerGroups["Bag"])
+		module:UpdateBankAnchor(f.bank, ContainerGroups["Bank"])
 	end
 
-	function MyContainer:OnContentsChanged()
+	function module:GetContainerColumns(bagType)
+		if bagType == "Bag" then
+			return C.db["Bags"]["BagsWidth"]
+		elseif bagType == "Bank" then
+			return C.db["Bags"]["BankWidth"]
+		end
+	end
+
+	function MyContainer:OnContentsChanged(gridOnly)
 		self:SortButtons("bagSlot")
 
-		local columns = self.Settings.Columns
+		local columns = module:GetContainerColumns(self.Settings.BagType)
 		local offset = 38
 		local spacing = 3
 		local xOffset = 5
@@ -866,7 +907,9 @@ function module:OnLogin()
 		end
 		self:SetSize(width + xOffset*2, height + offset)
 
-		module:UpdateAllAnchors()
+		if not gridOnly then
+			module:UpdateAllAnchors()
+		end
 	end
 
 	function MyContainer:OnCreate(name, settings)
@@ -935,6 +978,33 @@ function module:OnLogin()
 		if name == "Bag" then module.CreateCollapseArrow(self) end
 
 		self:HookScript("OnShow", B.RestoreMF)
+	end
+
+	local function updateBagSize(button)
+		button:SetSize(iconSize, iconSize)
+		if button.glowFrame then
+			button.glowFrame:SetSize(iconSize+8, iconSize+8)
+		end
+		button.Count:SetFont(DB.Font[1], C.db["Bags"]["FontSize"], DB.Font[3])
+		button.iLvl:SetFont(DB.Font[1], C.db["Bags"]["FontSize"], DB.Font[3])
+	end
+
+	function module:UpdateBagSize()
+		iconSize = C.db["Bags"]["IconSize"]
+		for _, container in pairs(Backpack.contByName) do
+			container:ApplyToButtons(updateBagSize)
+			if container.freeSlot then
+				container.freeSlot:SetSize(iconSize, iconSize)
+				container.freeSlot.tag:SetFont(DB.Font[1], C.db["Bags"]["FontSize"]+2, DB.Font[3])
+			end
+			if container.BagBar then
+				for _, bagButton in pairs(container.BagBar.buttons) do
+					bagButton:SetSize(iconSize, iconSize)
+				end
+				container.BagBar:UpdateAnchor()
+			end
+			container:OnContentsChanged(true)
+		end
 	end
 
 	local BagButton = Backpack:GetClass("BagButton", true, "BagButton")

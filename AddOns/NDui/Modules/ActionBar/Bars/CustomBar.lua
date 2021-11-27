@@ -11,9 +11,9 @@ local prevPage = 8
 local function ChangeActionPageForDruid()
 	local page = IsPlayerSpell(33891) and 10 or 8
 	if prevPage ~= page then
-		RegisterStateDriver(_G["NDui_CustomBar"], "page", page)
+		RegisterStateDriver(_G["NDui_ActionBarX"], "page", page)
 		for i = 1, 12 do
-			local button = _G["NDui_CustomBarButton"..i]
+			local button = _G["NDui_ActionBarXButton"..i]
 			button.id = (page-1)*12 + i
 			button:SetAttribute("action", button.id)
 		end
@@ -32,17 +32,12 @@ local function UpdatePageBySpells()
 end
 
 function Bar:CreateCustomBar(anchor)
-	local size = C.db["Actionbar"]["CustomBarButtonSize"]
 	local num = 12
-	local name = "NDui_CustomBar"
+	local name = "NDui_ActionBarX"
 	local page = DB.MyClass == "WARRIOR" and 10 or 8
 
 	local frame = CreateFrame("Frame", name, UIParent, "SecureHandlerStateTemplate")
-	frame:SetWidth(num*size + (num-1)*margin + 2*padding)
-	frame:SetHeight(size + 2*padding)
-	frame:SetPoint(unpack(anchor))
 	frame.mover = B.Mover(frame, L[name], "CustomBar", anchor)
-	frame.buttons = {}
 
 --	RegisterStateDriver(frame, "visibility", "[petbattle] hide; show")
 	RegisterStateDriver(frame, "page", page)
@@ -50,16 +45,16 @@ function Bar:CreateCustomBar(anchor)
 	local buttonList = {}
 	for i = 1, num do
 		local button = CreateFrame("CheckButton", "$parentButton"..i, frame, "ActionBarButtonTemplate")
-		button:SetSize(size, size)
 		button.id = (page-1)*12 + i
 		button.isCustomButton = true
 		button:SetAttribute("action", button.id)
-		frame.buttons[i] = button
 		tinsert(buttonList, button)
 		tinsert(Bar.buttons, button)
 	end
+	frame.buttons = buttonList
 
-	if C.db["Actionbar"]["CustomBarFader"] and cfg.fader then
+	if cfg.fader then
+		frame.isDisable = not C.db["Actionbar"]["BarXFader"]
 		Bar.CreateButtonFrameFader(frame, buttonList, cfg.fader)
 	end
 
@@ -67,7 +62,7 @@ function Bar:CreateCustomBar(anchor)
 end
 
 function Bar:UpdateCustomBar()
-	local frame = _G.NDui_CustomBar
+	local frame = _G.NDui_ActionBarX
 	if not frame then return end
 
 	local size = C.db["Actionbar"]["CustomBarButtonSize"]

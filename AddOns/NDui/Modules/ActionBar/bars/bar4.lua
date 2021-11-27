@@ -4,54 +4,47 @@ local Bar = B:GetModule("Actionbar")
 
 local _G = _G
 local tinsert = tinsert
+local InCombatLockdown = InCombatLockdown
 local cfg = C.Bars.bar4
-local margin, padding = C.Bars.margin, C.Bars.padding
 
-local function SetFrameSize(frame, size, num)
-	size = size or frame.buttonSize
-	num = num or frame.numButtons
+function Bar:ToggleBarFader(name)
+	local frame = _G["NDui_Action"..name]
+	if not frame then return end
 
-	local layout = C.db["Actionbar"]["Style"]
-	if layout == 2 then
-		frame:SetWidth(25*size + 25*margin + 2*padding)
-		frame:SetHeight(2*size + margin + 2*padding)
-
-		local button = _G["MultiBarRightButton7"]
-		button:SetPoint("TOPRIGHT", frame, -2*(size+margin) - padding, -padding)
-	elseif layout == 3 then
-		frame:SetWidth(4*size + 3*margin + 2*padding)
-		frame:SetHeight(3*size + 2*margin + 2*padding)
+	frame.isDisable = not C.db["Actionbar"][name.."Fader"]
+	if frame.isDisable then
+		Bar:StartFadeIn(frame)
 	else
-		frame:SetWidth(size + 2*padding)
-		frame:SetHeight(num*size + (num-1)*margin + 2*padding)
+		Bar:StartFadeOut(frame)
+	end
+end
+
+function Bar:UpdateFrameClickThru()
+	local showBar4, showBar5
+
+	local function updateClickThru()
+		_G.NDui_ActionBar4:EnableMouse(showBar4)
+		_G.NDui_ActionBar5:EnableMouse((not showBar4 and showBar4) or (showBar4 and showBar5))
 	end
 
-	if not frame.mover then
-		frame.mover = B.Mover(frame, SHOW_MULTIBAR3_TEXT, "Bar4", frame.Pos)
-	else
-		frame.mover:SetSize(frame:GetSize())
-	end
-
-	if not frame.SetFrameSize then
-		frame.buttonSize = size
-		frame.numButtons = num
-		frame.SetFrameSize = SetFrameSize
-	end
+	hooksecurefunc("SetActionBarToggles", function(_, _, bar3, bar4)
+		showBar4 = not not bar3
+		showBar5 = not not bar4
+		if InCombatLockdown() then
+			B:RegisterEvent("PLAYER_REGEN_ENABLED", updateClickThru)
+		else
+			updateClickThru()
+		end
+	end)
 end
 
 function Bar:CreateBar4()
 	local num = NUM_ACTIONBAR_BUTTONS
 	local buttonList = {}
-	local layout = C.db["Actionbar"]["Style"]
 
 	local frame = CreateFrame("Frame", "NDui_ActionBar4", UIParent, "SecureHandlerStateTemplate")
-	if layout == 2 then
-		frame.Pos = {"BOTTOM", UIParent, "BOTTOM", 0, 26}
-	elseif layout == 3 then
-		frame.Pos = {"BOTTOM", UIParent, "BOTTOM", 395, 26}
-	else
-		frame.Pos = {"RIGHT", UIParent, "RIGHT", -1, 0}
-	end
+	frame.mover = B.Mover(frame, L["Actionbar"].."4", "Bar4", {"RIGHT", UIParent, "RIGHT", -1, 0})
+	Bar.movers[5] = frame.mover
 
 	MultiBarRight:SetParent(frame)
 	MultiBarRight:EnableMouse(false)
@@ -60,49 +53,16 @@ function Bar:CreateBar4()
 		local button = _G["MultiBarRightButton"..i]
 		tinsert(buttonList, button)
 		tinsert(Bar.buttons, button)
-		button:ClearAllPoints()
-		if layout == 2 then
-			if i == 1 then
-				button:SetPoint("TOPLEFT", frame, padding, -padding)
-			elseif i == 4 then
-				local previous = _G["MultiBarRightButton1"]
-				button:SetPoint("TOP", previous, "BOTTOM", 0, -margin)
-			elseif i == 7 then
-				button:SetPoint("TOPRIGHT", frame, -2*(cfg.size+margin) - padding, -padding)
-			elseif i == 10 then
-				local previous = _G["MultiBarRightButton7"]
-				button:SetPoint("TOP", previous, "BOTTOM", 0, -margin)
-			else
-				local previous = _G["MultiBarRightButton"..i-1]
-				button:SetPoint("LEFT", previous, "RIGHT", margin, 0)
-			end
-		elseif layout == 3 then
-			if i == 1 then
-				button:SetPoint("TOPLEFT", frame, padding, -padding)
-			elseif i == 5 or i == 9 then
-				local previous = _G["MultiBarRightButton"..i-4]
-				button:SetPoint("TOP", previous, "BOTTOM", 0, -margin)
-			else
-				local previous = _G["MultiBarRightButton"..i-1]
-				button:SetPoint("LEFT", previous, "RIGHT", margin, 0)
-			end
-		else
-			if i == 1 then
-				button:SetPoint("TOPRIGHT", frame, -padding, -padding)
-			else
-				local previous = _G["MultiBarRightButton"..i-1]
-				button:SetPoint("TOP", previous, "BOTTOM", 0, -margin)
-			end
-		end
 	end
-
-	frame.buttonList = buttonList
-	SetFrameSize(frame, cfg.size, num)
+	frame.buttons = buttonList
 
 	frame.frameVisibility = "[petbattle][overridebar][vehicleui][possessbar,@vehicle,exists][shapeshift] hide; show"
 	RegisterStateDriver(frame, "visibility", frame.frameVisibility)
 
-	if C.db["Actionbar"]["Bar4Fade"] and cfg.fader then
+	if cfg.fader then
+		frame.isDisable = not C.db["Actionbar"]["Bar4Fader"]
 		Bar.CreateButtonFrameFader(frame, buttonList, cfg.fader)
 	end
+
+	Bar:UpdateFrameClickThru()
 end

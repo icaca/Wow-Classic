@@ -5,21 +5,33 @@ if DB.Client ~= "zhCN" then return end
 local strsplit, pairs = string.split, pairs
 
 local hx = {
-	"背包及其工具栏调整；",
-	"WA及Bigwigs等美化调整；",
-	"目标标记菜单的排序调整；",
-	"战士的技能缺失提示更新；",
-	"界面美化部分模块更新；",
-	"移除LibHealComm，现在使用暴雪API进行治疗预估；",
-	"个人资源条现在也显示治疗预估；",
-	"添加锁定目标姓名板功能；",
-	"oUF核心更新；",
-	"简易战斗信息及姓名板打断来源更新；",
-	"自动攻击计时条更新；",
-	"自动修理功能更新；",
-	"小地图添加尺寸调节选项；",
-	"修复队长拾取下的一个暴雪bug；",
-	"修正公会银行的已学会染色；",
+	"界面美化更新；",
+	"DBM美化更新；",
+	"技能监控列表调整；",
+	"公会银行添加物品品质染色；",
+	"优化头像连击点的刷新；",
+	"头像的血量及能量的标签调整；",
+	"优化施法条的法术目标的刷新；",
+	"自动攻击计时条调整；",
+	"治疗预估更新；",
+	"右键菜单的交互色块调整；",
+	"目标死亡时不再隐藏鼠标提示的状态条；",
+	"可以按住ALT并点击NPC窗口名称屏蔽其自动交互；",
+	"BaudErrorFrame更新；",
+	"更新记录面板调整；",
+	"姓名板添加友方姓名板独立设置选项；",
+	"姓名板的稀有度指示器的位置调整；",
+	"优化姓名板的相关选项，支持更多自定义；",
+	"信息条现在可以自由排列组合；",
+	"背包整理更新；",
+	"背包选项优化，大部分可以即使刷新；",
+	"背包添加每列排序数量的选项；",
+	"动作条的相关选项调整；",
+	"动作条支持自定义，并与他人分享布局；",
+	"按住shift指向目标时显示与你的声望状态；",
+	"添加部分帮助信息提示；",
+	"优化聊天窗口tab切换标签功能；",
+	"添加选项以关闭背景线条；",
 	"控制台及本地文本更新。",
 }
 
@@ -27,12 +39,14 @@ local f
 local function changelog()
 	if f then f:Show() return end
 
+	local majorVersion = gsub(DB.Version, "%.%d+$", ".0")
+
 	f = CreateFrame("Frame", "NDuiChangeLog", UIParent)
 	f:SetPoint("CENTER")
 	f:SetFrameStrata("HIGH")
 	B.CreateMF(f)
 	B.SetBD(f)
-	B.CreateFS(f, 18, DB.Version.." "..L["Changelog"], true, "TOP", 0, -10)
+	B.CreateFS(f, 18, majorVersion.." "..L["Changelog"], true, "TOP", 0, -10)
 	B.CreateWatermark(f)
 
 	local ll = B.SetGradient(f, "H", .7, .7, .7, 0, .5, 100, C.mult)

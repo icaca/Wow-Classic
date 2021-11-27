@@ -119,7 +119,10 @@ function QuestieEvent:Load()
     end
 
     -- Darkmoon Faire is quite special because of its setup days where just two quests are available
-    _LoadDarkmoonFaire()
+    -- ** Disable DMF fully now as Dates are calculated wrong **
+    --if Questie.IsEra then -- load DMF only on Era realms, not on TBC, not on SoM
+    --    _LoadDarkmoonFaire()
+    --end
 
     -- Clear the quests to save memory
     QuestieEvent.eventQuests = nil
@@ -480,70 +483,107 @@ tinsert(QuestieEvent.eventQuests, {"Children's Week", 10942}) -- Children's Week
 tinsert(QuestieEvent.eventQuests, {"Children's Week", 10943}) -- Children's Week
 
 tinsert(QuestieEvent.eventQuests, {"Darkmoon Faire", 9249}) -- 40 Tickets - Schematic: Steam Tonk Controller
+tinsert(QuestieEvent.eventQuests, {"Darkmoon Faire", 10938}) -- Darkmoon Blessings Deck
 tinsert(QuestieEvent.eventQuests, {"Darkmoon Faire", 10939}) -- Darkmoon Storms Deck
 tinsert(QuestieEvent.eventQuests, {"Darkmoon Faire", 10940}) -- Darkmoon Furies Deck
 tinsert(QuestieEvent.eventQuests, {"Darkmoon Faire", 10941}) -- Darkmoon Lunacy Deck
-tinsert(QuestieEvent.eventQuests, {"Darkmoon Faire", 10941}) -- Darkmoon Lunacy Deck
 
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 11450}) -- Fire Training
+--tinsert(QuestieEvent.eventQuests, {"Hallow's End", 11450}) -- Fire Training
 tinsert(QuestieEvent.eventQuests, {"Hallow's End", 11356}) -- Costumed Orphan Matron
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12360}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 11357}) -- Masked Orphan Matron
 tinsert(QuestieEvent.eventQuests, {"Hallow's End", 11131}) -- Stop the Fires!
 tinsert(QuestieEvent.eventQuests, {"Hallow's End", 11135}) -- The Headless Horseman
 tinsert(QuestieEvent.eventQuests, {"Hallow's End", 11220}) -- The Headless Horseman
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12409}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 11219}) -- Stop the Fires!
+--tinsert(QuestieEvent.eventQuests, {"Hallow's End", 11219}) -- Stop the Fires!
 tinsert(QuestieEvent.eventQuests, {"Hallow's End", 11361}) -- Fire Training
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12332}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12336}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12340}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12344}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12348}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12352}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12356}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12399}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12403}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12407}) -- Candy Bucket
 tinsert(QuestieEvent.eventQuests, {"Hallow's End", 11360}) -- Fire Brigade Practice
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 11449}) -- Fire Training
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12331}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12335}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12339}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12343}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12347}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12351}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12355}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12359}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12398}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12402}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12406}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12410}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 11357}) -- Masked Orphan Matron
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 11440}) -- Fire Brigade Practice
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12286}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12334}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12338}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12342}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12346}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12350}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12354}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12358}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12397}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12401}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12405}) -- Candy Bucket
-tinsert(QuestieEvent.eventQuests, {"Hallow's End", 11439}) -- Fire Brigade Practice
+--tinsert(QuestieEvent.eventQuests, {"Hallow's End", 11449}) -- Fire Training
+--tinsert(QuestieEvent.eventQuests, {"Hallow's End", 11440}) -- Fire Brigade Practice
+--tinsert(QuestieEvent.eventQuests, {"Hallow's End", 11439}) -- Fire Brigade Practice
 tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12133}) -- Smash the Pumpkin
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12135}) -- Let the Fires Come!
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12139}) -- Let the Fires Come!
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12155}) -- Smash the Pumpkin
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12286}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12331}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12332}) -- Candy Bucket
 tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12333}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12334}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12335}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12336}) -- Candy Bucket
 tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12337}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12338}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12339}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12340}) -- Candy Bucket
 tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12341}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12342}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12343}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12344}) -- Candy Bucket
 tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12345}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12346}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12347}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12348}) -- Candy Bucket
 tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12349}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12350}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12351}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12352}) -- Candy Bucket
 tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12353}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12354}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12355}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12356}) -- Candy Bucket
 tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12357}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12358}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12359}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12360}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12361}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12362}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12363}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12364}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12365}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12366}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12367}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12368}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12369}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12370}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12371}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12373}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12374}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12375}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12376}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12377}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12378}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12379}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12380}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12381}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12382}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12383}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12384}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12385}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12386}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12387}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12388}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12389}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12390}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12391}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12392}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12393}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12394}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12395}) -- Candy Bucket
 tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12396}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12397}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12398}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12399}) -- Candy Bucket
 tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12400}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12401}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12402}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12403}) -- Candy Bucket
 tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12404}) -- Candy Bucket
+--tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12405}) -- Candy Bucket -- doesn't exist
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12406}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12407}) -- Candy Bucket
 tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12408}) -- Candy Bucket
+tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12409}) -- Candy Bucket
+--tinsert(QuestieEvent.eventQuests, {"Hallow's End", 12410}) -- Candy Bucket -- doesn't exist
 tinsert(QuestieEvent.eventQuests, {"Hallow's End", 11392}) -- Call the Headless Horseman
 tinsert(QuestieEvent.eventQuests, {"Hallow's End", 11401}) -- Call the Headless Horseman
 tinsert(QuestieEvent.eventQuests, {"Hallow's End", 11404}) -- Call the Headless Horseman
@@ -560,7 +600,8 @@ tinsert(QuestieEvent.eventQuests, {"Brewfest", 12192}) -- This One Time, When I 
 tinsert(QuestieEvent.eventQuests, {"Brewfest", 11437}) -- [PH] Beer Garden A
 --tinsert(QuestieEvent.eventQuests, {"Brewfest", 11454}) -- Seek the Saboteurs
 tinsert(QuestieEvent.eventQuests, {"Brewfest", 12420}) -- Brew of the Month Club
-tinsert(QuestieEvent.eventQuests, {"Brewfest", 12306}) -- Brew of the Month Club
+tinsert(QuestieEvent.eventQuests, {"Brewfest", 12421}) -- Brew of the Month Club
+--tinsert(QuestieEvent.eventQuests, {"Brewfest", 12306}) -- Brew of the Month Club
 tinsert(QuestieEvent.eventQuests, {"Brewfest", 11120}) -- Pink Elekks On Parade
 tinsert(QuestieEvent.eventQuests, {"Brewfest", 11400}) -- Brewfest Riding Rams
 tinsert(QuestieEvent.eventQuests, {"Brewfest", 11442}) -- Welcome to Brewfest!
@@ -573,6 +614,8 @@ tinsert(QuestieEvent.eventQuests, {"Brewfest", 11446}) -- Brewfest!
 tinsert(QuestieEvent.eventQuests, {"Brewfest", 12062}) -- Insult Coren Direbrew
 tinsert(QuestieEvent.eventQuests, {"Brewfest", 12194}) -- Say, There Wouldn't Happen to be a Souvenir This Year, Would There?
 tinsert(QuestieEvent.eventQuests, {"Brewfest", 12191}) -- Chug and Chuck!
+tinsert(QuestieEvent.eventQuests, {"Brewfest", 11293}) -- Bark for the Barleybrews!
+tinsert(QuestieEvent.eventQuests, {"Brewfest", 11294}) -- Bark for the Thunderbrews!
 
 
 tinsert(QuestieEvent.eventQuests, {"Midsummer", 9324}) -- Stealing Orgrimmar's Flame
@@ -734,6 +777,7 @@ tinsert(QuestieEvent.eventQuests, {"Midsummer", 11933}) -- Stealing the Exodar's
 tinsert(QuestieEvent.eventQuests, {"Midsummer", 11935}) -- Stealing Silvermoon's Flame
 tinsert(QuestieEvent.eventQuests, {"Midsummer", 11954}) -- Striking Back (level 67)
 tinsert(QuestieEvent.eventQuests, {"Midsummer", 11955}) -- Ahune, the Frost Lord
+tinsert(QuestieEvent.eventQuests, {"Midsummer", 11972}) -- Shards of Ahune
 tinsert(QuestieEvent.eventQuests, {"Midsummer", 11964}) -- Incense for the Summer Scorchlings
 tinsert(QuestieEvent.eventQuests, {"Midsummer", 11966}) -- Incense for the Festival Scorchlings
 tinsert(QuestieEvent.eventQuests, {"Midsummer", 11970}) -- The Master of Summer Lore

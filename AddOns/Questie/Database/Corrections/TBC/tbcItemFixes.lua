@@ -16,6 +16,9 @@ function QuestieTBCItemFixes:Load()
         [5959] = {
             [itemKeys.npcDrops] = {4376,4378,4379,4411,4412,4413,4414,4415,4380},
         },
+        [6083] = {
+            [itemKeys.npcDrops] = {},
+        },
         [12366] = {
             [itemKeys.npcDrops] = {7457,7458,7459,7460},
         },
@@ -203,6 +206,27 @@ function QuestieTBCItemFixes:Load()
         [35277] = {
             [itemKeys.npcDrops] = {25866,25863,25924},
         },
+        [37736] = { -- 2021 Brewfest item (Alliance)
+            [itemKeys.name] = '"Brew of the Month" Club Membership Form',
+            [itemKeys.startQuest] = 12420,
+            [itemKeys.itemLevel] = 1,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.ammoType] = 0,
+            [itemKeys.class] = 12,
+            [itemKeys.subClass] = 0,
+            [itemKeys.vendors] = {23710,27478},
+        },
+        [37737] = { -- 2021 Brewfest item (Horde)
+            [itemKeys.name] = '"Brew of the Month" Club Membership Form',
+            [itemKeys.startQuest] = 12421,
+            [itemKeys.itemLevel] = 1,
+            [itemKeys.requiredLevel] = 1,
+            [itemKeys.ammoType] = 0,
+            [itemKeys.class] = 12,
+            [itemKeys.subClass] = 0,
+            [itemKeys.vendors] = {24495,27489},
+        },
+
 
         -- Below are fake items which can be used to show special quest "objectives" as requiredSourceItem.
         -- For example this is used for quest 10129 to show the NPC you have to talk with to start the flight

@@ -205,6 +205,10 @@ function Bar:StyleActionButton(button, cfg)
 	if button.GetCheckedTexture then checkedTexture = button:GetCheckedTexture() end
 	local floatingBG = _G[buttonName.."FloatingBG"]
 
+	--pet stuff
+	local petShine = _G[buttonName.."Shine"]
+	if petShine then petShine:SetInside() end
+
 	--hide stuff
 	if floatingBG then floatingBG:Hide() end
 	if NewActionTexture then NewActionTexture:SetTexture(nil) end
@@ -277,7 +281,7 @@ function Bar:StyleAllActionButtons(cfg)
 		Bar:StyleActionButton(_G["MultiBarBottomRightButton"..i], cfg)
 		Bar:StyleActionButton(_G["MultiBarRightButton"..i], cfg)
 		Bar:StyleActionButton(_G["MultiBarLeftButton"..i], cfg)
-		Bar:StyleActionButton(_G["NDui_CustomBarButton"..i], cfg)
+		Bar:StyleActionButton(_G["NDui_ActionBarXButton"..i], cfg)
 	end
 	for i = 1, 6 do
 		Bar:StyleActionButton(_G["OverrideActionBarButton"..i], cfg)

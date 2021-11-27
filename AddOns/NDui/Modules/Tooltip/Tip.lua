@@ -9,11 +9,12 @@ local YOU, TARGET, AFK, DND, DEAD, PLAYER_OFFLINE = YOU, TARGET, AFK, DND, DEAD,
 local FOREIGN_SERVER_LABEL, INTERACTIVE_SERVER_LABEL = FOREIGN_SERVER_LABEL, INTERACTIVE_SERVER_LABEL
 local LE_REALM_RELATION_COALESCED, LE_REALM_RELATION_VIRTUAL = LE_REALM_RELATION_COALESCED, LE_REALM_RELATION_VIRTUAL
 local UnitIsPVP, UnitFactionGroup, UnitRealmRelationship, UnitGUID = UnitIsPVP, UnitFactionGroup, UnitRealmRelationship, UnitGUID
-local UnitIsConnected, UnitIsDeadOrGhost, UnitIsAFK, UnitIsDND = UnitIsConnected, UnitIsDeadOrGhost, UnitIsAFK, UnitIsDND
+local UnitIsConnected, UnitIsDeadOrGhost, UnitIsAFK, UnitIsDND, UnitReaction = UnitIsConnected, UnitIsDeadOrGhost, UnitIsAFK, UnitIsDND, UnitReaction
 local InCombatLockdown, IsShiftKeyDown, GetMouseFocus, GetItemInfo = InCombatLockdown, IsShiftKeyDown, GetMouseFocus, GetItemInfo
 local GetCreatureDifficultyColor, UnitCreatureType, UnitClassification = GetCreatureDifficultyColor, UnitCreatureType, UnitClassification
 local UnitIsPlayer, UnitName, UnitPVPName, UnitClass, UnitRace, UnitLevel = UnitIsPlayer, UnitName, UnitPVPName, UnitClass, UnitRace, UnitLevel
 local GetRaidTargetIndex, GetGuildInfo, IsInGuild = GetRaidTargetIndex, GetGuildInfo, IsInGuild
+local GameTooltip_ClearMoney, GameTooltip_ClearStatusBars, GameTooltip_ClearProgressBars, GameTooltip_ClearWidgetSet = GameTooltip_ClearMoney, GameTooltip_ClearStatusBars, GameTooltip_ClearProgressBars, GameTooltip_ClearWidgetSet
 
 local classification = {
 	elite = " |cffcc8800"..ELITE.."|r",
@@ -21,7 +22,7 @@ local classification = {
 	rareelite = " |cffff99cc"..L["Rare"].."|r ".."|cffcc8800"..ELITE.."|r",
 	worldboss = " |cffff0000"..BOSS.."|r",
 }
-local npcIDstring = "ID: "..DB.InfoColor.."%s"
+local npcIDstring = "%s "..DB.InfoColor.."%s"
 
 function TT:GetUnit()
 	local _, unit = self and self:GetUnit()
@@ -33,8 +34,8 @@ function TT:GetUnit()
 end
 
 function TT:HideLines()
-    for i = 3, self:NumLines() do
-        local tiptext = _G["GameTooltipTextLeft"..i]
+	for i = 3, self:NumLines() do
+		local tiptext = _G["GameTooltipTextLeft"..i]
 		local linetext = tiptext:GetText()
 		if linetext then
 			if linetext == PVP then
@@ -56,7 +57,7 @@ function TT:HideLines()
 				end
 			end
 		end
-    end
+	end
 end
 
 function TT:GetLevelLine()
@@ -90,9 +91,16 @@ function TT:InsertFactionFrame(faction)
 end
 
 function TT:OnTooltipCleared()
+	if self:IsForbidden() then return end
+
 	if self.factionFrame and self.factionFrame:GetAlpha() ~= 0 then
 		self.factionFrame:SetAlpha(0)
 	end
+
+	GameTooltip_ClearMoney(self)
+	GameTooltip_ClearStatusBars(self)
+	GameTooltip_ClearProgressBars(self)
+	GameTooltip_ClearWidgetSet(self)
 end
 
 function TT:OnTooltipSetUnit()
@@ -199,22 +207,15 @@ function TT:OnTooltipSetUnit()
 
 		if not isPlayer and isShiftKeyDown then
 			local guid = UnitGUID(unit)
-			local npcID = B.GetNPCID(guid)
+			local npcID = guid and B.GetNPCID(guid)
 			if npcID then
-				self:AddLine(format(npcIDstring, npcID))
+				local reaction = UnitReaction(unit, "player")
+				local standingText = reaction and hexColor.._G["FACTION_STANDING_LABEL"..reaction]
+				self:AddLine(format(npcIDstring, standingText or "", npcID))
 			end
 		end
 
-		if alive then
-			self.StatusBar:SetStatusBarColor(r, g, b)
-
-			if GameTooltipStatusBar.text then
-				local value, max = UnitHealth(unit), UnitHealthMax(unit)
-				GameTooltipStatusBar.text:SetText(B.Numb(value).." | "..B.Numb(max))
-			end
-		else
-			self.StatusBar:Hide()
-		end
+		self.StatusBar:SetStatusBarColor(r, g, b)
 	else
 		self.StatusBar:SetStatusBarColor(0, .9, 0)
 	end
@@ -414,6 +415,12 @@ function TT:FixRecipeItemNameWidth()
 	end
 end
 
+function TT:ResetUnit(btn)
+	if btn == "LSHIFT" and UnitExists("mouseover") then
+		GameTooltip:SetUnit("mouseover")
+	end
+end
+
 function TT:OnLogin()
 	GameTooltip.StatusBar = GameTooltipStatusBar
 	GameTooltip:HookScript("OnTooltipCleared", TT.OnTooltipCleared)
@@ -431,6 +438,7 @@ function TT:OnLogin()
 	TT:ReskinTooltipIcons()
 	TT:SetupTooltipID()
 	TT:TargetedInfo()
+	B:RegisterEvent("MODIFIER_STATE_CHANGED", TT.ResetUnit)
 end
 
 -- Tooltip Skin Registration

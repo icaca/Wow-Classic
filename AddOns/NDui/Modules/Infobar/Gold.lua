@@ -101,8 +101,8 @@ info.onMouseUp = function(self, btn)
 end
 
 info.onEnter = function(self)
-	GameTooltip:SetOwner(self, "ANCHOR_NONE")
-	GameTooltip:SetPoint("BOTTOMRIGHT", UIParent, -15, 30)
+	local _, anchor, offset = module:GetTooltipAnchor(info)
+	GameTooltip:SetOwner(self, "ANCHOR_"..anchor, 0, offset)
 	GameTooltip:ClearLines()
 	GameTooltip:AddLine(CURRENCY, 0,.6,1)
 	GameTooltip:AddLine(" ")

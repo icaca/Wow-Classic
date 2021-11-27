@@ -22,7 +22,7 @@
 ## Notes-ruRU: BigWigs Zul'Gurub Modules
 ## Notes-zhCN: BigWigs 祖尔格拉布模块。
 ## Notes-zhTW: BigWigs 祖爾格拉布模組
-## Version: v31-classic
+## Version: v32-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

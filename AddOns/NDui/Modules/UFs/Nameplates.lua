@@ -10,6 +10,8 @@ local UnitClassification, UnitExists, InCombatLockdown = UnitClassification, Uni
 local UnitGUID, GetPlayerInfoByGUID, Ambiguate, UnitName, UnitHealth, UnitHealthMax = UnitGUID, GetPlayerInfoByGUID, Ambiguate, UnitName, UnitHealth, UnitHealthMax
 local SetCVar, UIFrameFadeIn, UIFrameFadeOut = SetCVar, UIFrameFadeIn, UIFrameFadeOut
 local C_NamePlate_GetNamePlateForUnit = C_NamePlate.GetNamePlateForUnit
+local C_NamePlate_SetNamePlateEnemyClickThrough = C_NamePlate.SetNamePlateEnemyClickThrough
+local C_NamePlate_SetNamePlateFriendlyClickThrough = C_NamePlate.SetNamePlateFriendlyClickThrough
 local INTERRUPTED = INTERRUPTED
 local _QuestieTooltips, _QuestiePlayer, _QuestieQuest
 
@@ -37,6 +39,13 @@ function UF:UpdatePlateSpacing()
 	SetCVar("nameplateOverlapV", C.db["Nameplate"]["VerticalSpacing"])
 end
 
+function UF:UpdatePlateClickThru()
+	if InCombatLockdown() then return end
+
+	C_NamePlate_SetNamePlateEnemyClickThrough(C.db["Nameplate"]["EnemyThru"])
+	C_NamePlate_SetNamePlateFriendlyClickThrough(C.db["Nameplate"]["FriendlyThru"])
+end
+
 function UF:SetupCVars()
 	UF:ClampTargetPlate()
 	UF:UpdatePlateRange()
@@ -44,6 +53,7 @@ function UF:SetupCVars()
 	UF:UpdatePlateSpacing()
 	UF:UpdatePlateAlpha()
 	SetCVar("nameplateSelectedAlpha", 1)
+	UF:UpdatePlateClickThru()
 
 	UF:UpdatePlateScale()
 	SetCVar("nameplateSelectedScale", 1)
@@ -222,7 +232,7 @@ end
 function UF:UpdateTargetIndicator()
 	local style = C.db["Nameplate"]["TargetIndicator"]
 	local element = self.TargetIndicator
-	local isNameOnly = self.isNameOnly
+	local isNameOnly = self.plateType == "NameOnly"
 	if style == 1 then
 		element:Hide()
 	else
@@ -488,7 +498,7 @@ function UF:AddQuestIcon(self)
 end
 
 -- Unit classification
-local classify = {
+local NPClassifies = {
 	rare = {1, 1, 1, true},
 	elite = {1, 1, 1},
 	rareelite = {1, .1, .1},
@@ -496,13 +506,9 @@ local classify = {
 }
 
 function UF:AddCreatureIcon(self)
-	local iconFrame = CreateFrame("Frame", nil, self)
-	iconFrame:SetAllPoints()
-	iconFrame:SetFrameLevel(self:GetFrameLevel() + 2)
-
-	local icon = iconFrame:CreateTexture(nil, "ARTWORK")
+	local icon = self:CreateTexture(nil, "ARTWORK")
 	icon:SetAtlas("VignetteKill")
-	icon:SetPoint("BOTTOMLEFT", self, "LEFT", 0, -6)
+	icon:SetPoint("RIGHT", self.nameText, "LEFT", 15, 0)
 	icon:SetSize(24, 24)
 	icon:Hide()
 
@@ -510,16 +516,17 @@ function UF:AddCreatureIcon(self)
 end
 
 function UF:UpdateUnitClassify(unit)
-	if self.ClassifyIndicator then
-		local class = UnitClassification(unit)
-		if (not self.isNameOnly) and class and classify[class] then
-			local r, g, b, desature = unpack(classify[class])
-			self.ClassifyIndicator:SetVertexColor(r, g, b)
-			self.ClassifyIndicator:SetDesaturated(desature)
-			self.ClassifyIndicator:Show()
-		else
-			self.ClassifyIndicator:Hide()
-		end
+	if not self.ClassifyIndicator then return end
+
+	local class = UnitClassification(unit)
+	local classify = class and NPClassifies[class]
+	if classify then
+		local r, g, b, desature = unpack(classify)
+		self.ClassifyIndicator:SetVertexColor(r, g, b)
+		self.ClassifyIndicator:SetDesaturated(desature)
+		self.ClassifyIndicator:Show()
+	else
+		self.ClassifyIndicator:Hide()
 	end
 end
 
@@ -676,7 +683,23 @@ function UF:UpdateTargetClassPower()
 	end
 end
 
+function UF:ToggleNameplateAuras()
+	if C.db["Nameplate"]["PlateAuras"] then
+		if not self:IsElementEnabled("Auras") then
+			self:EnableElement("Auras")
+		end
+	else
+		if self:IsElementEnabled("Auras") then
+			self:DisableElement("Auras")
+		end
+	end
+end
+
 function UF:UpdateNameplateAuras()
+	UF.ToggleNameplateAuras(self)
+
+	if not C.db["Nameplate"]["PlateAuras"] then return end
+
 	local element = self.Auras
 	if C.db["Nameplate"]["ShowPlayerPlate"] and C.db["Nameplate"]["NameplateClassPower"] then
 		element:SetPoint("BOTTOMLEFT", self.nameText, "TOPLEFT", 0, 10 + _G.oUF_ClassPowerBar:GetHeight())
@@ -691,22 +714,44 @@ function UF:UpdateNameplateAuras()
 	element:ForceUpdate()
 end
 
-function UF:RefreshNameplats()
-	local plateHeight = C.db["Nameplate"]["PlateHeight"]
-	local nameTextSize = C.db["Nameplate"]["NameTextSize"]
-	local iconSize = plateHeight*2 + 5
+function UF:UpdateNameplateSize()
+	local plateWidth, plateHeight = C.db["Nameplate"]["PlateWidth"], C.db["Nameplate"]["PlateHeight"]
+	local plateCBHeight, plateCBOffset = C.db["Nameplate"]["PlateCBHeight"], C.db["Nameplate"]["PlateCBOffset"]
+	local nameTextSize, CBTextSize = C.db["Nameplate"]["NameTextSize"], C.db["Nameplate"]["CBTextSize"]
+	local healthTextSize = C.db["Nameplate"]["HealthTextSize"]
+	local healthTextOffset = C.db["Nameplate"]["HealthTextOffset"]
+	if C.db["Nameplate"]["FriendPlate"] and self.isFriendly and not C.db["Nameplate"]["NameOnlyMode"] then -- cannot use plateType here
+		plateWidth, plateHeight = C.db["Nameplate"]["FriendPlateWidth"], C.db["Nameplate"]["FriendPlateHeight"]
+		plateCBHeight, plateCBOffset = C.db["Nameplate"]["FriendPlateCBHeight"], C.db["Nameplate"]["FriendPlateCBOffset"]
+		nameTextSize, CBTextSize = C.db["Nameplate"]["FriendNameSize"], C.db["Nameplate"]["FriendCBTextSize"]
+		healthTextSize = C.db["Nameplate"]["FriendHealthSize"]
+		healthTextOffset = C.db["Nameplate"]["FriendHealthOffset"]
+	end
 
+	local font, fontFlag = DB.Font[1], DB.Font[3]
+	local iconSize = plateHeight + plateCBHeight + 5
+
+	self:SetSize(plateWidth, plateHeight)
+	self.nameText:SetFont(font, nameTextSize, fontFlag)
+	self.npcTitle:SetFont(font, nameTextSize-1, fontFlag)
+	self.Castbar.Icon:SetSize(iconSize, iconSize)
+	self.Castbar.glowFrame:SetSize(iconSize+8, iconSize+8)
+	self.Castbar:SetHeight(plateCBHeight)
+	self.Castbar.Time:SetFont(font, CBTextSize, fontFlag)
+	self.Castbar.Time:SetPoint("TOPRIGHT", self.Castbar, "RIGHT", 0, plateCBOffset)
+	self.Castbar.Text:SetFont(font, CBTextSize, fontFlag)
+	self.Castbar.Text:SetPoint("TOPLEFT", self.Castbar, "LEFT", 0, plateCBOffset)
+	self.Castbar.Shield:SetPoint("TOP", self.Castbar, "CENTER", 0, plateCBOffset)
+	self.Castbar.Shield:SetSize(CBTextSize + 4, CBTextSize + 4)
+	self.Castbar.spellTarget:SetFont(font, CBTextSize+3, fontFlag)
+	self.healthValue:SetFont(font, healthTextSize, fontFlag)
+	self.healthValue:SetPoint("RIGHT", self, 0, healthTextOffset)
+	self.healthValue:UpdateTag()
+end
+
+function UF:RefreshNameplats()
 	for nameplate in pairs(platesList) do
-		nameplate:SetSize(C.db["Nameplate"]["PlateWidth"], plateHeight)
-		nameplate.nameText:SetFont(DB.Font[1], nameTextSize, DB.Font[3])
-		nameplate.npcTitle:SetFont(DB.Font[1], nameTextSize-1, DB.Font[3])
-		nameplate.Castbar.Icon:SetSize(iconSize, iconSize)
-		nameplate.Castbar:SetHeight(plateHeight)
-		nameplate.Castbar.Time:SetFont(DB.Font[1], nameTextSize, DB.Font[3])
-		nameplate.Castbar.Text:SetFont(DB.Font[1], nameTextSize, DB.Font[3])
-		nameplate.Castbar.spellTarget:SetFont(DB.Font[1], nameTextSize+3, DB.Font[3])
-		nameplate.healthValue:SetFont(DB.Font[1], C.db["Nameplate"]["HealthTextSize"], DB.Font[3])
-		nameplate.healthValue:UpdateTag()
+		UF.UpdateNameplateSize(nameplate)
 		UF.UpdateNameplateAuras(nameplate)
 		UF.UpdateTargetIndicator(nameplate)
 		UF.UpdateTargetChange(nameplate)
@@ -728,13 +773,12 @@ function UF:UpdatePlateByType()
 	local hpval = self.healthValue
 	local title = self.npcTitle
 	local raidtarget = self.RaidTargetIndicator
-	local classify = self.ClassifyIndicator
 	local questIcon = self.questIcon
 
 	name:ClearAllPoints()
 	raidtarget:ClearAllPoints()
 
-	if self.isNameOnly then
+	if self.plateType == "NameOnly" then
 		for _, element in pairs(DisabledElements) do
 			if self:IsElementEnabled(element) then
 				self:DisableElement(element)
@@ -749,7 +793,6 @@ function UF:UpdatePlateByType()
 		title:Show()
 
 		raidtarget:SetPoint("TOP", title, "BOTTOM", 0, -5)
-		classify:Hide()
 		if questIcon then questIcon:SetPoint("LEFT", name, "RIGHT", -1, 0) end
 	else
 		for _, element in pairs(DisabledElements) do
@@ -767,21 +810,29 @@ function UF:UpdatePlateByType()
 		title:Hide()
 
 		raidtarget:SetPoint("BOTTOMRIGHT", self, "TOPLEFT", 0, 3)
-		classify:Show()
 		if questIcon then questIcon:SetPoint("LEFT", self, "RIGHT", -1, 0) end
+
+		UF.UpdateNameplateSize(self)
 	end
 
 	UF.UpdateTargetIndicator(self)
+	UF.ToggleNameplateAuras(self)
 end
 
 function UF:RefreshPlateType(unit)
 	self.reaction = UnitReaction(unit, "player")
 	self.isFriendly = self.reaction and self.reaction >= 5
-	self.isNameOnly = C.db["Nameplate"]["NameOnlyMode"] and self.isFriendly or false
+	if C.db["Nameplate"]["NameOnlyMode"] and self.isFriendly or self.widgetsOnly then
+		self.plateType = "NameOnly"
+	elseif C.db["Nameplate"]["FriendPlate"] and self.isFriendly then
+		self.plateType = "FriendPlate"
+	else
+		self.plateType = "None"
+	end
 
-	if self.previousType == nil or self.previousType ~= self.isNameOnly then
+	if self.previousType == nil or self.previousType ~= self.plateType then
 		UF.UpdatePlateByType(self)
-		self.previousType = self.isNameOnly
+		self.previousType = self.plateType
 	end
 end
 

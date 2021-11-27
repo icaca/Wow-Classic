@@ -165,7 +165,7 @@ end
 -- Itemlevel
 do
 	local iLvlDB = {}
-	local itemLevelString = gsub(ITEM_LEVEL, "%%d", "")
+	local itemLevelString = "^"..gsub(ITEM_LEVEL, "%%d", "")
 	local enchantString = gsub(ENCHANTED_TOOLTIP_LINE, "%%s", "(.+)")
 	local RETRIEVING_ITEM_INFO = RETRIEVING_ITEM_INFO
 
@@ -221,14 +221,14 @@ do
 
 			for i = 2, 5 do
 				local line = _G[tip:GetName().."TextLeft"..i]
-				if line then
-					local text = line:GetText() or ""
-					local found = strfind(text, itemLevelString)
-					if found then
-						local level = strmatch(text, "(%d+)%)?$")
-						iLvlDB[link] = tonumber(level)
-						break
-					end
+				if not line then break end
+
+				local text = line:GetText()
+				local found = text and strfind(text, itemLevelString)
+				if found then
+					local level = strmatch(text, "(%d+)%)?$")
+					iLvlDB[link] = tonumber(level)
+					break
 				end
 			end
 
@@ -306,9 +306,11 @@ do
 							region:SetAlpha(0)
 						elseif i ~= kill then
 							region:SetTexture("")
+							region:SetAtlas("")
 						end
 					else
 						region:SetTexture("")
+						region:SetAtlas("")
 					end
 				end
 			end
@@ -333,7 +335,7 @@ do
 		["RIGHT"] = {relF = "LEFT", degree = 270, arrowX = -5, arrowY = 0, glowX = -4, glowY = 0},
 	}
 
-	function B:ShowHelpTip(parent, text, targetPoint, offsetX, offsetY, callback, callbackArg)
+	function B:ShowHelpTip(parent, text, targetPoint, offsetX, offsetY, callback, callbackArg, arrowX, arrowY)
 		local info = helpTipTable[callbackArg]
 		if not info then
 			local anchorInfo = pointInfo[targetPoint]
@@ -349,7 +351,7 @@ do
 			info.okay:SetScript("OnClick", B.HelpInfoAcknowledge)
 
 			info.Arrow:ClearAllPoints()
-			info.Arrow:SetPoint("CENTER", info, anchorInfo.relF, anchorInfo.arrowX, anchorInfo.arrowY)
+			info.Arrow:SetPoint("CENTER", info, anchorInfo.relF, arrowX or anchorInfo.arrowX, arrowY or anchorInfo.arrowY)
 
 			info.Arrow.Glow:ClearAllPoints()
 			info.Arrow.Glow:SetPoint("CENTER", info.Arrow.Arrow, "CENTER", anchorInfo.glowX, anchorInfo.glowY)
@@ -453,6 +455,7 @@ do
 
 	-- Background texture
 	function B:CreateTex()
+		if not C.db["Skins"]["BgTex"] then return end
 		if self.__bgTex then return end
 
 		local frame = self
@@ -667,6 +670,12 @@ do
 		hooksecurefunc(self, "Hide", resetIconBorderColor)
 	end
 
+	local CLASS_ICON_TCOORDS = CLASS_ICON_TCOORDS
+	function B:ClassIconTexCoord(class)
+		local tcoords = CLASS_ICON_TCOORDS[class]
+		self:SetTexCoord(tcoords[1] + .022, tcoords[2] - .025, tcoords[3] + .022, tcoords[4] - .025)
+	end
+
 	-- Handle statusbar
 	function B:CreateSB(spark, r, g, b)
 		self:SetStatusBarTexture(DB.normTex)
@@ -756,6 +765,7 @@ do
 			region = buttonName and _G[buttonName..region] or self[region]
 			if region then
 				region:SetAlpha(0)
+				region:Hide()
 			end
 		end
 

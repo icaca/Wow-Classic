@@ -1,8 +1,11 @@
 # BigWigs
 
-## [v31-classic](https://github.com/BigWigsMods/BigWigs/tree/v31-classic) (2021-09-16)
-[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v30.1-classic...v31-classic) [Previous Releases](https://github.com/BigWigsMods/BigWigs/releases)
+## [v32-classic](https://github.com/BigWigsMods/BigWigs/tree/v32-classic) (2021-11-02)
+[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v31-classic...v32-classic) [Previous Releases](https://github.com/BigWigsMods/BigWigs/releases)
 
-- bump version  
-- SSC/Lurker: Add Geyser, Fix phase changes  
-- SSC/Lurker: Fix Spout trigger  
+- Bump version  
+- Bump TOC for 1.14 and fix BCC  
+- TempestKeep/Solarian: Fix Wrath duration and use proper spell as option  
+- TempestKeep/Kaelthas: Fix phase 4 timer  
+- TempestKeep/Solarian: Fix Wrath of the Astromancer spell id  
+    Fixes #1125  

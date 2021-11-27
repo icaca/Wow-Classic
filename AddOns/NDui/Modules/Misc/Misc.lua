@@ -38,17 +38,18 @@ function M:OnLogin()
 	end
 
 	-- Init
-	self:UIWidgetFrameMover()
-	self:MoveDurabilityFrame()
-	self:MoveTicketStatusFrame()
-	self:UpdateFasterLoot()
-	self:UpdateErrorBlocker()
-	self:TradeTargetInfo()
-	self:ToggleTaxiDismount()
-	self:BidPriceHighlight()
-	self:BlockStrangerInvite()
-	self:TogglePetHappiness()
-	self:QuickMenuButton()
+	M:UIWidgetFrameMover()
+	M:MoveDurabilityFrame()
+	M:MoveTicketStatusFrame()
+	M:UpdateFasterLoot()
+	M:UpdateErrorBlocker()
+	M:TradeTargetInfo()
+	M:ToggleTaxiDismount()
+	M:BidPriceHighlight()
+	M:BlockStrangerInvite()
+	M:TogglePetHappiness()
+	M:QuickMenuButton()
+	M:BaudErrorFrameHelpTip()
 
 	-- Auto chatBubbles
 	if NDuiADB["AutoBubbles"] then
@@ -408,7 +409,7 @@ function M:QuickMenuButton()
 		local name = dropdownMenu.name
 		local unit = dropdownMenu.unit
 		local isPlayer = unit and UnitIsPlayer(unit)
-		local isFriendMenu = dropdownMenu == FriendsDropDown -- menus on FriendsFrame
+		local isFriendMenu = dropdownMenu == FriendsDropDown and not dropdownMenu.bnetIDAccount -- menus on FriendsFrame
 		if not name or (not isPlayer and not dropdownMenu.chatType and not isFriendMenu) then
 			frame:Hide()
 			return
@@ -486,4 +487,19 @@ function M:TogglePetHappiness()
 	else
 		B:UnregisterEvent("UNIT_HAPPINESS", CheckPetHappiness)
 	end
+end
+
+function M:BaudErrorFrameHelpTip()
+	if not IsAddOnLoaded("!BaudErrorFrame") then return end
+	local button, count = _G.BaudErrorFrameMinimapButton, _G.BaudErrorFrameMinimapCount
+	if not button then return end
+
+	hooksecurefunc(count, "SetText", function(_, text)
+		if not NDuiADB["Help"]["BaudError"] then
+			text = tonumber(text)
+			if text and text > 0 then
+				B:ShowHelpTip(button, L["BaudErrorTip"], "TOP", -90, 15, nil, "BaudError", 80)
+			end
+		end
+	end)
 end

@@ -30,48 +30,30 @@ AL["AtlasLoot Modules"] = "Módulos de AtlasLoot"
 AL["Balzaphon"] = "Balzaphon"
 AL["Bonus"] = "Bonus"
 AL["Bow"] = "Arco"
---[[Translation missing --]]
---[[ AL["Brutal Gladiator's Aegis"] = "Brutal Gladiator's Aegis"--]] 
---[[Translation missing --]]
---[[ AL["Brutal Gladiator's Battlegear"] = "Brutal Gladiator's Battlegear"--]] 
---[[Translation missing --]]
---[[ AL["Brutal Gladiator's Dreadgear"] = "Brutal Gladiator's Dreadgear"--]] 
---[[Translation missing --]]
---[[ AL["Brutal Gladiator's Earthshaker"] = "Brutal Gladiator's Earthshaker"--]] 
---[[Translation missing --]]
---[[ AL["Brutal Gladiator's Felshroud"] = "Brutal Gladiator's Felshroud"--]] 
---[[Translation missing --]]
---[[ AL["Brutal Gladiator's Investiture"] = "Brutal Gladiator's Investiture"--]] 
---[[Translation missing --]]
---[[ AL["Brutal Gladiator's Pursuit"] = "Brutal Gladiator's Pursuit"--]] 
---[[Translation missing --]]
---[[ AL["Brutal Gladiator's Raiment"] = "Brutal Gladiator's Raiment"--]] 
---[[Translation missing --]]
---[[ AL["Brutal Gladiator's Redemption"] = "Brutal Gladiator's Redemption"--]] 
---[[Translation missing --]]
---[[ AL["Brutal Gladiator's Refuge"] = "Brutal Gladiator's Refuge"--]] 
---[[Translation missing --]]
---[[ AL["Brutal Gladiator's Regalia"] = "Brutal Gladiator's Regalia"--]] 
---[[Translation missing --]]
---[[ AL["Brutal Gladiator's Sanctuary"] = "Brutal Gladiator's Sanctuary"--]] 
---[[Translation missing --]]
---[[ AL["Brutal Gladiator's Thunderfist"] = "Brutal Gladiator's Thunderfist"--]] 
---[[Translation missing --]]
---[[ AL["Brutal Gladiator's Vestments"] = "Brutal Gladiator's Vestments"--]] 
---[[Translation missing --]]
---[[ AL["Brutal Gladiator's Vindication"] = "Brutal Gladiator's Vindication"--]] 
---[[Translation missing --]]
---[[ AL["Brutal Gladiator's Wartide"] = "Brutal Gladiator's Wartide"--]] 
---[[Translation missing --]]
---[[ AL["Brutal Gladiator's Wildhide"] = "Brutal Gladiator's Wildhide"--]] 
+AL["Brutal Gladiator's Aegis"] = "Égida de Gladiador brutal"
+AL["Brutal Gladiator's Battlegear"] = "Equipo de batalla de Gladiador brutal"
+AL["Brutal Gladiator's Dreadgear"] = "Equipo de terror de Gladiador brutal"
+AL["Brutal Gladiator's Earthshaker"] = "Sacudetierra de Gladiador brutal"
+AL["Brutal Gladiator's Felshroud"] = "Sayo vil de Gladiador brutal"
+AL["Brutal Gladiator's Investiture"] = "Investidura de Gladiador brutal"
+AL["Brutal Gladiator's Pursuit"] = "Persecución de Gladiador brutal"
+AL["Brutal Gladiator's Raiment"] = "Vestiduras de Gladiador brutal"
+AL["Brutal Gladiator's Redemption"] = "Redención de Gladiador brutal"
+AL["Brutal Gladiator's Refuge"] = "Refugio de Gladiador brutal"
+AL["Brutal Gladiator's Regalia"] = "Atavío de Gladiador brutal"
+AL["Brutal Gladiator's Sanctuary"] = "Santuario de Gladiador brutal"
+AL["Brutal Gladiator's Thunderfist"] = "Puño de trueno de Gladiador brutal"
+AL["Brutal Gladiator's Vestments"] = "Vestimentas de Gladiador brutal"
+AL["Brutal Gladiator's Vindication"] = "Vindicación de Gladiador brutal"
+AL["Brutal Gladiator's Wartide"] = "Marea de guerra de Gladiador brutal"
+AL["Brutal Gladiator's Wildhide"] = "Envoltura salvaje de Gladiador brutal"
 AL["Chat Link"] = "Enlace de Chat"
 AL["Click to open Atlas instance map."] = "Haz clic para abrir el mapa de instancias de Atlas."
 AL["Collections"] = "Colecciones"
 AL["Command %s not found. Use '/al slash' for a full list of commands"] = "Comando %s no se encuentra. Escribe '/al slash' para una lista de todos los comandos."
 AL["Content phase:"] = "Fase de contenido:"
 AL["Copy Box"] = "Caja de copiar"
---[[Translation missing --]]
---[[ AL["Coren Direbrew"] = "Coren Direbrew"--]] 
+AL["Coren Direbrew"] = "Coren Cerveza Temible"
 AL["Crafting"] = "Fabricados"
 AL["Crossbow"] = "Ballesta"
 AL["Ctrl + C to copy"] = "Ctrl + C para copiar"

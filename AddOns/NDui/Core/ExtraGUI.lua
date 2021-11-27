@@ -2,6 +2,13 @@ local _, ns = ...
 local B, C, L, DB = unpack(ns)
 local G = B:GetModule("GUI")
 
+local _G = _G
+local unpack, pairs, ipairs, tinsert = unpack, pairs, ipairs, tinsert
+local min, max, strmatch, strfind, tonumber = min, max, strmatch, strfind, tonumber
+local GetSpellInfo, GetSpellTexture = GetSpellInfo, GetSpellTexture
+local GetInstanceInfo = GetInstanceInfo
+local IsControlKeyDown = IsControlKeyDown
+
 local function sortBars(barTable)
 	local num = 1
 	for _, bar in pairs(barTable) do
@@ -505,6 +512,8 @@ function G:SetupNameplateFilter(parent)
 		local scroll = G:CreateScroll(frame, 240, 200)
 		scroll.box = B.CreateEditBox(frame, 185, 25)
 		scroll.box:SetPoint("TOPLEFT", 10, -10)
+		scroll.box.title = L["Tips"]
+		B.AddTooltip(scroll.box, "ANCHOR_TOPRIGHT", L["ID Intro"], "info")
 		scroll.add = B.CreateButton(frame, 70, 25, ADD)
 		scroll.add:SetPoint("TOPRIGHT", -8, -10)
 		scroll.add:SetScript("OnClick", function()
@@ -626,6 +635,8 @@ function G:SetupBuffIndicator(parent)
 		GameTooltip:Show()
 	end
 
+	local UF = B:GetModule("UnitFrames")
+
 	for index, value in ipairs(frameData) do
 		B.CreateFS(panel, 14, value.text, "system", "TOPLEFT", 20, value.offset)
 
@@ -680,7 +691,6 @@ function G:SetupBuffIndicator(parent)
 			B.AddTooltip(showAll, "ANCHOR_TOPRIGHT", L["ShowAllTip"], "info")
 			scroll.showAll = showAll
 
-			local UF = B:GetModule("UnitFrames")
 			for spellID, value in pairs(UF.CornerSpells) do
 				local r, g, b = unpack(value[2])
 				createBar(scroll.child, index, spellID, value[1], r, g, b, value[3])
@@ -698,14 +708,16 @@ end
 local function sliderValueChanged(self, v)
 	local current = tonumber(format("%.0f", v))
 	self.value:SetText(current)
-	C.db["UFs"][self.__value] = current
+	C.db[self.__key][self.__value] = current
 	self.__update()
 end
 
-local function createOptionSlider(parent, title, minV, maxV, defaultV, x, y, value, func)
+local function createOptionSlider(parent, title, minV, maxV, defaultV, x, y, value, func, key)
 	local slider = B.CreateSlider(parent, title, minV, maxV, 1, x, y)
-	slider:SetValue(C.db["UFs"][value])
-	slider.value:SetText(C.db["UFs"][value])
+	if not key then key = "UFs" end
+	slider:SetValue(C.db[key][value])
+	slider.value:SetText(C.db[key][value])
+	slider.__key = key
 	slider.__value = value
 	slider.__update = func
 	slider.__default = defaultV
@@ -757,11 +769,13 @@ function G:SetupUnitFrame(parent)
 		end
 	end
 
+	local UF = B:GetModule("UnitFrames")
 	local mainFrames = {_G.oUF_Player, _G.oUF_Target}
 	local function updatePlayerSize()
 		for _, frame in pairs(mainFrames) do
 			SetUnitFrameSize(frame, "Player")
 		end
+		UF:UpdateTargetAuras()
 	end
 	createOptionGroup(scroll.child, L["Player&Target"], -10, "Player", updatePlayerSize)
 
@@ -1077,5 +1091,221 @@ function G:PlateCastbarGlow(parent)
 		if value then
 			createBar(scroll.child, spellID)
 		end
+	end
+end
+
+function G:SetupNameplateSize(parent)
+	local guiName = "NDuiGUI_PlateSizeSetup"
+	toggleExtraGUI(guiName)
+	if extraGUIs[guiName] then return end
+
+	local panel = createExtraGUI(parent, guiName, L["NameplateSize"].."*")
+	local scroll = G:CreateScroll(panel, 260, 540)
+
+	local optionValues = {
+		["enemy"] = {"PlateWidth", "PlateHeight", "NameTextSize", "HealthTextSize", "HealthTextOffset", "PlateCBHeight", "CBTextSize", "PlateCBOffset"},
+		["friend"] = {"FriendPlateWidth", "FriendPlateHeight", "FriendNameSize", "FriendHealthSize", "FriendHealthOffset", "FriendPlateCBHeight", "FriendCBTextSize", "FriendPlateCBOffset"},
+	}
+	local function createOptionGroup(parent, title, offset, value, func)
+		createOptionTitle(parent, title, offset)
+		createOptionSlider(parent, L["NP Width"], 50, 500, 190, 30, offset-60, optionValues[value][1], func, "Nameplate")
+		createOptionSlider(parent, L["NP Height"], 5, 50, 8, 30, offset-130, optionValues[value][2], func, "Nameplate")
+		createOptionSlider(parent, L["NameTextSize"], 10, 50, 14, 30, offset-200, optionValues[value][3], func, "Nameplate")
+		createOptionSlider(parent, L["HealthTextSize"], 10, 50, 16, 30, offset-270, optionValues[value][4], func, "Nameplate")
+		createOptionSlider(parent, L["Health Offset"], -50, 50, 5, 30, offset-340, optionValues[value][5], func, "Nameplate")
+		createOptionSlider(parent, L["Castbar Height"], 5, 50, 8, 30, offset-410, optionValues[value][6], func, "Nameplate")
+		createOptionSlider(parent, L["CastbarTextSize"], 10, 50, 14, 30, offset-480, optionValues[value][7], func, "Nameplate")
+		createOptionSlider(parent, L["CastbarTextOffset"], -50, 50, -1, 30, offset-550, optionValues[value][8], func, "Nameplate")
+	end
+
+	local UF = B:GetModule("UnitFrames")
+	createOptionGroup(scroll.child, L["HostileNameplate"], -10, "enemy", UF.RefreshAllPlates)
+	createOptionGroup(scroll.child, L["FriendlyNameplate"], -630, "friend", UF.RefreshAllPlates)
+end
+
+function G:SetupActionBar(parent)
+	local guiName = "NDuiGUI_ActionBarSetup"
+	toggleExtraGUI(guiName)
+	if extraGUIs[guiName] then return end
+
+	local panel = createExtraGUI(parent, guiName, L["ActionbarSetup"].."*")
+	local scroll = G:CreateScroll(panel, 260, 540)
+
+	local Bar = B:GetModule("Actionbar")
+	local defaultValues = {
+		-- defaultSize, minButtons, maxButtons, defaultButtons, defaultPerRow 
+		["Bar1"] = {34, 6, 12, 12, 12},
+		["Bar2"] = {34, 1, 12, 12, 12},
+		["Bar3"] = {32, 0, 12, 0, 12},
+		["Bar4"] = {32, 1, 12, 12, 1},
+		["Bar5"] = {32, 1, 12, 12, 1},
+		["BarPet"] = {26, 1, 10, 10, 10},
+	}
+	local function createOptionGroup(parent, title, offset, value, color)
+		color = color or ""
+		local data = defaultValues[value]
+		local function updateBarScale()
+			Bar:UpdateActionSize(value)
+		end
+		createOptionTitle(parent, title, offset)
+		createOptionSlider(parent, L["ButtonSize"], 20, 80, data[1], 30, offset-60, value.."Size", updateBarScale, "Actionbar")
+		createOptionSlider(parent, color..L["MaxButtons"], data[2], data[3], data[4], 30, offset-130, value.."Num", updateBarScale, "Actionbar")
+		createOptionSlider(parent, L["ButtonsPerRow"], 1, data[3], data[5], 30, offset-200, value.."PerRow", updateBarScale, "Actionbar")
+		createOptionSlider(parent, L["ButtonFontSize"], 8, 20, 12, 30, offset-270, value.."Font", updateBarScale, "Actionbar")
+	end
+
+	createOptionGroup(scroll.child, L["Actionbar"].."1", -10, "Bar1")
+	createOptionGroup(scroll.child, L["Actionbar"].."2", -340, "Bar2")
+	createOptionGroup(scroll.child, L["Actionbar"].."3", -670, "Bar3", "|cffff0000")
+	createOptionGroup(scroll.child, L["Actionbar"].."4", -1000, "Bar4")
+	createOptionGroup(scroll.child, L["Actionbar"].."5", -1330, "Bar5")
+	createOptionGroup(scroll.child, L["Pet Actionbar"], -1660, "BarPet")
+
+	createOptionTitle(scroll.child, L["LeaveVehicle"], -1990)
+	createOptionSlider(scroll.child, L["ButtonSize"], 20, 80, 34, 30, -2050, "VehButtonSize", Bar.UpdateVehicleButton, "Actionbar")
+end
+
+function G:SetupStanceBar(parent)
+	local guiName = "NDuiGUI_StanceBarSetup"
+	toggleExtraGUI(guiName)
+	if extraGUIs[guiName] then return end
+
+	local panel = createExtraGUI(parent, guiName, L["ActionbarSetup"].."*")
+	local scroll = G:CreateScroll(panel, 260, 540)
+
+	local Bar = B:GetModule("Actionbar")
+	local parent, offset = scroll.child, -10
+	createOptionTitle(parent, L["StanceBar"], offset)
+	createOptionSlider(parent, L["ButtonSize"], 20, 80, 30, 30, offset-60, "BarStanceSize", Bar.UpdateStanceBar, "Actionbar")
+	createOptionSlider(parent, L["ButtonsPerRow"], 1, 10, 10, 30, offset-130, "BarStancePerRow", Bar.UpdateStanceBar, "Actionbar")
+	createOptionSlider(parent, L["ButtonFontSize"], 8, 20, 12, 30, offset-200, "BarStanceFont", Bar.UpdateStanceBar, "Actionbar")
+end
+
+function G:SetupActionbarStyle(parent)
+	local size, padding = 30, 3
+
+	local frame = CreateFrame("Frame", "NDuiActionbarStyleFrame", parent.child)
+	frame:SetSize((size+padding)*5 + padding, size + 2*padding)
+	frame:SetPoint("TOPRIGHT", -100, -15)
+	B.CreateBDFrame(frame, .25)
+
+	local Bar = B:GetModule("Actionbar")
+
+	local styleString = {
+		[1] = "NAB:34:12:12:12:34:12:12:12:32:12:0:12:32:12:12:1:32:12:12:1:26:12:10:10:30:12:10:0B24:0B60:-271B26:271B26:-1BR336:-35BR336:0B100:-202B100",
+		[2] = "NAB:34:12:12:12:34:12:12:12:34:12:12:12:32:12:12:1:32:12:12:1:26:12:10:10:30:12:10:0B24:0B60:0B96:271B26:-1BR336:-35BR336:0B134:-200B138",
+		[3] = "NAB:34:12:12:12:34:12:12:12:34:12:12:6:32:12:12:1:32:12:12:1:26:12:10:10:30:12:10:-108B24:-108B60:216B24:271B26:-1TR-336:-35TR-336:0B98:-310B100",
+	}
+	local styleName = {
+		[1] = _G.DEFAULT,
+		[2] = "3X12",
+		[3] = "2X18",
+		[4] = L["Export"],
+		[5] = L["Import"],
+	}
+	local tooltips = {
+		[4] = L["ExportActionbarStyle"],
+		[5] = L["ImportActionbarStyle"],
+	}
+
+	local function applyBarStyle(self)
+		if not IsControlKeyDown() then return end
+		local str = styleString[self.index]
+		if not str then return end
+		Bar:ImportActionbarStyle(str)
+	end
+
+	StaticPopupDialogs["NDUI_BARSTYLE_EXPORT"] = {
+		text = L["Export"],
+		button1 = OKAY,
+		OnShow = function(self)
+			self.editBox:SetText(Bar:ExportActionbarStyle())
+			self.editBox:HighlightText()
+		end,
+		EditBoxOnEscapePressed = function(self)
+			self:GetParent():Hide()
+		end,
+		whileDead = 1,
+		hasEditBox = 1,
+		editBoxWidth = 250,
+	}
+
+	StaticPopupDialogs["NDUI_BARSTYLE_IMPORT"] = {
+		text = L["Import"],
+		button1 = OKAY,
+		button2 = CANCEL,
+		OnShow = function(self)
+			self.button1:Disable()
+		end,
+		OnAccept = function(self)
+			Bar:ImportActionbarStyle(self.editBox:GetText())
+		end,
+		EditBoxOnTextChanged = function(self)
+			local button1 = self:GetParent().button1
+			local text = self:GetText()
+			local found = text and strfind(text, "^NAB:")
+			if found then
+				button1:Enable()
+			else
+				button1:Disable()
+			end
+		end,
+		EditBoxOnEscapePressed = function(self)
+			self:GetParent():Hide()
+		end,
+		whileDead = 1,
+		showAlert = 1,
+		hasEditBox = 1,
+		editBoxWidth = 250,
+	}
+
+	local function exportBarStyle()
+		StaticPopup_Hide("NDUI_BARSTYLE_IMPORT")
+		StaticPopup_Show("NDUI_BARSTYLE_EXPORT")
+	end
+
+	local function importBarStyle()
+		StaticPopup_Hide("NDUI_BARSTYLE_EXPORT")
+		StaticPopup_Show("NDUI_BARSTYLE_IMPORT")
+	end
+
+	B:RegisterEvent("PLAYER_REGEN_DISABLED", function()
+		StaticPopup_Hide("NDUI_BARSTYLE_EXPORT")
+		StaticPopup_Hide("NDUI_BARSTYLE_IMPORT")
+	end)
+
+	local function styleOnEnter(self)
+		GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT")
+		GameTooltip:ClearLines()
+		GameTooltip:AddLine(self.title)
+		GameTooltip:AddLine(self.tip, .6,.8,1,1)
+		GameTooltip:Show()
+	end
+
+	local function GetButtonText(i)
+		if i == 4 then
+			return "|T"..DB.ArrowUp..":18|t"
+		elseif i == 5 then
+			return "|T"..DB.ArrowUp..":18:18:0:0:1:1:0:1:1:0|t"
+		else
+			return i
+		end
+	end
+
+	for i = 1, 5 do
+		local bu = B.CreateButton(frame, size, size, GetButtonText(i))
+		bu:SetPoint("LEFT", (i-1)*(size + padding) + padding, 0)
+		bu.index = i
+		bu.title = styleName[i]
+		bu.tip = tooltips[i] or L["ApplyBarStyle"]
+		if i == 4 then
+			bu:SetScript("OnClick", exportBarStyle)
+		elseif i == 5 then
+			bu:SetScript("OnClick", importBarStyle)
+		else
+			bu:SetScript("OnClick", applyBarStyle)
+		end
+		bu:HookScript("OnEnter", styleOnEnter)
+		bu:HookScript("OnLeave", B.HideTooltip)
 	end
 end

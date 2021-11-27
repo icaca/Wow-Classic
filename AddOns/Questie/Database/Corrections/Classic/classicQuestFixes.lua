@@ -71,9 +71,6 @@ function QuestieQuestFixes:Load()
         [109] = {
             [questKeys.startedBy] = {{233,237,240,261,294,963},nil,nil}, --#2158
         },
-        [123] = {
-            [questKeys.startedBy] = {{100},nil,{1307}},
-        },
         [148] = {
             [questKeys.preQuestSingle] = {}, -- #1173
         },
@@ -208,6 +205,9 @@ function QuestieQuestFixes:Load()
         },
         [484] = {
             [questKeys.requiredMinRep] = {72,0}, -- #1501
+        },
+        [489] = {
+            [questKeys.startedBy] = {{2081,2083,2151,2155},nil,nil},
         },
         [495] = {
             [questKeys.exclusiveTo] = {518},
@@ -2665,6 +2665,9 @@ function QuestieQuestFixes:Load()
         [8733] = {
             [questKeys.preQuestSingle] = {8555}, -- #2365
         },
+        [8736] = {
+            [questKeys.triggerEnd] = {"The Redemption of Eranikus", {[zoneIDs.MOONGLADE]={{51.8,36.4}}}},
+        },
         [8747] = {
             [questKeys.exclusiveTo] = {8752,8753,8754,8755,8756,8757,8758,8759,8760,8761}, --protector neutral
         },
@@ -2951,6 +2954,9 @@ function QuestieQuestFixes:Load()
         [9050] = {
             [questKeys.specialFlags] = 1,
         },
+        [9052] = {
+            [questKeys.preQuestSingle] = {},
+        },
         [9054] = {
             [questKeys.specialFlags] = 1,
         },
@@ -2976,6 +2982,7 @@ function QuestieQuestFixes:Load()
             [questKeys.specialFlags] = 1,
         },
         [9063] = {
+            [questKeys.exclusiveTo] = {9052},
             [questKeys.zoneOrSort] = 493,
         },
         [9069] = {
