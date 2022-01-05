@@ -166,7 +166,6 @@ end
 do
 	local iLvlDB = {}
 	local itemLevelString = "^"..gsub(ITEM_LEVEL, "%%d", "")
-	local enchantString = gsub(ENCHANTED_TOOLTIP_LINE, "%%s", "(.+)")
 	local RETRIEVING_ITEM_INFO = RETRIEVING_ITEM_INFO
 
 	local tip = CreateFrame("GameTooltip", "NDui_ScanTooltip", nil, "GameTooltipTemplate")
@@ -179,7 +178,6 @@ do
 			wipe(tip.gems)
 		end
 
-		local step = 1
 		for i = 1, 5 do
 			local tex = _G[tip:GetName().."Texture"..i]
 			local texture = tex and tex:IsShown() and tex:GetTexture()
@@ -418,10 +416,11 @@ do
 		end
 		GameTooltip:Show()
 	end
-	function B:AddTooltip(anchor, text, color)
+	function B:AddTooltip(anchor, text, color, showTips)
 		self.anchor = anchor
 		self.text = text
 		self.color = color
+		if showTips then self.title = L["Tips"] end
 		self:SetScript("OnEnter", Tooltip_OnEnter)
 		self:SetScript("OnLeave", B.HideTooltip)
 	end
@@ -527,6 +526,14 @@ do
 		return tex
 	end
 
+	function B:HideBackdrop()
+		if DB.isNewPatch then
+			if self.NineSlice then self.NineSlice:SetAlpha(0) end
+		else
+			if self.SetBackdrop then self:SetBackdrop(nil) end
+		end
+	end
+
 	-- Handle frame
 	function B:CreateBDFrame(a, gradient)
 		local frame = self
@@ -559,7 +566,7 @@ do
 	-- Handle icons
 	function B:ReskinIcon(shadow)
 		self:SetTexCoord(unpack(DB.TexCoord))
-		local bg = B.CreateBDFrame(self)
+		local bg = B.CreateBDFrame(self, .25) -- exclude from opacity control
 		if shadow then B.CreateSD(bg) end
 		return bg
 	end
@@ -615,8 +622,7 @@ do
 		bu.Icon:SetTexture(616343)
 		bu:SetHighlightTexture(616343)
 		if tooltip then
-			bu.title = L["Tips"]
-			B.AddTooltip(bu, "ANCHOR_BOTTOMLEFT", tooltip, "info")
+			B.AddTooltip(bu, "ANCHOR_BOTTOMLEFT", tooltip, "info", true)
 		end
 
 		return bu
@@ -829,20 +835,6 @@ do
 	hooksecurefunc("PanelTemplates_DeselectTab", B.ResetTabAnchor)
 
 	-- Handle scrollframe
-	local function Scroll_OnEnter(self)
-		local thumb = self.thumb
-		if not thumb then return end
-		thumb.bg:SetBackdropColor(cr, cg, cb, .25)
-		thumb.bg:SetBackdropBorderColor(cr, cg, cb)
-	end
-
-	local function Scroll_OnLeave(self)
-		local thumb = self.thumb
-		if not thumb then return end
-		thumb.bg:SetBackdropColor(0, 0, 0, 0)
-		B.SetBorderColor(thumb.bg)
-	end
-
 	local function GrabScrollBarElement(frame, element)
 		local frameName = frame:GetDebugName()
 		return frame[element] or frameName and (_G[frameName..element] or strfind(frameName, element)) or nil
@@ -856,20 +848,57 @@ do
 		if thumb then
 			thumb:SetAlpha(0)
 			thumb:SetWidth(16)
-			self.thumb = thumb
-
 			local bg = B.CreateBDFrame(self, 0, true)
 			bg:SetPoint("TOPLEFT", thumb, 0, -2)
 			bg:SetPoint("BOTTOMRIGHT", thumb, 0, 4)
-			thumb.bg = bg
+			bg:SetBackdropColor(cr, cg, cb, .75)
 		end
 
 		local up, down = self:GetChildren()
 		B.ReskinArrow(up, "up")
 		B.ReskinArrow(down, "down")
+	end
 
-		self:HookScript("OnEnter", Scroll_OnEnter)
-		self:HookScript("OnLeave", Scroll_OnLeave)
+	-- WowTrimScrollBar
+	local function updateTrimScrollArrow(self, atlas)
+		local arrow = self.__owner
+		if not arrow.__texture then return end
+	
+		if atlas == arrow.disabledTexture then
+			arrow.__texture:SetVertexColor(.5, .5, .5)
+		else
+			arrow.__texture:SetVertexColor(1, 1, 1)
+		end
+	end
+
+	local function reskinTrimScrollArrow(self, direction)
+		if not self then return end
+
+		self.Texture:SetAlpha(0)
+		self.Overlay:SetAlpha(0)
+		local tex = self:CreateTexture(nil, "ARTWORK")
+		tex:SetAllPoints()
+		B.CreateBDFrame(tex, .25)
+		B.SetupArrow(tex, direction)
+		self.__texture = tex
+	
+		self:HookScript("OnEnter", B.Texture_OnEnter)
+		self:HookScript("OnLeave", B.Texture_OnLeave)
+		self.Texture.__owner = self
+		hooksecurefunc(self.Texture, "SetAtlas", updateTrimScrollArrow)
+		self.Texture:SetAtlas(self.Texture:GetAtlas())
+	end
+
+	function B:ReskinTrimScroll()
+		B.StripTextures(self)
+		reskinTrimScrollArrow(self.Back, "up")
+		reskinTrimScrollArrow(self.Forward, "down")
+
+		local thumb = self:GetThumb()
+		if thumb then
+			B.StripTextures(thumb, 0)
+			B.CreateBDFrame(thumb, 0, true):SetBackdropColor(cr, cg, cb, .75)
+		end
 	end
 
 	-- Handle dropdown
@@ -1438,6 +1467,7 @@ do
 		bu:SetSize(18, 18)
 		local list = CreateFrame("Frame", nil, dd, "BackdropTemplate")
 		list:SetPoint("TOP", dd, "BOTTOM", 0, -2)
+		RaiseFrameLevel(list)
 		B.CreateBD(list, 1)
 		list:SetBackdropBorderColor(1, 1, 1, .2)
 		list:Hide()
@@ -1455,6 +1485,7 @@ do
 			local text = B.CreateFS(opt[i], 14, j, false, "LEFT", 5, 0)
 			text:SetPoint("RIGHT", -5, 0)
 			opt[i].text = j
+			opt[i].index = i
 			opt[i].__owner = dd
 			opt[i]:SetScript("OnClick", optOnClick)
 			opt[i]:SetScript("OnEnter", optOnEnter)
@@ -1472,6 +1503,9 @@ do
 	local function updatePicker()
 		local swatch = ColorPickerFrame.__swatch
 		local r, g, b = ColorPickerFrame:GetColorRGB()
+		r = B:Round(r, 2)
+		g = B:Round(g, 2)
+		b = B:Round(b, 2)
 		swatch.tex:SetVertexColor(r, g, b)
 		swatch.color.r, swatch.color.g, swatch.color.b = r, g, b
 	end
@@ -1508,8 +1542,9 @@ do
 		end
 	end
 
+	local whiteColor = {r=1, g=1, b=1}
 	function B:CreateColorSwatch(name, color)
-		color = color or {r=1, g=1, b=1}
+		color = color or whiteColor
 
 		local swatch = CreateFrame("Button", nil, self, "BackdropTemplate")
 		swatch:SetSize(18, 18)

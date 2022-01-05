@@ -104,10 +104,12 @@ G.DefaultSettings = {
 		VerticalTotems = true,
 		TotemSize = 32,
 		ClassAuras = false,
-		ReverseBuffs = false,
+		BuffFrame = true,
+		HideBlizBuff = false,
+		ReverseBuff = false,
 		BuffSize = 30,
 		BuffsPerRow = 16,
-		ReverseDebuffs = false,
+		ReverseDebuff = false,
 		DebuffSize = 30,
 		DebuffsPerRow = 16,
 	},
@@ -120,25 +122,26 @@ G.DefaultSettings = {
 	UFs = {
 		Enable = true,
 		Portrait = true,
-		PlayerDebuff = false,
-		ToTAuras = false,
+		ShowAuras = true,
 		Arena = true,
 		Castbars = true,
 		SwingBar = false,
 		SwingTimer = false,
 		RaidFrame = true,
 		NumGroups = 8,
+		RaidDirec = 1,
+		RaidRows = 1,
 		SimpleMode = false,
-		SMUnitsPerColumn = 20,
-		SMGroupByIndex = 1,
+		SMRScale = 10,
+		SMRPerCol = 20,
+		SMRGroupBy = 1,
+		SMRGroups = 6,
+		SMRDirec = 1,
 		InstanceAuras = true,
 		DispellOnly = false,
 		RaidDebuffScale = 1,
 		RaidHealthColor = 1,
-		HorizonRaid = false,
-		HorizonParty = false,
 		ShowSolo = false,
-		SimpleRaidScale = 10,
 		RaidWidth = 80,
 		RaidHeight = 32,
 		RaidPowerHeight = 2,
@@ -151,11 +154,16 @@ G.DefaultSettings = {
 		FCTFontSize = 18,
 		PetCombatText = true,
 		RaidClickSets = false,
-		ShowTeamIndex = false,
+		TeamIndex = false,
 		ClassPower = true,
+		CPWidth = 150,
+		CPHeight = 5,
+		CPxOffset = 12,
+		CPyOffset = -2,
 		LagString = true,
 		RaidBuffIndicator = true,
 		PartyFrame = true,
+		PartyDirec = 2,
 		PWOnRight = false,
 		PartyWidth = 100,
 		PartyHeight = 32,
@@ -164,37 +172,51 @@ G.DefaultSettings = {
 		PartyPetWidth = 100,
 		PartyPetHeight = 22,
 		PartyPetPowerHeight = 2,
+		PartyPetPerCol = 5,
+		PartyPetMaxCol = 1,
+		PartyPetVsby = 1,
+		PetDirec = 1,
 		HealthColor = 1,
 		BuffIndicatorType = 1,
 		BuffIndicatorScale = 1,
 		EnergyTicker = false,
 		UFTextScale = 1,
-		SmoothAmount = .3,
 		ToToT = false,
 		RaidTextScale = 1,
 		FrequentHealth = false,
 		HealthFrequency = .2,
-		TargetAurasPerRow = 9,
 		ShowRaidBuff = false,
 		RaidBuffSize = 12,
 		ShowRaidDebuff = true,
 		RaidDebuffSize = 12,
 		SmartRaid = false,
+		Desaturate = true,
+		DebuffColor = false,
+		CCName = true,
+		RCCName = true,
+		HideTip = false,
 
 		PlayerWidth = 245,
 		PlayerHeight = 24,
 		PlayerPowerHeight = 4,
 		PlayerPowerOffset = 2,
+		PlayerHPTag = 2,
+		PlayerMPTag = 4,
 		FocusWidth = 200,
 		FocusHeight = 22,
 		FocusPowerHeight = 3,
 		FocusPowerOffset = 2,
+		FocusHPTag = 2,
+		FocusMPTag = 4,
 		PetWidth = 120,
 		PetHeight = 18,
 		PetPowerHeight = 2,
+		PetHPTag = 4,
 		BossWidth = 150,
 		BossHeight = 22,
 		BossPowerHeight = 2,
+		BossHPTag = 5,
+		BossMPTag = 5,
 
 		CastingColor = {r=.3, g=.7, b=1},
 		--NotInterruptColor = {r=1, g=.5, b=.5},
@@ -207,6 +229,38 @@ G.DefaultSettings = {
 		FocusCB = true,
 		FocusCBWidth = 320,
 		FocusCBHeight = 20,
+
+		PlayerNumBuff = 20,
+		PlayerNumDebuff = 20,
+		PlayerBuffType = 1,
+		PlayerDebuffType = 1,
+		PlayerAurasPerRow = 9,
+		TargetNumBuff = 20,
+		TargetNumDebuff = 20,
+		TargetBuffType = 2,
+		TargetDebuffType = 2,
+		TargetAurasPerRow = 9,
+		FocusNumBuff = 20,
+		FocusNumDebuff = 20,
+		FocusBuffType = 3,
+		FocusDebuffType = 2,
+		FocusAurasPerRow = 8,
+		ToTNumBuff = 6,
+		ToTNumDebuff = 6,
+		ToTBuffType = 1,
+		ToTDebuffType = 1,
+		ToTAurasPerRow = 5,
+		PetNumBuff = 6,
+		PetNumDebuff = 6,
+		PetBuffType = 1,
+		PetDebuffType = 1,
+		PetAurasPerRow = 5,
+		BossNumBuff = 6,
+		BossNumDebuff = 6,
+		BossBuffType = 2,
+		BossDebuffType = 3,
+		BossBuffPerRow = 6,
+		BossDebuffPerRow = 6,
 	},
 	Chat = {
 		Sticky = false,
@@ -229,6 +283,7 @@ G.DefaultSettings = {
 		BlockSpammer = false,
 		ChatBGType = 2,
 		WhisperSound = true,
+		BottomBox = false,
 	},
 	Map = {
 		DisableMap = false,
@@ -265,7 +320,8 @@ G.DefaultSettings = {
 		PPHealthHeight = 5,
 		PPPowerHeight = 5,
 		PPPowerText = false,
-		FullHealth = true,
+		NameType = 5,
+		HealthType = 2,
 		SecureColor = {r=1, g=0, b=1},
 		TransColor = {r=1, g=.8, b=0},
 		InsecureColor = {r=1, g=0, b=0},
@@ -273,12 +329,12 @@ G.DefaultSettings = {
 		--DPSRevertThreat = false,
 		PPFadeout = true,
 		PPFadeoutAlpha = 0,
-		NameplateClassPower = false,
+		TargetPower = false,
 		MinScale = 1,
 		MinAlpha = 1,
-		ColorBorder = false,
+		Desaturate = true,
+		DebuffColor = false,
 		QuestIndicator = true,
-		ClassPowerOnly = false,
 		NameOnlyMode = false,
 		ExecuteRatio = 0,
 		ColoredTarget = false,
@@ -292,6 +348,7 @@ G.DefaultSettings = {
 		FriendPlate = false,
 		EnemyThru = false,
 		FriendlyThru = false,
+		BlockDBM = true,
 
 		PlateWidth = 190,
 		PlateHeight = 8,
@@ -339,8 +396,9 @@ G.DefaultSettings = {
 	},
 	Tooltip = {
 		CombatHide = false,
-		Cursor = false,
-		ClassColor = false,
+		CursorMode = 1,
+		ItemQuality = false,
+		TipAnchor = 4,
 		HideRank = false,
 		FactionIcon = true,
 		TargetBy = true,
@@ -435,6 +493,7 @@ G.AccountSettings = {
 	Help = {},
 	CustomTex = "",
 	MajorSpells = {},
+	SmoothAmount = .25,
 }
 
 -- Initial settings
@@ -521,8 +580,28 @@ local function setupCastbar()
 	G:SetupCastbar(guiPage[3])
 end
 
+local function setupClassPower()
+	G:SetupUFClassPower(guiPage[3])
+end
+
+local function setupUFAuras()
+	G:SetupUFAuras(guiPage[3])
+end
+
 local function setupRaidFrame()
 	G:SetupRaidFrame(guiPage[4])
+end
+
+local function setupSimpleRaidFrame()
+	G:SetupSimpleRaidFrame(guiPage[4])
+end
+
+local function setupPartyFrame()
+	G:SetupPartyFrame(guiPage[4])
+end
+
+local function setupPartyPetFrame()
+	G:SetupPartyPetFrame(guiPage[4])
 end
 
 local function setupRaidDebuffs()
@@ -547,6 +626,10 @@ end
 
 local function setupPlateCastbarGlow()
 	G:PlateCastbarGlow(guiPage[5])
+end
+
+local function setupBuffFrame()
+	G:SetupBuffFrame(guiPage[7])
 end
 
 local function setupAuraWatch()
@@ -611,20 +694,6 @@ local function toggleBarFader(self)
 	B:GetModule("Actionbar"):ToggleBarFader(name)
 end
 
-local function updateBuffFrame()
-	local A = B:GetModule("Auras")
-	A:UpdateOptions()
-	A:UpdateHeader(A.BuffFrame)
-	A.BuffFrame.mover:SetSize(A.BuffFrame:GetSize())
-end
-
-local function updateDebuffFrame()
-	local A = B:GetModule("Auras")
-	A:UpdateOptions()
-	A:UpdateHeader(A.DebuffFrame)
-	A.DebuffFrame.mover:SetSize(A.DebuffFrame:GetSize())
-end
-
 local function updateReminder()
 	B:GetModule("Auras"):InitReminder()
 end
@@ -656,6 +725,14 @@ end
 
 local function toggleChatBackground()
 	B:GetModule("Chat"):ToggleChatBackground()
+end
+
+local function toggleLanguageFilter()
+	B:GetModule("Chat"):ToggleLanguageFilter()
+end
+
+local function toggleEditBoxAnchor()
+	B:GetModule("Chat"):ToggleEditBoxAnchor()
 end
 
 local function updateToggleDirection()
@@ -698,6 +775,16 @@ local function togglePlateVisibility()
 	B:GetModule("UnitFrames"):TogglePlateVisibility()
 end
 
+local function togglePlayerPlate()
+	refreshNameplates()
+	B:GetModule("UnitFrames"):TogglePlayerPlate()
+end
+
+local function toggleTargetClassPower()
+	refreshNameplates()
+	B:GetModule("UnitFrames"):ToggleTargetClassPower()
+end
+
 local function updatePlateScale()
 	B:GetModule("UnitFrames"):UpdatePlateScale()
 end
@@ -714,23 +801,20 @@ local function updateUFTextScale()
 	B:GetModule("UnitFrames"):UpdateTextScale()
 end
 
+local function toggleUFClassPower()
+	B:GetModule("UnitFrames"):ToggleUFClassPower()
+end
+
+local function toggleAllAuras()
+	B:GetModule("UnitFrames"):ToggleAllAuras()
+end
+
 local function updateRaidTextScale()
 	B:GetModule("UnitFrames"):UpdateRaidTextScale()
 end
 
 local function refreshRaidFrameIcons()
 	B:GetModule("UnitFrames"):RefreshRaidFrameIcons()
-end
-
-local function updateTargetFrameAuras()
-	B:GetModule("UnitFrames"):UpdateTargetAuras()
-end
-
-local function updateSimpleModeGroupBy()
-	local UF = B:GetModule("UnitFrames")
-	if UF.UpdateSimpleModeHeader then
-		UF:UpdateSimpleModeHeader()
-	end
 end
 
 local function updateRaidAuras()
@@ -741,12 +825,25 @@ local function updateRaidHealthMethod()
 	B:GetModule("UnitFrames"):UpdateRaidHealthMethod()
 end
 
+local function toggleCastBarLatency()
+	B:GetModule("UnitFrames"):ToggleCastBarLatency()
+end
+
 local function updateSmoothingAmount()
-	B:SetSmoothingAmount(C.db["UFs"]["SmoothAmount"])
+	B:SetSmoothingAmount(NDuiADB["SmoothAmount"])
 end
 
 local function updateAllHeaders()
 	B:GetModule("UnitFrames"):UpdateAllHeaders()
+end
+
+local function updateTeamIndex()
+	local UF = B:GetModule("UnitFrames")
+	if UF.CreateAndUpdateRaidHeader then
+		UF:CreateAndUpdateRaidHeader()
+		UF:UpdateRaidTeamIndex()
+	end
+	updateRaidTextScale()
 end
 
 local function updateMapFader()
@@ -826,20 +923,21 @@ end
 -- Config
 local HeaderTag = "|cff00cc4c"
 local NewTag = "|TInterface\\OptionsFrame\\UI-OptionsFrame-NewFeatureIcon:0|t"
+G.HealthValues = {DISABLE, L["ShowHealthDefault"], L["ShowHealthCurMax"], L["ShowHealthCurrent"], L["ShowHealthPercent"], L["ShowHealthLoss"], L["ShowHealthLossPercent"]}
 
 G.TabList = {
-	NewTag..L["Actionbar"],
-	NewTag..L["Bags"],
-	L["Unitframes"],
-	L["RaidFrame"],
+	L["Actionbar"],
+	L["Bags"],
+	NewTag..L["Unitframes"],
+	NewTag..L["RaidFrame"],
 	NewTag..L["Nameplate"],
-	L["PlayerPlate"],
-	L["Auras"],
+	NewTag..L["PlayerPlate"],
+	NewTag..L["Auras"],
 	L["Raid Tools"],
 	L["ChatFrame"],
 	L["Maps"],
-	NewTag..L["Skins"],
-	L["Tooltip"],
+	L["Skins"],
+	NewTag..L["Tooltip"],
 	L["Misc"],
 	NewTag..L["UI Settings"],
 	L["Profile"],
@@ -847,16 +945,16 @@ G.TabList = {
 
 G.OptionList = { -- type, key, value, name, horizon, doubleline
 	[1] = {
-		{1, "Actionbar", "Enable", NewTag..HeaderTag..L["Enable Actionbar"], nil, setupActionBar},
+		{1, "Actionbar", "Enable", HeaderTag..L["Enable Actionbar"], nil, setupActionBar},
 		{},--blank
-		{1, "Actionbar", "MicroMenu", L["Micromenu"]},
-		{1, "Actionbar", "ShowStance", NewTag..L["ShowStanceBar"], true, setupStanceBar},
+		{1, "Actionbar", "MicroMenu", L["Micromenu"], nil, nil, nil, L["MicroMenuTip"]},
+		{1, "Actionbar", "ShowStance", L["ShowStanceBar"], true, setupStanceBar},
 		{1, "Actionbar", "Bar4Fader", L["Bar4 Fade"].."*", nil, nil, toggleBarFader},
 		{1, "Actionbar", "Bar5Fader", L["Bar5 Fade"].."*", true, nil, toggleBarFader},
 		{},--blank
 		{1, "Actionbar", "CustomBar", HeaderTag..L["Enable CustomBar"], nil, nil, nil, L["CustomBarTip"]},
 		{1, "Actionbar", "BarXFader", L["CustomBarFader"].."*", nil, nil, toggleBarFader},
-		{3, "Actionbar", "CustomBarButtonSize", L["ButtonSize"].."*", true, {24, 60, 1}, updateCustomBar},
+		{3, "Actionbar", "CustomBarButtonSize", L["ButtonSize"].."*", true, {20, 80, 1}, updateCustomBar},
 		{3, "Actionbar", "CustomBarNumButtons", L["MaxButtons"].."*", nil, {1, 12, 1}, updateCustomBar},
 		{3, "Actionbar", "CustomBarNumPerRow", L["ButtonsPerRow"].."*", true, {1, 12, 1}, updateCustomBar},
 		{},--blank
@@ -886,32 +984,29 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{3, "Bags", "iLvlToShow", L["iLvlToShow"].."*", nil, {1, 500, 1}, nil, L["iLvlToShowTip"]},
 		{4, "Bags", "BagSortMode", L["BagSortMode"].."*", true, {L["Forward"], L["Backward"], DISABLE}, updateBagSortOrder, L["BagSortTip"]},
 		{},--blank
-		{3, "Bags", "BagsPerRow", NewTag..L["BagsPerRow"].."*", nil, {1, 20, 1}, updateBagAnchor, L["BagsPerRowTip"]},
-		{3, "Bags", "BankPerRow", NewTag..L["BankPerRow"].."*", true, {1, 20, 1}, updateBagAnchor, L["BankPerRowTip"]},
+		{3, "Bags", "BagsPerRow", L["BagsPerRow"].."*", nil, {1, 20, 1}, updateBagAnchor, L["BagsPerRowTip"]},
+		{3, "Bags", "BankPerRow", L["BankPerRow"].."*", true, {1, 20, 1}, updateBagAnchor, L["BankPerRowTip"]},
 		{3, "Bags", "IconSize", L["Bags IconSize"].."*", nil, {20, 50, 1}, updateBagSize},
-		{3, "Bags", "FontSize", NewTag..L["Bags FontSize"].."*", true, {10, 50, 1}, updateBagSize},
+		{3, "Bags", "FontSize", L["Bags FontSize"].."*", true, {10, 50, 1}, updateBagSize},
 		{3, "Bags", "BagsWidth", L["Bags Width"].."*", false, {10, 40, 1}, updateBagSize},
 		{3, "Bags", "BankWidth", L["Bank Width"].."*", true, {10, 40, 1}, updateBagSize},
 	},
 	[3] = {
-		{1, "UFs", "Enable", HeaderTag..L["Enable UFs"], nil, setupUnitFrame, nil, L["HideUFWarning"]},
+		{1, "UFs", "Enable", NewTag..HeaderTag..L["Enable UFs"], nil, setupUnitFrame, nil, L["HideUFWarning"]},
+		{1, "UFs", "Arena", L["Arena Frame"], true},
+		{1, "UFs", "ToToT", L["TototUF"]},
+		{1, "UFs", "EnergyTicker", L["EnergyTicker"], true},
+		{1, "UFs", "ShowAuras", NewTag..L["ShowAuras"].."*", nil, setupUFAuras, toggleAllAuras},
+		{1, "UFs", "ClassPower", NewTag..L["UFs ClassPower"].."*", true, setupClassPower, toggleUFClassPower},
+		{1, "UFs", "Portrait", L["UFs Portrait"]},
+		{1, "UFs", "CCName", NewTag..L["ClassColor Name"].."*", true, nil, updateUFTextScale},
+		{3, "UFs", "UFTextScale", L["UFTextScale"].."*", nil, {.8, 1.5, .05}, updateUFTextScale},
+		{4, "UFs", "HealthColor", L["HealthColor"].."*", true, {L["Default Dark"], L["ClassColorHP"], L["GradientHP"]}, updateUFTextScale},
 		{},--blank
 		{1, "UFs", "Castbars", HeaderTag..L["UFs Castbar"], nil, setupCastbar},
-		{1, "UFs", "LagString", L["Castbar LagString"], true},
+		{1, "UFs", "LagString", L["Castbar LagString"].."*", true, nil, toggleCastBarLatency},
 		{1, "UFs", "SwingBar", L["UFs SwingBar"]},
 		{1, "UFs", "SwingTimer", L["UFs SwingTimer"], true, nil, nil, L["SwingTimer Tip"]},
-		{},--blank
-		{1, "UFs", "Arena", HeaderTag..L["Arena Frame"]},
-		{1, "UFs", "ToToT", HeaderTag..L["UFs ToToT"], true},
-		{1, "UFs", "Portrait", L["UFs Portrait"]},
-		{1, "UFs", "ClassPower", L["UFs ClassPower"], true},
-		{1, "UFs", "PlayerDebuff", L["Player Debuff"]},
-		{1, "UFs", "ToTAuras", L["ToT Debuff"], true},
-		{1, "UFs", "EnergyTicker", L["EnergyTicker"]},
-		{4, "UFs", "HealthColor", L["HealthColor"].."*", nil, {L["Default Dark"], L["ClassColorHP"], L["GradientHP"]}, updateUFTextScale},
-		{3, "UFs", "TargetAurasPerRow", L["TargetAurasPerRow"].."*", true, {5, 20, 1}, updateTargetFrameAuras},
-		{3, "UFs", "UFTextScale", L["UFTextScale"].."*", nil, {.8, 1.5, .05}, updateUFTextScale},
-		{3, "UFs", "SmoothAmount", HeaderTag..L["SmoothAmount"].."*", true, {.15, .6, .05}, updateSmoothingAmount, L["SmoothAmountTip"]},
 		{},--blank
 		{1, "UFs", "CombatText", HeaderTag..L["UFs CombatText"]},
 		{1, "UFs", "AutoAttack", L["CombatText AutoAttack"].."*"},
@@ -921,11 +1016,11 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{3, "UFs", "FCTFontSize", L["FCTFontSize"].."*", true, {12, 40, 1}},
 	},
 	[4] = {
-		{1, "UFs", "RaidFrame", HeaderTag..L["UFs RaidFrame"], nil, setupRaidFrame, nil, L["RaidFrameTip"]},
+		{1, "UFs", "RaidFrame", NewTag..HeaderTag..L["UFs RaidFrame"], nil, setupRaidFrame, nil, L["RaidFrameTip"]},
+		{1, "UFs", "SimpleMode", NewTag..L["SimpleRaidFrame"], true, setupSimpleRaidFrame, nil, L["SimpleRaidFrameTip"]},
 		{},--blank
-		{1, "UFs", "PartyFrame", HeaderTag..L["UFs PartyFrame"]},
-		{1, "UFs", "HorizonParty", L["Horizon PartyFrame"], true},
-		{1, "UFs", "PartyPetFrame", HeaderTag..L["UFs PartyPetFrame"]},	
+		{1, "UFs", "PartyFrame", NewTag..L["PartyFrame"], nil, setupPartyFrame, nil, L["PartyFrameTip"]},
+		{1, "UFs", "PartyPetFrame", NewTag..L["PartyPetFrame"], true, setupPartyPetFrame},
 		{},--blank
 		{1, "UFs", "ShowRaidDebuff", L["ShowRaidDebuff"].."*", nil, nil, updateRaidAuras, L["ShowRaidDebuffTip"]},
 		{1, "UFs", "ShowRaidBuff", L["ShowRaidBuff"].."*", true, nil, updateRaidAuras, L["ShowRaidBuffTip"]},
@@ -942,30 +1037,28 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{3, "UFs", "RaidDebuffScale", L["RaidDebuffScale"].."*", true, {.8, 2, .1}, refreshRaidFrameIcons},
 		{},--blank
 		{1, "UFs", "RaidClickSets", HeaderTag..L["Enable ClickSets"], nil, setupClickCast},
-		{1, "UFs", "ShowSolo", L["ShowSolo"].."*", nil, nil, updateAllHeaders, L["ShowSoloTip"]},
-		{1, "UFs", "ShowTeamIndex", L["RaidFrame TeamIndex"], true},
-		{1, "UFs", "SmartRaid", NewTag..L["SmartRaid"].."*", nil, nil, updateAllHeaders, L["SmartRaidTip"]},
-		{1, "UFs", "HorizonRaid", L["Horizon RaidFrame"], true},
-		{4, "UFs", "RaidHealthColor", L["HealthColor"].."*", nil, {L["Default Dark"], L["ClassColorHP"], L["GradientHP"]}, updateRaidTextScale},
-		{4, "UFs", "RaidHPMode", L["RaidHPMode"].."*", true, {L["DisableRaidHP"], L["RaidHPPercent"], L["RaidHPCurrent"], L["RaidHPLost"]}, updateRaidNameText},
-		{3, "UFs", "NumGroups", L["Num Groups"], nil, {4, 8, 1}},
-		{1, "UFs", "FrequentHealth", HeaderTag..L["FrequentHealth"].."*", true, nil, updateRaidHealthMethod, L["FrequentHealthTip"]},
-		{3, "UFs", "RaidTextScale", L["UFTextScale"].."*", nil, {.8, 1.5, .05}, updateRaidTextScale},
-		{3, "UFs", "HealthFrequency", L["HealthFrequency"].."*", true, {.1, .5, .05}, updateRaidHealthMethod, L["HealthFrequencyTip"]},
 		{},--blank
-		{1, "UFs", "SimpleMode", HeaderTag..L["SimpleRaidFrame"], nil, nil, nil, L["SimpleRaidFrameTip"]},
-		{3, "UFs", "SMUnitsPerColumn", L["SimpleMode Column"], nil, {10, 40, 1}},
-		{4, "UFs", "SMGroupByIndex", L["SimpleMode GroupBy"].."*", true, {GROUP, CLASS}, updateSimpleModeGroupBy},
-		{nil, true},-- FIXME: dirty fix for now
-		{nil, true},
+		{4, "UFs", "RaidHealthColor", L["HealthColor"].."*", nil, {L["Default Dark"], L["ClassColorHP"], L["GradientHP"]}, updateRaidTextScale},
+		{4, "UFs", "RaidHPMode", L["HealthValueType"].."*", true, {DISABLE, L["ShowHealthPercent"], L["ShowHealthCurrent"], L["ShowHealthLoss"], L["ShowHealthLossPercent"]}, updateRaidNameText, L["100PercentTip"]},
+		{1, "UFs", "ShowSolo", L["ShowSolo"].."*", nil, nil, updateAllHeaders, L["ShowSoloTip"]},
+		{1, "UFs", "SmartRaid", HeaderTag..L["SmartRaid"].."*", nil, nil, updateAllHeaders, L["SmartRaidTip"]},
+		{3, "UFs", "RaidTextScale", L["UFTextScale"].."*", true, {.8, 1.5, .05}, updateRaidTextScale},
+		{1, "UFs", "TeamIndex", L["RaidFrame TeamIndex"].."*", nil, nil, updateTeamIndex},
+		{1, "UFs", "FrequentHealth", HeaderTag..L["FrequentHealth"].."*", true, nil, updateRaidHealthMethod, L["FrequentHealthTip"]},
+		{1, "UFs", "HideTip", NewTag..L["HideTooltip"].."*", nil, nil, updateRaidTextScale, L["HideTooltipTip"]},
+		{1, "UFs", "RCCName", NewTag..L["ClassColor Name"].."*", nil, nil, updateRaidTextScale},
+		{3, "UFs", "HealthFrequency", L["HealthFrequency"].."*", true, {.1, .5, .05}, updateRaidHealthMethod, L["HealthFrequencyTip"]},
 	},
 	[5] = {
 		{1, "Nameplate", "Enable", HeaderTag..L["Enable Nameplate"], nil, setupNameplateSize, refreshNameplates},
-		{1, "Nameplate", "FriendPlate", NewTag..L["FriendPlate"].."*", nil, nil, refreshNameplates, L["FriendPlateTip"]},
+		{1, "Nameplate", "FriendPlate", L["FriendPlate"].."*", nil, nil, refreshNameplates, L["FriendPlateTip"]},
 		{1, "Nameplate", "NameOnlyMode", L["NameOnlyMode"].."*", true, nil, nil, L["NameOnlyModeTip"]},
+		{4, "Nameplate", "NameType", NewTag..L["NameTextType"].."*", nil, {DISABLE, L["Tag:name"], L["Tag:levelname"], L["Tag:rarename"], L["Tag:rarelevelname"]}, refreshNameplates, L["PlateLevelTagTip"]},
+		{4, "Nameplate", "HealthType", NewTag..L["HealthValueType"].."*", true, G.HealthValues, refreshNameplates, L["100PercentTip"]},
 		{},--blank
 		{1, "Nameplate", "PlateAuras", HeaderTag..L["PlateAuras"].."*", nil, setupNameplateFilter, refreshNameplates},
-		{1, "Nameplate", "ColorBorder", L["ColorBorder"].."*", nil, nil, refreshNameplates},
+		{1, "Nameplate", "Desaturate", NewTag..L["DesaturateIcon"].."*", nil, nil, refreshNameplates, L["DesaturateIconTip"]},
+		{1, "Nameplate", "DebuffColor", NewTag..L["DebuffColor"].."*", nil, nil, refreshNameplates, L["DebuffColorTip"]},
 		{4, "Nameplate", "AuraFilter", L["NameplateAuraFilter"].."*", true, {L["BlackNWhite"], L["PlayerOnly"], L["IncludeCrowdControl"]}, refreshNameplates},
 		{3, "Nameplate", "maxAuras", L["Max Auras"].."*", false, {1, 20, 1}, refreshNameplates},
 		{3, "Nameplate", "AuraSize", L["Auras Size"].."*", true, {18, 40, 1}, refreshNameplates},
@@ -976,11 +1069,11 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Nameplate", "HostileCC", L["Hostile CC"].."*", true},
 		{1, "Nameplate", "FriendlyThru", NewTag..L["Friendly ClickThru"].."*", nil, nil, updateClickThru},
 		{1, "Nameplate", "EnemyThru", NewTag..L["Enemy ClickThru"].."*", true, nil, updateClickThru},
-		{1, "Nameplate", "FullHealth", L["Show FullHealth"].."*", nil, nil, refreshNameplates},
-		{1, "Nameplate", "ClampTarget", NewTag..L["ClampTargetPlate"].."*", true, nil, clampTargetPlate, L["ClampTargetPlateTip"]},
 		{1, "Nameplate", "CastbarGlow", L["PlateCastbarGlow"].."*", nil, setupPlateCastbarGlow, nil, L["PlateCastbarGlowTip"]},
 		{1, "Nameplate", "CastTarget", L["PlateCastTarget"].."*", true, nil, nil, L["PlateCastTargetTip"]},
-		{1, "Nameplate", "QuestIndicator", L["QuestIndicator"], nil, nil, nil, L["QuestIndicatorAddOns"]},
+		{1, "Nameplate", "ClampTarget", L["ClampTargetPlate"].."*", nil, nil, clampTargetPlate, L["ClampTargetPlateTip"]},
+		{1, "Nameplate", "QuestIndicator", L["QuestIndicator"], true, nil, nil, L["QuestIndicatorAddOns"]},
+		{1, "Nameplate", "BlockDBM", NewTag..L["BlockDBM"], nil, nil, nil, L["BlockDBMTip"]},
 		{},--blank
 		{1, "Nameplate", "ColoredTarget", HeaderTag..L["ColoredTarget"].."*", nil, nil, nil, L["ColoredTargetTip"]},
 		{1, "Nameplate", "ColoredFocus", HeaderTag..L["ColoredFocus"].."*", true, nil, nil, L["ColoredFocusTip"]},
@@ -1002,24 +1095,26 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{3, "Nameplate", "PlateRange", L["PlateRange"].."*", nil, {0, 41, 1}, updatePlateRange},
 		{3, "Nameplate", "VerticalSpacing", L["NP VerticalSpacing"].."*", true, {.5, 1.5, .1}, updatePlateSpacing},
 		{3, "Nameplate", "MinScale", L["Nameplate MinScale"].."*", false, {.5, 1, .1}, updatePlateScale},
-		{3, "Nameplate", "MinAlpha", L["Nameplate MinAlpha"].."*", true, {.5, 1, .1}, updatePlateAlpha},
+		{3, "Nameplate", "MinAlpha", L["Nameplate MinAlpha"].."*", true, {.3, 1, .1}, updatePlateAlpha},
 	},
 	[6] = {
-		{1, "Nameplate", "ShowPlayerPlate", HeaderTag..L["Enable PlayerPlate"]},
+		{1, "Nameplate", "ShowPlayerPlate", HeaderTag..L["Enable PlayerPlate"].."*", nil, nil, togglePlayerPlate},
+		{1, "Nameplate", "TargetPower", NewTag..HeaderTag..L["TargetClassPower"].."*", true, nil, toggleTargetClassPower},
 		{},--blank
 		--{1, "Auras", "ClassAuras", L["Enable ClassAuras"], true},
-		{1, "Nameplate", "NameplateClassPower", L["Nameplate ClassPower"]},
-		{1, "Nameplate", "PPFadeout", L["PlayerPlate Fadeout"].."*", true, nil, togglePlateVisibility},
-		{1, "Nameplate", "ClassPowerOnly", L["Nameplate ClassPowerOnly"], nil},
+		{1, "Nameplate", "PPFadeout", L["PlayerPlate Fadeout"].."*", nil, nil, togglePlateVisibility},
 		{1, "Nameplate", "PPPowerText", L["PlayerPlate PowerText"].."*", nil, nil, togglePlatePower},
 		{3, "Nameplate", "PPFadeoutAlpha", L["PlayerPlate FadeoutAlpha"].."*", true, {0, .5, .05}, togglePlateVisibility},
 		{},--blank
-		{3, "Nameplate", "PPWidth", L["PlayerPlate HPWidth"].."*", false, {150, 300, 1}, refreshNameplates},
+		{3, "Nameplate", "PPWidth", L["Width"].."*", false, {150, 300, 1}, refreshNameplates},
 		{3, "Nameplate", "PPBarHeight", L["PlayerPlate CPHeight"].."*", true, {2, 15, 1}, refreshNameplates},
 		{3, "Nameplate", "PPHealthHeight", L["PlayerPlate HPHeight"].."*", false, {2, 15, 1}, refreshNameplates},
 		{3, "Nameplate", "PPPowerHeight", L["PlayerPlate MPHeight"].."*", true, {2, 15, 1}, refreshNameplates},
 	},
 	[7] = {
+		{1, "Auras", "BuffFrame", NewTag..HeaderTag..L["BuffFrame"], nil, setupBuffFrame, nil, L["BuffFrameTip"]},
+		{1, "Auras", "HideBlizBuff", NewTag..L["HideBlizUI"], true, nil, nil, L["HideBlizBuffTip"]},
+		{},--blank
 		{1, "AuraWatch", "Enable", HeaderTag..L["Enable AuraWatch"], nil, setupAuraWatch},
 		{1, "AuraWatch", "WatchSpellRank", L["AuraWatch WatchSpellRank"], nil, nil, nil, L["WatchSpellRankTip"]},
 		{1, "AuraWatch", "ClickThrough", L["AuraWatch ClickThrough"], nil, nil, nil, L["ClickThroughTip"]},
@@ -1030,13 +1125,6 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{3, "Auras", "TotemSize", L["TotemSize"].."*", true, {24, 60, 1}, refreshTotemBar},
 		{},--blank
 		{1, "Auras", "Reminder", L["Enable Reminder"].."*", nil, nil, updateReminder, L["ReminderTip"]},
-		{},--blank
-		{1, "Auras", "ReverseBuffs", L["ReverseBuffs"].."*", nil, nil, updateBuffFrame},
-		{1, "Auras", "ReverseDebuffs", L["ReverseDebuffs"].."*", true, nil, updateDebuffFrame},
-		{3, "Auras", "BuffSize", L["BuffSize"].."*", nil, {24, 50, 1}, updateBuffFrame},
-		{3, "Auras", "DebuffSize", L["DebuffSize"].."*", true, {24, 50, 1}, updateDebuffFrame},
-		{3, "Auras", "BuffsPerRow", L["BuffsPerRow"].."*", nil, {10, 20, 1}, updateBuffFrame},
-		{3, "Auras", "DebuffsPerRow", L["DebuffsPerRow"].."*", true, {10, 16, 1}, updateDebuffFrame},
 	},
 	[8] = {
 		{1, "Misc", "RaidTool", HeaderTag..L["Raid Manger"]},
@@ -1068,8 +1156,9 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Chat", "Chatbar", L["ShowChatbar"]},
 		{1, "Chat", "WhisperColor", L["Differ WhisperColor"].."*", true},
 		{1, "Chat", "ChatItemLevel", L["ShowChatItemLevel"]},
-		{1, "Chat", "Freedom", L["Language Filter"], true},
+		{1, "Chat", "Freedom", L["Language Filter"].."*", true, nil, toggleLanguageFilter},
 		{1, "Chat", "WhisperSound", L["WhisperSound"].."*", nil, nil, nil, L["WhisperSoundTip"]},
+		{1, "Chat", "BottomBox", L["BottomBox"].."*", true, nil, toggleEditBoxAnchor},
 		{4, "ACCOUNT", "TimestampFormat", L["TimestampFormat"].."*", nil, {DISABLE, "03:27 PM", "03:27:32 PM", "15:27", "15:27:32"}},
 		{4, "Chat", "ChatBGType", L["ChatBGType"].."*", true, {DISABLE, L["Default Dark"], L["Gradient"]}, toggleChatBackground},
 		{},--blank
@@ -1107,7 +1196,7 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Skins", "Loot", L["Loot"], true},
 		{1, "Skins", "Shadow", L["Shadow"]},
 		{1, "Skins", "FontOutline", L["FontOutline"], true},
-		{1, "Skins", "BgTex", NewTag..L["BgTex"]},
+		{1, "Skins", "BgTex", L["BgTex"]},
 		{1, "Skins", "GreyBD", L["GreyBackdrop"], true, nil, nil, L["GreyBackdropTip"]},
 		{3, "Skins", "SkinAlpha", L["SkinAlpha"].."*", nil, {0, 1, .05}, updateSkinAlpha},
 		{3, "Skins", "FontScale", L["GlobalFontScale"], true, {.5, 1.5, .05}},
@@ -1131,11 +1220,11 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Skins", "WeakAuras", L["WeakAuras Skin"], true},
 	},
 	[12] = {
+		{3, "Tooltip", "Scale", L["Tooltip Scale"].."*", nil, {.5, 1.5, .1}},
+		{4, "Tooltip", "TipAnchor", NewTag..L["TipAnchor"].."*", true, {L["TOPLEFT"], L["TOPRIGHT"], L["BOTTOMLEFT"], L["BOTTOMRIGHT"]}, nil, L["TipAnchorTip"]},
 		{1, "Tooltip", "CombatHide", L["Hide Tooltip"].."*"},
-		{1, "Tooltip", "Cursor", L["Follow Cursor"].."*"},
-		{1, "Tooltip", "ClassColor", L["Classcolor Border"].."*"},
-		{3, "Tooltip", "Scale", L["Tooltip Scale"].."*", true, {.5, 1.5, .1}},
-		{},--blank
+		{1, "Tooltip", "ItemQuality", NewTag..L["ShowItemQuality"].."*"},
+		{4, "Tooltip", "CursorMode", NewTag..L["Follow Cursor"].."*", true, {DISABLE, L["LEFT"], L["TOP"], L["RIGHT"]}},
 		{1, "Tooltip", "HideTitle", L["Hide Title"].."*"},
 		{1, "Tooltip", "HideRank", L["Hide Rank"].."*", true},
 		{1, "Tooltip", "FactionIcon", L["FactionIcon"].."*"},
@@ -1163,19 +1252,19 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 	},
 	[14] = {
 		{1, "ACCOUNT", "VersionCheck", L["Version Check"]},
+		{1, "ACCOUNT", "LockUIScale", L["Lock UIScale"]},
+		{3, "ACCOUNT", "UIScale", L["Setup UIScale"], true, {.4, 1.15, .01}, nil, L["UIScaleTip"]},
 		{},--blank
-		{1, "ACCOUNT", "DisableInfobars", HeaderTag..L["DisableInfobars"]},
+		{1, "ACCOUNT", "DisableInfobars", "|cffff0000"..L["DisableInfobars"]},
 		{3, "Misc", "MaxAddOns", L["SysMaxAddOns"].."*", nil,  {1, 50, 1}, nil, L["SysMaxAddOnsTip"]},
 		{3, "Misc", "InfoSize", L["InfobarFontSize"].."*", true,  {10, 50, 1}, updateInfobarSize},
 		{2, "Misc", "InfoStrLeft", L["LeftInfobar"].."*", nil, nil, updateInfobarAnchor, L["InfobarStrTip"]},
 		{2, "Misc", "InfoStrRight", L["RightInfobar"].."*", true, nil, updateInfobarAnchor, L["InfobarStrTip"]},
 		{},--blank
-		{3, "ACCOUNT", "UIScale", L["Setup UIScale"], false, {.4, 1.15, .01}, nil, L["UIScaleTip"]},
-		{1, "ACCOUNT", "LockUIScale", HeaderTag..L["Lock UIScale"], true},
-		{},--blank
 		{4, "ACCOUNT", "TexStyle", L["Texture Style"], false, {}},
 		{4, "ACCOUNT", "NumberFormat", L["Numberize"], true, {L["Number Type1"], L["Number Type2"], L["Number Type3"]}},
 		{2, "ACCOUNT", "CustomTex", L["CustomTex"], nil, nil, nil, L["CustomTexTip"]},
+		{3, "ACCOUNT", "SmoothAmount", NewTag..L["SmoothAmount"].."*", true, {.15, .6, .01}, updateSmoothingAmount, L["SmoothAmountTip"]},
 	},
 	[15] = {
 	},
@@ -1223,7 +1312,7 @@ local function CreateTab(parent, i, name)
 	return tab
 end
 
-local function NDUI_VARIABLE(key, value, newValue)
+local function CheckUIOption(key, value, newValue)
 	if key == "ACCOUNT" then
 		if newValue ~= nil then
 			NDuiADB[value] = newValue
@@ -1237,6 +1326,57 @@ local function NDUI_VARIABLE(key, value, newValue)
 			return C.db[key][value]
 		end
 	end
+end
+
+G.needUIReload = nil
+
+local function CheckUIReload(name)
+	if not strfind(name, "%*") then
+		G.needUIReload = true
+	end
+end
+
+local function onCheckboxClick(self)
+	CheckUIOption(self.__key, self.__value, self:GetChecked())
+	CheckUIReload(self.__name)
+	if self.__callback then self:__callback() end
+end
+
+local function restoreEditbox(self)
+	self:SetText(CheckUIOption(self.__key, self.__value))
+end
+local function acceptEditbox(self)
+	CheckUIOption(self.__key, self.__value, self:GetText())
+	CheckUIReload(self.__name)
+	if self.__callback then self:__callback() end
+end
+
+local function onSliderChanged(self, v)
+	local current = B:Round(tonumber(v), 2)
+	CheckUIOption(self.__key, self.__value, current)
+	CheckUIReload(self.__name)
+	self.value:SetText(current)
+	if self.__callback then self:__callback() end
+end
+
+local function updateDropdownSelection(self)
+	local dd = self.__owner
+	for i = 1, #dd.__options do
+		local option = dd.options[i]
+		if i == CheckUIOption(dd.__key, dd.__value) then
+			option:SetBackdropColor(1, .8, 0, .3)
+			option.selected = true
+		else
+			option:SetBackdropColor(0, 0, 0, .3)
+			option.selected = false
+		end
+	end
+end
+local function updateDropdownClick(self)
+	local dd = self.__owner
+	CheckUIOption(dd.__key, dd.__value, self.index)
+	CheckUIReload(dd.__name)
+	if dd.__callback then dd:__callback() end
 end
 
 local function CreateOption(i)
@@ -1254,21 +1394,20 @@ local function CreateOption(i)
 				cb:SetPoint("TOPLEFT", 20, -offset)
 				offset = offset + 35
 			end
+			cb.__key = key
 			cb.__value = value
+			cb.__name = name
+			cb.__callback = callback
 			cb.name = B.CreateFS(cb, 14, name, false, "LEFT", 30, 0)
-			cb:SetChecked(NDUI_VARIABLE(key, value))
-			cb:SetScript("OnClick", function(self)
-				NDUI_VARIABLE(key, value, cb:GetChecked())
-				if callback then callback(self) end
-			end)
+			cb:SetChecked(CheckUIOption(key, value))
+			cb:SetScript("OnClick", onCheckboxClick)
 			if data and type(data) == "function" then
 				local bu = B.CreateGear(parent)
 				bu:SetPoint("LEFT", cb.name, "RIGHT", -2, 1)
 				bu:SetScript("OnClick", data)
 			end
 			if tooltip then
-				cb.title = L["Tips"]
-				B.AddTooltip(cb, "ANCHOR_RIGHT", tooltip, "info")
+				B.AddTooltip(cb, "ANCHOR_RIGHT", tooltip, "info", true)
 			end
 		-- Editbox
 		elseif optType == 2 then
@@ -1276,6 +1415,8 @@ local function CreateOption(i)
 			eb:SetMaxLetters(999)
 			eb.__key = key
 			eb.__value = value
+			eb.__name = name
+			eb.__callback = callback
 			eb.__default = (key == "ACCOUNT" and G.AccountSettings[value]) or G.DefaultSettings[key][value]
 			if horizon then
 				eb:SetPoint("TOPLEFT", 345, -offset + 45)
@@ -1283,20 +1424,14 @@ local function CreateOption(i)
 				eb:SetPoint("TOPLEFT", 35, -offset - 25)
 				offset = offset + 70
 			end
-			eb:SetText(NDUI_VARIABLE(key, value))
-			eb:HookScript("OnEscapePressed", function()
-				eb:SetText(NDUI_VARIABLE(key, value))
-			end)
-			eb:HookScript("OnEnterPressed", function(self)
-				NDUI_VARIABLE(key, value, eb:GetText())
-				if callback then callback(self) end
-			end)
+			eb:SetText(CheckUIOption(key, value))
+			eb:HookScript("OnEscapePressed", restoreEditbox)
+			eb:HookScript("OnEnterPressed", acceptEditbox)
 
 			B.CreateFS(eb, 14, name, "system", "CENTER", 0, 25)
-			eb.title = L["Tips"]
 			local tip = L["EditBox Tip"]
 			if tooltip then tip = tooltip.."|n"..tip end
-			B.AddTooltip(eb, "ANCHOR_RIGHT", tip, "info")
+			B.AddTooltip(eb, "ANCHOR_RIGHT", tip, "info", true)
 		-- Slider
 		elseif optType == 3 then
 			local min, max, step = unpack(data)
@@ -1308,18 +1443,16 @@ local function CreateOption(i)
 				offset = offset + 70
 			end
 			local s = B.CreateSlider(parent, name, min, max, step, x, y)
+			s.__key = key
+			s.__value = value
+			s.__name = name
+			s.__callback = callback
 			s.__default = (key == "ACCOUNT" and G.AccountSettings[value]) or G.DefaultSettings[key][value]
-			s:SetValue(NDUI_VARIABLE(key, value))
-			s:SetScript("OnValueChanged", function(_, v)
-				local current = B:Round(tonumber(v), 2)
-				NDUI_VARIABLE(key, value, current)
-				s.value:SetText(current)
-				if callback then callback() end
-			end)
-			s.value:SetText(B:Round(NDUI_VARIABLE(key, value), 2))
+			s:SetValue(CheckUIOption(key, value))
+			s:SetScript("OnValueChanged", onSliderChanged)
+			s.value:SetText(B:Round(CheckUIOption(key, value), 2))
 			if tooltip then
-				s.title = L["Tips"]
-				B.AddTooltip(s, "ANCHOR_RIGHT", tooltip, "info")
+				B.AddTooltip(s, "ANCHOR_RIGHT", tooltip, "info", true)
 			end
 		-- Dropdown
 		elseif optType == 4 then
@@ -1336,38 +1469,29 @@ local function CreateOption(i)
 				dd:SetPoint("TOPLEFT", 35, -offset - 25)
 				offset = offset + 70
 			end
-			dd.Text:SetText(data[NDUI_VARIABLE(key, value)])
+			dd.Text:SetText(data[CheckUIOption(key, value)])
+			dd.__key = key
+			dd.__value = value
+			dd.__name = name
+			dd.__options = data
+			dd.__callback = callback
+			dd.button.__owner = dd
+			dd.button:HookScript("OnClick", updateDropdownSelection)
 
-			local opt = dd.options
-			dd.button:HookScript("OnClick", function()
-				for num = 1, #data do
-					if num == NDUI_VARIABLE(key, value) then
-						opt[num]:SetBackdropColor(1, .8, 0, .3)
-						opt[num].selected = true
-					else
-						opt[num]:SetBackdropColor(0, 0, 0, .3)
-						opt[num].selected = false
-					end
-				end
-			end)
-			for i in pairs(data) do
-				opt[i]:HookScript("OnClick", function()
-					NDUI_VARIABLE(key, value, i)
-					if callback then callback() end
-				end)
+			for i = 1, #data do
+				dd.options[i]:HookScript("OnClick", updateDropdownClick)
 				if value == "TexStyle" then
-					AddTextureToOption(opt, i) -- texture preview
+					AddTextureToOption(dd.options, i) -- texture preview
 				end
 			end
 
 			B.CreateFS(dd, 14, name, "system", "CENTER", 0, 25)
 			if tooltip then
-				dd.title = L["Tips"]
-				B.AddTooltip(dd, "ANCHOR_RIGHT", tooltip, "info")
+				B.AddTooltip(dd, "ANCHOR_RIGHT", tooltip, "info", true)
 			end
 		-- Colorswatch
 		elseif optType == 5 then
-			local swatch = B.CreateColorSwatch(parent, name, NDUI_VARIABLE(key, value))
+			local swatch = B.CreateColorSwatch(parent, name, CheckUIOption(key, value))
 			local width = 25 + (horizon or 0)*155
 			if horizon then
 				swatch:SetPoint("TOPLEFT", width, -offset + 30)
@@ -1407,7 +1531,7 @@ local function CreateContactBox(parent, text, url, index)
 end
 
 local donationList = {
-	["afdian"] = "33578473, normanvon, y368413, EK, msylgj, 夜丨灬清寒, akakai, reisen410, 其实你很帥, 萨菲尔, Antares, RyanZ, fldqw, Mario, 时光旧予, 食铁骑兵, 爱蕾丝的基总, 施然, 命运镇魂曲, 不可语上, Leo, 忘川, 刘翰承, 悟空海外党, cncj, 暗月, 汪某人, 黑手, iraq120, 嗜血未冷, 我又不是妖怪，养乐多，无人知晓，秋末旷夜-迪瑟洛克，Teo，莉拉斯塔萨，音尘绝，刺王杀驾，醉跌-凤凰之神，灬麦加灬-阿古斯，漂舟不系，朵小熙，山岸逢花，乄阿财-帕奇维克，乌鸦岭守墓饼-罗宁，自在独踽踽-霜之哀伤，御行宇航-碧玉矿洞，末日伯爵-奥罗，阿玛忆-白银之手，零氪-罗宁以及部分未备注名字的用户。",
+	["afdian"] = "33578473, normanvon, y368413, EK, msylgj, 夜丨灬清寒, akakai, reisen410, 其实你很帥, 萨菲尔, Antares, RyanZ, fldqw, Mario, 时光旧予, 食铁骑兵, 爱蕾丝的基总, 施然, 命运镇魂曲, 不可语上, Leo, 忘川, 刘翰承, 悟空海外党, cncj, 暗月, 汪某人, 黑手, iraq120, 嗜血未冷, 我又不是妖怪，养乐多，无人知晓，秋末旷夜-迪瑟洛克，Teo，莉拉斯塔萨，音尘绝，刺王杀驾，醉跌-凤凰之神，灬麦加灬-阿古斯，漂舟不系，朵小熙，山岸逢花，乄阿财-帕奇维克，乌鸦岭守墓饼-罗宁，自在独踽踽-霜之哀伤，御行宇航-碧玉矿洞，末日伯爵-奥罗，阿玛忆-白银之手，零氪-罗宁，粉色刘老头-黑曜石之锋，shadowlezi以及部分未备注名字的用户。",
 	["Patreon"] = "Quentin, Julian Neigefind, silenkin, imba Villain, Zeyu Zhu, Kon Floros.",
 }
 local function CreateDonationIcon(parent, texture, name, xOffset)

@@ -7,30 +7,31 @@ tinsert(C.defaultThemes, function()
 	LootFramePortraitOverlay:Hide()
 
 	hooksecurefunc("LootFrame_UpdateButton", function(index)
-		local ic = _G["LootButton"..index.."IconTexture"]
-		if not ic then return end
+		local name = "LootButton"..index
+		local bu = _G[name]
+		if not bu:IsShown() then return end
 
-		if not ic.bg then
-			local bu = _G["LootButton"..index]
+		local nameFrame = _G[name.."NameFrame"]
+		--local questTexture = _G[name.."IconQuestTexture"]
 
-			_G["LootButton"..index.."NameFrame"]:Hide()
-
+		if not bu.bg then
+			nameFrame:Hide()
+			--questTexture:SetAlpha(0)
 			bu:SetNormalTexture("")
 			bu:SetPushedTexture("")
 			bu:GetHighlightTexture():SetColorTexture(1, 1, 1, .25)
 			bu.IconBorder:SetAlpha(0)
+			bu.bg = B.ReskinIcon(bu.icon)
 
-			local bd = B.CreateBDFrame(bu, .25)
-			bd:SetPoint("TOPLEFT")
-			bd:SetPoint("BOTTOMRIGHT", 114, 0)
-
-			ic.bg = B.ReskinIcon(ic)
+			local bg = B.CreateBDFrame(bu, .25)
+			bg:SetPoint("TOPLEFT", bu.bg, "TOPRIGHT", 1, 0)
+			bg:SetPoint("BOTTOMRIGHT", bu.bg, 115, 0)
 		end
 
-		if select(7, GetLootSlotInfo(index)) then
-			ic.bg:SetBackdropBorderColor(1, 1, 0)
+		if select(7, GetLootSlotInfo(index)) then -- questTexture:IsShown()
+			bu.bg:SetBackdropBorderColor(.8, .8, 0)
 		else
-			ic.bg:SetBackdropBorderColor(0, 0, 0)
+			bu.bg:SetBackdropBorderColor(0, 0, 0)
 		end
 	end)
 
@@ -50,7 +51,9 @@ tinsert(C.defaultThemes, function()
 	local MasterLooterFrame = MasterLooterFrame
 
 	B.StripTextures(MasterLooterFrame)
-	MasterLooterFrame.Background:Hide()
+	if not DB.isNewPatch then
+		MasterLooterFrame.Background:Hide()
+	end
 	B.StripTextures(MasterLooterFrame.Item)
 	MasterLooterFrame.Item.Icon:SetTexCoord(.08, .92, .08, .92)
 	MasterLooterFrame.Item.bg = B.CreateBDFrame(MasterLooterFrame.Item.Icon)
@@ -61,7 +64,7 @@ tinsert(C.defaultThemes, function()
 		LootFrame:SetAlpha(.4)
 	end)
 
-	MasterLooterFrame:HookScript("OnHide", function(self)
+	MasterLooterFrame:HookScript("OnHide", function()
 		LootFrame:SetAlpha(1)
 	end)
 

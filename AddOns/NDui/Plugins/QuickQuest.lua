@@ -18,8 +18,7 @@ local function setupCheckButton()
 	mono:SetScript("OnClick", function(self)
 		C.db["Misc"]["AutoQuest"] = self:GetChecked()
 	end)
-	mono.title = L["Tips"]
-	B.AddTooltip(mono, "ANCHOR_BOTTOMLEFT", L["AutoQuestTip"], "info")
+	B.AddTooltip(mono, "ANCHOR_BOTTOMLEFT", L["AutoQuestTip"], "info", true)
 
 	created = true
 end
@@ -339,16 +338,6 @@ local itemBlacklist = {
 	[31664] = 88604, -- Nat's Fishing Journal
 }
 
-local ignoreProgressNPC = {
-	[119388] = true,
-	[127037] = true,
-	[126954] = true,
-	[124312] = true,
-	[141584] = true,
-	[326027] = true, -- 运输站回收生成器DX-82
-	[150563] = true, -- 斯卡基特，麦卡贡订单日常
-}
-
 QuickQuest:Register("QUEST_PROGRESS", function()
 	if(IsQuestCompletable()) then
 		local id, _, worldQuest = GetQuestTagInfo(GetQuestID())
@@ -456,8 +445,7 @@ local function UnitQuickQuestStatus(self)
 		local frame = CreateFrame("Frame", nil, self)
 		frame:SetSize(100, 14)
 		frame:SetPoint("TOP", self, "BOTTOM", 0, -2)
-		frame.title = L["Tips"]
-		B.AddTooltip(frame, "ANCHOR_RIGHT", L["AutoQuestIgnoreTip"], "info")
+		B.AddTooltip(frame, "ANCHOR_RIGHT", L["AutoQuestIgnoreTip"], "info", true)
 		B.CreateFS(frame, 14, IGNORED):SetTextColor(1, 0, 0)
 
 		self.__ignore = frame

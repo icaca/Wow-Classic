@@ -245,10 +245,86 @@ function S:CharacterStatsTBC()
 	end
 end
 
+local function restyleMRTWidget(self)
+	local iconTexture = self.iconTexture
+	local bar = self.statusbar
+	local parent = self.parent
+	local width = parent.barWidth or 100
+	local mult = (parent.iconSize or 24) + 5
+	local offset = 3
+
+	if not self.styled then
+		B.SetBD(iconTexture)
+		self.__bg = B.SetBD(bar)
+		self.background:SetAllPoints(bar)
+
+		self.styled = true
+	end
+	iconTexture:SetTexCoord(unpack(DB.TexCoord))
+	self.__bg:SetShown(parent.optionAlphaTimeLine ~= 0)
+
+	if parent.optionIconPosition == 3 or parent.optionIconTitles then
+		self.statusbar:SetPoint("RIGHT", self, -offset, 0)
+		mult = 0
+	elseif parent.optionIconPosition == 2 then
+		self.icon:SetPoint("RIGHT", self, -offset, 0)
+		self.statusbar:SetPoint("LEFT", self, offset, 0)
+		self.statusbar:SetPoint("RIGHT", self, -mult, 0)
+	else
+		self.icon:SetPoint("LEFT", self, offset, 0)
+		self.statusbar:SetPoint("LEFT", self, mult, 0)
+		self.statusbar:SetPoint("RIGHT", self, -offset, 0)
+	end
+
+	self.timeline.width = width - mult - offset
+	self.timeline:SetWidth(self.timeline.width)
+	self.border.top:Hide()
+	self.border.bottom:Hide()
+	self.border.left:Hide()
+	self.border.right:Hide()
+end
+
+local MRTLoaded
+local function LoadMRTSkin()
+	if MRTLoaded then return end
+	MRTLoaded = true
+
+	local name = "MRTRaidCooldownCol"
+	for i = 1, 10 do
+		local column = _G[name..i]
+		local lines = column and column.lines
+		if lines then
+			for j = 1, #lines do
+				local line = lines[j]
+				if line.UpdateStyle then
+					hooksecurefunc(line, "UpdateStyle", restyleMRTWidget)
+					line:UpdateStyle()
+				end
+			end
+		end
+	end
+end
+
+function S:MRT_Skin()
+	if not IsAddOnLoaded("MRT") then return end
+
+	local isEnabled = VMRT and VMRT.ExCD2 and VMRT.ExCD2.enabled
+	if isEnabled then
+		LoadMRTSkin()
+	else
+		hooksecurefunc(MRTOptionsFrameExCD2, "Load", function(self)
+			if self.chkEnable then
+				self.chkEnable:HookScript("OnClick", LoadMRTSkin)
+			end
+		end)
+	end
+end
+
 function S:LoadOtherSkins()
-	self:WhatsTraining()
-	self:RecountSkin()
-	self:BindPad()
-	self:PostalSkin()
-	self:CharacterStatsTBC()
+	S:WhatsTraining()
+	S:RecountSkin()
+	S:BindPad()
+	S:PostalSkin()
+	S:CharacterStatsTBC()
+	S:MRT_Skin()
 end

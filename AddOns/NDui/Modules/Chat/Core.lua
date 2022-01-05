@@ -4,11 +4,11 @@ local module = B:RegisterModule("Chat")
 local cr, cg, cb = DB.r, DB.g, DB.b
 
 local _G = _G
-local tostring, pairs, ipairs, strsub, strlower = tostring, pairs, ipairs, string.sub, string.lower
+local pairs, ipairs, strsub, strlower = pairs, ipairs, string.sub, string.lower
 local IsInGroup, IsInRaid, IsInGuild, IsShiftKeyDown, IsControlKeyDown, PlaySound = IsInGroup, IsInRaid, IsInGuild, IsShiftKeyDown, IsControlKeyDown, PlaySound
 local ChatEdit_UpdateHeader, GetCVar, SetCVar, Ambiguate, GetTime = ChatEdit_UpdateHeader, GetCVar, SetCVar, Ambiguate, GetTime
 local GetNumGuildMembers, GetGuildRosterInfo, IsGuildMember, UnitIsGroupLeader, UnitIsGroupAssistant, InviteToGroup = GetNumGuildMembers, GetGuildRosterInfo, IsGuildMember, UnitIsGroupLeader, UnitIsGroupAssistant, InviteToGroup
-local BNGetFriendInfoByID, BNGetGameAccountInfo, CanCooperateWithGameAccount, BNInviteFriend, BNFeaturesEnabledAndConnected = BNGetFriendInfoByID, BNGetGameAccountInfo, CanCooperateWithGameAccount, BNInviteFriend, BNFeaturesEnabledAndConnected
+local BNGetFriendInfoByID, BNGetGameAccountInfo, CanCooperateWithGameAccount, BNInviteFriend = BNGetFriendInfoByID, BNGetGameAccountInfo, CanCooperateWithGameAccount, BNInviteFriend
 local GeneralDockManager = GeneralDockManager
 local messageSoundID = SOUNDKIT.TELL_MESSAGE
 local C_GuildInfo_IsGuildOfficer = C_GuildInfo.IsGuildOfficer
@@ -69,6 +69,25 @@ local function GradientBackground(self)
 	return frame
 end
 
+local chatEditboxes = {}
+local function UpdateEditBoxAnchor(eb)
+	local parent = eb.__owner
+	eb:ClearAllPoints()
+	if C.db["Chat"]["BottomBox"] then
+		eb:SetPoint("TOPLEFT", parent, "BOTTOMLEFT", 4, -10)
+		eb:SetPoint("BOTTOMRIGHT", parent, "BOTTOMRIGHT", -15, -34)
+	else
+		eb:SetPoint("BOTTOMLEFT", parent, "TOPLEFT", 4, 26)
+		eb:SetPoint("TOPRIGHT", parent, "TOPRIGHT", -15, 50)
+	end
+end
+
+function module:ToggleEditBoxAnchor()
+	for _, eb in pairs(chatEditboxes) do
+		UpdateEditBoxAnchor(eb)
+	end
+end
+
 function module:SkinChat()
 	if not self or self.styled then return end
 
@@ -89,11 +108,12 @@ function module:SkinChat()
 
 	local eb = _G[name.."EditBox"]
 	eb:SetAltArrowKeyMode(false)
-	eb:ClearAllPoints()
-	eb:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 4, 26)
-	eb:SetPoint("TOPRIGHT", self, "TOPRIGHT", -17, 50)
+	eb:SetClampedToScreen(true)
+	eb.__owner = self
+	UpdateEditBoxAnchor(eb)
 	B.StripTextures(eb, 2)
 	B.SetBD(eb)
+	tinsert(chatEditboxes, eb)
 
 	local lang = _G[name.."EditBoxLanguage"]
 	lang:GetRegions():SetAlpha(0)
@@ -322,6 +342,32 @@ function module:PlayWhisperSound(event, _, author)
 	end
 end
 
+-- ProfanityFilter
+local sideEffectFixed
+local function FixLanguageFilterSideEffects()
+	if sideEffectFixed then return end
+	sideEffectFixed = true
+
+	B.CreateFS(HelpFrame, 18, L["LanguageFilterTip"], "system",  "TOP", 0, 30)
+end
+
+local hasCNFix
+function module:ToggleLanguageFilter()
+	if C.db["Chat"]["Freedom"] then
+		if GetCVar("portal") == "CN" then
+			ConsoleExec("portal TW")
+			FixLanguageFilterSideEffects()
+			hasCNFix = true
+		end
+		SetCVar("profanityFilter", 0)
+	else
+		if hasCNFix then
+			ConsoleExec("portal CN")
+		end
+		SetCVar("profanityFilter", 1)
+	end
+end
+
 function module:OnLogin()
 	fontOutline = C.db["Skins"]["FontOutline"] and "OUTLINE" or ""
 
@@ -365,6 +411,7 @@ function module:OnLogin()
 	module:ChatCopy()
 	module:UrlCopy()
 	module:WhisperInvite()
+	module:ToggleLanguageFilter()
 
 	-- Lock chatframe
 	if C.db["Chat"]["Lock"] then
@@ -372,17 +419,5 @@ function module:OnLogin()
 		B:RegisterEvent("UI_SCALE_CHANGED", module.UpdateChatSize)
 		hooksecurefunc("FCF_SavePositionAndDimensions", module.UpdateChatSize)
 		FCF_SavePositionAndDimensions(ChatFrame1)
-	end
-
-	-- ProfanityFilter
-	if not BNFeaturesEnabledAndConnected() then return end
-	if C.db["Chat"]["Freedom"] then
-		if GetCVar("portal") == "CN" then
-			ConsoleExec("portal TW")
-			B.CreateFS(HelpFrame, 18, L["LanguageFilterTip"], "system",  "TOP", 0, 30)
-		end
-		SetCVar("profanityFilter", 0)
-	else
-		SetCVar("profanityFilter", 1)
 	end
 end

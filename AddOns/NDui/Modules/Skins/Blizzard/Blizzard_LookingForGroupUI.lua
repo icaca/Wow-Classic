@@ -1,9 +1,7 @@
 local _, ns = ...
 local B, C, L, DB = unpack(ns)
 
-if DB.isNewPatch then return end
-
-tinsert(C.defaultThemes, function()
+C.themes["Blizzard_LookingForGroupUI"] = function()
 	local closeButton = select(3, LFGParentFrame:GetChildren())
 	if not LFGParentFrame.CloseButton then
 		LFGParentFrame.CloseButton = closeButton
@@ -47,4 +45,4 @@ tinsert(C.defaultThemes, function()
 	for i = 1, 16 do
 		_G["LFMFrameButton"..i.."Level"]:SetWidth(24)
 	end
-end)
+end

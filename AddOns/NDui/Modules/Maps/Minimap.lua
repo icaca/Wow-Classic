@@ -4,8 +4,6 @@ local module = B:GetModule("Maps")
 
 local select, pairs, unpack, next, tinsert = select, pairs, unpack, next, tinsert
 local strmatch, strfind, strupper = strmatch, strfind, strupper
-local IsPlayerSpell, GetSpellInfo, GetSpellTexture = IsPlayerSpell, GetSpellInfo, GetSpellTexture
-local CastSpellByID, GetTrackingTexture = CastSpellByID, GetTrackingTexture
 local UIFrameFadeOut, UIFrameFadeIn = UIFrameFadeOut, UIFrameFadeIn
 local GetInstanceInfo, GetDifficultyInfo = GetInstanceInfo, GetDifficultyInfo
 local C_Timer_After = C_Timer.After
@@ -340,7 +338,17 @@ function module:UpdateMinimapScale()
 	local scale = C.db["Map"]["MinimapScale"]
 	Minimap:SetSize(size, size)
 	Minimap:SetScale(scale)
-	Minimap.mover:SetSize(size*scale, size*scale)
+	if Minimap.mover then
+		Minimap.mover:SetSize(size*scale, size*scale)
+	end
+end
+
+function GetMinimapShape() -- LibDBIcon
+	if not module.initialized then
+		module:UpdateMinimapScale()
+		module.initialized = true
+	end
+	return "SQUARE"
 end
 
 function module:ShowMinimapClock()
