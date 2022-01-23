@@ -526,14 +526,6 @@ do
 		return tex
 	end
 
-	function B:HideBackdrop()
-		if DB.isNewPatch then
-			if self.NineSlice then self.NineSlice:SetAlpha(0) end
-		else
-			if self.SetBackdrop then self:SetBackdrop(nil) end
-		end
-	end
-
 	-- Handle frame
 	function B:CreateBDFrame(a, gradient)
 		local frame = self
@@ -701,6 +693,29 @@ do
 			self.Spark:SetAlpha(.8)
 			self.Spark:SetPoint("TOPLEFT", self:GetStatusBarTexture(), "TOPRIGHT", -10, 10)
 			self.Spark:SetPoint("BOTTOMRIGHT", self:GetStatusBarTexture(), "BOTTOMRIGHT", 10, -10)
+		end
+	end
+
+	function B:CreateAndUpdateBarTicks(bar, ticks, numTicks)
+		for i = 1, #ticks do
+			ticks[i]:Hide()
+		end
+
+		if numTicks and numTicks > 0 then
+			local width, height = bar:GetSize()
+			local delta = width / numTicks
+			for i = 1, numTicks-1 do
+				if not ticks[i] then
+					ticks[i] = bar:CreateTexture(nil, "OVERLAY")
+					ticks[i]:SetTexture(DB.normTex)
+					ticks[i]:SetVertexColor(0, 0, 0, .7)
+					ticks[i]:SetWidth(C.mult)
+					ticks[i]:SetHeight(height)
+				end
+				ticks[i]:ClearAllPoints()
+				ticks[i]:SetPoint("RIGHT", bar, "LEFT", delta * i, 0 )
+				ticks[i]:Show()
+			end
 		end
 	end
 
@@ -1671,10 +1686,16 @@ do
 		frame:SetPoint("BOTTOMRIGHT", anchor2 or anchor, "BOTTOMRIGHT", xOffset, -yOffset)
 	end
 
+	local function HideBackdrop(frame)
+		if frame.NineSlice then frame.NineSlice:SetAlpha(0) end
+		if frame.SetBackdrop then frame:SetBackdrop(nil) end
+	end
+
 	local function addapi(object)
 		local mt = getmetatable(object).__index
 		if not object.SetInside then mt.SetInside = SetInside end
 		if not object.SetOutside then mt.SetOutside = SetOutside end
+		if not object.HideBackdrop then mt.HideBackdrop = HideBackdrop end
 		if not object.DisabledPixelSnap then
 			if mt.SetTexture then hooksecurefunc(mt, "SetTexture", DisablePixelSnap) end
 			if mt.SetTexCoord then hooksecurefunc(mt, "SetTexCoord", DisablePixelSnap) end

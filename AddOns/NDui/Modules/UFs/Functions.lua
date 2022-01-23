@@ -201,6 +201,36 @@ function UF:UpdateFrameNameTag()
 	name:UpdateTag()
 end
 
+function UF:UpdateRaidNameAnchor(name)
+	if self.raidType == "pet" then
+		name:ClearAllPoints()
+		if C.db["UFs"]["RaidHPMode"] == 1 then
+			name:SetWidth(self:GetWidth()*.95)
+			name:SetJustifyH("CENTER")
+			name:SetPoint("CENTER")
+		else
+			name:SetWidth(self:GetWidth()*.65)
+			name:SetJustifyH("LEFT")
+			name:SetPoint("LEFT", 3, -1)
+		end
+	elseif self.raidType == "simple" then
+		if C.db["UFs"]["RaidHPMode"] == 1 then
+			name:SetWidth(self:GetWidth()*.95)
+		else
+			name:SetWidth(self:GetWidth()*.65)
+		end
+	else
+		name:ClearAllPoints()
+		name:SetWidth(self:GetWidth()*.95)
+		name:SetJustifyH("CENTER")
+		if C.db["UFs"]["RaidHPMode"] == 1 then
+			name:SetPoint("CENTER")
+		else
+			name:SetPoint("TOP", 0, -3)
+		end
+	end
+end
+
 function UF:CreateHealthText(self)
 	local mystyle = self.mystyle
 	local textFrame = CreateFrame("Frame", nil, self)
@@ -210,21 +240,7 @@ function UF:CreateHealthText(self)
 	self.nameText = name
 	name:SetJustifyH("LEFT")
 	if mystyle == "raid" then
-		name:SetWidth(self:GetWidth()*.95)
-		name:ClearAllPoints()
-		if self.raidType == "pet" then
-			name:SetWidth(self:GetWidth()*.55)
-			name:SetPoint("LEFT", 3, -1)
-		elseif self.raidType == "simple" then
-			name:SetPoint("LEFT", 4, 0)
-		else
-			name:SetJustifyH("CENTER")
-			if C.db["UFs"]["RaidHPMode"] ~= 1 then
-				name:SetPoint("TOP", 0, -3)
-			else
-				name:SetPoint("CENTER")
-			end
-		end
+		UF.UpdateRaidNameAnchor(self, name)
 		name:SetScale(C.db["UFs"]["RaidTextScale"])
 	elseif mystyle == "nameplate" then
 		name:ClearAllPoints()
@@ -243,7 +259,6 @@ function UF:CreateHealthText(self)
 		self:Tag(hpval, "[raidhp]")
 		if self.raidType == "pet" then
 			hpval:SetPoint("RIGHT", -3, -1)
-			self:Tag(hpval, "[VariousHP(current)]")
 		elseif self.raidType == "simple" then
 			hpval:SetPoint("RIGHT", -4, 0)
 		else
@@ -257,26 +272,6 @@ function UF:CreateHealthText(self)
 		self:Tag(hpval, "[VariousHP(currentpercent)]")
 	else
 		UF.UpdateFrameHealthTag(self)
-	end
-end
-
-function UF:UpdateRaidNameText()
-	for _, frame in pairs(oUF.objects) do
-		if frame.mystyle == "raid" and not frame.raidType == "pet" then
-			local name = frame.nameText
-			name:ClearAllPoints()
-			if frame.raidType == "simple" then
-				name:SetPoint("LEFT", 4, 0)
-			else
-				name:SetJustifyH("CENTER")
-				if C.db["UFs"]["RaidHPMode"] ~= 1 then
-					name:SetPoint("TOP", 0, -3)
-				else
-					name:SetPoint("CENTER")
-				end
-			end
-			frame.healthValue:UpdateTag()
-		end
 	end
 end
 
@@ -428,8 +423,10 @@ function UF:UpdateRaidTextScale()
 	local scale = C.db["UFs"]["RaidTextScale"]
 	for _, frame in pairs(oUF.objects) do
 		if frame.mystyle == "raid" then
+			UF.UpdateRaidNameAnchor(frame, frame.nameText)
 			frame.nameText:SetScale(scale)
 			frame.healthValue:SetScale(scale)
+			frame.healthValue:UpdateTag()
 			if frame.powerText then frame.powerText:SetScale(scale) end
 			UF:UpdateHealthBarColor(frame, true)
 			UF:UpdatePowerBarColor(frame, true)
@@ -526,7 +523,7 @@ local function createBarMover(bar, text, value, anchor)
 end
 
 local function updateSpellTarget(self, _, unit)
-	B.PostCastUpdate(self.Castbar, unit)
+	UF.PostCastUpdate(self.Castbar, unit)
 end
 
 function UF:ToggleCastBarLatency(frame)
@@ -534,13 +531,13 @@ function UF:ToggleCastBarLatency(frame)
 	if not frame then return end
 
 	if C.db["UFs"]["LagString"] then
-		--frame:RegisterEvent("GLOBAL_MOUSE_UP", B.OnCastSent, true) -- Fix quests with WorldFrame interaction
-		--frame:RegisterEvent("GLOBAL_MOUSE_DOWN", B.OnCastSent, true)
-		frame:RegisterEvent("CURRENT_SPELL_CAST_CHANGED", B.OnCastSent, true)
+		--frame:RegisterEvent("GLOBAL_MOUSE_UP", UF.OnCastSent, true) -- Fix quests with WorldFrame interaction
+		--frame:RegisterEvent("GLOBAL_MOUSE_DOWN", UF.OnCastSent, true)
+		frame:RegisterEvent("CURRENT_SPELL_CAST_CHANGED", UF.OnCastSent, true)
 	else
-		--frame:UnregisterEvent("GLOBAL_MOUSE_UP", B.OnCastSent)
-		--frame:UnregisterEvent("GLOBAL_MOUSE_DOWN", B.OnCastSent)
-		frame:UnregisterEvent("CURRENT_SPELL_CAST_CHANGED", B.OnCastSent)
+		--frame:UnregisterEvent("GLOBAL_MOUSE_UP", UF.OnCastSent)
+		--frame:UnregisterEvent("GLOBAL_MOUSE_DOWN", UF.OnCastSent)
+		frame:UnregisterEvent("CURRENT_SPELL_CAST_CHANGED", UF.OnCastSent)
 		if frame.Castbar then frame.Castbar.__sendTime = nil end
 	end
 end
@@ -638,17 +635,17 @@ function UF:CreateCastBar(self)
 
 	cb.Time = timer
 	cb.Text = name
-	cb.OnUpdate = B.OnCastbarUpdate
-	cb.PostCastStart = B.PostCastStart
-	cb.PostChannelStart = B.PostCastStart
-	cb.PostCastStop = B.PostCastStop
-	cb.PostChannelStop = B.PostChannelStop
-	cb.PostCastDelayed = B.PostCastUpdate
-	cb.PostChannelUpdate = B.PostCastUpdate
-	cb.PostCastFailed = B.PostCastFailed
-	cb.PostCastInterrupted = B.PostCastFailed
-	cb.PostCastInterruptible = B.PostUpdateInterruptible
-	cb.PostCastNotInterruptible = B.PostUpdateInterruptible
+	cb.OnUpdate = UF.OnCastbarUpdate
+	cb.PostCastStart = UF.PostCastStart
+	cb.PostChannelStart = UF.PostCastStart
+	cb.PostCastStop = UF.PostCastStop
+	cb.PostChannelStop = UF.PostChannelStop
+	cb.PostCastDelayed = UF.PostCastUpdate
+	cb.PostChannelUpdate = UF.PostCastUpdate
+	cb.PostCastFailed = UF.PostCastFailed
+	cb.PostCastInterrupted = UF.PostCastFailed
+	cb.PostCastInterruptible = UF.PostUpdateInterruptible
+	cb.PostCastNotInterruptible = UF.PostUpdateInterruptible
 
 	self.Castbar = cb
 end
@@ -1250,6 +1247,8 @@ function UF:ToggleUFClassPower()
 			end
 		end
 	end
+
+	UF.ToggleEnergyTicker(playerFrame, C.db["UFs"]["EnergyTicker"])
 end
 
 function UF:UpdateUFClassPower()
@@ -1435,7 +1434,6 @@ function UF:CreateFCT(self)
 end
 
 function UF:CreateEneryTicker(self)
-	if not C.db["UFs"]["EnergyTicker"] then return end
 	if DB.MyClass == "WARRIOR" then return end
 
 	local ticker = CreateFrame("StatusBar", nil, self.Power)
@@ -1444,4 +1442,17 @@ function UF:CreateEneryTicker(self)
 	ticker.Spark = ticker:CreateTexture(nil, "OVERLAY")
 
 	self.EnergyManaRegen = ticker
+end
+
+function UF:ToggleEnergyTicker(enable)
+	if not self.EnergyManaRegen then return end
+	if enable then
+		if not self:IsElementEnabled("EnergyManaRegen") then
+			self:EnableElement("EnergyManaRegen")
+		end
+	else
+		if self:IsElementEnabled("EnergyManaRegen") then
+			self:DisableElement("EnergyManaRegen")
+		end
+	end
 end

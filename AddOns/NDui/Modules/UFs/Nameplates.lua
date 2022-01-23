@@ -909,7 +909,7 @@ function UF:CreatePlayerPlate()
 	UF:CreatePowerBar(self)
 	UF:CreatePrediction(self)
 	UF:CreateClassPower(self)
-	--UF:CreateEneryTicker(self)
+	UF:CreateEneryTicker(self)
 	--if C.db["Auras"]["ClassAuras"] then
 	--	B:GetModule("Auras"):CreateLumos(self)
 	--end
@@ -919,7 +919,7 @@ function UF:CreatePlayerPlate()
 	textFrame:SetFrameLevel(self:GetFrameLevel() + 5)
 	self.powerText = B.CreateFS(textFrame, 14)
 	self:Tag(self.powerText, "[pppower]")
-	UF:TogglePlatePower()
+	self.powerText:SetShown(C.db["Nameplate"]["PPPowerText"])
 
 	UF:TogglePlateVisibility()
 end
@@ -933,13 +933,9 @@ function UF:TogglePlayerPlate()
 	else
 		plate:Disable()
 	end
-end
-
-function UF:TogglePlatePower()
-	local plate = _G.oUF_PlayerPlate
-	if not plate then return end
 
 	plate.powerText:SetShown(C.db["Nameplate"]["PPPowerText"])
+	UF.ToggleEnergyTicker(plate, C.db["Nameplate"]["EnergyTicker"])
 end
 
 function UF:TogglePlateVisibility()
