@@ -1,19 +1,29 @@
-# [3.7.5](https://github.com/WeakAuras/WeakAuras2/tree/3.7.5) (2022-01-11)
+# [3.7.7](https://github.com/WeakAuras/WeakAuras2/tree/3.7.7) (2022-01-23)
 
-[Full Changelog](https://github.com/WeakAuras/WeakAuras2/compare/3.7.4...3.7.5)
+[Full Changelog](https://github.com/WeakAuras/WeakAuras2/compare/3.7.6...3.7.7)
 
 ## Highlights
 
- Fixes for regressions in 3.7.4 
+ - Bugfixes 
 
 ## Commits
 
-Stanzilla (1):
+InfusOnWoW (5):
 
+- Transmission: Check sender before decompression
+- Spell Changes: Also check for name/icon changes
+- Fix unnecessary calls to ApplyStateToRegion
+- Fix Modernize calling GetProperties lua error
+- Fix validate not actually moving conditions
+
+Stanzilla (2):
+
+- Update TOC for BCC Patch 2.5.3
 - Update WeakAurasModelPaths from wow.tools
 
-Vardex (2):
+mrbuds (3):
 
-- Fix checking for unique keys
-- Fix generating unique key for suboptions
+- remove boss unit for BBC
+- Disable WeakAurasModelPaths auto update
+- Allow unitId filtering on various events, fixes #3432 (#3433)
 

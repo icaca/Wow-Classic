@@ -210,8 +210,10 @@ L["Autocast Shine"] = "Autocast Shine"
 L["Automatic"] = "Automatisch"
 --[[Translation missing --]]
 L["Automatic Length"] = "Automatic Length"
---[[Translation missing --]]
-L["Automatic Repair Confirmation Dialog"] = "Automatic Repair Confirmation Dialog"
+L["Automatic Repair Confirmation Dialog"] = [=[WeakAuras hat festgestellt, dass es herabgestuft wurde.
+Ihre gespeicherten Auren funktionieren möglicherweise nicht mehr richtig.
+Möchten Sie das |cffff0000EXPERIMENTAL|r-Reparaturwerkzeug ausführen? Dadurch werden alle Änderungen überschrieben, die Sie seit dem letzten Datenbank-Upgrade vorgenommen haben.
+Letzte Aktualisierung: %s]=]
 L["Automatic Rotation"] = "Automatische Rotation"
 L["Avoidance (%)"] = "Vermeidung (%)"
 --[[Translation missing --]]
@@ -902,8 +904,9 @@ L["Majordomo Executus"] = "Majordomo Executus"
 L["Make sure you can trust the person who sent it!"] = "Gehen Sie sicher dass Sie der Person vertrauen können!"
 --[[Translation missing --]]
 L["Malformed WeakAuras link"] = "Malformed WeakAuras link"
---[[Translation missing --]]
-L["Manual Repair Confirmation Dialog"] = "Manual Repair Confirmation Dialog"
+L["Manual Repair Confirmation Dialog"] = [=[Möchten Sie das |cffff0000EXPERIMENTAL|r-Reparaturwerkzeug wirklich ausführen?
+Dadurch werden alle Änderungen überschrieben, die Sie seit dem letzten Datenbank-Upgrade vorgenommen haben.
+Letzte Aktualisierung: %s]=]
 L["Manual Rotation"] = "Manuelle Rotation"
 L["Marked First"] = "Zuerst markiert"
 L["Marked Last"] = "Zuletzt markiert"
@@ -1623,6 +1626,8 @@ L["Trigger:"] = "Auslöser:"
 --[[Translation missing --]]
 L["Trivial (Low Level)"] = "Trivial (Low Level)"
 L["True"] = "Zutrifft"
+--[[Translation missing --]]
+L["Trying to repair broken conditions in %s likely caused by a WeakAuras bug."] = "Trying to repair broken conditions in %s likely caused by a WeakAuras bug."
 L["Twin Emperors"] = "Zwillingsimperatoren"
 L["Type"] = "Typ"
 --[[Translation missing --]]
@@ -1727,10 +1732,8 @@ L["Your scheduled automatic profile has been cancelled."] = "Your scheduled auto
 L["Your threat as a percentage of the tank's current threat."] = "Your threat as a percentage of the tank's current threat."
 --[[Translation missing --]]
 L["Your threat on the mob as a percentage of the amount required to pull aggro. Will pull aggro at 100."] = "Your threat on the mob as a percentage of the amount required to pull aggro. Will pull aggro at 100."
---[[Translation missing --]]
-L["Your total threat on the mob."] = "Your total threat on the mob."
---[[Translation missing --]]
-L["Zone ID(s)"] = "Zone ID(s)"
+L["Your total threat on the mob."] = "Ihre gesamte Bedrohung für den Mob."
+L["Zone ID(s)"] = "GebietsID(s)"
 L["Zone Name"] = "Gebietsname"
 L["Zoom"] = "Zoom"
 --[[Translation missing --]]

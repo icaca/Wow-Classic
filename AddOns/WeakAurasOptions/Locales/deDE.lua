@@ -1119,8 +1119,7 @@ Nur ein Wert kann ausgewählt werden.]=]
 	L["Y Rotation"] = "Y-Rotation"
 	L["Y Scale"] = "Skalierung (Y)"
 	L["Yellow Rune"] = "Gelbe Rune"
-	--[[Translation missing --]]
-	L["Yes"] = "Yes"
+	L["Yes"] = "Ja"
 	--[[Translation missing --]]
 	L["y-Offset"] = "y-Offset"
 	L["Y-Offset"] = "Y-Versatz"

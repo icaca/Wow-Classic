@@ -2354,9 +2354,9 @@ Private.event_prototypes = {
         if trigger.use_showHealAbsorb then
           AddUnitEventForEvents(result, unit, "UNIT_HEAL_ABSORB_AMOUNT_CHANGED")
         end
-        if trigger.use_showIncomingHeal then
-          AddUnitEventForEvents(result, unit, "UNIT_HEAL_PREDICTION")
-        end
+      end
+      if trigger.use_showIncomingHeal then
+        AddUnitEventForEvents(result, unit, "UNIT_HEAL_PREDICTION")
       end
       if trigger.use_ignoreDead or trigger.use_ignoreDisconnected then
         AddUnitEventForEvents(result, unit, "UNIT_FLAGS")
@@ -2488,8 +2488,6 @@ Private.event_prototypes = {
         type = "toggle",
         test = "true",
         reloadOptions = true,
-        enable = WeakAuras.IsRetail(),
-        hidden = not WeakAuras.IsRetail()
       },
       {
         name = "absorb",
@@ -2518,8 +2516,7 @@ Private.event_prototypes = {
         init = "UnitGetIncomingHeals(unit)",
         store = true,
         conditionType = "number",
-        enable = function(trigger) return WeakAuras.IsRetail() and trigger.use_showIncomingHeal end,
-        hidden = not WeakAuras.IsRetail()
+        enable = function(trigger) return trigger.use_showIncomingHeal end,
       },
       {
         name = "name",
@@ -2713,7 +2710,7 @@ Private.event_prototypes = {
           end
         end,
         enable = function(trigger)
-          return WeakAuras.IsRetail() and trigger.use_showIncomingHeal;
+          return trigger.use_showIncomingHeal;
         end
       }
     },
@@ -9002,3 +8999,28 @@ Private.dynamic_texts = {
     end
   }
 };
+
+-- Events in that list can be filtered by unitID
+Private.UnitEventList = {
+  PLAYER_GUILD_UPDATE = true,
+  MINIMAP_PING = true,
+  PARTY_MEMBER_DISABLE = true,
+  PARTY_MEMBER_ENABLE = true,
+  READY_CHECK_CONFIRM = true,
+  PLAYER_GAINS_VEHICLE_DATA = true,
+  PLAYER_LOSES_VEHICLE_DATA = true,
+  ARENA_COOLDOWNS_UPDATE = true,
+  ARENA_CROWD_CONTROL_SPELL_UPDATE = true,
+  HONOR_XP_UPDATE = true,
+  INCOMING_RESURRECT_CHANGED = true,
+  INCOMING_SUMMON_CHANGED = true,
+  KNOWN_TITLES_UPDATE = true,
+  PLAYER_DAMAGE_DONE_MODS = true,
+  PLAYER_FLAGS_CHANGED = true,
+  PLAYER_PVP_KILLS_CHANGED = true,
+  PLAYER_PVP_RANK_CHANGED = true,
+  PLAYER_SPECIALIZATION_CHANGED = true,
+  PLAYER_TRIAL_XP_UPDATE = true,
+  PLAYER_XP_UPDATE = true,
+  PVP_TIMER_UPDATE = true
+}
