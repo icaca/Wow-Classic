@@ -1,4 +1,4 @@
-## Interface: 20502
+## Interface: 20503
 
 ## Title: BigWigs [|cffeda55fOptions|r]
 ## Title-zhCN: BigWigs [|cffeda55f选项|r]
@@ -22,7 +22,7 @@
 ## Notes-ptBR: BigWigs Configuration Options
 ## Notes-esES: Opciones de configuración de BigWigs.
 ## Notes-esMX: Opciones de configuración de BigWigs.
-## Version: v32-classic
+## Version: v33-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs, BigWigs_Core, BigWigs_Plugins

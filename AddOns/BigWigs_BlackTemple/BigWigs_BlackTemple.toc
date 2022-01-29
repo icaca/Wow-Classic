@@ -1,4 +1,4 @@
-## Interface: 20502
+## Interface: 20503
 
 ## Title: BigWigs [|cffeda55fBlack Temple|r]
 ## Title-deDE: BigWigs [|cffeda55fDer Schwarze Tempel|r]
@@ -22,7 +22,7 @@
 ## Notes-ruRU: BigWigs Black Temple Modules
 ## Notes-zhCN: BigWigs 黑暗神殿模块
 ## Notes-zhTW: BigWigs 黑暗神廟模組
-## Version: v32-classic
+## Version: v33-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

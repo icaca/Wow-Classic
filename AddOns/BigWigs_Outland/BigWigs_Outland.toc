@@ -1,4 +1,4 @@
-## Interface: 20502
+## Interface: 20503
 
 ## Title: BigWigs [|cffeda55fOutland|r]
 ## Title-deDE: BigWigs [|cffeda55fScherbenwelt|r]
@@ -22,7 +22,7 @@
 ## Notes-ruRU: Модули BigWigs Запределье
 ## Notes-zhCN: BigWigs 外域模块
 ## Notes-zhTW: BigWigs 外域模組
-## Version: v32-classic
+## Version: v33-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

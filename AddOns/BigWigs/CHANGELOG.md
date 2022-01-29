@@ -1,11 +1,15 @@
 # BigWigs
 
-## [v32-classic](https://github.com/BigWigsMods/BigWigs/tree/v32-classic) (2021-11-02)
-[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v31-classic...v32-classic) [Previous Releases](https://github.com/BigWigsMods/BigWigs/releases)
+## [v33-classic](https://github.com/BigWigsMods/BigWigs/tree/v33-classic) (2022-01-28)
+[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v32-classic...v33-classic) [Previous Releases](https://github.com/BigWigsMods/BigWigs/releases)
 
-- Bump version  
-- Bump TOC for 1.14 and fix BCC  
-- TempestKeep/Solarian: Fix Wrath duration and use proper spell as option  
-- TempestKeep/Kaelthas: Fix phase 4 timer  
-- TempestKeep/Solarian: Fix Wrath of the Astromancer spell id  
-    Fixes #1125  
+- Update option files  
+- bump version  
+- TempestKeep/Solarian: Just use both spell IDs for wrath, closes #1131  
+- BlackTemple/ShadeOfAkama: Another comment  
+- BlackTemple/Supremus: Fix scheduling error  
+- BlackTemple/ShadeOfAkama: Remove the engage code also  
+- BlackTemple/ShadeOfAkama: Disable module, this was made for retail and would need properly tested on BCC where the IEEU event won't exist.  
+- toc bumps  
+- Update ruRU (#1134)  
+-  Hyjal/Trash: Update widget IDs for BCC (#1135)  

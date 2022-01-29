@@ -11,7 +11,7 @@ BigWigs:AddColors("Void Reaver", {
 })
 
 BigWigs:AddColors("High Astromancer Solarian", {
-	[33045] = {"blue","yellow"},
+	[42783] = {"blue","yellow"},
 	["phase"] = {"green","red"},
 	["split"] = "red",
 })

@@ -1,4 +1,4 @@
-## Interface: 20502
+## Interface: 20503
 
 ## Title: BigWigs [|cffeda55fNaxxramas|r]
 ## Title-deDE: BigWigs [|cffeda55fNaxxramas|r]
@@ -22,7 +22,7 @@
 ## Notes-ruRU: BigWigs Naxxramas Modules
 ## Notes-zhCN: BigWigs 纳克萨玛斯模块
 ## Notes-zhTW: BigWigs 納克薩瑪斯模組
-## Version: v32-classic
+## Version: v33-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs
