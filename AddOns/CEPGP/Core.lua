@@ -206,7 +206,7 @@ CEPGP_Info = {
 		Source =				""
 	},
 	Version = 					{
-		Number =				"1.14.0",
+		Number =				"1.14.1",
 		Build =					"Release",
 		List =					{
 		},
@@ -334,7 +334,6 @@ function CEPGP_OnEvent(event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, ar
 	if CEPGP_Info.Active[1] or CEPGP_Info.Debug then --EPGP and loot distribution related 
 		--	An encounter has been defeated
 		local function handleEncounter(event, arg1, arg5)
-			
 			if event == "ENCOUNTER_END" and arg5 == 1 then
 				local id = tonumber(arg1);
 				local name = CEPGP_EncounterInfo.ID[id];
@@ -342,6 +341,7 @@ function CEPGP_OnEvent(event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, ar
 					if CEPGP.EP.AutoAward[name] and tonumber(CEPGP.EP.BossEP[name]) > 0 then
 						CEPGP_handleCombat(name);
 					end
+				else
 				end
 				return;
 			end
@@ -503,7 +503,7 @@ function CEPGP_RaidAssistLootClosed()
 		HideUIPanel(CEPGP_distribute_popup);
 		HideUIPanel(CEPGP_loot_distributing);
 		HideUIPanel(CEPGP_frame);
-		CEPGP_distribute_item_tex:SetBackdrop(nil);
+		--CEPGP_distribute_item_tex:SetBackdrop(nil);
 		_G["CEPGP_distribute_item_tex"]:SetScript('OnEnter', function() end);
 		_G["CEPGP_distribute_item_name_frame"]:SetScript('OnClick', function() end);
 	end

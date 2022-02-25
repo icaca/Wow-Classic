@@ -613,7 +613,7 @@ end
 function private.OptionalMatsOnClick(button)
 	button:GetBaseElement():ShowDialogFrame(UIElements.New("Frame", "frame")
 		:SetLayout("VERTICAL")
-		:SetSize(478, 268)
+		:SetSize(478, 308)
 		:SetPadding(12)
 		:AddAnchor("CENTER")
 		:SetMouseEnabled(true)

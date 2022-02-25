@@ -2980,6 +2980,7 @@ local ALL_BONUS_ID_MAP = {
 	[7574] = 7574,
 	[7575] = 7575,
 	[7576] = 7576,
+	[7882] = 7882,
 }
 local IMPORTANT_BONUS_ID_MAP = {
 	[40] = 40,
@@ -3389,6 +3390,7 @@ local IMPORTANT_BONUS_ID_MAP = {
 	[7574] = 7574,
 	[7575] = 7575,
 	[7576] = 7576,
+	[7882] = 7882,
 }
 
 -- This table is based on static data available at https://raidbots.com/developers

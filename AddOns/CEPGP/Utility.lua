@@ -362,7 +362,8 @@ function CEPGP_initSavedVars()
 	--[[	Alt Management	]]--
 	CEPGP.Alt = CEPGP.Alt or {
 		SyncEP = true,
-		SyncGP = true
+		SyncGP = true,
+		Auto = false
 	};
 	CEPGP.Alt.Links = CEPGP.Alt.Links or {};
 	
@@ -1092,6 +1093,15 @@ function CEPGP_rosterUpdate(event)
 				CEPGP_Info.Guild.Roster[k] = nil;
 			end
 			
+			if CEPGP.Alt.Auto then
+				CEPGP.Alt.Links = {};
+				for k, v in pairs(CEPGP_Info.Guild.Roster) do
+					if CEPGP_Info.Guild.Roster[v[11]] then
+						CEPGP_addCharacterLink(v[11], k, true);
+					end
+				end
+			end
+
 			if _G["CEPGP_options_alt_mangement"]:IsVisible() then
 				CEPGP_UpdateAltScrollBar();
 			end
@@ -1139,7 +1149,7 @@ function CEPGP_rosterUpdate(event)
 				return;
 			end
 			i = i + 1;
-			local name, rank, rankIndex, _, class, _, _, _, online, _, classFileName = GetGuildRosterInfo(i);
+			local name, rank, rankIndex, _, class, _, publicnote, _, online, _, classFileName = GetGuildRosterInfo(i);
 			if name then
 				name = Ambiguate(name, "all");
 				tempRoster[name] = nil;
@@ -1155,7 +1165,8 @@ function CEPGP_rosterUpdate(event)
 					[7] = classFileName,
 					[8] = online,
 					[9] = (CEPGP.Guild.Exclusions[rankIndex+1] and true or nil),
-					[10] = (CEPGP.Guild.Filter[rankIndex+1] and true or nil)
+					[10] = (CEPGP.Guild.Filter[rankIndex+1] and true or nil),
+					[11] = publicnote
 				};
 				if CEPGP_Info.Import.Running or CEPGP_Info.Traffic.Sharing then
 					if CEPGP_Info.Import.Running and CEPGP_Info.Import.Source == name then
@@ -1411,6 +1422,7 @@ function CEPGP_addToStandby(player, playerList)
 		CEPGP.Standby.Roster = CEPGP_tSort(CEPGP.Standby.Roster, 1);
 		if CEPGP.Standby.Share then CEPGP_addAddonMsg("StandbyListAdd;"..player..";"..class..";"..rank..";"..rankIndex..";"..EP..";"..GP..";"..classFile, "RAID"); end
 		CEPGP_addAddonMsg("StandbyAdded;" .. player .. ";You have been added to the standby list.", "GUILD");
+		CEPGP_print(player .. " added to the standby list.")
 	
 	else --	If a list of players is being imported
 		for index, data in ipairs(playerList) do
@@ -1700,7 +1712,7 @@ function CEPGP_getItemLink(id, func)
 			elseif rarity == 5 then -- Legendary
 				return "\124cffff8000\124Hitem:" .. id .. ":::::::::::::\124h[" .. name .. "]\124h\124r";
 			end
-			func();
+			if func then func() end;
 		end);
 	else
 		if rarity == 0 then -- Poor
@@ -1716,7 +1728,7 @@ function CEPGP_getItemLink(id, func)
 		elseif rarity == 5 then -- Legendary
 			return "\124cffff8000\124Hitem:" .. id .. ":::::::::::::\124h[" .. name .. "]\124h\124r";
 		end
-		func();
+		if func then func() end;
 	end
 end
 
@@ -2737,7 +2749,7 @@ function CEPGP_keyExists(t, key)
 	return t[key] ~= nil;
 end
 
-function CEPGP_addCharacterLink(main, alt)
+function CEPGP_addCharacterLink(main, alt, silent)
 	if not CEPGP.Alt.Links then
 		CEPGP.Alt.Links = {};
 	end
@@ -2745,13 +2757,19 @@ function CEPGP_addCharacterLink(main, alt)
 	for m, t in pairs(CEPGP.Alt.Links) do
 		for k, v in pairs(t) do
 			if string.lower(m) == string.lower(alt) then
-				CEPGP_print(alt .. " is already marked as a main character", true);
+				if not silent then
+					CEPGP_print(alt .. " is already marked as a main character", true);
+				end
 				return;
 			elseif string.lower(v) == string.lower(main) then
-				CEPGP_print(main .. " is marked as an alt of " .. m .. " and cannot be a main character", true);
+				if not silent then
+					CEPGP_print(main .. " is marked as an alt of " .. m .. " and cannot be a main character", true);
+				end
 				return;
 			elseif string.lower(v) == string.lower(alt) then
-				CEPGP_print(alt .. " is already linked to " .. m, true);
+				if not silent then
+					CEPGP_print(alt .. " is already linked to " .. m, true);
+				end
 				return;
 			end
 		end
@@ -2763,7 +2781,9 @@ function CEPGP_addCharacterLink(main, alt)
 	
 	CEPGP.Alt.Links[main][#CEPGP.Alt.Links[main]+1] = alt;
 	
-	CEPGP_print(alt .. " is now an alt of " .. main);
+	if not silent then
+		CEPGP_print(alt .. " is now an alt of " .. main);
+	end
 end
 
 function CEPGP_removeCharacterLink(main, alt)

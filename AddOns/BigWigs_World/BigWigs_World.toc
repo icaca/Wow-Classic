@@ -1,4 +1,5 @@
-## Interface: 20503
+## Interface: 11401
+## Interface-BCC: 20503
 
 ## Title: BigWigs [|cffeda55fWorld|r]
 ## Title-deDE: BigWigs [|cffeda55fWorld|r]
@@ -22,7 +23,7 @@
 ## Notes-ruRU: BigWigs World Boss Modules
 ## Notes-zhCN: 世界首领模块。
 ## Notes-zhTW: BigWigs World Boss Modules
-## Version: v33-classic
+## Version: v34-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

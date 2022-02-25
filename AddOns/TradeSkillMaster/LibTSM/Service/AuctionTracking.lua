@@ -15,6 +15,7 @@ local ItemString = TSM.Include("Util.ItemString")
 local TempTable = TSM.Include("Util.TempTable")
 local Sound = TSM.Include("Util.Sound")
 local Money = TSM.Include("Util.Money")
+local Theme = TSM.Include("Util.Theme")
 local Analytics = TSM.Include("Util.Analytics")
 local ItemInfo = TSM.Include("Service.ItemInfo")
 local Settings = TSM.Include("Service.Settings")
@@ -126,7 +127,13 @@ AuctionTracking:OnSettingsLoad(function()
 	end
 
 	-- setup enhanced sale / buy messages
-	ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", private.FilterSystemMsg)
+	if TSM.IsWowClassic() then
+		ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", private.FilterSystemMsg)
+	else
+		Event.Register("AUCTION_HOUSE_SHOW_NOTIFICATION", private.FilterAuctionMsg)
+		Event.Register("AUCTION_HOUSE_SHOW_FORMATTED_NOTIFICATION", private.FilterAuctionMsg)
+		Event.Register("AUCTION_HOUSE_SHOW_COMMODITY_WON_NOTIFICATION", private.FilterCommodityAuctionMsg)
+	end
 	if TSM.IsWowClassic() then
 		hooksecurefunc("PlaceAuctionBid", function(_, index, amountPaid)
 			local link = GetAuctionItemLink("list", index)
@@ -624,6 +631,19 @@ function private.FilterSystemMsg(_, _, msg, ...)
 			Sound.PlaySound(private.settings.auctionSaleSound)
 			return nil, private.prevLineResult, ...
 		end
+	end
+end
+
+function private.FilterAuctionMsg(_, msg, ...)
+	if msg == Enum.AuctionHouseNotification.AuctionWon and private.lastPurchase.name then
+		Log.PrintUserRaw(Theme.GetStandardColor("YELLOW"):ColorText(format(L["You won an auction for %sx%d for %s"], private.lastPurchase.link, private.lastPurchase.stackSize, Money.ToString(private.lastPurchase.buyout, "|cffffffff"))))
+	end
+	-- TODO: figure out if we can do the same enhancement for sold auctions on retail
+end
+
+function private.FilterCommodityAuctionMsg(_, msg, qty)
+	if private.lastPurchase.name then
+		Log.PrintUserRaw(Theme.GetStandardColor("YELLOW"):ColorText(format(L["You won an auction for %sx%d for %s"], private.lastPurchase.link, qty, Money.ToString(private.lastPurchase.buyout, "|cffffffff"))))
 	end
 end
 

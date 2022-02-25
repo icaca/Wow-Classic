@@ -426,7 +426,8 @@ function private.GetCategoryGroupPath(categoryId)
 		tinsert(parts, 1, private.categoryInfoCache.name[categoryId])
 		categoryId = private.categoryInfoCache.parent[categoryId]
 	end
-	tinsert(parts, 1, TSM.Crafting.ProfessionUtil.GetCurrentProfessionName())
+	local name = TSM.Crafting.ProfessionUtil.GetCurrentProfessionInfo()
+	tinsert(parts, 1, name)
 	return TSM.Groups.Path.Join(TempTable.UnpackAndRelease(parts))
 end
 
@@ -673,7 +674,8 @@ function private.IsPlayerProfession()
 end
 
 function private.OnChatMsgSkill(_, msg)
-	if not strmatch(msg, TSM.Crafting.ProfessionUtil.GetCurrentProfessionName()) then
+	local name = TSM.Crafting.ProfessionUtil.GetCurrentProfessionInfo()
+	if not strmatch(msg, name) then
 		return
 	end
 	for self in pairs(private.activeElements) do

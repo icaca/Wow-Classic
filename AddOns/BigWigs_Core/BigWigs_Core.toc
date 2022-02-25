@@ -1,4 +1,5 @@
-## Interface: 20503
+## Interface: 11401
+## Interface-BCC: 20503
 
 ## Title: BigWigs [|cffeda55fCore|r]
 ## Title-zhCN: BigWigs [|cffeda55f核心|r]
@@ -22,7 +23,7 @@
 ## Notes-ptBR: Core do BigWigs
 ## Notes-esES: Núcleo de BigWigs.
 ## Notes-esMX: Núcleo de BigWigs.
-## Version: v33-classic
+## Version: v34-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs
