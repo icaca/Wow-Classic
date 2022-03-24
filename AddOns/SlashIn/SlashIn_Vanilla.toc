@@ -1,4 +1,4 @@
-## Interface: 90200
+## Interface: 11402
 ## Version: v9.2.0
 ## Author: Funkydude
 ## Title: SlashIn

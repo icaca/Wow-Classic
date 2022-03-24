@@ -207,12 +207,14 @@ AuctionTracking:OnGameDataLoad(function()
 			ElvUIChatIsEnabled = true
 		end
 	end
-	if ElvUIChatIsEnabled then
-		private.origChatFrameOnEvent = ElvUIChat.ChatFrame_OnEvent
-		ElvUIChat.ChatFrame_OnEvent = private.ChatFrameOnEvent
-	else
-		private.origChatFrameOnEvent = ChatFrame_OnEvent
-		ChatFrame_OnEvent = private.ChatFrameOnEvent
+	if TSM.IsWowClassic() then
+		if ElvUIChatIsEnabled then
+			private.origChatFrameOnEvent = ElvUIChat.ChatFrame_OnEvent
+			ElvUIChat.ChatFrame_OnEvent = private.ChatFrameOnEvent
+		else
+			private.origChatFrameOnEvent = ChatFrame_OnEvent
+			ChatFrame_OnEvent = private.ChatFrameOnEvent
+		end
 	end
 end)
 
@@ -588,7 +590,11 @@ function private.UpdateAuctionPricesMessages()
 		if auctionStackSizes[link] ~= INVALID_STACK_SIZE then
 			sort(prices)
 			private.settings.auctionPrices[link] = prices
-			private.settings.auctionMessages[format(ERR_AUCTION_SOLD_S, name)] = link
+			if TSM.IsWowClassic() then
+				private.settings.auctionMessages[format(ERR_AUCTION_SOLD_S, name)] = link
+			else
+				private.settings.auctionMessages[name] = link
+			end
 		end
 	end
 	TempTable.Release(freeTables)
@@ -634,11 +640,36 @@ function private.FilterSystemMsg(_, _, msg, ...)
 	end
 end
 
-function private.FilterAuctionMsg(_, msg, ...)
+function private.FilterAuctionMsg(_, msg, item)
 	if msg == Enum.AuctionHouseNotification.AuctionWon and private.lastPurchase.name then
 		Log.PrintUserRaw(Theme.GetStandardColor("YELLOW"):ColorText(format(L["You won an auction for %sx%d for %s"], private.lastPurchase.link, private.lastPurchase.stackSize, Money.ToString(private.lastPurchase.buyout, "|cffffffff"))))
+	elseif msg == Enum.AuctionHouseNotification.AuctionSold and item then
+		local link = private.settings.auctionMessages and private.settings.auctionMessages[item]
+		if link then
+			-- we may have just sold an auction
+			local price = tremove(private.settings.auctionPrices[link], 1)
+			local numAuctions = #private.settings.auctionPrices[link]
+			if not price then
+				-- couldn't determine the price, so just replace the link
+				Log.PrintUserRaw(Theme.GetStandardColor("YELLOW"):ColorText(format(L["Your auction of %s has sold!"], link)))
+				Sound.PlaySound(private.settings.auctionSaleSound)
+			end
+			if numAuctions == 0 then -- this was the last auction
+				private.settings.auctionMessages[item] = nil
+			end
+			Log.PrintUserRaw(Theme.GetStandardColor("YELLOW"):ColorText(format(L["Your auction of %s has sold for %s!"], link, Money.ToString(price, "|cffffffff"))))
+			Sound.PlaySound(private.settings.auctionSaleSound)
+		else
+			Log.PrintUserRaw(Theme.GetStandardColor("YELLOW"):ColorText(format(L["Your auction of %s has sold!"], item)))
+			Sound.PlaySound(private.settings.auctionSaleSound)
+		end
+	elseif msg == Enum.AuctionHouseNotification.AuctionOutbid and item then
+		Log.PrintUserRaw(Theme.GetStandardColor("YELLOW"):ColorText(format(ERR_AUCTION_OUTBID_S, item)))
+	elseif msg == Enum.AuctionHouseNotification.AuctionExpired and item then
+		Log.PrintUserRaw(Theme.GetStandardColor("YELLOW"):ColorText(format(ERR_AUCTION_EXPIRED_S, item)))
+	elseif msg == Enum.AuctionHouseNotification.BidPlaced then
+		Log.PrintUserRaw(Theme.GetStandardColor("YELLOW"):ColorText(ERR_AUCTION_BID_PLACED))
 	end
-	-- TODO: figure out if we can do the same enhancement for sold auctions on retail
 end
 
 function private.FilterCommodityAuctionMsg(_, msg, qty)

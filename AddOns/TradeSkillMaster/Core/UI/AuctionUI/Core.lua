@@ -197,6 +197,7 @@ function private.AuctionFrameInit()
 		ScriptWrapper.Set(tab, "OnClick", private.TSMTabOnClick)
 		if not TSM.IsWowClassic() then
 			AuctionHouseFrame:HookScript("OnShow", function(self)
+				self:UnregisterEvent("AUCTION_HOUSE_AUCTION_CREATED")
 				self:UnregisterEvent("AUCTION_HOUSE_SHOW_NOTIFICATION")
 				self:UnregisterEvent("AUCTION_HOUSE_SHOW_FORMATTED_NOTIFICATION")
 				self:UnregisterEvent("AUCTION_HOUSE_SHOW_COMMODITY_WON_NOTIFICATION")

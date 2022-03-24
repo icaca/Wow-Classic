@@ -702,7 +702,7 @@ function private.FSMCreate()
 						return "ST_CONFIRMING_BID_BUY", true
 					end
 				else
-					if msg == Enum.AuctionHouseNotification.AuctionWon or (context.numBid > 0 and msg == Enum.AuctionHouseNotification.BidPlaced) then
+					if (context.searchContext:IsBuyoutScan() and msg == Enum.AuctionHouseNotification.AuctionWon) or (context.searchContext:IsBidScan() and msg == Enum.AuctionHouseNotification.BidPlaced) then
 						-- bought an auction
 						return "ST_CONFIRMING_BID_BUY", true
 					end

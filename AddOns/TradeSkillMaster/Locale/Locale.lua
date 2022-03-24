@@ -1381,6 +1381,7 @@ do
 		L["Your auction has not been undercut."] = "Your auction has not been undercut."
 		L["Your auction of %s expired"] = "Your auction of %s expired"
 		L["Your auction of %s has sold for %s!"] = "Your auction of %s has sold for %s!"
+		L["Your auction of %s has sold!"] = "Your auction of %s has sold!"
 		L["Your craft value method for '%s' was invalid so it has been returned to the default. Details: %s"] = "Your craft value method for '%s' was invalid so it has been returned to the default. Details: %s"
 		L["Your default craft value method was invalid so it has been returned to the default. Details: %s"] = "Your default craft value method was invalid so it has been returned to the default. Details: %s"
 		L["Your max restock (%s) is invalid for %s."] = "Your max restock (%s) is invalid for %s."

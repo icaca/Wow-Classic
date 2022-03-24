@@ -1,28 +1,36 @@
-# [3.7.11](https://github.com/WeakAuras/WeakAuras2/tree/3.7.11) (2022-02-22)
+# [3.7.14](https://github.com/WeakAuras/WeakAuras2/tree/3.7.14) (2022-03-20)
 
-[Full Changelog](https://github.com/WeakAuras/WeakAuras2/compare/3.7.10...3.7.11)
+[Full Changelog](https://github.com/WeakAuras/WeakAuras2/compare/3.7.13...3.7.14)
 
 ## Highlights
 
- - Bug fixes
-- Enable Autocast Glow for Classic/BCC 
+ - bug fixes 
 
 ## Commits
 
-InfusOnWoW (3):
+Adam Wendelin (1):
 
-- BCC: Correctly disabled Glaives and enable Thrown Weapons
-- BCC: Correctly disable Goblins
-- Fix Order of Subelements in Dynamic Groups
+- Add slam rank 5 to spells resetting swing
 
-Stanzilla (1):
+InfusOnWoW (4):
 
-- Update TOC for 9.2.0 and 1.14.2
+- Fix nil error in UnitPlayerControlledFixed
+- Fix Class coloring for units that are far away
+- DBM: Fix nil error for paused timers
+- Change order of Types and Prototypes.lua loading
 
-mrbuds (4):
+asakawa (1):
 
-- enable autocast glow for bcc & som
-- clear scripts on import/export frame fixes #3496
-- restore hastepercent to previous state on retail
-- Faction Reputation trigger: support friendship standing
+- add a tooltip for unit selections in status triggers
+
+mrbuds (8):
+
+- BW/DBM Timer triggers: fix handling of remainingTime with paused timers, fixes #3537
+- Threat Situation trigger: add boss & nameplate support add a migration for unitThreat to unit statesParameter is now "unit"
+- Revert "Adjust {rt#} replacement to be compatible with DBM extended raid marks" raid target > 8 was removed in 9.2 https://wowpedia.fandom.com/wiki/Patch_9.2.0/API_changes
+- Spell Known trigger: add inverse option, fixes #3533
+- Combat Log trigger: add spellSchool filter, fixes #3529
+- Character state bcc: revert hastepercent change, fixes #3516
+- bufftrigger boss unit fix
+- more fixes to support boss units up to 10
 

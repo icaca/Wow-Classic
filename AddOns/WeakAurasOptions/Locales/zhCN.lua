@@ -47,6 +47,23 @@ local L = WeakAuras.L
 	L["|cFFffcc00Font Flags:|r |cFFFF0000%s|r and shadow |c%sColor|r with offset |cFFFF0000%s/%s|r%s%s"] = "|cFFffcc00文字样式：|r|cFFFF0000%s|r，阴影|c%s颜色|r、偏移量|cFFFF0000%s/%s|r%s%s"
 	L["|cFFffcc00Font Flags:|r |cFFFF0000%s|r and shadow |c%sColor|r with offset |cFFFF0000%s/%s|r%s%s%s"] = "|cFFffcc00文字样式：|r|cFFFF0000%s|r，阴影|c%s颜色|r、偏移量|cFFFF0000%s/%s|r%s%s%s"
 	L["|cFFffcc00Format Options|r"] = "|cFFffcc00格式选项|r"
+	L[ [=[• |cff00ff00Player|r, |cff00ff00Target|r, |cff00ff00Focus|r, and |cff00ff00Pet|r correspond directly to those individual unitIDs.
+• |cff00ff00Specific Unit|r lets you provide a specific valid unitID to watch.
+|cffff0000Note|r: The game will not fire events for all valid unitIDs, making some untrackable by this trigger.
+• |cffffff00Party|r, |cffffff00Raid|r, |cffffff00Boss|r, |cffffff00Arena|r, and |cffffff00Nameplate|r can match multiple corresponding unitIDs.
+• |cffffff00Smart Group|r adjusts to your current group type, matching just the "player" when solo, "party" units (including "player") in a party or "raid" units in a raid.
+• |cffffff00Multi-target|r attempts to use the Combat Log events, rather than unitID, to track affected units.
+|cffff0000Note|r: Without a direct relationship to actual unitIDs, results may vary.
+
+|cffffff00*|r Yellow Unit settings can match multiple units and will default to being active even while no affected units are found without a Unit Count or Match Count setting.]=] ] = [=[• |cff00ff00玩家|r，|cff00ff00目标|r，|cff00ff00焦点目标|r，和|cff00ff00宠物|r直接对应相应的单位ID。
+• |cff00ff00指定单位|r允许你提供一个有效的单位ID来监视。
+|cffff0000注意|r：游戏不会为所有有效的单位ID触发事件，使得其无法被这个触发器跟踪。
+• |cffffff00小队|r，|cffffff00团队|r，|cffffff00首领|r，|cffffff00竞技场|r，和|cffffff00姓名版|r可以匹配多个相应的单位ID。
+• |cffffff00智能队伍|r会根据你目前的组队情况调整，未组队时自动匹配"玩家"，在小队中时匹配"小队"（包括"玩家"），在团队中时匹配"团队"。
+• |cffffff00多目标|r会尝试使用战斗记录事件，而不是单位ID，来跟踪受影响的单位。
+|cffff0000注意|r：没有直接关系到单位ID，结果可能会多种多样。
+
+|cffffff00*|r黄色的单位设置可以匹配多个单位。在没有单位计数和匹配计数设置的情况下，即使没有受影响的单位，也会默认活跃。]=]
 	L["1 Match"] = "1个符合"
 	L["A 20x20 pixels icon"] = "20x20像素图标"
 	L["A 32x32 pixels icon"] = "32x32像素图标"
@@ -158,10 +175,8 @@ Off Screen]=] ] = "光环在屏幕外"
 	L["Browse Wago, the largest collection of auras."] = "浏览Wago，最大的光环集合网站。"
 	L["Can be a Name or a Unit ID (e.g. party1). A name only works on friendly players in your group."] = "可以是名字或单位 ID（例如 party1），只有在队伍中的友方玩家名字是有效的。"
 	L["Can be a UID (e.g., party1)."] = "可以是单位 ID（例如：party1）。"
-	--[[Translation missing --]]
-	L["Can set to 0 if Columns * Width equal File Width"] = "Can set to 0 if Columns * Width equal File Width"
-	--[[Translation missing --]]
-	L["Can set to 0 if Rows * Height equal File Height"] = "Can set to 0 if Rows * Height equal File Height"
+	L["Can set to 0 if Columns * Width equal File Width"] = "如果列x宽度=文件宽度，可以设为0"
+	L["Can set to 0 if Rows * Height equal File Height"] = "如果行x高度=文件高度，可以设为0"
 	L["Cancel"] = "取消"
 	L["Cast by Player Character"] = "玩家角色施放"
 	L["Cast by Players"] = "玩家施放"
@@ -324,10 +339,8 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["Fallback Icon"] = "后备图标"
 	L["False"] = "假"
 	L["Fetch Affected/Unaffected Names"] = "获取受影响的/未受影响的名称"
-	--[[Translation missing --]]
-	L["File Height"] = "File Height"
-	--[[Translation missing --]]
-	L["File Width"] = "File Width"
+	L["File Height"] = "文件高度"
+	L["File Width"] = "文件宽度"
 	L["Filter by Arena Spec"] = "根据竞技场专精过滤"
 	L["Filter by Class"] = "根据职业过滤"
 	L["Filter by Group Role"] = "根据团队职责过滤"
@@ -350,13 +363,11 @@ Supports multiple entries, separated by commas
 	L["Found a Bug?"] = "发现了故障？"
 	L["Frame"] = "框体"
 	L["Frame Count"] = "帧数"
-	--[[Translation missing --]]
-	L["Frame Height"] = "Frame Height"
+	L["Frame Height"] = "帧高度"
 	L["Frame Rate"] = "帧率"
 	L["Frame Selector"] = "选择框体"
 	L["Frame Strata"] = "框架层级"
-	--[[Translation missing --]]
-	L["Frame Width"] = "Frame Width"
+	L["Frame Width"] = "帧宽度"
 	L["Frequency"] = "频率"
 	L["From Template"] = "从模板"
 	L["Full Circle"] = "完整圆形"
@@ -407,8 +418,7 @@ Supports multiple entries, separated by commas
 	L["Height"] = "高度"
 	L["Help"] = "帮助"
 	L["Hide"] = "隐藏"
-	--[[Translation missing --]]
-	L["Hide Background"] = "Hide Background"
+	L["Hide Background"] = "隐藏背景"
 	L["Hide Glows applied by this aura"] = "隐藏由此光环应用的发光"
 	L["Hide on"] = "隐藏于"
 	L["Hide this group's children"] = "隐藏此组的子项目"
@@ -484,7 +494,7 @@ Supports multiple entries, separated by commas
 	L["Low Mana"] = "低法力值"
 	L["Magnetically Align"] = "磁力对齐"
 	L["Main"] = "主要的"
-	L["Match Count"] = "计数匹配"
+	L["Match Count"] = "匹配计数"
 	L["Matches the height setting of a horizontal bar or width for a vertical bar."] = "符合水平进度条的高度设置，或者垂直进度条的宽度设置。"
 	L["Max"] = "最大"
 	L["Max Length"] = "最大长度"
@@ -515,8 +525,7 @@ Supports multiple entries, separated by commas
 任何相匹配的值的值可以提取]=]
 	L["Multiselect single tooltip"] = [=[|cFFFF0000忽略|r - |cFF777777单个|r - |cFF777777多个|r
 只有一个单一的匹配值可以提取]=]
-	--[[Translation missing --]]
-	L["Must be a power of 2"] = "Must be a power of 2"
+	L["Must be a power of 2"] = "必须为2的幂"
 	L["Name Info"] = "名称讯息"
 	L["Name Pattern Match"] = "名称规则匹配"
 	L["Name(s)"] = "名称"
@@ -622,13 +631,11 @@ Supports multiple entries, separated by commas
 	L["Row Width"] = "列宽度"
 	L["Rows"] = "行"
 	L["Same"] = "相同"
-	--[[Translation missing --]]
-	L["Same texture as Foreground"] = "Same texture as Foreground"
+	L["Same texture as Foreground"] = "与前景材质相同"
 	L["Scale"] = "缩放"
 	L["Search"] = "搜索"
 	L["Select the auras you always want to be listed first"] = "选择优先列出的光环"
-	--[[Translation missing --]]
-	L["Selected Frame"] = "Selected Frame"
+	L["Selected Frame"] = "已选择帧"
 	L["Send To"] = "发送给"
 	L["Separator Text"] = "分隔符文本"
 	L["Separator text"] = "分隔符文本"

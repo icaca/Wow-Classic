@@ -1,5 +1,4 @@
-## Interface: 11401
-## Interface-BCC: 20503
+## Interface: 20503
 
 ## Title: BigWigs [|cffeda55fAhn'Qiraj Temple|r]
 ## Title-deDE: BigWigs [|cffeda55fTempel von Ahn'Qiraj|r]
@@ -23,7 +22,7 @@
 ## Notes-ruRU: BigWigs Ahn'Qiraj Temple Modules
 ## Notes-zhCN: BigWigs 安其拉神殿模块。
 ## Notes-zhTW: BigWigs 安其拉神廟模組。
-## Version: v34-classic
+## Version: v35-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs
