@@ -1,4 +1,4 @@
-## Interface: 20503
+## Interface: 20504
 
 ## Title: BigWigs [|cffeda55fThe Battle for Mount Hyjal|r]
 ## Title-deDE: BigWigs [|cffeda55fDie Schlacht um den Hyjal|r]
@@ -22,7 +22,7 @@
 ## Notes-ruRU: BigWigs Mount Hyjal Modules
 ## Notes-zhCN: BigWigs Mount Hyjal Modules
 ## Notes-zhTW: BigWigs Mount Hyjal Modules
-## Version: v35-classic
+## Version: v37.1-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

@@ -48,35 +48,29 @@ do
 	local day, hour, minute = 86400, 3600, 60
 	function B.FormatTime(s)
 		if s >= day then
-			return format("%d"..DB.MyColor.."d", s/day), s%day
+			return format("%d"..DB.MyColor.."d", s/day + .5), s%day
 		elseif s >= hour then
-			return format("%d"..DB.MyColor.."h", s/hour), s%hour
+			return format("%d"..DB.MyColor.."h", s/hour + .5), s%hour
 		elseif s >= minute then
-			return format("%d"..DB.MyColor.."m", s/minute), s%minute
+			return format("%d"..DB.MyColor.."m", s/minute + .5), s%minute
 		elseif s > 10 then
-			return format("|cffcccc33%d|r", s), s - floor(s)
+			return format("|cffcccc33%d|r", s + .5), s - floor(s)
 		elseif s > 3 then
-			return format("|cffffff00%d|r", s), s - floor(s)
+			return format("|cffffff00%d|r", s + .5), s - floor(s)
 		else
-			if C.db["Actionbar"]["DecimalCD"] then
-				return format("|cffff0000%.1f|r", s), s - format("%.1f", s)
-			else
-				return format("|cffff0000%d|r", s + .5), s - floor(s)
-			end
+			return format("|cffff0000%.1f|r", s), s - format("%.1f", s)
 		end
 	end
 
 	function B.FormatTimeRaw(s)
 		if s >= day then
-			return format("%dd", s/day)
+			return format("%dd", s/day + .5)
 		elseif s >= hour then
-			return format("%dh", s/hour)
+			return format("%dh", s/hour + .5)
 		elseif s >= minute then
-			return format("%dm", s/minute)
-		elseif s >= 3 then
-			return floor(s)
+			return format("%dm", s/minute + .5)
 		else
-			return format("%d", s)
+			return format("%d", s + .5)
 		end
 	end
 
@@ -1130,6 +1124,20 @@ do
 		thumb:SetTexture(DB.sparkTex)
 		thumb:SetBlendMode("ADD")
 		if vertical then thumb:SetRotation(rad(90)) end
+
+		local bar = CreateFrame("StatusBar", nil, bg)
+		bar:SetStatusBarTexture(DB.normTex)
+		bar:SetStatusBarColor(1, .8, 0, .5)
+		if vertical then
+			bar:SetPoint("BOTTOMLEFT", bg, C.mult, C.mult)
+			bar:SetPoint("BOTTOMRIGHT", bg, -C.mult, C.mult)
+			bar:SetPoint("TOP", thumb, "CENTER")
+			bar:SetOrientation("VERTICAL")
+		else
+			bar:SetPoint("TOPLEFT", bg, C.mult, -C.mult)
+			bar:SetPoint("BOTTOMLEFT", bg, C.mult, C.mult)
+			bar:SetPoint("RIGHT", thumb, "CENTER")
+		end
 	end
 
 	-- Handle collapse
@@ -1423,7 +1431,7 @@ do
 		eb:SetAutoFocus(false)
 		eb:SetTextInsets(5, 5, 0, 0)
 		eb:SetFont(DB.Font[1], DB.Font[2]+2, DB.Font[3])
-		eb.bg = B.CreateBDFrame(eb, .25, true)
+		eb.bg = B.CreateBDFrame(eb, 0, true)
 		eb.bg:SetAllPoints()
 		eb:SetScript("OnEscapePressed", editBoxClearFocus)
 		eb:SetScript("OnEnterPressed", editBoxClearFocus)

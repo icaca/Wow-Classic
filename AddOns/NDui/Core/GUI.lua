@@ -24,7 +24,8 @@ G.DefaultSettings = {
 		Count = true,
 		Classcolor = false,
 		Cooldown = true,
-		DecimalCD = true,
+		MmssTH = 60,
+		TenthTH = 3,
 		Bar4Fader = false,
 		Bar5Fader = true,
 		BindType = 1,
@@ -126,7 +127,10 @@ G.DefaultSettings = {
 		Arena = true,
 		Castbars = true,
 		SwingBar = false,
+		SwingWidth = 275,
+		SwingHeight = 3,
 		SwingTimer = false,
+		OffOnTop = false,
 		RaidFrame = true,
 		NumGroups = 8,
 		RaidDirec = 1,
@@ -187,8 +191,10 @@ G.DefaultSettings = {
 		HealthFrequency = .2,
 		ShowRaidBuff = false,
 		RaidBuffSize = 12,
+		BuffClickThru = true,
 		ShowRaidDebuff = true,
 		RaidDebuffSize = 12,
+		DebuffClickThru = true,
 		SmartRaid = false,
 		Desaturate = true,
 		DebuffColor = false,
@@ -344,12 +350,15 @@ G.DefaultSettings = {
 		FocusColor = {r=1, g=.8, b=0},
 		CastbarGlow = true,
 		CastTarget = false,
+		Interruptor = true,
 		PlateRange = 41,
 		ClampTarget = true,
 		FriendPlate = false,
 		EnemyThru = false,
 		FriendlyThru = false,
 		BlockDBM = true,
+		Dispellable = true,
+		UnitTargeted = false,
 
 		PlateWidth = 190,
 		PlateHeight = 8,
@@ -367,6 +376,12 @@ G.DefaultSettings = {
 		FriendNameSize = 14,
 		FriendHealthSize = 16,
 		FriendHealthOffset = 5,
+		NameOnlyTextSize = 14,
+		NameOnlyTitleSize = 12,
+		NameOnlyTitle = true,
+		NameOnlyGuild = false,
+		CVarOnlyNames = false,
+		CVarShowNPCs = false,
 	},
 	Skins = {
 		DBM = true,
@@ -452,6 +467,7 @@ G.DefaultSettings = {
 		InfoStrRight = "[spec][dura][gold][time]",
 		InfoSize = 13,
 		MaxAddOns = 12,
+		MaxZoom = 2.6,
 	},
 	Tutorial = {
 		Complete = false,
@@ -472,7 +488,6 @@ G.AccountSettings = {
 	GuildSortBy = 1,
 	GuildSortOrder = true,
 	DetectVersion = DB.Version,
-	ResetDetails = true,
 	LockUIScale = false,
 	UIScale = .71,
 	NumberFormat = 1,
@@ -495,6 +510,8 @@ G.AccountSettings = {
 	CustomTex = "",
 	MajorSpells = {},
 	SmoothAmount = .25,
+	AutoRecycle = false,
+	IgnoredButtons = "",
 }
 
 -- Initial settings
@@ -589,6 +606,10 @@ local function setupUFAuras()
 	G:SetupUFAuras(guiPage[3])
 end
 
+local function setupSwingBars()
+	G:SetupSwingBars(guiPage[3])
+end
+
 local function setupRaidFrame()
 	G:SetupRaidFrame(guiPage[4])
 end
@@ -623,6 +644,10 @@ end
 
 local function setupNameplateSize()
 	G:SetupNameplateSize(guiPage[5])
+end
+
+local function setupNameOnlySize()
+	G:SetupNameOnlySize(guiPage[5])
 end
 
 local function setupPlateCastbarGlow()
@@ -740,16 +765,8 @@ local function updateToggleDirection()
 	B:GetModule("Skins"):RefreshToggleDirection()
 end
 
-local function clampTargetPlate()
-	B:GetModule("UnitFrames"):ClampTargetPlate()
-end
-
-local function updatePlateRange()
-	B:GetModule("UnitFrames"):UpdatePlateRange()
-end
-
-local function updatePlateSpacing()
-	B:GetModule("UnitFrames"):UpdatePlateSpacing()
+local function updatePlateCVars()
+	B:GetModule("UnitFrames"):UpdatePlateCVars()
 end
 
 local function updateCustomUnitList()
@@ -780,14 +797,6 @@ end
 local function toggleTargetClassPower()
 	refreshNameplates()
 	B:GetModule("UnitFrames"):ToggleTargetClassPower()
-end
-
-local function updatePlateScale()
-	B:GetModule("UnitFrames"):UpdatePlateScale()
-end
-
-local function updatePlateAlpha()
-	B:GetModule("UnitFrames"):UpdatePlateAlpha()
 end
 
 local function updateUFTextScale()
@@ -822,6 +831,10 @@ local function toggleCastBarLatency()
 	B:GetModule("UnitFrames"):ToggleCastBarLatency()
 end
 
+local function toggleSwingBars()
+	B:GetModule("UnitFrames"):ToggleSwingBars()
+end
+
 local function updateSmoothingAmount()
 	B:SetSmoothingAmount(NDuiADB["SmoothAmount"])
 end
@@ -841,6 +854,10 @@ end
 
 local function updateMapFader()
 	B:GetModule("Maps"):MapFader()
+end
+
+local function refreshPlateByEvents()
+	B:GetModule("UnitFrames"):RefreshPlateByEvents()
 end
 
 local function updateMinimapScale()
@@ -871,6 +888,10 @@ local function togglePetHappiness()
 	B:GetModule("Misc"):TogglePetHappiness()
 end
 
+local function updateMaxZoomLevel()
+	B:GetModule("Misc"):UpdateMaxZoomLevel()
+end
+
 local function updateInfobarAnchor(self)
 	if self:GetText() == "" then
 		self:SetText(self.__default)
@@ -897,8 +918,7 @@ StaticPopupDialogs["RESET_DETAILS"] = {
 	button1 = YES,
 	button2 = NO,
 	OnAccept = function()
-		NDuiADB["ResetDetails"] = true
-		ReloadUI()
+		B:GetModule("Skins"):ResetDetailsAnchor(true)
 	end,
 	whileDead = 1,
 }
@@ -919,19 +939,19 @@ local NewTag = "|TInterface\\OptionsFrame\\UI-OptionsFrame-NewFeatureIcon:0|t"
 G.HealthValues = {DISABLE, L["ShowHealthDefault"], L["ShowHealthCurMax"], L["ShowHealthCurrent"], L["ShowHealthPercent"], L["ShowHealthLoss"], L["ShowHealthLossPercent"]}
 
 G.TabList = {
-	L["Actionbar"],
+	NewTag..L["Actionbar"],
 	L["Bags"],
 	L["Unitframes"],
-	NewTag..L["RaidFrame"],
+	L["RaidFrame"],
 	NewTag..L["Nameplate"],
-	NewTag..L["PlayerPlate"],
+	L["PlayerPlate"],
 	L["Auras"],
 	L["Raid Tools"],
 	L["ChatFrame"],
-	L["Maps"],
+	NewTag..L["Maps"],
 	L["Skins"],
 	L["Tooltip"],
-	L["Misc"],
+	NewTag..L["Misc"],
 	L["UI Settings"],
 	L["Profile"],
 }
@@ -953,14 +973,15 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{},--blank
 		{1, "Actionbar", "Cooldown", HeaderTag..L["Show Cooldown"]},
 		{1, "Actionbar", "OverrideWA", L["HideCooldownOnWA"].."*", true},
-		{1, "Actionbar", "DecimalCD", L["Decimal Cooldown"].."*"},
-		{1, "Misc", "SendActionCD", HeaderTag..L["SendActionCD"].."*", true, nil, nil, L["SendActionCDTip"]},
+		{3, "Actionbar", "MmssTH", NewTag..L["MmssThreshold"].."*", nil, {60, 600, 1}, nil, L["MmssThresholdTip"]},
+		{3, "Actionbar", "TenthTH", NewTag..L["TenthThreshold"].."*", true, {0, 60, 1}, nil, L["TenthThresholdTip"]},
 		{},--blank
 		{1, "Actionbar", "Hotkeys", L["Actionbar Hotkey"].."*", nil, nil, updateHotkeys},
 		{1, "Actionbar", "Macro", L["Actionbar Macro"], true},
 		{1, "Actionbar", "Count", L["Actionbar Item Counts"]},
 		{1, "Actionbar", "Classcolor", L["ClassColor BG"], true},
 		{1, "Actionbar", "EquipColor", L["EquipColor"].."*", nil, nil, updateEquipColor},
+		{1, "Misc", "SendActionCD", HeaderTag..L["SendActionCD"].."*", true, nil, nil, L["SendActionCDTip"]},
 		{},--blank
 		{1, "Actionbar", "AspectBar", HeaderTag..L["AspectBar"].."*", nil, nil, toggleAspectBar},
 		{1, "Actionbar", "VerticleAspect", L["VerticleAspect"].."*", nil, nil, updateAspectStatus},
@@ -998,8 +1019,7 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{},--blank
 		{1, "UFs", "Castbars", HeaderTag..L["UFs Castbar"], nil, setupCastbar},
 		{1, "UFs", "LagString", L["Castbar LagString"].."*", true, nil, toggleCastBarLatency},
-		{1, "UFs", "SwingBar", L["UFs SwingBar"]},
-		{1, "UFs", "SwingTimer", L["UFs SwingTimer"], true, nil, nil, L["SwingTimer Tip"]},
+		{1, "UFs", "SwingBar", L["UFs SwingBar"].."*", nil, setupSwingBars, toggleSwingBars},
 		{},--blank
 		{1, "UFs", "CombatText", HeaderTag..L["UFs CombatText"]},
 		{1, "UFs", "AutoAttack", L["CombatText AutoAttack"].."*"},
@@ -1013,10 +1033,12 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "UFs", "SimpleMode", L["SimpleRaidFrame"], true, setupSimpleRaidFrame, nil, L["SimpleRaidFrameTip"]},
 		{},--blank
 		{1, "UFs", "PartyFrame", L["PartyFrame"], nil, setupPartyFrame, nil, L["PartyFrameTip"]},
-		{1, "UFs", "PartyPetFrame", NewTag..L["PartyPetFrame"], true, setupPartyPetFrame, nil, L["PartyPetTip"]},
+		{1, "UFs", "PartyPetFrame", L["PartyPetFrame"], true, setupPartyPetFrame, nil, L["PartyPetTip"]},
 		{},--blank
 		{1, "UFs", "ShowRaidDebuff", L["ShowRaidDebuff"].."*", nil, nil, updateRaidAuras, L["ShowRaidDebuffTip"]},
 		{1, "UFs", "ShowRaidBuff", L["ShowRaidBuff"].."*", true, nil, updateRaidAuras, L["ShowRaidBuffTip"]},
+		{1, "UFs", "DebuffClickThru", L["DebuffClickThru"].."*", nil, nil, updateRaidAuras, L["ClickThroughTip"]},
+		{1, "UFs", "BuffClickThru", L["BuffClickThru"].."*", true, nil, updateRaidAuras, L["ClickThroughTip"]},
 		{3, "UFs", "RaidDebuffSize", L["RaidDebuffSize"].."*", nil, {5, 30, 1}, updateRaidAuras},
 		{3, "UFs", "RaidBuffSize", L["RaidBuffSize"].."*", true, {5, 30, 1}, updateRaidAuras},
 		{},--blank
@@ -1045,11 +1067,12 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 	[5] = {
 		{1, "Nameplate", "Enable", HeaderTag..L["Enable Nameplate"], nil, setupNameplateSize, refreshNameplates},
 		{1, "Nameplate", "FriendPlate", L["FriendPlate"].."*", nil, nil, refreshNameplates, L["FriendPlateTip"]},
-		{1, "Nameplate", "NameOnlyMode", L["NameOnlyMode"].."*", true, nil, nil, L["NameOnlyModeTip"]},
+		{1, "Nameplate", "NameOnlyMode", L["NameOnlyMode"].."*", true, setupNameOnlySize, nil, L["NameOnlyModeTip"]},
 		{4, "Nameplate", "NameType", L["NameTextType"].."*", nil, {DISABLE, L["Tag:name"], L["Tag:levelname"], L["Tag:rarename"], L["Tag:rarelevelname"]}, refreshNameplates, L["PlateLevelTagTip"]},
 		{4, "Nameplate", "HealthType", L["HealthValueType"].."*", true, G.HealthValues, refreshNameplates, L["100PercentTip"]},
 		{},--blank
 		{1, "Nameplate", "PlateAuras", HeaderTag..L["PlateAuras"].."*", nil, setupNameplateFilter, refreshNameplates},
+		{1, "Nameplate", "Dispellable", NewTag..L["Dispellable"].."*", true, nil, refreshNameplates, L["DispellableTip"]},
 		{1, "Nameplate", "Desaturate", L["DesaturateIcon"].."*", nil, nil, refreshNameplates, L["DesaturateIconTip"]},
 		{1, "Nameplate", "DebuffColor", L["DebuffColor"].."*", nil, nil, refreshNameplates, L["DebuffColorTip"]},
 		{4, "Nameplate", "AuraFilter", L["NameplateAuraFilter"].."*", true, {L["BlackNWhite"], L["PlayerOnly"], L["IncludeCrowdControl"]}, refreshNameplates},
@@ -1064,9 +1087,11 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Nameplate", "EnemyThru", L["Enemy ClickThru"].."*", true, nil, updateClickThru},
 		{1, "Nameplate", "CastbarGlow", L["PlateCastbarGlow"].."*", nil, setupPlateCastbarGlow, nil, L["PlateCastbarGlowTip"]},
 		{1, "Nameplate", "CastTarget", L["PlateCastTarget"].."*", true, nil, nil, L["PlateCastTargetTip"]},
-		{1, "Nameplate", "ClampTarget", L["ClampTargetPlate"].."*", nil, nil, clampTargetPlate, L["ClampTargetPlateTip"]},
+		{1, "Nameplate", "ClampTarget", L["ClampTargetPlate"].."*", nil, nil, updatePlateCVars, L["ClampTargetPlateTip"]},
 		{1, "Nameplate", "QuestIndicator", L["QuestIndicator"], true, nil, nil, L["QuestIndicatorAddOns"]},
-		{1, "Nameplate", "BlockDBM", NewTag..L["BlockDBM"], nil, nil, nil, L["BlockDBMTip"]},
+		{1, "Nameplate", "BlockDBM", L["BlockDBM"], nil, nil, nil, L["BlockDBMTip"]},
+		{1, "Nameplate", "Interruptor", NewTag..L["ShowInterruptor"].."*", true},
+		{1, "Nameplate", "UnitTargeted", NewTag..L["Show TargetedBy"].."*", nil, nil, refreshPlateByEvents, L["TargetedByTip"]},
 		{},--blank
 		{1, "Nameplate", "ColoredTarget", HeaderTag..L["ColoredTarget"].."*", nil, nil, nil, L["ColoredTargetTip"]},
 		{1, "Nameplate", "ColoredFocus", HeaderTag..L["ColoredFocus"].."*", true, nil, nil, L["ColoredFocusTip"]},
@@ -1085,10 +1110,12 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		--{1, "Nameplate", "DPSRevertThreat", L["DPS Revert Threat"].."*", true},
 		--{5, "Nameplate", "OffTankColor", L["OffTank Color"].."*", 3},
 		{},--blank
-		{3, "Nameplate", "PlateRange", L["PlateRange"].."*", nil, {0, 41, 1}, updatePlateRange},
-		{3, "Nameplate", "VerticalSpacing", L["NP VerticalSpacing"].."*", true, {.5, 1.5, .1}, updatePlateSpacing},
-		{3, "Nameplate", "MinScale", L["Nameplate MinScale"].."*", false, {.5, 1, .1}, updatePlateScale},
-		{3, "Nameplate", "MinAlpha", L["Nameplate MinAlpha"].."*", true, {.3, 1, .1}, updatePlateAlpha},
+		{1, "Nameplate", "CVarOnlyNames", NewTag..L["CVarOnlyNames"], nil, nil, updatePlateCVars, L["CVarOnlyNamesTip"]},
+		{1, "Nameplate", "CVarShowNPCs", NewTag..L["CVarShowNPCs"].."*", true, nil, updatePlateCVars, L["CVarShowNPCsTip"]},
+		{3, "Nameplate", "PlateRange", L["PlateRange"].."*", nil, {0, 41, 1}, updatePlateCVars},
+		{3, "Nameplate", "VerticalSpacing", L["NP VerticalSpacing"].."*", true, {.5, 1.5, .1}, updatePlateCVars},
+		{3, "Nameplate", "MinScale", L["Nameplate MinScale"].."*", false, {.5, 1, .1}, updatePlateCVars},
+		{3, "Nameplate", "MinAlpha", L["Nameplate MinAlpha"].."*", true, {.3, 1, .1}, updatePlateCVars},
 	},
 	[6] = {
 		{1, "Nameplate", "ShowPlayerPlate", HeaderTag..L["Enable PlayerPlate"].."*", nil, nil, togglePlayerPlate},
@@ -1098,7 +1125,7 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Nameplate", "PPFadeout", L["PlayerPlate Fadeout"].."*", nil, nil, togglePlateVisibility},
 		{1, "Nameplate", "PPPowerText", L["PlayerPlate PowerText"].."*", nil, nil, togglePlayerPlate},
 		{3, "Nameplate", "PPFadeoutAlpha", L["PlayerPlate FadeoutAlpha"].."*", true, {0, .5, .05}, togglePlateVisibility},
-		{1, "Nameplate", "EnergyTicker", NewTag..L["EnergyTicker"].."*", nil, nil, togglePlayerPlate},
+		{1, "Nameplate", "EnergyTicker", L["EnergyTicker"].."*", nil, nil, togglePlayerPlate},
 		{},--blank
 		{3, "Nameplate", "PPWidth", L["Width"].."*", false, {150, 300, 1}, refreshNameplates},
 		{3, "Nameplate", "PPBarHeight", L["PlayerPlate CPHeight"].."*", true, {2, 15, 1}, refreshNameplates},
@@ -1174,14 +1201,15 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Map", "MapFader", L["MapFader"].."*", nil, nil, updateMapFader},
 		{3, "Map", "MapScale", L["Map Scale"], true, {.5, 1, .1}},
 		{},--blank
+		{3, "Map", "MinimapScale", L["Minimap Scale"].."*", nil, {.5, 3, .1}, updateMinimapScale},
+		{3, "Map", "MinimapSize", L["Minimap Size"].."*", true, {100, 500, 1}, updateMinimapScale},
 		{1, "Map", "Clock", L["Minimap Clock"].."*", nil, nil, showMinimapClock},
 		{1, "Map", "DiffFlag", L["Minimap DiffFlag"], true, nil, nil, L["DiffFlagTip"]},
 		{1, "Map", "CombatPulse", L["Minimap Pulse"]},
 		{1, "Map", "WhoPings", L["Show WhoPings"], true},
 		{1, "Map", "ShowRecycleBin", L["Show RecycleBin"]},
 		{1, "Misc", "ExpRep", L["Show Expbar"], true},
-		{3, "Map", "MinimapScale", L["Minimap Scale"].."*", nil, {.5, 3, .1}, updateMinimapScale},
-		{3, "Map", "MinimapSize", L["Minimap Size"].."*", true, {100, 500, 1}, updateMinimapScale},
+		{2, "ACCOUNT", "IgnoredButtons", NewTag..L["IgnoredButtons"], nil, nil, nil, L["IgnoredButtonsTip"]},
 	},
 	[11] = {
 		{1, "Skins", "BlizzardSkins", HeaderTag..L["BlizzardSkins"], nil, nil, nil, L["BlizzardSkinsTips"]},
@@ -1241,7 +1269,8 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Misc", "Focuser", L["Easy Focus"]},
 		{1, "Misc", "PetHappiness", L["PetHappiness"].."*", true, nil, togglePetHappiness},
 		{1, "Misc", "MenuButton", L["MenuButton"], nil, nil, nil, L["MenuButtonTip"]},
-		{1, "Misc", "AutoDismount", L["AutoDismount"].."*", true, nil, nil, L["AutoDismountTip"]},
+		{1, "Misc", "AutoDismount", L["AutoDismount"].."*", nil, nil, nil, L["AutoDismountTip"]},
+		{3, "Misc", "MaxZoom", NewTag..L["MaxZoom"].."*", true, {1, 3.4, .1}, updateMaxZoomLevel},
 		{1, "Misc", "BlockInvite", "|cffff0000"..L["BlockInvite"].."*", nil, nil, nil, L["BlockInviteTip"]},
 	},
 	[14] = {
@@ -1258,7 +1287,7 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{4, "ACCOUNT", "TexStyle", L["Texture Style"], false, {}},
 		{4, "ACCOUNT", "NumberFormat", L["Numberize"], true, {L["Number Type1"], L["Number Type2"], L["Number Type3"]}},
 		{2, "ACCOUNT", "CustomTex", L["CustomTex"], nil, nil, nil, L["CustomTexTip"]},
-		{3, "ACCOUNT", "SmoothAmount", L["SmoothAmount"].."*", true, {.15, .6, .01}, updateSmoothingAmount, L["SmoothAmountTip"]},
+		{3, "ACCOUNT", "SmoothAmount", L["SmoothAmount"].."*", true, {.1, 1, .05}, updateSmoothingAmount, L["SmoothAmountTip"]},
 	},
 	[15] = {
 	},
@@ -1525,7 +1554,7 @@ local function CreateContactBox(parent, text, url, index)
 end
 
 local donationList = {
-	["afdian"] = "33578473, normanvon, y368413, EK, msylgj, 夜丨灬清寒, akakai, reisen410, 其实你很帥, 萨菲尔, Antares, RyanZ, fldqw, Mario, 时光旧予, 食铁骑兵, 爱蕾丝的基总, 施然, 命运镇魂曲, 不可语上, Leo, 忘川, 刘翰承, 悟空海外党, cncj, 暗月, 汪某人, 黑手, iraq120, 嗜血未冷, 我又不是妖怪，养乐多，无人知晓，秋末旷夜-迪瑟洛克，Teo，莉拉斯塔萨，音尘绝，刺王杀驾，醉跌-凤凰之神，灬麦加灬-阿古斯，漂舟不系，朵小熙，山岸逢花，乄阿财-帕奇维克，乌鸦岭守墓饼-罗宁，自在独踽踽-霜之哀伤，御行宇航-碧玉矿洞，末日伯爵-奥罗，阿玛忆-白银之手，零氪-罗宁，粉色刘老头-黑曜石之锋，shadowlezi以及部分未备注名字的用户。",
+	["afdian"] = "33578473, normanvon, y368413, EK, msylgj, 夜丨灬清寒, akakai, reisen410, 其实你很帥, 萨菲尔, Antares, RyanZ, fldqw, Mario, 时光旧予, 食铁骑兵, 爱蕾丝的基总, 施然, 命运镇魂曲, 不可语上, Leo (En-布鲁), 忘川, 刘翰承, 悟空海外党, cncj, 暗月, 汪某人, 黑手, iraq120, 嗜血未冷, 我又不是妖怪，养乐多，无人知晓，秋末旷夜-迪瑟洛克，Teo，莉拉斯塔萨，音尘绝，刺王杀驾，醉跌-凤凰之神，灬麦加灬-阿古斯，漂舟不系，朵小熙，山岸逢花，乄阿财-帕奇维克，乌鸦岭守墓饼-罗宁，自在独踽踽-霜之哀伤，御行宇航-碧玉矿洞，末日伯爵-奥罗，阿玛忆-白银之手，零氪-罗宁，粉色刘老头-黑曜石之锋，shadowlezi，風雲再起-帕奇维克，congfeng，东叫兽，solor以及部分未备注名字的用户。",
 	["Patreon"] = "Quentin, Julian Neigefind, silenkin, imba Villain, Zeyu Zhu, Kon Floros.",
 }
 local function CreateDonationIcon(parent, texture, name, xOffset)

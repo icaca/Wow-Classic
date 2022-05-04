@@ -56,6 +56,7 @@ C.themes["Blizzard_TradeSkillUI"] = function()
 	B.ReskinArrow(TradeSkillDecrementButton, "left")
 	B.ReskinArrow(TradeSkillIncrementButton, "right")
 	B.ReskinInput(TradeSkillInputBox)
+	B.ReskinInput(TradeSearchInputBox)
 
 	B.StripTextures(TradeSkillRankFrameBorder)
 	B.StripTextures(TradeSkillRankFrame)
@@ -67,6 +68,7 @@ C.themes["Blizzard_TradeSkillUI"] = function()
 
 	B.ReskinCollapse(TradeSkillCollapseAllButton)
 	TradeSkillExpandButtonFrame:DisableDrawLayer("BACKGROUND")
+	B.ReskinCheck(TradeSkillFrameAvailableFilterCheckButton)
 
 	TradeSkillFrame:HookScript("OnShow", function()
 		for i = 1, 22 do

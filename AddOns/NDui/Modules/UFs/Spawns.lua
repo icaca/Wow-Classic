@@ -33,13 +33,13 @@ local function CreatePlayerStyle(self)
 	UF:CreateClassPower(self)
 	UF:CreateEneryTicker(self)
 	UF:CreateAuras(self)
+	UF:CreateSwing(self)
 
 	if C.db["UFs"]["Castbars"] then
 		UF:ReskinMirrorBars()
 		--UF:ReskinTimerTrakcer(self)
 	end
 	if not C.db["Misc"]["ExpRep"] then UF:CreateExpRepBar(self) end
-	if C.db["UFs"]["SwingBar"] then UF:CreateSwing(self) end
 end
 
 local function CreateTargetStyle(self)
@@ -304,7 +304,7 @@ function UF:OnLogin()
 		UF:CreateUnitTable()
 		UF:CreatePowerUnitTable()
 		UF:QuestIconCheck()
-		UF:RefreshPlateOnFactionChanged()
+		UF:RefreshPlateByEvents()
 		UF:RefreshMajorSpells()
 
 		oUF:RegisterStyle("Nameplates", UF.CreatePlates)
@@ -384,11 +384,12 @@ function UF:OnLogin()
 				if i == 1 then
 					arena[i].mover = B.Mover(arena[i], L["ArenaFrame"]..i, "Arena1", {"RIGHT", UIParent, "RIGHT", -350, -90}, moverWidth, moverHeight)
 				else
-					arena[i].mover = B.Mover(arena[i], L["ArenaFrame"]..i, "Arena"..i, {"BOTTOM", arena[i-1], "TOP", 0, 50}, moverWidth, moverHeight)
+					arena[i].mover = B.Mover(arena[i], L["ArenaFrame"]..i, "Arena"..i, {"BOTTOMLEFT", arena[i-1], "TOPLEFT", 0, 50}, moverWidth, moverHeight)
 				end
 			end
 		end
 
+		UF:ToggleSwingBars()
 		UF:ToggleUFClassPower()
 		UF:UpdateTextScale()
 		UF:ToggleAllAuras()

@@ -16,91 +16,50 @@ local headerString = QUESTS_LABEL.." %s/%s"
 
 local frame
 
-function S:EnhancedQuestLog()
+function S:ExtQuestLogFrame()
+	local QuestLogFrame = _G.QuestLogFrame
 	if QuestLogFrame:GetWidth() > 700 then return end
 
-	-- LeatrixPlus EnhancedQuestLog
-	-- Make the quest log frame double-wide
-	UIPanelWindows["QuestLogFrame"] = { area = "override", pushable = 0, xoffset = -16, yoffset = 12, bottomClampOverride = 140 + 12, width = 714, height = 487, whileDead = 1}
+	B.StripTextures(QuestLogFrame, 2)
+	QuestLogFrame.TitleText = _G.QuestLogTitleText
+	QuestLogFrame.scrollFrame = _G.QuestLogDetailScrollFrame
+	QuestLogFrame.listScrollFrame = _G.QuestLogListScrollFrame
+	S:EnlargeDefaultUIPanel("QuestLogFrame", 0)
 
-	-- Size the quest log frame
-	QuestLogFrame:SetWidth(714)
-	QuestLogFrame:SetHeight(487)
+	B.StripTextures(_G.EmptyQuestLogFrame)
+	_G.QuestLogNoQuestsText:ClearAllPoints()
+	_G.QuestLogNoQuestsText:SetPoint("CENTER", QuestLogFrame.listScrollFrame)
+	_G.QuestFramePushQuestButton:ClearAllPoints()
+	_G.QuestFramePushQuestButton:SetPoint("LEFT", _G.QuestLogFrameAbandonButton, "RIGHT", 1, 0)
 
-	-- Adjust quest log title text
-	QuestLogTitleText:ClearAllPoints()
-	QuestLogTitleText:SetPoint("TOP", QuestLogFrame, "TOP", 0, -18)
-
-	-- Move the detail frame to the right and stretch it to full height
-	QuestLogDetailScrollFrame:ClearAllPoints()
-	QuestLogDetailScrollFrame:SetPoint("TOPLEFT", QuestLogListScrollFrame, "TOPRIGHT", 31, 1)
-	QuestLogDetailScrollFrame:SetHeight(336)
-
-	-- Expand the quest list to full height
-	QuestLogListScrollFrame:SetHeight(336)
-
-	-- Create additional quest rows
-	local oldQuestsDisplayed = QUESTS_DISPLAYED
-	_G.QUESTS_DISPLAYED = _G.QUESTS_DISPLAYED + 16
-	for i = oldQuestsDisplayed + 1, QUESTS_DISPLAYED do
-		local button = CreateFrame("Button", "QuestLogTitle"..i, QuestLogFrame, "QuestLogTitleButtonTemplate")
-		button:SetID(i)
-		button:Hide()
-		button:ClearAllPoints()
-		button:SetPoint("TOPLEFT", _G["QuestLogTitle"..(i-1)], "BOTTOMLEFT", 0, 1)
+	_G.QUESTS_DISPLAYED = 22
+	for i = 7, _G.QUESTS_DISPLAYED do
+		local button = _G["QuestLogTitle"..i]
+		if not button then
+			button = CreateFrame("Button", "QuestLogTitle"..i, QuestLogFrame, "QuestLogTitleButtonTemplate")
+			button:SetPoint("TOPLEFT", _G["QuestLogTitle"..(i-1)], "BOTTOMLEFT", 0, 1)
+			button:SetID(i)
+			button:Hide()
+		end
 	end
 
-	if not C.db["Skins"]["BlizzardSkins"] then
-		-- Get quest frame textures
-		local regions = {QuestLogFrame:GetRegions()}
-		-- Set top left texture
-		regions[3]:SetTexture("Interface\\QUESTFRAME\\UI-QuestLogDualPane-Left")
-		regions[3]:SetSize(512, 512)
-		-- Set top right texture
-		regions[4]:ClearAllPoints()
-		regions[4]:SetPoint("TOPLEFT", regions[3], "TOPRIGHT", 0, 0)
-		regions[4]:SetTexture("Interface\\QUESTFRAME\\UI-QuestLogDualPane-Right")
-		regions[4]:SetSize(256, 512)
-		-- Hide bottom left and bottom right textures
-		regions[5]:Hide()
-		regions[6]:Hide()
+	local toggleMap = CreateFrame("Button", nil, QuestLogFrame)
+	toggleMap:SetPoint("TOP", 10, -35)
+	toggleMap:SetSize(48, 32)
+	local text = B.CreateFS(toggleMap, 14, SHOW_MAP)
+	text:ClearAllPoints()
+	text:SetPoint("LEFT", toggleMap, "RIGHT")
+	local tex = toggleMap:CreateTexture(nil, "ARTWORK")
+	tex:SetAllPoints()
+	tex:SetTexture(316593)
+	tex:SetTexCoord(.125, .875, 0, .5)
+	toggleMap:SetScript("OnClick", ToggleWorldMap)
+	toggleMap:SetScript("OnMouseUp", function() tex:SetTexCoord(.125, .875, 0, .5) end)
+	toggleMap:SetScript("OnMouseDown", function() tex:SetTexCoord(.125, .875, .5, 1) end)
+
+	if C.db["Skins"]["BlizzardSkins"] then
+		B.CreateBDFrame(QuestLogFrame.scrollFrame, .25)
 	end
-
-	-- Position and resize abandon button
-	QuestLogFrameAbandonButton:SetSize(100, 22)
-	QuestLogFrameAbandonButton:SetText(ABANDON_QUEST_ABBREV)
-	QuestLogFrameAbandonButton:ClearAllPoints()
-	QuestLogFrameAbandonButton:SetPoint("BOTTOMLEFT", QuestLogFrame, "BOTTOMLEFT", 17, 52)
-
-	-- Position and resize share button
-	QuestFramePushQuestButton:SetSize(100, 22)
-	QuestFramePushQuestButton:SetText(SHARE_QUEST_ABBREV)
-	QuestFramePushQuestButton:ClearAllPoints()
-	QuestFramePushQuestButton:SetPoint("LEFT", QuestLogFrameAbandonButton, "RIGHT", 3, 0)
-
-	-- Add map button
-	local logMapButton = CreateFrame("Button", nil, QuestLogFrame, "UIPanelButtonTemplate")
-	logMapButton:SetText(BRAWL_TOOLTIP_MAP)
-	logMapButton:ClearAllPoints()
-	logMapButton:SetPoint("LEFT", QuestFramePushQuestButton, "RIGHT", 3, 0)
-	logMapButton:SetSize(100, 22)
-	logMapButton:SetScript("OnClick", ToggleWorldMap)
-	if C.db["Skins"]["BlizzardSkins"] then B.Reskin(logMapButton) end
-
-	-- Position and size close button
-	QuestFrameExitButton:SetSize(80, 22)
-	QuestFrameExitButton:SetText(CLOSE)
-	QuestFrameExitButton:ClearAllPoints()
-	QuestFrameExitButton:SetPoint("BOTTOMRIGHT", QuestLogFrame, "BOTTOMRIGHT", -42, 52)
-
-	-- Empty quest frame
-	QuestLogNoQuestsText:ClearAllPoints()
-	QuestLogNoQuestsText:SetPoint("TOP", QuestLogListScrollFrame, 0, -50)
-	hooksecurefunc(EmptyQuestLogFrame, "Show", function()
-		EmptyQuestLogFrame:ClearAllPoints()
-		EmptyQuestLogFrame:SetPoint("BOTTOMLEFT", QuestLogFrame, "BOTTOMLEFT", 20, -76)
-		EmptyQuestLogFrame:SetHeight(487)
-	end)
 
 	-- Move ClassicCodex
 	if CodexQuest then
@@ -353,7 +312,7 @@ function S:QuestTracker()
 
 	if not C.db["Skins"]["QuestTracker"] then return end
 
-	S:EnhancedQuestLog()
 	S:EnhancedQuestTracker()
+	S:ExtQuestLogFrame()
 	hooksecurefunc("QuestLog_Update", S.QuestLogLevel)
 end

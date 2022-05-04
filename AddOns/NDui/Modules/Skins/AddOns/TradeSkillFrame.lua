@@ -2,10 +2,10 @@ local _, ns = ...
 local B, C, L, DB = unpack(ns)
 local S = B:GetModule("Skins")
 
--- Credit: LeatrixPlus
 local strfind = strfind
-local GetTradeSkillSelectionIndex, GetTradeSkillInfo, GetNumTradeSkills = GetTradeSkillSelectionIndex, GetTradeSkillInfo, GetNumTradeSkills
+local GetTradeSkillLine = GetTradeSkillLine
 local GetCraftSelectionIndex, GetCraftInfo, GetNumCrafts = GetCraftSelectionIndex, GetCraftInfo, GetNumCrafts
+local SEARCH = _G.SEARCH
 
 local skinIndex = 0
 function S:TradeSkill_OnEvent(addon)
@@ -44,15 +44,15 @@ local function removeInputText(self)
 end
 
 function S:CreateSearchWidget(parent, anchor)
-	local title = B.CreateFS(parent, 15, SEARCH, "system")
+	local searchBox = B.CreateEditBox(parent, 150, 20)
+	local title = B.CreateFS(searchBox, 15, SEARCH, "system")
 	title:ClearAllPoints()
 
-	local searchBox = B.CreateEditBox(parent, 150, 20)
 	if C.db["Skins"]["BlizzardSkins"] then
 		title:SetPoint("TOPLEFT", anchor, "BOTTOMLEFT", 6, -6)
 		searchBox.bg:SetBackdropColor(0, 0, 0, 0)
-		searchBox:SetPoint("TOPLEFT", title, "TOPRIGHT", 3, 3)
-		searchBox:SetPoint("BOTTOMRIGHT", anchor, "BOTTOMRIGHT", 0, -23)
+		searchBox:SetPoint("TOPLEFT", title, "TOPRIGHT", 3, 1)
+		searchBox:SetPoint("BOTTOMRIGHT", anchor, "BOTTOMRIGHT", 1, -23)
 	else
 		title:SetPoint("TOPLEFT", anchor, "BOTTOMLEFT", 5, -5)
 		searchBox:SetFrameLevel(6)
@@ -82,22 +82,6 @@ local function updateScrollBarValue(scrollBar, maxSkills, selectSkill)
 	scrollBar:SetValue(selectIndex / maxIndex * maxValue)
 end
 
-function S:UpdateTradeSelection(i, maxSkills)
-	TradeSkillFrame_SetSelection(i)
-	TradeSkillFrame_Update()
-	updateScrollBarValue(TradeSkillListScrollFrameScrollBar, maxSkills, GetTradeSkillSelectionIndex())
-end
-
-function S:GetTradeSearchResult(text, from, to, step)
-	for i = from, to, step do
-		local skillName, skillType = GetTradeSkillInfo(i)
-		if skillType ~= "header" and strfind(skillName, text) then
-			S:UpdateTradeSelection(i, GetNumTradeSkills())
-			return true
-		end
-	end
-end
-
 function S:UpdateCraftSelection(i, maxSkills)
 	CraftFrame_SetSelection(i)
 	CraftFrame_Update()
@@ -114,299 +98,155 @@ function S:GetCraftSearchResult(text, from, to, step)
 	end
 end
 
-local SharedWindowData = {
-	area = "override",
-	pushable = 1,
-	xoffset = -16,
-	yoffset = 12,
-	bottomClampOverride = 140 + 12,
-	width = 714,
-	height = 487,
-	whileDead = 1,
-}
+local function searchBox_OnShow(self)
+	self:SetText(SEARCH)
+end
 
-local function ResizeHighlightFrame(self)
-	self:SetWidth(290)
+local function searchBox_OnTextChanged(self)
+	TradeSkillFilter_OnTextChanged(self)
+end
+
+local function searchBox_OnEditFocusLost(self)
+	self:HighlightText(0, 0)
+	if self:GetText() == "" then
+		self:SetText(SEARCH)
+	end
+end
+
+local function searchBox_OnEditFocusGained(self)
+	self:HighlightText()
+	if self:GetText() == SEARCH then
+		self:SetText("")
+	end
+end
+
+function S:CreateTradeSearchBox(parent, anchor)
+	local searchBox = B.CreateEditBox(parent, 223, 20)
+	searchBox:SetPoint("TOPLEFT", anchor, "BOTTOMLEFT", -1, -6)
+	searchBox:SetTextInsets(6, 6, 0, 0)
+
+	searchBox:SetScript("OnShow", searchBox_OnShow)
+	searchBox:SetScript("OnTextChanged", searchBox_OnTextChanged)
+	searchBox:SetScript("OnEditFocusLost", searchBox_OnEditFocusLost)
+	searchBox:SetScript("OnEditFocusGained", searchBox_OnEditFocusGained)
+	searchBox:HookScript("OnEscapePressed", searchBox_OnShow)
+
+	return searchBox
 end
 
 function S:EnhancedTradeSkill()
+	local TradeSkillFrame = _G.TradeSkillFrame
 	if TradeSkillFrame:GetWidth() > 700 then return end
 
-	-- Make the tradeskill frame double-wide
-	UIPanelWindows["TradeSkillFrame"] = SharedWindowData
+	B.StripTextures(TradeSkillFrame)
+	TradeSkillFrame.TitleText = TradeSkillFrameTitleText
+	TradeSkillFrame.scrollFrame = _G.TradeSkillDetailScrollFrame
+	TradeSkillFrame.listScrollFrame = _G.TradeSkillListScrollFrame
+	S:EnlargeDefaultUIPanel("TradeSkillFrame", 1)
 
-	-- Size the tradeskill frame
-	TradeSkillFrame:SetWidth(714)
-	TradeSkillFrame:SetHeight(487)
-
-	-- Adjust title text
-	TradeSkillFrameTitleText:ClearAllPoints()
-	TradeSkillFrameTitleText:SetPoint("TOP", TradeSkillFrame, "TOP", 0, -18)
-
-	-- Expand the tradeskill list to full height
-	TradeSkillListScrollFrame:ClearAllPoints()
-	TradeSkillListScrollFrame:SetPoint("TOPLEFT", TradeSkillFrame, "TOPLEFT", 25, -75)
-	TradeSkillListScrollFrame:SetSize(295, 336)
-
-	-- Create additional list rows
-	local oldTradeSkillsDisplayed = TRADE_SKILLS_DISPLAYED
-
-	-- Position existing buttons
-	for i = 1 + 1, TRADE_SKILLS_DISPLAYED do
-		_G["TradeSkillSkill"..i]:ClearAllPoints()
-		_G["TradeSkillSkill"..i]:SetPoint("TOPLEFT", _G["TradeSkillSkill"..(i-1)], "BOTTOMLEFT", 0, 1)
-	end
-
-	-- Create and position new buttons
-	_G.TRADE_SKILLS_DISPLAYED = _G.TRADE_SKILLS_DISPLAYED + 14
-	for i = oldTradeSkillsDisplayed + 1, TRADE_SKILLS_DISPLAYED do
-		local button = CreateFrame("Button", "TradeSkillSkill"..i, TradeSkillFrame, "TradeSkillSkillButtonTemplate")
-		button:SetID(i)
-		button:Hide()
-		button:ClearAllPoints()
+	_G.TRADE_SKILLS_DISPLAYED = 22
+	for i = 2, _G.TRADE_SKILLS_DISPLAYED do
+		local button = _G["TradeSkillSkill"..i]
+		if not button then
+			button = CreateFrame("Button", "TradeSkillSkill"..i, TradeSkillFrame, "TradeSkillSkillButtonTemplate")
+			button:SetID(i)
+			button:Hide()
+		end
 		button:SetPoint("TOPLEFT", _G["TradeSkillSkill"..(i-1)], "BOTTOMLEFT", 0, 1)
 	end
 
-	-- Set highlight bar width when shown
-	hooksecurefunc(TradeSkillHighlightFrame, "Show", ResizeHighlightFrame)
-
-	-- Move the tradeskill detail frame to the right and stretch it to full height
-	TradeSkillDetailScrollFrame:ClearAllPoints()
-	TradeSkillDetailScrollFrame:SetPoint("TOPLEFT", TradeSkillFrame, "TOPLEFT", 352, -74)
-	TradeSkillDetailScrollFrame:SetSize(298, 336)
-
-	-- Hide detail scroll frame textures
-	TradeSkillDetailScrollFrameTop:SetAlpha(0)
-	TradeSkillDetailScrollFrameBottom:SetAlpha(0)
-
-	-- Create texture for skills list
-	local RecipeInset = TradeSkillFrame:CreateTexture(nil, "ARTWORK")
-	RecipeInset:SetSize(304, 361)
-	RecipeInset:SetPoint("TOPLEFT", TradeSkillFrame, "TOPLEFT", 16, -72)
-	RecipeInset:SetTexture("Interface\\RAIDFRAME\\UI-RaidFrame-GroupBg")
-
-	-- Set detail frame backdrop
-	local DetailsInset = TradeSkillFrame:CreateTexture(nil, "ARTWORK")
-	DetailsInset:SetSize(302, 339)
-	DetailsInset:SetPoint("TOPLEFT", TradeSkillFrame, "TOPLEFT", 348, -72)
-	DetailsInset:SetTexture("Interface\\ACHIEVEMENTFRAME\\UI-GuildAchievement-Parchment-Horizontal-Desaturated")
-
-	-- Hide expand tab (left of All button)
-	TradeSkillExpandTabLeft:Hide()
-
-	-- Get tradeskill frame textures
-	local regions = {TradeSkillFrame:GetRegions()}
-
-	-- Set top left texture
-	regions[2]:SetTexture("Interface\\QUESTFRAME\\UI-QuestLogDualPane-Left")
-	regions[2]:SetSize(512, 512)
-
-	-- Set top right texture
-	regions[3]:ClearAllPoints()
-	regions[3]:SetPoint("TOPLEFT", regions[2], "TOPRIGHT", 0, 0)
-	regions[3]:SetTexture("Interface\\QUESTFRAME\\UI-QuestLogDualPane-Right")
-	regions[3]:SetSize(256, 512)
-
-	-- Hide bottom left and bottom right textures
-	regions[4]:Hide()
-	regions[5]:Hide()
-
-	-- Hide skills list dividing bar
-	regions[9]:Hide()
-	regions[10]:Hide()
-
-	-- Move create button row
-	TradeSkillCreateButton:ClearAllPoints()
-	TradeSkillCreateButton:SetPoint("RIGHT", TradeSkillCancelButton, "LEFT", -1, 0)
-
-	-- Position and size close button
-	TradeSkillCancelButton:SetSize(80, 22)
-	TradeSkillCancelButton:SetText(CLOSE)
 	TradeSkillCancelButton:ClearAllPoints()
 	TradeSkillCancelButton:SetPoint("BOTTOMRIGHT", TradeSkillFrame, "BOTTOMRIGHT", -42, 54)
-
-	-- Position close box
-	TradeSkillFrameCloseButton:ClearAllPoints()
-	TradeSkillFrameCloseButton:SetPoint("TOPRIGHT", TradeSkillFrame, "TOPRIGHT", -34, -13)
-
-	-- Position dropdown menus
+	TradeSkillCreateButton:ClearAllPoints()
+	TradeSkillCreateButton:SetPoint("RIGHT", TradeSkillCancelButton, "LEFT", -1, 0)
 	TradeSkillInvSlotDropDown:ClearAllPoints()
 	TradeSkillInvSlotDropDown:SetPoint("TOPLEFT", TradeSkillFrame, "TOPLEFT", 510, -40)
-	TradeSkillSubClassDropDown:ClearAllPoints()
-	TradeSkillSubClassDropDown:SetPoint("RIGHT", TradeSkillInvSlotDropDown, "LEFT", 0, 0)
+	TradeSkillFrameAvailableFilterCheckButton:SetPoint("TOPLEFT", 230, -70)
 
-	-- Reskin
 	if C.db["Skins"]["BlizzardSkins"] then
-		regions[2]:Hide()
-		regions[3]:Hide()
-		RecipeInset:Hide()
-		DetailsInset:Hide()
 		TradeSkillFrame:SetHeight(512)
-		TradeSkillCancelButton:ClearAllPoints()
 		TradeSkillCancelButton:SetPoint("BOTTOMRIGHT", TradeSkillFrame, "BOTTOMRIGHT", -42, 78)
 		TradeSkillRankFrame:ClearAllPoints()
 		TradeSkillRankFrame:SetPoint("TOPLEFT", TradeSkillFrame, 24, -24)
+	else
+		TradeSkillFrameCloseButton:ClearAllPoints()
+		TradeSkillFrameCloseButton:SetPoint("TOPRIGHT", TradeSkillFrame, "TOPRIGHT", -30, -8)
 	end
 
-	-- Search widgets
-	local searchBox, nextButton, prevButton = S:CreateSearchWidget(TradeSkillFrame, TradeSkillRankFrame)
+	-- Search widget
+	TradeSearchInputBox:ClearAllPoints()
+	TradeSearchInputBox:SetPoint("TOPLEFT", TradeSkillRankFrame, "BOTTOMLEFT", 1, -6)
+	TradeSearchInputBox:SetWidth(221)
+	TradeSearchInputBox:SetTextInsets(5, 5, 0, 0)
+	TradeSearchInputBox:SetFont(DB.Font[1], DB.Font[2]+2, DB.Font[3])
+	TradeSearchInputBox:HookScript("OnEscapePressed", searchBox_OnShow)
 
-	searchBox:HookScript("OnEnterPressed", function(self)
-		local text = self:GetText()
-		if not text or text == "" then return end
+	local searchBox = S:CreateTradeSearchBox(TradeSkillFrame, TradeSkillRankFrame)
 
-		if not S:GetTradeSearchResult(text, 1, GetNumTradeSkills(), 1) then
-			UIErrorsFrame:AddMessage(DB.InfoColor..L["InvalidName"])
+	local prevTrade
+	hooksecurefunc("TradeSkillFrame_Update", function()
+		local name = GetTradeSkillLine()
+		if not prevTrade or prevTrade ~= name then
+			searchBox_OnShow(searchBox)
+			searchBox:ClearFocus()
+			prevTrade = name
 		end
-	end)
-
-	nextButton:SetScript("OnClick", function()
-		local text = searchBox:GetText()
-		if not text or text == "" then return end
-
-		if not S:GetTradeSearchResult(text, GetTradeSkillSelectionIndex() + 1, GetNumTradeSkills(), 1) then
-			UIErrorsFrame:AddMessage(DB.InfoColor..L["NoMatchReult"])
-		end
-	end)
-
-	prevButton:SetScript("OnClick", function()
-		local text = searchBox:GetText()
-		if not text or text == "" then return end
-
-		if not S:GetTradeSearchResult(text, GetTradeSkillSelectionIndex() - 1, 1, -1) then
-			UIErrorsFrame:AddMessage(DB.InfoColor..L["NoMatchReult"])
-		end
+		searchBox:SetShown(not TradeSearchInputBox:IsShown())
+		TradeSkillHighlightFrame:SetWidth(300)
 	end)
 end
 
 function S:EnhancedCraft()
-	-- Make the craft frame double-wide
-	UIPanelWindows["CraftFrame"] = SharedWindowData
+	local CraftFrame = _G.CraftFrame
+	if CraftFrame:GetWidth() > 700 then return end
 
-	-- Size the craft frame
-	CraftFrame:SetWidth(714)
-	CraftFrame:SetHeight(487)
+	B.StripTextures(CraftFrame)
+	CraftFrame.TitleText = CraftFrameTitleText
+	CraftFrame.scrollFrame = _G.CraftDetailScrollFrame
+	CraftFrame.listScrollFrame = _G.CraftListScrollFrame
+	S:EnlargeDefaultUIPanel("CraftFrame", 1)
 
-	-- Adjust title text
-	CraftFrameTitleText:ClearAllPoints()
-	CraftFrameTitleText:SetPoint("TOP", CraftFrame, "TOP", 0, -18)
-
-	-- Expand the crafting list to full height
-	CraftListScrollFrame:ClearAllPoints()
-	CraftListScrollFrame:SetPoint("TOPLEFT", CraftFrame, "TOPLEFT", 25, -75)
-	CraftListScrollFrame:SetSize(295, 336)
-
-	-- Create additional list rows
-	local oldCraftsDisplayed = CRAFTS_DISPLAYED
-
-	-- Position existing buttons
-	Craft1Cost:ClearAllPoints()
-	Craft1Cost:SetPoint("RIGHT", Craft1, "RIGHT", -30, 0)
-	for i = 1 + 1, CRAFTS_DISPLAYED do
-		_G["Craft"..i]:ClearAllPoints()
-		_G["Craft"..i]:SetPoint("TOPLEFT", _G["Craft"..(i-1)], "BOTTOMLEFT", 0, 1)
-		_G["Craft"..i.."Cost"]:ClearAllPoints()
-		_G["Craft"..i.."Cost"]:SetPoint("RIGHT", _G["Craft"..i], "RIGHT", -30, 0)
-	end
-
-	-- Create and position new buttons
-	_G.CRAFTS_DISPLAYED = _G.CRAFTS_DISPLAYED + 14
-	for i = oldCraftsDisplayed + 1, CRAFTS_DISPLAYED do
-		local button = CreateFrame("Button", "Craft"..i, CraftFrame, "CraftButtonTemplate")
-		button:SetID(i)
-		button:Hide()
-		button:ClearAllPoints()
+	_G.CRAFTS_DISPLAYED = 22
+	for i = 2, _G.CRAFTS_DISPLAYED do
+		local button = _G["Craft"..i]
+		if not button then
+			button = CreateFrame("Button", "Craft"..i, CraftFrame, "CraftButtonTemplate")
+			button:SetID(i)
+			button:Hide()
+		end
 		button:SetPoint("TOPLEFT", _G["Craft"..(i-1)], "BOTTOMLEFT", 0, 1)
-		_G["Craft"..i.."Cost"]:ClearAllPoints()
-		_G["Craft"..i.."Cost"]:SetPoint("RIGHT", _G["Craft"..i], "RIGHT", -30, 0)
 	end
 
-	-- Move craft frame points (such as Beast Training)
 	CraftFramePointsLabel:ClearAllPoints()
 	CraftFramePointsLabel:SetPoint("TOPLEFT", CraftFrame, "TOPLEFT", 100, -70)
 	CraftFramePointsText:ClearAllPoints()
 	CraftFramePointsText:SetPoint("LEFT", CraftFramePointsLabel, "RIGHT", 3, 0)
 
-	-- Set highlight bar width when shown
-	hooksecurefunc(CraftHighlightFrame, "Show", ResizeHighlightFrame)
-
-	-- Move the craft detail frame to the right and stretch it to full height
-	CraftDetailScrollFrame:ClearAllPoints()
-	CraftDetailScrollFrame:SetPoint("TOPLEFT", CraftFrame, "TOPLEFT", 352, -74)
-	CraftDetailScrollFrame:SetSize(298, 336)
-	-- CraftReagent1:SetHeight(500) -- Debug
-
-	-- Hide detail scroll frame textures
-	CraftDetailScrollFrameTop:SetAlpha(0)
-	CraftDetailScrollFrameBottom:SetAlpha(0)
-
-	-- Create texture for skills list
-	local RecipeInset = CraftFrame:CreateTexture(nil, "ARTWORK")
-	RecipeInset:SetSize(304, 361)
-	RecipeInset:SetPoint("TOPLEFT", CraftFrame, "TOPLEFT", 16, -72)
-	RecipeInset:SetTexture("Interface\\RAIDFRAME\\UI-RaidFrame-GroupBg")
-
-	-- Set detail frame backdrop
-	local DetailsInset = CraftFrame:CreateTexture(nil, "ARTWORK")
-	DetailsInset:SetSize(302, 339)
-	DetailsInset:SetPoint("TOPLEFT", CraftFrame, "TOPLEFT", 348, -72)
-	DetailsInset:SetTexture("Interface\\ACHIEVEMENTFRAME\\UI-GuildAchievement-Parchment-Horizontal-Desaturated")
-
-	-- Hide expand tab (left of All button)
-	CraftExpandTabLeft:Hide()
-
-	-- Get craft frame textures
-	local regions = {CraftFrame:GetRegions()}
-
-	-- Set top left texture
-	regions[2]:SetTexture("Interface\\QUESTFRAME\\UI-QuestLogDualPane-Left")
-	regions[2]:SetSize(512, 512)
-
-	-- Set top right texture
-	regions[3]:ClearAllPoints()
-	regions[3]:SetPoint("TOPLEFT", regions[2], "TOPRIGHT", 0, 0)
-	regions[3]:SetTexture("Interface\\QUESTFRAME\\UI-QuestLogDualPane-Right")
-	regions[3]:SetSize(256, 512)
-
-	-- Hide bottom left and bottom right textures
-	regions[4]:Hide()
-	regions[5]:Hide()
-
-	-- Hide skills list dividing bar
-	regions[9]:Hide()
-	regions[10]:Hide()
-
-	-- Move create button row
-	CraftCreateButton:ClearAllPoints()
-	CraftCreateButton:SetPoint("RIGHT", CraftCancelButton, "LEFT", -1, 0)
-
-	-- Position and size close button
-	CraftCancelButton:SetSize(80, 22)
-	CraftCancelButton:SetText(CLOSE)
 	CraftCancelButton:ClearAllPoints()
 	CraftCancelButton:SetPoint("BOTTOMRIGHT", CraftFrame, "BOTTOMRIGHT", -42, 54)
-
-	-- Position close box
-	CraftFrameCloseButton:ClearAllPoints()
-	CraftFrameCloseButton:SetPoint("TOPRIGHT", CraftFrame, "TOPRIGHT", -34, -13)
+	CraftCreateButton:ClearAllPoints()
+	CraftCreateButton:SetPoint("RIGHT", CraftCancelButton, "LEFT", -1, 0)
 	CraftFrameFilterDropDown:ClearAllPoints()
-	CraftFrameFilterDropDown:SetPoint("TOPLEFT", CraftFrame, "TOPLEFT", 510, -40)
+	CraftFrameFilterDropDown:SetPoint("TOPRIGHT", CraftFrame, -30, -40)
 	CraftFrameAvailableFilterCheckButton:ClearAllPoints()
-	CraftFrameAvailableFilterCheckButton:SetPoint("RIGHT", CraftFrameFilterDropDown, "LEFT", -130, 2)
+	CraftFrameAvailableFilterCheckButton:SetPoint("TOP", CraftFrame, -10, -42)
 
-	-- Reskin
+	hooksecurefunc("CraftFrame_Update", function()
+		CraftHighlightFrame:SetWidth(300)
+	end)
+
 	if C.db["Skins"]["BlizzardSkins"] then
-		regions[2]:Hide()
-		regions[3]:Hide()
-		RecipeInset:Hide()
-		DetailsInset:Hide()
 		CraftFrame:SetHeight(512)
 		CraftCancelButton:ClearAllPoints()
 		CraftCancelButton:SetPoint("BOTTOMRIGHT", CraftFrame, "BOTTOMRIGHT", -42, 78)
 		CraftRankFrame:ClearAllPoints()
 		CraftRankFrame:SetPoint("TOPLEFT", CraftFrame, 24, -24)
+	else
+		CraftFrameCloseButton:ClearAllPoints()
+		CraftFrameCloseButton:SetPoint("TOPRIGHT", CraftFrame, "TOPRIGHT", -30, -8)
 	end
 
+	-- Search widget
 	local searchBox, nextButton, prevButton = S:CreateSearchWidget(CraftFrame, CraftRankFrame)
 
 	searchBox:HookScript("OnEnterPressed", function(self)

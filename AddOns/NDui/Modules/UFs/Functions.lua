@@ -564,8 +564,9 @@ function UF:CreateCastBar(self)
 		cb:SetSize(C.db["UFs"]["FocusCBWidth"], C.db["UFs"]["FocusCBHeight"])
 		createBarMover(cb, L["Focus Castbar"], "FocusCB", C.UFs.Focuscb)
 	elseif mystyle == "boss" or mystyle == "arena" then
-		cb:SetPoint("TOPRIGHT", self.Power, "BOTTOMRIGHT", 0, -8)
-		cb:SetSize(self:GetWidth(), 10)
+		cb:SetPoint("TOPLEFT", self.Power, "BOTTOMLEFT", 0, -3)
+		cb:SetPoint("TOPRIGHT", self.Power, "BOTTOMRIGHT", 0, -3)
+		cb:SetHeight(10)
 	elseif mystyle == "nameplate" then
 		cb:SetPoint("TOPLEFT", self, "BOTTOMLEFT", 0, -5)
 		cb:SetPoint("TOPRIGHT", self, "BOTTOMRIGHT", 0, -5)
@@ -857,6 +858,12 @@ function UF.RaidBuffFilter(_, _, _, _, _, _, _, _, _, caster, _, _, spellID, can
 end
 
 local debuffBlackList = {
+	[23445] = true, -- 邪恶双子
+	[36893] = true, -- 传送器故障
+	[36895] = true, -- 传送器故障
+	[36897] = true, -- 传送器故障
+	[36900] = true, -- 灵魂分裂：坏蛋
+	[36901] = true, -- 灵魂分裂：好人
 }
 function UF.RaidDebuffFilter(element, _, _, name, _, _, _, _, _, caster, _, _, spellID, _, isBossAura)
 	local parent = element.__owner
@@ -1064,7 +1071,7 @@ function UF:CreateBuffs(self)
 		bu.num = (self.raidType == "simple" or not C.db["UFs"]["ShowRaidBuff"]) and 0 or 3
 		bu.size = C.db["UFs"]["RaidBuffSize"]
 		bu.CustomFilter = UF.RaidBuffFilter
-		bu.disableMouse = true
+		bu.disableMouse = C.db["UFs"]["BuffClickThru"]
 		bu.fontSize = C.db["UFs"]["RaidBuffSize"]-2
 	else -- boss and arena
 		bu.__value = "Boss"
@@ -1096,7 +1103,7 @@ function UF:CreateDebuffs(self)
 		bu.num = (self.raidType == "simple" or not C.db["UFs"]["ShowRaidDebuff"]) and 0 or 3
 		bu.size = C.db["UFs"]["RaidDebuffSize"]
 		bu.CustomFilter = UF.RaidDebuffFilter
-		bu.disableMouse = true
+		bu.disableMouse = C.db["UFs"]["DebuffClickThru"]
 		bu.fontSize = C.db["UFs"]["RaidDebuffSize"]-2
 	else -- boss and arena
 		bu:SetPoint("TOPRIGHT", self, "TOPLEFT", -5, 0)
@@ -1120,6 +1127,7 @@ function UF:UpdateRaidAuras()
 				debuffs.num = (frame.raidType == "simple" or not C.db["UFs"]["ShowRaidDebuff"]) and 0 or 3
 				debuffs.size = C.db["UFs"]["RaidDebuffSize"]
 				debuffs.fontSize = C.db["UFs"]["RaidDebuffSize"]-2
+				debuffs.disableMouse = C.db["UFs"]["DebuffClickThru"]
 				UF:UpdateAuraContainer(frame, debuffs, debuffs.num)
 				debuffs:ForceUpdate()
 			end
@@ -1129,6 +1137,7 @@ function UF:UpdateRaidAuras()
 				buffs.num = (frame.raidType == "simple" or not C.db["UFs"]["ShowRaidBuff"]) and 0 or 3
 				buffs.size = C.db["UFs"]["RaidBuffSize"]
 				buffs.fontSize = C.db["UFs"]["RaidBuffSize"]-2
+				buffs.disableMouse = C.db["UFs"]["BuffClickThru"]
 				UF:UpdateAuraContainer(frame, buffs, buffs.num)
 				buffs:ForceUpdate()
 			end
@@ -1363,13 +1372,27 @@ function UF:CreateAddPower(self)
 	self.AdditionalPower.frequentUpdates = true
 end
 
+function UF:ToggleSwingBars()
+	local frame = _G.oUF_Player
+	if not frame then return end
+
+	if C.db["UFs"]["SwingBar"] then
+		if not frame:IsElementEnabled("Swing") then
+			frame:EnableElement("Swing")
+		end
+	elseif frame:IsElementEnabled("Swing") then
+		frame:DisableElement("Swing")
+	end
+end
+
 function UF:CreateSwing(self)
-	if not C.db["UFs"]["Castbars"] then return end
+	local width, height = C.db["UFs"]["SwingWidth"], C.db["UFs"]["SwingHeight"]
 
 	local bar = CreateFrame("Frame", nil, self)
-	local width = C.db["UFs"]["PlayerCBWidth"] - C.db["UFs"]["PlayerCBHeight"] - 5
-	bar:SetSize(width, 3)
-	bar:SetPoint("TOP", self.Castbar.mover, "BOTTOM", 0, -5)
+	bar:SetSize(width, height)
+	bar.mover = B.Mover(bar, L["UFs SwingBar"], "Swing", {"BOTTOM", UIParent, "BOTTOM", 0, 170})
+	bar:ClearAllPoints()
+	bar:SetPoint("CENTER", bar.mover)
 
 	local two = CreateFrame("StatusBar", nil, bar)
 	two:Hide()
@@ -1389,15 +1412,22 @@ function UF:CreateSwing(self)
 
 	local off = CreateFrame("StatusBar", nil, bar)
 	off:Hide()
-	off:SetPoint("TOPLEFT", bar, "BOTTOMLEFT", 0, -3)
-	off:SetPoint("BOTTOMRIGHT", bar, "BOTTOMRIGHT", 0, -6)
+	if C.db["UFs"]["OffOnTop"] then
+		off:SetPoint("BOTTOMLEFT", bar, "TOPLEFT", 0, 3)
+		off:SetPoint("BOTTOMRIGHT", bar, "TOPRIGHT", 0, 3)
+	else
+		off:SetPoint("TOPLEFT", bar, "BOTTOMLEFT", 0, -3)
+		off:SetPoint("TOPRIGHT", bar, "BOTTOMRIGHT", 0, -3)
+	end
+	off:SetHeight(height)
 	B.CreateSB(off, true, .8, .8, .8)
 
-	if C.db["UFs"]["SwingTimer"] then
-		bar.Text = B.CreateFS(bar, 12, "")
-		bar.TextMH = B.CreateFS(main, 12, "")
-		bar.TextOH = B.CreateFS(off, 12, "", false, "CENTER", 1, -5)
-	end
+	bar.Text = B.CreateFS(bar, 12, "")
+	bar.Text:SetShown(C.db["UFs"]["SwingTimer"])
+	bar.TextMH = B.CreateFS(main, 12, "")
+	bar.TextMH:SetShown(C.db["UFs"]["SwingTimer"])
+	bar.TextOH = B.CreateFS(off, 12, "")
+	bar.TextOH:SetShown(C.db["UFs"]["SwingTimer"])
 
 	self.Swing = bar
 	self.Swing.Twohand = two

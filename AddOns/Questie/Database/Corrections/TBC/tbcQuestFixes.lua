@@ -90,6 +90,7 @@ function QuestieTBCQuestFixes:Load()
         },
         [1135] = {
             [questKeys.startedBy] = {{4456},nil,nil},
+            [questKeys.zoneOrSort] = zoneIDs.DARKSHORE,
         },
         [1437] = {
             [questKeys.triggerEnd] = {"Find and search Tyranis and Dalinda Malem's wagon", {[zoneIDs.DESOLACE]={{56.52,17.84}}}},
@@ -100,11 +101,23 @@ function QuestieTBCQuestFixes:Load()
         [1486] = {
             [questKeys.requiredRaces] = raceIDs.ALL,
         },
+        [1508] = {
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
+        },
         [1699] = {
             [questKeys.triggerEnd] = {"Enter the Rethban Caverns", {[zoneIDs.REDRIDGE_MOUNTAINS]={{19.22,25.25}}}},
         },
         [1719] = {
             [questKeys.triggerEnd] = {"Step on the grate to begin the Affray", {[zoneIDs.THE_BARRENS]={{68.61,48.72}}}},
+        },
+        [1801] = {
+            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.UNDEAD + raceIDs.BLOOD_ELF,
+        },
+        [1803] = {
+            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.UNDEAD + raceIDs.BLOOD_ELF,
+        },
+        [1805] = {
+            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.UNDEAD + raceIDs.BLOOD_ELF,
         },
         [2240] = {
             [questKeys.triggerEnd] = {"Explore the Hidden Chamber", {[zoneIDs.BADLANDS]={{35.22,10.32}}}},
@@ -121,6 +134,12 @@ function QuestieTBCQuestFixes:Load()
         },
         [2989] = {
             [questKeys.triggerEnd] = {"Search the Altar of Zul", {[zoneIDs.THE_HINTERLANDS]={{48.86,68.42}}}},
+        },
+        [2996] = {
+            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.UNDEAD + raceIDs.BLOOD_ELF,
+        },
+        [3001] = {
+            [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.UNDEAD + raceIDs.BLOOD_ELF,
         },
         [3117] = {
             [questKeys.requiredRaces] = raceIDs.NIGHT_ELF,
@@ -1076,6 +1095,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredMaxRep]= {932,0},
         },
         [10019] = {
+            [questKeys.preQuestSingle] = {},
             [questKeys.preQuestGroup] = {10211,10017},
             [questKeys.requiredMaxRep]= {932,0},
         },
@@ -1084,6 +1104,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.requiredMaxRep]= {934,0},
         },
         [10025] = {
+            [questKeys.preQuestSingle] = {},
             [questKeys.preQuestGroup] = {10211,10024},
             [questKeys.requiredMaxRep]= {934,0},
         },
@@ -1543,6 +1564,9 @@ function QuestieTBCQuestFixes:Load()
         [10594] = {
             [questKeys.triggerEnd] = {"Singing crystal resonant frequency gauged", {[zoneIDs.BLADES_EDGE_MOUNTAINS]={{59.77,73.83}}}},
         },
+        [10605] = {
+            [questKeys.exclusiveTo] = {1472,1507},
+        },
         [10606] = {
             [questKeys.objectives] = {nil,nil,{{30713,nil},{30712,nil}},nil},
         },
@@ -1839,38 +1863,63 @@ function QuestieTBCQuestFixes:Load()
         [10930] = {
             [questKeys.extraObjectives] = {{nil, ICON_TYPE_SLAY, "Kill Decrepit Clefthoofs and use the Fumper on their corpses", 0, {{"monster", 22105}}}},
         },
+        [10942] = {
+            [questKeys.zoneOrSort] = sortKeys.SEASONAL,
+        },
+        [10943] = {
+            [questKeys.zoneOrSort] = sortKeys.SEASONAL,
+        },
         [10945] = {
             [questKeys.triggerEnd] = {"Salandria taken to Sporeggar", {[zoneIDs.ZANGARMARSH]={{19.22,51.23}}}},
+            [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [10946] = {
             [questKeys.triggerEnd] = {"Ruse of the Ashtongue", {[zoneIDs.NETHERSTORM]={{73.88,63.76}}}},
         },
         [10950] = {
             [questKeys.triggerEnd] = {"Dornaa taken to the Ring of Observance", {[zoneIDs.TEROKKAR_FOREST]={{39.71,64.6}}}},
+            [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [10951] = {
             [questKeys.triggerEnd] = {"Salandria taken to the Dark Portal", {[zoneIDs.HELLFIRE_PENINSULA]={{88.33,50.19}}}},
+            [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [10952] = {
             [questKeys.triggerEnd] = {"Dornaa taken to the Dark Portal", {[zoneIDs.HELLFIRE_PENINSULA]={{88.26,50.32}}}},
+            [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [10953] = {
             [questKeys.triggerEnd] = {"Salandria taken to the Throne of the Elements", {[zoneIDs.NAGRAND]={{60.5,22.7}}}},
+            [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [10954] = {
             [questKeys.triggerEnd] = {"Dornaa taken to Aeris Landing", {[zoneIDs.NAGRAND]={{31.47,57.45}}}},
+            [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [10956] = {
             [questKeys.triggerEnd] = {"Dornaa taken to the Seat of the Naaru", {[zoneIDs.THE_EXODAR]={{56.65,40.73}}}},
+            [questKeys.zoneOrSort] = sortKeys.SEASONAL,
+        },
+        [10960] = {
+            [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [10962] = {
             [questKeys.triggerEnd] = {"Dornaa taken to the Caverns of Time", {[zoneIDs.TANARIS]={{60.52,57.74}}}},
+            [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [10963] = {
             [questKeys.triggerEnd] = {"Salandria taken to the Caverns of Time", {[zoneIDs.TANARIS]={{60.53,57.72}}}},
+            [questKeys.zoneOrSort] = sortKeys.SEASONAL,
+        },
+        [10966] = {
+            [questKeys.zoneOrSort] = sortKeys.SEASONAL,
+        },
+        [10967] = {
+            [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [10968] = {
             [questKeys.triggerEnd] = {"Dornaa taken to Farseer Nobundo", {[zoneIDs.THE_EXODAR]={{30.8,29.88}}}},
+            [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [10974] = {
             [questKeys.requiredMinRep] = {933,21000},
@@ -2169,6 +2218,9 @@ function QuestieTBCQuestFixes:Load()
         [11162] = {
             [questKeys.extraObjectives] = {{nil, ICON_TYPE_EVENT, "Plant the Stonemaul Banner", 0, {{"object", 186336}}}},
         },
+        [11164] = {
+            [questKeys.preQuestSingle] = {11132},
+        },
         [11169] = {
             [questKeys.objectives] = {nil,nil,nil,nil,{{4344,4345},4344,"Totem Tests Performed"}},
         },
@@ -2181,6 +2233,9 @@ function QuestieTBCQuestFixes:Load()
         },
         [11177] = {
             [questKeys.nextQuestInChain] = 1218,
+        },
+        [11178] = {
+            [questKeys.startedBy] = {{23863},nil,{33102,},},
         },
         [11180] = {
             [questKeys.extraObjectives] = {{nil, ICON_TYPE_SLAY, "Information Gathered", 0, {{"monster", 23554},{"monster", 23555}}}},
@@ -2936,6 +2991,9 @@ function QuestieTBCQuestFixes:Load()
         [11972] = {
             [questKeys.startedBy] = {nil,{187892},{35723,},},
             [questKeys.finishedBy] = {{25697},nil},
+        },
+        [11975] = {
+            [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12012] = {
             [questKeys.startedBy] = {{25324},nil,nil},

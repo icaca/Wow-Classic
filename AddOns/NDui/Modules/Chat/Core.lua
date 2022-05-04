@@ -96,6 +96,9 @@ function module:SkinChat()
 	self:SetMaxResize(DB.ScreenWidth, DB.ScreenHeight)
 	self:SetMinResize(100, 50)
 	self:SetFont(DB.Font[1], fontSize, fontOutline)
+	if fontOutline ~= "" then
+		self:SetShadowColor(0, 0, 0, 0)
+	end
 	self:SetShadowColor(0, 0, 0, 0)
 	self:SetClampRectInsets(0, 0, 0, 0)
 	self:SetClampedToScreen(false)
@@ -351,17 +354,15 @@ local function FixLanguageFilterSideEffects()
 	B.CreateFS(HelpFrame, 18, L["LanguageFilterTip"], "system",  "TOP", 0, 30)
 end
 
-local hasCNFix
 function module:ToggleLanguageFilter()
 	if C.db["Chat"]["Freedom"] then
 		if GetCVar("portal") == "CN" then
 			ConsoleExec("portal TW")
 			FixLanguageFilterSideEffects()
-			hasCNFix = true
 		end
 		SetCVar("profanityFilter", 0)
 	else
-		if hasCNFix then
+		if sideEffectFixed then
 			ConsoleExec("portal CN")
 		end
 		SetCVar("profanityFilter", 1)

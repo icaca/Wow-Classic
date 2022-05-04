@@ -4,8 +4,8 @@ This mod is distributed under Version 2 of the GPL.  A copy of the GPL is includ
 
 [Changelog history](https://github.com/Hoizame/AtlasLootClassic/blob/master/AtlasLootClassic/Documentation/Release_Notes.md)
 
-## v2.4.1-bcc (Jan, 19, 2022)
+## v2.4.2 (Apr, 13, 2022)
 
-- (bcc) update .toc version
-- (bcc) update vendor prices
-- (bcc) remove Heavy Netherweave Net
+- Update vendor prices
+- #203 add Fist weapons for Hunter
+- Update BoJ Vendors

@@ -52,6 +52,7 @@ function M:OnLogin()
 	M:QuickMenuButton()
 	M:BaudErrorFrameHelpTip()
 	M:EnhancedPicker()
+	C_Timer_After(0, M.UpdateMaxZoomLevel)
 
 	-- Auto chatBubbles
 	if NDuiADB["AutoBubbles"] then
@@ -415,19 +416,31 @@ function M:QuickMenuButton()
 
 		local name = dropdownMenu.name
 		local unit = dropdownMenu.unit
+		local bnetID = dropdownMenu.bnetIDAccount
 		local isPlayer = unit and UnitIsPlayer(unit)
-		local isFriendMenu = dropdownMenu == FriendsDropDown and not dropdownMenu.bnetIDAccount -- menus on FriendsFrame
+		local isFriendMenu = dropdownMenu == FriendsDropDown -- menus on FriendsFrame
 		if not name or (not isPlayer and not dropdownMenu.chatType and not isFriendMenu) then
 			frame:Hide()
 			return
 		end
 
-		local server = dropdownMenu.server
-		if not server or server == "" then
-			server = DB.MyRealm
+		if bnetID then
+			local gameID = select(6, BNGetFriendInfoByID(bnetID))
+			if gameID then
+				local _, characterName, client, realmName = BNGetGameAccountInfo(gameID)
+				if client == "WoW" and realmName ~= "" then
+					M.MenuButtonName = characterName.."-"..realmName
+					frame:Show()
+				end
+			end
+		else
+			local server = dropdownMenu.server
+			if not server or server == "" then
+				server = DB.MyRealm
+			end
+			M.MenuButtonName = name.."-"..server
+			frame:Show()
 		end
-		M.MenuButtonName = name.."-"..server
-		frame:Show()
 	end)
 end
 
@@ -603,4 +616,8 @@ function M:EnhancedPicker()
 		self.__boxB:SetText(b)
 		self.__boxH:SetText(format("%02x%02x%02x", r, g, b))
 	end)
+end
+
+function M:UpdateMaxZoomLevel()
+	SetCVar("cameraDistanceMaxZoomFactor", C.db["Misc"]["MaxZoom"])
 end

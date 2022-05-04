@@ -17,13 +17,10 @@ local function isMessageProtected(msg)
 	return msg and (msg ~= gsub(msg, "(:?|?)|K(.-)|k", canChangeMessage))
 end
 
-local function colorReplace(msg, r, g, b)
+local function replaceMessage(msg, r, g, b)
 	local hexRGB = B.HexRGB(r, g, b)
-	local hexReplace = format("|r%s", hexRGB)
-	msg = gsub(msg, "|r", hexReplace)
-	msg = format("%s%s|r", hexRGB, msg)
-
-	return msg
+	msg = gsub(msg, "|T(.-):.-|t", "%1") -- accept texture path or id
+	return format("%s%s|r", hexRGB, msg)
 end
 
 function module:GetChatLines()
@@ -32,7 +29,7 @@ function module:GetChatLines()
 		local msg, r, g, b = self:GetMessageInfo(i)
 		if msg and not isMessageProtected(msg) then
 			r, g, b = r or 1, g or 1, b or 1
-			msg = colorReplace(msg, r, g, b)
+			msg = replaceMessage(msg, r, g, b)
 			lines[index] = tostring(msg)
 			index = index + 1
 		end
@@ -50,7 +47,7 @@ function module:ChatCopy_OnClick(btn)
 			frame:Show()
 
 			local lineCt = module.GetChatLines(chatframe)
-			local text = tconcat(lines, " \n", 1, lineCt)
+			local text = tconcat(lines, "\n", 1, lineCt)
 			FCF_SetChatWindowFontSize(chatframe, chatframe, fontSize)
 			editBox:SetText(text)
 		else

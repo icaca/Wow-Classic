@@ -21,8 +21,6 @@ local function ForceDefaultSettings()
 	SetCVar("lockActionBars", 1)
 	SetCVar("autoQuestWatch", 1)
 	SetCVar("overrideArchive", 0)
-	SetCVar("predictedHealth", 1)
-	SetCVar("cameraDistanceMaxZoomFactor", 2.6)
 	SetActionBarToggles(1, 1, 1, 1)
 	if not InCombatLockdown() then
 		SetCVar("nameplateMotion", 1)
@@ -304,7 +302,6 @@ local function YesTutor()
 			NDuiADB["SkadaRequest"] = true
 			NDuiADB["BWRequest"] = true
 			ForceAddonSkins()
-			NDuiADB["ResetDetails"] = true
 			UIErrorsFrame:AddMessage(DB.InfoColor..L["Tutorial Complete"])
 			pass:Hide()
 		elseif currentPage == 3 then

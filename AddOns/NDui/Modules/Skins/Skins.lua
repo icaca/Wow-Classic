@@ -143,27 +143,69 @@ function S:SetToggleDirection(frame)
 	close:ClearAllPoints()
 	close:SetPoint(rel1, parent, rel2, x, y)
 	close:SetSize(width, height)
-	close.text:SetText(str1)
 	open:ClearAllPoints()
 	open:SetPoint(rel1, parent, rel1, -x, -y)
 	open:SetSize(width, height)
-	open.text:SetText(str2)
 
 	if C.db["Skins"]["ToggleDirection"] == 5 then
 		close:SetScale(.001)
 		close:SetAlpha(0)
 		open:SetScale(.001)
 		open:SetAlpha(0)
+		close.text:SetText("")
+		open.text:SetText("")
 	else
 		close:SetScale(1)
 		close:SetAlpha(1)
 		open:SetScale(1)
 		open:SetAlpha(1)
+		close.text:SetText(str1)
+		open.text:SetText(str2)
 	end
 end
 
 function S:RefreshToggleDirection()
 	for _, frame in pairs(toggleFrames) do
 		S:SetToggleDirection(frame)
+	end
+end
+
+S.SharedWindowData = {
+	area = "override",
+	xoffset = -16,
+	yoffset = 12,
+	bottomClampOverride = 152,
+	width = 714,
+	height = 487,
+	whileDead = 1,
+}
+
+function S:EnlargeDefaultUIPanel(name, pushed)
+	local frame = _G[name]
+	if not frame then return end
+
+	UIPanelWindows[name] = S.SharedWindowData
+	UIPanelWindows[name].pushable = pushed
+
+	frame:SetSize(S.SharedWindowData.width, S.SharedWindowData.height)
+	frame.TitleText:ClearAllPoints()
+	frame.TitleText:SetPoint("TOP", frame, 0, -18)
+
+	frame.scrollFrame:ClearAllPoints()
+	frame.scrollFrame:SetPoint("TOPRIGHT", frame, -65, -70)
+	frame.scrollFrame:SetPoint("BOTTOMRIGHT", frame, -65, 80)
+	frame.listScrollFrame:ClearAllPoints()
+	frame.listScrollFrame:SetPoint("TOPLEFT", frame, 19, -70)
+	frame.listScrollFrame:SetPoint("BOTTOMLEFT", frame, 19, 80)
+
+	if not C.db["Skins"]["BlizzardSkins"] then
+		local leftTex = frame:CreateTexture(nil, "BACKGROUND")
+		leftTex:SetTexture(309665)
+		leftTex:SetSize(512, 512)
+		leftTex:SetPoint("TOPLEFT")
+		local rightTex = frame:CreateTexture(nil, "BACKGROUND")
+		rightTex:SetTexture(309666)
+		rightTex:SetSize(256, 512)
+		rightTex:SetPoint("TOPLEFT", leftTex, "TOPRIGHT")
 	end
 end

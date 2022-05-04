@@ -1,5 +1,5 @@
 ## Interface: 90200
-## Version: v9.2.0
+## Version: v9.2.2
 ## Author: Funkydude
 ## Title: SlashIn
 ## Notes: Provides the /in command for delayed execution.
