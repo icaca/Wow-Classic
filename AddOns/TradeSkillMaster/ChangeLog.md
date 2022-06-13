@@ -1,5 +1,5 @@
-## v4.11.26 Changes
+## v4.11.27 Changes
 
-* [Classic] Fix incorrect disenchantables
+* [Retail] Bonus ID updates
 
 [Known Issues](https://support.tradeskillmaster.com/en_US/known_issues)
