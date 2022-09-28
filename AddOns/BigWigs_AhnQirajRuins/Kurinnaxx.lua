@@ -3,21 +3,10 @@
 -- Module declaration
 --
 
-local mod, CL = BigWigs:NewBoss("Kurinnaxx", 509)
+local mod, CL = BigWigs:NewBoss("Kurinnaxx", 509, 1537)
 if not mod then return end
 mod:RegisterEnableMob(15348)
-mod:SetAllowWin(true)
 mod:SetEncounterID(718)
-
---------------------------------------------------------------------------------
--- Localization
---
-
-local L = mod:NewLocale("enUS", true)
-if L then
-	L.bossName = "Kurinnaxx"
-end
-L = mod:GetLocale()
 
 --------------------------------------------------------------------------------
 -- Initialization
@@ -47,7 +36,7 @@ end
 
 function mod:MortalWound(args)
 	local amount = args.amount or 1
-	self:StackMessage(25646, args.destName, amount, "purple")
+	self:StackMessageOld(25646, args.destName, amount, "purple")
 	self:TargetBar(25646, 15, args.destName)
 	if amount > 2 then -- warn at 3? 5?
 		self:PlaySound(25646, "warning")

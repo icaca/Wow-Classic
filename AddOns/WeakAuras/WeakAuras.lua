@@ -1,10 +1,6 @@
 local AddonName, Private = ...
 
-<<<<<<< Updated upstream
-local internalVersion = 51
-=======
 local internalVersion = 53
->>>>>>> Stashed changes
 
 -- Lua APIs
 local insert = table.insert

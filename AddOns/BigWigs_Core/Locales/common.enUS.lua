@@ -26,14 +26,17 @@ L.stage = "Stage %d"
 L.normal = "Normal mode"
 L.heroic = "Heroic mode"
 L.mythic = "Mythic mode"
+L.hard = "Hard mode"
 L.active = "Active" -- When a boss becomes active, after speech finishes
 L.general = "General" -- General settings, i.e. things that apply to normal, heroic and mythic mode.
+L.absorb = "Absorb" -- Used for shield-like abilities that absorb damage or healing
 
 L.duration = "%s for %s sec" -- Spell for 10 seconds
 L.over = "%s Over" -- Spell Over
 L.removed = "%s Removed" -- Spell Removed
 L.removed_from = "%s removed from %s" -- Spell removed from Player
 L.removed_by = "%s removed by %s" -- Spell removed by Player
+L.removed_after = "%s removed after %.1fs" -- "Spell removed after 1.1s" (s = seconds)
 L.incoming = "%s Incoming" -- Spell Incoming
 L.interrupted = "%s Interrupted" -- Spell Interrupted
 L.interrupted_by = "%s interrupted by %s" -- Spell interrupted by Player
@@ -70,6 +73,7 @@ L.custom_sec = "%s in %d sec"
 
 L.focus_only = "|cffff0000Focus target alerts only.|r "
 L.trash = "Trash"
+L.affixes = "Affixes" -- Seasonal affixes for raids and mythic+ dungeons
 
 -- Common raid marking locale
 L.marker = "%s Marker"
@@ -91,6 +95,7 @@ L.amount_three = "%dK" -- Thousands 1,000
 L.seconds = "%.1fs" -- 1.1 seconds
 
 -- Common ability name replacements
+L.tank_combo = "Tank Combo" -- Used for tank swap mechanics where the boss casts a sequence of tank buster attacks
 L.laser = "Laser" -- Used for abilities that act like a laser. Usually from the boss to a player, or, from the boss to a specific area
 L.beam = "Beam" -- Similar to "Laser" (a beam from boss to player/boss to area) but can be used to better describe certain abilities that don't look like a Laser
 L.beams = "Beams" -- Plural of L.beam

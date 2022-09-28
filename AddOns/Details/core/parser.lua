@@ -6,6 +6,7 @@
 	local _
 	local DetailsFramework = DetailsFramework
 	local isTBC = DetailsFramework.IsTBCWow()
+	local isWOTLK = DetailsFramework.IsWotLKWow()
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --> local pointers
@@ -38,7 +39,7 @@
 	local escudo = _detalhes.escudos --details local
 	local parser = _detalhes.parser --details local
 	local absorb_spell_list = _detalhes.AbsorbSpells --details local
-	local arena_enemies = _detalhes.arena_enemies --details local
+	--local arena_enemies = _detalhes.arena_enemies --details local (not in use - deprecated)
 
 	local cc_spell_list = DetailsFramework.CrowdControlSpells
 	local container_habilidades = _detalhes.container_habilidades --details local
@@ -297,14 +298,14 @@
 		[169429] = true,
 		[169428] = true,
 		[169430] = true,
+		
+		[189706] = true, --Chaotic Essence from Fated Affix --Remove on 10.0
 	}
 
 	local ignored_npcids = {}
 
 	--> ignore soul link (damage from the warlock on his pet - current to demonology only)
 	local SPELLID_WARLOCK_SOULLINK = 108446
-	--> when checking if can start a new combat, ignore the damage from warlock's burning rush
-	local SPELLID_WARLOCK_BURNINGRUSH = 111400
 	--> brewmaster monk guard talent
 	local SPELLID_MONK_GUARD = 115295
 	--> brewmaster monk stagger mechanics
@@ -448,6 +449,17 @@
 		Details.KyrianWeaponActorSpellId = 328351 --for the icon
 		Details.KyrianWeaponColor = {0.729, 0.917, 1} --color
 
+		--cannon weapons on grimrail depot --remove on 10.0
+		--these detect the cannon weapon actor by the damage spellId
+		Details.GrimrailDepotCannonWeaponSpellIds = {
+			[160776] = true, --Homing Shell
+			[166545] = true, --Sharpnel Cannon
+			[161073] = true, --Blackrock Grenade
+		}
+		Details.GrimrailDepotCannonWeaponActorName = "Cannon"
+		Details.GrimrailDepotCannonWeaponActorSpellId = 166545 --for the icon
+		Details.GrimrailDepotCannonWeaponColor = {1, 0.353, 0.082} --color
+
 		--sanguine affix for m+
 		Details.SanguineHealActorName = GetSpellInfo(SPELLID_SANGUINE_HEAL)
 
@@ -463,6 +475,15 @@
 			--add kyrian weapons
 			Details.SpecialSpellActorsName[Details.KyrianWeaponActorName] = Details.KyrianWeaponActorSpellId
 			for spellId in pairs(Details.KyrianWeaponSpellIds) do
+				local spellName = GetSpellInfo(spellId)
+				if (spellName) then
+					Details.SpecialSpellActorsName[spellName] = spellId
+				end
+			end
+
+			--add grimrail depot cannon weapons
+			Details.SpecialSpellActorsName[Details.GrimrailDepotCannonWeaponActorName] = Details.GrimrailDepotCannonWeaponActorSpellId
+			for spellId in pairs(Details.GrimrailDepotCannonWeaponSpellIds) do
 				local spellName = GetSpellInfo(spellId)
 				if (spellName) then
 					Details.SpecialSpellActorsName[spellName] = spellId
@@ -621,6 +642,13 @@
 		--kyrian weapons
 		if (Details.KyrianWeaponSpellIds[spellid]) then
 			who_name = Details.KyrianWeaponActorName
+			who_flags = 0x514
+			who_serial = "Creature-0-3134-2289-28065-" .. spellid .. "-000164C698"
+		end
+
+		--grimail depot cannon
+		if (Details.GrimrailDepotCannonWeaponSpellIds[spellid]) then
+			who_name = Details.GrimrailDepotCannonWeaponActorName
 			who_flags = 0x514
 			who_serial = "Creature-0-3134-2289-28065-" .. spellid .. "-000164C698"
 		end
@@ -842,9 +870,9 @@
 			end
 		--end
 
-		if (isTBC) then
+		if (isTBC or isWOTLK) then
 			--is the target an enemy with judgement of light?
-			if (TBC_JudgementOfLightCache[alvo_name]) then
+			if (TBC_JudgementOfLightCache[alvo_name] and false) then
 				--store the player name which just landed a damage
 				TBC_JudgementOfLightCache._damageCache[who_name] = {time, alvo_name}
 			end
@@ -853,7 +881,7 @@
 	------------------------------------------------------------------------------------------------
 	--> check if need start an combat
 	
-		if (not _in_combat) then
+		if (not _in_combat) then --~startcombat ~combatstart
 			if (	token ~= "SPELL_PERIODIC_DAMAGE" and
 				(
 					(who_flags and _bit_band (who_flags, AFFILIATION_GROUP) ~= 0 and _UnitAffectingCombat (who_name) )
@@ -883,7 +911,9 @@
 				--> entrar em combate se for dot e for do jogador e o ultimo combate ter sido a mais de 10 segundos atr�s
 				if (token == "SPELL_PERIODIC_DAMAGE" and who_name == _detalhes.playername) then
 					--> ignora burning rush se o jogador estiver fora de combate
-					if (spellid == SPELLID_WARLOCK_BURNINGRUSH) then
+					--111400 warlock's burning rush
+					--368637 is buff from trinket "Scars of Fraternal Strife" which make the player bleed even out-of-combat
+					if (spellid == 111400 or spellid == 368637) then
 						return
 					end
 					--> faz o calculo dos 10 segundos
@@ -2117,7 +2147,7 @@
 			cura_efetiva = cura_efetiva + amount - overhealing
 		end
 
-		if (isTBC) then
+		if (isTBC or isWOTLK) then
 			--earth shield
 			if (spellid == SPELLID_SHAMAN_EARTHSHIELD_HEAL) then
 				--get the information of who placed the buff into this actor
@@ -2139,7 +2169,7 @@
 				TBC_LifeBloomLatestHeal = cura_efetiva
 				return
 
-			elseif (spellid == 27163) then --Judgement of Light (paladin)
+			elseif (spellid == 27163 and false) then --Judgement of Light (paladin) --disabled on 25 September 2022
 				--check if the hit was landed in the same cleu tick
 
 				local hitCache = TBC_JudgementOfLightCache._damageCache[who_name]
@@ -2241,7 +2271,11 @@
 					if (not unitId) then
 						unitId = Details:GuessArenaEnemyUnitId(alvo_name)
 					end
-					this_event [5] = _UnitHealth(unitId)
+					if (unitId) then
+						this_event [5] = _UnitHealth(unitId)
+					else
+						this_event [5] = 0
+					end
 				else
 					this_event [5] = _UnitHealth(alvo_name)
 				end
@@ -2479,14 +2513,14 @@
 					necro_cheat_deaths[who_serial] = true
 				end
 
-				if (isTBC) then
+				if (isTBC or isWOTLK) then
 					if (SHAMAN_EARTHSHIELD_BUFF[spellid]) then
 						TBC_EarthShieldCache[alvo_name] = {who_serial, who_name, who_flags}
 
 					elseif (spellid == SPELLID_PRIEST_POM_BUFF) then
 						TBC_PrayerOfMendingCache [alvo_name] = {who_serial, who_name, who_flags}
 
-					elseif (spellid == 27163) then --Judgement Of Light
+					elseif (spellid == 27163 and false) then --Judgement Of Light
 						TBC_JudgementOfLightCache[alvo_name] = {who_serial, who_name, who_flags}
 					end
 				end
@@ -2534,8 +2568,8 @@
 				_detalhes.tabela_pets:Adicionar(alvo_serial, alvo_name, alvo_flags, who_serial, who_name, 0x00000417)
 			end
 
-			if (isTBC) then --buff applied
-				if (spellid == 27162) then --Judgement Of Light
+			if (isTBC or isWOTLK) then --buff applied
+				if (spellid == 27162 and false) then --Judgement Of Light
 					--which player applied the judgement of light on this mob
 					TBC_JudgementOfLightCache[alvo_name] = {who_serial, who_name, who_flags}
 				end
@@ -2767,7 +2801,7 @@
 						escudo [alvo_name][spellid][who_name] = amount
 						
 						if (overheal > 0) then
-							return parser:heal (token, time, who_serial, who_name, who_flags, alvo_serial, alvo_name, alvo_flags, alvo_flags2, spellid, spellname, nil, 0, _math_ceil (overheal), 0, 0, nil, true)
+							return parser:heal (token, time, who_serial, who_name, who_flags, alvo_serial, alvo_name, alvo_flags, alvo_flags2, spellid, spellname, nil, 0, _math_ceil (overheal), 0, nil, true)
 						end
 					end
 				
@@ -2811,8 +2845,8 @@
 				bargastBuffs[alvo_serial] = (bargastBuffs[alvo_serial] or 0) + 1
 			end
 
-			if (isTBC) then --buff refresh
-				if (spellid == 27162) then --Judgement Of Light
+			if (isTBC or isWOTLK) then --buff refresh
+				if (spellid == 27162 and false) then --Judgement Of Light
 					--which player applied the judgement of light on this mob
 					TBC_JudgementOfLightCache[alvo_name] = {who_serial, who_name, who_flags}
 				end
@@ -2986,8 +3020,8 @@
 				who_serial, who_name, who_flags = "", enemyName, 0xa48
 			end
 
-			if (isTBC) then --buff removed
-				if (spellid == 27162) then --Judgement Of Light
+			if (isTBC or isWOTLK) then --buff removed
+				if (spellid == 27162 and false) then --Judgement Of Light
 					TBC_JudgementOfLightCache[alvo_name] = nil
 				end
 			end
@@ -4887,6 +4921,9 @@ local SPELL_POWER_PAIN = SPELL_POWER_PAIN or (PowerEnum and PowerEnum.Pain) or 1
 			if (_detalhes.debug) then
 				_detalhes:Msg ("(debug) zone type is now 'pvp'.")
 			end
+			if(not _detalhes.is_in_battleground and _detalhes.overall_clear_pvp) then
+				_detalhes.tabela_historico:resetar_overall()
+			end
 			
 			_detalhes.is_in_battleground = true
 			
@@ -4913,6 +4950,8 @@ local SPELL_POWER_PAIN = SPELL_POWER_PAIN or (PowerEnum and PowerEnum.Pain) or 1
 					_detalhes.time_type = 1
 				end
 			end
+
+			Details.lastBattlegroundStartTime = GetTime()
 		
 		elseif (zoneType == "arena") then
 		
@@ -4926,6 +4965,9 @@ local SPELL_POWER_PAIN = SPELL_POWER_PAIN or (PowerEnum and PowerEnum.Pain) or 1
 			end
 		
 			if (not _detalhes.is_in_arena) then
+				if (_detalhes.overall_clear_pvp) then
+					_detalhes.tabela_historico:resetar_overall()
+				end
 				--> reset spec cache if broadcaster requested
 				if (_detalhes.streamer_config.reset_spec_cache) then
 					wipe (_detalhes.cached_specs)
@@ -5418,7 +5460,7 @@ local SPELL_POWER_PAIN = SPELL_POWER_PAIN or (PowerEnum and PowerEnum.Pain) or 1
 	
 	function _detalhes.parser_functions:PLAYER_TALENT_UPDATE()
 		if (IsInGroup() or IsInRaid()) then
-			if (_detalhes.SendTalentTimer and not _detalhes.SendTalentTimer._cancelled) then
+			if (_detalhes.SendTalentTimer and not _detalhes.SendTalentTimer:IsCancelled()) then
 				_detalhes.SendTalentTimer:Cancel()
 			end
 			_detalhes.SendTalentTimer = C_Timer.NewTimer (11, function()
@@ -5446,7 +5488,7 @@ local SPELL_POWER_PAIN = SPELL_POWER_PAIN or (PowerEnum and PowerEnum.Pain) or 1
 		end
 		
 		if (IsInGroup() or IsInRaid()) then
-			if (_detalhes.SendTalentTimer and not _detalhes.SendTalentTimer._cancelled) then
+			if (_detalhes.SendTalentTimer and not _detalhes.SendTalentTimer:IsCancelled()) then
 				_detalhes.SendTalentTimer:Cancel()
 			end
 			_detalhes.SendTalentTimer = C_Timer.NewTimer (11, function()
@@ -5564,7 +5606,7 @@ local SPELL_POWER_PAIN = SPELL_POWER_PAIN or (PowerEnum and PowerEnum.Pain) or 1
 				_detalhes:SchedulePetUpdate (2)
 				
 				--> send char data
-				if (_detalhes.SendCharDataOnGroupChange and not _detalhes.SendCharDataOnGroupChange._cancelled) then
+				if (_detalhes.SendCharDataOnGroupChange and not _detalhes.SendCharDataOnGroupChange:IsCancelled()) then
 					return
 				end
 				_detalhes.SendCharDataOnGroupChange = C_Timer.NewTimer (11, function()
@@ -5578,7 +5620,7 @@ local SPELL_POWER_PAIN = SPELL_POWER_PAIN or (PowerEnum and PowerEnum.Pain) or 1
 		_detalhes:SchedulePetUpdate (6)
 	end
 
-	function _detalhes.parser_functions:START_TIMER(...)
+	function _detalhes.parser_functions:START_TIMER(...) --~timer
 	
 		if (_detalhes.debug) then
 			_detalhes:Msg("(debug) found a timer.")
@@ -5617,7 +5659,13 @@ local SPELL_POWER_PAIN = SPELL_POWER_PAIN or (PowerEnum and PowerEnum.Pain) or 1
 			_detalhes.tabela_vigente.discard_segment = true
 			Details:EndCombat()
 		end
+
+		Details.lastBattlegroundStartTime = GetTime()
 		Details:StartCombat()
+
+		if (Details.debug) then
+			Details:Msg("(debug) a battleground has started.")
+		end		
 	end
 
 	-- ~load
@@ -5727,49 +5775,58 @@ local SPELL_POWER_PAIN = SPELL_POWER_PAIN or (PowerEnum and PowerEnum.Pain) or 1
 	local saver = CreateFrame ("frame", nil, UIParent)
 	saver:RegisterEvent ("PLAYER_LOGOUT")
 	saver:SetScript ("OnEvent", function (...)
-		
+		--save the time played on this class, run protected
+		pcall(function()
+			local className = select(2, UnitClass("player"))
+			if (className) then
+				Details.class_time_played[className] = (Details.class_time_played[className] or 0) + GetTime() - Details.GetStartupTime()
+			end
+		end)
+
 		local currentStep = 0
 
 		--SAVINGDATA = true
+		_detalhes_global.exit_log = {}
+		_detalhes_global.exit_errors = _detalhes_global.exit_errors or {}
 
+		currentStep = "Checking the framework integrity"
 		if (not _detalhes.gump) then
-			--> failed to load the framework.
+			--failed to load the framework
+			tinsert(_detalhes_global.exit_log, "The framework wasn't in Details member 'gump'.")
+			tinsert(_detalhes_global.exit_errors, 1, currentStep .. "|" .. date() .. "|" .. _detalhes.userversion .. "|Framework wasn't loaded|")
 			return
 		end
 
-		_detalhes_global.exit_log = {}
-		_detalhes_global.exit_errors = _detalhes_global.exit_errors or {}
-		
-		local saver_error = function (errortext)
+		local saver_error = function(errortext)
 			_detalhes_global = _detalhes_global or {}
-			tinsert (_detalhes_global.exit_errors, 1, currentStep .. "|" .. date() .. "|" .. _detalhes.userversion .. "|" .. errortext .. "|" .. debugstack())
-			tremove (_detalhes_global.exit_errors, 6)
+			tinsert(_detalhes_global.exit_errors, 1, currentStep .. "|" .. date() .. "|" .. _detalhes.userversion .. "|" .. errortext .. "|" .. debugstack())
+			tremove(_detalhes_global.exit_errors, 6)
 		end
 
 		_detalhes.saver_error_func = saver_error
 		_detalhes.logoff_saving_data = true
-	
-		--> close info window
-			if (_detalhes.FechaJanelaInfo) then
-				tinsert (_detalhes_global.exit_log, "1 - Closing Janela Info.")
-				currentStep = "Fecha Janela Info"
-				xpcall (_detalhes.FechaJanelaInfo, saver_error)
-			end
-			
-		--> do not save window pos
-			if (_detalhes.tabela_instancias) then
-				currentStep = "Dealing With Instances"
-				tinsert (_detalhes_global.exit_log, "2 - Clearing user place from instances.")
-				for id, instance in _detalhes:ListInstances() do
-					if (id) then
-						tinsert (_detalhes_global.exit_log, "  - " .. id .. " has baseFrame: " .. (instance.baseframe and "yes" or "no") .. ".")
-						if (instance.baseframe) then
-							instance.baseframe:SetUserPlaced (false)
-							instance.baseframe:SetDontSavePosition (true)
-						end
+
+		--close info window
+		if (_detalhes.FechaJanelaInfo) then
+			tinsert(_detalhes_global.exit_log, "1 - Closing Janela Info.")
+			currentStep = "Fecha Janela Info"
+			xpcall(_detalhes.FechaJanelaInfo, saver_error)
+		end
+
+		--do not save window pos
+		if (_detalhes.tabela_instancias) then
+			currentStep = "Dealing With Instances"
+			tinsert (_detalhes_global.exit_log, "2 - Clearing user place from instances.")
+			for id, instance in _detalhes:ListInstances() do
+				if (id) then
+					tinsert (_detalhes_global.exit_log, "  - " .. id .. " has baseFrame: " .. (instance.baseframe and "yes" or "no") .. ".")
+					if (instance.baseframe) then
+						instance.baseframe:SetUserPlaced (false)
+						instance.baseframe:SetDontSavePosition (true)
 					end
 				end
 			end
+		end
 
 		--> leave combat start save tables
 			if (_detalhes.in_combat and _detalhes.tabela_vigente) then 
@@ -5815,12 +5872,11 @@ local SPELL_POWER_PAIN = SPELL_POWER_PAIN or (PowerEnum and PowerEnum.Pain) or 1
 	-- ~parserstart ~startparser ~cleu
 
 	function _detalhes.OnParserEvent()
-		-- 8.0 changed
 		local time, token, hidding, who_serial, who_name, who_flags, who_flags2, target_serial, target_name, target_flags, target_flags2, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12 = _CombatLogGetCurrentEventInfo()
 		
 		local funcao = token_list [token]
 		if (funcao) then
-			funcao (nil, token, time, who_serial, who_name, who_flags, target_serial, target_name, target_flags, target_flags2, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12)
+			return funcao (nil, token, time, who_serial, who_name, who_flags, target_serial, target_name, target_flags, target_flags2, A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12)
 		else
 			return
 		end
@@ -6089,11 +6145,11 @@ local SPELL_POWER_PAIN = SPELL_POWER_PAIN or (PowerEnum and PowerEnum.Pain) or 1
 		end
 
 		if (_in_combat) then
-			if (not _auto_regen_thread or _auto_regen_thread._cancelled) then
+			if (not _auto_regen_thread or _auto_regen_thread:IsCancelled()) then
 				_auto_regen_thread = C_Timer.NewTicker (AUTO_REGEN_PRECISION / 10, regen_power_overflow_check)
 			end
 		else
-			if (_auto_regen_thread and not _auto_regen_thread._cancelled) then
+			if (_auto_regen_thread and not _auto_regen_thread:IsCancelled()) then
 				_auto_regen_thread:Cancel()
 				_auto_regen_thread = nil
 			end
@@ -6266,7 +6322,7 @@ local SPELL_POWER_PAIN = SPELL_POWER_PAIN or (PowerEnum and PowerEnum.Pain) or 1
 
 		for i = 1, players do
 			local name, killingBlows, honorableKills, deaths, honorGained, faction, race, rank, class, classToken, damageDone, healingDone, bgRating, ratingChange, preMatchMMR, mmrChange, talentSpec
-			if (isTBC) then
+			if (isTBC or isWOTLK) then
 				name, killingBlows, honorableKills, deaths, honorGained, faction, rank, race, class, classToken, damageDone, healingDone, bgRating, ratingChange, preMatchMMR, mmrChange, talentSpec = GetBattlefieldScore(i)
 			else
 				name, killingBlows, honorableKills, deaths, honorGained, faction, race, class, classToken, damageDone, healingDone, bgRating, ratingChange, preMatchMMR, mmrChange, talentSpec = GetBattlefieldScore(i)

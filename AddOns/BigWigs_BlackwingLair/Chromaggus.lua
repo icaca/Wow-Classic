@@ -2,10 +2,9 @@
 -- Module declaration
 --
 
-local mod, CL = BigWigs:NewBoss("Chromaggus", 469)
+local mod, CL = BigWigs:NewBoss("Chromaggus", 469, 1535)
 if not mod then return end
 mod:RegisterEnableMob(14020)
-mod:SetAllowWin(true)
 mod:SetEncounterID(616)
 
 --------------------------------------------------------------------------------
@@ -31,10 +30,8 @@ local icons = {
 -- Localization
 --
 
-local L = mod:NewLocale("enUS", true)
+local L = mod:NewLocale()
 if L then
-	L.bossName = "Chromaggus"
-
 	L.breath = "Breaths"
 	L.breath_desc = "Warn for Breaths."
 

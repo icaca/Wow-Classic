@@ -2824,7 +2824,8 @@ function CEPGP_encodeClassString(class, str)
 		["ROGUE"] = "00FFF569",
 		["SHAMAN"] = "000070DE",
 		["WARLOCK"] = "008787ED",
-		["WARRIOR"] = "00C79C6E"
+		["WARRIOR"] = "00C79C6E",
+		["DEATHKNIGHT"] = "00C41E3A"
 	}
 	
 	if class then

@@ -6379,7 +6379,7 @@
 						self:ClearFocus();
 						self:HighlightText(0,0);
 						if IsShiftKeyDown() then
-							_G["CEPGP_raid_modifiers_Naxxramas"]:SetFocus(true);
+							_G["CEPGP_raid_modifiers_The Temple of Ahn'Quiraj"]:SetFocus(true);
 						else
 							_G["CEPGP_raid_modifiers_Onyxia's Lair"]:SetFocus(true);
 						end
@@ -6696,7 +6696,13 @@
 						if IsShiftKeyDown() then
 							_G["CEPGP_raid_modifiers_The Ruins of Ahn'Qiraj"]:SetFocus(true);
 						else
-							_G["CEPGP_raid_modifiers_Naxxramas"]:SetFocus(true);
+							if _G["CEPGP_raid_modifiers_Karazhan"] then
+								_G["CEPGP_raid_modifiers_Karazhan"]:SetFocus(true);
+							elseif _G["CEPGP_raid_modifiers_Naxxramas"] then
+								_G["CEPGP_raid_modifiers_Naxxramas"]:SetFocus(true);
+							else
+								_G["CEPGP_raid_modifiers_Molten Core"]:SetFocus(true);
+							end
 						end
 					</OnTabPressed>
 					<OnEditFocusLost>
@@ -6717,6 +6723,7 @@
 					</OnEditFocusLost>
 				</Scripts>
 			</EditBox>
+<!--
 			<EditBox name="$parent_Naxxramas" inherits="InputBoxTemplate">
 				<Size x="50" y="15" />
 				<Anchors>
@@ -6780,6 +6787,7 @@
 					</OnEditFocusLost>
 				</Scripts>
 			</EditBox>
+			-->
 		</Frames>
 		<Scripts>
 			<OnLoad inherit="prepend">
@@ -8030,6 +8038,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
+					<!--
 					<Button name="CEPGP_EP_options_naxx_button" inherits="GameMenuButtonTemplate" text="Naxxramas">
 						<Size>
 							<AbsDimension x="100" y="21" />
@@ -8048,6 +8057,7 @@
 							</OnClick>
 						</Scripts>
 					</Button>
+					-->
 					<Button name="CEPGP_EP_options_world_button" inherits="GameMenuButtonTemplate" text="World Encounters">
 						<Size>
 							<AbsDimension x="150" y="21" />
@@ -9220,6 +9230,7 @@
 							</Layer>
 						</Layers>
 					</Frame>
+					<!--
 					<Frame name="CEPGP_EP_options_naxx" enableMouse="true" toplevel="true" hidden="true">
 						<Size>
 							<AbsDimension x="390" y="300" />
@@ -9600,6 +9611,7 @@
 						</Layers>
 
 					</Frame>
+					-->
 					<Frame name="CEPGP_EP_options_worldboss" enableMouse="true" toplevel="true" hidden="true">
 						<Size>
 							<AbsDimension x="390" y="300" />

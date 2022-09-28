@@ -712,27 +712,13 @@ function QuestieSearchResults:DrawSearchTab(container)
     searchBox:SetLabel(l10n("Advanced Search") .. " (".. l10n("Quests") .. ", ".. l10n("NPCs") .. ", ".. l10n("Objects") .. ", ".. l10n("Items") .. ")");
     searchBox:DisableButton(true);
     searchBox:SetCallback("OnTextChanged", function()
-<<<<<<< Updated upstream
-        if searchBox:GetText() ~= '' then
-=======
         if searchBox:GetText() ~= "" then
->>>>>>> Stashed changes
             searchButton:SetDisabled(false);
         else
             searchButton:SetDisabled(true);
         end
     end);
-<<<<<<< Updated upstream
-    searchBox:SetCallback("OnEnterPressed", function()
-        if searchBox:GetText() ~= '' then
-            local text = string.trim(searchBox:GetText(), " \n\r\t[]");
-            QuestieSearchResults:DrawSearchResultTab(searchGroup, Questie.db.char.searchType, text, false);
-            searchBox:ClearFocus()
-        end
-    end);
-=======
     searchBox:SetCallback("OnEnterPressed", _GetSearchFunction(searchBox, searchGroup));
->>>>>>> Stashed changes
     -- Check for existence of previous search, if present use its text
     if QuestieSearch.LastResult.query ~= "" then
         searchBox:SetText(QuestieSearch.LastResult.query)

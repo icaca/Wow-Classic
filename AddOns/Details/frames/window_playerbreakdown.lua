@@ -146,7 +146,7 @@ function _detalhes:AbreJanelaInfo (jogador, from_att_change, refresh, ShiftKeyDo
 	
 	if (info.barras2) then
 		for index, barra in ipairs (info.barras2) do 
-			barra.icone:SetTexture (nil)
+			barra.icone:SetTexture ("")
 			barra.icone:SetTexCoord (0, 1, 0, 1)
 		end
 	end
@@ -365,7 +365,7 @@ function gump:TrocaBackgroundInfo()
 	if (info.atributo == 1) then --> DANO
 	
 		if (info.sub_atributo == 1 or info.sub_atributo == 2) then --> damage done / dps
-			info.bg1_sec_texture:SetTexture (nil)
+			info.bg1_sec_texture:SetTexture ("")
 			info.tipo = 1
 			
 			if (info.sub_atributo == 2) then
@@ -428,7 +428,7 @@ function gump:TrocaBackgroundInfo()
 		
 	elseif (info.atributo == 2) then --> HEALING
 		if (info.sub_atributo == 1 or info.sub_atributo == 2 or info.sub_atributo == 3) then --> damage done / dps
-			info.bg1_sec_texture:SetTexture (nil)
+			info.bg1_sec_texture:SetTexture ("")
 			info.tipo = 1
 			
 			if (info.sub_atributo == 3) then
@@ -462,12 +462,12 @@ function gump:TrocaBackgroundInfo()
 		end
 		
 	elseif (info.atributo == 3) then --> REGEN
-		info.bg1_sec_texture:SetTexture (nil)
+		info.bg1_sec_texture:SetTexture ("")
 		info.tipo = 2
 		info.targets:SetText ("Vindo de:")
 	
 	elseif (info.atributo == 4) then --> MISC
-		info.bg1_sec_texture:SetTexture (nil)
+		info.bg1_sec_texture:SetTexture ("")
 		info.tipo = 2
 
 		info.targets:SetText (Loc ["STRING_TARGETS"] .. ":")
@@ -2315,7 +2315,7 @@ function gump:CriaJanelaInfo()
 					end
 				else
 					local d = lastvalue - ps
-					d = d / ps * 100
+					d = d / max(ps, 0.001) * 100
 					d = _math_floor (math.abs (d))
 					
 					if (d > 999) then
@@ -2636,7 +2636,7 @@ function gump:CriaJanelaInfo()
 					framebg:Hide()
 					label1:SetText ("")
 					label2:SetText ("")
-					icon1:SetTexture (nil)
+					icon1:SetTexture ("")
 				end
 				
 			--> habilidade usada para interromper
@@ -2719,10 +2719,10 @@ function gump:CriaJanelaInfo()
 		--icon - name - applications - refreshes - uptime
 		--
 		
-		local wa_button = function (self, mouseButton, spellID, auraType)
-			local spellName, _, spellIcon = GetSpellInfo (spellID)
-			_detalhes:OpenAuraPanel (spellID, spellName, spellIcon, nil, auraType == "BUFF" and 4 or 2, 1)
-		end
+		--local wa_button = function (self, mouseButton, spellID, auraType)
+		--	local spellName, _, spellIcon = GetSpellInfo (spellID)
+		--	_detalhes:OpenAuraPanel (spellID, spellName, spellIcon, nil, auraType == "BUFF" and 4 or 2, 1)
+		--end
 		
 		local scroll_createline = function (self, index)
 			local line = CreateFrame ("button", "$parentLine" .. index, self,"BackdropTemplate")
@@ -2742,8 +2742,8 @@ function gump:CriaJanelaInfo()
 			local apply = line:CreateFontString ("$parentName", "overlay", "GameFontNormal")
 			local refresh = line:CreateFontString ("$parentName", "overlay", "GameFontNormal")
 			
-			local waButton = DF:CreateButton (line, wa_button, 18, 18)
-			waButton:SetIcon ([[Interface\AddOns\WeakAuras\Media\Textures\icon]])
+			--local waButton = DF:CreateButton (line, wa_button, 18, 18)
+			--waButton:SetIcon ([[Interface\AddOns\WeakAuras\Media\Textures\icon]])
 			
 			DF:SetFontSize (name, text_size)
 			DF:SetFontSize (uptime, text_size)
@@ -2755,14 +2755,14 @@ function gump:CriaJanelaInfo()
 			uptime:SetPoint ("left", line, "left", 186, 0)
 			apply:SetPoint ("left", line, "left", 276, 0)
 			refresh:SetPoint ("left", line, "left", 322, 0)
-			waButton:SetPoint ("left", line, "left", 372, 0)
+			--waButton:SetPoint ("left", line, "left", 372, 0)
 			
 			line.Icon = icon
 			line.Name = name
 			line.Uptime = uptime
 			line.Apply = apply
 			line.Refresh = refresh
-			line.WaButton = waButton
+			--line.WaButton = waButton
 
 			name:SetJustifyH ("left")
 			uptime:SetJustifyH ("left")
@@ -2779,7 +2779,7 @@ function gump:CriaJanelaInfo()
 		
 		local scroll_buff_refresh = function (self, data, offset, total_lines)
 		
-			local haveWA = _G.WeakAuras
+			local haveWA = false --_G.WeakAuras
 		
 			for i = 1, total_lines do
 				local index = i + offset
@@ -2797,11 +2797,11 @@ function gump:CriaJanelaInfo()
 					line.Apply:SetText (aura [4])
 					line.Refresh:SetText (aura [5])
 					
-					if (haveWA) then
-						line.WaButton:SetClickFunction (wa_button, aura.spellID, line.AuraType)
-					else
-						line.WaButton:Disable()
-					end
+					--if (haveWA) then
+					--	line.WaButton:SetClickFunction (wa_button, aura.spellID, line.AuraType)
+					--else
+					--	line.WaButton:Disable()
+					--end
 					
 					if (i%2 == 0) then
 						line:SetBackdropColor (unpack (line_bg_color [1]))
@@ -2844,9 +2844,9 @@ function gump:CriaJanelaInfo()
 		refreshedLabel:SetPoint (headerOffsetsBuffs[4], -10)
 		create_titledesc_frame (refreshedLabel.widget, "refreshes")
 		
-		local waLabel = DF:CreateLabel (frame, "WA")
-		waLabel:SetPoint (headerOffsetsBuffs[5], -10)
-		create_titledesc_frame (waLabel.widget, "create weak aura")
+		--local waLabel = DF:CreateLabel (frame, "WA")
+		--waLabel:SetPoint (headerOffsetsBuffs[5], -10)
+		--create_titledesc_frame (waLabel.widget, "create weak aura")
 		
 		local buffScroll = DF:CreateScrollBox (frame, "$parentBuffUptimeScroll", scroll_buff_refresh, {}, scroll_width, scrollHeight, scroll_line_amount, scroll_line_height)
 		buffScroll:SetPoint ("topleft", frame, "topleft", 5, -30)
@@ -2874,12 +2874,10 @@ function gump:CriaJanelaInfo()
 		refreshedLabel2:SetPoint (headerOffsetsDebuffs[4], -10)
 		create_titledesc_frame (refreshedLabel2.widget, "refreshes")
 		
-		local waLabel2 = DF:CreateLabel (frame, "WA")
-		waLabel2:SetPoint (headerOffsetsDebuffs[5], -10)
-		create_titledesc_frame (waLabel2.widget, "create weak aura")
+		--local waLabel2 = DF:CreateLabel (frame, "WA")
+		--waLabel2:SetPoint (headerOffsetsDebuffs[5], -10)
+		--create_titledesc_frame (waLabel2.widget, "create weak aura")
 
-		
-		
 		local debuffScroll = DF:CreateScrollBox (frame, "$parentDebuffUptimeScroll", scroll_buff_refresh, {}, scroll_width, scrollHeight, scroll_line_amount, scroll_line_height)
 		debuffScroll:SetPoint ("topleft", frame, "topleft", debuffScrollStartX, -30)
 		for i = 1, scroll_line_amount do 
@@ -2983,7 +2981,7 @@ function gump:CriaJanelaInfo()
 					local bar_2 = frame2.bars [i]
 					local bar_3 = frame3.bars [i]
 					
-					bar [1]:SetTexture (nil)
+					bar [1]:SetTexture ("")
 					bar [2].lefttext:SetText (empty_text)
 					bar [2].lefttext:SetTextColor (.5, .5, .5, 1)
 					bar [2].righttext:SetText ("")
@@ -2991,7 +2989,7 @@ function gump:CriaJanelaInfo()
 					bar [2]:SetValue (0)
 					bar [2]:SetBackdropColor (1, 1, 1, 0)
 					bar [3][4] = nil
-					bar_2 [1]:SetTexture (nil)
+					bar_2 [1]:SetTexture ("")
 					bar_2 [2].lefttext:SetText (empty_text)
 					bar_2 [2].lefttext:SetTextColor (.5, .5, .5, 1)
 					bar_2 [2].righttext:SetText ("")
@@ -2999,7 +2997,7 @@ function gump:CriaJanelaInfo()
 					bar_2 [2]:SetValue (0)
 					bar_2 [2]:SetBackdropColor (1, 1, 1, 0)
 					bar_2 [3][4] = nil
-					bar_3 [1]:SetTexture (nil)
+					bar_3 [1]:SetTexture ("")
 					bar_3 [2].lefttext:SetText (empty_text)
 					bar_3 [2].lefttext:SetTextColor (.5, .5, .5, 1)
 					bar_3 [2].righttext:SetText ("")
@@ -3129,7 +3127,7 @@ function gump:CriaJanelaInfo()
 							bar_2 [3][4] = player_2
 							
 						else
-							bar_2 [1]:SetTexture (nil)
+							bar_2 [1]:SetTexture ("")
 							bar_2 [2].lefttext:SetText (empty_text)
 							bar_2 [2].lefttext:SetTextColor (.5, .5, .5, 1)
 							bar_2 [2].righttext:SetText ("")
@@ -3139,7 +3137,7 @@ function gump:CriaJanelaInfo()
 							bar_2 [3][4] = nil
 						end
 					else
-						bar_2 [1]:SetTexture (nil)
+						bar_2 [1]:SetTexture ("")
 						bar_2 [2].lefttext:SetText (empty_text)
 						bar_2 [2].lefttext:SetTextColor (.5, .5, .5, 1)
 						bar_2 [2].righttext:SetText ("")
@@ -3200,7 +3198,7 @@ function gump:CriaJanelaInfo()
 							bar_3 [3][4] = player_3
 							
 						else
-							bar_3 [1]:SetTexture (nil)
+							bar_3 [1]:SetTexture ("")
 							bar_3 [2].lefttext:SetText (empty_text)
 							bar_3 [2].lefttext:SetTextColor (.5, .5, .5, 1)
 							bar_3 [2].righttext:SetText ("")
@@ -3210,7 +3208,7 @@ function gump:CriaJanelaInfo()
 							bar_3 [3][4] = nil
 						end
 					else
-						bar_3 [1]:SetTexture (nil)
+						bar_3 [1]:SetTexture ("")
 						bar_3 [2].lefttext:SetText (empty_text)
 						bar_3 [2].lefttext:SetTextColor (.5, .5, .5, 1)
 						bar_3 [2].righttext:SetText ("")
@@ -3221,7 +3219,7 @@ function gump:CriaJanelaInfo()
 					end
 					
 				else
-					bar [1]:SetTexture (nil)
+					bar [1]:SetTexture ("")
 					bar [2].lefttext:SetText (empty_text)
 					bar [2].lefttext:SetTextColor (.5, .5, .5, 1)
 					bar [2].righttext:SetText ("")
@@ -3229,7 +3227,7 @@ function gump:CriaJanelaInfo()
 					bar [2]:SetValue (0)
 					bar [2]:SetBackdropColor (1, 1, 1, 0)
 					bar [3][4] = nil
-					bar_2 [1]:SetTexture (nil)
+					bar_2 [1]:SetTexture ("")
 					bar_2 [2].lefttext:SetText (empty_text)
 					bar_2 [2].lefttext:SetTextColor (.5, .5, .5, 1)
 					bar_2 [2].righttext:SetText ("")
@@ -3237,7 +3235,7 @@ function gump:CriaJanelaInfo()
 					bar_2 [2]:SetValue (0)
 					bar_2 [2]:SetBackdropColor (1, 1, 1, 0)
 					bar_2 [3][4] = nil
-					bar_3 [1]:SetTexture (nil)
+					bar_3 [1]:SetTexture ("")
 					bar_3 [2].lefttext:SetText (empty_text)
 					bar_3 [2].lefttext:SetTextColor (.5, .5, .5, 1)
 					bar_3 [2].righttext:SetText ("")
@@ -3387,8 +3385,8 @@ function gump:CriaJanelaInfo()
 						bar [2]:SetValue (data [2] / top * 100)
 						--bar [2]:SetValue (100)
 						bar [3][1] = data [1].counter --tooltip hits
-						bar [3][2] = data [2] / data [1].counter --tooltip average
-						bar [3][3] = _math_floor (data [1].c_amt / data [1].counter * 100) --tooltip critical
+						bar [3][2] = data [2] / max(data [1].counter, 0.0001) --tooltip average
+						bar [3][3] = _math_floor (data [1].c_amt / max(data [1].counter, 0.0001) * 100) --tooltip critical
 						bar [3][4] = spellid
 
 					--player 2
@@ -3458,7 +3456,7 @@ function gump:CriaJanelaInfo()
 						bar_2 [3][3] = _math_floor (spell.c_amt / spell.counter * 100) --tooltip critical
 						bar_2 [2]:SetBackdropColor (1, 1, 1, 0)
 					else
-						bar_2 [1]:SetTexture (nil)
+						bar_2 [1]:SetTexture ("")
 						bar_2 [2].lefttext:SetText (empty_text)
 						bar_2 [2].lefttext:SetTextColor (.5, .5, .5, 1)
 						bar_2 [2].righttext:SetText ("")
@@ -3533,7 +3531,7 @@ function gump:CriaJanelaInfo()
 							bar_3 [3][2] = spell.total / spell.counter --tooltip average
 							bar_3 [3][3] = _math_floor (spell.c_amt / spell.counter * 100) --tooltip critical
 						else
-							bar_3 [1]:SetTexture (nil)
+							bar_3 [1]:SetTexture ("")
 							bar_3 [2].lefttext:SetText (empty_text)
 							bar_3 [2].lefttext:SetTextColor (.5, .5, .5, 1)
 							bar_3 [2].righttext:SetText ("")
@@ -3542,7 +3540,7 @@ function gump:CriaJanelaInfo()
 							bar_3 [2]:SetBackdropColor (1, 1, 1, 0)
 						end
 					else
-						bar_3 [1]:SetTexture (nil)
+						bar_3 [1]:SetTexture ("")
 						bar_3 [2].lefttext:SetText (empty_text)
 						bar_3 [2].lefttext:SetTextColor (.5, .5, .5, 1)
 						bar_3 [2].righttext:SetText ("")
@@ -3551,14 +3549,14 @@ function gump:CriaJanelaInfo()
 						bar_3 [2]:SetBackdropColor (1, 1, 1, 0)
 					end
 				else
-					bar [1]:SetTexture (nil)
+					bar [1]:SetTexture ("")
 					bar [2].lefttext:SetText (empty_text)
 					bar [2].lefttext:SetTextColor (.5, .5, .5, 1)
 					bar [2].righttext:SetText ("")
 					bar [2]:SetValue (0)
 					bar [2]:SetBackdropColor (1, 1, 1, 0)
 					local bar_2 = frame2.bars [i]
-					bar_2 [1]:SetTexture (nil)
+					bar_2 [1]:SetTexture ("")
 					bar_2 [2].lefttext:SetText (empty_text)
 					bar_2 [2].lefttext:SetTextColor (.5, .5, .5, 1)
 					bar_2 [2].righttext:SetText ("")
@@ -3566,7 +3564,7 @@ function gump:CriaJanelaInfo()
 					bar_2 [2]:SetValue (0)
 					bar_2 [2]:SetBackdropColor (1, 1, 1, 0)
 					local bar_3 = frame3.bars [i]
-					bar_3 [1]:SetTexture (nil)
+					bar_3 [1]:SetTexture ("")
 					bar_3 [2].lefttext:SetText (empty_text)
 					bar_3 [2].lefttext:SetTextColor (.5, .5, .5, 1)
 					bar_3 [2].righttext:SetText ("")
@@ -3788,7 +3786,7 @@ function gump:CriaJanelaInfo()
 						if (not bar) then
 							bar = frame2.tooltip:CreateBar (index)
 						end
-						bar [1]:SetTexture (nil)
+						bar [1]:SetTexture ("")
 						bar [2].lefttext:SetText ("")
 						bar [2].righttext:SetText ("")
 						bar [2].righttext2:SetText ("")
@@ -3842,7 +3840,7 @@ function gump:CriaJanelaInfo()
 						if (not bar) then
 							bar = frame3.tooltip:CreateBar (index)
 						end
-						bar [1]:SetTexture (nil)
+						bar [1]:SetTexture ("")
 						bar [2].lefttext:SetText ("")
 						bar [2].righttext:SetText ("")
 						bar [2].righttext2:SetText ("")
@@ -4577,7 +4575,7 @@ function gump:CriaJanelaInfo()
 				
 				function tooltip:Reset()
 					for index, bar in _ipairs (tooltip.bars) do 
-						bar [1]:SetTexture (nil)
+						bar [1]:SetTexture ("")
 						bar [2].lefttext:SetText ("")
 						bar [2].righttext:SetText ("")
 						bar [2].righttext2:SetText ("")
@@ -5596,48 +5594,48 @@ local function SetBarraScripts (esta_barra, instancia, i)
 
 end
 
-local function CriaTexturaBarra (instancia, barra)
+local function CriaTexturaBarra(newLine)
+	newLine.textura = CreateFrame("StatusBar", nil, newLine, "BackdropTemplate")
+	newLine.textura:SetFrameLevel(newLine:GetFrameLevel()-1)
+	newLine.textura:SetAllPoints(newLine)
+	newLine.textura:SetAlpha(0.5)
+	newLine.textura:Show()
+	
+	local textureObject = newLine.textura:CreateTexture(nil, "artwork")
+	local texturePath = SharedMedia:Fetch("statusbar", _detalhes.player_details_window.bar_texture)
+	textureObject:SetTexture(texturePath)
+	newLine.textura:SetStatusBarTexture(textureObject)
+	newLine.textura:SetStatusBarColor(.5, .5, .5, 1)
+	--newLine.textura:SetColorFill(.5, .5, .5, 1) --(r, g, b, a) --only in 10.0?
+	newLine.textura:SetMinMaxValues(0, 100)
 
-	barra.textura = _CreateFrame ("StatusBar", nil, barra, "BackdropTemplate")
+	local backgroundTexture = newLine.textura:CreateTexture(nil, "background")
+	backgroundTexture:SetAllPoints()
+	backgroundTexture:SetColorTexture(.5, .5, .5, 0.18)
+	newLine.textura.bg = backgroundTexture
 	
-	barra.textura:SetFrameLevel (barra:GetFrameLevel()-1)
-	
-	barra.textura:SetAllPoints (barra)
-	barra.textura:SetAlpha (0.5)
-	
-	local texture = SharedMedia:Fetch ("statusbar", _detalhes.player_details_window.bar_texture)
-	barra.textura:SetStatusBarTexture (texture)
-	barra.textura:SetStatusBarTexture (.6, .6, .6, 1)
-	
-	barra.textura:SetStatusBarColor (.5, .5, .5, 0)
-	barra.textura:SetMinMaxValues (0,100)
-	
-	barra.textura.bg = barra.textura:CreateTexture (nil, "background")
-	barra.textura.bg:SetAllPoints()
-	barra.textura.bg:SetColorTexture (1, 1, 1, 0.08)
-	
-	if (barra.targets) then
-		barra.targets:SetParent (barra.textura)
-		barra.targets:SetFrameLevel (barra.textura:GetFrameLevel()+2)
+	if (newLine.targets) then
+		newLine.targets:SetParent(newLine.textura)
+		newLine.targets:SetFrameLevel(newLine.textura:GetFrameLevel()+2)
 	end
 	
-	barra.lineText1 = barra:CreateFontString (nil, "OVERLAY", "GameFontHighlightSmall")
-	barra.lineText1:SetPoint ("LEFT", barra.icone, "RIGHT", 2, 0)
-	barra.lineText1:SetJustifyH ("LEFT")
-	barra.lineText1:SetTextColor (1,1,1,1)
-	barra.lineText1:SetNonSpaceWrap (true)
-	barra.lineText1:SetWordWrap (false)
-	
-	barra.lineText4 = barra:CreateFontString (nil, "OVERLAY", "GameFontHighlightSmall")
-	if (barra.targets) then
-		barra.lineText4:SetPoint ("RIGHT", barra.targets, "LEFT", -2, 0)
+	--create the left text
+	newLine.lineText1 = newLine:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+	newLine.lineText1:SetPoint("LEFT", newLine.icone, "RIGHT", 2, 0)
+	newLine.lineText1:SetJustifyH("LEFT")
+	newLine.lineText1:SetTextColor(1,1,1,1)
+	newLine.lineText1:SetNonSpaceWrap(true)
+	newLine.lineText1:SetWordWrap(false)
+
+	--create the rigth text
+	newLine.lineText4 = newLine:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+	if (newLine.targets) then
+		newLine.lineText4:SetPoint("RIGHT", newLine.targets, "LEFT", -2, 0)
 	else
-		barra.lineText4:SetPoint ("RIGHT", barra, "RIGHT", -2, 0)
+		newLine.lineText4:SetPoint("RIGHT", newLine, "RIGHT", -2, 0)
 	end
-	barra.lineText4:SetJustifyH ("RIGHT")
-	barra.lineText4:SetTextColor (1,1,1,1)
-	
-	barra.textura:Show()
+	newLine.lineText4:SetJustifyH("RIGHT")
+	newLine.lineText4:SetTextColor(1,1,1,1)
 end
 
 local miniframe_func_on_enter = function (self)
@@ -5798,69 +5796,62 @@ end
 
 
 function gump:CriaNovaBarraInfo1 (instancia, index)
-
-	if (_detalhes.playerDetailWindow.barras1 [index]) then
-		print ("erro a barra "..index.." ja existe na janela de detalhes...")
+	if (_detalhes.playerDetailWindow.barras1[index]) then
 		return
 	end
 
-	local janela = info.container_barras.gump
+	local parentFrame = info.container_barras.gump
 
-	local esta_barra = _CreateFrame ("Button", "Details_infobox1_bar_"..index, info.container_barras.gump,"BackdropTemplate")
-	esta_barra:SetHeight (CONST_BAR_HEIGHT)
-	esta_barra.index = index
+	local newLine = CreateFrame("Button", "Details_infobox1_bar_" .. index, parentFrame, "BackdropTemplate")
+	newLine:SetHeight(CONST_BAR_HEIGHT)
+	newLine.index = index
 
 	local y = (index-1) * (CONST_BAR_HEIGHT + 1)
-	y = y*-1 --> baixo
+	y = y * -1
 	
-	esta_barra:SetPoint ("LEFT", janela, "LEFT", CONST_BAR_HEIGHT, 0)
-	esta_barra:SetPoint ("RIGHT", janela, "RIGHT")
-	esta_barra:SetPoint ("TOP", janela, "TOP", 0, y)
-	esta_barra:SetFrameLevel (janela:GetFrameLevel() + 1)
+	newLine:SetPoint("LEFT", parentFrame, "LEFT", CONST_BAR_HEIGHT, 0)
+	newLine:SetPoint("RIGHT", parentFrame, "RIGHT")
+	newLine:SetPoint("TOP", parentFrame, "TOP", 0, y)
+	newLine:SetFrameLevel(parentFrame:GetFrameLevel() + 1)
+	newLine:SetAlpha(1)
+	newLine:EnableMouse(true)
+	newLine:RegisterForClicks("LeftButtonDown","RightButtonUp")	
+	newLine.isMain = true
 
-	esta_barra:EnableMouse (true)
-	esta_barra:RegisterForClicks ("LeftButtonDown","RightButtonUp")	
-	
-	esta_barra.targets = CreateFrame ("frame", "Details_infobox1_bar_"..index.."Targets", esta_barra, "BackdropTemplate")
-	esta_barra.targets:SetPoint ("right", esta_barra, "right")
-	esta_barra.targets:SetSize (CONST_BAR_HEIGHT-1, CONST_BAR_HEIGHT-1)
-	esta_barra.targets.texture = esta_barra.targets:CreateTexture (nil, overlay)
-	esta_barra.targets.texture:SetTexture ([[Interface\MINIMAP\TRACKING\Target]])
-	esta_barra.targets.texture:SetAllPoints()
-	esta_barra.targets.texture:SetDesaturated (true)
-	esta_barra.targets:SetAlpha (.7)
-	esta_barra.targets.texture:SetAlpha (1)
-	esta_barra.targets:SetScript ("OnEnter", target_on_enter)
-	esta_barra.targets:SetScript ("OnLeave", target_on_leave)
-	
-	esta_barra.icone = esta_barra:CreateTexture (nil, "OVERLAY")
-	esta_barra.icone:SetWidth (CONST_BAR_HEIGHT)
-	esta_barra.icone:SetHeight (CONST_BAR_HEIGHT)
-	esta_barra.icone:SetPoint ("RIGHT", esta_barra, "LEFT", 0, 0)
+	--create a square frame which is placed at the right side of the line to show which targets for damaged by the spell
+	newLine.targets = CreateFrame("frame", "$parentTargets", newLine, "BackdropTemplate")
+	newLine.targets:SetPoint("right", newLine, "right", 0, 0)
+	newLine.targets:SetSize(CONST_BAR_HEIGHT-1, CONST_BAR_HEIGHT-1)
+	newLine.targets:SetAlpha(.7)
+	newLine.targets:SetScript("OnEnter", target_on_enter)
+	newLine.targets:SetScript("OnLeave", target_on_leave)
+	newLine.targets.texture = newLine.targets:CreateTexture(nil, "overlay")
+	newLine.targets.texture:SetTexture([[Interface\MINIMAP\TRACKING\Target]])
+	newLine.targets.texture:SetAllPoints()
+	newLine.targets.texture:SetDesaturated(true)
+	newLine.targets.texture:SetAlpha(1)
 
-	CriaTexturaBarra(instancia, esta_barra)
+	--create the icon to show the spell icon
+	newLine.icone = newLine:CreateTexture(nil, "OVERLAY")
+	newLine.icone:SetWidth(CONST_BAR_HEIGHT-2)
+	newLine.icone:SetHeight(CONST_BAR_HEIGHT-2)
+	newLine.icone:SetPoint("RIGHT", newLine, "LEFT", 0, 0)
+	newLine.icone:SetAlpha(1)
+	--frame which will show the spell tooltip
+	newLine.miniframe = CreateFrame("frame", nil, newLine, "BackdropTemplate")
+	newLine.miniframe:SetSize(CONST_BAR_HEIGHT * 2, CONST_BAR_HEIGHT-2)
+	newLine.miniframe:SetPoint("right", newLine, "left", CONST_BAR_HEIGHT, 0)
+	newLine.miniframe:SetScript("OnEnter", miniframe_func_on_enter)
+	newLine.miniframe:SetScript("OnLeave", miniframe_func_on_leave)
 	
-	--> icone
-	esta_barra.miniframe = CreateFrame ("frame", nil, esta_barra, "BackdropTemplate")
-	esta_barra.miniframe:SetSize (CONST_BAR_HEIGHT-2, CONST_BAR_HEIGHT-2)
-	esta_barra.miniframe:SetPoint ("left", esta_barra, "left", 0, 0)
+	CriaTexturaBarra(newLine)
+	SetBarraScripts (newLine, instancia, index)
 	
-	esta_barra.miniframe:SetScript ("OnEnter", miniframe_func_on_enter)
-	esta_barra.miniframe:SetScript ("OnLeave", miniframe_func_on_leave)
-
-	esta_barra:SetAlpha(1)
-	esta_barra.icone:SetAlpha (1)
+	info.barras1[index] = newLine
+	newLine.textura:SetStatusBarColor(1, 1, 1, 1)
+	newLine.on_focus = false
 	
-	esta_barra.isMain = true
-	
-	SetBarraScripts (esta_barra, instancia, index)
-	
-	info.barras1 [index] = esta_barra --> barra adicionada
-	
-	esta_barra.textura:SetStatusBarColor (1, 1, 1, 1) --> isso aqui � a parte da sele��o e descele��o
-	esta_barra.on_focus = false --> isso aqui � a parte da sele��o e descele��o
-	
-	return esta_barra
+	return newLine
 end
 
 function gump:CriaNovaBarraInfo2(instancia, index)
@@ -5892,7 +5883,7 @@ function gump:CriaNovaBarraInfo2(instancia, index)
 	esta_barra.icone:SetHeight(CONST_TARGET_HEIGHT)
 	esta_barra.icone:SetPoint("RIGHT", esta_barra, "LEFT", 0, 0)
 
-	CriaTexturaBarra(instancia, esta_barra)
+	CriaTexturaBarra(esta_barra)
 	
 	esta_barra:SetAlpha(ALPHA_BLEND_AMOUNT)
 	esta_barra.icone:SetAlpha(1)
@@ -5932,7 +5923,7 @@ function gump:CriaNovaBarraInfo3 (instancia, index)
 	
 	esta_barra:EnableMouse (true)
 	
-	CriaTexturaBarra (instancia, esta_barra)
+	CriaTexturaBarra(esta_barra)
 
 	--> icone
 	esta_barra.icone = esta_barra:CreateTexture (nil, "OVERLAY")

@@ -7,12 +7,7 @@ end
 local L = WeakAuras.L
 
 -- WeakAuras/Options
-<<<<<<< Updated upstream
-	--[[Translation missing --]]
-	L[" and |cFFFF0000mirrored|r"] = " and |cFFFF0000mirrored|r"
-=======
 	L[" and |cFFFF0000mirrored|r"] = "et  |cFFFF0000mirrored|r"
->>>>>>> Stashed changes
 	L["-- Do not remove this comment, it is part of this aura: "] = "-- Ne supprimez pas ce commentaire, il fait partie de cette aura :"
 	--[[Translation missing --]]
 	L[" rotated |cFFFF0000%s|r degrees"] = " rotated |cFFFF0000%s|r degrees"
@@ -56,8 +51,6 @@ local L = WeakAuras.L
 	--[[Translation missing --]]
 	L["%s - Main"] = "%s - Main"
 	L["%s - Option #%i has the key %s. Please choose a different option key."] = "%s - L'option #%i est attribuée à la touche %s. Veuillez choisir une touche différente."
-<<<<<<< Updated upstream
-=======
 	--[[Translation missing --]]
 	L["%s - Rotate Animation"] = "%s - Rotate Animation"
 	--[[Translation missing --]]
@@ -72,18 +65,14 @@ local L = WeakAuras.L
 	L["%s - Translate Animation"] = "%s - Translate Animation"
 	--[[Translation missing --]]
 	L["%s - Trigger Logic"] = "%s - Trigger Logic"
->>>>>>> Stashed changes
 	L["%s %s, Lines: %d, Frequency: %0.2f, Length: %d, Thickness: %d"] = "%s %s, Lignes : %d, Fréquence : %0.2f, Longueur : %d, Épaisseur : %d"
 	L["%s %s, Particles: %d, Frequency: %0.2f, Scale: %0.2f"] = "%s %s, Particules : %d, Fréquence : %0.2f, Échelle : %0.2f"
 	--[[Translation missing --]]
 	L["%s %u. Overlay Function"] = "%s %u. Overlay Function"
 	L["%s Alpha: %d%%"] = "%s opacité : %d%%"
 	L["%s Color"] = "%s couleur"
-<<<<<<< Updated upstream
-=======
 	--[[Translation missing --]]
 	L["%s Custom Variables"] = "%s Custom Variables"
->>>>>>> Stashed changes
 	--[[Translation missing --]]
 	L["%s Default Alpha, Zoom, Icon Inset, Aspect Ratio"] = "%s Default Alpha, Zoom, Icon Inset, Aspect Ratio"
 	--[[Translation missing --]]
@@ -111,18 +100,11 @@ local L = WeakAuras.L
 	L["%s, Offset: %0.2f;%0.2f"] = "%s, Décaler: %0.2f;%0.2f"
 	L["%s, offset: %0.2f;%0.2f"] = "%s, décaler: %0.2f;%0.2f"
 	L["%s|cFFFF0000custom|r texture with |cFFFF0000%s|r blend mode%s%s"] = "%s|cFFFF0000custom|r texture avec |cFFFF0000%s|r mode fusionné%s%s"
-<<<<<<< Updated upstream
-	L["(Right click to rename)"] = "(Clique droit pour renommer)"
-	L["|c%02x%02x%02x%02xCustom Color|r"] = "|c%02x%02x%02x%02xCouleur personnalisée|r"
-	--[[Translation missing --]]
-	L["|cFFE0E000Note:|r This sets the description only on '%s'"] = "|cFFE0E000Note:|r This sets the description only on '%s'"
-=======
 	L["(Right click to rename)"] = "(Clic-Droit pour renommer)"
 	L["|c%02x%02x%02x%02xCustom Color|r"] = "|c%02x%02x%02x%02xCouleur personnalisée|r"
 	--[[Translation missing --]]
 	L["|cff999999Triggers tracking multiple units will default to being active even while no affected units are found without a Unit Count or Match Count setting applied.|r"] = "|cff999999Triggers tracking multiple units will default to being active even while no affected units are found without a Unit Count or Match Count setting applied.|r"
 	L["|cFFE0E000Note:|r This sets the description only on '%s'"] = "|cFFE0E000Note:|r Ceci définit la description uniquement sur '%s'"
->>>>>>> Stashed changes
 	L["|cFFE0E000Note:|r This sets the URL on all selected auras"] = "|cFFE0E000Note:|r Ceci définit l'URL sur toutes les auras sélectionnées"
 	L["|cFFE0E000Note:|r This sets the URL on this group and all its members."] = "|cFFE0E000Note:|r Ceci définit l'URL sur ce groupe et tous ses membres."
 	L["|cFFFF0000Automatic|r length"] = "|cFFFF0000Automatic|r longueur"
@@ -140,11 +122,7 @@ local L = WeakAuras.L
 	--[[Translation missing --]]
 	L["|cFFffcc00Font Flags:|r |cFFFF0000%s|r and shadow |c%sColor|r with offset |cFFFF0000%s/%s|r%s%s%s"] = "|cFFffcc00Font Flags:|r |cFFFF0000%s|r and shadow |c%sColor|r with offset |cFFFF0000%s/%s|r%s%s%s"
 	--[[Translation missing --]]
-<<<<<<< Updated upstream
-	L["|cFFffcc00Format Options|r"] = "|cFFffcc00Format Options|r"
-=======
 	L["|cffffcc00Format Options|r"] = "|cffffcc00Format Options|r"
->>>>>>> Stashed changes
 	--[[Translation missing --]]
 	L[ [=[• |cff00ff00Player|r, |cff00ff00Target|r, |cff00ff00Focus|r, and |cff00ff00Pet|r correspond directly to those individual unitIDs.
 • |cff00ff00Specific Unit|r lets you provide a specific valid unitID to watch.
@@ -189,11 +167,6 @@ Enable this setting if you want this timer to be hidden, or when using a WeakAur
 	L["Add Option"] = "Ajouter Option"
 	L["Add Overlay"] = "Ajouter un Overlay"
 	L["Add Property Change"] = "Ajouter un Changement de Propriété"
-<<<<<<< Updated upstream
-	L["Add Raid Mark Information"] = "Ajouter des informations sur les marques de raid"
-	L["Add Role Information"] = "Ajouter une information de rôle"
-=======
->>>>>>> Stashed changes
 	L["Add Snippet"] = "Ajouter un extrait"
 	L["Add Sub Option"] = "Ajouter un sous-option"
 	L["Add to group %s"] = "Ajouter au groupe %s"
@@ -466,13 +439,10 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED
 	--[[Translation missing --]]
 	L["Enable \"Edge\" part of the overlay"] = "Enable \"Edge\" part of the overlay"
 	L["Enable \"swipe\" part of the overlay"] = "Activer la partie \"balayage\" de la superposition"
-<<<<<<< Updated upstream
-=======
 	--[[Translation missing --]]
 	L["Enable Debug Log"] = "Enable Debug Log"
 	--[[Translation missing --]]
 	L["Enable Debug Logging"] = "Enable Debug Logging"
->>>>>>> Stashed changes
 	L["Enable Swipe"] = "Activer le balayage"
 	L["Enable the \"Swipe\" radial overlay"] = "Activer la superposition radiale du \"balayage\""
 	L["Enabled"] = "Activé"
@@ -812,11 +782,8 @@ Seule une unique valeur peut être choisie]=]
 	L["New Aura"] = "Nouvelle aura"
 	L["New Value"] = "Nouvelle Valeur"
 	L["No Children"] = "Aucun enfant"
-<<<<<<< Updated upstream
-=======
 	--[[Translation missing --]]
 	L["No Logs saved."] = "No Logs saved."
->>>>>>> Stashed changes
 	L["None"] = "Aucun"
 	L["Not a table"] = "N'est pas une table"
 	L["Not all children have the same value for this option"] = "Tous les enfants n'ont pas la même valeur pour cette option"
@@ -824,11 +791,8 @@ Seule une unique valeur peut être choisie]=]
 	--[[Translation missing --]]
 	L["Note: Automated Messages to SAY and YELL are blocked outside of Instances."] = "Note: Automated Messages to SAY and YELL are blocked outside of Instances."
 	L["Note: The legacy buff trigger is now permanently disabled. It will be removed in the near future."] = "Remarque : le déclencheur de buff hérités est désormais désactivé de façon permanente. Il sera supprimé dans un avenir proche."
-<<<<<<< Updated upstream
-=======
 	--[[Translation missing --]]
 	L["Npc ID"] = "Npc ID"
->>>>>>> Stashed changes
 	L["Number of Entries"] = "Nombre d'entrées"
 	--[[Translation missing --]]
 	L["Offer a guided way to create auras for your character"] = "Offer a guided way to create auras for your character"
@@ -1063,11 +1027,8 @@ Seule une unique valeur peut être choisie]=]
 	--[[Translation missing --]]
 	L["Sub Option %i"] = "Sub Option %i"
 	L["Swipe Overlay Settings"] = "Paramètres de la superposition des balayages"
-<<<<<<< Updated upstream
-=======
 	--[[Translation missing --]]
 	L["Templates could not be loaded, the addon is %s"] = "Templates could not be loaded, the addon is %s"
->>>>>>> Stashed changes
 	L["Temporary Group"] = "Groupe temporaire"
 	L["Text"] = "Texte"
 	L["Text %s"] = "Texte %s"

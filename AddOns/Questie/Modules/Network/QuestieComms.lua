@@ -250,12 +250,9 @@ function QuestieComms:PopulateQuestDataPacketV2_noclass_renameme(questId, quest,
 
     local count = 0
 
-<<<<<<< Updated upstream
-=======
     local rawObjectives = QuestLogCache.GetQuestObjectives(questId) -- DO NOT MODIFY THE RETURNED TABLE
     if (not rawObjectives) then return offset, count end
 
->>>>>>> Stashed changes
     if questObject and next(questObject.Objectives) then
         quest[offset] = questId
         local countOffset = offset+1
@@ -284,12 +281,9 @@ function QuestieComms:PopulateQuestDataPacketV2(questId, quest, offset)
 
     local count = 0
 
-<<<<<<< Updated upstream
-=======
     local rawObjectives = QuestLogCache.GetQuestObjectives(questId) -- DO NOT MODIFY THE RETURNED TABLE
     if (not rawObjectives) then return offset, count end
 
->>>>>>> Stashed changes
     if questObject and next(questObject.Objectives) then
         quest[offset] = questId
         local countOffset = offset+1
@@ -764,14 +758,6 @@ function QuestieComms:CreateQuestDataPacket(questId)
     local questObject = QuestieDB:GetQuest(questId);
 
     ---@class QuestPacket
-<<<<<<< Updated upstream
-    local quest = {};
-    quest.id = questId;
-    local rawObjectives = QuestieQuest:GetAllLeaderBoardDetails(questId);
-    quest.objectives = {}
-    if questObject and next(questObject.Objectives) then
-        for objectiveIndex, objective in pairs(rawObjectives) do
-=======
     local quest = {
         id = questId,
         objectives = {},
@@ -782,7 +768,6 @@ function QuestieComms:CreateQuestDataPacket(questId)
 
     if questObject and next(questObject.Objectives) then
         for objectiveIndex, objective in pairs(rawObjectives) do -- DO NOT MODIFY THE RETURNED TABLE
->>>>>>> Stashed changes
             if questObject.Objectives[objectiveIndex] then
                 quest.objectives[objectiveIndex] = {};
                 quest.objectives[objectiveIndex].id = questObject.Objectives[objectiveIndex].Id;--[_QuestieComms.idLookup["id"]] = questObject.Objectives[objectiveIndex].Id;

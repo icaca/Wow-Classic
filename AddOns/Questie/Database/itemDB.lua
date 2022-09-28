@@ -88,13 +88,8 @@ end
 
 QuestieDB.itemCompilerTypes = {
     ["foodType"] = "u8",
-<<<<<<< Updated upstream
-    ["itemLevel"] = "u8",
-    ["flags"] = "u16",
-=======
     ["itemLevel"] = "u16",
     ["flags"] = "u32",
->>>>>>> Stashed changes
     ["startQuest"] = "u24",
     ["requiredLevel"] = "u8",
     ["ammoType"] = "u8",
@@ -102,13 +97,8 @@ QuestieDB.itemCompilerTypes = {
     ["subClass"] = "u8",
     ["npcDrops"] = "u16u24array",
     ["objectDrops"] = "u8u24array",
-<<<<<<< Updated upstream
-    ["itemDrops"] = "u8u16array",
-    ["vendors"] = "u8u16array",
-=======
     ["itemDrops"] = "u8u24array",
     ["vendors"] = "u8u24array",
->>>>>>> Stashed changes
     ["relatedQuests"] = "u8u24array",
     ["questRewards"] = "u8u24array",
     ["name"] = "u8string",

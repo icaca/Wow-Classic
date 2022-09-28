@@ -54,12 +54,9 @@ function M:OnLogin()
 	M:BaudErrorFrameHelpTip()
 	M:EnhancedPicker()
 	C_Timer_After(0, M.UpdateMaxZoomLevel)
-<<<<<<< Updated upstream
-=======
 	M:AutoEquipBySpec()
 	M:UpdateScreenShot()
 	M:FlyoutOnKeyAlt()
->>>>>>> Stashed changes
 
 	-- Auto chatBubbles
 	if NDuiADB["AutoBubbles"] then
@@ -668,8 +665,6 @@ end
 
 function M:UpdateMaxZoomLevel()
 	SetCVar("cameraDistanceMaxZoomFactor", C.db["Misc"]["MaxZoom"])
-<<<<<<< Updated upstream
-=======
 end
 
 -- Autoequip in Spec-changing
@@ -782,5 +777,4 @@ function M:FlyoutOnKeyAlt()
 			end
 		end
 	end)
->>>>>>> Stashed changes
 end

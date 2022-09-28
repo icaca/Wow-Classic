@@ -75,12 +75,9 @@ function QuestieItemFixes:Load()
         [2633] = {
             [itemKeys.npcDrops] = {940,941,942}, -- #2433
         },
-<<<<<<< Updated upstream
-=======
         [2665] = {
             [itemKeys.relatedQuests] = {90},
         },
->>>>>>> Stashed changes
         [2686] = {
             [itemKeys.relatedQuests] = {308},
             [itemKeys.npcDrops] = {1247,1682,7744},

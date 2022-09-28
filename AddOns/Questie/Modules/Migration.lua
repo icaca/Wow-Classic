@@ -111,13 +111,6 @@ local migrationFunctions = {
         if not Questie.db.char.questAnnounceChannel then
             if (not Questie.db.char.questAnnounce) or Questie.db.char.questAnnounce == "disabled" then
                 Questie.db.char.questAnnounceChannel = "disabled"
-<<<<<<< Updated upstream
-            else
-                Questie.db.char.questAnnounceChannel = "group"
-            end
-        end
-    end,
-=======
                 Questie.db.char.questAnnounceObjectives = false
             else
                 Questie.db.char.questAnnounceChannel = "group"
@@ -149,7 +142,6 @@ local migrationFunctions = {
             Questie.db.char.isAchievementsExpanded = true
         end
     end
->>>>>>> Stashed changes
 }
 
 function Migration:Migrate()

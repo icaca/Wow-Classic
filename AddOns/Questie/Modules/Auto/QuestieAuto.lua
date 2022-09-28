@@ -240,21 +240,13 @@ end
 
 local _QuestFinishedCallback = function()
     if _QuestieAuto:AllQuestWindowsClosed() then
-<<<<<<< Updated upstream
-        Questie:Debug(Questie.DEBUG_DEVELOP, "All quest windows closed! Resetting shouldRunAuto")
-=======
         Questie:Debug(Questie.DEBUG_DEVELOP, "[QuestieAuto] All quest windows closed! Resetting shouldRunAuto")
->>>>>>> Stashed changes
         _QuestieAuto:ResetModifier()
     end
 end
 
 function QuestieAuto:QUEST_FINISHED()
-<<<<<<< Updated upstream
-    Questie:Debug(Questie.DEBUG_DEVELOP, "[EVENT] QUEST_FINISHED")
-=======
     Questie:Debug(Questie.DEBUG_DEVELOP, "[QuestieAuto][EVENT] QUEST_FINISHED")
->>>>>>> Stashed changes
 
     C_Timer.After(0.5, _QuestFinishedCallback)
 end

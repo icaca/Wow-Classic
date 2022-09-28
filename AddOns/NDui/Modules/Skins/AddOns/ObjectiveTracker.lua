@@ -18,35 +18,6 @@ local headerString = QUESTS_LABEL.." %s/%s"
 local frame
 
 function S:ExtQuestLogFrame()
-<<<<<<< Updated upstream
-	local QuestLogFrame = _G.QuestLogFrame
-	if QuestLogFrame:GetWidth() > 700 then return end
-
-	B.StripTextures(QuestLogFrame, 2)
-	QuestLogFrame.TitleText = _G.QuestLogTitleText
-	QuestLogFrame.scrollFrame = _G.QuestLogDetailScrollFrame
-	QuestLogFrame.listScrollFrame = _G.QuestLogListScrollFrame
-	S:EnlargeDefaultUIPanel("QuestLogFrame", 0)
-
-	B.StripTextures(_G.EmptyQuestLogFrame)
-	_G.QuestLogNoQuestsText:ClearAllPoints()
-	_G.QuestLogNoQuestsText:SetPoint("CENTER", QuestLogFrame.listScrollFrame)
-	_G.QuestFramePushQuestButton:ClearAllPoints()
-	_G.QuestFramePushQuestButton:SetPoint("LEFT", _G.QuestLogFrameAbandonButton, "RIGHT", 1, 0)
-
-	_G.QUESTS_DISPLAYED = 22
-	for i = 7, _G.QUESTS_DISPLAYED do
-		local button = _G["QuestLogTitle"..i]
-		if not button then
-			button = CreateFrame("Button", "QuestLogTitle"..i, QuestLogFrame, "QuestLogTitleButtonTemplate")
-			button:SetPoint("TOPLEFT", _G["QuestLogTitle"..(i-1)], "BOTTOMLEFT", 0, 1)
-			button:SetID(i)
-			button:Hide()
-		end
-	end
-
-=======
->>>>>>> Stashed changes
 	local toggleMap = CreateFrame("Button", nil, QuestLogFrame)
 	toggleMap:SetPoint("TOP", 10, -35)
 	toggleMap:SetSize(48, 32)
@@ -60,13 +31,6 @@ function S:ExtQuestLogFrame()
 	toggleMap:SetScript("OnClick", ToggleWorldMap)
 	toggleMap:SetScript("OnMouseUp", function() tex:SetTexCoord(.125, .875, 0, .5) end)
 	toggleMap:SetScript("OnMouseDown", function() tex:SetTexCoord(.125, .875, .5, 1) end)
-<<<<<<< Updated upstream
-
-	if C.db["Skins"]["BlizzardSkins"] then
-		B.CreateBDFrame(QuestLogFrame.scrollFrame, .25)
-	end
-=======
->>>>>>> Stashed changes
 
 	-- Move ClassicCodex
 	if CodexQuest then
@@ -214,10 +178,6 @@ function S:QuestTracker()
 
 	if not C.db["Skins"]["QuestTracker"] then return end
 
-<<<<<<< Updated upstream
-	S:EnhancedQuestTracker()
-=======
->>>>>>> Stashed changes
 	S:ExtQuestLogFrame()
 	hooksecurefunc("QuestLog_Update", S.QuestLogLevel)
 	hooksecurefunc(QuestLogListScrollFrame, "update", S.QuestLogLevel)

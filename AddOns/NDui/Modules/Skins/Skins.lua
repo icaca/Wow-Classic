@@ -207,8 +207,6 @@ function S:EnlargeDefaultUIPanel(name, pushed)
 		rightTex:SetTexture(309666)
 		rightTex:SetSize(256, 512)
 		rightTex:SetPoint("TOPLEFT", leftTex, "TOPRIGHT")
-<<<<<<< Updated upstream
-=======
 
 		local cover1 = frame:CreateTexture(nil, "ARTWORK")
 		cover1:SetPoint("BOTTOMLEFT", 20, 54)
@@ -225,6 +223,5 @@ function S:EnlargeDefaultUIPanel(name, pushed)
 		cover3:SetSize(25, 360)
 		cover3:SetTexture("Interface\\TradeSkillFrame\\UI-TradeSkill-TopLeft")
 		cover3:SetTexCoord(.3, .4, .15, .25)
->>>>>>> Stashed changes
 	end
 end

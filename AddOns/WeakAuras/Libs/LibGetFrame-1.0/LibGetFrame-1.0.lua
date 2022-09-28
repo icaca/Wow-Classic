@@ -1,13 +1,8 @@
 local MAJOR_VERSION = "LibGetFrame-1.0"
-<<<<<<< Updated upstream
-local MINOR_VERSION = 34
-if not LibStub then error(MAJOR_VERSION .. " requires LibStub.") end
-=======
 local MINOR_VERSION = 50
 if not LibStub then
   error(MAJOR_VERSION .. " requires LibStub.")
 end
->>>>>>> Stashed changes
 local lib = LibStub:NewLibrary(MAJOR_VERSION, MINOR_VERSION)
 if not lib then
   return
@@ -23,43 +18,6 @@ local tinsert, CopyTable, wipe, GetActionInfo = tinsert, CopyTable, wipe, GetAct
 local maxDepth = 50
 
 local defaultFramePriorities = {
-<<<<<<< Updated upstream
-    -- raid frames
-    "^Vd1", -- vuhdo
-    "^Vd2", -- vuhdo
-    "^Vd3", -- vuhdo
-    "^Vd4", -- vuhdo
-    "^Vd5", -- vuhdo
-    "^Vd", -- vuhdo
-    "^HealBot", -- healbot
-    "^GridLayout", -- grid
-    "^Grid2Layout", -- grid2
-    "^PlexusLayout", -- plexus
-    "^ElvUF_Raid%d*Group", -- elv
-    "^oUF_bdGrid", -- bdgrid
-    "^oUF_.-Raid", -- generic oUF
-    "^LimeGroup", -- lime
-    "^SUFHeaderraid", -- suf
-    "^LUFHeaderraid", -- luf
-    "^AshToAshUnit%d+Unit%d+", -- AshToAsh
-    "^Cell", -- Cell
-    -- party frames
-    "^AleaUI_GroupHeader", -- Alea
-    "^SUFHeaderparty", --suf
-    "^LUFHeaderparty", --luf
-    "^ElvUF_PartyGroup", -- elv
-    "^oUF_.-Party", -- generic oUF
-    "^PitBull4_Groups_Party", -- pitbull4
-    "^CompactRaid", -- blizz
-    "^CompactParty", -- blizz
-    -- player frame
-    "^SUFUnitplayer",
-    "^LUFUnitplayer",
-    "^PitBull4_Frames_Player",
-    "^ElvUF_Player",
-    "^oUF_.-Player",
-    "^PlayerFrame",
-=======
   -- raid frames
   "^Vd1", -- vuhdo
   "^Vd2", -- vuhdo
@@ -98,7 +56,6 @@ local defaultFramePriorities = {
   "^ElvUF_Player",
   "^oUF_.-Player",
   "^PlayerFrame",
->>>>>>> Stashed changes
 }
 
 local defaultPlayerFrames = {
@@ -150,21 +107,6 @@ local defaultFocusFrames = {
   "FocusFrame",
 }
 local defaultRaidFrames = {
-<<<<<<< Updated upstream
-    "^Vd",
-    "^HealBot",
-    "^GridLayout",
-    "^Grid2Layout",
-    "^PlexusLayout",
-    "^ElvUF_Raid%d*Group",
-    "^oUF_.-Raid",
-    "^AshToAsh",
-    "^Cell",
-    "^LimeGroup",
-    "^SUFHeaderraid",
-    "^LUFHeaderraid",
-    "^CompactRaid",
-=======
   "^Vd",
   "^HealBot",
   "^GridLayout",
@@ -179,7 +121,6 @@ local defaultRaidFrames = {
   "^SUFHeaderraid",
   "^LUFHeaderraid",
   "^CompactRaid",
->>>>>>> Stashed changes
 }
 
 local GetFramesCache = {}     -- frame adress => frame name, GetUnitFrames only use this table
@@ -590,39 +531,6 @@ lib.GetFrame = lib.GetUnitFrame -- compatibility
 
 -- nameplates
 function lib.GetUnitNameplate(unit)
-<<<<<<< Updated upstream
-    if not unit then return end
-    local nameplate = C_NamePlate.GetNamePlateForUnit(unit)
-    if nameplate then
-        -- credit to Exality for https://wago.io/explosiveorbs
-        if nameplate.unitFrame and nameplate.unitFrame.Health then
-          -- elvui
-          return nameplate.unitFrame.Health
-        elseif nameplate.unitFramePlater then
-          -- plater
-          return nameplate.unitFramePlater.healthBar
-        elseif nameplate.kui then
-          -- kui
-          return nameplate.kui.HealthBar
-        elseif nameplate.extended then
-          -- tidyplates
-          --nameplate.extended.visual.healthbar:SetHeight(tidyplatesHeight)
-          return nameplate.extended.visual.healthbar
-        elseif nameplate.TPFrame then
-          -- tidyplates: threat plates
-          return nameplate.TPFrame.visual.healthbar
-        elseif nameplate.unitFrame then
-          -- bdui nameplates
-          return nameplate.unitFrame.Health
-        elseif nameplate.ouf then
-          -- bdNameplates
-          return nameplate.ouf.Health
-        elseif nameplate.UnitFrame then
-          -- default
-          return nameplate.UnitFrame.healthBar
-        else
-          return nameplate
-=======
   if not unit then
     return
   end
@@ -699,7 +607,6 @@ function lib.GetActionButtonsById(id, actionType, subType)
       then
         for _, frame in ipairs(SlotToFrame[i]) do
           tinsert(frames, frame)
->>>>>>> Stashed changes
         end
       end
     end

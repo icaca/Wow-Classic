@@ -376,15 +376,6 @@ local genericsLocales = {
     },
     ["Group"] = {
         ["ptBR"] = "Grupo",
-<<<<<<< Updated upstream
-        ["ruRU"] = false,
-        ["deDE"] = "Gruppe",
-        ["koKR"] = false,
-        ["esMX"] = "Grupo",
-        ["enUS"] = true,
-        ["zhCN"] = false,
-        ["zhTW"] = false,
-=======
         ["ruRU"] = "Группа",
         ["deDE"] = "Gruppe",
         ["koKR"] = nil,
@@ -392,24 +383,11 @@ local genericsLocales = {
         ["enUS"] = true,
         ["zhCN"] = "队伍",
         ["zhTW"] = nil,
->>>>>>> Stashed changes
         ["esES"] = "Grupo",
         ["frFR"] = "Groupe",
     },
     ["Raid"] = {
         ["ptBR"] = "Raide",
-<<<<<<< Updated upstream
-        ["ruRU"] = false,
-        ["deDE"] = "Schlachtzug",
-        ["koKR"] = false,
-        ["esMX"] = "Banda",
-        ["enUS"] = true,
-        ["zhCN"] = false,
-        ["zhTW"] = false,
-        ["esES"] = "Banda",
-        ["frFR"] = "Raid",
-    },
-=======
         ["ruRU"] = "Рейд",
         ["deDE"] = "Schlachtzug",
         ["koKR"] = nil,
@@ -444,7 +422,6 @@ local genericsLocales = {
         ["esES"] = "Logros",
         ["frFR"] = "Hauts faits",
     },
->>>>>>> Stashed changes
 }
 
 for k, v in pairs(genericsLocales) do

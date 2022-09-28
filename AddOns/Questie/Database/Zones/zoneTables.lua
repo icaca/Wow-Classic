@@ -212,10 +212,7 @@ ZoneDB.private.dungeons = {
     [3791] = {"Sethekk Halls",nil,3519},
     [3792] = {"Mana-Tombs",nil,3519},
     [3805] = {"Zul'Aman",nil,3433},
-<<<<<<< Updated upstream
-=======
     [3836] = {"Magtheridon's Lair",nil,3483},
->>>>>>> Stashed changes
     [3847] = {"The Botanica",nil,3523},
     [3848] = {"The Arcatraz",nil,3523},
     [3849] = {"The Mechanar",nil,3523},
@@ -298,10 +295,7 @@ ZoneDB.private.dungeonLocations = {
     [3791] = {{3519, 43.2, 65.6}},
     [3792] = {{3519, 39.7, 60.2}},
     [3805] = {{3433, 82.6, 64.3}},
-<<<<<<< Updated upstream
-=======
     [3836] = {{3483, 47.7, 53.6}},
->>>>>>> Stashed changes
     [3847] = {{3523, 71.7, 55.0}},
     [3848] = {{3523, 74.4, 57.7}},
     [3849] = {{3523, 70.6, 69.7}},
@@ -2609,13 +2603,9 @@ ZoneDB.private.zoneIDs = {
     AUCHENAI_CRYPTS = 3790,
     SETHEKK_HALLS = 3791,
     MANA_TOMBS = 3792,
-<<<<<<< Updated upstream
-    ZUL_AMAN = 3805,
-=======
     TEMPEST_KEEP = 3845,
     ZUL_AMAN = 3805,
     BLACK_TEMPLE = 3959,
->>>>>>> Stashed changes
     SUNWELL_PLATEAU = 4075,
     ISLE_OF_QUEL_DANAS = 4080,
     MAGISTERS_TERRACE = 4131,

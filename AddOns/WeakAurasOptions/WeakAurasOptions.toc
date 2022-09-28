@@ -1,14 +1,7 @@
-<<<<<<< Updated upstream
-## Interface: 20504
-## Title: WeakAuras Options
-## Author: The WeakAuras Team
-## Version: 3.7.16
-=======
 ## Interface: 90207
 ## Title: WeakAuras Options
 ## Author: The WeakAuras Team
 ## Version: 4.1.4
->>>>>>> Stashed changes
 ## Notes: Options for WeakAuras
 ## Notes-esES: Opciones para WeakAuras
 ## Notes-deDE: Optionen für WeakAuras

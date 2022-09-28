@@ -81,11 +81,7 @@ local L = WeakAuras.L
 	L["|cFFffcc00Extra:|r %s and %s %s"] = "|cFFffcc00额外：|r%s 并且 %s %s"
 	L["|cFFffcc00Font Flags:|r |cFFFF0000%s|r and shadow |c%sColor|r with offset |cFFFF0000%s/%s|r%s%s"] = "|cFFffcc00文字样式：|r|cFFFF0000%s|r，阴影|c%s颜色|r、偏移量|cFFFF0000%s/%s|r%s%s"
 	L["|cFFffcc00Font Flags:|r |cFFFF0000%s|r and shadow |c%sColor|r with offset |cFFFF0000%s/%s|r%s%s%s"] = "|cFFffcc00文字样式：|r|cFFFF0000%s|r，阴影|c%s颜色|r、偏移量|cFFFF0000%s/%s|r%s%s%s"
-<<<<<<< Updated upstream
-	L["|cFFffcc00Format Options|r"] = "|cFFffcc00格式选项|r"
-=======
 	L["|cffffcc00Format Options|r"] = "|cffffcc00格式选项|r"
->>>>>>> Stashed changes
 	L[ [=[• |cff00ff00Player|r, |cff00ff00Target|r, |cff00ff00Focus|r, and |cff00ff00Pet|r correspond directly to those individual unitIDs.
 • |cff00ff00Specific Unit|r lets you provide a specific valid unitID to watch.
 |cffff0000Note|r: The game will not fire events for all valid unitIDs, making some untrackable by this trigger.
@@ -394,17 +390,12 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["Fallback Icon"] = "后备图标"
 	L["False"] = "假"
 	L["Fetch Affected/Unaffected Names"] = "获取受影响的/未受影响的名称"
-<<<<<<< Updated upstream
-	L["File Height"] = "文件高度"
-	L["File Width"] = "文件宽度"
-=======
 	L["Fetch Raid Mark Information"] = "获取团队标记信息"
 	L["Fetch Role Information"] = "获取职责信息"
 	L["Fetch Tooltip Information"] = "获取鼠标提示信息"
 	L["File Height"] = "文件高度"
 	L["File Width"] = "文件宽度"
 	L["Filter based on the spell Name string."] = "根据法术名称过滤"
->>>>>>> Stashed changes
 	L["Filter by Arena Spec"] = "根据竞技场专精过滤"
 	L["Filter by Class"] = "根据职业过滤"
 	L["Filter by Group Role"] = "根据团队职责过滤"
@@ -578,10 +569,7 @@ Can use \ to escape -.]=] ] = [=[过滤格式：'名称'，'名称-服务器'，
 	L["Magnetically Align"] = "磁力对齐"
 	L["Main"] = "主要的"
 	L["Match Count"] = "匹配计数"
-<<<<<<< Updated upstream
-=======
 	L["Match Count per Unit"] = "每单位匹配计数"
->>>>>>> Stashed changes
 	L["Matches the height setting of a horizontal bar or width for a vertical bar."] = "符合水平进度条的高度设置，或者垂直进度条的宽度设置。"
 	L["Max"] = "最大"
 	L["Max Length"] = "最大长度"

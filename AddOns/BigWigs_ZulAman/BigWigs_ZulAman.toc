@@ -1,4 +1,4 @@
-## Interface: 20504
+## Interface: 30400
 
 ## Title: BigWigs [|cffeda55fZul'Aman|r]
 ## Title-deDE: BigWigs [|cffeda55fZul'Aman|r]
@@ -22,7 +22,7 @@
 ## Notes-ruRU: BigWigs Zul'Aman Modules
 ## Notes-zhCN: BigWigs Zul'Aman Modules
 ## Notes-zhTW: BigWigs Zul'Aman Modules
-## Version: v37.1-classic
+## Version: v44.2-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

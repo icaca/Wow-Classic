@@ -16,7 +16,7 @@ mod:RegisterEnableMob(
 -- Localization
 --
 
-local L = mod:NewLocale("enUS", true)
+local L = mod:NewLocale()
 if L then
 	L.anubisath = "Anubisath"
 	L.sentinel = "Anubisath Sentinel"
@@ -218,7 +218,7 @@ end
 --[[ Vekniss Hive Crawler ]]--
 
 function mod:SunderArmor(args)
-	self:StackMessage(25051, args.destName, args.amount, "yellow")
+	self:StackMessageOld(25051, args.destName, args.amount, "yellow")
 	self:TargetBar(25051, 20, args.destName)
 end
 

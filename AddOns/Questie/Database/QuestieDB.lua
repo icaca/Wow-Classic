@@ -393,27 +393,6 @@ function QuestieDB.GetQuestTagInfo(questId)
 end
 
 ---@param questId number
-<<<<<<< Updated upstream
----@return number @Complete = 1, Failed = -1, Incomplete = 0
-function QuestieDB:IsComplete(questId)
-    local questLogIndex = GetQuestLogIndexByID(questId)
-    local _, _, _, _, _, isComplete = GetQuestLogTitle(questLogIndex)
-
-    if isComplete ~= nil then
-        return isComplete -- 1 if the quest is completed, -1 if the quest is failed
-    end
-
-    isComplete = IsQuestComplete(questId) -- true if the quest is both in the quest log and complete, false otherwise
-    if isComplete then
-        return 1
-    end
-
-    return 0
-end
-
----@param questId number
-=======
->>>>>>> Stashed changes
 ---@return boolean
 function QuestieDB.IsActiveEventQuest(questId)
     return QuestieEvent.activeQuests[questId] == true
@@ -800,11 +779,7 @@ function QuestieDB:GetQuest(questId) -- /dump QuestieDB:GetQuest(867)
     --- to differentiate from the current quest log info.
     --- Quest objectives generated from DB+Corrections.
     --- Data itself is for example for monster type { Type = "monster", Id = 16518, Text = "Nestlewood Owlkin inoculated" }
-<<<<<<< Updated upstream
-    ---@type table<number, table>
-=======
     ---@type Objective[]
->>>>>>> Stashed changes
     QO.ObjectiveData = {}
 
     ---@type RawObjectives
@@ -896,11 +871,6 @@ function QuestieDB:GetQuest(questId) -- /dump QuestieDB:GetQuest(867)
     if(preQuestGroup ~= nil and next(preQuestGroup) ~= nil and preQuestSingle ~= nil and next(preQuestSingle) ~= nil) then
         Questie:Debug(Questie.DEBUG_CRITICAL, "ERRRRORRRRRRR not mutually exclusive for questID:", questId)
     end
-
-    --- Quest objectives generated from quest log in QuestieQuest.lua -> QuestieQuest:PopulateQuestLogInfo(quest)
-    --- Includes also icons drawn to maps, and other stuff.
-    ---@type table<number, table>
-    QO.Objectives = {}
 
     --- Quest objectives generated from quest log in QuestieQuest.lua -> QuestieQuest:PopulateQuestLogInfo(quest)
     --- Includes also icons drawn to maps, and other stuff.

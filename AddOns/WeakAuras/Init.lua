@@ -8,14 +8,6 @@ WeakAuras.halfWidth = WeakAuras.normalWidth / 2
 WeakAuras.doubleWidth = WeakAuras.normalWidth * 2
 
 local versionStringFromToc = GetAddOnMetadata("WeakAuras", "Version")
-<<<<<<< Updated upstream
-local versionString = "3.7.16"
-local buildTime = "20220324202342"
-local isDevVersion = false
-
---[==[@debug@
-if versionStringFromToc == "3.7.16" then
-=======
 local versionString = "4.1.4"
 local buildTime = "20220920104545"
 
@@ -30,26 +22,11 @@ local flavor = flavorFromTocToNumber[flavorFromToc]
 
 --[==[@debug@
 if versionStringFromToc == "4.1.4" then
->>>>>>> Stashed changes
   versionStringFromToc = "Dev"
   buildTime = "Dev"
 end
 --@end-debug@]==]
 
-<<<<<<< Updated upstream
-local intendedWoWProject = WOW_PROJECT_MAINLINE
-
---@non-version-retail@
---[====[@version-classic@
-intendedWoWProject = WOW_PROJECT_CLASSIC
---@end-version-classic@]====]
---@version-bcc@
-intendedWoWProject = WOW_PROJECT_BURNING_CRUSADE_CLASSIC or WOW_PROJECT_MAINLINE
---@end-version-bcc@
---@end-non-version-retail@
-
-=======
->>>>>>> Stashed changes
 WeakAuras.versionString = versionStringFromToc
 WeakAuras.buildTime = buildTime
 WeakAuras.newFeatureString = "|TInterface\\OptionsFrame\\UI-OptionsFrame-NewFeatureIcon:0|t"

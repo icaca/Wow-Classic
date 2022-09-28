@@ -147,24 +147,18 @@ function QuestieTBCQuestFixes:Load()
         [1687] = {
             [questKeys.questLevel] = -1,
         },
-        [1508] = {
-            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
-        },
         [1699] = {
             [questKeys.triggerEnd] = {"Enter the Rethban Caverns", {[zoneIDs.REDRIDGE_MOUNTAINS]={{19.22,25.25}}}},
         },
         [1719] = {
             [questKeys.triggerEnd] = {"Step on the grate to begin the Affray", {[zoneIDs.THE_BARRENS]={{68.61,48.72}}}},
         },
-<<<<<<< Updated upstream
-=======
         [1799] = {
             [questKeys.preQuestSingle] = {4967,4969},
         },
         [1800] = {
             [questKeys.questLevel] = -1,
         },
->>>>>>> Stashed changes
         [1801] = {
             [questKeys.requiredRaces] = raceIDs.ORC + raceIDs.UNDEAD + raceIDs.BLOOD_ELF,
         },
@@ -1985,12 +1979,6 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.questLevel] = -1,
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
-        [10942] = {
-            [questKeys.zoneOrSort] = sortKeys.SEASONAL,
-        },
-        [10943] = {
-            [questKeys.zoneOrSort] = sortKeys.SEASONAL,
-        },
         [10945] = {
             [questKeys.questLevel] = -1,
             [questKeys.triggerEnd] = {"Salandria taken to Sporeggar", {[zoneIDs.ZANGARMARSH]={{19.22,51.23}}}},
@@ -2031,10 +2019,7 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [10960] = {
-<<<<<<< Updated upstream
-=======
             [questKeys.questLevel] = -1,
->>>>>>> Stashed changes
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [10962] = {
@@ -2046,14 +2031,6 @@ function QuestieTBCQuestFixes:Load()
         [10963] = {
             [questKeys.questLevel] = -1,
             [questKeys.triggerEnd] = {"Salandria taken to the Caverns of Time", {[zoneIDs.TANARIS]={{60.53,57.72}}}},
-<<<<<<< Updated upstream
-            [questKeys.zoneOrSort] = sortKeys.SEASONAL,
-        },
-        [10966] = {
-            [questKeys.zoneOrSort] = sortKeys.SEASONAL,
-        },
-        [10967] = {
-=======
             [questKeys.preQuestGroup] = {10945,10951,10953},
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
@@ -2063,7 +2040,6 @@ function QuestieTBCQuestFixes:Load()
         },
         [10967] = {
             [questKeys.questLevel] = -1,
->>>>>>> Stashed changes
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [10968] = {
@@ -2375,9 +2351,6 @@ function QuestieTBCQuestFixes:Load()
         },
         [11162] = {
             [questKeys.extraObjectives] = {{nil, ICON_TYPE_EVENT, l10n("Plant the Stonemaul Banner"), 0, {{"object", 186336}}}},
-        },
-        [11164] = {
-            [questKeys.preQuestSingle] = {11132},
         },
         [11164] = {
             [questKeys.preQuestSingle] = {11132},
@@ -3351,12 +3324,9 @@ function QuestieTBCQuestFixes:Load()
             [questKeys.finishedBy] = {{25697},nil},
         },
         [11975] = {
-<<<<<<< Updated upstream
-=======
             [questKeys.questLevel] = -1,
             [questKeys.triggerEnd] = {"Salandria taken to the Dark Portal", {[zoneIDs.SILVERMOON_CITY]={{76.6,81.2}}}},
             [questKeys.preQuestGroup] = {10945,10951,10953},
->>>>>>> Stashed changes
             [questKeys.zoneOrSort] = sortKeys.SEASONAL,
         },
         [12012] = {

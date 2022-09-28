@@ -50,11 +50,6 @@ local ChatFilter = QuestieLoader:ImportModule("ChatFilter")
 local QuestieShutUp = QuestieLoader:ImportModule("QuestieShutUp")
 ---@type Hooks
 local Hooks = QuestieLoader:ImportModule("Hooks")
-<<<<<<< Updated upstream
----@class QuestieValidateGameCache
-local QuestieValidateGameCache = QuestieLoader:ImportModule("QuestieValidateGameCache")
-
-=======
 ---@type QuestieValidateGameCache
 local QuestieValidateGameCache = QuestieLoader:ImportModule("QuestieValidateGameCache")
 ---@type MinimapIcon
@@ -87,16 +82,7 @@ QuestieInit.Stages[1] = function() -- run as a coroutine
     Questie:Debug(Questie.DEBUG_CRITICAL, "[QuestieInit:Stage1] Starting the real init.")
 
     MinimapIcon:Init()
->>>>>>> Stashed changes
 
-
--- ********************************************************************************
--- Start of QuestieInit.Stages ******************************************************
-
--- stage worker functions. Most are coroutines.
-QuestieInit.Stages = {}
-
-QuestieInit.Stages[1] = function() -- run as a coroutine
     HBDHooks:Init()
 
     QuestieFramePool:SetIcons()
@@ -173,18 +159,10 @@ QuestieInit.Stages[2] = function() -- not a coroutine
 end
 
 QuestieInit.Stages[3] = function() -- run as a coroutine
-<<<<<<< Updated upstream
-    -- register events that rely on questie being initialized
-    QuestieEventHandler:RegisterLateEvents()
-    QuestEventHandler:RegisterEvents()
-    ChatFilter:RegisterEvents()
-    coroutine.yield()
-=======
     Questie:Debug(Questie.DEBUG_INFO, "[QuestieInit:Stage3] Stage 3 start.")
 
     -- register events that rely on questie being initialized
     QuestieEventHandler:RegisterLateEvents()
->>>>>>> Stashed changes
 
     -- ** OLD ** Questie:ContinueInit() ** START **
     QuestieTooltips:Initialize()
@@ -192,8 +170,6 @@ QuestieInit.Stages[3] = function() -- run as a coroutine
     QuestieQuestTimers:Initialize()
     QuestieComms:Initialize()
 
-<<<<<<< Updated upstream
-=======
     QuestieSlash.RegisterSlashCommands()
 
     QuestieOptions:Initialize()
@@ -242,7 +218,6 @@ QuestieInit.Stages[3] = function() -- run as a coroutine
 
     QuestieMap:InitializeQueue()
 
->>>>>>> Stashed changes
     coroutine.yield()
     QuestiePlayer:Initialize()
     l10n:PostBoot()
@@ -332,10 +307,6 @@ function QuestieInit:LoadBaseDB()
 end
 
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 -- this function creates coroutine to run a function from QuestieInit.Stages[]
 ---@param stage number @the stage to start
 function _QuestieInit:StartStageCoroutine(stage)

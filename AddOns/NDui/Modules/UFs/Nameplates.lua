@@ -40,7 +40,6 @@ function UF:SetupCVars()
 	UF:UpdatePlateCVars()
 	SetCVar("nameplateOverlapH", .8)
 	SetCVar("nameplateSelectedAlpha", 1)
-	SetCVar("predictedHealth", 1)
 	UF:UpdatePlateClickThru()
 
 	SetCVar("nameplateSelectedScale", 1)
@@ -483,21 +482,6 @@ function UF:UpdateForQuestie(npcID)
 	if data then
 		local foundObjective, progressText
 		for _, tooltip in pairs(data) do
-<<<<<<< Updated upstream
-			local questID = tooltip.questId
-			if questID then
-				_QuestieQuest:UpdateQuest(questID)
-
-				if _QuestiePlayer.currentQuestlog[questID] then
-					foundObjective = true
-
-					if tooltip.objective and tooltip.objective.Needed then
-						progressText = tooltip.objective.Needed - tooltip.objective.Collected
-						if progressText == 0 then
-							foundObjective = nil
-						end
-						break
-=======
 			if not tooltip.npc then
 				local questID = tooltip.questId
 				if questID then
@@ -511,7 +495,6 @@ function UF:UpdateForQuestie(npcID)
 							end
 							break
 						end
->>>>>>> Stashed changes
 					end
 				end
 			end
@@ -613,15 +596,9 @@ local NPClassifies = {
 
 function UF:AddCreatureIcon(self)
 	local icon = self:CreateTexture(nil, "ARTWORK")
-<<<<<<< Updated upstream
-	icon:SetAtlas("auctionhouse-icon-favorite")
-	icon:SetPoint("RIGHT", self.nameText, "LEFT", 10, 0)
-	icon:SetSize(20, 20)
-=======
 	icon:SetTexture(DB.starTex)
 	icon:SetPoint("RIGHT", self.nameText, "LEFT", 10, 0)
 	icon:SetSize(18, 18)
->>>>>>> Stashed changes
 	icon:Hide()
 
 	self.ClassifyIndicator = icon
@@ -759,12 +736,8 @@ function UF:CreatePlates()
 	UF:CreateAuras(self)
 	UF:CreateThreatColor(self)
 
-<<<<<<< Updated upstream
-	self.Auras.showStealableBuffs = C.db["Nameplate"]["Dispellable"]
-=======
 	self.Auras.showStealableBuffs = C.db["Nameplate"]["DispellMode"] == 1
 	self.Auras.alwaysShowStealable = C.db["Nameplate"]["DispellMode"] == 2
->>>>>>> Stashed changes
 	self.powerText = B.CreateFS(self, 22)
 	self.powerText:ClearAllPoints()
 	self.powerText:SetPoint("TOP", self.Castbar, "BOTTOM", 0, -4)
@@ -815,12 +788,8 @@ function UF:UpdateNameplateAuras()
 	element.numTotal = C.db["Nameplate"]["maxAuras"]
 	element.size = C.db["Nameplate"]["AuraSize"]
 	element.showDebuffType = C.db["Nameplate"]["DebuffColor"]
-<<<<<<< Updated upstream
-	element.showStealableBuffs = C.db["Nameplate"]["Dispellable"]
-=======
 	element.showStealableBuffs = C.db["Nameplate"]["DispellMode"] == 1
 	element.alwaysShowStealable = C.db["Nameplate"]["DispellMode"] == 2
->>>>>>> Stashed changes
 	element.desaturateDebuff = C.db["Nameplate"]["Desaturate"]
 	element:SetWidth(self:GetWidth())
 	element:SetHeight((element.size + element.spacing) * 2)

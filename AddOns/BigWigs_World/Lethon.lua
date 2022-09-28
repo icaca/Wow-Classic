@@ -44,6 +44,10 @@ function mod:GetOptions()
 	}
 end
 
+function mod:OnRegister()
+	self.displayName = L.bossName
+end
+
 function mod:OnBossEnable()
 	whirlCount = 0 -- don't want to reset if OnEngage is late
 
@@ -111,7 +115,7 @@ end
 function mod:NoxiousBreathApplied(args)
 	if not self:Damager() and self:Tank(args.destName) then
 		local amount = args.amount or 1
-		self:StackMessage(24818, args.destName, amount, "purple")
+		self:StackMessageOld(24818, args.destName, amount, "purple")
 		if self:Tank() and amount > 3 then
 			self:PlaySound(24818, "warning")
 		end

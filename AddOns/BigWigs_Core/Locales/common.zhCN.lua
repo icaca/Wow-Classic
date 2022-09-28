@@ -27,14 +27,17 @@ L.stage = "阶段%d"
 L.normal = "普通模式"
 L.heroic = "英雄模式"
 L.mythic = "史诗模式"
+L.hard = "困难模式"
 L.active = "激活" -- When a boss becomes active, after speech finishes
 L.general = "通用" -- General settings, i.e. things that apply to normal, heroic and mythic mode.
+L.absorb = "吸收" -- Used for shield-like abilities that absorb damage or healing
 
 L.duration = "%s持续%s秒" -- Spell for 10 seconds
 L.over = "%s结束" -- Spell Over
 L.removed = "%s移除" -- Spell Removed
 L.removed_from = "%2$s已移除%1$s" -- Spell removed from Player
 L.removed_by = "%s被%s移除" -- Spell removed by Player
+L.removed_after = "%s在%.1f秒后移除" -- "Spell removed after 1.1s" (s = seconds)
 L.incoming = "即将%s" -- Spell Incoming
 L.interrupted = "%s已打断" -- Spell Interrupted
 L.interrupted_by = "%2$s已打断%1$s" -- Spell interrupted by Player
@@ -45,8 +48,8 @@ L.cancelled = "%s取消" -- Spell Cancelled
 
 -- Add related
 L.add_spawned = "小怪刷新"
-L.spawned = "%s重生"
-L.spawning = "%s出现"
+L.spawned = "%s已刷新"
+L.spawning = "%s刷新"
 L.next_add = "下一波小怪"
 L.add_killed = "小怪已击杀（%d/%d）"
 L.add_remaining = "小怪已击杀，%d剩余"
@@ -71,6 +74,7 @@ L.custom_sec = "%2$d秒后%1$s"
 
 L.focus_only = "|cffff0000只警报焦点目标。|r "
 L.trash = "小怪"
+L.affixes = "词缀" -- Seasonal affixes for raids and mythic+ dungeons
 
 -- Common raid marking locale
 L.marker = "%s标记"
@@ -92,6 +96,7 @@ L.amount_three = "%d千" -- Thousands 1,000
 L.seconds = "%.1f秒" -- 1.1 seconds
 
 -- Common ability name replacements
+L.tank_combo = "坦克连击" -- Used for tank swap mechanics where the boss casts a sequence of tank buster attacks
 L.laser = "激光" -- Used for abilities that act like a laser. Usually from the boss to a player, or, from the boss to a specific area
 L.beam = "射线" -- Similar to "Laser" (a beam from boss to player/boss to area) but can be used to better describe certain abilities that don't look like a Laser
 L.beams = "射线" -- Plural of L.beam

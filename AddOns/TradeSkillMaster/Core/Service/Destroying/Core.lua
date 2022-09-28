@@ -418,11 +418,7 @@ function private.IsDestroyable(itemString)
 	local quality = ItemInfo.GetQuality(itemString)
 	if ItemInfo.IsDisenchantable(itemString) and quality <= private.settings.deMaxQuality then
 		local hasSourceItem = true
-<<<<<<< Updated upstream
-		if TSM.IsWowBCClassic() then
-=======
 		if TSM.IsWowWrathClassic() then
->>>>>>> Stashed changes
 			local classId = ItemInfo.GetClassId(itemString)
 			local itemLevel = ItemInfo.GetItemLevel(ItemString.GetBase(itemString))
 			hasSourceItem = false

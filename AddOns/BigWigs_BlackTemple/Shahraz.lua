@@ -15,6 +15,7 @@ mod:SetAllowWin(true)
 --
 
 local playerList = mod:NewTargetList()
+local castCollector = {}
 
 --------------------------------------------------------------------------------
 -- Initialization
@@ -37,11 +38,13 @@ function mod:OnBossEnable()
 	self:Log("SPELL_AURA_APPLIED", "FatalAttraction", 41001)
 	self:Log("SPELL_AURA_REMOVED", "FatalAttractionRemoved", 41001)
 
-	self:RegisterUnitEvent("UNIT_SPELLCAST_SUCCEEDED", nil, "boss1")
+	self:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED")
 end
 
 function mod:OnEngage()
+	castCollector = {}
 	playerList = self:NewTargetList()
+	self:CDBar(41001, 25) -- Fatal Attraction
 	self:Berserk(600)
 end
 
@@ -58,6 +61,7 @@ function mod:FatalAttraction(args)
 	end
 
 	if #playerList == 1 then
+		self:CDBar(args.spellId, 24) -- Extreme variance 24-40+
 		self:ScheduleTimer("TargetMessageOld", 0.3, args.spellId, playerList, "orange", "alert")
 	end
 end
@@ -77,8 +81,9 @@ do
 		[40882] = true, -- Prismatic Aura: Fire
 		[40896] = true, -- Prismatic Aura: Frost
 	}
-	function mod:UNIT_SPELLCAST_SUCCEEDED(_, _, _, spellId)
-		if spells[spellId] then
+	function mod:UNIT_SPELLCAST_SUCCEEDED(_, _, castGUID, spellId)
+		if spells[spellId] and not castCollector[castGUID] then
+			castCollector[castGUID] = true
 			self:MessageOld(spellId, "yellow", "info") -- SetOption:40883,40891,40880,40897,40882,40896:::
 			self:Bar(spellId, 15) -- SetOption:40883,40891,40880,40897,40882,40896:::
 		end

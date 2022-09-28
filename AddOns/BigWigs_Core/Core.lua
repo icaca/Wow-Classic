@@ -475,7 +475,6 @@ do
 					core:Print(errorJournalIdInvalid:format(moduleName, journalId))
 				end
 			else
-				-- Localized name is set in :RegisterBossModule
 				m.displayName = moduleName
 			end
 
@@ -540,6 +539,7 @@ end
 
 do
 	local GetSpellInfo = GetSpellInfo
+	local C_EncounterJournal_GetSectionInfo = function(key) return BigWigsAPI:GetLocale("BigWigs: Encounter Info")[key] end
 	local C = core.C -- Set from Constants.lua
 	local standardFlag = C.BAR + C.CASTBAR + C.MESSAGE + C.ICON + C.SOUND + C.SAY + C.SAY_COUNTDOWN + C.PROXIMITY + C.FLASH + C.ALTPOWER + C.VOICE + C.INFOBOX + C.NAMEPLATEBAR
 	local defaultToggles = setmetatable({
@@ -564,11 +564,9 @@ do
 						if not n then core:Error(("Invalid spell ID %d in the optionHeaders for module %s."):format(v, module.name)) end
 						module.optionHeaders[k] = n or v
 					else
-						-- local tbl = C_EncounterJournal.GetSectionInfo(-v)
-						-- if not tbl then core:Error(("Invalid journal ID (-)%d in the optionHeaders for module %s."):format(-v, module.name)) end
-						local L = module:GetLocale()
-						if not L[v] then core:Error(("Invalid journal ID (-)%d in the optionHeaders for module %s."):format(-v, module.name)) end
-						module.optionHeaders[k] = L[v] or v
+						local tbl = C_EncounterJournal_GetSectionInfo(-v)
+						if not tbl then core:Error(("Invalid journal ID (-)%d in the optionHeaders for module %s."):format(-v, module.name)) end
+						module.optionHeaders[k] = tbl and tbl.title or v
 					end
 				end
 			end
@@ -623,10 +621,8 @@ do
 						if not n then core:Error(("Invalid spell ID %d in the toggleOptions for module %s."):format(v, module.name)) end
 						module.toggleDefaults[v] = bitflags
 					else
-						-- local tbl = C_EncounterJournal_GetSectionInfo(-v)
-						-- if not tbl then core:Error(("Invalid journal ID (-)%d in the toggleOptions for module %s."):format(-v, module.name)) end
-						local L = module:GetLocale()
-						if not L[v] then core:Error(("Invalid journal ID (-)%d in the toggleOptions for module %s."):format(-v, module.name)) end
+						local tbl = C_EncounterJournal_GetSectionInfo(-v)
+						if not tbl then core:Error(("Invalid journal ID (-)%d in the toggleOptions for module %s."):format(-v, module.name)) end
 						module.toggleDefaults[v] = bitflags
 					end
 				end
@@ -649,12 +645,6 @@ do
 
 	function core:RegisterBossModule(module)
 		module.SetupOptions = moduleOptions
-
-		-- Localize the display name
-		local L = module:GetLocale()
-		if L.bossName then
-			module.displayName = L.bossName
-		end
 
 		-- Call the module's OnRegister (which is our OnInitialize replacement)
 		if type(module.OnRegister) == "function" then

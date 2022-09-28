@@ -5,50 +5,6 @@ end
 local L = WeakAuras.L
 
 -- WeakAuras
-<<<<<<< Updated upstream
-L["   • %d auras added"] = "• %d auras ajoutées"
-L["   • %d auras deleted"] = "• %d auras supprimées"
-L["   • %d auras modified"] = "• %d auras modifiées"
-L[ [=[ Filter formats: 'Name', 'Name-Realm', '-Realm'. 
-
-Supports multiple entries, separated by commas
-]=] ] = "Formats de filtre : Nom, 'Serveur-Nom', 'Serveur-'. Supporte les entrées multiples, séparées par des virgules"
-L["%s - %i. Trigger"] = "%s - %i. Déclencheur"
-L["%s - Alpha Animation"] = "%s - Animation de l'opacité"
-L["%s - Color Animation"] = "%s - Animation en couleur"
-L["%s - Condition Custom Chat"] = "%s - Condition de chat personnalisé"
-L["%s - Custom Anchor"] = "%s - Ancre personnalisée"
---[[Translation missing --]]
-L["%s - Custom Grow"] = "%s - Custom Grow"
---[[Translation missing --]]
-L["%s - Custom Sort"] = "%s - Custom Sort"
-L["%s - Custom Text"] = "%s - Texte personnalisé"
-L["%s - Finish"] = "%s - Terminer"
-L["%s - Finish Action"] = "%s - Action de fin"
-L["%s - Finish Custom Text"] = "%s - Texte de fin personnalisé"
-L["%s - Init Action"] = "%s - Action initialisée"
-L["%s - Main"] = "%s - Principal"
-L["%s - Rotate Animation"] = "%s - Animation de la rotation"
-L["%s - Scale Animation"] = "%s - Échelle de l'animation"
-L["%s - Start"] = "%s - Début"
-L["%s - Start Action"] = "%s - Début de l'action"
-L["%s - Start Custom Text"] = "%s - Texte personnalisé de début"
-L["%s - Translate Animation"] = "%s - Animation Translation"
-L["%s - Trigger Logic"] = "%s - Déclenchement logique"
---[[Translation missing --]]
-L["%s Custom Variables"] = "%s Custom Variables"
-L["%s Duration Function"] = "%s Fonction de Durée"
-L["%s Icon Function"] = "%s Fonction d'Icône"
-L["%s Name Function"] = "%s Fonction de Nom"
-L["%s Overlay Color"] = "%s Couleur de l'Overlay"
---[[Translation missing --]]
-L["%s Overlay Function"] = "%s Overlay Function"
-L["%s Stacks Function"] = "%s Fonction de Piles"
-L["%s Texture Function"] = "%s Fonction de Texture"
-L["%s total auras"] = "%s auras au total"
-L["%s Trigger Function"] = "%s Fonction de Déclenchement"
-L["%s Untrigger Function"] = "%s Fonction de Désactivation"
-=======
 --[[Translation missing --]]
 L[ [=[ Filter formats: 'Name', 'Name-Realm', '-Realm'. 
 
@@ -58,7 +14,6 @@ Can use \ to escape -.]=] ] = [=[ Filter formats: 'Name', 'Name-Realm', '-Realm'
 Supports multiple entries, separated by commas
 Can use \ to escape -.]=]
 L["%s Overlay Color"] = "%s couleur de la superposition"
->>>>>>> Stashed changes
 L["* Suffix"] = "* Suffixe"
 L["/wa help - Show this message"] = "/wa help - Affiche ce message"
 L["/wa minimap - Toggle the minimap icon"] = "/wa minimap - Afficher l'icône sur la mini-carte"
@@ -74,27 +29,6 @@ L["|cFFFF0000Not|r Item Bonus Id Equipped"] = "ID du bonus de l'objet |cFFFF0000
 L["|cFFFF0000Not|r Player Name/Realm"] = "|cFFFF0000Not|r Nom du joueur / serveur"
 L["|cFFffcc00Extra Options:|r %s"] = "|cFFffcc00Options supplémentaires :|r %s"
 L["|cFFffcc00Extra Options:|r None"] = "|cFFffcc00Options supplémentaires :|r Aucun"
-<<<<<<< Updated upstream
---[[Translation missing --]]
-L[ [=[• |cff00ff00Player|r, |cff00ff00Target|r, |cff00ff00Focus|r, and |cff00ff00Pet|r correspond directly to those individual unitIDs.
-• |cff00ff00Specific Unit|r lets you provide a specific valid unitID to watch.
-|cffff0000Note|r: The game will not fire events for all valid unitIDs, making some untrackable by this trigger.
-• |cffffff00Party|r, |cffffff00Raid|r, |cffffff00Boss|r, |cffffff00Arena|r, and |cffffff00Nameplate|r can match multiple corresponding unitIDs.
-• |cffffff00Smart Group|r adjusts to your current group type, matching just the "player" when solo, "party" units (including "player") in a party or "raid" units in a raid.
-
-|cffffff00*|r Yellow Unit settings will create clones for each matching unit while this trigger is providing Dynamic Info to the Aura.]=] ] = [=[• |cff00ff00Player|r, |cff00ff00Target|r, |cff00ff00Focus|r, and |cff00ff00Pet|r correspond directly to those individual unitIDs.
-• |cff00ff00Specific Unit|r lets you provide a specific valid unitID to watch.
-|cffff0000Note|r: The game will not fire events for all valid unitIDs, making some untrackable by this trigger.
-• |cffffff00Party|r, |cffffff00Raid|r, |cffffff00Boss|r, |cffffff00Arena|r, and |cffffff00Nameplate|r can match multiple corresponding unitIDs.
-• |cffffff00Smart Group|r adjusts to your current group type, matching just the "player" when solo, "party" units (including "player") in a party or "raid" units in a raid.
-
-|cffffff00*|r Yellow Unit settings will create clones for each matching unit while this trigger is providing Dynamic Info to the Aura.]=]
-L["10 Man Raid"] = "Raid 10 Joueurs"
-L["10 Player Raid (Heroic)"] = "Raid 10 Joueurs (Héroïque)"
-L["10 Player Raid (Normal)"] = "Raid 10 Joueurs (Normal)"
-L["20 Man Raid"] = "Raid 20 Joueurs"
-L["25 Man Raid"] = "Raid 25 Joueurs"
-=======
 L[ [=[• |cff00ff00Player|r, |cff00ff00Target|r, |cff00ff00Focus|r, and |cff00ff00Pet|r correspond directly to those individual unitIDs.
 • |cff00ff00Specific Unit|r lets you provide a specific valid unitID to watch.
 |cffff0000Note|r: The game will not fire events for all valid unitIDs, making some untrackable by this trigger.
@@ -114,7 +48,6 @@ L["20 Player Raid"] = "20 Player Raid"
 L["25 Man Raid"] = "Raid 25 Joueurs"
 --[[Translation missing --]]
 L["25 Player Raid"] = "25 Player Raid"
->>>>>>> Stashed changes
 L["25 Player Raid (Heroic)"] = "Raid 25 Joueurs (Héroïque)"
 L["25 Player Raid (Normal)"] = "Raid 25 Joueurs (Normal)"
 L["40 Man Raid"] = "Raid 40 Personnes"
@@ -167,30 +100,21 @@ L["Always include realm"] = "Toujours inclure le royaume"
 L["Always True"] = "Toujours Vrai"
 L["Amount"] = "Quantité"
 --[[Translation missing --]]
-<<<<<<< Updated upstream
-=======
 L["Anchoring"] = "Anchoring"
 --[[Translation missing --]]
->>>>>>> Stashed changes
 L["And Talent"] = "And Talent"
 L["Anetheron"] = "Anetheron"
 L["Animations"] = "Animations"
 L["Anticlockwise"] = "Sens anti-horaire"
-<<<<<<< Updated upstream
-=======
 --[[Translation missing --]]
 L["Anub'arak"] = "Anub'arak"
->>>>>>> Stashed changes
 L["Anub'Rekhan"] = "Anub'Rekhan"
 L["Any"] = "N'importe lequel"
 L["Any Triggers"] = "Au moins un déclencheur"
 L["AOE"] = "AOE"
 L["Arcane Resistance"] = "Résistance aux arcanes"
-<<<<<<< Updated upstream
-=======
 --[[Translation missing --]]
 L["Archavon the Stone Watcher"] = "Archavon the Stone Watcher"
->>>>>>> Stashed changes
 L["Archimonde"] = "Archimonde"
 L[ [=[Are you sure you want to run the |cffff0000EXPERIMENTAL|r repair tool?
 This will overwrite any changes you have made since the last database upgrade.
@@ -256,11 +180,8 @@ L["Azgalor"] = "Azgalor"
 L["Back and Forth"] = "D'avant en arrière"
 L["Background"] = "Arrière-plan"
 L["Background Color"] = "Couleur d'arrière-plan"
-<<<<<<< Updated upstream
-=======
 --[[Translation missing --]]
 L["Baltharus the Warborn"] = "Baltharus the Warborn"
->>>>>>> Stashed changes
 L["Bar Color"] = "Couleur de barre"
 L["Baron Geddon"] = "Baron Geddon"
 --[[Translation missing --]]
@@ -1072,10 +993,6 @@ L["Next Combat"] = "Prochain combat"
 --[[Translation missing --]]
 L["Next Encounter"] = "Next Encounter"
 L["Nightbane"] = "Plaie-de-nuit"
-<<<<<<< Updated upstream
-L["No Children"] = "Aucun enfant"
-=======
->>>>>>> Stashed changes
 --[[Translation missing --]]
 L["No Extend"] = "No Extend"
 L["No Instance"] = "Aucune instance"
@@ -1083,10 +1000,6 @@ L["No Profiling information saved."] = "Aucune information de profilage enregist
 L["None"] = "Aucun"
 L["Non-player Character"] = "Personnage non-joueur"
 L["Normal"] = "Normal"
-<<<<<<< Updated upstream
-L["Not in Group"] = "N'est pas en groupe"
-=======
->>>>>>> Stashed changes
 --[[Translation missing --]]
 L["Normal Party"] = "Normal Party"
 --[[Translation missing --]]
@@ -1100,12 +1013,7 @@ L["Note, that cross realm transmission is possible if you are on the same group"
 L["Note: Due to how complicated the swing timer behavior is and the lack of APIs from Blizzard, results are inaccurate in edge cases."] = "Note: Due to how complicated the swing timer behavior is and the lack of APIs from Blizzard, results are inaccurate in edge cases."
 L["Note: 'Hide Alone' is not available in the new aura tracking system. A load option can be used instead."] = "Remarque: \"Cacher Seul\" n'est pas disponible dans le nouveau système de suivi d'aura. Une option de chargement peut être utilisée à la place."
 L["Note: The available text replacements for multi triggers match the normal triggers now."] = "Remarque: Les remplacements de texte disponibles pour les déclencheurs multiples correspondent maintenant aux déclencheurs normaux."
-<<<<<<< Updated upstream
---[[Translation missing --]]
-L["Note: This trigger type estimates the range to the hitbox of a unit. The actual range of friendly players is usually 3 yards more than the estimate. Range checking capabilities depend on your current class and known abilities as well as the type of unit being checked. Some of the ranges may also not work with certain NPCs.|n|n|cFFAAFFAAFriendly Units:|r %s|n|cFFFFAAAAHarmful Units:|r %s|n|cFFAAAAFFMiscellanous Units:|r %s"] = "Note: This trigger type estimates the range to the hitbox of a unit. The actual range of friendly players is usually 3 yards more than the estimate. Range checking capabilities depend on your current class and known abilities as well as the type of unit being checked. Some of the ranges may also not work with certain NPCs.|n|n|cFFAAFFAAFriendly Units:|r %s|n|cFFFFAAAAHarmful Units:|r %s|n|cFFAAAAFFMiscellanous Units:|r %s"
-=======
 L["Note: This trigger type estimates the range to the hitbox of a unit. The actual range of friendly players is usually 3 yards more than the estimate. Range checking capabilities depend on your current class and known abilities as well as the type of unit being checked. Some of the ranges may also not work with certain NPCs.|n|n|cFFAAFFAAFriendly Units:|r %s|n|cFFFFAAAAHarmful Units:|r %s|n|cFFAAAAFFMiscellanous Units:|r %s"] = "Remarque : Ce type de déclencheur estime la portée du masque de collision (hitbox) d'une unité. La portée réelle des joueurs amis est généralement supérieure de 3 mètres à l'estimation. Les capacités de vérification de la portée dépendent de votre classe actuelle et de vos capacités connues, ainsi que du type d'unité à vérifier. Certaines des portées peuvent également ne pas fonctionner avec certains PNJ.|n|n|cFFAAFFAAUnités amies :|r %s|n|cFFFFAAAAUnités nuisibles :|r %s|n|cFFAAAAFFUnités diverses :|r %s"
->>>>>>> Stashed changes
 L["Noth the Plaguebringer"] = "Noth le Porte-peste"
 L["NPC"] = "PNJ"
 L["Npc ID"] = "ID PNJ"
@@ -1807,17 +1715,11 @@ L["Your scheduled automatic profile has been cancelled."] = "Your scheduled auto
 L["Your threat as a percentage of the tank's current threat."] = "Your threat as a percentage of the tank's current threat."
 L["Your threat on the mob as a percentage of the amount required to pull aggro. Will pull aggro at 100."] = "Votre menace sur le monstre en pourcentage du montant requis pour attirer l'aggro. Monte l'aggro à 100."
 L["Your total threat on the mob."] = "Votre menace totale sur le monstre."
-<<<<<<< Updated upstream
-L["Zone ID(s)"] = "ID de la Zone"
-L["Zone Name"] = "Nom de la Zone"
-L["Zoom"] = "Zoom"
-=======
 L["Zone ID(s)"] = "ID de la zone"
 L["Zone Name"] = "Nom de la zone"
 L["Zoom"] = "Zoom"
 --[[Translation missing --]]
 L["Zoom Animation"] = "Zoom Animation"
->>>>>>> Stashed changes
 L["Zul'Aman"] = "Zul'Aman"
 L["Zul'Gurub"] = "Zul'Gurub"
 

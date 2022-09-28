@@ -365,8 +365,8 @@
 			options_frame:Hide()
 			
 			options_frame:SetPoint ("center", UIParent, "center")
-			options_frame.TitleText:SetText (title)
-			options_frame.portrait:SetTexture ([[Interface\CHARACTERFRAME\TEMPORARYPORTRAIT-FEMALE-BLOODELF]])
+			--options_frame.TitleText:SetText (title) --10.0 fuck
+			--options_frame.portrait:SetTexture ([[Interface\CHARACTERFRAME\TEMPORARYPORTRAIT-FEMALE-BLOODELF]])
 			
 			return options_frame
 	
@@ -461,15 +461,22 @@
 		--> menu background
 			local menuBackground = CreateFrame ("frame", "$parentMenuFrame", f,"BackdropTemplate")
 			_detalhes:FormatBackground (menuBackground)
+			local menuBackgroundTexture = menuBackground:CreateTexture("$parentBackgroundTexture", "background", nil, -2)
+			menuBackgroundTexture:SetAllPoints()
+			menuBackgroundTexture:SetColorTexture(0.2, 0.2, 0.2, .5)
 			
 		--> statusbar
 			local statusBar = CreateFrame ("frame", nil, menuBackground,"BackdropTemplate")
 			statusBar:SetPoint ("topleft", menuBackground, "bottomleft", 0, 1)
 			statusBar:SetPoint ("topright", f, "bottomright", 0, 1)
 			statusBar:SetHeight (20)
-			_detalhes.gump:ApplyStandardBackdrop (statusBar)
 			statusBar:SetAlpha (1)
-			_detalhes.gump:BuildStatusbarAuthorInfo (statusBar)
+			DetailsFramework:BuildStatusbarAuthorInfo (statusBar)
+			DetailsFramework:ApplyStandardBackdrop (statusBar)
+			local extraDarkTexture = statusBar:CreateTexture(nil, "background")
+			extraDarkTexture:SetAllPoints()
+			extraDarkTexture:SetColorTexture(.2, .2, .2, .8)
+
 			--
 			local right_click_to_back = _detalhes.gump:CreateLabel (statusBar, "right click to close", 10, "gray")
 			right_click_to_back:SetPoint ("bottomright", statusBar, "bottomright", -1, 5)
@@ -483,14 +490,17 @@
 			local bigdog = _detalhes.gump:NewImage (menuBackground, [[Interface\MainMenuBar\UI-MainMenuBar-EndCap-Human]], 180*0.7, 200*0.7, "overlay", {0, 1, 0, 1}, "backgroundBigDog", "$parentBackgroundBigDog")
 			bigdog:SetPoint ("bottomleft", custom_window, "bottomleft", 0, 1)
 			bigdog:SetAlpha (0.3)
-			
+
+			local gradientBelowTheLine = DetailsFramework:CreateTexture(menuBackground, {gradient = "vertical", fromColor = {0, 0, 0, 0.45}, toColor = "transparent"}, 1, 95, "artwork", {0, 1, 0, 1}, "dogGradient")
+			gradientBelowTheLine:SetPoint("bottoms")
+
 			local bigdogRow = menuBackground:CreateTexture (nil, "artwork")
 			bigdogRow:SetPoint ("bottomleft", menuBackground, "bottomleft", 1, 1)
 			bigdogRow:SetPoint ("bottomright", menuBackground, "bottomright", -1, 1)
 			bigdogRow:SetHeight (20)
 			bigdogRow:SetColorTexture (.5, .5, .5, .1)
 			bigdogRow:Hide()
-			
+
 			--
 		--> plugins menu title bar
 			local titlebar_plugins = CreateFrame ("frame", nil, menuBackground,"BackdropTemplate")

@@ -13,7 +13,19 @@ local AceGUI = LibStub("AceGUI-3.0")
 local adbo = LibStub("AceDBOptions-3.0")
 --local lds = LibStub("LibDualSpec-1.0")
 
-local C_EncounterJournal_GetSectionInfo = function() end
+local C_EncounterJournal_GetSectionInfo = function(key)
+	local info = BigWigsAPI:GetLocale("BigWigs: Encounter Info")[key]
+	if info then
+		-- Options uses a few more fields, so copy the entry and include them
+		local tbl = {}
+		for k,v in next, info do
+			tbl[k] = v
+		end
+		tbl.spellID = 0
+		tbl.link = ("|cff66bbff|Hjournal:2:%d:1|h[%s]|h|r"):format(key, tbl.title)
+		return tbl
+	end
+end
 
 local loader = BigWigsLoader
 local API = BigWigsAPI
@@ -27,6 +39,7 @@ local soundModule
 local configFrame, isPluginOpen
 
 local showToggleOptions, getAdvancedToggleOption = nil, nil
+local toggleOptionsStatusTable = {}
 
 local getOptions
 local acOptions = {
@@ -582,7 +595,7 @@ function getAdvancedToggleOption(scrollFrame, dropdown, module, bossOption)
 	back:SetText(L.back)
 	back:SetFullWidth(true)
 	back:SetCallback("OnClick", function()
-		showToggleOptions(dropdown, nil, dropdown:GetUserData("bossIndex"))
+		showToggleOptions(dropdown, nil, dropdown:GetUserData("bossIndex"), true)
 	end)
 
 	local check = AceGUI:Create("CheckBox")
@@ -679,6 +692,10 @@ end
 
 local function buttonClicked(widget)
 	clearPendingUpdates()
+	-- save scroll bar position
+	toggleOptionsStatusTable.restore_scrollvalue = toggleOptionsStatusTable.scrollvalue
+	toggleOptionsStatusTable.restore_offset = toggleOptionsStatusTable.offset
+
 	local scrollFrame = widget:GetUserData("scrollFrame")
 	local dropdown = widget:GetUserData("dropdown")
 	local module = widget:GetUserData("module")
@@ -1117,20 +1134,28 @@ local function populateToggleOptions(widget, module)
 		end
 		scrollFrame:AddChildren(getDefaultToggleOption(scrollFrame, widget, module, option))
 	end
+
 	local list = AceGUI:Create("Button")
 	list:SetFullWidth(true)
 	list:SetText(L.listAbilities)
 	list:SetUserData("module", module)
 	list:SetCallback("OnClick", listAbilitiesInChat)
 	scrollFrame:AddChild(list)
-	scrollFrame:SetScroll(0)
+
 	scrollFrame:ResumeLayout()
 	scrollFrame:PerformLayout()
 end
 
-function showToggleOptions(widget, event, group)
+function showToggleOptions(widget, event, group, noScrollReset)
 	local module = BigWigs:GetBossModule(group)
 	widget:SetUserData("bossIndex", group)
+	-- reset scroll bar if not hitting the back button
+	if not noScrollReset then
+		toggleOptionsStatusTable.restore_offset = nil
+		toggleOptionsStatusTable.restore_scrollvalue = nil
+	end
+	toggleOptionsStatusTable.offset = toggleOptionsStatusTable.restore_offset
+	toggleOptionsStatusTable.scrollvalue = toggleOptionsStatusTable.restore_scrollvalue
 	populateToggleOptions(widget, module)
 end
 
@@ -1168,6 +1193,7 @@ local function onZoneShow(treeWidget, id)
 	scroll:SetLayout("Flow")
 	scroll:SetFullWidth(true)
 	scroll:SetFullHeight(true)
+	scroll:SetStatusTable(toggleOptionsStatusTable)
 	innerContainer:SetUserData("parent", scroll)
 	innerContainer:AddChild(scroll)
 
@@ -1194,8 +1220,9 @@ do
 	local expansionHeader = {
 		"Classic",
 	}
-	if BigWigsLoader.isBC then
+	if BigWigsLoader.isClassic then
 		expansionHeader[#expansionHeader+1] = "BurningCrusade"
+		expansionHeader[#expansionHeader+1] = "WrathOfTheLichKing"
 	end
 
 	local statusTable = {}
@@ -1234,12 +1261,14 @@ do
 		local zoneId = value:match("\001(-?%d+)$")
 		if zoneId then
 			onZoneShow(widget, tonumber(zoneId))
-		-- elseif value:match("^BigWigs_") and value ~= "BigWigs_Classic" and GetAddOnEnableState(playerName, value) == 0 then
-		-- 		local missing = AceGUI:Create("Label")
-		-- 		missing:SetText(L.missingAddOn:format(value))
-		-- 		missing:SetFontObject(GameFontHighlight)
-		-- 		missing:SetFullWidth(true)
-		-- 		widget:AddChild(missing)
+		-- XXX update when era addons are ready for classic
+		-- elseif value:match("^BigWigs_") and GetAddOnEnableState(playerName, value) == 0 then
+		elseif value == "BigWigs_WrathOfTheLichKing" and GetAddOnEnableState(playerName, value) == 0 then
+				local missing = AceGUI:Create("Label")
+				missing:SetText(L.missingAddOn:format(value))
+				missing:SetFontObject(GameFontHighlight)
+				missing:SetFullWidth(true)
+				widget:AddChild(missing)
 		elseif value:match("^LittleWigs_") and GetAddOnEnableState(playerName, "LittleWigs") == 0 then
 				local missing = AceGUI:Create("Label")
 				missing:SetText(L.missingAddOn:format("LittleWigs"))

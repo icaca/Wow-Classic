@@ -135,12 +135,9 @@ function G:SetupRaidDebuffs(parent)
 		end
 	end
 	local raidIDs = {564,565,534,532,544,548,580,550,568}
-<<<<<<< Updated upstream
-=======
 	if maxLevel > 70 then
 		raidIDs = {631,533,249,616,615,724,649,603,624}
 	end
->>>>>>> Stashed changes
 	local raids = {}
 	for _, id in pairs(raidIDs) do
 		local name = GetNameFromID(id)
@@ -1379,17 +1376,10 @@ function G:SetupCastbar(parent)
 		local castbar = _G.oUF_Player and _G.oUF_Player.Castbar
 		if castbar then
 			local width, height = C.db["UFs"]["PlayerCBWidth"], C.db["UFs"]["PlayerCBHeight"]
-<<<<<<< Updated upstream
-			_G.oUF_Player.Castbar:SetSize(width, height)
-			_G.oUF_Player.Castbar.Icon:SetSize(height, height)
-			_G.oUF_Player.Castbar.mover:Show()
-			_G.oUF_Player.Castbar.mover:SetSize(width+height+5, height+5)
-=======
 			castbar:SetSize(width, height)
 			castbar.Icon:SetSize(height, height)
 			castbar.mover:Show()
 			castbar.mover:SetSize(width+height+5, height+5)
->>>>>>> Stashed changes
 		end
 	end
 	createOptionGroup(scroll.child, L["Player Castbar"], -140, "Player", updatePlayerCastbar)
@@ -1442,53 +1432,6 @@ function G:SetupSwingBars(parent)
 	local panel = createExtraGUI(parent, guiName, L["UFs SwingBar"].."*")
 	local scroll = G:CreateScroll(panel, 260, 540)
 
-	local parent, offset = scroll.child, -10
-	local frame = _G.oUF_Player
-
-	local function configureSwingBars()
-		if not frame then return end
-
-		local width, height = C.db["UFs"]["SwingWidth"], C.db["UFs"]["SwingHeight"]
-		local swing = frame.Swing
-		swing:SetSize(width, height)
-		swing.Offhand:SetHeight(height)
-		swing.mover:SetSize(width, height)
-		swing.mover:Show()
-
-		swing.Text:SetShown(C.db["UFs"]["SwingTimer"])
-		swing.TextMH:SetShown(C.db["UFs"]["SwingTimer"])
-		swing.TextOH:SetShown(C.db["UFs"]["SwingTimer"])
-
-		swing.Offhand:ClearAllPoints()
-		if C.db["UFs"]["OffOnTop"] then
-			swing.Offhand:SetPoint("BOTTOMLEFT", swing, "TOPLEFT", 0, 3)
-			swing.Offhand:SetPoint("BOTTOMRIGHT", swing, "TOPRIGHT", 0, 3)
-		else
-			swing.Offhand:SetPoint("TOPLEFT", swing, "BOTTOMLEFT", 0, -3)
-			swing.Offhand:SetPoint("TOPRIGHT", swing, "BOTTOMRIGHT", 0, -3)
-		end
-	end
-
-	createOptionCheck(parent, offset, L["UFs SwingTimer"], "UFs", "SwingTimer", configureSwingBars, L["SwingTimer Tip"])
-	createOptionCheck(parent, offset-35, L["OffhandOnTop"], "UFs", "OffOnTop", configureSwingBars)
-	createOptionSlider(parent, L["Width"], 50, 1000, 275, offset-105, "SwingWidth", configureSwingBars)
-	createOptionSlider(parent, L["Height"], 1, 50, 3, offset-175, "SwingHeight", configureSwingBars)
-
-	panel:HookScript("OnHide", function()
-		local mover = frame and frame.Swing and frame.Swing.mover
-		if mover then mover:Hide() end
-	end)
-end
-
-function G:SetupSwingBars(parent)
-	local guiName = "NDuiGUI_SwingSetup"
-	toggleExtraGUI(guiName)
-	if extraGUIs[guiName] then return end
-
-	local panel = createExtraGUI(parent, guiName, L["UFs SwingBar"].."*")
-	local scroll = G:CreateScroll(panel, 260, 540)
-
-	local UF = B:GetModule("UnitFrames")
 	local parent, offset = scroll.child, -10
 	local frame = _G.oUF_Player
 

@@ -3,11 +3,14 @@
 -- Module declaration
 --
 
-local mod, CL = BigWigs:NewBoss("C'Thun", 531)
+local mod, CL = BigWigs:NewBoss("C'Thun", 531, 1551)
 if not mod then return end
 mod:RegisterEnableMob(15727, 15589) -- C'Thun, Eye of C'Thun
-mod:SetAllowWin(true)
 mod:SetEncounterID(717)
+
+--------------------------------------------------------------------------------
+-- Locals
+--
 
 local timeP1Tentacle = 45      -- tentacle timers for phase 1
 local timeP1TentacleStart = 45 -- delay for first tentacles from engage onwards
@@ -35,10 +38,8 @@ local timerCheckTarget = nil
 -- Localization
 --
 
-local L = mod:NewLocale("enUS", true)
+local L = mod:NewLocale()
 if L then
-	L.bossName = "C'Thun"
-
 	L.tentacle = "Tentacles"
 	L.tentacle_desc = "Warn for Tentacles"
 	L.tentacle_icon = 26391 -- inv_misc_ahnqirajtrinket_05 / Tentacle Call

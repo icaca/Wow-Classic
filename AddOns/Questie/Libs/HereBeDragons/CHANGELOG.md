@@ -1,13 +1,3 @@
-<<<<<<< Updated upstream
-# Lib: HereBeDragons
-
-## [2.06-release](https://github.com/Nevcairiel/HereBeDragons/tree/2.06-release) (2021-05-08)
-[Full Changelog](https://github.com/Nevcairiel/HereBeDragons/compare/2.05-release...2.06-release) [Previous Releases](https://github.com/Nevcairiel/HereBeDragons/releases)
-
-- Fixup Luacheck  
-- Update API check to be independent of WoW version  
-- Add transform and worldmap data for BC  
-=======
 # Lib: HereBeDragons
 
 ## [2.09-release](https://github.com/Nevcairiel/HereBeDragons/tree/2.09-release) (2022-08-29)
@@ -23,4 +13,3 @@
 - Don't use expansion level checks, they may not be present in all clients  
 - Fix handling of pins from phased sub maps  
 - Add Wrath Classic support  
->>>>>>> Stashed changes

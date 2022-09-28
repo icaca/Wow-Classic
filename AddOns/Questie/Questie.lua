@@ -16,25 +16,8 @@ local band = bit.band
 local QuestieOptionsDefaults = QuestieLoader:ImportModule("QuestieOptionsDefaults")
 ---@type QuestieEventHandler
 local QuestieEventHandler = QuestieLoader:ImportModule("QuestieEventHandler");
-<<<<<<< Updated upstream
----@type QuestieTooltips
-local QuestieTooltips = QuestieLoader:ImportModule("QuestieTooltips");
----@type QuestieDBMIntegration
-local QuestieDBMIntegration = QuestieLoader:ImportModule("QuestieDBMIntegration");
----@type QuestieQuestTimers
-local QuestieQuestTimers = QuestieLoader:ImportModule("QuestieQuestTimers")
----@type QuestieCombatQueue
-local QuestieCombatQueue = QuestieLoader:ImportModule("QuestieCombatQueue")
----@type QuestieSlash
-local QuestieSlash = QuestieLoader:ImportModule("QuestieSlash")
----@class QuestieValidateGameCache
-local QuestieValidateGameCache = QuestieLoader:ImportModule("QuestieValidateGameCache")
----@type l10n
-local l10n = QuestieLoader:ImportModule("l10n")
-=======
 ---@type QuestieValidateGameCache
 local QuestieValidateGameCache = QuestieLoader:ImportModule("QuestieValidateGameCache")
->>>>>>> Stashed changes
 
 
 function Questie:OnInitialize()

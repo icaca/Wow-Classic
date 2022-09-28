@@ -541,313 +541,324 @@ function _detalhes:SaveProfile (saveas)
 
 		end
 
-	--> save skins
-		if (not _detalhes.do_not_save_skins) then
-			table.wipe (profile.instances)
-			for index, instance in ipairs (_detalhes.tabela_instancias) do
-				local exported = instance:ExportSkin()
-				exported.__was_opened = instance:IsEnabled()
-				exported.__pos = Details.CopyTable (instance:GetPosition())
-				exported.__locked = instance.isLocked
-				exported.__snap = Details.CopyTable (instance.snap)
-				exported.__snapH = instance.horizontalSnap
-				exported.__snapV = instance.verticalSnap
-				profile.instances [index] = exported
-			end
+	--save skins
+	if (not _detalhes.do_not_save_skins) then
+		table.wipe(profile.instances)
+		for index, instance in ipairs(_detalhes.tabela_instancias) do
+			local exported = instance:ExportSkin()
+			exported.__was_opened = instance:IsEnabled()
+			exported.__pos = Details.CopyTable(instance:GetPosition())
+			exported.__locked = instance.isLocked
+			exported.__snap = Details.CopyTable(instance.snap)
+			exported.__snapH = instance.horizontalSnap
+			exported.__snapV = instance.verticalSnap
+			profile.instances[index] = exported
 		end
-		_detalhes.do_not_save_skins = nil
-		
-		_detalhes:SaveLocalInstanceConfig()
+	end
+	_detalhes.do_not_save_skins = nil
+	_detalhes:SaveLocalInstanceConfig()
 
-	--> end
-		return profile
+	return profile
 end
 
 local default_profile = {
+	--spec coords, reset with: /run Details.class_specs_coords = nil
+	class_specs_coords = {
+		[577] = {128/512, 192/512, 256/512, 320/512}, --havoc demon hunter
+		[581] = {192/512, 256/512, 256/512, 320/512}, --vengeance demon hunter
 
-	--> spec coords
---	/run Details.class_specs_coords = nil
-		class_specs_coords = {
-			[577] = {128/512, 192/512, 256/512, 320/512}, --> havoc demon hunter
-			[581] = {192/512, 256/512, 256/512, 320/512}, --> vengeance demon hunter
-		
-			[250] = {0, 64/512, 0, 64/512}, --> blood dk
-			[251] = {64/512, 128/512, 0, 64/512}, --> frost dk
-			[252] = {128/512, 192/512, 0, 64/512}, --> unholy dk
-			
-			[102] = {192/512, 256/512, 0, 64/512}, -->  druid balance
-			[103] = {256/512, 320/512, 0, 64/512}, -->  druid feral
-			[104] = {320/512, 384/512, 0, 64/512}, -->  druid guardian
-			[105] = {384/512, 448/512, 0, 64/512}, -->  druid resto
+		[250] = {0, 64/512, 0, 64/512}, --blood dk
+		[251] = {64/512, 128/512, 0, 64/512}, --frost dk
+		[252] = {128/512, 192/512, 0, 64/512}, --unholy dk
 
-			[253] = {448/512, 512/512, 0, 64/512}, -->  hunter bm
-			[254] = {0, 64/512, 64/512, 128/512}, --> hunter marks
-			[255] = {64/512, 128/512, 64/512, 128/512}, --> hunter survivor
-			
-			[62] = {(128/512) + 0.001953125, 192/512, 64/512, 128/512}, --> mage arcane
-			[63] = {192/512, 256/512, 64/512, 128/512}, --> mage fire
-			[64] = {256/512, 320/512, 64/512, 128/512}, --> mage frost
-			
-			[268] = {320/512, 384/512, 64/512, 128/512}, --> monk bm
-			[269] = {448/512, 512/512, 64/512, 128/512}, --> monk ww
-			[270] = {384/512, 448/512, 64/512, 128/512}, --> monk mw
-			
-			[65] = {0, 64/512, 128/512, 192/512}, --> paladin holy
-			[66] = {64/512, 128/512, 128/512, 192/512}, --> paladin protect
-			[70] = {(128/512) + 0.001953125, 192/512, 128/512, 192/512}, --> paladin ret
-			
-			[256] = {192/512, 256/512, 128/512, 192/512}, --> priest disc
-			[257] = {256/512, 320/512, 128/512, 192/512}, --> priest holy
-			[258] = {(320/512) + (0.001953125 * 4), 384/512, 128/512, 192/512}, --> priest shadow
-			
-			[259] = {384/512, 448/512, 128/512, 192/512}, --> rogue assassination
-			[260] = {448/512, 512/512, 128/512, 192/512}, --> rogue combat
-			[261] = {0, 64/512, 192/512, 256/512}, --> rogue sub
-			
-			[262] = {64/512, 128/512, 192/512, 256/512}, --> shaman elemental
-			[263] = {128/512, 192/512, 192/512, 256/512}, --> shamel enhancement
-			[264] = {192/512, 256/512, 192/512, 256/512}, --> shaman resto
-			
-			[265] = {256/512, 320/512, 192/512, 256/512}, --> warlock aff
-			[266] = {320/512, 384/512, 192/512, 256/512}, --> warlock demo
-			[267] = {384/512, 448/512, 192/512, 256/512}, --> warlock destro
-			
-			[71] = {448/512, 512/512, 192/512, 256/512}, --> warrior arms
-			[72] = {0, 64/512, 256/512, 320/512}, --> warrior fury
-			[73] = {64/512, 128/512, 256/512, 320/512}, --> warrior protect
+		[102] = {192/512, 256/512, 0, 64/512}, -- druid balance
+		[103] = {256/512, 320/512, 0, 64/512}, -- druid feral
+		[104] = {320/512, 384/512, 0, 64/512}, -- druid guardian
+		[105] = {384/512, 448/512, 0, 64/512}, -- druid resto
+
+		[253] = {448/512, 512/512, 0, 64/512}, -- hunter bm
+		[254] = {0, 64/512, 64/512, 128/512}, --hunter marks
+		[255] = {64/512, 128/512, 64/512, 128/512}, --hunter survivor
+
+		[62] = {(128/512) + 0.001953125, 192/512, 64/512, 128/512}, --mage arcane
+		[63] = {192/512, 256/512, 64/512, 128/512}, --mage fire
+		[64] = {256/512, 320/512, 64/512, 128/512}, --mage frost
+
+		[268] = {320/512, 384/512, 64/512, 128/512}, --monk bm
+		[269] = {448/512, 512/512, 64/512, 128/512}, --monk ww
+		[270] = {384/512, 448/512, 64/512, 128/512}, --monk mw
+
+		[65] = {0, 64/512, 128/512, 192/512}, --paladin holy
+		[66] = {64/512, 128/512, 128/512, 192/512}, --paladin protect
+		[70] = {(128/512) + 0.001953125, 192/512, 128/512, 192/512}, --paladin ret
+
+		[256] = {192/512, 256/512, 128/512, 192/512}, --priest disc
+		[257] = {256/512, 320/512, 128/512, 192/512}, --priest holy
+		[258] = {(320/512) + (0.001953125 * 4), 384/512, 128/512, 192/512}, --priest shadow
+
+		[259] = {384/512, 448/512, 128/512, 192/512}, --rogue assassination
+		[260] = {448/512, 512/512, 128/512, 192/512}, --rogue combat
+		[261] = {0, 64/512, 192/512, 256/512}, --rogue sub
+
+		[262] = {64/512, 128/512, 192/512, 256/512}, --shaman elemental
+		[263] = {128/512, 192/512, 192/512, 256/512}, --shamel enhancement
+		[264] = {192/512, 256/512, 192/512, 256/512}, --shaman resto
+
+		[265] = {256/512, 320/512, 192/512, 256/512}, --warlock aff
+		[266] = {320/512, 384/512, 192/512, 256/512}, --warlock demo
+		[267] = {384/512, 448/512, 192/512, 256/512}, --warlock destro
+
+		[71] = {448/512, 512/512, 192/512, 256/512}, --warrior arms
+		[72] = {0, 64/512, 256/512, 320/512}, --warrior fury
+		[73] = {64/512, 128/512, 256/512, 320/512}, --warrior protect
+
+		[1467] = {256/512, 320/512, 256/512, 320/512}, -- Devastation
+		[1468] = {320/512, 384/512, 256/512, 320/512}, -- Preservation
+	},
+
+	--class icons and colors
+	class_icons_small = [[Interface\AddOns\Details\images\classes_small]],
+	class_coords = {
+		["DEMONHUNTER"] = {
+			0.73828126 / 2, -- [1]
+			1 / 2, -- [2]
+			0.5 / 2, -- [3]
+			0.75 / 2, -- [4]
+		},
+		["HUNTER"] = {
+			0, -- [1]
+			0.25 / 2, -- [2]
+			0.25 / 2, -- [3]
+			0.5 / 2, -- [4]
+		},
+		["WARRIOR"] = {
+			0, -- [1]
+			0.25 / 2, -- [2]
+			0, -- [3]
+			0.25 / 2, -- [4]
+		},
+		["ROGUE"] = {
+			0.49609375 / 2, -- [1]
+			0.7421875 / 2, -- [2]
+			0, -- [3]
+			0.25 / 2, -- [4]
+		},
+		["MAGE"] = {
+			0.25 / 2, -- [1]
+			0.49609375 / 2, -- [2]
+			0, -- [3]
+			0.25 / 2, -- [4]
+		},
+		["PET"] = {
+			0.25 / 2, -- [1]
+			0.49609375 / 2, -- [2]
+			0.75 / 2, -- [3]
+			1 / 2, -- [4]
+		},
+		["DRUID"] = {
+			0.7421875 / 2, -- [1]
+			0.98828125 / 2, -- [2]
+			0, -- [3]
+			0.25 / 2, -- [4]
+		},
+		["MONK"] = {
+			0.5 / 2, -- [1]
+			0.73828125 / 2, -- [2]
+			0.5 / 2, -- [3]
+			0.75 / 2, -- [4]
+		},
+		["DEATHKNIGHT"] = {
+			0.25 / 2, -- [1]
+			0.5 / 2, -- [2]
+			0.5 / 2, -- [3]
+			0.75 / 2, -- [4]
+		},
+		["UNKNOW"] = {
+			0.5 / 2, -- [1]
+			0.75 / 2, -- [2]
+			0.75 / 2, -- [3]
+			1 / 2, -- [4]
+		},
+		["PRIEST"] = {
+			0.49609375 / 2, -- [1]
+			0.7421875 / 2, -- [2]
+			0.25 / 2, -- [3]
+			0.5 / 2, -- [4]
+		},
+		["UNGROUPPLAYER"] = {
+			0.5 / 2, -- [1]
+			0.75 / 2, -- [2]
+			0.75 / 2, -- [3]
+			1 / 2, -- [4]
+		},
+		["Alliance"] = {
+			0.49609375 / 2, -- [1]
+			0.742187 / 25, -- [2]
+			0.75 / 2, -- [3]
+			1 / 2, -- [4]
+		},
+		["WARLOCK"] = {
+			0.7421875 / 2, -- [1]
+			0.98828125 / 2, -- [2]
+			0.25 / 2, -- [3]
+			0.5 / 2, -- [4]
+		},
+		["ENEMY"] = {
+			0, -- [1]
+			0.25 / 2, -- [2]
+			0.75 / 2, -- [3]
+			1 / 2, -- [4]
+		},
+		["Horde"] = {
+			0.7421875 / 2, -- [1]
+			0.98828125 / 2, -- [2]
+			0.75 / 2, -- [3]
+			1 / 2, -- [4]
+		},
+		["PALADIN"] = {
+			0, -- [1]
+			0.25 / 2, -- [2]
+			0.5 / 2, -- [3]
+			0.75 / 2, -- [4]
+		},
+		["MONSTER"] = {
+			0, -- [1]
+			0.25 / 2, -- [2]
+			0.75 / 2, -- [3]
+			1 / 2, -- [4]
+		},
+		["SHAMAN"] = {
+			0.25 / 2, -- [1]
+			0.49609375 / 2, -- [2]
+			0.25 / 2, -- [3]
+			0.5 / 2, -- [4]
+		},
+		["EVOKER"] = {
+			0.50390625, -- [1]
+			0.625, -- [2]
+			0, -- [3]
+			0.125, -- [4]
+		},
+	},
+
+	class_colors = {
+		["DEMONHUNTER"] = {
+			0.64,
+			0.19,
+			0.79,
+		},
+		["HUNTER"] = {
+			0.67, -- [1]
+			0.83, -- [2]
+			0.45, -- [3]
+		},
+		["WARRIOR"] = {
+			0.78, -- [1]
+			0.61, -- [2]
+			0.43, -- [3]
+		},
+		["PALADIN"] = {
+			0.96, -- [1]
+			0.55, -- [2]
+			0.73, -- [3]
+		},
+		["SHAMAN"] = {
+			0, -- [1]
+			0.44, -- [2]
+			0.87, -- [3]
+		},
+		["MAGE"] = {
+			0.41, -- [1]
+			0.8, -- [2]
+			0.94, -- [3]
+		},
+		["ROGUE"] = {
+			1, -- [1]
+			0.96, -- [2]
+			0.41, -- [3]
+		},
+		["UNKNOW"] = {
+			0.2, -- [1]
+			0.2, -- [2]
+			0.2, -- [3]
+		},
+		["PRIEST"] = {
+			1, -- [1]
+			1, -- [2]
+			1, -- [3]
+		},
+		["WARLOCK"] = {
+			0.58, -- [1]
+			0.51, -- [2]
+			0.79, -- [3]
+		},
+		["UNGROUPPLAYER"] = {
+			0.4, -- [1]
+			0.4, -- [2]
+			0.4, -- [3]
+		},
+		["ENEMY"] = {
+			0.94117, -- [1]
+			0, -- [2]
+			0.0196, -- [3]
+			1, -- [4]
+		},
+		["version"] = 1,
+		["PET"] = {
+			0.3, -- [1]
+			0.4, -- [2]
+			0.5, -- [3]
+		},
+		["DRUID"] = {
+			1, -- [1]
+			0.49, -- [2]
+			0.04, -- [3]
+		},
+		["MONK"] = {
+			0, -- [1]
+			1, -- [2]
+			0.59, -- [3]
+		},
+		["DEATHKNIGHT"] = {
+			0.77, -- [1]
+			0.12, -- [2]
+			0.23, -- [3]
+		},
+		["ARENA_GREEN"] = {
+			0.686, -- [1]
+			0.372, -- [2]
+			0.905, -- [3]
+		},
+		["ARENA_YELLOW"] = {
+			1, -- [1]
+			1, -- [2]
+			0.25, -- [3]
+		},
+		["NEUTRAL"] = {
+			1, -- [1]
+			1, -- [2]
+			0, -- [3]
+		},
+		["SELF"] = {
+			0.89019, -- [1]
+			0.32156, -- [2]
+			0.89019, -- [3]
 		},
 
-	--> class icons and colors
-		class_icons_small = [[Interface\AddOns\Details\images\classes_small]],
-		class_coords = {
-			["DEMONHUNTER"] = {
-				0.73828126, -- [1]
-				1, -- [2]
-				0.5, -- [3]
-				0.75, -- [4]
-			},
-			["HUNTER"] = {
-				0, -- [1]
-				0.25, -- [2]
-				0.25, -- [3]
-				0.5, -- [4]
-			},
-			["WARRIOR"] = {
-				0, -- [1]
-				0.25, -- [2]
-				0, -- [3]
-				0.25, -- [4]
-			},
-			["ROGUE"] = {
-				0.49609375, -- [1]
-				0.7421875, -- [2]
-				0, -- [3]
-				0.25, -- [4]
-			},
-			["MAGE"] = {
-				0.25, -- [1]
-				0.49609375, -- [2]
-				0, -- [3]
-				0.25, -- [4]
-			},
-			["PET"] = {
-				0.25, -- [1]
-				0.49609375, -- [2]
-				0.75, -- [3]
-				1, -- [4]
-			},
-			["DRUID"] = {
-				0.7421875, -- [1]
-				0.98828125, -- [2]
-				0, -- [3]
-				0.25, -- [4]
-			},
-			["MONK"] = {
-				0.5, -- [1]
-				0.73828125, -- [2]
-				0.5, -- [3]
-				0.75, -- [4]
-			},
-			["DEATHKNIGHT"] = {
-				0.25, -- [1]
-				0.5, -- [2]
-				0.5, -- [3]
-				0.75, -- [4]
-			},
-			["UNKNOW"] = {
-				0.5, -- [1]
-				0.75, -- [2]
-				0.75, -- [3]
-				1, -- [4]
-			},
-			["PRIEST"] = {
-				0.49609375, -- [1]
-				0.7421875, -- [2]
-				0.25, -- [3]
-				0.5, -- [4]
-			},
-			["UNGROUPPLAYER"] = {
-				0.5, -- [1]
-				0.75, -- [2]
-				0.75, -- [3]
-				1, -- [4]
-			},
-			["Alliance"] = {
-				0.49609375, -- [1]
-				0.7421875, -- [2]
-				0.75, -- [3]
-				1, -- [4]
-			},
-			["WARLOCK"] = {
-				0.7421875, -- [1]
-				0.98828125, -- [2]
-				0.25, -- [3]
-				0.5, -- [4]
-			},
-			["ENEMY"] = {
-				0, -- [1]
-				0.25, -- [2]
-				0.75, -- [3]
-				1, -- [4]
-			},
-			["Horde"] = {
-				0.7421875, -- [1]
-				0.98828125, -- [2]
-				0.75, -- [3]
-				1, -- [4]
-			},
-			["PALADIN"] = {
-				0, -- [1]
-				0.25, -- [2]
-				0.5, -- [3]
-				0.75, -- [4]
-			},
-			["MONSTER"] = {
-				0, -- [1]
-				0.25, -- [2]
-				0.75, -- [3]
-				1, -- [4]
-			},
-			["SHAMAN"] = {
-				0.25, -- [1]
-				0.49609375, -- [2]
-				0.25, -- [3]
-				0.5, -- [4]
-			},
-			},
-		
-		class_colors = {
-			["DEMONHUNTER"] = {
-				0.64,
-				0.19,
-				0.79,
-			},
-			["HUNTER"] = {
-				0.67, -- [1]
-				0.83, -- [2]
-				0.45, -- [3]
-			},
-			["WARRIOR"] = {
-				0.78, -- [1]
-				0.61, -- [2]
-				0.43, -- [3]
-			},
-			["PALADIN"] = {
-				0.96, -- [1]
-				0.55, -- [2]
-				0.73, -- [3]
-			},
-			["SHAMAN"] = {
-				0, -- [1]
-				0.44, -- [2]
-				0.87, -- [3]
-			},
-			["MAGE"] = {
-				0.41, -- [1]
-				0.8, -- [2]
-				0.94, -- [3]
-			},
-			["ROGUE"] = {
-				1, -- [1]
-				0.96, -- [2]
-				0.41, -- [3]
-			},
-			["UNKNOW"] = {
-				0.2, -- [1]
-				0.2, -- [2]
-				0.2, -- [3]
-			},
-			["PRIEST"] = {
-				1, -- [1]
-				1, -- [2]
-				1, -- [3]
-			},
-			["WARLOCK"] = {
-				0.58, -- [1]
-				0.51, -- [2]
-				0.79, -- [3]
-			},
-			["UNGROUPPLAYER"] = {
-				0.4, -- [1]
-				0.4, -- [2]
-				0.4, -- [3]
-			},
-			["ENEMY"] = {
-				0.94117, -- [1]
-				0, -- [2]
-				0.0196, -- [3]
-				1, -- [4]
-			},
-			["version"] = 1,
-			["PET"] = {
-				0.3, -- [1]
-				0.4, -- [2]
-				0.5, -- [3]
-			},
-			["DRUID"] = {
-				1, -- [1]
-				0.49, -- [2]
-				0.04, -- [3]
-			},
-			["MONK"] = {
-				0, -- [1]
-				1, -- [2]
-				0.59, -- [3]
-			},
-			["DEATHKNIGHT"] = {
-				0.77, -- [1]
-				0.12, -- [2]
-				0.23, -- [3]
-			},
-			["ARENA_GREEN"] = {
-				0.686, -- [1]
-				0.372, -- [2]
-				0.905, -- [3]
-			},
-			["ARENA_YELLOW"] = {
-				1, -- [1]
-				1, -- [2]
-				0.25, -- [3]
-			},
-			["NEUTRAL"] = {
-				1, -- [1]
-				1, -- [2]
-				0, -- [3]
-			},
-			["SELF"] = {
-				0.89019, -- [1]
-				0.32156, -- [2]
-				0.89019, -- [3]
-			},
+		["EVOKER"] = {
+			0.31764705882353, -- [1]
+			0.24313725490196, -- [2]
+			0.91372549019608, -- [3]
 		},
+	},
 
-		death_log_colors = {
-			damage = "red",
-			heal = "green",
-			friendlyfire = "darkorange",
-			cooldown = "yellow",
-			debuff = "purple",
-		},
+	death_log_colors = {
+		damage = "red",
+		heal = "green",
+		friendlyfire = "darkorange",
+		cooldown = "yellow",
+		debuff = "purple",
+	},
 
 	fade_speed = 0.15,
 	use_self_color = false,
@@ -862,7 +873,7 @@ local default_profile = {
 	--> PvP
 		only_pvp_frags = false,
 		color_by_arena_team = true,
-		show_arena_role_icon = false,
+		show_arena_role_icon = false, --deprecated: this has been moved to instance settings 05.06.22 (tercio)
 
 	--> window settings
 		max_window_size = {width = 480, height = 450},
@@ -905,10 +916,10 @@ local default_profile = {
 		clear_ungrouped = true,
 		
 	--> if clear graphic data when logout
-		clear_graphic = true, 
+		clear_graphic = true,
 		
 	--> item level tracker
-		track_item_level = true,
+		track_item_level = false,
 	
 	--> text settings
 		font_sizes = {menus = 10},
@@ -987,6 +998,7 @@ local default_profile = {
 		overall_clear_newchallenge = true,
 		overall_clear_newtorghast = true,
 		overall_clear_logout = false,
+		overall_clear_pvp = true,
 		data_cleanup_logout = false,
 		close_shields = false,
 		pvp_as_group = true,
@@ -1033,27 +1045,34 @@ local default_profile = {
 			line_texture = "Details Serenity",
 			line_color = {.1, .1, .1, 0.3},
 		},
-		
+
 	--> current damage
-		current_dps_meter = {
-			frame = {
-				locked = false,
-				width = 220,
-				height = 65,
+		realtime_dps_meter = {
+			frame_settings = {
+				locked = true,
+				width = 300,
+				height = 23,
 				backdrop_color = {0, 0, 0, 0.2},
-				show_title = false,
+				show_title = true,
 				strata = "LOW",
+
+				--libwindow
+				point = "TOP",
+				scale = 1,
+				y = -110,
+				x = 0,
 			},
 			options_frame = {},
 			enabled = false,
 			arena_enabled = true,
-			mythic_dungeon_enabled = true,
+			mythic_dungeon_enabled = false,
 			font_size = 18,
 			font_color = {1, 1, 1, 1},
 			font_shadow = "NONE",
 			font_face = "Friz Quadrata TT",
+			text_offset = 2,
 			update_interval = 0.30,
-			sample_size = 5, --in seconds
+			sample_size = 3, --in seconds
 		},
 		
 	--> streamer
@@ -1277,10 +1296,28 @@ local default_global_data = {
 		current_exp_raid_encounters = {},
 		installed_skins_cache = {},
 
+	--> spell category feedback
+		spell_category_savedtable = {},
+		spell_category_latest_query = 0,
+		spell_category_latest_save = 0,
+		spell_category_latest_sent = 0,
+
+	--> class time played
+		class_time_played = {},
+
+	--> keystone cache
+		keystone_cache = {},
+
 	--> all switch settings (panel shown when right click the title bar)
 		all_switch_config = {
 			scale = 1,
 			font_size = 10,
+		},
+
+	--> keystone window
+		keystone_frame = {
+			scale = 1,
+			position = {},
 		},
 		
 	--> profile by spec
@@ -1378,7 +1415,7 @@ local default_global_data = {
 		run_code = {
 			["on_specchanged"] = "\n-- run when the player changes its spec",
 			["on_zonechanged"] = "\n-- when the player changes zone, this code will run",
-			["on_init"] = "\n-- code to run when Details! initializes, put here code which only will run once\n-- this also will run then the profile is changed\n\n--size of the death log tooltip in the Deaths display (default 350)\nDetails.death_tooltip_width = 350;\n\n--when in arena or battleground, details! silently switch to activity time (goes back to the old setting on leaving, default true)\nDetails.force_activity_time_pvp = true;\n\n--speed of the bar animations (default 33)\nDetails.animation_speed = 33;\n\n--threshold to trigger slow or fast speed (default 0.45)\nDetails.animation_speed_mintravel = 0.45;\n\n--call to update animations\nDetails:RefreshAnimationFunctions();\n\n--max window size, does require a /reload to work (default 480 x 450)\nDetails.max_window_size.width = 480;\nDetails.max_window_size.height = 450;\n\n--use the arena team color as the class color (default true)\nDetails.color_by_arena_team = true;\n\n--use the role icon in the player bar when inside an arena (default false)\nDetails.show_arena_role_icon = false;\n\n--how much time the update warning is shown (default 10)\nDetails.update_warning_timeout = 10;",
+			["on_init"] = "\n-- code to run when Details! initializes, put here code which only will run once\n-- this also will run then the profile is changed\n\n--size of the death log tooltip in the Deaths display (default 350)\nDetails.death_tooltip_width = 350;\n\n--when in arena or battleground, details! silently switch to activity time (goes back to the old setting on leaving, default true)\nDetails.force_activity_time_pvp = true;\n\n--speed of the bar animations (default 33)\nDetails.animation_speed = 33;\n\n--threshold to trigger slow or fast speed (default 0.45)\nDetails.animation_speed_mintravel = 0.45;\n\n--call to update animations\nDetails:RefreshAnimationFunctions();\n\n--max window size, does require a /reload to work (default 480 x 450)\nDetails.max_window_size.width = 480;\nDetails.max_window_size.height = 450;\n\n--use the arena team color as the class color (default true)\nDetails.color_by_arena_team = true;\n\n--how much time the update warning is shown (default 10)\nDetails.update_warning_timeout = 10;",
 			["on_leavecombat"] = "\n-- this code runs when the player leave combat",
 			["on_entercombat"] = "\n-- this code runs when the player enters in combat",
 			["on_groupchange"] = "\n-- this code runs when the player enter or leave a group",
@@ -1759,7 +1796,13 @@ function Details:ImportProfile (profileString, newProfileName)
 		profileObject.instances = DetailsFramework.table.copy ({}, profileData.instances)
 
 		Details:ApplyProfile (newProfileName)
-		
+
+		--reset automation settings (due to user not knowing why some windows are disappearing)
+		for instanceId, instance in Details:ListInstances() do
+			DetailsFramework.table.copy(instance.hide_on_context, Details.instance_defaults.hide_on_context)
+		end
+
+
 		Details:Msg ("profile successfully imported.")--localize-me
 		return true
 	else

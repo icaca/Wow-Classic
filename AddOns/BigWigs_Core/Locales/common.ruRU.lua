@@ -27,14 +27,17 @@ L.stage = "Этап %d"
 L.normal = "Обычный режим"
 L.heroic = "Героический режим"
 L.mythic = "Эпохальный режим"
+L.hard = "Сложный режим"
 L.active = "Активен" -- When a boss becomes active, after speech finishes
 L.general = "Общее" -- General settings, i.e. things that apply to normal, heroic and mythic mode.
+L.absorb = "Поглот." -- Used for shield-like abilities that absorb damage or healing
 
 L.duration = "%s для %s сек" -- Spell for 10 seconds
 L.over = "%s завершается" -- Spell Over
 L.removed = "%s снято" -- Spell Removed
 L.removed_from = "%s Снято С %s" -- Spell removed from Player
 L.removed_by = "%s был снят %s" -- Spell removed by Player
+L.removed_after = "%s убран спустя %.1fс" -- "Spell removed after 1.1s" (s = seconds)
 L.incoming = "%s на подходе" -- Spell Incoming
 L.interrupted = "%s прервано" -- Spell Interrupted
 L.interrupted_by = "%s прерван %s" -- Spell interrupted by Player
@@ -71,6 +74,7 @@ L.custom_sec = "%s через %d сек"
 
 L.focus_only = "|cffff0000Оповещения только для фокуса.|r "
 L.trash = "Трэш"
+L.affixes = "Аффикс" -- Seasonal affixes for raids and mythic+ dungeons
 
 -- Common raid marking locale
 L.marker = "Метка %s"
@@ -92,6 +96,7 @@ L.amount_three = "%dт" -- Thousands 1,000
 L.seconds = "%.1fс" -- 1.1 seconds
 
 -- Common ability name replacements
+L.tank_combo = "Танковское комбо" -- Used for tank swap mechanics where the boss casts a sequence of tank buster attacks
 L.laser = "Лазер" -- Used for abilities that act like a laser. Usually from the boss to a player, or, from the boss to a specific area
 L.beam = "Луч" -- Similar to "Laser" (a beam from boss to player/boss to area) but can be used to better describe certain abilities that don't look like a Laser
 L.beams = "Лучи" -- Plural of L.beam

@@ -794,13 +794,9 @@ L["CVarOnlyNamesTip"] = "|nIf checked, only show names on blizzard nameplates.|n
 L["CVarShowNPCs"] = "CVar always show npc" -- need translation
 L["CVarShowNPCsTip"] = "|nIf checked, always show npc nameplates. Or only shows when selected." -- need translation
 L["Dispellable"] = "Show dispellable auras" -- need translation
-<<<<<<< Updated upstream
-L["DispellableTip"] = "|nShow and highlight YOUR dispellable auras." -- need translation
-=======
 L["DispellableTip"] = "|nFilter: only shows the magic and enrage auras that you can dispell.|n|nAlways: always shows the magic and enrage auras, no matter which you can dispell." -- need translation
 L["Filter"] = "Filter" -- need translation
 L["Always"] = "Always" -- need translation
->>>>>>> Stashed changes
 L["ShowInterruptor"] = "Show castbar interruptor" -- need translation
 L["MmssThreshold"] = "MMSS Threshold" -- need translation
 L["MmssThresholdTip"] = "|nIf cooldown less than current threhold, show cooldown in format MM:SS.|nEg. 2 mins and half presents as 2:30." -- need translation
@@ -811,9 +807,6 @@ L["IgnoredButtons"] = "Ignored recycle buttons" -- need translation
 L["IgnoredButtonsTip"] = "|nEnter the names of buttons that exclude from recycle bin. You can type /fstack and mouseover the button for its name. Partial name is acceptable.|nUse space in between for multiple names. UI reload required." -- need translation
 L["MaxZoom"] = "Max Camera Zoom Level" -- need translation
 L["BuffClickThru"] = "Disable buff tooltip" -- need translation
-<<<<<<< Updated upstream
-L["DebuffClickThru"] = "Disable debuff tooltip" -- need translation
-=======
 L["DebuffClickThru"] = "Disable debuff tooltip" -- need translation
 L["SysFont"] = "Use system font path" -- need translation
 L["SysFontTip"] = "|nIf enabled, chat frame font would follow system default font path, instead of the font used by other UI elements." -- need translation
@@ -847,4 +840,3 @@ L["DemonPage"] = "Warlock demon page" -- need translation
 L["DispellTypeTip"] = "|nAlways: All the auras from magic, curse, disease and poison would show on raidframe.|n|nFilter: Only show your dispellable debuffs. The icon border would be colored by debuff types." -- need translation
 L["GearManagerTip"] = "You can double click icon to select item set." -- need translation
 L["AutoBuffsTip"] = "|nIf checked, use blizzard API logic to display buffs, no longer use the white list below, up to 3." -- need translation
->>>>>>> Stashed changes

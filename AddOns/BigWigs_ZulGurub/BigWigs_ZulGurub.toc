@@ -1,4 +1,4 @@
-## Interface: 20504
+## Interface: 30400
 
 ## Title: BigWigs [|cffeda55fZul'Gurub|r]
 ## Title-deDE: BigWigs [|cffeda55fZul'Gurub|r]
@@ -22,7 +22,7 @@
 ## Notes-ruRU: BigWigs Zul'Gurub Modules
 ## Notes-zhCN: BigWigs 祖尔格拉布模块。
 ## Notes-zhTW: BigWigs 祖爾格拉布模組
-## Version: v37.1-classic
+## Version: v44.2-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

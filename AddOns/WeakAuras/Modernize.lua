@@ -1392,8 +1392,6 @@ function Private.Modernize(data)
     end
   end
 
-<<<<<<< Updated upstream
-=======
   if (data.internalVersion < 52) then
     local function matchTarget(input)
       return input == "target" or input == "'target'" or input == "\"target\"" or input == "%t" or input == "'%t'" or input == "\"%t\""
@@ -1476,6 +1474,5 @@ function Private.Modernize(data)
     end
   end
 
->>>>>>> Stashed changes
   data.internalVersion = max(data.internalVersion or 0, WeakAuras.InternalVersion());
 end

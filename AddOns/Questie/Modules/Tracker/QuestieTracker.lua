@@ -950,17 +950,11 @@ function QuestieTracker:Update()
                             line.label:Show()
                         end
 
-<<<<<<< Updated upstream
-                if complete == 0 then
-                    for _, objective in pairs(quest.Objectives) do
-                        line = _QuestieTracker:GetNextLine()
-=======
                     -- Tags quest as either complete or failed so as to always have at least one objective.
                     -- (TODO: change tags to reflect NPC to turn a quest into or in the case of a failure
                     -- which NPC to obtain the quest from again...)
                     elseif (complete == 1 or complete == -1) then
                         line = LinePool.GetNextLine()
->>>>>>> Stashed changes
                         if not line then break end -- stop populating the tracker
 
                         line:SetMode("objective")
@@ -1071,22 +1065,14 @@ function QuestieTracker:Update()
                     quest.HideIcons = true
                 end
                 if Questie.db.char.TrackerFocus and type(Questie.db.char.TrackerFocus) == "number" and Questie.db.char.TrackerFocus == quest.Id then -- quest focus
-<<<<<<< Updated upstream
-                    QuestieTracker:FocusQuest(quest.Id)
-=======
                     TrackerUtils:FocusQuest(quest.Id)
->>>>>>> Stashed changes
                 end
                 for _, objective in pairs(quest.Objectives) do
                     if Questie.db.char.TrackerHiddenObjectives[tostring(questId) .. " " .. tostring(objective.Index)] then
                         objective.HideIcons = true
                     end
                     if  Questie.db.char.TrackerFocus and type(Questie.db.char.TrackerFocus) == "string" and Questie.db.char.TrackerFocus == tostring(quest.Id) .. " " .. tostring(objective.Index) then
-<<<<<<< Updated upstream
-                        QuestieTracker:FocusObjective(quest.Id, objective.Index)
-=======
                         TrackerUtils:FocusObjective(quest.Id, objective.Index)
->>>>>>> Stashed changes
                     end
                 end
 
@@ -1095,11 +1081,7 @@ function QuestieTracker:Update()
                         objective.HideIcons = true
                     end
                     if  Questie.db.char.TrackerFocus and type(Questie.db.char.TrackerFocus) == "string" and Questie.db.char.TrackerFocus == tostring(quest.Id) .. " " .. tostring(objective.Index) then
-<<<<<<< Updated upstream
-                        QuestieTracker:FocusObjective(quest.Id, objective.Index)
-=======
                         TrackerUtils:FocusObjective(quest.Id, objective.Index)
->>>>>>> Stashed changes
                     end
                 end
             end
@@ -1120,221 +1102,7 @@ function QuestieTracker:Update()
     end
 end
 
-<<<<<<< Updated upstream
-function _Tracker:ReportErrorMessage(zoneOrtSort)
-    Questie:Error("SortID: |cffffbf00"..zoneOrtSort.."|r was not found in the Database. Please file a bugreport at:")
-    Questie:Error("|cff00bfffhttps://github.com/Questie/Questie/issues|r")
-end
-
-function _QuestieTracker:GetNextLine()
-    lineIndex = lineIndex + 1
-    if not _QuestieTracker.LineFrames[lineIndex] then
-        return nil -- past the line limit
-    end
-    
-    if _QuestieTracker.LineFrames[lineIndex].expandQuest then
-        _QuestieTracker.LineFrames[lineIndex].expandQuest:Hide()
-
-    elseif _QuestieTracker.LineFrames[lineIndex].expandZone then
-        _QuestieTracker.LineFrames[lineIndex].expandZone:Hide()
-    end
-
-    return _QuestieTracker.LineFrames[lineIndex]
-end
-
-function _QuestieTracker:GetNextItemButton()
-    buttonIndex = buttonIndex + 1
-    return _QuestieTracker.ItemButtons[buttonIndex]
-end
-
-function _QuestieTracker:StartFadeTicker()
-    if (not _QuestieTracker.FadeTicker) and QuestieTracker.started then
-        _QuestieTracker.FadeTicker = C_Timer.NewTicker(0.02, function()
-            if _QuestieTracker.FadeTickerDirection then
-                if _QuestieTracker.FadeTickerValue < 0.3 then
-                    _QuestieTracker.FadeTickerValue = _QuestieTracker.FadeTickerValue + 0.02
-
-                    -- Un-fade the background and border(if enabled)
-                    if Questie.db.char.isTrackerExpanded and Questie.db.global.trackerBackdropEnabled and Questie.db.global.trackerBackdropFader then
-                        _QuestieTracker.baseFrame:SetBackdropColor(0, 0, 0, math.min(Questie.db.global.trackerBackdropAlpha, _QuestieTracker.FadeTickerValue*3.3))
-                        if Questie.db.global.trackerBorderEnabled then
-                            _QuestieTracker.baseFrame:SetBackdropBorderColor(1, 1, 1, math.min(Questie.db.global.trackerBackdropAlpha, _QuestieTracker.FadeTickerValue*3.3))
-                        end
-                    end
-
-                    -- Un-fade the resizer
-                    if Questie.db.char.isTrackerExpanded then
-                        _QuestieTracker.baseFrame.sizer:SetAlpha(_QuestieTracker.FadeTickerValue*3.3)
-                    end
-
-                    -- Un-fade the minimize buttons
-                    if (Questie.db.char.isTrackerExpanded and Questie.db.global.trackerFadeMinMaxButtons) then
-                        for i=1, _QuestieTracker.highestIndex do
-                            _QuestieTracker.LineFrames[i].expandQuest:SetAlpha(_QuestieTracker.FadeTickerValue*3.3)
-                        end
-                    end
-
-                    -- Un-fade the quest item buttons
-                    if (Questie.db.char.isTrackerExpanded and Questie.db.global.trackerFadeQuestItemButtons) then
-                        for i=1, _QuestieTracker.highestIndex do
-                            if _QuestieTracker.LineFrames[i].button then
-                                _QuestieTracker.LineFrames[i].button:SetAlpha(_QuestieTracker.FadeTickerValue*3.3)
-                            end
-                        end
-                    end
-
-                else
-                    _QuestieTracker.FadeTicker:Cancel()
-                    _QuestieTracker.FadeTicker = nil
-                end
-            else
-                if _QuestieTracker.FadeTickerValue > 0 then
-                    _QuestieTracker.FadeTickerValue = _QuestieTracker.FadeTickerValue - 0.02
-
-                    -- Fade the background and border(if enabled)
-                    if Questie.db.char.isTrackerExpanded and Questie.db.global.trackerBackdropEnabled and Questie.db.global.trackerBackdropFader then
-                        _QuestieTracker.baseFrame:SetBackdropColor(0, 0, 0, math.min(Questie.db.global.trackerBackdropAlpha, _QuestieTracker.FadeTickerValue*3.3))
-                        if Questie.db.global.trackerBorderEnabled then
-                            _QuestieTracker.baseFrame:SetBackdropBorderColor(1, 1, 1, math.min(Questie.db.global.trackerBackdropAlpha, _QuestieTracker.FadeTickerValue*3.3))
-                        end
-                    end
-
-                    -- Fade the resizer
-                    if Questie.db.char.isTrackerExpanded then
-                        _QuestieTracker.baseFrame.sizer:SetAlpha(_QuestieTracker.FadeTickerValue*3.3)
-                    end
-
-                    -- Fade the minimuze buttons
-                    if (Questie.db.char.isTrackerExpanded and Questie.db.global.trackerFadeMinMaxButtons) then
-                        for i=1, _QuestieTracker.highestIndex do
-                            _QuestieTracker.LineFrames[i].expandQuest:SetAlpha(_QuestieTracker.FadeTickerValue*3.3)
-                        end
-                    end
-
-                    -- Fade the quest item buttons
-                    if (Questie.db.char.isTrackerExpanded and Questie.db.global.trackerFadeQuestItemButtons) then
-                        for i=1, _QuestieTracker.highestIndex do
-                            if _QuestieTracker.LineFrames[i].button then
-                                _QuestieTracker.LineFrames[i].button:SetAlpha(_QuestieTracker.FadeTickerValue*3.3)
-                            end
-                        end
-                    end
-
-                else
-                    _QuestieTracker.FadeTicker:Cancel()
-                    _QuestieTracker.FadeTicker = nil
-                end
-            end
-        end)
-    end
-end
-
-function QuestieTracker:UnFocus()
-    -- reset HideIcons to match savedvariable state
-    if (not Questie.db.char.TrackerFocus) then
-        return
-    end
-    for questId in pairs (QuestiePlayer.currentQuestlog) do
-        local quest = QuestieDB:GetQuest(questId)
-
-        if quest then
-            quest.FadeIcons = nil
-            if next(quest.Objectives) then
-
-                if Questie.db.char.TrackerHiddenQuests[quest.Id] then
-                    quest.HideIcons = true
-                    quest.FadeIcons = nil
-                else
-                    quest.HideIcons = nil
-                    quest.FadeIcons = nil
-                end
-
-                for _, objective in pairs(quest.Objectives) do
-                    if Questie.db.char.TrackerHiddenObjectives[tostring(questId) .. " " .. tostring(objective.Index)] then
-                        objective.HideIcons = true
-                        objective.FadeIcons = nil
-                    else
-                        objective.HideIcons = nil
-                        objective.FadeIcons = nil
-                    end
-                end
-
-                for _, objective in pairs(quest.SpecialObjectives) do
-                    if Questie.db.char.TrackerHiddenObjectives[tostring(questId) .. " " .. tostring(objective.Index)] then
-                        objective.HideIcons = true
-                        objective.FadeIcons = nil
-                    else
-                        objective.HideIcons = nil
-                        objective.FadeIcons = nil
-                    end
-                end
-            end
-        end
-    end
-
-    Questie.db.char.TrackerFocus = nil
-end
-
-function QuestieTracker:FocusObjective(questId, objectiveIndex)
-    if Questie.db.char.TrackerFocus and (type(Questie.db.char.TrackerFocus) ~= "string" or Questie.db.char.TrackerFocus ~= tostring(questId) .. " " .. tostring(objectiveIndex)) then
-        QuestieTracker:UnFocus()
-    end
-
-    Questie.db.char.TrackerFocus = tostring(questId) .. " " .. tostring(objectiveIndex)
-    for questLogQuestId in pairs (QuestiePlayer.currentQuestlog) do
-        local quest = QuestieDB:GetQuest(questLogQuestId)
-        if quest and next(quest.Objectives) then
-            if questLogQuestId == questId then
-                quest.HideIcons = nil
-                quest.FadeIcons = nil
-
-                for _, objective in pairs(quest.Objectives) do
-                    if objective.Index == objectiveIndex then
-                        objective.HideIcons = nil
-                        objective.FadeIcons = nil
-                    else
-                        objective.FadeIcons = true
-                    end
-                end
-
-                for _, objective in pairs(quest.SpecialObjectives) do
-                    if objective.Index == objectiveIndex then
-                        objective.HideIcons = nil
-                        objective.FadeIcons = nil
-                    else
-                        objective.FadeIcons = true
-                    end
-                end
-
-            else
-                quest.FadeIcons = true
-            end
-        end
-    end
-end
-
-function QuestieTracker:FocusQuest(questId)
-    if Questie.db.char.TrackerFocus and (type(Questie.db.char.TrackerFocus) ~= "number" or Questie.db.char.TrackerFocus ~= questId) then
-        QuestieTracker:UnFocus()
-    end
-    Questie.db.char.TrackerFocus = questId
-    for questLogQuestId in pairs (QuestiePlayer.currentQuestlog) do
-        local quest = QuestieDB:GetQuest(questLogQuestId)
-        if quest then
-            if questLogQuestId == questId then
-                quest.HideIcons = nil
-                quest.FadeIcons = nil
-            else
-                quest.FadeIcons = true
-            end
-        end
-    end
-end
-
-function QuestieTracker:Untrack(quest)
-=======
 function QuestieTracker.Untrack(quest)
->>>>>>> Stashed changes
     Questie:Debug(Questie.DEBUG_DEVELOP, "QuestieTracker: Untrack")
     QuestieTracker:UntrackQuestId(quest.Id)
 end
@@ -1360,17 +1128,11 @@ function QuestieTracker:HookBaseTracker()
     QuestieTracker._disableHooks = nil
 
     if not QuestieTracker._alreadyHookedSecure then
-<<<<<<< Updated upstream
-        hooksecurefunc("AutoQuestWatch_Insert", function(index, watchTimer)
-            QuestieTracker:AQW_Insert(index, watchTimer)
-        end)
-=======
         if AutoQuestWatch_Insert then
             hooksecurefunc("AutoQuestWatch_Insert", function(index, watchTimer)
                 QuestieTracker:AQW_Insert(index, watchTimer)
             end)
         end
->>>>>>> Stashed changes
         hooksecurefunc("AddQuestWatch", function(index, watchTimer)
             QuestieTracker:AQW_Insert(index, watchTimer)
         end)
@@ -1507,10 +1269,6 @@ function QuestieTracker:UntrackQuestId(questId)
     end
 
     QuestieCombatQueue:Queue(function()
-<<<<<<< Updated upstream
-        QuestieTracker:ResetLinesForChange()
-=======
->>>>>>> Stashed changes
         QuestieTracker:Update()
     end)
 end

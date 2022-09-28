@@ -110,30 +110,6 @@ function QuestieLib:GetRGBForObjective(objective)
     end
 end
 
-<<<<<<< Updated upstream
----@param questId number @The quest ID
----@return boolean
-function QuestieLib:IsResponseCorrect(questId)
-    local objectiveList = C_QuestLog.GetQuestObjectives(questId)
-
-    if not objectiveList then
-        return false
-    end
-
-    for key, objective in pairs(objectiveList) do
-        local text, objectiveType = objective.text, objective.type
-        if (not objectiveType) or objectiveType == ""
-        or (not text) or stringSub(text, 1, 1) == " " then
-            Questie:Debug(Questie.DEBUG_CRITICAL, "[QuestieLib:GetQuestObjectives] Objective not cached yet. questId=", questId, "objective=", key, "type=", objectiveType, "text=", text)
-            return false
-        end
-    end
-
-    return true
-end
-
-=======
->>>>>>> Stashed changes
 ---@param questId number
 ---@param showLevel number @ Whether the quest level should be included
 ---@param showState boolean @ Whether to show (Complete/Failed)
@@ -214,18 +190,11 @@ end
 
 --- There are quests in TBC which have a quest level of -1. This indicates that the quest level is the
 --- same as the player level. This function should be used whenever accessing the quest or required level.
-<<<<<<< Updated upstream
----@param questId number
----@return number, number @questLevel & requiredLevel
-function QuestieLib:GetTbcLevel(questId)
-    local questLevel, requiredLevel = unpack(QuestieDB.QueryQuest(questId, "questLevel", "requiredLevel"))
-=======
 ---@param questId QuestId
 ---@param playerLevel Level? ---@ PlayerLevel, if nil we fetch current level
 ---@return Level questLevel, Level requiredLevel @questLevel & requiredLevel
 function QuestieLib.GetTbcLevel(questId, playerLevel)
     local questLevel, requiredLevel = QuestieDB.QueryQuestSingle(questId, "questLevel"), QuestieDB.QueryQuestSingle(questId, "requiredLevel")
->>>>>>> Stashed changes
     if (questLevel == -1) then
         local level = playerLevel or QuestiePlayer.GetPlayerLevel();
         if (requiredLevel > level) then
@@ -323,17 +292,6 @@ function QuestieLib:GetRaceString(raceMask)
     end
 end
 
-<<<<<<< Updated upstream
-function QuestieLib:ProfileFunction(functionReference, includeSubroutine)
-    -- Optional var
-    if (not includeSubroutine) then includeSubroutine = true end
-    local now, count = GetFunctionCPUUsage(functionReference, includeSubroutine)
-    -- Questie:Print("[QuestieLib]", "Profiling Avg:", round(time/count, 6));
-    return now, count
-end
-
-=======
->>>>>>> Stashed changes
 function QuestieLib:CacheItemNames(questId)
     local quest = QuestieDB:GetQuest(questId)
     if (quest and quest.ObjectiveData) then

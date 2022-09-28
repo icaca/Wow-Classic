@@ -128,15 +128,10 @@ function QuestieOptionsDefaults:Load()
             autoModifier = "shift",
             acceptTrivial = false,
             questAnnounceChannel = "group",
-<<<<<<< Updated upstream
-            questAnnounceAccepted = false,
-            questAnnounceAbandoned = false,
-=======
             questAnnounceItems = true,
             questAnnounceAccepted = false,
             questAnnounceAbandoned = false,
             questAnnounceObjectives = true,
->>>>>>> Stashed changes
             questAnnounceCompleted = false,
             isTrackerExpanded = true,
             hideUnexploredMapIcons = false,

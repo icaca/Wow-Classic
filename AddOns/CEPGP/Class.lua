@@ -152,5 +152,24 @@ CEPGP_classes = {
 		"Bag",
 		"Trade Goods",
 		"Junk"
+	},
+	["Deathknight"] = {
+		"Miscellaneous",
+		"Cloth",
+		"Leather",
+		"Mail",
+		"Plate",
+		"One-Handed Swords",
+		"Two-Handed Swords",
+		"One-Handed Maces",
+		"Two-Handed Maces",
+		"One-Handed Axes",
+		"Two-Handed Axes",
+		"Polearms",
+		"Quest",
+		"Bag",
+		"Trade Goods",
+		"Junk",
+		"Sigils"
 	}
 }

@@ -794,13 +794,9 @@ L["CVarOnlyNamesTip"] = "|n勾選後，對於暴雪自帶的名條將只保留�
 L["CVarShowNPCs"] = "總是顯示NPC名條"
 L["CVarShowNPCsTip"] = "|n勾選後，將總是顯示NPC名條。否則只在選中NPC時顯示。"
 L["Dispellable"] = "顯示可驅散法術"
-<<<<<<< Updated upstream
-L["DispellableTip"] = "|n顯示並高亮你當前可驅散的法術。"
-=======
 L["DispellableTip"] = "|n過濾：顯示並高亮你能驅散的魔法或激怒效果。|n|n總是：始終顯示目標身上所有魔法及激怒效果，無論你是否可以驅散。"
 L["Filter"] = "過濾"
 L["Always"] = "總是"
->>>>>>> Stashed changes
 L["ShowInterruptor"] = "施法條顯示打斷者"
 L["MmssThreshold"] = "显示分秒的阈值"
 L["MmssThresholdTip"] = "|n当冷却时间小于所设阈值时，精确显示分秒。|n例如2分半显示为2:30。"
@@ -811,9 +807,6 @@ L["IgnoredButtons"] = "回收站忽略列表"
 L["IgnoredButtonsTip"] = "|n輸入你不想收納進回收站的按鈕名字。你可以輸入/fstack後指向圖標來查看，只需輸入名字的一部分即可。|n對於多個按鈕名字，以空格隔開。需要重載插件後生效。"
 L["MaxZoom"] = "最大視距等級"
 L["BuffClickThru"] = "禁用增益法術提示訊息"
-<<<<<<< Updated upstream
-L["DebuffClickThru"] = "禁用減益法術提示訊息"
-=======
 L["DebuffClickThru"] = "禁用減益法術提示訊息"
 L["SysFont"] = "使用系統字體路徑"
 L["SysFontTip"] = "|n啟用後，聊天窗口將使用系統的字體路徑，不再與其他UI元素統一。"
@@ -847,4 +840,3 @@ L["DemonPage"] = "術士惡魔形態翻頁"
 L["DispellTypeTip"] = "|n總是：始終顯示魔法、詛咒、疾病及中毒效果。|n|n過濾：只顯示你可以驅散的負面效果，對於你可以驅散的法術，圖示邊框是帶有顏色的。"
 L["GearManagerTip"] = "雙擊圖標即可裝備該方案。"
 L["AutoBuffsTip"] = "|n勾選後，不再使用白名單過濾，而使用暴雪自帶邏輯顯示增益，上限3個。"
->>>>>>> Stashed changes

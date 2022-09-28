@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-## Interface: 20504
-=======
 ## Interface: 90207
->>>>>>> Stashed changes
 
 ## Title: LittleWigs
 ## Notes: Boss warnings for 5-man dungeons & scenarios.
@@ -27,12 +23,6 @@
 ## X-BigWigs-LoadOn-InstanceId: 2284, 2285, 2286, 2287, 2289, 2290, 2291, 2293, 2441, 2520, 2527, 2519, 2521, 2526, 2515, 2516, 2451
 ## Dependencies: BigWigs
 ## LoadOnDemand: 1
-<<<<<<< Updated upstream
-## Version: v8-classic
-
-warning.lua
-=======
 ## Version: v9.2.20
->>>>>>> Stashed changes
 
 modules.xml

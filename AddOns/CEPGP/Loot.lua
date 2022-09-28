@@ -6,8 +6,8 @@ function CEPGP_LootFrame_Update()
 		local texture, item, quantity, quality;
 		for index = 1, numLootItems do
 			if ( index <= numLootItems ) then	
-				texture, item, quantity, _, quality = GetLootSlotInfo(index);
-				if (tostring(GetLootSlotLink(index)) ~= "nil" or CEPGP_inOverride(item)) and item ~= nil then
+				texture, item, quantity, currencyID, quality = GetLootSlotInfo(index);
+				if (tostring(GetLootSlotLink(index)) ~= "nil" or CEPGP_inOverride(item)) and item ~= nil and currencyID == nil then
 					items[index-count] = {};
 					items[index-count][1] = texture;
 					items[index-count][2] = item;
@@ -31,8 +31,8 @@ function CEPGP_LootFrame_Update()
 			local slot = index;
 			if ( slot <= numLootItems ) then	
 				if (LootSlotHasItem(slot)) then
-					texture, item, quantity, _, quality = GetLootSlotInfo(slot);
-					if tostring(GetLootSlotLink(slot)) ~= "nil" or CEPGP_inOverride(item) then
+					texture, item, quantity, currencyID, quality = GetLootSlotInfo(slot);
+					if (tostring(GetLootSlotLink(slot)) ~= "nil" or CEPGP_inOverride(item)) and currencyID == nil then
 						items[index-count] = {};
 						items[index-count][1] = texture;
 						items[index-count][2] = item;

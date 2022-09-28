@@ -1,12 +1,3 @@
-<<<<<<< Updated upstream:AddOns/Questie/Questie-BCC.toc
-## Interface: 20504
-## Title: |cFFFFFFFFQuestie|r|cFF00FF00 v6.9.1|r
-## Author: Aero/Logon/Muehe/TheCrux(BreakBB)/Drejjmit/Dyaxler/Schaka/Zoey/Everyone else
-## Notes: A standalone Classic QuestHelper
-## Version: 6.9.1
-## RequiredDeps:
-## OptionalDeps: Ace3, CallbackHandler-1.0, HereBeDragons, LibCompress, LibDataBroker-1.1, LibDBIcon-1.0, LibQuestXP, LibSharedMedia-3.0, LibStub, LibUIDropDownMenu
-=======
 ## Interface: 30400
 ## Title: Questie|cFF00FF00 v7.2.3|r
 ## Author: Aero/Logon/Muehe/TheCrux(BreakBB)/Drejjmit/Dyaxler/Schaka/Zoey/Everyone else
@@ -14,7 +5,6 @@
 ## Version: 7.2.3
 ## RequiredDeps:
 ## OptionalDeps: Ace3, CallbackHandler-1.0, HereBeDragons, LibDataBroker-1.1, LibDBIcon-1.0, LibSharedMedia-3.0, LibStub, LibUIDropDownMenu
->>>>>>> Stashed changes:AddOns/Questie/Questie-WOTLKC.toc
 ## SavedVariables: QuestieConfig
 ## SavedVariablesPerCharacter: QuestieConfigCharacter
 ## X-Curse-Project-ID: 334372
@@ -30,13 +20,6 @@ Libs\HereBeDragons\HereBeDragons-2.0.lua
 Libs\HereBeDragons\HereBeDragons-Pins-2.0.lua
 Libs\HereBeDragons\HereBeDragons-Migrate.lua
 
-<<<<<<< Updated upstream:AddOns/Questie/Questie-BCC.toc
-LibsOnlyTBC\LibQuestXP\LibQuestXP.xml
-
-# Loader module
-Modules\Libs\QuestieLoader.lua
-
-=======
 # Loader module
 Modules\Libs\QuestieLoader.lua
 
@@ -44,21 +27,10 @@ Modules\Libs\QuestieLoader.lua
 Database\QuestXP\QuestieXP.lua
 Database\QuestXP\DB\xpDB-wotlk.lua
 
->>>>>>> Stashed changes:AddOns/Questie/Questie-WOTLKC.toc
 # stream module (used by DB)
 Modules\QuestieStream.lua
 
 # Zones
-<<<<<<< Updated upstream:AddOns/Questie/Questie-BCC.toc
-Database\Zones\zoneDB.lua
-Database\Zones\zoneTables.lua
-
-# Databases
-Database\TBC\tbcItemDB.lua
-Database\TBC\tbcNpcDB.lua
-Database\TBC\tbcObjectDB.lua
-Database\TBC\tbcQuestDB.lua
-=======
 Database\Zones\zoneTables.lua
 Database\Zones\zoneDB.lua
 
@@ -67,7 +39,6 @@ Database\Wotlk\wotlkItemDB.lua
 Database\Wotlk\wotlkNpcDB.lua
 Database\Wotlk\wotlkObjectDB.lua
 Database\Wotlk\wotlkQuestDB.lua
->>>>>>> Stashed changes:AddOns/Questie/Questie-WOTLKC.toc
 Database\QuestieDB.lua
 Database\questDB.lua
 Database\objectDB.lua
@@ -97,15 +68,12 @@ Database\Corrections\TBC\tbcNPCFixes.lua
 Database\Corrections\TBC\tbcItemFixes.lua
 Database\Corrections\TBC\tbcObjectFixes.lua
 
-<<<<<<< Updated upstream:AddOns/Questie/Questie-BCC.toc
-=======
 # Wotlk Corrections
 Database\Corrections\Wotlk\wotlkQuestFixes.lua
 Database\Corrections\Wotlk\wotlkNPCFixes.lua
 Database\Corrections\Wotlk\wotlkItemFixes.lua
 Database\Corrections\Wotlk\wotlkObjectFixes.lua
 
->>>>>>> Stashed changes:AddOns/Questie/Questie-WOTLKC.toc
 # Compiler
 Database\compiler.lua
 
@@ -115,19 +83,6 @@ Localization\Translations\Translations.xml
 
 Localization\lookups\lookupQuestCategories.lua
 Localization\lookups\lookupZones.lua
-<<<<<<< Updated upstream:AddOns/Questie/Questie-BCC.toc
-Localization\lookups\TBC\lookupItems\lookupItems.xml
-Localization\lookups\TBC\lookupNpcs\lookupNpcs.xml
-Localization\lookups\TBC\lookupObjects\lookupObjects.xml
-Localization\lookups\TBC\lookupQuests\lookupQuests.xml
-
-# Libs
-Modules\Libs\QuestieLib.lua
-#Modules\Libs\QuestieCompress.lua
-Modules\Libs\QuestieSerializer.lua
-Modules\Libs\QuestieCombatQueue.lua
-Modules\Libs\QuestieHash.lua
-=======
 Localization\lookups\Wotlk\lookupItems\lookupItems.xml
 Localization\lookups\Wotlk\lookupNpcs\lookupNpcs.xml
 Localization\lookups\Wotlk\lookupObjects\lookupObjects.xml
@@ -138,7 +93,6 @@ Modules\Libs\QuestieLib.lua
 Modules\Libs\QuestieSerializer.lua
 Modules\Libs\QuestieCombatQueue.lua
 Modules\Libs\RamerDouglasPeucker.lua
->>>>>>> Stashed changes:AddOns/Questie/Questie-WOTLKC.toc
 
 # Modules
 Modules\QuestieValidateGameCache.lua
@@ -150,10 +104,7 @@ Modules\QuestieEventHandler.lua
 Modules\Migration.lua
 Modules\QuestieMenu.lua
 Modules\QuestieAnnounce.lua
-<<<<<<< Updated upstream:AddOns/Questie/Questie-BCC.toc
-=======
 Modules\QuestieShutUp.lua
->>>>>>> Stashed changes:AddOns/Questie/Questie-WOTLKC.toc
 Modules\TaskQueue.lua
 Modules\QuestiePlayer.lua
 
@@ -182,13 +133,9 @@ Modules\Map\QuestieMapUtils.lua
 Modules\Map\HBDHooks.lua
 
 # Quest
-<<<<<<< Updated upstream:AddOns/Questie/Questie-BCC.toc
-Modules\Quest\DailyQuests.lua
-=======
 Modules\Quest\QuestLogCache.lua
 Modules\Quest\DailyQuests.lua
 Modules\Quest\IsleOfQuelDanas.lua
->>>>>>> Stashed changes:AddOns/Questie/Questie-WOTLKC.toc
 Modules\Quest\QuestEventHandler.lua
 Modules\Quest\QuestieQuest.lua
 Modules\Quest\QuestieQuestPrivates.lua
@@ -218,12 +165,6 @@ Modules\Journey\QuestieSearchResults.lua
 
 # Tracker
 Modules\Tracker\QuestieTracker.lua
-<<<<<<< Updated upstream:AddOns/Questie/Questie-BCC.toc
-Modules\Tracker\QuestieTrackerUtils.lua
-Modules\Tracker\QuestieTrackerMenu.lua
-Modules\Tracker\QuestieTrackerPrivates.lua
-Modules\Tracker\QuestieQuestTimers.lua
-=======
 Modules\Tracker\TrackerUtils.lua
 Modules\Tracker\TrackerMenu.lua
 Modules\Tracker\FadeTicker.lua
@@ -232,7 +173,6 @@ Modules\Tracker\QuestieQuestTimers.lua
 Modules\Tracker\ActiveQuestsHeader.lua
 Modules\Tracker\AchievementTracker.lua
 Modules\Tracker\LinePool.lua
->>>>>>> Stashed changes:AddOns/Questie/Questie-WOTLKC.toc
 
 Modules\QuestieDBMIntegration.lua
 Modules\QuestieSlash.lua
@@ -247,10 +187,7 @@ Modules\Options\GeneralTab\QuestieOptionsGeneral.lua
 Modules\Options\MapTab\QuestieOptionsMap.lua
 Modules\Options\MinimapTab\QuestieOptionsMinimap.lua
 Modules\Options\NameplateTab\QuestieOptionsNameplate.lua
-<<<<<<< Updated upstream:AddOns/Questie/Questie-BCC.toc
-=======
 Modules\Options\SocialTab\QuestieOptionsSocial.lua
->>>>>>> Stashed changes:AddOns/Questie/Questie-WOTLKC.toc
 Modules\Options\TrackerTab\QuestieOptionsTracker.lua
 Modules\Options\TooltipTab\QuestieOptionsTooltip.lua
 

@@ -26,11 +26,7 @@ elseif TSM.IsWowWrathClassic() then
 		["i:818"] = { -- Tigerseye
 			["i:2770"] = {requiredSkill = 20, matRate = 0.5000, minAmount = 1, maxAmount = 1, amountOfMats = 0.1000}, -- Copper Ore
 		},
-<<<<<<< Updated upstream
-		["i:1210"] = {  -- Shadowgem
-=======
 		["i:1210"] = { -- Shadowgem
->>>>>>> Stashed changes
 			["i:2771"] = {requiredSkill = 50, matRate = 0.3600, minAmount = 1, maxAmount = 1, amountOfMats = 0.0720}, -- Tin Ore
 			["i:2770"] = {requiredSkill = 20, matRate = 0.1000, minAmount = 1, maxAmount = 1, amountOfMats = 0.0200}, -- Copper Ore
 		},
@@ -99,8 +95,6 @@ elseif TSM.IsWowWrathClassic() then
 		["i:23107"] = { -- Shadow Draenite
 			["i:23424"] = {requiredSkill = 275, matRate = 0.1650, minAmount = 1, maxAmount = 1, amountOfMats = 0.0330}, -- Fel Iron Ore
 			["i:23425"] = {requiredSkill = 325, matRate = 0.1700, minAmount = 1, maxAmount = 1, amountOfMats = 0.0340}, -- Adamantite Ore
-<<<<<<< Updated upstream
-=======
 		},
 		["i:36917"] = { -- Bloodstone
 			["i:36909"] = {requiredSkill = 350, matRate = 0.1600, minAmount = 1, maxAmount = 2, amountOfMats = 0.0330}, -- Cobalt Ore
@@ -131,7 +125,6 @@ elseif TSM.IsWowWrathClassic() then
 			["i:36909"] = {requiredSkill = 350, matRate = 0.1600, minAmount = 1, maxAmount = 2, amountOfMats = 0.0330}, -- Cobalt Ore
 			["i:36912"] = {requiredSkill = 400, matRate = 0.1800, minAmount = 1, maxAmount = 2, amountOfMats = 0.0355}, -- Saronite Ore
 			["i:36910"] = {requiredSkill = 450, matRate = 0.2350, minAmount = 1, maxAmount = 2, amountOfMats = 0.5000}, -- Titanium Ore
->>>>>>> Stashed changes
 		},
 		-- ========================================== Rare Gems ========================================
 		["i:23440"] = { -- Dawnstone
@@ -157,8 +150,6 @@ elseif TSM.IsWowWrathClassic() then
 		["i:23437"] = { -- Talasite
 			["i:23424"] = {requiredSkill = 275, matRate = 0.0125, minAmount = 1, maxAmount = 1, amountOfMats = 0.0025}, -- Fel Iron Ore
 			["i:23425"] = {requiredSkill = 325, matRate = 0.0350, minAmount = 1, maxAmount = 1, amountOfMats = 0.0070}, -- Adamantite Ore
-<<<<<<< Updated upstream
-=======
 		},
 		["i:36921"] = { -- Autumn's Glow
 			["i:36909"] = {requiredSkill = 350, matRate = 0.0100, minAmount = 1, maxAmount = 2, amountOfMats = 0.0020}, -- Cobalt Ore
@@ -208,7 +199,6 @@ elseif TSM.IsWowWrathClassic() then
 		},
 		["i:36925"] = { -- Majestic Zircon
 			["i:36910"] = {requiredSkill = 450, matRate = 0.0300, minAmount = 1, maxAmount = 2, amountOfMats = 0.0061}, -- Titanium Ore
->>>>>>> Stashed changes
 		},
 	}
 else
@@ -495,56 +485,32 @@ else
 		["i:36921"] = { -- Autumn's Glow
 			["i:36909"] = {matRate = 0.0150, minAmount = 1, maxAmount = 2, amountOfMats = 0.0030}, -- Cobalt Ore
 			["i:36912"] = {matRate = 0.0400, minAmount = 1, maxAmount = 2, amountOfMats = 0.0081}, -- Saronite Ore
-<<<<<<< Updated upstream
-			["i:36910"] = {matRate = 0.0450, minAmount = 1, maxAmount = 2, amountOfMats = 0.0091}, -- Titanium Ore
-=======
 			["i:36910"] = {matRate = 0.0400, minAmount = 1, maxAmount = 2, amountOfMats = 0.0081}, -- Titanium Ore
->>>>>>> Stashed changes
 		},
 		["i:36933"] = { -- Forest Emerald
 			["i:36909"] = {matRate = 0.0150, minAmount = 1, maxAmount = 2, amountOfMats = 0.0030}, -- Cobalt Ore
 			["i:36912"] = {matRate = 0.0400, minAmount = 1, maxAmount = 2, amountOfMats = 0.0081}, -- Saronite Ore
-<<<<<<< Updated upstream
-			["i:36910"] = {matRate = 0.0450, minAmount = 1, maxAmount = 2, amountOfMats = 0.0091}, -- Titanium Ore
-=======
 			["i:36910"] = {matRate = 0.0400, minAmount = 1, maxAmount = 2, amountOfMats = 0.0081}, -- Titanium Ore
->>>>>>> Stashed changes
 		},
 		["i:36930"] = { -- Monarch Topaz
 			["i:36909"] = {matRate = 0.0150, minAmount = 1, maxAmount = 2, amountOfMats = 0.0030}, -- Cobalt Ore
 			["i:36912"] = {matRate = 0.0400, minAmount = 1, maxAmount = 2, amountOfMats = 0.0081}, -- Saronite Ore
-<<<<<<< Updated upstream
-			["i:36910"] = {matRate = 0.0450, minAmount = 1, maxAmount = 2, amountOfMats = 0.0091}, -- Titanium Ore
-=======
 			["i:36910"] = {matRate = 0.0400, minAmount = 1, maxAmount = 2, amountOfMats = 0.0081}, -- Titanium Ore
->>>>>>> Stashed changes
 		},
 		["i:36918"] = { -- Scarlet Ruby
 			["i:36909"] = {matRate = 0.0150, minAmount = 1, maxAmount = 2, amountOfMats = 0.0030}, -- Cobalt Ore
 			["i:36912"] = {matRate = 0.0400, minAmount = 1, maxAmount = 2, amountOfMats = 0.0081}, -- Saronite Ore
-<<<<<<< Updated upstream
-			["i:36910"] = {matRate = 0.0450, minAmount = 1, maxAmount = 2, amountOfMats = 0.0091}, -- Titanium Ore
-=======
 			["i:36910"] = {matRate = 0.0400, minAmount = 1, maxAmount = 2, amountOfMats = 0.0081}, -- Titanium Ore
->>>>>>> Stashed changes
 		},
 		["i:36924"] = { -- Sky Sapphire
 			["i:36909"] = {matRate = 0.0150, minAmount = 1, maxAmount = 2, amountOfMats = 0.0030}, -- Cobalt Ore
 			["i:36912"] = {matRate = 0.0400, minAmount = 1, maxAmount = 2, amountOfMats = 0.0081}, -- Saronite Ore
-<<<<<<< Updated upstream
-			["i:36910"] = {matRate = 0.0450, minAmount = 1, maxAmount = 2, amountOfMats = 0.0091}, -- Titanium Ore
-=======
 			["i:36910"] = {matRate = 0.0400, minAmount = 1, maxAmount = 2, amountOfMats = 0.0081}, -- Titanium Ore
->>>>>>> Stashed changes
 		},
 		["i:36927"] = { -- Twilight Opal
 			["i:36909"] = {matRate = 0.0150, minAmount = 1, maxAmount = 2, amountOfMats = 0.0030}, -- Cobalt Ore
 			["i:36912"] = {matRate = 0.0400, minAmount = 1, maxAmount = 2, amountOfMats = 0.0081}, -- Saronite Ore
-<<<<<<< Updated upstream
-			["i:36910"] = {matRate = 0.0450, minAmount = 1, maxAmount = 2, amountOfMats = 0.0091}, -- Titanium Ore
-=======
 			["i:36910"] = {matRate = 0.0400, minAmount = 1, maxAmount = 2, amountOfMats = 0.0081}, -- Titanium Ore
->>>>>>> Stashed changes
 		},
 		["i:52192"] = { -- Dream Emerald
 			["i:53038"] = {matRate = 0.0125, minAmount = 1, maxAmount = 1, amountOfMats = 0.0025}, -- Obsidium Ore

@@ -38,21 +38,15 @@ local QuestieCombatQueue = QuestieLoader:ImportModule("QuestieCombatQueue")
 local QuestieInit = QuestieLoader:ImportModule("QuestieInit")
 ---@type MinimapIcon
 local MinimapIcon = QuestieLoader:ImportModule("MinimapIcon")
-<<<<<<< Updated upstream
-=======
 ---@type AchievementTracker
 local AchievementTracker = QuestieLoader:ImportModule("AchievementTracker")
->>>>>>> Stashed changes
 
 local questAcceptedMessage  = string.gsub(ERR_QUEST_ACCEPTED_S , "(%%s)", "(.+)")
 local questCompletedMessage  = string.gsub(ERR_QUEST_COMPLETE_S , "(%%s)", "(.+)")
 
-<<<<<<< Updated upstream
-=======
 --* Calculated in _EventHandler:PlayerLogin()
 ---en/br/es/fr/gb/it/mx: "You are now %s with %s." (e.g. "You are now Honored with Stormwind."), all other languages are very alike
 local FACTION_STANDING_CHANGED_PATTERN
->>>>>>> Stashed changes
 
 function QuestieEventHandler:RegisterEarlyEvents()
     Questie:RegisterEvent("PLAYER_LOGIN", _EventHandler.PlayerLogin)
@@ -68,13 +62,8 @@ function QuestieEventHandler:RegisterLateEvents()
     Questie:RegisterEvent("MAP_EXPLORATION_UPDATED", _EventHandler.MapExplorationUpdated)
     Questie:RegisterEvent("MODIFIER_STATE_CHANGED", _EventHandler.ModifierStateChanged)
     -- Events to update a players professions and reputations
-<<<<<<< Updated upstream
-    Questie:RegisterEvent("CHAT_MSG_SKILL", _EventHandler.ChatMsgSkill)
-    Questie:RegisterEvent("CHAT_MSG_COMBAT_FACTION_CHANGE", _EventHandler.ChatMsgCompatFactionChange)
-=======
     Questie:RegisterBucketEvent("CHAT_MSG_SKILL", 2, _EventHandler.ChatMsgSkill)
     Questie:RegisterBucketEvent("CHAT_MSG_COMBAT_FACTION_CHANGE", 2, _EventHandler.ChatMsgCompatFactionChange)
->>>>>>> Stashed changes
     Questie:RegisterEvent("CHAT_MSG_SYSTEM", _EventHandler.ChatMsgSystem)
 
     -- UI Quest Events
@@ -122,8 +111,6 @@ function QuestieEventHandler:RegisterLateEvents()
 end
 
 function _EventHandler:PlayerLogin()
-<<<<<<< Updated upstream
-=======
     -- Check config exists
     if not Questie.db or not QuestieConfig then
         -- Did you move Questie.db = LibStub("AceDB-3.0"):New("QuestieConfig",.......) out of Questie:OnInitialize() ?
@@ -180,7 +167,6 @@ function _EventHandler:PlayerLogin()
     end
 
     -- Start real Questie init
->>>>>>> Stashed changes
     QuestieInit:Init()
 end
 
@@ -190,11 +176,8 @@ function _EventHandler:ChatMsgSystem(message)
     -- When a new quest is accepted or completed quest is turned in, update the LibDataBroker text with the appropriate message
     if string.find(message, questCompletedMessage) == 1 or string.find(message, questAcceptedMessage) == 1 then
         MinimapIcon:UpdateText(message)
-<<<<<<< Updated upstream
-=======
     elseif string.find(message, FACTION_STANDING_CHANGED_PATTERN) then -- When you discover a new faction or increase standing eg. Neutral -> Friendly
         QuestieReputation:Update()
->>>>>>> Stashed changes
     end
 end
 

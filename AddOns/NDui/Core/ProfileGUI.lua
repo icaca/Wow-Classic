@@ -380,8 +380,6 @@ local accountStrValues = {
 	["IgnoredButtons"] = true,
 }
 
-<<<<<<< Updated upstream
-=======
 local spellBooleanValues = {
 	["RaidBuffsWhite"] = true,
 	["RaidDebuffsBlack"] = true,
@@ -395,7 +393,6 @@ local booleanTable = {
 	["DotSpells"] = true,
 }
 
->>>>>>> Stashed changes
 function G:ExportGUIData()
 	local text = "NDuiSettings:"..DB.Version..":"..DB.MyName..":"..DB.MyClass
 	for KEY, VALUE in pairs(C.db) do
@@ -491,8 +488,6 @@ function G:ExportGUIData()
 			for k, v in pairs(VALUE) do
 				text = text..":"..k..":"..v
 			end
-<<<<<<< Updated upstream
-=======
 		elseif KEY == "ClickSets" then
 			text = text..";ACCOUNT:"..KEY
 			if NDuiADB[KEY][DB.MyClass] then
@@ -502,7 +497,6 @@ function G:ExportGUIData()
 					text = text..":"..fullkey..":"..value
 				end
 			end
->>>>>>> Stashed changes
 		elseif VALUE == true or VALUE == false or accountStrValues[KEY] then
 			text = text..";ACCOUNT:"..KEY..":"..tostring(VALUE)
 		end

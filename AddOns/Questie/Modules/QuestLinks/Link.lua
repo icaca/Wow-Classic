@@ -59,11 +59,7 @@ end
 ---@return string
 function QuestieLink:GetQuestLinkStringById(questId)
     local questName = QuestieDB.QueryQuestSingle(questId, "name");
-<<<<<<< Updated upstream
-    local questLevel, _ = QuestieLib:GetTbcLevel(questId);
-=======
     local questLevel, _ = QuestieLib.GetTbcLevel(questId);
->>>>>>> Stashed changes
     return QuestieLink:GetQuestLinkString(questLevel, questName, questId)
 end
 

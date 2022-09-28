@@ -11,13 +11,9 @@ C.themes["Blizzard_TradeSkillUI"] = function()
 	B.ReskinArrow(TradeSkillDecrementButton, "left")
 	B.ReskinArrow(TradeSkillIncrementButton, "right")
 	B.ReskinInput(TradeSkillInputBox)
-<<<<<<< Updated upstream
-	B.ReskinInput(TradeSearchInputBox)
-=======
 	B.ReskinInput(TradeSkillFrameEditBox)
 	TradeSkillFrameBottomLeftTexture:Hide()
 	TradeSkillFrameBottomRightTexture:Hide()
->>>>>>> Stashed changes
 
 	B.StripTextures(TradeSkillRankFrameBorder)
 	B.StripTextures(TradeSkillRankFrame)

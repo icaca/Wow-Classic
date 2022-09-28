@@ -175,10 +175,7 @@ function module:RecycleBin()
 	bu.Icon:SetTexture(DB.binTex)
 	bu:SetHighlightTexture(DB.binTex)
 	bu.title = DB.InfoColor..L["Minimap RecycleBin"]
-<<<<<<< Updated upstream
-=======
 	bu:SetFrameLevel(999)
->>>>>>> Stashed changes
 	B.AddTooltip(bu, "ANCHOR_LEFT")
 	updateRecycleTip(bu)
 

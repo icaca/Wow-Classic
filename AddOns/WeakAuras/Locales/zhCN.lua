@@ -465,11 +465,7 @@ L["Friendly"] = "友善"
 L["Friendly Fire"] = "友方伤害"
 L["Friendship Max Rank"] = "最大关系等级"
 L["Friendship Rank"] = "关系等级"
-<<<<<<< Updated upstream
-L["From"] = "从"
-=======
 L["Frost"] = "冰霜"
->>>>>>> Stashed changes
 L["Frost Resistance"] = "冰霜抗性"
 L["Frost Rune #1"] = "冰霜符文 #1"
 L["Frost Rune #2"] = "冰霜符文 #2"

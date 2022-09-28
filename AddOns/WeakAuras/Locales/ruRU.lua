@@ -1064,12 +1064,7 @@ L["Spell IDs:"] = "ID заклинаний:"
 L["Spell in Range"] = "В зоне действия (заклинание)"
 L["Spell Known"] = "Заклинание известно"
 L["Spell Name"] = "Название заклинания"
-<<<<<<< Updated upstream
---[[Translation missing --]]
-L["Spell School"] = "Spell School"
-=======
 L["Spell School"] = "Школа магии"
->>>>>>> Stashed changes
 L["Spell Usable"] = "Заклинание доступно"
 L["Spin"] = "Вращение"
 L["Spiral"] = "Спираль"

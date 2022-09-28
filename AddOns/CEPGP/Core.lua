@@ -123,7 +123,13 @@ CEPGP_Info = {
 			g = 0.61,	
 			b = 0.43,	
 			colorStr = "#C79C6E"
-		}	
+		},
+		["DEATHKNIGHT"]	=		{
+			r = 0.77,
+			g = 0.12,
+			b = 0.23,
+			colorStr = "#C41E3A"
+		}
 	},		
 	CoreFrames =				{
 		[1] = CEPGP_guild,
@@ -206,7 +212,7 @@ CEPGP_Info = {
 		Source =				""
 	},
 	Version = 					{
-		Number =				"1.14.1",
+		Number =				"1.15.4",
 		Build =					"Release",
 		List =					{
 		},
