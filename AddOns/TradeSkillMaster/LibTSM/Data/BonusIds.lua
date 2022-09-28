@@ -2992,6 +2992,13 @@ local ALL_BONUS_ID_MAP = {
 	[7914] = 7914,
 	[7917] = 7917,
 	[7960] = 7960,
+<<<<<<< Updated upstream
+=======
+	[8756] = 8756,
+	[8757] = 8757,
+	[8758] = 8758,
+	[8759] = 8759,
+>>>>>>> Stashed changes
 }
 local IMPORTANT_BONUS_ID_MAP = {
 	[40] = 40,
@@ -3413,6 +3420,13 @@ local IMPORTANT_BONUS_ID_MAP = {
 	[7914] = 7914,
 	[7917] = 7917,
 	[7960] = 7960,
+<<<<<<< Updated upstream
+=======
+	[8756] = 8756,
+	[8757] = 8757,
+	[8758] = 8758,
+	[8759] = 8759,
+>>>>>>> Stashed changes
 }
 
 -- This table is based on static data available at https://raidbots.com/developers

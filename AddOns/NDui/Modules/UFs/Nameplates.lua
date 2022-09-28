@@ -13,7 +13,7 @@ local C_NamePlate_GetNamePlateForUnit = C_NamePlate.GetNamePlateForUnit
 local C_NamePlate_SetNamePlateEnemyClickThrough = C_NamePlate.SetNamePlateEnemyClickThrough
 local C_NamePlate_SetNamePlateFriendlyClickThrough = C_NamePlate.SetNamePlateFriendlyClickThrough
 local INTERRUPTED = INTERRUPTED
-local _QuestieTooltips, _QuestiePlayer, _QuestieQuest
+local _QuestieTooltips, _QuestiePlayer
 
 -- Init
 function UF:UpdatePlateCVars()
@@ -49,10 +49,20 @@ function UF:SetupCVars()
 
 	B.HideOption(InterfaceOptionsNamesPanelUnitNameplatesNameplateMaxDistanceSlider) -- Use option in GUI
 
-	if IsAddOnLoaded("Questie") then
-		_QuestieQuest = QuestieLoader:ImportModule("QuestieQuest")
+	if IsAddOnLoaded("Questie") and QuestieLoader then
 		_QuestiePlayer = QuestieLoader:ImportModule("QuestiePlayer")
 		_QuestieTooltips = QuestieLoader:ImportModule("QuestieTooltips")
+
+		local _QuestieEventHandler = QuestieLoader:ImportModule("QuestEventHandler")
+		if _QuestieEventHandler and _QuestieEventHandler.private then
+			hooksecurefunc(_QuestieEventHandler.private, "UpdateAllQuests", function()
+				for _, plate in pairs(C_NamePlate.GetNamePlates()) do
+					if plate.unitFrame then
+						UF.UpdateQuestIndicator(plate.unitFrame)
+					end
+				end
+			end)
+		end
 	end
 end
 
@@ -74,29 +84,79 @@ function UF:BlockAddons()
 end
 
 -- Elements
-local customUnits = {}
-function UF:CreateUnitTable()
-	wipe(customUnits)
-	if not C.db["Nameplate"]["CustomUnitColor"] then return end
-	B.CopyTable(C.CustomUnits, customUnits)
-	B.SplitList(customUnits, C.db["Nameplate"]["UnitList"])
+local function refreshNameplateUnits(VALUE)
+	wipe(UF[VALUE])
+	if not C.db["Nameplate"]["Show"..VALUE] then return end
+
+	for npcID in pairs(C[VALUE]) do
+		if C.db["Nameplate"][VALUE][npcID] == nil then
+			UF[VALUE][npcID] = true
+		end
+	end
+	for npcID, value in pairs(C.db["Nameplate"][VALUE]) do
+		if value then
+			UF[VALUE][npcID] = true
+		end
+	end
 end
 
-local showPowerList = {}
+UF.CustomUnits = {}
+function UF:CreateUnitTable()
+	refreshNameplateUnits("CustomUnits")
+end
+
+UF.PowerUnits = {}
 function UF:CreatePowerUnitTable()
-	wipe(showPowerList)
-	B.CopyTable(C.ShowPowerList, showPowerList)
-	B.SplitList(showPowerList, C.db["Nameplate"]["ShowPowerList"])
+	refreshNameplateUnits("PowerUnits")
 end
 
 function UF:UpdateUnitPower()
 	local unitName = self.unitName
 	local npcID = self.npcID
-	local shouldShowPower = showPowerList[unitName] or showPowerList[npcID]
-	if shouldShowPower then
-		self.powerText:Show()
+	local shouldShowPower = UF.PowerUnits[unitName] or UF.PowerUnits[npcID]
+	self.powerText:SetShown(shouldShowPower)
+end
+
+-- Off-tank threat color
+local groupRoles, isInGroup, myRole = {}
+local function refreshGroupRoles()
+	local isInRaid = IsInRaid()
+	isInGroup = isInRaid or IsInGroup()
+	wipe(groupRoles)
+	myRole = UnitGroupRolesAssigned("player")
+
+	if isInGroup then
+		local numPlayers = (isInRaid and GetNumGroupMembers()) or GetNumSubgroupMembers()
+		local unit = (isInRaid and "raid") or "party"
+		for i = 1, numPlayers do
+			local index = unit..i
+			if UnitExists(index) then
+				groupRoles[UnitName(index)] = UnitGroupRolesAssigned(index)
+			end
+		end
+	end
+end
+
+local function resetGroupRoles()
+	isInGroup = IsInRaid() or IsInGroup()
+	wipe(groupRoles)
+end
+
+function UF:UpdateGroupRoles()
+	refreshGroupRoles()
+	B:RegisterEvent("GROUP_ROSTER_UPDATE", refreshGroupRoles)
+	B:RegisterEvent("GROUP_LEFT", resetGroupRoles)
+end
+
+function UF:CheckThreatStatus(unit)
+	if not UnitExists(unit) then return end
+
+	local unitTarget = unit.."target"
+	local unitRole = isInGroup and UnitExists(unitTarget) and not UnitIsUnit(unitTarget, "player") and groupRoles[UnitName(unitTarget)] or "NONE"
+	if myRole == "TANK" and unitRole == "TANK" then
+		return true, UnitThreatSituation(unitTarget, unit)
 	else
-		self.powerText:Hide()
+		return false, UnitThreatSituation("player", unit)
 	end
 end
 
@@ -107,18 +167,25 @@ function UF:UpdateColor(_, unit)
 	local element = self.Health
 	local name = self.unitName
 	local npcID = self.npcID
-	local isCustomUnit = customUnits[name] or customUnits[npcID]
+	local isCustomUnit = UF.CustomUnits[name] or UF.CustomUnits[npcID]
 	local isPlayer = self.isPlayer
 	local isFriendly = self.isFriendly
-	local status = UnitThreatSituation("player", unit) or false -- just in case
+	local isOffTank, status
+	if C.db["Nameplate"]["OffTankThreat"] then
+		isOffTank, status = UF:CheckThreatStatus(unit)
+	else
+		status = UnitThreatSituation("player", unit)
+	end
 	local customColor = C.db["Nameplate"]["CustomColor"]
 	local secureColor = C.db["Nameplate"]["SecureColor"]
 	local transColor = C.db["Nameplate"]["TransColor"]
 	local insecureColor = C.db["Nameplate"]["InsecureColor"]
+	local offTankColor = C.db["Nameplate"]["OffTankColor"]
 	local executeRatio = C.db["Nameplate"]["ExecuteRatio"]
 	local healthPerc = UnitHealth(unit) / (UnitHealthMax(unit) + .0001) * 100
 	local targetColor = C.db["Nameplate"]["TargetColor"]
 	local focusColor = C.db["Nameplate"]["FocusColor"]
+	local dotColor = C.db["Nameplate"]["DotColor"]
 	local r, g, b
 
 	if not UnitIsConnected(unit) then
@@ -130,6 +197,8 @@ function UF:UpdateColor(_, unit)
 			r, g, b = focusColor.r, focusColor.g, focusColor.b
 		elseif isCustomUnit then
 			r, g, b = customColor.r, customColor.g, customColor.b
+		elseif self.Auras.hasTheDot then
+			r, g, b = dotColor.r, dotColor.g, dotColor.b
 		elseif isPlayer and isFriendly then
 			if C.db["Nameplate"]["FriendlyCC"] then
 				r, g, b = B.UnitColor(unit)
@@ -144,7 +213,11 @@ function UF:UpdateColor(_, unit)
 			r, g, b = UnitSelectionColor(unit, true)
 			if status and C.db["Nameplate"]["TankMode"] then
 				if status == 3 then
-					r, g, b = secureColor.r, secureColor.g, secureColor.b
+					if isOffTank then
+						r, g, b = offTankColor.r, offTankColor.g, offTankColor.b
+					else
+						r, g, b = secureColor.r, secureColor.g, secureColor.b
+					end
 				elseif status == 2 or status == 1 then
 					r, g, b = transColor.r, transColor.g, transColor.b
 				elseif status == 0 then
@@ -158,18 +231,15 @@ function UF:UpdateColor(_, unit)
 		element:SetStatusBarColor(r, g, b)
 	end
 
-	if isCustomUnit or not C.db["Nameplate"]["TankMode"] then
-		if status and status == 3 then
+	self.ThreatIndicator:Hide()
+	if status and (isCustomUnit or not C.db["Nameplate"]["TankMode"]) then
+		if status == 3 then
 			self.ThreatIndicator:SetBackdropBorderColor(1, 0, 0)
 			self.ThreatIndicator:Show()
-		elseif status and (status == 2 or status == 1) then
+		elseif status == 2 or status == 1 then
 			self.ThreatIndicator:SetBackdropBorderColor(1, 1, 0)
 			self.ThreatIndicator:Show()
-		else
-			self.ThreatIndicator:Hide()
 		end
-	else
-		self.ThreatIndicator:Hide()
 	end
 
 	if executeRatio > 0 and healthPerc <= executeRatio then
@@ -186,9 +256,9 @@ function UF:UpdateThreatColor(_, unit)
 end
 
 function UF:CreateThreatColor(self)
-	local threatIndicator = B.CreateSD(self, 3, true)
-	threatIndicator:SetOutside(self.Health.backdrop, 3, 3)
+	local threatIndicator = B.CreateSD(self.backdrop, nil, true)
 	threatIndicator:Hide()
+	self.backdrop.__shadow = nil
 
 	self.ThreatIndicator = threatIndicator
 	self.ThreatIndicator.Override = UF.UpdateThreatColor
@@ -319,7 +389,7 @@ function UF:AddTargetIndicator(self)
 	frame.ArrowAnimGroup = animGroup
 
 	frame.Glow = B.CreateSD(frame, 8, true)
-	frame.Glow:SetOutside(self.Health.backdrop, 8, 8)
+	frame.Glow:SetOutside(self.backdrop, 8, 8)
 	frame.Glow:SetBackdropBorderColor(1, 1, 1)
 	frame.Glow:SetFrameLevel(0)
 
@@ -413,6 +483,7 @@ function UF:UpdateForQuestie(npcID)
 	if data then
 		local foundObjective, progressText
 		for _, tooltip in pairs(data) do
+<<<<<<< Updated upstream
 			local questID = tooltip.questId
 			if questID then
 				_QuestieQuest:UpdateQuest(questID)
@@ -426,6 +497,21 @@ function UF:UpdateForQuestie(npcID)
 							foundObjective = nil
 						end
 						break
+=======
+			if not tooltip.npc then
+				local questID = tooltip.questId
+				if questID then
+					if _QuestiePlayer.currentQuestlog[questID] then
+						foundObjective = true
+
+						if tooltip.objective and tooltip.objective.Needed then
+							progressText = tooltip.objective.Needed - tooltip.objective.Collected
+							if progressText == 0 then
+								foundObjective = nil
+							end
+							break
+						end
+>>>>>>> Stashed changes
 					end
 				end
 			end
@@ -494,7 +580,7 @@ function UF:UpdateQuestIndicator()
 
 	if CodexMap then
 		UF.UpdateCodexQuestUnit(self, self.unitName)
-	elseif _QuestieTooltips then
+	elseif _QuestieTooltips and _QuestiePlayer then
 		UF.UpdateForQuestie(self, self.npcID)
 	end
 end
@@ -527,9 +613,15 @@ local NPClassifies = {
 
 function UF:AddCreatureIcon(self)
 	local icon = self:CreateTexture(nil, "ARTWORK")
+<<<<<<< Updated upstream
 	icon:SetAtlas("auctionhouse-icon-favorite")
 	icon:SetPoint("RIGHT", self.nameText, "LEFT", 10, 0)
 	icon:SetSize(20, 20)
+=======
+	icon:SetTexture(DB.starTex)
+	icon:SetPoint("RIGHT", self.nameText, "LEFT", 10, 0)
+	icon:SetSize(18, 18)
+>>>>>>> Stashed changes
 	icon:Hide()
 
 	self.ClassifyIndicator = icon
@@ -652,7 +744,8 @@ function UF:CreatePlates()
 	local health = CreateFrame("StatusBar", nil, self)
 	health:SetAllPoints()
 	health:SetStatusBarTexture(DB.normTex)
-	health.backdrop = B.SetBD(health) -- don't mess up with libs
+	self.backdrop = B.SetBD(health)
+	self.backdrop.__shadow = nil
 	B:SmoothBar(health)
 
 	self.Health = health
@@ -666,7 +759,12 @@ function UF:CreatePlates()
 	UF:CreateAuras(self)
 	UF:CreateThreatColor(self)
 
+<<<<<<< Updated upstream
 	self.Auras.showStealableBuffs = C.db["Nameplate"]["Dispellable"]
+=======
+	self.Auras.showStealableBuffs = C.db["Nameplate"]["DispellMode"] == 1
+	self.Auras.alwaysShowStealable = C.db["Nameplate"]["DispellMode"] == 2
+>>>>>>> Stashed changes
 	self.powerText = B.CreateFS(self, 22)
 	self.powerText:ClearAllPoints()
 	self.powerText:SetPoint("TOP", self.Castbar, "BOTTOM", 0, -4)
@@ -717,7 +815,12 @@ function UF:UpdateNameplateAuras()
 	element.numTotal = C.db["Nameplate"]["maxAuras"]
 	element.size = C.db["Nameplate"]["AuraSize"]
 	element.showDebuffType = C.db["Nameplate"]["DebuffColor"]
+<<<<<<< Updated upstream
 	element.showStealableBuffs = C.db["Nameplate"]["Dispellable"]
+=======
+	element.showStealableBuffs = C.db["Nameplate"]["DispellMode"] == 1
+	element.alwaysShowStealable = C.db["Nameplate"]["DispellMode"] == 2
+>>>>>>> Stashed changes
 	element.desaturateDebuff = C.db["Nameplate"]["Desaturate"]
 	element:SetWidth(self:GetWidth())
 	element:SetHeight((element.size + element.spacing) * 2)
@@ -934,6 +1037,8 @@ function UF:PostUpdatePlates(event, unit)
 		UF.RefreshPlateType(self, unit)
 	elseif event == "NAME_PLATE_UNIT_REMOVED" then
 		self.npcID = nil
+		self.tarBy:SetText("")
+		self.tarByTex:Hide()
 	end
 
 	if event ~= "NAME_PLATE_UNIT_REMOVED" then
@@ -977,7 +1082,7 @@ function UF:ResizePlayerPlate()
 		plate.Health:SetHeight(healthHeight)
 		plate.Power:SetHeight(powerHeight)
 
-		local bars = plate.ClassPower
+		local bars = plate.ClassPower or plate.Runes
 		if bars then
 			plate.ClassPowerBar:SetSize(barWidth, barHeight)
 			local max = bars.__max
@@ -999,7 +1104,6 @@ function UF:CreatePlayerPlate()
 	UF:CreatePowerBar(self)
 	UF:CreatePrediction(self)
 	UF:CreateClassPower(self)
-	UF:CreateEneryTicker(self)
 	--if C.db["Auras"]["ClassAuras"] then
 	--	B:GetModule("Auras"):CreateLumos(self)
 	--end
@@ -1025,7 +1129,6 @@ function UF:TogglePlayerPlate()
 	end
 
 	plate.powerText:SetShown(C.db["Nameplate"]["PPPowerText"])
-	UF.ToggleEnergyTicker(plate, C.db["Nameplate"]["EnergyTicker"])
 end
 
 function UF:TogglePlateVisibility()
@@ -1033,11 +1136,15 @@ function UF:TogglePlateVisibility()
 	if not plate then return end
 
 	if C.db["Nameplate"]["PPFadeout"] then
+		plate:RegisterEvent("UNIT_EXITED_VEHICLE", UF.PlateVisibility)
+		plate:RegisterEvent("UNIT_ENTERED_VEHICLE", UF.PlateVisibility)
 		plate:RegisterEvent("PLAYER_REGEN_ENABLED", UF.PlateVisibility, true)
 		plate:RegisterEvent("PLAYER_REGEN_DISABLED", UF.PlateVisibility, true)
 		plate:RegisterEvent("PLAYER_ENTERING_WORLD", UF.PlateVisibility, true)
 		UF.PlateVisibility(plate)
 	else
+		plate:UnregisterEvent("UNIT_EXITED_VEHICLE", UF.PlateVisibility)
+		plate:UnregisterEvent("UNIT_ENTERED_VEHICLE", UF.PlateVisibility)
 		plate:UnregisterEvent("PLAYER_REGEN_ENABLED", UF.PlateVisibility)
 		plate:UnregisterEvent("PLAYER_REGEN_DISABLED", UF.PlateVisibility)
 		plate:UnregisterEvent("PLAYER_ENTERING_WORLD", UF.PlateVisibility)
@@ -1088,6 +1195,17 @@ function UF:ToggleTargetClassPower()
 				end
 			end
 		end
+		if plate.Runes then
+			if not plate:IsElementEnabled("Runes") then
+				plate:EnableElement("Runes")
+				plate.Runes:ForceUpdate()
+			end
+			if playerPlate then
+				if playerPlate:IsElementEnabled("Runes") then
+					playerPlate:DisableElement("Runes")
+				end
+			end
+		end
 	else
 		plate:Disable()
 		if plate.ClassPower then
@@ -1101,6 +1219,17 @@ function UF:ToggleTargetClassPower()
 				end
 			end
 		end
+		if plate.Runes then
+			if plate:IsElementEnabled("Runes") then
+				plate:DisableElement("Runes")
+			end
+			if playerPlate then
+				if not playerPlate:IsElementEnabled("Runes") then
+					playerPlate:EnableElement("Runes")
+					playerPlate.Runes:ForceUpdate()
+				end
+			end
+		end
 	end
 end
 
@@ -1110,7 +1239,7 @@ function UF:ResizeTargetPower()
 
 	local barWidth = C.db["Nameplate"]["PlateWidth"]
 	local barHeight = C.db["Nameplate"]["PPBarHeight"]
-	local bars = plate.ClassPower
+	local bars = plate.ClassPower or plate.Runes
 	if bars then
 		plate.ClassPowerBar:SetSize(barWidth, barHeight)
 		local max = bars.__max
@@ -1140,4 +1269,31 @@ function UF:RefreshMajorSpells()
 			UF.MajorSpells[spellID] = true
 		end
 	end
+end
+
+UF.NameplateWhite = {}
+UF.NameplateBlack = {}
+
+local function RefreshNameplateFilter(list, key)
+	wipe(UF[key])
+
+	for spellID in pairs(list) do
+		local name = GetSpellInfo(spellID)
+		if name then
+			if NDuiADB[key][spellID] == nil then
+				UF[key][spellID] = true
+			end
+		end
+	end
+
+	for spellID, value in pairs(NDuiADB[key]) do
+		if value then
+			UF[key][spellID] = true
+		end
+	end
+end
+
+function UF:RefreshNameplateFilters()
+	RefreshNameplateFilter(C.WhiteList, "NameplateWhite")
+	RefreshNameplateFilter(C.BlackList, "NameplateBlack")
 end

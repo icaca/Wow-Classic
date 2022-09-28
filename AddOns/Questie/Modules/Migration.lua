@@ -111,11 +111,45 @@ local migrationFunctions = {
         if not Questie.db.char.questAnnounceChannel then
             if (not Questie.db.char.questAnnounce) or Questie.db.char.questAnnounce == "disabled" then
                 Questie.db.char.questAnnounceChannel = "disabled"
+<<<<<<< Updated upstream
             else
                 Questie.db.char.questAnnounceChannel = "group"
             end
         end
     end,
+=======
+                Questie.db.char.questAnnounceObjectives = false
+            else
+                Questie.db.char.questAnnounceChannel = "group"
+                Questie.db.char.questAnnounceObjectives = true
+            end
+        end
+    end,
+    [9] = function()
+        if Questie.db.char.hiddenDailies and Questie.db.char.hiddenDailies.hc and next(Questie.db.char.hiddenDailies.hc) then
+            table.insert(Questie.db.char.hiddenDailies.hc, 11499, true) -- Add new HC daily to hiddenDailies
+        end
+    end,
+    [10] = function()
+        if Questie.db.char.questAnnounceObjectives == nil then
+            Questie.db.char.questAnnounceObjectives = true
+        end
+    end,
+    [11] = function()
+        Questie.db.global.trackerEnabled = true
+    end,
+    [12] = function()
+        Questie.db.char.collapsedQuests = {}
+    end,
+    [13] = function()
+        Questie.db[Questie.db.global.questieTLoc].TrackerLocation = nil
+    end,
+    [14] = function()
+        if Questie.db.char.isAchievementsExpanded == nil then
+            Questie.db.char.isAchievementsExpanded = true
+        end
+    end
+>>>>>>> Stashed changes
 }
 
 function Migration:Migrate()

@@ -4,7 +4,7 @@ local QuestieTBCItemFixes = QuestieLoader:CreateModule("QuestieTBCItemFixes")
 ---@type QuestieDB
 local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
 
-QuestieDB.fakeTbcItemStartId = 40000
+QuestieDB.fakeTbcItemStartId = 60000
 
 function QuestieTBCItemFixes:Load()
     local itemKeys = QuestieDB.itemKeys
@@ -19,8 +19,14 @@ function QuestieTBCItemFixes:Load()
         [6083] = {
             [itemKeys.npcDrops] = {},
         },
+        [8073] = {
+            [itemKeys.npcDrops] = {},
+        },
         [12366] = {
             [itemKeys.npcDrops] = {7457,7458,7459,7460},
+        },
+        [20023] = {
+            [itemKeys.npcDrops] = {6375,6377,6378,6379,6380,8759,8761,8762,8763,8764,8766,},
         },
         [21771] = {
             [itemKeys.npcDrops] = {15668,15669},
@@ -115,6 +121,9 @@ function QuestieTBCItemFixes:Load()
         [25462] = {
             [itemKeys.npcDrops] = {16807},
         },
+        [25554] = {
+            [itemKeys.npcDrops] = {},
+        },
         [25807] = {
             [itemKeys.npcDrops] = {18476,18477},
         },
@@ -146,7 +155,7 @@ function QuestieTBCItemFixes:Load()
             [itemKeys.npcDrops] = {21727},
         },
         [30659] = {
-            [itemKeys.npcDrops] = {21725}
+            [itemKeys.npcDrops] = {21725},
         },
         [30823] = {
             [itemKeys.npcDrops] = {19678},
@@ -175,6 +184,9 @@ function QuestieTBCItemFixes:Load()
         [31941] = {
             [itemKeys.objectDrops] = {185460},
         },
+        [31951] = {
+            [itemKeys.vendors] = {21643},
+        },
         [31957] = {
             [itemKeys.npcDrops] = {20520},
         },
@@ -185,6 +197,12 @@ function QuestieTBCItemFixes:Load()
         [32380] = {
             [itemKeys.npcDrops] = {20600},
         },
+        [32385] = {
+            [itemKeys.npcDrops] = {21174},
+        },
+        [32386] = {
+            [itemKeys.npcDrops] = {21174},
+        },
         [33071] = {
             [itemKeys.npcDrops] = {},
         },
@@ -194,8 +212,11 @@ function QuestieTBCItemFixes:Load()
         [31813] = {
             [itemKeys.npcDrops] = {18884},
         },
+        [34246] = {
+            [itemKeys.npcDrops] = {},
+        },
         [32742] = {
-            [itemKeys.npcDrops] = {23363}
+            [itemKeys.npcDrops] = {23363},
         },
         [33041] = {
             [itemKeys.objectDrops] = {186283},
@@ -212,8 +233,14 @@ function QuestieTBCItemFixes:Load()
         [33175] = {
             [itemKeys.npcDrops] = {},
         },
+        [34502] = {
+            [itemKeys.objectDrops] = {400014},
+        },
         [34864] = {
             [itemKeys.objectDrops] = {500004,500005,500006},
+        },
+        [35229] = {
+            [itemKeys.objectDrops] = {400013},
         },
         [35277] = {
             [itemKeys.npcDrops] = {25866,25863,25924},
@@ -242,6 +269,7 @@ function QuestieTBCItemFixes:Load()
         -- Below are fake items which can be used to show special quest "objectives" as requiredSourceItem.
         -- For example this is used for quest 10129 to show the NPC you have to talk with to start the flight
 
+        -- TODO: Transform these items to extraObjectives. These fakeIds were introduced before extraObjectives were a thing
         [40000] = {
             [itemKeys.name] = "Speak with Wing Commander Brack",
             [itemKeys.relatedQuests] = {10129},

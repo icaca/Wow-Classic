@@ -3,6 +3,8 @@
 -------------------------
 ---@type QuestieQuest
 local QuestieQuest = QuestieLoader:ImportModule("QuestieQuest");
+---@type IsleOfQuelDanas
+local IsleOfQuelDanas = QuestieLoader:ImportModule("IsleOfQuelDanas");
 ---@type QuestieOptions
 local QuestieOptions = QuestieLoader:ImportModule("QuestieOptions");
 ---@type QuestieOptionsDefaults
@@ -247,7 +249,37 @@ function QuestieOptions.tabs.general:Initialize()
                     },
                 },
             },
-            Spacer_A = QuestieOptionsUtils:Spacer(1.22),
+            Spacer_A1 = QuestieOptionsUtils:Spacer(2.1, (not Questie.IsWotlk)),
+            isleOfQuelDanasPhase = {
+                type = "select",
+                order = 2.5,
+                width = 1.5,
+                hidden = (not Questie.IsWotlk),
+                values = IsleOfQuelDanas.localizedPhaseNames,
+                style = 'dropdown',
+                name = function() return l10n("Isle of Quel'Danas Phase") end,
+                desc = function() return l10n("Select the phase fitting your realm progress on the Isle of Quel'Danas"); end,
+                disabled = function() return (not Questie.IsWotlk) end,
+                get = function() return Questie.db.global.isleOfQuelDanasPhase; end,
+                set = function(_, key)
+                    Questie.db.global.isleOfQuelDanasPhase = key
+                    QuestieQuest:SmoothReset()
+                end,
+            },
+            isleOfQuelDanasPhaseReminder = {
+                type = "toggle",
+                order = 2.6,
+                hidden = (not Questie.IsWotlk),
+                name = function() return l10n('Disable Phase reminder'); end,
+                desc = function() return l10n("Enable or disable the reminder on login to set the Isle of Quel'Danas phase"); end,
+                disabled = function() return (not Questie.IsWotlk) end,
+                width = 1,
+                get = function () return Questie.db.global.isIsleOfQuelDanasPhaseReminderDisabled; end,
+                set = function (_, value)
+                    Questie.db.global.isIsleOfQuelDanasPhaseReminderDisabled = value
+                end,
+            },
+            Spacer_A = QuestieOptionsUtils:Spacer(2.9, (not Questie.IsWotlk)),
             minimapButtonEnabled = {
                 type = "toggle",
                 order = 3,
@@ -331,6 +363,7 @@ function QuestieOptions.tabs.general:Initialize()
                 end,
             },
             --Spacer_B = QuestieOptionsUtils:Spacer(1.73),
+<<<<<<< Updated upstream
             questAnnounceChannel = {
                 type = "select",
                 order = 9,
@@ -415,6 +448,8 @@ function QuestieOptions.tabs.general:Initialize()
                     end
                 end,
             },
+=======
+>>>>>>> Stashed changes
             quest_options = {
                 type = "header",
                 order = 12,
@@ -480,7 +515,7 @@ function QuestieOptions.tabs.general:Initialize()
                 end,
                 width = "normal",
                 min = 0,
-                max = 70,
+                max = 60 + 10 * GetExpansionLevel(),
                 step = 1,
                 disabled = function() return (not Questie.db.char.manualMinLevelOffset) and (not Questie.db.char.absoluteLevelOffset); end,
                 get = function() return Questie.db.char.minLevelFilter; end,
@@ -500,7 +535,7 @@ function QuestieOptions.tabs.general:Initialize()
                 end,
                 width = "normal",
                 min = 0,
-                max = 70,
+                max = 60 + 10 * GetExpansionLevel(),
                 step = 1,
                 disabled = function() return (not Questie.db.char.absoluteLevelOffset); end,
                 get = function(info) return Questie.db.char.maxLevelFilter; end,

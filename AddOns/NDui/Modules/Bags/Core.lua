@@ -286,30 +286,31 @@ function module:CreateSortButton(name)
 	return bu
 end
 
-function module:GetContainerEmptySlot(bagID)
-	local bagType = module.BagsType[bagID]
-	for slotID = 1, GetContainerNumSlots(bagID) do
-		if not GetContainerItemID(bagID, slotID) and bagType == 0 then
-			return slotID
+function module:GetContainerEmptySlot(bagID, bagGroup)
+	if cargBags.BagGroups[bagID] == bagGroup then
+		for slotID = 1, GetContainerNumSlots(bagID) do
+			if not GetContainerItemID(bagID, slotID) then
+				return slotID
+			end
 		end
 	end
 end
 
-function module:GetEmptySlot(name)
-	if name == "Bag" then
+function module:GetEmptySlot(bagType, bagGroup)
+	if bagType == "Bag" then
 		for bagID = 0, NUM_BAG_SLOTS do
-			local slotID = module:GetContainerEmptySlot(bagID)
+			local slotID = module:GetContainerEmptySlot(bagID, bagGroup)
 			if slotID then
 				return bagID, slotID
 			end
 		end
-	elseif name == "Bank" then
-		local slotID = module:GetContainerEmptySlot(-1)
+	elseif bagType == "Bank" then
+		local slotID = module:GetContainerEmptySlot(-1, bagGroup)
 		if slotID then
 			return -1, slotID
 		end
 		for bagID = NUM_BAG_SLOTS+1, NUM_BAG_SLOTS+NUM_BANKBAGSLOTS do
-			local slotID = module:GetContainerEmptySlot(bagID)
+			local slotID = module:GetContainerEmptySlot(bagID, bagGroup)
 			if slotID then
 				return bagID, slotID
 			end
@@ -318,20 +319,24 @@ function module:GetEmptySlot(name)
 end
 
 function module:FreeSlotOnDrop()
-	local bagID, slotID = module:GetEmptySlot(self.__name)
+	local bagID, slotID = module:GetEmptySlot(self.__owner.Settings.BagType, self.__owner.bagGroup)
 	if slotID then
 		PickupContainerItem(bagID, slotID)
 	end
 end
 
 local freeSlotContainer = {
-	["Bag"] = true,
-	["Bank"] = true,
+	["Bag"] = 0,
+	["Bank"] = 0,
+	["AmmoItem"] = DB.MyClass == "WARLOCK" and 1 or DB.MyClass == "HUNTER" and -1,
+	["BankAmmoItem"] = DB.MyClass == "WARLOCK" and 1 or DB.MyClass == "HUNTER" and -1,
 }
 
 function module:CreateFreeSlots()
 	local name = self.name
-	if not freeSlotContainer[name] then return end
+	local bagGroup = freeSlotContainer[name]
+	if not bagGroup then return end
+	self.bagGroup = bagGroup
 
 	local slot = CreateFrame("Button", name.."FreeSlot", self, "BackdropTemplate")
 	slot:SetSize(self.iconSize, self.iconSize)
@@ -343,13 +348,13 @@ function module:CreateFreeSlots()
 	slot:SetScript("OnMouseUp", module.FreeSlotOnDrop)
 	slot:SetScript("OnReceiveDrag", module.FreeSlotOnDrop)
 	B.AddTooltip(slot, "ANCHOR_RIGHT", L["FreeSlots"])
-	slot.__name = name
+	slot.__owner = self
 
 	local tag = self:SpawnPlugin("TagDisplay", "[space]", slot)
 	tag:SetFont(DB.Font[1], C.db["Bags"]["FontSize"] + 2, DB.Font[3])
 	tag:SetTextColor(.6, .8, 1)
 	tag:SetPoint("CENTER", 1, 0)
-	tag.__name = name
+	tag.__owner = self
 	slot.tag = tag
 
 	self.freeSlot = slot
@@ -424,7 +429,7 @@ local function splitOnClick(self)
 	if texture and not locked and itemCount and itemCount > C.db["Bags"]["SplitCount"] then
 		SplitContainerItem(self.bagID, self.slotID, C.db["Bags"]["SplitCount"])
 
-		local bagID, slotID = module:GetEmptySlot("Bag")
+		local bagID, slotID = module:GetEmptySlot("Bag", 0)
 		if slotID then
 			PickupContainerItem(bagID, slotID)
 		end
@@ -432,7 +437,69 @@ local function splitOnClick(self)
 end
 
 local favouriteEnable
+
+local function GetCustomGroupTitle(index)
+	return C.db["Bags"]["CustomNames"][index] or (PREFERENCES.." "..index)
+end
+
+StaticPopupDialogs["NDUI_RENAMECUSTOMGROUP"] = {
+	text = BATTLE_PET_RENAME,
+	button1 = OKAY,
+	button2 = CANCEL,
+	OnAccept = function(self)
+		local index = module.selectGroupIndex
+		local text = self.editBox:GetText()
+		C.db["Bags"]["CustomNames"][index] = text ~= "" and text or nil
+
+		module.CustomMenu[index+2].text = GetCustomGroupTitle(index)
+		module.ContainerGroups["Bag"][index].label:SetText(GetCustomGroupTitle(index))
+		module.ContainerGroups["Bank"][index].label:SetText(GetCustomGroupTitle(index))
+	end,
+	EditBoxOnEscapePressed = function(self)
+		self:GetParent():Hide()
+	end,
+	whileDead = 1,
+	showAlert = 1,
+	hasEditBox = 1,
+	editBoxWidth = 250,
+}
+
+function module:RenameCustomGroup(index)
+	module.selectGroupIndex = index
+	StaticPopup_Show("NDUI_RENAMECUSTOMGROUP")
+end
+
+function module:MoveItemToCustomBag(index)
+	local itemID = module.selectItemID
+	if index == 0 then
+		if C.db["Bags"]["CustomItems"][itemID] then
+			C.db["Bags"]["CustomItems"][itemID] = nil
+		end
+	else
+		C.db["Bags"]["CustomItems"][itemID] = index
+	end
+	module:UpdateAllBags()
+end
+
+function module:IsItemInCustomBag()
+	local index = self.arg1
+	local itemID = module.selectItemID
+	return (index == 0 and not C.db["Bags"]["CustomItems"][itemID]) or (C.db["Bags"]["CustomItems"][itemID] == index)
+end
+
 function module:CreateFavouriteButton()
+	local menuList = {
+		{text = "", icon = 134400, isTitle = true, notCheckable = true, tCoordLeft = .08, tCoordRight = .92, tCoordTop = .08, tCoordBottom = .92},
+		{text = NONE, arg1 = 0, func = module.MoveItemToCustomBag, checked = module.IsItemInCustomBag},
+	}
+	for i = 1, 5 do
+		tinsert(menuList, {
+			text = GetCustomGroupTitle(i), arg1 = i, func = module.MoveItemToCustomBag, checked = module.IsItemInCustomBag, hasArrow = true,
+			menuList = {{text = BATTLE_PET_RENAME, arg1 = i, func = module.RenameCustomGroup}}
+		})
+	end
+	module.CustomMenu = menuList
+
 	local enabledText = DB.InfoColor..L["FavouriteMode Enabled"]
 
 	local bu = B.CreateButton(self, 22, 22, true, "Interface\\Common\\friendship-heart")
@@ -466,15 +533,13 @@ end
 local function favouriteOnClick(self)
 	if not favouriteEnable then return end
 
-	local texture, _, _, quality, _, _, _, _, _, itemID = GetContainerItemInfo(self.bagID, self.slotID)
+	local texture, _, _, quality, _, _, link, _, _, itemID = GetContainerItemInfo(self.bagID, self.slotID)
 	if texture and quality > LE_ITEM_QUALITY_POOR then
-		if C.db["Bags"]["FavouriteItems"][itemID] then
-			C.db["Bags"]["FavouriteItems"][itemID] = nil
-		else
-			C.db["Bags"]["FavouriteItems"][itemID] = true
-		end
 		ClearCursor()
-		module:UpdateAllBags()
+		module.selectItemID = itemID
+		module.CustomMenu[1].text = link
+		module.CustomMenu[1].icon = texture
+		EasyMenu(module.CustomMenu, B.EasyMenu, self, 0, 0, "MENU")
 	end
 end
 
@@ -643,29 +708,33 @@ function module:OnLogin()
 	Backpack:HookScript("OnHide", function() PlaySound(SOUNDKIT.IG_BACKPACK_CLOSE) end)
 
 	module.Bags = Backpack
-	module.BagsType = {}
-	module.BagsType[0] = 0	-- backpack
-	module.BagsType[-1] = 0	-- bank
+	cargBags.BagGroups = {}
+	cargBags.BagGroups[0] = 0	-- backpack
+	cargBags.BagGroups[-1] = 0	-- bank
 
 	local f = {}
 	local filters = module:GetFilters()
 	local MyContainer = Backpack:GetContainerClass()
-	local ContainerGroups = {["Bag"] = {}, ["Bank"] = {}}
+	module.ContainerGroups = {["Bag"] = {}, ["Bank"] = {}}
 
 	local function AddNewContainer(bagType, index, name, filter)
-		local newContainer = MyContainer:New(name, {BagType = bagType})
+		local newContainer = MyContainer:New(name, {BagType = bagType, Index = index})
 		newContainer:SetFilter(filter, true)
-		ContainerGroups[bagType][index] = newContainer
+		module.ContainerGroups[bagType][index] = newContainer
 	end
 
 	function Backpack:OnInit()
-		AddNewContainer("Bag", 7, "Junk", filters.bagsJunk)
-		AddNewContainer("Bag", 3, "BagFavourite", filters.bagFavourite)
-		AddNewContainer("Bag", 1, "AmmoItem", filters.bagAmmo)
-		AddNewContainer("Bag", 2, "Equipment", filters.bagEquipment)
-		AddNewContainer("Bag", 5, "Consumable", filters.bagConsumable)
-		AddNewContainer("Bag", 4, "BagGoods", filters.bagGoods)
-		AddNewContainer("Bag", 6, "BagQuest", filters.bagQuest)
+		AddNewContainer("Bag", 13, "Junk", filters.bagsJunk)
+		for i = 1, 5 do
+			AddNewContainer("Bag", i, "BagCustom"..i, filters["bagCustom"..i])
+		end
+		AddNewContainer("Bag", 6, "AmmoItem", filters.bagAmmo)
+		AddNewContainer("Bag", 8, "EquipSet", filters.bagEquipSet)
+		AddNewContainer("Bag", 7, "Equipment", filters.bagEquipment)
+		AddNewContainer("Bag", 9, "BagCollection", filters.bagCollection)
+		AddNewContainer("Bag", 11, "Consumable", filters.bagConsumable)
+		AddNewContainer("Bag", 10, "BagGoods", filters.bagGoods)
+		AddNewContainer("Bag", 12, "BagQuest", filters.bagQuest)
 
 		f.main = MyContainer:New("Bag", {Bags = "bags", BagType = "Bag"})
 		f.main.__anchor = {"BOTTOMRIGHT", -50, 100}
@@ -677,14 +746,18 @@ function module:OnLogin()
 		keyring:SetPoint("TOPRIGHT", f.main, "BOTTOMRIGHT", 0, -5)
 		keyring:Hide()
 		f.main.keyring = keyring
-	
-		AddNewContainer("Bank", 4, "BankFavourite", filters.bankFavourite)
-		AddNewContainer("Bank", 1, "bankAmmoItem", filters.bankAmmo)
-		AddNewContainer("Bank", 3, "BankLegendary", filters.bankLegendary)
-		AddNewContainer("Bank", 2, "BankEquipment", filters.bankEquipment)
-		AddNewContainer("Bank", 6, "BankConsumable", filters.bankConsumable)
-		AddNewContainer("Bank", 5, "BankGoods", filters.bankGoods)
-		AddNewContainer("Bank", 7, "BankQuest", filters.bankQuest)
+
+		for i = 1, 5 do
+			AddNewContainer("Bank", i, "BankCustom"..i, filters["bankCustom"..i])
+		end
+		AddNewContainer("Bank", 6, "BankAmmoItem", filters.bankAmmo)
+		AddNewContainer("Bank", 8, "BankEquipSet", filters.bankEquipSet)
+		AddNewContainer("Bank", 9, "BankLegendary", filters.bankLegendary)
+		AddNewContainer("Bank", 7, "BankEquipment", filters.bankEquipment)
+		AddNewContainer("Bank", 10, "BankCollection", filters.bankCollection)
+		AddNewContainer("Bank", 12, "BankConsumable", filters.bankConsumable)
+		AddNewContainer("Bank", 11, "BankGoods", filters.bankGoods)
+		AddNewContainer("Bank", 13, "BankQuest", filters.bankQuest)
 
 		f.bank = MyContainer:New("Bank", {Bags = "bank", BagType = "Bank"})
 		f.bank.__anchor = {"BOTTOMLEFT", 25, 50}
@@ -692,7 +765,7 @@ function module:OnLogin()
 		f.bank:SetFilter(filters.onlyBank, true)
 		f.bank:Hide()
 
-		for bagType, groups in pairs(ContainerGroups) do
+		for bagType, groups in pairs(module.ContainerGroups) do
 			for _, container in ipairs(groups) do
 				local parent = Backpack.contByName[bagType]
 				container:SetParent(parent)
@@ -762,7 +835,7 @@ function module:OnLogin()
 		end
 	end
 
-	local bagTypeColor = {
+	local bagGroupColor = {
 		[-1] = {.67, .83, .45, .25},-- 箭袋/弹药
 		[0] = {.3, .3, .3, .3},		-- 容器
 		[1] = {.53, .53, .93, .25}, -- 灵魂袋
@@ -790,14 +863,6 @@ function module:OnLogin()
 	end
 
 	function MyButton:OnUpdate(item)
-		if MerchantFrame:IsShown() then
-			if item.isInSet then
-				self:SetAlpha(.5)
-			else
-				self:SetAlpha(1)
-			end
-		end
-
 		if self.JunkIcon then
 			if (MerchantFrame:IsShown() or customJunkEnable) and (item.quality == LE_ITEM_QUALITY_POOR or NDuiADB["CustomJunkList"][item.id]) and item.hasPrice then
 				self.JunkIcon:Show()
@@ -806,7 +871,7 @@ function module:OnLogin()
 			end
 		end
 
-		if C.db["Bags"]["FavouriteItems"][item.id] and not C.db["Bags"]["ItemFilter"] then
+		if C.db["Bags"]["CustomItems"][item.id] and not C.db["Bags"]["ItemFilter"] then
 			self.Favourite:Show()
 		else
 			self.Favourite:Hide()
@@ -831,16 +896,25 @@ function module:OnLogin()
 		end
 
 		if C.db["Bags"]["SpecialBagsColor"] then
-			local bagType = module.BagsType[item.bagID]
-			local color = bagTypeColor[bagType] or bagTypeColor[0]
+			local bagType = cargBags.BagGroups[item.bagID]
+			local color = bagGroupColor[bagType] or bagGroupColor[0]
 			self:SetBackdropColor(unpack(color))
 		else
 			self:SetBackdropColor(.3, .3, .3, .3)
 		end
 
 		-- Hide empty tooltip
+<<<<<<< Updated upstream
 		if not item.texture and GameTooltip:GetOwner() == self then
 			GameTooltip:Hide()
+=======
+		if GameTooltip:GetOwner() == self then
+			if item.texture then
+				self:UpdateTooltip()
+			else
+				GameTooltip:Hide()
+			end
+>>>>>>> Stashed changes
 		end
 
 		-- Support Pawn
@@ -861,8 +935,8 @@ function module:OnLogin()
 	end
 
 	function module:UpdateAllAnchors()
-		module:UpdateBagsAnchor(f.main, ContainerGroups["Bag"])
-		module:UpdateBankAnchor(f.bank, ContainerGroups["Bank"])
+		module:UpdateBagsAnchor(f.main, module.ContainerGroups["Bag"])
+		module:UpdateBankAnchor(f.bank, module.ContainerGroups["Bank"])
 	end
 
 	function module:GetContainerColumns(bagType)
@@ -884,7 +958,7 @@ function module:OnLogin()
 		local _, height = self:LayoutButtons("grid", columns, spacing, xOffset, yOffset)
 		local width = columns * (iconSize+spacing)-spacing
 		if self.freeSlot then
-			if C.db["Bags"]["GatherEmpty"] then
+			if C.db["Bags"]["GatherEmpty"] and (self.bagGroup == 0 or (self.totalFree > 0 and C.db["Bags"]["ItemFilter"])) then
 				local numSlots = #self.buttons + 1
 				local row = ceil(numSlots / columns)
 				local col = numSlots % columns
@@ -921,31 +995,39 @@ function module:OnLogin()
 			B.CreateMF(self, nil, true)
 		end
 
+		self.iconSize = iconSize
+		module.CreateFreeSlots(self)
+
 		local label
 		if strmatch(name, "AmmoItem$") then
 			label = DB.MyClass == "HUNTER" and INVTYPE_AMMO or SOUL_SHARDS
 		elseif strmatch(name, "Equipment$") then
 			label = BAG_FILTER_EQUIPMENT
+		elseif strmatch(name, "EquipSet$") then
+			label = L["Equipement Set"]
 		elseif name == "BankLegendary" then
 			label = LOOT_JOURNAL_LEGENDARIES
 		elseif strmatch(name, "Consumable$") then
 			label = BAG_FILTER_CONSUMABLES
 		elseif name == "Junk" then
 			label = BAG_FILTER_JUNK
-		elseif strmatch(name, "Favourite") then
-			label = PREFERENCES
+		elseif strmatch(name, "Collection") then
+			label = COLLECTIONS
 		elseif name == "Keyring" then
 			label = KEYRING
 		elseif strmatch(name, "Goods") then
 			label = AUCTION_CATEGORY_TRADE_GOODS
 		elseif strmatch(name, "Quest") then
 			label = QUESTS_LABEL
+		elseif strmatch(name, "Custom%d") then
+			label = GetCustomGroupTitle(settings.Index)
 		end
-		if label then B.CreateFS(self, 14, label, true, "TOPLEFT", 5, -8) return end
+		if label then
+			self.label = B.CreateFS(self, 14, label, true, "TOPLEFT", 5, -8)
+			return
+		end
 
-		self.iconSize = iconSize
 		module.CreateInfoFrame(self)
-		module.CreateFreeSlots(self)
 
 		local buttons = {}
 		buttons[1] = module.CreateCloseButton(self, f)
@@ -1017,7 +1099,7 @@ function module:OnLogin()
 
 		self:SetSize(iconSize, iconSize)
 		B.CreateBD(self, .25)
-		self.Icon:SetAllPoints()
+		self.Icon:SetInside()
 		self.Icon:SetTexCoord(unpack(DB.TexCoord))
 	end
 
@@ -1034,11 +1116,11 @@ function module:OnLogin()
 		end
 
 		if classID == LE_ITEM_CLASS_CONTAINER then
-			module.BagsType[self.bagID] = subClassID or 0
+			cargBags.BagGroups[self.bagID] = subClassID or 0
 		elseif classID == LE_ITEM_CLASS_QUIVER then
-			module.BagsType[self.bagID] = -1
+			cargBags.BagGroups[self.bagID] = -1
 		else
-			module.BagsType[self.bagID] = 0
+			cargBags.BagGroups[self.bagID] = 0
 		end
 	end
 

@@ -1,7 +1,14 @@
+<<<<<<< Updated upstream
 ## Interface: 20504
 ## Title: WeakAuras Templates
 ## Author: The WeakAuras Team
 ## Version: 3.7.16
+=======
+## Interface: 90207
+## Title: WeakAuras Templates
+## Author: The WeakAuras Team
+## Version: 4.1.4
+>>>>>>> Stashed changes
 ## Notes: Templates for WeakAuras
 ## X-Category: Interface Enhancements
 ## Globe-Main: WeakAuras
@@ -12,6 +19,6 @@
 locales.xml
 
 TriggerTemplates.lua
-TriggerTemplatesDataBCC.lua
+TriggerTemplatesData.lua
 
 AceGUI-Widgets\AceGUIContainer-WeakAurasTemplateGroup.lua

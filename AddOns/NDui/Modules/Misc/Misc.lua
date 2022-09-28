@@ -39,6 +39,7 @@ function M:OnLogin()
 	end
 
 	-- Init
+	M:NakedIcon()
 	M:UIWidgetFrameMover()
 	M:MoveDurabilityFrame()
 	M:MoveTicketStatusFrame()
@@ -53,6 +54,12 @@ function M:OnLogin()
 	M:BaudErrorFrameHelpTip()
 	M:EnhancedPicker()
 	C_Timer_After(0, M.UpdateMaxZoomLevel)
+<<<<<<< Updated upstream
+=======
+	M:AutoEquipBySpec()
+	M:UpdateScreenShot()
+	M:FlyoutOnKeyAlt()
+>>>>>>> Stashed changes
 
 	-- Auto chatBubbles
 	if NDuiADB["AutoBubbles"] then
@@ -97,9 +104,50 @@ function M:OnLogin()
 	hooksecurefunc(MasterLooterFrame, "Show", function(self)
 		self:ClearAllPoints()
 	end)
+
+	-- Fix inspect error in wrath beta
+	if not InspectTalentFrameSpentPoints then
+		InspectTalentFrameSpentPoints = CreateFrame("Frame")
+	end
 end
 
--- Reanchor Vehicle
+-- Get Naked
+function M:NakedIcon()
+	GearManagerToggleButton:SetScript("OnEnter", function(self)
+		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+		GameTooltip:ClearLines()
+		GameTooltip:AddLine(EQUIPMENT_MANAGER, 1,1,1)
+		GameTooltip:AddLine(NEWBIE_TOOLTIP_EQUIPMENT_MANAGER, 1,.8,0, 1)
+		GameTooltip:AddLine(L["Get Naked"], .6,.8,1, 1)
+		GameTooltip:Show()
+	end)
+
+	local function UnequipItemInSlot(i)
+		local action = EquipmentManager_UnequipItemInSlot(i)
+		EquipmentManager_RunAction(action)
+	end
+
+	GearManagerToggleButton:RegisterForClicks("LeftButtonUp", "RightButtonUp")
+	GearManagerToggleButton:SetScript("OnDoubleClick", function(_, btn)
+		if btn ~= "RightButton" then return end
+		for i = 1, 18 do
+			local link = GetInventoryItemLink("player", i)
+			if link then
+				UnequipItemInSlot(i)
+			end
+		end
+	end)
+	GearManagerToggleButton:SetScript("OnClick", function(_, btn)
+		if btn ~= "LeftButton" then return end
+		if GearManagerDialog:IsShown() then
+			GearManagerDialog:Hide()
+		else
+			GearManagerDialog:Show()
+		end
+	end)
+end
+
+-- Reanchor Vehicle, isNewPatch
 function M:VehicleSeatMover()
 	local frame = CreateFrame("Frame", "NDuiVehicleSeatMover", UIParent)
 	frame:SetSize(125, 125)
@@ -620,4 +668,119 @@ end
 
 function M:UpdateMaxZoomLevel()
 	SetCVar("cameraDistanceMaxZoomFactor", C.db["Misc"]["MaxZoom"])
+<<<<<<< Updated upstream
+=======
+end
+
+-- Autoequip in Spec-changing
+function M:AutoEquipBySpec()
+	local changeSpells = {
+		[63644] = true, -- second spec
+		[63645] = true, -- main spec
+	}
+	local function setupMisc(event, unit, _, spellID)
+		if not C.db["Misc"]["Autoequip"] then
+			B:UnregisterEvent(event, setupMisc)
+			return
+		end
+		if not UnitIsUnit(unit, "player") then return end
+		if not changeSpells[spellID] then return end
+
+		local talentName = ""
+		local higher = 0
+		for i = 1, 3 do
+			local name, _, pointsSpent = GetTalentTabInfo(i)
+			if not name then break end
+			if pointsSpent > higher then
+				higher = pointsSpent
+				talentName = name
+			end
+		end
+		if talentName == "" then return end
+
+		local setID = C_EquipmentSet.GetEquipmentSetID(talentName)
+		if setID then
+			local _, _, _, hasEquipped = C_EquipmentSet.GetEquipmentSetInfo(setID)
+			if not hasEquipped then
+				C_EquipmentSet.UseEquipmentSet(setID)
+				print(format(DB.InfoColor..EQUIPMENT_SETS, talentName))
+			end
+		else
+			for i = 0, C_EquipmentSet.GetNumEquipmentSets()-1 do
+				local name, _, _, isEquipped = C_EquipmentSet.GetEquipmentSetInfo(i)
+				if isEquipped then
+					print(format(DB.InfoColor..EQUIPMENT_SETS, name))
+					break
+				end
+			end
+		end
+	end
+
+	B:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED", setupMisc, "player")
+end
+
+-- Achievement screenshot
+function M:ScreenShotOnEvent()
+	M.ScreenShotFrame.delay = 1
+	M.ScreenShotFrame:Show()
+end
+
+function M:UpdateScreenShot()
+	if not M.ScreenShotFrame then
+		M.ScreenShotFrame = CreateFrame("Frame")
+		M.ScreenShotFrame:Hide()
+		M.ScreenShotFrame:SetScript("OnUpdate", function(self, elapsed)
+			self.delay = self.delay - elapsed
+			if self.delay < 0 then
+				Screenshot()
+				self:Hide()
+			end
+		end)
+	end
+
+	if C.db["Misc"]["Screenshot"] then
+		B:RegisterEvent("ACHIEVEMENT_EARNED", M.ScreenShotOnEvent)
+	else
+		M.ScreenShotFrame:Hide()
+		B:UnregisterEvent("ACHIEVEMENT_EARNED", M.ScreenShotOnEvent)
+	end
+end
+
+-- Flyout buttons by holding key ALT
+function M:FlyoutOnKeyAlt()
+	hooksecurefunc("PaperDollItemSlotButton_OnEnter", function(self)
+		self:RegisterEvent("MODIFIER_STATE_CHANGED")
+		if not InCombatLockdown() then
+			PaperDollItemSlotButton_UpdateFlyout(self) -- taint in combat
+		end
+		if PaperDollFrameItemFlyout:IsShown() then
+			GameTooltip:SetOwner(PaperDollFrameItemFlyoutButtons, "ANCHOR_RIGHT", 6, -PaperDollFrameItemFlyoutButtons:GetHeight() - 6)
+		else
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+		end
+		local hasItem, _, repairCost = GameTooltip:SetInventoryItem("player", self:GetID(), nil, true)
+		if not hasItem then
+			local text = _G[strupper(strsub(self:GetName(), 10))]
+			if self.checkRelic and UnitHasRelicSlot("player") then
+				text = RELICSLOT
+			end
+			GameTooltip:SetText(text)
+		end
+		if InRepairMode() and repairCost and (repairCost > 0) then
+			GameTooltip:AddLine(REPAIR_COST, nil, nil, nil, true)
+			SetTooltipMoney(GameTooltip, repairCost)
+			GameTooltip:Show()
+		else
+			CursorUpdate(self)
+		end
+	end)
+
+	hooksecurefunc("PaperDollItemSlotButton_OnEvent", function(self, event)
+		if event == "MODIFIER_STATE_CHANGED" then
+			if IsModifiedClick("SHOWITEMFLYOUT") and self:IsMouseOver() then
+				PaperDollItemSlotButton_OnEnter(self)
+			end
+		end
+	end)
+>>>>>>> Stashed changes
 end

@@ -1,5 +1,6 @@
 ﻿local _, ns = ...
 local B, C, L, DB = unpack(ns)
+local oUF = ns.oUF
 local module = B:GetModule("Maps")
 
 local select, pairs, unpack, next, tinsert = select, pairs, unpack, next, tinsert
@@ -27,7 +28,7 @@ function module:CreatePulse()
 			bg:SetBackdropBorderColor(1, 0, 0)
 			anim:Play()
 		elseif not InCombatLockdown() then
-			if MiniMapMailFrame:IsShown() then
+			if C_Calendar.GetNumPendingInvites() > 0 or MiniMapMailFrame:IsShown() then
 				bg:SetBackdropBorderColor(1, 1, 0)
 				anim:Play()
 			else
@@ -38,6 +39,7 @@ function module:CreatePulse()
 	end
 	B:RegisterEvent("PLAYER_REGEN_ENABLED", updateMinimapAnim)
 	B:RegisterEvent("PLAYER_REGEN_DISABLED", updateMinimapAnim)
+	B:RegisterEvent("CALENDAR_UPDATE_PENDING_INVITES", updateMinimapAnim)
 	B:RegisterEvent("UPDATE_PENDING_MAIL", updateMinimapAnim)
 
 	MiniMapMailFrame:HookScript("OnHide", function()
@@ -49,16 +51,16 @@ end
 
 function module:ReskinRegions()
 	-- Tracking icon
-	MiniMapTracking:SetScale(.7)
+	MiniMapTracking:SetScale(.8)
 	MiniMapTracking:ClearAllPoints()
-	MiniMapTracking:SetPoint("BOTTOMRIGHT", Minimap, -2, 0)
-	MiniMapTrackingBorder:Hide()
+	MiniMapTracking:SetPoint("BOTTOMRIGHT", Minimap, 2, -4)
+	MiniMapTracking:SetFrameLevel(999)
 	MiniMapTrackingBackground:Hide()
+	MiniMapTrackingButtonBorder:Hide()
 	B.ReskinIcon(MiniMapTrackingIcon)
-
-	MiniMapTracking:SetHighlightTexture(DB.bdTex)
-	local hl = MiniMapTracking:GetHighlightTexture()
-	hl:SetVertexColor(1, 1, 1, .25)
+	MiniMapTrackingIconOverlay:SetAlpha(0)
+	local hl = MiniMapTrackingButton:GetHighlightTexture()
+	hl:SetColorTexture(1, 1, 1, .25)
 	hl:SetAllPoints(MiniMapTrackingIcon)
 
 	-- Mail icon
@@ -71,6 +73,7 @@ function module:ReskinRegions()
 	-- Battlefield
 	MiniMapBattlefieldFrame:ClearAllPoints()
 	MiniMapBattlefieldFrame:SetPoint("BOTTOMLEFT", Minimap, "BOTTOMLEFT", -5, -5)
+	MiniMapBattlefieldFrame:SetFrameLevel(999)
 	MiniMapBattlefieldBorder:Hide()
 	MiniMapBattlefieldIcon:SetAlpha(0)
 	BattlegroundShine:SetTexture(nil)
@@ -102,9 +105,42 @@ function module:ReskinRegions()
 	-- LFG Icon
 	if MiniMapLFGFrame then
 		MiniMapLFGFrame:ClearAllPoints()
-		MiniMapLFGFrame:SetPoint("BOTTOMRIGHT", Minimap, 5, 15)
-		MiniMapLFGBorder:Hide()
+		MiniMapLFGFrame:SetPoint("RIGHT", Minimap, 5, 0)
+		MiniMapLFGFrameBorder:Hide()
 	end
+
+	-- Difficulty Flags
+	MiniMapInstanceDifficulty:ClearAllPoints()
+	MiniMapInstanceDifficulty:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", 2, 2)
+	MiniMapInstanceDifficulty:SetScale(.9)
+
+	-- Invites Icon
+	GameTimeCalendarInvitesTexture:ClearAllPoints()
+	GameTimeCalendarInvitesTexture:SetParent("Minimap")
+	GameTimeCalendarInvitesTexture:SetPoint("TOPRIGHT")
+
+	local Invt = CreateFrame("Button", nil, UIParent)
+	Invt:SetPoint("TOPRIGHT", Minimap, "BOTTOMLEFT", -20, -20)
+	Invt:SetSize(250, 80)
+	Invt:Hide()
+	B.SetBD(Invt)
+	B.CreateFS(Invt, 16, DB.InfoColor..GAMETIME_TOOLTIP_CALENDAR_INVITES)
+
+	local function updateInviteVisibility()
+		Invt:SetShown(C_Calendar.GetNumPendingInvites() > 0)
+	end
+	B:RegisterEvent("CALENDAR_UPDATE_PENDING_INVITES", updateInviteVisibility)
+	B:RegisterEvent("PLAYER_ENTERING_WORLD", updateInviteVisibility)
+
+	Invt:SetScript("OnClick", function(_, btn)
+		Invt:Hide()
+		--if btn == "LeftButton" and not InCombatLockdown() then -- fix by LibShowUIPanel
+		if btn == "LeftButton" then
+			ToggleCalendar()
+		end
+		B:UnregisterEvent("CALENDAR_UPDATE_PENDING_INVITES", updateInviteVisibility)
+		B:UnregisterEvent("PLAYER_ENTERING_WORLD", updateInviteVisibility)
+	end)
 end
 
 function module:RecycleBin()
@@ -139,6 +175,10 @@ function module:RecycleBin()
 	bu.Icon:SetTexture(DB.binTex)
 	bu:SetHighlightTexture(DB.binTex)
 	bu.title = DB.InfoColor..L["Minimap RecycleBin"]
+<<<<<<< Updated upstream
+=======
+	bu:SetFrameLevel(999)
+>>>>>>> Stashed changes
 	B.AddTooltip(bu, "ANCHOR_LEFT")
 	updateRecycleTip(bu)
 
@@ -201,9 +241,12 @@ function module:RecycleBin()
 				local texture = region:GetTexture() or ""
 				if removedTextures[texture] or strfind(texture, "Interface\\CharacterFrame") or strfind(texture, "Interface\\Minimap") then
 					region:SetTexture(nil)
+					region:Hide() -- hide CircleMask
 				end
-				region:ClearAllPoints()
-				region:SetAllPoints()
+				if not region.__ignored then
+					region:ClearAllPoints()
+					region:SetAllPoints()
+				end
 				if not isGoodLookingIcon[name] then
 					region:SetTexCoord(unpack(DB.TexCoord))
 				end
@@ -385,17 +428,6 @@ function module:ShowMinimapClock()
 	end
 end
 
-function module:EasyTrackMenu()
-	local hasAlaCalendar = IsAddOnLoaded("alaCalendar")
-	Minimap:SetScript("OnMouseUp", function(self, btn)
-		if btn == "MiddleButton" and hasAlaCalendar then
-			B:TogglePanel(ALA_CALENDAR)
-		else
-			Minimap_OnClick(self)
-		end
-	end)
-end
-
 function module:ShowMinimapHelpInfo()
 	Minimap:HookScript("OnEnter", function()
 		if not NDuiADB["Help"]["MinimapInfo"] then
@@ -404,45 +436,94 @@ function module:ShowMinimapHelpInfo()
 	end)
 end
 
-local function UpdateDifficultyFlag()
-	local frame = _G["NDuiMinimapDifficulty"]
-	local _, instanceType, difficulty, _, _, _, _, _, instanceGroupSize = GetInstanceInfo()
-	local _, _, isHeroic, _, displayHeroic = GetDifficultyInfo(difficulty)
-	if instanceType == "raid" or isHeroic or displayHeroic then
-		if isHeroic or displayHeroic then
-			frame.tex:SetTexCoord(0, .25, .0703125, .4296875)
-		else
-			frame.tex:SetTexCoord(0, .25, .5703125, .9296875)
+function module:ShowCalendar()
+	if C.db["Map"]["Calendar"] then
+		if not GameTimeFrame.styled then
+			GameTimeFrame:SetNormalTexture(nil)
+			GameTimeFrame:SetPushedTexture(nil)
+			GameTimeFrame:SetHighlightTexture(nil)
+			GameTimeFrame:SetSize(18, 18)
+			GameTimeFrame:SetParent(Minimap)
+			GameTimeFrame:ClearAllPoints()
+			GameTimeFrame:SetPoint("BOTTOMRIGHT", Minimap, -2, 20)
+			GameTimeFrame:SetHitRectInsets(0, 0, 0, 0)
+
+			for i = 1, GameTimeFrame:GetNumRegions() do
+				local region = select(i, GameTimeFrame:GetRegions())
+				if region.SetTextColor then
+					region:SetTextColor(cr, cg, cb)
+					region:SetFont(unpack(DB.Font))
+					break
+				end
+			end
+
+			GameTimeFrame.styled = true
 		end
-		frame.text:SetText(instanceGroupSize)
-		frame:Show()
+		GameTimeFrame:Show()
 	else
-		frame:Hide()
+		GameTimeFrame:Hide()
 	end
 end
 
-function module:MinimapDifficulty()
-	if not C.db["Map"]["DiffFlag"] then return end
-	if _G.MiniMapInstanceDifficulty then return end -- hide flag if blizz makes its own
+local function GetVolumeColor(cur)
+	local r, g, b = oUF:RGBColorGradient(cur, 100, 1, 1, 1, 1, .8, 0, 1, 0, 0)
+	return r, g, b
+end
 
-	local frame = CreateFrame("Frame", "NDuiMinimapDifficulty", Minimap)
-	frame:SetSize(38, 46)
-	frame:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", 2, 2)
-	frame:SetScale(.6)
-	frame:Hide()
+local function GetCurrentVolume()
+	return B:Round(GetCVar("Sound_MasterVolume") * 100)
+end
 
-	local tex = frame:CreateTexture(nil, "ARTWORK")
-	tex:SetTexture("Interface\\Minimap\\UI-DungeonDifficulty-Button")
-	tex:SetPoint("CENTER")
-	tex:SetSize(64, 46)
-	tex:SetTexCoord(0, .25, .0703125, .4140625)
-	frame.tex = tex
+function module:SoundVolume()
+	if not C.db["Map"]["EasyVolume"] then return end
 
-	frame.text = B.CreateFS(frame, 15, "", true, "CENTER", 1, -8)
+	local f = CreateFrame("Frame", nil, Minimap)
+	f:SetAllPoints()
+	local text = B.CreateFS(f, 30)
 
-	B:RegisterEvent("GROUP_ROSTER_UPDATE", UpdateDifficultyFlag)
-	B:RegisterEvent("UPDATE_INSTANCE_INFO", UpdateDifficultyFlag)
-	B:RegisterEvent("INSTANCE_GROUP_SIZE_CHANGED", UpdateDifficultyFlag)
+	local anim = f:CreateAnimationGroup()
+	anim:SetScript("OnPlay", function() f:SetAlpha(1) end)
+	anim:SetScript("OnFinished", function() f:SetAlpha(0) end)
+	anim.fader = anim:CreateAnimation("Alpha")
+	anim.fader:SetFromAlpha(1)
+	anim.fader:SetToAlpha(0)
+	anim.fader:SetDuration(3)
+	anim.fader:SetSmoothing("OUT")
+	anim.fader:SetStartDelay(1)
+
+	module.VolumeText = text
+	module.VolumeAnim = anim
+end
+
+function module:Minimap_OnMouseWheel(zoom)
+	if IsControlKeyDown() and module.VolumeText then
+		local value = GetCurrentVolume()
+		local mult = IsAltKeyDown() and 100 or 5
+		value = value + zoom*mult
+		if value > 100 then value = 100 end
+		if value < 0 then value = 0 end
+
+		SetCVar("Sound_MasterVolume", tostring(value/100))
+		module.VolumeText:SetText(value)
+		module.VolumeText:SetTextColor(GetVolumeColor(value))
+		module.VolumeAnim:Stop()
+		module.VolumeAnim:Play()
+	else
+		if zoom > 0 then
+			Minimap_ZoomIn()
+		else
+			Minimap_ZoomOut()
+		end
+	end
+end
+
+function module:Minimap_OnMouseUp(btn)
+	if btn == "MiddleButton" then
+		--if InCombatLockdown() then UIErrorsFrame:AddMessage(DB.InfoColor..ERR_NOT_IN_COMBAT) return end -- fix by LibShowUIPanel
+		ToggleCalendar()
+	else
+		Minimap_OnClick(self)
+	end
 end
 
 function module:SetupMinimap()
@@ -458,16 +539,13 @@ function module:SetupMinimap()
 
 	self:UpdateMinimapScale()
 	self:ShowMinimapClock()
+	B.HideOption(InterfaceOptionsDisplayPanelShowMinimapClock)
+	self:ShowCalendar()
 
 	-- Mousewheel Zoom
 	Minimap:EnableMouseWheel(true)
-	Minimap:SetScript("OnMouseWheel", function(_, zoom)
-		if zoom > 0 then
-			Minimap_ZoomIn()
-		else
-			Minimap_ZoomOut()
-		end
-	end)
+	Minimap:SetScript("OnMouseWheel", module.Minimap_OnMouseWheel)
+	Minimap:SetScript("OnMouseUp", module.Minimap_OnMouseUp)
 
 	-- Hide Blizz
 	local frames = {
@@ -479,8 +557,6 @@ function module:SetupMinimap()
 		"MinimapZoomIn",
 		"MiniMapWorldMapButton",
 		"MiniMapMailBorder",
-		"MinimapToggleButton",
-		"GameTimeFrame",
 	}
 
 	for _, v in pairs(frames) do
@@ -493,9 +569,8 @@ function module:SetupMinimap()
 	self:ReskinRegions()
 	self:RecycleBin()
 	self:WhoPingsMyMap()
-	self:EasyTrackMenu()
 	self:ShowMinimapHelpInfo()
-	self:MinimapDifficulty()
+	self:SoundVolume()
 
 	if LibDBIcon10_TownsfolkTracker then
 		LibDBIcon10_TownsfolkTracker:DisableDrawLayer("OVERLAY")

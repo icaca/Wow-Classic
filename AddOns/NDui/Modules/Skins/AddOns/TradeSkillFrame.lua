@@ -2,22 +2,18 @@ local _, ns = ...
 local B, C, L, DB = unpack(ns)
 local S = B:GetModule("Skins")
 
+<<<<<<< Updated upstream
 local strfind = strfind
 local GetTradeSkillLine = GetTradeSkillLine
 local GetCraftSelectionIndex, GetCraftInfo, GetNumCrafts = GetCraftSelectionIndex, GetCraftInfo, GetNumCrafts
 local SEARCH = _G.SEARCH
 
 local skinIndex = 0
+=======
+>>>>>>> Stashed changes
 function S:TradeSkill_OnEvent(addon)
-	if addon == "Blizzard_CraftUI" then
-		S:EnhancedCraft()
-		skinIndex = skinIndex + 1
-	elseif addon == "Blizzard_TradeSkillUI" then
+	if addon == "Blizzard_TradeSkillUI" then
 		S:EnhancedTradeSkill()
-		skinIndex = skinIndex + 1
-	end
-
-	if skinIndex >= 2 then
 		B:UnregisterEvent("ADDON_LOADED", S.TradeSkill_OnEvent)
 	end
 end
@@ -28,6 +24,7 @@ function S:TradeSkillSkin()
 	B:RegisterEvent("ADDON_LOADED", S.TradeSkill_OnEvent)
 end
 
+<<<<<<< Updated upstream
 local function createArrowButton(parent, anchor, direction)
 	local button = CreateFrame("Button", nil, parent)
 	button:SetPoint("LEFT", anchor, "RIGHT", 3, 0)
@@ -117,9 +114,31 @@ local function searchBox_OnEditFocusGained(self)
 	self:HighlightText()
 	if self:GetText() == SEARCH then
 		self:SetText("")
+=======
+function S:EnhancedTradeSkill()
+	local TradeSkillFrame = _G.TradeSkillFrame
+	if TradeSkillFrame:GetWidth() > 700 then return end
+
+	B.StripTextures(TradeSkillFrame)
+	TradeSkillFrame.TitleText = TradeSkillFrameTitleText
+	TradeSkillFrame.scrollFrame = _G.TradeSkillDetailScrollFrame
+	TradeSkillFrame.listScrollFrame = _G.TradeSkillListScrollFrame
+	S:EnlargeDefaultUIPanel("TradeSkillFrame", 1)
+
+	_G.TRADE_SKILLS_DISPLAYED = 22
+	for i = 2, _G.TRADE_SKILLS_DISPLAYED do
+		local button = _G["TradeSkillSkill"..i]
+		if not button then
+			button = CreateFrame("Button", "TradeSkillSkill"..i, TradeSkillFrame, "TradeSkillSkillButtonTemplate")
+			button:SetID(i)
+			button:Hide()
+		end
+		button:SetPoint("TOPLEFT", _G["TradeSkillSkill"..(i-1)], "BOTTOMLEFT", 0, 1)
+>>>>>>> Stashed changes
 	end
 end
 
+<<<<<<< Updated upstream
 function S:CreateTradeSearchBox(parent, anchor)
 	local searchBox = B.CreateEditBox(parent, 223, 20)
 	searchBox:SetPoint("TOPLEFT", anchor, "BOTTOMLEFT", -1, -6)
@@ -155,6 +174,8 @@ function S:EnhancedTradeSkill()
 		button:SetPoint("TOPLEFT", _G["TradeSkillSkill"..(i-1)], "BOTTOMLEFT", 0, 1)
 	end
 
+=======
+>>>>>>> Stashed changes
 	TradeSkillCancelButton:ClearAllPoints()
 	TradeSkillCancelButton:SetPoint("BOTTOMRIGHT", TradeSkillFrame, "BOTTOMRIGHT", -42, 54)
 	TradeSkillCreateButton:ClearAllPoints()
@@ -166,6 +187,7 @@ function S:EnhancedTradeSkill()
 	if C.db["Skins"]["BlizzardSkins"] then
 		TradeSkillFrame:SetHeight(512)
 		TradeSkillCancelButton:SetPoint("BOTTOMRIGHT", TradeSkillFrame, "BOTTOMRIGHT", -42, 78)
+<<<<<<< Updated upstream
 		TradeSkillRankFrame:ClearAllPoints()
 		TradeSkillRankFrame:SetPoint("TOPLEFT", TradeSkillFrame, 24, -24)
 	else
@@ -275,4 +297,12 @@ function S:EnhancedCraft()
 			UIErrorsFrame:AddMessage(DB.InfoColor..L["NoMatchReult"])
 		end
 	end)
+=======
+	else
+		TradeSkillFrameBottomLeftTexture:Hide()
+		TradeSkillFrameBottomRightTexture:Hide()
+		TradeSkillFrameCloseButton:ClearAllPoints()
+		TradeSkillFrameCloseButton:SetPoint("TOPRIGHT", TradeSkillFrame, "TOPRIGHT", -30, -8)
+	end
+>>>>>>> Stashed changes
 end

@@ -10,7 +10,6 @@ local GetTime = GetTime
 local GetInventoryItemID = GetInventoryItemID
 local UnitAttackSpeed = UnitAttackSpeed
 local UnitRangedDamage = UnitRangedDamage
-local IsPlayerMoving = IsPlayerMoving
 local UnitCastingInfo = UnitCastingInfo
 
 local meleeing, rangeing, lasthit
@@ -18,7 +17,7 @@ local MainhandID = GetInventoryItemID("player", 16)
 local OffhandID = GetInventoryItemID("player", 17)
 local RangedID = GetInventoryItemID("player", 18)
 local playerGUID = UnitGUID("player")
-local AUTO_CAST_TIME = .65
+local AUTO_CAST_TIME = 0
 local delayTime = 0
 
 local function SwingStopped(element)
@@ -48,26 +47,6 @@ local function UpdateBarValue(self, value)
 			local decimal = rangeing and "%.2f" or "%.1f"
 			self.Text:SetFormattedText(decimal, self.max - self.min - value)
 		end
-	end
-end
-
-local function delayUpdate(self)
-	local now = GetTime()
-	local isMoving = IsPlayerMoving()
-	if not isMoving then
-		local elapsed = now - delayTime
-		if elapsed > AUTO_CAST_TIME then
-			delayTime = 0
-			self:Hide()
-			self:SetScript("OnUpdate", nil)
-			meleeing = false
-			rangeing = false
-		else
-			UpdateBarValue(self, elapsed + self.swingTime)
-		end
-	else
-		delayTime = now
-		UpdateBarValue(self, self.swingTime)
 	end
 end
 
@@ -112,33 +91,29 @@ do
 
 			local currentValue = now - self.min
 			local swingTime = self.max - self.min - AUTO_CAST_TIME
-			local isMoving = IsPlayerMoving()
 
-			if rangeing and currentValue >= swingTime and isMoving then
-				self.swingTime = swingTime
-				self:SetScript("OnUpdate", delayUpdate)
-			else
-				if now > self.max then
-					if meleeing then
-						if lasthit then
-							self.min = self.max
-							self.max = self.max + self.speed
-							UpdateBarMinMaxValues(self)
-							slamtime = 0
-						end
-					else
-						delayTime = 0
-						self:Hide()
-						self:SetScript("OnUpdate", nil)
-						meleeing = false
-						rangeing = false
+			if now > self.max then
+				if meleeing then
+					if lasthit then
+						self.min = self.max
+						self.max = self.max + self.speed
+						UpdateBarMinMaxValues(self)
+						slamtime = 0
 					end
 				else
-					UpdateBarValue(self, currentValue)
+					delayTime = 0
+					self:Hide()
+					self:SetScript("OnUpdate", nil)
+					meleeing = false
+					rangeing = false
 				end
+			else
+				UpdateBarValue(self, currentValue)
 			end
 
-			self.__owner.bg:SetShown(rangeing)
+			if self.__owner.bg then
+				self.__owner.bg:SetShown(rangeing)
+			end
 		end
 	end
 end
@@ -237,7 +212,7 @@ local function RangedChange(self, _, unit)
 	local speed = UnitRangedDamage("player")
 
 	if RangedID ~= NewRangedID then
-		swing.speed = UnitRangedDamage(unit)
+		swing.speed = speed
 		swing.min = now
 		swing.max = swing.min + swing.speed
 		swing:Show()
@@ -266,13 +241,15 @@ local function Ranged(self, _, unit, _, spellID)
 	rangeing = true
 	bar:Show()
 
-	swing.speed = UnitRangedDamage(unit)
+	swing.speed = UnitRangedDamage(unit) * .82
 	swing.min = GetTime()
 	swing.max = swing.min + swing.speed
 	swing:Show()
 	UpdateBarMinMaxValues(swing)
 	swing:SetScript("OnUpdate", OnDurationUpdate)
-	bar.bg:SetWidth(AUTO_CAST_TIME / (swing.max - swing.min) * bar:GetWidth())
+	if bar.bg then
+		bar.bg:SetWidth(AUTO_CAST_TIME / (swing.max - swing.min) * bar:GetWidth())
+	end
 
 	swingMH:Hide()
 	swingMH:SetScript("OnUpdate", nil)

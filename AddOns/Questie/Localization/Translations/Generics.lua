@@ -76,7 +76,7 @@ local genericsLocales = {
     },
     ["Reload UI"] = {
         ["ptBR"] = "Recarregar interface",
-        ["ruRU"] = "Перезагрузка интерфейса",
+        ["ruRU"] = "Перезагрузка",
         ["deDE"] = "Interface neu laden",
         ["koKR"] = "Reload UI",
         ["esMX"] = "Recargar IU",
@@ -112,7 +112,7 @@ local genericsLocales = {
     },
     ["Cancel"] = {
         ["ptBR"] = "Cancelar",
-        ["ruRU"] = "Закрыть это окно",
+        ["ruRU"] = "Отмена",
         ["deDE"] = "Abbrechen",
         ["koKR"] = "취소",
         ["esMX"] = "Cancelar",
@@ -278,6 +278,18 @@ local genericsLocales = {
         ["esES"] = "Detalles del objeto",
         ["frFR"] = "Détails de l'objet",
     },
+    ["Item Details"] = {
+        ["ptBR"] = false,
+        ["ruRU"] = "Подробности о предмете",
+        ["deDE"] = "Item-Details",
+        ["koKR"] = false,
+        ["esMX"] = "Detalles de objeto",
+        ["enUS"] = true,
+        ["zhCN"] = false,
+        ["zhTW"] = false,
+        ["esES"] = "Detalles de objeto",
+        ["frFR"] = "Détails de l’objet",
+    },
     ["Required Level"] = {
         ["ptBR"] = "Nível necessário",
         ["ruRU"] = "Требуемый уровень",
@@ -364,6 +376,7 @@ local genericsLocales = {
     },
     ["Group"] = {
         ["ptBR"] = "Grupo",
+<<<<<<< Updated upstream
         ["ruRU"] = false,
         ["deDE"] = "Gruppe",
         ["koKR"] = false,
@@ -371,11 +384,21 @@ local genericsLocales = {
         ["enUS"] = true,
         ["zhCN"] = false,
         ["zhTW"] = false,
+=======
+        ["ruRU"] = "Группа",
+        ["deDE"] = "Gruppe",
+        ["koKR"] = nil,
+        ["esMX"] = "Grupo",
+        ["enUS"] = true,
+        ["zhCN"] = "队伍",
+        ["zhTW"] = nil,
+>>>>>>> Stashed changes
         ["esES"] = "Grupo",
         ["frFR"] = "Groupe",
     },
     ["Raid"] = {
         ["ptBR"] = "Raide",
+<<<<<<< Updated upstream
         ["ruRU"] = false,
         ["deDE"] = "Schlachtzug",
         ["koKR"] = false,
@@ -386,6 +409,42 @@ local genericsLocales = {
         ["esES"] = "Banda",
         ["frFR"] = "Raid",
     },
+=======
+        ["ruRU"] = "Рейд",
+        ["deDE"] = "Schlachtzug",
+        ["koKR"] = nil,
+        ["esMX"] = "Banda",
+        ["enUS"] = true,
+        ["zhCN"] = "团队",
+        ["zhTW"] = nil,
+        ["esES"] = "Banda",
+        ["frFR"] = "Raid",
+    },
+    ["Vendors"] = {
+        ["ptBR"] = false,
+        ["ruRU"] = "Продавцы",
+        ["deDE"] = "Händler",
+        ["koKR"] = false,
+        ["esMX"] = "Vendedores",
+        ["enUS"] = true,
+        ["zhCN"] = false,
+        ["zhTW"] = false,
+        ["esES"] = "Vendedores",
+        ["frFR"] = "Vendeurs",
+    },
+    ["Achievements"] = {
+        ["ptBR"] = false,
+        ["ruRU"] = "Достижения",
+        ["deDE"] = "Erfolge",
+        ["koKR"] = false,
+        ["esMX"] = "Logros",
+        ["enUS"] = true,
+        ["zhCN"] = false,
+        ["zhTW"] = false,
+        ["esES"] = "Logros",
+        ["frFR"] = "Hauts faits",
+    },
+>>>>>>> Stashed changes
 }
 
 for k, v in pairs(genericsLocales) do

@@ -68,6 +68,10 @@ function S:ResetDetailsAnchor(force)
 	local Details = _G.Details
 	if not Details then return end
 
+<<<<<<< Updated upstream
+=======
+	local height = 190
+>>>>>>> Stashed changes
 	local instance1 = Details:GetInstance(1)
 	local instance2 = Details:GetInstance(2)
 	if instance1 and (force or IsDefaultAnchor(instance1)) then
@@ -78,7 +82,11 @@ function S:ResetDetailsAnchor(force)
 		EmbedWindow(instance1, -3, 24, 320, height)
 	end
 
+<<<<<<< Updated upstream
 	return instance1, instance2
+=======
+	return instance1
+>>>>>>> Stashed changes
 end
 
 local function ReskinDetails()
@@ -98,7 +106,11 @@ local function ReskinDetails()
 	end
 
 	-- Reanchor
+<<<<<<< Updated upstream
 	local instance1, instance2 = S:ResetDetailsAnchor()
+=======
+	local instance1 = S:ResetDetailsAnchor()
+>>>>>>> Stashed changes
 
 	local listener = Details:CreateEventListener()
 	listener:RegisterEvent("DETAILS_INSTANCE_OPEN")

@@ -21,7 +21,11 @@ _GetAnnounceMarker = function()
 end
 
 function QuestieAnnounce:AnnounceObjectiveToChannel(questId, itemId, objectiveText, objectiveProgress)
+<<<<<<< Updated upstream
     if _QuestieAnnounce:AnnounceEnabledAndPlayerInChannel() then
+=======
+    if _QuestieAnnounce:AnnounceEnabledAndPlayerInChannel() and Questie.db.char.questAnnounceObjectives then
+>>>>>>> Stashed changes
         -- no hyperlink required here
         local questLink = QuestieLink:GetQuestLinkStringById(questId);
 
@@ -38,13 +42,39 @@ function QuestieAnnounce:AnnounceObjectiveToChannel(questId, itemId, objectiveTe
     end
 end
 
+<<<<<<< Updated upstream
 function QuestieAnnounce:AnnounceQuestItemLootedToChannel(questId, itemId)
     if _QuestieAnnounce:AnnounceEnabledAndPlayerInChannel() then
+=======
+local _has_seen_incomplete = {}
+local _has_sent_announce = {}
+
+function QuestieAnnounce:ObjectiveChanged(questId, text, numFulfilled, numRequired)
+    -- Announce completed objective
+    if (numRequired ~= numFulfilled) then
+        _has_seen_incomplete[text] = true
+    elseif _has_seen_incomplete[text] and not _has_sent_announce[text] then
+        _has_seen_incomplete[text] = nil
+        _has_sent_announce[text] = true
+        QuestieAnnounce:AnnounceObjectiveToChannel(questId, nil, text, tostring(numFulfilled) .. "/" .. tostring(numRequired))
+    end
+end
+
+
+function QuestieAnnounce:AnnounceQuestItemLootedToChannel(questId, itemId)
+    if _QuestieAnnounce:AnnounceEnabledAndPlayerInChannel() and Questie.db.char.questAnnounceItems then
+>>>>>>> Stashed changes
         local questHyperLink = QuestieLink:GetQuestLinkStringById(questId);
         local itemLink = select(2, GetItemInfo(itemId))
 
         local message = _GetAnnounceMarker() .. " Questie : " .. l10n("Picked up %s which starts %s!", itemLink, questHyperLink)
         _QuestieAnnounce:AnnounceToChannel(message)
+<<<<<<< Updated upstream
+=======
+        return true
+    else
+        return false
+>>>>>>> Stashed changes
     end
 end
 
@@ -70,7 +100,11 @@ end
 
 function _QuestieAnnounce:AnnounceToChannel(message)
     Questie:Debug(Questie.DEBUG_DEVELOP, "[QuestieAnnounce] raw msg: ", message)
+<<<<<<< Updated upstream
     if (not message) or alreadySentBandaid[message] then
+=======
+    if (not message) or alreadySentBandaid[message] or Questie.db.global.questieShutUp then
+>>>>>>> Stashed changes
         return
     end
 
@@ -89,9 +123,12 @@ end
 function QuestieAnnounce:ItemLooted(text, notPlayerName, _, _, playerName)
     if (playerNameCache or _GetPlayerName()) == playerName or (string.len(playerName) == 0 and playerNameCache == notPlayerName) then
         local itemId = tonumber(string.match(text, "item:(%d+)"))
+        if not itemId then return end
 
         local startQuestId = itemCache[itemId]
-        if (startQuestId == nil) and QuestieDB.QueryItemSingle then -- check QueryItemSingle because this event can fire before db init is complete
+        -- startQuestId can have boolean false as value, need to compare to nil
+        -- check QueryItemSingle because this event can fire before db init is complete
+        if (startQuestId == nil) and QuestieDB.QueryItemSingle then
             startQuestId = QuestieDB.QueryItemSingle(itemId, "startQuest")
             -- filter 0 values away so itemCache value is a valid questId if it evaluates to true
             -- we do "or false" here because nil would mean not cached
@@ -100,12 +137,18 @@ function QuestieAnnounce:ItemLooted(text, notPlayerName, _, _, playerName)
         end
 
         if startQuestId then
+<<<<<<< Updated upstream
             if _QuestieAnnounce:AnnounceEnabledAndPlayerInChannel() then
                 QuestieAnnounce:AnnounceQuestItemLootedToChannel(startQuestId, itemId)
                 return
             end
 
             _QuestieAnnounce:AnnounceSelf(startQuestId, itemId)
+=======
+            if not QuestieAnnounce:AnnounceQuestItemLootedToChannel(startQuestId, itemId) then
+                _QuestieAnnounce:AnnounceSelf(startQuestId, itemId)
+            end
+>>>>>>> Stashed changes
         end
     end
 end

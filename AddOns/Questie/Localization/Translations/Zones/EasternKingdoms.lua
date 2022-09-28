@@ -209,7 +209,7 @@ local easternKingdomsLocales = {
     ["Stormwind City"] = {
         ["ptBR"] = "Ventobravo",
         ["ruRU"] = "Штормград",
-        ["deDE"] = "Stormwind Stadt",
+        ["deDE"] = "Sturmwind",
         ["koKR"] = "스톰윈드",
         ["esMX"] = "Ciudad de Ventormenta",
         ["enUS"] = true,
@@ -233,7 +233,11 @@ local easternKingdomsLocales = {
     ["Ironforge"] = {
         ["ptBR"] = "Altaforja",
         ["ruRU"] = "Стальгорн",
+<<<<<<< Updated upstream
         ["deDE"] = true,
+=======
+        ["deDE"] = "Eisenschmiede",
+>>>>>>> Stashed changes
         ["koKR"] = "아이언포지",
         ["esMX"] = "Forjaz",
         ["enUS"] = true,
@@ -245,7 +249,11 @@ local easternKingdomsLocales = {
     ["Undercity"] = {
         ["ptBR"] = "Cidade Baixa",
         ["ruRU"] = "Подгород",
+<<<<<<< Updated upstream
         ["deDE"] = true,
+=======
+        ["deDE"] = "Unterstadt",
+>>>>>>> Stashed changes
         ["koKR"] = "언더시티",
         ["esMX"] = "Entrañas",
         ["enUS"] = true,

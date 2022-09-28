@@ -1,7 +1,14 @@
+<<<<<<< Updated upstream
 ## Interface: 20504
 ## Title: WeakAuras Archive
 ## Author: The WeakAuras Team
 ## Version: 3.7.16
+=======
+## Interface: 90207
+## Title: WeakAuras Archive
+## Author: The WeakAuras Team
+## Version: 4.1.4
+>>>>>>> Stashed changes
 ## LoadOnDemand: 1
 ## SavedVariables: WeakAurasArchive
 ## Dependencies: WeakAuras

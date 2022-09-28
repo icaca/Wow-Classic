@@ -22,6 +22,24 @@ function A:HideBlizBuff()
 	B.HideObject(_G.TemporaryEnchantFrame)
 end
 
+function A:ReskinBuffButtons()
+	local buffName, buff
+	for i = 1, BUFF_ACTUAL_DISPLAY do
+		buffName = "BuffButton"..i
+		buff = _G[buffName]
+		if not buff then break end
+		if not buff.styled then
+			B.ReskinIcon(_G[buffName.."Icon"])
+			buff.styled = true
+		end
+	end
+end
+
+function A:UpdateConsolidatedFrame()
+	BuffFrame_Update()
+	A:ReskinBuffButtons()
+end
+
 function A:BuildBuffFrame()
 	if not C.db["Auras"]["BuffFrame"] then return end
 
@@ -53,6 +71,15 @@ function A:BuildBuffFrame()
 	A.DebuffFrame.mover = B.Mover(A.DebuffFrame, "Debuffs", "DebuffAnchor", {"TOPRIGHT", A.BuffFrame.mover, "BOTTOMRIGHT", 0, -12})
 	A.DebuffFrame:ClearAllPoints()
 	A.DebuffFrame:SetPoint("TOPRIGHT", A.DebuffFrame.mover)
+
+	if _G.ConsolidatedBuffsTooltip then
+		_G.ConsolidatedBuffsTooltip:HideBackdrop()
+		B.SetBD(_G.ConsolidatedBuffsTooltip)
+		B.HideOption(_G.InterfaceOptionsDisplayPanelConsolidateBuffs)
+
+		A:ReskinBuffButtons()
+		B:RegisterEvent("UNIT_AURA", A.UpdateConsolidatedFrame, "player")
+	end
 end
 
 local day, hour, minute = 86400, 3600, 60
@@ -187,7 +214,9 @@ function A:UpdateHeader(header)
 	local cfg = A.settings.Debuffs
 	if header.filter == "HELPFUL" then
 		cfg = A.settings.Buffs
-		header:SetAttribute("consolidateTo", 0)
+		local isConsolidated = C.db["Auras"]["Consolidate"] and 1 or 0
+		SetCVar("consolidateBuffs", isConsolidated)
+		header:SetAttribute("consolidateTo", isConsolidated)
 		header:SetAttribute("weaponTemplate", format("NDuiAuraTemplate%d", cfg.size))
 	end
 
@@ -237,12 +266,13 @@ function A:CreateAuraHeader(filter)
 	header:SetAttribute("unit", "player")
 	header:SetAttribute("filter", filter)
 	header.filter = filter
-	RegisterStateDriver(header, "visibility", "[petbattle] hide; show")
+	--RegisterStateDriver(header, "visibility", "[petbattle] hide; show")
 	RegisterAttributeDriver(header, "unit", "[vehicleui] vehicle; player")
 
 	if filter == "HELPFUL" then
 		header:SetAttribute("consolidateDuration", -1)
 		header:SetAttribute("includeWeapons", 1)
+		header:SetAttribute("consolidateProxy", "NDuiConsolidateTemplate")
 	end
 
 	A:UpdateHeader(header)

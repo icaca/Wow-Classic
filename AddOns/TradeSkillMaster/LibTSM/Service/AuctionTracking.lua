@@ -526,7 +526,12 @@ function private.GetOwnedAuctionInfo(index)
 		end
 		local link = info and info.itemLink
 		if not link then
-			return
+			if ItemInfo.IsCommodity(info.itemKey.itemID) then
+				link = ItemInfo.GetLink(info.itemKey.itemID)
+			end
+			if not link then
+				return
+			end
 		end
 		local bid = info.bidAmount or info.buyoutAmount
 		local minBid = bid

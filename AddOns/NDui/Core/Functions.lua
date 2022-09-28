@@ -156,7 +156,7 @@ do
 	end
 end
 
--- Itemlevel
+-- Scan tooltip
 do
 	local iLvlDB = {}
 	local itemLevelString = "^"..gsub(ITEM_LEVEL, "%%d", "")
@@ -173,7 +173,7 @@ do
 		end
 
 		for i = 1, 5 do
-			local tex = _G[tip:GetName().."Texture"..i]
+			local tex = _G["NDui_ScanTooltipTexture"..i]
 			local texture = tex and tex:IsShown() and tex:GetTexture()
 			if texture then
 				tip.gems[i] = texture
@@ -212,7 +212,7 @@ do
 			end
 
 			for i = 2, 5 do
-				local line = _G[tip:GetName().."TextLeft"..i]
+				local line = _G["NDui_ScanTooltipTextLeft"..i]
 				if not line then break end
 
 				local text = line:GetText()
@@ -226,6 +226,61 @@ do
 
 			return iLvlDB[link]
 		end
+	end
+
+	local pendingNPCs, nameCache, callbacks = {}, {}, {}
+	local loadingStr = "..."
+	local pendingFrame = CreateFrame("Frame")
+	pendingFrame:Hide()
+	pendingFrame:SetScript("OnUpdate", function(self, elapsed)
+		self.elapsed = (self.elapsed or 0) + elapsed
+		if self.elapsed > 1 then
+			if next(pendingNPCs) then
+				for npcID, count in pairs(pendingNPCs) do
+					if count > 2 then
+						nameCache[npcID] = UNKNOWN
+						if callbacks[npcID] then
+							callbacks[npcID](UNKNOWN)
+						end
+						pendingNPCs[npcID] = nil
+					else
+						local name = B.GetNPCName(npcID, callbacks[npcID])
+						if name and name ~= loadingStr then
+							pendingNPCs[npcID] = nil
+						else
+							pendingNPCs[npcID] = pendingNPCs[npcID] + 1
+						end
+					end
+				end
+			else
+				self:Hide()
+			end
+
+			self.elapsed = 0
+		end
+	end)
+
+	function B.GetNPCName(npcID, callback)
+		local name = nameCache[npcID]
+		if not name then
+			tip:SetOwner(UIParent, "ANCHOR_NONE")
+			tip:SetHyperlink(format("unit:Creature-0-0-0-0-%d", npcID))
+			name = _G.NDui_ScanTooltipTextLeft1:GetText() or loadingStr
+			if name == loadingStr then
+				if not pendingNPCs[npcID] then
+					pendingNPCs[npcID] = 1
+					pendingFrame:Show()
+				end
+			else
+				nameCache[npcID] = name
+			end
+		end
+		if callback then
+			callback(name)
+			callbacks[npcID] = callback
+		end
+
+		return name
 	end
 end
 
@@ -872,7 +927,7 @@ do
 	local function updateTrimScrollArrow(self, atlas)
 		local arrow = self.__owner
 		if not arrow.__texture then return end
-	
+
 		if atlas == arrow.disabledTexture then
 			arrow.__texture:SetVertexColor(.5, .5, .5)
 		else
@@ -890,7 +945,7 @@ do
 		B.CreateBDFrame(tex, .25)
 		B.SetupArrow(tex, direction)
 		self.__texture = tex
-	
+
 		self:HookScript("OnEnter", B.Texture_OnEnter)
 		self:HookScript("OnLeave", B.Texture_OnLeave)
 		self.Texture.__owner = self
@@ -905,7 +960,7 @@ do
 
 		local thumb = self:GetThumb()
 		if thumb then
-			B.StripTextures(thumb, 0)
+			thumb:DisableDrawLayer("BACKGROUND")
 			B.CreateBDFrame(thumb, 0, true):SetBackdropColor(cr, cg, cb, .75)
 		end
 	end
@@ -932,7 +987,7 @@ do
 			if self.bg then
 				self.bg:SetBackdropColor(cr, cg, cb, .25)
 			else
-				self.__texture:SetVertexColor(cr, cg, cb)
+				self.__texture:SetVertexColor(0, .6, 1)
 			end
 		end
 	end
@@ -1168,6 +1223,7 @@ do
 	end
 
 	function B:ReskinCollapse(isAtlas)
+		self:SetNormalTexture("")
 		self:SetHighlightTexture("")
 		self:SetPushedTexture("")
 		self:SetDisabledTexture("")
@@ -1201,6 +1257,7 @@ do
 				button:SetSize(16, 16)
 				button:ClearAllPoints()
 				button:SetPoint("CENTER", -3, 0)
+				button:SetHitRectInsets(1, 1, 1, 1)
 				B.Reskin(button)
 
 				local tex = button:CreateTexture()
@@ -1350,26 +1407,43 @@ do
 	-- Role Icons
 	function B:GetRoleTexCoord()
 		if self == "TANK" then
-			return .34/9.03, 2.86/9.03, 3.16/9.03, 5.68/9.03
+			return .34/9.03, 2.85/9.03, 3.16/9.03, 5.67/9.03
 		elseif self == "DPS" or self == "DAMAGER" then
-			return 3.26/9.03, 5.78/9.03, 3.16/9.03, 5.68/9.03
+			return 3.27/9.03, 5.78/9.03, 3.16/9.03, 5.67/9.03
 		elseif self == "HEALER" then
-			return 3.26/9.03, 5.78/9.03, .28/9.03, 2.78/9.03
+			return 3.27/9.03, 5.78/9.03, .27/9.03, 2.78/9.03
 		elseif self == "LEADER" then
-			return .34/9.03, 2.86/9.03, .28/9.03, 2.78/9.03
+			return .34/9.03, 2.85/9.03, .27/9.03, 2.78/9.03
 		elseif self == "READY" then
-			return 6.17/9.03, 8.75/9.03, .28/9.03, 2.78/9.03
+			return 6.17/9.03, 8.68/9.03, .27/9.03, 2.78/9.03
 		elseif self == "PENDING" then
-			return 6.17/9.03, 8.75/9.03, 3.16/9.03, 5.68/9.03
+			return 6.17/9.03, 8.68/9.03, 3.16/9.03, 5.67/9.03
 		elseif self == "REFUSE" then
-			return 3.26/9.03, 5.78/9.03, 6.03/9.03, 8.61/9.03
+			return 3.27/9.03, 5.78/9.03, 6.04/9.03, 8.55/9.03
 		end
+	end
+
+	function B:GetRoleTex()
+		if self == "TANK" then
+			return DB.tankTex
+		elseif self == "DPS" or self == "DAMAGER" then
+			return DB.dpsTex
+		elseif self == "HEALER" then
+			return DB.healTex
+		end
+	end
+
+	function B:ReskinSmallRole(role)
+		self:SetTexture(B.GetRoleTex(role))
+		self:SetTexCoord(0, 1, 0, 1)
 	end
 
 	function B:ReskinRole(role)
 		if self.background then self.background:SetTexture("") end
+
 		local cover = self.cover or self.Cover
 		if cover then cover:SetTexture("") end
+
 		local texture = self.GetNormalTexture and self:GetNormalTexture() or self.texture or self.Texture or (self.SetTexture and self) or self.Icon
 		if texture then
 			texture:SetTexture(DB.rolesTex)
@@ -1572,7 +1646,9 @@ do
 		local swatch = CreateFrame("Button", nil, self, "BackdropTemplate")
 		swatch:SetSize(18, 18)
 		B.CreateBD(swatch, 1)
-		swatch.text = B.CreateFS(swatch, 14, name, false, "LEFT", 26, 0)
+		if name then
+			swatch.text = B.CreateFS(swatch, 14, name, false, "LEFT", 26, 0)
+		end
 		local tex = swatch:CreateTexture()
 		tex:SetInside()
 		tex:SetTexture(DB.bdTex)
@@ -1643,6 +1719,19 @@ do
 			frame:Hide()
 		else
 			frame:Show()
+		end
+	end
+
+	function B:ToggleFriends(index) -- needs review, maybe taint
+		if FriendsFrame:IsShown() then
+			if FriendsFrame.selectedTab ~= index then
+				_G["FriendsFrameTab"..index]:Click()
+			else
+				ToggleFrame(FriendsFrame)
+			end
+		else
+			ToggleFrame(FriendsFrame)
+			_G["FriendsFrameTab"..index]:Click()
 		end
 	end
 end

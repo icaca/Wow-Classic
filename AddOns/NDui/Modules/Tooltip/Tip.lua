@@ -410,8 +410,9 @@ function TT:SetupTooltipFonts()
 end
 
 function TT:FixRecipeItemNameWidth()
+	local name = self:GetName()
 	for i = 1, self:NumLines() do
-		local line = _G["GameTooltipTextLeft"..i]
+		local line = _G[name.."TextLeft"..i]
 		if line:GetHeight() > 40 then
 			line:SetWidth(line:GetWidth() + 1)
 		end
@@ -435,6 +436,8 @@ function TT:OnLogin()
 	hooksecurefunc("GameTooltip_AnchorComparisonTooltips", TT.GameTooltip_ComparisonFix)
 	TT:SetupTooltipFonts()
 	GameTooltip:HookScript("OnTooltipSetItem", TT.FixRecipeItemNameWidth)
+	ItemRefTooltip:HookScript("OnTooltipSetItem", TT.FixRecipeItemNameWidth)
+	EmbeddedItemTooltip:HookScript("OnTooltipSetItem", TT.FixRecipeItemNameWidth)
 
 	-- Elements
 	TT:ReskinTooltipIcons()
@@ -531,4 +534,13 @@ end)
 
 TT:RegisterTooltips("Blizzard_EventTrace", function()
 	TT.ReskinTooltip(EventTraceTooltip)
+end)
+
+TT:RegisterTooltips("Blizzard_LookingForGroupUI", function()
+	TT.ReskinTooltip(LFGBrowseSearchEntryTooltip)
+end)
+
+TT:RegisterTooltips("Blizzard_Calendar", function()
+	CalendarContextMenu:HookScript("OnShow", TT.ReskinTooltip)
+	CalendarInviteStatusContextMenu:HookScript("OnShow", TT.ReskinTooltip)
 end)

@@ -1,5 +1,10 @@
+<<<<<<< Updated upstream
 ## Interface: 90200
 ## Version: v9.2.2
+=======
+## Interface: 90207
+## Version: v9.2.4
+>>>>>>> Stashed changes
 ## Author: Funkydude
 ## Title: SlashIn
 ## Notes: Provides the /in command for delayed execution.
@@ -18,5 +23,6 @@
 ## X-License: All Rights Reserved: You are free to fork and modify on GitHub, please ask us about anything else.
 ## X-Curse-Project-ID: 26308
 ## X-WoWI-ID: 18054
+## X-Wago-ID: pkNMDOGz
 
 SlashIn.lua

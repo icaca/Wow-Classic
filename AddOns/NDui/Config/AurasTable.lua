@@ -67,22 +67,6 @@ function module:AddNewAuraWatch(class, list)
 	end
 end
 
--- RaidFrame spells
-local RaidBuffs = {}
-function module:AddClassSpells(list)
-	for class, value in pairs(list) do
-		if class == "ALL" then
-			if not RaidBuffs[class] then RaidBuffs[class] = {} end
-			for spellID in pairs(value) do
-				local name = GetSpellInfo(spellID)
-				if name then
-					RaidBuffs[class][name] = true
-				end
-			end
-		end
-	end
-end
-
 -- RaidFrame debuffs
 local RaidDebuffs = {}
 function module:AddRaidDebuffs(list)
@@ -94,7 +78,7 @@ function module:AddRaidDebuffs(list)
 	end
 end
 
-function module:RegisterDebuff(_, instID, _, spellID, level)
+function module:RegisterDebuff(tierID, instID, _, spellID, level)
 	local instName = GetRealZoneText(instID)
 	if not instName then
 		if DB.isDeveloper then print("Invalid instance ID: "..instID) end
@@ -146,6 +130,45 @@ function module:CheckMajorSpells()
 	end
 end
 
+local function CheckNameplateFilter(list, key)
+	for spellID in pairs(list) do
+		local name = GetSpellInfo(spellID)
+		if name then
+			if NDuiADB[key][spellID] then
+				NDuiADB[key][spellID] = nil
+			end
+		else
+			if DB.isDeveloper then print("Invalid nameplate filter ID: "..spellID) end
+		end
+	end
+
+	for spellID, value in pairs(NDuiADB[key]) do
+		if value == false and list[spellID] == nil then
+			NDuiADB[key][spellID] = nil
+		end
+	end
+end
+
+local function cleanupNameplateUnits(VALUE)
+	for npcID in pairs(C[VALUE]) do
+		if C.db["Nameplate"][VALUE][npcID] then
+			C.db["Nameplate"][VALUE][npcID] = nil
+		end
+	end
+	for npcID, value in pairs(C.db["Nameplate"][VALUE]) do
+		if value == false and C[VALUE][npcID] == nil then
+			C.db["Nameplate"][VALUE][npcID] = nil
+		end
+	end
+end
+
+function module:CheckNameplateFilters()
+	CheckNameplateFilter(C.WhiteList, "NameplateWhite")
+	CheckNameplateFilter(C.BlackList, "NameplateBlack")
+	cleanupNameplateUnits("CustomUnits")
+	cleanupNameplateUnits("PowerUnits")
+end
+
 function module:OnLogin()
 	for instID, value in pairs(RaidDebuffs) do
 		for spell, priority in pairs(value) do
@@ -161,9 +184,9 @@ function module:OnLogin()
 	end
 
 	C.AuraWatchList = AuraWatchList
-	C.RaidBuffs = RaidBuffs
 	C.RaidDebuffs = RaidDebuffs
 
 	module:CheckCornerSpells()
 	module:CheckMajorSpells()
+	module:CheckNameplateFilters()
 end

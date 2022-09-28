@@ -4,7 +4,11 @@
 ## Author: deezo
 ## X-Category: Library
 ## X-License: BSD
+<<<<<<< Updated upstream
 ## Version: f15e6de
+=======
+## Version: 357b944
+>>>>>>> Stashed changes
 ## OptionalDeps: Masque
 
 LibStub\LibStub.lua

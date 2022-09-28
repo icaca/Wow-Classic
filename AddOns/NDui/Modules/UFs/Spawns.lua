@@ -10,7 +10,9 @@ local UFRangeAlpha = {insideAlpha = 1, outsideAlpha = .4}
 
 local function SetUnitFrameSize(self, unit)
 	local width = C.db["UFs"][unit.."Width"]
-	local height = C.db["UFs"][unit.."Height"] + C.db["UFs"][unit.."PowerHeight"] + C.mult
+	local healthHeight = C.db["UFs"][unit.."Height"]
+	local powerHeight = C.db["UFs"][unit.."PowerHeight"]
+	local height = powerHeight == 0 and healthHeight or healthHeight + powerHeight + C.mult
 	self:SetSize(width, height)
 end
 
@@ -27,11 +29,11 @@ local function CreatePlayerStyle(self)
 	UF:CreateCastBar(self)
 	UF:CreateRaidMark(self)
 	UF:CreateIcons(self)
+	UF:CreateRestingIndicator(self)
 	UF:CreatePrediction(self)
 	UF:CreateFCT(self)
 	UF:CreateAddPower(self)
 	UF:CreateClassPower(self)
-	UF:CreateEneryTicker(self)
 	UF:CreateAuras(self)
 	UF:CreateSwing(self)
 
@@ -121,6 +123,7 @@ local function CreatePetStyle(self)
 	UF:CreatePowerBar(self)
 	UF:CreateRaidMark(self)
 	UF:CreateAuras(self)
+	UF:CreateSparkleCastBar(self)
 end
 
 local function CreateArenaStyle(self)
@@ -144,7 +147,7 @@ local function CreateRaidStyle(self)
 	self.Range = UFRangeAlpha
 	self.disableTooltip = C.db["UFs"]["HideTip"]
 
-	UF:CreateHeader(self)
+	UF:CreateHeader(self, true)
 	UF:CreateHealthBar(self)
 	UF:CreateHealthText(self)
 	UF:CreatePowerBar(self)
@@ -154,13 +157,10 @@ local function CreateRaidStyle(self)
 	UF:CreateRaidIcons(self)
 	UF:CreatePrediction(self)
 	UF:CreateClickSets(self)
-	UF:CreateRaidDebuffs(self)
 	UF:CreateThreatBorder(self)
-	UF:CreateAuras(self)
-	UF:CreateBuffs(self)
-	UF:CreateDebuffs(self)
-	UF:RefreshAurasByCombat(self)
-	UF:CreateBuffIndicator(self)
+	if self.raidType ~= "simple" then
+		UF:CreateRaidAuras(self)
+	end
 end
 
 local function CreateSimpleRaidStyle(self)
@@ -179,7 +179,7 @@ local function CreatePartyPetStyle(self)
 	self.Range = UFRangeAlpha
 	self.disableTooltip = C.db["UFs"]["HideTip"]
 
-	UF:CreateHeader(self)
+	UF:CreateHeader(self, true)
 	UF:CreateHealthBar(self)
 	UF:CreateHealthText(self)
 	UF:CreatePowerBar(self)
@@ -306,6 +306,7 @@ function UF:OnLogin()
 		UF:QuestIconCheck()
 		UF:RefreshPlateByEvents()
 		UF:RefreshMajorSpells()
+		UF:RefreshNameplateFilters()
 
 		oUF:RegisterStyle("Nameplates", UF.CreatePlates)
 		oUF:SetActiveStyle("Nameplates")
@@ -393,12 +394,18 @@ function UF:OnLogin()
 		UF:ToggleUFClassPower()
 		UF:UpdateTextScale()
 		UF:ToggleAllAuras()
+		UF:UpdateScrollingFont()
+		UF:TogglePortraits()
+		UF:CheckPowerBars()
+		UF:UpdateRaidInfo() -- RaidAuras
 	end
 
 	if C.db["UFs"]["RaidFrame"] then
+		SetCVar("predictedHealth", 1)
 		UF:AddClickSetsListener()
 		UF:UpdateCornerSpells()
-		UF:BuildNameListFromID()
+		UF:UpdateRaidBuffsWhite()
+		UF:UpdateRaidDebuffsBlack()
 		UF.headers = {}
 
 		-- Hide Default RaidFrame
@@ -555,7 +562,7 @@ function UF:OnLogin()
 
 			local groupByTypes = {
 				[1] = {"1,2,3,4,5,6,7,8", "GROUP", "INDEX"},
-				[2] = {"WARRIOR,ROGUE,PALADIN,DRUID,SHAMAN,HUNTER,PRIEST,MAGE,WARLOCK", "CLASS", "NAME"},
+				[2] = {"DEATHKNIGHT,WARRIOR,ROGUE,PALADIN,DRUID,SHAMAN,HUNTER,PRIEST,MAGE,WARLOCK", "CLASS", "NAME"},
 			}
 			function UF:UpdateSimpleModeHeader()
 				ResetHeaderPoints(group)
@@ -726,5 +733,56 @@ function UF:OnLogin()
 		end
 
 		UF:UpdateRaidHealthMethod()
+
+		if C.db["UFs"]["SpecRaidPos"] then
+			local changeSpells = {
+				[63644] = true, -- second spec
+				[63645] = true, -- main spec
+			}
+			local function UpdateSpecPos(event, ...)
+				local unit, _, spellID = ...
+				if (event == "UNIT_SPELLCAST_SUCCEEDED" and UnitIsUnit(unit, "player") and changeSpells[spellID]) or event == "ON_LOGIN" then
+					local specIndex = GetActiveTalentGroup()
+					if not specIndex then return end
+
+					if not C.db["Mover"]["RaidPos"..specIndex] then
+						C.db["Mover"]["RaidPos"..specIndex] = {"TOPLEFT", "UIParent", "TOPLEFT", 35, -50}
+					end
+					if raidMover then
+						raidMover:ClearAllPoints()
+						raidMover:SetPoint(unpack(C.db["Mover"]["RaidPos"..specIndex]))
+					end
+
+					if not C.db["Mover"]["PartyPos"..specIndex] then
+						C.db["Mover"]["PartyPos"..specIndex] = {"LEFT", "UIParent", "LEFT", 350, 0}
+					end
+					if partyMover then
+						partyMover:ClearAllPoints()
+						partyMover:SetPoint(unpack(C.db["Mover"]["PartyPos"..specIndex]))
+					end
+				end
+			end
+			UpdateSpecPos("ON_LOGIN")
+			B:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED", UpdateSpecPos, "player")
+
+			if raidMover then
+				local function updateRaidMover()
+					local specIndex = GetActiveTalentGroup()
+					if not specIndex then return end
+					C.db["Mover"]["RaidPos"..specIndex] = C.db["Mover"]["RaidFrame"]
+				end
+				raidMover:HookScript("OnDragStop", updateRaidMover)
+				raidMover:HookScript("OnHide", updateRaidMover)
+			end
+			if partyMover then
+				local function updatePartyMover()
+					local specIndex = GetActiveTalentGroup()
+					if not specIndex then return end
+					C.db["Mover"]["PartyPos"..specIndex] = C.db["Mover"]["PartyFrame"]
+				end
+				partyMover:HookScript("OnDragStop", updatePartyMover)
+				partyMover:HookScript("OnHide", updatePartyMover)
+			end
+		end
 	end
 end

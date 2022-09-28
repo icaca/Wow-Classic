@@ -9,7 +9,11 @@ DB.Support = GetAddOnMetadata("NDui", "X-Support")
 DB.Client = GetLocale()
 DB.ScreenWidth, DB.ScreenHeight = GetPhysicalScreenSize()
 DB.isClassic = select(4, GetBuildInfo()) < 90000
+<<<<<<< Updated upstream
 DB.isNewPatch = select(4, GetBuildInfo()) >= 20504 -- 2.5.4
+=======
+DB.isNewPatch = select(4, GetBuildInfo()) >= 30400 -- 3.4.0 WLK
+>>>>>>> Stashed changes
 
 -- Colors
 DB.MyName = UnitName("player")
@@ -57,8 +61,12 @@ DB.gradTex = Media.."gradTex"
 DB.flatTex = Media.."flatTex"
 DB.bgTex = Media.."bgTex"
 DB.arrowTex = Media.."TargetArrow"
+DB.starTex = Media.."Hutu\\star"
 DB.MicroTex = Media.."Hutu\\Menu\\"
 DB.rolesTex = Media.."Hutu\\RoleIcons"
+DB.tankTex = Media.."Hutu\\Tank"
+DB.healTex = Media.."Hutu\\Healer"
+DB.dpsTex = Media.."Hutu\\DPS"
 DB.chatLogo = Media.."Hutu\\logoSmall"
 DB.logoTex = Media.."Hutu\\logoClassic"
 DB.sortTex = Media.."SortIcon"
@@ -168,8 +176,20 @@ DB.ReminderBuffs = {
 				[1459] = true,
 				[8096] = true,  -- 智力卷轴
 				[23028] = true, -- 奥术光辉
+				[46302] = true, -- 基鲁的胜利之歌
 			},
 			depend = 1459,
+			combat = true,
+			instance = true,
+			pvp = true,
+		},
+		{	spells = {
+				[168] = true,	-- 霜甲术
+				[7302] = true,	-- 冰甲术
+				[6117] = true,	-- 法师护甲
+				[30482] = true,	-- 熔岩护甲
+			},
+			depend = 168,
 			combat = true,
 			instance = true,
 			pvp = true,
@@ -180,6 +200,7 @@ DB.ReminderBuffs = {
 				[1243] = true,
 				[8099] = true,  -- 耐力卷轴
 				[21562] = true, -- 坚韧祷言
+				[46302] = true, -- 基鲁的胜利之歌
 			},
 			depend = 1243,
 			combat = true,
@@ -237,6 +258,7 @@ DB.ReminderBuffs = {
 	HUNTER = {
 		{	spells = {	-- 雄鹰守护
 				[13165] = true,
+				[61846] = true, -- 龙鹰
 			},
 			depend = 13165,
 			combat = true,
@@ -256,11 +278,31 @@ DB.ReminderBuffs = {
 		{	spells = {
 				[28176] = true,	-- 邪甲术
 				[706] = true,	-- 魔甲术
+				[687] = true,	-- 恶魔皮肤
 			},
 			depend = 28176,
 			combat = true,
 			instance = true,
 			pvp = true,
+		},
+	},
+	DEATHKNIGHT = {
+		{	spells = {
+				[57330] = true,	-- 寒冬号角
+				[25527] = true, -- 大地之力图腾
+			},
+			depend = 57330,
+			combat = true,
+			instance = true,
+			pvp = true,
+		},
+	},
+	PALADIN = {
+		{	spells = {	-- 正义之怒
+				[25780] = true,
+			},
+			depend = 20925,
+			instance = true,
 		},
 	},
 }
