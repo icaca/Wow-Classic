@@ -53,7 +53,7 @@ function addon.fillOptions()
 	-- Guide window options
 
 	addon.optionsFrame.titleGuideWindow = content:CreateFontString(nil, content, "GameFontNormal")
-	addon.optionsFrame.titleGuideWindow:SetText("|cFFFFFFFF___ " .. L.GUIDE_WINDOW .. " _______________________________________________________")
+	addon.optionsFrame.titleGuideWindow:SetText("|cFFFFFFFF___ " .. L.GUIDE_WINDOW:gsub("^%l", string.upper) .. " _______________________________________________________")
 	addon.optionsFrame.titleGuideWindow:SetPoint("TOPLEFT", prev, "BOTTOMLEFT", 0, -10)
 	addon.optionsFrame.titleGuideWindow:SetFontObject("GameFontNormalLarge")
 	local prev = addon.optionsFrame.titleGuideWindow
@@ -144,9 +144,20 @@ function addon.fillOptions()
 		else
 			addon.mainFrame.scrollFrame.ScrollBar:SetAlpha(0)
 		end
+		if GuidelimeDataChar.showUseItemButtons == "RIGHT" then
+			addon.updateUseItemButtons()
+		end
 	end)
 	addon.optionsFrame.showCompletedSteps:SetPoint("TOPLEFT", prev, "BOTTOMLEFT", 0, 0)
 	prev = addon.optionsFrame.showCompletedSteps
+
+	addon.optionsFrame.showTitle = addon.addCheckOption(content, GuidelimeDataChar, "showTitle", L.SHOW_GUIDE_TITLE, nil, function()
+		if GuidelimeDataChar.mainFrameShowing then
+			addon.updateMainFrame()
+		end
+	end)
+	addon.optionsFrame.showTitle:SetPoint("TOPLEFT", prev, "BOTTOMLEFT", 0, 0)
+	prev = addon.optionsFrame.showTitle
 
 	addon.optionsFrame.showCompletedSteps = addon.addCheckOption(content, GuidelimeDataChar, "showCompletedSteps", L.SHOW_COMPLETED_STEPS, nil, function()
 		if GuidelimeDataChar.mainFrameShowing then
@@ -163,7 +174,7 @@ function addon.fillOptions()
 	end)
 	addon.optionsFrame.showUnavailableSteps:SetPoint("TOPLEFT", prev, "BOTTOMLEFT", 0, 0)
 	prev = addon.optionsFrame.showUnavailableSteps
-
+	
 	checkbox = addon.addCheckOption(content, GuidelimeData, "showQuestLevels", L.SHOW_SUGGESTED_QUEST_LEVELS, nil, function()
 		if GuidelimeDataChar.mainFrameShowing then
 			addon.updateStepsText()
@@ -180,16 +191,34 @@ function addon.fillOptions()
 	checkbox:SetPoint("TOPLEFT", prev, "BOTTOMLEFT", 0, 0)
 	prev = checkbox
 
+	local text = content:CreateFontString(nil, content, "GameFontNormal")
+	text:SetText(L.SHOW_USE_ITEM_BUTTONS)
+	text:SetPoint("TOPLEFT", prev, "BOTTOMLEFT", 30, -10)
+	prev = text
+	local choices = {"LEFT", "RIGHT"}
+	for i, v in ipairs(choices) do
+		content.options["showUseItemButtons" .. v] = addon.addCheckbox(content, L["USE_ITEM_BUTTONS_" .. v])
+		content.options["showUseItemButtons" .. v]:SetChecked(GuidelimeDataChar. showUseItemButtons == v)
+		content.options["showUseItemButtons" .. v]:SetScript("OnClick", function()
+			GuidelimeDataChar.showUseItemButtons = content.options["showUseItemButtons" .. v]:GetChecked() and v
+			for _, v2 in ipairs(choices) do
+				content.options["showUseItemButtons" .. v2]:SetChecked(GuidelimeDataChar.showUseItemButtons == v2)
+			end
+			addon.updateUseItemButtons()
+		end)
+		content.options["showUseItemButtons" .. v]:SetPoint("TOPLEFT", prev, "TOPLEFT", i * 180, 10)
+	end
+
 	text = content:CreateFontString(nil, content, "GameFontNormal")
 	text:SetText(L.SELECT_COLORS)
-	text:SetPoint("TOPLEFT", prev, "BOTTOMLEFT", 30, -8)
+	text:SetPoint("TOPLEFT", prev, "BOTTOMLEFT", 0, -20)
 	prev = text
 
 	button = CreateFrame("BUTTON", nil, content, "UIPanelButtonTemplate")
 	button:SetWidth(100)
 	button:SetHeight(20)
 	button:SetText(GuidelimeData.fontColorACCEPT .. L.QUEST_ACCEPT)
-	button:SetPoint("TOPLEFT", checkbox, "BOTTOMLEFT", 110, -4)
+	button:SetPoint("TOPLEFT", prev, "TOPLEFT", 110, 4)
 	button:SetScript("OnClick", function()
 		showColorPicker(GuidelimeData.fontColorACCEPT, function()
 			GuidelimeData.fontColorACCEPT = getColorPickerColor()
@@ -203,7 +232,7 @@ function addon.fillOptions()
 	button:SetWidth(100)
 	button:SetHeight(20)
 	button:SetText(GuidelimeData.fontColorCOMPLETE .. L.QUEST_COMPLETE)
-	button:SetPoint("TOPLEFT", checkbox, "BOTTOMLEFT", 210, -4)
+	button:SetPoint("TOPLEFT", prev, "TOPLEFT", 210, 4)
 	button:SetScript("OnClick", function()
 		showColorPicker(GuidelimeData.fontColorCOMPLETE, function()
 			GuidelimeData.fontColorCOMPLETE = getColorPickerColor()
@@ -217,7 +246,7 @@ function addon.fillOptions()
 	button:SetWidth(100)
 	button:SetHeight(20)
 	button:SetText(GuidelimeData.fontColorTURNIN .. L.QUEST_TURNIN)
-	button:SetPoint("TOPLEFT", checkbox, "BOTTOMLEFT", 110, -24)
+	button:SetPoint("TOPLEFT", prev, "TOPLEFT", 110, -16)
 	button:SetScript("OnClick", function()
 		showColorPicker(GuidelimeData.fontColorTURNIN, function()
 			GuidelimeData.fontColorTURNIN = getColorPickerColor()
@@ -231,7 +260,7 @@ function addon.fillOptions()
 	button:SetWidth(100)
 	button:SetHeight(20)
 	button:SetText(GuidelimeData.fontColorSKIP .. L.QUEST_SKIP)
-	button:SetPoint("TOPLEFT", checkbox, "BOTTOMLEFT", 210, -24)
+	button:SetPoint("TOPLEFT", prev, "TOPLEFT", 210, -16)
 	button:SetScript("OnClick", function()
 		showColorPicker(GuidelimeData.fontColorSKIP, function()
 			GuidelimeData.fontColorSKIP = getColorPickerColor()
@@ -385,6 +414,12 @@ function addon.fillOptions()
 	checkbox:SetPoint("TOPLEFT", prev, "BOTTOMLEFT", 0, 0)
 	prev = checkbox
 
+	checkbox = addon.addCheckOption(content, GuidelimeData, "showMapMarkersInGuide", L.GUIDE_WINDOW, nil, function()
+		addon.updateStepsText()
+	end)
+	checkbox:SetPoint("TOPLEFT", prev, "BOTTOMLEFT", 0, 0)
+	prev = checkbox
+
 	-- Additional markers options
 
 	addon.optionsFrame.titleMapMarkersLoc = content:CreateFontString(nil, content, "GameFontNormal")
@@ -459,13 +494,29 @@ function addon.fillOptions()
 	addon.optionsFrame.titleGeneral:SetPoint("TOPLEFT", prev, "BOTTOMLEFT", 0, -100)
 	addon.optionsFrame.titleGeneral:SetFontObject("GameFontNormalLarge")
 	prev = addon.optionsFrame.titleGeneral
-
-	checkbox = addon.addCheckOption(content, GuidelimeData, "autoCompleteQuest", L.AUTO_COMPLETE_QUESTS)
-	checkbox:SetPoint("TOPLEFT", prev, "BOTTOMLEFT", 0, 0)
-	prev = checkbox
+	
+	for _, option in ipairs({"Accept", "TurnIn"}) do
+		local text = content:CreateFontString(nil, content, "GameFontNormal")
+		text:SetText(L["AUTO_" .. string.upper(option) .. "_QUESTS"])
+		text:SetPoint("TOPLEFT", prev, "BOTTOMLEFT", 0, -20)
+		prev = text
+	
+		local choices = {"Current", "Guide", "All"}
+		for i, v in ipairs(choices) do
+			content.options["auto" .. option .. "Quests" .. v] = addon.addCheckbox(content, L[string.upper(v) .. "_QUESTS"])
+			content.options["auto" .. option .. "Quests" .. v]:SetChecked(GuidelimeData["auto" .. option .. "Quests"] == v)
+			content.options["auto" .. option .. "Quests" .. v]:SetScript("OnClick", function()
+				GuidelimeData["auto" .. option .. "Quests"] = content.options["auto" .. option .. "Quests" .. v]:GetChecked() and v
+				for _, v2 in ipairs(choices) do
+					content.options["auto" .. option .. "Quests" .. v2]:SetChecked(GuidelimeData["auto" .. option .. "Quests"] == v2)
+				end
+			end)
+			content.options["auto" .. option .. "Quests" .. v]:SetPoint("TOPLEFT", prev, "TOPLEFT", 30 + i * 150, 10)
+		end
+	end
 
 	checkbox = addon.addCheckOption(content, GuidelimeData, "autoSelectFlight", L.AUTO_SELECT_FLIGHT)
-	checkbox:SetPoint("TOPLEFT", prev, "BOTTOMLEFT", 0, 0)
+	checkbox:SetPoint("TOPLEFT", prev, "BOTTOMLEFT", 0, -10)
 	prev = checkbox
 
 	checkbox = addon.addCheckOption(content, GuidelimeData, "skipCutscenes", L.SKIP_CUTSCENES, nil, function()
@@ -476,9 +527,9 @@ function addon.fillOptions()
 	checkbox:SetPoint("TOPLEFT", prev, "BOTTOMLEFT", 0, 0)
 	prev = checkbox
 
-	checkbox = addon.addCheckOption(content, GuidelimeData, "displayDemoGuides", L.DISPLAY_DEMO_GUIDES, nil, addon.fillGuides)
+	--[[checkbox = addon.addCheckOption(content, GuidelimeData, "displayDemoGuides", L.DISPLAY_DEMO_GUIDES, nil, addon.fillGuides)
 	checkbox:SetPoint("TOPLEFT", prev, "BOTTOMLEFT", 0, 0)
-	prev = checkbox
+	prev = checkbox]]
 
 	checkbox = addon.addCheckOption(content, GuidelimeData, "showTooltips", L.SHOW_TOOLTIPS, nil, function()
 		if GuidelimeDataChar.mainFrameShowing then

@@ -135,11 +135,11 @@ end
 function M:VersionCheck_Compare(new, old)
 	local new1, new2 = strsplit(".", new)
 	new1, new2 = tonumber(new1), tonumber(new2)
-	if new1 > 2 then new1, new2 = 0, 0 end
+	if new1 > 3 then new1, new2 = 0, 0 end
 
 	local old1, old2 = strsplit(".", old)
 	old1, old2 = tonumber(old1), tonumber(old2)
-	if old1 > 2 then old1, old2 = 0, 0 end
+	if old1 > 3 then old1, old2 = 0, 0 end
 
 	if new1 > old1 or (new1 == old1 and new2 > old2) then
 		return "IsNew"
@@ -334,6 +334,7 @@ function M:SendCurrentItem(thisTime, itemID, itemLink)
 end
 
 function M:AnalyzeButtonCooldown()
+	if not self.action then return end -- no action for pet actionbar
 	if not C.db["Misc"]["SendActionCD"] then return end
 	if not IsInGroup() then return end
 

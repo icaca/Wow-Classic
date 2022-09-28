@@ -102,8 +102,7 @@ function Bar:MicroMenu()
 	if not C.db["Actionbar"]["MicroMenu"] then return end
 
 	local menubar = CreateFrame("Frame", nil, UIParent)
-	menubar:SetSize(265, 22)
-	B.Mover(menubar, L["Menubar"], "Menubar", C.Skins.MicroMenuPos)
+	menubar:SetSize(323, 22)
 	Bar:MicroMenu_Lines(menubar)
 
 	-- Generate Buttons
@@ -111,8 +110,10 @@ function Bar:MicroMenu()
 		{"player", "CharacterMicroButton", MicroButtonTooltipText(CHARACTER_BUTTON, "TOGGLECHARACTER0")},
 		{"spellbook", "SpellbookMicroButton", MicroButtonTooltipText(SPELLBOOK_ABILITIES_BUTTON, "TOGGLESPELLBOOK")},
 		{"talents", "TalentMicroButton", MicroButtonTooltipText(TALENTS, "TOGGLETALENTS")},
+		{"achievements", "AchievementMicroButton", MicroButtonTooltipText(ACHIEVEMENT_BUTTON, "TOGGLEACHIEVEMENT")},
 		{"quests", "QuestLogMicroButton", MicroButtonTooltipText(QUESTLOG_BUTTON, "TOGGLEQUESTLOG")},
 		{"guild", "SocialsMicroButton", MicroButtonTooltipText(SOCIAL_BUTTON, "TOGGLESOCIAL")},
+		{"encounter", "PVPMicroButton", MicroButtonTooltipText(PLAYER_V_PLAYER, "TOGGLECHARACTER4")},
 		{"LFG", "LFGMicroButton", MicroButtonTooltipText(LFG_BUTTON, "TOGGLELFG")},
 		{"store", function() ToggleStoreUI() end, BLIZZARD_STORE},
 		{"collections", "HelpMicroButton", MicroButtonTooltipText(HELP_BUTTON, "TOGGLEHELP")},
@@ -122,6 +123,7 @@ function Bar:MicroMenu()
 	for _, info in pairs(buttonInfo) do
 		Bar:MicroButton_Create(menubar, info)
 	end
+	B.Mover(menubar, L["Menubar"], "Menubar", C.Skins.MicroMenuPos)
 
 	-- Order Positions
 	for i = 1, #buttonList do
@@ -133,8 +135,8 @@ function Bar:MicroMenu()
 	end
 
 	-- Default elements
+	B.HideObject(PVPMicroButtonTexture)
 	B.HideObject(MicroButtonPortrait)
-	B.HideObject(MainMenuBarDownload)
 	B.HideObject(HelpOpenWebTicketButton)
 	B.HideObject(MainMenuBarPerformanceBar)
 	MainMenuMicroButton:SetScript("OnUpdate", nil)

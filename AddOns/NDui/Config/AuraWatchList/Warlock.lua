@@ -2,6 +2,8 @@ local _, ns = ...
 local B, C, L, DB = unpack(ns)
 local module = B:GetModule("AurasTable")
 
+if DB.MyClass ~= "WARLOCK" then return end
+
 -- 术士的法术监控
 local list = {
 	["Player Aura"] = {		-- 玩家光环组
@@ -24,6 +26,8 @@ local list = {
 	},
 	["Special Aura"] = {	-- 玩家重要光环组
 		{AuraID = 28610, UnitID = "pet"},		-- 防护暗影结界
+		{AuraID = 47241, UnitID = "player"},		-- 恶魔变形
+		{AuraID = 50589, UnitID = "player"},		-- 献祭光环
 	},
 	["Focus Aura"] = {		-- 焦点光环组
 	},

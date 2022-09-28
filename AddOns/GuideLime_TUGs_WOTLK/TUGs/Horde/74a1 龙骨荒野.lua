@@ -1,0 +1,68 @@
+Guidelime.registerGuide(
+[[
+[GA Horde]
+[N74a1 龙骨荒野 - 部落]
+[NX74a2 龙骨荒野 - 部落]
+[插件是由 TUGs 编写的完全免费的任务指引, 由Github/Guidelime频道搬运而来，
+本指引由国服五区【范克瑞斯】【Gone With The Gold】公会【四季时光】 翻译
+本指引将每个精英任务和地下城都标记为可选做或者跳过. 如果你接到了关于精英与地下城的任务建议您还是做一下，因为在初期非常容易找到匹配的队伍！
+TurnIn: [QT12218]
+Accept: [QA12221]
+TurnIn: [QT12230]
+Accept: [QA12232]
+Accept: [QA12240]
+Accept: [QA12245]
+Accept: [QA12234]
+这里有多个任务，如果可能的话，一起完成所有任务。
+Do: [QC12232]
+Do: [QC12245,4]
+Do: [QC12234,1]
+Do: [QC12245,3]
+Do: [QC12234,3]
+Do: [QC12240]
+Do: [QC12245,2]
+Do: [QC12234,2]
+Do: [QC12245,1]
+记得在你回来的路上做<补充坐骑>任务搞第一匹马. (稍后会告诉你在什么时候搞第二匹和第三匹马!)
+TurnIn: [QT12240]
+Accept: [QA12243]
+TurnIn: [QT12234]
+Accept: [QA12239]
+TurnIn: [QT12245]
+Accept: [QA12252]
+TurnIn: [QT12232]
+TurnIn: [QT12239]
+Accept: [QA12254]
+Do: [QC12254]
+TurnIn: [QT12254]
+Accept: [QA12260]
+Do: [QC12260]
+TurnIn: [QT12260]
+Accept: [QA12274]
+Do: [QC12274]
+Do: [QC12243,1]
+Do: [QC12243]
+TurnIn: [QT12274]
+Accept: [QA12283]
+Do: [QC12283]
+Do: [QC12252]
+他会掉落触发任务物品<拷问者的魔棒>，右击接受任务！
+Accept: [QA12271]
+记得在你回来的路上做<补充坐骑>任务搞第二匹马.
+TurnIn: [QT12243]
+TurnIn: [QT12271]
+Accept: [QA12273]
+TurnIn: [QT12283]
+Accept: [QA12285]
+TurnIn: [QT12252]
+你刚刚又接到了一个组队任务，一如既往的尽快找到一个队伍来做它,不过这依然是一个可选任务！
+(当你翅膀硬的时候)Do: [QC12285]
+Do: [QC12273,3]
+Do: [QC12273,1]
+Do: [QC12273,4]
+Do: [QC12273,2]
+记得在你回来的路上做<补充坐骑>任务搞第三匹马.  妙啊~~~
+Do: [QC12214]
+TurnIn: [QT12214]
+TurnIn: [QT12273]
+]], "TUGs The Ultimate (Leveling) Guides")

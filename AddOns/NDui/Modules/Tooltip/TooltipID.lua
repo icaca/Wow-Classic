@@ -5,6 +5,7 @@ local TT = B:GetModule("Tooltip")
 local strmatch, format, tonumber, select, strfind = string.match, string.format, tonumber, select, string.find
 local UnitAura, GetItemCount, GetItemInfo, GetUnitName = UnitAura, GetItemCount, GetItemInfo, GetUnitName
 local GetMouseFocus = GetMouseFocus
+local GetCurrencyListInfo = GetCurrencyListInfo
 local BAGSLOT, BANK = BAGSLOT, BANK
 local SELL_PRICE_TEXT = format("|cffffffff%s%s%%s|r", SELL_PRICE, HEADER_COLON)
 local ITEM_LEVEL_STR = gsub(ITEM_LEVEL_PLUS, "%+", "")
@@ -61,11 +62,6 @@ function TT:UpdateItemSellPrice()
 	end
 end
 
-local iLvlItemClassIDs = {
-	[LE_ITEM_CLASS_ARMOR] = true,
-	[LE_ITEM_CLASS_WEAPON] = true,
-}
-
 function TT:AddLineForID(id, linkType, noadd)
 	for i = 1, self:NumLines() do
 		local line = _G[self:GetName().."TextLeft"..i]
@@ -94,7 +90,7 @@ function TT:AddLineForID(id, linkType, noadd)
 		end
 
 		-- iLvl info like retail
-		if name and itemLevel and itemLevel > 1 and iLvlItemClassIDs[classID] then
+		if name and itemLevel and itemLevel > 1 and DB.iLvlClassIDs[classID] then
 			local tipName = self:GetName()
 			local index = strfind(tipName, "Shopping") and 3 or 2
 			local line = _G[tipName.."TextLeft"..index]
@@ -102,6 +98,7 @@ function TT:AddLineForID(id, linkType, noadd)
 			if lineText then
 				line:SetFormattedText(ITEM_LEVEL_STR, itemLevel, lineText)
 				line:SetJustifyH("LEFT")
+				line:SetWidth(ceil(line:GetStringWidth())) -- make sure it won't affect by RatingBuster
 			end
 		end
 	end
@@ -179,6 +176,15 @@ function TT:SetupTooltipID()
 	ShoppingTooltip2:HookScript("OnTooltipSetItem", TT.SetItemID)
 	ItemRefShoppingTooltip1:HookScript("OnTooltipSetItem", TT.SetItemID)
 	ItemRefShoppingTooltip2:HookScript("OnTooltipSetItem", TT.SetItemID)
+
+	-- Currencies
+	hooksecurefunc(GameTooltip, "SetCurrencyToken", function(self, index)
+		local id = select(12, GetCurrencyListInfo(index))
+		if id then TT.AddLineForID(self, id, types.currency) end
+	end)
+	hooksecurefunc(GameTooltip, "SetCurrencyTokenByID", function(self, id)
+		if id then TT.AddLineForID(self, id, types.currency) end
+	end)
 
 	-- Spell caster
 	hooksecurefunc(GameTooltip, "SetUnitAura", TT.UpdateSpellCaster)

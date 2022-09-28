@@ -1,8 +1,10 @@
-## Interface: 11306
+## Interface: 11403
 ## Title: HandyNotes_DungeonLocations (Classic)
-## Version: 1.05-bcc
+## Version: 1.06a-classic
 ## Notes: Shows locations of old world dungeon and raid entrances
 ## Author: Caliaha of Cairne
+## X-Curse-Project-ID: 323067
+## X-WoWI-ID: 25298
 ## RequiredDeps: HandyNotes
 ## SavedVariables: HandyNotes_DungeonLocationsClassicDB
 

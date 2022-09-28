@@ -5,6 +5,7 @@ HBD = LibStub("HereBeDragons-2.0")
 
 -- Register events and call functions
 addon.frame:SetScript("OnEvent", function(self, event, ...)
+	if addon.debugging then print("LIME:", event, ...) end
 	addon.frame[event](self, ...)
 end)
 
@@ -15,13 +16,7 @@ end
 
 addon.frame:RegisterEvent('PLAYER_LOGIN')
 function addon.frame:PLAYER_LOGIN()
-	--if addon.debugging then print("LIME: Player logged in...") end
 	C_Timer.After(2, init)
-end
-
-addon.frame:RegisterEvent('PLAYER_ENTERING_WORLD')
-function addon.frame:PLAYER_ENTERING_WORLD()
-	--if addon.debugging then print("LIME: Player entering world...") end
 end
 
 addon.frame:RegisterEvent('PLAYER_LEVEL_UP')
@@ -43,7 +38,6 @@ end
 
 addon.frame:RegisterEvent('UPDATE_FACTION')
 function addon.frame:UPDATE_FACTION(level)
-	if addon.debugging then print("LIME: Update faction") end
 	addon.updateMainFrame()
 end
 
@@ -208,13 +202,27 @@ end
 
 addon.frame:RegisterEvent('QUEST_LOG_UPDATE')
 function addon.frame:QUEST_LOG_UPDATE()
-	if addon.debugging then print("LIME: QUEST_LOG_UPDATE", addon.firstLogUpdate) end
 	doQuestUpdate()
 end
 
+function addon.isQuestAuto(option, id)
+	if option == "All" then 
+		return true 
+	elseif addon.currentGuide == nil then
+		return false
+	elseif option == "Current" then 
+		return addon.currentGuide.activeQuests ~= nil and addon.contains(addon.currentGuide.activeQuests, id)
+	elseif option == "Guide" then
+		return addon.scannedQuests ~= nil and addon.containsKey(addon.scannedQuests, id)
+	else
+		return false
+	end
+end
+
+
 addon.frame:RegisterEvent('GOSSIP_SHOW')
 function addon.frame:GOSSIP_SHOW()
-	if GuidelimeData.autoCompleteQuest and not IsShiftKeyDown() and addon.currentGuide ~= nil and addon.currentGuide.activeQuests ~= nil then 
+	if (GuidelimeData.autoAcceptQuests or GuidelimeData.autoTurnInQuests) and not IsShiftKeyDown() then 
 		if addon.debugging then print ("LIME: GOSSIP_SHOW", addon.GetGossipActiveQuests()) end
 		if addon.debugging then print ("LIME: GOSSIP_SHOW", addon.GetGossipAvailableQuests()) end
 		local q = { addon.GetGossipActiveQuests() }
@@ -224,7 +232,7 @@ function addon.frame:GOSSIP_SHOW()
 		for i = 1, addon.GetNumGossipActiveQuests() do
 			local name = q[(i-1) * 6 + 1]
 			local complete = q[(i-1) * 6 + 4]
-			if complete and addon.contains(addon.currentGuide.activeQuests, function(id) return name == addon.getQuestNameById(id) end) then
+			if complete and addon.isQuestAuto(GuidelimeData.autoTurnInQuests, function(id) return name == addon.getQuestNameById(id) end) then
 				if selectActive == nil then
 					selectActive = i
 				else
@@ -235,7 +243,7 @@ function addon.frame:GOSSIP_SHOW()
 		q = { addon.GetGossipAvailableQuests() }
 		for i = 1, addon.GetNumGossipAvailableQuests() do
 			local name = q[(i-1) * 7 + 1]
-			if addon.contains(addon.currentGuide.activeQuests, function(id) return name == addon.getQuestNameById(id) end) then
+			if addon.isQuestAuto(GuidelimeData.autoAcceptQuests, function(id) return name == addon.getQuestNameById(id) end) then
 				if selectActive == nil and selectAvailable == nil then
 					selectAvailable = i
 				else
@@ -277,7 +285,7 @@ end
 
 addon.frame:RegisterEvent('QUEST_GREETING')
 function addon.frame:QUEST_GREETING()
-	if GuidelimeData.autoCompleteQuest and not IsShiftKeyDown() and addon.currentGuide ~= nil and addon.currentGuide.activeQuests ~= nil then 
+	if GuidelimeData.autoAcceptQuest and not IsShiftKeyDown() then 
 		if addon.debugging then print ("LIME: QUEST_GREETING", GetNumActiveQuests()) end
 		if addon.debugging then print ("LIME: QUEST_GREETING", GetNumAvailableQuests()) end
 		local selectActive = nil
@@ -285,7 +293,7 @@ function addon.frame:QUEST_GREETING()
 		addon.openNpcAgain = false
 		for i = 1, GetNumActiveQuests() do
 			local name = GetActiveTitle(i)
-			if addon.contains(addon.currentGuide.activeQuests, function(id) return name == addon.getQuestNameById(id) end) then
+			if addon.isQuestAuto(GuidelimeData.autoAcceptQuests, function(id) return name == addon.getQuestNameById(id) end) then
 				if selectActive == nil then
 					selectActive = i
 				else
@@ -295,7 +303,7 @@ function addon.frame:QUEST_GREETING()
 		end
 		for i = 1, GetNumAvailableQuests() do
 			local name = GetAvailableTitle(i)
-			if addon.contains(addon.currentGuide.activeQuests, function(id) return name == addon.getQuestNameById(id) end) then
+			if addon.isQuestAuto(GuidelimeData.autoAcceptQuests, function(id) return name == addon.getQuestNameById(id) end) then
 				if selectActive == nil and selectAvailable == nil then
 					selectAvailable = i
 				else
@@ -322,17 +330,13 @@ addon.frame:RegisterEvent('QUEST_DETAIL')
 function addon.frame:QUEST_DETAIL()
 	local id = GetQuestID()
 	if addon.debugging then print ("LIME: QUEST_DETAIL", id) end
-	if GuidelimeData.autoCompleteQuest and not IsShiftKeyDown() then
-		if addon.currentGuide ~= nil and addon.currentGuide.activeQuests ~= nil and addon.contains(addon.currentGuide.activeQuests, id) then 
-			C_Timer.After(addon.AUTO_COMPLETE_DELAY, function()
-				AcceptQuest()
-				if addon.openNpcAgain then 
-					--todo
-				end
-			end)
-		else
-			addon.lastQuestOpened = id
-		end
+	if not IsShiftKeyDown() and addon.isQuestAuto(GuidelimeData.autoAcceptQuests, id) then
+		C_Timer.After(addon.AUTO_COMPLETE_DELAY, function()
+			AcceptQuest()
+			if addon.openNpcAgain then 
+				--todo
+			end
+		end)
 	end
 end
 
@@ -340,7 +344,7 @@ addon.frame:RegisterEvent('QUEST_PROGRESS')
 function addon.frame:QUEST_PROGRESS()
 	local id = GetQuestID()
 	if addon.debugging then print ("LIME: QUEST_PROGRESS", id) end
-	if IsQuestCompletable() and GuidelimeData.autoCompleteQuest and not IsShiftKeyDown() and addon.currentGuide ~= nil and addon.currentGuide.activeQuests ~= nil and addon.contains(addon.currentGuide.activeQuests, id) then 
+	if not IsShiftKeyDown() and IsQuestCompletable() and addon.isQuestAuto(GuidelimeData.autoTurnInQuests, id) then
 		C_Timer.After(addon.AUTO_COMPLETE_DELAY, function() 
 			CompleteQuest()
 			if addon.openNpcAgain then 
@@ -353,7 +357,7 @@ end
 addon.frame:RegisterEvent('QUEST_COMPLETE')
 function addon.frame:QUEST_COMPLETE()
 	local id = GetQuestID()
-	if GuidelimeData.autoCompleteQuest and not IsShiftKeyDown() and addon.currentGuide ~= nil and addon.currentGuide.activeQuests ~= nil and addon.contains(addon.currentGuide.activeQuests, id) then 
+	if not IsShiftKeyDown() and addon.isQuestAuto(GuidelimeData.autoTurnInQuests, id) then
 		if addon.debugging then print ("LIME: QUEST_COMPLETE", id) end
 		if (GetNumQuestChoices() <= 1) then
 			C_Timer.After(addon.AUTO_COMPLETE_DELAY, function() 
@@ -365,7 +369,6 @@ end
 
 addon.frame:RegisterEvent('CINEMATIC_START')
 function addon.frame:CINEMATIC_START()
-	if addon.debugging then print ("LIME: CINEMATIC_START") end
 	if GuidelimeData.skipCutscenes then
 		StopCinematic()
 	end
@@ -373,7 +376,6 @@ end
 
 addon.frame:RegisterEvent('TAXIMAP_OPENED')
 function addon.frame:TAXIMAP_OPENED()
-	if addon.debugging then print ("LIME: TAXIMAP_OPENED") end
 	if GuidelimeData.autoSelectFlight and not IsShiftKeyDown() and addon.currentGuide ~= nil and addon.currentGuide.firstActiveIndex ~= nil and	addon.currentGuide.lastActiveIndex ~= nil then
 		for i = addon.currentGuide.firstActiveIndex, addon.currentGuide.lastActiveIndex do
 			local step = addon.currentGuide.steps[i]
@@ -407,7 +409,6 @@ end
 
 addon.frame:RegisterEvent('PLAYER_CONTROL_LOST')
 function addon.frame:PLAYER_CONTROL_LOST()
-	if addon.debugging then print ("LIME: PLAYER_CONTROL_LOST") end
 	C_Timer.After(1, function() 
 		if UnitOnTaxi("player") then
 			if addon.debugging then print ("LIME: UnitOnTaxi") end
@@ -418,7 +419,6 @@ end
 
 addon.frame:RegisterEvent('UI_INFO_MESSAGE')
 function addon.frame:UI_INFO_MESSAGE(errorType, message)
-	if addon.debugging then print ("LIME: UI_INFO_MESSAGE", errorType, message) end
 	if message == ERR_NEWTAXIPATH then
 		if addon.debugging then print ("LIME: ERR_NEWTAXIPATH") end
 		addon.completeSemiAutomaticByType("GET_FLIGHT_POINT")
@@ -427,14 +427,12 @@ end
 
 addon.frame:RegisterEvent('HEARTHSTONE_BOUND')
 function addon.frame:HEARTHSTONE_BOUND(errorType, message)
-	if addon.debugging then print ("LIME: HEARTHSTONE_BOUND") end
 	addon.completeSemiAutomaticByType("SET_HEARTH")
 end
 
 
 addon.frame:RegisterEvent('UNIT_SPELLCAST_SUCCEEDED')
 function addon.frame:UNIT_SPELLCAST_SUCCEEDED(unitTarget, castGUID, spellID)
-	--if addon.debugging then print ("LIME: UNIT_SPELLCAST_SUCCEEDED", unitTarget, castGUID, spellID) end
 	-- hearthstone was used (or Astral Recall)
 	if spellID == 8690 or spellID == 556 then
 		addon.completeSemiAutomaticByType("HEARTH")
@@ -444,18 +442,77 @@ end
 addon.requestItemInfo = {}
 addon.frame:RegisterEvent('GET_ITEM_INFO_RECEIVED')
 function addon.frame:GET_ITEM_INFO_RECEIVED(itemId,success)
-	-- if addon.debugging then print ("LIME: GET_ITEM_INFO_RECEIVED") end
 	if addon.requestItemInfo[itemId] and success then
 		addon.requestItemInfo[itemId] = nil
 		addon.updateStepsText()
+		addon.updateUseItemButtons()
 	end
 end
 
 addon.frame:RegisterEvent('BAG_UPDATE')
 function addon.frame:BAG_UPDATE()
-	-- if addon.debugging then print ("LIME: BAG_UPDATE") end
 	local guide = GuidelimeDataChar and addon.guides[GuidelimeDataChar.currentGuide]
 	if guide and guide.itemUpdateIndices and #guide.itemUpdateIndices > 0 then
 		addon.updateSteps(guide.itemUpdateIndices)
+	else
+		addon.updateUseItemButtons()
+	end
+end
+
+addon.frame:RegisterEvent('PLAYER_FARSIGHT_FOCUS_CHANGED')
+function addon.frame:PLAYER_FARSIGHT_FOCUS_CHANGED()
+	-- This is a hack to work around an issue with HereBeDragons
+	-- see https://www.curseforge.com/wow/addons/herebedragons/issues/31
+	-- In situations where player is remote controlling coordinates reported by hbd stay on the player character position and minimap icons do not move
+	-- Therefore arrow and minimap will be disabled
+	-- TODO: Are there other similar "remote-controlled" quest vehicles?
+	local spellIds = {
+		6196,   -- Far Sight, 
+		321297, -- Eyes of the Beast
+		6197,   -- Eagle Exe
+		51852,  -- Eye of Acherus (in DK intro quest)
+	}
+	local i = 1
+	while (true) do
+		local name, _, _, _, _, _, _, _, _, spellId = UnitAura("player", i, "HELPFUL")
+		if not name then break end
+		--if addon.debugging then print ("LIME: player has buff", name, spellId) end
+		if addon.contains(spellIds, spellId) then
+			if not addon.hideMinimapIconsAndArrowWhileBuffed then
+				if addon.debugging then print ("LIME: deactivating arrow and minimap due to", name) end
+				addon.hideMinimapIconsAndArrowWhileBuffed = true
+				addon.updateStepsMapIcons()
+			end
+			return
+		end
+		i = i + 1
+	end
+	if addon.hideMinimapIconsAndArrowWhileBuffed then
+		if addon.debugging then print ("LIME: reactivating arrow and minimap") end
+		addon.hideMinimapIconsAndArrowWhileBuffed = false
+		addon.updateStepsMapIcons()
+	end
+end
+
+addon.frame:RegisterEvent('PLAYER_REGEN_ENABLED')
+function addon.frame:PLAYER_REGEN_ENABLED()
+	if addon.updateAfterCombat then
+		addon.updateAfterCombat = false
+		addon.updateUseItemButtons()
+	end
+end
+
+addon.frame:RegisterEvent('UPDATE_BINDINGS')
+function addon.frame:UPDATE_BINDINGS()
+	addon.updateUseItemButtons()
+end
+
+addon.frame:RegisterEvent('BAG_UPDATE_COOLDOWN')
+function addon.frame:BAG_UPDATE_COOLDOWN()
+	if not addon.mainFrame or not addon.mainFrame.useButtons then return end
+	for _, button in ipairs(addon.mainFrame.useButtons) do
+		if button:IsShown() then
+			button:Update()
+		end
 	end
 end

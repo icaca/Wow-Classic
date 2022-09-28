@@ -10,11 +10,37 @@ local CLASS_ICON_TCOORDS = CLASS_ICON_TCOORDS
 local GetMoney = GetMoney
 local GetContainerNumSlots, GetContainerItemInfo, UseContainerItem = GetContainerNumSlots, GetContainerItemInfo, UseContainerItem
 local C_Timer_After, IsControlKeyDown, IsShiftKeyDown = C_Timer.After, IsControlKeyDown, IsShiftKeyDown
+local GetBackpackCurrencyInfo = GetBackpackCurrencyInfo
+local C_CurrencyInfo_GetCurrencyInfo = C_CurrencyInfo.GetCurrencyInfo
 local CalculateTotalNumberOfFreeBagSlots = CalculateTotalNumberOfFreeBagSlots
 local slotString = L["Bags"]..": %s%d"
 
 local profit, spent, oldMoney = 0, 0, 0
 local myName, myRealm = DB.MyName, DB.MyRealm
+
+local crossRealms = GetAutoCompleteRealms()
+if not crossRealms or #crossRealms == 0 then
+	crossRealms = {[1]=myRealm}
+end
+
+StaticPopupDialogs["RESETGOLD"] = {
+	text = L["Are you sure to reset the gold count?"],
+	button1 = YES,
+	button2 = NO,
+	OnAccept = function()
+		for _, realm in pairs(crossRealms) do
+			if NDuiADB["totalGold"][realm] then
+				wipe(NDuiADB["totalGold"][realm])
+			end
+		end
+		NDuiADB["totalGold"][myRealm][myName] = {GetMoney(), DB.MyClass}
+	end,
+	whileDead = 1,
+}
+
+local menuList = {
+	{text = B.HexRGB(1, .8, 0)..REMOVE_WORLD_MARKERS.."!!!", notCheckable = true, func = function() StaticPopup_Show("RESETGOLD") end},
+}
 
 local function getClassIcon(class)
 	local c1, c2, c3, c4 = unpack(CLASS_ICON_TCOORDS[class])
@@ -45,6 +71,10 @@ info.onEvent = function(self, event, arg1)
 	if event == "PLAYER_ENTERING_WORLD" then
 		oldMoney = GetMoney()
 		self:UnregisterEvent(event)
+
+		if NDuiADB["ShowSlots"] then
+			self:RegisterEvent("BAG_UPDATE")
+		end
 	elseif event == "BAG_UPDATE" then
 		if arg1 < 0 or arg1 > 4 then return end
 	end
@@ -63,26 +93,52 @@ info.onEvent = function(self, event, arg1)
 	end
 
 	if not NDuiADB["totalGold"][myRealm] then NDuiADB["totalGold"][myRealm] = {} end
-	NDuiADB["totalGold"][myRealm][myName] = {GetMoney(), DB.MyClass}
+	if not NDuiADB["totalGold"][myRealm][myName] then NDuiADB["totalGold"][myRealm][myName] = {} end
+	NDuiADB["totalGold"][myRealm][myName][1] = GetMoney()
+	NDuiADB["totalGold"][myRealm][myName][2] = DB.MyClass
 
 	oldMoney = newMoney
 end
 
-StaticPopupDialogs["RESETGOLD"] = {
-	text = L["Are you sure to reset the gold count?"],
-	button1 = YES,
-	button2 = NO,
-	OnAccept = function()
-		wipe(NDuiADB["totalGold"][myRealm])
-		NDuiADB["totalGold"][myRealm][myName] = {GetMoney(), DB.MyClass}
-	end,
-	whileDead = 1,
-}
+local RebuildCharList
+
+local function clearCharGold(_, realm, name)
+	NDuiADB["totalGold"][realm][name] = nil
+	DropDownList1:Hide()
+	RebuildCharList()
+end
+
+function RebuildCharList()
+	for i = 2, #menuList do
+		if menuList[i] then wipe(menuList[i]) end
+	end
+
+	local index = 1
+	for _, realm in pairs(crossRealms) do
+		if NDuiADB["totalGold"][realm] then
+			for name, value in pairs(NDuiADB["totalGold"][realm]) do
+				if not (realm == myRealm and name == myName) then
+					index = index + 1
+					if not menuList[index] then menuList[index] = {} end
+					menuList[index].text = B.HexRGB(B.ClassColor(value[2]))..Ambiguate(name.."-"..realm, "none")
+					menuList[index].notCheckable = true
+					menuList[index].arg1 = realm
+					menuList[index].arg2 = name
+					menuList[index].func = clearCharGold
+				end
+			end
+		end
+	end
+end
 
 info.onMouseUp = function(self, btn)
 	if btn == "RightButton" then
 		if IsControlKeyDown() then
-			StaticPopup_Show("RESETGOLD")
+			if not menuList[1].created then
+				RebuildCharList()
+				menuList[1].created = true
+			end
+			EasyMenu(menuList, B.EasyMenu, self, -80, 100, "MENU", 1)
 		else
 			NDuiADB["ShowSlots"] = not NDuiADB["ShowSlots"]
 			if NDuiADB["ShowSlots"] then
@@ -96,9 +152,19 @@ info.onMouseUp = function(self, btn)
 		NDuiADB["AutoSell"] = not NDuiADB["AutoSell"]
 		self:onEnter()
 	else
-		ToggleAllBags()
+		if NDuiADB["ShowSlots"] then
+			ToggleAllBags()
+		else
+			--if InCombatLockdown() then UIErrorsFrame:AddMessage(DB.InfoColor..ERR_NOT_IN_COMBAT) return end -- fix by LibShowUIPanel
+			ToggleCharacter("TokenFrame")
+		end
 	end
 end
+
+local replacedTextures = {
+	[136998] = "Interface\\PVPFrame\\PVP-Currency-Alliance",
+	[137000] = "Interface\\PVPFrame\\PVP-Currency-Horde",
+}
 
 info.onEnter = function(self)
 	local _, anchor, offset = module:GetTooltipAnchor(info)
@@ -119,16 +185,38 @@ info.onEnter = function(self)
 
 	local totalGold = 0
 	GameTooltip:AddLine(L["RealmCharacter"], .6,.8,1)
-	local thisRealmList = NDuiADB["totalGold"][myRealm]
-	for k, v in pairs(thisRealmList) do
-		local gold, class = unpack(v)
-		local r, g, b = B.ClassColor(class)
-		GameTooltip:AddDoubleLine(getClassIcon(class)..k, module:GetMoneyString(gold), r,g,b, 1,1,1)
-		totalGold = totalGold + gold
+	for _, realm in pairs(crossRealms) do
+		local thisRealmList = NDuiADB["totalGold"][realm]
+		if thisRealmList then
+			for k, v in pairs(thisRealmList) do
+				local name = Ambiguate(k.."-"..realm, "none")
+				local gold, class = unpack(v)
+				local r, g, b = B.ClassColor(class)
+				GameTooltip:AddDoubleLine(getClassIcon(class)..name, module:GetMoneyString(gold), r,g,b, 1,1,1)
+				totalGold = totalGold + gold
+			end
+		end
 	end
 	GameTooltip:AddLine(" ")
 	GameTooltip:AddDoubleLine(TOTAL..":", module:GetMoneyString(totalGold), .6,.8,1, 1,1,1)
 
+	for i = 1, GetNumWatchedTokens() do
+		local name, count, icon, currencyID = GetBackpackCurrencyInfo(i)
+		if name and i == 1 then
+			GameTooltip:AddLine(" ")
+			GameTooltip:AddLine(CURRENCY..":", .6,.8,1)
+		end
+		if name and count then
+			local total = C_CurrencyInfo_GetCurrencyInfo(currencyID).maxQuantity
+			icon = replacedTextures[icon] or icon -- replace classic honor icons
+			local iconTexture = " |T"..icon..":13:15:0:0:50:50:4:46:4:46|t"
+			if total > 0 then
+				GameTooltip:AddDoubleLine(name, count.."/"..total..iconTexture, 1,1,1, 1,1,1)
+			else
+				GameTooltip:AddDoubleLine(name, count..iconTexture, 1,1,1, 1,1,1)
+			end
+		end
+	end
 	GameTooltip:AddDoubleLine(" ", DB.LineString)
 	GameTooltip:AddDoubleLine(" ", DB.RightButton..L["Switch Mode"].." ", 1,1,1, .6,.8,1)
 	GameTooltip:AddDoubleLine(" ", DB.ScrollButton..L["AutoSell Junk"]..": "..(NDuiADB["AutoSell"] and "|cff55ff55"..VIDEO_OPTIONS_ENABLED or "|cffff5555"..VIDEO_OPTIONS_DISABLED).." ", 1,1,1, .6,.8,1)

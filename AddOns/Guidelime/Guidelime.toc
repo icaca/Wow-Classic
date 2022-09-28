@@ -1,7 +1,7 @@
 ## Title: Guidelime
 ## Author: Borick of Arthas(EU)
-## Version: 2.026
-## Interface: 20502
+## Version: 3.001
+## Interface: 30400
 ## SavedVariables: GuidelimeData
 ## SavedVariablesPerCharacter: GuidelimeDataChar
 ## Notes: Leveling guides with automatic progress updates 
@@ -26,7 +26,7 @@ Guidelime_EditorTools.lua
 Guidelime_Parser.lua
 Guidelime_Map.lua
 Guidelime_Import.lua
-Guidelime_QuestLog.lua
+Guidelime_QuestLog_wrath.lua
 Guidelime_QuestScan.lua
 Data\Guidelime_MapDB.lua
 Data\Guidelime_QuestsDB.lua
@@ -38,11 +38,10 @@ Data\Guidelime_CreaturesDB_Locales.lua
 Data\Guidelime_ObjectsDB_Locales.lua
 Data\Guidelime_ItemsDB_Locales.lua
 Data\Guidelime_QuestsTools.lua
+Data\Guidelime_QuestieCorrections.lua
 Data\Guidelime_Questie.lua
 Data\Guidelime_ClassicCodexCorrections.lua
 Data\Guidelime_ClassicCodex.lua
 Data\Guidelime_FlightmasterDB.lua
 Data\Guidelime_FlightmasterDB_Locales.lua
-
-DemoGuides\DemoGuides.xml
 

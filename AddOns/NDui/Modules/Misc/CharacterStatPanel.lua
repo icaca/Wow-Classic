@@ -8,6 +8,13 @@ local cr, cg, cb = DB.r, DB.g, DB.b
 
 local hasOtherAddon
 
+-- Blizz locales typo in zhTW, build 44832
+CR_DODGE_TOOLTIP = gsub(CR_DODGE_TOOLTIP, "。2", ".2")
+CR_PARRY_TOOLTIP = gsub(CR_PARRY_TOOLTIP, "。2", ".2")
+CR_BLOCK_TOOLTIP = gsub(CR_BLOCK_TOOLTIP, "。2", ".2")
+RESILIENCE_TOOLTIP = gsub(RESILIENCE_TOOLTIP, "。2", ".2")
+DEFAULT_STATDEFENSE_TOOLTIP = gsub(DEFAULT_STATDEFENSE_TOOLTIP, "。2", ".2")
+
 local function SetCharacterStats(statsTable, category)
 	if category == "PLAYERSTAT_BASE_STATS" then
 		PaperDollFrame_SetStat(statsTable[1], 1)
@@ -199,14 +206,18 @@ local function GetItemSlotLevel(unit, index)
 	return tonumber(level) or 0
 end
 
+-- P1 174,187,200,213
+-- P2 200,213,226,239
+-- P3 200,226,239,252
+-- P4 200,246,259,272
 local function GetILvlTextColor(level)
-	if level >= 150 then
+	if level >= 213 then
 		return 1, .5, 0
-	elseif level >= 115 then
+	elseif level >= 200 then
 		return .63, .2, .93
-	elseif level >= 80 then
+	elseif level >= 187 then
 		return 0, .43, .87
-	elseif level >= 45 then
+	elseif level >= 174 then
 		return .12, 1, 0
 	else
 		return 1, 1, 1
@@ -288,7 +299,7 @@ end
 local function ToggleMagicRes()
 	if C.db["Misc"]["StatExpand"] then
 		CharacterResistanceFrame:ClearAllPoints()
-		CharacterResistanceFrame:SetPoint("TOPLEFT", M.StatPanel2, 28, -25)
+		CharacterResistanceFrame:SetPoint("TOPLEFT", M.StatPanel2, 28, -10)
 		CharacterResistanceFrame:SetParent(M.StatPanel2)
 		if not hasOtherAddon then CharacterModelFrame:SetSize(231, 320) end -- size in retail
 
@@ -336,22 +347,115 @@ local function ToggleStatPanel(texture)
 	ToggleMagicRes()
 end
 
-local function ExpandCharacterFrame(expand)
-	CharacterFrame:SetWidth(expand and 584 or 384)
+local function resetMerInspect(self)
+	if self.isDoing then return end
+	self.isDoing = true
+	M:SortAddOnPanels()
+	self.isDoing = nil
+end
+
+M.OtherPanels = {"DCS_StatScrollFrame", "CSC_SideStatsFrame"}
+local found
+function M:FindAddOnPanels()
+	if not found then
+		for _, name in pairs(M.OtherPanels) do
+			if _G[name] then
+				tinsert(PaperDollFrame.__statPanels, _G[name])
+			end
+		end
+		if PaperDollFrame.inspectFrame then
+			hooksecurefunc(PaperDollFrame.inspectFrame, "SetPoint", resetMerInspect)
+			tinsert(PaperDollFrame.__statPanels, PaperDollFrame.inspectFrame)
+		end
+		found = true
+	end
+
+	M:SortAddOnPanels()
+end
+
+function M:SortAddOnPanels()
+	local prev
+	for _, frame in pairs(PaperDollFrame.__statPanels) do
+		if frame:IsShown() then
+			frame:ClearAllPoints()
+			if not prev then
+				if M.StatPanel2:IsShown() then
+					frame:SetPoint("TOPLEFT", M.StatPanel2, "TOPRIGHT", 3, 0)
+				else
+					frame:SetPoint("TOPLEFT", PaperDollFrame, "TOPRIGHT", -32, -15-C.mult)
+				end
+			else
+				frame:SetPoint("TOPLEFT", prev, "TOPRIGHT", 3, 0)
+			end
+			prev = frame
+		end
+	end
+end
+
+function M:SelectEquipSet()
+	if InCombatLockdown() then UIErrorsFrame:AddMessage(DB.InfoColor..ERR_NOT_IN_COMBAT) return end
+
+	local selectedSet = GearManagerDialog.selectedSet
+	local name = selectedSet and selectedSet.id
+	if name then
+		PlaySound(SOUNDKIT.IG_CHARACTER_INFO_TAB)
+		EquipmentManager_EquipSet(name)
+	end
+end
+
+function M:ExGearManager()
+	GearManagerDialog.Title:SetJustifyH("LEFT")
+	GearManagerDialog.Title:SetPoint("TOPLEFT", 12, -12)
+	GearManagerDialog:SetFrameStrata("DIALOG")
+	GearManagerDialog:SetSize(339, 70)
+	GearManagerDialog:ClearAllPoints()
+	GearManagerDialog:SetPoint("BOTTOMLEFT", PaperDollFrame, "TOPLEFT", 10, -18)
+
+	local prevButton
+	for i = 1, 10 do
+		local button = _G["GearSetButton"..i]
+		button:ClearAllPoints()
+		button:SetSize(28, 28)
+		if not prevButton then
+			button:SetPoint("BOTTOMLEFT", 10, 10)
+		else
+			button:SetPoint("LEFT", prevButton, "RIGHT", 5, 0)
+		end
+		prevButton = button
+
+		button:SetScript("OnDoubleClick", M.SelectEquipSet)
+	end
+
+	local names = {"EquipSet", "DeleteSet", "SaveSet"}
+	for i, name in pairs(names) do
+		local button = _G["GearManagerDialog"..name]
+		button:SetSize(60, 20)
+		button:ClearAllPoints()
+		button:SetPoint("TOPRIGHT", 35 - 62*i, -9)
+	end
+
+	GearManagerDialog:HookScript("OnShow", function(self)
+		if not NDuiADB["Help"]["GearManager"] then
+			B:ShowHelpTip(self, L["GearManagerTip"], "RIGHT", 20, 0, nil, "GearManager")
+		end
+	end)
 end
 
 function M:CharacterStatePanel()
+	B:BlizzFrameMover(CharacterFrame) -- Save anchor for CharacterFrame
+
 	if not C.db["Skins"]["BlizzardSkins"] then return end   -- disable if skins off, needs review
 
 	hasOtherAddon = IsAddOnLoaded("CharacterStatsTBC")
 
 	local statPanel = CreateFrame("Frame", "NDuiStatPanel", PaperDollFrame)
 	statPanel:SetSize(200, 422)
-	statPanel:SetPoint("TOPRIGHT", PaperDollFrame, "TOPRIGHT", -35, -16)
+	statPanel:SetPoint("TOPLEFT", PaperDollFrame, "TOPRIGHT", -32, -15-C.mult)
+	B.SetBD(statPanel)
 	M.StatPanel2 = statPanel
 
 	local scrollFrame = CreateFrame("ScrollFrame", nil, statPanel, "UIPanelScrollFrameTemplate")
-	scrollFrame:SetPoint("TOPLEFT", 0, -60)
+	scrollFrame:SetPoint("TOPLEFT", 0, -45)
 	scrollFrame:SetPoint("BOTTOMRIGHT", 0, 2)
 	scrollFrame.ScrollBar:Hide()
 	scrollFrame.ScrollBar.Show = B.Dummy
@@ -389,6 +493,8 @@ function M:CharacterStatePanel()
 	BuildValueFromList()
 	CharacterNameFrame:ClearAllPoints()
 	CharacterNameFrame:SetPoint("TOPLEFT", CharacterFrame, 130, -20)
+	PaperDollFrame.__statPanels = {}
+	M:ExGearManager()
 
 	-- Update data
 	hooksecurefunc("ToggleCharacter", UpdateStats)
@@ -401,18 +507,14 @@ function M:CharacterStatePanel()
 
 	bu:SetScript("OnClick", function(self)
 		C.db["Misc"]["StatExpand"] = not C.db["Misc"]["StatExpand"]
-		ExpandCharacterFrame(C.db["Misc"]["StatExpand"])
 		ToggleStatPanel(self.__texture)
+		M:SortAddOnPanels()
 	end)
 
 	ToggleStatPanel(bu.__texture)
 
-	PaperDollFrame:HookScript("OnHide", function()
-		ExpandCharacterFrame()
-	end)
-
 	PaperDollFrame:HookScript("OnShow", function()
-		ExpandCharacterFrame(C.db["Misc"]["StatExpand"])
+		M:FindAddOnPanels()
 	end)
 
 	-- Block LeatrixPlus toggle

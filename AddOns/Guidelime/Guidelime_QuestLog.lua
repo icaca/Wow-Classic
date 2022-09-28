@@ -32,7 +32,7 @@ function addon.updateQuestLog()
 					newTitle = format("  [%d%s] ", level, qtype) .. title
 				end
 				if GuidelimeData.showQuestIds then
-					newTitle = title .. format(" (#%d)", id)
+					newTitle = newTitle .. format(" (#%d)", id)
 				end
 				tooltip = ""
 				if addon.scannedQuests[id] then

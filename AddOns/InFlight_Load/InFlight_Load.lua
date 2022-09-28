@@ -50,8 +50,23 @@ if GetAddOnEnableState(UnitName("player"), "InFlight") == 2 then
 	local t
 	do
 	t = {
+		[L["Amber Ledge"]]					= {{ find = L["AmberLedgeGossip"],			s = "Amber Ledge",					d = "Transitus Shield (Scenic Route)" }},
+		[L["Argent Tournament Grounds"]]	= {{ find = L["ArgentTournamentGossip"],	s = "Argent Tournament Grounds",	d = "Return" }},
+		[L["Blackwind Landing"]]			= {{ find = L["BlackwindLandingGossip"],	s = "Blackwind Landing",			d = "Skyguard Outpost" }},
+		[L["Caverns of Time"]]				= {{ find = L["CavernsOfTimeGossip"],		s = "Caverns of Time",				d = "Nozdormu's Lair" }},
+		[L["Expedition Point"]]				= {{ find = L["ExpeditionPointGossip"],		s = "Expedition Point",				d = "Shatter Point" }},
+		[L["Hellfire Peninsula"]]			= {{ find = L["HellfirePeninsulaGossip"],	s = "Honor Point",					d = "Shatter Point" }},
 		[L["Nighthaven"]]					= {{ find = L["NighthavenGossipA"],			s = "Nighthaven", 					d = "Rut'theran Village" },
 											   { find = L["NighthavenGossipH"],			s = "Nighthaven", 					d = "Thunder Bluff" }},
+		[L["Old Hillsbrad Foothills"]]		= {{ find = L["OldHillsbradGossip"],		s = "Old Hillsbrad Foothills",		d = "Durnholde Keep" }},
+        [L["Reaver's Fall"]]		        = {{ find = L["Reaver'sFallGossip"],		s = "Reaver's Fall",		        d = "Spinebreaker Post" }},
+		[L["Shatter Point"]]				= {{ find = L["ShatterPointGossip"],		s = "Shatter Point",				d = "Honor Point" }},
+		[L["Skyguard Outpost"]]				= {{ find = L["SkyguardOutpostGossip"],		s = "Skyguard Outpost",				d = "Blackwind Landing" }},
+		[L["Stormwind City"]]				= {{ find = L["StormwindCityGossip"],		s = "Stormwind City",				d = "Return" }},
+		[L["Sun's Reach Harbor"]]			= {{ find = L["SSSAGossip"],				s = "Shattered Sun Staging Area",	d = "Return" },
+											   { find = L["SSSAGossip2"],				s = "Shattered Sun Staging Area",	d = "The Sin'loren" }},
+		[L["The Sin'loren"]]				= {{ find = L["TheSin'lorenGossip"],		s = "The Sin'loren",				d = "Shattered Sun Staging Area" }},
+		[L["Valgarde"]]						= {{ find = L["ValgardeGossip"],			s = "Valgarde",						d = "Explorers' League Outpost" }},
 	}
 	end
 

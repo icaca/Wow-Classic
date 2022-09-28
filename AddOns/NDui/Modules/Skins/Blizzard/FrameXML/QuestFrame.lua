@@ -134,55 +134,25 @@ tinsert(C.defaultThemes, function()
 
 	-- QuestLogFrame
 
-	QuestLogQuestTitle:SetTextColor(1, .8, 0)
-	QuestLogDescriptionTitle:SetTextColor(1, .8, 0)
-	QuestLogRewardTitleText:SetTextColor(1, .8, 0)
-	QuestLogRewardTitleText.SetTextColor = B.Dummy
-	QuestLogItemReceiveText:SetTextColor(1, 1, 1)
-	QuestLogItemReceiveText.SetTextColor = B.Dummy
-	QuestLogItemChooseText:SetTextColor(1, 1, 1)
-	QuestLogItemChooseText.SetTextColor = B.Dummy
-	QuestLogTimerText:SetTextColor(1, .8, 0)
-	QuestLogTimerText.SetTextColor = B.Dummy
-	for i = 1, 10 do
-		local text = _G["QuestLogObjective"..i]
-		text:SetTextColor(1, 1, 1)
-		text.SetTextColor = B.Dummy
-	end
+	B.ReskinPortraitFrame(QuestLogFrame, 10, -10, 0, 5)
+	B.Reskin(QuestLogFrameTrackButton)
+	B.Reskin(QuestLogFrameCancelButton)
+	B.ReskinPortraitFrame(QuestLogDetailFrame, 10, -10, 0, 0)
 
-	B.ReskinPortraitFrame(QuestLogFrame, 10, -10, -30, 45)
+	hooksecurefunc("QuestLog_Update", function()
+		for _, button in pairs(QuestLogListScrollFrame.buttons) do
+			if button and not button.styled then
+				B.ReskinCollapse(button)
+				button.styled = true
+			end
+		end
+	end)
 	B.Reskin(QuestLogFrameAbandonButton)
 	B.Reskin(QuestFramePushQuestButton)
-	B.Reskin(QuestFrameExitButton)
 	B.ReskinScroll(QuestLogDetailScrollFrameScrollBar)
 	B.ReskinScroll(QuestLogListScrollFrameScrollBar)
 	B.StripTextures(QuestLogCount)
 	B.CreateBDFrame(QuestLogCount, .25)
-
-	B.ReskinCollapse(QuestLogCollapseAllButton)
-	QuestLogCollapseAllButton:DisableDrawLayer("BACKGROUND")
-
-	B.StripTextures(QuestLogTrack)
-	QuestLogTrack:SetSize(8, 8)
-	QuestLogTrackTitle:SetPoint("LEFT", QuestLogTrack, "RIGHT", 3, 0)
-	QuestLogTrackTracking:SetTexture(DB.bdTex)
-	B.CreateBDFrame(QuestLogTrackTracking)
-
-	hooksecurefunc("QuestLog_Update", function()
-		for i = 1, QUESTS_DISPLAYED, 1 do
-			local bu = _G["QuestLogTitle"..i]
-			if bu and not bu.styled then
-				B.ReskinCollapse(bu)
-				bu.styled = true
-			end
-		end
-	end)
-
-	for i = 1, 10 do
-		local button = _G["QuestLogItem"..i]
-		ReskinQuestItem(button)
-		hooksecurefunc(button.Icon, "SetTexture", UpdateQuestItemQuality)
-	end
 
 	C_Timer.After(3, function()
 		if CodexQuestShow then
@@ -190,10 +160,13 @@ tinsert(C.defaultThemes, function()
 			B.Reskin(CodexQuestHide)
 			B.Reskin(CodexQuestReset)
 		end
+
+		-- Check all buttons
+		for i = 1, QuestLogDetailScrollChildFrame:GetNumChildren() do
+			local child = select(i, QuestLogDetailScrollChildFrame:GetChildren())
+			if child:IsObjectType("Button") and child.Text and not child.__bg then
+				B.Reskin(child)
+			end
+		end
 	end)
-
-	-- QuestTimerFrame
-
-	B.StripTextures(QuestTimerFrame)
-	B.SetBD(QuestTimerFrame)
 end)

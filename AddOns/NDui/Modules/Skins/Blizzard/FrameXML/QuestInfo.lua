@@ -125,22 +125,25 @@ tinsert(C.defaultThemes, function()
 		ReskinRewardButtonWithSize(MapQuestInfoRewardsFrame[name], true)
 	end
 
-	for _, name in next, {"HonorFrame", "SkillPointFrame", "ArtifactXPFrame"} do
+	--for _, name in next, {"HonorFrame", "SkillPointFrame", "ArtifactXPFrame"} do
+	for _, name in next, {"SkillPointFrame", "ArtifactXPFrame"} do -- don't handle honor frame, needs review
 		ReskinRewardButtonWithSize(QuestInfoRewardsFrame[name])
 	end
 
 	-- Title Reward, needs review
 	do
 		local frame = QuestInfoPlayerTitleFrame
-		local icon = frame.Icon
-
-		B.ReskinIcon(icon)
 		for i = 2, 4 do
 			select(i, frame:GetRegions()):Hide()
 		end
-		local bg = B.CreateBDFrame(frame, .25)
-		bg:SetPoint("TOPLEFT", icon, "TOPRIGHT", 0, 2)
-		bg:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", 220, -1)
+
+		local icon = frame.Icon or QuestInfoPlayerTitleFrameIconTexture
+		if icon then
+			B.ReskinIcon(icon)
+			local bg = B.CreateBDFrame(frame, .25)
+			bg:SetPoint("TOPLEFT", icon, "TOPRIGHT", 0, 2)
+			bg:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", 220, -1)
+		end
 	end
 
 	-- Others
@@ -196,6 +199,7 @@ tinsert(C.defaultThemes, function()
 		QuestInfoRewardsFrame.ItemReceiveText,
 		QuestInfoRewardsFrame.PlayerTitleText,
 		QuestInfoRewardsFrame.XPFrame.ReceiveText,
+		QuestInfoTalentFrame.ReceiveText,
 	}
 	for _, font in pairs(whitish) do
 		SetTextColor_White(font)

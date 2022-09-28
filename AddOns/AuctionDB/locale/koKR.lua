@@ -1,0 +1,66 @@
+-- Generated file, do not edit.
+local addon, _ns = ...
+
+if (GetLocale() ~= 'koKR') then return end
+
+local L = _G[addon].L
+L["|cFF99E5FFLeft|r click to scan or open offline"] = "|cFF99E5FFLeft|r 클릭하여 스캔하거나 오프라인으로 엽니다."
+L["|cFF99E5FFRight|r click for options"] = "|cFF99E5FFRight|r 옵션을 보려면 클릭하십시오."
+L["10 sec"] = "10 초"
+L["2 sec"] = "2 초"
+L[ [=[Action Button!
+
+|cFF99E5FFLeft|r click (or hit space, return or IWT key) to:]=] ] = "액션 버튼! |cFF99E5FFLeft|r 클릭 (또는 공백, 리턴 또는 IWT 키 누르기) :"
+L["AH closed"] = "AH 닫기"
+L["AHDB bug report open: "] = "AHDB 버그 보고서 열기 : "
+L["AHDB Open"] = "AHDB 열기"
+L["AHDB options"] = "AHDB 옵션"
+L["AHDB Scan"] = "AHDB 스캔"
+L["Auction House DataBase addon key bindings"] = "경매장 데이터베이스 애드온 키 바인딩"
+L["Auction House DataBase: records DB history, offline queries and more."] = "경매장 데이터베이스 : DB 이력, 오프라인 쿼리 등을 기록합니다."
+L["auctioneer"] = "경매인"
+L["Auto Save/Reload"] = "자동 저장/다시로드"
+L["Auto Scan"] = "자동 스캔"
+L["Auto scan delay"] = "자동 스캔 지연"
+L["Automatically prompts for /reload in order to save the DataBase at the end of the scan"] = "스캔이 끝날 때 데이터베이스를 저장하기 위해 /reload를 자동으로 프롬프트합니다."
+L["Automatically prompts for targetting the auctioneer at /reload or login time."] = "/ reload 또는 로그인 할 때 경매인을 대상으로 지정하라는 메시지가 자동으로 표시됩니다."
+L["Automatically scan the AH whenever possible, unless the |cFF99E5FFShift|r key is held"] = [=[
+
+|cFF99E5FFShift|r 키를 누르지 않는 한 가능할 때마다 AH를 자동으로 스캔합니다.]=]
+L["Bug Report"] = "버그 리포트"
+L["Bug report from slash command"] = "슬래시 명령의 버그 리포트"
+L["Can't do a full scan at this point, try later..."] = "지금은 전체 스캔을 수행 할 수 없습니다. 나중에 시도하십시오..."
+L["Can't scan outside of cities..."] = "도시 밖에서는 스캔 할 수 없습니다 ..."
+L["click the button, or hit space or enter or IWT to "] = "버튼을 클릭하거나 스페이스를 누르거나 엔터하거나 IWT를 사용"
+L["Debug level"] = "디버그 레벨"
+L["Development, troubleshooting and advanced options:"] = "개발, 문제 해결 및 고급 옵션:"
+L["Disable key bindings"] = "키 바인딩 비활성화"
+L["Disable the automatic temporary keybinding when a scan is possible."] = "스캔이 가능한 경우 자동 임시 키 바인딩을 비활성화하십시오."
+L["Drag to move this button."] = "이 버튼을 이동하려면 드래그하세요."
+L["Get Information to submit a bug."] = "버그를 제출할 정보를 얻으십시오."
+L["How long to wait for cancellation before scan start"] = "스캔 시작 전 취소 대기 시간"
+L["None"] = "없음"
+L["Please submit on discord or https://|cFF99E5FFbit.ly/ahbug|r or email"] = "디스코드 또는 https://|cFF99E5FFbit.ly/ahbug|r  또는 이메일로 제출하십시오"
+L["Reset minimap button"] = "미니맵 리셋 버튼"
+L["Resets the minimap button to back to initial default location"] = "미니 맵 버튼을 초기 기본 위치로 재설정합니다."
+L["Save the scan data to SavedVariables"] = "스캔 데이터를 SavedVariables에 저장"
+L["Sets the debug level"] = "디버그 레벨을 설정합니다"
+L["Shift key is down so we're not starting a scan."] = "Shift 키가 다운되어 스캔을 시작하지 않습니다."
+L["Show new items"] = "새 항목 표시"
+L["Show text about scan possible and commands"] = "스캔 가능 및 명령에 대한 텍스트 표시"
+L["Show the big action button"] = "큰 작업 버튼 표시"
+L["Shows never seen before items found in scan up to these many"] = "이전에 보지 못했던 항목을 스캔중에 가장 많이 찾았음을 표시합니다."
+L["Shows, if checked, the big button prompting you to go do a scan; hides if unchecked."] = "선택하면 스캔을 수행하라는 큰 버튼이 표시됩니다. 선택하지 않으면 숨깁니다."
+L["Slower initial scan per session but more complete information with all sellers"] = "세션별 초기 스캔을 줄이지만 모든 판매자가 보다 완벽한 정보를 제공합니다."
+L["Start a full manual scan now"] = "지금 전체 수동 스캔 시작"
+L["Start a full scan"] = "전체 스캔 시작"
+L["Starting full scan (hold shift next time to prevent it or turn off auto scan)"] = "전체 스캔 시작 (다음 번에 Shift 키를 누른 상태로 방지하거나 자동 스캔을 끄십시오)"
+L["Target Auctioneer at load time"] = "로드 시 대상 경매인"
+L["Target the Auctioneer"] = "경매인 대상"
+L["These options let you control the behavior of AHDB"] = "이 옵션을 사용하면 AHDB의 동작을 제어 할 수 있습니다."
+L["Try again when not in combat..."] = "전투중이 아닐때 다시 시도하십시오..."
+L["Use SexyMap/LDBIcon if available"] = "사용 가능한 경우 SexyMap/LDBIcon 사용"
+L["Wait for Seller information"] = "판매자 정보를 기다립니다."
+L["When at the AH: "] = "AH에있을 때 : "
+L["When checked and if LibDBIcon is installed, use it for minimap icon, otherwise use our code."] = "확인한 후 LibDBIcon이 설치되어 있으면 미니 맵 아이콘으로 사용하고 그렇지 않으면 코드를 사용하십시오."
+

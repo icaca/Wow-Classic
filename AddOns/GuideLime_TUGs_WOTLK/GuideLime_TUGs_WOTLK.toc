@@ -1,0 +1,161 @@
+## Title: Guidelime_TUGs
+## Author: TUGs | The Unprofessional Gamer
+## Version: 3.44
+## Interface: 30400
+## Dependencies: Guidelime
+## Notes: The Ultimate (Leveling) Guide
+
+TUGs\Alliance\1-9Dwarf&Gnome.lua
+TUGs\Alliance\1-9Human.lua
+TUGs\Alliance\1-10Nightelf Starting Zone.lua
+TUGs\Alliance\9-11Dun Morogh, Loch Modan.lua
+TUGs\Alliance\11-18Darkshore.lua
+TUGs\Alliance\18-20DM,Redridge Mountains.lua
+TUGs\Alliance\20-24Ashenvale,Duskwood.lua
+TUGs\Alliance\24-29Ashenvale,Wetlands.lua
+TUGs\Alliance\29-31Duskwood,Hillsbrad.lua
+TUGs\Alliance\31-36STV,Desolace.lua
+TUGs\Alliance\36-37Arathi.lua
+TUGs\Alliance\38-39Dustwallow Marsh,STV.lua
+TUGs\Alliance\40-43Badlands,Uldaman.lua
+TUGs\Alliance\41-44Tanaris,STV.lua
+TUGs\Alliance\44-45Feralas.lua
+TUGs\Alliance\45-47Tanaris,Hinterlands.lua
+TUGs\Alliance\47-49Searing Gorge.lua
+TUGs\Alliance\49-51Un'Goro.lua
+TUGs\Alliance\52-53Felwood.lua
+TUGs\Alliance\55-56BS,WPL.lua
+TUGs\Alliance\56-60WPL,EPL,BS.lua
+
+TUGs\Horde\1-6Undead.lua
+TUGs\Horde\6-12Undead.lua
+TUGs\Horde\1-6Orc.lua
+TUGs\Horde\6-12Orc.lua
+TUGs\Horde\1-6Tauren.lua
+TUGs\Horde\6-12Tauren.lua
+TUGs\Horde\12-16The Barrens.lua
+TUGs\Horde\16-21The Barrens.lua
+TUGs\Horde\21-25 Part.lua
+TUGs\Horde\25-31 Part.lua
+TUGs\Horde\31-33 Part.lua
+TUGs\Horde\33-36 Part.lua
+TUGs\Horde\36-39 Part.lua
+TUGs\Horde\39-41 Part.lua
+TUGs\Horde\41-43 Part.lua
+TUGs\Horde\43-45 Part.lua
+TUGs\Horde\45-48 Part.lua
+TUGs\Horde\48-51 Part.lua
+TUGs\Horde\51-53 Part.lua
+TUGs\Horde\53-55 Part.lua
+TUGs\Horde\55-56 Part.lua
+TUGs\Horde\56-58 Part.lua
+TUGs\Horde\58-60 Part.lua
+
+TUGs\Alliance\1-12Draenei.lua
+TUGs\Alliance\12-20Draenei.lua
+TUGs\Horde\1-13Bloodelf.lua
+TUGs\Horde\13-20Bloodelf.lua
+TUGs\Alliance\60-61Hellfire Peninsula Part I.lua
+TUGs\Alliance\61-62Hellfire Peninsula Part II.lua
+TUGs\Alliance\62-63Zangarmarsh.lua
+TUGs\Alliance\63-64Terokkar Forest Part I.lua
+TUGs\Alliance\64-64Terokkar Forest Part II.lua
+TUGs\Alliance\64-65Nagrand Part I.lua
+TUGs\Alliance\65-66Nagrand Part II.lua
+TUGs\Alliance\66-67Blade's Edge Mountains Part I.lua
+TUGs\Alliance\67-67Blade's Edge Mountains Part II.lua
+TUGs\Alliance\67-68Netherstorm I.lua
+TUGs\Alliance\69-69Netherstorm II.lua
+TUGs\Alliance\69-70Shadowmoon Valley.lua
+
+TUGs\Horde\1-13Bloodelf.lua
+TUGs\Horde\13-20Bloodelf.lua
+TUGs\Horde\60-61 Part.lua
+TUGs\Horde\61-62 Part.lua
+TUGs\Horde\62-63 Part.lua
+TUGs\Horde\63-64 Part.lua
+TUGs\Horde\64-65 Part.lua
+TUGs\Horde\65-66 Part.lua
+TUGs\Horde\68-70a Shadowmoon Valley Horde.lua
+TUGs\Horde\68-70b Shadowmoon Valley Horde.lua
+
+TUGs\Alliance\70a1 嚎风峡湾.lua
+TUGs\Alliance\70a2 嚎风峡湾.lua
+TUGs\Alliance\70a3 嚎风峡湾.lua
+TUGs\Alliance\70a4 嚎风峡湾.lua
+TUGs\Alliance\70a5 嚎风峡湾.lua
+TUGs\Alliance\70a6 嚎风峡湾.lua
+TUGs\Alliance\70a7 嚎风峡湾.lua
+TUGs\Alliance\70b1 北风苔原.lua
+TUGs\Alliance\70b2 北风苔原.lua
+TUGs\Alliance\70b3 北风苔原.lua
+TUGs\Alliance\70b4 北风苔原.lua
+TUGs\Alliance\70b5 北风苔原.lua
+TUGs\Alliance\72a 龙骨荒野.lua
+TUGs\Alliance\72b 龙骨荒野.lua
+TUGs\Alliance\72c 龙骨荒野.lua
+TUGs\Alliance\73a 龙骨荒野.lua
+TUGs\Alliance\73b 龙骨荒野.lua
+TUGs\Alliance\73c 龙骨荒野.lua
+TUGs\Alliance\75a 灰熊丘陵.lua
+TUGs\Alliance\75b 灰熊丘陵.lua
+TUGs\Alliance\75c 灰熊丘陵.lua
+TUGs\Alliance\76a1 灰熊丘陵.lua
+TUGs\Alliance\76a2 灰熊丘陵.lua
+TUGs\Alliance\76b1 祖达克.lua
+TUGs\Alliance\76b2 祖达克.lua
+TUGs\Alliance\76b3 祖达克.lua
+TUGs\Alliance\77a 祖达克.lua
+TUGs\Alliance\77b 祖达克.lua
+TUGs\Alliance\77c 祖达克.lua
+TUGs\Alliance\78a 索拉查盆地.lua
+TUGs\Alliance\78b 索拉查盆地.lua
+TUGs\Alliance\78c 索拉查盆地.lua
+TUGs\Alliance\79a 风暴峭壁.lua
+TUGs\Alliance\79b 风暴峭壁.lua
+TUGs\Alliance\79c 风暴峭壁.lua
+
+TUGs\Horde\70a1 北风苔原.lua
+TUGs\Horde\70a2 北风苔原.lua
+TUGs\Horde\70a3 北风苔原.lua
+TUGs\Horde\70a4 北风苔原.lua
+TUGs\Horde\70a 嚎风峡湾.lua
+TUGs\Horde\71a 北风苔原.lua
+TUGs\Horde\71b 北风苔原.lua
+TUGs\Horde\71c 北风苔原.lua
+TUGs\Horde\72a 龙骨荒野.lua
+TUGs\Horde\72b 龙骨荒野.lua
+TUGs\Horde\72c 龙骨荒野.lua
+TUGs\Horde\74a1 龙骨荒野.lua
+TUGs\Horde\74a2 龙骨荒野.lua
+TUGs\Horde\74a3 龙骨荒野.lua
+TUGs\Horde\74b1 灰熊丘陵.lua
+TUGs\Horde\74b2 灰熊丘陵.lua
+TUGs\Horde\74b3 灰熊丘陵.lua
+TUGs\Horde\75a 灰熊丘陵.lua
+TUGs\Horde\75b 灰熊丘陵.lua
+TUGs\Horde\76a 祖达克.lua
+TUGs\Horde\76b 祖达克.lua
+TUGs\Horde\76c 祖达克.lua
+TUGs\Horde\77a 祖达克.lua
+TUGs\Horde\77b 祖达克.lua
+TUGs\Horde\77c 祖达克.lua
+TUGs\Horde\78a 索拉查盆地.lua
+TUGs\Horde\78b 索拉查盆地.lua
+TUGs\Horde\78c 索拉查盆地.lua
+TUGs\Horde\79a 风暴峭壁.lua
+TUGs\Horde\79b 风暴峭壁.lua
+TUGs\Horde\79c 风暴峭壁.lua
+
+TUGs\55-56 Deathknight.lua
+TUGs\56-57 Deathknight.lua
+TUGs\57-58 Deathknight.lua
+
+TUGs\Professions\Alchemy Shopping List.lua
+TUGs\Professions\Alchemy.lua
+
+TUGs\Professions\Engineering.lua
+TUGs\Professions\Jewelcrafting Shopping List.lua
+TUGs\Professions\Jewelcrafting.lua
+
+TUGs\Professions\Tailoring.lua

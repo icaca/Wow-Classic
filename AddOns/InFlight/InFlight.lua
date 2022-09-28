@@ -170,21 +170,21 @@ function InFlight:LoadBulk()  -- called from InFlight_Load
 	end
 
 	-- Check that this is the right version of the client
-	if select(4, GetBuildInfo()) > 30000 then
+	if select(4, GetBuildInfo()) > 30400 or select(4, GetBuildInfo()) < 21000 then
 		Print(L["AddonDisabled"])
 		DisableAddOn("InFlight")
 		return
 	end
 
 	-- Check that this is the right version of the database to avoid corruption
-	if InFlightDB.version ~= "classic" then
+	if InFlightDB.version ~= "wrath" then
 		InFlightDB.global = nil
-		InFlightDB.version = "classic"
+		InFlightDB.version = "wrath"
 	end
 
 	-- Update default data
-	if InFlightDB.dbinit ~= 1134 or debug then
-		InFlightDB.dbinit = 1134
+	if InFlightDB.dbinit ~= 340 or debug then
+		InFlightDB.dbinit = 340
 		InFlightDB.upload = nil
 		Print(L["DefaultsUpdated"])
 
@@ -366,6 +366,12 @@ function InFlight:InitSource(isTaxiMap)  -- cache source location and hook toolt
 			taxiSrc = L[taxiSrcName]
 		end
 	end
+
+	-- Workaround for Blizzard bug on OutLand Flight Map
+	if not taxiSrc and GetTaxiMapID() == 1467 and GetMinimapZoneText() == L["Shatter Point"] then
+		taxiSrcName = L["Shatter Point"]
+		taxiSrc = "Shatter Point"
+	end
 end
 
 ----------------------------------
@@ -424,7 +430,7 @@ do  -- timer bar
 	-----------------------------
 	function InFlight:CreateBar()
 	-----------------------------
-		sb = CreateFrame("StatusBar", "InFlightBar", UIParent, BackdropTemplateMixin and "BackdropTemplate")
+		sb = CreateFrame("StatusBar", "InFlightBar", UIParent)
 		sb:Hide()
 		sb:SetPoint(db.p, UIParent, db.rp, db.x, db.y)
 		sb:SetMovable(true)
@@ -657,6 +663,14 @@ do  -- timer bar
 			locText:SetJustifyV("CENTER")
 			SetPoints(locText, "LEFT", sb, "LEFT", 4, 0, "RIGHT", timeText, "LEFT", -2, 0)
 			locText:SetText(taxiDstName or "??")
+		elseif db.twolines then
+			timeText:SetJustifyH("CENTER")
+			timeText:SetJustifyV("CENTER")
+			SetPoints(timeText, "CENTER", sb, "CENTER", 0, 0)
+			locText:SetJustifyH("CENTER")
+			locText:SetJustifyV("BOTTOM")
+			SetPoints(locText, "TOPLEFT", sb, "TOPLEFT", -24, db.fontsize*2.5, "BOTTOMRIGHT", sb, "TOPRIGHT", 24, (db.border=="None" and 1) or 3)
+			locText:SetFormattedText("%s %s\n%s", taxiSrcName or "??", db.totext, taxiDstName or "??")
 		else
 			timeText:SetJustifyH("CENTER")
 			timeText:SetJustifyV("CENTER")
@@ -692,7 +706,7 @@ function InFlight:SetLayout(this)  -- setups the options in the default interfac
 
 	t2:SetFormattedText("|cff00aaffAuthor:|r %s\n|cff00aaffVersion:|r %s\n\n%s|r", GetInfo("Author"), GetInfo("Version"), GetInfo("Notes"))
 
-	local b = CreateFrame("Button", nil, this, "UIPanelButtonTemplate",BackdropTemplateMixin and "BackdropTemplate")
+	local b = CreateFrame("Button", nil, this, "UIPanelButtonTemplate")
 	b:SetText(_G.GAMEOPTIONS_MENU)
 	b:SetWidth(max(120, b:GetTextWidth() + 20))
 	b:SetScript("OnClick", InFlight.ShowOptions)
@@ -711,14 +725,14 @@ local info = { }
 function InFlight.ShowOptions()
 -------------------------------
 	if not InFlightDD then
-		InFlightDD = CreateFrame("Frame", "InFlightDD", InFlight, BackdropTemplateMixin and "BackdropTemplate")
+		InFlightDD = CreateFrame("Frame", "InFlightDD", InFlight)
 		InFlightDD.displayMode = "MENU"
 
 		hooksecurefunc("ToggleDropDownMenu", function(...) lastb = select(8, ...) end)
 		local function Exec(b, k, value)
 			if k == "totext" then
 				StaticPopupDialogs["InFlightToText"] = StaticPopupDialogs["InFlightToText"] or {
-					text = "Enter your 'to' text.",
+                    text = L["Enter your 'to' text."],
 					button1 = ACCEPT, button2 = CANCEL,
 					hasEditBox = 1, maxLetters = 12,
 					OnAccept = function(self)
@@ -956,6 +970,7 @@ function InFlight.ShowOptions()
 					AddColor(lvl, L["BorderColor"], "bordercolor")
 				elseif sub == "text" then
 					AddToggle(lvl, L["CompactMode"], "inline")
+                    AddToggle(lvl, L["TwoLines"], "twolines")
 					AddExecute(lvl, L["ToText"], "totext")
 					AddList(lvl, L["Font"], "font")
 					AddList(lvl, _G.FONT_SIZE, "fontsize")

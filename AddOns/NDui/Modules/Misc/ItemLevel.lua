@@ -5,6 +5,7 @@ local M = B:GetModule("Misc")
 local pairs, select, next, wipe = pairs, select, next, wipe
 local UnitGUID, GetItemInfo = UnitGUID, GetItemInfo
 local GetInventoryItemLink = GetInventoryItemLink
+local GetTradePlayerItemLink, GetTradeTargetItemLink = GetTradePlayerItemLink, GetTradeTargetItemLink
 
 local inspectSlots = {
 	"Head",
@@ -111,7 +112,7 @@ function M:ItemLevel_UpdateGemInfo(link, unit, index, slotFrame)
 					texture:SetTexture(gem)
 					bg:SetBackdropBorderColor(0, 0, 0)
 					bg:Show()
-		
+
 					gemStep = gemStep + 1
 				end
 			end
@@ -227,6 +228,67 @@ function M:ItemLevel_UpdateInspect(...)
 	end
 end
 
+local function GetItemQualityAndLevel(link)
+	local _, _, quality, level, _, _, _, _, _, _, _, classID = GetItemInfo(link)
+	if quality and quality > 1 and level > 1 and DB.iLvlClassIDs[classID] then
+		return quality, level
+	end
+end
+
+function M:ItemLevel_UpdateMerchant(link)
+	if not self.iLvl then
+		self.iLvl = B.CreateFS(_G[self:GetName().."ItemButton"], DB.Font[2]+1, "", false, "BOTTOMLEFT", 1, 1)
+	end
+	self.iLvl:SetText("")
+	if link then
+		local quality, level = GetItemQualityAndLevel(link)
+		if quality and level then
+			local color = DB.QualityColors[quality]
+			self.iLvl:SetText(level)
+			self.iLvl:SetTextColor(color.r, color.g, color.b)
+		end
+	end
+end
+
+function M.ItemLevel_UpdateTradePlayer(index)
+	local button = _G["TradePlayerItem"..index]
+	local link = GetTradePlayerItemLink(index)
+	M.ItemLevel_UpdateMerchant(button, link)
+end
+
+function M.ItemLevel_UpdateTradeTarget(index)
+	local button = _G["TradeRecipientItem"..index]
+	local link = GetTradeTargetItemLink(index)
+	M.ItemLevel_UpdateMerchant(button, link)
+end
+
+function M:ItemLevel_FlyoutUpdate(id)
+	if not self.iLvl then
+		self.iLvl = B.CreateFS(self, DB.Font[2]+1, "", false, "BOTTOMLEFT", 1, 1)
+	end
+
+	local quality, level = select(3, GetItemInfo(id))
+	local color = DB.QualityColors[quality or 0]
+	self.iLvl:SetText(level)
+	self.iLvl:SetTextColor(color.r, color.g, color.b)
+	M:ItemBorderSetColor(self, color.r, color.g, color.b)
+end
+
+function M:ItemLevel_FlyoutSetup()
+	if self.iLvl then self.iLvl:SetText("") end
+
+	local location = self.location
+	if not location then return end
+
+	if tonumber(location) then
+		if location >= PDFITEMFLYOUT_FIRST_SPECIAL_LOCATION then return end
+		local id = EquipmentManager_GetItemInfoByLocation(location)
+		if id then
+			M.ItemLevel_FlyoutUpdate(self, id)
+		end
+	end
+end
+
 function M:ShowItemLevel()
 	if not C.db["Misc"]["ItemLevel"] then return end
 
@@ -239,9 +301,25 @@ function M:ShowItemLevel()
 	-- iLvl on InspectFrame
 	B:RegisterEvent("INSPECT_READY", M.ItemLevel_UpdateInspect)
 
+	-- iLvl on FlyoutButtons
+	hooksecurefunc("PaperDollFrameItemFlyout_Show", function()
+		for _, button in pairs(PaperDollFrameItemFlyout.buttons) do
+			if button:IsShown() then
+				M.ItemLevel_FlyoutSetup(button)
+			end
+		end
+	end)
+
 	-- Update item quality
 	M.QualityUpdater = CreateFrame("Frame")
 	M.QualityUpdater:Hide()
 	M.QualityUpdater:SetScript("OnUpdate", M.RefreshButtonInfo)
+
+	-- iLvl on MerchantFrame
+	hooksecurefunc("MerchantFrameItem_UpdateQuality", M.ItemLevel_UpdateMerchant)
+
+	-- iLvl on TradeFrame
+	hooksecurefunc("TradeFrame_UpdatePlayerItem", M.ItemLevel_UpdateTradePlayer)
+	hooksecurefunc("TradeFrame_UpdateTargetItem", M.ItemLevel_UpdateTradeTarget)
 end
 M:RegisterMisc("GearInfo", M.ShowItemLevel)

@@ -44,7 +44,9 @@ tinsert(C.defaultThemes, function()
 			"InterfaceOptionsNamesPanelUnitNameplates",
 			"InterfaceOptionsCameraPanel",
 			"InterfaceOptionsMousePanel",
+			"InterfaceOptionsFeaturesPanel",
 			"InterfaceOptionsAccessibilityPanel",
+			"InterfaceOptionsColorblindPanel",
 			"CompactUnitFrameProfiles",
 			"CompactUnitFrameProfilesGeneralOptionsFrame",
 		}

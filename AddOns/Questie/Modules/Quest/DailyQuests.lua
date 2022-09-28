@@ -20,7 +20,7 @@ local lastCheck
 ---@param message string
 ---@return nil
 function DailyQuests:FilterDailies(message, _, _)
-    if message and Questie.db.char.showRepeatableQuests and QuestiePlayer:GetPlayerLevel() == 70 then
+    if message and Questie.db.char.showRepeatableQuests and QuestiePlayer.GetPlayerLevel() == 70 then
         -- If the REPUTABLE message is empty, i.e contains "::::::::::" we don't count it as a check.
         if (not lastCheck) and not string.find(message, "::::::::::") then
             lastCheck = GetTime();
@@ -179,6 +179,7 @@ hcDailyIds = {
     [11384] = true,
     [11386] = true,
     [11388] = true,
+    [11499] = true,
 };
 
 cookingDailyIds = {

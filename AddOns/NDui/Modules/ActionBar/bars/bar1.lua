@@ -118,6 +118,9 @@ function Bar:CreateBar1()
 	end
 
 	local actionPage = "[bar:6]6;[bar:5]5;[bar:4]4;[bar:3]3;[bar:2]2;[overridebar]14;[shapeshift]13;[vehicleui]12;[possessbar]12;[bonusbar:5]11;[bonusbar:4]10;[bonusbar:3]9;[bonusbar:2]8;[bonusbar:1]7;1"
+	if C.db["Actionbar"]["DemonPage"] and DB.MyClass == "WARLOCK" then
+		actionPage = "[bar:6]6;[bar:5]5;[bar:4]4;[bar:3]3;[bar:2]2;[overridebar]14;[shapeshift]13;[vehicleui]12;[possessbar]12;[bonusbar:5]11;[bonusbar:4]10;[bonusbar:3]9;[bonusbar:2]8;[bonusbar:1]7;[form:1]7;1"
+	end
 	local buttonName = "ActionButton"
 	for i, button in next, buttonList do
 		frame:SetFrameRef(buttonName..i, button)
@@ -158,4 +161,5 @@ function Bar:OnLogin()
 	Bar:ReskinBars()
 	Bar:UpdateAllScale()
 	Bar:HunterAspectBar()
+	Bar:TotemBar()
 end

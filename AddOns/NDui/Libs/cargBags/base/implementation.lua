@@ -308,6 +308,7 @@ function Implementation:GetItemInfo(bagID, slotID, i)
 	if itemLink then
 		i.texture, i.count, i.locked, i.quality, i.link, i.id = texture, count, locked, quality, itemLink, itemID
 		i.hasPrice = not noValue
+		--i.isInSet, i.setName = GetContainerItemEquipmentSetInfo(bagID, slotID)
 		i.cdStart, i.cdFinish, i.cdEnable = GetContainerItemCooldown(bagID, slotID)
 		i.name, _, _, i.level, _, i.type, i.subType, _, i.equipLoc, _, _, i.classID, i.subClassID = GetItemInfo(itemLink)
 		i.isQuestItem = i.classID == LE_ITEM_CLASS_QUESTITEM

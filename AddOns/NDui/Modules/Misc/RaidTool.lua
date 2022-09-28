@@ -438,7 +438,7 @@ end
 function M:RaidTool_CreateMenu(parent)
 	local frame = CreateFrame("Frame", nil, parent)
 	frame:SetPoint("TOP", parent, "BOTTOM", 0, -3)
-	frame:SetSize(182, 38)
+	frame:SetSize(182, 70)
 	B.SetBD(frame)
 	frame:Hide()
 
@@ -502,6 +502,14 @@ function M:RaidTool_CreateMenu(parent)
 				UIErrorsFrame:AddMessage(DB.InfoColor..ERR_NOT_LEADER)
 			end
 		end},
+		{ROLE_POLL, function()
+			if IsInGroup() and (UnitIsGroupLeader("player") or (UnitIsGroupAssistant("player") and IsInRaid())) then
+				InitiateRolePoll()
+			else
+				UIErrorsFrame:AddMessage(DB.InfoColor..ERR_NOT_LEADER)
+			end
+		end},
+		{RAID_CONTROL, function() B:ToggleFriends(4) end},
 	}
 
 	local bu = {}
@@ -516,7 +524,6 @@ function M:RaidTool_CreateMenu(parent)
 end
 
 function M:RaidTool_EasyMarker()
-	local order = {"8", "7", "6", "5", "4", "3", "2", "1", "NONE"}
 	local menuList = {}
 
 	local function GetMenuTitle(color, text)
@@ -527,15 +534,26 @@ function M:RaidTool_EasyMarker()
 		SetRaidTarget("target", arg1)
 	end
 
-	for index, value in pairs(order) do
-		local blizz = _G.UnitPopupButtons["RAID_TARGET_"..value]
+	local mixins = {
+		UnitPopupRaidTarget8ButtonMixin,
+		UnitPopupRaidTarget7ButtonMixin,
+		UnitPopupRaidTarget6ButtonMixin,
+		UnitPopupRaidTarget5ButtonMixin,
+		UnitPopupRaidTarget4ButtonMixin,
+		UnitPopupRaidTarget3ButtonMixin,
+		UnitPopupRaidTarget2ButtonMixin,
+		UnitPopupRaidTarget1ButtonMixin,
+		UnitPopupRaidTargetNoneButtonMixin
+	}
+	for index, mixin in pairs(mixins) do
+		local texCoords = mixin:GetTextureCoords()
 		menuList[index] = {
-			text = GetMenuTitle(blizz.color, blizz.text),
-			icon = blizz.icon,
-			tCoordLeft = blizz.tCoordLeft,
-			tCoordRight = blizz.tCoordRight,
-			tCoordTop = blizz.tCoordTop,
-			tCoordBottom = blizz.tCoordBottom,
+			text = GetMenuTitle(mixin:GetColor(), mixin:GetText()),
+			icon = mixin:GetIcon(),
+			tCoordLeft = texCoords.tCoordLeft,
+			tCoordRight = texCoords.tCoordRight,
+			tCoordTop = texCoords.tCoordTop,
+			tCoordBottom = texCoords.tCoordBottom,
 			arg1 = 9 - index,
 			func = SetRaidTargetByIndex,
 		}

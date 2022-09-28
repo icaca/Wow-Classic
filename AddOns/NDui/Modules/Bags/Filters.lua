@@ -1,6 +1,7 @@
 local _, ns = ...
 local B, C, L, DB = unpack(ns)
 local module = B:GetModule("Bags")
+local cargBags = ns.cargBags
 
 local LE_ITEM_QUALITY_POOR, LE_ITEM_QUALITY_LEGENDARY = LE_ITEM_QUALITY_POOR, LE_ITEM_QUALITY_LEGENDARY
 local LE_ITEM_CLASS_CONSUMABLE, LE_ITEM_CLASS_ITEM_ENHANCEMENT = LE_ITEM_CLASS_CONSUMABLE, LE_ITEM_CLASS_ITEM_ENHANCEMENT
@@ -47,22 +48,33 @@ local function isItemJunk(item)
 	return (item.quality == LE_ITEM_QUALITY_POOR or NDuiADB["CustomJunkList"][item.id]) and item.hasPrice
 end
 
+local function isItemEquipSet(item)
+	if not C.db["Bags"]["ItemFilter"] then return end
+	if not C.db["Bags"]["FilterEquipSet"] then return end
+	return item.isInSet
+end
+
 local function isItemAmmo(item)
 	if not C.db["Bags"]["ItemFilter"] then return end
 	if not C.db["Bags"]["FilterAmmo"] then return end
+
+	if C.db["Bags"]["GatherEmpty"] and not item.texture then
+		return false
+	end
+
 	if DB.MyClass == "HUNTER" then
-		return item.equipLoc == AmmoEquipLoc or module.BagsType[item.bagID] == -1
+		return item.equipLoc == AmmoEquipLoc or cargBags.BagGroups[item.bagID] == -1
 	elseif DB.MyClass == "WARLOCK" then
-		return item.id == 6265 or module.BagsType[item.bagID] == 1
+		return item.id == 6265 or cargBags.BagGroups[item.bagID] == 1
 	end
 end
 
-local iLvlClassIDs = {
+DB.iLvlClassIDs = {
 	[LE_ITEM_CLASS_ARMOR] = true,
 	[LE_ITEM_CLASS_WEAPON] = true,
 }
 function module:IsItemHasLevel(item)
-	return iLvlClassIDs[item.classID]
+	return DB.iLvlClassIDs[item.classID]
 end
 
 local function isItemEquipment(item)
@@ -88,15 +100,30 @@ local function isItemLegendary(item)
 	return item.quality == LE_ITEM_QUALITY_LEGENDARY
 end
 
-local function isItemFavourite(item)
+local collectionBlackList = {}
+local collectionIDs = {
+	[LE_ITEM_MISCELLANEOUS_MOUNT] = LE_ITEM_CLASS_MISCELLANEOUS,
+	[LE_ITEM_MISCELLANEOUS_COMPANION_PET] = LE_ITEM_CLASS_MISCELLANEOUS,
+}
+local function isMountOrPet(item)
+	return not collectionBlackList[item.id] and item.subClassID and collectionIDs[item.subClassID] == item.classID
+end
+local function isItemCollection(item)
+	if not C.db["Bags"]["ItemFilter"] then return end
+	if not C.db["Bags"]["FilterCollection"] then return end
+	return isMountOrPet(item)
+end
+
+local function isItemCustom(item, index)
 	if not C.db["Bags"]["ItemFilter"] then return end
 	if not C.db["Bags"]["FilterFavourite"] then return end
-	return item.id and C.db["Bags"]["FavouriteItems"][item.id]
+	local customIndex = item.id and C.db["Bags"]["CustomItems"][item.id]
+	return customIndex and customIndex == index
 end
 
 local function isEmptySlot(item)
 	if not C.db["Bags"]["GatherEmpty"] then return end
-	return module.initComplete and not item.texture and module.BagsType[item.bagID] == 0
+	return module.initComplete and not item.texture and (C.db["Bags"]["ItemFilter"] or cargBags.BagGroups[item.bagID] == 0)
 end
 
 local function isItemKeyRing(item)
@@ -121,21 +148,28 @@ function module:GetFilters()
 	filters.onlyBags = function(item) return isItemInBag(item) and not isEmptySlot(item) end
 	filters.bagAmmo = function(item) return isItemInBag(item) and isItemAmmo(item) end
 	filters.bagEquipment = function(item) return isItemInBag(item) and isItemEquipment(item) end
+	filters.bagEquipSet = function(item) return isItemInBag(item) and isItemEquipSet(item) end
 	filters.bagConsumable = function(item) return isItemInBag(item) and isItemConsumable(item) end
 	filters.bagsJunk = function(item) return isItemInBag(item) and isItemJunk(item) end
 	filters.onlyBank = function(item) return isItemInBank(item) and not isEmptySlot(item) end
 	filters.bankAmmo = function(item) return isItemInBank(item) and isItemAmmo(item) end
 	filters.bankLegendary = function(item) return isItemInBank(item) and isItemLegendary(item) end
 	filters.bankEquipment = function(item) return isItemInBank(item) and isItemEquipment(item) end
+	filters.bankEquipSet = function(item) return isItemInBank(item) and isItemEquipSet(item) end
 	filters.bankConsumable = function(item) return isItemInBank(item) and isItemConsumable(item) end
 	filters.onlyReagent = function(item) return item.bagID == -3 end
-	filters.bagFavourite = function(item) return isItemInBag(item) and isItemFavourite(item) end
-	filters.bankFavourite = function(item) return isItemInBank(item) and isItemFavourite(item) end
 	filters.onlyKeyring = function(item) return isItemKeyRing(item) end
+	filters.bagCollection = function(item) return isItemInBag(item) and isItemCollection(item) end
+	filters.bankCollection = function(item) return isItemInBank(item) and isItemCollection(item) end
 	filters.bagGoods = function(item) return isItemInBag(item) and isTradeGoods(item) end
 	filters.bankGoods = function(item) return isItemInBank(item) and isTradeGoods(item) end
 	filters.bagQuest = function(item) return isItemInBag(item) and isQuestItem(item) end
 	filters.bankQuest = function(item) return isItemInBank(item) and isQuestItem(item) end
+
+	for i = 1, 5 do
+		filters["bagCustom"..i] = function(item) return isItemInBag(item) and isItemCustom(item, i) end
+		filters["bankCustom"..i] = function(item) return isItemInBank(item) and isItemCustom(item, i) end
+	end
 
 	return filters
 end

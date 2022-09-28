@@ -19,12 +19,12 @@ C.BlackList = {
 
 -- 特殊单位的染色列表
 C.CustomUnits = {
-	[120651] = true, -- 爆炸物
+	--[120651] = true, -- 爆炸物
 }
 
 -- 显示能量值的单位
-C.ShowPowerList = {
-	[155432] = true, -- 魔力使者
+C.PowerUnits = {
+	--[155432] = true, -- 魔力使者
 }
 
 -- 重要读条高亮

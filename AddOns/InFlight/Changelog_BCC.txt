@@ -1,0 +1,46 @@
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Update 1 (06/04/21):
+
+-- added missing flightpoints (Outland)
+-- added/updated flighttimes (Azeroth and Outland)
+-- updated a few languages
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Update 2 (06/13/21):
+
+-- added missing flightpoint (Outland)
+-- added/updated flighttimes (Outland)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Update 3 (09/10/21):
+
+-- TOC
+-- added/updated a bunch of flighttimes
+-- added Zul'Aman flightpoint
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Update 4 (10/06/21):
+
+-- added/updated a bunch of flighttimes (Outland and Kalimdor complete)
+-- a new display option added (two lines)
+-- "Enter your 'to' text." is translatable
+-- changed the Confirm Popup a little bit
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Update 5 (04/04/22):
+
+-- TOC
+-- added all Zul'Aman + other missing flighttimes (should now be complete)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Update 6 (06/19/22):
+
+-- added all Shattered Sun Staging Area + other missing flighttimes
+
+-- TOTAL
+-- Horde: 973 flights
+-- Alliance: 1001 flights
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+

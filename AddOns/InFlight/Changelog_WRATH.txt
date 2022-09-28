@@ -1,0 +1,28 @@
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Update 1 (09/02/22): BETA-RELEASE
+
+-- update to wrath (WotLK Classic)
+-- added flightpoints/times (Northrend)
+-- updated a few languages
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Update 2 (09/08/22): BETA-RELEASE
+
+-- added/updated flightpoints/times (Eastern Kingdoms)
+-- updated a few locales (still missing translations)
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Update 3 (09/10/22): BETA-RELEASE
+
+-- updated locales only (should be complete)
+   [If you found typos or misspelled words or missing flightpoints etc, tell me]
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Current Data InFlight Wrath:
+Horde - 1813 flights
+Alliance - 1858 flights

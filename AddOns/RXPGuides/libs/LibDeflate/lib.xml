@@ -1,0 +1,10 @@
+<<<<<<< Updated upstream:AddOns/Details/Libs/LibDeflate/lib.xml
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+	<Script file="LibDeflate.lua" />
+</Ui>
+=======
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="LibDeflate.lua" />
+</Ui>
+>>>>>>> Stashed changes:AddOns/RXPGuides/libs/LibDeflate/lib.xml

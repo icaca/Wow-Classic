@@ -25,6 +25,8 @@ codes:
  - REP acquire reputation
  - GG ON/OFF enable/disable automatically generating goto coordinates
  - GL ON/OFF enable/disable automatically generating additional loc coordinates
+ - UI use item
+ - GI ON/OFF enable/disable automatically generating use item
 ]]
 
 addon.codes = {
@@ -55,6 +57,8 @@ addon.codes = {
 	AUTO_ADD_COORDINATES_LOC = "GL",
 	COLLECT_ITEM = "CI",
 	REPUTATION = "REP",
+	USE_ITEM = "UI",
+	AUTO_ADD_USE_ITEM = "GI",
 --deprecated
 	COMPLETE_WITH_NEXT = "C", -- same as OC
 	PICKUP = "QP", -- same as QA
@@ -94,6 +98,7 @@ function addon.parseGuide(guide, group, strict, nameOnly)
 		guide.itemUpdateIndices = {}
 		guide.autoAddCoordinatesGOTO = true
 		guide.autoAddCoordinatesLOC = true
+		guide.autoAddUseItem = true
 		guide.unknownQuests = 0
 		local t = guide.text:gsub("\\\\[\n\r]", "\\\\"):gsub("([^\n\r]-)[\n\r]", function(c)
 			if c ~= nil and c ~= "" then
@@ -143,9 +148,8 @@ end
 
 local function textFormatting(text, color)
 	local url
-	local formatted = text:gsub("(https://[%w%./#%-%?=#]*)", function(u) url = u; return "|cFFAAAAAA" .. u .. "|r" end)
-		:gsub("(http://[%w%./#%-%?=#]*)", function(u) url = u; return "|cFFAAAAAA" .. u .. "|r" end)
-		:gsub("(www%.[%w%./#%-%?=#]*)", function(u) if url == nil then url = u end; return "|cFFAAAAAA" .. u .. "|r" end)
+	local formatted = text:gsub("(https?://[%w%./#%-%?=#]*)", function(u) if not url then url = u else url = url .. "\n" .. u end; return "|cFFAAAAAA" .. u .. "|r" end)
+		:gsub("(www%.[%w%./#%-%?=#]*)", function(u) if not url then url = u elseif not url:find(u) then url = url .. "\n" .. u end; return "|cFFAAAAAA" .. u .. "|r" end)
 		:gsub("%*([^\n\r]-)%*", (color or "|cFFFFD100") .. "%1|r")
 		:gsub("%*%*","%*")
 	local formattedInactive = formatted:gsub("|r", addon.COLOR_INACTIVE)
@@ -193,7 +197,7 @@ function addon.parseLine(step, guide, strict, nameOnly)
 			return ""
 		end		
 		table.insert(step.elements, element)
-		local tag = code:sub(#addon.codes[element.t] + 1) --:gsub("^%s*","")
+		local tag = code:sub(#addon.codes[element.t] + 1):gsub("^%s*","")
 		
 		if element.t == "NEXT" then
 			local _, c = tag:gsub("%s*(%d*%.?%d*)%s*%-?%s*(%d*%.?%d*)%s*(.*)", function (minLevel, maxLevel, title)
@@ -336,6 +340,15 @@ function addon.parseLine(step, guide, strict, nameOnly)
 				guide.autoAddCoordinatesGOTO = true
 			elseif tag:upper():gsub(" ","") == "OFF" then
 				guide.autoAddCoordinatesGOTO = false
+			else
+				addon.createPopupFrame(string.format(L.ERROR_CODE_NOT_RECOGNIZED, guide.title or "", code, (step.line or "") .. " " .. step.text)):Show()
+				err = true
+			end
+		elseif element.t == "AUTO_ADD_USE_ITEM" then
+			if tag:upper():gsub(" ","") == "ON" then
+				guide.autoAddUseItem = true
+			elseif tag:upper():gsub(" ","") == "OFF" then
+				guide.autoAddUseItem = false
 			else
 				addon.createPopupFrame(string.format(L.ERROR_CODE_NOT_RECOGNIZED, guide.title or "", code, (step.line or "") .. " " .. step.text)):Show()
 				err = true
@@ -490,9 +503,22 @@ function addon.parseLine(step, guide, strict, nameOnly)
 		elseif element.t == "COLLECT_ITEM" then
 			local _, c = tag:gsub("%s*(%d+),?(%d*)%s*(.-)%s*$", function(id, qty, title)	
 				if id ~= "" then
-					element.itemRequests = 0
 					element.itemId = tonumber(id)
 					element.qty = tonumber(qty) or 1
+					if title == "-" then
+						element.title = ""
+					elseif title ~= "" then
+						element.title = title
+					end
+				else
+					addon.createPopupFrame(string.format(L.ERROR_CODE_NOT_RECOGNIZED, guide.title or "", code, (step.line or "") .. " " .. step.text)):Show()
+					err = true
+				end
+			end, 1)
+		elseif element.t == "USE_ITEM" then
+			local _, c = tag:gsub("%s*(%d+)%s*(.-)%s*$", function(id, title)	
+				if id ~= "" then
+					element.useItemId = tonumber(id)
 					if title == "-" then
 						element.title = ""
 					elseif title ~= "" then

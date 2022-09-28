@@ -6,15 +6,6 @@ HBD = LibStub("HereBeDragons-2.0")
 local QuestieDB = QuestieLoader and QuestieLoader:ImportModule("QuestieDB");
 local ZoneDB = QuestieLoader and QuestieLoader:ImportModule("ZoneDB")
 
-local correctionsObjectiveOrder = {
-	-- https://tbc.wowhead.com/quest=10503/the-bladespire-threat
-	-- objectives switched; first kill credit then creature
-	[10503] = {2, 1},
-	-- https://tbc.wowhead.com/quest=10861/veil-lithic-preemptive-strike
-	-- objectives switched; first object then creature
-	[10861] = {2, 1},
-}
-
 function addon.bit(p)
   return 2 ^ (p - 1)  -- 1-based indexing
 end
@@ -37,7 +28,7 @@ local function checkQuestie()
 			addon.waitingForQuestie = false
 			addon.loadCurrentGuide(false)
 			addon.updateFromQuestLog()
-			addon.updateSteps()
+			addon.updateMainFrame()
 		end)
 		return false	
 	end
@@ -88,11 +79,9 @@ end
 
 function addon.getQuestTypeQuestie(id)
 	if id == nil or not checkQuestie() then return end
-	local quest = QuestieDB:GetQuest(id)
-	if quest == nil then return end
-	if quest:IsDungeonQuest() then return "Dungeon" end
-	if quest:IsRaidQuest() then return "Raid" end
-	if quest:GetQuestTagInfo() == 1 then return "Group" end
+	if QuestieDB.IsDungeonQuest(id) then return "Dungeon" end
+	if QuestieDB.IsRaidQuest(id) then return "Raid" end
+	if QuestieDB.GetQuestTagInfo(id) == 1 then return "Group" end
 	local _, _, _, _, _, isElite = GetQuestTagInfo(id)
 	if isElite then return "Elite" end
 end
@@ -140,7 +129,7 @@ function addon.getQuestClassesQuestie(id)
 	local bitmask = quest.requiredClasses
 	if bitmask == nil or bitmask == 0 then return end
 	local classes = {}
-	for i, class in pairs({"Warrior", "Paladin", "Hunter", "Rogue", "Priest", "", "Shaman", "Mage", "Warlock", "", "Druid"}) do
+	for i, class in pairs({"Warrior", "Paladin", "Hunter", "Rogue", "Priest", "DeathKnight", "Shaman", "Mage", "Warlock", "", "Druid"}) do
 		if class ~= "" and addon.hasbit(bitmask, addon.bit(i)) then 
 			table.insert(classes, class) 
 		end
@@ -203,7 +192,7 @@ function addon.getQuestPositionsQuestie(id, typ, index, filterZone)
 		if list ~= nil then
 			--if addon.debugging then print("LIME: getQuestPositionsQuestie " .. typ .. " " .. id .. " " .. #list) end
 			for i = 1, #list do
-				local oi = (typ == "COMPLETE" and correctionsObjectiveOrder[id]) and correctionsObjectiveOrder[id][i] or i
+				local oi = (typ == "COMPLETE" and addon.questieCorrectionsObjectiveOrder[id]) and addon.questieCorrectionsObjectiveOrder[id][i] or i
 				if index == nil or index == 0 or index == oi then
 					if list[i].NPC ~= nil then
 						for _, id2 in ipairs(list[i].NPC) do
@@ -232,12 +221,12 @@ function addon.getQuestPositionsQuestie(id, typ, index, filterZone)
 						if filterZone == nil then
 							for zone, posList in pairs(list[i].Coordinates) do
 								for _, pos in ipairs(posList) do
-									table.insert(positions, {x = pos[1], y = pos[2], zone = addon.zoneNames[ZoneDB:GetUiMapIdByAreaId(zone)] or zone, objectives = oi})
+									table.insert(positions, {x = pos[1], y = pos[2], zone = addon.zoneNames[ZoneDB:GetUiMapIdByAreaId(zone)] or zone, objectives = {oi}})
 								end
 							end
 						elseif list[i].Coordinates[filterZoneId] ~= nil then
 							for _, pos in ipairs(list[i].Coordinates[filterZoneId]) do
-								table.insert(positions, {x = pos[1], y = pos[2], zone = filterZone, objectives = oi})
+								table.insert(positions, {x = pos[1], y = pos[2], zone = filterZone, objectives = {oi}})
 							end
 						end
 					end
@@ -336,6 +325,7 @@ function addon.getQuestObjectivesQuestie(id, typ)
 	if quest == nil then return end
 	if typ == "ACCEPT" then 
 		list = {quest.Starts}
+		if addon.questieCorrectionsQuestAccept[id] then list = addon.questieCorrectionsQuestAccept[id] end
 	elseif typ == "COMPLETE" then
 		list = quest.ObjectiveData
 	elseif typ == "TURNIN" then
@@ -400,9 +390,9 @@ function addon.getQuestObjectivesQuestie(id, typ)
 			table.insert(objectives, {type = "monster", names = objList, ids = {npc = list[j].IdList}})
 		end
 	end
-	if typ == "COMPLETE" and correctionsObjectiveOrder[id] then
+	if typ == "COMPLETE" and addon.questieCorrectionsObjectiveOrder[id] then
 		local objectives2 = {}
-		for i, j in ipairs(correctionsObjectiveOrder[id]) do
+		for i, j in ipairs(addon.questieCorrectionsObjectiveOrder[id]) do
 			objectives2[i] = objectives[j]
 		end
 		return objectives2
@@ -439,3 +429,55 @@ function addon.getObjectNameQuestie(id)
 	local object = QuestieDB:GetObject(id)
 	if object ~= nil then return object.name end
 end
+
+function addon.getItemProvidedByQuestQuestie(id)
+	if id == nil or not checkQuestie() then return end
+	local quest = QuestieDB:GetQuest(id)
+	return quest and quest.sourceItemId > 0 and quest.sourceItemId
+end
+
+function addon.isItemUsableQuestie(id)
+	if id == nil or not checkQuestie() then return end
+	local item = QuestieDB:GetItem(id)
+	-- lootable or activatble according to https://github.com/cmangos/issues/wiki/Item_template#flags
+	return item and (addon.hasbit(item.flags, 4) or addon.hasbit(item.flags, 64))
+end
+
+function addon.getUsableQuestItemsQuestie(id)
+	if id == nil or not checkQuestie() then return end
+	local quest = QuestieDB:GetQuest(id)
+	if not quest then return end
+	local items
+	if quest.sourceItemId > 0 and addon.isItemUsable(quest.sourceItemId) then
+		items = {quest.sourceItemId}
+	end
+	if quest.SpecialObjectives then
+		for _, o in pairs(quest.SpecialObjectives) do
+			if o.Type == "item" and not addon.contains(items, o.Id) and addon.isItemUsable(o.Id) then
+				if not items then items = {o.Id} else table.insert(items, o.Id) end
+			end
+		end
+	end
+	return items
+end
+
+-- /run Guidelime.addon.listQuestWithItems()
+function addon.listQuestWithItems()
+	local t = ""
+    for qid, _ in pairs(QuestieDB.QuestPointers) do
+		local items = addon.getUsableQuestItemsQuestie(qid)
+		if items then
+			local quest = QuestieDB:GetQuest(qid)
+			t = t .. qid .. ";" .. quest.name
+			for _, id in ipairs(items) do
+				local item = QuestieDB:GetItem(id)
+				t = t .. ";" .. id .. ";" .. item.name
+			end
+			t = t .. "\n"
+		end
+	end
+	--print(t)
+	addon.showUrlPopup(t)
+end
+
+
