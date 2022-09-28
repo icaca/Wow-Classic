@@ -1,4 +1,4 @@
-## Interface: 11303
+## Interface: 20503
 ## Title: InFlight
 ## Notes: Status bar timer for your flight paths
 ## Notes-deDE: Statusleisten-Zeitanzeige für Ihre Flugrouten
