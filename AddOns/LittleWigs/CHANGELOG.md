@@ -1,12 +1,10 @@
 # LittleWigs
 
-## [v9.2.20](https://github.com/BigWigsMods/LittleWigs/tree/v9.2.20) (2022-09-26)
-[Full Changelog](https://github.com/BigWigsMods/LittleWigs/compare/v9.2.19...v9.2.20) [Previous Releases](https://github.com/BigWigsMods/LittleWigs/releases)
+## [v9.2.22](https://github.com/BigWigsMods/LittleWigs/tree/v9.2.22) (2022-09-29)
+[Full Changelog](https://github.com/BigWigsMods/LittleWigs/compare/v9.2.21...v9.2.22) [Previous Releases](https://github.com/BigWigsMods/LittleWigs/releases)
 
-- WotLK: Update throttles to use args.time  
-- WotLK/Gundrak/Moorabi: Scan for boss unit  
-- WotLK: Don't use CheckBossStatus in Classic  
-- WotLK: Limit unit event calls  
-- Also fix running from source on classic  
-- Fix options when running LittleWigs from source (#757)  
-- Workflow: Enable Wago again  
+- WoD/IronDocks/Enforcers: Improve Lava Sweep alert (#777)  
+- WoD/IronDocks/Nokgar: Barbed Arrow Barrage timer/alert and improve Dismount, Shredding Swipes, Burning Arrows (#776)  
+- WoD/GrimrailDepot/SkylordTovra: Improve Thunderous Breath alert (#775)  
+- WoD/GrimrailDepot/Trash: Getting Angry, Storm Shield applied, Thunder Zone under you, Arcane Blitz timing (#774)  
+- WotLK/TheCullingOfStratholme/Trash: Fix for Classic  
