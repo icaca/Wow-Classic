@@ -1,6 +1,7 @@
 # BigWigs
 
-## [v44.2-classic](https://github.com/BigWigsMods/BigWigs/tree/v44.2-classic) (2022-09-28)
-[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v44.1-classic...v44.2-classic) [Previous Releases](https://github.com/BigWigsMods/BigWigs/releases)
+## [v45-classic](https://github.com/BigWigsMods/BigWigs/tree/v45-classic) (2022-09-30)
+[Full Changelog](https://github.com/BigWigsMods/BigWigs/compare/v44.2-classic...v45-classic) [Previous Releases](https://github.com/BigWigsMods/BigWigs/releases)
 
-- Loader: Fix the zone prints  
+- bump version  
+- Core: Check the RAID\_BOSS\_WHISPER message isn't blank before trying to send it  

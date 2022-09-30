@@ -22,7 +22,7 @@
 ## Notes-ruRU: Модуль BigWigs Солнечного Колодца
 ## Notes-zhCN: BigWigs 太阳之井模块
 ## Notes-zhTW: BigWigs 太陽之井高地模組
-## Version: v44.2-classic
+## Version: v45-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

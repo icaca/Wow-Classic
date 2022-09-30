@@ -22,4 +22,4 @@
 
 ## Dependencies: BigWigs
 ## LoadOnDemand: 1
-## Version: v9.2.22
+## Version: v9.2.24

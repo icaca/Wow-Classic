@@ -22,7 +22,7 @@
 ## Notes-ruRU: Модули BigWigs Запределье
 ## Notes-zhCN: BigWigs 外域模块
 ## Notes-zhTW: BigWigs 外域模組
-## Version: v44.2-classic
+## Version: v45-classic
 
 ## LoadOnDemand: 1
 ## Dependencies: BigWigs

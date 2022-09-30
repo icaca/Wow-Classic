@@ -3,4 +3,4 @@
 ## Interface-Classic: 11403
 
 ## Title: BigWigs [|cffeda55fNaxxramas|r] (Classic Era Only)
-## Version: v44.2-classic
+## Version: v45-classic
