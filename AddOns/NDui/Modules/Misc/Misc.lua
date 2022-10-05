@@ -40,6 +40,7 @@ function M:OnLogin()
 
 	-- Init
 	M:NakedIcon()
+	M:VehicleSeatMover()
 	M:UIWidgetFrameMover()
 	M:MoveDurabilityFrame()
 	M:MoveTicketStatusFrame()
@@ -57,6 +58,7 @@ function M:OnLogin()
 	M:AutoEquipBySpec()
 	M:UpdateScreenShot()
 	M:FlyoutOnKeyAlt()
+	M:MoveBlizzFrames()
 
 	-- Auto chatBubbles
 	if NDuiADB["AutoBubbles"] then
@@ -144,8 +146,10 @@ function M:NakedIcon()
 	end)
 end
 
--- Reanchor Vehicle, isNewPatch
+-- Reanchor Vehicle
 function M:VehicleSeatMover()
+	if not VehicleSeatIndicator then return end
+
 	local frame = CreateFrame("Frame", "NDuiVehicleSeatMover", UIParent)
 	frame:SetSize(125, 125)
 	B.Mover(frame, L["VehicleSeat"], "VehicleSeat", {"BOTTOMRIGHT", UIParent, -400, 30})
@@ -433,6 +437,10 @@ function M:MenuButton_GuildInvite()
 	GuildInvite(M.MenuButtonName)
 end
 
+function M:MenuButton_Whisper()
+	ChatFrame_SendTell(M.MenuButtonName)
+end
+
 function M:QuickMenuButton()
 	if not C.db["Misc"]["MenuButton"] then return end
 
@@ -440,13 +448,14 @@ function M:QuickMenuButton()
 		{text = ADD_FRIEND, func = M.MenuButton_AddFriend, color = {0, .6, 1}},
 		{text = gsub(CHAT_GUILD_INVITE_SEND, HEADER_COLON, ""), func = M.MenuButton_GuildInvite, color = {0, .8, 0}},
 		{text = COPY_NAME, func = M.MenuButton_CopyName, color = {1, 0, 0}},
+		{text = WHISPER, func = M.MenuButton_Whisper, color = {1, .5, 1}},
 	}
 
 	local frame = CreateFrame("Frame", "NDuiMenuButtonFrame", DropDownList1)
 	frame:SetSize(10, 10)
 	frame:SetPoint("TOPLEFT")
 	frame:Hide()
-	for i = 1, 3 do
+	for i = 1, 4 do
 		local button = CreateFrame("Button", nil, frame)
 		button:SetSize(25, 10)
 		button:SetPoint("TOPLEFT", frame, (i-1)*28 + 2, -2)
@@ -630,7 +639,7 @@ function M:EnhancedPicker()
 	colorBar:SetPoint("BOTTOM", 0, 38)
 
 	local count = 0
-	for name, class in pairs(DB.ClassList) do
+	for class, name in pairs(LOCALIZED_CLASS_NAMES_MALE) do
 		local value = DB.ClassColors[class]
 		if value then
 			local bu = B.CreateButton(colorBar, 22, 22, true)
@@ -716,6 +725,7 @@ end
 
 -- Achievement screenshot
 function M:ScreenShotOnEvent()
+	PlaySound(12891) -- achivement sound
 	M.ScreenShotFrame.delay = 1
 	M.ScreenShotFrame:Show()
 end
@@ -777,4 +787,12 @@ function M:FlyoutOnKeyAlt()
 			end
 		end
 	end)
+end
+
+-- Move and save blizz frames
+function M:MoveBlizzFrames()
+	if not IsAddOnLoaded("RXPGuides") then
+		B:BlizzFrameMover(CharacterFrame)
+	end
+	B:BlizzFrameMover(QuestLogFrame)
 end

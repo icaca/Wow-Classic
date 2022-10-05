@@ -45,6 +45,7 @@ Supported class powers:
 --]]
 
 local _, ns = ...
+local B, C, L, DB = unpack(ns)
 local oUF = ns.oUF
 
 local _, PlayerClass = UnitClass('player')
@@ -74,10 +75,10 @@ local function UpdateColor(element, powerType)
 end
 
 local function Update(self, event, unit, powerType)
-	if event == "PLAYER_TARGET_CHANGED" then
-		unit, powerType = "player", "COMBO_POINTS"
-	elseif powerType == "ENERGY" then
-		powerType = "COMBO_POINTS" -- sometimes powerType return ENERGY for the first combo point
+	if event == 'PLAYER_TARGET_CHANGED' then
+		unit, powerType = 'player', 'COMBO_POINTS'
+	elseif powerType == 'ENERGY' then
+		powerType = 'COMBO_POINTS' -- sometimes powerType return ENERGY for the first combo point
 	end
 
 	if(not (unit and (UnitIsUnit(unit, 'player') and (not powerType or powerType == ClassPowerType)
@@ -98,9 +99,9 @@ local function Update(self, event, unit, powerType)
 
 	local cur, max, mod, oldMax
 	if(event ~= 'ClassPowerDisable') then
-		local powerID = ClassPowerID
+		local powerID = unit == 'vehicle' and SPELL_POWER_COMBO_POINTS or ClassPowerID
 		--cur = UnitPower(unit, powerID, true)
-		cur = GetComboPoints(unit, "target")	-- has to use GetComboPoints in classic
+		cur = GetComboPoints(unit, 'target')	-- has to use GetComboPoints in classic
 		max = UnitPowerMax(unit, powerID)
 		mod = UnitPowerDisplayMod(powerID)
 
@@ -156,13 +157,30 @@ local function Path(self, ...)
 	return (self.ClassPower.Override or Update) (self, ...)
 end
 
+-- Pet owns the vehicle in the specifc quest
+-- https://www.wowhead.com/wotlk/quest=13414/aces-high
+local function updateUnitFrame(frame, event, unit, powerType)
+	if not frame then return end
+	if frame:IsEnabled() and frame:IsElementEnabled("ClassPower") then
+		Path(frame, event, unit, powerType)
+	end
+end
+
+local function WatchVehicleCombos(event, unit, powerType)
+	if unit == 'vehicle' and powerType == 'COMBO_POINTS' then
+		updateUnitFrame(_G.oUF_Player, event, unit, powerType)
+		updateUnitFrame(_G.oUF_PlayerPlate, event, unit, powerType)
+		updateUnitFrame(_G.oUF_TargetPlate, event, unit, powerType)
+	end
+end
+
 local function Visibility(self, event, unit)
 	local element = self.ClassPower
 	local shouldEnable
 
 	if(UnitHasVehicleUI('player')) then
-		shouldEnable = true -- PlayerVehicleHasComboPoints()
 		unit = 'vehicle'
+		shouldEnable = UnitPowerMax(unit, SPELL_POWER_COMBO_POINTS) == 5 -- PlayerVehicleHasComboPoints()
 	elseif(ClassPowerID) then
 		-- use 'player' instead of unit because 'SPELLS_CHANGED' is a unitless event
 		if(not RequirePower or RequirePower == UnitPowerType('player')) then
@@ -176,8 +194,8 @@ local function Visibility(self, event, unit)
 		end
 	end
 
-	local isEnabled = element.isEnabled
-	local powerType = ClassPowerType
+	local isEnabled = element.__isEnabled
+	local powerType = unit == 'vehicle' and 'COMBO_POINTS' or ClassPowerType
 
 	if(shouldEnable) then
 		--[[ Override: ClassPower:UpdateColor(powerType)
@@ -219,10 +237,12 @@ do
 		self:RegisterEvent('PLAYER_TARGET_CHANGED', Path, true)
 		self:RegisterEvent('UNIT_MAXPOWER', Path)
 
-		self.ClassPower.isEnabled = true
+		self.ClassPower.__isEnabled = true
 
 		if(UnitHasVehicleUI('player')) then
 			Path(self, 'ClassPowerEnable', 'vehicle', 'COMBO_POINTS')
+
+			B:RegisterEvent('UNIT_POWER_FREQUENT', WatchVehicleCombos)
 		else
 			Path(self, 'ClassPowerEnable', 'player', ClassPowerType)
 		end
@@ -238,8 +258,10 @@ do
 			element[i]:Hide()
 		end
 
-		self.ClassPower.isEnabled = false
+		self.ClassPower.__isEnabled = false
 		Path(self, 'ClassPowerDisable', 'player', ClassPowerType)
+
+		B:UnregisterEvent('UNIT_POWER_FREQUENT', WatchVehicleCombos)
 	end
 
 	if(PlayerClass == 'ROGUE' or PlayerClass == 'DRUID') then

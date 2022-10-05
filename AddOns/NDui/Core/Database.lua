@@ -120,6 +120,12 @@ end
 B:RegisterEvent("PLAYER_LOGIN", CheckRole)
 B:RegisterEvent("CHARACTER_POINTS_CHANGED", CheckRole)]]
 
+local function UpdateMyLevel()
+	DB.MyLevel = UnitLevel("player")
+end
+UpdateMyLevel()
+B:RegisterEvent("PLAYER_LEVEL_UP", UpdateMyLevel)
+
 -- Raidbuff Checklist
 DB.BuffList = {
 	[1] = {		-- 合剂
@@ -172,7 +178,8 @@ DB.ReminderBuffs = {
 				[1459] = true,
 				[8096] = true,  -- 智力卷轴
 				[23028] = true, -- 奥术光辉
-				[46302] = true, -- 基鲁的胜利之歌
+				[61316] = true, -- 达拉然光辉
+				--[46302] = true, -- 基鲁的胜利之歌
 			},
 			depend = 1459,
 			combat = true,
@@ -196,7 +203,7 @@ DB.ReminderBuffs = {
 				[1243] = true,
 				[8099] = true,  -- 耐力卷轴
 				[21562] = true, -- 坚韧祷言
-				[46302] = true, -- 基鲁的胜利之歌
+				--[46302] = true, -- 基鲁的胜利之歌
 			},
 			depend = 1243,
 			combat = true,
@@ -204,9 +211,11 @@ DB.ReminderBuffs = {
 			pvp = true,
 		},
 		{	spells = {	-- 心灵之火
-				[588] = true,
+				[48168] = true,
 			},
-			depend = 588,
+			depend = 48168,
+			combat = true,
+			instance = true,
 			pvp = true,
 		},
 	},
@@ -228,8 +237,9 @@ DB.ReminderBuffs = {
 		},
 	},
 	WARRIOR = {
-		{	spells = {	-- 战斗怒吼
-				[6673] = true,
+		{	spells = {
+				[6673] = true,	-- 战斗怒吼
+				[19740] = true,	-- 力量祝福
 			},
 			depends = {6673, 5242, 6192, 11549, 11550, 11551, 25289, 2048},
 			gemini = {

@@ -7,6 +7,7 @@ tinsert(C.defaultThemes, function()
 	B.Reskin(BattlefieldFrameJoinButton)
 	B.Reskin(BattlefieldFrameCancelButton)
 	B.Reskin(BattlefieldFrameGroupJoinButton)
+	B.ReskinScroll(BattlefieldFrameTypeScrollFrameScrollBar)
 	BattlefieldFrameBGTex:Hide()
 	B.CreateBDFrame(BattlefieldFrameInfoScrollFrame, .25)
 
@@ -32,8 +33,9 @@ tinsert(C.defaultThemes, function()
 	end
 
 	-- WorldStateScoreFrame
-	B.ReskinPortraitFrame(WorldStateScoreFrame, 13, -15, -108, 70)
+	B.ReskinPortraitFrame(WorldStateScoreFrame, 13, -15, -90, 70)
 	B.ReskinScroll(WorldStateScoreScrollFrameScrollBar)
+	WorldStateScoreScrollFrameScrollBar:SetPoint("TOPLEFT", WorldStateScoreScrollFrame, "TOPRIGHT", 38, -16) -- don't overlay with scroll buttons
 	for i = 1, 3 do
 		B.ReskinTab(_G["WorldStateScoreFrameTab"..i])
 	end

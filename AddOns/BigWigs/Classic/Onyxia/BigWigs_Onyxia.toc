@@ -1,6 +1,0 @@
-## Interface: 30400
-## Interface-BCC: 20504
-## Interface-Classic: 11403
-
-## Title: BigWigs [|cffeda55fOnyxia|r] (Classic Era Only)
-## Version: v45-classic

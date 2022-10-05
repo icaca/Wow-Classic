@@ -96,8 +96,9 @@ local spellRankTableData = {
 	[11] = { 25299, 25297, 30020, 27136, 25221, 25391, 27030, 48442, 48071 },
 	[12] = { 26981, 26978, 25222, 25396, 27031, 48781, 48443 },
 	[13] = { 26982, 26979, 48782, 49272, 48067, 45543 },
-	[14] = { 49273, 48377, 48440, 48068, 45544 },
-	[15] = { 48378, 48441 },
+	[14] = { 49273, 48377, 48440, 48068, 51827 },
+	[15] = { 48378, 48441, 45544 },
+	[16] = { 51803 },
 }
 
 local SpellIDToRank = {}
@@ -805,10 +806,6 @@ end
 local CalculateHealing, GetHealTargets, AuraHandler, CalculateHotHealing, ResetChargeData, LoadClassData
 
 local function getBaseHealAmount(spellData, spellName, spellID, spellRank)
-	if not spellRank then -- bandage fix
-		print("LibHealComm Error:", spellName, spellID, spellRank)
-		spellRank = 1
-	end
 	if spellID == 37563 then
 		spellData = spellData["37563"]
 	else
@@ -1513,6 +1510,7 @@ if( playerClass == "PRIEST" ) then
 
 		CalculateHotHealing = function(guid, spellID)
 			local spellName, spellRank = GetSpellInfo(spellID), SpellIDToRank[spellID]
+			if not spellRank then return end -- Replenishment(spellID 57669) shares the same spellName with Renew in zhCN
 			local healAmount = getBaseHealAmount(hotData, spellName, spellID, spellRank)
 			local spellPower = GetSpellBonusHealing()
 			local healModifier, spModifier = playerHealModifier, 1
@@ -3248,7 +3246,7 @@ function HealComm:OnInitialize()
 
 		local _GetHealTargets = GetHealTargets
 
-		GetHealTargets = function(bitType, guid, spellID)
+		GetHealTargets = function(bitType, guid, spellID, amount)
 			local spellName = GetSpellInfo(spellID)
 
 			if spellName == FirstAid then
@@ -3256,7 +3254,7 @@ function HealComm:OnInitialize()
 			end
 
 			if _GetHealTargets then
-				return _GetHealTargets(bitType, guid, spellID)
+				return _GetHealTargets(bitType, guid, spellID, amount)
 			end
 		end
 
