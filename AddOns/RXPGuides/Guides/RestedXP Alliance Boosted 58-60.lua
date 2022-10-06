@@ -2,9 +2,9 @@ RXPGuides.RegisterGuide([[
 #tbc
 #wotlk
 << Alliance
-#name 提升角色 58-60
+#name 增强字符58-60
 #version 1
-#group RestedXP 联盟 Boosted 58-60
+#group RestedXP联盟增加了58-60
 #defaultfor 58Boost
 #next RestedXP 联盟 60-70\59-61 地狱火半岛
 step << Warrior
@@ -288,7 +288,7 @@ step
     .accept 5281 >>接受不安宁的灵魂
 step << Hunter
     #sticky
-    .tame 8602 >> 如果你的宠物除了咆哮之外没有其他能力，那么在前往普雷格伍德的路上，抛弃你的宠物并驯服一只58级蝙蝠
+    .tame 8602 >>如果你的宠物除了咆哮之外没有其他能力，那么在前往普雷格伍德的路上，抛弃你的宠物并驯服一只58级蝙蝠
     >>买些真菌喂你的新宠物
     .collect 8948,20
     .goto Eastern Plaguelands,79.5,64.0
@@ -305,7 +305,7 @@ step
     .accept 5282 >>接受不安宁的灵魂
 step
     #completewith next
-    .hs >> Hearth到Southshore
+    .hs >>炉灶到Southshore
 step
     .goto Hillsbrad Foothills,49.4,52.3
     .fly Chillwind Camp >>飞往奇风营地
@@ -369,7 +369,7 @@ step
 step
     .goto Western Plaguelands,47.8,50.8
 	>>点击谷仓内的日记
-    .turnin 5058 >> 交上Dalson夫人日记
+    .turnin 5058 >>交上Dalson夫人日记
 step
 	#completewith DalsonsT
     .goto Western Plaguelands,46.9,51.5,0
@@ -382,8 +382,8 @@ step
 step
 	#label DalsonsT
     .goto Western Plaguelands,46.2,52.1
-    .turnin 5219 >> 上缴目标：Dalson的眼泪
-    .accept 5220 >> 接受返回奇风营地
+    .turnin 5219 >>上缴目标：Dalson的眼泪
+    .accept 5220 >>接受返回奇风营地
 step
     .goto Western Plaguelands,46.9,51.5
 	>>寻找在农舍周围巡逻的流浪骷髅
@@ -393,7 +393,7 @@ step
 	#completewith next
     .goto Western Plaguelands,48.2,49.7
 	>>在睡觉前确保身体健康
-    .turnin 5059 >> 转入锁定状态
+    .turnin 5059 >>转入锁定状态
 step
     .goto Western Plaguelands,48.2,49.7
 	>>杀死Farmer Dalson。抢他的钥匙
@@ -401,7 +401,7 @@ step
 step
     .goto Western Plaguelands,47.4,49.7
 	>>点击农舍顶层的橱柜
-    .turnin 5060 >> 转入锁定状态
+    .turnin 5060 >>转入锁定状态
 step
     .goto Western Plaguelands,48.4,31.9
     .turnin 5904 >>向你倾诉瘟疫
@@ -416,7 +416,7 @@ step
     .goto Western Plaguelands,50.3,41.1,70,0
     .goto Western Plaguelands,52.0,44.3
 	>>杀死血腥暴徒。如果你找不到医护人员和猎人，在营地杀死暴徒，迫使他们重生，因为他们与其他暴徒类型共享重生
-	>>如果你找不到法师，杀死骑士（因为他们共享后代）
+	>>如果你找不到法师，杀死骑士(因为他们共享后代)
     .complete 6004,1 --Scarlet Medic (2)
     .complete 6004,2 --Scarlet Hunter (2)
     .complete 6004,3 --Scarlet Mage (2)
@@ -567,7 +567,7 @@ step
     .accept 5241 >>接受卡林叔叔
 step
     #completewith next
-    .hs >> Hearth到Southshore
+    .hs >>炉灶到Southshore
 step
     .goto Eastern Plaguelands,81.6,59.3
     .fly Chillwind Camp >>飞往奇风营地
@@ -629,11 +629,11 @@ step
     .accept 5181 >>接受达罗郡的恶棍
 step
     .goto Eastern Plaguelands,79.7,63.7
-    .turnin 6021 >> 交给被放逐的扎尔达尔
+    .turnin 6021 >>交给被放逐的扎尔达尔
 step
     #completewith next
     .goto Eastern Plaguelands,51.41,49.70
-    .xp 60-8750 >> 研磨xp直到距离60级8750xp
+    .xp 60-8750 >>研磨xp直到距离60级8750xp
 step
     >>如果你还需要xp，那么做达罗郡的恶棍
     .complete 5181,1 --Skull of Horgus (1)

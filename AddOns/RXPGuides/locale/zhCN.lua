@@ -18,7 +18,7 @@ _G["BINDING_NAME_" .. "CLICK RXPItemFrameButton4:LeftButton"] =
 -- Full common phrases
 
 -- Words
-L.words = {["Accept"] = _G.ACCEPT, ["Kill"] = "击杀", ["Loot"] = "拾取", ["Talk"] = "对话", ["Use"] = "使用", ["Travel"] = "前往", ["Exit"] = "离开", ["Take"] = "乘坐", ["Zeppelin"] = "飞艇", ["Hearth"] = "炉石", ["Hearthstone"] = "炉石", ["Undercity"] = "幽暗城", ["Orgrimmar"] = "奥格瑞玛", ["Shattrath"] = "沙塔斯", ["City"] = "城", ["Hellfire"] = "地狱火", ["Peninsula"] = "半岛", ["Nagrand"] = "纳格兰", ["Terokkar"] = "泰罗卡", ["Forest"] = "森林", ["Netherstorm"] = "虚空风暴", ["Shadowmoon"] = "影月", ["Valley"] = "谷", ["Zangarmarsh"] = "赞加沼泽",["Borean"] = "北风", ["Tundra"] = "苔原", ["Icecrown"] = "冰冠冰川", ["Dalaran"] = "达拉然", ["Wintergrasp"] = "冬拥湖", ["Storm"] = "风暴", ["Peaks"] = "峭壁", ["Howling"] = "嚎风", ["Fjord"] = "峡湾", ["Grizzly"] = "灰熊", ["Hills"] = "丘陵", ["Crystalsong"] = "晶歌", ["Dragonblight"] = "龙骨荒野", ["Hrothgar's"] = "洛斯加尔", ["Hrothgar"] = "洛斯加尔", ["Landing"] = "登陆点", ["Sholazar"] = "索拉查", ["Basin"] = "盆地", ["Zul'Drak"] = "祖达克", ["Azjol-Nerub"] = "艾卓-尼鲁布", ["Ahn'kahet"] = "安卡赫特", ["Drak'Tharon"] = "达克萨隆", ["Gundrak"] = "古达克", ["Stratholme"] = "斯坦索姆", ["Oculus"] = "魔环", ["Nexus"] = "魔枢", ["Utgarde"] = "乌特加德", ["Violet"] = "紫罗兰", ["Hold"] = "监狱", ["Silvermoon"] = "银月", ["Quel'Danas"] = "奎尔丹纳斯", ["Durotar"] = "杜隆塔尔", ["Thunder"] = "雷霆", ["Bluff"] = "崖", ["Vengeance"] = "复仇港", ["Buy"] = "购买" , ["Alliance"] = "联盟"}
+L.words = {["Accept"] = _G.ACCEPT, ["Kill"] = "杀"}
 
 -- Core Addon UI translations
 L["Error parsing guides\nTotal guides loaded: %d/%s"] =

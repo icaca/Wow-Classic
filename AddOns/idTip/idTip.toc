@@ -1,0 +1,6 @@
+## Interface: 20502
+## Title: idTip
+## Version: 10.1.1
+## Notes: Adds IDs to the ingame tooltips
+## Author: silverwind
+idTip.lua

@@ -4,7 +4,7 @@ RXPGuides.RegisterGuide([[
 << Horde
 #name 13-23 贫瘠之地
 #version 1
-#group RestedXP 部落 1-30
+#group RestedXP部落1-30
 #defaultfor Shaman/Warrior
 #next 23-27 希尔斯布莱德丘陵 / 灰谷
 step << Tauren Shaman
@@ -12,14 +12,14 @@ step << Tauren Shaman
     .accept 840 >>接受部落征兵
 step << Tauren Shaman
     .isOnQuest 1525
-    .goto Durotar,52.8,28.7,25 >> 到这里的洞穴里去
+    .goto Durotar,52.8,28.7,25 >>到这里的洞穴里去
 step << Tauren Shaman
     >>为了袋子杀死燃烧之刃信徒
     .goto Durotar,52.5,26.7
     .complete 1525,2 --Reagent Pouch (1)
 step << Tauren Shaman
     .isOnQuest 1525
-    .goto Durotar,52.8,28.7,20 >> 离开洞穴
+    .goto Durotar,52.8,28.7,20 >>离开洞穴
 step << Tauren Shaman
     .goto The Barrens,62.2,19.4
     .turnin 840 >>交出部落征兵
@@ -32,7 +32,7 @@ step << !Tauren
 #xprate >1.499
     #completewith next
     .goto The Barrens,52.3,32.0
-    .vendor >> 根据需要购买6个槽袋
+    .vendor >>根据需要购买6个槽袋
 step << !Tauren
 #xprate >1.499
     .goto The Barrens,52.2,31.0
@@ -109,10 +109,10 @@ step << Shaman
 step
     #sticky
     #completewith next
-    >>检查陈氏空桶的位置。抢走它，开始任务。否则你以后会得到它。
+    >>检查陈氏空桶的位置。抢走它，开始任务。否则，您稍后会得到它。
 .goto The Barrens,55.7,27.3
 .collect 4926,1,819 --Collect Chen's Empty Keg
-.accept 819 >> 收下陈的空桶
+.accept 819 >>收下陈的空桶
 step
     .goto The Barrens,55.6,26.6
     >>杀死该地区的Quillboars
@@ -176,18 +176,18 @@ step << Tauren Shaman
     .turnin 842 >>交出十字路口征兵
 step
     .goto The Barrens,52.0,29.9
-    .home >> 把你的炉石放在十字路口
+    .home >>把你的炉石放在十字路口
 step << !Hunter !Rogue !Warlock !Mage !Priest
      #sticky
     #completewith next
     .money <0.75
-    >> 检查利扎里克（地精商人）是否在十字路口。如果是的话，买些药水和一把重钉锤。
+    >>检查利扎里克(地精商人)是否在十字路口。如果是的话，买些药水和一把重钉锤。
     .unitscan Lizzarik
     .goto The Barrens,52.5,30.7,20,0
 .collect 4778,1 --Collect Heavy Spiked Mace
 step
     .isOnQuest 872
-    .goto The Barrens,57.1,25.3,250 >> 跑到这里
+    .goto The Barrens,57.1,25.3,250 >>跑到这里
 step
     #sticky
     #completewith Crates
@@ -219,17 +219,17 @@ step
     .complete 872,1 --Razormane Geomancer (8)
     .complete 872,2 --Razormane Defender (8)
 step << Warrior
-    >> 在这里抢劫酒桶。如果还没有恢复，就等待重生。
+    >>在这里抢劫酒桶。如果还没有恢复，就等待重生。
 .goto The Barrens,55.8,20.0
 .collect 4926,1,819 --Collect Chen's Empty Keg
-.accept 819 >> 收下陈的空桶
+.accept 819 >>收下陈的空桶
 step << !Tauren !Undead
     #sticky
     #completewith next
     >>杀死你看到的任何哲夫拉。抢走他们的马蹄
     .complete 845,1 --Zhevra Hooves (4)
 step << Tauren Warrior
-    .goto The Barrens,56.7,19.8,60 >> 快跑到这里，途中有暴徒在捣乱
+    .goto The Barrens,56.7,19.8,60 >>快跑到这里，途中有暴徒在捣乱
 step << !Tauren !Undead
     .goto The Barrens,62.3,20.1
     .turnin 924 >>交出恶魔种子
@@ -254,10 +254,10 @@ step << Shaman
     .goto The Barrens,55.9,19.9
     .turnin 1527 >>交火召唤
 step << Shaman
-     >> 在这里抢劫酒桶。如果还没有恢复，就等待重生。
+     >>在这里抢劫酒桶。如果还没有恢复，就等待重生。
     .goto The Barrens,55.8,20.0
     .collect 4926,1,819 --Collect Chen's Empty Keg
-    .accept 819 >> 收下陈的空桶
+    .accept 819 >>收下陈的空桶
 step
     >>杀死你看到的任何哲夫拉。抢走他们的马蹄。在进入棘轮之前，确保您有4个
     .goto The Barrens,63.9,35.8
@@ -296,8 +296,8 @@ step
 step
     #label rachetfp
     .goto The Barrens,62.05,39.41
-    >> 这里的五级鱼食非常便宜，请备货 << Warrior/Rogue
-    .vendor >> 补充食物/水
+    >>这里的五级鱼食非常便宜，请备货 << Warrior/Rogue
+    .vendor >>补充食物/水
 step
     #sticky
     #completewith next
@@ -333,7 +333,7 @@ step
 step << Druid
     >>传送至Moonglade
     .goto Moonglade,52.4,40.6
-    .trainer 12042 >> 火车咒语
+    .trainer 12042 >>火车咒语
 step
     #completewith next
     .hs >>炉膛到十字路口
@@ -455,7 +455,7 @@ step
 .goto The Barrens,56.5,7.5
     .accept 858 >>接受点火
 step
-    >>杀死监督员Lugwizzle（他在整个塔上巡逻）。抢他取点火钥匙
+    >>杀死监督员Lugwizzle(他在整个塔上巡逻)。抢他取点火钥匙
 .goto The Barrens,56.3,8.6
     .complete 858,1 --Ignition Key (1)
     .unitscan Supervisor Lugwizzle
@@ -495,7 +495,7 @@ step << Orc/Troll
 step << Orc/Troll
 #xprate >1.499
     .goto Orgrimmar,45.2,64.0
-     >> 交出任务，但不要飞回十字路口
+     >>交出任务，但不要飞回十字路口
     .turnin 6385 >>交给风骑士大师多拉斯
     .accept 6386 >>接受返回十字路口。
 step << Tauren/Undead/BloodElf
@@ -510,18 +510,18 @@ step
 step << Paladin
     #completewith next
     .goto Orgrimmar,32.3,35.7
-    .trainer >> 去训练你的职业咒语
+    .trainer >>去训练你的职业咒语
 step << Shaman
     .goto Orgrimmar,38.8,36.4
-.train 8045 >> 列车接地冲击r3
-.train 8019 >> 训练摇滚武器r3
-.train 325 >> 列车避雷针r2
-.train 526 >> 火车治疗毒药
+.train 8045 >>列车接地冲击r3
+.train 8019 >>训练摇滚武器r3
+.train 325 >>列车避雷针r2
+.train 526 >>火车治疗毒药
 .train 8154 >>训练石肤图腾2
 step << Warrior
     .goto Orgrimmar,80.4,32.4
-    .train 1160 >> 列车泄气喊叫r1
-    .train 285 >> 训练英雄打击r3
+    .train 1160 >>列车泄气喊叫r1
+    .train 285 >>训练英雄打击r3
 step
     #completewith next
     .hs >>炉膛到十字路口
@@ -580,7 +580,7 @@ step
 .goto The Barrens,55.5,17.3
     .complete 881,1 --Echeyakee's Hide (1)
 step
-    >> 返回十字路口
+    >>返回十字路口
     .goto The Barrens,52.2,31.0
     .turnin 881 >>交给Echeyakee
     .accept 905 >>接受愤怒的镰刀
@@ -594,9 +594,9 @@ step
 step
     #completewith next
     .goto The Barrens,51.5,30.3
-    .fly Ratchet >> 飞到棘轮
+    .fly Ratchet >>飞到棘轮
 step
-    >> 头部至棘轮
+    >>头部至棘轮
     .goto The Barrens,63.0,37.2
     .turnin 902 >>交给Samophlange
     .turnin 863 >>上车逃生
@@ -674,7 +674,7 @@ step
     .home >>将您的炉石设置为陶拉霍营地
 step
     .goto The Barrens,45.6,59.0
-    .vendor >> 补充食物/水，前方有一段艰难的任务
+    .vendor >>补充食物/水，前方有一段艰难的任务
 step
     .goto The Barrens,44.5,59.2
     .accept 878 >>战争中接受部落
@@ -713,7 +713,7 @@ step
     .goto Kalimdor,52.2,55.2,35,0
     .goto Kalimdor,51.8,54.8,20,0
     .goto Kalimdor,52.2,55.2
-    >>寻找疯狂的马格利什（小妖精）。他是隐形的，有多个繁殖点。杀了他，抢了他99岁的港口
+    >>寻找疯狂的马格利什(小妖精)。他是隐形的，有多个繁殖点。杀了他，抢了他99岁的港口
     .complete 959,1 --Collect 99-Year-Old Port (1)
     .unitscan Mad Magglish
     .isOnQuest 959
@@ -737,15 +737,15 @@ step
     .goto Kalimdor,52.8,54.8,30,0
     .goto Kalimdor,52.6,54.5,30,0
 	.goto Kalimdor,52.6,54.5
-    >>杀死胞浆以获得哭泣精华。留心洞穴深处的两个稀有物种（Trigore和Boahn），因为它们会掉落蓝色的BoE武器。
+    >>杀死胞浆以获得哭泣精华。留心洞穴深处的两个稀有物种(Trigore和Boahn)，因为它们会掉落蓝色的BoE武器。
     .complete 1491,1 --Wailing Essence (6)
     .unitscan Trigore the Lasher
     .unitscan Boahn
     .isOnQuest 1491
 step
-    >> 返回Kolkar前哨
+    >>返回Kolkar前哨
     .goto The Barrens,45.4,28.4
-    .turnin 850 >> 移交Kolkar领导人
+    .turnin 850 >>移交Kolkar领导人
     .isOnQuest 850
 step
 #xprate <1.5
@@ -754,17 +754,17 @@ step
     .complete 876,1 --Serena's Head (1)
 step
     .goto The Barrens,35.3,27.9
-    >> 前往石爪山
+    >>前往石爪山
     .isOnQuest 1061
-    .turnin 1061 >> 《石爪之魂》（The Spirits of Stonetalon）上映
+    .turnin 1061 >>《石爪之魂》(The Spirits of Stonetalon)上映
 step
     .goto The Barrens,35.3,27.9    
-    .accept 1062 >> 接受地精侵略者
+    .accept 1062 >>接受地精侵略者
 step
     .maxlevel 22
     .goto The Barrens,35.3,27.9
-    >> 前往石爪山
-    .accept 6548 >> 接受复仇我的村庄
+    >>前往石爪山
+    .accept 6548 >>接受复仇我的村庄
 step
     .isOnQuest 6548
     .goto Stonetalon Mountains,80.7,89.2,50,0
@@ -781,14 +781,14 @@ step
 step
     .isOnQuest 6548
     .goto The Barrens,35.2,27.8
-    >> 回到荒野中的任务给予者那里
-    .turnin 6548 >> 上缴复仇我的村庄
-    .accept 6629 >> 接受Kill Grundig Darkcloud
+    >>回到荒野中的任务给予者那里
+    .turnin 6548 >>上缴复仇我的村庄
+    .accept 6629 >>接受Kill Grundig Darkcloud
 step
 .goto Stonetalon Mountains,82.3,98.5,40 >>跑到这里的山上去
 step
     .goto Stonetalon Mountains,71.4,95.1
-    .accept 6461 >> 接受输血器
+    .accept 6461 >>接受输血器
 step
     #sticky
     #completewith next
@@ -803,7 +803,7 @@ step
 step
     >>启动卡亚护送
     .goto Stonetalon Mountains,73.5,85.8
-    .accept 6523 >> 接受保护Kaya
+    .accept 6523 >>接受保护Kaya
     .isOnQuest 6629
 step
        >>护送Kaya并靠近她。3灰熊会在篝火旁产卵。在她到达营地之前吃/喝
@@ -813,12 +813,12 @@ step
 step
     #sticky
     #completewith next
-    >> 在前往通缉海报的途中杀死迪普莫斯爬虫。你现在不必完成任务。
+    >>在前往通缉海报的途中杀死迪普莫斯爬虫。你现在不必完成任务。
     .complete 6461,1 --Kill Deepmoss Creeper (x10)
 step
     >>点击沿路通缉海报
     .goto Stonetalon Mountains,59.0,75.7
-    .accept 6284 >> 接受阿拉伯恐惧症
+    .accept 6284 >>接受阿拉伯恐惧症
 step
     .goto Stonetalon Mountains,57.5,76.2,30 >>沿着这条小路跑到西希尔峡谷
 step
@@ -840,7 +840,7 @@ step
     .goto Stonetalon Mountains,52.6,71.8,40,0
     .goto Stonetalon Mountains,52.2,75.6,40,0
     .goto Stonetalon Mountains,53.9,74.2
-    >> 杀死并掠夺贝塞莱斯的毒牙
+    >>杀死并掠夺贝塞莱斯的毒牙
     .complete 6284,1 --Collect Besseleth's Fang (x1)
 	.unitscan Besseleth
     .isOnQuest 6284
@@ -859,14 +859,14 @@ step
     .isOnQuest 6461
 step
     #label spiderend
-    >> 前往山后的小妖精小屋
+    >>前往山后的小妖精小屋
     .goto Stonetalon Mountains,59.0,62.6
-    .turnin 1483 >> 交给Ziz Fizziks
+    .turnin 1483 >>交给Ziz Fizziks
     .isOnQuest 1483
 step
-    >> 前往山后的小妖精小屋
+    >>前往山后的小妖精小屋
     .goto Stonetalon Mountains,59.0,62.6
-    .accept 1093 >> 接受超级收割者6000
+    .accept 1093 >>接受超级收割者6000
 step
     #sticky
     #completewith next
@@ -896,17 +896,17 @@ step
     .isOnQuest 1062
 step
     .goto Stonetalon Mountains,59.0,62.6
-    .turnin 1093 >> 转入超级收割台6000
-    .accept 1094 >> 接受进一步指示
+    .turnin 1093 >>转入超级收割台6000
+    .accept 1094 >>接受进一步指示
 step << Druid
     #requires deepmossegg
     >>传送至Moonglade
     .goto Moonglade,52.4,40.6
-    .trainer 12042 >> 火车咒语
+    .trainer 12042 >>火车咒语
 step
     #requires deepmossegg
     #completewith next
-    .hs >> Hearth前往陶拉霍营地
+    .hs >>炉灶前往陶拉霍营地
 step
     #label eggend
     .goto The Barrens,44.9,59.1
@@ -925,7 +925,7 @@ step
     .goto The Barrens,46.0,49.2,0
     .goto The Barrens,45.3,52.5,0
     .goto The Barrens,45.0,51.8,0
-    .use 5099 >>找到并杀死该地区的拉科塔·马尼（格雷·科多）。抢走他的蹄子。如果你找不到他，跳过这个任务。
+    .use 5099 >>找到并杀死该地区的拉科塔·马尼(格雷·科多)。抢走他的蹄子。如果你找不到他，跳过这个任务。
     .collect 5099,1,883 --Collect Hoof of Lakota'Mani
     .accept 883 >>接受Lakota'Mani
     .unitscan Lakota'mani
@@ -979,16 +979,16 @@ step
     .turnin 1491 >>提交智能饮料
 step
     #completewith next
-    .destroy 5570 >> 你现在可以销毁任何剩下的深苔藓蜘蛛蛋了
+    .destroy 5570 >>你现在可以销毁任何剩下的深苔藓蜘蛛蛋了
 step
     .goto The Barrens,62.3,38.4
     .turnin 821 >>交回陈的空桶
 step << Warrior
     .goto The Barrens,62.2,38.4
-    .vendor >> 检查Grazlix的强力链裤。有钱就买
+    .vendor >>检查Grazlix的强力链裤。有钱就买
 step << Druid/Rogue/Warrior/Hunter/Shaman
     .goto The Barrens,62.2,38.5
-    .vendor >> 检查Vexspindle的Wolf Bracers。有钱就买
+    .vendor >>检查Vexspindle的Wolf Bracers。有钱就买
 step
     .goto The Barrens,63.1,37.1
     #completewith next
@@ -1022,9 +1022,9 @@ step
     .accept 5052 >>接受阿加马根的血片
     .turnin 5052 >>交出阿加马根血片
 step
-    >> 用你的血碎片来拯救风之精灵
-    .accept 889 >> 接受风的精神
-    .turnin 889 >> 风之灵归来
+    >>用你的血碎片来拯救风之精灵
+    .accept 889 >>接受风的精神
+    .turnin 889 >>风之灵归来
 step
     .isOnQuest 883
 .goto The Barrens,44.8,59.1
@@ -1049,7 +1049,7 @@ step
 .goto The Barrens,44.2,62.1,75,0
 .goto The Barrens,49.2,62.6,75,0
 .goto The Barrens,49.6,60.0
->>在该区域周围搜索Owatanka（蓝雷蜥蜴）。如果你找到他，抢走他的尾钉并开始任务。如果你找不到他，跳过这个任务
+>>在该区域周围搜索Owatanka(蓝雷蜥蜴)。如果你找到他，抢走他的尾钉并开始任务。如果你找不到他，跳过这个任务
 .collect 5102,1,884 --Collect Owatanka's Tailspike
 .accept 884 >>接受Owatanka
     .unitscan Owatanka
@@ -1089,7 +1089,7 @@ step
 #xprate >1.499
     .goto Thunder Bluff,45.9,64.7
     #completewith next
-    >> 步行至Thunderbluff。
+    >>步行至Thunderbluff。
     .home >>将您的炉石设置为雷霆崖
 step
 #xprate <1.5
@@ -1097,9 +1097,9 @@ step
     #completewith next
     .home >>将您的炉石设置为雷霆崖
 step << Warrior wotlk
-	.train 198 >> 火车1h梅斯
+	.train 198 >>火车1h梅斯
     .goto Thunder Bluff,40.93,62.71
-    .vendor >> 购买连枷
+    .vendor >>购买连枷
     .collect 925,1
     .goto Thunder Bluff,53.20,58.27
 step << Warrior tbc/Shaman
@@ -1108,7 +1108,7 @@ step << Warrior tbc/Shaman
     +如果更便宜，请从拍卖行购买一个绿色的2小时锤。如果你要运行哀嚎洞穴，跳过这一步，任务组会更好。
 step << Warrior tbc/Shaman
     .goto Thunder Bluff,53.2,58.2
-    .vendor >> 买一把锤子
+    .vendor >>买一把锤子
     .collect 924,1
 step
     .goto Thunder Bluff,61.4,80.9
@@ -1127,7 +1127,7 @@ step
     #xprate <1.5
     .maxlevel 21
     .goto Thunder Bluff,22.8,20.9
-    >> 进入精神升起下方的视野池
+    >>进入精神升起下方的视野池
     .accept 962 >>接受蛇花
 step << Shaman
     .goto Thunder Bluff,23.6,19.1
@@ -1138,7 +1138,7 @@ step << Shaman
 .train 913 >>训练治愈波r4
 .train 8052 >>火车火焰冲击r2
 .train 6390 >>火车石爪图腾2
-.train 8056 >> 火车霜冻冲击
+.train 8056 >>火车霜冻冲击
 step
     #completewith next
     .goto Thunder Bluff,46.9,49.9
@@ -1172,24 +1172,24 @@ step
 step
 #xprate >1.499
     .isOnQuest 1095
-    >> 前往山后的小妖精小屋
+    >>前往山后的小妖精小屋
     .goto Stonetalon Mountains,59.0,62.6
-    .turnin 1095 >> 提交进一步说明
+    .turnin 1095 >>提交进一步说明
 step
 #xprate <1.5
-    >> 前往太阳岩度假区
-    >> 到达太阳岩后，沿着左边的山路走
+    >>前往太阳岩度假区
+    >>到达太阳岩后，沿着左边的山路走
     .goto Stonetalon Mountains,49.0,62.8,40,0
     .goto Stonetalon Mountains,47.3,64.2
-    .accept 6562 >> 接受深层次的麻烦
+    .accept 6562 >>接受深层次的麻烦
     .maxlevel 24
 step
     .goto Stonetalon Mountains,47.2,61.1
-    .turnin 6284 >> 上缴阿拉伯恐惧症
+    .turnin 6284 >>上缴阿拉伯恐惧症
     .isQuestComplete 6284
 step
     .goto Stonetalon Mountains,47.5,58.3
-    .turnin 6401 >> 活捉Kaya
+    .turnin 6401 >>活捉Kaya
     .isQuestComplete 6401
 step
     .goto Stonetalon Mountains,45.1,59.8
@@ -1215,35 +1215,35 @@ step
 step
 #xprate <1.5
     .goto Ashenvale,12.3,33.8
-    .fp Zoram >> 获取Zoram'gar前哨飞行路线
+    .fp Zoram >>获取Zoram'gar前哨飞行路线
     .maxlevel 22
 step
 #xprate <1.5
     .goto Ashenvale,11.8,34.7
-    .accept 216 >> 在石头和蓟马之间接受
+    .accept 216 >>在石头和蓟马之间接受
     .maxlevel 22
 step
 #xprate <1.5
-    >> 与小屋里的巨魔交谈
+    >>与小屋里的巨魔交谈
     .goto Ashenvale,11.6,34.9
-    .accept 6442 >> 在Zoram Strand接受Naga
-    .accept 6462 >> 接受巨魔魅力
+    .accept 6442 >>在Zoram Strand接受Naga
+    .accept 6462 >>接受巨魔魅力
     .maxlevel 22
 step
 #xprate <1.5
     .isOnQuest 6562
     .goto Ashenvale,11.6,34.3
-    .turnin 6562 >> 深陷困境
+    .turnin 6562 >>深陷困境
 step
 #xprate <1.5
     .goto Ashenvale,11.6,34.3
-    .accept 6563 >> 接受阿库迈的精髓
+    .accept 6563 >>接受阿库迈的精髓
     .maxlevel 22
 step
 #xprate <1.5
     >>接受此任务将启动护送。跟着他
     .goto Ashenvale,12.1,34.4
-    .accept 6641 >> 接受伏尔莎的激光
+    .accept 6641 >>接受伏尔莎的激光
     .maxlevel 22
 step
 #xprate <1.5
@@ -1276,14 +1276,14 @@ step
     .goto Ashenvale,13.6,9.0,30,0
     .goto Ashenvale,13.0,13.2,30,0
     .goto Ashenvale,13.6,9.0
-    >>在水下游泳，进入黑深潭。杀死女祭司直到一张湿纸条掉落（任务）。然后右击它并接受任务。
+    >>在水下游泳，进入黑深潭。杀死女祭司直到一张湿纸条掉落(任务)。然后右击它并接受任务。
     .collect 16790,1,6564 --Collect Damp Note
-    .accept 6564 >> 接受对旧神的忠诚
+    .accept 6564 >>接受对旧神的忠诚
     .isOnQuest 6442
 step
 #xprate <1.5
     #requires Sapphires
-    >> 从隧道的墙上抢走蓝宝石。
+    >>从隧道的墙上抢走蓝宝石。
     .goto Ashenvale,13.0,13.2,30,0
     .goto Ashenvale,13.6,9.0,30,0
     .goto Ashenvale,13.0,13.2,30,0
@@ -1300,49 +1300,49 @@ step
     #requires wrathtailhead
     >>返回佐拉姆加前哨。
     .goto Ashenvale,12.2,34.2
-    .turnin 6641 >> 交给伏尔莎激光器
+    .turnin 6641 >>交给伏尔莎激光器
     .isOnQuest 6641
 step
 #xprate <1.5
     .goto Ashenvale,11.6,34.3
-    .turnin 6563 >> 交回阿库迈的精华
+    .turnin 6563 >>交回阿库迈的精华
     .isOnQuest 6553
 step
 #xprate <1.5
     #sticky
     #completewith next
-    .destroy 16784 >> 摧毁所有阿库迈剩余的蓝宝石
+    .destroy 16784 >>摧毁所有阿库迈剩余的蓝宝石
 step
 #xprate <1.5
     .goto Ashenvale,11.6,34.3
-    .turnin 6564 >> 效忠旧神
+    .turnin 6564 >>效忠旧神
     .isOnQuest 6564
 step
 #xprate <1.5
     .goto Ashenvale,11.7,34.9
-    .turnin 6442 >> 在Zoram Strand上交给Naga
+    .turnin 6442 >>在Zoram Strand上交给Naga
     .isOnQuest 6442
 step << Druid
     >>传送至Moonglade
     .goto Moonglade,52.4,40.6
-    .trainer 12042 >> 火车咒语
+    .trainer 12042 >>火车咒语
 step
     .zoneskip Stonetalon Mountains
     #completewith eldercr
-    .hs >> 火炉到雷霆崖
+    .hs >>火炉到雷霆崖
     .cooldown item,6948,>0
 step
     #completewith next
     .goto Stonetalon Mountains,45.1,59.8
-    .fly Thunder Bluff >> 飞向雷霆崖 
+    .fly Thunder Bluff >>飞向雷霆崖 
     .zoneskip Thunder Bluff
 step
     #label eldercr
     .isOnQuest 1063
     .goto Thunder Bluff,69.8,30.8
-    .turnin 1063 >> 交给克罗恩长老
-    >> 等待角色扮演结束
-    .accept 1064 >> 接受被遗弃的援助
+    .turnin 1063 >>交给克罗恩长老
+    >>等待角色扮演结束
+    .accept 1064 >>接受被遗弃的援助
 step
     .isOnQuest 1489
     .goto Thunder Bluff,78.4,28.8
@@ -1357,10 +1357,10 @@ step
     .turnin 1490 >>交给奈拉·威尔德曼
 step
     .isOnQuest 1064
-    >> 前往灵泉下的水池
+    >>前往灵泉下的水池
     .goto Thunder Bluff,22.9,21.1
-    .turnin 1064 >> 交出被遗弃的援助
-    .accept 1065 >> 接受塔伦磨坊之旅
+    .turnin 1064 >>交出被遗弃的援助
+    .accept 1065 >>接受塔伦磨坊之旅
 step << !Tauren
 #xprate >1.499
     .goto Thunder Bluff,23.0,21.1
@@ -1405,18 +1405,18 @@ step << Shaman
 step << Shaman
 .goto Orgrimmar,38.6,36.0
     #completewith next
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Paladin
     .goto Orgrimmar,32.3,35.7
         #completewith next
-    .trainer >> 去训练你的职业咒语
+    .trainer >>去训练你的职业咒语
 step << Warrior
 .goto Orgrimmar,79.7,31.4
         #completewith next
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warrior
     .goto Orgrimmar,81.2,19.0
-    .collect 29009,1 >> 从曾道剑处购买一把重型飞刀
+    .collect 29009,1 >>从曾道剑处购买一把重型飞刀
 step << Warrior/Paladin/Shaman
     .goto Orgrimmar,81.5,19.6
     .train 197 >>列车2h轴

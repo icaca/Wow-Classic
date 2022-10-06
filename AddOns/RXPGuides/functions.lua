@@ -952,7 +952,7 @@ function addon.UpdateQuestCompletionData(self)
     local icon = addon.icons.complete
     local id = element.questId
 
-    if element.tag ~= "complete" then
+    if not element.tag or element.tag ~= "complete" then
         return
     elseif type(id) ~= "number" then
         print('Error (.' .. element.tag .. '): Invalid quest ID at step ' .. element.step.index)
@@ -1466,6 +1466,8 @@ function addon.functions.home(self, ...)
         return element
     end
 
+    if not addon.settings.db.profile.enableBindAutomation or IsShiftKeyDown() then return end
+
     local element = self.element
     if not element.step.active or element.completed or element.skip then
         element.confirm = false
@@ -1538,6 +1540,8 @@ function addon.functions.fly(self, ...)
         element.tooltipText = addon.icons.fly .. element.text
         return element
     end
+
+    if not addon.settings.db.profile.enableBindAutomation or IsShiftKeyDown() then return end
 
     local element = self.element
     if not element.step.active then return end
@@ -2725,6 +2729,7 @@ function addon.functions.unitscan(self, text, ...)
 
         if text and text ~= "" then element.text = text end
         element.textOnly = true
+        element.targets = npcs
         return element
     end
 
@@ -3178,6 +3183,8 @@ function addon.functions.skipgossip(self, text, ...)
         element.args = #args > 0 and args
         return element
     end
+
+    if not addon.settings.db.profile.enableGossipAutomation or IsShiftKeyDown() then return end
 
     local element = self.element
     local args = element.args or {}
@@ -3728,22 +3735,4 @@ function addon.functions.wpbuff(self)
         if id == self.buff then return self.state end
     end
     return not self.state
-end
-
-local rxp_words = {
-["abandon"] = 1,
-["accept"] = 1,
-["turnin"] = 1
-}
-for i, v in pairs(addon.functions) do
-    if rxp_words[i] then
-        addon.functions[i] = function(self, ...)
-            if type(self) == "string" then
-                local text, arg1, arg2, arg3, arg4 = ...
-                return v(self, nil, arg1, arg2, arg3, arg4)
-            else
-                return v(self, ...)
-            end
-        end
-    end
 end

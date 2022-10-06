@@ -1,9 +1,9 @@
-## Interface: 90205
-## Title: RXP Guides
+## Interface: 30400
+## Title: RestedXP Guides
 ## Notes: In-game leveling guides
 ## Notes-zhCN: TODO
 ## Author: RestedXP
-## Version: v4.3.2
+## Version: v4.3.12
 ## OptionalDeps: Questie, unitscan
 ## SavedVariables: RXPData, RXPDB
 ## SavedVariablesPerCharacter: RXPCData, RXPCTrackingData, RXPCComms, RXPCSettings
@@ -23,6 +23,7 @@ ActiveItemFrame.lua
 LevelingTracker.lua
 Timers.lua
 Communications.lua
+Targeting.lua
 
 DB/wotlk.xml
 

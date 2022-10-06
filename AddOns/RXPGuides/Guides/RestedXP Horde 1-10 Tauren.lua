@@ -4,7 +4,7 @@ RXPGuides.RegisterGuide([[
 << Horde
 #name 1-10 莫高雷
 #version 1
-#group RestedXP 部落 1-30
+#group RestedXP部落1-30
 #defaultfor Tauren
 #next 10-20 永歌森林 / 幽魂之地 << !Warrior !Shaman
 #next 10-13 莫高雷 << Warrior/Shaman
@@ -17,7 +17,7 @@ step
     .goto Mulgore,44.9,77.1
     .accept 747 >>接受狩猎开始
 step
-	>> 走进小屋
+	>>走进小屋
     .goto Mulgore,44.2,76.1
     .accept 752 >>接受一项艰巨的任务
 step << Warrior/Shaman
@@ -27,7 +27,7 @@ step << Warrior/Shaman
     .goto Mulgore,45.6,74.0,30,0
 step << Warrior/Shaman
     .goto Mulgore,45.3,76.5
-    .vendor >> 供应商垃圾
+    .vendor >>供应商垃圾
 step << Warrior
     .goto Mulgore,44.0,76.1
     .train 6673 >>火车战斗呐喊
@@ -64,7 +64,7 @@ step
     .accept 750 >>接受狩猎继续
 step << Hunter
     .goto Mulgore,45.3,76.5
-    .vendor >>供应商垃圾箱。购买1000颗子弹（5叠）
+    .vendor >>供应商垃圾箱。购买1000颗子弹(5叠)
 step
     .goto Mulgore,44.2,76.1
     .turnin 753 >>交出一项微不足道的任务
@@ -96,13 +96,13 @@ step
     >>为美洲狮的皮毛杀死它们
     .complete 750,1 --Mountain Cougar Pelt (10)
 step << !Druid !Shaman
-	>> 在前往任务的途中碾碎暴徒
+	>>在前往任务的途中碾碎暴徒
     .goto Mulgore,44.9,77.0
-    .xp 3+1150>>研磨至1150+/1400xp
+    .xp 3+1150>>研磨至1150+/1400经验
 step << Druid/Shaman
-	>> 在前往任务的途中碾碎暴徒
+	>>在前往任务的途中碾碎暴徒
     .goto Mulgore,44.9,77.0
-    .xp 3+1110>>研磨至1110+/1400xp
+    .xp 3+1110>>研磨至1110+/1400经验
 step << Warrior/Hunter
     >>确保你有价值1美元90美分的可售物品。如果没有，研磨更多
     .goto Mulgore,44.9,77.0
@@ -119,7 +119,7 @@ step << Shaman
     .accept 780 >>接受战舰
 step
     .goto Mulgore,45.3,76.5
-    .vendor >> 供应商垃圾
+    .vendor >>供应商垃圾
 step << Druid
     .goto Mulgore,45.1,75.9
     .turnin 3094 >>交上葱郁的音符
@@ -127,7 +127,7 @@ step << Druid
 step << Shaman
     .goto Mulgore,45.0,75.9
     .turnin 3093 >>交上符文铭文
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Shaman
     .goto Mulgore,44.7,76.2
     .accept 1519 >>接受地球的召唤
@@ -137,10 +137,10 @@ step
     .accept 3376 >>接受Break Sharptusk！
 step << Hunter
     .goto Mulgore,44.3,75.7
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Warrior
     .goto Mulgore,44.0,76.1
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step
     .goto Mulgore,58.2,85.0
     >>杀死洞穴外的战车以获取侧翼和鼻翼
@@ -180,7 +180,7 @@ step << Shaman
 step
 	#label nomoreboar
 	#completewith next
-    .hs >> 赫斯前往纳拉奇营地
+    .hs >>赫斯前往纳拉奇营地
 step
     .goto Mulgore,44.9,77.0
     .turnin 780 >>交出战车
@@ -220,12 +220,12 @@ step
 step
     #softcore
 	#completewith next
-    .goto Mulgore,46.5,55.5,300 >> 在精神治疗者处死亡并重生，或跑到血蹄村
+    .goto Mulgore,46.5,55.5,300 >>在精神治疗者处死亡并重生，或跑到血蹄村
 step
 	#hardcore
 	#completewith next
-    .goto Mulgore,48.3,53.3,100 >> 跑到血蹄村 << !Hunter
-    .goto Mulgore,47.3,62.0,100 >> 跑到血蹄村 << Hunter
+    .goto Mulgore,48.3,53.3,100 >>跑到血蹄村 << !Hunter
+    .goto Mulgore,47.3,62.0,100 >>跑到血蹄村 << Hunter
 step << !Hunter
     .goto Mulgore,48.3,53.3
     .accept 11129 >>接受凯尔失踪！
@@ -234,11 +234,11 @@ step << !Hunter
     .accept 766 >>接受Mazzranache
 step << Shaman/Druid
     .goto Mulgore,45.7,58.6
-     >> 供应商垃圾。如果你有足够的钱买一根手杖（4s80c），就卖掉你的武器。如果不够，请跳过此步骤
+     >>供应商垃圾。如果你有足够的钱买一根手杖(4s80c)，就卖掉你的武器。如果不够，请跳过此步骤
     .collect 2495,1 --Collect Walking Stick
 step << Warrior
     .goto Mulgore,45.7,58.6
-     >> 供应商垃圾。如果能给你足够的钱买一把木槌，就卖掉你的武器（6s66c）。如果不够，请跳过此步骤
+     >>供应商垃圾。如果能给你足够的钱买一把木槌，就卖掉你的武器(6s66c)。如果不够，请跳过此步骤
     .collect 2493,1 --Collect Wooden Mallet
 step << !Hunter
     .goto Mulgore,46.6,61.1
@@ -260,21 +260,21 @@ step << !Hunter
 step << Shaman
         #completewith next
     .goto Mulgore,48.4,59.2
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << !Hunter
     .goto Mulgore,48.7,59.3
     .accept 761 >>接受Swoop狩猎
 step << Druid
         #completewith next
     .goto Mulgore,48.5,59.6
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << !Hunter
     .goto Mulgore,48.6,60.4
     .accept 748 >>接受毒水
 step << Warrior
         #completewith next
     .goto Mulgore,49.5,60.6
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step
     .goto Mulgore,47.3,62.0
     .accept 743 >>接受风怒的危险
@@ -302,7 +302,7 @@ step << Hunter
     .accept 771 >>接受视觉仪式
 step << Hunter
     .goto Mulgore,45.5,58.5
-     >> 供应商垃圾。如果你的武器给了你足够的钱，就把它卖掉。如果不够，请跳过此步骤
+     >>供应商垃圾。如果你的武器给了你足够的钱，就把它卖掉。如果不够，请跳过此步骤
     .collect 2509,1 --Collect Ornate Blunderbuss
 step << Hunter
     .goto Mulgore,47.0,57.0
@@ -310,7 +310,7 @@ step << Hunter
 step << Hunter
     #completewith next
     .goto Mulgore,47.8,55.7
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 	.money <0.01
 step << Hunter
     .goto Mulgore,48.3,53.3
@@ -369,7 +369,7 @@ step
     .goto Mulgore,48.3,72.0,90,0
     .goto Mulgore,53.5,73.0,90,0
     .goto Mulgore,48.3,72.0
-    >>在两个营地之间来回移动，杀死侏儒。注意蛇梨（9级罕见）。他太难杀了。
+    >>在两个营地之间来回移动，杀死侏儒。注意蛇梨(9级罕见)。他太难杀了。
     .complete 745,1 --Palemane Tanner (10)
     .complete 745,2 --Palemane Skinner (8)
     .complete 745,3 --Palemane Poacher (5)
@@ -385,15 +385,15 @@ step << Tauren
 step << Warrior
     #completewith next
     .goto Mulgore,49.5,60.6
-    .trainer >> 如果你还需要训练你的职业技能
+    .trainer >>如果你还需要训练你的职业技能
 step << Shaman
     #completewith next
     .goto Mulgore,48.4,59.2
-    .trainer >> 如果你还需要训练你的职业技能
+    .trainer >>如果你还需要训练你的职业技能
 step << Druid
     #completewith next
     .goto Mulgore,48.5,59.6
-    .trainer >> 如果你还需要训练你的职业技能
+    .trainer >>如果你还需要训练你的职业技能
 step
     .goto Mulgore,47.5,60.2
     .turnin 745 >>轮流分享土地
@@ -401,19 +401,19 @@ step << Warrior
         #completewith next
     .goto Mulgore,46.8,60.8
 	.money <0.01
-    .trainer >> 培训急救
+    .trainer >>培训急救
 step << Shaman/Druid
     .goto Mulgore,45.7,58.6
-     >> 供应商垃圾箱。如果你有足够的钱买手杖（4s80c），就把你的武器卖掉。如果不够，请跳过此步骤
+     >>供应商垃圾箱。如果你有足够的钱买手杖(4s80c)，就把你的武器卖掉。如果不够，请跳过此步骤
     .collect 2495,1 --Collect Walking Stick
 step << Warrior
     .goto Mulgore,45.7,58.6
-     >> 供应商垃圾箱。如果能给你足够的钱买木槌，就卖掉你的武器（6s66c）。如果不够，请跳过此步骤
+     >>供应商垃圾箱。如果能给你足够的钱买木槌，就卖掉你的武器(6s66c)。如果不够，请跳过此步骤
     .collect 2493,1 --Collect Wooden Mallet
 step << Hunter
     .goto Mulgore,45.5,58.5
     .money <0.0380
-     >> 供应商垃圾箱。如果你的武器能给你足够的钱来买Ornate Blunderbus（3s 80c），就把它卖掉。如果不够，请跳过此步骤
+     >>供应商垃圾箱。如果你的武器能给你足够的钱来买Ornate Blunderbus(3s 80c)，就把它卖掉。如果不够，请跳过此步骤
     .collect 2509,1 --Collect Ornate Blunderbuss
 step
     #label Vision
@@ -427,13 +427,13 @@ step
     .goto Mulgore,50.2,60.2,60,0
     .goto Mulgore,46.8,59.6,60,0
     .goto Mulgore,47.3,56.9
-    .use 33009 >>寻找法国人凯尔。他沿着顺时针方向在整个城镇巡逻（所以逆时针方向走）。走到他跟前，用嫩步兵肉
+    .use 33009 >>寻找法国人凯尔。他沿着顺时针方向在整个城镇巡逻(所以逆时针方向走)。走到他跟前，用嫩步兵肉
 	.complete 11129,1 --Kyle Fed (1)
 	.unitscan Kyle the Frenzied
 step << Hunter
 	#completewith next
     .goto Mulgore,47.8,55.7
-    .trainer >> 如果你还需要训练你的职业技能
+    .trainer >>如果你还需要训练你的职业技能
 step
     .goto Mulgore,48.2,53.3
     .turnin 11129 >>交出凯尔失踪了！
@@ -446,7 +446,7 @@ step
 	.unitscan Morin Cloudstalker
 step
     .goto Mulgore,53.8,48.3
-	>> 途中碾碎美洲狮和狼，然后点击商队中间的板条箱。
+	>>途中碾碎美洲狮和狼，然后点击商队中间的板条箱。
     .turnin 749 >>收缴被摧毁的商队
     .accept 751 >>接受被摧毁的商队
 step
@@ -474,11 +474,11 @@ step
 step
     #softcore
     #completewith TotemW
-    .goto Mulgore,46.5,55.5,200 >> 在精神治疗者处死亡并重生，或跑到血蹄村
+    .goto Mulgore,46.5,55.5,200 >>在精神治疗者处死亡并重生，或跑到血蹄村
 step
     #hardcore
     #completewith TotemW
-    .goto Mulgore,46.5,55.5,200 >> 跑回血蹄村
+    .goto Mulgore,46.5,55.5,200 >>跑回血蹄村
 step
     .isQuestComplete 766
     .goto Mulgore,47.0,57.2
@@ -499,33 +499,33 @@ step
 step << Shaman
         #completewith next
     .goto Mulgore,48.4,59.2
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Druid
         #completewith next
     .goto Mulgore,48.5,59.6
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Warrior
         #completewith next
     .goto Mulgore,49.5,60.6
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Shaman/Druid
     .goto Mulgore,45.7,58.6
-     >> 供应商垃圾箱。如果你有足够的钱买手杖（4s80c），就把你的武器卖掉。如果不够，请跳过此步骤
+     >>供应商垃圾箱。如果你有足够的钱买手杖(4s80c)，就把你的武器卖掉。如果不够，请跳过此步骤
     .collect 2495,1 --Collect Walking Stick
 step << Warrior
     .goto Mulgore,45.7,58.6
-     >> 供应商垃圾箱。如果能给你足够的钱买木槌，就卖掉你的武器（6s66c）。如果不够，请跳过此步骤
+     >>供应商垃圾箱。如果能给你足够的钱买木槌，就卖掉你的武器(6s66c)。如果不够，请跳过此步骤
     .collect 2493,1 --Collect Wooden Mallet
 step << Hunter
     .goto Mulgore,45.5,58.5
-     >> 供应商垃圾箱。如果你的武器给了你足够的钱来买Ornate Blunderbus（3s 83c），就把它卖掉。如果不够，请跳过此步骤
+     >>供应商垃圾箱。如果你的武器给了你足够的钱来买Ornate Blunderbus(3s 83c)，就把它卖掉。如果不够，请跳过此步骤
     .collect 2509,1 --Collect Ornate Blunderbuss
 step << Warrior
     .goto Mulgore,46.7,60.7
-    .vendor >> 供应商垃圾箱。买尽可能多的新鲜烘焙面包
+    .vendor >>供应商垃圾箱。买尽可能多的新鲜烘焙面包
 step << Druid/Shaman
     .goto Mulgore,46.7,60.7
-    .vendor >> 供应商垃圾箱。买尽可能多的冰镇牛奶
+    .vendor >>供应商垃圾箱。买尽可能多的冰镇牛奶
 step
     .goto Mulgore,44.5,45.3
     .use 5415 >>在井上使用雷鸣清洁图腾
@@ -557,7 +557,7 @@ step
 step
 	#completewith next
 	.goto Mulgore,54.15,27.81
-	.destroy 4823 >> 你现在可以摧毁先知之水了
+	.destroy 4823 >>你现在可以摧毁先知之水了
 step
 	#completewith next
     .goto Mulgore,54.15,27.81
@@ -594,11 +594,11 @@ step
     .xp 9+4400>>研磨至4450+/6500xp
 step << !Druid
     #completewith hsfailsafe3
-    .hs >>Hearth to Bloodhoof村
+    .hs >>炉灶 to Bloodhoof村
 step << Druid
     #completewith next
     .goto Mulgore,54.76,35.10
-    .deathskip >> 在精神治疗者处死去并重生，或者跑到血蹄村
+    .deathskip >>在精神治疗者处死去并重生，或者跑到血蹄村
 step << !Hunter
     .goto Mulgore,47.0,57.2
     .turnin 766 >>转入Mazzranache
@@ -626,17 +626,17 @@ step << Shaman
         #completewith next
     .goto Mulgore,48.4,59.2
     .accept 2984 >>接受火灾召唤
-     .trainer >> 训练你的职业咒语
+     .trainer >>训练你的职业咒语
 step << Druid
         #completewith next
     .goto Mulgore,48.5,59.6
     .accept 5928 >>接听电话
-     .trainer >> 训练你的职业咒语
+     .trainer >>训练你的职业咒语
 step << Warrior
         #completewith next
     .goto Mulgore,49.5,60.6
     .accept 1505 >>接受退伍军人乌泽克
-     .trainer >> 训练你的职业咒语
+     .trainer >>训练你的职业咒语
 step << Hunter
     .goto Mulgore,47.5,60.2
     .turnin 746 >>转入矮人挖掘
@@ -654,14 +654,14 @@ step << Hunter
     #sticky
         #completewith next
     .goto Mulgore,47.7,55.7
-     .trainer >> 训练你的宠物法术
+     .trainer >>训练你的宠物法术
 step << Hunter
         #completewith next
     .goto Mulgore,47.8,55.7
     .accept 6061 >>接受驯服野兽
-     .trainer >> 训练你的职业咒语
+     .trainer >>训练你的职业咒语
 step << Hunter
-    .use 15914 >>单击Plainstrider上包中的驯服棒。尝试在最大射程（30码）进行
+    .use 15914 >>单击Plainstrider上包中的驯服棒。尝试在最大射程(30码)进行
     .goto Mulgore,53.7,62.2
     .complete 6061,1 --Tame an Adult Plainstrider (1)
 step << Hunter
@@ -669,7 +669,7 @@ step << Hunter
     .turnin 6061 >>转身驯服野兽
     .accept 6087 >>接受驯服野兽
 step << Hunter
-    .use 15915 >>点击你包里的驯服棒来对付追踪者。尝试在最大射程（30码）进行
+    .use 15915 >>点击你包里的驯服棒来对付追踪者。尝试在最大射程(30码)进行
     .goto Mulgore,47.1,48.3
     .complete 6087,1 --Tame a Prairie Stalker (1)
 step << Hunter
@@ -692,7 +692,7 @@ step << Warrior/Shaman
     .goto Mulgore,59.7,62.5,30,0
     .goto Mulgore,51.1,58.6,30,0
     .goto Mulgore,59.7,62.5
-    .turnin 751 >> 收缴被摧毁的商队
+    .turnin 751 >>收缴被摧毁的商队
     .accept 764 >>接受合资公司。
     .accept 765 >>接受主管Fizspholler
     .unitscan Morin Cloudstalker
@@ -705,7 +705,7 @@ step << Druid/Hunter
     .goto Mulgore,59.7,62.5,30,0
     .goto Mulgore,51.1,58.6,30,0
     .goto Mulgore,59.7,62.5
-    .turnin 751 >> 收缴被摧毁的商队
+    .turnin 751 >>收缴被摧毁的商队
 	.unitscan Morin Cloudstalker
 step << Tauren Warrior/Tauren Shaman
     >>杀死该地区的狼。抢走他们的牙齿
@@ -717,7 +717,7 @@ step << Tauren Warrior/Tauren Shaman
 step << Warrior tbc/Shaman tbc
     #sticky
     #completewith next
-    .goto Mulgore,46.5,55.5,200 >> 在精神治疗者处死去并重生，或者跑到血蹄村
+    .goto Mulgore,46.5,55.5,200 >>在精神治疗者处死去并重生，或者跑到血蹄村
 step << Tauren Warrior/Tauren Shaman
     >>跑回血蹄村 << wotlk
     .goto Mulgore,48.5,60.4
@@ -759,7 +759,7 @@ step << Druid
     .complete 5930,1 --Seek out the Great Bear Spirit and learn what it has to share with you about the nature of the bear. (1)
     .skipgossip
 step << Druid
-    .cast 18960 >> 传送回Moonglade
+    .cast 18960 >>传送回Moonglade
 .goto Moonglade,56.2,30.7
     .turnin 5930 >>交出大熊精神
     .accept 5932 >>接受回到雷霆崖
@@ -822,10 +822,10 @@ step
     .goto The Barrens,43.9,24.4
     .complete 848,1 --Collect Fungal Spores (x4)
 step << tbc
-    .goto The Barrens,52.0,30.6,150 >> 在精神治疗者处死亡并重生，或者逃跑
+    .goto The Barrens,52.0,30.6,150 >>在精神治疗者处死亡并重生，或者逃跑
 step
     .goto The Barrens,52.3,31.9
-    >> 返回十字路口
+    >>返回十字路口
     .turnin 870 >>把被遗忘的水池交出来
     .accept 877 >>接受停滞的绿洲
 step
@@ -909,13 +909,13 @@ RXPGuides.RegisterGuide([[
 << Horde
 #name 10-13 莫高雷
 #version 1
-#group RestedXP 部落 1-30
+#group RestedXP部落1-30
 #defaultfor Tauren
 #next 13-23 贫瘠之地
 step
     #sticky
     #completewith ThunderBluff
-    >>留心鬼嚎（罕见的白狼）。抢劫他以换取恶魔疤痕斗篷。如果你找不到他，跳过这一步。
+    >>留心鬼嚎(罕见的白狼)。抢劫他以换取恶魔疤痕斗篷。如果你找不到他，跳过这一步。
     .collect 4854,1,770 --Collect Demon Scarred Cloak
     .accept 770 >>接受恶魔疤痕披风
     .unitscan Ghost Howl
@@ -947,7 +947,7 @@ step
     .goto Mulgore,48.6,16.1,40,0
     .goto Mulgore,51.8,33.8,40,0
     .goto Mulgore,56.2,32.9
->>四处寻找Arra'Chea（大黑kodo）。他顺时针走。杀了他，抢了他的角
+>>四处寻找Arra'Chea(大黑kodo)。他顺时针走。杀了他，抢了他的角
     .complete 776,1 --Horn of Arra'chea (1)
     .unitscan Arra'Chea
 step
@@ -1015,7 +1015,7 @@ step << Warrior
     .train 7384 >>列车功率过大
 step
     #completewith next
-    .hs >> 火炉或飞回十字路口
+    .hs >>火炉或飞回十字路口
 step
     .goto The Barrens,52.0,30.3
     .accept 869 >>接受猛禽窃贼

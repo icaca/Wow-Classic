@@ -9,11 +9,11 @@ RXPGuides.RegisterGuide([[
 #next 30-36 阿拉希高地/奥特兰克山脉 AoE
 step
 .goto Orgrimmar,38.69,85.38
-.trainer >> 上楼去。列车入口：Orgrimmar
+.trainer >>上楼去。列车入口：Orgrimmar
 step
 #level 22
 .goto Orgrimmar,38.34,85.56
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 >>如果你还没有遵守冰霜法师AoE规范
 >>确保你至少剩下30银子
 step
@@ -23,52 +23,52 @@ step
 .goto Durotar,50.82,13.86
 +等齐柏林飞艇来了，等它来了就上车
 step
-.zone Tirisfal Glades >> 前往提里斯福尔
+.zone Tirisfal Glades >>前往提里斯福尔
 step
 .goto Tirisfal Glades,61.87,65.02,40,0
-.goto Tirisfal Glades,61.81,74.42,40 >> 跑到地下城，然后跑到电梯间。乘一部电梯到幽暗城的主要部分
+.goto Tirisfal Glades,61.81,74.42,40 >>跑到地下城，然后跑到电梯间。乘一部电梯到幽暗城的主要部分
 step
 #completewith next
-+银行项目（如果需要）
++银行项目(如果需要)
 step << Undead Mage
 .goto Undercity,62.01,42.73
 .turnin 441 >>交给罗利和幽暗城
 .accept 530 >>接受丈夫的复仇
 step << !Undead Mage
 .goto Undercity,63.27,48.60
-.fp Undercity >> 获取幽暗城飞行路线
+.fp Undercity >>获取幽暗城飞行路线
 step
 .goto Undercity,82.79,15.82
-.vendor >> 去找汉娜。购买传送符文
+.vendor >>去找汉娜。购买传送符文
 .collect 17031,1 
 step
 .goto Undercity,84.20,15.55
-.trainer >> 训练地下门户
+.trainer >>训练地下门户
 >>如果你没有足够的钱，向下面的试剂供应商出售一些东西
 step << Undead Mage
 .goto Undercity,63.27,48.60
-.fly Silverpine >> 飞到银松森林
+.fly Silverpine >>飞到银松森林
 step << !Undead Mage
 #sticky
 #completewith next
 .goto Undercity,82.36,15.31
 +转到右侧的试剂供应商，执行“注销跳过”，将角色定位在最低楼梯的最高部分，直到看起来像漂浮在空中，然后注销并重新登录。
-.link https://www.youtube.com/watch?v=-Bi95bCN8dM >> 单击此处查看示例
+.link https://www.youtube.com/watch?v=-Bi95bCN8dM >>单击此处查看示例
 >>如果你做不到这一点，就正常离开幽暗城
 step << !Undead Mage
-.goto Tirisfal Glades,61.85,66.59,60 >> 退出地下城
+.goto Tirisfal Glades,61.85,66.59,60 >>退出地下城
 step << !Undead Mage
 .goto Silverpine Forest,67.42,5.91
-.zone Silverpine Forest >> 沿着这条路往西走，到银松森林
+.zone Silverpine Forest >>沿着这条路往西走，到银松森林
 step << Mage
 #completewith next
 .money <0.1400
 .goto Silverpine Forest,44.80,39.24
-.vendor >> 与安德里亚交谈，检查智者腰带。如果价格上涨，就买下来（如果你需要的话）
+.vendor >>与安德里亚交谈，检查智者腰带。如果价格上涨，就买下来(如果你需要的话)
 step
 >>前往墓地 << !Undead Mage
 .goto Silverpine Forest,42.80,40.87
-.accept 493 >>接受Hillsbrad Foothills之旅
+.accept 493 >>接受希尔斯布莱德丘陵之旅
 step
 .goto Silverpine Forest,42.91,42.00
 .turnin 3301 >>交给穆拉·鲁恩托姆
@@ -80,7 +80,7 @@ step << Undead Mage
 #label Valdred
 .goto Silverpine Forest,44.63,84.69
 .complete 530,1 
->>杀死瓦尔德雷德·莫里（他很能干）。抢他的手
+>>杀死瓦尔德雷德·莫里(他很能干)。抢他的手
 step
 #completewith next
 .goto Silverpine Forest,46.50,86.49,0
@@ -91,16 +91,16 @@ step << Undead Mage
 #requires Valdred
 step
 .goto Silverpine Forest,46.10,85.75
-.xp 22 >> 向南跑到格雷曼墙。AoE到22
+.xp 22 >>向南跑到格雷曼墙。AoE到22
 step
->>向东直奔希尔斯布拉德
+>>向东直奔希尔斯布莱德丘陵
 .goto Silverpine Forest,72.58,81.35
 .accept 494 >>接受罢工时间
 step
 >>跑向塔伦磨坊
 .goto Hillsbrad Foothills,62.37,20.58
 .turnin 494 >>上缴时间打击
-.accept 527 >>接受希尔斯布拉德战役
+.accept 527 >>接受希尔斯布莱德丘陵战役
 step << skip
 #som
 .goto Hillsbrad Foothills,62.62,20.73
@@ -116,16 +116,16 @@ step
 .accept 567 >>接受危险！
 step
 .goto Hillsbrad Foothills,62.77,19.02
-.home >> 把你的炉子放在塔伦磨坊
+.home >>把你的炉子放在塔伦磨坊
 step
 .goto Hillsbrad Foothills,61.44,19.05
-.turnin 493 >>转入Hillsbrad Foothills之旅
+.turnin 493 >>转入希尔斯布莱德丘陵之旅
 .turnin 1065 >>前往塔伦磨坊的旅程
 
 .accept 501 >>接受疼痛药剂
 step
 .goto Hillsbrad Foothills,60.14,18.62
-.fp Hillsbrad >> 获取Tarren Mill飞行路线
+.fp Hillsbrad >>获取Tarren Mill飞行路线
 step << skip
 #sticky
 #completewith Hillsbrad1
@@ -143,7 +143,7 @@ step
 .complete 501,1 
 step
 #label Hillsbrad1
-.goto Hillsbrad Foothills,36.02,39.19,150 >> 跑到希尔斯布拉德球场
+.goto Hillsbrad Foothills,36.02,39.19,150 >>跑到希尔斯布莱德丘陵球场
 step
 #sticky
 #completewith next
@@ -158,14 +158,14 @@ step
 #sticky
 #completewith next
 .goto Hillsbrad Foothills,35.16,39.06
->>AoE该地区的Hillsbrad暴徒。留心Farmer Rey和Getz
+>>AoE该地区的希尔斯布莱德丘陵暴徒。留心Farmer Rey和Getz
 .complete 527,1 
 .complete 527,2 
 .complete 527,3 
 .complete 527,4 
 step
 #label l24
-.xp 24 >> AoE中部和北部田地（农民和农场主）至24
+.xp 24 >>AoE中部和北部田地(农民和农场主)至24
 >>开始保存你得到的羊毛布。以后需要12层
 step
 #sticky
@@ -176,7 +176,7 @@ step
 .goto Hillsbrad Foothills,35.1,41.0,60,0
 .complete 527,4 
 step
->>杀死农夫雷。他可以在房子的一楼或二楼。他也可以在外面的葡萄藤下（小屋）
+>>杀死农夫雷。他可以在房子的一楼或二楼。他也可以在外面的葡萄藤下(小屋)
 .goto Hillsbrad Foothills,33.7,35.5,20,0
 .goto Hillsbrad Foothills,33.2,34.8,20,0
 .goto Hillsbrad Foothills,33.7,35.5,20,0
@@ -190,7 +190,7 @@ step
 .goto Hillsbrad Foothills,33.2,34.8
 .complete 527,3 
 step
->>AoE该地区的Hillsbrad暴徒。留心Farmer Rey和Getz
+>>AoE该地区的希尔斯布莱德丘陵暴徒。留心Farmer Rey和Getz
 .complete 527,1 
 .complete 527,2 
 step
@@ -198,37 +198,37 @@ step
 .complete 567,2 
 step
 #requires Getz
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step
 .goto Undercity,85.14,10.03
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 >>确保你有至少10秒的剩菜
 step
 .goto Undercity,82.79,15.82
-.vendor >> 去找汉娜。购买传送符文
+.vendor >>去找汉娜。购买传送符文
 .collect 17031,1 
 step
 .goto Undercity,57.30,32.76
-.trainer >> 训练1小时剑、匕首
+.trainer >>训练1小时剑、匕首
 step << Undead Mage
 .goto Undercity,62.01,42.72
 .turnin 530 >>上缴丈夫的复仇
 step
 #completewith next
 .goto Undercity,65.97,44.73
-+把你的羊毛布放在这里。以后需要12层（240层）
++把你的羊毛布放在这里。以后需要12层(240层)
 step
-.hs >> 赫斯到塔伦磨坊
-.vendor >> 心满意足后，向客栈老板购买25级饮料
+.hs >>赫斯到塔伦磨坊
+.vendor >>心满意足后，向客栈老板购买25级饮料
 step
 #hardcore
 #completewith next
 .goto Hillsbrad Foothills,62.56,19.91
-.vendor >> 如果需要，从Kayren购买8-10个老虎袋
+.vendor >>如果需要，从Kayren购买8-10个老虎袋
 step
 .goto Hillsbrad Foothills,62.34,20.44
-.turnin 527 >>希尔斯布拉德战役
-.accept 528 >>接受希尔斯布拉德战役
+.turnin 527 >>希尔斯布莱德丘陵战役
+.accept 528 >>接受希尔斯布莱德丘陵战役
 step
 .goto Hillsbrad Foothills,62.13,19.57
 .accept 546 >>接受死亡纪念品
@@ -242,9 +242,9 @@ step
 >>AoE狮子队正在前往田野的途中。抢他们的血
 .complete 501,1 
 step
-.goto Hillsbrad Foothills,36.02,39.19,150 >> 跑到希尔斯布拉德球场
+.goto Hillsbrad Foothills,36.02,39.19,150 >>跑到希尔斯布莱德丘陵球场
 +强烈建议您查看新字段的链接，因为这里可能有点棘手
-.link https://www.twitch.tv/videos/970328906?t=00h50m19s >> 单击此处
+.link https://www.twitch.tv/videos/970328906?t=00h50m19s >>单击此处
 step
 .isOnQuest 502
 >>在斯坦利交出长生不老药。事后杀了他
@@ -262,7 +262,7 @@ step
 >>AoE南部田地的农民
 .complete 528,1 
 step
-.xp 25 >> AoE将所有字段设置为25
+.xp 25 >>AoE将所有字段设置为25
 step
 >>继续研磨，直到你抢走30个头骨
 .complete 546,1 
@@ -270,13 +270,13 @@ step
 .complete 528,1 
 step
 #requires Kalaba
-.hs >> 如果你的炉子开了，就把炉子烧给塔伦磨坊
->> 如果你的炉子坏了，继续AoE耕作直到它恢复
-.vendor >> 心满意足后，向客栈老板购买25级饮料
+.hs >>如果你的炉子开了，就把炉子烧给塔伦磨坊
+>>如果你的炉子坏了，继续AoE耕作直到它恢复
+.vendor >>心满意足后，向客栈老板购买25级饮料
 step
 .goto Hillsbrad Foothills,62.35,20.51
-.turnin 528 >>希尔斯布拉德战役
-.accept 529 >>接受希尔斯布拉德战役
+.turnin 528 >>希尔斯布莱德丘陵战役
+.accept 529 >>接受希尔斯布莱德丘陵战役
 step
 .goto Hillsbrad Foothills,62.13,19.57
 .turnin 546 >>递交死亡纪念品
@@ -290,7 +290,7 @@ step
 .goto Hillsbrad Foothills,61.44,19.06
 .accept 509 >>接受痛苦药剂
 step
-.goto Hillsbrad Foothills,36.02,39.19,150 >> 跑到希尔斯布拉德球场
+.goto Hillsbrad Foothills,36.02,39.19,150 >>跑到希尔斯布莱德丘陵球场
 step
 #sticky
 #label Iron
@@ -304,7 +304,7 @@ step
 .complete 529,1 
 .complete 529,2 
 step
-.xp 26 >> AoE所有字段均为26
+.xp 26 >>AoE所有字段均为26
 >>开始保存你得到的羊毛布。以后需要12层
 step
 >>杀死铁匠Verringtan和他周围的学徒
@@ -312,37 +312,37 @@ step
 .complete 529,2 
 step
 #requires Iron
->> 如果你的炉子坏了，继续AoE耕作直到它恢复
-.zone Undercity >> 传送（不要加热）到Undercity
+>>如果你的炉子坏了，继续AoE耕作直到它恢复
+.zone Undercity >>传送(不要加热)到Undercity
 step
 .goto Undercity,85.14,10.03
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 >>确保你至少有30多岁的剩菜
 step
 .goto Undercity,82.79,15.82
-.vendor >> 去找汉娜。购买传送符文
+.vendor >>去找汉娜。购买传送符文
 .collect 17031,3 
 step
 #completewith next
 .goto Undercity,65.97,44.73
-+把你的羊毛布放在这里。以后需要12层（240层）
++把你的羊毛布放在这里。以后需要12层(240层)
 step
 #softcore
 #completewith next
 .goto Undercity,71.50,41.92,0
 +如果你有多余的钱，就从拍卖行买一些袋子，你会有很长的路要走
 step
-.hs >> 如果你的炉子开了，就把炉子烧给塔伦磨坊
-.vendor >> 心满意足后，向客栈老板购买25级饮料
+.hs >>如果你的炉子开了，就把炉子烧给塔伦磨坊
+.vendor >>心满意足后，向客栈老板购买25级饮料
 step
 #hardcore
 #completewith next
 .goto Hillsbrad Foothills,62.56,19.91
-.vendor >> 如果需要，从Kayren购买8-10个老虎袋
+.vendor >>如果需要，从Kayren购买8-10个老虎袋
 step
 .goto Hillsbrad Foothills,62.27,20.40
-.turnin 529 >>希尔斯布拉德战役
-.accept 532 >>接受希尔斯布拉德战役
+.turnin 529 >>希尔斯布莱德丘陵战役
+.accept 532 >>接受希尔斯布莱德丘陵战役
 step
 #sticky
 >>杀死办事员。他在大厅里
@@ -360,20 +360,20 @@ step
 .goto Hillsbrad Foothills,29.73,41.75
 .complete 532,3 
 step
-.xp 27 >> AoE所有字段为27
+.xp 27 >>AoE所有字段为27
 step
-.hs >> 如果你的炉子开了，就把炉子烧给塔伦磨坊。否则，保持AoE农业
-.vendor >> 心满意足后，向客栈老板购买25级饮料
+.hs >>如果你的炉子开了，就把炉子烧给塔伦磨坊。否则，保持AoE农业
+.vendor >>心满意足后，向客栈老板购买25级饮料
 step
-.turnin 532 >>希尔斯布拉德战役
-.accept 539 >>接受希尔斯布拉德战役
+.turnin 532 >>希尔斯布莱德丘陵战役
+.accept 539 >>接受希尔斯布莱德丘陵战役
 step
 >>抢劫该地区的大蓝蘑菇。
->>你可以攻击侏儒，但在萨满施放闪电箭+治疗波时要小心（记得使用反法术）
+>>你可以攻击侏儒，但在萨满施放闪电箭+治疗波时要小心(记得使用反法术)
 .goto Hillsbrad Foothills,63.70,61.59
 .complete 509,1 
 step
-.goto Hillsbrad Foothills,27.21,57.20,150 >> 跑向Azurelode矿山
+.goto Hillsbrad Foothills,27.21,57.20,150 >>跑向Azurelode矿山
 step
 #sticky
 #completewith next
@@ -391,7 +391,7 @@ step
 .goto Hillsbrad Foothills,31.20,56.02
 .complete 539,1 
 step
-.xp 30 >> 矿井中的AoE暴徒达到30级
+.xp 30 >>矿井中的AoE暴徒达到30级
 >>开始保存你得到的羊毛布。以后需要12层
 >>如果需要的话，你可以回到塔伦磨坊购买更多的水和供应商垃圾，然后跑回矿场
 step
@@ -403,14 +403,14 @@ step
 .complete 539,1 
 step
 #requires Hackett
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step
 .goto Undercity,85.14,10.03
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 >>确保你至少有40多岁的剩菜
 step
 .goto Undercity,82.79,15.82
-.vendor >> 去找汉娜。购买传送符文
+.vendor >>去找汉娜。购买传送符文
 .collect 17031,4 
 step
 .goto Undercity,63.82,49.37
@@ -418,15 +418,15 @@ step
 step
 #completewith next
 .goto Undercity,65.97,44.73
-+把你的羊毛布放在这里。以后需要12层（240层）
++把你的羊毛布放在这里。以后需要12层(240层)
 step
-.hs >> 如果你的炉子开了，就把炉子烧给塔伦磨坊
-.vendor >> 心满意足后，向客栈老板购买25级饮料
+.hs >>如果你的炉子开了，就把炉子烧给塔伦磨坊
+.vendor >>心满意足后，向客栈老板购买25级饮料
 step
 #hardcore
 #completewith next
 .goto Hillsbrad Foothills,62.56,19.91
-.vendor >> 如果需要，从Kayren购买8-10个老虎袋
+.vendor >>如果需要，从Kayren购买8-10个老虎袋
 step
 .goto Hillsbrad Foothills,61.86,19.57
 .accept 676 >>接受锤子可能坠落
@@ -436,7 +436,7 @@ step
 .accept 556 >>接受石头标记
 step
 .goto Hillsbrad Foothills,62.38,20.56
-.turnin 539 >>希尔斯布拉德战役
+.turnin 539 >>希尔斯布莱德丘陵战役
 .turnin 567 >>交危险品！
 step
 .goto Hillsbrad Foothills,63.24,20.65
@@ -461,52 +461,52 @@ step
 #som
 #sticky
 +这是一个填充部分，如果您是24级或以上，请跳过本部分指南。
-.xpcheck 24-25 职业任务 << Warlock/Rogue/Shaman
-.xpcheck 24-26 南贫瘠之地 贫瘠之地/石爪山脉 << !Rogue !Warlock !Shaman
+.xpcheck 24-25 Class quests << Warlock/Rogue/Shaman
+.xpcheck 24-26 Southern Barrens/Stonetalon << !Rogue !Warlock !Shaman
 .zoneskip Hillsbrad Foothills
 .zoneskip Silverpine Forest
 step << Shaman
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.3,14.8
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 >>确保你接受过爆破和伏击训练。你也需要一把匕首
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,47.5,46.7
-.vendor >> 如果你有钱，买你的宠物法术升级。
+.vendor >>如果你有钱，买你的宠物法术升级。
 step << Mage
 #som
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
->> 训练结束后，确保至少存35银子
+.trainer >>去训练你的职业咒语
+>>训练结束后，确保至少存35银子
 step << Mage
 #era
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
->> 训练结束后，确保至少节省55银币
+.trainer >>去训练你的职业咒语
+>>训练结束后，确保至少节省55银币
 step << Mage
 #era
 .goto Orgrimmar,38.69,85.39
-.trainer >> 上楼去。列车入口：Orgrimmar
+.trainer >>上楼去。列车入口：Orgrimmar
 step << Priest
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest/Warlock/Mage
 .goto Orgrimmar,44.4,48.6
-.collect 5211,1 >> 如果你有钱买黄昏魔杖。
+.collect 5211,1 >>如果你有钱买黄昏魔杖。
 step << Warlock
 .goto Orgrimmar,48.2,45.3
 .turnin 1512 >>交出爱的礼物
@@ -542,8 +542,8 @@ step << Rogue
 #completewith roguetowerq
 +这里的每一个怪物都会对某些技能造成更大的伤害。
 >>伏击无人机
->>击溃巡警（1个组合点）
->>一次剔出Lookout（1个组合点）
+>>击溃巡警(1个组合点)
+>>一次剔出Lookout(1个组合点)
 step << Rogue
 .goto Durotar,18.31,16.95
 >>扒手Foreman Silixiz抢劫他的塔钥匙
@@ -576,29 +576,29 @@ step << Warlock
 .isQuestComplete 6284
 #sticky
 #completewith next
-.bankdeposit 16192 >> 将以下项目存入您的银行：
->> 贝塞莱斯的牙
+.bankdeposit 16192 >>将以下项目存入您的银行：
+>>贝塞莱斯的牙
 step
 #sticky
 #completewith next
 +去齐柏林塔。把齐柏林飞艇带到提里斯法
 .goto Durotar,50.8,13.8
 step
-.zone Tirisfal Glades >>抵达提里斯福尔 Glades
+.zone Tirisfal Glades >>抵达提里斯法尔·格拉德斯
 step
-.goto Tirisfal Glades,61.87,65.02,40 >> 跑到地下城
+.goto Tirisfal Glades,61.87,65.02,40 >>跑到地下城
 step
-.goto Tirisfal Glades,61.81,74.42,30 >> 跑到电梯间
+.goto Tirisfal Glades,61.81,74.42,30 >>跑到电梯间
 step << !Undead !Rogue
 >>把其中一部电梯放下
 .goto Undercity,63.25,48.56
-.fp Undercity >> 获取地下飞行路线
+.fp Undercity >>获取地下飞行路线
 step << Mage
 .goto Undercity,84.19,15.55
-.trainer >> 前往Ziggurat顶部的门户培训师。火车入口：地下城
+.trainer >>前往Ziggurat顶部的门户培训师。火车入口：地下城
 step << Mage
 .goto Undercity,82.79,15.82
-.vendor >> 去找汉娜。购买传送符文（如果你想的话，可以购买更多）
+.vendor >>去找汉娜。购买传送符文(如果你想的话，可以购买更多)
 .collect 17031,1 
 step << Undead/Rogue
 >>把其中一部电梯放下
@@ -607,37 +607,37 @@ step << Undead/Rogue
 
 step << Priest
 .goto Undercity,49.2,18.2
-.turnin 5644 >> 转向吞食瘟疫
+.turnin 5644 >>转向吞食瘟疫
 step << Undead
 .goto Undercity,63.25,48.56
-.accept 6324 >> 接受返回Podrig
+.accept 6324 >>接受返回Podrig
 step << Undead/Rogue
 .goto Undercity,63.25,48.56
-.fly The Sepulcher >> 飞向坟墓
+.fly The Sepulcher >>飞向坟墓
 step << !Undead !Rogue
 .goto Undercity,46.16,43.97,50,0
 .goto Undercity,41.04,33.26,50,0
 .goto Undercity,23.86,35.90,50,0
-.goto Undercity,15.06,32.86,50 >> 通过下水道退出地下城
+.goto Undercity,15.06,32.86,50 >>通过下水道退出地下城
 step << !Undead !Rogue
 .goto Silverpine Forest,67.57,5.00
-.zone Silverpine Forest >> 向西南方向驶向Silverpine
+.zone Silverpine Forest >>向西南方向驶向Silverpine
 step << !Undead !Rogue
 .goto Silverpine Forest,45.60,42.60
 .fp Sepulcher >>跑向坟墓。获取坟墓飞行路线
 step
 >>单击墓碑
 .goto Silverpine Forest,44.10,42.60
-.turnin 264 >> 至死不渝
+.turnin 264 >>至死不渝
 step
 .goto Silverpine Forest,43.06,41.92
-.turnin 3301 >> 交给穆拉·鲁恩托姆
+.turnin 3301 >>交给穆拉·鲁恩托姆
 step << Undead
 .goto Silverpine Forest,43.4,41.60
-.turnin 6324 >> 转入返回Podrig
+.turnin 6324 >>转入返回Podrig
 step
 .goto Silverpine Forest,42.90,40.80
-.accept 493 >> 接受Hillsbrad Foothills之旅
+.accept 493 >>接受希尔斯布莱德丘陵之旅
 step << skip
 .goto Silverpine Forest,46.07,85.75
 >>杀死瓦尔德雷德·马里。抢他的手
@@ -646,10 +646,10 @@ step << skip
 
 step
 .goto Hillsbrad Foothills,20.80,47.40
-.accept 494 >> 接受罢工时间
+.accept 494 >>接受罢工时间
 step
 .goto Hillsbrad Foothills,60.10,18.60
-.fp Tarren Mill>> 获取Tarren Mill飞行路线
+.fp Tarren Mill>>获取Tarren Mill飞行路线
 step << Rogue
 .goto Hillsbrad Foothills,61.55,19.19
 .turnin 2479 >>交出Hinott的援助
@@ -666,42 +666,42 @@ step << Shaman
 .complete 1536,1 
 step
 .goto Hillsbrad Foothills,61.50,19.20
-.turnin 493 >> 转入Hillsbrad Foothills之旅
-.turnin 1065 >> 前往塔伦磨坊的旅程
-.accept 1066 >> 接受无辜者的鲜血
+.turnin 493 >>转入希尔斯布莱德丘陵之旅
+.turnin 1065 >>前往塔伦磨坊的旅程
+.accept 1066 >>接受无辜者的鲜血
 step
 .goto Hillsbrad Foothills,61.50,19.20
-.accept 496 >> 接受痛苦药剂
-.accept 501 >> 接受疼痛药剂
+.accept 496 >>接受痛苦药剂
+.accept 501 >>接受疼痛药剂
 step
 .goto Hillsbrad Foothills,62.50,19.70
->> 点击酒店外的通缉海报
-.accept 567 >> 接受危险！
+>>点击酒店外的通缉海报
+.accept 567 >>接受危险！
 step
 .goto Hillsbrad Foothills,62.20,20.50
-.turnin 494 >> 上缴时间打击
-.accept 527 >> 接受希尔斯布拉德战役
+.turnin 494 >>上缴时间打击
+.accept 527 >>接受希尔斯布莱德丘陵战役
 step
 .goto Hillsbrad Foothills,62.60,20.70
 >>点击Melisara旁边的通缉海报
-.accept 549 >> 接受通缉：辛迪加人员
+.accept 549 >>接受通缉：辛迪加人员
 step
 .goto Hillsbrad Foothills,63.20,20.70
-.accept 498 >> 接受救援
+.accept 498 >>接受救援
 step << Hunter
 #completewith next
 .goto Hillsbrad Foothills,62.56,19.91
-.vendor >> 买箭直到你的箭袋装满
+.vendor >>买箭直到你的箭袋装满
 step
 .goto Hillsbrad Foothills,62.79,19.05
-.vendor 2388 >> 到客栈里面去。供应商垃圾，并从Shay那里购买食物/水
+.vendor 2388 >>到客栈里面去。供应商垃圾，并从Shay那里购买食物/水
 step << Shaman/Warrior
 .goto Hillsbrad Foothills,60.4,26.2
-.vendor >> 如果你有足够的钱，去供应商那里买一把无情的斧子。它并不总是在商店里。
+.vendor >>如果你有足够的钱，去供应商那里买一把无情的斧子。它并不总是在商店里。
 .collect 12249,1
 step << Rogue
 .goto Hillsbrad Foothills,60.4,26.2
-.vendor >> 如果你有足够的钱，去供应商那里买一把宽刃刀。它并不总是在商店里。
+.vendor >>如果你有足够的钱，去供应商那里买一把宽刃刀。它并不总是在商店里。
 .collect 12247,1
 step
 #era
@@ -711,7 +711,7 @@ step
 .complete 496,2 
 step
 #era
-.goto Hillsbrad Foothills,78.46,43.06,200 >> 跑到Dornholde Keep
+.goto Hillsbrad Foothills,78.46,43.06,200 >>跑到Dornholde Keep
 step
 #sticky
 #label syndicateq
@@ -728,11 +728,11 @@ step
 step << !Rogue !Hunter !Shaman
 #completewith next
 .goto Hillsbrad Foothills,80.1,38.9
-.vendor >> 供应商垃圾箱，必要时进行维修
+.vendor >>供应商垃圾箱，必要时进行维修
 step << Rogue/Hunter/Shaman
 #completewith Drull
 .goto Hillsbrad Foothills,80.1,38.9
-.vendor >> 供应商和维修（如果需要）。如果商店里有跟踪裤和/或狼护腕，请购买
+.vendor >>供应商和维修(如果需要)。如果商店里有跟踪裤和/或狼护腕，请购买
 step
 #completewith next
 .goto Hillsbrad Foothills,79.8,39.3
@@ -775,27 +775,27 @@ step
 step
 #requires syndicateq
 .goto Hillsbrad Foothills,61.5,19.1
-.turnin 1066 >> 无辜者的血
+.turnin 1066 >>无辜者的血
 step
 .goto Hillsbrad Foothills,62.38,20.52
-.turnin 549 >> 需要上缴：财团人员
+.turnin 549 >>需要上缴：财团人员
 step
 .goto Hillsbrad Foothills,63.2,20.7
-.turnin 498 >> 移交救援人员
+.turnin 498 >>移交救援人员
 step << Hunter
 #completewith next
 .goto Hillsbrad Foothills,62.56,19.91
-.vendor >> 买箭直到你的箭袋装满
+.vendor >>买箭直到你的箭袋装满
 step
 .goto Hillsbrad Foothills,62.79,19.05
-.vendor 2388 >> 到客栈里面去。供应商垃圾，并从Shay那里购买食物/水
+.vendor 2388 >>到客栈里面去。供应商垃圾，并从Shay那里购买食物/水
 step
 #completewith next
 >>在前往田野的途中杀死熊和山狮。抢走他们的舌头和鲜血
 .complete 496,1 
 .complete 501,1 
 step
-.goto Hillsbrad Foothills,36.02,39.19,150 >> 跑到希尔斯布拉德球场
+.goto Hillsbrad Foothills,36.02,39.19,150 >>跑到希尔斯布莱德丘陵球场
 step
 #sticky
 #label Farmers
@@ -815,7 +815,7 @@ step
 .goto Hillsbrad Foothills,36.7,39.4
 .complete 527,4 
 step
->>杀死农夫雷。他可以在房子的一楼或二楼。他也可以在外面的葡萄藤下（小屋）
+>>杀死农夫雷。他可以在房子的一楼或二楼。他也可以在外面的葡萄藤下(小屋)
 .goto Hillsbrad Foothills,33.7,35.5,20,0
 .goto Hillsbrad Foothills,33.2,34.8,20,0
 .goto Hillsbrad Foothills,33.7,35.5,20,0
@@ -841,11 +841,11 @@ step
 #requires Farmers
 >>返回塔伦磨坊
 .goto Hillsbrad Foothills,62.3,20.2
-.turnin 527 >> 希尔斯布拉德战役
+.turnin 527 >>希尔斯布莱德丘陵战役
 step
 .goto Hillsbrad Foothills,62.5,20.3
-.accept 528 >> 接受希尔斯布拉德战役
-.accept 546 >> 接受死亡纪念品
+.accept 528 >>接受希尔斯布莱德丘陵战役
+.accept 546 >>接受死亡纪念品
 step
 #completewith next
 >>杀死熊和山狮。抢走他们的舌头和鲜血
@@ -858,7 +858,7 @@ step
 .complete 496,1 
 .complete 501,1 
 step
-.goto Hillsbrad Foothills,36.02,39.19,150 >> 跑到希尔斯布拉德球场
+.goto Hillsbrad Foothills,36.02,39.19,150 >>跑到希尔斯布莱德丘陵球场
 step
 #sticky
 #label Wilkes
@@ -891,23 +891,23 @@ step
 step
 >>跑回塔伦磨坊
 .goto Hillsbrad Foothills,62.4,20.3
-.turnin 528 >> 希尔斯布拉德战役
-.accept 529 >> 接受希尔斯布拉德战役
+.turnin 528 >>希尔斯布莱德丘陵战役
+.accept 529 >>接受希尔斯布莱德丘陵战役
 step
 .goto Hillsbrad Foothills,61.5,19.1
-.turnin 496 >> 上缴痛苦灵丹妙药
-.accept 499 >> 接受痛苦药剂
-.turnin 501 >> 上缴止痛药
-.accept 502 >> 接受疼痛药剂
-.turnin 499 >> 上缴痛苦灵丹妙药
-.accept 1067 >> 接受重返雷霆崖
+.turnin 496 >>上缴痛苦灵丹妙药
+.accept 499 >>接受痛苦药剂
+.turnin 501 >>上缴止痛药
+.accept 502 >>接受疼痛药剂
+.turnin 499 >>上缴痛苦灵丹妙药
+.accept 1067 >>接受重返雷霆崖
 step << Shaman/Warrior
 .goto Hillsbrad Foothills,60.4,26.2
-.vendor >> 如果你第一次没有得到无情斧头，现在就去商店买。
+.vendor >>如果你第一次没有得到无情斧头，现在就去商店买。
 .collect 12249,1
 step << Rogue
 .goto Hillsbrad Foothills,60.4,26.2
-.vendor >> 如果你第一次没有得到宽刃刀，现在就去商店买。
+.vendor >>如果你第一次没有得到宽刃刀，现在就去商店买。
 .collect 12247,1
 step
 #sticky
@@ -915,11 +915,11 @@ step
 +在交出痛苦药剂时，你可以在获得额外经验后杀死斯坦利
 step
 .goto Hillsbrad Foothills,32.6,35.6
-.turnin 502 >> 上缴止痛药
+.turnin 502 >>上缴止痛药
 step
 #sticky
 #label Crate
->>跑回Hillsbrad田地
+>>跑回希尔斯布莱德丘陵
 >>收集铁匠内的板条箱
 .goto Hillsbrad Foothills,32.0,45.4
 .complete 529,3 
@@ -930,8 +930,8 @@ step
 .complete 529,2 
 step
 #requires Crate
-.hs >> 火炉到雷霆崖
->> 如果需要，购买食物/水
+.hs >>火炉到雷霆崖
+>>如果需要，购买食物/水
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -945,24 +945,24 @@ RXPGuides.RegisterGuide([[
 
 step << Shaman
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 #completewith next
 .goto Orgrimmar,45.7,56.0
-.vendor >> 如果你没有匕首可以临时使用，请从Kareth那里购买Jambiya
+.vendor >>如果你没有匕首可以临时使用，请从Kareth那里购买Jambiya
 step << Rogue
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 >>确保你接受过爆破和伏击训练。你也需要一把匕首
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,47.5,46.7
-.vendor >> 如果你有钱买你的宠物法术升级。
+.vendor >>如果你有钱买你的宠物法术升级。
 step << Warlock
 .goto Orgrimmar,44.4,48.6
-.collect 5211,1 >> 如果你有钱买黄昏魔杖。
+.collect 5211,1 >>如果你有钱买黄昏魔杖。
 step << Warlock
 .goto Orgrimmar,48.2,45.3
 .turnin 1512 >>交出爱的礼物
@@ -998,8 +998,8 @@ step << Rogue
 #completewith roguetowerq
 +这里的每一个怪物都会对某些技能造成更大的伤害。
 >>伏击无人机
->>击溃巡警（1个组合点）
->>一次剔出Lookout（1个组合点）
+>>击溃巡警(1个组合点)
+>>一次剔出Lookout(1个组合点)
 step << Rogue
 .goto Durotar,18.31,16.95
 >>扒手Foreman Silixiz抢劫他的塔钥匙
@@ -1032,57 +1032,57 @@ step << Warlock
 .isQuestComplete 6284
 #sticky
 #completewith next
-.bankdeposit 16192 >> 将以下项目存入您的银行：
->> 贝塞莱斯的牙
+.bankdeposit 16192 >>将以下项目存入您的银行：
+>>贝塞莱斯的牙
 step << !Shaman !Rogue
 .goto Orgrimmar,45.11,63.89
-.fly Camp T >> 飞往陶拉霍营地
+.fly Camp T >>飞往陶拉霍营地
 step << Shaman/Rogue
 #sticky
 #completewith next
 +去齐柏林塔。把齐柏林飞艇带到提里斯法
 .goto Durotar,50.8,13.8
 step << Shaman/Rogue
-.zone Tirisfal Glades >>抵达提里斯福尔 Glades
+.zone Tirisfal Glades >>抵达提里斯法尔·格拉德斯
 step << !Undead Rogue/Shaman
 #completewith next
-.goto Tirisfal Glades,61.87,65.02,40 >> 跑到地下城
+.goto Tirisfal Glades,61.87,65.02,40 >>跑到地下城
 step << !Undead Rogue/Shaman
-.goto Tirisfal Glades,61.81,74.42,30 >> 跑到电梯间
+.goto Tirisfal Glades,61.81,74.42,30 >>跑到电梯间
 step << !Undead Rogue/Shaman
 >>把其中一部电梯放下
 .goto Undercity,63.25,48.56
-.fp Undercity >> 获取地下飞行路线
+.fp Undercity >>获取地下飞行路线
 step << !Undead Rogue/Shaman
 .goto Undercity,46.16,43.97,50,0
 .goto Undercity,41.04,33.26,50,0
 .goto Undercity,23.86,35.90,50,0
-.goto Undercity,15.06,32.86,50 >> 通过下水道退出地下城
+.goto Undercity,15.06,32.86,50 >>通过下水道退出地下城
 step << Shaman/Rogue
 .goto Silverpine Forest,67.57,5.00
-.zone Silverpine Forest >> 向西南方向驶向Silverpine
+.zone Silverpine Forest >>向西南方向驶向Silverpine
 step << Shaman/Rogue
 .goto Silverpine Forest,45.60,42.60
 .fp Sepulcher >>跑向坟墓。获取坟墓飞行路线
 step << Shaman/Rogue
 >>单击墓碑
 .goto Silverpine Forest,44.10,42.60
-.turnin 264 >> 至死不渝
+.turnin 264 >>至死不渝
 step << Shaman/Rogue
 .goto Silverpine Forest,43.06,41.92
-.turnin 3301 >> 交给穆拉·鲁恩托姆
+.turnin 3301 >>交给穆拉·鲁恩托姆
 step << Shaman/Rogue
 .goto Silverpine Forest,43.4,41.60
-.turnin 6324 >> 转入返回Podrig
+.turnin 6324 >>转入返回Podrig
 step << Shaman/Rogue
 .goto Silverpine Forest,42.90,40.80
-.accept 493 >> 接受Hillsbrad Foothills之旅
+.accept 493 >>接受希尔斯布莱德丘陵之旅
 step << Shaman/Rogue
 .goto Hillsbrad Foothills,20.80,47.40
-.accept 494 >> 接受罢工时间
+.accept 494 >>接受罢工时间
 step << Shaman/Rogue
 .goto Hillsbrad Foothills,60.10,18.60
-.fp Tarren Mill>> 获取Tarren Mill飞行路线
+.fp Tarren Mill>>获取Tarren Mill飞行路线
 step << Rogue
 .goto Hillsbrad Foothills,61.55,19.19
 .turnin 2479 >>交出Hinott的援助
@@ -1098,32 +1098,32 @@ step << Shaman
 .complete 1536,1 
 step << Shaman/Rogue
 .goto Hillsbrad Foothills,61.50,19.20
-.turnin 493 >> 转入Hillsbrad Foothills之旅
-.turnin 1065 >> 前往塔伦磨坊的旅程
-.accept 1066 >> 接受无辜者的鲜血
+.turnin 493 >>转入希尔斯布莱德丘陵之旅
+.turnin 1065 >>前往塔伦磨坊的旅程
+.accept 1066 >>接受无辜者的鲜血
 step << Shaman/Rogue
 .goto Hillsbrad Foothills,62.20,20.50
-.turnin 494 >> 上缴时间打击
+.turnin 494 >>上缴时间打击
 step << Shaman/Rogue
 .goto Hillsbrad Foothills,62.60,20.70
 >>点击Melisara旁边的通缉海报
-.accept 549 >> 接受通缉：辛迪加人员
+.accept 549 >>接受通缉：辛迪加人员
 step << Shaman/Rogue
 .goto Hillsbrad Foothills,63.20,20.70
-.accept 498 >> 接受救援
+.accept 498 >>接受救援
 step << Shaman/Rogue
 .goto Hillsbrad Foothills,62.79,19.05
-.vendor 2388 >> 到客栈里面去。供应商垃圾，并从Shay那里购买食物/水
+.vendor 2388 >>到客栈里面去。供应商垃圾，并从Shay那里购买食物/水
 step << Shaman
 .goto Hillsbrad Foothills,60.4,26.2
-.vendor >> 如果你有足够的钱，去供应商那里买一把无情的斧子。它并不总是在商店里。
+.vendor >>如果你有足够的钱，去供应商那里买一把无情的斧子。它并不总是在商店里。
 .collect 12249,1
 step << Rogue
 .goto Hillsbrad Foothills,60.4,26.2
-.vendor >> 如果你有足够的钱，去供应商那里买一把宽刃刀。它并不总是在商店里。
+.vendor >>如果你有足够的钱，去供应商那里买一把宽刃刀。它并不总是在商店里。
 .collect 12247,1
 step << Shaman/Rogue
-.goto Hillsbrad Foothills,78.46,43.06,200 >> 跑到Dornholde Keep
+.goto Hillsbrad Foothills,78.46,43.06,200 >>跑到Dornholde Keep
 step << Shaman/Rogue
 #sticky
 #label syndicateq
@@ -1140,7 +1140,7 @@ step << Shaman/Rogue
 step << Shaman/Rogue
 #completewith Drull
 .goto Hillsbrad Foothills,80.1,38.9
-.vendor >> 供应商和维修（如果需要）。如果商店里有跟踪裤和/或狼护腕，请购买
+.vendor >>供应商和维修(如果需要)。如果商店里有跟踪裤和/或狼护腕，请购买
 step << Shaman/Rogue
 #completewith next
 .goto Hillsbrad Foothills,79.8,39.3
@@ -1167,23 +1167,23 @@ step << Shaman/Rogue
 step << Shaman/Rogue
 #requires syndicateq
 .goto Hillsbrad Foothills,61.5,19.1
-.turnin 1066 >> 无辜者的血
-.accept 1067 >> 接受重返雷霆崖
+.turnin 1066 >>无辜者的血
+.accept 1067 >>接受重返雷霆崖
 step << Shaman/Rogue
 .goto Hillsbrad Foothills,62.38,20.52
-.turnin 549 >> 需要上缴：财团人员
+.turnin 549 >>需要上缴：财团人员
 step << Shaman/Rogue
 .goto Hillsbrad Foothills,63.2,20.7
-.turnin 498 >> 移交救援人员
+.turnin 498 >>移交救援人员
 step << Shaman/Rogue
-.hs >> 火炉到雷霆崖
+.hs >>火炉到雷霆崖
 step << Shaman/Rogue
 .goto Thunder Bluff,22.90,21.00
-.turnin 1067 >> 投奔雷霆崖
-.accept 1086 >> 接受飞行机器机场
+.turnin 1067 >>投奔雷霆崖
+.accept 1086 >>接受飞行机器机场
 step << Shaman/Rogue
 .goto Thunder Bluff,46.8,50.0
-.fly Camp Taurajo >> 飞往陶拉霍营地
+.fly Camp Taurajo >>飞往陶拉霍营地
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -1195,78 +1195,78 @@ RXPGuides.RegisterGuide([[
 step << Shaman/Warrior
 #era/som
 .goto Thunder Bluff,54.0,57.3
-.vendor >> 如果你在希尔斯布拉德没有买到无情斧头，去买吧
+.vendor >>如果你在希尔斯布莱德丘陵没有买到无情斧头，去买吧
 .collect 12249,1
 step
 #sticky
-.abandon 264 >> 至死不渝让我们分离
-.abandon 3301 >> 放弃穆拉·鲁内托姆
+.abandon 264 >>至死不渝让我们分离
+.abandon 3301 >>放弃穆拉·鲁内托姆
 step << Hunter
 #era/som
 .goto Thunder Bluff,59.1,86.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 #era/som
 .goto Thunder Bluff,54.1,83.9
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 #era/som
 .goto Thunder Bluff,57.6,85.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Druid
 #era/som
 .goto Thunder Bluff,77.0,29.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Shaman
 #era/som
 .goto Thunder Bluff,22.8,21.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 #era/som
 .goto Thunder Bluff,24.6,22.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Mage
 #era/som
 .goto Thunder Bluff,25.2,20.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 #era/som
 #completewith next
-.vendor >> 购买大量25级箭头（1200+）。记住在25级时装备它们
+.vendor >>购买大量25级箭头(1200+)。记住在25级时装备它们
 step << Hunter
 #era/som
 .goto Thunder Bluff,46.9,45.7
->> 如果商店里有Sturdy Recurve，就去买。如果不是，请跳过此步骤
+>>如果商店里有Sturdy Recurve，就去买。如果不是，请跳过此步骤
 .collect 11306,1
 step << Warlock
 #era/som
 .isOnQuest 6284
->> 从您的银行提取以下项目：
->> 贝塞莱斯的牙
+>>从您的银行提取以下项目：
+>>贝塞莱斯的牙
 .bankwithdraw 16192
 step << Rogue
 #era/som
->> 如果你能够使用AH或以某种方式获得这些物品，现在就准备好它们。
+>>如果你能够使用AH或以某种方式获得这些物品，现在就准备好它们。
 .collect 5996,1
 .collect 6050,1
 .collect 1710,1
 step
 #era/som
 .goto Thunder Bluff,22.90,21.00
-.turnin 1067 >> 投奔雷霆崖
-.accept 1086 >> 接受飞行机器机场
+.turnin 1067 >>投奔雷霆崖
+.accept 1086 >>接受飞行机器机场
 step
 #era/som
 .goto Thunder Bluff,54.70,51.30
-.accept 1195 >> 接受圣火
+.accept 1195 >>接受圣火
 step
 #completwith next
 .goto Thunder Bluff,46.8,50.0
-.fly Camp Taurajo >> 飞往陶拉霍营地
+.fly Camp Taurajo >>飞往陶拉霍营地
 step
 #completewith next
 .goto The Barrens,45.60,59.00
-.turnin 5046 >> 如果你有4个血腥狂，就交给剃须刀获得荆棘增益效果
+.turnin 5046 >>如果你有4个血腥狂，就交给剃须刀获得荆棘增益效果
 step << Warrior
 #era
 >>在大楼里
@@ -1275,7 +1275,7 @@ step << Warrior
 .accept 1824 >>在巨人球场接受审判
 step
 .goto The Barrens,44.6,59.2
-.accept 879 >> 接受内部背叛
+.accept 879 >>接受内部背叛
 step
 .goto The Barrens,45.6,59.0
 .home >>将您的炉石设置为陶拉霍营地
@@ -1286,7 +1286,7 @@ step
 .goto The Barrens,44.2,62.1,0
 .goto The Barrens,49.2,62.6,0
 .goto The Barrens,49.6,60.0,0
->>在该区域周围搜索Owatanka（蓝雷蜥蜴）。如果你找到他，抢走他的尾钉并开始任务。如果你找不到他，跳过这个任务
+>>在该区域周围搜索Owatanka(蓝雷蜥蜴)。如果你找到他，抢走他的尾钉并开始任务。如果你找不到他，跳过这个任务
 .collect 5102,1,884 
 .accept 884 >>接受Owatanka
 step << Warrior
@@ -1304,7 +1304,7 @@ step
 #completewith next
 >>请留心Silithid Harvester。如果你看到它，就把它杀死，然后洗劫它的头
 .collect 5138,1,897 
-.accept 897 >> 接受收割机
+.accept 897 >>接受收割机
 .unitscan Silithid Harvester
 step
 >>抢劫在硅利兹附近发现的大土堆
@@ -1320,14 +1320,14 @@ step
 .goto The Barrens,44.7,74.7,0
 .goto The Barrens,44.7,77.8,0
 .goto The Barrens,47.6,79.8,0
->>在该区域周围搜索Washte Pawne（红风蛇）。
+>>在该区域周围搜索Washte Pawne(红风蛇)。
 .collect 5103,1 
 .accept 885 >>接受Washte Pawne
 step
 .goto The Barrens,46.0,76.2,90,0
 .goto The Barrens,46.0,81.2,90,0
 .goto The Barrens,46.0,76.2
-.accept 843 >> 接受甘恩的复垦
+.accept 843 >>接受甘恩的复垦
 .unitscan Gann Stonespire
 step << Shaman
 .goto The Barrens,43.4,77.4
@@ -1342,17 +1342,17 @@ step
 .collect 5094,1 
 step
 .goto The Barrens,43.4,78.8
->> 可以发现库兹在山脊周围巡逻
+>>可以发现库兹在山脊周围巡逻
 .unitscan Kuz
 .complete 879,1 
 step
 .goto The Barrens,40.6,80.7
->> 在斜坡上的大楼里
+>>在斜坡上的大楼里
 .unitscan Lok
 .complete 879,3 
 step
 .goto The Barrens,43.8,83.5
->> 山脊南部周围
+>>山脊南部周围
 .complete 879,2 
 .unitscan Nak
 step
@@ -1371,8 +1371,8 @@ step
 #requires Baeldun
 .goto The Barrens,46.0,81.2,90,0
 .goto The Barrens,46.0,76.2
-.turnin 843 >> 移交甘恩的复垦
-.accept 846 >> 接受甘恩的复仇
+.turnin 843 >>移交甘恩的复垦
+.accept 846 >>接受甘恩的复仇
 .unitscan Gann Stonespire
 step
 >>杀掉暴徒并掠夺他们以报仇甘恩
@@ -1383,8 +1383,8 @@ step
 step
 .goto The Barrens,46.0,81.2,90,0
 .goto The Barrens,46.0,76.2
-.turnin 846 >> 交出甘恩的复仇
-.accept 849 >> 接受甘恩的复仇
+.turnin 846 >>交出甘恩的复仇
+.accept 849 >>接受甘恩的复仇
 .unitscan Gann Stonespire
 step
 >>右击发射台顶部的飞行机器
@@ -1395,25 +1395,25 @@ step
 .goto The Barrens,46.0,76.2,90,0
 .goto The Barrens,46.0,81.2,90,0
 .goto The Barrens,46.0,76.2,90,0
-.turnin 849 >> 交出甘恩的复仇
+.turnin 849 >>交出甘恩的复仇
 step
 #requires Washte
 .goto Dustwallow Marsh,29.35,42.92
-.zone Dustwallow Marsh >> 前往Dustwallow
+.zone Dustwallow Marsh >>前往Dustwallow
 step << Warrior/Shaman
 .goto Dustwallow Marsh,36.20,31.60
 >>跑到Brackenwall村。尽量坚持走公路
 >>由于该地区有高级别的暴徒，因此在这里跑步时要格外小心。如果你拉他们，不要试图攻击他们，继续跑
 >>由于该地区有高级别的暴徒，因此在这里跑步时要格外小心。如果你拉他们，不要试图攻击他们，只要留在幽灵狼里，继续奔跑
-.vendor 4884 >> 如果商店里有大棍子，就从Zulrg那里买。
+.vendor 4884 >>如果商店里有大棍子，就从Zulrg那里买。
 step << Rogue
 .goto Dustwallow Marsh,36.4,30.4
-.vendor >> 购买健康罐和战斗卷轴，帮助你稍后独奏BFD地牢。
+.vendor >>购买健康罐和战斗卷轴，帮助你稍后独奏BFD地牢。
 step
 .goto Dustwallow Marsh,35.60,31.80
 >>跑到Brackenwall村。尽量坚持走公路 << !Shaman !Warrior
-.fp Brackenwall >> 获取Brackenwall村飞行路线
-.fly Ratchet >> 飞到棘轮
+.fp Brackenwall >>获取Brackenwall村飞行路线
+.fly Ratchet >>飞到棘轮
 step
 #completewith next
 .goto The Barrens,62.29,39.03
@@ -1421,20 +1421,20 @@ step
 >>如果您的心跳加快，请跳过此问题
 step
 .goto The Barrens,65.80,43.90
-.turnin 874 >> 提交Mahren Skyseer
-.accept 873 >> 接受Isha Awak
+.turnin 874 >>提交Mahren Skyseer
+.accept 873 >>接受Isha Awak
 step
 .goto The Barrens,65.6,47.1,100,0
 .goto The Barrens,63.3,54.2,100,0
 .goto The Barrens,65.6,47.1,100,0
 .goto The Barrens,63.3,54.2
->>在海岸上下寻找Isha Awak（红门槛）。杀死并掠夺它的心脏
+>>在海岸上下寻找Isha Awak(红门槛)。杀死并掠夺它的心脏
 .complete 873,1 
 .unitscan Isha Awak
 step
 .isOnQuest 891
 #sticky
->> 如果杀死Isha Awak后你的壁炉还没烧起来，那么做Northwatch任务。否则，放弃《北方守望者之枪》
+>>如果杀死Isha Awak后你的壁炉还没烧起来，那么做Northwatch任务。否则，放弃《北方守望者之枪》
 .complete 891,4 
 step
 .isOnQuest 891
@@ -1463,7 +1463,7 @@ step
 .complete 898,1 
 step
 .goto The Barrens,62.29,39.03
-.turnin 898 >> 从等待中自由转入
+.turnin 898 >>从等待中自由转入
 .isQuestComplete 898
 step
 .goto The Barrens,62.29,39.03
@@ -1471,71 +1471,71 @@ step
 .isOnQuest 891
 step
 .goto The Barrens,65.83,43.85
-.turnin 873 >> 交给Isha Awak
+.turnin 873 >>交给Isha Awak
 step
-.hs >> 赫斯返回陶拉霍营地
->> 如果需要，购买食物/水
+.hs >>赫斯返回陶拉霍营地
+>>如果需要，购买食物/水
 step
 .isOnQuest 897
-.turnin 897 >> 收割机上交
+.turnin 897 >>收割机上交
 step
 .goto The Barrens,45.10,57.70
-.accept 893 >> 接受首选武器
-.turnin 893 >> 交出首选武器
-.accept 1153 >> 接受新的矿石样本
+.accept 893 >>接受首选武器
+.turnin 893 >>交出首选武器
+.accept 1153 >>接受新的矿石样本
 step
 .goto The Barrens,44.8,59.0
-.turnin 885 >> 交给Washte Pawne
-.turnin 884 >> 交给Owatanka
+.turnin 885 >>交给Washte Pawne
+.turnin 884 >>交给Owatanka
 step
 .goto The Barrens,44.60,59.20
-.turnin 879 >> 自首背叛
-.accept 906 >> 接受内部背叛
+.turnin 879 >>自首背叛
+.accept 906 >>接受内部背叛
 step
 .goto The Barrens,44.60,59.20
-.turnin 879 >> 自首背叛
-.accept 906 >> 接受内部背叛
+.turnin 879 >>自首背叛
+.accept 906 >>接受内部背叛
 step
 .goto The Barrens,44.45,59.15
-.fly Crossroads >> 飞向十字路口
+.fly Crossroads >>飞向十字路口
 step
 .goto The Barrens,51.50,30.90
-.turnin 906 >> 自首背叛
+.turnin 906 >>自首背叛
 step
 #completewith next
 +如果您有12个以上的卵磷脂，请拆分堆栈并删除多余的卵磷脂
 step
 .goto The Barrens,51.10,29.60
-.turnin 868 >> 提交鸡蛋搜索
+.turnin 868 >>提交鸡蛋搜索
 step << Hunter
 .goto The Barrens,51.50,30.34
-.fly Orgrimmar >> 飞往奥格瑞玛
+.fly Orgrimmar >>飞往奥格瑞玛
 step << Hunter
 .goto Orgrimmar,48.13,80.53
-.vendor >> 用25级箭填充你的箭袋。还可以将您的行李升级到4个8槽的袋子（如果它们更大）。
+.vendor >>用25级箭填充你的箭袋。还可以将您的行李升级到4个8槽的袋子(如果它们更大)。
 step
 .maxlevel 25,stonetalon25
 .goto The Barrens,51.5,30.3 << !Hunter
 .goto Orgrimmar,45.11,63.89 << Hunter
-.fly Sun Rock >> 飞到石爪山
+.fly Sun Rock >>飞到石爪山
 step
 #era
 .goto Stonetalon Mountains,45.90,60.40
-.accept 1087 >> 接受塞纳留斯的遗产
+.accept 1087 >>接受塞纳留斯的遗产
 step
 .goto Stonetalon Mountains,47.30,64.30
-.accept 6393 >> 接受元素战争
+.accept 6393 >>接受元素战争
 step
 .goto Stonetalon Mountains,47.40,58.40
-.accept 6301 >> 接受重生周期
+.accept 6301 >>接受重生周期
 step
 .goto Stonetalon Mountains,47.30,61.10
-.accept 5881 >> 接受预备队召唤
-.accept 6282 >> 接受Harpies威胁
+.accept 5881 >>接受预备队召唤
+.accept 6282 >>接受Harpies威胁
 step << Warlock
 .isQuestComplete 6284
 .goto Stonetalon Mountains,47.19,61.15
-.turnin 6284 >> 上缴阿拉伯恐惧症
+.turnin 6284 >>上缴阿拉伯恐惧症
 step << !Warlock
 .goto Stonetalon Mountains,59.10,75.73
 .accept 6284 >>接受阿拉伯恐惧症
@@ -1546,7 +1546,7 @@ step << !Warlock
 .unitscan Besseleth
 step
 .goto Stonetalon Mountains,59.00,62.60
-.accept 1096 >> 接受Gerenzo扳手
+.accept 1096 >>接受Gerenzo扳手
 step
 .unitscan XT:9
 >>杀死XT:9。它在河的南侧巡逻
@@ -1562,7 +1562,7 @@ step
 step
 .isOnQuest 1086
 .goto Stonetalon Mountains,66.40,45.40
->> 放置有毒烟雾器
+>>放置有毒烟雾器
 .complete 1086,1
 step
 .goto Stonetalon Mountains,64.48,40.25
@@ -1571,15 +1571,15 @@ step
 .unitscan Gerenzo Wrenchwhistle
 step
 .goto Stonetalon Mountains,62.6,40.2
-.vendor >> 在平台结束时，从供应商处购买装备升级。他有机会为每个职业升级装备。
+.vendor >>在平台结束时，从供应商处购买装备升级。他有机会为每个职业升级装备。
 step
 .goto Stonetalon Mountains,58.98,62.59
-.turnin 1096 >> 上Gerenzo扳手口哨
+.turnin 1096 >>上Gerenzo扳手口哨
 step
 #era
 #completewith Gaea
 .goto Stonetalon Mountains,50.64,36.60,0
->> 穿过湖面和湖面时，掠夺盖亚种子。
+>>穿过湖面和湖面时，掠夺盖亚种子。
 .complete 6301,1
 step
 #era
@@ -1603,54 +1603,54 @@ step
 .complete 1058,4
 step
 .goto Stonetalon Mountains,50.64,36.60
->> 穿过湖面和湖面时，掠夺盖亚种子。
+>>穿过湖面和湖面时，掠夺盖亚种子。
 .complete 6301,1
 step
 #completewith next
 .goto Stonetalon Mountains,32.60,67.40,0
->> 杀死火元素。为Increndrite掠夺他们
+>>杀死火元素。为Increndrite掠夺他们
 .complete 6393,1
 step
 .goto Stonetalon Mountains,31.10,61.27
->>杀死哈比。当你生命值低于20%时，当杀戮者处决你时要小心，低冷却时，Amburses会因大量瞬间伤害而休克，Roguefeets会猛击（大约每10秒一次多次攻击）
+>>杀死哈比。当你生命值低于20%时，当杀戮者处决你时要小心，低冷却时，Amburses会因大量瞬间伤害而休克，Roguefeets会猛击(大约每10秒一次多次攻击)
 .complete 6282,1
 .complete 6282,2
 .complete 6282,3
 .complete 6282,4
 step
 #completewith next
-.goto Stonetalon Mountains,38.7,68.6,50 >> 从西侧进入太阳岩度假区
+.goto Stonetalon Mountains,38.7,68.6,50 >>从西侧进入太阳岩度假区
 step
 #era
 .goto Stonetalon Mountains,46.00,60.50
->> 前往太阳岩度假区
-.turnin 1087 >> 交出塞纳留斯的遗产
-.accept 1088 >> 接受Ordanus
+>>前往太阳岩度假区
+.turnin 1087 >>交出塞纳留斯的遗产
+.accept 1088 >>接受Ordanus
 step << !Warlock
 .goto Stonetalon Mountains,47.24,61.14
 .turnin 6284 >>上缴阿拉伯恐惧症
 step
 .goto Stonetalon Mountains,47.10,61.10
-.turnin 6282 >> 交Harpies Threaten
-.accept 6283 >> 接受血腥血统
+.turnin 6282 >>交Harpies Threaten
+.accept 6283 >>接受血腥血统
 step
 .goto Stonetalon Mountains,47.40,58.50
-.turnin 6301 >> 轮回重生周期
-.accept 6381 >> 接受新生活
+.turnin 6301 >>轮回重生周期
+.accept 6381 >>接受新生活
 step
 #completewith next
 .goto Stonetalon Mountains,32.60,67.40,0
->> 杀死火元素。为Increndrite掠夺他们
+>>杀死火元素。为Increndrite掠夺他们
 .complete 6393,1
 step
 #sticky
 #completewith Ripper
 .goto Stonetalon Mountains,31.10,61.27,0
->> 在烧焦谷的土堆里种树
+>>在烧焦谷的土堆里种树
 .complete 6381,1
 step
 .goto Stonetalon Mountains,32.60,67.40
->> 杀死火元素。为Increndrite掠夺他们
+>>杀死火元素。为Increndrite掠夺他们
 .complete 6393,1
 step
 #hardcore
@@ -1668,43 +1668,43 @@ step
 .unitscan Bloodfury Ripper
 step
 .goto Stonetalon Mountains,31.10,61.27
->> 在烧焦谷的土堆里种树
+>>在烧焦谷的土堆里种树
 .complete 6381,1
 step
 .goto Stonetalon Mountains,38.7,68.6,50,0
 .goto Stonetalon Mountains,47.20,64.40
->> 返回太阳岩度假区
-.turnin 6393 >> 交出元素战
+>>返回太阳岩度假区
+.turnin 6393 >>交出元素战
 step
 .isQuestComplete 6283
 .goto Stonetalon Mountains,47.19,61.15
-.turnin 6283 >> 交出血腥血统
+.turnin 6283 >>交出血腥血统
 step
 .goto Stonetalon Mountains,47.46,58.37
-.turnin 6381 >> 开启新生活
+.turnin 6381 >>开启新生活
 step
 #era
 .goto Stonetalon Mountains,74.50,97.90
-.turnin 1060 >> 把信交给金子
-.turnin 1058 >> 交出金子的森林魔法
+.turnin 1060 >>把信交给金子
+.turnin 1058 >>交出金子的森林魔法
 step
 #som
 #phase 1-2
 .goto Stonetalon Mountains,74.50,97.90
-.turnin 1060 >> 把信交给金子
+.turnin 1060 >>把信交给金子
 step
 .goto The Barrens,35.30,27.90
-.turnin 1068 >> 翻转切碎机
+.turnin 1068 >>翻转切碎机
 step << Hunter
-.hs >> 炉灶前往陶拉霍营地
->> 如果需要，购买食物/水
+.hs >>炉灶前往陶拉霍营地
+>>如果需要，购买食物/水
 step << Hunter
 .goto The Barrens,44.45,59.15
-.fly Splintertree >> 飞到Splinterree Post
+.fly Splintertree >>飞到Splinterree Post
 step << !Hunter
 #label stonetalon25
 .goto Ashenvale,68.66,85.86
-.zone Ashenvale >> 从Stonetalon经由荒原步行到灰谷
+.zone Ashenvale >>从Stonetalon经由荒原步行到灰谷
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -1715,31 +1715,31 @@ RXPGuides.RegisterGuide([[
 #next 28-30 千针石林
 step << !Hunter
 .goto Ashenvale,68.30,75.30
->> 开始护送任务
-.accept 6544 >> 接受Torek的袭击
+>>开始护送任务
+.accept 6544 >>接受Torek的袭击
 step << !Hunter
->> 护送Torek。当你杀死里面的怪物4时，跑到最后一个平台（因为会有更多的怪物产生），让兽人反抗
->> 杀死对托雷克有仇恨的暴徒，然后杀死其他人。
+>>护送Torek。当你杀死里面的怪物4时，跑到最后一个平台(因为会有更多的怪物产生)，让兽人反抗
+>>杀死对托雷克有仇恨的暴徒，然后杀死其他人。
 .complete 6544,1 
 step << !Hunter
 .goto Ashenvale,71.20,68.10
-.accept 6503 >> 接受灰谷领先者
+.accept 6503 >>接受灰谷领先者
 step << !Hunter
 .goto Ashenvale,73.00,62.50
-.turnin 6544 >> 交出Torek的袭击
+.turnin 6544 >>交出Torek的袭击
 step << !Hunter
 .goto Ashenvale,73.78,61.46
-.turnin 6382 >> 交出灰谷狩猎
-.turnin 6383 >> 交出灰谷狩猎
+.turnin 6382 >>交出灰谷狩猎
+.turnin 6383 >>交出灰谷狩猎
 step
 .goto Ashenvale,73.10,61.50
-.accept 6441 >> 接受萨蒂尔喇叭
+.accept 6441 >>接受萨蒂尔喇叭
 step << Hunter
 .goto Ashenvale,73.38,61.01
-.stable >> 与Qeeju交谈。稳定您的宠物
+.stable >>与Qeeju交谈。稳定您的宠物
 step
 .goto Ashenvale,73.60,60.10
-.accept 25 >> 接受Stonetalon停止
+.accept 25 >>接受Stonetalon停止
 step << Rogue
 .goto Ashenvale,74.0,60.6
 .home >>将炉石设置为Splinterree Post
@@ -1759,7 +1759,7 @@ step << Hunter
 step << Hunter
 #label Outrunners
 .goto Ashenvale,71.20,68.10
-.accept 6503 >> 接受灰谷领先者
+.accept 6503 >>接受灰谷领先者
 step
 >>杀死在该地区潜行的灰谷先锋。
 .goto Ashenvale,72.5,72.5,90,0
@@ -1789,16 +1789,16 @@ step
 step
 #era
 .goto Ashenvale,62.07,51.32
->> 兵马俑可能很难对付，你应该试着炸开他，抢劫他，然后从大楼里跳下来。
+>>兵马俑可能很难对付，你应该试着炸开他，抢劫他，然后从大楼里跳下来。
 .complete 1088,1 
 step
->>寻找黑影（一只黑豹）并抢夺她以获得黑影之头，然后接受它。
+>>寻找黑影(一只黑豹)并抢夺她以获得黑影之头，然后接受它。
 .goto Ashenvale,62.2,49.6,90,0
 .goto Ashenvale,58.0,56.2,90,0
 .goto Ashenvale,51.9,54.3,90,0
 .goto Ashenvale,61.2,51.5
 .collect 16304,1,24 
-.accept 24 >> 接受阴影的头部
+.accept 24 >>接受阴影的头部
 .unitscan Shadumbra
 step
 >>杀死笑姐妹直到她们掉下蚀刻的药水
@@ -1824,7 +1824,7 @@ step
 step
 >>去洞穴的后面。与熊对话。这就开始了护送
 .goto Ashenvale,41.5,34.5
-.accept 6482 >> 接受鲁尔的自由
+.accept 6482 >>接受鲁尔的自由
 step
 .goto Ashenvale,38.5,36.4
 .complete 6482,1 
@@ -1843,9 +1843,9 @@ step
 .goto Ashenvale,43.8,63.6,90,0
 .goto Ashenvale,41.4,65.9,90,0
 .goto Ashenvale,41.5,67.4
->>寻找乌尔桑古斯（熊）。他顺时针巡逻。为乌尔桑戈斯之爪杀死并抢劫他，然后接受它
+>>寻找乌尔桑古斯(熊)。他顺时针巡逻。为乌尔桑戈斯之爪杀死并抢劫他，然后接受它
 .collect 16303,1,23 
-.accept 23 >> 接受乌尔桑戈斯的爪子
+.accept 23 >>接受乌尔桑戈斯的爪子
 .unitscan Ursangous
 step
 #sticky
@@ -1874,7 +1874,7 @@ step
 .complete 1195,1 
 step
 .goto Ashenvale,71.2,68.1
-.turnin 6503 >> 交给灰谷队的领先者
+.turnin 6503 >>交给灰谷队的领先者
 step
 #sticky
 #completewith next
@@ -1888,77 +1888,77 @@ step
 .goto Ashenvale,75.7,70.0,90,0
 .goto Ashenvale,78.2,65.5,90,0
 .goto Ashenvale,75.3,72.0,0
->>寻找Sharptalon（大鸟）。他顺时针巡逻。为了夏普塔龙之爪杀死并掠夺他，然后接受它。把他单独降到60%左右，然后风筝把他送到亡灵营地杀死他。
+>>寻找Sharptalon(大鸟)。他顺时针巡逻。为了夏普塔龙之爪杀死并掠夺他，然后接受它。把他单独降到60%左右，然后风筝把他送到亡灵营地杀死他。
 .collect 16305,1,2 
-.accept 2 >> 接受夏普塔龙之爪
+.accept 2 >>接受夏普塔龙之爪
 .unitscan Sharptalon
 step
 >>回镇上去
 .goto Ashenvale,73.1,62.5
-.turnin 6544 >> 交出Torek的袭击
+.turnin 6544 >>交出Torek的袭击
 step
 .goto Ashenvale,73.8,61.5
-.turnin 2 >> 交给沙普塔龙的爪子
-.turnin 24 >> 翻转阴影的头部
-.turnin 23 >> 交出乌尔桑戈斯的爪子
-.turnin 247 >> 交出狩猎完成
+.turnin 2 >>交给沙普塔龙的爪子
+.turnin 24 >>翻转阴影的头部
+.turnin 23 >>交出乌尔桑戈斯的爪子
+.turnin 247 >>交出狩猎完成
 step
 .goto Ashenvale,73.1,61.5
-.turnin 6441 >> 交出赛特角
+.turnin 6441 >>交出赛特角
 step
 .goto Ashenvale,73.7,60.0
-.turnin 25 >> 转入Stonetalon静止状态
-.turnin 1918 >> 交出斜面元素
-.accept 824 >> 接受土戒Je'neu
+.turnin 25 >>转入Stonetalon静止状态
+.turnin 1918 >>交出斜面元素
+.accept 824 >>接受土戒Je'neu
 step
 .goto Ashenvale,74.1,60.9
-.turnin 6482 >> 把自由交给鲁尔
+.turnin 6482 >>把自由交给鲁尔
 step
 .goto Ashenvale,73.2,61.5
-.fly Zoram'gar >> 飞往佐拉姆加前哨
+.fly Zoram'gar >>飞往佐拉姆加前哨
 step
 .goto Ashenvale,11.9,34.5
-.turnin 216 >> 在岩石和蓟马之间转弯
+.turnin 216 >>在岩石和蓟马之间转弯
 step
 .goto Ashenvale,11.7,34.8
-.turnin 6462 >> 加入巨魔魅力
+.turnin 6462 >>加入巨魔魅力
 step
 .goto Ashenvale,11.6,34.3
-.turnin 824 >> 交回土戒的Je'neu
+.turnin 824 >>交回土戒的Je'neu
 step << Rogue
 .goto Ashenvale,11.59,34.27
 .accept 6921 >>在废墟中接受
 .accept 6563 >>接受阿库迈的精髓
 step << Rogue
-.goto Ashenvale,14.0,15.0,100 >> 前往Blackfathom Deeps的入口
+.goto Ashenvale,14.0,15.0,100 >>前往Blackfathom Deeps的入口
 step << Rogue
 .goto Ashenvale,13.15,12.96
->> 杀死布莱克法索姆潮汐女祭司直到湿气音符掉落。开始任务
+>>杀死布莱克法索姆潮汐女祭司直到湿气音符掉落。开始任务
 .collect 16790,1,6564
-.accept 6564 >> 接受对旧神的忠诚
+.accept 6564 >>接受对旧神的忠诚
 step << Rogue
 .goto Ashenvale,17.04,12.29
->> 潜入地牢，抢劫墙上的20个蓝宝石
+>>潜入地牢，抢劫墙上的20个蓝宝石
 .complete 6563,1 
 step << Rogue
 #completewith next
 +要独奏这个任务，你需要以两种方式正确演奏。首先，你不需要死气沉沉，这意味着在你与老板争吵之前，你应该充分呼吸。第二件事要注意的是，你需要尽可能地踢出每一个冰雹，并在踢过之后使用回避。他的大部分损失将来自霜冻。记住，你可以消失，5分钟后再试一次，只要你不气死。
-.link https://youtu.be/ehXV0stmDrM?t=202 >> 单击此处获取有关此部分的指南
+.link https://youtu.be/ehXV0stmDrM?t=202 >>单击此处获取有关此部分的指南
 step << Rogue
->> 一路潜行到月光废墟，然后在桥下游泳，为老板做准备（使用你所有的增益）
->> 掠夺深渊核心，这就产生了首领。
->> 从阿奎尼斯男爵手中抢走地球仪。接受任务
+>>一路潜行到月光废墟，然后在桥下游泳，为老板做准备(使用你所有的增益)
+>>掠夺深渊核心，这就产生了首领。
+>>从阿奎尼斯男爵手中抢走地球仪。接受任务
 .collect 16762,1,6922
-.accept 6922 >> 接受阿奎尼斯男爵
+.accept 6922 >>接受阿奎尼斯男爵
 step << !Rogue !Warlock
-.hs >> 炉灶前往陶拉霍营地
->> 如果需要，购买食物/水
+.hs >>炉灶前往陶拉霍营地
+>>如果需要，购买食物/水
 step << Rogue
-.hs >> 壁炉到Splinterree Post
->> 如果需要，购买食物/水
+.hs >>壁炉到Splinterree Post
+>>如果需要，购买食物/水
 step << Rogue
 .goto Ashenvale,73.2,61.5
-.fly Zoram'gar >> 飞往佐拉姆加前哨
+.fly Zoram'gar >>飞往佐拉姆加前哨
 step << Rogue
 .goto Ashenvale,11.57,34.28
 .turnin 6563 >>交回阿库迈的精华
@@ -1967,26 +1967,26 @@ step << Rogue
 .turnin 6564 >>效忠旧神
 step << Warlock/Rogue
 .goto Ashenvale,12.24,33.80
-.fly Orgrimmar >> 飞往奥格瑞玛
+.fly Orgrimmar >>飞往奥格瑞玛
 step << Rogue
 .goto Orgrimmar,48.0,80.2
-.vendor >> 如果你需要的话，可以买套餐
+.vendor >>如果你需要的话，可以买套餐
 step << Rogue
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,47.5,46.7
-.vendor >> 如果你有钱，买你的宠物升级。
+.vendor >>如果你有钱，买你的宠物升级。
 step << Warlock
-.hs >> 炉灶前往陶拉霍营地
->> 如果需要，购买食物/水
+.hs >>炉灶前往陶拉霍营地
+>>如果需要，购买食物/水
 step
 .goto Orgrimmar,45.11,63.89 << Rogue
 .goto The Barrens,44.45,59.16 << !Warlock !Rogue
-.fly Thunder Bluff >> 飞向雷霆崖
+.fly Thunder Bluff >>飞向雷霆崖
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -1997,51 +1997,51 @@ RXPGuides.RegisterGuide([[
 #next RestedXP 部落 30-40\30-33 希尔斯布莱德丘陵/阿拉希高地
 step << Shaman/Warrior
 .goto Thunder Bluff,54.0,57.3
->> 如果无情斧在商店里，那就去买吧。如果不是，请跳过此步骤
+>>如果无情斧在商店里，那就去买吧。如果不是，请跳过此步骤
 .collect 12249,1
 step
 .goto Thunder Bluff,54.90,51.60
-.turnin 1195 >> 交出圣火
-.accept 1196 >> 接受圣火
+.turnin 1195 >>交出圣火
+.accept 1196 >>接受圣火
 step << Druid
 .goto Thunder Bluff,77.0,29.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .goto Thunder Bluff,61.4,80.9
 .turnin 1130 >>交出Melor发送消息
 .accept 1131 >>接受Steelsnap
 step << Hunter
 .goto Thunder Bluff,59.1,86.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Thunder Bluff,54.1,83.9
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 .goto Thunder Bluff,57.6,85.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .goto Thunder Bluff,45.80,64.60
-.home >> 将您的炉石设置为雷霆崖
+.home >>将您的炉石设置为雷霆崖
 step << Shaman
 .goto Thunder Bluff,22.8,21.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 .goto Thunder Bluff,24.6,22.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Mage
 .goto Thunder Bluff,25.2,20.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .isOnQuest 1086
 .goto Thunder Bluff,22.80,20.80
-.turnin 1086 >> 在飞行机器机场上缴
+.turnin 1086 >>在飞行机器机场上缴
 step
 >>跑上塔去见飞行大师
 .goto Thunder Bluff,47.00,49.83
-.fly Camp Taurajo >> 飞往陶拉霍营地
+.fly Camp Taurajo >>飞往陶拉霍营地
 step
 .goto The Barrens,45.10,57.70
-.accept 1153 >> 接受新的矿石样本
+.accept 1153 >>接受新的矿石样本
 step << Shaman
 .goto The Barrens,43.4,77.4
 .turnin 1534 >>水的召唤
@@ -2049,37 +2049,37 @@ step << Shaman
 step << Warlock/Hunter
 #era
 .goto The Barrens,48.90,86.30
-.accept 857 >> 接受月亮的眼泪
+.accept 857 >>接受月亮的眼泪
 #softcore
 step << Warlock/Hunter
 #era
 .goto The Barrens,49.12,84.25
->> 进入要塞，下楼，洗劫箱子。
+>>进入要塞，下楼，洗劫箱子。
 .complete 857,1
 #softcore
 step << Warlock/Hunter
 #era
 .goto The Barrens,48.99,86.29
-.turnin 857 >> 《月亮的眼泪》
+.turnin 857 >>《月亮的眼泪》
 #softcore
 step
 .isOnQuest 5881
 .goto The Barrens,44.00,92.00
-.turnin 5881 >> 交纳准备金
+.turnin 5881 >>交纳准备金
 step
 .goto The Barrens,44.20,92.20
-.accept 4542 >> 接受发送给Freewind Post的消息
+.accept 4542 >>接受发送给Freewind Post的消息
 step
 #sticky
 #completewith GalakM
->> 当心并杀死在你搜寻时巡逻该地区的Galak Messenger。抢劫他的杀人笔记
+>>当心并杀死在你搜寻时巡逻该地区的Galak Messenger。抢劫他的杀人笔记
 .collect 12564,1,4881
-.accept 4881 >> 接受刺杀阴谋
+.accept 4881 >>接受刺杀阴谋
 .unitscan Galak Messenger
 step
 #sticky
 #completewith Faith
->> 杀死你遇到的所有科波德人。掠夺他们以获取矿石样本
+>>杀死你遇到的所有科波德人。掠夺他们以获取矿石样本
 .goto Thousand Needles,65.74,49.89,0
 .goto Thousand Needles,67.87,58.33,0
 .goto Thousand Needles,66.03,62.14,0
@@ -2090,28 +2090,28 @@ step
 >>乘电梯到Freewind Post
 .goto Thousand Needles,46.74,47.98,30,0
 .goto Thousand Needles,45.10,49.10
-.fp Freewind >> 获取Freewind飞行后路径
+.fp Freewind >>获取Freewind飞行后路径
 step
 .goto Thousand Needles,44.90,48.90
-.accept 4767 >> 接受风骑士
+.accept 4767 >>接受风骑士
 step
 .goto Thousand Needles,44.70,50.30
-.accept 4821 >> 接受异形蛋
+.accept 4821 >>接受异形蛋
 step
 .goto Thousand Needles,45.70,50.80
-.turnin 4542 >> 向Freewind Post提交消息
-.accept 4841 >> 接受安抚半人马座
+.turnin 4542 >>向Freewind Post提交消息
+.accept 4841 >>接受安抚半人马座
 step
 .goto Thousand Needles,46.10,51.60
-.turnin 1196 >> 交出圣火
-.accept 1197 >> 接受圣火
+.turnin 1196 >>交出圣火
+.accept 1197 >>接受圣火
 step
 .goto Thousand Needles,46.00,50.80
->> 点击通缉海报
-.accept 5147 >> 接受通缉-Arnak Grimtotem
+>>点击通缉海报
+.accept 5147 >>接受通缉-Arnak Grimtotem
 step
 #completewith next
->> 杀死该地区的半人马
+>>杀死该地区的半人马
 .complete 4841,1
 .complete 4841,2
 .complete 4841,3
@@ -2123,25 +2123,25 @@ step
 step
 .goto Thousand Needles,44.11,37.16,50,0
 .goto Thousand Needles,42.00,31.60
->> 去半人马洞。点击背面的火盆。从中掠夺物品
+>>去半人马洞。点击背面的火盆。从中掠夺物品
 .complete 1197,1
 step
 .goto Thousand Needles,40.89,38.45
->> 杀死剩下的半人马座
+>>杀死剩下的半人马座
 .complete 4841,1
 .complete 4841,2
 .complete 4841,3
 step
 .goto Thousand Needles,53.90,41.60
-.accept 1149 >> 接受信仰测试
+.accept 1149 >>接受信仰测试
 step
->> 从小木平台上跳下来。你将被传送回半空中的洞穴
+>>从小木平台上跳下来。你将被传送回半空中的洞穴
 .complete 1149,1
 step
 #label Faith
 .goto Thousand Needles,53.94,41.48
-.turnin 1149 >> 信仰的交验
-.accept 1150 >> 接受耐久性试验
+.turnin 1149 >>信仰的交验
+.accept 1150 >>接受耐久性试验
 step
 #sticky
 #label Kobolds
@@ -2150,7 +2150,7 @@ step
 .goto Thousand Needles,66.03,62.14,90,0
 .goto Thousand Needles,58.95,57.84,90,0
 .goto Thousand Needles,65.74,49.89
->> 杀死你遇到的所有科波德人。掠夺他们以获取矿石样本
+>>杀死你遇到的所有科波德人。掠夺他们以获取矿石样本
 .complete 1153,1
 .unitscan Gravelsnout Digger,Gravelsnout Surveyor,Gibblesnik
 step
@@ -2168,24 +2168,24 @@ step
 step
 #requires Kobolds
 .goto Thousand Needles,46.10,51.60
-.turnin 1197 >> 交出圣火
+.turnin 1197 >>交出圣火
 step
 .goto Thousand Needles,45.70,50.80
-.turnin 4841 >> 交出安抚半人马座
-.accept 5064 >> 接受Grimtotem间谍
+.turnin 4841 >>交出安抚半人马座
+.accept 5064 >>接受Grimtotem间谍
 step
 .goto Thousand Needles,44.70,50.30
-.turnin 4821 >> 交上外星人蛋
-.accept 4865 >> 接受野蛇
+.turnin 4821 >>交上外星人蛋
+.accept 4865 >>接受野蛇
 step
 .goto Thousand Needles,25.90,54.80
->> 前往竖琴洞。摧毁它末端的所有箱子，召唤格伦卡·血溪。
->> 小心，因为这个任务非常困难。如果你无法独奏或跳过，请找一个小组。
-.link https://www.youtube.com/watch?v=EVy-6OjB5bs&t=27300s >> 如果您认为可行，请单击此处查看可视参考
+>>前往竖琴洞。摧毁它末端的所有箱子，召唤格伦卡·血溪。
+>>小心，因为这个任务非常困难。如果你无法独奏或跳过，请找一个小组。
+.link https://www.youtube.com/watch?v=EVy-6OjB5bs&t=27300s >>如果您认为可行，请单击此处查看可视参考
 .complete 1150,1
 step
 #completewith SteelsnapG
->> 杀死Steelsnap。他在这个地区巡逻。试着分开拉他如果你知道怎么做
+>>杀死Steelsnap。他在这个地区巡逻。试着分开拉他如果你知道怎么做
 .complete 1131,1
 .unitscan Steelsnap
 step
@@ -2197,21 +2197,21 @@ step
 .goto Thousand Needles,12.65,34.49,60,0
 .goto Thousand Needles,13.45,40.29,40,0
 .goto Thousand Needles,17.90,40.60
->> 开始护送任务
-.accept 4770 >> 接受返程
+>>开始护送任务
+.accept 4770 >>接受返程
 step
 #label Paoka
->> 护送Pao'ka到安全的地方。小心心魔（32级稀有精英）
+>>进入巨魔洞穴。杀了格里克尼尔，然后把他抢走作为格雷林的日记
 .complete 4770,1
 .unitscan Heartrazor
 step
 .goto Thousand Needles,11.60,35.21
->> 采集完Highperc鸡蛋
+>>采集完Highperc鸡蛋
 .complete 4767,1
 step
 #completewith SteelsnapG
 .goto Thousand Needles,21.06,31.87
-.vendor >> 供应商垃圾，必要时购买食物/水
+.vendor >>供应商垃圾，必要时购买食物/水
 step
 .isOnQuest 4881
 .goto Thousand Needles,21.34,31.95
@@ -2229,21 +2229,21 @@ step
 .turnin 4966 >>投案保护卡纳蒂·格雷科洛德
 step
 .goto Thousand Needles,21.50,32.50
-.accept 5151 >> 接受超级电容器Gizmo
-.turnin 4865 >> 《狂蛇归来》
-.accept 5062 >> 接受圣火
-.turnin 4770 >> 转入返程
+.accept 5151 >>接受超级电容器Gizmo
+.turnin 4865 >>《狂蛇归来》
+.accept 5062 >>接受圣火
+.turnin 4770 >>转入返程
 step
 #softcore
 .goto Thousand Needles,22.90,24.40
->> 点击豹笼，杀死里面的精英。如果他太难独奏，就组队。
+>>点击豹笼，杀死里面的精英。如果他太难独奏，就组队。
 >>小心，因为这个任务很难完成
 .complete 5151,1
 
 step
 #hardcore
 .goto Thousand Needles,22.90,24.40
->> 点击豹笼，杀死里面的精英
+>>点击豹笼，杀死里面的精英
 >>小心，因为这个任务很难完成
 .complete 5151,1
 
@@ -2258,11 +2258,11 @@ step
 step
 #label SteelsnapG
 .goto The Barrens,35.22,92.47
->> 完成一个新的矿石样品
+>>完成一个新的矿石样品
 .complete 1153,1
 step
 #label GalakM
->>搜索Steelsnap（Hyena）。他逆时针巡逻
+>>搜索Steelsnap(Hyena)。他逆时针巡逻
 >>用鹰眼侦察他 << Hunter
 >>如果你受过训练，用远视侦察机侦察他 << Shaman
 .goto Thousand Needles,10.9,23.2,90,0
@@ -2280,7 +2280,7 @@ step
 step
 .goto Thousand Needles,21.43,32.55
 .isQuestComplete 5151
-.turnin 5151 >> 打开超级电容器Gizmo
+.turnin 5151 >>打开超级电容器Gizmo
 step
 >>搜索Galak Messenger。他从一个营地出发，上路，然后去另一个营地
 >>用鹰眼侦察他 << Hunter
@@ -2296,7 +2296,7 @@ step
 .goto Thousand Needles,36.0,29.0,90,0
 .goto Thousand Needles,39.6,33.6,90,0
 .collect 12564,1,4881 
-.accept 4881 >> 接受刺杀阴谋
+.accept 4881 >>接受刺杀阴谋
 .unitscan Galak Messenger
 step
 >>掠夺整个水体中和周围的植物
@@ -2304,86 +2304,86 @@ step
 .complete 5062,1
 step
 #completewith next
-.hs >> 火炉到雷霆崖
->> 如果需要，购买食物/水
+.hs >>火炉到雷霆崖
+>>如果需要，购买食物/水
 step
 .goto Thunder Bluff,61.53,80.91
-.turnin 1131 >> 转入Steelsnap
-.accept 1136 >> 接受Frostmaw << Hunter
+.turnin 1131 >>转入Steelsnap
+.accept 1136 >>接受Frostmaw << Hunter
 step << Hunter
 .goto Thunder Bluff,59.1,86.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Thunder Bluff,54.1,83.9
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 .goto Thunder Bluff,57.6,85.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .goto Thunder Bluff,70.20,30.90
-.turnin 5062 >> 交出圣火
-.accept 5088 >> 接受Arikara
+.turnin 5062 >>交出圣火
+.accept 5088 >>接受Arikara
 step << Druid
 .goto Thunder Bluff,77.0,29.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Shaman
 .goto Thunder Bluff,22.8,21.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 .goto Thunder Bluff,24.6,22.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Mage
 .goto Thunder Bluff,25.2,20.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .goto Thunder Bluff,46.8,50.0
-.fly Camp Taurajo >> 飞往陶拉霍营地
+.fly Camp Taurajo >>飞往陶拉霍营地
 step
 .goto The Barrens,45.10,57.70
-.turnin 1153 >> 交出新的矿石样本
+.turnin 1153 >>交出新的矿石样本
 step
 .goto The Barrens,44.45,59.15
-.fly Freewind >> 飞向千针
+.fly Freewind >>飞向千针
 step
 .goto Thousand Needles,45.00,49.00
-.turnin 4767 >> 转入Wind Rider
+.turnin 4767 >>转入Wind Rider
 step
 .goto Thousand Needles,46.00,52.0
-.home >> 将您的炉石设置为Freewind Post
+.home >>将您的炉石设置为Freewind Post
 step
 .isQuestComplete 1150
 .goto Thousand Needles,53.90,41.60
-.turnin 1150 >> 耐久性转入试验
+.turnin 1150 >>耐久性转入试验
 step
 .isQuestTurnedIn 1150
 .goto Thousand Needles,53.90,41.60
-.accept 1151 >> 接受强度试验
+.accept 1151 >>接受强度试验
 step
 .goto Thousand Needles,53.90,41.60
-.accept 1151 >> 接受强度试验
+.accept 1151 >>接受强度试验
 .isQuestTurnedIn 1150
 step
 #completewith next
 .goto Thousand Needles,25.60,45.60,0
 .goto Thousand Needles,8.60,20.00,0
->> 寻找Pounder的Rok'Alim。他在该地区西北部的大部分地区巡逻
->> 小心，因为这个任务很难完成。如果需要，跳过它
+>>寻找Pounder的Rok'Alim。他在该地区西北部的大部分地区巡逻
+>>小心，因为这个任务很难完成。如果需要，跳过它
 .complete 1151,1
 .unitscan Rok'Alim the Pounder
 .isOnQuest 1151
 step
-.goto Thousand Needles,31.50,36.70,30 >> 前往黑云峰
+.goto Thousand Needles,31.50,36.70,30 >>前往黑云峰
 step
 .goto Thousand Needles,31.80,32.70
->> 抢劫高原上的胸部。收集机密笔记#1
+>>抢劫高原上的胸部。收集机密笔记#1
 .complete 5064,1
 step
 .goto Thousand Needles,33.80,39.90
->> 抢劫大楼里的箱子。收集机密笔记#2
+>>抢劫大楼里的箱子。收集机密笔记#2
 .complete 5064,2
 step
 .goto Thousand Needles,39.20,41.60
->> 抢劫大楼里的箱子。收集机密笔记#3
+>>抢劫大楼里的箱子。收集机密笔记#3
 .complete 5064,3
 step
 >>清除篝火周围的暴徒。点燃它，然后杀死阿里卡拉。抢劫她
@@ -2393,12 +2393,12 @@ step
 .complete 5088,1
 step
 .goto Thousand Needles,38.00,26.80
->> 杀死Arnak Grimtotem。抢走他的蹄子
+>>杀死Arnak Grimtotem。抢走他的蹄子
 .complete 5147,1
 step
 .goto Thousand Needles,38.00,26.60
->> 开始护送任务
-.accept 4904 >> 最终免费接受
+>>开始护送任务
+.accept 4904 >>最终免费接受
 step
 >>护送拉科塔。每当她到达一个新的平台时，会有2个怪物出现-如果你在后面重生，尝试保持在她前面以清除平台
 >>小心，因为这个任务很难完成。不要害怕在你后面跑，也不要害怕护送失败
@@ -2408,40 +2408,40 @@ step
 step
 .isQuestComplete 1151
 .goto Thousand Needles,53.90,41.50
-.turnin 1151 >> 强度转入试验
+.turnin 1151 >>强度转入试验
 step
 .goto Thousand Needles,77.78,77.26
->> 与Kravel Koalbeard交谈
-.accept 1110 >> 接受火箭汽车零件
-.accept 1111 >> 接受码头管理员Dizzywig
+>>与Kravel Koalbeard交谈
+.accept 1110 >>接受火箭汽车零件
+.accept 1111 >>接受码头管理员Dizzywig
 step
 .goto Thousand Needles,78.06,77.12
->> 与侏儒交谈
-.accept 1104 >> 接受盐平毒液
-.accept 1105 >> 接受硬化壳
+>>与侏儒交谈
+.accept 1104 >>接受盐平毒液
+.accept 1105 >>接受硬化壳
 step
 .goto Thousand Needles,80.17,75.88
-.accept 1176 >> 接受负载减轻
+.accept 1176 >>接受负载减轻
 step
 .goto Thousand Needles,81.63,77.95
-.accept 1175 >> 接受道路上的碰撞
+.accept 1175 >>接受道路上的碰撞
 step
 .goto Tanaris,51.60,25.40
-.fp Gadgetzan >> 获取Gadgetzan飞行路线
-.fly Freewind >> 飞到Freewind Post
+.fp Gadgetzan >>获取Gadgetzan飞行路线
+.fly Freewind >>飞到Freewind Post
 step
 .goto Thousand Needles,45.70,50.80
-.turnin 5064 >> 加入Grimtotem Spying
-.turnin 5147 >> 通缉犯-Arnak Grimtotem
+.turnin 5064 >>加入Grimtotem Spying
+.turnin 5147 >>通缉犯-Arnak Grimtotem
 step
 .isQuestComplete 4904
 .goto Thousand Needles,46.00,51.50
-.turnin 4904 >> 最后免费上缴
+.turnin 4904 >>最后免费上缴
 step
-.goto Thousand Needles,46.65,48.36,30 >> 从Freewind Post乘坐电梯
+.goto Thousand Needles,46.65,48.36,30 >>从Freewind Post乘坐电梯
 step
 .goto Thousand Needles,21.50,32.20
-.turnin 5088 >> 交给Arikara
+.turnin 5088 >>交给Arikara
 step
 .goto Thousand Needles,21.34,31.95
 .turnin 4881 >>交出刺杀阴谋
@@ -2455,40 +2455,40 @@ step
 step
 .goto Thousand Needles,25.60,45.60,0
 .goto Thousand Needles,8.60,20.00,0
->> 寻找Pounder的Rok'Alim。他在该地区西北部的大部分地区巡逻
->> 小心，因为这个任务很难完成。如果需要，跳过它
+>>寻找Pounder的Rok'Alim。他在该地区西北部的大部分地区巡逻
+>>小心，因为这个任务很难完成。如果需要，跳过它
 .complete 1151,1
 .unitscan Rok'Alim the Pounder
 .isOnQuest 1151
 step
 #softcore
 .goto Feralas,88.97,41.13
-.zone Feralas >> 向西北方向驶入费拉拉斯
+.zone Feralas >>向西北方向驶入费拉拉斯
 step
 #softcore
 .goto Feralas,75.40,44.40
-.deathskip >> 一旦你的区域变为费拉拉斯，拉一个高级怪物。在莫雅奇营地死亡并重生
+.deathskip >>一旦你的区域变为费拉拉斯，拉一个高级怪物。在莫雅奇营地死亡并重生
 step
 #hardcore
 .goto Feralas,75.40,44.40
->> 沿着这条路去莫雅奇营地。小心那些高级暴徒
-.fp Camp Mojache >> 获取Mojache营地飞行路线
-.fly Crossroads >> 飞向十字路口
+>>沿着这条路去莫雅奇营地。小心那些高级暴徒
+.fp Camp Mojache >>获取Mojache营地飞行路线
+.fly Crossroads >>飞向十字路口
 step
 #softcore
 .goto Feralas,75.40,44.40
-.fp Camp Mojache >> 获取Mojache营地飞行路线
-.fly Crossroads >> 飞向十字路口
+.fp Camp Mojache >>获取Mojache营地飞行路线
+.fly Crossroads >>飞向十字路口
 step
 .goto The Barrens,51.10,29.60
-.accept 1145 >> 接受蜂群的成长
+.accept 1145 >>接受蜂群的成长
 step
 .goto The Barrens,51.5,30.3
-.fly Ratchet >> 飞到棘轮
+.fly Ratchet >>飞到棘轮
 step
 .goto The Barrens,63.30,38.40
-.turnin 1111 >> 交码头管理员Dizzywig
-.accept 1112 >> 接受Kravel的零件
+.turnin 1111 >>交码头管理员Dizzywig
+.accept 1112 >>接受Kravel的零件
 step << Shaman
 .goto The Barrens,65.8,43.8
 .turnin 220 >>水的召唤
@@ -2498,26 +2498,26 @@ step << Shaman
 .collect 6637,1
 step << !Mage
 .goto The Barrens,63.1,37.1
-.fly Orgrimmar >> 飞往奥格瑞玛
+.fly Orgrimmar >>飞往奥格瑞玛
 step << Mage
-.zone Orgrimmar >> 电传至Orgrimmar
+.zone Orgrimmar >>电传至Orgrimmar
 step << Mage
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Shaman
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 >>至少节省1金88银供以后使用
 step << Hunter
 .goto Orgrimmar,66.3,14.8
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 >>至少节省1金88银供以后使用
 step << Hunter
 .goto Orgrimmar,81.62,19.59
-.train 197 >> 从Hanashi培训2小时车轴
+.train 197 >>从Hanashi培训2小时车轴
 step
 .accept 2841 >>接受钻机战争
 .goto Orgrimmar,76.1,25.2
@@ -2527,49 +2527,49 @@ step
 >>为了接受第二个任务，你需要在任务日志中添加钻机战争
 step
 #sticky
-.abandon 2841 >> 放弃钻机战争
+.abandon 2841 >>放弃钻机战争
 .accept 2842 >>在放弃钻机战争之前，确保你的任务日志中有首席工程师Scooty
 step
 .goto Orgrimmar,75.00,34.10
-.turnin 1145 >> 加入蜂群成长
-.accept 1146 >> 接受蜂群的成长
+.turnin 1145 >>加入蜂群成长
+.accept 1146 >>接受蜂群的成长
 step << Warrior
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
-.accept 1718 >> 接受岛民
+.trainer >>去训练你的职业咒语
+.accept 1718 >>接受岛民
 step << Rogue
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,47.5,46.7
-.vendor >> 如果你有钱的话，买你的宠物魔法书。
+.vendor >>如果你有钱的话，买你的宠物魔法书。
 step << Mage
 .goto Orgrimmar,45.44,56.54
-.vendor >> 前往霍尔萨斯。购买两个传送符文（如果你想，可以购买更多）
+.vendor >>前往霍尔萨斯。购买两个传送符文(如果你想，可以购买更多)
 .collect 17031,2 
 step
 .goto Orgrimmar,44.70,52.00
-.accept 1431 >> 接受联盟关系
+.accept 1431 >>接受联盟关系
 step << Priest
 .goto Orgrimmar,44.8,48.8
->> 走进阴影的裂缝，与凯蒂斯交谈。购买害虫魔杖。装备它
+>>走进阴影的裂缝，与凯蒂斯交谈。购买害虫魔杖。装备它
 .collect 5347,1
 step << Priest
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 >>跑到Orgrimmar的西出口
 .goto Orgrimmar,22.50,52.60
-.turnin 1431 >> 移交联盟关系
-.accept 1432 >> 接受联盟关系
+.turnin 1431 >>移交联盟关系
+.accept 1432 >>接受联盟关系
 step << Warrior
 .goto Orgrimmar,45.14,63.89
-.fly Ratchet >> 飞到棘轮
+.fly Ratchet >>飞到棘轮
 step << Warrior
->>跑（不游泳）到弗雷岛
+>>跑(不游泳)到弗雷岛
 .goto The Barrens,65.09,47.81,90,0
 .goto The Barrens,68.61,49.16
 .turnin 1718 >>《岛上居民》
@@ -2588,10 +2588,10 @@ step << Warrior
 >>跑回棘轮
 .goto The Barrens,65.09,47.81,90,0
 .goto The Barrens,63.08,37.16
-.fly Orgrimmar >> 飞往奥格瑞玛
+.fly Orgrimmar >>飞往奥格瑞玛
 ]])
 RXPGuides.RegisterGuide([[
-#version 7
+#version 9
 #wotlk
 #tbc
 #group RestedXP 部落 30-45
@@ -2606,40 +2606,40 @@ step
 .zone Stranglethorn Vale >>带着齐柏林飞艇去格罗姆戈。
 step
 .goto Stranglethorn Vale,32.5,29.3
-.fp Grom'gol >> 获取Grom'gol大本营飞行路线
+.fp Grom'gol >>获取Grom'gol大本营飞行路线
 step
 .isQuestTurnedIn 1176
 .zone Tirisfal Glades >>带着齐柏林飞艇去幽暗城。
 step
 .isQuestTurnedIn 1176
 .goto Undercity,63.7,48.9
-.accept 1164 >> 接受小偷的偷窃
+.accept 1164 >>接受小偷的偷窃
 step << Hunter
 .isQuestTurnedIn 1176
 .goto Undercity,58.6,32.7
-.vendor >> 去买Heavy Quiver&Bullova
+.vendor >>去买Heavy Quiver&Bullova
 .collect 7371,1
 .collect 2523,1
 step << Rogue
 .isQuestTurnedIn 1176
 .goto Undercity,58.6,32.7
-.vendor >> 去买大刀
+.vendor >>去买大刀
 .collect 2520,1
 step << !Undead !Rogue
 .isQuestTurnedIn 1176
 .goto Undercity,63.3,48.4
-.fp Undercity >> 获取幽暗城飞行路线
+.fp Undercity >>获取幽暗城飞行路线
 step << !Shaman
 .isQuestTurnedIn 1176
 #completewith next
 .goto Undercity,63.2,48.3
-.fly Tarren Mill >> 飞往塔伦磨坊
+.fly Tarren Mill >>飞往塔伦磨坊
 step << Shaman
 .goto Silverpine Forest,45.6,42.6
-.fp Sepulcher >> 获得the Sepulcher飞行路线
+.fp Sepulcher >>获得the Sepulcher飞行路线
 step << Shaman
 #completewith next
-.goto Silverpine Forest,42.1,40.5,10 >> 跳到树这边来
+.goto Silverpine Forest,42.1,40.5,10 >>跳到树这边来
 step << Shaman
 .goto Silverpine Forest,41.6,41.8,15,0
 .goto Silverpine Forest,40.3,42.1,15,0
@@ -2664,33 +2664,33 @@ step << Shaman
 step << Shaman
 .xp <35,1
 .goto Tirisfal Glades,61.9,59.1
-.zone Stranglethorn Vale >> 登上齐柏林飞艇前往奥格瑞玛
+.zone Stranglethorn Vale >>登上齐柏林飞艇前往奥格瑞玛
 step
 .isOnQuest 1164
->> 接受塔伦磨坊周围的任务
-.accept 509 >> 接受痛苦药剂
+>>接受塔伦磨坊周围的任务
+.accept 509 >>接受痛苦药剂
 .goto Hillsbrad Foothills,61.4,19.2
-.accept 676 >> 接受锤子可能坠落
+.accept 676 >>接受锤子可能坠落
 .goto Hillsbrad Foothills,61.8,19.8
-.accept 556 >> 接受石头标记
+.accept 556 >>接受石头标记
 .goto Hillsbrad Foothills,61.5,20.9
-.accept 544 >> 接受越狱
+.accept 544 >>接受越狱
 .goto Hillsbrad Foothills,61.6,20.5
 step
 .isOnQuest 529
 .goto Hillsbrad Foothills,62.4,20.3
-.turnin 529 >> 希尔斯布拉德战役
+.turnin 529 >>希尔斯布莱德丘陵战役
 step
 .goto Hillsbrad Foothills,62.4,20.3
 .isQuestTurnedIn 529
-.accept 532 >> 接受希尔斯布拉德战役
+.accept 532 >>接受希尔斯布莱德丘陵战役
 step
 .isOnQuest 1164
-.accept 547 >> 接受亨伯特的剑
+.accept 547 >>接受亨伯特的剑
 .goto Hillsbrad Foothills,62.7,20.5
-.accept 533 >> 接受渗透
+.accept 533 >>接受渗透
 .goto Hillsbrad Foothills,63.2,20.6
-.accept 552 >> 接受海勒克的复仇
+.accept 552 >>接受海勒克的复仇
 .goto Hillsbrad Foothills,63.9,19.7
 step
 .isOnQuest 552
@@ -2720,7 +2720,7 @@ step
 .isOnQuest 532
 .goto Hillsbrad Foothills,29.6,41.8,40,0
 .goto Hillsbrad Foothills,29.5,42.2
->> 走进市政厅，在治安法官旁边的地上抢书。杀死治安官和议员。
+>>走进市政厅，在治安法官旁边的地上抢书。杀死治安官和议员。
 .complete 532,4 
 .complete 532,1 
 .complete 532,2 
@@ -2728,19 +2728,19 @@ step
 .isOnQuest 532
 #label magisterbye
 .goto Hillsbrad Foothills,62.3,20.3
-.turnin 532 >> 希尔斯布拉德战役
+.turnin 532 >>希尔斯布莱德丘陵战役
 step
 .goto Hillsbrad Foothills,62.3,20.3
 .isQuestTurnedIn 532
-.accept 539 >> 接受希尔斯布拉德战役
+.accept 539 >>接受希尔斯布莱德丘陵战役
 step
 .isOnQuest 552
 .goto Hillsbrad Foothills,63.9,19.7
-.turnin 552 >> 交出海勒克的复仇
+.turnin 552 >>交出海勒克的复仇
 step
 .goto Hillsbrad Foothills,63.9,19.7
 .isQuestTurnedIn 552
-.accept 553 >> 接受海勒克的复仇
+.accept 553 >>接受海勒克的复仇
 step
 #completewith Bonds
 .isOnQuest 546
@@ -2760,7 +2760,7 @@ step
 step
 #label Bonds
 .isOnQuest 539
->>杀死Foreman Bonds。他位于矿井的主（中央）室。也结束对矿工的杀戮
+>>杀死Foreman Bonds。他位于矿井的主(中央)室。也结束对矿工的杀戮
 * Note: Foreman Bonds will summon two dwarven guards when he gets low health!
 .goto Hillsbrad Foothills,31.2,56.0
 .complete 539,1 
@@ -2809,12 +2809,12 @@ step
 .complete 556,1 
 step
 .isOnQuest 553
->>前往奥特兰克山脉的雪人洞穴。点击钎焊器（范围很大）
+>>前往奥特兰克山脉的雪人洞穴。点击钎焊器(范围很大)
 .goto Alterac Mountains,37.5,66.3
 .complete 553,3 
 step
 .isOnQuest 553
->>跑回Hillsbrad Foothills的雪人洞穴，点击那里的火盆。你一进去就向右转，它在顶层。
+>>跑回希尔斯布莱德丘陵的雪人洞穴，点击那里的火盆。你一进去就向右转，它在顶层。
 .goto Hillsbrad Foothills,46.2,31.8,30,0
 .goto Hillsbrad Foothills,43.9,28.1
 .complete 553,1 
@@ -2834,38 +2834,38 @@ step
 .complete 533,1 
 step
 .isOnQuest 544
->> 返回Tarren Mill
+>>返回Tarren Mill
 .goto Hillsbrad Foothills,61.5,20.9
-.turnin 544 >> 入狱入狱
+.turnin 544 >>入狱入狱
 step
 .isOnQuest 556
 .goto Hillsbrad Foothills,61.5,20.9
-.turnin 556 >> 上缴石头代币
+.turnin 556 >>上缴石头代币
 step
 .isOnQuest 546
 .goto Hillsbrad Foothills,62.1,19.7
-.turnin 546 >> 递交死亡纪念品
+.turnin 546 >>递交死亡纪念品
 step
 .isOnQuest 539
 .goto Hillsbrad Foothills,62.3,20.3
-.turnin 539 >> 希尔斯布拉德战役
+.turnin 539 >>希尔斯布莱德丘陵战役
 step
 .goto Hillsbrad Foothills,62.3,20.3
 .isQuestTurnedIn 539
-.accept 541 >> 接受希尔斯布拉德战役
+.accept 541 >>接受希尔斯布莱德丘陵战役
 step
 .isOnQuest 567
 .goto Hillsbrad Foothills,62.3,20.3
-.turnin 567 >> 交危险品！
+.turnin 567 >>交危险品！
 step
 .isOnQuest 533
 .goto Hillsbrad Foothills,63.3,20.7
-.turnin 533 >> 转入渗透
+.turnin 533 >>转入渗透
 step
 .isOnQuest 553
->> 前往联盟小镇南岸。尽量避开警卫！你可能需要从河边靠近。
+>>前往联盟小镇南岸。尽量避开警卫！你可能需要从河边靠近。
 .goto Hillsbrad Foothills,52.9,53.4
-.turnin 553 >> 交出海勒克的复仇
+.turnin 553 >>交出海勒克的复仇
 step
 .isOnQuest 509
 >>掠夺农场周围的白蘑菇
@@ -2875,7 +2875,7 @@ step
 #sticky
 #completewith next
 .isOnQuest 547
-.goto Hillsbrad Foothills,71.0,78.6,40 >> 进入Dun Garok煤仓
+.goto Hillsbrad Foothills,71.0,78.6,40 >>进入Dun Garok煤仓
 step
 #sticky
 #completewith next
@@ -2898,7 +2898,7 @@ step
 step
 .isQuestTurnedIn 533
 .goto Arathi Highlands,21.4,30.9
-.zone Arathi Highlands >> 跑进Arathi高地
+.zone Arathi Highlands >>跑进Arathi高地
 step
 .isOnQuest 676
 .goto Arathi Highlands,32.4,44.7
@@ -2912,7 +2912,7 @@ step
 +在Dabyrie农场杀死指定的人类暴徒。抢他们的头
 step
 .isOnQuest 1164
->>马赛尔在马厩里。他使用盾牌墙（10秒内-75%伤害）和盾牌猛击（中断）
+>>马赛尔在马厩里。他使用盾牌墙(10秒内-75%伤害)和盾牌猛击(中断)
 .goto Arathi Highlands,54.1,38.1
 .complete 1164,2 
 .unitscan Marcel Dabyrie
@@ -2932,43 +2932,42 @@ step
 step
 .isQuestTurnedIn 533
 .goto Arathi Highlands,62.50,33.80
-.accept 642 >> 接受被困公主
+.accept 642 >>接受被困公主
 step
 .goto Arathi Highlands,73.1,32.5
-.fp Hammerfall >> 获取Hammerfall飞行路线
+.fp Hammerfall >>获取Hammerfall飞行路线
 .zoneskip Arathi Highlands,1
 step
 #completewith next
 .goto Arathi Highlands,73.8,32.5
 .zoneskip Arathi Highlands,1
-.vendor >> 补充食物和水
+.vendor >>补充食物和水
 step
 .isOnQuest 676
 .goto Arathi Highlands,74.2,33.9
-.turnin 676 >> 铁锤可能坠落
-.accept 677 >> 接受武器召唤
+.turnin 676 >>铁锤可能坠落
+.accept 677 >>接受武器召唤
 step
 #completewith next
 .zoneskip Arathi Highlands,1
 .goto Arathi Highlands,72.6,33.4
-.vendor >> 供应商和维修
+.vendor >>供应商和维修
 step
 .isQuestTurnedIn 533
 .goto Arathi Highlands,72.8,34.1
-.accept 655 >> 接受Hammerfall
+.accept 655 >>接受Hammerfall
 step
 .isQuestTurnedIn 533
 .goto Arathi Highlands,74.7,36.3
-.turnin 655 >> 转入Hammerfall
-.accept 671 >> 接受犯规魔法
+.turnin 655 >>转入Hammerfall
+.accept 671 >>接受犯规魔法
 step
-#xprate <1.5
 .isQuestTurnedIn 533
 .goto Arathi Highlands,74.7,36.3
-.accept 672 >> 接受养育精神
+.accept 672 >>接受养育精神
 step
 #completewith next
-+留心猎手尼玛（罕见）。他可以放弃非常好的BoE
++留心猎手尼玛(罕见)。他可以放弃非常好的BoE
 .unitscan Nimar the Slayer
 .isOnQuest 677
 step
@@ -3019,124 +3018,124 @@ step
 .complete 672,1 
 step
 .isOnQuest 677
->> 返回Hammerfall
+>>返回Hammerfall
 .goto Arathi Highlands,74.3,33.9
-.turnin 677 >> 交出武器召唤
-.accept 678 >> 接受武器召唤
+.turnin 677 >>交出武器召唤
+.accept 678 >>接受武器召唤
 step
 .isOnQuest 672
 .goto Arathi Highlands,74.7,36.4
-.turnin 672 >> 投入养育精神
-.accept 674 >> 接受养育精神
+.turnin 672 >>投入养育精神
+.accept 674 >>接受养育精神
 step
 .isOnQuest 671
 .goto Arathi Highlands,74.7,36.4
-.turnin 671 >> 提交犯规魔法
+.turnin 671 >>提交犯规魔法
 step
 .isOnQuest 674
 .goto Arathi Highlands,72.6,33.9
-.turnin 674 >> 投入养育精神
-.accept 675 >> 接受养育精神
+.turnin 674 >>投入养育精神
+.accept 675 >>接受养育精神
 step
 .isOnQuest 675
 .goto Arathi Highlands,74.7,36.3
-.turnin 675 >> 投入养育精神
+.turnin 675 >>投入养育精神
 step
 #completewith next
 .goto Arathi Highlands,73.0,32.5
-.fly Tarren Mill >> 飞往塔伦磨坊
+.fly Tarren Mill >>飞往塔伦磨坊
 .zoneskip Arathi Highlands,1
 step
 .isOnQuest 541
 .goto Hillsbrad Foothills,62.3,20.3
-.turnin 541 >> 希尔斯布拉德战役
-.accept 550 >> 接受希尔斯布拉德战役
+.turnin 541 >>希尔斯布莱德丘陵战役
+.accept 550 >>接受希尔斯布莱德丘陵战役
 step
 .isOnQuest 547
 .goto Hillsbrad Foothills,62.7,20.3
-.turnin 547 >> 交出亨伯特的剑
+.turnin 547 >>交出亨伯特的剑
 step
 .isOnQuest 509
 .goto Hillsbrad Foothills,61.5,19.2
-.turnin 509 >> 上缴痛苦药剂
-.accept 513 >> 接受痛苦药剂
+.turnin 509 >>上缴痛苦药剂
+.accept 513 >>接受痛苦药剂
 step << Warrior tbc
->> 乘车前往奥特兰克山脉
+>>乘车前往奥特兰克山脉
 .goto Alterac Mountains,80.5,66.9
 .turnin 1791 >>交给Windwatcher
 .accept 1712 >>接受气旋
 step
 #completewith next
 .goto Hillsbrad Foothills,60.1,18.7
-.fly Undercity >> 飞到地下城
+.fly Undercity >>飞到地下城
 .zoneskip Hillsbrad Foothills,1
 step
 .isOnQuest 1164
 .goto Undercity,64.0,49.6
-.turnin 1164 >> 自首盗窃小偷
+.turnin 1164 >>自首盗窃小偷
 step << Priest
 #completewith next
 .goto Undercity,47.6,18.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Undercity,1
 step << Warrior
 #completewith next
 .goto Undercity,48.3,15.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Undercity,1
 step << Mage
 #completewith next
 .goto Undercity,56.3,16.3
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Undercity,1
 step << Warlock
 #completewith next
 .goto Undercity,88.9,15.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Undercity,1
 step << Rogue
 #completewith next
 .goto Undercity,85.2,71.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Undercity,1
 step << Paladin
 #completewith next
 .goto Undercity,58.0,90.3
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Undercity,1
 step
 .isOnQuest 513
->> 前往皇家宿舍下的药剂师
+>>前往皇家宿舍下的药剂师
 .goto Undercity,45.2,58.3,15,0
 .goto Undercity,48.9,69.2
-.turnin 513 >> 上缴痛苦药剂
+.turnin 513 >>上缴痛苦药剂
 step
 .isOnQuest 550
->> 前往皇家宿舍
+>>前往皇家宿舍
 .goto Undercity,56.2,92.0
-.turnin 550 >> 希尔斯布拉德战役
+.turnin 550 >>希尔斯布莱德丘陵战役
 step << Druid
->> 使用“传送到月光”法术
+>>使用“传送到月光”法术
 .goto Moonglade,52.5,40.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << !Shaman
 .isOnQuest 1146
 #completewith next
 .goto Thousand Needles,67.6,64.0
-.hs >> 炉灶
+.hs >>炉灶
 step << Shaman
 .isOnQuest 1531
 #completewith next
 .goto Thousand Needles,54.7,44.4
-.hs >> 炉灶
+.hs >>炉灶
 step
 .goto Orgrimmar,45.1,63.9
-.fly Freewind Post >> 飞到Freewind Post
+.fly Freewind Post >>飞到Freewind Post
 .zoneskip Orgrimmar,1
 step << Shaman
 #sticky
 #completewith next
-.goto Thousand Needles,54.7,44.4,20 >> 在这里跑上坡道
+.goto Thousand Needles,54.7,44.4,20 >>在这里跑上坡道
 .isOnQuest 1531
 step << Shaman
 .isOnQuest 1531
@@ -3146,47 +3145,47 @@ step << Shaman
 step
 .isOnQuest 1146
 .goto Thousand Needles,67.6,64.0
-.turnin 1146 >> 加入蜂群成长
+.turnin 1146 >>加入蜂群成长
 step
 .isQuestTurnedIn 1146
 .goto Thousand Needles,67.6,64.0
-.accept 1147 >> 接受蜂群的成长
+.accept 1147 >>接受蜂群的成长
 step
 .isOnQuest 1112
 .goto Thousand Needles,77.8,77.2
->> 前往电缆管道。任务完成后会有一个简短的角色扮演。
-.turnin 1112 >> Kravel的转入零件
+>>前往电缆管道。任务完成后会有一个简短的角色扮演。
+.turnin 1112 >>Kravel的转入零件
 step
 .isQuestAvailable 1110
 .goto Thousand Needles,77.8,77.2
-.accept 1110 >> 接受火箭汽车零件
+.accept 1110 >>接受火箭汽车零件
 step
 .isQuestAvailable 1114
 .zoneskip Thousand Needles,1
 .goto Thousand Needles,77.8,77.2
-.accept 1114 >> 接受交付给侏儒
-.turnin 1114 >> 交给侏儒
+.accept 1114 >>接受交付给侏儒
+.turnin 1114 >>交给侏儒
 step
 .isQuestAvailable 1105
-.accept 1105 >> 接受硬化壳
+.accept 1105 >>接受硬化壳
 .goto Thousand Needles,78.1,77.1
 step
 .zoneskip Thousand Needles,1
 .isQuestAvailable 1115
 .goto Thousand Needles,77.9,77.2
-.accept 1115 >> 接受谣言传播者
+.accept 1115 >>接受谣言传播者
 step
 .isQuestAvailable 1104
 .goto Thousand Needles,77.9,77.2
-.accept 1104 >> 接受盐平毒液
+.accept 1104 >>接受盐平毒液
 step
 .isQuestAvailable 1176
 .goto Thousand Needles,80.2,75.8
-.accept 1176 >> 接受负载减轻
+.accept 1176 >>接受负载减轻
 step
 .isQuestAvailable 1175
 .goto Thousand Needles,81.7,78.0
-.accept 1175 >> 接受道路上的碰撞
+.accept 1175 >>接受道路上的碰撞
 step
 #sticky
 #completewith ShimmeringF
@@ -3208,7 +3207,7 @@ step
 .goto Thousand Needles,82.3,54.0,80,0
 .goto Thousand Needles,87.4,65.2
 >>圈出杀戮和收集闪光平地任务的区域
->> 寻找时从地面收集火箭汽车零件
+>>寻找时从地面收集火箭汽车零件
 .complete 1110,1 
 .complete 1104,1 
 .complete 1176,1 
@@ -3221,11 +3220,11 @@ step
 #label partsoftheswarm
 >>研磨硅磷脂生物直到你得到一个开裂的硅磷脂甲壳。点击它接受任务。
 .collect 5877,1,1148
-.accept 1148 >> 接受部分Swarm
+.accept 1148 >>接受部分Swarm
 .zoneskip Thousand Needles,1
 step
->> 前往西南角
->> 在挖掘地点后面的洞穴深处发现了侵略者。蜂巢无人机会对附近的其他无人机进行社交攻击，小心！
+>>前往西南角
+>>在挖掘地点后面的洞穴深处发现了侵略者。蜂巢无人机会对附近的其他无人机进行社交攻击，小心！
 .goto Thousand Needles,67.8,85.7
 .complete 1148,1 
 .complete 1148,2 
@@ -3238,37 +3237,37 @@ step
 #requires partsoftheswarm
 .isOnQuest 1147
 .goto Thousand Needles,67.6,63.9
-.turnin 1147 >> 加入蜂群成长
+.turnin 1147 >>加入蜂群成长
 step
 .isOnQuest 1110
 .goto Thousand Needles,77.8,77.2
-.turnin 1110 >> 交回火箭汽车零件
+.turnin 1110 >>交回火箭汽车零件
 step
 .isQuestTurnedIn 1110
 .goto Thousand Needles,78.0,77.1
-.turnin 1104 >> 加入盐平毒液
-.turnin 1105 >> 转入硬化壳
-.accept 1107 >> 接受包裹的尾翼
-.accept 1106 >> 接受流亡者马泰克
+.turnin 1104 >>加入盐平毒液
+.turnin 1105 >>转入硬化壳
+.accept 1107 >>接受包裹的尾翼
+.accept 1106 >>接受流亡者马泰克
 step
 .isQuestTurnedIn 1110
 .goto Thousand Needles,80.2,75.8
-.turnin 1176 >> 转向负载减轻
-.accept 1178 >> 接受地精赞助
+.turnin 1176 >>转向负载减轻
+.accept 1178 >>接受地精赞助
 step
 .isOnQuest 1175
 .goto Thousand Needles,81.6,78.0
-.turnin 1175 >> 在道路上转弯
+.turnin 1175 >>在道路上转弯
 step << !Shaman !Warrior
 #completewith next
 .isOnQuest 1148
 .goto Tanaris,51.6,25.5
-.fly Crossroads >> 飞向十字路口
+.fly Crossroads >>飞向十字路口
 step << Shaman/Warrior
 #completewith next
 .zoneskip Thousand Needles,1
 .goto Tanaris,51.6,25.5
-.zone Orgrimmar >> 赫斯到奥格瑞玛
+.zone Orgrimmar >>赫斯到奥格瑞玛
 step << Shaman/Warrior
 .goto Orgrimmar,75.0,34.2
 .turnin 1184 >>交出部分蜂群
@@ -3276,26 +3275,26 @@ step << Shaman/Warrior
 step << Shaman
 #completewith next
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Orgrimmar,1
 step << Warrior
 #completewith next
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Orgrimmar,1
 step << Shaman/Warrior
 #completewith next
 .isOnQuest 1148
 .goto Tanaris,51.6,25.5
-.fly Crossroads >> 飞向十字路口
+.fly Crossroads >>飞向十字路口
 step
 .isOnQuest 1148
 .goto The Barrens,51.1,29.6
-.turnin 1148 >> 交出部分蜂群
+.turnin 1148 >>交出部分蜂群
 step
 .goto The Barrens,51.1,29.6
 .isQuestTurnedIn 1148
-.accept 1184 >> 接受部分Swarm
+.accept 1184 >>接受部分Swarm
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -3306,10 +3305,10 @@ RXPGuides.RegisterGuide([[
 #next 33-34 千针石林
 #somname 30-32 希尔斯布莱德丘陵/阿拉希高地
 step << Mage
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step << Mage
 .goto Undercity,82.79,15.82
-.vendor >> 去找汉娜。购买两个传送符文（如果你想，可以购买更多）
+.vendor >>去找汉娜。购买两个传送符文(如果你想，可以购买更多)
 .collect 17031,2 
 step << !Mage
 #sticky
@@ -3320,12 +3319,12 @@ step << !Mage
 .zone Tirisfal Glades >>抵达提里斯福尔
 step << Hunter
 .goto Undercity,57.8,31.6
-.train 5011 >> 火车十字弓
-.train 202 >> 训练双手剑
+.train 5011 >>火车十字弓
+.train 202 >>训练双手剑
 step << Hunter
 #som
 .goto Undercity,58.6,32.7
-.vendor >> 如果你买得起的话，去买一个重型奎弗和一个重型十字弓。用箭填充你的新箭袋
+.vendor >>如果你买得起的话，去买一个重型奎弗和一个重型十字弓。用箭填充你的新箭袋
 >>如果能给你足够的钱买十字弓，就卖掉你现在的弓。装备它
 .collect 7371,1
 .collect 15809,1
@@ -3334,7 +3333,7 @@ step << Hunter
 step << Hunter
 #era
 .goto Undercity,58.6,32.7
-.vendor >> 如果你买得起的话，去买一个重型奎弗和一个重型十字弓。用箭填充你的新箭袋
+.vendor >>如果你买得起的话，去买一个重型奎弗和一个重型十字弓。用箭填充你的新箭袋
 >>如果能给你足够的钱买十字弓，就卖掉你现在的弓。装备它
 >>如果你有多余的钱，你也可以从杰弗里那里买一辆Bullova
 .collect 7371,1
@@ -3343,14 +3342,14 @@ step << Rogue
 #sticky
 #completewith next
 .goto Undercity,58.6,32.7
-.vendor >> 如果你没有为《亡灵之剑》独奏《黑寻深》，那就去买《大刀》吧。
+.vendor >>如果你没有为《亡灵之剑》独奏《黑寻深》，那就去买《大刀》吧。
 .collect 2520,1
 step
 .goto Undercity,64.20,49.60
-.accept 1164 >> 接受小偷的偷窃
+.accept 1164 >>接受小偷的偷窃
 step
 .goto Undercity,62.14,44.92
-.train 2550 >> 去尤妮斯·伯奇。训练烹饪稍后的任务
+.train 2550 >>去尤妮斯·伯奇。训练烹饪稍后的任务
 step
 .goto Undercity,62.30,43.08
 >>与罗纳德·伯奇交谈。向他购买舒缓香料
@@ -3358,16 +3357,16 @@ step
 #era/som
 step << !Undead !Rogue
 .goto Undercity,63.3,48.4
-.fp Undercity >> 获取地下飞行路线
+.fp Undercity >>获取地下飞行路线
 step
 #completewith next
 .goto Undercity,63.2,48.3
-.fly Tarren Mill >> 飞到塔伦米尔，如果你没有FP步行去塔伦米尔 << !Shaman
-.fly Sepulcher >> 飞向坟墓 << Shaman
+.fly Tarren Mill >>飞到塔伦米尔，如果你没有FP步行去塔伦米尔 << !Shaman
+.fly Sepulcher >>飞向坟墓 << Shaman
 step << Shaman
 #sticky
 #completewith next
-.goto Silverpine Forest,42.1,40.5,10 >> 跳到树这边来
+.goto Silverpine Forest,42.1,40.5,10 >>跳到树这边来
 step << Shaman
 .goto Silverpine Forest,41.6,41.8,15,0
 .goto Silverpine Forest,41.6,41.8,15,0
@@ -3387,25 +3386,25 @@ step << Shaman
 .accept 96 >>接受水的召唤
 step << Shaman
 .goto Silverpine Forest,45.6,42.6
-.fly Tarren Mill >> 飞往塔伦磨坊
+.fly Tarren Mill >>飞往塔伦磨坊
 step
 .goto Hillsbrad Foothills,61.4,19.2
-.accept 509 >> 接受痛苦药剂
+.accept 509 >>接受痛苦药剂
 step
 .goto Hillsbrad Foothills,61.8,19.8
-.accept 676 >> 接受锤子可能坠落
+.accept 676 >>接受锤子可能坠落
 step
 .isQuestTurnedIn 528
 .goto Hillsbrad Foothills,62.4,20.3
-.turnin 529 >> 希尔斯布拉德战役
-.accept 532 >> 接受希尔斯布拉德战役
+.turnin 529 >>希尔斯布莱德丘陵战役
+.accept 532 >>接受希尔斯布莱德丘陵战役
 
 step
 .goto Hillsbrad Foothills,63.2,20.6
-.accept 533 >> 接受渗透
+.accept 533 >>接受渗透
 step
 .goto Hillsbrad Foothills,63.9,19.7
-.accept 552 >> 接受海勒克的复仇
+.accept 552 >>接受海勒克的复仇
 step << !Warrior
 #era
 >>在河里上下游荡，杀死海龟。抢他们的肉
@@ -3433,12 +3432,12 @@ step
 #era
 >>进入客栈
 .goto Hillsbrad Foothills,62.3,19.1
-.accept 7321 >> 接受安抚乌龟饼干
-.turnin 7321 >> 交上安抚乌龟饼干
+.accept 7321 >>接受安抚乌龟饼干
+.turnin 7321 >>交上安抚乌龟饼干
 step
 .goto Hillsbrad Foothills,61.5,20.9
-.accept 556 >> 接受石头标记
-.accept 544 >> 接受越狱
+.accept 556 >>接受石头标记
+.accept 544 >>接受越狱
 step
 .goto Hillsbrad Foothills,47.9,31.5,60,0
 .goto Hillsbrad Foothills,46.1,33.2,60,0
@@ -3470,23 +3469,23 @@ step
 >>跑回塔伦磨坊
 #requires Council
 .goto Hillsbrad Foothills,62.3,20.3
-.turnin 532 >> 希尔斯布拉德战役
-.accept 539 >> 接受希尔斯布拉德战役
+.turnin 532 >>希尔斯布莱德丘陵战役
+.accept 539 >>接受希尔斯布莱德丘陵战役
 step
 #softcore
 .goto Hillsbrad Foothills,63.9,19.7
-.turnin 552 >> 交出海勒克的复仇
-.accept 553 >> 接受海勒克的复仇
+.turnin 552 >>交出海勒克的复仇
+.accept 553 >>接受海勒克的复仇
 step
 #hardcore
 .goto Hillsbrad Foothills,63.9,19.7
-.turnin 552 >> 交出海勒克的复仇
+.turnin 552 >>交出海勒克的复仇
 step << Hunter
 .goto Hillsbrad Foothills,62.55,19.91
-.vendor >> 前往凯伦。买箭直到你的箭袋装满。你还有很长的路要走
+.vendor >>前往凯伦。买箭直到你的箭袋装满。你还有很长的路要走
 step
 .goto Hillsbrad Foothills,62.79,19.02
-.vendor >> 走进客栈。如果需要，购买食物/水。你还有很长的路要走
+.vendor >>走进客栈。如果需要，购买食物/水。你还有很长的路要走
 step
 .isOnQuest 546
 #sticky
@@ -3495,7 +3494,7 @@ step
 .complete 546,1 
 step
 .isOnQuest 546
-.goto Hillsbrad Foothills,26.95,59.55,100 >> 跑向Azurelode矿山
+.goto Hillsbrad Foothills,26.95,59.55,100 >>跑向Azurelode矿山
 step
 .isQuestTurnedIn 528
 #sticky
@@ -3516,7 +3515,7 @@ step
 step
 .isQuestTurnedIn 528
 #label Bonds
->>杀死Foreman Bonds。他位于矿井的主（中央）室。也结束对矿工的杀戮
+>>杀死Foreman Bonds。他位于矿井的主(中央)室。也结束对矿工的杀戮
 .goto Hillsbrad Foothills,31.2,56.0
 .complete 539,1 
 .complete 539,2 
@@ -3528,11 +3527,11 @@ step
 .complete 546,1 
 step
 .goto Hillsbrad Foothills,29.8,55.0
-.xp 32 >> 在矿井中研磨至32。如果需要补充库存，请返回塔伦磨坊
+.xp 32 >>在矿井中升级到32。如果需要补充库存，请返回塔伦磨坊
 #era
 step
 .goto Hillsbrad Foothills,29.8,55.0
-.xp 31 >> 在矿井中研磨至31
+.xp 31 >>在矿井中升级到31
 #som
 #phase 1-2
 step
@@ -3577,7 +3576,7 @@ step << Hunter
 >>杀死一头山狮并掠夺一具新鲜尸体
 .collect 5810,1
 step
->>去雪人洞。点击钎焊器（范围很大）
+>>去雪人洞。点击钎焊器(范围很大)
 .goto Alterac Mountains,37.5,66.3
 .complete 553,3 
 #softcore
@@ -3609,40 +3608,40 @@ step
 .complete 533,1 
 step
 .goto Hillsbrad Foothills,61.5,20.9
-.turnin 544 >> 入狱入狱
-.turnin 556 >> 上缴石头代币
+.turnin 544 >>入狱入狱
+.turnin 556 >>上缴石头代币
 step
 .isQuestComplete 546
 .goto Hillsbrad Foothills,62.1,19.7
-.turnin 546 >> 递交死亡纪念品
+.turnin 546 >>递交死亡纪念品
 step
 .isQuestComplete 539
 .goto Hillsbrad Foothills,62.3,20.3
-.turnin 539 >> 希尔斯布拉德战役
+.turnin 539 >>希尔斯布莱德丘陵战役
 step
 .isQuestComplete 567
 .goto Hillsbrad Foothills,62.3,20.3
-.turnin 567 >> 交危险品！
+.turnin 567 >>交危险品！
 step
 .goto Hillsbrad Foothills,63.3,20.7
-.turnin 533 >> 转入渗透
+.turnin 533 >>转入渗透
 step << Hunter
 .goto Hillsbrad Foothills,62.55,19.91
-.vendor >> 前往凯伦。买箭直到你的箭袋装满
+.vendor >>前往凯伦。买箭直到你的箭袋装满
 step
 .goto Hillsbrad Foothills,62.79,19.02
-.vendor >> 走进客栈。如果需要，购买食物/水
+.vendor >>走进客栈。如果需要，购买食物/水
 step
 #softcore
 .goto Hillsbrad Foothills,52.9,53.4
-.turnin 553 >> 交出海勒克的复仇
+.turnin 553 >>交出海勒克的复仇
 step
 >>掠夺农场周围的白蘑菇
 .goto Hillsbrad Foothills,64.7,61.4
 .complete 509,1 
 step
 .goto Arathi Highlands,20.19,29.54
-.zone Arathi Highlands >> 前往阿拉蒂高地
+.zone Arathi Highlands >>前往阿拉蒂高地
 step
 >>杀死食人丘内外的食人魔
 .goto Hillsbrad Foothills,83.09,58.18,90,0
@@ -3651,8 +3650,8 @@ step
 .complete 676,2
 step
 .goto Arathi Highlands,54.20,38.20
->> 杀死马塞尔。抢他的头
->> 几秒钟后，小心防护墙（减少伤害）
+>>杀死马塞尔。抢他的头
+>>几秒钟后，小心防护墙(减少伤害)
 .complete 1164,2
 step << Rogue/Warrior/Shaman
 #sticky
@@ -3661,36 +3660,36 @@ step << Rogue/Warrior/Shaman
 #hardcore
 step
 .goto Arathi Highlands,56.40,36.10
->> 杀死科纳塔。抢她的头
+>>杀死科纳塔。抢她的头
 .complete 1164,1
 step
 .goto Arathi Highlands,56.50,38.70
->> 杀死法德尔。抢他的头
->> 小心，因为他会打人并且有高伤害毒药
+>>杀死法德尔。抢他的头
+>>小心，因为他会打人并且有高伤害毒药
 .complete 1164,3
 step
 .goto Arathi Highlands,62.50,33.80
-.accept 642 >> 接受被困公主
+.accept 642 >>接受被困公主
 step
 >>跑向Hammerfall
 .goto Arathi Highlands,73.10,32.70
-.fp Hammerfall >> 获取Hammerfall飞行路线
+.fp Hammerfall >>获取Hammerfall飞行路线
 step
 .goto Arathi Highlands,74.20,33.90
-.turnin 676 >> 铁锤可能坠落
-.accept 677 >> 接受武器召唤
+.turnin 676 >>铁锤可能坠落
+.accept 677 >>接受武器召唤
 step
 .goto Arathi Highlands,72.90,34.20
-.accept 655 >> 接受Hammerfall
+.accept 655 >>接受Hammerfall
 step
 .goto Arathi Highlands,74.60,36.30
-.turnin 655 >> 转入Hammerfall
-.accept 672 >> 接受养育精神
-.accept 671 >> 接受犯规魔法
+.turnin 655 >>转入Hammerfall
+.accept 672 >>接受养育精神
+.accept 671 >>接受犯规魔法
 step
 #sticky
 #completewith next
-+留心猎手尼玛（罕见）。他可以放弃非常好的BoE
++留心猎手尼玛(罕见)。他可以放弃非常好的BoE
 .unitscan Nimar the Slayer
 step
 #sticky
@@ -3725,7 +3724,7 @@ step
 step
 #label xpgate
 .goto Arathi Highlands,33.8,31.8
-.xp 33>> 研磨至33级
+.xp 33>>升级到33级
 #era
 step
 #label xpgate
@@ -3736,58 +3735,58 @@ step
 step
 #requires Raptorscomplete
 .goto Arathi Highlands,74.3,33.9
-.turnin 677 >> 交出武器召唤
+.turnin 677 >>交出武器召唤
 step
 .goto Arathi Highlands,74.7,36.4
-.turnin 672 >> 投入养育精神
-.accept 674 >> 接受养育精神
-.turnin 671 >> 提交犯规魔法
+.turnin 672 >>投入养育精神
+.accept 674 >>接受养育精神
+.turnin 671 >>提交犯规魔法
 step
 .goto Arathi Highlands,72.6,33.9
-.turnin 674 >> 投入养育精神
+.turnin 674 >>投入养育精神
 step
 .goto Arathi Highlands,72.8,34.1
-.accept 675 >> 接受养育精神
+.accept 675 >>接受养育精神
 step
 .goto Arathi Highlands,74.7,36.3
-.turnin 675 >> 投入养育精神
+.turnin 675 >>投入养育精神
 step
 .goto Arathi Highlands,73.0,32.5
-.fly Tarren Mill >> 飞往塔伦磨坊
+.fly Tarren Mill >>飞往塔伦磨坊
 step
 .goto Hillsbrad Foothills,61.50,19.20
-.turnin 509 >> 上缴痛苦药剂
-.accept 513 >> 接受痛苦药剂
+.turnin 509 >>上缴痛苦药剂
+.accept 513 >>接受痛苦药剂
 step
-.fly Undercity >> 飞到地下城
+.fly Undercity >>飞到地下城
 step
 .goto Undercity,64.20,49.60
-.turnin 1164 >> 自首窃贼
+.turnin 1164 >>自首窃贼
 step
 .goto Undercity,48.60,69.60
-.turnin 513 >> 上缴痛苦药剂
+.turnin 513 >>上缴痛苦药剂
 step << Priest
 .goto Undercity,47.6,18.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warrior
 .goto Undercity,48.3,15.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Mage
 .goto Undercity,56.3,16.3
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Undercity,88.9,15.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 .goto Undercity,85.2,71.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Druid
->> 使用“传送到月光”法术
+>>使用“传送到月光”法术
 .goto Moonglade,52.5,40.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
-.hs >> 炉灶回到Freewind Post
->> 如果需要，购买食物/水
+.hs >>炉灶回到Freewind Post
+>>如果需要，购买食物/水
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -3799,10 +3798,10 @@ RXPGuides.RegisterGuide([[
 #next 36-60 法师 AoE
 step
 .goto Arathi Highlands,73.84,32.47
-.home >> 将炉心设置为Hammerfall
+.home >>将炉心设置为Hammerfall
 step
 .goto Arathi Highlands,73.02,32.70
-.fp Hammerfall >> 获取Hammerfall飞行路线
+.fp Hammerfall >>获取Hammerfall飞行路线
 step
 .goto Arathi Highlands,72.77,33.67
 .accept 655 >>接受Hammerfall
@@ -3816,12 +3815,12 @@ step
 >>AoE猛禽正在前往Dabyrie Farmstead的途中。抢走他们的眼睛
 .complete 672,1 
 step
-.goto Arathi Highlands,55.25,39.86,150 >> 跑到达比里农场
+.goto Arathi Highlands,55.25,39.86,150 >>跑到达比里农场
 step
 #completewith next
-+如果可能的话，尽量避免拉那些指定的暴徒。马塞尔有盾牌墙（伤害降低75%），法德尔有远程毒药+鞭笞，凯纳塔什么也不做
++如果可能的话，尽量避免拉那些指定的暴徒。马塞尔有盾牌墙(伤害降低75%)，法德尔有远程毒药+鞭笞，凯纳塔什么也不做
 step
-.xp 32 >> AoE Dabyrie Farmstead到32
+.xp 32 >>AoE Dabyrie Farmstead到32
 >>开始保存你得到的羊毛布和丝绸布。以后需要12层
 step
 >>AoE指定的NPC。抢他们的头
@@ -3833,18 +3832,18 @@ step
 .complete 1164,1 
 
 step
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step
 .goto Undercity,85.14,10.03
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step
 .goto Undercity,82.79,15.82
-.vendor >> 去找汉娜。购买传送符文
+.vendor >>去找汉娜。购买传送符文
 .collect 17031,3 
 step
 #completewith next
 .goto Undercity,65.97,44.73
-+将您的羊毛布和丝绸布存放在这里。以后需要每层（240）12层
++将您的羊毛布和丝绸布存放在这里。以后需要每层(240)12层
 step
 .goto Undercity,63.82,49.37
 .turnin 1164 >>自首盗窃小偷
@@ -3853,16 +3852,16 @@ step
 .goto Undercity,48.82,69.28
 .turnin 513 >>上缴痛苦药剂
 step
-.hs >> 哈默斯到哈默福尔
-.vendor >> 供应商垃圾
+.hs >>哈默斯到哈默福尔
+.vendor >>供应商垃圾
 step
 .goto Arathi Highlands,42.14,39.38
 >>AoE猛禽正在前往Dabyrie Farmstead的途中。抢走他们的眼睛
 .complete 672,1 
 step
-.goto Arathi Highlands,55.25,39.86,150 >> 跑到达比里农场
+.goto Arathi Highlands,55.25,39.86,150 >>跑到达比里农场
 step
-.xp 34 >> AoE Dabyrie Farmstead至34
+.xp 34 >>AoE Dabyrie Farmstead至34
 >>开始保存你得到的羊毛布和丝绸布。以后需要12层
 step
 >>在山洞里走走。启动AoEing食人魔
@@ -3874,21 +3873,21 @@ step
 .goto Arathi Highlands,32.32,28.58
 .complete 671,1 
 step
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step
 .goto Undercity,85.14,10.03
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step
 .goto Undercity,82.79,15.82
-.vendor >> 去找汉娜。购买传送符文
+.vendor >>去找汉娜。购买传送符文
 .collect 17031,3 
 step
 #completewith next
 .goto Undercity,65.97,44.73
-+将您的羊毛布和丝绸布存放在这里。以后需要每层（240）12层
++将您的羊毛布和丝绸布存放在这里。以后需要每层(240)12层
 step
-.hs >> 哈默斯到哈默福尔
-.vendor >> 心满意足后，从客栈老板那里购买35级饮料
+.hs >>哈默斯到哈默福尔
+.vendor >>心满意足后，从客栈老板那里购买35级饮料
 step
 .goto Arathi Highlands,74.26,33.93
 .turnin 676 >>铁锤可能坠落
@@ -3907,9 +3906,9 @@ step
 
 step
 .goto Arathi Highlands,73.02,32.70
-.fly Hillsbrad >> 飞往塔伦磨坊
+.fly Hillsbrad >>飞往塔伦磨坊
 step
-.home >> 把你的炉子放在塔伦磨坊
+.home >>把你的炉子放在塔伦磨坊
 .goto Hillsbrad Foothills,62.78,19.03
 step
 #sticky
@@ -3934,7 +3933,7 @@ step
 >>继续研磨，直到炉缸冷却<8分钟
 step
 #completewith next
-.goto Alterac Mountains,42.67,95.30,40 >> 进入雪人洞
+.goto Alterac Mountains,42.67,95.30,40 >>进入雪人洞
 step
 >>AoE Yetis公司。抢他们去拿棍子
 .goto Alterac Mountains,40.83,93.24
@@ -3979,25 +3978,25 @@ step
 .goto Alterac Mountains,49.49,56.10,120,0
 .goto Alterac Mountains,47.12,60.91,120,0
 .goto Alterac Mountains,58.39,67.91,120,0
-.xp 36 >> AoE猫/辛迪加/食人魔达到36级
+.xp 36 >>AoE猫/辛迪加/食人魔达到36级
 >>开始保存你得到的丝绸。以后需要12层
 step
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step
 .goto Undercity,85.14,10.03
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 >>确保你至少有50块剩余
 step
 .goto Undercity,82.79,15.82
-.vendor >> 去找汉娜。购买传送符文
+.vendor >>去找汉娜。购买传送符文
 .collect 17031,5 
 step
 #completewith next
 .goto Undercity,65.97,44.73
-+把你早些时候的丝绸存放在这里。以后需要每层（240）12层
++把你早些时候的丝绸存放在这里。以后需要每层(240)12层
 step
-.hs >> 赫斯到塔伦磨坊
-.vendor >> 如果需要，购买35级饮料
+.hs >>赫斯到塔伦磨坊
+.vendor >>如果需要，购买35级饮料
 step
 .goto Hillsbrad Foothills,61.50,20.94
 .turnin 556 >>上缴石头代币
@@ -4045,11 +4044,11 @@ step
 .complete 545,2 
 .complete 557,1 
 step
-.hs >> 赫斯到塔伦磨坊
-.vendor >> 如果需要，购买35级饮料
+.hs >>赫斯到塔伦磨坊
+.vendor >>如果需要，购买35级饮料
 step
 .goto Hillsbrad Foothills,62.29,19.04
-.vendor >> 在客栈一楼从克里斯托夫那里购买3种舒缓香料
+.vendor >>在客栈一楼从克里斯托夫那里购买3种舒缓香料
 .collect 3713,3 
 step
 .goto Hillsbrad Foothills,63.24,20.66
@@ -4059,10 +4058,10 @@ step
 .turnin 557 >>收起装订支架
 .turnin 545 >>移交达拉然巡逻队
 step
-.zone Orgrimmar >> 电传至Orgrimmar
+.zone Orgrimmar >>电传至Orgrimmar
 step
 .goto Orgrimmar,45.11,63.91
-.fly Camp T >> 飞往陶拉霍营地
+.fly Camp T >>飞往陶拉霍营地
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -4074,53 +4073,53 @@ RXPGuides.RegisterGuide([[
 #somname 32-33 千针石林
 step
 .goto Thousand Needles,45.70,50.70
-.accept 5361 >> 接受家族树
+.accept 5361 >>接受家族树
 step << Hunter
 .goto Thousand Needles,44.89,50.69
-.vendor >> 前往斯塔恩。买箭直到你的箭袋装满
+.vendor >>前往斯塔恩。买箭直到你的箭袋装满
 step << Shaman
 #sticky
 #completewith next
-.goto Thousand Needles,54.7,44.4,30 >> 在这里跑上坡道
+.goto Thousand Needles,54.7,44.4,30 >>在这里跑上坡道
 step << Shaman
 >>转动这个可以让你在1小时内获得40%的移动速度，30%的攻击速度增益
 .goto Thousand Needles,53.5,42.7
 .turnin 1531 >>接通空中通话
 step
 .goto Thousand Needles,53.90,41.50
-.turnin 1151 >> 强度转入试验
+.turnin 1151 >>强度转入试验
 .isQuestComplete 1151
 step
 .goto Thousand Needles,67.6,64.0
-.turnin 1146 >> 加入蜂群成长
-.accept 1147 >> 接受蜂群的成长
+.turnin 1146 >>加入蜂群成长
+.accept 1147 >>接受蜂群的成长
 step
 #sticky
 #label CarParts
-.accept 1110 >> 接受火箭汽车零件
+.accept 1110 >>接受火箭汽车零件
 step
 .goto Thousand Needles,77.8,77.2
-.turnin 1112 >> Kravel的转入零件
+.turnin 1112 >>Kravel的转入零件
 step
 #requires CarParts
 .goto Thousand Needles,78.1,77.1
-.accept 1105 >> 接受硬化壳
+.accept 1105 >>接受硬化壳
 step
 #sticky
 #label SaltVenom
-.accept 1104 >> 接受盐平毒液
+.accept 1104 >>接受盐平毒液
 step
 .goto Thousand Needles,77.9,77.2
-.accept 1114 >> 接受交付给侏儒
-.turnin 1114 >> 交给侏儒
-.accept 1115 >> 接受谣言传播者
+.accept 1114 >>接受交付给侏儒
+.turnin 1114 >>交给侏儒
+.accept 1115 >>接受谣言传播者
 step
 #requires SaltVenom
 .goto Thousand Needles,80.2,75.8
-.accept 1176 >> 接受负载减轻
+.accept 1176 >>接受负载减轻
 step
 .goto Thousand Needles,81.7,78.0
-.accept 1175 >> 接受道路上的碰撞
+.accept 1175 >>接受道路上的碰撞
 step
 #completewith next
 >>收集一些在地面上发现的火箭汽车零件
@@ -4143,7 +4142,7 @@ step
 step
 >>研磨硅磷脂生物直到你得到一个开裂的硅磷脂甲壳。点击它接受任务。
 .collect 5877,1,1148
-.accept 1148 >> 接受部分Swarm
+.accept 1148 >>接受部分Swarm
 step
 .goto Thousand Needles,67.8,85.7
 >>杀死硅利德暴徒
@@ -4166,58 +4165,58 @@ step
 .complete 1110,1 
 step
 .goto Thousand Needles,67.6,63.9
-.turnin 1147 >> 加入蜂群成长
+.turnin 1147 >>加入蜂群成长
 step
 .goto Thousand Needles,77.8,77.2
-.turnin 1110 >> 交回火箭汽车零件
-.accept 5762 >> 接受Hemet Nesingwarve
+.turnin 1110 >>交回火箭汽车零件
+.accept 5762 >>接受Hemet Nesingwarve
 step
 .goto Thousand Needles,78.0,77.1
-.turnin 1104 >> 加入盐平毒液
-.turnin 1105 >> 转入硬化壳
-.accept 1106 >> 接受流亡者马泰克
+.turnin 1104 >>加入盐平毒液
+.turnin 1105 >>转入硬化壳
+.accept 1106 >>接受流亡者马泰克
 step
 .goto Thousand Needles,80.2,75.8
-.turnin 1176 >> 转向负载减轻
-.accept 1178 >> 接受地精赞助
+.turnin 1176 >>转向负载减轻
+.accept 1178 >>接受地精赞助
 step
 .goto Thousand Needles,81.6,78.0
-.turnin 1175 >> 在道路上转弯
+.turnin 1175 >>在道路上转弯
 step
 .goto Tanaris,51.6,25.5
-.fly Camp Taurajo >> 飞往陶拉霍营地
+.fly Camp Taurajo >>飞往陶拉霍营地
 step
 .goto The Barrens,45.60,59.0
 .home >>将您的炉石设置为陶拉霍营地
 step
 .goto The Barrens,44.45,59.15
-.fly Crossroads >> 飞向十字路口
+.fly Crossroads >>飞向十字路口
 step
 .goto The Barrens,51.10,29.60
-.turnin 1148 >> 交出部分蜂群
-.accept 1184 >> 接受部分Swarm
+.turnin 1148 >>交出部分蜂群
+.accept 1184 >>接受部分Swarm
 step
 .goto The Barrens,51.5,30.3
-.fly Ratchet >> 飞到棘轮
+.fly Ratchet >>飞到棘轮
 step
 .goto The Barrens,62.68,37.42
-.bankdeposit 4306 >> 将之前的15块丝绸存入您的银行：
->>丝绸布（15）
+.bankdeposit 4306 >>将之前的15块丝绸存入您的银行：
+>>丝绸布(15)
 step
 .goto The Barrens,62.70,36.30
-.turnin 1178 >> 提交地精赞助
-.accept 1180 >> 接受地精赞助
+.turnin 1178 >>提交地精赞助
+.accept 1180 >>接受地精赞助
 step << Shaman
 .goto The Barrens,65.8,43.8
 .turnin 96 >>水的召唤
 step
 .goto The Barrens,63.30,38.50
-.turnin 1111 >> 交码头管理员Dizzywig
+.turnin 1111 >>交码头管理员Dizzywig
 
 step
 #completewith next
 .goto The Barrens,63.74,38.66
-.zone Stranglethorn Vale >> 乘船去荆棘谷
+.zone Stranglethorn Vale >>乘船去荆棘谷
 step
 .goto Stranglethorn Vale,27.6,77.4
 .turnin 2842 >>上任总工程师Scooty
@@ -4233,17 +4232,17 @@ step << skip
 
 step
 #sticky
-.abandon 2841 >> 放弃钻机战争
+.abandon 2841 >>放弃钻机战争
 step
 .goto Stranglethorn Vale,26.30,73.50
-.turnin 1180 >> 提交地精赞助
-.accept 1181 >> 接受地精赞助
+.turnin 1180 >>提交地精赞助
+.accept 1181 >>接受地精赞助
 step << Warrior/Shaman
 #sticky
 #label Protection
 #completewith BigStick
 .goto Stranglethorn Vale,28.3,75.5
-.vendor >> 去小贩那里，如果商店里有保护人员或大棒，就去买。
+.vendor >>去小贩那里，如果商店里有保护人员或大棒，就去买。
 .collect 12252,1
 step << Warrior/Shaman
 #sticky
@@ -4255,75 +4254,75 @@ step
 #era
 >>客栈底层
 .goto Stranglethorn Vale,27.10,77.30
-.accept 605 >> 接受唱蓝碎片
+.accept 605 >>接受唱蓝碎片
 step << Rogue
 >>去客栈二楼的第一个房间。与伊恩交谈
 .goto Stranglethorn Vale,26.8,77.2
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 >>去客栈的三楼
 .goto Stranglethorn Vale,26.94,77.20
-.accept 201 >> 接受调查营地
-.turnin 1115 >> 交给谣言贩子
+.accept 201 >>接受调查营地
+.turnin 1115 >>交给谣言贩子
 
-.accept 189 >> 接受血鳞耳
-.accept 213 >> 接受敌对接管
+.accept 189 >>接受血鳞耳
+.accept 213 >>接受敌对接管
 step
 >>从三楼出来，向男爵Revilgaz走去
 .goto Stranglethorn Vale,27.20,76.90
-.turnin 1181 >> 提交地精赞助
-.accept 1182 >> 接受地精赞助
+.turnin 1181 >>提交地精赞助
+.accept 1182 >>接受地精赞助
 step
 >>呆在阳台上。前往Seahorn面临的小径
 .goto Stranglethorn Vale,26.90,77.10
-.fp Booty Bay >> 获取Booty Bay飞行路线
+.fp Booty Bay >>获取Booty Bay飞行路线
 step
 >>皮革车间内
 .goto Stranglethorn Vale,28.30,77.60
-.accept 575 >> 接受供应和需求
+.accept 575 >>接受供应和需求
 step
-.hs >> 赫斯返回陶拉霍营地
->> 如果需要，购买食物/水
+.hs >>赫斯返回陶拉霍营地
+>>如果需要，购买食物/水
 step
 .goto The Barrens,44.45,59.15
-.fly Thunder Bluff >> 飞向雷霆崖
+.fly Thunder Bluff >>飞向雷霆崖
 step
 .goto Thunder Bluff,45.8,64.60
 .home >>将您的炉石设置为雷霆崖
 step << Druid
 .goto Thunder Bluff,77.0,29.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Thunder Bluff,61.53,80.91
-.turnin 1136 >> 交给Frostmaw
+.turnin 1136 >>交给Frostmaw
 .isQuestComplete 1136
 step << Hunter
 .goto Thunder Bluff,59.1,86.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Thunder Bluff,54.1,83.9
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 .goto Thunder Bluff,57.6,85.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Shaman
 .goto Thunder Bluff,22.8,21.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 .goto Thunder Bluff,24.6,22.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Mage
 .goto Thunder Bluff,25.2,20.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Mage
 .goto Thunder Bluff,22.49,16.90
-.trainer >> 前往Birgitte。火车入口：雷霆崖
+.trainer >>前往Birgitte。火车入口：雷霆崖
 step
 .goto Thunder Bluff,46.9,49.9
-.fly Sun Rock >> 飞到石爪山
+.fly Sun Rock >>飞到石爪山
 ]])
 RXPGuides.RegisterGuide([[
-#version 7
+#version 9
 #wotlk
 #tbc
 #group RestedXP 部落 30-45
@@ -4336,41 +4335,41 @@ step
 .fly Orgrimmar >>飞往奥格瑞玛
 .zoneskip The Barrens,1
 step
-.zone Orgrimmar >> 抵达奥格瑞玛
+.zone Orgrimmar >>抵达奥格瑞玛
 step << Paladin
 #completewith next
 .goto Orgrimmar,32.4,35.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Orgrimmar,1
 step << Hunter
 #completewith next
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Orgrimmar,1
 step << Hunter
 #completewith next
 .goto Orgrimmar,66.3,14.8
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 .zoneskip Orgrimmar,1
 step << Rogue
 #completewith next
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Orgrimmar,1
 step << Warlock
 #completewith next
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Orgrimmar,1
 step << Mage
 #completewith next
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Orgrimmar,1
 step << Priest
 #completewith next
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Orgrimmar,1
 step << !Shaman !Warrior
 .goto Orgrimmar,75.0,34.2
@@ -4398,14 +4397,14 @@ step << Shaman
 step << Shaman
 .isOnQuest 1178
 .goto The Barrens,62.7,36.3
-.turnin 1178 >> 提交地精赞助
-.accept 1180 >> 接受地精赞助
+.turnin 1178 >>提交地精赞助
+.accept 1180 >>接受地精赞助
 step << !Shaman
 .maxlevel 36
 .isOnQuest 1178
 .goto The Barrens,62.7,36.3
-.turnin 1178 >> 提交地精赞助
-.accept 1180 >> 接受地精赞助
+.turnin 1178 >>提交地精赞助
+.accept 1180 >>接受地精赞助
 step
 .maxlevel 36
 #completewith next
@@ -4420,7 +4419,7 @@ step << Shaman
 #label Protection
 #completewith BigStick
 .goto Stranglethorn Vale,28.3,75.5
-.vendor >> 去小贩那里，如果商店里有保护人员或大棒，就去买。
+.vendor >>去小贩那里，如果商店里有保护人员或大棒，就去买。
 .collect 12252,1
 step <<Shaman
 .maxlevel 36
@@ -4431,74 +4430,74 @@ step <<Shaman
 step
 .isQuestTurnedIn 1178
 .goto Stranglethorn Vale,26.4,73.5
-.turnin 1180 >> 提交地精赞助
-.accept 1181 >> 接受地精赞助
+.turnin 1180 >>提交地精赞助
+.accept 1181 >>接受地精赞助
 step
 .isQuestTurnedIn 1180
->> 前往建筑物的第二层
+>>前往建筑物的第二层
 .goto Stranglethorn Vale,28.3,77.6
-.accept 575 >> 接受供应和需求
+.accept 575 >>接受供应和需求
 step
 .isQuestTurnedIn 1180
->> 去客栈吧，这个任务在底层
+>>去客栈吧，这个任务在底层
 .goto Stranglethorn Vale,27.0,77.2
-.accept 605 >> 接受唱蓝碎片
+.accept 605 >>接受唱蓝碎片
 step
 .isQuestTurnedIn 1180
 .isOnQuest 1115
->> 这些任务在客栈的顶层
+>>这些任务在客栈的顶层
 .goto Stranglethorn Vale,27.0,77.2
-.turnin 1115 >> 交给谣言贩子
+.turnin 1115 >>交给谣言贩子
 step
 .isQuestTurnedIn 1180
->> 这些任务在客栈的顶层
+>>这些任务在客栈的顶层
 .goto Stranglethorn Vale,27.1,77.3
-.accept 189 >> 接受血鳞耳
-.accept 213 >> 接受敌对接管
-.accept 201 >> 接受调查营地
+.accept 189 >>接受血鳞耳
+.accept 213 >>接受敌对接管
+.accept 201 >>接受调查营地
 step
 .isQuestTurnedIn 1180
 .goto Stranglethorn Vale,27.2,76.9
-.turnin 1181 >> 提交地精赞助
-.accept 1182 >> 接受地精赞助
+.turnin 1181 >>提交地精赞助
+.accept 1182 >>接受地精赞助
 step << Rogue
 .isQuestTurnedIn 1180
 #completewith next
 .goto Stranglethorn Vale,26.8,77.2
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .isQuestTurnedIn 1180
 .goto Stranglethorn Vale,26.9,77.0
-.fp Booty Bay >> 获取Booty Bay飞行路线
+.fp Booty Bay >>获取Booty Bay飞行路线
 step
 .isQuestTurnedIn 1180
 #completewith next
 .goto Stranglethorn Vale,26.9,77.0
-.fly Grom'gol >> 飞往格罗姆戈
+.fly Grom'gol >>飞往格罗姆戈
 step << Hunter
 .isQuestTurnedIn 1180
 #completewith next
 .goto Stranglethorn Vale,31.2,28.7
-.trainer >> 去训练你的宠物能力
+.trainer >>去训练你的宠物能力
 step << Hunter
 .isQuestTurnedIn 1180
 #completewith next
 .goto Stranglethorn Vale,31.1,28.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .isQuestTurnedIn 1180
->> 接受Grom'gol周围的任务
-.accept 568 >> 接受格罗姆戈的辩护
+>>接受Grom'gol周围的任务
+.accept 568 >>接受格罗姆戈的辩护
 .goto Stranglethorn Vale,32.0,28.6
-.accept 570 >> 接受莫扎丁的魅力
+.accept 570 >>接受莫扎丁的魅力
 .goto Stranglethorn Vale,32.2,28.9
-.accept 9436 >> 接受血鳞洞察力
+.accept 9436 >>接受血鳞洞察力
 .goto Stranglethorn Vale,32.2,29.2
-.accept 596 >> 接受血骨项链
+.accept 596 >>接受血骨项链
 .goto Stranglethorn Vale,32.2,27.7
-.accept 629 >> 接受邪恶礁
-.accept 638 >> 接受Trollbane
-.accept 581 >> 接受Yenniku的狩猎
+.accept 629 >>接受邪恶礁
+.accept 638 >>接受Trollbane
+.accept 581 >>接受Yenniku的狩猎
 .goto Stranglethorn Vale,32.2,27.7
 step
 .isQuestTurnedIn 1180
@@ -4507,17 +4506,17 @@ step
 step
 .isQuestTurnedIn 1180
 .goto Stranglethorn Vale,35.7,10.7
-.turnin 5762 >> 交给Hemet Nesingwarve Jr。
-.accept 583 >> 接受欢迎来到丛林
-.turnin 583 >> 上车欢迎来到丛林
-.accept 194 >> 接受猛禽大师
-.accept 185 >> 接受老虎精通
-.accept 190 >> 接受黑豹精通
+.turnin 5762 >>交给Hemet Nesingwarve Jr。
+.accept 583 >>接受欢迎来到丛林
+.turnin 583 >>上车欢迎来到丛林
+.accept 194 >>接受猛禽大师
+.accept 185 >>接受老虎精通
+.accept 190 >>接受黑豹精通
 step
 .isQuestTurnedIn 1180
 #completewith next
 .goto Stranglethorn Vale,35.7,10.7
-.vendor >> 供应商和维修
+.vendor >>供应商和维修
 step
 .isQuestTurnedIn 1180
 #sticky
@@ -4543,7 +4542,7 @@ step
 step
 .isQuestTurnedIn 1180
 #label YoungTigers
->> 杀死该地区的小虎。当三个任务都完成后，我们就要回营地了，试着在附近完成杀戮。
+>>杀死该地区的小虎。当三个任务都完成后，我们就要回营地了，试着在附近完成杀戮。
 .goto Stranglethorn Vale,35.7,12.3,40,0
 .goto Stranglethorn Vale,34.0,11.7,50,0
 .goto Stranglethorn Vale,30.7,7.5,50,0
@@ -4566,10 +4565,10 @@ step
 step
 .isQuestTurnedIn 1180
 .goto Stranglethorn Vale,35.6,10.6
-.turnin 185 >> 上交老虎精通
-.accept 186 >> 接受老虎精通
-.turnin 190 >> 交出黑豹大师
-.accept 191 >> 接受黑豹精通
+.turnin 185 >>上交老虎精通
+.accept 186 >>接受老虎精通
+.turnin 190 >>交出黑豹大师
+.accept 191 >>接受黑豹精通
 step
 .isQuestTurnedIn 1180
 .goto Stranglethorn Vale,43.4,14.4,50,0
@@ -4580,8 +4579,8 @@ step
 .complete 186,1 
 step
 .isQuestTurnedIn 1180
-.turnin 186 >> 上交老虎精通
-.accept 187 >> 接受老虎精通
+.turnin 186 >>上交老虎精通
+.accept 187 >>接受老虎精通
 step
 .isQuestTurnedIn 1180
 .goto Stranglethorn Vale,31.0,11.2,50,0
@@ -4614,17 +4613,17 @@ step
 step
 .isQuestTurnedIn 1180
 .goto Stranglethorn Vale,35.6,10.5
-.turnin 191 >> 交出黑豹大师
-.accept 192 >> 接受黑豹精通
-.turnin 194 >> 交猛禽大师
-.accept 195 >> 接受猛禽大师
-.turnin 187 >> 上交老虎精通
-.accept 188 >> 接受老虎精通
+.turnin 191 >>交出黑豹大师
+.accept 192 >>接受黑豹精通
+.turnin 194 >>交猛禽大师
+.accept 195 >>接受猛禽大师
+.turnin 187 >>上交老虎精通
+.accept 188 >>接受老虎精通
 step
 #sticky
 #label sindall
 .isQuestTurnedIn 1180
->>在高原上杀死Sin'Dall（或在其周围绕圈巡逻）。抢他的爪子
+>>在高原上杀死Sin'Dall(或在其周围绕圈巡逻)。抢他的爪子
 .goto Stranglethorn Vale,32.2,17.4
 .complete 188,1 
 .unitscan Sin'Dall
@@ -4638,7 +4637,7 @@ step
 .goto Stranglethorn Vale,29.8,19.4,50,0
 .goto Stranglethorn Vale,30.6,18.9,50,0
 .goto Stranglethorn Vale,33.9,15.6
->> 杀死血鳞萨满。抢劫他们以换取血腥图腾
+>>杀死血鳞萨满。抢劫他们以换取血腥图腾
 .complete 9436,1 
 step
 .isQuestTurnedIn 1180
@@ -4649,7 +4648,7 @@ step
 .goto Stranglethorn Vale,29.8,19.4,50,0
 .goto Stranglethorn Vale,30.6,18.9,50,0
 .goto Stranglethorn Vale,33.9,15.6
->> 杀死血鳞巨魔。掠夺他们的象牙
+>>杀死血鳞巨魔。掠夺他们的象牙
 .complete 581,1 
 step
 #requires sindall
@@ -4667,20 +4666,20 @@ step
 .complete 568,1 
 step
 .isQuestTurnedIn 1180
->> 返回Grom'gol
+>>返回Grom'gol
 .goto Stranglethorn Vale,32.2,27.8
-.turnin 581 >> 投奔Yenniku
-.accept 582 >> 接受猎头
+.turnin 581 >>投奔Yenniku
+.accept 582 >>接受猎头
 step
 .isQuestTurnedIn 1180
 .goto Stranglethorn Vale,32.0,28.6
-.turnin 9436 >> 提交血滴洞察力
-.accept 9457 >> 接受不寻常的赞助人
+.turnin 9436 >>提交血滴洞察力
+.accept 9457 >>接受不寻常的赞助人
 step
 .isQuestTurnedIn 1180
 .goto Stranglethorn Vale,32.2,28.9
-.turnin 568 >> 交出格罗姆戈的辩护
-.accept 569 >> 接受格罗姆戈的辩护
+.turnin 568 >>交出格罗姆戈的辩护
+.accept 569 >>接受格罗姆戈的辩护
 step
 .isQuestTurnedIn 568
 #completewith next
@@ -4696,7 +4695,7 @@ step
 .goto Stranglethorn Vale,23.3,25.4,50,0
 .goto Stranglethorn Vale,24.9,23.4
 >>在海底杀死穆洛克。抢走他们的鳍
->> 记住使用无穷无尽的呼吸 << Warlock
+>>记住使用无穷无尽的呼吸 << Warlock
 .complete 1107,1 
 step
 .isQuestTurnedIn 568
@@ -4738,24 +4737,24 @@ step << Warrior tbc
 .complete 1712,2 
 step
 .isQuestTurnedIn 568
->> 返回Grom'gol
+>>返回Grom'gol
 .goto Stranglethorn Vale,32.2,27.8
-.turnin 582 >> 转入猎头行业
-.turnin 596 >> 交上血腥骨头项链
-.turnin 629 >> 在Vile Reef转弯
+.turnin 582 >>转入猎头行业
+.turnin 596 >>交上血腥骨头项链
+.turnin 629 >>在Vile Reef转弯
 step
 .isQuestTurnedIn 568
 #completewith next
 .goto Stranglethorn Vale,32.3,28.0
-.vendor >> 供应商和维修
+.vendor >>供应商和维修
 step
 .isQuestTurnedIn 568
 .goto Stranglethorn Vale,32.0,28.7
-.turnin 9457 >> 交给一个不寻常的赞助人
+.turnin 9457 >>交给一个不寻常的赞助人
 step
 #completewith next
 .isQuestTurnedIn 568
->> 专注于杀死食人魔食人魔。当你等待重生的时候，穿过河流杀死老虎和隐形黑豹。
+>>专注于杀死食人魔食人魔。当你等待重生的时候，穿过河流杀死老虎和隐形黑豹。
 .complete 570,1 
 .complete 192,1 
 .complete 570,2 
@@ -4838,13 +4837,13 @@ step
 .complete 575,1 
 step
 .isQuestTurnedIn 568
->> 返回猎人营地
+>>返回猎人营地
 .goto Stranglethorn Vale,35.6,10.8
-.turnin 195 >> 交猛禽大师
-.accept 196 >> 接受猛禽大师
-.turnin 192 >> 交出黑豹大师
-.accept 193 >> 接受黑豹精通
-.turnin 188 >> 上交老虎精通
+.turnin 195 >>交猛禽大师
+.accept 196 >>接受猛禽大师
+.turnin 192 >>交出黑豹大师
+.accept 193 >>接受黑豹精通
+.turnin 188 >>上交老虎精通
 step
 .isQuestTurnedIn 568
 .goto Stranglethorn Vale,37.3,30.9
@@ -4854,39 +4853,39 @@ step
 step
 .isQuestTurnedIn 192
 .goto Stranglethorn Vale,32.2,28.8
-.turnin 569 >> 交出格罗姆戈的辩护
+.turnin 569 >>交出格罗姆戈的辩护
 step
 .isQuestTurnedIn 192
 .goto Stranglethorn Vale,32.1,29.2
-.turnin 570 >> 交出莫扎丁的魔法
-.accept 572 >> 接受莫扎丁的魅力
+.turnin 570 >>交出莫扎丁的魔法
+.accept 572 >>接受莫扎丁的魅力
 step
 .isQuestTurnedIn 192
 #completewith next
 .goto Stranglethorn Vale,32.5,29.3
-.fly Booty Bay >> 飞到Booty Bay
+.fly Booty Bay >>飞到Booty Bay
 step
 .isQuestTurnedIn 192
 .goto Stranglethorn Vale,27.2,76.9
-.turnin 1182 >> 提交地精赞助
-.accept 1183 >> 接受地精赞助
+.turnin 1182 >>提交地精赞助
+.accept 1183 >>接受地精赞助
 step
 .isQuestTurnedIn 192
 .goto Stranglethorn Vale,27.0,77.2
-.turnin 189 >> 交回血腥耳朵
-.turnin 213 >> 交出敌意接管
-.turnin 201 >> 转入调查营地
-.turnin 605 >> 交上唱着的蓝色碎片
+.turnin 189 >>交回血腥耳朵
+.turnin 213 >>交出敌意接管
+.turnin 201 >>转入调查营地
+.turnin 605 >>交上唱着的蓝色碎片
 step
 .isQuestTurnedIn 192
 .isOnQuest 575
 .goto Stranglethorn Vale,28.3,77.6
-.turnin 575 >> 供应和需求周转
+.turnin 575 >>供应和需求周转
 step << Druid
 .isQuestTurnedIn 192
-.cast 18960 >> 使用“传送到月光”法术
+.cast 18960 >>使用“传送到月光”法术
 .goto Moonglade,52.5,40.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .isQuestTurnedIn 192
 #completewith next
@@ -4895,57 +4894,57 @@ step << Paladin
 .isQuestTurnedIn 192
 #completewith next
 .goto Orgrimmar,32.4,35.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Shaman
 .isQuestTurnedIn 192
 #completewith next
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .isQuestTurnedIn 192
 #completewith next
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .isQuestTurnedIn 192
 #completewith next
 .goto Orgrimmar,66.3,14.8
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 .isQuestTurnedIn 192
 #completewith next
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warrior
 .isQuestTurnedIn 192
 .goto Orgrimmar,81.2,19.0
-.collect 25876,1 >> 从曾多建那里购买一把闪光飞斧。如果你还没有学会扔火车，那么就趁你在这里的时候扔火车。
+.collect 25876,1 >>从曾多建那里购买一把闪光飞斧。如果你还没有学会扔火车，那么就趁你在这里的时候扔火车。
 step << Rogue
 .isQuestTurnedIn 192
 #completewith next
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .isQuestTurnedIn 192
 #completewith next
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock tbc
 .isQuestTurnedIn 192
 #completewith next
 .goto Orgrimmar,47.5,46.7
-.vendor >> 购买痛苦之鞭（等级3）
+.vendor >>购买痛苦之鞭(等级3)
 .collect 16371,1
 step << Mage
 .isQuestTurnedIn 192
 #completewith next
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 .isQuestTurnedIn 192
 #completewith next
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 #completewith dustwallowarrive
 .goto Orgrimmar,45.2,63.9,-1
@@ -4958,43 +4957,43 @@ step
 step
 >>点击地面上的鞋印
 .goto Dustwallow Marsh,29.7,47.6
-.accept 1268 >> 接受可疑的指纹
+.accept 1268 >>接受可疑的指纹
 step
 >>点击木板上的徽章
 .goto Dustwallow Marsh,29.8,48.2
-.accept 1269 >> 接受Paval Reethe中尉
+.accept 1269 >>接受Paval Reethe中尉
 step
 >>点击壁炉上方的盾牌
 .goto Dustwallow Marsh,29.6,48.6
-.accept 1251 >> 接受黑盾
+.accept 1251 >>接受黑盾
 step
 .goto Dustwallow Marsh,35.1,38.2
-.accept 1177 >> 接受饥饿！
+.accept 1177 >>接受饥饿！
 step
 .goto Dustwallow Marsh,35.5,32.0
-.fp Brackenwall >> 获得Brackenwall村的飞行路线
+.fp Brackenwall >>获得Brackenwall村的飞行路线
 step
 .goto Dustwallow Marsh,35.2,30.6
-.accept 1201 >> 接受Theramore间谍
+.accept 1201 >>接受Theramore间谍
 step
 .goto Dustwallow Marsh,35.9,31.7
-.accept 9437 >> 接受黎明奔跑者的暮色
+.accept 9437 >>接受黎明奔跑者的暮色
 step
 .goto Dustwallow Marsh,36.4,31.9
-.turnin 1268 >> 交出可疑的指纹
-.turnin 1269 >> 上缴帕瓦尔·里瑟中尉
-.turnin 1251 >> 交出黑盾
-.accept 1321 >> 接受黑盾
+.turnin 1268 >>交出可疑的指纹
+.turnin 1269 >>上缴帕瓦尔·里瑟中尉
+.turnin 1251 >>交出黑盾
+.accept 1321 >>接受黑盾
 step
 .goto Dustwallow Marsh,37.1,32.9
-.accept 11225 >> 接受巫山隐士
+.accept 11225 >>接受巫山隐士
 step
 .goto Dustwallow Marsh,36.5,30.8
-.turnin 1321 >> 交出黑盾
-.accept 1322 >> 接受黑盾
+.turnin 1321 >>交出黑盾
+.accept 1322 >>接受黑盾
 step
 .goto Dustwallow Marsh,40.9,36.8
-.accept 1273 >> 接受提问Reethe
+.accept 1273 >>接受提问Reethe
 step
 >>当你到达营地并经历一个简短的RP序列时，会有4个暴徒出现。当他们开始攻击时，让奥格伦攻击一个，同时使用冷却时间杀死另外三个。
 .goto Dustwallow Marsh,42.7,38.5
@@ -5011,7 +5010,7 @@ step
 step
 #xprate <1.5
 .goto Dustwallow Marsh,46.9,17.5
-.accept 1270 >> 接受臭鼬的逃跑
+.accept 1270 >>接受臭鼬的逃跑
 step
 #xprate <1.5
 >>守卫臭鼬直到他找到了Bogbean植物
@@ -5021,16 +5020,16 @@ step
 #xprate <1.3
 >>点击污垢
 .goto Dustwallow Marsh,55.4,26.0
-.accept 1238 >> 接受丢失报告
+.accept 1238 >>接受丢失报告
 step
 .goto Dustwallow Marsh,55.4,26.3
-.accept 11180 >> 接受什么是幽灵山？
-.turnin 11225 >> 女巫山隐士归案
-.accept 1218 >> 接受沼泽青蛙腿
+.accept 11180 >>接受什么是幽灵山？
+.turnin 11225 >>女巫山隐士归案
+.accept 1218 >>接受沼泽青蛙腿
 step
 #sticky
 #completewith next
->>杀死巫婆山周围的沼泽蛙（一级生物）。抢劫青蛙腿
+>>杀死巫婆山周围的沼泽蛙(一级生物)。抢劫青蛙腿
 .complete 1218,1 
 step << !Hunter !Warlock
 .goto Dustwallow Marsh,55.8,30.1,50,0
@@ -5064,10 +5063,10 @@ step
 .complete 1218,1 
 step
 .goto Dustwallow Marsh,55.4,26.4
-.turnin 11180 >> 交出什么是幽灵山？
-.accept 11181 >> 接受巫婆的诅咒
-.turnin 1218 >> 转入沼泽青蛙腿
-.accept 1206 >> 接受Jarl需要眼睛
+.turnin 11180 >>交出什么是幽灵山？
+.accept 11181 >>接受巫婆的诅咒
+.turnin 1218 >>转入沼泽青蛙腿
+.accept 1206 >>接受Jarl需要眼睛
 step
 .goto Dustwallow Marsh,57.0,24.2,50,0
 .goto Dustwallow Marsh,58.4,25.3,50,0
@@ -5075,19 +5074,19 @@ step
 .goto Dustwallow Marsh,53.3,20.0,50,0
 .goto Dustwallow Marsh,50.9,18.5,50,0
 .goto Dustwallow Marsh,57.0,24.2
->> 收集Witchbane，一种在沼泽地发现的粉色和绿色叶子植物。
+>>收集Witchbane，一种在沼泽地发现的粉色和绿色叶子植物。
 .complete 11181,1 
 step
 .goto Dustwallow Marsh,55.6,26.2
-.turnin 11181 >> 上缴女巫的诅咒
-.accept 11183 >> 接受清理巫山
+.turnin 11181 >>上缴女巫的诅咒
+.accept 11183 >>接受清理巫山
 step
 >>走到码头的尽头，使用巫毒之火来繁殖泽尔弗雷克斯。杀了他。
 .goto Dustwallow Marsh,55.2,26.7
 .complete 11183,1 
 step
 .goto Dustwallow Marsh,55.6,26.2
-.turnin 11183 >> 转身清洗巫山
+.turnin 11183 >>转身清洗巫山
 step
 #completewith next
 >>如果你在去蜘蛛的路上遇到渗透者，杀死他们。他们是秘密的。
@@ -5117,33 +5116,33 @@ step
 .unitscan Theramore Infiltrator
 step
 .goto Dustwallow Marsh,36.5,31.8
-.turnin 1273 >> 提交提问Reethe
+.turnin 1273 >>提交提问Reethe
 step
 .goto Dustwallow Marsh,36.5,30.8
-.turnin 1322 >> 交出黑盾
-.accept 1323 >> 接受黑盾
+.turnin 1322 >>交出黑盾
+.accept 1323 >>接受黑盾
 step
 .goto Dustwallow Marsh,36.4,31.9
-.turnin 1323 >> 交出黑盾
-.accept 1276 >> 接受黑盾
+.turnin 1323 >>交出黑盾
+.accept 1276 >>接受黑盾
 step
 .goto Dustwallow Marsh,35.9,31.7
-.turnin 9437 >> 《黎明奔跑者的暮色》
+.turnin 9437 >>《黎明奔跑者的暮色》
 step
 .goto Dustwallow Marsh,35.2,30.7
-.turnin 1201 >> 交出Theramore间谍
+.turnin 1201 >>交出Theramore间谍
 step
 #xprate <1.3
 .goto Dustwallow Marsh,35.2,30.7
-.turnin 1238 >> 交出遗失报告
+.turnin 1238 >>交出遗失报告
 step
 #xprate <1.3
 .goto Dustwallow Marsh,55.4,25.9
-.accept 1239 >> 接受被分割的负责人
+.accept 1239 >>接受被分割的负责人
 step
 .goto Dustwallow Marsh,55.4,26.3
-.turnin 1206 >> 转入Jarl需要眼睛
-.accept 1203 >> 接受Jarl需要刀片
+.turnin 1206 >>转入Jarl需要眼睛
+.accept 1203 >>接受Jarl需要刀片
 step
 .goto Dustwallow Marsh,57.8,19.7
 >>杀死拉佐斯平。抢他的剑
@@ -5158,19 +5157,19 @@ step
 .complete 1177,1 
 step
 .goto Dustwallow Marsh,55.5,26.3
-.turnin 1203 >> 转入Jarl需要刀片
+.turnin 1203 >>转入Jarl需要刀片
 step
 #xprate <1.5
 .goto Dustwallow Marsh,46.9,17.5
 .xp 37+56000>>研磨至56000+/62400xp
 step
 .goto Dustwallow Marsh,35.2,30.6
-.turnin 1239 >> 交出被分割的头部
-.accept 1240 >> 接受巨魔巫医
+.turnin 1239 >>交出被分割的头部
+.accept 1240 >>接受巨魔巫医
 step
 #xprate >1.499
 .goto Dustwallow Marsh,35.2,38.4
-.turnin 1177 >> 饿了就回去！
+.turnin 1177 >>饿了就回去！
 
 ]])
 RXPGuides.RegisterGuide([[
@@ -5183,45 +5182,45 @@ RXPGuides.RegisterGuide([[
 #somname 33-35 凄凉之地
 step
 .goto Stonetalon Mountains,46.00,60.50
-.turnin 1088 >> 交给Ordanus
+.turnin 1088 >>交给Ordanus
 #era
 step
 .goto Stonetalon Mountains,44.63,61.55,60,0
 .goto Stonetalon Mountains,38.77,68.65,60,0
 .goto Stonetalon Mountains,30.22,75.61,60,0
 .goto Stonetalon Mountains,29.29,79.69
-.zone Desolace >> 向西走到Harpies家所在的地方，向南走到Desolace。
+.zone Desolace >>向西走到Harpies家所在的地方，向南走到Desolace。
 step
 .goto Desolace,55.80,30.10
 >>磨碎燃烧之刃怪物直到你得到一张剥落的恶魔皮
 .collect 20310,1,1480
-.accept 1480 >> 接受腐败者
+.accept 1480 >>接受腐败者
 step
 .goto Desolace,38.90,27.20
-.accept 5741 >> 接受光之权杖
+.accept 5741 >>接受光之权杖
 step
 #era
 .goto Desolace,56.20,59.60
-.accept 1365 >> 接受Khan Dez'hepah
-.accept 1368 >> 接受盖尔基斯联盟
+.accept 1365 >>接受Khan Dez'hepah
+.accept 1368 >>接受盖尔基斯联盟
 step
 #som
 .goto Desolace,56.20,59.60
-.accept 1365 >> 接受Khan Dez'hepah
+.accept 1365 >>接受Khan Dez'hepah
 step
 .goto Desolace,55.40,55.70
-.turnin 5361 >> 提交家谱
+.turnin 5361 >>提交家谱
 step
 .goto Desolace,52.60,54.40
-.turnin 1432 >> 移交联盟关系
-.accept 1433 >> 接受联盟关系
-.accept 1434 >> 接受萨蒂尔的羞辱
+.turnin 1432 >>移交联盟关系
+.accept 1433 >>接受联盟关系
+.accept 1434 >>接受萨蒂尔的羞辱
 step
 .goto Desolace,52.20,53.50
-.turnin 1433 >> 移交联盟关系
-.accept 1435 >> 接受灵魂的燃烧
-.turnin 1480 >> 交出腐败者
-.accept 1481 >> 接受腐败者
+.turnin 1433 >>移交联盟关系
+.accept 1435 >>接受灵魂的燃烧
+.turnin 1480 >>交出腐败者
+.accept 1481 >>接受腐败者
 step
 .goto Desolace,73.20,41.80,60,0
 .goto Desolace,73.00,46.80,60,0
@@ -5229,18 +5228,18 @@ step
 .goto Desolace,73.20,41.80,0
 .goto Desolace,73.00,46.80,0
 .goto Desolace,74.80,48.80
->> 杀死Khan Dez'hepah，他有3个不同的产卵地点
+>>杀死Khan Dez'hepah，他有3个不同的产卵地点
 .complete 1365,1
 .unitscan Khan Dez'hepah
 step
 #sticky
 #label shadowstalkers
 .goto Desolace,76.70,19.40,0
->> 杀死影语者。抢走他们的头皮
+>>杀死影语者。抢走他们的头皮
 .complete 1481,1
 step
 .goto Desolace,76.70,19.40
->> 优先考虑仇恨流氓
+>>优先考虑仇恨流氓
 .complete 1434,1
 .complete 1434,2
 .complete 1434,3
@@ -5249,44 +5248,44 @@ step
 step
 #requires shadowstalkers
 .goto Desolace,62.30,39.00
-.accept 5501 >> 接受骨骼采集器
+.accept 5501 >>接受骨骼采集器
 step
 >>跑回幽灵行者驿站
 .goto Desolace,52.60,54.40
-.turnin 1434 >> 被萨蒂尔盯上了
+.turnin 1434 >>被萨蒂尔盯上了
 step
 .goto Desolace,52.20,53.40
-.turnin 1481 >> 交出腐败者
-.accept 1482 >> 接受腐败者
+.turnin 1481 >>交出腐败者
+.accept 1482 >>接受腐败者
 step
 .goto Desolace,51.20,53.27
->> 如果需要，购买食物/水
+>>如果需要，购买食物/水
 step
 #era
 .goto Desolace,56.20,59.50
-.turnin 1365 >> 交出Khan Dez'hepah
-.accept 1366 >> 接受半人马奖赏
+.turnin 1365 >>交出Khan Dez'hepah
+.accept 1366 >>接受半人马奖赏
 step
 #som
 .goto Desolace,56.20,59.50
-.turnin 1365 >> 交出Khan Dez'hepah
+.turnin 1365 >>交出Khan Dez'hepah
 step
 .goto Desolace,60.80,61.90
-.accept 5561 >> 接受Kodo Roundup
+.accept 5561 >>接受Kodo Roundup
 step
 #era
 .goto Desolace,69.90,75.10
->> 杀死半人马座。抢走他们的耳朵
+>>杀死半人马座。抢走他们的耳朵
 .complete 1366,1
 step
 #era
 .goto Desolace,69.90,75.10
->> 磨碎半人马座，直到你和盖尔基斯半人马团友好
+>>磨碎半人马座，直到你和盖尔基斯半人马团友好
 .reputation 92,Friendly
 step
 #era
 .goto Desolace,56.20,59.60
-.turnin 1366 >> 交出半人马奖赏
+.turnin 1366 >>交出半人马奖赏
 step
 #completewith next
 .goto Desolace,49.7,57.2,0
@@ -5303,32 +5302,32 @@ step
 .complete 5501,1
 step
 .goto Desolace,60.80,61.90
-.turnin 5561 >> 交给Kodo Roundup
+.turnin 5561 >>交给Kodo Roundup
 step
 #era
 .goto Desolace,36.30,79.20
-.turnin 1368 >> 加入盖尔基斯联盟
-.accept 1370 >> 接受偷窃物资
+.turnin 1368 >>加入盖尔基斯联盟
+.accept 1370 >>接受偷窃物资
 step
 >>跑向影食村
 .goto Desolace,25.80,68.20
-.accept 5381 >> 接受Iruxos之手
+.accept 5381 >>接受Iruxos之手
 step
 .goto Desolace,22.70,72.10
-.accept 6142 >> 接受蛤蜊饵
+.accept 6142 >>接受蛤蜊饵
 step
 .goto Desolace,23.30,72.90
-.accept 6143 >> 接受其他鱼煎炸
+.accept 6143 >>接受其他鱼煎炸
 step
 >>跑到码头尽头
 .goto Desolace,21.60,74.14
-.fp Shadowprey Village >> 获得暗影猎物村的飞行路线
+.fp Shadowprey Village >>获得暗影猎物村的飞行路线
 step << Hunter
 .goto Desolace,24.93,71.84
-.vendor >> 前往塔克。买箭直到你的箭袋装满。
+.vendor >>前往塔克。买箭直到你的箭袋装满。
 step
 .goto Desolace,47.80,61.8
-.accept 6134 >> 接受Ghost-o-plasm向上取整
+.accept 6134 >>接受Ghost-o-plasm向上取整
 #era
 step
 #som
@@ -5336,56 +5335,56 @@ step
 .xp 34+17500>>研磨至34和17500+/62800
 step
 .goto Desolace,62.30,39.00
-.turnin 5501 >> 交给骨骼采集器
+.turnin 5501 >>交给骨骼采集器
 step
 #label infused
 #sticky
->> 使用燃烧宝石杀死燃烧之刃怪物
+>>使用燃烧宝石杀死燃烧之刃怪物
 .complete 1435,1
 step
 .goto Desolace,55.20,30.10
->> 杀死塔顶的先知
+>>杀死塔顶的先知
 .complete 5741,1
 step
 .goto Desolace,54.90,26.70
->> 进入主楼。在圆圈中的水晶上使用恶魔镐
->> 37级恶魔将诞生。杀了它
+>>进入主楼。在圆圈中的水晶上使用恶魔镐
+>>37级恶魔将诞生。杀了它
 .complete 5381,1
 step
 #requires infused
 .goto Desolace,38.90,27.10
-.turnin 5741 >> 交出光剑
-.accept 6027 >> 接受古书
+.turnin 5741 >>交出光剑
+.accept 6027 >>接受古书
 step
 .goto Desolace,36.00,30.40
 >>点击地面上的书
-.accept 6161 >> 接受索取Rackmore的宝藏！
+.accept 6161 >>接受索取Rackmore的宝藏！
 step
 #label oracledeso
 #completewith Nagas
 .goto Desolace,36.88,23.16,0
->> 杀死Slitherblade Oracles。抢他们的水晶
->> 它们与其他Nagas共享产卵，所以你可能必须杀死它们
+>>杀死Slitherblade Oracles。抢他们的水晶
+>>它们与其他Nagas共享产卵，所以你可能必须杀死它们
 .complete 1482,1
 step
 #label desogoldenkey
 #sticky
 .goto Desolace,36.88,23.16,0
->> 杀死Nagas。抢他们的金钥匙
+>>杀死Nagas。抢他们的金钥匙
 .complete 6161,2
 step
 #label clambait
 #sticky
 .goto Desolace,33.09,29.79,0
->> 在水下寻找蛤蜊。抢他们的肉
+>>在水下寻找蛤蜊。抢他们的肉
 .complete 6142,1
 step
 .goto Desolace,32.40,29.20
->> 杀死Mak’kura。抢他们去拿银钥匙。
+>>杀死Mak’kura。抢他们去拿银钥匙。
 .complete 6161,1
 step
 #completewith Rackmore
->> 杀死该地区的Naga
+>>杀死该地区的Naga
 .complete 6143,1 
 .goto Desolace,28.8,8.6
 .complete 6143,3 
@@ -5395,80 +5394,80 @@ step
 step
 .isQuestComplete 6161
 .goto Desolace,30.00,8.80
-.turnin 6161 >> 交出索取Rackmore的宝藏！
+.turnin 6161 >>交出索取Rackmore的宝藏！
 step
 .goto Desolace,28.20,6.60
->> 清除雕像周围的暴徒
->> 点击雕像。杀死产卵的38级纳加
+>>清除雕像周围的暴徒
+>>点击雕像。杀死产卵的38级纳加
 .complete 6027,1
 step
 #label Rackmore
 #requires desogoldenkey
 .goto Desolace,30.00,8.80
-.turnin 6161 >> 交出索取Rackmore的宝藏！
+.turnin 6161 >>交出索取Rackmore的宝藏！
 step
 #label Nagas
 .goto Desolace,36.88,23.16
->> 杀死该地区的Naga
+>>杀死该地区的Naga
 .complete 6143,1
 .complete 6143,2
 .complete 6143,3
 step
 .goto Desolace,28.69,8.05
->> 杀死Slitherblade Oracles。抢他们的水晶
->> 它们与其他Nagas共享产卵，所以你可能必须杀死它们
+>>杀死Slitherblade Oracles。抢他们的水晶
+>>它们与其他Nagas共享产卵，所以你可能必须杀死它们
 .complete 1482,1
 .unitscan Slitherblade Oracles
 step
 #requires clambait
 .goto Desolace,38.88,27.16
-.turnin 6027 >> 交出古书
+.turnin 6027 >>交出古书
 step
 .goto Desolace,52.24,53.44
-.turnin 1435 >> 交出烈火
-.turnin 1482 >> 交出腐败者
-.accept 1484 >> 接受腐败者
+.turnin 1435 >>交出烈火
+.turnin 1482 >>交出腐败者
+.accept 1484 >>接受腐败者
 step
 .goto Desolace,52.56,54.38
-.accept 1436 >> 接受联盟关系
-.turnin 1484 >> 交出腐败者
+.accept 1436 >>接受联盟关系
+.turnin 1484 >>交出腐败者
 step
 #era
 .goto Desolace,69.90,75.10
->> 收集粗糙的干肉（x6）
+>>收集粗糙的干肉(x6)
 .complete 1370,1
 step
 #era
 .goto Desolace,36.21,79.24
-.turnin 1370 >> 上缴偷窃物资
-.accept 1373 >> 接受Ongeku
+.turnin 1370 >>上缴偷窃物资
+.accept 1373 >>接受Ongeku
 step << Hunter
 .goto Desolace,24.90,68.66
->> 稳定你的宠物，驯服天蝎座猎犬，学习爪5
+>>稳定你的宠物，驯服天蝎座猎犬，学习爪5
 step
 .goto Desolace,25.10,72.20
-.accept 5763 >> 接受在荆棘中狩猎
+.accept 5763 >>接受在荆棘中狩猎
 step
 .goto Desolace,25.80,68.20
-.turnin 5381 >> 伊鲁克斯之手
+.turnin 5381 >>伊鲁克斯之手
 step
 .goto Desolace,23.40,72.80
-.turnin 6143 >> 把其他鱼翻过来煎
+.turnin 6143 >>把其他鱼翻过来煎
 step
 .goto Desolace,22.70,72.10
-.turnin 6142 >> 上缴蛤蜊饵
+.turnin 6142 >>上缴蛤蜊饵
 step
 .goto Desolace,42.78,70.12
-.xp 35 >> 研磨至35
+.xp 35 >>升级到35
 step << Druid
 #sticky
 #completewith next
->> 使用“传送到月光”法术
+>>使用“传送到月光”法术
 .goto Moonglade,52.5,40.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
-.hs >> 赫斯回到雷霆崖
->> 如果需要，购买食物/水
+.hs >>赫斯回到雷霆崖
+>>如果需要，购买食物/水
 step << Warrior
 #softcore
 >>去拍卖行。购买8 Liferoot
@@ -5476,57 +5475,57 @@ step << Warrior
 .collect 3357,8
 step
 .goto Thunder Bluff,61.4,81.0
-.accept 1136 >> 接受Frostmaw
-.accept 1205 >> 接受僵局
+.accept 1136 >>接受Frostmaw
+.accept 1205 >>接受僵局
 step << Hunter
 .goto Thunder Bluff,59.1,86.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Thunder Bluff,54.1,83.9
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 .goto Thunder Bluff,57.6,85.5
-.trainer >> 去训练你的职业咒语
->> 如果需要，购买食物/水
+.trainer >>去训练你的职业咒语
+>>如果需要，购买食物/水
 step << !Mage
 .goto Thunder Bluff,46.9,49.9
-.fly Orgrimmar >> 飞往奥格瑞玛
+.fly Orgrimmar >>飞往奥格瑞玛
 step << Mage
-.zone Orgrimmar >> 电传至Orgrimmar
+.zone Orgrimmar >>电传至Orgrimmar
 step << Shaman
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,47.5,46.7
-.vendor >> 如果你有钱，买你的宠物升级。
+.vendor >>如果你有钱，买你的宠物升级。
 step << Mage
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .goto Orgrimmar,22.40,52.80
-.turnin 1436 >> 移交联盟关系
+.turnin 1436 >>移交联盟关系
 step
 .goto Orgrimmar,75.20,34.30
-.turnin 1184 >> 交出部分蜂群
+.turnin 1184 >>交出部分蜂群
 step
 .goto Orgrimmar,54.1,68.4
-.home >> 将您的炉石设置为Orgrimmar
+.home >>将您的炉石设置为Orgrimmar
 step
 #completewith next
-.goto Durotar,45.53,11.79,60 >> 逃离Orgrimmar
+.goto Durotar,45.53,11.79,60 >>逃离Orgrimmar
 step
 >>在奥格瑞玛城外登上齐柏林塔
 .goto Durotar,50.53,12.52
-.zone Stranglethorn Vale >> 带齐柏林飞艇去荆棘谷
+.zone Stranglethorn Vale >>带齐柏林飞艇去荆棘谷
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -5537,31 +5536,31 @@ RXPGuides.RegisterGuide([[
 #next 37-38 尘泥沼泽
 step
 .goto Stranglethorn Vale,32.10,29.20
-.accept 570 >> 接受莫扎丁的魅力
+.accept 570 >>接受莫扎丁的魅力
 step
 .goto Stranglethorn Vale,32.20,28.90
-.accept 568 >> 接受格罗姆戈的辩护
+.accept 568 >>接受格罗姆戈的辩护
 step
 #era
 .goto Stranglethorn Vale,32.20,27.80
-.accept 596 >> 接受血骨项链
-.accept 629 >> 接受邪恶礁
+.accept 596 >>接受血骨项链
+.accept 629 >>接受邪恶礁
 step
 #som
 .goto Stranglethorn Vale,32.20,27.80
-.accept 629 >> 接受邪恶礁
+.accept 629 >>接受邪恶礁
 step
 .goto Stranglethorn Vale,32.20,27.80
-.accept 581 >> 接受Yenniku的狩猎
+.accept 581 >>接受Yenniku的狩猎
 step
 .goto Stranglethorn Vale,35.66,10.52
-.turnin 5762 >> 交给Hemet Nesingwarve
-.turnin 5763 >> 在荆棘林中狩猎
-.accept 583 >> 接受欢迎来到丛林
-.turnin 583 >> 上车欢迎来到丛林
-.accept 194 >> 接受猛禽大师
-.accept 185 >> 接受老虎精通
-.accept 190 >> 接受黑豹精通
+.turnin 5762 >>交给Hemet Nesingwarve
+.turnin 5763 >>在荆棘谷中狩猎
+.accept 583 >>接受欢迎来到丛林
+.turnin 583 >>上车欢迎来到丛林
+.accept 194 >>接受猛禽大师
+.accept 185 >>接受老虎精通
+.accept 190 >>接受黑豹精通
 step
 #sticky
 #completewith YoungTigers
@@ -5609,10 +5608,10 @@ step
 .complete 575,1 
 step
 .goto Stranglethorn Vale,35.6,10.6
-.turnin 185 >> 上交老虎精通
-.accept 186 >> 接受老虎精通
-.turnin 190 >> 交出黑豹大师
-.accept 191 >> 接受黑豹精通
+.turnin 185 >>上交老虎精通
+.accept 186 >>接受老虎精通
+.turnin 190 >>交出黑豹大师
+.accept 191 >>接受黑豹精通
 step
 .goto Stranglethorn Vale,31.0,11.2,90,0
 .goto Stranglethorn Vale,29.7,8.9,90,0
@@ -5635,12 +5634,12 @@ step
 .complete 194,1 
 step
 .goto Stranglethorn Vale,35.6,10.5
-.turnin 191 >> 交出黑豹大师
-.accept 192 >> 接受黑豹精通
-.turnin 186 >> 上交老虎精通
-.accept 187 >> 接受老虎精通
-.turnin 194 >> 交猛禽大师
-.accept 195 >> 接受猛禽大师
+.turnin 191 >>交出黑豹大师
+.accept 192 >>接受黑豹精通
+.turnin 186 >>上交老虎精通
+.accept 187 >>接受老虎精通
+.turnin 194 >>交猛禽大师
+.accept 195 >>接受猛禽大师
 step
 #sticky
 #completewith BloodscalpTr
@@ -5655,7 +5654,7 @@ step
 .goto Stranglethorn Vale,29.8,19.4,90,0
 .goto Stranglethorn Vale,30.6,18.9,90,0
 .goto Stranglethorn Vale,33.9,15.6
->> 杀死血鳞巨魔。抢他们的牙
+>>杀死血鳞巨魔。抢他们的牙
 .complete 581,1 
 step
 .goto Stranglethorn Vale,32.1,15.8,90,0
@@ -5678,19 +5677,19 @@ step
 .complete 568,1 
 step
 .goto Stranglethorn Vale,32.2,27.8
-.turnin 581 >> 投奔Yenniku
-.accept 582 >> 接受猎头
+.turnin 581 >>投奔Yenniku
+.accept 582 >>接受猎头
 step
 .goto Stranglethorn Vale,32.2,28.9
-.turnin 568 >> 交出格罗姆戈的辩护
-.accept 569 >> 接受格罗姆戈的辩护
+.turnin 568 >>交出格罗姆戈的辩护
+.accept 569 >>接受格罗姆戈的辩护
 step << Hunter
 .goto Stranglethorn Vale,31.55,27.95
-.vendor >> 前往北方。买箭直到你的箭袋装满。
+.vendor >>前往北方。买箭直到你的箭袋装满。
 step << Hunter
 #level 36
 .goto Stranglethorn Vale,31.23,28.68
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step
 #sticky
 #completewith next
@@ -5746,14 +5745,14 @@ step << Warrior
 step
 #som
 .goto Stranglethorn Vale,32.2,27.8
-.turnin 582 >> 转入猎头行业
-.turnin 629 >> 在Vile Reef转弯
+.turnin 582 >>转入猎头行业
+.turnin 629 >>在Vile Reef转弯
 step
 #era
 .goto Stranglethorn Vale,32.2,27.8
-.turnin 582 >> 转入猎头行业
-.turnin 596 >> 交上血腥骨头项链
-.turnin 629 >> 在Vile Reef转弯
+.turnin 582 >>转入猎头行业
+.turnin 596 >>交上血腥骨头项链
+.turnin 629 >>在Vile Reef转弯
 step
 #completewith next
 .goto Stranglethorn Vale,37.3,30.9,100,0
@@ -5809,7 +5808,7 @@ step
 .goto Stranglethorn Vale,49.6,25.4,90,0
 .goto Stranglethorn Vale,49.5,20.4,90,0
 .goto Stranglethorn Vale,47.7,22.6
->>杀死影喉黑豹（他们是隐形的）。掠夺他们以获得暗影爪。看看其他暴徒不在附近的地方，特别是树木周围
+>>杀死影喉黑豹(他们是隐形的)。掠夺他们以获得暗影爪。看看其他暴徒不在附近的地方，特别是树木周围
 .complete 570,1 
 .complete 192,1 
 step
@@ -5828,12 +5827,12 @@ step
 .complete 575,1 
 step
 .goto Stranglethorn Vale,35.6,10.8
-.turnin 195 >> 交猛禽大师
-.accept 196 >> 接受猛禽大师
-.turnin 187 >> 上交老虎精通
-.accept 188 >> 接受老虎精通
-.turnin 192 >> 交出黑豹大师
-.accept 193 >> 接受黑豹精通
+.turnin 195 >>交猛禽大师
+.accept 196 >>接受猛禽大师
+.turnin 187 >>上交老虎精通
+.accept 188 >>接受老虎精通
+.turnin 192 >>交出黑豹大师
+.accept 193 >>接受黑豹精通
 step
 >>杀死辛达尔。抢走他的爪子
 >>他可以在高原上，也可以在高原周围巡逻
@@ -5842,88 +5841,88 @@ step
 .unitscan Sin'Dall
 step
 .goto Stranglethorn Vale,35.6,10.7
-.turnin 188 >> 上交老虎精通
+.turnin 188 >>上交老虎精通
 step
 .goto Stranglethorn Vale,32.2,27.8
-.accept 638 >> 接受Trollbane
+.accept 638 >>接受Trollbane
 step
 .goto Stranglethorn Vale,32.2,28.8
-.turnin 569 >> 交出格罗姆戈的辩护
+.turnin 569 >>交出格罗姆戈的辩护
 step
 .goto Stranglethorn Vale,32.1,29.2
-.turnin 570 >> 交出莫扎丁的魔法
-.accept 572 >> 接受莫扎丁的魅力
+.turnin 570 >>交出莫扎丁的魔法
+.accept 572 >>接受莫扎丁的魅力
 step
 .goto Stranglethorn Vale,32.5,29.3
-.fly Booty Bay >> 飞到Booty Bay
+.fly Booty Bay >>飞到Booty Bay
 step
 .goto Stranglethorn Vale,27.2,76.9
-.turnin 1182 >> 提交地精赞助
-.accept 1183 >> 接受地精赞助
+.turnin 1182 >>提交地精赞助
+.accept 1183 >>接受地精赞助
 step
 #era
 .goto Stranglethorn Vale,27.0,77.2
-.turnin 189 >> 交回血腥耳朵
-.turnin 213 >> 交出敌意接管
-.turnin 201 >> 转入调查营地
-.accept 1116 >> 接受沼泽中的梦尘
-.accept 209 >> 接受骷髅人的长牙
+.turnin 189 >>交回血腥耳朵
+.turnin 213 >>交出敌意接管
+.turnin 201 >>转入调查营地
+.accept 1116 >>接受沼泽中的梦尘
+.accept 209 >>接受骷髅人的长牙
 
 step
 #som
 .goto Stranglethorn Vale,27.0,77.2
-.turnin 189 >> 交回血腥耳朵
-.turnin 213 >> 交出敌意接管
-.turnin 201 >> 转入调查营地
-.accept 209 >> 接受骷髅人的长牙
+.turnin 189 >>交回血腥耳朵
+.turnin 213 >>交出敌意接管
+.turnin 201 >>转入调查营地
+.accept 209 >>接受骷髅人的长牙
 step
 #era
 .goto Stranglethorn Vale,27.0,77.2
 >>在客栈的底层
-.turnin 605 >> 交上唱着的蓝色碎片
-.accept 600 >> 接受风险公司采矿
+.turnin 605 >>交上唱着的蓝色碎片
+.accept 600 >>接受风险公司采矿
 
 step
 .goto Stranglethorn Vale,28.3,77.6
-.turnin 575 >> 供应和需求周转
+.turnin 575 >>供应和需求周转
 step << Druid
->> 使用“传送到月光”法术
+>>使用“传送到月光”法术
 .goto Moonglade,52.5,40.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .hs >>赫斯到奥格瑞玛
->> 如果需要，购买食物/水
+>>如果需要，购买食物/水
 step
 .goto Orgrimmar,48.0,80.2
 >>在开始Dustwallow专区前购买3种舒缓香料
 .collect 3713,3
 step << Shaman
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.3,14.8
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,47.5,46.7
-.vendor >> 购买疼痛3
+.vendor >>购买疼痛3
 step << Mage
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -5933,7 +5932,7 @@ RXPGuides.RegisterGuide([[
 #name 36-60 法师 AoE
 step
 .goto The Barrens,45.58,59.04
-.home >> 将炉子放在陶拉霍营地
+.home >>将炉子放在陶拉霍营地
 step
 >>向南驶入Dustwallow沼泽
 >>单击地面上的Hoofprints
@@ -5952,7 +5951,7 @@ step
 .accept 1177 >>接受饥饿！
 step
 .goto Dustwallow Marsh,35.56,31.88
-.fp Brackenwall >> 获取Brackenwall飞行路线
+.fp Brackenwall >>获取Brackenwall飞行路线
 step
 .goto Dustwallow Marsh,36.42,31.89
 .turnin 1251 >>交出黑盾
@@ -5983,7 +5982,7 @@ step
 #completewith next
 +我强烈建议观看这些暴徒的法师指南，因为他们可能是AoE法师升级体验中最难的部分
 >>我不建议在38级之前完成乌龟背包+
-.link https://youtu.be/SxMc2GoP33c?t=3824 >> 单击此处
+.link https://youtu.be/SxMc2GoP33c?t=3824 >>单击此处
 step
 #sticky
 #label Head
@@ -5998,17 +5997,17 @@ step
 .goto Dustwallow Marsh,57.79,15.71,100,0
 .goto Dustwallow Marsh,54.14,15.11,100,0
 .goto Dustwallow Marsh,53.98,19.35,100,0
-.xp 38 >> AoE Murlocs至38层
+.xp 38 >>AoE Murlocs至38层
 step
 #requires Head
-.trainer >> 传送到Undercity。训练你的38级法术
+.trainer >>传送到Undercity。训练你的38级法术
 >>开始对你的钱也要非常小心，因为你的坐骑能达到40级是很好的
 step
-.hs >> 炉灶前往陶拉霍营地
-.vendor >> 如果需要，购买35级饮料
+.hs >>炉灶前往陶拉霍营地
+.vendor >>如果需要，购买35级饮料
 step
 .goto The Barrens,44.44,59.15
-.fly Brackenwall >> 飞往Brackenwall村
+.fly Brackenwall >>飞往Brackenwall村
 step
 .goto Dustwallow Marsh,35.15,38.25
 .turnin 1177 >>饿了就回去！
@@ -6040,25 +6039,25 @@ step
 .goto Dustwallow Marsh,57.79,15.71,100,0
 .goto Dustwallow Marsh,54.14,15.11,100,0
 .goto Dustwallow Marsh,53.98,19.35,100,0
-.xp 40 >> AoE Murlocs达到40级
+.xp 40 >>AoE Murlocs达到40级
 step << Undead
-.zone Undercity >> 传送到地下城
-.trainer >> 训练你的职业咒语
+.zone Undercity >>传送到地下城
+.trainer >>训练你的职业咒语
 step << Undead
 #sticky
 #completewith next
 .goto Undercity,82.36,15.31
 +转到右侧的试剂供应商，执行“注销跳过”，将角色定位在最低楼梯的最高部分，直到看起来像漂浮在空中，然后注销并重新登录。
-.link https://www.youtube.com/watch?v=-Bi95bCN8dM >> 单击此处查看示例
+.link https://www.youtube.com/watch?v=-Bi95bCN8dM >>单击此处查看示例
 >>如果你做不到这一点，就正常离开幽暗城
 step << Undead
 #era
 >>如果您在出售垃圾后没有90克或更多，请跳过此步骤
-.goto Tirisfal Glades,61.85,66.59,60 >> 退出地下城
+.goto Tirisfal Glades,61.85,66.59,60 >>退出地下城
 step << Undead
 #som
 >>如果您在出售垃圾后没有50克或更多，请跳过此步骤
-.goto Tirisfal Glades,61.85,66.59,60 >> 退出地下城
+.goto Tirisfal Glades,61.85,66.59,60 >>退出地下城
 step << Undead
 #era
 .zone Tirisfal Glades >>如果您在出售垃圾后没有90克或更多，请跳过此步骤
@@ -6070,8 +6069,8 @@ step << Undead
 .trainer >>跑进蒂里斯法尔·格拉德斯，进行骑马和骑马训练。
 .goto Tirisfal Glades,59.93,52.57
 step << Troll
-.zone Orgrimmar >> 电传至Orgrimmar
-.trainer >> 训练你的职业咒语
+.zone Orgrimmar >>电传至Orgrimmar
+.trainer >>训练你的职业咒语
 step << Troll
 #era
 .zone Durotar >>如果您在出售垃圾后没有90克或更多，请跳过此步骤
@@ -6083,15 +6082,15 @@ step << Troll
 .goto Durotar,55.21,75.53
 .trainer >>从Orgrimmar出发，一直跑到Sen'jin，接受骑乘训练。
 step
-.hs >> 炉灶前往陶拉霍营地
->> 如果需要，购买食物/水
+.hs >>炉灶前往陶拉霍营地
+>>如果需要，购买食物/水
 step
 #softcore
 #som
-.fly Brackenwall >> 飞往Brackenwall村
+.fly Brackenwall >>飞往Brackenwall村
 step
 #hardcore
-.fly Brackenwall >> 飞往Brackenwall村
+.fly Brackenwall >>飞往Brackenwall村
 step
 #softcore
 #som
@@ -6117,37 +6116,37 @@ step
 .xp 42+80000>>AoE Murlocs达到42级和80000+/101000xp
 step
 #hardcore
-.zone Undercity >> 传送到地下城
-.trainer >> 训练你的职业咒语
+.zone Undercity >>传送到地下城
+.trainer >>训练你的职业咒语
 step
 #hardcore
-.hs >> 炉灶前往陶拉霍营地
->> 如果需要，购买食物/水
+.hs >>炉灶前往陶拉霍营地
+>>如果需要，购买食物/水
 step
 #softcore
 #som
-.zone Undercity >> 传送到地下城
-.trainer >> 训练你的职业咒语
+.zone Undercity >>传送到地下城
+.trainer >>训练你的职业咒语
 step
 #softcore
 #som
-.hs >> 炉灶前往陶拉霍营地
->> 如果需要，购买食物/水
+.hs >>炉灶前往陶拉霍营地
+>>如果需要，购买食物/水
 step
 #completewith next
 .goto Thousand Needles,45.14,49.11,0
-.fp Freewind Post >> 获取Freewind Post飞行路径
+.fp Freewind Post >>获取Freewind Post飞行路径
 >>这是完全可选的，因为它在路线中根本不使用，但很方便取用
 step
 >>前往塔纳瑞斯。穿越荒野->千针->小精灵
 .goto Tanaris,52.51,27.91
-.home >> 把你的炉子放在Gadgetzan
+.home >>把你的炉子放在Gadgetzan
 step
 #softcore
 #era
 .goto Tanaris,51.42,28.75
 .accept 3042 >>接受巨魔的脾气
-.vendor >> Krinkle的供应商和维修
+.vendor >>Krinkle的供应商和维修
 step
 #softcore
 #era
@@ -6156,17 +6155,17 @@ step
 step
 #softcore
 #era
-.goto Tanaris,38.73,20.02,60 >> 前往Zul'Farrak
+.goto Tanaris,38.73,20.02,60 >>前往Zul'Farrak
 step
 #softcore
 #era
 #completewith next
 +你现在要做的是Zul’Farrak。这可能非常困难，但一旦你学会了，xp/hr绝对值得
 >>根据您是否已安装，单击其中一个链接
->>如果你没有坐骑，一旦你得到价值90克的战利品，立即传送回幽暗城，注销后跳到提里斯福尔，跑到布里尔，然后购买你的坐骑。炉灶回到Gadgetzan << Undead
->>如果你没有坐骑，一旦你得到价值90克的战利品，立即传送回奥格瑞玛，跑向杜隆塔尔，然后跑向森津购买你的坐骑。炉灶回到Gadgetzan << Troll
-.link https://youtu.be/TgwHw7qT4ws >> 如果您有坐骑，请单击此处
-.link https://youtu.be/4-yJ47T728Y?t=6 >> 如果您没有坐骑，请单击此处
+>>如果你没有坐骑，一旦你得到价值90克的战利品，立即传送回幽暗城，注销后跳到提里斯福尔，跑到布里尔，然后购买你的坐骑。Hearth回到Gadgetzan << Undead
+>>如果你没有坐骑，一旦你得到价值90克的战利品，立即传送回奥格瑞玛，跑向杜隆塔尔，然后跑向森津购买你的坐骑。Hearth回到Gadgetzan << Troll
+.link https://youtu.be/TgwHw7qT4ws >>如果您有坐骑，请单击此处
+.link https://youtu.be/4-yJ47T728Y?t=6 >>如果您没有坐骑，请单击此处
 step
 #softcore
 #sticky
@@ -6177,7 +6176,7 @@ step
 step
 #softcore
 #era
-.xp 44 >> AoE Zul'Farrak达到44级
+.xp 44 >>AoE Zul'Farrak达到44级
 >>开始保存你得到的丝绸布和玛格韦布。以后你需要每叠12层
 step
 #softcore
@@ -6237,8 +6236,8 @@ step
 step
 #softcore
 #som
-.goto Tanaris,68.73,41.49,50 >> 前往Lost Rigger Cove。途中打开AoE指南并观看
-.link https://youtu.be/SxMc2GoP33c?t=4113 >> 单击此处以供参考
+.goto Tanaris,68.73,41.49,50 >>前往Lost Rigger Cove。途中打开AoE指南并观看
+.link https://youtu.be/SxMc2GoP33c?t=4113 >>单击此处以供参考
 step
 #softcore
 #som
@@ -6340,8 +6339,8 @@ step
 .turnin 1690 >>移交Wastewand法官
 step
 #hardcore
-.goto Tanaris,68.73,41.49,50 >> 前往Lost Rigger Cove。途中打开AoE指南并观看
-.link https://youtu.be/SxMc2GoP33c?t=4113 >> 单击此处以供参考
+.goto Tanaris,68.73,41.49,50 >>前往Lost Rigger Cove。途中打开AoE指南并观看
+.link https://youtu.be/SxMc2GoP33c?t=4113 >>单击此处以供参考
 step
 #hardcore
 #sticky
@@ -6364,7 +6363,7 @@ step
 step
 #hardcore
 .goto Tanaris,73.72,46.86
-.xp 44 >> AoE研磨至44
+.xp 44 >>AoE升级到44
 >>使用你在东边第二艘船第二层的任何船长钥匙
 >>开始保存你得到的丝绸布和玛格韦布。以后你需要每叠12层
 step
@@ -6382,29 +6381,29 @@ step
 #softcore
 #era
 #requires Temper
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step
 #softcore
 #som
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step
 #hardcore
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step
 .goto Undercity,85.16,10.01
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step
 .goto Undercity,82.79,15.82
->> 与汉娜交谈。购买6个传送符文
+>>与汉娜交谈。购买6个传送符文
 >>如果你需要的话，你也可以去AH买大一点的包
 .collect 17031,6 
 step
-.hs >> Gadgetzan之炉
-.vendor >> 购买140级45级饮料
+.hs >>Gadgetzan之炉
+.vendor >>购买140级45级饮料
 step
 #completewith next
 .goto Tanaris,52.30,28.92
-+把你的丝绸布和马盖韦布从早些时候起就存放在这里。以后需要每层12层（240）
++把你的丝绸布和马盖韦布从早些时候起就存放在这里。以后需要每层12层(240)
 step
 #hardcore
 .goto Tanaris,66.56,22.27
@@ -6432,51 +6431,51 @@ step
 step
 #hardcore
 .goto Tanaris,73.72,46.86
-.xp 48 >> AoE研磨至48
+.xp 48 >>AoE升级到48
 >>使用你在东边第二艘船第二层的任何船长钥匙
 step
 #softcore
 #som
 .goto Tanaris,51.42,28.75
 .accept 3042 >>接受巨魔的脾气
-.vendor >> Krinkle的供应商和维修
+.vendor >>Krinkle的供应商和维修
 step
 #softcore
 #era
 .goto Tanaris,51.42,28.75
 .turnin 3042 >>加入巨魔脾气
-.vendor >> Krinkle的供应商和维修
+.vendor >>Krinkle的供应商和维修
 step
 #softcore
 .goto Tanaris,51.57,26.75
-.accept 2865 >> 接受圣甲虫壳
+.accept 2865 >>接受圣甲虫壳
 step
 #softcore
-.goto Tanaris,38.73,20.02,60 >> 前往Zul'Farrak
+.goto Tanaris,38.73,20.02,60 >>前往Zul'Farrak
 step
 #softcore
 #sticky
 #completewith ZF54
 .goto Tanaris,39.14,29.15,0
->>如果你曾经锁定过（每小时最多5个实例），并且它不会让你回到ZF，那么就使用Dowsing Widget
+>>如果你曾经锁定过(每小时最多5个实例)，并且它不会让你回到ZF，那么就使用Dowsing Widget
 .complete 992,1 
 step
 #softcore
 #era
 #completewith next
 +你现在要学习做一个更难的版本，它需要更长的时间，但会提供更多的经验：拉圣甲虫。
-.link https://youtu.be/rFO4prcG2p0 >> 单击此处
+.link https://youtu.be/rFO4prcG2p0 >>单击此处
 step
 #softcore
 #som
 #completewith next
 +你现在要做的是Zul’Farrak。这可能非常困难，但一旦你学会了，xp/hr绝对值得
 >>根据您是否已安装，单击其中一个链接
->>如果你没有坐骑，一旦你得到了价值50克的战利品，立即传送回幽暗城，注销后跳到提里斯福尔，跑到布里尔，然后购买你的坐骑。炉灶回到Gadgetzan << Undead
->>如果你没有坐骑，一旦你得到了价值50克的战利品，立刻传送回奥格瑞玛，跑到杜隆塔尔，然后跑到森津买你的坐骑。炉灶回到Gadgetzan << Troll
-.link https://youtu.be/TgwHw7qT4ws >> 如果您有坐骑，请单击此处
-.link https://youtu.be/4-yJ47T728Y?t=6 >> 如果您没有坐骑，请单击此处
-.link https://youtu.be/rFO4prcG2p0 >> 当您感到足够舒适，可以进行额外的圣甲虫拉拽时，请单击此处
+>>如果你没有坐骑，一旦你得到了价值50克的战利品，立即传送回幽暗城，注销后跳到提里斯福尔，跑到布里尔，然后购买你的坐骑。Hearth回到Gadgetzan << Undead
+>>如果你没有坐骑，一旦你得到了价值50克的战利品，立刻传送回奥格瑞玛，跑到杜隆塔尔，然后跑到森津买你的坐骑。Hearth回到Gadgetzan << Troll
+.link https://youtu.be/TgwHw7qT4ws >>如果您有坐骑，请单击此处
+.link https://youtu.be/4-yJ47T728Y?t=6 >>如果您没有坐骑，请单击此处
+.link https://youtu.be/rFO4prcG2p0 >>当您感到足够舒适，可以进行额外的圣甲虫拉拽时，请单击此处
 step
 #softcore
 #sticky
@@ -6490,21 +6489,21 @@ step
 .complete 3042,1 
 step
 #softcore
-.xp 48 >> AoE Zul'Farrak达到48级
+.xp 48 >>AoE Zul'Farrak达到48级
 step
 #softcore
 #requires ScarabS
-.trainer >> 传送至奥格瑞玛或地下城。训练46-48级法术
+.trainer >>传送至奥格瑞玛或地下城。训练46-48级法术
 step
 #hardcore
-.trainer >> 传送至奥格瑞玛或地下城。训练46-48级法术
+.trainer >>传送至奥格瑞玛或地下城。训练46-48级法术
 step
-.hs >> Gadgetzan的心。如果需要，购买45级饮料
->> 如果需要，购买食物/水
+.hs >>Gadgetzan的心。如果需要，购买45级饮料
+>>如果需要，购买食物/水
 step
 #completewith next
 .goto Tanaris,52.30,28.92
-+把你的丝绸布和马盖韦布从早些时候起就存放在这里。以后需要每层12层（240）
++把你的丝绸布和马盖韦布从早些时候起就存放在这里。以后需要每层12层(240)
 step
 #hardcore
 .goto Tanaris,52.46,28.52
@@ -6514,7 +6513,7 @@ step
 #som
 .goto Tanaris,51.42,28.75
 .turnin 3042 >>加入巨魔脾气
-.vendor >> Krinkle的供应商和维修
+.vendor >>Krinkle的供应商和维修
 step
 #softcore
 .isQuestComplete 992
@@ -6523,13 +6522,13 @@ step
 step
 #softcore
 .goto Tanaris,51.57,26.75
-.turnin 2865 >> 交出圣甲虫壳
+.turnin 2865 >>交出圣甲虫壳
 step
 #softcore
-.goto Tanaris,38.73,20.02,60 >> 前往Zul'Farrak
+.goto Tanaris,38.73,20.02,60 >>前往Zul'Farrak
 step
 #softcore
-.xp 52 >> AoE Zul'Farrak达到52级
+.xp 52 >>AoE Zul'Farrak达到52级
 step
 #hardcore
 .isOnQuest 2876
@@ -6538,16 +6537,16 @@ step
 step
 #hardcore
 .goto Tanaris,73.72,46.86
-.xp 52 >> AoE研磨至52
+.xp 52 >>AoE升级到52
 >>使用你在东边第二艘船第二层的任何船长钥匙
 >>记住保存12叠Mageweave。你以后需要它来做衣服
 step
 #softcore
-.trainer >> 传送至奥格瑞玛或地下城。训练50-52级法术
+.trainer >>传送至奥格瑞玛或地下城。训练50-52级法术
 step
 #softcore
-.hs >> Gadgetzan的心。如果需要，购买45级饮料
->> 如果需要，购买食物/水
+.hs >>Gadgetzan的心。如果需要，购买45级饮料
+>>如果需要，购买食物/水
 step
 #softcore
 .isQuestComplete 992
@@ -6556,43 +6555,43 @@ step
 step
 #softcore
 .goto Tanaris,51.57,26.75
-.turnin 2865 >> 交出圣甲虫壳
+.turnin 2865 >>交出圣甲虫壳
 step
 #softcore
-.goto Tanaris,38.73,20.02,60 >> 前往Zul'Farrak
+.goto Tanaris,38.73,20.02,60 >>前往Zul'Farrak
 step
 #softcore
 #label ZF54
-.xp 54 >> AoE Zul'Farrak达到54级
+.xp 54 >>AoE Zul'Farrak达到54级
 >>记住保存12叠Mageweave。你以后需要它来做衣服
 step
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step
 .goto Undercity,85.16,10.01
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step
 #sticky
 #completewith next
 .goto Undercity,82.36,15.31
 +转到右侧的试剂供应商，执行“注销跳过”，将角色定位在最低楼梯的最高部分，直到看起来像漂浮在空中，然后注销并重新登录。
-.link https://www.youtube.com/watch?v=-Bi95bCN8dM >> 单击此处查看示例
+.link https://www.youtube.com/watch?v=-Bi95bCN8dM >>单击此处查看示例
 >>如果你做不到这一点，就正常离开幽暗城
 step
-.goto Tirisfal Glades,61.85,66.59,60 >> 退出地下城
+.goto Tirisfal Glades,61.85,66.59,60 >>退出地下城
 step
 >>向东跑到堡垒
 .goto Tirisfal Glades,83.19,68.45
-.turnin 5405 >> 交出银色黎明委员会
+.turnin 5405 >>交出银色黎明委员会
 
 step
 .goto Tirisfal Glades,83.1,68.9
-.accept 5096 >>接受红色分流
+.accept 5096 >>接受猩红分流
 step
 .goto Western Plaguelands,26.55,56.18
 >>抢劫火旁的板条箱
 .collect 12814,1 
 step
->> 要小心，因为暴徒相对比较难，而且可以在这里相互牵制
+>>要小心，因为暴徒相对比较难，而且可以在这里相互牵制
 >>烧毁指挥帐篷，然后在上面使用你库存中的横幅
 .goto Western Plaguelands,40.5,51.8
 .complete 5096,1 
@@ -6638,12 +6637,12 @@ step
 step
 >>谷仓内的地面
 .goto Western Plaguelands,47.79,50.67
-.turnin 5058 >> 交上Dalson夫人的日记
+.turnin 5058 >>交上Dalson夫人的日记
 step
 #completewith next
 +开始AoE在该地区的亡灵。小心，就像骷髅恐怖所害怕的那样。观看视频了解更多信息 << !Undead
-+开始AoE在该地区的亡灵。小心，就像骷髅恐怖分子所害怕的那样（记住使用你的被遗忘者种族意志）。观看视频了解更多信息 << Undead
-.link https://youtu.be/SxMc2GoP33c?t=4759 >> 单击此处
++开始AoE在该地区的亡灵。小心，就像骷髅恐怖分子所害怕的那样(记住使用你的被遗忘者种族意志)。观看视频了解更多信息 << Undead
+.link https://youtu.be/SxMc2GoP33c?t=4759 >>单击此处
 step
 #label SkeletonKey
 #completewith UD58
@@ -6655,14 +6654,14 @@ step
 #requires SkeletonKey
 .goto Western Plaguelands,48.16,49.64
 >>单击室外。这将产生一个暴徒。杀了它
-.turnin 5059 >> 转入锁定状态
+.turnin 5059 >>转入锁定状态
 .collect 12739,1 
 step
 #completewith UD58
 #requires LockedAway
 >>点击房屋顶层的橱柜
 .goto Western Plaguelands,47.37,49.66
-.turnin 5060 >> 转入锁定状态
+.turnin 5060 >>转入锁定状态
 step
 #phase 5
 #sticky
@@ -6679,12 +6678,12 @@ step
 .xp 55+100000>>该地区的AoE亡灵达到55和100000+/180800xp
 >>记住尝试保存12层Runecloth。你以后需要它来做衣服
 step
->>使用门口侧面包中的信标火炬（不要杀死里面的精英）
+>>使用门口侧面包中的信标火炬(不要杀死里面的精英)
 .goto Western Plaguelands,44.24,63.06
 .complete 5098,3 
 step
 .goto Western Plaguelands,26.65,55.18
-.vendor >> 你现在应该和银色黎明交朋友了，所以买尽可能多的曼纳饼干来维持你的等级60
+.vendor >>你现在应该和银色黎明交朋友了，所以买尽可能多的曼纳饼干来维持你的等级60
 >>如果你没有，把你掠夺的灾石交上来，直到你被洗劫一空
 step
 .goto Western Plaguelands,26.40,59.14
@@ -6694,13 +6693,13 @@ step
 .goto Western Plaguelands,26.68,59.59
 .accept 5901 >>接受你身上的瘟疫
 step
->>使用门口侧面包中的信标火炬（不要杀死里面的精英）
+>>使用门口侧面包中的信标火炬(不要杀死里面的精英)
 .goto Western Plaguelands,42.28,66.05
 .complete 5098,2 
 step
 #label UD58
 .goto Western Plaguelands,46.49,52.15
-.xp 58 >> AoE该地区的亡灵人数达到58人
+.xp 58 >>AoE该地区的亡灵人数达到58人
 step
 >>杀死大锅魔王Razarch。抢他的钥匙
 .goto Western Plaguelands,53.07,65.97
@@ -6713,10 +6712,10 @@ step
 .goto Western Plaguelands,53.73,64.66
 .accept 4984 >>接受野生动物的痛苦
 step
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step
 .goto Undercity,85.16,10.01
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step
 .goto Undercity,67.62,44.16
 .turnin 5023 >>迟到总比不上好
@@ -6731,10 +6730,10 @@ step
 #completewith next
 .goto Undercity,67.62,44.16
 +执行“注销跳过”，方法是定位角色，直到它们看起来像漂浮在你和地面之间，然后注销并重新登录。
-.link https://www.youtube.com/watch?v=-Bi95bCN8dM >> 单击此处查看示例
+.link https://www.youtube.com/watch?v=-Bi95bCN8dM >>单击此处查看示例
 >>如果你做不到这一点，就正常离开幽暗城
 step
-.goto Tirisfal Glades,61.85,66.59,60 >> 退出地下城
+.goto Tirisfal Glades,61.85,66.59,60 >>退出地下城
 step
 .goto Western Plaguelands,26.40,59.15
 .turnin 5234 >>返回堡垒
@@ -6766,7 +6765,7 @@ step
 .turnin 4984 >>交出野生动物的痛苦
 .accept 4985 >>接受野生动物的痛苦
 step
-.abandon 4984 >> 放弃野生动物的痛苦
+.abandon 4984 >>放弃野生动物的痛苦
 step
 #sticky
 #label Grizzly
@@ -6804,16 +6803,16 @@ step << skip
 .accept 6022 >>接受有目的的杀戮
 step
 .goto Eastern Plaguelands,36.5,90.8
-.accept 5149 >> 接受帕梅拉的玩偶
+.accept 5149 >>接受帕梅拉的玩偶
 step
 .goto Eastern Plaguelands,39.2,91.6
 >>抢劫在达罗郡地板上发现的3个娃娃部件，然后将它们组合在一起
 .complete 5149,1 
 step
 .goto Eastern Plaguelands,36.4,90.9
-.turnin 5149 >> 交上帕梅拉的玩偶
-.accept 5152 >> 接受玛琳阿姨
-.accept 5241 >> 接受Carlin叔叔
+.turnin 5149 >>交上帕梅拉的玩偶
+.accept 5152 >>接受玛琳阿姨
+.accept 5241 >>接受Carlin叔叔
 step
 #requires fordring1
 .goto Eastern Plaguelands,81.6,59.3
@@ -6821,26 +6820,26 @@ step
 step
 #phase 5
 .goto Eastern Plaguelands,81.63,58.07
-.home >> 把你的心放在光明的希望教堂
+.home >>把你的心放在光明的希望教堂
 step
 #phase 5
 .goto Eastern Plaguelands,81.42,58.51
-.accept 9126 >> 接受Bonescythe Digs
+.accept 9126 >>接受Bonescythe Digs
 step
 #phase 5
 .isQuestComplete 9126
-.turnin 9126 >> 转入Bonescythe Digs
+.turnin 9126 >>转入Bonescythe Digs
 step
 .goto Eastern Plaguelands,81.6,59.3
-.fp Light's Hope Chapel >> 获得光明希望教堂的飞行路线
+.fp Light's Hope Chapel >>获得光明希望教堂的飞行路线
 step
 .goto Eastern Plaguelands,81.4,59.9
-.turnin 5241 >> 交给卡林叔叔
-.accept 5211 >> 接受达罗郡守卫
+.turnin 5241 >>交给卡林叔叔
+.accept 5211 >>接受达罗郡守卫
 step
 .goto Eastern Plaguelands,79.7,63.6
-.accept 5281 >> 接受不安宁的灵魂
-.accept 6021 >> 接受被驱逐的扎达尔
+.accept 5281 >>接受不安宁的灵魂
+.accept 6021 >>接受被驱逐的扎达尔
 step
 #sticky
 #completewith EPL1
@@ -6864,32 +6863,32 @@ step
 step
 #sticky
 #completewith next
-+如果你有多余的瘟疫白蚁（不是100堆），请扔掉它们
++如果你有多余的瘟疫白蚁(不是100堆)，请扔掉它们
 step
 .goto Eastern Plaguelands,14.5,33.6
-.turnin 5281 >> 交回不安宁的灵魂
+.turnin 5281 >>交回不安宁的灵魂
 step
 #requires grubs
 #label EPL1
 .goto Eastern Plaguelands,7.6,43.7
-.turnin 5542 >> 交出恶魔狗
-.turnin 5543 >> 血色淡淡的天空
-.turnin 5544 >> 上车腐烂垃圾
-.accept 5742 >> 接受赎回
+.turnin 5542 >>交出恶魔狗
+.turnin 5543 >>血色淡淡的天空
+.turnin 5544 >>上车腐烂垃圾
+.accept 5742 >>接受赎回
 step
 #requires FPlague
 .goto Eastern Plaguelands,7.6,43.7
 >>与提里奥交谈
 .complete 5742,1 
-.turnin 5742 >> 兑现赎回
-.accept 5781 >> 接受遗忘的记忆
+.turnin 5742 >>兑现赎回
+.accept 5781 >>接受遗忘的记忆
 step
 .goto Eastern Plaguelands,27.4,84.9
 >>进入巨魔地窖
 .complete 6021,1 
 step
 .goto Eastern Plaguelands,27.3,85.2
-.accept 6024 >> 接受Hameya的请求
+.accept 6024 >>接受Hameya的请求
 step
 .goto Eastern Plaguelands,28.4,86.6
 >>通过点击垃圾堆召唤Mercutio和他的暴徒，你必须在处理其他3个添加时杀死他
@@ -6897,19 +6896,19 @@ step
 .complete 5781,1 
 step
 .goto Eastern Plaguelands,7.6,43.7
-.turnin 5781 >> 遗忘记忆的交集
-.accept 5845 >> 接受失去的荣誉
+.turnin 5781 >>遗忘记忆的交集
+.accept 5845 >>接受失去的荣誉
 step
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step
 #sticky
 #completewith next
 .goto Undercity,82.36,15.31
 +转到右侧的试剂供应商，执行“注销跳过”，将角色定位在最低楼梯的最高部分，直到看起来像漂浮在空中，然后注销并重新登录。
-.link https://www.youtube.com/watch?v=-Bi95bCN8dM >> 单击此处查看示例
+.link https://www.youtube.com/watch?v=-Bi95bCN8dM >>单击此处查看示例
 >>如果你做不到这一点，就正常离开幽暗城
 step
-.goto Tirisfal Glades,61.85,66.59,60 >> 退出地下城
+.goto Tirisfal Glades,61.85,66.59,60 >>退出地下城
 step
 .goto Tirisfal Glades,83.04,71.91
 .turnin 5236 >>返回堡垒
@@ -6918,26 +6917,26 @@ step
 .turnin 5901 >>向你倾诉瘟疫
 .accept 5902 >>接受你身上的瘟疫
 step
->>使用门口侧面包中的信标火炬（不要杀死里面的精英）
+>>使用门口侧面包中的信标火炬(不要杀死里面的精英)
 .goto Western Plaguelands,40.15,71.50
 .complete 5098,1 
 step
 .goto Western Plaguelands,49.2,78.6
-.turnin 5152 >> 交给玛琳阿姨
-.accept 5153 >> 接受一位奇怪的历史学家
+.turnin 5152 >>交给玛琳阿姨
+.accept 5153 >>接受一位奇怪的历史学家
 step
 .goto Western Plaguelands,49.6,76.8
 >>盗取房子外面的墓碑
 .complete 5153,1 
 step
->>使用门口侧面包中的信标火炬（不要杀死里面的精英）
+>>使用门口侧面包中的信标火炬(不要杀死里面的精英)
 .goto Western Plaguelands,46.73,71.14
 .complete 5098,4 
 step
 >>走进客栈。尽量避开途中的暴徒
 .goto Western Plaguelands,39.5,66.9
-.turnin 5153 >> 交一位奇怪的历史学家
-.accept 5154 >> 接受《达罗郡年鉴》
+.turnin 5153 >>交一位奇怪的历史学家
+.accept 5154 >>接受《达罗郡年鉴》
 
 step << skip
 #sticky
@@ -6956,38 +6955,38 @@ step
 .goto Western Plaguelands,39.5,66.8
 
 
-.turnin 5154 >> 上交《达罗郡年鉴》
-.accept 5210 >> 接受卡林兄弟
+.turnin 5154 >>上交《达罗郡年鉴》
+.accept 5210 >>接受卡林兄弟
 step << skip
 .goto Western Plaguelands,41.3,67.1
 >>在被烧毁的房子里寻找小锁盒
 .complete 4972,1 
 step << skip
 .goto Western Plaguelands,39.4,66.9
-.turnin 4972 >> 转入倒计时时间
+.turnin 4972 >>转入倒计时时间
 step
 #phase 1-4
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step
 #phase 1-4
 .goto Undercity,63.28,48.58
-.fly Eastern Plaguelands >> 飞向光明的希望教堂
+.fly Eastern Plaguelands >>飞向光明的希望教堂
 step
 #phase 5
-.hs >> 光明之心教堂
->> 如果需要，购买食物/水
+.hs >>光明之心教堂
+>>如果需要，购买食物/水
 step
 #phase 5
 .isQuestComplete 9126
-.turnin 9126 >> 转入Bonescythe Digs
+.turnin 9126 >>转入Bonescythe Digs
 step
 .goto Eastern Plaguelands,81.5,59.8
-.turnin 5210 >> 交给卡林兄弟
-.accept 5181 >> 接受达罗郡的恶棍
-.accept 5168 >> 接受达罗郡英雄
+.turnin 5210 >>交给卡林兄弟
+.accept 5181 >>接受达罗郡的恶棍
+.accept 5168 >>接受达罗郡英雄
 step
 .goto Eastern Plaguelands,79.7,63.7
-.turnin 6021 >> 交给被放逐的扎尔达尔
+.turnin 6021 >>交给被放逐的扎尔达尔
 step
 .goto Eastern Plaguelands,71.3,34.0
 >>在水下抢劫旗帜
@@ -7009,30 +7008,30 @@ step
 .complete 5181,2 
 step
 .goto Eastern Plaguelands,28.1,86.1
-.turnin 6024 >> 提交Hameya的请求
+.turnin 6024 >>提交Hameya的请求
 step
 .goto Eastern Plaguelands,7.6,43.6
-.turnin 5845 >> 交出失去的荣誉
-.accept 5846 >> 接受爱和家庭
+.turnin 5845 >>交出失去的荣誉
+.accept 5846 >>接受爱和家庭
 step
 .goto Western Plaguelands,63.8,57.2
 >>在谷仓外的地上抢劫盾牌
 .complete 5168,2 
 step
 .goto Western Plaguelands,65.7,75.4
-.turnin 5846 >> 爱与家庭的交集
+.turnin 5846 >>爱与家庭的交集
 step
 .isQuestComplete 4985
 .goto Western Plaguelands,53.7,64.7
-.turnin 4985 >> 交出野生动物的痛苦
-.accept 4987 >> 接受雕纹Oaken Branch
+.turnin 4985 >>交出野生动物的痛苦
+.accept 4987 >>接受雕纹Oaken Branch
 step
 .goto Western Plaguelands,48.4,31.9
-.turnin 5902 >> 向你倾诉瘟疫
-.accept 6390 >> 接受你身上的瘟疫
+.turnin 5902 >>向你倾诉瘟疫
+.accept 6390 >>接受你身上的瘟疫
 step
 .goto Western Plaguelands,51.9,28.2
-.accept 6004 >> 接受未完成的业务
+.accept 6004 >>接受未完成的业务
 step
 .goto Western Plaguelands,51.80,44.25,100,0
 .goto Western Plaguelands,40.53,51.79,100,0
@@ -7042,8 +7041,8 @@ step
 .complete 6004,4 
 step
 .goto Western Plaguelands,51.9,28.1
-.turnin 6004 >> 移交未完成的业务
-.accept 6023 >> 接受未完成的业务
+.turnin 6004 >>移交未完成的业务
+.accept 6023 >>接受未完成的业务
 step
 .goto Western Plaguelands,57.8,36.2
 .complete 6023,1 
@@ -7054,8 +7053,8 @@ step
 *There is a level 63 elite mob that can spawn at the tower, if that's the case just be patient and wait for Durgen to come down
 step
 .goto Western Plaguelands,51.9,28.0
-.turnin 6023 >> 移交未完成的业务
-.accept 6025 >> 接受未完成的业务
+.turnin 6023 >>移交未完成的业务
+.accept 6025 >>接受未完成的业务
 step
 .goto Western Plaguelands,45.7,18.8
 .complete 6025,1 
@@ -7065,19 +7064,19 @@ step
 >>抢劫市政厅内的图书馆。要么慢慢地逐个杀死所有的暴徒，要么把所有的暴民都拉进去，放在外面，把他们冷冻起来，然后抢劫天秤座并逃跑
 >>不要死在这里，否则你会有很长的路要走
 .complete 5168,1 
-.link >> 单击此处获取指南
+.link >>单击此处获取指南
 step
 #hardcore
 .goto Western Plaguelands,42.5,18.9
 >>抢劫市政厅内的图书馆。要么慢慢地逐个杀死所有的暴徒，要么把所有的暴民都拉进去，放在外面，把他们冷冻起来，然后抢劫天秤座并逃跑
 >>这项任务非常困难和危险。我不建议在硬核上这样做
 .complete 5168,1 
-.link >> 单击此处获取指南
+.link >>单击此处获取指南
 step
 #sticky
 #completewith next
 +我强烈建议观看这些暴徒的法师指南
-.link https://youtu.be/SxMc2GoP33c?t=3824 >> 单击此处
+.link https://youtu.be/SxMc2GoP33c?t=3824 >>单击此处
 step
 .goto Western Plaguelands,46.30,16.86,120,0
 .goto Western Plaguelands,44.84,12.43,120,0
@@ -7086,7 +7085,7 @@ step
 .xp 59+130000>>研磨至59&130000+/209800
 step
 .goto Western Plaguelands,51.9,28.0
-.turnin 6025 >> 移交未完成的业务
+.turnin 6025 >>移交未完成的业务
 step
 .goto Western Plaguelands,26.51,56.02
 .turnin 5098 >>沿望塔全部上缴
@@ -7097,26 +7096,26 @@ step
 .turnin 838 >>交学费
 step
 #phase 1-4
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step
 #phase 1-4
 .goto Undercity,63.28,48.58
-.fly Eastern Plaguelands >> 飞向光明的希望教堂
+.fly Eastern Plaguelands >>飞向光明的希望教堂
 step
 #phase 5
-.hs >> 光明之心教堂
->> 如果需要，购买食物/水
+.hs >>光明之心教堂
+>>如果需要，购买食物/水
 step
 #phase 5
 .isQuestComplete 9126
-.turnin 9126 >> 转入Bonescythe Digs
+.turnin 9126 >>转入Bonescythe Digs
 step
 .goto Eastern Plaguelands,81.5,59.8
-.turnin 5168 >> 交出达罗郡英雄
-.turnin 5181 >> 移交达罗郡的恶棍
-.turnin 5211 >> 交出达罗郡守卫
+.turnin 5168 >>交出达罗郡英雄
+.turnin 5181 >>移交达罗郡的恶棍
+.turnin 5211 >>交出达罗郡守卫
 step
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step
 #softcore
 #completewith UCBank
@@ -7132,14 +7131,14 @@ step
 .collect 4338,240 
 .collect 14047,240 
 step
->>确保你没有加载项会自动提交额外的runelcloth（代表），否则会告诉你稍后再购买
+>>确保你没有加载项会自动提交额外的runelcloth(代表)，否则会告诉你稍后再购买
 .goto Undercity,71.65,29.25
-.turnin 7813 >> 交出捐赠的羊毛
-.turnin 7814 >> 捐献丝绸
-.turnin 7817 >> 交出Mageweave的捐赠
-.turnin 7818 >> 交出Runecloth的捐赠
+.turnin 7813 >>交出捐赠的羊毛
+.turnin 7814 >>捐献丝绸
+.turnin 7817 >>交出Mageweave的捐赠
+.turnin 7818 >>交出Runecloth的捐赠
 step
-.zone Orgrimmar >> 电传至Orgrimmar
+.zone Orgrimmar >>电传至Orgrimmar
 step
 #softcore
 #completewith OGBank
@@ -7155,22 +7154,22 @@ step
 .collect 4338,180 
 .collect 14047,180 
 step
->>确保你没有加载项会自动提交额外的runelcloth（代表），否则会告诉你稍后再购买
+>>确保你没有加载项会自动提交额外的runelcloth(代表)，否则会告诉你稍后再购买
 .goto Orgrimmar,63.62,51.24
-.turnin 7826 >> 交出捐赠的羊毛
-.turnin 7827 >> 捐献丝绸
-.turnin 7831 >> 交出Mageweave的捐赠
-.turnin 7824 >> 交出Runecloth的捐赠
+.turnin 7826 >>交出捐赠的羊毛
+.turnin 7827 >>捐献丝绸
+.turnin 7831 >>交出Mageweave的捐赠
+.turnin 7824 >>交出Runecloth的捐赠
 step
->>确保你没有加载项会自动提交额外的runelcloth（代表），否则会告诉你稍后再购买
+>>确保你没有加载项会自动提交额外的runelcloth(代表)，否则会告诉你稍后再购买
 .goto Orgrimmar,37.69,87.92
-.turnin 7833 >> 交出捐赠的羊毛
-.turnin 7834 >> 捐献丝绸
-.turnin 7835 >> 交出Mageweave的捐赠
-.turnin 7836 >> 交出Runecloth的捐赠
+.turnin 7833 >>交出捐赠的羊毛
+.turnin 7834 >>捐献丝绸
+.turnin 7835 >>交出Mageweave的捐赠
+.turnin 7836 >>交出Runecloth的捐赠
 step
 .goto Orgrimmar,45.11,63.89
-.fly Thunder Bluff >> 飞向雷霆崖
+.fly Thunder Bluff >>飞向雷霆崖
 step
 #softcore
 #completewith TBBank
@@ -7189,12 +7188,12 @@ step
 .goto Thunder Bluff,75.63,31.66
 .turnin 4987 >>交给雕刻的奥肯分行
 step
->>确保你没有加载项会自动提交额外的runelcloth（代表），否则会告诉你稍后再购买
+>>确保你没有加载项会自动提交额外的runelcloth(代表)，否则会告诉你稍后再购买
 .goto Thunder Bluff,43.05,42.73
-.turnin 7820 >> 交出捐赠的羊毛
-.turnin 7821 >> 捐献丝绸
-.turnin 7822 >> 交出Mageweave的捐赠
-.turnin 7823 >> 交出Runecloth的捐赠
+.turnin 7820 >>交出捐赠的羊毛
+.turnin 7821 >>捐献丝绸
+.turnin 7822 >>交出Mageweave的捐赠
+.turnin 7823 >>交出Runecloth的捐赠
 step
 +恭喜你进入60级！
 ]])
@@ -7218,43 +7217,43 @@ step
 #label Hoofprints
 >>单击地面上的Hoofprints
 .goto Dustwallow Marsh,29.7,47.6
-.accept 1268 >> 接受可疑的指纹
+.accept 1268 >>接受可疑的指纹
 step
 #completewith next
 #sticky
 #label Badge
 >>点击木板上的护墙板
 .goto Dustwallow Marsh,29.8,48.2
-.accept 1269 >> 接受Paval Reethe中尉
+.accept 1269 >>接受Paval Reethe中尉
 step
 >>点击壁炉上方的盾牌
 .goto Dustwallow Marsh,29.6,48.6
-.accept 1251 >> 接受黑盾
+.accept 1251 >>接受黑盾
 step
 #requires Hoofprints
 step
 #requires Badge
 .goto Dustwallow Marsh,35.1,38.2
-.accept 1177 >> 接受饥饿！
+.accept 1177 >>接受饥饿！
 step << skip
 .goto Dustwallow Marsh,35.5,32.0
-.fp Brackenwall >> 获得Brackenwall村的飞行路线
+.fp Brackenwall >>获得Brackenwall村的飞行路线
 
 step
 .goto Dustwallow Marsh,35.2,30.6
-.accept 1201 >> 接受Theramore间谍
+.accept 1201 >>接受Theramore间谍
 step
 .goto Dustwallow Marsh,36.41,31.88
-.turnin 1268 >> 交出可疑的指纹
-.turnin 1269 >> 上缴帕瓦尔·里瑟中尉
+.turnin 1268 >>交出可疑的指纹
+.turnin 1269 >>上缴帕瓦尔·里瑟中尉
 step
 .goto Dustwallow Marsh,36.41,31.88
-.turnin 1251 >> 交出黑盾
-.accept 1321 >> 接受黑盾
+.turnin 1251 >>交出黑盾
+.accept 1321 >>接受黑盾
 step
 .goto Dustwallow Marsh,36.50,30.80
-.turnin 1321 >> 交出黑盾
-.accept 1322 >> 接受黑盾
+.turnin 1321 >>交出黑盾
+.accept 1322 >>接受黑盾
 step
 #sticky
 #completewith Infiltrator
@@ -7266,40 +7265,40 @@ step
 .goto Dustwallow Marsh,37.9,37.4,0
 .goto Dustwallow Marsh,39.0,21.6,0
 >>杀死该地区的黑狼蜘蛛。抢走他们的袋子
->> 血猛禽与蜘蛛共享产卵。必要时也杀了他们
+>>血猛禽与蜘蛛共享产卵。必要时也杀了他们
 .complete 1322,1 
 step
 .goto Dustwallow Marsh,41.00,36.70
->> 开始护送任务
-.accept 1273 >> 接受提问Reethe
+>>开始护送任务
+.accept 1273 >>接受提问Reethe
 step
 .goto Dustwallow Marsh,42.50,38.00
->> 护送奥格伦
->> 当你到达营地时，将产生4个暴徒，并进行一个简短的rp序列。当他们开始攻击时，让奥格伦攻击一个，同时使用冷却时间杀死另外三个。
+>>护送奥格伦
+>>当你到达营地时，将产生4个暴徒，并进行一个简短的rp序列。当他们开始攻击时，让奥格伦攻击一个，同时使用冷却时间杀死另外三个。
 .complete 1273,1
 step
 .goto Dustwallow Marsh,46.90,17.50
->> 开始护送任务
-.accept 1270 >> 接受臭鼬的逃跑
+>>开始护送任务
+.accept 1270 >>接受臭鼬的逃跑
 step
->> 护送恶臭
+>>护送恶臭
 .complete 1270,1
 step
 #completewith next
 #sticky
 #label Mound
 .goto Dustwallow Marsh,55.44,25.92
->> 点击污垢堆
-.accept 1238 >> 接受丢失报告
+>>点击污垢堆
+.accept 1238 >>接受丢失报告
 step
 .goto Dustwallow Marsh,55.43,26.26
-.accept 1218 >> 接受舒缓香料
-.turnin 1218 >> 加入舒缓香料
-.accept 1206 >> 接受Jarl需要眼睛
+.accept 1218 >>接受舒缓香料
+.turnin 1218 >>加入舒缓香料
+.accept 1206 >>接受Jarl需要眼睛
 step
 #requires Mound
 .goto Dustwallow Marsh,57.25,20.99
->> 杀死该地区的穆洛克人。抢他们的头
+>>杀死该地区的穆洛克人。抢他们的头
 .complete 1177,1
 step
 #sticky
@@ -7341,31 +7340,31 @@ step
 .complete 1322,1 
 step
 .goto Dustwallow Marsh,35.30,30.70
-.turnin 1201 >> 交出Theramore间谍
-.turnin 1238 >> 交出遗失报告
+.turnin 1201 >>交出Theramore间谍
+.turnin 1238 >>交出遗失报告
 step
 .goto Dustwallow Marsh,35.30,30.70
-.accept 1202 >> 接受Theramore码头
+.accept 1202 >>接受Theramore码头
 #softcore
 step
 .goto Dustwallow Marsh,36.50,30.80
-.turnin 1322 >> 交出黑盾
-.accept 1323 >> 接受黑盾
+.turnin 1322 >>交出黑盾
+.accept 1323 >>接受黑盾
 step
 .goto Dustwallow Marsh,36.50,31.80
-.turnin 1323 >> 交出黑盾
-.turnin 1273 >> 提交提问Reethe
-.accept 1276 >> 接受黑盾
+.turnin 1323 >>交出黑盾
+.turnin 1273 >>提交提问Reethe
+.accept 1276 >>接受黑盾
 step
 .goto Dustwallow Marsh,35.20,38.30
-.turnin 1177 >> 饿了就回去！
+.turnin 1177 >>饿了就回去！
 step
 .goto Dustwallow Marsh,55.40,25.90
 >>点击房子外面的土堆
-.accept 1239 >> 接受被分割的负责人
+.accept 1239 >>接受被分割的负责人
 step
 .goto Dustwallow Marsh,55.43,26.26
-.turnin 1206 >> 转入Jarl需要眼睛
+.turnin 1206 >>转入Jarl需要眼睛
 step
 #era
 .goto Dustwallow Marsh,46.9,17.5
@@ -7388,85 +7387,85 @@ step
 #hardcore
 step
 .goto Dustwallow Marsh,71.50,51.30
->> 沿着塞拉莫尔东侧游泳。务必小心警卫。在水中寻找胸部。打开它并掠夺文件
+>>沿着塞拉莫尔东侧游泳。务必小心警卫。在水中寻找胸部。打开它并掠夺文件
 .complete 1202,1
 #softcore
 step
 #completewith next
 .goto Dustwallow Marsh,69.60,49.96
-.deathskip >> 在精神治疗者处死亡并重生
+.deathskip >>在精神治疗者处死亡并重生
 #softcore
 step
 .isQuestTurnedIn 1238
 .goto Dustwallow Marsh,35.30,30.70
-.turnin 1239 >> 交出被分割的头部
-.accept 1240 >> 接受巨魔巫医
+.turnin 1239 >>交出被分割的头部
+.accept 1240 >>接受巨魔巫医
 step
 .goto Dustwallow Marsh,35.30,30.70
-.turnin 1202 >> 在Theramore码头上船
+.turnin 1202 >>在Theramore码头上船
 #softcore
 step
 .goto Dustwallow Marsh,35.6,31.9
-.fly Gadgetzan >> 飞到Gadgetzan
+.fly Gadgetzan >>飞到Gadgetzan
 step
 .goto Thousand Needles,80.2,75.8
-.turnin 1183 >> 提交地精赞助
-.accept 1186 >> 接受第十八名飞行员
+.turnin 1183 >>提交地精赞助
+.accept 1186 >>接受第十八名飞行员
 step
 .goto Thousand Needles,80.3,76.1
-.turnin 1186 >> 交第十八飞行员
-.accept 1187 >> 接受Razzeric的Tweaking
+.turnin 1186 >>交第十八飞行员
+.accept 1187 >>接受Razzeric的Tweaking
 step << Druid
 #label dustwallowskip1
->> 使用“传送到月光”法术
+>>使用“传送到月光”法术
 .goto Moonglade,52.5,40.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 #label dustwallowskip1
-.hs >> 向奥格瑞玛致敬，如果炉子不朝上飞的话。
->> 如果需要，购买食物/水
+.hs >>向奥格瑞玛致敬，如果炉子不朝上飞的话。
+>>如果需要，购买食物/水
 step
 #sticky
-.abandon 1186 >> 放弃地精赞助
+.abandon 1186 >>放弃地精赞助
 step << Shaman
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.3,14.8
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,47.5,46.7
-.vendor >> 如果你有钱，买你的宠物升级。
+.vendor >>如果你有钱，买你的宠物升级。
 step << Priest
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << !Mage
-.zone Tirisfal Glades >> 跑回齐柏林塔。把齐柏林飞船带到幽暗城
+.zone Tirisfal Glades >>跑回齐柏林塔。把齐柏林飞船带到幽暗城
 step << Mage
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step << Mage
 .goto Undercity,85.13,10.03
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 >>确保你至少存30块银子以备日后使用
 step << Mage
 .goto Undercity,82.79,15.82
-.vendor >> 去找汉娜。购买三个传送符文（如果你想，可以购买更多）
+.vendor >>去找汉娜。购买三个传送符文(如果你想，可以购买更多)
 .collect 17031,3 
 ]])
 RXPGuides.RegisterGuide([[
-#version 7
+#version 9
 #wotlk
 #tbc
 #group RestedXP 部落 30-45
@@ -7477,36 +7476,36 @@ step
 #completewith next
 .isOnQuest 1183
 .goto Dustwallow Marsh,35.6,31.9
-.fly Gadgetzan >> 飞到Gadgetzan
+.fly Gadgetzan >>飞到Gadgetzan
 step
 .isOnQuest 1107
 .goto Thousand Needles,78.1,77.1
-.turnin 1107 >> 收起包裹的尾翼
+.turnin 1107 >>收起包裹的尾翼
 step
 .isOnQuest 1112
 .goto Thousand Needles,77.8,77.2
->> 前往电缆管道。任务完成后会有一个简短的角色扮演。
-.turnin 1112 >> Kravel的转入零件
+>>前往电缆管道。任务完成后会有一个简短的角色扮演。
+.turnin 1112 >>Kravel的转入零件
 step
 .isQuestTurnedIn 1112
 .zoneskip Thousand Needles,1
 .goto Thousand Needles,77.8,77.2
-.accept 1114 >> 接受交付给侏儒
-.turnin 1114 >> 交给侏儒
+.accept 1114 >>接受交付给侏儒
+.turnin 1114 >>交给侏儒
 step
 .isQuestTurnedIn 1182
 .goto Thousand Needles,80.2,75.8
-.turnin 1183 >> 提交地精赞助
-.accept 1186 >> 接受第十八名飞行员
+.turnin 1183 >>提交地精赞助
+.accept 1186 >>接受第十八名飞行员
 step
 .isQuestTurnedIn 1183
 .goto Thousand Needles,80.3,76.1
-.turnin 1186 >> 交第十八飞行员
-.accept 1187 >> 接受Razzeric的Tweaking
+.turnin 1186 >>交第十八飞行员
+.accept 1187 >>接受Razzeric的Tweaking
 step << Druid
-.cast 18960 >> 使用“传送到月光”法术
+.cast 18960 >>使用“传送到月光”法术
 .goto Moonglade,52.5,40.5
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 
 step
 #completewith next
@@ -7514,39 +7513,39 @@ step
 step << Paladin
 #completewith next
 .goto Orgrimmar,32.4,35.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Shaman
 #completewith next
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 #completewith next
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 #completewith next
 .goto Orgrimmar,66.3,14.8
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 #completewith next
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 #completewith next
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 #completewith next
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Mage
 #completewith next
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 #completewith next
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << !Druid !Shaman !Warlock
 #completewith next
 .goto Orgrimmar,55.5,64.9
@@ -7555,53 +7554,53 @@ step << !Druid !Shaman !Warlock
 step
 #completewith next
 .goto Durotar,50.6,12.6
-.zone Stranglethorn Vale >> 登上齐柏林塔，带着齐柏林飞艇去荆棘谷
+.zone Stranglethorn Vale >>登上齐柏林塔，带着齐柏林飞艇去荆棘谷
 step
 #xprate <1.5
 .goto Stranglethorn Vale,32.2,27.7
-.turnin 1240 >> 交出巨魔巫医
-.accept 1261 >> 接受Marg Speaks
+.turnin 1240 >>交出巨魔巫医
+.accept 1261 >>接受Marg Speaks
 step
 #xprate >1.499
 .goto Stranglethorn Vale,32.2,27.7
-.turnin 1240 >> 交出巨魔巫医
+.turnin 1240 >>交出巨魔巫医
 step
 #completewith next
 .goto Stranglethorn Vale,31.6,29.1
-.zone Tirisfal Glades >> 登上齐柏林塔，带着齐柏林飞艇去蒂里斯法尔·格拉德斯
+.zone Tirisfal Glades >>登上齐柏林塔，带着齐柏林飞艇去蒂里斯法尔·格拉德斯
 step
 .goto Undercity,50.2,68.8
-.accept 232 >> 为药剂师辛格接受Errand
+.accept 232 >>为药剂师辛格接受Errand
 step
 .goto Undercity,58.5,55.4
-.turnin 232 >> 为药剂师Zinge上交Errand
-.accept 238 >> 为药剂师辛格接受Errand
+.turnin 232 >>为药剂师Zinge上交Errand
+.accept 238 >>为药剂师辛格接受Errand
 step
 .goto Undercity,49.9,67.9
-.turnin 238 >> 为药剂师Zinge上交Errand
+.turnin 238 >>为药剂师Zinge上交Errand
 step << Hunter/Paladin
 #completewith next
 .goto Undercity,58.6,33.0
-.vendor >> 买一把大斧子
+.vendor >>买一把大斧子
 .collect 2531,1
 step << Hunter
 #completewith next
 .goto Undercity,54.7,38.6
-.vendor >> 购买大型长弓。如果它不在商店里，以后在首都买。
+.vendor >>购买大型长弓。如果它不在商店里，以后在首都买。
 .collect 11307,1
 step << Rogue
 #completewith next
 .goto Undercity,57.4,93.9
-.vendor >> 去买一辆Rondel和一辆Falchion
+.vendor >>去买一辆Rondel和一辆Falchion
 .collect 2534,1
 .collect 2528,1
 step << Warrior tbc
 #completewith next
 .goto Undercity,77.48,49.60
-.vendor 4592 >> 去纳撒尼尔那里买两堆35级的垃圾。为以后配备
+.vendor 4592 >>去纳撒尼尔那里买两堆35级的垃圾。为以后配备
 step << Warrior tbc
 #completewith next
->> 去拍卖行买以下物品
+>>去拍卖行买以下物品
 .collect 4480,8
 .collect 4479,8
 .collect 4481,8
@@ -7609,10 +7608,10 @@ step << Warrior tbc
 
 step
 .goto Undercity,49.9,68.3
-.accept 243 >> 接受进入字段
+.accept 243 >>接受进入字段
 step
 .goto Undercity,57.4,93.9
-.accept 495 >> 接受意志之冠
+.accept 495 >>接受意志之冠
 step
 .goto Undercity,62.2,44.6
 .train 2551 >>训练烹饪。我们需要它来接受/交出我们早些时候收集的龟肉。
@@ -7620,12 +7619,12 @@ step
 .goto Undercity,62.7,47.9
 .accept 2342 >>接受回收的宝藏
 step
-#completewith next
+#completewith flytarren
 .goto Undercity,63.4,48.4
-.fly Tarren Mill >> 飞往塔伦磨坊
+.fly Tarren Mill >>飞往塔伦磨坊
 step
 .goto Hillsbrad Foothills,62.7,20.5
-.accept 533 >> 接受渗透
+.accept 533 >>接受渗透
 step
 .isOnQuest 533
 >>杀死辛迪加并在营地周围掠夺他们，直到导弹掉落。
@@ -7637,39 +7636,40 @@ step
 step
 .isOnQuest 533
 .goto Hillsbrad Foothills,63.3,20.7
-.turnin 533 >> 转入渗透
+.turnin 533 >>转入渗透
 step
+#label flytarren
 .isQuestTurnedIn 556
 .goto Hillsbrad Foothills,61.5,20.9
-.accept 557 >> 接受绑定的括号
+.accept 557 >>接受绑定的括号
 step
 .isQuestTurnedIn 556
 .goto Hillsbrad Foothills,61.6,20.6
-.accept 545 >> 接受达拉然巡逻队
+.accept 545 >>接受达拉然巡逻队
 step
 .goto Hillsbrad Foothills,62.5,20.6
-.turnin 495 >> 交出意志之冠
-.accept 518 >> 接受意志之冠
-.accept 566 >> 接受通缉：Baron Vardus
+.turnin 495 >>交出意志之冠
+.accept 518 >>接受意志之冠
+.accept 566 >>接受通缉：Baron Vardus
 step
 .goto Hillsbrad Foothills,63.2,20.7
-.accept 503 >> 接受Gol'dir
+.accept 503 >>接受Gol'dir
 step << tbc
 .goto Hillsbrad Foothills,62.3,19.1
 >>与Christoph Jeffcoat交谈，购买舒缓香料。
 .complete 7321,2 
 step
 .goto Hillsbrad Foothills,62.3,19.1
-.accept 7321 >> 接受安抚乌龟饼干
-.turnin 7321 >> 交上安抚乌龟饼干
+.accept 7321 >>接受安抚乌龟饼干
+.turnin 7321 >>交上安抚乌龟饼干
 step << Warrior tbc
 #completewith Whirlwind
 +这是非常重要的，你看这个视频如何奶酪旋风斧旋风
-.link https://www.youtube.com/watch?v=BiuWeMSHEhA >> 单击此处观看教程视频。
+.link https://www.youtube.com/watch?v=BiuWeMSHEhA >>单击此处观看教程视频。
 step << Warrior tbc
 >>如果你买的话，在去这里的路上使用一种自然保护药剂。如果你没有买，别担心
 .goto Alterac Mountains,80.5,66.9
-.turnin 1714 >> 流亡本质的回归
+.turnin 1714 >>流亡本质的回归
 step << Warrior tbc
 .goto Alterac Mountains,80.5,66.9
 .turnin 1712 >>转向气旋
@@ -7682,7 +7682,7 @@ step << Warrior tbc
 .goto Alterac Mountains,80.6,62.2
 .complete 1713,1 
 step << Warrior tbc
->> 拾取斧头作为奖励
+>>拾取斧头作为奖励
 .goto Alterac Mountains,80.5,66.9
 .turnin 1713 >>交出召唤
 .turnin 1792 >>交出旋风武器
@@ -7697,6 +7697,11 @@ step
 .goto Alterac Mountains,46.1,46.6
 >>杀死该地区的Crushridge Maulers。他们与其他食人魔共享产卵，所以你也应该杀死其他食人兽
 .complete 518,1 
+step
+#completewith next
+.unitscan Baron Vardus
+>>检查地下室中的Baron Vardus和酒店大楼中的/目标Baron。
+.complete 566,1 
 step
 .goto Alterac Mountains,62.7,40.2,10,0
 .goto Alterac Mountains,63.1,43.4,10,0
@@ -7716,19 +7721,20 @@ step
 .complete 503,2 
 step
 .goto Alterac Mountains,60.0,43.8
-.turnin 503 >> 转入Gol'dir
-.accept 506 >> 接受布莱克摩尔的遗产
+.turnin 503 >>转入Gol'dir
+.accept 506 >>接受布莱克摩尔的遗产
 step
 .goto Hillsbrad Foothills,62.6,20.6
-.turnin 518 >> 交出意志之冠
-.accept 519 >> 接受意志之冠
+.turnin 518 >>交出意志之冠
+.accept 519 >>接受意志之冠
 step
 .goto Hillsbrad Foothills,63.3,20.7
-.turnin 506 >> 交出布莱克摩尔的遗产
-.accept 507 >> 接受Aliden Perenolde勋爵
+.turnin 506 >>交出布莱克摩尔的遗产
+.accept 507 >>接受Aliden Perenolde勋爵
 step
 #sticky
 #completewith next
+.isQuestTurnedIn 1136
 >>杀死该区域周围的山狮以获取尸体。我们将很快使用它。
 .collect 5810,1
 step
@@ -7774,8 +7780,8 @@ step
 step
 >>在Elysa身后转身
 .goto Alterac Mountains,39.3,14.3
-.turnin 507 >> 交给Aliden Perenolde勋爵
-.accept 508 >> 接受塔雷莎的礼物
+.turnin 507 >>交给Aliden Perenolde勋爵
+.accept 508 >>接受塔雷莎的礼物
 step
 .goto Alterac Mountains,47.8,17.1,40,0
 .goto Alterac Mountains,53.6,20.6,40,0
@@ -7790,26 +7796,26 @@ step
 #xprate <1.5
 
 .goto Hillsbrad Foothills,61.6,20.8
-.turnin -545 >> 移交达拉然巡逻队
-.turnin -557 >> 收起装订支架
+.turnin -545 >>移交达拉然巡逻队
+.turnin -557 >>收起装订支架
 step
 .goto Hillsbrad Foothills,62.3,20.4
-.turnin 566 >> 通缉犯：巴伦·瓦杜斯
+.turnin 566 >>通缉犯：巴伦·瓦杜斯
 step
 .goto Hillsbrad Foothills,62.7,20.6
-.turnin 519 >> 交出意志之冠
-.accept 520 >> 接受意志之冠
+.turnin 519 >>交出意志之冠
+.accept 520 >>接受意志之冠
 step
 .goto Hillsbrad Foothills,63.2,20.7
-.turnin 508 >> 交上塔雷莎的礼物
+.turnin 508 >>交上塔雷莎的礼物
 step
 .goto Hillsbrad Foothills,61.6,20.8
-.turnin -545 >> 移交达拉然巡逻队
-.turnin -557 >> 收起装订支架
+.turnin -545 >>移交达拉然巡逻队
+.turnin -557 >>收起装订支架
 step
 #xprate <1.5
 .goto Alterac Mountains,37.9,52.2
-.xp 39 >> 在该区域内对食人魔进行研磨至39
+.xp 39 >>在该区域内对食人魔进行升级到39
 step
 >>在营房顶部杀死Mug'thol。抢他的头和王冠
 .goto Alterac Mountains,36.9,53.3,20,0
@@ -7818,36 +7824,36 @@ step
 .complete 520,2 
 step
 .goto Hillsbrad Foothills,62.6,20.6
-.turnin 520 >> 交出意志之冠
-.accept 521 >> 接受意志之冠
+.turnin 520 >>交出意志之冠
+.accept 521 >>接受意志之冠
 step
 #completewith next
 .goto Hillsbrad Foothills,60.2,18.6
-.fly Hammerfall >> 飞到Hammerfall
+.fly Hammerfall >>飞到Hammerfall
 step
->> 前往阿拉蒂高地
+>>前往阿拉蒂高地
 .goto Arathi Highlands,62.50,33.80
-.accept 642 >> 接受被困公主
+.accept 642 >>接受被困公主
 step
 .goto Arathi Highlands,73.8,33.9
-.turnin 638 >> 加入Trollbane
-.accept 639 >> 接受风暴符号
+.turnin 638 >>加入Trollbane
+.accept 639 >>接受风暴符号
 step
 .isQuestTurnedIn 677
 .goto Arathi Highlands,74.2,33.9
-.accept 678 >> 接受武器召唤
+.accept 678 >>接受武器召唤
 step
 .isQuestTurnedIn 671
 .goto Arathi Highlands,74.7,36.3
-.accept 673 >> 接受犯规魔法
+.accept 673 >>接受犯规魔法
 step
 .isQuestTurnedIn 675
 .goto Arathi Highlands,74.5,36.7
-.accept 701 >> 接受猛禽之怒
+.accept 701 >>接受猛禽之怒
 step
 #sticky
 #completewith next
-.goto Arathi Highlands,80.9,39.9,30 >> 沿着这条路跑
+.goto Arathi Highlands,80.9,39.9,30 >>沿着这条路跑
 step
 .goto Arathi Highlands,82.4,38.7,40,0
 .goto Arathi Highlands,82.2,36.2,40,0
@@ -7858,8 +7864,8 @@ step
 step
 >>在洞穴尽头的漂浮碎片处转弯
 .goto Arathi Highlands,84.3,31.0
-.turnin 642 >> 交出被困公主
-.accept 651 >> 接受绑定石头
+.turnin 642 >>交出被困公主
+.accept 651 >>接受绑定石头
 step
 >>掠夺中间的石头作为钥匙
 .goto Arathi Highlands,66.7,29.7
@@ -7882,7 +7888,7 @@ step
 .goto Arathi Highlands,29.4,61.6,30,0
 .goto Arathi Highlands,29.6,63.0,30,0
 .goto Arathi Highlands,29.4,64.4
->>杀死Marez Cowl。抢劫她以换取被污染的血石珠（她不在建筑物内）
+>>杀死Marez Cowl。抢劫她以换取被污染的血石珠(她不在建筑物内)
 .complete 673,1 
 .unitscan Marez Cowl
 step
@@ -7897,8 +7903,8 @@ step
 .complete 639,1 
 step
 .goto Arathi Highlands,36.1,57.4
-.turnin 651 >> 交出装订石
-.accept 652 >> 接受打破基石
+.turnin 651 >>交出装订石
+.accept 652 >>接受打破基石
 step
 .goto Arathi Highlands,67.3,31.1,50,0
 .goto Arathi Highlands,61.8,43.0,50,0
@@ -7961,15 +7967,15 @@ step
 .goto Arathi Highlands,47.4,56.8,50,0
 .goto Arathi Highlands,61.8,43.0,50,0
 .goto Arathi Highlands,67.3,31.1
->>找到并杀死Fozruk（由kobolds守卫的地球巨人）。他在该地区的大部分地区巡逻。击溃他的一些守卫，逃跑，然后回来杀了他，如果你认为杀他有困难的话。
+>>找到并杀死Fozruk(由kobolds守卫的地球巨人)。他在该地区的大部分地区巡逻。击溃他的一些守卫，逃跑，然后回来杀了他，如果你认为杀他有困难的话。
 .complete 652,1 
 .unitscan Fozruk
 step
 .goto Arathi Highlands,36.1,58.0
-.turnin 652 >> 转身打破关键
+.turnin 652 >>转身打破关键
 step
 .goto Arathi Highlands,36.3,58.0
-.accept 688 >> 接受Myzrael的盟友
+.accept 688 >>接受Myzrael的盟友
 step
 .isOnQuest 701
 #sticky
@@ -7998,41 +8004,41 @@ step
 step
 .isQuestComplete 701
 .goto Arathi Highlands,74.7,36.3
-.turnin 673 >> 提交犯规魔法
-.turnin 701 >> 交出猛禽的鬼魂
-.accept 702 >> 接受猛禽之怒
+.turnin 673 >>提交犯规魔法
+.turnin 701 >>交出猛禽的鬼魂
+.accept 702 >>接受猛禽之怒
 step
 .goto Arathi Highlands,74.5,35.6
-.turnin 688 >> 交出Myzrael的盟友
-.accept 687 >> 接受失落的泰尔杜林
+.turnin 688 >>交出Myzrael的盟友
+.accept 687 >>接受失落的泰尔杜林
 step
 .isOnQuest 702
 .goto Arathi Highlands,72.7,33.9
-.turnin 702 >> 交出猛禽的鬼魂
-.accept 847 >> 接受猛禽之怒
+.turnin 702 >>交出猛禽的鬼魂
+.accept 847 >>接受猛禽之怒
 step
 .goto Arathi Highlands,73.9,33.9
-.turnin 639 >> 交出风暴符号
+.turnin 639 >>交出风暴符号
 step
 .isQuestTurnedIn 701
 .goto Arathi Highlands,73.9,33.9
-.accept 640 >> 接受破碎的魔咒
+.accept 640 >>接受破碎的魔咒
 step
 .isOnQuest 678
 .goto Arathi Highlands,74.3,33.9
-.turnin 678 >> 交出武器召唤
-.accept 679 >> 接受武器召唤
+.turnin 678 >>交出武器召唤
+.accept 679 >>接受武器召唤
 step
 .isOnQuest 847
 .goto Arathi Highlands,74.7,36.3
-.turnin 847 >> 交出猛禽的鬼魂
+.turnin 847 >>交出猛禽的鬼魂
 step
 .isQuestTurnedIn 701
 .goto Arathi Highlands,74.0,33.3
-.accept 680 >> 接受真正的威胁
+.accept 680 >>接受真正的威胁
 step
 .isQuestTurnedIn 701
-.goto Arathi Highlands,23.9,60.6,45 >> 进入暴风城要塞的暴风城势力区域
+.goto Arathi Highlands,23.9,60.6,45 >>进入暴风城要塞的暴风城势力区域
 step
 .isQuestTurnedIn 701
 .goto Arathi Highlands,20.9,62.6,40,0
@@ -8044,7 +8050,7 @@ step
 .complete 640,1 
 step
 .isQuestTurnedIn 701
-.goto Arathi Highlands,24.4,64.2,30 >> 进入Stromgarde的兽人/巨魔势力
+.goto Arathi Highlands,24.4,64.2,30 >>进入Stromgarde的兽人/巨魔势力
 step
 .isQuestTurnedIn 701
 #completewith next
@@ -8073,36 +8079,36 @@ step
 .unitscan Or'Kalar
 step
 #completewith next
-.goto Arathi Highlands,24.6,64.7,10 >> 跑到这里跳到金属墙上
-.goto Arathi Highlands,24.4,65.2,10 >> 从金属墙跑过砖墙，跳到金属墙的末端
-.goto Arathi Highlands,21.2,70.2,20 >> 继续沿着金属墙跑，直到你到达墙上的洞
+.goto Arathi Highlands,24.6,64.7,10 >>跑到这里跳到金属墙上
+.goto Arathi Highlands,24.4,65.2,10 >>从金属墙跑过砖墙，跳到金属墙的末端
+.goto Arathi Highlands,21.2,70.2,20 >>继续沿着金属墙跑，直到你到达墙上的洞
 step
 #completewith next
 .goto Arathi Highlands,21.6,75.6,20,0
-.goto Arathi Highlands,22.1,79.9,20 >> 穿过洞穴到法尔迪尔湾
+.goto Arathi Highlands,22.1,79.9,20 >>穿过洞穴到法尔迪尔湾
 step
 .goto Arathi Highlands,31.9,82.6
-.accept 663 >> 接受Land Ho！
+.accept 663 >>接受Land Ho！
 step
 .goto Arathi Highlands,32.3,81.5
-.turnin 663 >> 上缴陆浩！
+.turnin 663 >>上缴陆浩！
 step
 .goto Arathi Highlands,33.0,81.4
-.accept 662 >> 接受深海打捞
+.accept 662 >>接受深海打捞
 step
 .goto Arathi Highlands,33.9,80.7
-.accept 664 >> 接受淹没的悲伤
-.accept 665 >> 接受沉没的宝藏
+.accept 664 >>接受淹没的悲伤
+.accept 665 >>接受沉没的宝藏
 step
 >>当菲兹勒跪在石头上时，两个水元素将诞生。杀了他们
 .goto Arathi Highlands,35.7,79.7
 .complete 665,1 
 step
 .goto Arathi Highlands,33.8,80.5
-.turnin 665 >> 交回沉没的宝藏
+.turnin 665 >>交回沉没的宝藏
 step << wotlk
 .goto Arathi Highlands,33.8,80.5
-.accept 666 >> 接受沉没的宝藏
+.accept 666 >>接受沉没的宝藏
 step << !Druid !Warlock !Shaman
 .isOnQuest 666
 #completewith SLog
@@ -8157,7 +8163,7 @@ step
 .goto Arathi Highlands,24.1,85.7,40,0
 .goto Arathi Highlands,23.2,89.7,40,0
 .goto Arathi Highlands,19.3,84.1
->>使用你的宝石寻找护目镜来寻找精灵宝石（因为它们在小地图上显示黄色圆点）。潜入水下抢劫
+>>使用你的宝石寻找护目镜来寻找精灵宝石(因为它们在小地图上显示黄色圆点)。潜入水下抢劫
 .complete 666,1 
 step
 .goto Arathi Highlands,19.3,84.1,40,0
@@ -8172,22 +8178,22 @@ step
 step
 #requires ElvenGems
 .goto Arathi Highlands,32.8,81.3
-.turnin 662 >> 在深海打捞中移交
+.turnin 662 >>在深海打捞中移交
 step << wotlk
 .isQuestComplete 666
 .goto Arathi Highlands,33.9,80.6
-.turnin 666 >> 交回沉没的宝藏
+.turnin 666 >>交回沉没的宝藏
 step << wotlk
 .isQuestTurnedIn 666
-.accept 668 >> 接受沉没的宝藏
+.accept 668 >>接受沉没的宝藏
 step
 .goto Arathi Highlands,34.0,80.8
-.turnin 664 >> 倾诉淹没的悲伤
+.turnin 664 >>倾诉淹没的悲伤
 step << wotlk
 .isQuestTurnedIn 666
 .goto Arathi Highlands,32.2,81.5
-.turnin 668 >> 交回沉没的宝藏
-.accept 669 >> 接受沉没的宝藏
+.turnin 668 >>交回沉没的宝藏
+.accept 669 >>接受沉没的宝藏
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -8198,38 +8204,38 @@ RXPGuides.RegisterGuide([[
 #next 39-40 荒芜之地
 step
 .goto Undercity,50.2,68.8
-.accept 232 >> 为药剂师辛格接受Errand
+.accept 232 >>为药剂师辛格接受Errand
 step
 .goto Undercity,58.5,55.4
-.turnin 232 >> 为药剂师Zinge上交Errand
-.accept 238 >> 为药剂师辛格接受Errand
+.turnin 232 >>为药剂师Zinge上交Errand
+.accept 238 >>为药剂师辛格接受Errand
 step
 .goto Undercity,49.9,67.9
-.turnin 238 >> 为药剂师Zinge上交Errand
-.accept 243 >> 接受进入字段
+.turnin 238 >>为药剂师Zinge上交Errand
+.accept 243 >>接受进入字段
 step << Hunter
 .goto Undercity,58.6,33.0
->> 如果你是近战编织，买一把大斧子。否则，请跳过此步骤
+>>如果你是近战编织，买一把大斧子。否则，请跳过此步骤
 .collect 2531,1
 step << Hunter
 .goto Undercity,54.7,38.6
->> 与艾比盖尔交谈。购买大型长弓。如果它不在商店里，跳过这一步，稍后在首都购买。
+>>与艾比盖尔交谈。购买大型长弓。如果它不在商店里，跳过这一步，稍后在首都购买。
 .collect 11307,1
 step << Rogue
 .goto Undercity,58.66,33.07
->> 与杰弗里交谈。买一个Rondel和一个Falchion
+>>与杰弗里交谈。买一个Rondel和一个Falchion
 .collect 2534,1
 .collect 2528,1
 step << Priest
 .goto Undercity,69.54,26.93
-.collect 5239,1 >> 与赞恩交谈。购买黑骨魔杖
+.collect 5239,1 >>与赞恩交谈。购买黑骨魔杖
 step << Warrior
 .goto Undercity,77.48,49.60
-.vendor 4592 >> 去纳撒尼尔。买两堆35级投掷物。为以后配备
+.vendor 4592 >>去纳撒尼尔。买两堆35级投掷物。为以后配备
 step << Warrior
 #softcore
 #completewith next
->>你也可以现在就买这些东西来节省很多时间（如果你有钱的话）
+>>你也可以现在就买这些东西来节省很多时间(如果你有钱的话)
 .collect 4480,8
 .collect 4479,8
 .collect 4481,8
@@ -8237,18 +8243,18 @@ step << Warrior
 step << !Warrior
 #softcore
 .goto Undercity,64.3,35.8
->> 去拍卖行买一种水呼吸药剂。这将使你的生活在未来变得更加轻松
+>>去拍卖行买一种水呼吸药剂。这将使你的生活在未来变得更加轻松
 .collect 5996,1
 step << Warrior
 #softcore
 .goto Undercity,64.3,35.8
->> 去拍卖行买一瓶水呼吸药剂和自然保护药剂
+>>去拍卖行买一瓶水呼吸药剂和自然保护药剂
 .collect 5996,1
 .collect 6052,2
 step << Warrior
 #completewith next
 .goto Undercity,63.27,48.59
-.fly Hammerfall >> 飞到Hammerfall
+.fly Hammerfall >>飞到Hammerfall
 step << Warrior
 .goto Arathi Highlands,66.72,29.72
 #label Cresting
@@ -8265,38 +8271,38 @@ step << Warrior
 .collect 4479,8
 step << !Warrior
 .goto Undercity,63.27,48.59
-.fly Tarren Mill >> 飞往塔伦磨坊
+.fly Tarren Mill >>飞往塔伦磨坊
 step
 .goto Hillsbrad Foothills,61.5,20.9
-.accept 557 >> 接受绑定的括号
+.accept 557 >>接受绑定的括号
 step
 .goto Hillsbrad Foothills,61.6,20.6
-.accept 545 >> 接受达拉然巡逻队
+.accept 545 >>接受达拉然巡逻队
 step
 .goto Hillsbrad Foothills,62.60,20.70
-.accept 566 >> 接受通缉：Baron Vardus
+.accept 566 >>接受通缉：Baron Vardus
 step
 .goto Hillsbrad Foothills,63.20,20.70
-.accept 503 >> 接受Gol'dir
+.accept 503 >>接受Gol'dir
 step << Warrior
 #softcore
 #completewith Whirlwind
 +如果你没有从拍卖行得到自然保护药水，那么观看这个视频，了解如何用旋风斧干酪“旋风”是非常重要的
-.link https://www.youtube.com/watch?v=BiuWeMSHEhA >> 单击此处
+.link https://www.youtube.com/watch?v=BiuWeMSHEhA >>单击此处
 step << Warrior
 #hardcore
 #completewith Whirlwind
 +这是非常重要的，你看这个视频如何奶酪旋风斧旋风
-.link https://www.youtube.com/watch?v=BiuWeMSHEhA >> 单击此处
+.link https://www.youtube.com/watch?v=BiuWeMSHEhA >>单击此处
 step << Warrior
 #softcore
 >>如果你买的话，在去这里的路上使用一种自然保护药剂
 .goto Alterac Mountains,80.5,66.9
-.turnin 1714 >> 流亡本质的回归
+.turnin 1714 >>流亡本质的回归
 step << Warrior
 #hardcore
 .goto Alterac Mountains,80.5,66.9
-.turnin 1714 >> 流亡本质的回归
+.turnin 1714 >>流亡本质的回归
 step << Warrior
 .goto Alterac Mountains,80.5,66.9
 .turnin 1712 >>转向气旋
@@ -8317,23 +8323,23 @@ step << Warrior
 .goto Alterac Mountains,80.6,62.2
 .complete 1713,1 
 step << Warrior
->> 拿起斧头
+>>拿起斧头
 .goto Alterac Mountains,80.5,66.9
 .turnin 1713 >>交出召唤
 .turnin 1792 >>交出旋风武器
 step
 .goto Alterac Mountains,63.20,43.90
->> 杀死Jailor Borhuin。抢他的钥匙
+>>杀死Jailor Borhuin。抢他的钥匙
 .complete 503,1
 .unitscan Jailor Borhuin
 step
 .goto Alterac Mountains,60.00,43.80
-.turnin 503 >> 转入Gol'dir
-.accept 506 >> 接受布莱克摩尔的遗产
+.turnin 503 >>转入Gol'dir
+.accept 506 >>接受布莱克摩尔的遗产
 step
 .goto Alterac Mountains,62.10,82.50
-.turnin 506 >> 交出布莱克摩尔的遗产
-.accept 507 >> 接受Aliden Perenolde勋爵
+.turnin 506 >>交出布莱克摩尔的遗产
+.accept 507 >>接受Aliden Perenolde勋爵
 step
 #sticky
 #completewith next
@@ -8364,14 +8370,14 @@ step
 +下一个任务可能很难，要格外小心
 #hardcore
 step
->> 在房子的二楼。如果你身边有宠物/其他玩家，他会吹泡泡、续约并睡觉
+>>在房子的二楼。如果你身边有宠物/其他玩家，他会吹泡泡、续约并睡觉
 .goto Alterac Mountains,39.3,14.6
 .complete 507,1 
 step
 >>在Elysa身后转身
 .goto Alterac Mountains,39.3,14.3
-.turnin 507 >> 交给Aliden Perenolde勋爵
-.accept 508 >> 接受塔雷莎的礼物
+.turnin 507 >>交给Aliden Perenolde勋爵
+.accept 508 >>接受塔雷莎的礼物
 step
 #sticky
 #completewith next
@@ -8388,53 +8394,53 @@ step
 .unitscan Baron Vardus
 step
 .goto Alterac Mountains,61.10,82.40
-.turnin 566 >> 通缉犯：巴伦·瓦杜斯
+.turnin 566 >>通缉犯：巴伦·瓦杜斯
 step
 .goto Alterac Mountains,62.10,82.50
-.turnin 508 >> 交上塔雷莎的礼物
+.turnin 508 >>交上塔雷莎的礼物
 step
 .goto Hillsbrad Foothills,61.6,20.8
-.turnin 545 >> 移交达拉然巡逻队
-.turnin 557 >> 收起装订支架
+.turnin 545 >>移交达拉然巡逻队
+.turnin 557 >>收起装订支架
 step
 .goto Hillsbrad Foothills,60.15,18.63
-.fly Hammerfall >> 飞到Hammerfall
+.fly Hammerfall >>飞到Hammerfall
 step
 .goto Arathi Highlands,73.80,33.90
-.turnin 638 >> 加入Trollbane
+.turnin 638 >>加入Trollbane
 step
 .goto Arathi Highlands,74.30,33.80
-.accept 678 >> 接受武器召唤
+.accept 678 >>接受武器召唤
 step << Rogue
 .goto Arathi Highlands,74.7,36.3
-.accept 673 >> 接受犯规魔法
+.accept 673 >>接受犯规魔法
 step
 .goto Arathi Highlands,72.70,34.20
-.accept 675 >> 接受养育精神
+.accept 675 >>接受养育精神
 step
 .goto Arathi Highlands,74.70,36.40
 .turnin 675 >>投入养育精神
-.accept 701 >> 接受猛禽之怒
+.accept 701 >>接受猛禽之怒
 step
 .goto Arathi Highlands,84.97,31.61
->> 杀死科波德斯。为米兹雷尔的莫特斯掠夺他们
+>>杀死科波德斯。为米兹雷尔的莫特斯掠夺他们
 .complete 642,1
 step
 .goto Arathi Highlands,84.30,30.95
 >>点击洞穴后面的石碑
-.turnin 642 >> 交出被困公主
-.accept 651 >> 接受绑定石头
+.turnin 642 >>交出被困公主
+.accept 651 >>接受绑定石头
 step
 .goto Arathi Highlands,66.70,29.80
->> 掠夺元素中间的岩石
+>>掠夺元素中间的岩石
 .complete 651,2
 step
 .goto Arathi Highlands,52.00,50.80
->> 掠夺元素中间的岩石
+>>掠夺元素中间的岩石
 .complete 651,3
 step
 .goto Arathi Highlands,25.50,30.10
->> 掠夺元素中间的岩石
+>>掠夺元素中间的岩石
 .complete 651,1
 step << Rogue
 #sticky
@@ -8446,28 +8452,28 @@ step << Rogue
 .goto Arathi Highlands,29.6,63.0,90,0
 .goto Arathi Highlands,29.4,64.4,90,0
 .goto Arathi Highlands,29.4,61.6
->>杀死Marez Cowl。抢夺她去寻找被污染的血石珠（她不在建筑物内），你可以潜行到她身边，通常她在左边。
+>>杀死Marez Cowl。抢夺她去寻找被污染的血石珠(她不在建筑物内)，你可以潜行到她身边，通常她在左边。
 .complete 673,1 
 step
 .goto Arathi Highlands,36.20,57.30
-.turnin 651 >> 交出装订石
-.accept 652 >> 接受打破基石
+.turnin 651 >>交出装订石
+.accept 652 >>接受打破基石
 step << Hunter
 #sticky
->> 使用鹰眼找到福兹鲁克
+>>使用鹰眼找到福兹鲁克
 >>确保先杀了斯莱比和其他的kobolds，你可以一次杀一个add并重新开始战斗
 >>在避难所附近放风筝杀死福兹鲁克
->>这是一个困难的任务独奏，如果你不能分组，考虑跳过这一步
+>>这是一个困难的任务，如果你不能分组，考虑跳过这一步
 .complete 652,1
-.link https://www.twitch.tv/videos/778346703 >> 点击此处查看视频参考
+.link https://www.twitch.tv/videos/778346703 >>点击此处查看视频参考
 .unitscan Fozruk
 step << !Hunter
 #sticky
->> 找到并杀死Fozruk，但不要急着完成这一步，他在整个区域巡逻
+>>找到并杀死Fozruk，但不要急着完成这一步，他在整个区域巡逻
 >>这是一个很难独奏的精英，如果你不能组队，考虑跳过这一步 << !Warlock
 >>Fozruk令人恐惧，Sleeby可以治愈，这是一个非常困难的独奏任务，如果你无法组合，请考虑跳过这一步 << Warlock
 .complete 652,1
-.link https://www.twitch.tv/videos/669107037?t=05h51m54s >> 点击此处查看视频参考
+.link https://www.twitch.tv/videos/669107037?t=05h51m54s >>点击此处查看视频参考
 .unitscan Fozruk
 step
 #sticky
@@ -8483,59 +8489,59 @@ step
 step
 #requires Graptor
 .goto Arathi Highlands,36.07,58.09
->> 如果您还没有找到Fozruk，请跳过此步骤
+>>如果您还没有找到Fozruk，请跳过此步骤
 >>在完成这个任务后，一个精英暴徒将诞生，准备逃跑
-.turnin 652 >> 转身打破关键
+.turnin 652 >>转身打破关键
 step
 .goto Arathi Highlands,36.07,58.09
-.accept 688 >> 接受Myzrael的盟友
+.accept 688 >>接受Myzrael的盟友
 .isQuestTurnedIn 652
 step
 .goto Arathi Highlands,74.70,36.40
-.turnin 673 >> 提交犯规魔法 << Rogue
-.turnin 701 >> 交出猛禽的鬼魂
-.accept 702 >> 接受猛禽之怒
+.turnin 673 >>提交犯规魔法 << Rogue
+.turnin 701 >>交出猛禽的鬼魂
+.accept 702 >>接受猛禽之怒
 step
 .goto Arathi Highlands,74.40,35.60
-.turnin 688 >> 交出Myzrael的盟友
-.accept 687 >> 接受失落的泰尔杜林
+.turnin 688 >>交出Myzrael的盟友
+.accept 687 >>接受失落的泰尔杜林
 .isQuestTurnedIn 652
 step
 .goto Arathi Highlands,72.70,34.20
-.turnin 702 >> 交出猛禽的鬼魂
+.turnin 702 >>交出猛禽的鬼魂
 step
 .goto Arathi Highlands,74.20,33.90
-.turnin 678 >> 交出武器召唤
+.turnin 678 >>交出武器召唤
 step
 .goto Arathi Highlands,72.80,34.10
-.accept 847 >> 接受猛禽之怒
+.accept 847 >>接受猛禽之怒
 step
 .goto Arathi Highlands,74.70,36.40
-.turnin 847 >> 交出猛禽的鬼魂
+.turnin 847 >>交出猛禽的鬼魂
 step
 .goto Arathi Highlands,21.6,75.6,30,0
-.goto Arathi Highlands,22.1,79.9,25 >> 穿过洞穴到法尔迪尔湾
+.goto Arathi Highlands,22.1,79.9,25 >>穿过洞穴到法尔迪尔湾
 step
 .goto Arathi Highlands,31.9,82.6
-.accept 663 >> 接受Land Ho！
+.accept 663 >>接受Land Ho！
 step
 .goto Arathi Highlands,32.3,81.5
-.turnin 663 >> 上缴陆浩！
+.turnin 663 >>上缴陆浩！
 step
 .goto Arathi Highlands,33.0,81.4
-.accept 662 >> 接受深海打捞
+.accept 662 >>接受深海打捞
 step
 .goto Arathi Highlands,33.9,80.7
-.accept 664 >> 接受淹没的悲伤
-.accept 665 >> 接受沉没的宝藏
+.accept 664 >>接受淹没的悲伤
+.accept 665 >>接受沉没的宝藏
 step
 >>当菲兹勒跪在石头上时，两个水元素将诞生。在他们攻击菲兹勒之前攻击他们。杀了他们
 .goto Arathi Highlands,35.7,79.7
 .complete 665,1 
 step
 .goto Arathi Highlands,33.8,80.5
-.turnin 665 >> 交回沉没的宝藏
-.accept 666 >> 接受沉没的宝藏
+.turnin 665 >>交回沉没的宝藏
+.accept 666 >>接受沉没的宝藏
 step
 #sticky
 #completewith next
@@ -8615,19 +8621,19 @@ step
 step
 #requires ElvenGems
 .goto Arathi Highlands,32.8,81.3
-.turnin 662 >> 在深海打捞中移交
+.turnin 662 >>在深海打捞中移交
 >>重新装备头盔
 step
 .goto Arathi Highlands,33.9,80.6
-.turnin 666 >> 交回沉没的宝藏
-.accept 668 >> 接受沉没的宝藏
+.turnin 666 >>交回沉没的宝藏
+.accept 668 >>接受沉没的宝藏
 step
 .goto Arathi Highlands,34.0,80.8
-.turnin 664 >> 倾诉淹没的悲伤
+.turnin 664 >>倾诉淹没的悲伤
 step
 .goto Arathi Highlands,32.2,81.5
-.turnin 668 >> 交回沉没的宝藏
-.accept 669 >> 接受沉没的宝藏
+.turnin 668 >>交回沉没的宝藏
+.accept 669 >>接受沉没的宝藏
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -8639,12 +8645,12 @@ RXPGuides.RegisterGuide([[
 step
 .maxlevel 40,badlandsskip
 .goto Wetlands,32.78,13.12
-.zone Wetlands >> 游到湿地
+.zone Wetlands >>游到湿地
 step
 .goto Wetlands,53.86,46.42,150,0
 .goto Wetlands,63.9,78.6
-.zone Loch Modan >> 在洞穴后面的蘑菇上注销。当你重新登录时，这会将你传送到Thelsamar外面
-.link https://www.youtube.com/watch?v=21CuGto26Mk >> 单击此处获取参考
+.zone Loch Modan >>在洞穴后面的蘑菇上注销。当你重新登录时，这会将你传送到Thelsamar外面
+.link https://www.youtube.com/watch?v=21CuGto26Mk >>单击此处获取参考
 >>登录时要非常小心，不要向前移动，因为周围有30-40级的守卫，您可能会被标记为PVP。而是跑到路的另一边，尽量避开警卫
 step
 #completewith next
@@ -8660,29 +8666,29 @@ step
 .goto Loch Modan,22.87,94.92,30,0
 .goto Badlands,5.73,29.78,0
 >>使用快捷方式更快地到达荒地
-.zone Badlands >> 跑向荒地
-.link https://www.youtube.com/watch?v=oNFXup-DCM0 >> 单击此处
+.zone Badlands >>跑向荒地
+.link https://www.youtube.com/watch?v=oNFXup-DCM0 >>单击此处
 step
 .goto Badlands,4.1,44.7
-.fp Kargath >> 获取Kargath飞行路线
+.fp Kargath >>获取Kargath飞行路线
 step
 #level 40
 .goto Badlands,2.9,45.6
-.accept 782 >> 接受断开的联盟
+.accept 782 >>接受断开的联盟
 >>如果您不是40级，请跳过此步骤
 step
 .goto Badlands,2.6,46.1
-.accept 2258 >> 接受荒地试剂运行
+.accept 2258 >>接受荒地试剂运行
 step
 .goto Badlands,6.4,47.5
-.accept 1419 >> 接受狼贼
+.accept 1419 >>接受狼贼
 step
 #era
 .goto Badlands,6.4,47.0
-.accept 1420 >> 接受向Helgru的报告
+.accept 1420 >>接受向Helgru的报告
 step
 .goto Badlands,25.8,45.0
-.accept 710 >> 接受元素研究：岩石
+.accept 710 >>接受元素研究：岩石
 step
 #completewith badlandsall
 >>在穿越荒地的过程中完成这些任务。
@@ -8703,11 +8709,11 @@ step
 step
 #label badlandsall
 .goto Badlands,26.0,44.9
-.turnin 710 >> 元素的转入研究：岩石
-.accept 711 >> 接受元素研究：岩石
+.turnin 710 >>元素的转入研究：岩石
+.accept 711 >>接受元素研究：岩石
 step
 #completewith next
->> 你还不需要完成Gizzard，这些可以稍后完成，也可以在整个区域内完成。
+>>你还不需要完成Gizzard，这些可以稍后完成，也可以在整个区域内完成。
 .complete 2258,1 
 step
 .goto Badlands,18.0,56.6
@@ -8720,16 +8726,16 @@ step
 step
 #era
 .goto Badlands,23.2,47.0
-.xp 40 >> 研磨至40
+.xp 40 >>升级到40
 step
 .goto Badlands,2.9,45.6
-.accept 782 >> 接受断开的联盟
+.accept 782 >>接受断开的联盟
 step
 .goto Badlands,42.4,52.8
-.accept 703 >> 接受烤蜂翅
-.turnin 703 >> 把烧烤的蜂翅翻过来
-.turnin 1106 >> 将流亡者马泰克交回
-.accept 1108 >> 接受Indurium
+.accept 703 >>接受烤蜂翅
+.turnin 703 >>把烧烤的蜂翅翻过来
+.turnin 1106 >>将流亡者马泰克交回
+.accept 1108 >>接受Indurium
 step
 .isOnQuest 782
 #sticky
@@ -8751,7 +8757,7 @@ step
 .complete 711,1 
 step
 .goto Badlands,51.4,76.8
-.turnin 687 >> 交给失落的泰尔杜林
+.turnin 687 >>交给失落的泰尔杜林
 .isOnQuest 687
 step
 >>杀死特罗格斯。掠夺他们以换取Indurium薄片
@@ -8760,11 +8766,11 @@ step
 step
 #label badlands3
 .goto Badlands,42.4,52.7
-.turnin 1108 >> 交出Indurium
-.accept 1137 >> 接受失败的新闻
+.turnin 1108 >>交出Indurium
+.accept 1137 >>接受失败的新闻
 step
 #completewith next
->> 当你做土狼的时候，杀死所有你看到的秃鹰。
+>>当你做土狼的时候，杀死所有你看到的秃鹰。
 .complete 2258,1 
 step
 .goto Badlands,34.6,66.8
@@ -8776,29 +8782,29 @@ step
 .complete 2258,1 
 step
 .goto Badlands,6.4,47.3
-.turnin 1419 >> 交出土狼窃贼
+.turnin 1419 >>交出土狼窃贼
 step
 .goto Badlands,2.4,45.9
-.turnin 2258 >> 移交荒地试剂运行
+.turnin 2258 >>移交荒地试剂运行
 step
 #requires signofearthBL
 .goto Badlands,2.8,45.6
-.turnin 782 >> 交出破碎的联盟
+.turnin 782 >>交出破碎的联盟
 .isQuestComplete 782
 step
 .goto Badlands,26.0,44.9
-.turnin 711 >> 元素的转入研究：岩石
+.turnin 711 >>元素的转入研究：岩石
 step << Druid
->> 使用“传送到月光”法术
+>>使用“传送到月光”法术
 .goto Moonglade,52.5,40.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 #label badlandsskip
-.hs >> 赫斯到奥格瑞玛
->> 如果需要，购买食物/水
+.hs >>赫斯到奥格瑞玛
+>>如果需要，购买食物/水
 ]])
 RXPGuides.RegisterGuide([[
-#version 7
+#version 9
 #wotlk
 #tbc
 #group RestedXP 部落 30-45
@@ -8806,12 +8812,12 @@ RXPGuides.RegisterGuide([[
 #name 40-43 荒芜之地 / 尘泥沼泽
 #next 43-45 Lower 荆棘谷
 step
-.zone Wetlands >> 游到湿地
+.zone Wetlands >>游到湿地
 step << tbc
 .goto Wetlands,53.86,46.42,150,0
 .goto Wetlands,63.9,78.6
-.zone Loch Modan >> 在洞穴后面的蘑菇上注销。当你重新登录时，这会将你传送到Thelsamar外面
-.link https://www.youtube.com/watch?v=21CuGto26Mk >> 单击此处获取参考
+.zone Loch Modan >>在洞穴后面的蘑菇上注销。当你重新登录时，这会将你传送到Thelsamar外面
+.link https://www.youtube.com/watch?v=21CuGto26Mk >>单击此处获取参考
 >>登录时请务必小心，不要向前移动，因为周围有30-40级的守卫，您可能会被标记为PVP。而是跑到路的另一边，尽量避开警卫
 step
 #completewith next
@@ -8827,26 +8833,26 @@ step
 .goto Loch Modan,22.87,94.92,30,0
 .goto Badlands,5.73,29.78,0
 >>使用快捷方式更快地到达荒地
-.zone Badlands >> 跑向荒地
-.link https://www.youtube.com/watch?v=oNFXup-DCM0 >> 单击此处查看视频指南。
+.zone Badlands >>跑向荒地
+.link https://www.youtube.com/watch?v=oNFXup-DCM0 >>单击此处查看视频指南。
 step
 .goto Badlands,4.1,44.7
-.fp Kargath >> 获取卡加特飞行路线
+.fp Kargath >>获取卡加特飞行路线
 step
 .goto Badlands,2.9,45.6
-.accept 782 >> 接受断开的联盟
+.accept 782 >>接受断开的联盟
 step
 .goto Badlands,2.6,46.1
-.accept 2258 >> 接受荒地试剂运行
+.accept 2258 >>接受荒地试剂运行
 step
 .goto Badlands,6.0,48.2
-.accept 9439 >> 接受无人认领的行李
+.accept 9439 >>接受无人认领的行李
 step
 .goto Badlands,6.4,47.5
-.accept 1419 >> 接受狼贼
+.accept 1419 >>接受狼贼
 step
 .goto Badlands,25.8,45.0
-.accept 710 >> 接受元素研究：岩石
+.accept 710 >>接受元素研究：岩石
 step
 .goto Badlands,23.2,47.0,40,0
 .goto Badlands,19.5,46.4,40,0
@@ -8859,8 +8865,8 @@ step
 .complete 710,1 
 step
 .goto Badlands,26.0,44.9
-.turnin 710 >> 元素的转入研究：岩石
-.accept 711 >> 接受元素研究：岩石
+.turnin 710 >>元素的转入研究：岩石
+.accept 711 >>接受元素研究：岩石
 step
 #sticky
 #label signofearthBL
@@ -8876,20 +8882,21 @@ step
 .complete 2258,2 
 step
 .goto Badlands,42.4,52.8
-.accept 703 >> 接受烤蜂翅
-.turnin 1106 >> 将流亡者马泰克交回
-.accept 1108 >> 接受Indurium
+.accept 703 >>接受烤蜂翅
+.turnin 1106 >>将流亡者马泰克交回
+.accept 1108 >>接受Indurium
 step
 #sticky
 #label bbqwingsBL
 .complete 703,1 
 step
 .goto Badlands,51.3,76.9
-.turnin 687 >> 交给失落的泰尔杜林
+.turnin 687 >>交给失落的泰尔杜林
 step
 .goto Badlands,51.2,76.7
-.accept 709 >> 接受毁灭的解决方案
+.accept 709 >>接受毁灭的解决方案
 step
+#requires bbqwingsBL
 .goto Badlands,36.2,75.1,40,0
 .goto Badlands,46.0,78.4,40,0
 .goto Badlands,42.8,87.2,40,0
@@ -8900,26 +8907,9 @@ step
 .goto Badlands,50.1,67.2
 .complete 1108,1 
 step
-.goto Badlands,6.4,47.3
-.turnin 1419 >> 交出土狼窃贼
-step
-.goto Badlands,2.4,45.9
-.turnin 2258 >> 移交荒地试剂运行
-step
-#requires signofearthBL
-.goto Badlands,2.8,45.6
-.turnin 782 >> 交出破碎的联盟
-step
-.goto Badlands,26.0,44.9
-.turnin 711 >> 元素的转入研究：岩石
-step
-#requires bbqwingsBL
-.goto Badlands,42.4,52.7
-.turnin 703 >> 把烧烤的蜂翅翻过来
-.turnin 1108 >> 交出Indurium
-step
+#requires badlandscollect
 #completewith next
-.goto Badlands,42.9,29.9,30 >> 进入愤怒堡垒
+.goto Badlands,42.9,29.9,30 >>进入愤怒堡垒
 step
 .goto Badlands,41.0,29.3
 >>Advisor包位于桶内。
@@ -8932,10 +8922,10 @@ step
 #completewith Tablet
 .goto Badlands,41.86,26.51
 .goto Badlands,51.86,63.51,40 >>当你看起来像在漂浮时，在楼梯顶部注销，然后重新登录
-.link https://www.youtube.com/watch?v=7BoxowuQaKs >> 单击此处
+.link https://www.youtube.com/watch?v=7BoxowuQaKs >>单击此处
 step
 #completewith garett
->> 掠夺矮人以获得项链，它可以在奥格瑞玛交付XP（你无法开始任务）
+>>掠夺矮人以获得项链，它可以在奥格瑞玛交付XP(你无法开始任务)
 .collect 7666,1 
 step
 #label Tablet
@@ -8948,147 +8938,165 @@ step
 .complete 2342,1 
 step
 #completewith next
-.deathskip >> 在精神治疗师处死亡并重生
+.deathskip >>在精神治疗师处死亡并重生
+step
+.goto Badlands,42.4,52.7
+.turnin 703 >>把烧烤的蜂翅翻过来
+.turnin 1108 >>交出Indurium
+.accept 1137 >>接受消息失败
 step
 .goto Badlands,51.3,77.0
-.turnin 709 >> 交出毁灭的解决方案
+.turnin 709 >>交出毁灭的解决方案
 step
 .goto Badlands,51.2,77.1
-.accept 728 >> 接受《亚金文摘》到地下城
+.accept 728 >>接受《亚金文摘》到地下城
 step
 .goto Badlands,6.1,48.2
-.turnin 9439 >> 交出无人认领的行李
+.turnin 9439 >>交出无人认领的行李
+step
+#requires badlandscollect
+.goto Badlands,6.4,47.3
+.turnin 1419 >>交出土狼窃贼
+step
+.goto Badlands,2.4,45.9
+.turnin 2258 >>移交荒地试剂运行
+step
+.goto Badlands,2.8,45.6
+.turnin 782 >>交出破碎的联盟
+step
+.goto Badlands,26.0,44.9
+.turnin 711 >>元素的转入研究：岩石
 step
 .isQuestTurnedIn 701
 #completewith next
 .goto Badlands,4.1,44.8
-.fly Hammerfall >> 飞到Hammerfall
+.fly Hammerfall >>飞到Hammerfall
 step
 .isQuestTurnedIn 701
 .goto Arathi Highlands,74.3,33.9
-.turnin 679 >> 交出武器召唤
+.turnin 679 >>交出武器召唤
 step
 .isOnQuest 679
-.abandon 679 >> 放弃武器召唤
+.abandon 679 >>放弃武器召唤
 step
 .isQuestTurnedIn 701
 .goto Arathi Highlands,74.0,33.2
-.turnin 680 >> 交出真正的威胁
+.turnin 680 >>交出真正的威胁
 step
 .isOnQuest 701
-.abandon 701 >> 放弃真正的威胁
+.abandon 701 >>放弃真正的威胁
 step
 .isQuestTurnedIn 701
 .goto Arathi Highlands,74.8,36.3
-.turnin 640 >> 交回破碎的魔杖
+.turnin 640 >>交回破碎的魔杖
 step
 .isOnQuest 640
-.abandon 640 >> 放弃破碎的印记
+.abandon 640 >>放弃破碎的印记
 step << Druid
->> 使用“传送到月光”法术
+>>使用“传送到月光”法术
 .goto Moonglade,52.5,40.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 #completewith next
-.hs >> 赫斯到奥格瑞玛
+.hs >>赫斯到奥格瑞玛
 step << Hunter
 .goto Orgrimmar,78.1,38.4
-.vendor >> 去买Massive Longbow，有时它还没上市。
+.vendor >>去买Massive Longbow，有时它还没上市。
 .collect 11307,1
 step << Paladin
 #completewith next
 .goto Orgrimmar,32.4,35.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Shaman
 #completewith next
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 #completewith next
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 #completewith next
 .goto Orgrimmar,66.3,14.8
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 #completewith next
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 #completewith next
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 #completewith next
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Mage
 #completewith next
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 #completewith next
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .itemcount 7666,1
 .use 7666
 .goto Orgrimmar,59.4,36.8
-.accept 2283 >> 接受项链回收
-.turnin 2283 >> 交回项链
+.accept 2283 >>接受项链回收
+.turnin 2283 >>交回项链
 step
 #completewith next
 .goto Orgrimmar,45.3,63.9
 .fly Thunder Bluff >>飞向雷霆崖
 step << Hunter
 .goto Thunder Bluff,46.9,45.7
-.vendor >> 去买一个巨大的长弓，这是导游最后一次告诉你去买。否则每次你到首都都要检查一下。
+.vendor >>去买一个巨大的长弓，这是导游最后一次告诉你去买。否则每次你到首都都要检查一下。
 .collect 11307,1
 step << Shaman
 .goto Thunder Bluff,53.1,56.7
-.vendor >> 去买个Rondel
+.vendor >>去买个Rondel
 .collect 2534,1
 step << Shaman
 .goto Thunder Bluff,54.0,57.2
-.vendor >> 在匕首小贩旁边买一个方济各。
+.vendor >>在匕首小贩旁边买一个方济各。
 .collect 2530,1
 step << Mage
 .goto Thunder Bluff,22.5,16.9
-.trainer >> 去训练你的Thunder Bluff Portal
+.trainer >>去训练你的Thunder Bluff Portal
 step
 .goto Thunder Bluff,61.4,81.0
-.turnin 1136 >> 交给Frostmaw
-.accept 1205 >> 接受僵局
+.turnin 1136 >>交给Frostmaw
+.accept 1205 >>接受僵局
 step
 .goto Thunder Bluff,53.9,80.8
-.turnin 1276 >> 交出黑盾
-.accept 11204 >> 接受返回Krog
+.turnin 1276 >>交出黑盾
+.accept 11204 >>接受返回Krog
 step
 #completewith next
 .goto Thunder Bluff,46.8,49.9
 .fly Brackenwall Village >>飞往Brackenwall村
 step
 .goto Dustwallow Marsh,36.3,31.5
-.accept 1166 >> 接受莫洛克霸王的担忧
+.accept 1166 >>接受莫洛克霸王的担忧
 step
 #completewith next
 .goto Dustwallow Marsh,36.9,32.3
-.home >> 把你的炉石放在Brackenwall村
+.home >>把你的炉石放在Brackenwall村
 step
 .goto Dustwallow Marsh,36.4,31.9
-.turnin 11204 >> 交回Krog
-.accept 11200 >> 接受更多巧合
-.accept 11201 >> 接受Grimtotem阴谋
+.turnin 11204 >>交回Krog
+.accept 11200 >>接受更多巧合
+.accept 11201 >>接受Grimtotem阴谋
 step
 .goto Dustwallow Marsh,37.1,33.0
-.accept 1169 >> 接受识别兄弟
+.accept 1169 >>接受识别兄弟
 step
 .goto Dustwallow Marsh,37.3,31.4
-.accept 1168 >> 接受黑龙军团
+.accept 1168 >>接受黑龙军团
 step
 .goto Dustwallow Marsh,35.2,30.7
-.accept 11213 >> 接受Tabetha上的检查
+.accept 11213 >>接受Tabetha上的检查
 step
 #completewith Plan7
 >>掠夺散落在各处的长矛武器架
@@ -9111,32 +9119,32 @@ step
 .complete 11200,1 
 step
 .goto Dustwallow Marsh,35.2,30.7
-.accept 11215 >> 接受帮助Mudspoller
+.accept 11215 >>接受帮助Mudspoller
 step
 .goto Dustwallow Marsh,36.4,31.8
-.turnin 11200 >> 不仅仅是巧合
-.turnin 11201 >> 交出格里姆托姆阴谋
-.accept 11203 >> 接受查找Tabetha
+.turnin 11200 >>不仅仅是巧合
+.turnin 11201 >>交出格里姆托姆阴谋
+.accept 11203 >>接受查找Tabetha
 step
 #xprate <1.5
 .goto Dustwallow Marsh,35.2,38.4
-.turnin 1177 >> 饿了就回去！
+.turnin 1177 >>饿了就回去！
 step
 .goto Dustwallow Marsh,46.0,57.2
-.turnin 11203 >> 转入查找Tabetha
-.accept 11205 >> 接受愤怒的迪雷霍恩帖子！
-.turnin 11213 >> 在Tabetha上交验
-.accept 11169 >> 接受恐怖武器
-.accept 11173 >> 接受试剂窃贼
+.turnin 11203 >>转入查找Tabetha
+.accept 11205 >>接受愤怒的迪雷霍恩帖子！
+.turnin 11213 >>在Tabetha上交验
+.accept 11169 >>接受恐怖武器
+.accept 11173 >>接受试剂窃贼
 step
 .goto Dustwallow Marsh,46.1,57.5
-.accept 11156 >> 接受迪雷霍恩突袭者
-.accept 11172 >> 接受齐柏林飞船坠毁
+.accept 11156 >>接受迪雷霍恩突袭者
+.accept 11172 >>接受齐柏林飞船坠毁
 step
 .goto Dustwallow Marsh,53.5,56.9
-.turnin 11172 >> 提交齐柏林飞船坠毁案
-.accept 11174 >> 接受防腐
-.accept 11207 >> 接受货物安全！
+.turnin 11172 >>提交齐柏林飞船坠毁案
+.accept 11174 >>接受防腐
+.accept 11207 >>接受货物安全！
 step
 #completewith BoxesCargo2
 .use 33108 >>在该区域的Oozes上使用您包中的Ooze Buster
@@ -9171,9 +9179,9 @@ step
 .complete 11174,1 
 step
 .goto Dustwallow Marsh,53.5,56.9
-.turnin 11174 >> 交车防腐
-.turnin 11207 >> 上车，保护货物！
-.accept 11208 >> 接受Drazzit的交付
+.turnin 11174 >>交车防腐
+.turnin 11207 >>上车，保护货物！
+.accept 11208 >>接受Drazzit的交付
 step
 #completewith Tents6
 >>杀死Direhorn Grimtotems
@@ -9184,7 +9192,7 @@ step
 .goto Dustwallow Marsh,47.1,46.8
 .use 33115 >>在东北部的帐篷里找到并杀死药剂师塞拉。掠夺密封信并点击它进行任务。
 .collect 33115,1,11186
-.accept 11186 >> 接受背叛的迹象？
+.accept 11186 >>接受背叛的迹象？
 step
 #label Tents6
 .goto Dustwallow Marsh,47.1,46.8
@@ -9208,11 +9216,11 @@ step
 step
 #requires Cylla
 .goto Dustwallow Marsh,46.1,57.5
-.turnin 11156 >> 交出迪雷霍恩袭击者
+.turnin 11156 >>交出迪雷霍恩袭击者
 step
 .goto Dustwallow Marsh,46.0,57.1
-.turnin 11205 >> 交给愤怒的迪雷霍恩帖子！
-.accept 11206 >> 接受司法裁决
+.turnin 11205 >>交给愤怒的迪雷霍恩帖子！
+.accept 11206 >>接受司法裁决
 step
 #completewith CrocoTotem
 >>杀死该地区的碎纸机和爬行动物。抢劫他们以获取沼泽毒液
@@ -9261,24 +9269,24 @@ step
 .complete 11173,1 
 step
 .goto Dustwallow Marsh,46.0,57.2
-.turnin 11169 >> 交出恐怖武器
-.turnin 11173 >> 交出试剂窃贼
+.turnin 11169 >>交出恐怖武器
+.turnin 11173 >>交出试剂窃贼
 step
 .goto Dustwallow Marsh,42.8,72.4
-.fp >> 获取泥链轮飞行路径
+.fp >>获取泥链轮飞行路径
 step
 .goto Dustwallow Marsh,42.3,72.9
-.turnin 11215 >> 打开帮助Mudspower
-.turnin 11208 >> 交付Drazzit
+.turnin 11215 >>打开帮助Mudspower
+.turnin 11208 >>交付Drazzit
 step
 .goto Dustwallow Marsh,41.7,73.0
-.accept 11184 >> 接受通缉令：贪婪的Goreclaw
+.accept 11184 >>接受通缉令：贪婪的Goreclaw
 step
 .goto Dustwallow Marsh,41.6,72.9
-.accept 11217 >> 接受捉龙
+.accept 11217 >>接受捉龙
 step
 .goto Dustwallow Marsh,41.9,73.9
-.accept 11158 >> 接受鲜血羽毛
+.accept 11158 >>接受鲜血羽毛
 step
 #completewith next
 >>杀死猛禽。掠夺他们的羽毛
@@ -9295,14 +9303,14 @@ step
 .complete 11158,1 
 step
 .goto Dustwallow Marsh,41.9,73.9
-.turnin 11158 >> 交出鲜血羽毛
-.accept 11160 >> 接受石锤旗帜
+.turnin 11158 >>交出鲜血羽毛
+.accept 11160 >>接受石锤旗帜
 step
 .goto Dustwallow Marsh,42.3,72.9
-.turnin 11184 >> 通缉犯：凶残的Goreclaw
+.turnin 11184 >>通缉犯：凶残的Goreclaw
 step
 .goto Dustwallow Marsh,41.8,73.9
-.accept 11161 >> 接受敌意的本质
+.accept 11161 >>接受敌意的本质
 step
 #sticky
 #label firebanes
@@ -9339,14 +9347,14 @@ step
 #completewith next
 .goto Dustwallow Marsh,36.79,68.93
 .goto Dustwallow Marsh,41.04,74.27,30 >>在横幅顶部注销，然后重新登录
-.link https://www.youtube.com/watch?v=JjCnExveVPo >> 单击此处
+.link https://www.youtube.com/watch?v=JjCnExveVPo >>单击此处
 step
 #requires DragonEssence
 #label MudsprocketTurnins2
 .goto Dustwallow Marsh,41.9,73.9
-.turnin 11160 >> 上交石锤旗
-.turnin 11161 >> 交出敌意的本质
-.accept 11159 >> 接受石锤堡的灵魂
+.turnin 11160 >>上交石锤旗
+.turnin 11161 >>交出敌意的本质
+.accept 11159 >>接受石锤堡的灵魂
 step
 #sticky
 #completewith snuffreq1
@@ -9365,8 +9373,8 @@ step
 #requires Snuff
 #label snuffreq1
 .goto Dustwallow Marsh,41.8,74.0
-.turnin 11159 >> 移交石锤堡的灵魂
-.accept 11162 >> 接受黑色飞行的挑战
+.turnin 11159 >>移交石锤堡的灵魂
+.accept 11162 >>接受黑色飞行的挑战
 step
 #completewith next
 >>掠夺妖精，。它们是散布在周围的绿色植物。
@@ -9397,43 +9405,43 @@ step
 .complete 11162,1 
 step
 #completewith next
-.hs >> 炉灶至Brackenwall村
+.hs >>炉灶至Brackenwall村
 step
 .goto Dustwallow Marsh,36.4,31.8
-.turnin 11206 >> 移交司法裁决
+.turnin 11206 >>移交司法裁决
 step
 .goto Dustwallow Marsh,36.3,31.4
-.turnin 1166 >> 交出莫洛克霸王的担忧
+.turnin 1166 >>交出莫洛克霸王的担忧
 step
 .goto Dustwallow Marsh,35.2,30.6
-.turnin 11186 >> 交出叛国的迹象？
+.turnin 11186 >>交出叛国的迹象？
 step
 .goto Dustwallow Marsh,37.4,31.4
-.turnin 1168 >> 交出黑龙军团
+.turnin 1168 >>交出黑龙军团
 step
 .goto Dustwallow Marsh,37.1,33.0
-.turnin 1169 >> 轮流识别婴儿
+.turnin 1169 >>轮流识别婴儿
 step
 .goto Dustwallow Marsh,37.2,33.1
-.accept 1170 >> 接受奥妮克希亚的兄弟
+.accept 1170 >>接受奥妮克希亚的兄弟
 step
 .goto Dustwallow Marsh,36.3,31.4
-.turnin 1170 >> 交出奥妮克希亚的雏鸟
-.accept 1171 >> 接受奥妮克希亚的兄弟
+.turnin 1170 >>交出奥妮克希亚的雏鸟
+.accept 1171 >>接受奥妮克希亚的兄弟
 step
 .goto Dustwallow Marsh,37.2,33.2
-.turnin 1171 >> 交出奥妮克希亚的雏鸟
-.accept 1172 >> 接受奥妮克希亚的兄弟
+.turnin 1171 >>交出奥妮克希亚的雏鸟
+.accept 1172 >>接受奥妮克希亚的兄弟
 step
 #completewith next
 .goto Dustwallow Marsh,35.6,31.8
-.fly Mudsprocket >> 飞到泥链轮
+.fly Mudsprocket >>飞到泥链轮
 step
 .goto Dustwallow Marsh,41.8,74.0
-.turnin 11162 >> 向黑色飞行挑战
+.turnin 11162 >>向黑色飞行挑战
 step
 .goto Dustwallow Marsh,41.6,73.0
-.turnin 11217 >> 转身捉龙
+.turnin 11217 >>转身捉龙
 step
 .goto Dustwallow Marsh,48.5,73.6,15,0
 .goto Dustwallow Marsh,48.4,76.0,15,0
@@ -9457,24 +9465,24 @@ step
 #completewith next
 >>返回泥链轮
 .goto Dustwallow Marsh,42.8,72.4
-.fly Brackenwall >> 飞往Brackenwall村
+.fly Brackenwall >>飞往Brackenwall村
 step
 #xprate <1.3
 .goto Dustwallow Marsh,35.3,30.7
-.turnin 1261 >> 打开边距扬声器
-.accept 1262 >> 接受Zor的报告
+.turnin 1261 >>打开边距扬声器
+.accept 1262 >>接受Zor的报告
 step
 .goto Dustwallow Marsh,37.1,33.0
-.turnin 1172 >> 交出奥妮克希亚的雏鸟
+.turnin 1172 >>交出奥妮克希亚的雏鸟
 step
 >>如果可能的话，找一个小组来完成这个任务。如果你不能独奏，就跳过这个任务。
 .goto Dustwallow Marsh,36.3,31.4
-.accept 1173 >> 接受挑战Mok'Morokk霸王
+.accept 1173 >>接受挑战Mok'Morokk霸王
 .complete 1173,1 
 step
 .isQuestComplete 1173
 .goto Dustwallow Marsh,37.0,32.9
-.turnin 1173 >> 加入挑战霸王莫洛克
+.turnin 1173 >>加入挑战霸王莫洛克
 step
 .isOnQuest 1173
 >>如果你无法完成任务，就放弃它。
@@ -9489,86 +9497,86 @@ RXPGuides.RegisterGuide([[
 #next 41-41 凄凉之地 II
 step << Shaman
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.3,14.8
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Mage
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,78.1,38.4
->> 去金莎买一把巨大的长弓。如果不在供应商处，请跳过此步骤
+>>去金莎买一把巨大的长弓。如果不在供应商处，请跳过此步骤
 .collect 11307,1
 step
 .goto Orgrimmar,75.18,34.20
-.accept 2981 >> 接受费拉拉斯的威胁
+.accept 2981 >>接受费拉拉斯的威胁
 step
 #sticky
-.abandon 1106 >> 如果你没有做《荒地》，就抛弃流亡者马泰克。
+.abandon 1106 >>如果你没有做《荒地》，就抛弃流亡者马泰克。
 step
 #completewith next
-.goto Durotar,45.53,11.79,60 >> 逃离Orgrimmar
+.goto Durotar,45.53,11.79,60 >>逃离Orgrimmar
 step
 >>在奥格瑞玛城外登上齐柏林塔
 .goto Durotar,50.53,12.52
-.zone Stranglethorn Vale >> 带齐柏林飞艇去荆棘谷
+.zone Stranglethorn Vale >>带齐柏林飞艇去荆棘谷
 step
 .goto Stranglethorn Vale,31.4,29.60
 .home >>将您的炉石设置为Grom'Gol大本营
 step
 .isQuestTurnedIn 1238
 .goto Stranglethorn Vale,32.20,27.80
-.turnin 1240 >> 交出巨魔巫医
+.turnin 1240 >>交出巨魔巫医
 step
 .goto Stranglethorn Vale,32.10,27.80
-.accept 584 >> 接受血鳞氏族首领
+.accept 584 >>接受血鳞氏族首领
 step
 #era
 .goto Stranglethorn Vale,32.20,27.70
-.accept 598 >> 接受分割骨骼项链
+.accept 598 >>接受分割骨骼项链
 step
 .goto Stranglethorn Vale,23.40,8.00
->> 杀死甘祖拉。抢他的头
+>>杀死甘祖拉。抢他的头
 .complete 584,1
 .unitscan Gan'zulah
 step
 .goto Stranglethorn Vale,23.50,9.50
->> 杀死内兹利奥克。抢他的头
+>>杀死内兹利奥克。抢他的头
 .complete 584,2
 .unitscan Nezzliok the Dire
 step
 .goto Stranglethorn Vale,32.20,27.60
->> 点击气泡杯
-.turnin 584 >> 交出血鳞族长
-.accept 585 >> 接受与Nezzliok的对话
+>>点击气泡杯
+.turnin 584 >>交出血鳞族长
+.accept 585 >>接受与Nezzliok的对话
 step
 .goto Stranglethorn Vale,32.10,29.20
-.accept 572 >> 接受莫扎丁的魅力
+.accept 572 >>接受莫扎丁的魅力
 step
 .goto Stranglethorn Vale,31.00,42.50
->> 杀死丛林追踪者。抢劫他们以换取丛林追踪者的羽毛
+>>杀死丛林追踪者。抢劫他们以换取丛林追踪者的羽毛
 .complete 196,1
 .complete 572,1
 step
 #era
 .goto Stranglethorn Vale,41.60,43.60
->> 杀死地精。抢走他们来换取蓝色水晶
+>>杀死地精。抢走他们来换取蓝色水晶
 .complete 600,1
 step
 #era
@@ -9584,16 +9592,16 @@ step
 .complete 209,1
 step
 .goto Stranglethorn Vale,42.20,36.10
->> 抢劫地上的骷髅堆
+>>抢劫地上的骷髅堆
 .complete 585,2
 step
 .goto Stranglethorn Vale,47.60,39.60
->> 抢劫地上的骷髅堆
+>>抢劫地上的骷髅堆
 .complete 585,3
 step
 #label SkullP
 .goto Stranglethorn Vale,46.10,32.30
->> 抢劫地上的骷髅堆
+>>抢劫地上的骷髅堆
 .complete 585,1
 step
 #som
@@ -9618,77 +9626,77 @@ step
 .goto Stranglethorn Vale,47.26,28.58
 .goto Stranglethorn Vale,49.61,23.98,0
 .goto Stranglethorn Vale,48.95,19.87,0
->> 寻找巴格特拉。杀了他，抢了他的牙
+>>寻找巴格特拉。杀了他，抢了他的牙
 .complete 193,1
 .unitscan BHAG'THERA
 step
 #era
-.hs >> 从赫斯到格罗姆戈尔
->> 如果需要，购买食物/水
+.hs >>从赫斯到格罗姆戈尔
+>>如果需要，购买食物/水
 step << Hunter
 #era
 .goto Stranglethorn Vale,31.55,27.95
-.vendor >> 前往北方。买箭直到你的箭袋装满
+.vendor >>前往北方。买箭直到你的箭袋装满
 step
 #era
 .goto Stranglethorn Vale,32.20,27.80
-.turnin 598 >> 旋入劈开的骨头项链
-.turnin 585 >> 交给Nezzliok说话
-.accept 1261 >> 接受Marg Speaks
+.turnin 598 >>旋入劈开的骨头项链
+.turnin 585 >>交给Nezzliok说话
+.accept 1261 >>接受Marg Speaks
 step
 #era
 .goto Stranglethorn Vale,32.10,29.20
-.turnin 572 >> 交出莫扎丁的魔法
+.turnin 572 >>交出莫扎丁的魔法
 step
 .goto Stranglethorn Vale,35.60,10.60
-.turnin 196 >> 交猛禽大师
-.accept 197 >> 接受猛禽大师
-.turnin 193 >> 交出黑豹大师
+.turnin 196 >>交猛禽大师
+.accept 197 >>接受猛禽大师
+.turnin 193 >>交出黑豹大师
 step
 #som
-.hs >> 从赫斯到格罗姆戈尔
->> 如果需要，购买食物/水
+.hs >>从赫斯到格罗姆戈尔
+>>如果需要，购买食物/水
 step << Hunter
 #era
 .goto Stranglethorn Vale,31.55,27.95
-.vendor >> 前往北方。买箭直到你的箭袋装满
+.vendor >>前往北方。买箭直到你的箭袋装满
 step
 .isQuestComplete 598
 .goto Stranglethorn Vale,32.20,27.80
-.turnin 598 >> 旋入劈开的骨头项链
+.turnin 598 >>旋入劈开的骨头项链
 step
 .goto Stranglethorn Vale,32.20,27.80
 .isQuestTurnedIn 1240
-.accept 1261 >> 接受Marg Speaks
+.accept 1261 >>接受Marg Speaks
 step
 .goto Stranglethorn Vale,32.20,27.80
-.turnin 585 >> 交给Nezzliok说话
+.turnin 585 >>交给Nezzliok说话
 step
 #som
 .goto Stranglethorn Vale,32.10,29.20
-.turnin 572 >> 交出莫扎丁的魔法
+.turnin 572 >>交出莫扎丁的魔法
 step
 #era
 #completewith next
 .goto Stranglethorn Vale,39.30,6.49,60,0
-.goto Stranglethorn Vale,40.60,3.15,50 >> 前往黄昏
+.goto Stranglethorn Vale,40.60,3.15,50 >>前往黄昏
 step
 #era
 .goto Deadwind Pass,28.10,29.60
-.accept 1372 >> 只接受真相
-.turnin 1372 >> 除了真相什么都不交
+.accept 1372 >>只接受真相
+.turnin 1372 >>除了真相什么都不交
 step
 #era
 #completewith next
-.goto Duskwood,88.47,41.00,50 >> 前往逆风山口
+.goto Duskwood,88.47,41.00,50 >>前往逆风山口
 step
 #era
 .goto Deadwind Pass,48.02,34.60,60,0
-.goto Deadwind Pass,58.43,41.51,50 >> 前往悲伤沼泽
+.goto Deadwind Pass,58.43,41.51,50 >>前往悲伤沼泽
 step
 #era
 #completewith next
-.goto Swamp of Sorrows,14.32,59.97,100 >> 前往幼崽所在地
+.goto Swamp of Sorrows,14.32,59.97,100 >>前往幼崽所在地
 step
 #era
 #completewith next
@@ -9701,38 +9709,38 @@ step
 step
 #era
 .goto Swamp of Sorrows,44.70,57.10
-.accept 698 >> 接受盈余不足
+.accept 698 >>接受盈余不足
 step
 #era
 .goto Swamp of Sorrows,46.10,54.70
-.fp Stonard >> 获取Stonard飞行路线
+.fp Stonard >>获取Stonard飞行路线
 step
 #era
 .goto Swamp of Sorrows,47.80,55.20
-.turnin 1420 >> 向Helgru提交报告
-.accept 1424 >> 接受眼泪池
+.turnin 1420 >>向Helgru提交报告
+.accept 1424 >>接受眼泪池
 step
 #era
 #sticky
 .goto Swamp of Sorrows,57.68,38.36,0
->> 杀死锯齿鳄鱼和锯齿蛇。抢劫他们作为锯齿状侧翼
+>>杀死锯齿鳄鱼和锯齿蛇。抢劫他们作为锯齿状侧翼
 .complete 698,1
 step
 #era
 .goto Swamp of Sorrows,47.10,38.83
->> 杀死Noboru，抢夺他作为棍棒，然后点击它。他在该区域的顶部中心巡逻
+>>杀死Noboru，抢夺他作为棍棒，然后点击它。他在该区域的顶部中心巡逻
 .collect 6196,1,1392
-.accept 1392 >> 接受Noboru的惩罚
-.unitscan NOB或U THE CUDGEL
+.accept 1392 >>接受Noboru的惩罚
+.unitscan NOBORU THE CUDGEL
 step
 #era
 .goto Swamp of Sorrows,26.00,31.40
-.accept 1389 >> 接受Draenethyst晶体
-.turnin 1392 >> 交出棍棒Noboru
+.accept 1389 >>接受Draenethyst晶体
+.turnin 1392 >>交出棍棒Noboru
 step
 #era
 #completewith Draene
->> 杀死翁格库。抢他的碎片。在休耕圣地到处都可以找到他
+>>杀死翁格库。抢他的碎片。在休耕圣地到处都可以找到他
 .complete 1373,1
 .isOnQuest 1373
 .unitscan Ongeku
@@ -9741,7 +9749,7 @@ step
 #sticky
 #completewith GalenE
 .goto Swamp of Sorrows,63.26,22.35,0
->> 在木屋周围抢劫6块蓝色水晶
+>>在木屋周围抢劫6块蓝色水晶
 .complete 1389,1
 step
 #era
@@ -9753,41 +9761,41 @@ step
 #era
 #label Galen
 .goto Swamp of Sorrows,65.46,18.16
->> 接受此任务将启动护送。在开始这项任务之前，试着清除距加伦以南40码处营地周围的暴徒
-.accept 1393 >> 接受盖伦的逃跑
+>>接受此任务将启动护送。在开始这项任务之前，试着清除距加伦以南40码处营地周围的暴徒
+.accept 1393 >>接受盖伦的逃跑
 step
 #era
 #label GalenE
->> 护送盖伦
+>>护送盖伦
 .complete 1393,1
 step
 #era
 #label Draene
 .goto Swamp of Sorrows,63.26,22.35
->> 完成Draenethyst晶体
+>>完成Draenethyst晶体
 .complete 1389,1
 step
 #era
 .goto Swamp of Sorrows,64.74,22.46
->> 杀死翁格库。抢他的碎片。在休耕圣地到处都可以找到他
+>>杀死翁格库。抢他的碎片。在休耕圣地到处都可以找到他
 .complete 1373,1
 .isOnQuest 1373
 .unitscan Ongeku
 step
 #era
 .goto Swamp of Sorrows,47.80,39.75
->> 点击Galen的Strongbox
-.turnin 1393 >> 转入Galen的逃亡
+>>点击Galen的Strongbox
+.turnin 1393 >>转入Galen的逃亡
 step
 #era
 .goto Swamp of Sorrows,57.68,38.36
->> 杀死锯齿鳄鱼和锯齿蛇。抢劫他们作为锯齿状侧翼
+>>杀死锯齿鳄鱼和锯齿蛇。抢劫他们作为锯齿状侧翼
 .complete 698,1
 step
 #era
 .goto Swamp of Sorrows,81.40,81.00
-.turnin 698 >> 缺少盈余
-.accept 699 >> 接受盈余不足
+.turnin 698 >>缺少盈余
+.accept 699 >>接受盈余不足
 step
 #era
 >>抢劫在湖水下发现的各种文物
@@ -9797,70 +9805,70 @@ step
 #era
 >>跑回斯托纳德
 .goto Swamp of Sorrows,48.00,54.90
-.turnin 1424 >> 在泪池中转身
+.turnin 1424 >>在泪池中转身
 step
 #era
 .goto Swamp of Sorrows,25.90,31.50
-.turnin 1392 >> 交出棍棒Noboru
-.turnin 1389 >> 转入德莱内斯特晶体
+.turnin 1392 >>交出棍棒Noboru
+.turnin 1389 >>转入德莱内斯特晶体
 step
 #era
 .goto Swamp of Sorrows,13.96,61.67
->> 杀死幼崽。掠夺他们的梦想之尘
+>>杀死幼崽。掠夺他们的梦想之尘
 .complete 1116,1
 step
 #era
-.hs >> 赫斯回到格罗姆戈
->> 如果需要，购买食物/水
+.hs >>赫斯回到格罗姆戈
+>>如果需要，购买食物/水
 step
 .goto Stranglethorn Vale,32.54,29.36
-.fly Booty Bay >> 飞到Booty Bay
+.fly Booty Bay >>飞到Booty Bay
 step
 #era
 >>客栈顶层
 .goto Stranglethorn Vale,27.00,77.20
-.turnin 1116 >> 沼泽中的梦尘
-.turnin 209 >> 换上骷髅人的长牙
+.turnin 1116 >>沼泽中的梦尘
+.turnin 209 >>换上骷髅人的长牙
 step
 #som
 >>客栈顶层
 .goto Stranglethorn Vale,27.00,77.10
-.turnin 209 >> 换上骷髅人的长牙
+.turnin 209 >>换上骷髅人的长牙
 step
 >>客栈阳台
 .goto Stranglethorn Vale,27.10,77.00
-.turnin 669 >> 交回沉没的宝藏
-.accept 1183 >> 接受地精赞助
+.turnin 669 >>交回沉没的宝藏
+.accept 1183 >>接受地精赞助
 step
 #era
 .goto Stranglethorn Vale,27.00,77.20
-.accept 1117 >> 接受Kravel的谣言
-.accept 2864 >> 接受Tran'rek
+.accept 1117 >>接受Kravel的谣言
+.accept 2864 >>接受Tran'rek
 step
 #som
 .goto Stranglethorn Vale,27.00,77.20
-.accept 2864 >> 接受Tran'rek
+.accept 2864 >>接受Tran'rek
 step
 #era
 .goto Stranglethorn Vale,27.10,77.30
-.turnin 600 >> 交由风险公司采矿
+.turnin 600 >>交由风险公司采矿
 step
 .goto Stranglethorn Vale,27.70,77.10
-.accept 2872 >> 接受斯托利的债务
+.accept 2872 >>接受斯托利的债务
 step
 #completewith next
-.goto Stranglethorn Vale,25.90,73.14,40 >> 跑到Booty Bay码头
+.goto Stranglethorn Vale,25.90,73.14,40 >>跑到Booty Bay码头
 step
 .goto Stranglethorn Vale,25.76,73.04
-.zone The Barrens >> 把船开到棘轮
+.zone The Barrens >>把船开到棘轮
 step
 .isQuestComplete 1270
 .goto The Barrens,62.40,37.60
-.turnin 1270 >> 交给臭臭逃亡者
+.turnin 1270 >>交给臭臭逃亡者
 step
 #era
 .goto The Barrens,63.08,37.16
-.fly Camp Taurajo >> 飞往陶拉霍营地
+.fly Camp Taurajo >>飞往陶拉霍营地
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -9874,52 +9882,52 @@ RXPGuides.RegisterGuide([[
 step
 #era
 .goto The Barrens,45.6,59.0
-.home >> 将您的炉石设置为陶拉霍营地
+.home >>将您的炉石设置为陶拉霍营地
 step << !Mage
 .isQuestComplete 1276
 .goto The Barrens,44.45,59.15
-.fly Thunder Bluff >> 飞向雷霆崖
+.fly Thunder Bluff >>飞向雷霆崖
 step << Mage
 .isQuestComplete 1276
-.zone Thunder Bluff >> 传送到Thunder Bluff
+.zone Thunder Bluff >>传送到Thunder Bluff
 step
 .isQuestComplete 1276
 .goto Thunder Bluff,54.00,80.90
-.turnin 1276 >> 交出黑盾
+.turnin 1276 >>交出黑盾
 step
 .isQuestComplete 1276
 .goto Thunder Bluff,61.40,80.70
-.accept 1205 >> 接受僵局
+.accept 1205 >>接受僵局
 step
 .isQuestTurnedIn 1276
 .goto Thunder Bluff,61.40,80.70
-.turnin 1136 >> 交给Frostmaw
+.turnin 1136 >>交给Frostmaw
 step
 #era
 .goto Thunder Bluff,47.00,49.83
-.fly Desolace >> 飞向绝望
+.fly Desolace >>飞向绝望
 step
 #era
 .goto Desolace,25.80,68.20
-.accept 5581 >> 接受军团门户
+.accept 5581 >>接受军团门户
 step
 #era
 .goto Desolace,36.30,79.20
-.turnin 1373 >> 转入Ongeku
-.accept 1374 >> 接受Khan Jehn
+.turnin 1373 >>转入Ongeku
+.accept 1374 >>接受Khan Jehn
 step
 #era
 .goto Desolace,47.80,61.80
-.accept 6134 >> 接受Ghost-o-plasm向上取整
+.accept 6134 >>接受Ghost-o-plasm向上取整
 step
 #era
 .goto Desolace,52.20,53.50
-.accept 1484 >> 接受腐败者
+.accept 1484 >>接受腐败者
 step
 #era
 .goto Desolace,52.60,54.30
-.turnin 1484 >> 交出腐败者
-.accept 1488 >> 接受腐败者
+.turnin 1484 >>交出腐败者
+.accept 1488 >>接受腐败者
 step
 #era
 #completewith KhanJ
@@ -9937,34 +9945,34 @@ step
 #era
 #completewith next
 .goto Desolace,55.90,77.80,0
->> 杀死阿兹特霍克领主，这可能很难，但在所有有冷却的职业上都可以做到。
->> 他在Mannoroc洞穴边缘巡逻
+>>杀死阿兹特霍克领主，这可能很难，但在所有有冷却的职业上都可以做到。
+>>他在Mannoroc洞穴边缘巡逻
 .complete 1488,1
 .unitscan Lord Azrethoc
 step
 #era
 #label Jugkar
 .goto Desolace,55.90,77.80
->> 杀死Jugkar Grim'rod
+>>杀死Jugkar Grim'rod
 .complete 1488,2
 step
 #era
 #label Azrethoc
 .goto Desolace,55.90,77.80
->> 杀死阿兹特霍克领主，这可能很难，但在所有有冷却的职业上都可以做到。
->> 他在Mannoroc洞穴边缘巡逻
+>>杀死阿兹特霍克领主，这可能很难，但在所有有冷却的职业上都可以做到。
+>>他在Mannoroc洞穴边缘巡逻
 .complete 1488,1
 .unitscan Lord Azrethoc
 step
 #era
 #label KhanJ
 .goto Desolace,66.30,80.10
->> 杀死Khan Jhen。抢他的头
+>>杀死Khan Jhen。抢他的头
 .complete 1374,1
 step
 #era
 .goto Desolace,64.00,91.70
->> 在骨谷，使用你的库存中的鬼磁铁板条箱。杀死产卵的幽灵。为幽灵-O-Plasm抢劫他们
+>>在骨谷，使用你的库存中的鬼磁铁板条箱。杀死产卵的幽灵。为幽灵-O-Plasm抢劫他们
 .complete 6134,1
 step
 #era
@@ -9974,46 +9982,46 @@ step
 step
 #era
 .goto Desolace,36.30,79.30
-.turnin 1374 >> 交出Khan Jehn
+.turnin 1374 >>交出Khan Jehn
 step
 #era
 .goto Desolace,25.81,68.21
-.turnin 5581 >> 交出军团的门户
+.turnin 5581 >>交出军团的门户
 step
 #era
 #softcore
 .goto Desolace,33.90,53.60
->> 开始护送任务
->> 小心，因为这个任务很难完成
-.accept 6132 >> 接受让我离开这里！
+>>开始护送任务
+>>小心，因为这个任务很难完成
+.accept 6132 >>接受让我离开这里！
 
 step
 #era
 #softcore
->> 第一波你可以完全忽略，暴徒不会冲向护卫队。第二波是5个怪物，所以使用所有冷却时间。如果你死了，跳过这个任务。
->> 完成护送任务
+>>第一波你可以完全忽略，暴徒不会冲向护卫队。第二波是5个怪物，所以使用所有冷却时间。如果你死了，跳过这个任务。
+>>完成护送任务
 .complete 6132,1
 step
 #era
 #softcore
 .goto Desolace,47.80,61.80
-.turnin 6132 >> 进去把我弄出去！
+.turnin 6132 >>进去把我弄出去！
 step
 #era
 .goto Desolace,47.83,61.82
-.turnin 6134 >> 提交Ghost-o-plaism汇总
+.turnin 6134 >>提交Ghost-o-plaism汇总
 step
 #era
 .goto Desolace,52.60,54.40
-.turnin 1488 >> 交出腐败者
+.turnin 1488 >>交出腐败者
 step
 #era
-.hs >> 赫斯返回陶拉霍营地
->> 如果需要，购买食物/水
+.hs >>赫斯返回陶拉霍营地
+>>如果需要，购买食物/水
 step
 #era
 .goto The Barrens,44.45,59.15
-.fly Tanaris >> 飞往塔纳瑞斯
+.fly Tanaris >>飞往塔纳瑞斯
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -10026,127 +10034,127 @@ RXPGuides.RegisterGuide([[
 step
 #som
 .goto Thunder Bluff,47.00,49.83
-.fly Tanaris >> 飞往塔纳瑞斯
+.fly Tanaris >>飞往塔纳瑞斯
 step
 .goto Tanaris,51.60,26.80
-.turnin 2864 >> 交给Tran'rek
+.turnin 2864 >>交给Tran'rek
 step
 .goto Tanaris,51.80,26.90
-.accept 2781 >> 接受通缉：哈里发Scorpidsting
+.accept 2781 >>接受通缉：哈里发Scorpidsting
 step
 .goto Tanaris,52.50,27.90
-.home >> 将您的炉石设置为Gadgetzan
+.home >>将您的炉石设置为Gadgetzan
 step
 .goto Tanaris,52.40,28.50
-.turnin 243 >> 转入球场
-.accept 379 >> 接受缓解口渴
+.turnin 243 >>转入球场
+.accept 379 >>接受缓解口渴
 step
 .goto Tanaris,52.46,28.51
-.accept 1690 >> 接受荒原正义
-.accept 1707 >> 接受水袋赏金
+.accept 1690 >>接受荒原正义
+.accept 1707 >>接受水袋赏金
 step
 .goto Tanaris,50.20,27.50
-.accept 992 >> 接受Gadgetzan水资源调查
+.accept 992 >>接受Gadgetzan水资源调查
 step
 .goto Tanaris,39.10,29.30
->> 在池中使用未映射的小部件。逃离暴徒的滋生
+>>在池中使用未映射的小部件。逃离暴徒的滋生
 .complete 992,1
 step
 #completewith next
 .goto Tanaris,60.18,23.29,0
->> 在前往Steamwheedle港的途中，杀死午间废墟中的土匪和窃贼。抢劫他们以换取水袋
+>>在前往Steamwheedle港的途中，杀死午间废墟中的土匪和窃贼。抢劫他们以换取水袋
 .complete 1690,1
 .complete 1690,2
 .collect 8483,10
 step
 .goto Tanaris,67.00,22.40
-.accept 3520 >> 接受筛选者精神
+.accept 3520 >>接受筛选者精神
 step
 .goto Tanaris,67.10,24.00
-.turnin 2872 >> 交出斯托利的债务
+.turnin 2872 >>交出斯托利的债务
 step
 .goto Tanaris,63.70,31.15
->> 杀死土匪和盗贼。抢他们去买水袋
+>>杀死土匪和盗贼。抢他们去买水袋
 .complete 1690,1
 .complete 1690,2
 .collect 8483,10
 step << Shaman
-.hs >> Gadgetzan之炉
->> 如果需要，购买食物/水
+.hs >>Gadgetzan之炉
+>>如果需要，购买食物/水
 step
 .goto Tanaris,52.50,28.50
-.turnin 1707 >> 交水袋赏金
-.turnin 379 >> 交上来缓解口渴
-.turnin 1690 >> 移交Wastewand法官
-.accept 1691 >> 接受更多浪费正义
+.turnin 1707 >>交水袋赏金
+.turnin 379 >>交上来缓解口渴
+.turnin 1690 >>移交Wastewand法官
+.accept 1691 >>接受更多浪费正义
 step
 #som
 #sticky
-.destroy 8524 >> 销毁包中的4711-FTZ型电源
+.destroy 8524 >>销毁包中的4711-FTZ型电源
 step
 .goto Tanaris,50.21,27.48
-.turnin 992 >> 提交Gadgetzan水资源调查
+.turnin 992 >>提交Gadgetzan水资源调查
 step
 #era
 .goto Tanaris,52.70,7.80
->> 向北前往闪耀的平地
-.turnin 1117 >> 向Kravel举报谣言
+>>向北前往闪耀的平地
+.turnin 1117 >>向Kravel举报谣言
 step
 .isQuestTurnedIn 1108
 .goto Tanaris,52.90,7.70
-.turnin 1137 >> 提交失败的新闻
+.turnin 1137 >>提交失败的新闻
 step
 .goto Tanaris,54.20,6.90
-.turnin 1183 >> 提交地精赞助
-.accept 1186 >> 接受第十八名飞行员
+.turnin 1183 >>提交地精赞助
+.accept 1186 >>接受第十八名飞行员
 step
 .isQuestTurnedIn 1108
 .goto Tanaris,54.20,6.90
-.accept 1190 >> 接受保持速度
+.accept 1190 >>接受保持速度
 step
 .goto Tanaris,54.30,7.00
-.turnin 1186 >> 交第十八飞行员
-.accept 1187 >> 接受Razzeric的Tweaking
+.turnin 1186 >>交第十八飞行员
+.accept 1187 >>接受Razzeric的Tweaking
 step
 .isQuestTurnedIn 1108
 #completewith next
 .goto Thousand Needles,79.81,77.02
 >>与Zamek交谈以转移注意力
-.turnin 1191 >> 转移Zamek的注意力
+.turnin 1191 >>转移Zamek的注意力
 .timer 30,Keeping Pace RP
 step
 .isQuestTurnedIn 1108
 .goto Thousand Needles,77.21,77.41
 >>点击金属小屋内无人看管的平面图
-.turnin 1190 >> 转弯保持速度
-.accept 1194 >> 接受Rizzle的示意图
+.turnin 1190 >>转弯保持速度
+.accept 1194 >>接受Rizzle的示意图
 step
 #era
 .goto Tanaris,52.70,7.80
-.accept 1118 >> 接受返回Booty Bay
+.accept 1118 >>接受返回Booty Bay
 step
 .isQuestTurnedIn 1108
 .goto Tanaris,54.20,6.90
-.turnin 1194 >> 提交Rizzle的示意图
+.turnin 1194 >>提交Rizzle的示意图
 step
 #sticky
 #completewith next
->> 如果你的炉石在上面，就把炉子放在Gadgetzan那里，否则就走回去飞。
-.hs >> Gadgetzan之炉
->> 如果需要，购买食物/水
+>>如果你的炉石在上面，就把炉子放在Gadgetzan那里，否则就走回去飞。
+.hs >>Gadgetzan之炉
+>>如果需要，购买食物/水
 step
 .maxlevel 43,dustwallowskip
 .goto Tanaris,51.60,25.50
-.fly Brackenwall >> 飞向尘土沼泽
+.fly Brackenwall >>飞向尘土沼泽
 step
 .goto Dustwallow Marsh,36.30,31.40
-.accept 1166 >> 接受莫洛克霸王的担忧
+.accept 1166 >>接受莫洛克霸王的担忧
 step
 .goto Dustwallow Marsh,37.10,33.00
-.accept 1169 >> 接受识别兄弟
+.accept 1169 >>接受识别兄弟
 step
 .goto Dustwallow Marsh,37.30,31.40
-.accept 1168 >> 接受黑龙军团
+.accept 1168 >>接受黑龙军团
 step
 #completewith Dragondeez
 .unitscan Deadmire
@@ -10160,24 +10168,24 @@ step
 .unitscan Deadmire
 step
 .goto Dustwallow Marsh,54.10,56.50
->> 抢劫坠毁的齐柏林飞艇附近地面上的盒子
+>>抢劫坠毁的齐柏林飞艇附近地面上的盒子
 .complete 1187,1
 step
 .isOnQuest 1261
 .goto Dustwallow Marsh,55.40,63.10
->> 杀死海滩上的Makrura暴徒。抢了他们的吊坠
+>>杀死海滩上的Makrura暴徒。抢了他们的吊坠
 .complete 1261,1
 step
 .goto Dustwallow Marsh,44.50,66.00
->> 抢劫地上的桶
+>>抢劫地上的桶
 .complete 1166,1
 step
 .goto Dustwallow Marsh,38.70,65.60
->> 抢劫地上的花瓶。之后进入洞穴
+>>抢劫地上的花瓶。之后进入洞穴
 .complete 1166,2
 step
 .goto Dustwallow Marsh,36.60,69.50
->> 在洞穴后面抢劫箱子。趁你在里面的时候杀了Scalebanes
+>>在洞穴后面抢劫箱子。趁你在里面的时候杀了Scalebanes
 .complete 1166,3
 .complete 1168,3
 step
@@ -10188,7 +10196,7 @@ step
 .complete 1169,2
 step
 .goto Dustwallow Marsh,44.64,65.97
->> 杀死该地区的龙人
+>>杀死该地区的龙人
 .complete 1168,1
 .complete 1168,2
 step
@@ -10214,39 +10222,39 @@ step
 step
 >>跑回Brackenwall村
 .goto Dustwallow Marsh,37.10,33.00
-.turnin 1169 >> 轮流识别婴儿
+.turnin 1169 >>轮流识别婴儿
 step
 .goto Dustwallow Marsh,36.30,31.50
-.turnin 1166 >> 交出莫洛克霸王的担忧
+.turnin 1166 >>交出莫洛克霸王的担忧
 step
 .goto Dustwallow Marsh,37.30,31.40
-.turnin 1168 >> 交出黑龙军团
+.turnin 1168 >>交出黑龙军团
 step
 .isQuestComplete 1261
 .goto Dustwallow Marsh,35.30,30.60
-.turnin 1261 >> 打开边距扬声器
+.turnin 1261 >>打开边距扬声器
 step
 .isQuestTurnedIn 1261
 .goto Dustwallow Marsh,35.30,30.60
-.accept 1262 >> 接受Zor的报告
+.accept 1262 >>接受Zor的报告
 step
-.hs >> Gadgetzan之炉
->> 如果需要，购买食物/水
+.hs >>Gadgetzan之炉
+>>如果需要，购买食物/水
 step
 #label dustwallowskip
 .goto Tanaris,51.80,26.90
 >>点击通缉海报
-.accept 2781 >> 接受通缉：哈里发Scorpidsting
+.accept 2781 >>接受通缉：哈里发Scorpidsting
 step
 #era
 #level 43
->> 单击包中的电源（橙色平板电脑）。
-.accept 654 >> 接受Tanaris现场取样
+>>单击包中的电源(橙色平板电脑)。
+.accept 654 >>接受Tanaris现场取样
 step
 #era
 .isOnQuest 654
->> 绕过这个区域，杀死蝎子、蛇蜥和鬣狗作为样本。点击掠夺的样本，测试它们是否可以接受
->> 不要删除任何不需要的未测试样本
+>>绕过这个区域，杀死蝎子、蛇蜥和鬣狗作为样本。点击掠夺的样本，测试它们是否可以接受
+>>不要删除任何不需要的未测试样本
 .complete 654,1
 .complete 654,2
 .complete 654,3
@@ -10254,12 +10262,12 @@ step
 #era
 .goto Tanaris,52.40,28.50
 .isOnQuest 654
-.turnin 654 >> 交给Tanaris现场采样
+.turnin 654 >>交给Tanaris现场采样
 step
 #era
 .isQuestTurnedIn 654
 .goto Tanaris,52.40,28.50
-.accept 864 >> 接受返回给药剂师Zinge
+.accept 864 >>接受返回给药剂师Zinge
 step
 #completewith next
 .goto Tanaris,62.22,37.75,0
@@ -10269,7 +10277,7 @@ step
 .unitscan Caliph Scorpidsting
 step
 .goto Tanaris,59.09,37.87
->> 做更多的浪费正义
+>>做更多的浪费正义
 .complete 1691,1
 .complete 1691,2
 .complete 1691,3
@@ -10282,28 +10290,28 @@ step
 step << Hunter
 #level 43
 .goto Tanaris,52.70,45.92
-.accept 3161 >> 接受Gahz’ridian
+.accept 3161 >>接受Gahz’ridian
 step << Hunter
 .goto Tanaris,47.31,65.14
 .goto Tanaris,40.48,72.82
->> 装备所提供的头盔。掠夺地面上（和小地图上）的沙块。抢走它们作为装饰品
+>>装备所提供的头盔。掠夺地面上(和小地图上)的沙块。抢走它们作为装饰品
 .complete 3161,1
 .isOnQuest 3161
 step << Hunter
 .goto Tanaris,52.70,45.92
 >>重新装备你的普通头盔
-.turnin 3161 >> 交给Gahz’ridian
+.turnin 3161 >>交给Gahz’ridian
 .isOnQuest 3161
 step
 .goto Tanaris,52.40,28.50
-.turnin 1691 >> 交给更多流浪汉法官
-.turnin 2781 >> 通缉犯：哈里发坏蛋
+.turnin 1691 >>交给更多流浪汉法官
+.turnin 2781 >>通缉犯：哈里发坏蛋
 step
 .goto Tanaris,51.60,25.50
-.fly Feralas >> 飞往费拉拉斯
+.fly Feralas >>飞往费拉拉斯
 ]])
 RXPGuides.RegisterGuide([[
-#version 7
+#version 9
 #wotlk
 #tbc
 #group RestedXP 部落 30-45
@@ -10314,11 +10322,11 @@ step
 .maxlevel 43
 #completewith next
 .goto Dustwallow Marsh,35.6,31.8
-.fly Ratchet >> 飞到棘轮
+.fly Ratchet >>飞到棘轮
 step
 #xprate <1.5
 .goto The Barrens,62.4,37.6
-.turnin 1270 >> 交给臭臭逃亡者
+.turnin 1270 >>交给臭臭逃亡者
 step
 .maxlevel 43
 #completewith next
@@ -10331,52 +10339,52 @@ step
 step
 .maxlevel 43
 .goto Stranglethorn Vale,26.8,73.7
-.accept 8551 >> 接受队长的胸膛
+.accept 8551 >>接受队长的胸膛
 step
 .maxlevel 44
 .goto Stranglethorn Vale,28.0,76.3
-.accept 595 >> 接受血尾巴海盗
+.accept 595 >>接受血尾巴海盗
 step
 .maxlevel 43
 .goto Stranglethorn Vale,27.6,76.7
-.accept 348 >> 接受绞痛热
+.accept 348 >>接受绞痛热
 step
 .maxlevel 43
 .goto Stranglethorn Vale,27.8,77.1
-.accept 606 >> 接受惊吓颤抖
-.accept 2872 >> 接受斯托利的债务
+.accept 606 >>接受惊吓颤抖
+.accept 2872 >>接受斯托利的债务
 step
 .maxlevel 43
 .goto Stranglethorn Vale,27.1,77.3
-.accept 600 >> 接受风险公司采矿
-.accept 621 >> 接受赞齐尔的秘密
-.accept 209 >> 接受骷髅人的长牙
+.accept 600 >>接受风险公司采矿
+.accept 621 >>接受赞齐尔的秘密
+.accept 209 >>接受骷髅人的长牙
 step
 .maxlevel 43
 .isOnQuest 669
 .goto Stranglethorn Vale,27.2,77.0
-.turnin 669 >> 交回沉没的宝藏
+.turnin 669 >>交回沉没的宝藏
 step
 .isQuestTurnedIn 570
 .isQuestTurnedIn 669
 .goto Stranglethorn Vale,26.7,76.5
-.accept 617 >> 通过捆绑接受Akiris
+.accept 617 >>通过捆绑接受Akiris
 step
 .isQuestTurnedIn 570
 .isQuestTurnedIn 669
 .goto Stranglethorn Vale,26.9,77.1
-.fly Grom'gol >> 飞往格罗姆戈
+.fly Grom'gol >>飞往格罗姆戈
 step
 .isQuestTurnedIn 570
 .isQuestTurnedIn 669
 .goto Stranglethorn Vale,32.1,29.1
-.accept 572 >> 接受莫扎丁的魅力
+.accept 572 >>接受莫扎丁的魅力
 step
 .isQuestTurnedIn 570
 .isQuestTurnedIn 669
 .goto Stranglethorn Vale,32.2,27.7
-.accept 598 >> 接受分割骨骼项链
-.accept 584 >> 接受血鳞氏族首领
+.accept 598 >>接受分割骨骼项链
+.accept 584 >>接受血鳞氏族首领
 step
 .isQuestTurnedIn 570
 .isOnQuest 584
@@ -10395,9 +10403,9 @@ step
 .isQuestTurnedIn 570
 .isOnQuest 584
 .goto Stranglethorn Vale,32.2,27.7
-.turnin 584 >> 交出血鳞族长
-.accept 585 >> 接受与Nezzliok的对话
-.accept 586 >> 接受与甘祖拉的对话
+.turnin 584 >>交出血鳞族长
+.accept 585 >>接受与Nezzliok的对话
+.accept 586 >>接受与甘祖拉的对话
 step
 .isQuestTurnedIn 570
 .isOnQuest 572
@@ -10496,68 +10504,68 @@ step
 .isQuestTurnedIn 570
 .isOnQuest 196
 .goto Stranglethorn Vale,35.7,10.8
-.turnin 196 >> 交猛禽大师
-.accept 197 >> 接受猛禽大师
+.turnin 196 >>交猛禽大师
+.accept 197 >>接受猛禽大师
 step
 .isQuestTurnedIn 570
 .isOnQuest 193
 .goto Stranglethorn Vale,35.6,10.6
-.turnin 193 >> 交出黑豹大师
+.turnin 193 >>交出黑豹大师
 step
 .isQuestTurnedIn 570
 .goto Stranglethorn Vale,32.2,27.7
 .isOnQuest 598
-.turnin 598 >> 旋入劈开的骨头项链
+.turnin 598 >>旋入劈开的骨头项链
 step
 .isQuestTurnedIn 570
 .goto Stranglethorn Vale,32.2,27.7
 .isOnQuest 585
-.turnin 585 >> 交给Nezzliok说话
+.turnin 585 >>交给Nezzliok说话
 step
 .isQuestTurnedIn 570
 .goto Stranglethorn Vale,32.2,27.7
 .isOnQuest 586
-.turnin 586 >> 与甘祖拉交谈
+.turnin 586 >>与甘祖拉交谈
 step
 .isQuestTurnedIn 669
 .goto Stranglethorn Vale,32.2,27.7
-.accept 588 >> 接受Yenniku的命运
+.accept 588 >>接受Yenniku的命运
 step
 .goto Stranglethorn Vale,32.2,27.7
 .isOnQuest 588
-.turnin 588 >> 交出Yenniku的命运
+.turnin 588 >>交出Yenniku的命运
 step
 .isQuestTurnedIn 669
 .goto Stranglethorn Vale,32.2,27.7
-.accept 589 >> 接受歌唱水晶
+.accept 589 >>接受歌唱水晶
 step
 .isQuestTurnedIn 570
 .isOnQuest 572
 .goto Stranglethorn Vale,32.2,29.2
-.turnin 572 >> 交出莫扎丁的魔法
-.accept 571 >> 接受莫扎丁的魅力
+.turnin 572 >>交出莫扎丁的魔法
+.accept 571 >>接受莫扎丁的魅力
 step
 .isQuestTurnedIn 570
 #completewith next
 .goto Stranglethorn Vale,32.5,29.3
-.fly Booty Bay>> 飞到Booty Bay
+.fly Booty Bay>>飞到Booty Bay
 .isOnQuest 600
 step
 .isQuestTurnedIn 570
 .isOnQuest 209
 .goto Stranglethorn Vale,27.0,77.2
-.turnin 209 >> 换上骷髅人的长牙
+.turnin 209 >>换上骷髅人的长牙
 step
 .isQuestTurnedIn 570
 .isOnQuest 600
 .goto Stranglethorn Vale,27.0,77.2
-.turnin 600 >> 交由风险公司采矿
+.turnin 600 >>交由风险公司采矿
 step
 .isQuestTurnedIn 570
 .isOnQuest 595
 .goto Stranglethorn Vale,27.3,69.5
-.turnin 595 >> 交出血尾海盗
-.accept 597 >> 接受血尾巴海盗
+.turnin 595 >>交出血尾海盗
+.accept 597 >>接受血尾巴海盗
 step
 .isQuestTurnedIn 570
 .isOnQuest 606
@@ -10580,7 +10588,7 @@ step
 .isOnQuest 349
 >>这将启动一项活动，3只大猩猩在被杀后一次一只地进入洞穴。杀了他们
 .goto Stranglethorn Vale,35.3,60.4
-.turnin 349 >> 转入绞痛热
+.turnin 349 >>转入荆棘谷
 step
 .isQuestTurnedIn 570
 #label Mokk2
@@ -10603,7 +10611,7 @@ step
 #completewith next
 .isOnQuest 589
 .goto Stranglethorn Vale,37.4,49.5,40,0
-.goto Stranglethorn Vale,42.0,50.0,20 >> 进入洞穴
+.goto Stranglethorn Vale,42.0,50.0,20 >>进入洞穴
 step
 .isQuestTurnedIn 570
 .isOnQuest 589
@@ -10616,7 +10624,7 @@ step
 step
 .isQuestTurnedIn 570
 .isOnQuest 197
->>杀死Tethis（蓝色猛禽）。为他的塔龙抢劫他
+>>杀死Tethis(蓝色猛禽)。为他的塔龙抢劫他
 .goto Stranglethorn Vale,28.7,44.8
 .complete 197,1 
 .unitscan Tethis
@@ -10624,70 +10632,70 @@ step
 .isQuestTurnedIn 570
 .isOnQuest 571
 .goto Stranglethorn Vale,32.1,29.2
-.turnin 571 >> 交出莫扎丁的魔法
-.accept 573 >> 接受莫扎丁的魅力
+.turnin 571 >>交出莫扎丁的魔法
+.accept 573 >>接受莫扎丁的魅力
 step
 .isQuestTurnedIn 570
 .isOnQuest 589
 .goto Stranglethorn Vale,32.2,27.7
-.turnin 589 >> 交出歌唱水晶
+.turnin 589 >>交出歌唱水晶
 step
 .isQuestTurnedIn 570
 .isOnQuest 197
 .goto Stranglethorn Vale,35.7,10.7
-.turnin 197 >> 交猛禽大师
-.accept 208 >> 接受大型游戏猎人
+.turnin 197 >>交猛禽大师
+.accept 208 >>接受大型游戏猎人
 step
 .isQuestTurnedIn 570
 .isOnQuest 597
 .goto Stranglethorn Vale,32.5,29.3
-.fly Booty Bay >> 飞到Booty Bay
+.fly Booty Bay >>飞到Booty Bay
 step
 .isQuestTurnedIn 570
 .isOnQuest 348
 .goto Stranglethorn Vale,27.7,76.7
-.turnin 348 >> 转入绞痛热
+.turnin 348 >>转入荆棘谷
 step
 .isQuestTurnedIn 570
 .isOnQuest 597
 .goto Stranglethorn Vale,28.1,76.2
-.turnin 597 >> 交出血尾海盗
-.accept 599 >> 接受血尾巴海盗
+.turnin 597 >>交出血尾海盗
+.accept 599 >>接受血尾巴海盗
 step
 .isQuestTurnedIn 570
 .isOnQuest 606
 .goto Stranglethorn Vale,26.9,73.6
-.turnin 606 >> 转身吓得发抖
-.accept 607 >> 接受返回MacKinley
+.turnin 606 >>转身吓得发抖
+.accept 607 >>接受返回MacKinley
 step
 .isQuestTurnedIn 570
 .isOnQuest 607
 .goto Stranglethorn Vale,28.5,75.8
-.accept 576 >> 接受请注意
+.accept 576 >>接受请注意
 step
 .isQuestTurnedIn 570
 .isOnQuest 607
 .goto Stranglethorn Vale,27.8,77.1
-.turnin 607 >> 返回麦金利
-.accept 609 >> 接受伏都教会费
+.turnin 607 >>返回麦金利
+.accept 609 >>接受伏都教会费
 step
 .isQuestTurnedIn 570
 .isOnQuest 599
 .goto Stranglethorn Vale,27.0,77.2
-.accept 587 >> 接受到鼻塞
+.accept 587 >>接受到鼻塞
 step
 .isQuestTurnedIn 570
 .isOnQuest 599
 .goto Stranglethorn Vale,27.1,77.0
-.turnin 599 >> 交出血尾海盗
-.accept 604 >> 接受血尾巴海盗
+.turnin 599 >>交出血尾海盗
+.accept 604 >>接受血尾巴海盗
 step
 .isQuestTurnedIn 570
 .isOnQuest 594
 #completewith BloodsailAndys
 >>在海岸上下和岛屿上搜寻绿色瓶子。抢夺纸条时接受任务
 .collect 4098,1,594
-.accept 594 >> 接受瓶子中的消息
+.accept 594 >>接受瓶子中的消息
 step
 .isQuestTurnedIn 570
 .isOnQuest 604
@@ -10732,14 +10740,14 @@ step
 .goto Stranglethorn Vale,33.1,78.2
 >>在岸上四处寻找一个绿色的瓶子。如果你抢走了纸条，接受任务
 .collect 4098,1,594
-.accept 594 >> 接受瓶子中的消息
+.accept 594 >>接受瓶子中的消息
 step
 .isQuestTurnedIn 570
 .isOnQuest 594
 >>游到岛上
 .goto Stranglethorn Vale,38.5,80.6
-.turnin 594 >> 把信息装在瓶子里
-.accept 630 >> 接受瓶子中的消息
+.turnin 594 >>把信息装在瓶子里
+.accept 630 >>接受瓶子中的消息
 step
 .isQuestTurnedIn 570
 .isOnQuest 630
@@ -10754,7 +10762,7 @@ step
 .isQuestTurnedIn 570
 .isOnQuest 630
 .goto Stranglethorn Vale,38.5,80.6
-.turnin 630 >> 把信息装在瓶子里
+.turnin 630 >>把信息装在瓶子里
 step
 .isQuestTurnedIn 570
 .isOnQuest 8551
@@ -10863,50 +10871,50 @@ step
 .isQuestTurnedIn 570
 .isOnQuest 8551
 .goto Stranglethorn Vale,26.7,73.6
-.turnin 8551 >> 上缴船长的胸膛
+.turnin 8551 >>上缴船长的胸膛
 step
 .isQuestTurnedIn 570
 .isOnQuest 576
 .goto Stranglethorn Vale,28.6,75.9
-.turnin 576 >> 进去，别看
+.turnin 576 >>进去，别看
 step
 .isQuestTurnedIn 570
 .isOnQuest 609
 .goto Stranglethorn Vale,27.8,77.1
-.turnin 609 >> 交纳伏都教会费
+.turnin 609 >>交纳伏都教会费
 step
 .isQuestTurnedIn 570
 .isOnQuest 617
 .goto Stranglethorn Vale,26.8,76.4
-.turnin 617 >> 把Akiris交给Bundle
+.turnin 617 >>把Akiris交给Bundle
 step
 .isQuestTurnedIn 570
 .isOnQuest 621
 .goto Stranglethorn Vale,27.1,77.4
-.accept 580 >> 接受威士忌瘦子的失落格罗
-.turnin 621 >> 交出Zanzil的秘密
+.accept 580 >>接受威士忌瘦子的失落格罗
+.turnin 621 >>交出Zanzil的秘密
 step
 .isQuestTurnedIn 570
 .isOnQuest 587
 .goto Stranglethorn Vale,26.9,77.3
-.turnin 587 >> 上缴至鼻烟
-.accept 2864 >> 接受Tran'rek
+.turnin 587 >>上缴至鼻烟
+.accept 2864 >>接受Tran'rek
 step
 .isQuestTurnedIn 570
 .isOnQuest 604
 .goto Stranglethorn Vale,27.2,77.0
-.turnin 604 >> 交出血尾海盗
+.turnin 604 >>交出血尾海盗
 step
 .isQuestTurnedIn 570
 .isOnQuest 573
 #completewith next
 .goto Stranglethorn Vale,26.8,77.1
-.fly Grom'gol >> 飞往格罗姆戈
+.fly Grom'gol >>飞往格罗姆戈
 step
 .isQuestTurnedIn 570
 .isOnQuest 573
 .goto Stranglethorn Vale,32.1,29.2
-.turnin 573 >> 交出莫扎丁的魔法
+.turnin 573 >>交出莫扎丁的魔法
 step
 .isQuestTurnedIn 570
 .isOnQuest 208
@@ -10918,7 +10926,7 @@ step
 .isQuestTurnedIn 570
 .isQuestComplete 208
 .goto Stranglethorn Vale,35.7,10.7
-.turnin 208 >> 交给大猎物猎人
+.turnin 208 >>交给大猎物猎人
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -10930,43 +10938,43 @@ RXPGuides.RegisterGuide([[
 #somname 42-43 菲拉斯
 step
 .goto Feralas,75.70,44.30
-.accept 2987 >> 接受Gordunni Cobalt
+.accept 2987 >>接受Gordunni Cobalt
 step
 #sticky
 #label RokOrhan
 .goto Feralas,75.70,43.62,0
->> 与Rok Orhan交谈。她在Mojache营地内的道路上巡逻
-.turnin 2981 >> 在费拉拉斯交出威胁
-.accept 2975 >> 接受费拉拉斯的食人魔
+>>与Rok Orhan交谈。她在Mojache营地内的道路上巡逻
+.turnin 2981 >>在费拉拉斯交出威胁
+.accept 2975 >>接受费拉拉斯的食人魔
 step
 .goto Feralas,76.00,42.70
-.accept 2973 >> 接受新斗篷的光芒
+.accept 2973 >>接受新斗篷的光芒
 step
 .goto Feralas,74.90,42.50
-.accept 2862 >> 接受对木瓜的战争
+.accept 2862 >>接受对木瓜的战争
 step
 >>建筑物内部
 .goto Feralas,74.50,42.90
-.accept 2822 >> 接受质量标志
+.accept 2822 >>接受质量标志
 step
 .goto Feralas,74.80,45.20
-.home >> 把你的炉石放在莫雅奇营地
+.home >>把你的炉石放在莫雅奇营地
 step
 #sticky
 #completewith YetiHide
 >>当你在费拉拉斯寻找时，小心遇险信标掉落
 .collect 8705,1,2766
-.accept 2766 >> 接受查找OOX-22/FE！
+.accept 2766 >>接受查找OOX-22/FE！
 step
 #requires RokOrhan
 .goto Feralas,73.76,45.76,90,0
 .goto Feralas,72.03,36.89
->> 杀死莫雅奇营地西北部的木爪侏儒。掠夺他们的鬃毛
+>>杀死莫雅奇营地西北部的木爪侏儒。掠夺他们的鬃毛
 .complete 2862,1
 step
 #completewith Scroll
 .goto Feralas,75.30,28.26,0
->> 在地上的蓝色补丁上，用你袋子里的奥文铲子。抢他们的钴。抢走之后变蓝的棕色泥土。那些有任务物品。
+>>在地上的蓝色补丁上，用你袋子里的奥文铲子。抢他们的钴。抢走之后变蓝的棕色泥土。那些有任务物品。
 .complete 2987,1
 step
 #completewith Shovel
@@ -10991,13 +10999,13 @@ step
 .goto Feralas,75.2,28.7,15,0
 .goto Feralas,74.6,27.9,15,0
 .goto Feralas,79.4,34.8,
->> 跑到戈杜尼哨所，寻找小羊皮纸。它可以在主营地或山区的东营地产卵。按照箭头指定生成点。
-.accept 2978 >> 接受Gordunni卷轴
+>>跑到戈杜尼哨所，寻找小羊皮纸。它可以在主营地或山区的东营地产卵。按照箭头指定生成点。
+.accept 2978 >>接受Gordunni卷轴
 step
 #label Shovel
 .goto Feralas,75.30,28.26,60,0
 .goto Feralas,74.59,30.23
->> 在地上的蓝色补丁上，用你袋子里的奥文铲子。抢他们的钴
+>>在地上的蓝色补丁上，用你袋子里的奥文铲子。抢他们的钴
 .complete 2987,1
 step
 .goto Feralas,76.10,33.20
@@ -11007,24 +11015,24 @@ step
 .complete 2975,3
 step << Shaman
 #completewith next
-.hs >> 赫斯前往莫贾奇营地
->> 如果需要，购买食物/水
+.hs >>赫斯前往莫贾奇营地
+>>如果需要，购买食物/水
 step
 .goto Feralas,74.90,42.46
-.turnin 2862 >> 向木瓜发动战争
-.accept 2863 >> 接受Alpha Strike
+.turnin 2862 >>向木瓜发动战争
+.accept 2863 >>接受Alpha Strike
 step
 .goto Feralas,75.80,43.58
-.turnin 2975 >> 交出费拉拉斯的食人魔
-.accept 2980 >> 接受费拉拉斯的食人魔
-.turnin 2978 >> 交上Gordunni卷轴
-.accept 2979 >> 接受黑暗仪式
+.turnin 2975 >>交出费拉拉斯的食人魔
+.accept 2980 >>接受费拉拉斯的食人魔
+.turnin 2978 >>交上Gordunni卷轴
+.accept 2979 >>接受黑暗仪式
 step
 .goto Feralas,75.70,44.30
-.turnin 2987 >> 交Gordunni Cobalt
+.turnin 2987 >>交Gordunni Cobalt
 step
 .goto Feralas,68.80,48.00
->> 杀死精灵飞镖。掠夺他们的翅膀
+>>杀死精灵飞镖。掠夺他们的翅膀
 .complete 2973,1
 step
 .goto Feralas,67.50,55.60
@@ -11033,89 +11041,89 @@ step
 .goto Feralas,71.51,55.98,0
 .goto Feralas,72.42,56.63,0
 .goto Feralas,73.21,56.25,0
->> 杀死木瓜阿尔法。每个营地通常有一个
+>>杀死木瓜阿尔法。每个营地通常有一个
 .complete 2863,1
 .unitscan Woodpaw Alpha
 step
 #completewith next
-.hs >> 赫斯前往莫贾奇营地
+.hs >>赫斯前往莫贾奇营地
 step
 .goto Feralas,76.00,42.80
-.turnin 2973 >> 交上新斗篷的光环
-.accept 2974 >> 接受严峻的发现
+.turnin 2973 >>交上新斗篷的光环
+.accept 2974 >>接受严峻的发现
 step
 .goto Feralas,74.90,42.50
-.turnin 2863 >> 转入Alpha Strike
-.accept 2902 >> 接受Woodpaw调查
+.turnin 2863 >>转入Alpha Strike
+.accept 2902 >>接受Woodpaw调查
 step
 .goto Feralas,67.10,46.40
->> 杀死该地区的格里姆特姆斯。抢他们的角
+>>杀死该地区的格里姆特姆斯。抢他们的角
 .complete 2974,1
 step
 .goto Feralas,71.60,55.90
->> 单击位于方框顶部的地图
-.turnin 2902 >> 交伍德帕调查
-.accept 2903 >> 接受作战计划
+>>单击位于方框顶部的地图
+.turnin 2902 >>交伍德帕调查
+.accept 2903 >>接受作战计划
 step
 .goto Feralas,76.00,42.80
-.turnin 2974 >> 提交一份严峻的发现
-.accept 2976 >> 接受严峻的发现
+.turnin 2974 >>提交一份严峻的发现
+.accept 2976 >>接受严峻的发现
 step
 .goto Feralas,74.90,42.40
-.turnin 2903 >> 提交作战计划
-.accept 7730 >> 接受Zukk’ash感染
-.accept 7731 >> 接受Stinglasher
+.turnin 2903 >>提交作战计划
+.accept 7730 >>接受Zukk’ash感染
+.accept 7731 >>接受Stinglasher
 step
 #completewith next
 .goto Feralas,73.38,62.94,0
->> 杀死该地区的Silithid暴徒。抢走他们的甲壳
+>>杀死该地区的Silithid暴徒。抢走他们的甲壳
 .complete 7730,1
 step
 .goto Feralas,76.90,61.60
->> 杀死Stinglasher。抢走它的腺体
->> 它在Silithid Hives外围巡逻
+>>杀死Stinglasher。抢走它的腺体
+>>它在Silithid Hives外围巡逻
 .complete 7731,1
 .unitscan Stinglasher
 step
 .goto Feralas,73.38,62.94
->> 杀死该地区的Silithid暴徒。抢走他们的甲壳
+>>杀死该地区的Silithid暴徒。抢走他们的甲壳
 .complete 7730,1
 step
 .goto Feralas,56.15,46.88,0
 #completewith egghypo
->> 杀死流氓谷狙击手。杀死他们后，在他们的尸体上使用荆棘
+>>杀死流氓谷狙击手。杀死他们后，在他们的尸体上使用荆棘
 .complete 3520,1
 .unitscan Rogue Vale Screecher
 step
 #completewith next
 .goto Feralas,58.59,69.85,0
->> 杀死戈杜尼法师领主。为了Gordunni Orb抢走他们
+>>杀死戈杜尼法师领主。为了Gordunni Orb抢走他们
 .complete 2979,1
 step
 .goto Feralas,59.58,65.02
->> 杀死该地区的Gordunni食人魔
+>>杀死该地区的Gordunni食人魔
 .complete 2980,1
 .complete 2980,2
 .complete 2980,3
 step
 .goto Feralas,58.59,69.85
->> 杀死戈杜尼法师领主。为了Gordunni Orb抢走他们
+>>杀死戈杜尼法师领主。为了Gordunni Orb抢走他们
 .complete 2979,1
 .unitscan Gordunni Mage-Lord
 step
 #label egghypo
 .goto Feralas,56.66,75.89
->> 向南走，在山边寻找鹰嘴狮巢穴。抢劫一个鹰嘴狮蛋
+>>向南走，在山边寻找鹰嘴狮巢穴。抢劫一个鹰嘴狮蛋
 .collect 8564,1 
 step
 #label longelegant
 #sticky
 .goto Feralas,56.46,63.08,0
->> 研磨磨砂皮鹰嘴兽。掠夺它们以获取优雅的长羽毛
+>>研磨磨砂皮鹰嘴兽。掠夺它们以获取优雅的长羽毛
 .collect 4589,10
 step
 .goto Feralas,56.15,46.88
->> 杀死流氓谷狙击手。杀死他们后，在他们的尸体上使用荆棘
+>>杀死流氓谷狙击手。杀死他们后，在他们的尸体上使用荆棘
 .complete 3520,1
 .unitscan Rogue Vale Screecher
 step
@@ -11123,106 +11131,106 @@ step
 .goto Feralas,55.14,56.35,70,0
 .goto Feralas,53.12,56.27,70,0
 .goto Feralas,52.05,58.40
->> 杀死Yetis。抢劫他们的藏身之处
+>>杀死Yetis。抢劫他们的藏身之处
 .complete 2822,1
 step
 #requires longelegant
->> 如果没有找到遇险信标，请跳过此步骤。
-.accept 2766 >> 接受查找OOX-22/FE！
+>>如果没有找到遇险信标，请跳过此步骤。
+.accept 2766 >>接受查找OOX-22/FE！
 step
 .goto Feralas,53.35,55.69
 .isOnQuest 2766
-.turnin 2766 >> 提交查找OOX-22/FE！
+.turnin 2766 >>提交查找OOX-22/FE！
 step
 .isQuestTurnedIn 2766
 .goto Feralas,53.35,55.69
->> 启动鸡护航。小心，因为这个护卫队很难
->> 3波将产生：3只野人（每级46），3只熊，然后是4只侏儒。把你所有很长的冷却时间都留给侏儒，在叶蒂斯上使用一些
-.accept 2767 >> 接受救援OOX-22/FE！
+>>启动鸡护航。小心，因为这个护卫队很难
+>>3波将产生：3只野人(每级46)，3只熊，然后是4只侏儒。把你所有很长的冷却时间都留给侏儒，在叶蒂斯上使用一些
+.accept 2767 >>接受救援OOX-22/FE！
 step
 #completewith next
-.hs >> 炉灶返回Mojache营地
->> 如果需要，购买食物/水
+.hs >>炉灶返回Mojache营地
+>>如果需要，购买食物/水
 step
 .goto Feralas,75.80,43.58
-.turnin 2980 >> 交出费拉拉斯的食人魔
-.turnin 2979 >> 夜幕降临仪式
-.accept 3002 >> 接受Gordunni Orb
+.turnin 2980 >>交出费拉拉斯的食人魔
+.turnin 2979 >>夜幕降临仪式
+.accept 3002 >>接受Gordunni Orb
 step
 .goto Feralas,74.40,43.40
-.accept 3121 >> Accept 奇怪的请求
+.accept 3121 >>接受一个奇怪的请求
 step
 .goto Feralas,74.40,42.90
-.turnin 2822 >> 交出质量标志
+.turnin 2822 >>交出质量标志
 step
 .goto Feralas,74.90,42.50
-.turnin 7730 >> 提交Zukk’ash感染
-.turnin 7731 >> 交回Stinglasher
-.accept 7732 >> 接受Zukk’ash报告
+.turnin 7730 >>提交Zukk’ash感染
+.turnin 7731 >>交回Stinglasher
+.accept 7732 >>接受Zukk’ash报告
 step << Druid
 .goto Feralas,76.0,42.3
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << !Mage
 .goto Feralas,75.45,44.36
-.fly Orgrimmar >> 飞往奥格瑞玛
+.fly Orgrimmar >>飞往奥格瑞玛
 step << Mage
-.zone Orgrimmar >> 电传至Orgrimmar
+.zone Orgrimmar >>电传至Orgrimmar
 step
 .goto Orgrimmar,39.20,86.30
-.turnin 3002 >> 交出Gordunni Orb
+.turnin 3002 >>交出Gordunni Orb
 step << Mage
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .isOnQuest 1262
 .goto Orgrimmar,39.00,38.10
-.turnin 1262 >> 向Zor提交报告
+.turnin 1262 >>向Zor提交报告
 step
 .isQuestTurnedIn 1262
 .goto Orgrimmar,39.00,38.10
-.accept 7541 >> 接受部落服务
-.turnin 7541 >> 为部落服务
+.accept 7541 >>接受部落服务
+.turnin 7541 >>为部落服务
 step << Shaman
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.3,14.8
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .goto Orgrimmar,56.50,46.60
-.turnin 7732 >> 提交Zukk’ash报告
+.turnin 7732 >>提交Zukk’ash报告
 step
 .goto Orgrimmar,75.20,34.20
-.turnin 2976 >> 提交一份严峻的发现
+.turnin 2976 >>提交一份严峻的发现
 step
 .goto Orgrimmar,49.60,50.40
-.turnin 3121 >> Turn in 奇怪的请求
-.accept 3122 >> 接受返回巫医Uzer'i
+.turnin 3121 >>提交一个奇怪的请求
+.accept 3122 >>接受返回巫医Uzer'i
 step << Rogue
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,47.5,46.7
-.vendor >> 如果你有钱，买你的宠物升级。
+.vendor >>如果你有钱，买你的宠物升级。
 step
 #completewith next
-.goto Durotar,45.53,11.79,60 >> 逃离Orgrimmar
+.goto Durotar,45.53,11.79,60 >>逃离Orgrimmar
 step
 >>在奥格瑞玛城外登上齐柏林塔
 .goto Durotar,50.53,12.52
-.zone Stranglethorn Vale >> 带齐柏林飞艇去荆棘谷
+.zone Stranglethorn Vale >>带齐柏林飞艇去荆棘谷
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -11234,14 +11242,14 @@ RXPGuides.RegisterGuide([[
 #somname 43-45 南贫瘠之地 荆棘谷
 step
 .goto Stranglethorn Vale,32.20,27.60
-.accept 586 >> 接受与甘祖拉的对话
+.accept 586 >>接受与甘祖拉的对话
 step
 .goto Stranglethorn Vale,32.10,29.20
-.accept 571 >> 接受莫扎丁的魅力
+.accept 571 >>接受莫扎丁的魅力
 step
 .goto Stranglethorn Vale,28.80,44.80
->> 杀死Tethis。为他的塔龙抢劫他
->> 他在猛禽区周围巡逻
+>>杀死Tethis。为他的塔龙抢劫他
+>>他在猛禽区周围巡逻
 .complete 197,1
 .unitscan Tethis
 step
@@ -11296,64 +11304,64 @@ step
 .complete 586,2 
 step
 .goto Stranglethorn Vale,35.70,10.80
-.turnin 197 >> 交猛禽大师
-.accept 208 >> 接受大型游戏猎人
+.turnin 197 >>交猛禽大师
+.accept 208 >>接受大型游戏猎人
 step
 .goto Stranglethorn Vale,32.20,27.70
->> 点击坩埚
-.turnin 586 >> 与甘祖拉交谈
-.accept 588 >> 接受Yenniku的命运
+>>点击坩埚
+.turnin 586 >>与甘祖拉交谈
+.accept 588 >>接受Yenniku的命运
 step
 .goto Stranglethorn Vale,32.20,27.70
-.turnin 588 >> 交出Yenniku的命运
-.accept 589 >> 接受歌唱水晶
+.turnin 588 >>交出Yenniku的命运
+.accept 589 >>接受歌唱水晶
 step
 .goto Stranglethorn Vale,32.54,29.36
-.fly Booty Bay >> 飞到Booty Bay
+.fly Booty Bay >>飞到Booty Bay
 step
 .goto Stranglethorn Vale,26.70,76.40
-.accept 617 >> 通过捆绑接受Akiris
+.accept 617 >>通过捆绑接受Akiris
 step
 .goto Stranglethorn Vale,27.10,77.30
-.accept 621 >> 接受赞齐尔的秘密
+.accept 621 >>接受赞齐尔的秘密
 step
 #era
 .goto Stranglethorn Vale,27.11,77.21
-.turnin 1118 >> 返回Booty Bay
+.turnin 1118 >>返回Booty Bay
 step
 .goto Stranglethorn Vale,27.70,77.10
-.accept 606 >> 接受惊吓颤抖
+.accept 606 >>接受惊吓颤抖
 step
 .goto Stranglethorn Vale,27.70,76.80
-.accept 348 >> 接受绞痛热
+.accept 348 >>接受绞痛热
 step
 .goto Stranglethorn Vale,28.10,76.20
-.accept 595 >> 接受血尾巴海盗
+.accept 595 >>接受血尾巴海盗
 step
 .goto Stranglethorn Vale,26.70,73.60
-.accept 8551 >> 接受队长的胸膛
+.accept 8551 >>接受队长的胸膛
 step
 .goto Stranglethorn Vale,27.27,69.51
-.turnin 595 >> 交出血尾海盗
-.accept 597 >> 接受血尾巴海盗
+.turnin 595 >>交出血尾海盗
+.accept 597 >>接受血尾巴海盗
 step
 .goto Stranglethorn Vale,28.09,76.21
-.turnin 597 >> 交出血尾海盗
-.accept 599 >> 接受血尾巴海盗
+.turnin 597 >>交出血尾海盗
+.accept 599 >>接受血尾巴海盗
 step
 .goto Stranglethorn Vale,26.92,77.34
-.accept 587 >> 接受到鼻塞
+.accept 587 >>接受到鼻塞
 step
 .goto Stranglethorn Vale,27.17,77.00
-.turnin 599 >> 交出血尾海盗
-.accept 604 >> 接受血尾巴海盗
+.turnin 599 >>交出血尾海盗
+.accept 604 >>接受血尾巴海盗
 step
 .isQuestComplete 2767
 .goto Stranglethorn Vale,28.35,76.35
-.turnin 2767 >> 提交救援OOX-22/FE！
+.turnin 2767 >>提交救援OOX-22/FE！
 step
 .goto Stranglethorn Vale,28.59,75.89
-.accept 576 >> 接受请注意
+.accept 576 >>接受请注意
 step
 #era
 #completewith Orders
@@ -11371,12 +11379,12 @@ step
 .goto Stranglethorn Vale,27.75,83.13,0
 .goto Stranglethorn Vale,27.18,82.66,0
 .goto Stranglethorn Vale,26.94,82.49,0
->> 掠夺血脉顺序和血脉图表。它们看起来像地上的卷轴
+>>掠夺血脉顺序和血脉图表。它们看起来像地上的卷轴
 .complete 604,2
 .complete 604,3
 step
 .goto Stranglethorn Vale,28.00,82.40
->> 杀死血尾Swashbucklers
+>>杀死血尾Swashbucklers
 .complete 604,1
 step
 #label Orders
@@ -11384,7 +11392,7 @@ step
 .goto Stranglethorn Vale,27.75,83.13,20,0
 .goto Stranglethorn Vale,27.18,82.66,20,0
 .goto Stranglethorn Vale,26.94,82.49
->> 掠夺血脉顺序和血脉图表。它们看起来像地上的卷轴
+>>掠夺血脉顺序和血脉图表。它们看起来像地上的卷轴
 .complete 604,2
 .complete 604,3
 step
@@ -11407,12 +11415,12 @@ step
 .collect 2799,10
 step
 .goto Stranglethorn Vale,32.80,65.80
->> 杀死大猩猩。抢走他们的Giblet和Sinew
+>>杀死大猩猩。抢走他们的Giblet和Sinew
 .complete 606,1
 .complete 571,1
 step
 .goto Stranglethorn Vale,32.80,65.80
->> 继续磨大猩猩，直到你得到10颗大猩猩的毒牙
+>>继续磨大猩猩，直到你得到10颗大猩猩的毒牙
 .collect 2799,10
 step
 #completewith next
@@ -11420,89 +11428,89 @@ step
 #hardcore
 step
 .goto Stranglethorn Vale,35.27,60.40
->> 这个任务非常艰巨。第1波不使用冷却时间。第2波使用所有冷却时间。在第3波，爬山躲避他们，当他们攻击时，NPC只杀死指定的暴徒并将其掠夺。
-.turnin 349 >> 转入绞痛热
+>>这个任务非常艰巨。第1波不使用冷却时间。第2波使用所有冷却时间。在第3波，爬山躲避他们，当他们攻击时，NPC只杀死指定的暴徒并将其掠夺。
+.turnin 349 >>转入荆棘谷
 step
->> 这个任务非常艰巨。第1波不使用冷却时间。第2波使用所有冷却时间。在第3波，爬山躲避他们，当他们攻击时，NPC只杀死指定的暴徒并将其掠夺。
+>>这个任务非常艰巨。第1波不使用冷却时间。第2波使用所有冷却时间。在第3波，爬山躲避他们，当他们攻击时，NPC只杀死指定的暴徒并将其掠夺。
 .goto Stranglethorn Vale,35.27,60.40
->> 收集莫克之心
+>>收集莫克之心
 .complete 348,1
 step
 .isQuestComplete 576
 .goto Stranglethorn Vale,28.60,75.80
-.turnin 576 >> 请保持警惕
+.turnin 576 >>请保持警惕
 step
 >>跑回Booty Bay
 .goto Stranglethorn Vale,26.90,73.70
-.turnin 606 >> 转身吓得发抖
-.accept 607 >> 接受返回MacKinley
+.turnin 606 >>转身吓得发抖
+.accept 607 >>接受返回MacKinley
 step
 .goto Stranglethorn Vale,27.60,76.70
-.turnin 348 >> 转入绞痛热
+.turnin 348 >>转入荆棘谷
 step
 .goto Stranglethorn Vale,27.70,77.10
-.turnin 607 >> 返回麦金利
-.accept 609 >> 接受伏都教会费
+.turnin 607 >>返回麦金利
+.accept 609 >>接受伏都教会费
 step
 #era
 .goto Stranglethorn Vale,27.20,77.00
-.turnin 604 >> 交出血尾海盗
-.accept 608 >> 接受血尾巴海盗
+.turnin 604 >>交出血尾海盗
+.accept 608 >>接受血尾巴海盗
 step
 #som
 .goto Stranglethorn Vale,27.20,77.00
-.turnin 604 >> 交出血尾海盗
+.turnin 604 >>交出血尾海盗
 step
 .goto Stranglethorn Vale,26.87,77.10
-.fly Grom'gol >> 飞往格罗姆戈
+.fly Grom'gol >>飞往格罗姆戈
 step
 .goto Stranglethorn Vale,32.10,29.20
-.turnin 571 >> 交出莫扎丁的魔法
-.accept 573 >> 接受莫扎丁的魅力
+.turnin 571 >>交出莫扎丁的魔法
+.accept 573 >>接受莫扎丁的魅力
 step
 .goto Stranglethorn Vale,38.18,35.60
->> 杀死国王班加拉斯。抢他的头
->> 小心，因为这个任务很难完成。他在产卵时带着2个怪物，然后以大约50%的速度再产卵2个。
+>>杀死国王班加拉斯。抢他的头
+>>小心，因为这个任务很难完成。他在产卵时带着2个怪物，然后以大约50%的速度再产卵2个。
 .complete 208,1
 
 step
 .goto Stranglethorn Vale,39.48,47.42,60,0
 .goto Stranglethorn Vale,41.67,50.19,60,0
 .goto Stranglethorn Vale,43.84,47.77
->> 到洞里去。杀死铁爪蜥蜴。抢走他们的蓝色碎片
+>>到洞里去。杀死铁爪蜥蜴。抢走他们的蓝色碎片
 .complete 589,1
 step
 #completewith Chucky
 .goto Stranglethorn Vale,35.26,51.28,0
->> 杀死Zanzil暴徒。抢走他们以获得混合物
+>>杀死Zanzil暴徒。抢走他们以获得混合物
 .complete 621,1
 step
 .goto Stranglethorn Vale,37.46,49.46,70,0
 .goto Stranglethorn Vale,35.26,51.28,0
->> 杀死莫里。抢劫他的梅花足
+>>杀死莫里。抢劫他的梅花足
 .complete 609,1
 step
 .goto Stranglethorn Vale,34.92,51.84
->> 杀死乔恩·乔恩。抢劫他的金望远镜
+>>杀死乔恩·乔恩。抢劫他的金望远镜
 .complete 609,2
 step
 #label Chucky
 .goto Stranglethorn Vale,34.07,54.11,70,0
 .goto Stranglethorn Vale,40.00,58.24
->> 杀死楚其。抢走他的大戒指
+>>杀死楚其。抢走他的大戒指
 .complete 609,3
 step
 .goto Stranglethorn Vale,39.44,58.47
->> 杀死Zanzil暴徒。抢走他们以获得混合物
->> 不要拉或攻击被放逐的赞齐尔
+>>杀死Zanzil暴徒。抢走他们以获得混合物
+>>不要拉或攻击被放逐的赞齐尔
 .complete 621,1
 step
->> 杀死戈拉什。抢劫他以换取Smotts的胸膛
->> 你可以把他放回Booty Bay卫队，只要你造成了大部分伤害，你就可以获得荣誉
->> 这个任务很难完成，这取决于你在移动中放风筝和造成伤害的程度。如果需要，你可以跳过这个任务
+>>杀死戈拉什。抢劫他以换取Smotts的胸膛
+>>你可以把他放回Booty Bay卫队，只要你造成了大部分伤害，你就可以获得荣誉
+>>这个任务很难完成，这取决于你在移动中放风筝和造成伤害的程度。如果需要，你可以跳过这个任务
 .goto Stranglethorn Vale,37.00,69.50
 .complete 8551,1
-.link https://youtu.be/lNy2ohTWeLw?t=1037 >> 单击此处获取参考
+.link https://youtu.be/lNy2ohTWeLw?t=1037 >>单击此处获取参考
 step
 #era
 #sticky
@@ -11516,22 +11524,22 @@ step
 .goto Stranglethorn Vale,32.90,88.20,0
 .goto Stranglethorn Vale,30.60,90.60,0
 .goto Stranglethorn Vale,29.30,88.30,0
->> 寻找Cortello的谜语。这是一个小卷轴，可以在底部和中间级别的3艘船中的任何一艘船上产卵。
-.accept 624 >> 接受Cortello的谜语
+>>寻找Cortello的谜语。这是一个小卷轴，可以在底部和中间级别的3艘船中的任何一艘船上产卵。
+.accept 624 >>接受Cortello的谜语
 step
 #era
 .goto Stranglethorn Vale,32.90,88.20
->> 在船尾二楼杀死斯蒂尔沃特船长
+>>在船尾二楼杀死斯蒂尔沃特船长
 .complete 608,1
 step
 #era
 .goto Stranglethorn Vale,30.60,90.60
->> 在船尾二楼杀死舰队司令费拉隆
+>>在船尾二楼杀死舰队司令费拉隆
 .complete 608,3
 step
 #era
 .goto Stranglethorn Vale,29.30,88.30
->> 在船尾二楼杀死基尔豪尔船长。小心Garr Salthoof，他就在房间外面守护着他，因为他很难对付
+>>在船尾二楼杀死基尔豪尔船长。小心Garr Salthoof，他就在房间外面守护着他，因为他很难对付
 >>加尔可以对大量伤害收费，晕眩2秒，猛击
 .complete 608,2
 step
@@ -11543,13 +11551,13 @@ step
 #era
 #requires Cortello
 #completewith next
->> 杀死Nagas。为Akiris Reed抢走他们
+>>杀死Nagas。为Akiris Reed抢走他们
 .complete 573,1
 .complete 617,1
 step
 #som
 #completewith next
->> 杀死Nagas。为Akiris Reed抢走他们
+>>杀死Nagas。为Akiris Reed抢走他们
 .complete 573,1
 .complete 617,1
 step
@@ -11557,73 +11565,73 @@ step
 .goto Stranglethorn Vale,27.04,67.80,60,0
 .goto Stranglethorn Vale,24.75,63.60,60,0
 .goto Stranglethorn Vale,28.97,61.92
->> 上山，过桥，从泉水中掠夺圣泉水
+>>上山，过桥，从泉水中掠夺圣泉水
 .complete 573,2
 step
 .goto Stranglethorn Vale,25.86,62.04
->> 杀死Nagas。为Akiris Reed抢走他们
+>>杀死Nagas。为Akiris Reed抢走他们
 .complete 573,1
 .complete 617,1
 step
 .isQuestComplete 8551
 >>跑回Booty Bay
 .goto Stranglethorn Vale,26.70,73.60
-.turnin 8551 >> 上缴船长的胸膛
+.turnin 8551 >>上缴船长的胸膛
 step
-.abandon 8551 >> 放弃队长的胸膛
+.abandon 8551 >>放弃队长的胸膛
 step
 .goto Stranglethorn Vale,28.60,75.90
-.turnin 576 >> 进去，别看
+.turnin 576 >>进去，别看
 step
 .goto Stranglethorn Vale,27.80,77.10
-.turnin 609 >> 交纳伏都教会费
+.turnin 609 >>交纳伏都教会费
 step
 .goto Stranglethorn Vale,26.70,76.40
-.turnin 617 >> 把Akiris交给Bundle
+.turnin 617 >>把Akiris交给Bundle
 step
 .goto Stranglethorn Vale,27.11,77.21
-.turnin 621 >> 交出Zanzil的秘密
+.turnin 621 >>交出Zanzil的秘密
 step
 .goto Stranglethorn Vale,27.13,77.44
-.accept 580 >> 接受威士忌瘦子的失落格罗
+.accept 580 >>接受威士忌瘦子的失落格罗
 step
 #era
 .goto Stranglethorn Vale,27.11,77.21
-.accept 1119 >> 接受桑齐的混合物和傻瓜的烈性酒
+.accept 1119 >>接受桑齐的混合物和傻瓜的烈性酒
 step
 .goto Stranglethorn Vale,27.00,77.30
-.turnin 587 >> 上缴至鼻烟
+.turnin 587 >>上缴至鼻烟
 step
 #era
 .goto Stranglethorn Vale,27.10,77.00
-.turnin 608 >> 交出血尾海盗
+.turnin 608 >>交出血尾海盗
 step
 .goto Stranglethorn Vale,26.87,77.10
-.fly Grom'gol >> 飞往格罗姆戈
+.fly Grom'gol >>飞往格罗姆戈
 step
 .goto Stranglethorn Vale,32.10,29.20
-.turnin 573 >> 交出莫扎丁的魔法
+.turnin 573 >>交出莫扎丁的魔法
 step
 .goto Stranglethorn Vale,32.20,27.80
-.turnin 589 >> 交出歌唱水晶
+.turnin 589 >>交出歌唱水晶
 step
 #completewith next
 .goto Stranglethorn Vale,35.70,10.80,0
 +交上你所有的日记页。
 step
 .goto Stranglethorn Vale,35.70,10.80
-.turnin 208 >> 交给大猎物猎人
+.turnin 208 >>交给大猎物猎人
 step
 #som
-.hs >> 赫斯前往莫贾奇营地
->> 如果需要，购买食物/水
+.hs >>赫斯前往莫贾奇营地
+>>如果需要，购买食物/水
 step
 #era
 .goto Stranglethorn Vale,32.6,29.2
-.fly Stonard>> 飞往斯托纳德
+.fly Stonard>>飞往斯托纳德
 ]])
 RXPGuides.RegisterGuide([[
-#version 7
+#version 9
 #wotlk
 #tbc
 #group RestedXP 部落 45-60
@@ -11632,7 +11640,7 @@ RXPGuides.RegisterGuide([[
 #next 49-51 辛特兰
 step << Mage
 .cast 3567
-.zone Orgrimmar >> 电传至Orgrimmar
+.zone Orgrimmar >>电传至Orgrimmar
 .zoneskip Dustwallow Marsh
 step << !Mage
 .goto Stranglethorn Vale,31.4,30.1
@@ -11640,44 +11648,44 @@ step << !Mage
 .zoneskip Dustwallow Marsh
 step << Paladin
 .goto Orgrimmar,32.4,35.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Dustwallow Marsh
 step << Shaman
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Dustwallow Marsh
 step << Hunter
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Dustwallow Marsh
 step << Hunter tbc
 .goto Orgrimmar,66.3,14.8
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 .zoneskip Dustwallow Marsh
 step << Warrior
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Dustwallow Marsh
 step << Rogue
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Dustwallow Marsh
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Dustwallow Marsh
 step << Warlock tbc
 .goto Orgrimmar,47.5,46.7
-.vendor >> 阵痛网格（4级）
+.vendor >>阵痛网格(4级)
 .collect 16372,1
 .zoneskip Dustwallow Marsh
 step << Mage
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Dustwallow Marsh
 step << Priest
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Dustwallow Marsh
 step << Warrior/Rogue
 .trainer >>与Orgrimmar的Hanashi交谈，训练弓。如果您之前已经这样做了，可以跳过此步骤
@@ -11686,27 +11694,27 @@ step << Warrior/Rogue
 step
 .isOnQuest 1262
 .goto Orgrimmar,38.7,38.6
-.turnin 1262 >> 向Zor提交报告
+.turnin 1262 >>向Zor提交报告
 .zoneskip Dustwallow Marsh
 step
 .isOnQuest 7541
 .goto Orgrimmar,39.0,38.3
-.turnin 7541 >> 为部落服务
+.turnin 7541 >>为部落服务
 .zoneskip Dustwallow Marsh
 step << wotlk
 #xprate <1.5
 .maxlevel 47
 .goto Orgrimmar,75.1,34.0
-.accept 2981 >> 接受费拉拉斯的威胁
+.accept 2981 >>接受费拉拉斯的威胁
 .zoneskip Dustwallow Marsh
 step << Druid
-.use 18960 >> 使用“传送到月光”法术
+.use 18960 >>使用“传送到月光”法术
 .goto Moonglade,52.5,40.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 .zoneskip Dustwallow Marsh
 step
 #completewith next
-.hs >> 炉灶至Brackenwall村
+.hs >>炉灶至Brackenwall村
 .zoneskip Dustwallow Marsh
 step
 #completewith next
@@ -11714,32 +11722,32 @@ step
 .fly Gadgetzan >>飞到Gadgetzan
 step
 .goto Tanaris,52.5,27.9
-.home >> 将您的炉石设置为Gadgetzan
+.home >>将您的炉石设置为Gadgetzan
 step
 .isOnQuest 2864
 .goto Tanaris,51.6,26.8
-.turnin 2864 >> 交给Tran'rek
+.turnin 2864 >>交给Tran'rek
 step
 .goto Tanaris,51.8,27.0
-.accept 2781 >> 接受通缉：哈里发Scorpidsting
-.accept 2875 >> 接受通缉：Andre Firebeard
+.accept 2781 >>接受通缉：哈里发Scorpidsting
+.accept 2875 >>接受通缉：Andre Firebeard
 step
 .goto Tanaris,50.3,27.4
-.accept 992 >> 接受Gadgetzan水资源调查
+.accept 992 >>接受Gadgetzan水资源调查
 step
 .isOnQuest 243
 .goto Tanaris,52.4,28.5
-.turnin 243 >> 转入球场
+.turnin 243 >>转入球场
 step
 .goto Tanaris,52.4,28.5
-.accept 379 >> 接受缓解口渴
-.accept 1690 >> 接受荒原正义
-.accept 1707 >> 接受水袋赏金
+.accept 379 >>接受缓解口渴
+.accept 1690 >>接受荒原正义
+.accept 1707 >>接受水袋赏金
 step
 .isOnQuest 1187
 .goto Thousand Needles,80.3,76.1
-.turnin 1187 >> 交给Razzeric的Tweaking
-.accept 1188 >> 安全第一
+.turnin 1187 >>交给Razzeric的Tweaking
+.accept 1188 >>安全第一
 step
 .goto Tanaris,38.9,29.1
 .complete 992,1 
@@ -11751,40 +11759,40 @@ step
 .complete 2781,1 
 .unitscan Caliph Scorpidsting
 step
->> 杀死10名流浪汉盗贼和土匪
->> 杀死Wastewanders获得10个Wasteward水袋
+>>杀死10名流浪汉盗贼和土匪
+>>杀死Wastewanders获得10个Wasteward水袋
 .goto Tanaris,62.7,32.8
 .complete 1690,2 
 .complete 1690,1 
 .collect 8483,10
 step << wotlk
 .goto Tanaris,67.1,23.9
-.accept 8366 >> 接受南海安定
-.turnin -2872 >> 交出斯托利的债务
-.accept 2873 >> 接受Stoley的发货
+.accept 8366 >>接受南海安定
+.turnin -2872 >>交出斯托利的债务
+.accept 2873 >>接受Stoley的发货
 step << tbc
 .goto Tanaris,67.1,23.9
-.accept 8366 >> 接受南海安定
+.accept 8366 >>接受南海安定
 step
 .goto Tanaris,66.4,22.3
-.accept 8365 >> 接受海盗帽啊！
+.accept 8365 >>接受海盗帽啊！
 step
 .goto Tanaris,50.9,27.2
-.turnin 1188 >> 安全第一
+.turnin 1188 >>安全第一
 step
 .goto Tanaris,50.2,27.5
-.turnin 992 >> 提交Gadgetzan水资源调查
-.accept 82 >> 接受有毒巢穴调查
+.turnin 992 >>提交Gadgetzan水资源调查
+.accept 82 >>接受有毒巢穴调查
 step
 .isQuestComplete 2781
 .goto Tanaris,52.4,28.5
-.turnin 2781 >> 通缉犯：哈里发坏蛋
+.turnin 2781 >>通缉犯：哈里发坏蛋
 step
 .goto Tanaris,52.4,28.5
-.turnin 1690 >> 移交Wastewand法官
-.accept 1691 >> 接受更多浪费正义
-.turnin 1707 >> 交水袋赏金
-.turnin 379 >> 交上来缓解口渴
+.turnin 1690 >>移交Wastewand法官
+.accept 1691 >>接受更多浪费正义
+.turnin 1707 >>交水袋赏金
+.turnin 379 >>交上来缓解口渴
 step
 #completewith next
 .goto Tanaris,62.22,37.75,0
@@ -11841,83 +11849,88 @@ step << wotlk
 .complete 2873,1 
 step
 .goto Tanaris,66.6,22.3
-.turnin 8365 >> 交出海盗帽啊！
+.turnin 8365 >>交出海盗帽啊！
 step << wotlk
 #xprate <1.5
 .maxlevel 47
 .goto Tanaris,66.9,22.5
-.accept 3520 >> 接受筛选者精神
+.accept 3520 >>接受筛选者精神
 step << wotlk
 .isOnQuest 2876
 .goto Tanaris,67.0,23.9
-.turnin 2875 >> 通缉犯：Andre Firebeard
-.turnin 8366 >> 转入南海安定
-.turnin 2873 >> 交给Stoley的货物
-.turnin 2876 >> 交船时间表
-.accept 2874 >> 接受交付给MacKinley
+.turnin 2875 >>通缉犯：Andre Firebeard
+.turnin 8366 >>转入南海安定
+.turnin 2873 >>交给Stoley的货物
+.turnin 2876 >>交船时间表
+.accept 2874 >>接受交付给MacKinley
 step << tbc
 .isOnQuest 2876
 .goto Tanaris,67.0,23.9
-.turnin 2875 >> 通缉犯：Andre Firebeard
-.turnin 8366 >> 转入南海安定
-.turnin 2876 >> 交船时间表
+.turnin 2875 >>通缉犯：Andre Firebeard
+.turnin 8366 >>转入南海安定
+.turnin 2876 >>交船时间表
 step << wotlk
 .goto Tanaris,67.0,23.9
-.turnin 2875 >> 通缉犯：Andre Firebeard
-.turnin 8366 >> 转入南海安定
-.turnin 2873 >> 交给Stoley的货物
-.accept 2874 >> 接受交付给MacKinley
+.turnin 2875 >>通缉犯：Andre Firebeard
+.turnin 8366 >>转入南海安定
+.turnin 2873 >>交给Stoley的货物
+.accept 2874 >>接受交付给MacKinley
 step << tbc
 .goto Tanaris,67.0,23.9
-.turnin 2875 >> 通缉犯：Andre Firebeard
-.turnin 8366 >> 转入南海安定
+.turnin 2875 >>通缉犯：Andre Firebeard
+.turnin 8366 >>转入南海安定
 step
 #completewith next
-.hs >> Gadgetzan之炉
+.hs >>Gadgetzan之炉
 .cooldown item,6948,>0
 step
 .goto Tanaris,52.4,28.5
-.turnin 2781 >> 通缉犯：哈里发坏蛋
+.turnin 2781 >>通缉犯：哈里发坏蛋
 step
 .goto Tanaris,52.4,28.5
-.turnin 1691 >> 交给更多流浪汉法官
+.turnin 1691 >>交给更多流浪汉法官
 step
 #xprate <1.5
 .maxlevel 47
 #completewith next
 .goto Tanaris,51.6,25.5,0
-.fly Camp Mojache >> 飞往莫雅奇营地
+.fly Camp Mojache >>飞往莫雅奇营地
 step
 #xprate <1.5
 .maxlevel 47
 #completewith next
 .goto Feralas,74.8,45.2
-.home >> 把你的炉石放在莫雅奇营地
+.home >>把你的炉石放在莫雅奇营地
+step
+#xprate <1.5
+.goto Feralas,75.70,44.30
+.accept 2987 >>接受Gordunni Cobalt
 step
 #xprate <1.5
 .maxlevel 47
 .goto Feralas,74.4,43.5
-.accept 3121 >> 奇怪的请求
+.accept 3121 >>接受一个奇怪的请求
 step
 #xprate <1.5
 .maxlevel 47
 .goto Feralas,75.9,42.8
-.accept 2973 >> 接受新斗篷的光芒
+.accept 2973 >>接受新斗篷的光芒
 step
 #xprate <1.5
 .maxlevel 47
 .goto Feralas,74.8,42.7
-.accept 2862 >> 接受对木瓜的战争
+.accept 2862 >>接受对木瓜的战争
 step
 #xprate <1.5
 .maxlevel 47
 .goto Feralas,74.5,43.0
-.accept 2822 >> 接受质量标志
-step << wotlk
+.accept 2822 >>接受质量标志
+step
 #xprate <1.5
 .maxlevel 47
 .goto Feralas,73.5,45.6
-.turnin 2981 >> 在费拉拉斯交出威胁
+.turnin 2981 >>在费拉拉斯交出威胁
+.accept 2975 >>接受费拉拉斯的食人魔
 step
 #xprate <1.5
 .isOnQuest 8705
@@ -11932,41 +11945,138 @@ step
 .complete 2862,1 
 step
 #xprate <1.5
-.isOnQuest 2862
-.goto Feralas,74.9,42.5
-.turnin 2862 >> 向木瓜发动战争
-.accept 2863 >> 接受Alpha Strike
+.goto Feralas,76.30,37.6
+.turnin 3121 >>提交一个奇怪的请求
+.accept 3122 >>接受返回巫医Uzer'i
 step
 #xprate <1.5
-.maxlevel 47
+#completewith Scroll
+.goto Feralas,75.30,28.26,0
+>>在地上的蓝色补丁上，用你袋子里的奥文铲子。抢他们的钴。抢走之后变蓝的棕色泥土。那些有任务物品。
+.complete 2987,1
+step
+#xprate <1.5
+#completewith Shovel
+.goto Feralas,76.10,33.20,0
+>>在Gordunni前哨杀死食人魔
+.complete 2975,1
+.complete 2975,2
+.complete 2975,3
+step
+#xprate <1.5
+#label Scroll
+.goto Feralas,75.25,34.44,60,0
+.goto Feralas,79.4,34.8,15,0
+.goto Feralas,80.5,34.3,15,0
+.goto Feralas,80.8,35.0,15,0
+.goto Feralas,75.1,29.8,15,0
+.goto Feralas,75.2,28.7,15,0
+.goto Feralas,74.6,27.9,15,0
+.goto Feralas,79.4,34.8,15,0
+.goto Feralas,80.5,34.3,15,0
+.goto Feralas,80.8,35.0,15,0
+.goto Feralas,75.1,29.8,15,0
+.goto Feralas,75.2,28.7,15,0
+.goto Feralas,74.6,27.9,15,0
+.goto Feralas,79.4,34.8,
+>>跑到戈杜尼哨所，寻找小羊皮纸。它可以在主营地或山区的东营地产卵。按照箭头指定生成点。
+.accept 2978 >>接受Gordunni卷轴
+step
+#xprate <1.5
+#label Shovel
+.goto Feralas,75.30,28.26,60,0
+.goto Feralas,74.59,30.23
+>>在地上的蓝色补丁上，用你袋子里的奥文铲子。抢他们的钴
+.complete 2987,1
+step
+#xprate <1.5
+.goto Feralas,76.10,33.20
+>>在Gordunni前哨杀死食人魔
+.complete 2975,1
+.complete 2975,2
+.complete 2975,3
+step
+#xprate <1.5
 .goto Feralas,74.4,43.5
-.accept 3380 >> 接受沉没的寺庙
+.turnin 3122 >>交回巫医乌泽尔
+.accept 3123 >>接受船舶测试
+.accept 3128 >>接受自然材料
+step
+#xprate <1.5
+.isOnQuest 2862
+.goto Feralas,74.9,42.5
+.turnin 2862 >>向木瓜发动战争
+.accept 2863 >>接受Alpha Strike
+step
+#xprate <1.5
+>>再次找到路上的雌性兽人。
+.goto Feralas,75.80,43.58
+.turnin 2975 >>交出费拉拉斯的食人魔
+.accept 2980 >>接受费拉拉斯的食人魔
+.turnin 2978 >>交上Gordunni卷轴
+.accept 2979 >>接受黑暗仪式
+step
+#xprate <1.5
+.goto Feralas,75.70,44.30
+.turnin 2987 >>交Gordunni Cobalt
+step
+#xprate <1.5
+.goto Feralas,74.4,43.5
+.accept 3380 >>接受沉没的寺庙
+step
+#xprate <1.5
+.goto Feralas,71.4,42.2
+>>随机饲养野兽并使用Beast Muisek容器。
+.complete 3123,1
+.use 9618
 step
 #xprate <1.5
 .isOnQuest 2973
 .goto Feralas,69.4,45.5
 .complete 2973,1 
 step
+#xprate <1.5
 .goto Feralas,66.7,52.1
-.abandon 2980 >> 放弃费拉拉斯的食人魔
+.abandon 2980 >>放弃费拉拉斯的食人魔
 step
 #xprate <1.5
 .isOnQuest 2863
->>阿尔卑斯山位于该地区不同的木偶营地。
+>>杀死木瓜阿尔法。每个营地通常有一个。山上有很多山洞
+.goto Feralas,73.08,56.41,50,0
+.goto Feralas,72.20,56.66,50,0
+.goto Feralas,69.13,55.77,50,0
+.goto Feralas,68.56,54.42,50,0
+.goto Feralas,67.22,54.84,50,0
+.goto Feralas,66.70,53.36,20,0
+.goto Feralas,65.91,51.67,30,0
+.goto Feralas,65.16,51.94,30,0
+.goto Feralas,65.68,52.72,30,0
 .goto Feralas,66.7,52.1
 .complete 2863,1 
 step
 #xprate <1.5
 .isOnQuest 2863
+#completewith next
+.goto Feralas,65.48,53.71
+.goto Feralas,72.97,44.75,50 >>在山上木瓜洞的最后一个蘑菇上注销，然后再登录
+.link https://www.youtube.com/watch?v=gTfQTbLwrfw >>单击此处以供参考
+step
+#xprate <1.5
+.goto Feralas,74.50,43.40
+.turnin 3123 >>交船测试船舶
+.accept 3124 >>接受Hippogriph-Muisek
+step
+#xprate <1.5
+.isOnQuest 2863
 .goto Feralas,74.9,42.5
-.turnin 2863 >> 转入Alpha Strike
-.accept 2902 >> 接受Woodpaw调查
+.turnin 2863 >>转入Alpha Strike
+.accept 2902 >>接受Woodpaw调查
 step
 #xprate <1.5
 .isOnQuest 2973
 .goto Feralas,75.9,42.8
-.turnin 2973 >> 交上新斗篷的光环
-.accept 2974 >> 接受严峻的发现
+.turnin 2973 >>交上新斗篷的光环
+.accept 2974 >>接受严峻的发现
 step
 #xprate <1.5
 .isOnQuest 2974
@@ -11976,25 +12086,25 @@ step
 #xprate <1.5
 .isOnQuest 2902
 .goto Feralas,71.7,55.8
-.turnin 2902 >> 交伍德帕调查
-.accept 2903 >> 接受作战计划
+.turnin 2902 >>交伍德帕调查
+.accept 2903 >>接受作战计划
 step
 #xprate <1.5
 .isOnQuest 2903
 .goto Feralas,74.9,42.5
-.turnin 2903 >> 提交作战计划
+.turnin 2903 >>提交作战计划
 step
 #xprate <1.5
 .goto Feralas,74.9,42.5
-.accept 7730 >> 接受Zukk’ash感染
-.accept 7731 >> 接受Stinglasher
+.accept 7730 >>接受Zukk’ash感染
+.accept 7731 >>接受Stinglasher
 .zoneskip Feralas,1
 step
 #xprate <1.5
 .isOnQuest 2974
 .goto Feralas,75.9,42.7
-.turnin 2974 >> 提交一份严峻的发现
-.accept 2976 >> 接受严峻的发现
+.turnin 2974 >>提交一份严峻的发现
+.accept 2976 >>接受严峻的发现
 step
 #xprate <1.5
 .isOnQuest 3520
@@ -12011,12 +12121,46 @@ step
 #xprate <1.5
 .zoneskip Feralas,1
 .goto Feralas,56.7,75.9
-.collect 8564,1 >> 拿起一个鹰嘴狮蛋。它们可以在南山上产卵。
+.collect 8564,1 >>拿起一个鹰嘴狮蛋。它们可以在南山上产卵。
 step
+#xprate <1.5
+.goto Feralas,54.4,68.1
+>>杀死弗莱弗瑟·伊波格里弗斯。掠夺他们的金属碎片，然后在他们的尸体上使用Hippogriph-Muisek容器
+.complete 3124,1 
+.complete 3128,4,31 
+.complete 3128,3
+.use 9619
+step
+#tbc
 #xprate <1.5
 .zoneskip Feralas,1
 .goto Feralas,55.6,62.0
-.collect 4589,10 >> 只饲养Frayfeather Hippogriphs（白色的），直到你有10根长而优雅的羽毛。稍后我们将使用它们进行任务。
+.collect 4589,10 >>只饲养Frayfeather Hippogriphs(白色的)，直到你有10根长而优雅的羽毛。稍后我们将使用它们进行任务。
+step
+#wotlk
+#xprate <1.5
+.zoneskip Feralas,1
+.goto Feralas,55.6,62.0
+.collect 4589,1 >>只饲养Frayfeather Hippogriphs(白色的)，直到你有10根长而优雅的羽毛。稍后我们将使用它们进行任务。
+step
+#xprate <1.5
+#completewith next
+.goto Feralas,58.59,69.85,0
+>>杀死戈杜尼法师领主。为了Gordunni Orb抢走他们
+.complete 2979,1
+step
+#xprate <1.5
+.goto Feralas,59.58,65.02
+>>杀死该地区的Gordunni食人魔
+.complete 2980,1
+.complete 2980,2
+.complete 2980,3
+step
+#xprate <1.5
+.goto Feralas,58.59,69.85
+>>杀死戈杜尼法师领主。为了Gordunni Orb抢走他们
+.complete 2979,1
+.unitscan Gordunni Mage-Lord
 step
 #xprate <1.5
 .isOnQuest 3520
@@ -12033,9 +12177,9 @@ step
 #requires feralasbeacon
 .goto Feralas,53.4,55.7
 .use 8705
-.accept 2766 >> 接受查找OOX-22/FE！
-.turnin 2766 >> 提交查找OOX-22/FE！
-.accept 2767 >> 接受救援OOX-22/FE！
+.accept 2766 >>接受查找OOX-22/FE！
+.turnin 2766 >>提交查找OOX-22/FE！
+.accept 2767 >>接受救援OOX-22/FE！
 step
 #xprate <1.5
 #label OOXFE
@@ -12052,66 +12196,205 @@ step
 #xprate <1.5
 .zoneskip Feralas,1
 #completewith next
-.hs >> 赫斯前往莫贾奇营地
+.hs >>赫斯前往莫贾奇营地
 .cooldown item,6948,>0
+step
+#xprate <1.5
+.goto Feralas,74.4,43.4
+.turnin 3124 >>交出Hippogriph-Muisek
+.accept 3125 >>接受仙龙木塞
+.accept 3380 >>接受沉没的寺庙
 step
 #xprate <1.5
 .isOnQuest 2822
 .goto Feralas,74.4,42.9
-.turnin 2822 >> 交出质量标志
+.turnin 2822 >>交出质量标志
+.accept 7734 >>接受改进的质量
 step
 #xprate <1.5
 .isOnQuest 7730
 .goto Feralas,74.9,42.5
-.turnin 7730 >> 提交Zukk’ash感染
+.turnin 7730 >>提交Zukk’ash感染
 step
 #xprate <1.5
 .isOnQuest 7731
 .goto Feralas,74.9,42.5
-.turnin 7731 >> 交回Stinglasher
-.accept 7732 >> 接受Zukk’ash报告
+.turnin 7731 >>交回Stinglasher
+.accept 7732 >>接受Zukk’ash报告
 step << Druid
 #xprate <1.5
 .zoneskip Feralas,1
 .goto Feralas,76.0,42.3
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
+step
+#xprate <1.5
+.goto Feralas,75.80,43.58
+.turnin 2980 >>交出费拉拉斯的食人魔
+.turnin 2979 >>夜幕降临仪式
+.accept 3002 >>接受Gordunni Orb
+step
+#xprate <1.5
+.goto Feralas,76.20,43.80
+.accept 3062 >>接受黑暗之心
+.accept 3063 >>北泉接受复仇
+step
+#xprate <1.5
+.goto Feralas,68.68,48.60
+>>杀死精灵龙。掠夺他们的包裹矿物，然后在他们的尸体上使用仙女木塞容器
+.complete 3125,1 
+.complete 3128,2 
+step
+#xprate <1.5
+.goto Feralas,74.4,43.3
+.turnin 3125 >>交给精灵龙木卫一
+.accept 3126 >>接受Treant Muisek
+step
+#xprate <1.5
+>>前往城市北部，杀死流浪森林行者。
+.goto Feralas,69.4,44.6,70,0
+.goto Feralas,70.6,41.8,70,0
+.goto Feralas,75.0,38.6,70,0
+.goto Feralas,77.4,40.8,70,0
+.goto Feralas,78.6,42.4,70,0
+.goto Feralas,79.6,45.4,70,0
+.goto Feralas,69.4,44.6
+.complete 3126,1 
+.complete 3128,1 
+.unitscan Wandering Forest Walker
+step
+#xprate <1.5
+.goto Feralas,74.5,43.4
+.turnin 3126 >>Treant Muisek上车
+.accept 3127 >>接受山地巨人穆塞克
+step
+#xprate <1.5
+>>向西跑到岸边
+.goto Feralas,44.9,43.4
+.accept 7003 >>接受被杀的巨人
+step
+#xprate <1.5
+#sticky
+#completewith next
+>>完美雪人皮从开始任务的暴徒身上掉落。如果你在所有愤怒伤疤雪人藏匿之前没有得到它，就跳过它。还不接受任务
+.collect 18972
+step
+#xprate <1.5
+>>杀死Scar Yetis。抢劫他们的藏身之处
+.goto Feralas,55.0,33.0
+.complete 7734,1 
+step
+#xprate <1.5
+>>使用佐宾的超收缩剂来削弱巨人。杀了他们。掠夺他们的残留物，然后在他们的尸体上使用山上的巨型Musiek容器
+.goto Feralas,38.8,21.6
+.complete 3127,1 
+.complete 3128,4
+step
+#xprate <1.5
+#completewith next
+>>杀死该地区的Harpies
+.goto Feralas,38.1,14.4,0
+.complete 3063,1 
+.complete 3063,2 
+.complete 3063,3 
+.complete 3063,4 
+step
+#xprate <1.5
+>>去大石头那里。在你的库存中使用哈泰特隆之角
+>>杀死Edana Hatetalon。抢走她的心
+.goto Feralas,40.5,8.6
+.complete 3062,1 
+step
+#xprate <1.5
+>>杀死该地区的Harpies
+.goto Feralas,38.1,14.4
+.complete 3063,1 
+.complete 3063,2 
+.complete 3063,3 
+.complete 3063,4 
+step
+#xprate <1.5
+.hs >>赫斯前往莫贾奇营地
+>>如果需要，购买食物/水
+step
+#xprate <1.5
+.isQuestComplete 3128
+.goto Feralas,74.5,43.3
+.turnin 3128 >>交出天然材料
+step
+#xprate <1.5
+.goto Feralas,74.5,43.3
+.turnin 3127 >>上山巨人穆塞克
+.isQuestComplete 3127
+step
+#xprate <1.5
+.goto Feralas,74.5,43.3
+.accept 3129 >>接受精神武器
+.isQuestTurnedIn 3127
+step
+#xprate <1.5
+.isQuestComplete 7734
+.goto Feralas,74.5,42.9
+.turnin 7734 >>提高质量
+step
+#xprate <1.5
+.isOnQuest 7738
+.turnin 7738 >>交上完美雪人皮
+step
+#xprate <1.5
+.isQuestComplete 3062
+.goto Feralas,76.1,43.8
+.turnin 3062 >>转入黑暗的心
+step
+#xprate <1.5
+.isQuestComplete 3063
+.goto Feralas,76.1,43.8
+.turnin 3063 >>在北泉上转向复仇
+step
+#xprate <1.5
+.isQuestComplete 3129
+.goto Feralas,74.4,43.4
+.turnin 3129 >>交出精神武器
+step
+#xprate <1.5
+.goto Feralas,74.4,43.4
+.turnin 3123 >>交船测试船舶
 step
 #xprate <1.5
 #completewith next
 .zoneskip Feralas,1
 .goto Feralas,75.4,44.3,0
-.fly Gadgetzan >> 飞到Gadgetzan
+.fly Gadgetzan >>飞到Gadgetzan
 step
 #completewith next
 .goto Tanaris,52.4,27.8
-.home >> 将您的炉石设置为Gadgetzan
+.home >>将您的炉石设置为Gadgetzan
 step
 .goto Tanaris,52.4,27.0
 .itemcount 8564,1
->> 把你从费拉拉斯那里得到的鸡蛋交上来
-.turnin 2741 >> 交上超级蛋蛋冰淇淋
+>>把你从费拉拉斯那里得到的鸡蛋交上来
+.turnin 2741 >>交上超级蛋蛋冰淇淋
 step
 .goto Tanaris,52.8,27.4
-.accept 5863 >> 接受Dunemal化合物
+.accept 5863 >>接受Dunemal化合物
 step
 .goto Tanaris,51.8,28.5
-.accept 2605 >> 接受口渴的地精
+.accept 2605 >>接受口渴的地精
 step
 .goto Tanaris,51.5,26.8
-.accept 3362 >> 接受蓟马谷
+.accept 3362 >>接受蓟马谷
 step
 .isOnQuest 3380
 .goto Tanaris,52.8,45.9
-.turnin 3380 >> 转入沉没的寺庙
+.turnin 3380 >>转入沉没的寺庙
 step
 #xprate <1.5
 .isQuestTurnedIn 3380
 .goto Tanaris,52.8,45.9
-.accept 3444 >> 接受石头圈
+.accept 3444 >>接受石头圈
 step
 #xprate <1.5
 .goto Tanaris,52.8,45.9
-.accept 3161 >> 接受Gahz’ridian
+.accept 3161 >>接受Gahz’ridian
 step
 #xprate <1.5
 #sticky
@@ -12169,8 +12452,8 @@ step
 .goto Tanaris,29.8,73.9,40,0
 .goto Tanaris,31.8,74.2,40,0
 .goto Tanaris,30.2,70.6
->>找到图加。他在该地区巡逻。他开始了定时护送任务。
-.accept 1560 >> 接受图加的任务
+>>找到并杀死渗透者Hameya。他在这个地区闲逛。抢走他的钥匙。
+.accept 1560 >>接受图加的任务
 .unitscan Tooga
 step
 .isOnQuest 5863
@@ -12183,42 +12466,42 @@ step
 step
 .isQuestComplete 1560
 .goto Tanaris,66.6,25.5
-.turnin 1560 >> 交给图加的任务
+.turnin 1560 >>交给图加的任务
 step << wotlk
 .isOnQuest 3520
 .goto Tanaris,67.0,22.4
-.turnin 3520 >> 投入筛选人员的精神
+.turnin 3520 >>投入筛选人员的精神
 step
 #completewith next
-.hs >> Gadgetzan之炉
+.hs >>Gadgetzan之炉
 .cooldown item,6948,>0
 step
 .isOnQuest 5863
 .goto Tanaris,52.8,27.4
-.turnin 5863 >> 交出Dunemal化合物
+.turnin 5863 >>交出Dunemal化合物
 step
 .isOnQuest 2605
 .goto Tanaris,51.8,28.6
-.turnin 2605 >> 交出口渴的地精
-.accept 2606 >> 以良好的品味接受
+.turnin 2605 >>交出口渴的地精
+.accept 2606 >>以良好的品味接受
 step
 .isOnQuest 2606
 .goto Tanaris,51.1,26.9
-.turnin 2606 >> 上车时味道不错
+.turnin 2606 >>上车时味道不错
 step
 .goto Tanaris,51.1,26.9
-.accept 2641 >> 接受Sprinkle的秘密成分
+.accept 2641 >>接受Sprinkle的秘密成分
 step
 .isOnQuest 82
 .goto Tanaris,51.1,26.9
-.turnin 82 >> 移交有毒巢穴调查
+.turnin 82 >>移交有毒巢穴调查
 step
 .goto Tanaris,50.2,27.5
-.accept 10 >> 接受Scrimshank赎回
+.accept 10 >>接受Scrimshank赎回
 step
 .isOnQuest 3362
 .goto Tanaris,51.6,26.8
-.turnin 3362 >> 在蓟马谷转弯
+.turnin 3362 >>在蓟马谷转弯
 step
 #sticky
 #label ooxtanaris
@@ -12226,12 +12509,12 @@ step
 .goto Tanaris,51.5,29.0
 .collect 8623,1,351
 .use 8623
-.accept 351 >> 接受查找OOX-17/TN！
+.accept 351 >>接受查找OOX-17/TN！
 step
 #xprate <1.5
 #requires Gornaments
 .goto Tanaris,52.7,46.0
-.turnin 3161 >> 交给Gahz’ridian
+.turnin 3161 >>交给Gahz’ridian
 step
 .isOnQuest 10
 .goto Tanaris,56.0,71.2
@@ -12239,8 +12522,8 @@ step
 step
 #requires ooxtanaris
 .goto Tanaris,60.2,64.7
-.turnin 351 >> 交给Find OOX-17/TN！
-.accept 648 >> 接受救援OOX-17/TN！
+.turnin 351 >>交给Find OOX-17/TN！
+.accept 648 >>接受救援OOX-17/TN！
 step
 .isOnQuest 648
 >>这个护送可能很难。尽可能吃/喝，以保持身体健康。
@@ -12249,96 +12532,100 @@ step
 step
 .isOnQuest 10
 .goto Tanaris,50.2,27.5
-.turnin 10 >> 提交Scrimshank Redemption
-.accept 110 >> 接受昆虫零件分析
+.turnin 10 >>提交Scrimshank Redemption
+.accept 110 >>接受昆虫零件分析
 step
 .isOnQuest 110
 .goto Tanaris,50.9,27.0
-.turnin 110 >> 移交昆虫部件分析
-.accept 113 >> 接受昆虫零件分析
+.turnin 110 >>移交昆虫部件分析
+.accept 113 >>接受昆虫零件分析
 step
 .isOnQuest 113
 .goto Tanaris,50.2,27.5
-.turnin 113 >> 移交昆虫部件分析
-.accept 32 >> 接受硅石的崛起
+.turnin 113 >>移交昆虫部件分析
+.accept 32 >>接受硅石的崛起
 step << Mage
 .goto Thunder Bluff,61.3,81.0
-.zone Thunder Bluff >> 传送到Thunder Bluff
+.zone Thunder Bluff >>传送到Thunder Bluff
 step << !Mage
 #completewith next
 .goto Tanaris,51.6,25.5,0
-.fly Thunder Bluff >> 飞向雷霆崖
+.fly Thunder Bluff >>飞向雷霆崖
 step
 .isOnQuest 1205
 .goto Thunder Bluff,61.3,81.0
-.turnin 1205 >> 交给Deadmire
+.turnin 1205 >>交给Deadmire
 step << Mage
 #completewith next
 .goto Orgrimmar,38.8,85.6
-.zone Orgrimmar >> 电传至Orgrimmar
+.zone Orgrimmar >>电传至Orgrimmar
 step << !Mage
 #completewith next
 .goto Thunder Bluff,47.0,49.9,0
-.fly Orgrimmar >> 飞往奥格瑞玛
+.fly Orgrimmar >>飞往奥格瑞玛
+step
+.isOnQuest 3002
+.goto Orgrimmar,39.20,86.30
+.turnin 3002 >>交出Gordunni Orb
 step << Paladin
 #completewith next
 .goto Orgrimmar,32.4,35.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Shaman
 #completewith next
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 #completewith next
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 #completewith next
 .goto Orgrimmar,66.3,14.8
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 #completewith next
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 #completewith next
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 #completewith next
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Mage
 #completewith next
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 #completewith next
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .goto Orgrimmar,59.4,36.8
-.accept 649 >> 接受纹波恢复
-.turnin 649 >> 转入纹波恢复
+.accept 649 >>接受纹波恢复
+.turnin 649 >>转入纹波恢复
 step
 .goto Orgrimmar,59.7,37.0
-.accept 650 >> 接受纹波恢复
+.accept 650 >>接受纹波恢复
 step
 .isOnQuest 2976
 .goto Orgrimmar,75.1,34.3
-.turnin 2976 >> 提交一份严峻的发现
+.turnin 2976 >>提交一份严峻的发现
 step
 .isOnQuest 7732
 .goto Orgrimmar,56.2,46.6
-.turnin 7732 >> 提交Zukk’ash报告
+.turnin 7732 >>提交Zukk’ash报告
 step
 .isOnQuest 3121
 .goto Orgrimmar,49.5,50.6
-.turnin 3121 >> Turn in 奇怪的请求
+.turnin 3121 >>提交一个奇怪的请求
 step
 .isOnQuest 32
 .goto Orgrimmar,56.2,46.6
-.turnin 32 >> 硅石上升的转折点
+.turnin 32 >>硅石上升的转折点
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -12353,43 +12640,43 @@ step
 #era
 >>奔向荒地边界
 .goto Swamp of Sorrows,34.30,66.00
-.accept 2784 >> 接受失宠
+.accept 2784 >>接受失宠
 step
 #era
 .goto Swamp of Sorrows,34.30,66.00
->> 浏览整个对话
+>>浏览整个对话
 .complete 2784,1
 .skipgossip
 step
 #era
 .goto Blasted Lands,52.76,2.93
-.turnin 2784 >> 从恩典中归来
-.accept 2621 >> 接受失宠者
+.turnin 2784 >>从恩典中归来
+.accept 2621 >>接受失宠者
 step
 #era
 .goto Swamp of Sorrows,47.90,55.00
-.accept 1429 >> 接受阿塔莱流亡
-.turnin 2621 >> 交出失宠者
-.accept 2622 >> 接受缺失订单
+.accept 1429 >>接受阿塔莱流亡
+.turnin 2621 >>交出失宠者
+.accept 2622 >>接受缺失订单
 step
 #era
 .goto Swamp of Sorrows,81.31,80.97
-.accept 699 >> 接受盈余不足
+.accept 699 >>接受盈余不足
 step
 #era
 .goto Swamp of Sorrows,74.10,17.34,0
->> 杀死锯齿蛇。掠夺他们的爪子
+>>杀死锯齿蛇。掠夺他们的爪子
 .complete 699,1
 step
 #era
 .goto Swamp of Sorrows,81.40,80.80
-.turnin 699 >> 缺少盈余
-.accept 1422 >> 接受来自海洋的威胁
+.turnin 699 >>缺少盈余
+.accept 1422 >>接受来自海洋的威胁
 step
 #era
 .goto Swamp of Sorrows,83.70,80.50
-.turnin 1422 >> 来自海上的威胁
-.accept 1426 >> 接受来自海洋的威胁
+.turnin 1422 >>来自海上的威胁
+.accept 1426 >>接受来自海洋的威胁
 step
 #era
 .goto Swamp of Sorrows,83.55,90.37
@@ -12400,22 +12687,22 @@ step
 step
 #era
 .goto Swamp of Sorrows,83.70,80.50
-.turnin 1426 >> 来自海上的威胁
-.accept 1427 >> 接受来自海洋的威胁
+.turnin 1426 >>来自海上的威胁
+.accept 1427 >>接受来自海洋的威胁
 step
 #era
 .goto Swamp of Sorrows,81.40,80.80
-.turnin 1427 >> 来自海上的威胁
+.turnin 1427 >>来自海上的威胁
 step
 #era
 .goto Swamp of Sorrows,83.75,80.41
-.accept 1428 >> 接受持续威胁
+.accept 1428 >>接受持续威胁
 step
 #era
 .goto Swamp of Sorrows,66.08,77.67,60,0
 .goto Swamp of Sorrows,62.90,87.40
->> 杀死沼泽谈话者。根据酋长的命令抢劫他
->> 这个任务可能很难，为老板节省你的冷却时间，杀死他产生的小怪物，他们一击即毙。
+>>杀死沼泽谈话者。根据酋长的命令抢劫他
+>>这个任务可能很难，为老板节省你的冷却时间，杀死他产生的小怪物，他们一击即毙。
 .complete 2623,1
 .unitscan Swamp Talker
 step
@@ -12428,75 +12715,75 @@ step
 step
 #era
 .goto Swamp of Sorrows,83.70,80.40
-.turnin 1428 >> 交出持续威胁
+.turnin 1428 >>交出持续威胁
 step
 #softcore
 #era
 #completewith next
->> 在精神治疗师处死亡并重生
+>>在精神治疗师处死亡并重生
 step << Hunter
 #era
 .goto Swamp of Sorrows,47.3,53.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 #era
 .goto Swamp of Sorrows,47.4,52.4
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warlock
 #era
 .goto Swamp of Sorrows,48.6,55.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 #era
 .goto Swamp of Sorrows,48.6,55.3
-.vendor >> 如果你有钱，买你的宠物升级。
+.vendor >>如果你有钱，买你的宠物升级。
 step << Shaman
 #era
 .goto Swamp of Sorrows,48.2,57.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warrior
 #era
 .goto Swamp of Sorrows,44.9,57.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 #era
 .goto Swamp of Sorrows,34.30,66.00
-.turnin 2623 >> 加入沼泽谈话者
-.accept 2801 >> 接受悲伤的故事
+.turnin 2623 >>加入沼泽谈话者
+.accept 2801 >>接受悲伤的故事
 step
 #era
->> 浏览整个对话
+>>浏览整个对话
 .complete 2801,1
 .skipgossip
 step
 #era
 .goto Blasted Lands,52.76,2.93
-.turnin 2801 >> 交出悲伤的故事
+.turnin 2801 >>交出悲伤的故事
 step
 #era
 .goto Swamp of Sorrows,22.90,48.30
 >>水下的
-.turnin 624 >> 交出科特罗的谜语
-.accept 625 >> 接受Cortello的谜语
+.turnin 624 >>交出科特罗的谜语
+.accept 625 >>接受Cortello的谜语
 step
 #era
-.hs >> 赫斯前往莫贾奇营地
->> 如果需要，购买食物/水
+.hs >>赫斯前往莫贾奇营地
+>>如果需要，购买食物/水
 step << Druid
 #era
 .goto Feralas,76.0,42.3
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 #era
 .goto Feralas,74.50,43.40
-.turnin 3122 >> 交回巫医乌泽尔
-.accept 3123 >> 接受船舶测试
-.accept 3380 >> 接受沉没的寺庙
-.accept 3128 >> 接受自然材料
+.turnin 3122 >>交回巫医乌泽尔
+.accept 3123 >>接受船舶测试
+.accept 3380 >>接受沉没的寺庙
+.accept 3128 >>接受自然材料
 step
 #era
 .goto Feralas,75.45,44.36
-.fly Tanaris>> 飞往塔纳瑞斯
+.fly Tanaris>>飞往塔纳瑞斯
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -12509,100 +12796,100 @@ RXPGuides.RegisterGuide([[
 step << Druid
 #som
 .goto Feralas,76.0,42.3
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 #som
 #level 46
 .goto Feralas,74.50,43.40
-.turnin 3122 >> 交回巫医乌泽尔
-.accept 3123 >> 接受船舶测试
-.accept 3380 >> 接受沉没的寺庙
+.turnin 3122 >>交回巫医乌泽尔
+.accept 3123 >>接受船舶测试
+.accept 3380 >>接受沉没的寺庙
 step
 #som
 .goto Feralas,74.50,43.40
-.turnin 3122 >> 交回巫医乌泽尔
-.accept 3123 >> 接受船舶测试
-.accept 3128 >> 接受自然材料
+.turnin 3122 >>交回巫医乌泽尔
+.accept 3123 >>接受船舶测试
+.accept 3128 >>接受自然材料
 step
 #som
 .goto Feralas,75.45,44.36
-.fly Tanaris>> 飞往塔纳瑞斯
+.fly Tanaris>>飞往塔纳瑞斯
 step
 #era
 .goto Tanaris,52.70,7.80
-.turnin 1119 >> 把Zanzil的混合物和傻瓜的烈性酒交上来
+.turnin 1119 >>把Zanzil的混合物和傻瓜的烈性酒交上来
 .timer 13,Kravel Koalbeard RP
 step
 .isQuestComplete 1187
 .goto Tanaris,54.30,7.10
-.turnin 1187 >> 交给Razzeric的Tweaking
+.turnin 1187 >>交给Razzeric的Tweaking
 step
 .goto Tanaris,54.30,7.10
 .isQuestTurnedIn 1187
-.accept 1188 >> 安全第一
+.accept 1188 >>安全第一
 step
 #era
 .goto Tanaris,52.70,7.80
-.accept 1120 >> 接受让侏儒喝醉
+.accept 1120 >>接受让侏儒喝醉
 step
 #era
 .goto Tanaris,52.60,7.60
-.turnin 1120 >> 转身让侏儒喝醉
+.turnin 1120 >>转身让侏儒喝醉
 step
 #era
 .goto Tanaris,52.70,7.80
-.accept 1122 >> 接受报告返回Fizzlebub
+.accept 1122 >>接受报告返回Fizzlebub
 step
 .goto Tanaris,50.21,27.48
-.accept 82 >> 接受有毒巢穴调查
+.accept 82 >>接受有毒巢穴调查
 step
 .goto Tanaris,51.90,27.00
-.accept 2875 >> 接受通缉：Andre Firebeard
+.accept 2875 >>接受通缉：Andre Firebeard
 step
 .goto Tanaris,51.56,26.75
-.accept 3362 >> 接受蓟马谷
+.accept 3362 >>接受蓟马谷
 step
 .isQuestComplete 1188
 .goto Tanaris,51.00,27.30
-.turnin 1188 >> 安全第一
+.turnin 1188 >>安全第一
 step
 .goto Tanaris,51.80,28.60
-.accept 2605 >> 接受口渴的地精
+.accept 2605 >>接受口渴的地精
 step
 .goto Tanaris,52.50,27.90
-.home >> 将您的炉石设置为Gadgetzan
+.home >>将您的炉石设置为Gadgetzan
 step
 .goto Tanaris,52.80,27.40
-.accept 5863 >> 接受Dunemal化合物
+.accept 5863 >>接受Dunemal化合物
 step
 .goto Tanaris,52.30,27.00
->> 点击Egg-O-Matic，把你的Hippogryph Egg（超级Egg-O-Matic）交给他。它是一个小型金属控制台，位于传送机旁边
-.accept 2741 >> 接受Super Egg-O-Matic
-.turnin 2741 >> 交上超级蛋蛋冰淇淋
+>>点击Egg-O-Matic，把你的Hippogryph Egg(超级Egg-O-Matic)交给他。它是一个小型金属控制台，位于传送机旁边
+.accept 2741 >>接受Super Egg-O-Matic
+.turnin 2741 >>交上超级蛋蛋冰淇淋
 step
 .goto Tanaris,66.60,22.30
-.accept 8365 >> 接受海盗帽啊！
+.accept 8365 >>接受海盗帽啊！
 step
 .goto Tanaris,67.00,22.40
-.turnin 3520 >> 投入筛选人员的精神
+.turnin 3520 >>投入筛选人员的精神
 step
 .goto Tanaris,67.10,23.90
-.accept 8366 >> 接受南海安定
-.accept 2873 >> 接受Stoley的发货
+.accept 8366 >>接受南海安定
+.accept 2873 >>接受Stoley的发货
 step
 #completewith next
-.goto Tanaris,68.76,41.51,70 >> 前往Lost Rigger Cove
+.goto Tanaris,68.76,41.51,70 >>前往Lost Rigger Cove
 step
 #sticky
 #completewith Hats
 .goto Tanaris,73.37,47.14,0
->> 在篝火旁杀死安德烈·费尔比尔德。当他拉车时要小心，后面有暴徒
->> 分开，如果可以的话拉他 << Mage/Warlock
+>>在篝火旁杀死安德烈·费尔比尔德。当他拉车时要小心，后面有暴徒
+>>分开，如果可以的话拉他 << Mage/Warlock
 .complete 2875,1
 step
 #sticky
 #completewith Pirates
->> 杀死海盗。抢他们的帽子
+>>杀死海盗。抢他们的帽子
 .complete 8365,1
 step
 #completewith next
@@ -12615,13 +12902,13 @@ step
 step
 .goto Tanaris,72.63,46.81,30,0
 .goto Tanaris,72.15,46.76
->> 抢劫楼上的棕色盒子
+>>抢劫楼上的棕色盒子
 .complete 2873,1
 step
 #completewith BugHole
 >>在塔纳瑞斯寻找时，注意遇险信标掉落
 .collect 8623,1,351
-.accept 351 >> 接受查找OOX-17/TN！
+.accept 351 >>接受查找OOX-17/TN！
 step
 #label Pirates
 .goto Tanaris,73.97,47.50
@@ -12633,41 +12920,41 @@ step
 step
 #label Hats
 .goto Tanaris,73.97,47.50
->> 杀死海盗。抢他们的帽子
+>>杀死海盗。抢他们的帽子
 .complete 8365,1
 step
 .goto Tanaris,73.37,47.14
->> 在篝火旁杀死安德烈·费尔比尔德。当他拉车时要小心，后面有暴徒
->> 分开，如果可以的话拉他 << Mage/Warlock
+>>在篝火旁杀死安德烈·费尔比尔德。当他拉车时要小心，后面有暴徒
+>>分开，如果可以的话拉他 << Mage/Warlock
 .complete 2875,1
 step
 .isOnQuest 3380
 .goto Tanaris,52.70,45.92
 >>离开丢失的索具湾
-.turnin 3380 >> 转入沉没的寺庙
+.turnin 3380 >>转入沉没的寺庙
 step
 .goto Tanaris,52.70,45.92
 
-.accept 3161 >> 接受Gahz’ridian << !Hunter
+.accept 3161 >>接受Gahz’ridian << !Hunter
 step << !Hunter
 .goto Tanaris,52.70,45.92
 >>离开丢失的索具湾
 
-.accept 3161 >> 接受Gahz’ridian
+.accept 3161 >>接受Gahz’ridian
 step
 .goto Tanaris,34.54,39.82
->> 杀死Silithids。掠夺他们的昆虫器官
->> 小心，因为这些暴徒可能很难对付
+>>杀死Silithids。掠夺他们的昆虫器官
+>>小心，因为这些暴徒可能很难对付
 .complete 82,1
 step
 #sticky
 #label GorMarok
 .goto Tanaris,41.50,57.80
->> 在山洞里杀死掠夺者Gor'marok。小心，因为他有致命一击并造成大量伤害
+>>在山洞里杀死掠夺者Gor'marok。小心，因为他有致命一击并造成大量伤害
 .complete 5863,3
 step
 .goto Tanaris,41.32,55.22
->> 杀死该地区的食人魔
+>>杀死该地区的食人魔
 .complete 5863,1
 .complete 5863,2
 step
@@ -12675,12 +12962,12 @@ step
 #sticky
 #label DewC
 .goto Tanaris,30.38,65.51
->> 杀死露水收集器。抢劫他们以换取拉登的结露腺
+>>杀死露水收集器。抢劫他们以换取拉登的结露腺
 .complete 2605,1
 step
 #requires GorMarok
 .goto Tanaris,28.70,64.06
->> 杀死该地区的元素
+>>杀死该地区的元素
 .complete 3362,1
 .complete 3362,2
 step
@@ -12690,125 +12977,125 @@ step
 .goto Tanaris,31.66,74.70
 .goto Tanaris,29.37,59.97,0
 .goto Tanaris,28.70,67.32,0
->> 寻找图加。开始他的护航任务
->> 非常小心，不要跑得比图加快太多，也不要失败
-.accept 1560 >> 接受图加的任务
+>>寻找图加。开始他的护航任务
+>>非常小心，不要跑得比图加快太多，也不要失败
+.accept 1560 >>接受图加的任务
 .unitscan Tooga
 step << !Hunter
 .goto Tanaris,40.53,72.80
->> 装备所提供的头盔。掠夺地面上（和小地图上）的沙块。抢走它们作为装饰品
->> 非常小心，不要跑得比图加快太多，也不要失败
+>>装备所提供的头盔。掠夺地面上(和小地图上)的沙块。抢走它们作为装饰品
+>>非常小心，不要跑得比图加快太多，也不要失败
 .complete 3161,1
 step
 .goto Tanaris,66.60,25.70
->> 非常小心，不要跑得比图加快太多，也不要失败
+>>非常小心，不要跑得比图加快太多，也不要失败
 .complete 1560,1 
-.turnin 1560 >> 交给图加的任务
+.turnin 1560 >>交给图加的任务
 step
 .goto Tanaris,67.00,23.90
-.turnin 2875 >> 通缉犯：Andre Firebeard
-.turnin 8366 >> 转入南海安定
-.turnin 2873 >> 交给Stoley的货物
-.accept 2874 >> 接受交付给MacKinley
+.turnin 2875 >>通缉犯：Andre Firebeard
+.turnin 8366 >>转入南海安定
+.turnin 2873 >>交给Stoley的货物
+.accept 2874 >>接受交付给MacKinley
 step
 .goto Tanaris,66.60,22.30
-.turnin 8365 >> 交出海盗帽啊！
+.turnin 8365 >>交出海盗帽啊！
 step
 #completewith next
-.hs >> 炉灶回到Gadgetzan
->> 如果需要，购买食物/水
+.hs >>炉灶回到Gadgetzan
+>>如果需要，购买食物/水
 step << skip
 .goto Tanaris,52.30,28.92
-.bankdeposit 9245 >> 将Stoley’s Bottle存入您的银行
+.bankdeposit 9245 >>将Stoley’s Bottle存入您的银行
 step
 .goto Tanaris,51.80,28.60
-.turnin 2605 >> 交出口渴的地精
-.accept 2606 >> 以良好的品味接受
+.turnin 2605 >>交出口渴的地精
+.accept 2606 >>以良好的品味接受
 step
 .goto Tanaris,50.90,27.00
-.turnin 82 >> 移交有毒巢穴调查
+.turnin 82 >>移交有毒巢穴调查
 step
 .goto Tanaris,51.10,26.90
-.turnin 2606 >> 上车时味道不错
-.accept 2641 >> 接受Sprinkle的秘密成分
+.turnin 2606 >>上车时味道不错
+.accept 2641 >>接受Sprinkle的秘密成分
 step
 .goto Tanaris,50.20,27.50
-.accept 10 >> 接受Scrimshank赎回
+.accept 10 >>接受Scrimshank赎回
 step
 .goto Tanaris,51.50,26.80
-.turnin 3362 >> 在蓟马谷转弯
+.turnin 3362 >>在蓟马谷转弯
 step
 .goto Tanaris,52.80,27.40
-.turnin 5863 >> 交出Dunemal化合物
+.turnin 5863 >>交出Dunemal化合物
 step
 .goto Tanaris,52.70,45.90
-.turnin 3161 >> 交给Gahz’ridian << !Hunter
+.turnin 3161 >>交给Gahz’ridian << !Hunter
 step
 #label BugHole
 .goto Tanaris,55.69,69.44,50,0
 .goto Tanaris,56.36,68.44,30,0
 .goto Tanaris,57.45,70.45,30,0
 .goto Tanaris,55.96,71.16
->> 进入地下的Silithid Hive。抢劫机器控制台
+>>进入地下的Silithid Hive。抢劫机器控制台
 .complete 10,1
 step
 >>如果你找到了一个遇险信标，右击它并接受任务，否则跳过这一步
-.accept 351 >> 接受查找OOX-17/TN！
+.accept 351 >>接受查找OOX-17/TN！
 step
 .isOnQuest 351
 .goto Tanaris,60.20,64.70
-.turnin 351 >> 交给Find OOX-17/TN！
+.turnin 351 >>交给Find OOX-17/TN！
 step
 .isQuestTurnedIn 351
 .goto Tanaris,60.23,64.71
->> 开始护送任务
-.accept 648 >> 接受救援OOX-17/TN！
+>>开始护送任务
+.accept 648 >>接受救援OOX-17/TN！
 step
 .isQuestTurnedIn 351
 .goto Tanaris,67.09,23.18
->> 护送机器鸡回Steamwheedle港
->> 小心，因为这个任务可能很难。2波将产生：一组3级46-47蝎子，一组43-45级流浪汉暴徒，一个暗影法师，一个刺客和一个怪物
->> 小心，当你的生命值低于20%时，刑法会处决你
+>>护送机器鸡回Steamwheedle港
+>>小心，因为这个任务可能很难。2波将产生：一组3级46-47蝎子，一组43-45级流浪汉暴徒，一个暗影法师，一个刺客和一个怪物
+>>小心，当你的生命值低于20%时，刑法会处决你
 .complete 648,1
 step << Shaman
-.hs >> Gadgetzan之炉
->> 如果需要，购买食物/水
+.hs >>Gadgetzan之炉
+>>如果需要，购买食物/水
 step
 .goto Tanaris,50.21,27.48
-.turnin 10 >> 提交Scrimshank Redemption
-.accept 110 >> 接受昆虫零件分析
+.turnin 10 >>提交Scrimshank Redemption
+.accept 110 >>接受昆虫零件分析
 step
 .goto Tanaris,50.90,27.00
-.turnin 110 >> 移交昆虫部件分析
-.accept 113 >> 接受昆虫零件分析
+.turnin 110 >>移交昆虫部件分析
+.accept 113 >>接受昆虫零件分析
 step
 .goto Tanaris,50.20,27.50
-.turnin 113 >> 移交昆虫部件分析
-.accept 32 >> 接受硅石的崛起
+.turnin 113 >>移交昆虫部件分析
+.accept 32 >>接受硅石的崛起
 step
 #era
 .goto Tanaris,51.60,25.50
-.fly Brackenwall >> 飞往Brackenwall
+.fly Brackenwall >>飞往Brackenwall
 step
 #era
 .goto Dustwallow Marsh,37.10,33.00
-.accept 1170 >> 接受奥妮克希亚的兄弟
+.accept 1170 >>接受奥妮克希亚的兄弟
 step
 #era
 .goto Dustwallow Marsh,36.30,31.40
-.turnin 1170 >> 交出奥妮克希亚的雏鸟
-.accept 1171 >> 接受奥妮克希亚的兄弟
+.turnin 1170 >>交出奥妮克希亚的雏鸟
+.accept 1171 >>接受奥妮克希亚的兄弟
 step
 #era
 .goto Dustwallow Marsh,37.10,33.00
-.turnin 1171 >> 交出奥妮克希亚的雏鸟
-.accept 1172 >> 接受奥妮克希亚的兄弟
+.turnin 1171 >>交出奥妮克希亚的雏鸟
+.accept 1172 >>接受奥妮克希亚的兄弟
 step
 #era
 >>进入猛禽洞
 .goto Dustwallow Marsh,31.10,66.10
-.turnin 625 >> 交出科特罗的谜语
-.accept 626 >> 接受Cortello的谜语
+.turnin 625 >>交出科特罗的谜语
+.accept 626 >>接受Cortello的谜语
 step
 #era
 .goto Dustwallow Marsh,48.50,75.30
@@ -12818,54 +13105,54 @@ step
 #era
 >>跑回Brackenwall
 .goto Dustwallow Marsh,37.15,33.08
-.turnin 1172 >> 交出奥妮克希亚的雏鸟
+.turnin 1172 >>交出奥妮克希亚的雏鸟
 step
 #era
 .goto Dustwallow Marsh,36.30,31.50
->> 接受这个任务会让莫克莫洛克霸王变得敌对。做好准备
->> 小心，因为这个任务可能很难
-.accept 1173 >> 接受挑战Mok'Morokk霸王
+>>接受这个任务会让莫克莫洛克霸王变得敌对。做好准备
+>>小心，因为这个任务可能很难
+.accept 1173 >>接受挑战Mok'Morokk霸王
 step
 #era
->> 击败莫莫霸王，将其生命值降低至30%左右
+>>击败莫莫霸王，将其生命值降低至30%左右
 .complete 1173,1
 step
 #era
 .goto Dustwallow Marsh,37.10,33.00
-.turnin 1173 >> 加入挑战霸王莫洛克
+.turnin 1173 >>加入挑战霸王莫洛克
 step << !Mage
 .isQuestComplete 1205
 #era
 .goto Dustwallow Marsh,35.57,31.89
-.fly Thunder Bluff>> 飞向雷霆崖
+.fly Thunder Bluff>>飞向雷霆崖
 step << !Mage
 .isQuestComplete 1205
 #som
 .goto Tanaris,51.60,25.50
-.fly Thunder Bluff>> 飞向雷霆崖
+.fly Thunder Bluff>>飞向雷霆崖
 step << Mage
 .isQuestComplete 1205
-.zone Thunder Bluff >> 传送到Thunder Bluff
+.zone Thunder Bluff >>传送到Thunder Bluff
 step
 .isQuestComplete 1205
 .goto Thunder Bluff,61.50,80.90
-.turnin 1205 >> 交给Deadmire
+.turnin 1205 >>交给Deadmire
 step << Druid
 .isQuestTurnedIn 1205
 .goto Thunder Bluff,77.0,29.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .isQuestTurnedIn 1205
 .goto Thunder Bluff,59.1,86.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .isQuestTurnedIn 1205
 .goto Thunder Bluff,54.1,83.9
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 .isQuestTurnedIn 1205
 .goto Thunder Bluff,57.6,85.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .isQuestTurnedIn 1205
 #softcore
@@ -12874,64 +13161,64 @@ step
 .collect 4306,15
 step << !Mage
 .goto Thunder Bluff,46.9,49.9
-.fly Orgrimmar>> 飞往奥格瑞玛
+.fly Orgrimmar>>飞往奥格瑞玛
 step << Mage
-.zone Orgrimmar >> 电传至Orgrimmar
+.zone Orgrimmar >>电传至Orgrimmar
 step << Shaman
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.3,14.8
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,47.5,46.7
-.vendor >> 如果你有钱，买你的宠物升级。
+.vendor >>如果你有钱，买你的宠物升级。
 step << Mage
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .goto Orgrimmar,56.40,46.50
-.turnin 32 >> 硅石上升的转折点
+.turnin 32 >>硅石上升的转折点
 step
 .goto Orgrimmar,59.40,36.70
-.accept 649 >> 接受纹波恢复
+.accept 649 >>接受纹波恢复
 step
 .goto Orgrimmar,59.50,36.80
-.turnin 649 >> 转入纹波恢复
-.accept 650 >> 接受纹波恢复
+.turnin 649 >>转入纹波恢复
+.accept 650 >>接受纹波恢复
 step
 #era
 .goto Orgrimmar,55.52,34.07
-.accept 4300 >> 接受骨刃武器
+.accept 4300 >>接受骨刃武器
 step
 #som
 #level 48
 .goto Orgrimmar,55.52,34.07
-.accept 4300 >> 接受骨刃武器
+.accept 4300 >>接受骨刃武器
 step << !Mage
 #sticky
 #completewith next
 +去齐柏林塔。把齐柏林飞艇带到提里斯法
 .goto Durotar,50.8,13.8
 step << !Mage
-.zone Tirisfal Glades >>抵达提里斯福尔 Glades
+.zone Tirisfal Glades >>抵达提里斯法尔·格拉德斯
 step << Mage
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -12943,23 +13230,23 @@ RXPGuides.RegisterGuide([[
 #somname 47-49 辛特兰
 step << Mage
 .goto Undercity,82.79,15.82
-.vendor >> 去找汉娜。购买四个传送符文（如果你想，可以多买）
+.vendor >>去找汉娜。购买四个传送符文(如果你想，可以多买)
 .collect 17031,4 
 step
 .goto Undercity,73.20,32.80
-.accept 2995 >> 接受通讯线路
+.accept 2995 >>接受通讯线路
 step
 .goto Undercity,48.50,71.90
-.accept 3568 >> 接受腐败
+.accept 3568 >>接受腐败
 step
 .isOnQuest 864
 .goto Undercity,50.00,68.20
-.turnin 864 >> 交回给药剂师Zinge
+.turnin 864 >>交回给药剂师Zinge
 step
 .goto Undercity,63.25,48.56
-.fly Tarren Mill >> 飞往塔伦磨坊
+.fly Tarren Mill >>飞往塔伦磨坊
 step
-.goto Hillsbrad Foothills,88.44,27.44,80 >> 从Hillsbrad到Hinterlands
+.goto Hillsbrad Foothills,88.44,27.44,80 >>从希尔斯布莱德丘陵到Hinterlands
 step
 #completewith VenomB
 +当你在腹地探险时，请留意可能掉落的遇险灯塔。不要掉下来
@@ -12968,30 +13255,30 @@ step
 #completewith ViHo
 .goto The Hinterlands,9.56,56.00,60,0
 .goto The Hinterlands,25.88,53.18,0
->> 杀死威尔金。在他们的尸体上使用Wildkin Muisek容器
+>>杀死威尔金。在他们的尸体上使用Wildkin Muisek容器
 .complete 3123,1
 step
 #label VenomB
 .goto The Hinterlands,23.50,58.80
 >>抢劫桌上的一个瓶子
-.accept 2933 >> 接受毒液瓶
+.accept 2933 >>接受毒液瓶
 step
 .goto The Hinterlands,26.70,48.60
-.turnin 650 >> 转入纹波恢复
-.accept 77 >> 接受棘手的情况
+.turnin 650 >>转入纹波恢复
+.accept 77 >>接受棘手的情况
 step
 #label ViHo
 .goto The Hinterlands,72.50,66.20,50,0
 .goto The Hinterlands,77.10,80.00
->> 前往Revantusk村
-.accept 7839 >> 接受Vilebranch Hooligans
+>>前往Revantusk村
+.accept 7839 >>接受Vilebranch Hooligans
 step
 .goto The Hinterlands,78.20,81.30
-.accept 7840 >> 接受猪油丢了午餐
+.accept 7840 >>接受猪油丢了午餐
 step
 .goto The Hinterlands,80.40,81.50
-.accept 7815 >> 接受Snapjaws，Mon！
-.accept 7816 >> 接受Gammerita，Mon！
+.accept 7815 >>接受Snapjaws，Mon！
+.accept 7816 >>接受Gammerita，Mon！
 step
 #era
 #completewith Cortello
@@ -13001,7 +13288,7 @@ step
 .goto The Hinterlands,79.14,71.45,0
 .goto The Hinterlands,77.47,75.83,0
 .goto The Hinterlands,78.83,76.26,0
->> 抢劫岸边地上的蓝瓶子
+>>抢劫岸边地上的蓝瓶子
 .complete 580,1
 step
 #era
@@ -13012,7 +13299,7 @@ step
 .goto The Hinterlands,79.14,71.45,0
 .goto The Hinterlands,77.47,75.83,0
 .goto The Hinterlands,78.83,76.26,0
->> 杀死伽美利塔。她上下巡逻
+>>杀死伽美利塔。她上下巡逻
 .complete 7816,1
 .unitscan Gammerita
 step
@@ -13024,14 +13311,14 @@ step
 .goto The Hinterlands,79.14,71.45,0
 .goto The Hinterlands,77.47,75.83,0
 .goto The Hinterlands,78.83,76.26,0
->> 沿着海岸杀死海龟
+>>沿着海岸杀死海龟
 .complete 7815,1
 step
 #era
 #label Cortello
 >>抢劫瀑布下的箱子
 .goto The Hinterlands,80.80,46.80
-.turnin 626 >> 交出科特罗的谜语
+.turnin 626 >>交出科特罗的谜语
 step
 #som
 #completewith Picnicbasket
@@ -13041,7 +13328,7 @@ step
 .goto The Hinterlands,79.14,71.45,0
 .goto The Hinterlands,77.47,75.83,0
 .goto The Hinterlands,78.83,76.26,0
->> 抢劫岸边地上的蓝瓶子
+>>抢劫岸边地上的蓝瓶子
 .complete 580,1
 step
 #som
@@ -13052,7 +13339,7 @@ step
 .goto The Hinterlands,79.14,71.45,0
 .goto The Hinterlands,77.47,75.83,0
 .goto The Hinterlands,78.83,76.26,0
->> 杀死伽美利塔。她上下巡逻
+>>杀死伽美利塔。她上下巡逻
 .complete 7816,1
 .unitscan Gammerita
 step
@@ -13064,13 +13351,13 @@ step
 .goto The Hinterlands,79.14,71.45,0
 .goto The Hinterlands,77.47,75.83,0
 .goto The Hinterlands,78.83,76.26,0
->> 沿着海岸杀死海龟
+>>沿着海岸杀死海龟
 .complete 7815,1
 step
 #label Picnicbasket
 .goto The Hinterlands,84.40,41.30
->> 掠夺猪油的野餐篮。3个49级怪物将产生（他们都有执行权，当你生命值低于20%时可以使用）-抢劫其中一个作为猪油午餐
->> 这个任务可能很棘手
+>>掠夺猪油的野餐篮。3个49级怪物将产生(他们都有执行权，当你生命值低于20%时可以使用)-抢劫其中一个作为猪油午餐
+>>这个任务可能很棘手
 .complete 7840,1
 step
 #sticky
@@ -13080,7 +13367,7 @@ step
 .goto The Hinterlands,79.14,71.45,80,0
 .goto The Hinterlands,77.47,75.83,80,0
 .goto The Hinterlands,78.83,76.26
->> 沿着海岸杀死海龟
+>>沿着海岸杀死海龟
 .complete 7815,1
 step
 #sticky
@@ -13090,7 +13377,7 @@ step
 .goto The Hinterlands,79.14,71.45,80,0
 .goto The Hinterlands,77.47,75.83,80,0
 .goto The Hinterlands,78.83,76.26
->> 杀死伽美利塔。她上下巡逻
+>>杀死伽美利塔。她上下巡逻
 .complete 7816,1
 .unitscan Gammerita
 step
@@ -13101,7 +13388,7 @@ step
 .goto The Hinterlands,79.14,71.45,80,0
 .goto The Hinterlands,77.47,75.83,80,0
 .goto The Hinterlands,78.83,76.26
->> 抢劫岸边地上的蓝瓶子
+>>抢劫岸边地上的蓝瓶子
 .complete 580,1
 step
 #requires Turtles
@@ -13110,30 +13397,30 @@ step
 step
 #requires Bottles
 .goto The Hinterlands,80.30,81.40
-.turnin 7815 >> 把Snapjaws交上来，Mon！
-.turnin 7816 >> 交给Gammerita，Mon！
+.turnin 7815 >>把Snapjaws交上来，Mon！
+.turnin 7816 >>交给Gammerita，Mon！
 step
 .goto The Hinterlands,78.20,81.30
-.turnin 7840 >> 猪油丢了午餐
+.turnin 7840 >>猪油丢了午餐
 step
 .goto The Hinterlands,78.80,78.40
-.accept 7844 >> 接受食人堂兄
+.accept 7844 >>接受食人堂兄
 step
 .goto The Hinterlands,79.40,79.10
-.accept 7841 >> 接受发送给Wildhammer的消息
+.accept 7841 >>接受发送给Wildhammer的消息
 step
 .goto The Hinterlands,79.10,79.50
-.accept 7828 >> 接受跟踪跟踪者
-.accept 7829 >> 接受狩猎野蛮人
-.accept 7830 >> 接受为堕落者复仇
+.accept 7828 >>接受跟踪跟踪者
+.accept 7829 >>接受狩猎野蛮人
+.accept 7830 >>接受为堕落者复仇
 step
 #completewith Bucket
 .goto The Hinterlands,70.90,62.40,0
->> 杀死Silvermane跟踪者
+>>杀死Silvermane跟踪者
 .complete 7828,1
 step
 #completewith Bucket
->> 杀死野蛮猫头鹰
+>>杀死野蛮猫头鹰
 .complete 7829,1
 step
 #completewith Bucket
@@ -13147,11 +13434,11 @@ step
 .goto The Hinterlands,66.40,44.80,0
 .goto The Hinterlands,57.40,42.40,0
 .goto The Hinterlands,53.30,38.80,0
->> 抢劫地上的小水桶。它有5个不同的可能生成位置
+>>抢劫地上的小水桶。它有5个不同的可能生成位置
 .complete 7839,1
 step
 .goto The Hinterlands,57.50,39.50
->> 盗取Skulk Rock洞穴内的部落补给箱以获取蜂蜜波纹
+>>盗取Skulk Rock洞穴内的部落补给箱以获取蜂蜜波纹
 .complete 77,1
 step
 #label Bucket
@@ -13165,12 +13452,12 @@ step
 .goto The Hinterlands,66.40,44.80,0
 .goto The Hinterlands,57.40,42.40,0
 .goto The Hinterlands,53.30,38.80,0
->> 抢劫地上的小水桶。它有5个不同的可能生成位置
+>>抢劫地上的小水桶。它有5个不同的可能生成位置
 .complete 7839,1
 step
 #completewith Tragan
 .goto The Hinterlands,47.56,59.04,0
->> 杀死Silvermane嚎叫者
+>>杀死Silvermane嚎叫者
 .complete 7828,2
 step
 #completewith Escort
@@ -13184,21 +13471,21 @@ step
 #sticky
 #label Notes
 .goto The Hinterlands,29.60,48.70
->> 在地上燃烧高地音符
+>>在地上燃烧高地音符
 .complete 2995,2
 step
 .goto The Hinterlands,28.60,46.10
->> 在桌子上烧毁Highvale报告
+>>在桌子上烧毁Highvale报告
 .complete 2995,3
 step
 #requires Notes
 .goto The Hinterlands,32.00,46.90
->> 在地上烧毁Highvale唱片
+>>在地上烧毁Highvale唱片
 .complete 2995,1
 step
 .goto The Hinterlands,30.73,46.97
->> 与林吉交谈。开始护送任务
-.accept 2742 >> 接受林基被困！
+>>与林吉交谈。开始护送任务
+.accept 2742 >>接受林基被困！
 step
 #label Escort
 >>护送林吉
@@ -13214,11 +13501,11 @@ step
 step
 #label Tragan
 .goto The Hinterlands,40.00,59.90
->> 潜水。抢一个蘑菇
+>>潜水。抢一个蘑菇
 .complete 2641,1
 step
 .goto The Hinterlands,47.56,59.04
->> 杀死Silvermane嚎叫者
+>>杀死Silvermane嚎叫者
 .complete 7828,2
 step
 .goto The Hinterlands,48.00,67.15
@@ -13228,83 +13515,83 @@ step
 step
 #completewith Stalkers
 .goto The Hinterlands,64.90,62.40,0
->> 杀死野蛮猫头鹰
+>>杀死野蛮猫头鹰
 .complete 7829,1
 step
 #completewith Stalkers
 .goto The Hinterlands,62.90,52.40,0
->> 找到并杀死一个剃须鲸领主。寻找天空领主羽毛
+>>找到并杀死一个剃须鲸领主。寻找天空领主羽毛
 .complete 7830,1
 .unitscan Razorbeak Skylord
 step
 #label Stalkers
 .goto The Hinterlands,70.90,62.40
->> 杀死Silvermane跟踪者
+>>杀死Silvermane跟踪者
 .complete 7828,1
 step
 #completewith next
 .goto The Hinterlands,64.90,62.40,0
->> 杀死野蛮猫头鹰
+>>杀死野蛮猫头鹰
 .complete 7829,1
 step
 .goto The Hinterlands,62.90,52.40
->> 找到并杀死一个剃须鲸领主。寻找天空领主羽毛
+>>找到并杀死一个剃须鲸领主。寻找天空领主羽毛
 .complete 7830,1
 .unitscan Razorbeak Skylord
 step
 .goto The Hinterlands,64.90,62.40
->> 杀死野兽猫头鹰并在其尸体上使用Wildkin Muisek容器
+>>杀死野蛮猫头鹰，并在其尸体上使用Wildkin Muisek容器
 .complete 7829,1
 .complete 3123,1
 step
 >>游到远东的岛上
 .goto The Hinterlands,86.30,59.00
-.turnin 2742 >> 上缴林基被困！
-.accept 2782 >> 接受林基的秘密
+.turnin 2742 >>上缴林基被困！
+.accept 2782 >>接受林基的秘密
 step
 >>跑回Revantusk村
 .goto The Hinterlands,77.20,80.20
-.turnin 7839 >> 交给Vilebranch Hooligans
+.turnin 7839 >>交给Vilebranch Hooligans
 step
 .goto The Hinterlands,78.80,78.40
-.turnin 7844 >> 交出食人堂兄
+.turnin 7844 >>交出食人堂兄
 step
 .goto The Hinterlands,79.10,79.50
-.turnin 7828 >> 转向跟踪跟踪者
-.turnin 7829 >> 交出狩猎野人
-.turnin 7830 >> 转身为堕落者复仇
+.turnin 7828 >>转向跟踪跟踪者
+.turnin 7829 >>交出狩猎野人
+.turnin 7830 >>转身为堕落者复仇
 step
 #hardcore
 >>你可以接受这些任务的后续行动，但请注意，它会在人口稠密的联盟地区为你标记PVP
 .goto The Hinterlands,79.30,79.10
-.turnin 7841 >> 向Wildhammer提交消息
-.accept 7842 >> 接受另一条消息给Wildhammer
-.turnin 7842 >> 向Wildhammer提交另一条消息
+.turnin 7841 >>向Wildhammer提交消息
+.accept 7842 >>接受另一条消息给Wildhammer
+.turnin 7842 >>向Wildhammer提交另一条消息
 step
 #softcore
 .goto The Hinterlands,79.38,79.08
-.turnin 7841 >> 向Wildhammer提交消息
-.accept 7842 >> 接受另一条消息给Wildhammer
-.turnin 7842 >> 向Wildhammer提交另一条消息
-.accept 7843 >> 接受Wildhammer的最后消息
+.turnin 7841 >>向Wildhammer提交消息
+.accept 7842 >>接受另一条消息给Wildhammer
+.turnin 7842 >>向Wildhammer提交另一条消息
+.accept 7843 >>接受Wildhammer的最后消息
 step
 .goto The Hinterlands,81.70,81.75
-.fp Hinterlands >> 获取腹地飞行路线
-.fly Tarren Mill>> 飞往塔伦磨坊
+.fp Hinterlands >>获取腹地飞行路线
+.fly Tarren Mill>>飞往塔伦磨坊
 step
 .goto Hillsbrad Foothills,61.50,19.20
-.turnin 2933 >> 上缴毒液瓶
-.accept 2934 >> 接受未损坏的毒液袋
+.turnin 2933 >>上缴毒液瓶
+.accept 2934 >>接受未损坏的毒液袋
 step
 .isOnQuest 7843
 .goto The Hinterlands,14.0,48.3
 >>跑回腹地
->> 去艾瑞峰插旗，等卫兵先巡逻走。
+>>去艾瑞峰插旗，等卫兵先巡逻走。
 .complete 7843,1
 step
 .goto The Hinterlands,26.70,48.60
-.turnin 77 >> 陷入困境
-.accept 81 >> 接受Ripple交付
+.turnin 77 >>陷入困境
+.accept 81 >>接受Ripple交付
 step
 >>跑向Shadra'Allor。杀死一名威瑟巴克兄弟守卫。抢劫它的未受损毒液袋
 >>30分钟后到期，请小心
@@ -13314,77 +13601,77 @@ step
 step
 #era
 .goto The Hinterlands,33.70,75.10
-.turnin 1429 >> 交出Atal'ai流放
+.turnin 1429 >>交出Atal'ai流放
 step
 #era
 .goto The Hinterlands,33.70,75.10
-.accept 1444 >> 接受返回地狱
+.accept 1444 >>接受返回地狱
 step
 .goto The Hinterlands,49.30,37.70
->> 如果未找到遇险信标，请手动跳过此步骤
-.accept 485 >> 接受查找OOX-09/HL！
-.turnin 485 >> 交给Find OOX-09/HL！
+>>如果未找到遇险信标，请手动跳过此步骤
+.accept 485 >>接受查找OOX-09/HL！
+.turnin 485 >>交给Find OOX-09/HL！
 
 step
 .isQuestTurnedIn 485
 .goto The Hinterlands,49.35,37.65
->> 启动鸡护送
-.accept 836 >> 接受救援OOX-09/HL！
+>>启动鸡护送
+.accept 836 >>接受救援OOX-09/HL！
 
 step
 .isQuestTurnedIn 485
->> 护送机器鸡。2波将产生：3级46只愤怒的猫头鹰和3级47只可以执行任务的维莱布兰奇使者（生命值低于20%时可以立即杀死你）
->> 小心，因为这个任务很难完成
+>>护送机器鸡。2波将产生：3级46只愤怒的猫头鹰和3级47只可以执行任务的维莱布兰奇使者(生命值低于20%时可以立即杀死你)
+>>小心，因为这个任务很难完成
 .goto The Hinterlands,79.47,61.21
 .complete 836,1 
 step
 .isOnQuest 7843
 >>跑回Revantusk村
 .goto The Hinterlands,79.40,79.10
-.turnin 7843 >> 向Wildhammer提交最终信息
+.turnin 7843 >>向Wildhammer提交最终信息
 step
 .goto The Hinterlands,81.70,81.75
-.fly Tarren Mill>> 飞往塔伦磨坊
+.fly Tarren Mill>>飞往塔伦磨坊
 step
 .goto Hillsbrad Foothills,61.50,19.20
-.turnin 2934 >> 交出未损坏的毒液袋
-.accept 2935 >> 接受咨询加德林大师 << Troll
+.turnin 2934 >>交出未损坏的毒液袋
+.accept 2935 >>接受咨询加德林大师 << Troll
 step << !Mage
 .goto Hillsbrad Foothills,60.10,18.60
-.fly Undercity >> 飞到地下城
+.fly Undercity >>飞到地下城
 step << Mage
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step << Mage
 .goto Undercity,82.79,15.82
-.vendor >> 去找汉娜。购买四个传送符文（如果你想，可以多买）
+.vendor >>去找汉娜。购买四个传送符文(如果你想，可以多买)
 .collect 17031,4 
 step << Troll
 #sticky
 #completewith next
-.abandon 2935 >> 如果你已经有坐骑，请咨询加德林大师。如果你没有坐骑，请一直保存到你有坐骑为止。
+.abandon 2935 >>如果你已经有坐骑，请咨询加德林大师。如果你没有坐骑，请一直保存到你有坐骑为止。
 step
 .goto Undercity,73.50,32.70
-.turnin 2995 >> 接通通信线路
-.turnin 2782 >> 交出林基的秘密
-.accept 8273 >> 接受奥兰的感激
-.turnin 8273 >> 交出奥兰的感激之情
+.turnin 2995 >>接通通信线路
+.turnin 2782 >>交出林基的秘密
+.accept 8273 >>接受奥兰的感激
+.turnin 8273 >>交出奥兰的感激之情
 step
-.hs >> 从赫斯到塔纳瑞斯
->> 如果需要，购买食物/水
+.hs >>从赫斯到塔纳瑞斯
+>>如果需要，购买食物/水
 step
 .goto Tanaris,51.10,26.90
-.turnin 2641 >> 加入Sprinkle的秘密成分
-.accept 2661 >> 接受Marin的交付
+.turnin 2641 >>加入Sprinkle的秘密成分
+.accept 2661 >>接受Marin的交付
 step
 .goto Tanaris,51.80,28.60
-.turnin 2661 >> 为Marin交付
-.accept 2662 >> 接受Noggenfogger Elixir
-.turnin 2662 >> 交出诺根福格药剂
->> 确保随身携带1叠noggenfogger，额外购买2叠并存入银行
+.turnin 2661 >>为Marin交付
+.accept 2662 >>接受Noggenfogger Elixir
+.turnin 2662 >>交出诺根福格药剂
+>>确保随身携带1叠noggenfogger，额外购买2叠并存入银行
 .collect 8529,60
 ]])
 RXPGuides.RegisterGuide([[
-#version 7
+#version 9
 #wotlk
 #tbc
 #group RestedXP 部落 45-60
@@ -13394,80 +13681,78 @@ RXPGuides.RegisterGuide([[
 step
 #completewith next
 .goto Orgrimmar,54.2,68.4
-.home >> 将您的炉石设置为Orgrimmar
+.home >>将您的炉石设置为Orgrimmar
 .zoneskip Undercity
 step << !Mage
 .goto Durotar,50.9,13.8
 .zone Tirisfal Glades >>把齐柏林飞船带到幽暗城
 .zoneskip Undercity
 step << Mage
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step
 .isOnQuest 2342
 .goto Undercity,62.4,48.6
 .turnin 2342 >>交还回收的宝藏
 step
 .goto Undercity,53.6,54.0
-.turnin -728 >> 去幽冥城帮亚银消化
+.turnin -728 >>去幽冥城帮亚银消化
 step
 .goto Undercity,73.3,32.5
-.accept 2995 >> 接受通讯线路
+.accept 2995 >>接受通讯线路
 step
 .isOnQuest 521
 .goto Undercity,57.4,93.9
-.turnin 521 >> 交出意志之冠
+.turnin 521 >>交出意志之冠
 step
 #completewith next
 .goto Undercity,63.2,48.3
-.fly Tarren Mill >> 飞往塔伦磨坊
+.fly Tarren Mill >>飞往塔伦磨坊
 step
 #completewith next
-.goto Hillsbrad Foothills,88.44,27.44,80 >> 从Hillsbrad到Hinterlands
+.goto Hillsbrad Foothills,88.44,27.44,80 >>从希尔斯布莱德丘陵到Hinterlands
 step
 .goto The Hinterlands,23.1,58.6
-.accept 2933 >> 接受毒液瓶
+.accept 2933 >>接受毒液瓶
 step
 .isOnQuest 650
 .goto The Hinterlands,26.7,48.6
-.turnin 650 >> 转入纹波恢复
-.accept 77 >> 接受棘手的情况
+.turnin 650 >>转入纹波恢复
+.accept 77 >>接受棘手的情况
 step
 .isOnQuest 2641
 >>在水下掠夺蘑菇。不要吃它
 .goto The Hinterlands,39.4,60.2
 .complete 2641,1 
 step
->> 跑到海滩去部落城市，开始接受任务
-.accept 7839 >> 接受Vilebranch Hooligans
+>>跑到海滩去部落城市，开始接受任务
+.accept 7839 >>接受Vilebranch Hooligans
 .goto The Hinterlands,77.5,80.2
-.accept 7844 >> 接受食人堂兄
+.accept 7844 >>接受食人堂兄
 .goto The Hinterlands,78.8,78.5
-.accept 7862 >> 接受空缺职位：Revantusk村守卫队长
+.accept 7862 >>接受空缺职位：Revantusk村守卫队长
 .goto The Hinterlands,79.1,79.0
-.accept 7861 >> 接受通缉：邪恶的女祭司赫克斯和她的小黄人
+.accept 7861 >>接受通缉：邪恶的女祭司赫克斯和她的小黄人
 step
-#xprate <1.5
 .goto The Hinterlands,79.3,79.1
-.accept 7841 >> 接受发送给Wildhammer的消息
-
+.accept 7841 >>接受发送给Wildhammer的消息
 step
-.accept 7829 >> 接受狩猎野蛮人
-.accept 7830 >> 接受为堕落者复仇
-.accept 7849 >> 接受分离焦虑
-.accept 7828 >> 接受跟踪跟踪者
+.accept 7829 >>接受狩猎野蛮人
+.accept 7830 >>接受为堕落者复仇
+.accept 7849 >>接受分离焦虑
+.accept 7828 >>接受跟踪跟踪者
 .goto The Hinterlands,79.1,79.5
-.accept 7840 >> 接受猪油丢了午餐
+.accept 7840 >>接受猪油丢了午餐
 .goto The Hinterlands,77.8,81.4
-.accept 7845 >> 接受被绑架的Torntusk长老！
-.accept 7850 >> 接受黑暗容器
+.accept 7845 >>接受被绑架的Torntusk长老！
+.accept 7850 >>接受黑暗容器
 .goto The Hinterlands,78.2,81.2
-.accept 7815 >> 接受Snapjaws，Mon！
-.accept 7816 >> 接受Gammerita，Mon！
+.accept 7815 >>接受Snapjaws，Mon！
+.accept 7816 >>接受Gammerita，Mon！
 .goto The Hinterlands,80.3,81.5
 step << Mage
 #completewith next
 .goto The Hinterlands,78.1,81.4
-.home >> 把你的炉石放在Raventusk村
+.home >>把你的炉石放在Raventusk村
 step
 #completewith Lunch
 .isOnQuest 580
@@ -13495,7 +13780,7 @@ step
 step
 #label Lunch
 .goto The Hinterlands,84.40,41.30
->> 掠夺猪油的野餐篮。49级怪物将产生（所有人都有处决技能，当你生命值低于20%时可以使用）-抢走其中一个作为猪油午餐
+>>掠夺猪油的野餐篮。49级怪物将产生(所有人都有处决技能，当你生命值低于20%时可以使用)-抢走其中一个作为猪油午餐
 .complete 7840,1
 step
 #completewith next
@@ -13532,11 +13817,11 @@ step
 .complete 580,1 
 step
 .goto The Hinterlands,78.1,81.5
-.turnin 7840 >> 猪油丢了午餐
+.turnin 7840 >>猪油丢了午餐
 step
 .goto The Hinterlands,80.3,81.5
-.turnin 7815 >> 把Snapjaws交上来，Mon！
-.turnin 7816 >> 交给Gammerita，Mon！
+.turnin 7815 >>把Snapjaws交上来，Mon！
+.turnin 7816 >>交给Gammerita，Mon！
 step
 #completewith Vilebranchs
 >>抢劫在金塔阿勒的地板上发现的小坩埚
@@ -13557,8 +13842,8 @@ step
 .complete 7849,1 
 step
 .goto The Hinterlands,59.6,77.8
-.turnin 7845 >> 交出被绑架的Torntusk长老！
-.accept 7846 >> 接受恢复密钥！
+.turnin 7845 >>交出被绑架的Torntusk长老！
+.accept 7846 >>接受恢复密钥！
 step
 goto The Hinterlands,59.3,78.2
 .complete 7861,1 
@@ -13579,8 +13864,8 @@ step
 step
 #label ReKey
 .goto The Hinterlands,59.6,77.9
-.turnin 7846 >> 交回钥匙！
-.accept 7847 >> 接受返回Primal Torntusk
+.turnin 7846 >>交回钥匙！
+.accept 7847 >>接受返回Primal Torntusk
 step
 #label Vilebranchs
 >>杀死该地区的Vilebranch
@@ -13605,7 +13890,7 @@ step
 .goto The Hinterlands,66.40,44.80,0
 .goto The Hinterlands,57.40,42.40,0
 .goto The Hinterlands,53.30,38.80,0
->> 抢劫地上的小水桶。它有5个不同的可能生成位置
+>>抢劫地上的小水桶。它有5个不同的可能生成位置
 .complete 7839,1
 step
 .isOnQuest 77
@@ -13623,7 +13908,7 @@ step
 .goto The Hinterlands,57.40,42.40,0
 .goto The Hinterlands,53.30,38.80,0
 .goto The Hinterlands,53.30,38.80
->> 抢劫地上的小水桶。它有5个不同的可能生成位置
+>>抢劫地上的小水桶。它有5个不同的可能生成位置
 .complete 7839,1
 step
 .goto The Hinterlands,57.0,50.2
@@ -13641,7 +13926,7 @@ step
 .complete 2995,3 
 step
 .goto The Hinterlands,30.6,47.0
-.accept 2742 >> 接受林基被困！
+.accept 2742 >>接受林基被困！
 step
 .goto The Hinterlands,34.4,55.1
 .complete 2742,1 
@@ -13670,12 +13955,12 @@ step
 #xprate >1.499
 .isQuestComplete 77
 .goto The Hinterlands,26.8,48.7
-.turnin 77 >> 陷入困境
+.turnin 77 >>陷入困境
 step
 #xprate >1.499
 .isQuestAvailable 81
 .goto The Hinterlands,26.8,48.7
-.accept 81 >> 接受Ripple交付
+.accept 81 >>接受Ripple交付
 step
 .goto The Hinterlands,45.5,63.2
 .complete 7844,1 
@@ -13706,15 +13991,15 @@ step
 #requires HinterlandsOOX
 .goto The Hinterlands,49.3,37.7
 .use 8704 >>右键单击包中的OOX-09/HL遇险信标
-.accept 485 >> 接受查找OOX-09/HL！
-.turnin 485 >> 交给Find OOX-09/HL！
+.accept 485 >>接受查找OOX-09/HL！
+.turnin 485 >>交给Find OOX-09/HL！
 .itemcount 8704,1
 step
 #xprate <1.5
 #requires HinterlandsOOX
 .isQuestTurnedIn 485
 .goto The Hinterlands,49.3,37.7
-.accept 836 >> 接受救援OOX-09/HL！
+.accept 836 >>接受救援OOX-09/HL！
 step
 #xprate <1.5
 #requires HinterlandsOOX
@@ -13725,76 +14010,79 @@ step
 #xprate >1.499
 .goto The Hinterlands,49.3,37.7
 .use 8704 >>右键单击包中的OOX-09/HL遇险信标
-.accept 485 >> 接受查找OOX-09/HL！
-.turnin 485 >> 交给Find OOX-09/HL！
+.accept 485 >>接受查找OOX-09/HL！
+.turnin 485 >>交给Find OOX-09/HL！
 >>不要执行后续护送任务
 .itemcount 8704,1
 step
 #requires smaneHL
 .goto The Hinterlands,86.3,59.1
-.turnin 2742 >> 上缴林基被困！
-.accept 2782 >> 接受林基的秘密
+.turnin 2742 >>上缴林基被困！
+.accept 2782 >>接受林基的秘密
 step
 .goto The Hinterlands,77.5,80.4
-.turnin 7839 >> 交给Vilebranch Hooligans
+.turnin 7839 >>交给Vilebranch Hooligans
 step
 .goto The Hinterlands,78.8,78.4
-.turnin 7844 >> 交出食人堂兄
+.turnin 7844 >>交出食人堂兄
 step
 .isOnQuest 7841
 .goto The Hinterlands,79.3,79.1
-.turnin 7841 >> 向Wildhammer提交消息
+.turnin 7841 >>向Wildhammer提交消息
 step
-#xprate <1.5
 .isQuestTurnedIn 7841
 .goto The Hinterlands,79.3,79.1
-.accept 7842 >> 接受另一条消息给Wildhammer
-.turnin 7842 >> 向Wildhammer提交另一条消息
-.accept 7843 >> 接受Wildhammer的最后消息
+.accept 7842 >>接受另一条消息给Wildhammer
+.turnin 7842 >>向Wildhammer提交另一条消息
+step
+.isQuestTurnedIn 7841
+.goto The Hinterlands,79.3,79.1
+#xprate <1.5
+.accept 7843 >>接受Wildhammer的最后消息
 step
 .goto The Hinterlands,79.1,79.5
-.turnin 7828 >> 转向跟踪跟踪者
-.turnin 7829 >> 交出狩猎野人
-.turnin 7830 >> 转身为堕落者复仇
-.turnin 7849 >> 转入分离焦虑
+.turnin 7828 >>转向跟踪跟踪者
+.turnin 7829 >>交出狩猎野人
+.turnin 7830 >>转身为堕落者复仇
+.turnin 7849 >>转入分离焦虑
 step
 .goto The Hinterlands,78.2,81.3
-.turnin 7862 >> 上缴职位空缺：Revantusk村守卫队长
-.turnin 7861 >> 通缉：邪恶的女祭司赫克斯和她的小黄人
-.turnin 7847 >> 返回原始Torntusk
-.turnin 7850 >> 交出黑暗容器
+.turnin 7862 >>上缴职位空缺：Revantusk村守卫队长
+.turnin 7861 >>通缉：邪恶的女祭司赫克斯和她的小黄人
+.turnin 7847 >>返回原始Torntusk
+.turnin 7850 >>交出黑暗容器
 step
 .goto The Hinterlands,81.7,81.9
-.fp Raventusk Village >> 获得Raventusk村的飞行路线
+.fp Raventusk Village >>获得Raventusk村的飞行路线
 step
 .goto The Hinterlands,81.7,81.8
-.fly Tarren Mill >> 飞往塔伦磨坊
+.fly Tarren Mill >>飞往塔伦磨坊
 step
 #xprate >1.499
 .goto Hillsbrad Foothills,61.5,19.1
-.turnin 2933 >> 上缴毒液瓶
+.turnin 2933 >>上缴毒液瓶
 step
 #xprate <1.5
 .goto Hillsbrad Foothills,61.5,19.1
-.turnin 2933 >> 上缴毒液瓶
-.accept 2934 >> 接受未损坏的毒液袋
+.turnin 2933 >>上缴毒液瓶
+.accept 2934 >>接受未损坏的毒液袋
 step
 #xprate <1.5
 .isOnQuest 7843
->> 小心警卫。他们在附近巡逻。这个任务也会标记你为PVP
-.use 7843 >> 使用您对Wildhammer的最终信息
+>>小心警卫。他们在附近巡逻。这个任务也会标记你为PVP
+.use 7843 >>使用您对Wildhammer的最终信息
 .goto The Hinterlands,14.3,48.1
 .complete 7843,1 
 step
 #xprate <1.5
 .isQuestComplete 77
 .goto The Hinterlands,26.8,48.7
-.turnin 77 >> 陷入困境
+.turnin 77 >>陷入困境
 step
 #xprate <1.5
 .isQuestAvailable 81
 .goto The Hinterlands,26.8,48.7
-.accept 81 >> 接受Ripple交付
+.accept 81 >>接受Ripple交付
 step
 #xprate <1.5
 .goto The Hinterlands,30.7,69.9
@@ -13803,80 +14091,80 @@ step
 step << Mage
 #xprate <1.5
 #completewith next
-.hs >> 炉灶 to Raventusk村
+.hs >>炉灶 to Raventusk村
 step
 #xprate <1.5
 .isQuestComplete 7843
 .goto The Hinterlands,79.4,79.1
-.turnin 7843 >> 向Wildhammer提交最终信息
+.turnin 7843 >>向Wildhammer提交最终信息
 step
 #xprate <1.5
 #completewith next
 .goto The Hinterlands,81.7,81.8
-.fly Tarren Mill >> 飞往塔伦磨坊
+.fly Tarren Mill >>飞往塔伦磨坊
 step
 #xprate <1.5
 .goto Hillsbrad Foothills,61.5,19.2
-.turnin 2934 >> 交出未损坏的毒液袋
+.turnin 2934 >>交出未损坏的毒液袋
 step << Mage
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step << Mage
 .goto Undercity,82.79,15.82
-.vendor >> 去找汉娜。购买10个传送符文
+.vendor >>去找汉娜。购买10个传送符文
 .collect 17031,10 
 step << !Mage
 #completewith next
 .goto Hillsbrad Foothills,60.1,18.7,0
-.fly Undercity >> 飞到地下城
+.fly Undercity >>飞到地下城
 step
->>向AH购买布料。现在买6堆。（地下城+银月城转弯）这是可选的。如果你拿不到布，就跳过这一步。
+>>向AH购买布料。现在买6堆。(地下城+银月城转弯)这是可选的。如果你拿不到布，就跳过这一步。
 .goto Undercity,71.8,29.0
-.turnin 7813 >> 交出捐赠的羊毛
-.turnin 7814 >> 捐献丝绸
-.turnin 7817 >> 交出Mageweave的捐赠
-.turnin 7818 >> 交出Runecloth的捐赠
+.turnin 7813 >>交出捐赠的羊毛
+.turnin 7814 >>捐献丝绸
+.turnin 7817 >>交出Mageweave的捐赠
+.turnin 7818 >>交出Runecloth的捐赠
 step
 .goto Undercity,73.4,32.7
-.turnin 2995 >> 接通通信线路
+.turnin 2995 >>接通通信线路
 step
 .goto Undercity,73.2,32.7
-.turnin 2782 >> 交出林基的秘密
-.turnin 8273 >> 交出奥兰的感激之情
+.turnin 2782 >>交出林基的秘密
+.turnin 8273 >>交出奥兰的感激之情
 step
 #xprate <1.5
 .goto Undercity,48.9,71.5
-.accept 3568 >> 接受腐败
+.accept 3568 >>接受腐败
 step << !Mage
 #xprate <1.5
 #completewith next
-.zone Silvermoon City >> 前往银月城
+.zone Silvermoon City >>前往银月城
 step << Mage
 #completewith next
-.zone Silvermoon City >> 传送到银月城。如果没有布料，请跳过这些步骤
+.zone Silvermoon City >>传送到银月城。如果没有布料，请跳过这些步骤
 step << Mage
 >>如果你拿不到布，跳过这些步骤。
 .goto Silvermoon City,56.5,52.5
-.turnin 10359 >> 交出捐赠的羊毛
-.turnin 10360 >> 捐献丝绸
-.turnin 10361 >> 交出Mageweave的捐赠
-.turnin 10362 >> 交出Runecloth的捐赠
+.turnin 10359 >>交出捐赠的羊毛
+.turnin 10360 >>捐献丝绸
+.turnin 10361 >>交出Mageweave的捐赠
+.turnin 10362 >>交出Runecloth的捐赠
 step << !Mage
 #xprate <1.5
 >>如果你拿不到布，跳过这些步骤。
 .goto Silvermoon City,56.5,52.5
-.turnin 10359 >> 交出捐赠的羊毛
-.turnin 10360 >> 捐献丝绸
-.turnin 10361 >> 交出Mageweave的捐赠
-.turnin 10362 >> 交出Runecloth的捐赠
+.turnin 10359 >>交出捐赠的羊毛
+.turnin 10360 >>捐献丝绸
+.turnin 10361 >>交出Mageweave的捐赠
+.turnin 10362 >>交出Runecloth的捐赠
 step << Druid
->> 使用“传送到月光”法术
+>>使用“传送到月光”法术
 .goto Moonglade,52.5,40.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << !Mage
 #completewith next
 .hs >>赫斯到奥格瑞玛
 step << Mage
-.zone Orgrimmar >> 电传至Orgrimmar
+.zone Orgrimmar >>电传至Orgrimmar
 step << !Mage
 .goto Orgrimmar,55.55,64.74
 >>去拍卖行。如果有Mithril肠衣，请稍后购买
@@ -13884,102 +14172,102 @@ step << !Mage
 step << Paladin
 #completewith next
 .goto Orgrimmar,32.4,35.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Shaman
 #completewith next
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 #completewith next
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 #completewith next
 .goto Orgrimmar,66.3,14.8
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 #completewith next
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 #completewith next
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 #completewith next
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Mage
 #completewith next
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 #completewith next
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Mage
 .goto Orgrimmar,55.55,64.74
 >>去拍卖行。如果有Mithril肠衣，请稍后购买
 .collect 10561,1 
 step
 .goto Orgrimmar,56.5,46.4
-.accept 4494 >> 接受Silithid的三月
+.accept 4494 >>接受Silithid的三月
 step
 .isOnQuest 81
 .goto Orgrimmar,59.4,36.9
-.turnin 81 >> 提交Ripple交付
+.turnin 81 >>提交Ripple交付
 step
 #xprate <1.5
 .maxlevel 50
 .goto Orgrimmar,75.0,33.8
-.accept 3504 >> 接受背叛
+.accept 3504 >>接受背叛
 step
 #xprate <1.5
 .maxlevel 50
 .goto Orgrimmar,55.7,34.6
-.accept 4300 >> 接受骨刃武器
+.accept 4300 >>接受骨刃武器
 step
 #completewith next
 .goto Orgrimmar,45.2,63.8
-.fly Ratchet >> 飞到棘轮
+.fly Ratchet >>飞到棘轮
 step
 .goto The Barrens,62.5,38.6
-.accept 4502 >> 接受火山活动
+.accept 4502 >>接受火山活动
 step
 .isOnQuest 3444
 .goto The Barrens,62.5,38.6
 .complete 3444,1 
 step
 .goto The Barrens,62.1,39.4
-.home >> 将您的家设置为棘轮
+.home >>将您的家设置为棘轮
 step
 .isOnQuest 648
 >>乘船去Booty Bay
 .goto Stranglethorn Vale,28.3,76.3
-.turnin 648 >> 提交救援OOX-17/TN！
+.turnin 648 >>提交救援OOX-17/TN！
 step
 .isOnQuest 2767
-.turnin 2767 >> 提交救援OOX-22/FE！
+.turnin 2767 >>提交救援OOX-22/FE！
 >>乘船去Booty Bay
 .goto Stranglethorn Vale,28.3,76.3
 step
 .isOnQuest 836
-.turnin 836 >> 提交救援OOX-09/HL！
+.turnin 836 >>提交救援OOX-09/HL！
 >>乘船去Booty Bay
 .goto Stranglethorn Vale,28.3,76.3
 step
 .isQuestTurnedIn 2767
 .goto Stranglethorn Vale,28.3,76.3
-.turnin 3721 >> 交上自己的OOX
+.turnin 3721 >>交上自己的OOX
 step
 .isOnQuest 2874
->> 乘船去Booty Bay
+>>乘船去Booty Bay
 .goto Stranglethorn Vale,27.8,77.1
-.turnin 2874 >> 交给MacKinley
+.turnin 2874 >>交给MacKinley
 step
 .isOnQuest 2874
 .goto Stranglethorn Vale,27.1,77.5
-.turnin 580 >> 交出威士忌瘦子的失落格罗
+.turnin 580 >>交出威士忌瘦子的失落格罗
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -13991,31 +14279,31 @@ RXPGuides.RegisterGuide([[
 step
 .maxlevel 50,Feralasskip
 .goto Tanaris,51.60,25.50
-.fly Feralas>> 飞往费拉拉斯
+.fly Feralas>>飞往费拉拉斯
 step
 #era/som
 .goto Feralas,76.20,43.80
-.accept 3062 >> 接受黑暗之心
-.accept 3063 >> 北泉接受复仇
-.accept 4120 >> 接受腐败的力量
+.accept 3062 >>接受黑暗之心
+.accept 3063 >>北泉接受复仇
+.accept 4120 >>接受腐败的力量
 step
 #som
 #phase 3-6
 .goto Feralas,76.20,43.80
-.accept 3062 >> 接受黑暗之心
-.accept 3063 >> 北泉接受复仇
+.accept 3062 >>接受黑暗之心
+.accept 3063 >>北泉接受复仇
 step
 .goto Feralas,74.50,42.90
-.accept 7734 >> 接受改进的质量
+.accept 7734 >>接受改进的质量
 step
 #som
 .goto Feralas,74.50,43.40
-.accept 3380 >> 接受沉没的寺庙
+.accept 3380 >>接受沉没的寺庙
 step
 .goto Feralas,74.50,43.40
-.turnin 3123 >> 交船测试船舶
-.accept 3124 >> 接受Hippogriph-Muisek
-.accept 3128 >> 接受自然材料
+.turnin 3123 >>交船测试船舶
+.accept 3124 >>接受Hippogriph-Muisek
+.accept 3128 >>接受自然材料
 step
 #som
 .goto Feralas,54.4,68.1
@@ -14030,8 +14318,8 @@ step
 .complete 3128,4 
 step
 .goto Feralas,74.4,43.4
-.turnin 3124 >> 交出Hippogriph-Muisek
-.accept 3125 >> 接受仙龙木塞
+.turnin 3124 >>交出Hippogriph-Muisek
+.accept 3125 >>接受仙龙木塞
 step
 .goto Feralas,68.68,48.60
 >>杀死精灵龙。掠夺他们的包裹矿物，然后在他们的尸体上使用仙女木塞容器
@@ -14039,10 +14327,10 @@ step
 .complete 3128,2 
 step
 .goto Feralas,74.4,43.3
-.turnin 3125 >> 交给精灵龙木卫一
-.accept 3126 >> 接受Treant Muisek
+.turnin 3125 >>交给精灵龙木卫一
+.accept 3126 >>接受Treant Muisek
 step
->> 遵循箭头。杀死叛徒。掠夺他们的劈开的原木，然后在他们的尸体上使用Treant Muisek容器
+>>遵循箭头。杀死叛徒。掠夺他们的劈开的原木，然后在他们的尸体上使用Treant Muisek容器
 .goto Feralas,69.4,44.6,70,0
 .goto Feralas,70.6,41.8,70,0
 .goto Feralas,75.0,38.6,70,0
@@ -14054,7 +14342,7 @@ step
 .collect 9593,1 
 .unitscan Wandering Forest Walker
 step
->> 遵循箭头。杀死叛徒。掠夺他们的劈开的原木，然后在他们的尸体上使用Treant Muisek容器
+>>遵循箭头。杀死叛徒。掠夺他们的劈开的原木，然后在他们的尸体上使用Treant Muisek容器
 .goto Feralas,73.0,51.0,70,0
 .goto Feralas,74.2,52.8,70,0
 .goto Feralas,72.6,57.4,70,0
@@ -14066,7 +14354,7 @@ step
 .collect 9593,2 
 .unitscan Wandering Forest Walker
 step
->> 遵循箭头。杀死最后一个叛徒。在尸体上使用Treant Muisek容器
+>>遵循箭头。杀死最后一个叛徒。在尸体上使用Treant Muisek容器
 .goto Feralas,58.6,52.0,70,0
 .goto Feralas,60.0,48.8,70,0
 .goto Feralas,57.8,48.0,70,0
@@ -14078,23 +14366,23 @@ step
 .unitscan Wandering Forest Walker
 step
 .goto Feralas,74.5,43.4
-.turnin 3126 >> Treant Muisek上车
-.accept 3127 >> 接受山地巨人穆塞克
+.turnin 3126 >>Treant Muisek上车
+.accept 3127 >>接受山地巨人穆塞克
 step
 >>向西跑到岸边
 .goto Feralas,44.9,43.4
-.accept 7003 >> 接受被杀的巨人
+.accept 7003 >>接受被杀的巨人
 step
 #sticky
 #completewith next
->> 完美雪人皮从开始任务的暴徒身上掉落。如果你在所有愤怒伤疤雪人藏匿之前没有得到它，就跳过它。还不接受任务
+>>完美雪人皮从开始任务的暴徒身上掉落。如果你在所有愤怒伤疤雪人藏匿之前没有得到它，就跳过它。还不接受任务
 .collect 18972
 step
 >>杀死Scar Yetis。抢劫他们的藏身之处
 .goto Feralas,55.0,33.0
 .complete 7734,1 
 step
->> 使用佐宾的超收缩剂来削弱巨人。杀了他们。掠夺他们的残留物，然后在他们的尸体上使用山上的巨型Musiek容器
+>>使用佐宾的超收缩剂来削弱巨人。杀了他们。掠夺他们的残留物，然后在他们的尸体上使用山上的巨型Musiek容器
 .goto Feralas,38.8,21.6
 .complete 3127,1 
 .collect 18956,8 
@@ -14119,87 +14407,87 @@ step
 .complete 3063,3 
 .complete 3063,4 
 step
->> 完成被击巨人。
+>>完成被击巨人。
 .goto Feralas,38.8,21.6
 .complete 7003,1 
 step
 .goto Feralas,44.9,43.4
-.turnin 7003 >> 交出被击毙的巨人
+.turnin 7003 >>交出被击毙的巨人
 step
 .hs >>Gadgetzan之炉
->> 如果需要，购买食物/水
+>>如果需要，购买食物/水
 step
 #label Feralasskip
 #som
 .goto Tanaris,52.70,45.92
-.turnin 3380 >> 转入沉没的寺庙
+.turnin 3380 >>转入沉没的寺庙
 step
 #completewith next
 .goto Tanaris,27.00,55.66,150,0
 .goto Tanaris,27.00,50.21
-.zone Un'Goro Crater >> 跑到Un'Goro火山口
+.zone Un'Goro Crater >>跑到Un'Goro火山口
 step
 .goto Un'Goro Crater,71.63,75.95
-.accept 4289 >> 接受Un'Goro的猿类
-.accept 4290 >> 接受拉尔科维的票价
+.accept 4289 >>接受Un'Goro的猿类
+.accept 4290 >>接受拉尔科维的票价
 step
 .isOnQuest 4300
 #completewith Scent
 .goto Un'Goro Crater,60.73,78.34,0
->> 杀死猛禽。抢他们去抓拉瓦萨的爪子。不要特意去做这个任务
+>>杀死猛禽。抢他们去抓拉瓦萨的爪子。不要特意去做这个任务
 .complete 4300,1
 step
 #completewith BoneBlade
 .goto Un'Goro Crater,70.60,53.26,0
->> 保存你从整个区域的暴徒那里掠夺的25块Un'Goro土壤。你稍后会完成这个
+>>保存你从整个区域的暴徒那里掠夺的25块Un'Goro土壤。你稍后会完成这个
 .collect 11018,25
 step
 #completewith BoneBlade
 .goto Un'Goro Crater,73.06,51.57,0
->> 当你在Un'Goro中搜寻时，每种颜色的7颗水晶将被掠夺：红色、黄色、绿色和蓝色
+>>当你在Un'Goro中搜寻时，每种颜色的7颗水晶将被掠夺：红色、黄色、绿色和蓝色
 .collect 11186,7
 .collect 11188,7
 .collect 11185,7
 .collect 11184,7
 step
 .goto Tanaris,27.50,42.80
-.accept 4289 >> 接受Un'Goro的猿类
-.accept 4290 >> 接受拉尔科维的票价
+.accept 4289 >>接受Un'Goro的猿类
+.accept 4290 >>接受拉尔科维的票价
 step
 .goto Un'Goro Crater,63.10,68.60
-.accept 3844 >> 接受这是每个人的秘密
+.accept 3844 >>接受这是每个人的秘密
 step
 >>转身，到水下
 .goto Un'Goro Crater,63.10,69.00
-.turnin 3844 >> 上缴这是每个人的秘密
-.accept 3845 >> 接受这是每个人的秘密
+.turnin 3844 >>上缴这是每个人的秘密
+.accept 3845 >>接受这是每个人的秘密
 step
 .goto Un'Goro Crater,68.80,56.80
->> 单击巨大的Threshadon。掠夺它的尸体
+>>单击巨大的Threshadon。掠夺它的尸体
 .complete 4290,1
 step
 .goto Un'Goro Crater,71.60,76.00
-.turnin 4290 >> 交上拉尔科维的车费
-.accept 4291 >> 接受拉尔科维的香味
+.turnin 4290 >>交上拉尔科维的车费
+.accept 4291 >>接受拉尔科维的香味
 step
 .goto Un'Goro Crater,67.30,73.10,20,0
 .goto Un'Goro Crater,66.60,66.70
->> 踩在小蛋巢上召唤拉尔科维伴侣。杀死并掠夺他们的腺体
+>>踩在小蛋巢上召唤拉尔科维伴侣。杀死并掠夺他们的腺体
 .complete 4291,1
 step
 #label Scent
 .goto Un'Goro Crater,71.63,75.95
-.turnin 4291 >> 加入拉尔科维的香味
-.accept 4292 >> 接受拉尔科维的诱饵
+.turnin 4291 >>加入拉尔科维的香味
+.accept 4292 >>接受拉尔科维的诱饵
 step
 .isOnQuest 4300
 #label BoneBlade
 .goto Un'Goro Crater,60.73,78.34
->> 杀死猛禽。为了拉瓦萨的爪子而抢劫他们
+>>杀死猛禽。为了拉瓦萨的爪子而抢劫他们
 .complete 4300,1
 step
->> 在Un'Goro附近骑行，掠夺7种颜色的水晶：红色、黄色、绿色和蓝色
->> 尽量留在西部/西北部/北部地区，因为他们有较低级别的暴徒可供逃离
+>>在Un'Goro附近骑行，掠夺7种颜色的水晶：红色、黄色、绿色和蓝色
+>>尽量留在西部/西北部/北部地区，因为他们有较低级别的暴徒可供逃离
 .collect 11186,7
 .collect 11188,7
 .collect 11185,7
@@ -14208,73 +14496,73 @@ step
 step
 #completewith next
 .goto Un'Goro Crater,44.70,8.10
->> 打开库存中的小包装
+>>打开库存中的小包装
 .complete 3845,1
 .complete 3845,2
 .complete 3845,3
 step
 >>跑向元帅庇护所
 .goto Un'Goro Crater,44.70,8.10
-.turnin 3845 >> 上缴这是每个人的秘密
-.accept 3908 >> 接受这是每个人的秘密
+.turnin 3845 >>上缴这是每个人的秘密
+.accept 3908 >>接受这是每个人的秘密
 step
 #completewith next
-.destroy 3108 >> 从你的库存中删除重型飞刀
-.destroy 11108 >> 从库存中删除褪色照片
+.destroy 3108 >>从你的库存中删除重型飞刀
+.destroy 11108 >>从库存中删除褪色照片
 step
 >>进入洞穴
 .goto Un'Goro Crater,43.16,6.24,30,0
 .goto Un'Goro Crater,41.90,2.70
-.accept 4284 >> 接受权力结晶
-.turnin 4284 >> 接通电源晶体
+.accept 4284 >>接受权力结晶
+.turnin 4284 >>接通电源晶体
 step
 .goto Un'Goro Crater,43.16,6.24,30,0
 .goto Un'Goro Crater,45.23,5.82
 >>离开洞穴
-.fp Marshal >> 获取Un'Goro陨石坑飞行路线
-.fly Camp Mojache >> 飞往莫雅奇营地
+.fp Marshal >>获取Un'Goro陨石坑飞行路线
+.fly Camp Mojache >>飞往莫雅奇营地
 step
 .isQuestComplete 3128
 .goto Feralas,74.5,43.3
-.turnin 3128 >> 交出天然材料
+.turnin 3128 >>交出天然材料
 step
 .goto Feralas,74.5,43.3
-.turnin 3127 >> 上山巨人穆塞克
+.turnin 3127 >>上山巨人穆塞克
 .isQuestComplete 3127
 step
 .goto Feralas,74.5,43.3
-.accept 3129 >> 接受精神武器
+.accept 3129 >>接受精神武器
 .isQuestTurnedIn 3127
 step
 .isQuestComplete 7734
 .goto Feralas,74.5,42.9
-.turnin 7734 >> 提高质量
+.turnin 7734 >>提高质量
 step
 .isOnQuest 7738
 .turnin 7738 >>交上完美雪人皮
 step
 .isQuestComplete 3062
 .goto Feralas,76.1,43.8
-.turnin 3062 >> 转入黑暗的心
+.turnin 3062 >>转入黑暗的心
 step
 .isQuestComplete 3063
 .goto Feralas,76.1,43.8
-.turnin 3063 >> 在北泉上转向复仇
+.turnin 3063 >>在北泉上转向复仇
 step
 .isQuestComplete 3129
 .goto Feralas,74.4,43.4
-.turnin 3129 >> 交出精神武器
+.turnin 3129 >>交出精神武器
 step
 #som
 #phase 3-6
 .goto Feralas,74.4,43.4
-.turnin 3123 >> 交船测试船舶
+.turnin 3123 >>交船测试船舶
 step << Druid
 .goto Feralas,76.0,42.3
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .goto Feralas,75.4,44.3,0
-.fly Ratchet >> 飞到棘轮
+.fly Ratchet >>飞到棘轮
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -14285,93 +14573,93 @@ RXPGuides.RegisterGuide([[
 #next 51-52 灼热峡谷/燃烧平原
 step
 .goto The Barrens,62.50,38.70
-.accept 4502 >> 接受火山活动
+.accept 4502 >>接受火山活动
 step << skip
 .goto The Barrens,62.50,38.60
->> 在大楼外为石头圈抢劫小木箱
+>>在大楼外为石头圈抢劫小木箱
 .complete 3444,1
 step
 .goto The Barrens,62.05,39.41
-.home >> 把你的炉石放在棘轮上
+.home >>把你的炉石放在棘轮上
 step
 .goto The Barrens,63.74,38.66
-.zone Stranglethorn Vale >> 乘船去荆棘谷
+.zone Stranglethorn Vale >>乘船去荆棘谷
 step << !Warrior !Rogue !Shaman
 #sticky
->> 在巨型小妖精雕像前寻找莫克拉什，一位精英巨人
+>>在巨型小妖精雕像前寻找莫克拉什，一位精英巨人
 >>在小妖精雕像附近设一个慢速陷阱，用猎豹放风筝 << Hunter
 >>绕着妖精雕像绕圈放风筝杀死他
 >>尽你所能地害怕他，他无法免疫恐惧或放慢速度 << Priest/Warlock
 >>当他达到60%的血量时，使用Levitate将他放回Booty Bay << Priest
->>只使用远程法术（根/星火/月火）他命中了硬 << Druid
+>>只使用远程法术(根/星火/月火)他命中了硬 << Druid
 >>抢劫并右键单击Monogramed Sash
 .collect 3985,1,8552
-.accept 8552 >> 接受Monogramed Sash
+.accept 8552 >>接受Monogramed Sash
 >>这可能是一个很难独奏的精英，如果有必要，跳过这一步
-.link https://www.youtube.com/watch?v=xw2mGnQaCQM >> 点击此处查看视频参考 << Priest
-.link https://www.twitch.tv/videos/850022146?t=04h16m26s >> 点击此处查看视频参考 << !Priest
+.link https://www.youtube.com/watch?v=xw2mGnQaCQM >>点击此处查看视频参考 << Priest
+.link https://www.twitch.tv/videos/850022146?t=04h16m26s >>点击此处查看视频参考 << !Priest
 step
 .isQuestComplete 648
 .goto Stranglethorn Vale,28.40,76.30
-.turnin 648 >> 提交救援OOX-17/TN！
+.turnin 648 >>提交救援OOX-17/TN！
 step
 .isQuestComplete 836
 .goto Stranglethorn Vale,28.40,76.30
-.turnin 836 >> 提交救援OOX-09/HL！
+.turnin 836 >>提交救援OOX-09/HL！
 step
 .isQuestComplete 2767
 .goto Stranglethorn Vale,28.40,76.30
-.turnin 2767 >> 提交救援OOX-22/FE！
+.turnin 2767 >>提交救援OOX-22/FE！
 step
 .goto Stranglethorn Vale,28.40,76.30
-.accept 3721 >> 接受自己的OOX
-.turnin 3721 >> 交上自己的OOX
+.accept 3721 >>接受自己的OOX
+.turnin 3721 >>交上自己的OOX
 .isQuestTurnedIn 2767
 .isQuestTurnedIn 836
 .isQuestTurnedIn 648
 step
 .isQuestComplete 648
 .goto Stranglethorn Vale,28.40,76.30
-.turnin 648 >> 提交救援OOX-17/TN！
+.turnin 648 >>提交救援OOX-17/TN！
 step
 .isQuestComplete 836
 .goto Stranglethorn Vale,28.40,76.30
-.turnin 836 >> 提交救援OOX-09/HL！
+.turnin 836 >>提交救援OOX-09/HL！
 step
 .isQuestComplete 2767
 .goto Stranglethorn Vale,28.40,76.30
-.turnin 2767 >> 提交救援OOX-22/FE！
+.turnin 2767 >>提交救援OOX-22/FE！
 step << !Warrior !Rogue !Shaman
 .isOnQuest 8552
 .goto Stranglethorn Vale,26.70,73.60
-.turnin 8552 >> 交上画押腰带
+.turnin 8552 >>交上画押腰带
 step
 .isQuestTurnedIn 8552
 .goto Stranglethorn Vale,26.70,73.60
-.accept 615 >> 接受船长的短刀
-.turnin 615 >> 上缴船长的短刀
+.accept 615 >>接受船长的短刀
+.turnin 615 >>上缴船长的短刀
 step
 #completewith next
 .goto Stranglethorn Vale,26.54,76.57
-.collect 4306,15 >> 如果你有的话，从银行里拿出15块丝绸。
+.collect 4306,15 >>如果你有的话，从银行里拿出15块丝绸。
 step
 .goto Stranglethorn Vale,27.70,77.10
-.turnin 2874 >> 交给MacKinley
+.turnin 2874 >>交给MacKinley
 step
 .goto Stranglethorn Vale,27.10,77.50
-.turnin 580 >> 交出威士忌瘦子的失落格罗
+.turnin 580 >>交出威士忌瘦子的失落格罗
 step
 #era
 .goto Stranglethorn Vale,27.10,77.30
-.turnin 1122 >> 将报告交回Fizzlebub
+.turnin 1122 >>将报告交回Fizzlebub
 step
 #era
 .goto Stranglethorn Vale,26.87,77.10
-.fly Stonard>> 飞往斯托纳德
+.fly Stonard>>飞往斯托纳德
 step
 #era
 .goto Swamp of Sorrows,47.90,55.00
-.turnin 1444 >> 交回Fel'Zerul
+.turnin 1444 >>交回Fel'Zerul
 step
 #era
 #completewith FlyBL
@@ -14383,8 +14671,8 @@ step
 #requires fragment
 #completewith FlyBL
 .goto Blasted Lands,51.8,35.6
-.accept 3501 >> 接受大量重要的一切
-.turnin 3501 >> 大量上缴所有重要物品
+.accept 3501 >>接受大量重要的一切
+.turnin 3501 >>大量上缴所有重要物品
 step
 #era
 #completewith FlyBL
@@ -14398,8 +14686,8 @@ step << Hunter/Rogue
 >>3蝎子钳
 >>2秃鹫Gizzard
 >>1只被炸毁的野猪肺
-.accept 2585 >> 接受决定性的前锋
-.turnin 2585 >> 交出决定性前锋
+.accept 2585 >>接受决定性的前锋
+.turnin 2585 >>交出决定性前锋
 step << Druid/Paladin/Warrior/Shaman
 #era
 .goto Blasted Lands,50.55,14.20
@@ -14407,25 +14695,25 @@ step << Druid/Paladin/Warrior/Shaman
 >>3 Snickerfang慢跑
 >>2爆猪肺
 >>1个蝎子钳
-.accept 2581 >> 接受Snickerfang Jowls
-.turnin 2581 >> 加入Snickerfang Jowls
+.accept 2581 >>接受Snickerfang Jowls
+.turnin 2581 >>加入Snickerfang Jowls
 step
 #era
 #requires blquests
 .goto Blasted Lands,50.55,14.20
-.accept 2585 >> 接受决定性的前锋 << !Rogue !Hunter
-.turnin 2585 >> 交出决定性前锋 << !Rogue !Hunter
-.accept 2583 >> 接受野猪的活力
-.turnin 2583 >> 交出野猪的活力
-.accept 2581 >> 接受Snickerfang Jowls << !Druid !Warrior !Shaman
-.turnin 2581 >> 加入Snickerfang Jowls << !Druid !Warrior !Shaman
-.accept 2601 >> 接受蛇怪的咬
-.turnin 2601 >> 交出蛇怪的咬痕
-.accept 2603 >> 接受秃鹫的活力
-.turnin 2603 >> 交出秃鹫的活力
+.accept 2585 >>接受决定性的前锋 << !Rogue !Hunter
+.turnin 2585 >>交出决定性前锋 << !Rogue !Hunter
+.accept 2583 >>接受野猪的活力
+.turnin 2583 >>交出野猪的活力
+.accept 2581 >>接受Snickerfang Jowls << !Druid !Warrior !Shaman
+.turnin 2581 >>加入Snickerfang Jowls << !Druid !Warrior !Shaman
+.accept 2601 >>接受蛇怪的咬
+.turnin 2601 >>交出蛇怪的咬痕
+.accept 2603 >>接受秃鹫的活力
+.turnin 2603 >>交出秃鹫的活力
 ]])
 RXPGuides.RegisterGuide([[
-#version 7
+#version 9
 #wotlk
 #tbc
 #group RestedXP 部落 45-60
@@ -14436,24 +14724,24 @@ step
 #sticky
 .maxlevel 52
 .goto Stranglethorn Vale,26.9,77.0
-.fly Badlands >> 飞到荒地
+.fly Badlands >>飞到荒地
 .goto Badlands,4.0,44.80,100
 step
 .maxlevel 52
 .goto Badlands,3.40,48.10
->> Thal’trak Proudtusk有时会做RP并四处走动，如果他正在做这件事，请跳过这一步。
-.accept 3821 >> 接受Dreamaul Rock
+>>Thal’trak Proudtusk有时会做RP并四处走动，如果他正在做这件事，请跳过这一步。
+.accept 3821 >>接受Dreamaul Rock
 .unitscan Thal'trak Proudtusk
 step
 .maxlevel 52
 .goto Badlands,3.62,61.88,50,0
 .goto Searing Gorge,72.34,55.47
-.zone Searing Gorge >> 乘车前往灼热峡谷
+.zone Searing Gorge >>乘车前往灼热峡谷
 step
 .maxlevel 52
 >>点击Outhouse
 .goto Searing Gorge,65.55,62.15
-.accept 4449 >> 接受捕获！
+.accept 4449 >>接受捕获！
 step
 #sticky
 #completewith HoardO
@@ -14467,46 +14755,46 @@ step
 .goto Searing Gorge,69.10,33.53,20,0
 .goto Searing Gorge,69.10,33.53,0
 .goto Searing Gorge,63.43,60.91
->> 杀死所有你看到的黑铁地质学家。您可能无法在网站上获得所有这些内容。如果没有，去营地杀死那里的地质学家，然后回到挖掘点
+>>杀死所有你看到的黑铁地质学家。您可能无法在网站上获得所有这些内容。如果没有，去营地杀死那里的地质学家，然后回到挖掘点
 .complete 4449,1
 step
 .goto Searing Gorge,39.10,39.00
-.accept 3441 >> 接受神圣报应
->> 与Kalaran Windblade交谈把他的对话通读一遍
+.accept 3441 >>接受神圣报应
+>>与Kalaran Windblade交谈把他的对话通读一遍
 .complete 3441,1
 .skipgossip
 step
 .isOnQuest 3441
 .goto Searing Gorge,39.05,38.98
-.turnin 3441 >> 上缴神圣报应
-.accept 3442 >> 接受无瑕疵的火焰
+.turnin 3441 >>上缴神圣报应
+.accept 3442 >>接受无瑕疵的火焰
 step
 .isQuestTurnedIn 3441
 .goto Searing Gorge,32.50,32.48,30,0
 >>跑到钍点
 .goto Searing Gorge,34.84,30.89
-.fp Thorium >> 获得灼热峡谷飞行路线
+.fp Thorium >>获得灼热峡谷飞行路线
 step
 .isQuestTurnedIn 3441
 .goto Searing Gorge,38.58,27.80
-.accept 7723 >> 接受诅咒这些胖手指
-.accept 7724 >> 接受火焰威胁！
-.accept 7727 >> 接受内雕龙？龙更像什么
+.accept 7723 >>接受诅咒这些胖手指
+.accept 7724 >>接受火焰威胁！
+.accept 7727 >>接受内雕龙？龙更像什么
 step
 .isQuestTurnedIn 3441
 .goto Searing Gorge,37.64,26.47
->> 点击通缉令
-.accept 7701 >> 接受通缉：监督Maltorius
-.accept 7728 >> 接受被盗：粉碎托耶尔和了望台望远镜
-.accept 7729 >> 接受工作机会：挑选竞争对手
+>>点击通缉令
+.accept 7701 >>接受通缉：监督Maltorius
+.accept 7728 >>接受被盗：粉碎托耶尔和了望台望远镜
+.accept 7729 >>接受工作机会：挑选竞争对手
 step << wotlk
 .isQuestTurnedIn 3441
 .goto Searing Gorge,38.36,27.74
-.accept 7702 >> 接受剥夺睡眠杀死Em
+.accept 7702 >>接受剥夺睡眠杀死Em
 step
 .isQuestTurnedIn 3441
 .goto Searing Gorge,38.58,27.80
-.accept 7722 >> 接受什么是通量？
+.accept 7722 >>接受什么是通量？
 step
 .isOnQuest 3442
 #completewith Spiders
@@ -14515,20 +14803,20 @@ step
 .goto Searing Gorge,24.23,53.91,0
 .goto Searing Gorge,31.16,43.52,0
 .goto Searing Gorge,43.98,35.35,0
->> 杀死火怪和元素。掠夺他们的心和油。优先考虑这一点
+>>杀死火怪和元素。掠夺他们的心和油。优先考虑这一点
 .complete 3442,1
 .complete 3442,2
 step
 .isOnQuest 7728
 #completewith Elementals
 .goto Searing Gorge,34.08,53.99,0
->> 杀死塔楼周围的黑铁守望者。为了望远镜而抢劫他们
+>>杀死塔楼周围的黑铁守望者。为了望远镜而抢劫他们
 .complete 7728,2
 step
 .isOnQuest 7728
 #completewith Elementals
 .goto Searing Gorge,40.90,50.31,0
->> 杀死蒸汽密斯。抢他们去风口
+>>杀死蒸汽密斯。抢他们去风口
 .complete 7728,1
 step
 .isOnQuest 7724
@@ -14536,14 +14824,14 @@ step
 .goto Searing Gorge,27.70,46.58,100,0
 .goto Searing Gorge,28.02,75.91,100,0
 .goto Searing Gorge,27.70,46.58
->> 杀死地图西边的熔岩蜘蛛
+>>杀死地图西边的熔岩蜘蛛
 .complete 7724,1
 step
 .isOnQuest 7723
 #completewith next
 .goto Searing Gorge,43.61,40.78,0
 .goto Searing Gorge,32.54,47.19,0
->> 杀死战争傀儡
+>>杀死战争傀儡
 .complete 7723,1
 step
 .isOnQuest 3442
@@ -14554,18 +14842,18 @@ step
 .goto Searing Gorge,31.16,43.52,90,0
 .goto Searing Gorge,43.98,35.35,90,0
 .goto Searing Gorge,30.41,76.05
->> 杀死火怪和元素。掠夺他们的心和油
+>>杀死火怪和元素。掠夺他们的心和油
 .complete 3442,1
 .complete 3442,2
 step
 .isOnQuest 3442
 .goto Searing Gorge,39.05,38.98
-.turnin 3442 >> 交给完美的火焰
-.accept 3443 >> 接受锻造轴
+.turnin 3442 >>交给完美的火焰
+.accept 3443 >>接受锻造轴
 step
 .isOnQuest 7727
 #completewith next
-.goto Searing Gorge,47.54,46.89,30 >> 跳下平台，进入洞穴
+.goto Searing Gorge,47.54,46.89,30 >>跳下平台，进入洞穴
 step
 .isOnQuest 7727
 .goto Searing Gorge,46.66,42.48,40,0
@@ -14578,11 +14866,11 @@ step
 .goto Searing Gorge,48.41,41.08,40,0
 .goto Searing Gorge,47.94,47.58,40,0
 .goto Searing Gorge,49.86,45.97,40,0
-.goto Searing Gorge,49.75,45.82,35 >> 跑出洞穴，然后沿着平台爬到洞穴的较高部分
+.goto Searing Gorge,49.75,45.82,35 >>跑出洞穴，然后沿着平台爬到洞穴的较高部分
 step
 .isOnQuest 7729
 #completewith Shanksinnit
->> 杀死监工和奴隶
+>>杀死监工和奴隶
 .complete 7729,1
 .complete 7729,2
 step
@@ -14610,166 +14898,166 @@ step
 .isOnQuest 3443
 #label Shanksinnit
 .goto Searing Gorge,42.81,28.11
->> 杀死矮人。掠夺他们镀钍匕首
+>>杀死矮人。掠夺他们镀钍匕首
 .complete 3443,1
 step
 .zoneskip Searing Gorge,1
 .goto Searing Gorge,43.72,29.81
-.use 11818 >> 继续磨矮人，直到你拿到灰熊小屋钥匙。接受它的任务
+.use 11818 >>继续磨矮人，直到你拿到灰熊小屋钥匙。接受它的任务
 .collect 11818,1,4451
-.accept 4451 >> 接受自由的钥匙
+.accept 4451 >>接受自由的钥匙
 step
 .isOnQuest 7729
 +注销后跳出洞穴。有许多不同的点可以使用
-.link https://www.youtube.com/watch?v=-mcsjDkeSUw >> 单击此处以供参考
+.link https://www.youtube.com/watch?v=-mcsjDkeSUw >>单击此处以供参考
 step
 .isOnQuest 3443
 .goto Searing Gorge,39.05,38.98
-.turnin 3443 >> 转动锻造轴
-.accept 3452 >> 接受火焰的外壳
+.turnin 3443 >>转动锻造轴
+.accept 3452 >>接受火焰的外壳
 step
 .isOnQuest 3452
 .goto Searing Gorge,16.84,38.84
->> 杀死该地区的暮光之城暴徒。为了拉格纳罗斯的象征而掠夺他们。
+>>杀死该地区的暮光之城暴徒。为了拉格纳罗斯的象征而掠夺他们。
 .complete 3452,1
 step
 #requires smithing
 .isQuestComplete 3452
 .goto Searing Gorge,39.05,38.98
-.turnin 3452 >> 拧入火焰外壳
+.turnin 3452 >>拧入火焰外壳
 step
 .isQuestTurnedIn 3452
 .goto Searing Gorge,39.05,38.98
->> RP活动进行期间，请紧邻NPC
-.accept 3453 >> 接受报应之火
-.turnin 3453 >> 交出报应之火
-.accept 3454 >> 接受报应之火
+>>RP活动进行期间，请紧邻NPC
+.accept 3453 >>接受报应之火
+.turnin 3453 >>交出报应之火
+.accept 3454 >>接受报应之火
 step
 .isQuestTurnedIn 3452
 .goto Searing Gorge,39.04,39.24
->> 点击报应之火
-.turnin 3454 >> 交出报应之火
+>>点击报应之火
+.turnin 3454 >>交出报应之火
 step
 .isQuestTurnedIn 3452
 .goto Searing Gorge,39.05,38.98
-.accept 3462 >> 接受Squire Maltrake
-.turnin 3462 >> 交给乡绅马尔特拉克
-.accept 3463 >> 接受，让他们消融！
+.accept 3462 >>接受Squire Maltrake
+.turnin 3462 >>交给乡绅马尔特拉克
+.accept 3463 >>接受，让他们消融！
 step
 #completewith OuthouseAndy
 .isOnQuest 7728
 .goto Searing Gorge,34.08,53.99,0
->> 杀死塔楼周围的黑铁守望者。为了望远镜而抢劫他们
+>>杀死塔楼周围的黑铁守望者。为了望远镜而抢劫他们
 .complete 7728,2
 step
 #completewith WarGolems
 .isOnQuest 7728
 .goto Searing Gorge,40.90,50.31,0
->> 杀死蒸汽密斯。抢他们去风口
+>>杀死蒸汽密斯。抢他们去风口
 .complete 7728,1
 step
 #completewith next
 .isOnQuest 7723
 .goto Searing Gorge,43.61,40.78,0
 .goto Searing Gorge,32.54,47.19,0
->> 杀死战争傀儡
+>>杀死战争傀儡
 .complete 7723,1
 step
 .isOnQuest 3463
 .goto Searing Gorge,33.30,54.47
->> 装备报应火炬并点击塔顶的火盆，点燃第一座塔
+>>装备报应火炬并点击塔顶的火盆，点燃第一座塔
 .complete 3463,4
 step
 #label WarGolems
 .isOnQuest 7723
 .goto Searing Gorge,43.61,40.78
->> 杀死战争傀儡
+>>杀死战争傀儡
 .complete 7723,1
 step
 .isOnQuest 7728
 .goto Searing Gorge,40.90,50.31
->> 杀死蒸汽密斯。抢他们去风口
+>>杀死蒸汽密斯。抢他们去风口
 .complete 7728,1
 step
 .isOnQuest 3463
 .goto Searing Gorge,35.66,60.68
->> 装备报应火炬并点击塔顶的火盆，点燃第二座塔
+>>装备报应火炬并点击塔顶的火盆，点燃第二座塔
 .complete 3463,1
 step
 .isOnQuest 3463
 .goto Searing Gorge,44.03,60.90
->> 装备报应火炬并点击塔顶的火盆，点燃第三座塔
+>>装备报应火炬并点击塔顶的火盆，点燃第三座塔
 .complete 3463,2
 step
 #label OuthouseAndy
 .isOnQuest 4449
 .goto Searing Gorge,65.59,62.17
-.turnin 4449 >> 上车被抓住！
+.turnin 4449 >>上车被抓住！
 step
 .isOnQuest 4451
 .goto Searing Gorge,65.59,62.17
-.turnin 4451 >> 交出自由的钥匙
+.turnin 4451 >>交出自由的钥匙
 step
 #label OuthouseAndy
 .isOnQuest 3463
 .goto Searing Gorge,50.10,54.70
->> 装备报应火炬并点击塔顶的火盆，点燃第四座塔
+>>装备报应火炬并点击塔顶的火盆，点燃第四座塔
 .complete 3463,3
 step
 .isOnQuest 7728
 .goto Searing Gorge,34.08,53.99
->> 杀死塔楼周围的黑铁守望者。为了望远镜而抢劫他们
+>>杀死塔楼周围的黑铁守望者。为了望远镜而抢劫他们
 .complete 7728,2
 step
 .isOnQuest 7729
->> 杀死监工和奴隶
+>>杀死监工和奴隶
 .complete 7729,1
 .complete 7729,2
 step
 #completewith next
 .isOnQuest 3463
 .goto Searing Gorge,39.05,38.98
-.turnin 3463 >> 上交给他们烧烤！
+.turnin 3463 >>上交给他们烧烤！
 step
 .isQuestTurnedIn 3452
 .goto Searing Gorge,38.85,38.99
->>在地上打开胸部（两次）
+>>在地上打开胸部(两次)
 >>打开黑龙飞行屋。确保你留着黑蜻蜓蜕皮待用
-.accept 3481 >> 接受小饰物。。。
-.turnin 3481 >> 交小饰物。。。
+.accept 3481 >>接受小饰物。。。
+.turnin 3481 >>交小饰物。。。
 step
 .isOnQuest 7701
 .goto Searing Gorge,37.74,26.56
 >>跑回钍点
-.turnin 7701 >> 通缉犯：监督马托利斯
+.turnin 7701 >>通缉犯：监督马托利斯
 step << wotlk
 .isOnQuest 7702
 .goto Searing Gorge,38.36,27.74
-.turnin 7702 >> 在剥夺睡眠的情况下杀死Em
+.turnin 7702 >>在剥夺睡眠的情况下杀死Em
 step
 .isOnQuest 7723
 .goto Searing Gorge,38.58,27.80
-.turnin 7723 >> 上缴诅咒这些胖手指
+.turnin 7723 >>上缴诅咒这些胖手指
 step
 .isOnQuest 7724
 .goto Searing Gorge,38.58,27.80
-.turnin 7724 >> 交出火警威胁！
+.turnin 7724 >>交出火警威胁！
 step
 .isOnQuest 7727
 .goto Searing Gorge,38.58,27.80
-.turnin 7727 >> 上缴印象龙？龙更像什么
+.turnin 7727 >>上缴印象龙？龙更像什么
 step
 .isOnQuest 7728
 .goto Searing Gorge,38.97,27.51
-.turnin 7728 >> 被盗入狱：粉碎托耶尔和了望台望远镜
+.turnin 7728 >>被盗入狱：粉碎托耶尔和了望台望远镜
 step
 .goto Searing Gorge,38.97,27.51
 .isQuestComplete 7729
-.turnin 7729 >> 提交工作机会：筛选竞争对手
+.turnin 7729 >>提交工作机会：筛选竞争对手
 step
 .isQuestComplete 7722
 .goto Searing Gorge,38.80,28.50
-.turnin 7722 >> 交出什么通量？
+.turnin 7722 >>交出什么通量？
 step
 .maxlevel 53
 .isQuestTurnedIn 7729
@@ -14778,30 +15066,30 @@ step
 .goto 1415,47.09,69.15,50,0
 .goto 1415,47.28,69.67,50,0
 .goto Burning Steppes,32.09,50.34,50,0
-.zone Burning Steppes >> 穿越黑岩山前往燃烧的草原
+.zone Burning Steppes >>穿越黑岩山前往燃烧的草原
 step
 .maxlevel 53
 .isQuestTurnedIn 7729
 .goto Burning Steppes,65.70,24.20
-.fp Flame Crest >> 获取燃烧的阶梯飞行路径
+.fp Flame Crest >>获取燃烧的阶梯飞行路径
 step
 .maxlevel 53
 .isQuestTurnedIn 7729
 .goto Burning Steppes,65.30,23.80
-.accept 4726 >> 接受Broodling精华
-.accept 4296 >> 接受七大平板电脑
+.accept 4726 >>接受Broodling精华
+.accept 4296 >>接受七大平板电脑
 step
 .isOnQuest 4726
 #completewith OgreRock
 .goto Burning Steppes,77.97,27.99,0
 .goto Burning Steppes,92.03,33.78,0
 .goto Burning Steppes,85.24,60.46,0
->> 在幼崽身上使用Draco Incarcinatrix-900，然后杀死它们。抢劫他们扔下的物体
+>>在幼崽身上使用Draco Incarcinatrix-900，然后杀死它们。抢劫他们扔下的物体
 .complete 4726,1
 step
 .isOnQuest 4296
 .goto Burning Steppes,54.10,40.70
->> 抢劫矮人雕像前的岩石
+>>抢劫矮人雕像前的岩石
 .complete 4296,1
 step
 #label OgreRock
@@ -14810,77 +15098,77 @@ step
 >>过桥，然后上山。点击祭坛上的遗迹
 .goto Burning Steppes,77.68,38.23,60,0
 .goto Burning Steppes,79.80,45.60
-.turnin 3821 >> 转入Dreadmaul Rock
+.turnin 3821 >>转入Dreadmaul Rock
 step
 .isOnQuest 4726
 .goto Burning Steppes,85.24,60.46,60,0
 .goto Burning Steppes,92.03,33.78,60,0
 .goto Burning Steppes,77.97,27.99
->> 在幼崽身上使用Draco Incarcinatrix-900，然后杀死它们。抢劫他们扔下的物体
+>>在幼崽身上使用Draco Incarcinatrix-900，然后杀死它们。抢劫他们扔下的物体
 .complete 4726,1
 step
 .zoneskip Burning Steppes,1
 >>返回Flame Crest
 .goto Burning Steppes,65.30,23.80
-.turnin 4726 >> 交出Broodling精华
-.turnin 4296 >> 上缴七人片
+.turnin 4726 >>交出Broodling精华
+.turnin 4296 >>上缴七人片
 step
 #xprate <1.5
 .goto Burning Steppes,65.30,23.80
-.accept 4808 >> 接受Felnok Steelspring
+.accept 4808 >>接受Felnok Steelspring
 step
 .goto Burning Steppes,77.68,38.23
-.xp 52 >> 将该区域的暴徒研磨至52级
+.xp 52 >>将该区域的暴徒升级到52级
 step
 .isQuestTurnedIn 3452
 #label HoardO
 .goto Burning Steppes,95.09,31.56
->> 到山洞里去，交上《火焰的味道》。记得从早些时候开始开启黑龙飞行的霍尔德（Hoard of Black Dragonflight）
-.accept 4022 >> 接受火焰的味道
-.turnin 4022 >> 尝到火焰的味道
+>>到山洞里去，交上《火焰的味道》。记得从早些时候开始开启黑龙飞行的霍尔德(Hoard of Black Dragonflight)
+.accept 4022 >>接受火焰的味道
+.turnin 4022 >>尝到火焰的味道
 step << Druid
->> 使用“传送到月光”法术
+>>使用“传送到月光”法术
 .goto Moonglade,52.5,40.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 #completewith next
 #label Searingskip
-.hs >> 赫斯到棘轮
-.vendor >> 如果需要，购买食物和水
+.hs >>赫斯到棘轮
+.vendor >>如果需要，购买食物和水
 step
 #completewith next
 .goto The Barrens,63.1,37.2
-.fly Gadgetzan >> 飞到Gadgetzan
+.fly Gadgetzan >>飞到Gadgetzan
 step
 #xprate <1.5
 .goto Tanaris,51.1,26.9
-.turnin 2641 >> 加入Sprinkle的秘密成分
-.turnin 4494 >> 三月份上船
-.accept 4496 >> 接受丛林中的邦格
-.accept 2661 >> 接受Marin的交付
+.turnin 2641 >>加入Sprinkle的秘密成分
+.turnin 4494 >>三月份上船
+.accept 4496 >>接受丛林中的邦格
+.accept 2661 >>接受Marin的交付
 step
 #xprate >1.499
 .goto Tanaris,51.1,26.9
-.turnin 2641 >> 加入Sprinkle的秘密成分
-.turnin -4494 >> 三月份上船
-.accept 2661 >> 接受Marin的交付
+.turnin 2641 >>加入Sprinkle的秘密成分
+.turnin -4494 >>三月份上船
+.accept 2661 >>接受Marin的交付
 step
 #xprate <1.5
 .goto Tanaris,51.5,26.8
-.accept 4504 >> 接受超级粘滞
+.accept 4504 >>接受超级粘滞
 step
 .goto Tanaris,51.8,28.6
-.turnin 2661 >> 为Marin交付
-.accept 2662 >> 接受Noggenfogger Elixir
-.turnin 2662 >> 交出诺根福格药剂
+.turnin 2661 >>为Marin交付
+.accept 2662 >>接受Noggenfogger Elixir
+.turnin 2662 >>交出诺根福格药剂
 step
 #completewith next
 .goto Tanaris,52.4,27.8
-.home >> 将您的炉石设置为Gadgetzan
+.home >>将您的炉石设置为Gadgetzan
 step
 .isOnQuest 3444
 .goto Tanaris,52.7,45.9
-.turnin 3444 >> 在石头圈内转弯
+.turnin 3444 >>在石头圈内转弯
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -14891,35 +15179,35 @@ RXPGuides.RegisterGuide([[
 #next 52-53 艾萨拉
 step
 #era
-.fly Badlands>> 飞到荒地
+.fly Badlands>>飞到荒地
 step
 #sticky
 #label Badlandsarrive
 #som
->> 飞到荒地，如果你没有飞行路径，就把传送机带到Gnomeregan，并按照视频指南操作。
+>>飞到荒地，如果你没有飞行路径，就把传送机带到Gnomeregan，并按照视频指南操作。
 .goto Badlands,4.0,44.80,100
 step
 #som
 .goto Stranglethorn Vale,27.7,77.4
 #completewith Badlandsarrive
->> 接受并交付任务后，进入任务传送者旁边的传送者。
-.accept 2843 >> 接受Gnomer goooone！
-.turnin 2843 >> 把Gnomer goooone交上来！
+>>接受并交付任务后，进入任务传送者旁边的传送者。
+.accept 2843 >>接受Gnomer goooone！
+.turnin 2843 >>把Gnomer goooone交上来！
 .maxlevel 51,Searingskip
 step
 #som
 .goto Dun Morogh,78.0,62.7
-.zone Badlands >> 步行到东邓莫罗的大楼并注销。
-.link https://www.youtube.com/watch?v=MdXtOxSxaYo >> 单击此处
+.zone Badlands >>步行到东邓莫罗的大楼并注销。
+.link https://www.youtube.com/watch?v=MdXtOxSxaYo >>单击此处
 step
 .goto Badlands,3.40,48.10
->> 你可能需要等待Thal'trak完成他的RP活动。跟着他转一圈
-.accept 3821 >> 接受Dreamaul Rock
+>>你可能需要等待Thal'trak完成他的RP活动。跟着他转一圈
+.accept 3821 >>接受Dreamaul Rock
 .unitscan Thal'trak Proudtusk
 step
 .goto Badlands,3.62,61.88,50,0
 .goto Searing Gorge,72.34,55.47
-.zone Searing Gorge >> 乘车前往灼热峡谷
+.zone Searing Gorge >>乘车前往灼热峡谷
 step
 #sticky
 #completewith HoardO
@@ -14928,43 +15216,43 @@ step
 step
 >>点击Outhouse
 .goto Searing Gorge,65.55,62.15
-.accept 4449 >> 接受捕获！
+.accept 4449 >>接受捕获！
 step
 .goto Searing Gorge,63.43,60.91,20,0
 .goto Searing Gorge,63.43,60.91,0
 .goto Searing Gorge,69.10,33.53,20,0
 .goto Searing Gorge,69.10,33.53,0
 .goto Searing Gorge,63.43,60.91
->> 杀死所有你看到的黑铁地质学家。您可能无法在网站上获得所有这些内容。如果没有，去营地杀死那里的地质学家，然后回到挖掘点
+>>杀死所有你看到的黑铁地质学家。您可能无法在网站上获得所有这些内容。如果没有，去营地杀死那里的地质学家，然后回到挖掘点
 .complete 4449,1
 step
 .goto Searing Gorge,39.10,39.00
-.accept 3441 >> 接受神圣报应
->> 与Kalaran Windblade交谈把他的对话通读一遍
+.accept 3441 >>接受神圣报应
+>>与Kalaran Windblade交谈把他的对话通读一遍
 .complete 3441,1
 .skipgossip
 step
 .goto Searing Gorge,39.05,38.98
-.turnin 3441 >> 上缴神圣报应
-.accept 3442 >> 接受无瑕疵的火焰
+.turnin 3441 >>上缴神圣报应
+.accept 3442 >>接受无瑕疵的火焰
 step
 .goto Searing Gorge,32.50,32.48,30,0
 >>跑到钍点
 .goto Searing Gorge,34.84,30.89
-.fp Thorium >> 获得灼热峡谷飞行路线
+.fp Thorium >>获得灼热峡谷飞行路线
 step
 .goto Searing Gorge,38.58,27.80
-.accept 7723 >> 接受诅咒这些胖手指
-.accept 7724 >> 接受火焰威胁！
-.accept 7727 >> 接受内雕龙？龙更像什么
+.accept 7723 >>接受诅咒这些胖手指
+.accept 7724 >>接受火焰威胁！
+.accept 7727 >>接受内雕龙？龙更像什么
 step
 .goto Searing Gorge,37.64,26.47
->> 点击通缉令
-.accept 7728 >> 接受被盗：粉碎托耶尔和了望台望远镜
-.accept 7729 >> 接受工作机会：挑选竞争对手
+>>点击通缉令
+.accept 7728 >>接受被盗：粉碎托耶尔和了望台望远镜
+.accept 7729 >>接受工作机会：挑选竞争对手
 step << !Shaman !Druid
 .goto Searing Gorge,38.58,27.80
-.accept 7722 >> 接受什么是通量？
+.accept 7722 >>接受什么是通量？
 step
 #completewith Spiders
 .goto Searing Gorge,30.41,76.05,0
@@ -14972,31 +15260,31 @@ step
 .goto Searing Gorge,24.23,53.91,0
 .goto Searing Gorge,31.16,43.52,0
 .goto Searing Gorge,43.98,35.35,0
->> 杀死火怪和元素。掠夺他们的心和油。优先考虑这一点
+>>杀死火怪和元素。掠夺他们的心和油。优先考虑这一点
 .complete 3442,1
 .complete 3442,2
 step
 #completewith Elementals
 .goto Searing Gorge,34.08,53.99,0
->> 杀死塔楼周围的黑铁守望者。为了望远镜而抢劫他们
+>>杀死塔楼周围的黑铁守望者。为了望远镜而抢劫他们
 .complete 7728,2
 step
 #completewith Elementals
 .goto Searing Gorge,40.90,50.31,0
->> 杀死蒸汽密斯。抢他们去风口
+>>杀死蒸汽密斯。抢他们去风口
 .complete 7728,1
 step
 #label Spiders
 .goto Searing Gorge,27.70,46.58,100,0
 .goto Searing Gorge,28.02,75.91,100,0
 .goto Searing Gorge,27.70,46.58
->> 杀死地图西边的熔岩蜘蛛
+>>杀死地图西边的熔岩蜘蛛
 .complete 7724,1
 step
 #completewith next
 .goto Searing Gorge,43.61,40.78,0
 .goto Searing Gorge,32.54,47.19,0
->> 杀死战争傀儡
+>>杀死战争傀儡
 .complete 7723,1
 step
 #label Elementals
@@ -15006,15 +15294,15 @@ step
 .goto Searing Gorge,31.16,43.52,90,0
 .goto Searing Gorge,43.98,35.35,90,0
 .goto Searing Gorge,30.41,76.05
->> 杀死火怪和元素。掠夺他们的心和油
+>>杀死火怪和元素。掠夺他们的心和油
 .complete 3442,1
 .complete 3442,2
 step
 .goto Searing Gorge,39.05,38.98
-.turnin 3442 >> 交给完美的火焰
-.accept 3443 >> 接受锻造轴
+.turnin 3442 >>交给完美的火焰
+.accept 3443 >>接受锻造轴
 step
-.goto Searing Gorge,47.54,46.89,30 >> 跳下平台，进入洞穴
+.goto Searing Gorge,47.54,46.89,30 >>跳下平台，进入洞穴
 step
 .goto Searing Gorge,46.66,42.48,40,0
 .goto Searing Gorge,51.67,37.02,40,0
@@ -15025,162 +15313,162 @@ step
 .goto Searing Gorge,48.41,41.08,40,0
 .goto Searing Gorge,47.94,47.58,40,0
 .goto Searing Gorge,49.86,45.97,40,0
-.goto Searing Gorge,49.75,45.82,35 >> 跑出洞穴，然后沿着平台爬到洞穴的较高部分
+.goto Searing Gorge,49.75,45.82,35 >>跑出洞穴，然后沿着平台爬到洞穴的较高部分
 step
 #completewith Shanksinnit
->> 杀死监工和奴隶
+>>杀死监工和奴隶
 .complete 7729,1
 .complete 7729,2
 step << !Shaman !Druid
 .goto Searing Gorge,40.5,35.7
->> 再次走出洞穴，这次从右边的门进去。在制定逃生路线的计划之前，先清理整个房间。
->> 小心，因为这个任务可能非常困难和危险。不要羞于跳过它 << Warrior/Priest/Rogue
->> 带着你的宠物拉住所有3个暴徒，然后去抢劫计划。 << Hunter
->> 用一个虚空行者拉住所有3个暴徒，然后去抢劫计划。 << Warlock
->> 建立25+怒气，然后同时恐惧所有3个暴徒并点击掠夺计划。 << Warrior
->> 去拉所有3个暴徒，用你的AOE恐惧来抢劫计划。 << Priest
->> 通过改进凿槽，这是可能的。对一个目标使用Sap，在计划附近做好准备。对第二个目标使用盲板。最后一个很难，你必须使用凿击（5.5秒cd）并立即开始抢劫计划（5秒） << Rogue
->> 在马托利斯身上使用变形术，然后对其他2名精英进行霜冻，然后对计划眨眼，将其洗劫一空。 << Mage
+>>再次走出洞穴，这次从右边的门进去。在制定逃生路线的计划之前，先清理整个房间。
+>>小心，因为这个任务可能非常困难和危险。不要羞于跳过它 << Warrior/Priest/Rogue
+>>带着你的宠物拉住所有3个暴徒，然后去抢劫计划。 << Hunter
+>>用一个虚空行者拉住所有3个暴徒，然后去抢劫计划。 << Warlock
+>>建立25+怒气，然后同时恐惧所有3个暴徒并点击掠夺计划。 << Warrior
+>>去拉所有3个暴徒，用你的AOE恐惧来抢劫计划。 << Priest
+>>通过改进凿槽，这是可能的。对一个目标使用Sap，在计划附近做好准备。对第二个目标使用盲板。最后一个很难，你必须使用凿击(5.5秒cd)并立即开始抢劫计划(5秒) << Rogue
+>>在马托利斯身上使用变形术，然后对其他2名精英进行霜冻，然后对计划眨眼，将其洗劫一空。 << Mage
 .complete 7722,1
 step
 #label Shanksinnit
 .goto Searing Gorge,42.81,28.11
->> 杀死矮人。掠夺他们镀钍匕首
+>>杀死矮人。掠夺他们镀钍匕首
 .complete 3443,1
 step
 .goto Searing Gorge,43.72,29.81
->> 继续磨矮人，直到你拿到灰熊小屋钥匙。接受它的任务
+>>继续磨矮人，直到你拿到灰熊小屋钥匙。接受它的任务
 .collect 11818,1,4451
-.accept 4451 >> 接受自由的钥匙
+.accept 4451 >>接受自由的钥匙
 step
 #completewith next
 +注销后跳出洞穴。有许多不同的点可以使用
-.link https://www.youtube.com/watch?v=-mcsjDkeSUw >> 单击此处以供参考
+.link https://www.youtube.com/watch?v=-mcsjDkeSUw >>单击此处以供参考
 step
 .goto Searing Gorge,39.05,38.98
-.turnin 3443 >> 转动锻造轴
-.accept 3452 >> 接受火焰的外壳
+.turnin 3443 >>转动锻造轴
+.accept 3452 >>接受火焰的外壳
 step
 #softcore
 .goto Searing Gorge,16.84,38.84
->> 杀死该地区的暮光之城暴徒。为了拉格纳罗斯的象征而掠夺他们。如果需要，为这个任务分组
->> 小心，因为这个任务可能非常困难。请注意，黑暗萨满有2000点生命值治疗和500点伤害的即时冲击法术
+>>杀死该地区的暮光之城暴徒。为了拉格纳罗斯的象征而掠夺他们。如果需要，为这个任务分组
+>>小心，因为这个任务可能非常困难。请注意，黑暗萨满有2000点生命值治疗和500点伤害的即时冲击法术
 .complete 3452,1
 step
 #hardcore
 .goto Searing Gorge,16.84,38.84
->> 杀死该地区的暮光之城暴徒。掠夺他们作为拉格纳罗斯的象征
->> 小心，因为这个任务可能非常困难。请注意，黑暗萨满有2000点生命值治疗和500点伤害的即时冲击法术
+>>杀死该地区的暮光之城暴徒。掠夺他们作为拉格纳罗斯的象征
+>>小心，因为这个任务可能非常困难。请注意，黑暗萨满有2000点生命值治疗和500点伤害的即时冲击法术
 .complete 3452,1
 step
 #requires smithing
 .isQuestComplete 3542
 .goto Searing Gorge,39.05,38.98
-.turnin 3452 >> 拧入火焰外壳
+.turnin 3452 >>拧入火焰外壳
 step
 .isQuestTurnedIn 3452
 .goto Searing Gorge,39.05,38.98
->> RP活动进行期间，请紧邻NPC
-.accept 3453 >> 接受报应之火
-.turnin 3453 >> 交出报应之火
-.accept 3454 >> 接受报应之火
+>>RP活动进行期间，请紧邻NPC
+.accept 3453 >>接受报应之火
+.turnin 3453 >>交出报应之火
+.accept 3454 >>接受报应之火
 step
 .isQuestTurnedIn 3452
 .goto Searing Gorge,39.04,39.24
->> 点击报应之火
-.turnin 3454 >> 交出报应之火
+>>点击报应之火
+.turnin 3454 >>交出报应之火
 step
 .isQuestTurnedIn 3452
 .goto Searing Gorge,39.05,38.98
-.accept 3462 >> 接受Squire Maltrake
-.turnin 3462 >> 交给乡绅马尔特拉克
-.accept 3463 >> 接受，让他们消融！
+.accept 3462 >>接受Squire Maltrake
+.turnin 3462 >>交给乡绅马尔特拉克
+.accept 3463 >>接受，让他们消融！
 step
 #completewith OuthouseAndy
 .goto Searing Gorge,34.08,53.99,0
->> 杀死塔楼周围的黑铁守望者。为了望远镜而抢劫他们
+>>杀死塔楼周围的黑铁守望者。为了望远镜而抢劫他们
 .complete 7728,2
 step
 #completewith WarGolems
 .goto Searing Gorge,40.90,50.31,0
->> 杀死蒸汽密斯。抢他们去风口
+>>杀死蒸汽密斯。抢他们去风口
 .complete 7728,1
 step
 #completewith next
 .goto Searing Gorge,43.61,40.78,0
 .goto Searing Gorge,32.54,47.19,0
->> 杀死战争傀儡
+>>杀死战争傀儡
 .complete 7723,1
 step
 .isQuestTurnedIn 3452
 .goto Searing Gorge,33.30,54.47
->> 装备报应火炬并点击塔顶的火盆，点燃第一座塔
+>>装备报应火炬并点击塔顶的火盆，点燃第一座塔
 .complete 3463,4
 step
 #label WarGolems
 .goto Searing Gorge,43.61,40.78
->> 杀死战争傀儡
+>>杀死战争傀儡
 .complete 7723,1
 step
 .goto Searing Gorge,40.90,50.31
->> 杀死蒸汽密斯。抢他们去风口
+>>杀死蒸汽密斯。抢他们去风口
 .complete 7728,1
 step
 .isQuestTurnedIn 3452
 .goto Searing Gorge,35.66,60.68
->> 装备报应火炬并点击塔顶的火盆，点燃第二座塔
+>>装备报应火炬并点击塔顶的火盆，点燃第二座塔
 .complete 3463,1
 step
 .isQuestTurnedIn 3452
 .goto Searing Gorge,44.03,60.90
->> 装备报应火炬并点击塔顶的火盆，点燃第三座塔
+>>装备报应火炬并点击塔顶的火盆，点燃第三座塔
 .complete 3463,2
 step
 #label OuthouseAndy
 .goto Searing Gorge,65.59,62.17
-.turnin 4449 >> 上车被抓住！
-.turnin 4451 >> 交出自由的钥匙
+.turnin 4449 >>上车被抓住！
+.turnin 4451 >>交出自由的钥匙
 step
 #label OuthouseAndy
 .isQuestTurnedIn 3452
 .goto Searing Gorge,50.10,54.70
->> 装备报应火炬并点击塔顶的火盆，点燃第四座塔
+>>装备报应火炬并点击塔顶的火盆，点燃第四座塔
 .complete 3463,3
 step
 .goto Searing Gorge,34.08,53.99
->> 杀死塔楼周围的黑铁守望者。为了望远镜而抢劫他们
+>>杀死塔楼周围的黑铁守望者。为了望远镜而抢劫他们
 .complete 7728,2
 step
->> 杀死监工和奴隶
+>>杀死监工和奴隶
 .complete 7729,1
 .complete 7729,2
 step
 #completewith next
 .isQuestTurnedIn 3452
 .goto Searing Gorge,39.05,38.98
-.turnin 3463 >> 上交给他们烧烤！
+.turnin 3463 >>上交给他们烧烤！
 step
 .isQuestTurnedIn 3452
 .goto Searing Gorge,38.85,38.99
->>在地上打开胸部（两次）
+>>在地上打开胸部(两次)
 >>打开黑龙飞行屋。确保你留着黑蜻蜓蜕皮待用
-.accept 3481 >> 接受小饰物。。。
-.turnin 3481 >> 交小饰物。。。
+.accept 3481 >>接受小饰物。。。
+.turnin 3481 >>交小饰物。。。
 step
 .goto Searing Gorge,38.97,27.50
 >>跑回钍点
-.turnin 7723 >> 上缴诅咒这些胖手指
-.turnin 7724 >> 交出火警威胁！
-.turnin 7727 >> 上缴印象龙？龙更像什么
-.turnin 7728 >> 被盗入狱：粉碎托耶尔和了望台望远镜
+.turnin 7723 >>上缴诅咒这些胖手指
+.turnin 7724 >>交出火警威胁！
+.turnin 7727 >>上缴印象龙？龙更像什么
+.turnin 7728 >>被盗入狱：粉碎托耶尔和了望台望远镜
 step << !Shaman
 .isQuestComplete 7722
 .goto Searing Gorge,38.80,28.50
-.turnin 7722 >> 交出什么通量？
+.turnin 7722 >>交出什么通量？
 step
 .goto Searing Gorge,38.80,28.50
 .isQuestComplete 7729
-.turnin 7729 >> 提交工作机会：筛选竞争对手
+.turnin 7729 >>提交工作机会：筛选竞争对手
 step
 #completewith next
 .goto Searing Gorge,69.2,71.6,50,0
@@ -15188,90 +15476,90 @@ step
 .goto Searing Gorge,73.6,83.0,50,0
 +跑到东南部的西林峡谷，在那里发现了愤怒的玛戈尔。等他一路巡逻出洞穴，然后从后面的蘑菇上跳下来 << Druid/Shaman
 >>小心点，因为玛歌对自然咒语免疫 << Shaman/Druid
-+跑到东南部的西林峡谷，在那里发现了愤怒的玛戈尔。等待他一路巡逻出洞穴（或杀死他），然后从后面的蘑菇中跳出来 << !Druid !Shaman
-.link https://www.youtube.com/watch?v=0_g2SY2JKt8 >> 单击此处
++跑到东南部的西林峡谷，在那里发现了愤怒的玛戈尔。等待他一路巡逻出洞穴(或杀死他)，然后从后面的蘑菇中跳出来 << !Druid !Shaman
+.link https://www.youtube.com/watch?v=0_g2SY2JKt8 >>单击此处
 step
 .goto Burning Steppes,28.43,17.70,0
-.zone Burning Steppes >> 通过Margol Logout Skip（速度快很多）或Blackrock Mountain前往燃烧的草原
+.zone Burning Steppes >>通过Margol Logout Skip(速度快很多)或Blackrock Mountain前往燃烧的草原
 step
 .goto Burning Steppes,65.70,24.20
-.fp Flame Crest >> 获取燃烧的阶梯飞行路径
+.fp Flame Crest >>获取燃烧的阶梯飞行路径
 step
 .goto Burning Steppes,65.30,23.80
-.accept 4726 >> 接受Broodling精华
-.accept 4296 >> 接受七大平板电脑
+.accept 4726 >>接受Broodling精华
+.accept 4296 >>接受七大平板电脑
 step
 #completewith HoardO
 .goto Burning Steppes,77.97,27.99,0
 .goto Burning Steppes,92.03,33.78,0
 .goto Burning Steppes,85.24,60.46,0
->> 在幼崽身上使用Draco Incarcinatrix-900，然后杀死它们。抢劫他们扔下的物体
+>>在幼崽身上使用Draco Incarcinatrix-900，然后杀死它们。抢劫他们扔下的物体
 .complete 4726,1
 step
 .goto Burning Steppes,54.10,40.70
->> 抢劫矮人雕像前的岩石
+>>抢劫矮人雕像前的岩石
 .complete 4296,1
 step
 >>过桥，然后上山。点击祭坛上的遗迹
 .goto Burning Steppes,77.68,38.23,60,0
 .goto Burning Steppes,79.80,45.60
-.turnin 3821 >> 转入Dreadmaul Rock
+.turnin 3821 >>转入Dreadmaul Rock
 step
 #completewith HoardO
 .goto Burning Steppes,85.24,60.46,60,0
 .goto Burning Steppes,92.03,33.78,60,0
 .goto Burning Steppes,77.97,27.99
->> 在幼崽身上使用Draco Incarcinatrix-900，然后杀死它们。抢劫他们扔下的物体
+>>在幼崽身上使用Draco Incarcinatrix-900，然后杀死它们。抢劫他们扔下的物体
 .complete 4726,1
 step
 >>返回Flame Crest
 .goto Burning Steppes,65.30,23.80
-.turnin 4726 >> 交出Broodling精华
-.accept 4808 >> 接受Felnok Steelspring
-.turnin 4296 >> 上缴七人片
+.turnin 4726 >>交出Broodling精华
+.accept 4808 >>接受Felnok Steelspring
+.turnin 4296 >>上缴七人片
 step
 .goto Burning Steppes,77.68,38.23
-.xp 52 >> 将该区域的暴徒研磨至52级
+.xp 52 >>将该区域的暴徒升级到52级
 step
 .isQuestTurnedIn 3452
 #label HoardO
 .goto Burning Steppes,95.09,31.56
->> 到山洞里去，交上《火焰的味道》。记得从早些时候开始开启黑龙飞行的霍尔德（Hoard of Black Dragonflight）
-.accept 4022 >> 接受火焰的味道
-.turnin 4022 >> 尝到火焰的味道
+>>到山洞里去，交上《火焰的味道》。记得从早些时候开始开启黑龙飞行的霍尔德(Hoard of Black Dragonflight)
+.accept 4022 >>接受火焰的味道
+.turnin 4022 >>尝到火焰的味道
 step << Druid
->> 使用“传送到月光”法术
+>>使用“传送到月光”法术
 .goto Moonglade,52.5,40.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << !Mage
 #som
 #completewith next
 #label Searingskip
-.hs >> 火炉到棘轮或乘船
->> 如果需要，购买食物/水
+.hs >>火炉到棘轮或乘船
+>>如果需要，购买食物/水
 step << !Mage
 #som
 .goto Stranglethorn Vale,26.90,77.10
-.fly Orgrimmar >> 飞往奥格瑞玛
+.fly Orgrimmar >>飞往奥格瑞玛
 step << Mage
 #som
 #label Searingskip
-.zone Orgrimmar >> 电传至Orgrimmar
+.zone Orgrimmar >>电传至Orgrimmar
 step << !Mage
 #era
 #completewith next
-.hs >> 火炉到棘轮或乘船
->> 如果需要，购买食物/水
+.hs >>火炉到棘轮或乘船
+>>如果需要，购买食物/水
 step << !Mage
 #era
 .goto Stranglethorn Vale,26.90,77.10
-.fly Orgrimmar >> 飞往奥格瑞玛
+.fly Orgrimmar >>飞往奥格瑞玛
 step << Mage
 #era
-.zone Orgrimmar >> 电传至Orgrimmar
+.zone Orgrimmar >>电传至Orgrimmar
 ]])
 RXPGuides.RegisterGuide([[
-#version 7
+#version 9
 #wotlk
 #tbc
 #group RestedXP 部落 45-60
@@ -15299,25 +15587,25 @@ step
 .collect 11184,7
 step
 .goto Un'Goro Crater,71.6,76.0
-.accept 4289 >> 接受Un'Goro的猿类
+.accept 4289 >>接受Un'Goro的猿类
 step
 .goto Un'Goro Crater,71.5,76.2
-.accept 4290 >> 接受拉尔科维的票价
+.accept 4290 >>接受拉尔科维的票价
 step
 .goto Un'Goro Crater,68.8,57.0
 >>单击其颈部附近的Threshadon
 .complete 4290,1 
 step
 .goto Un'Goro Crater,71.6,76.0
-.turnin 4290 >> 交上拉尔科维的车费
-.accept 4291 >> 接受拉尔科维的香味
+.turnin 4290 >>交上拉尔科维的车费
+.accept 4291 >>接受拉尔科维的香味
 step
 #sticky
 #label JournalUG
 >>该日志可以从该区域的任何暴徒中删除。它开始了一项任务。找到它时就接受它。
 .collect 11116,1,3884 
 .use 11116
-.accept 3884 >> 接受Williden杂志
+.accept 3884 >>接受Williden杂志
 step
 >>越过鸡蛋产卵并杀死一只拉尔科威配偶以获得腺体。
 .goto Un'Goro Crater,67.30,73.10,20,0
@@ -15326,11 +15614,11 @@ step
 .complete 4300,1 
 step
 .goto Un'Goro Crater,63.0,68.4
-.accept 3844 >> 接受这是每个人的秘密
+.accept 3844 >>接受这是每个人的秘密
 step
 .goto Un'Goro Crater,63.1,69.0
-.turnin 3844 >> 上缴这是每个人的秘密
-.accept 3845 >> 接受这是每个人的秘密
+.turnin 3844 >>上缴这是每个人的秘密
+.accept 3845 >>接受这是每个人的秘密
 step
 .use 11107 >>打开库存中的小包装
 .complete 3845,1 
@@ -15338,8 +15626,8 @@ step
 .complete 3845,3 
 step
 .goto Un'Goro Crater,71.6,75.9
-.turnin 4291 >> 加入拉尔科维的香味
-.accept 4292 >> 接受拉尔科维的诱饵
+.turnin 4291 >>加入拉尔科维的香味
+.accept 4292 >>接受拉尔科维的诱饵
 step
 .goto Un'Goro Crater,63.3,16.8
 >>杀死大猩猩。抢走他们的皮毛
@@ -15356,49 +15644,49 @@ step
 step
 #requires UGcrystals
 .goto Un'Goro Crater,46.1,13.5
-.accept 4243 >> 接受追逐A-Me 01
+.accept 4243 >>接受追逐A-Me 01
 step
 .goto Un'Goro Crater,44.2,11.4
-.accept 4503 >> 接受Shizzle的传单
+.accept 4503 >>接受Shizzle的传单
 step
 .goto Un'Goro Crater,45.5,8.6
-.accept 4145 >> 接受拉里昂和穆伊金
+.accept 4145 >>接受拉里昂和穆伊金
 step
 .goto Un'Goro Crater,44.7,8.2
-.turnin 3845 >> 上缴这是每个人的秘密
+.turnin 3845 >>上缴这是每个人的秘密
 step
 #xprate <1.5
 .goto Un'Goro Crater,44.7,8.2
-.accept 3908 >> 接受这是每个人的秘密
+.accept 3908 >>接受这是每个人的秘密
 step
 .goto Un'Goro Crater,43.6,8.4
-.accept 4501 >> 接受小心Pterrordax
-.accept 4492 >> 接受迷失！
+.accept 4501 >>接受小心Pterrordax
+.accept 4492 >>接受迷失！
 step
 .goto Un'Goro Crater,43.6,7.5
-.accept 3882 >> 接受滚动骨骼
+.accept 3882 >>接受滚动骨骼
 step
 .goto Un'Goro Crater,43.9,7.3
-.accept 3883 >> 接受外来生态
-.accept 3881 >> 接受远征救助
+.accept 3883 >>接受外来生态
+.accept 3881 >>接受远征救助
 step
 .goto Un'Goro Crater,43.9,7.3
-.accept 3884 >> 接受Williden杂志
-.turnin 3884 >> 上交Williden的日记
+.accept 3884 >>接受Williden杂志
+.turnin 3884 >>上交Williden的日记
 step
 >>进入洞穴
 .goto Un'Goro Crater,41.9,2.7
-.accept 4284 >> 接受权力结晶
-.turnin 4284 >> 接通电源晶体
-.accept 4285 >> 接受北方铁塔
-.accept 4288 >> 接受西塔
-.accept 4287 >> 接受东塔
+.accept 4284 >>接受权力结晶
+.turnin 4284 >>接通电源晶体
+.accept 4285 >>接受北方铁塔
+.accept 4288 >>接受西塔
+.accept 4287 >>接受东塔
 step
 .goto Un'Goro Crater,45.2,5.9
-.fp Un'Goro >> 获取元帅庇护所飞行路线
+.fp Un'Goro >>获取元帅庇护所飞行路线
 step << tbc
 #completewith next
->> 在点击塔门之前，杀死区域中的3-4个Pterrordax。抢他们的鳞片
+>>在点击塔门之前，杀死区域中的3-4个Pterrordax。抢他们的鳞片
 .goto Un'Goro Crater,56.6,12.6
 .complete 4501,1 
 .complete 4503,2 
@@ -15424,22 +15712,22 @@ step
 .complete 4287,1 
 step
 .use 11568 >>打开Torwa's Pouch，放入召唤Lar'korvi所需的两件物品。
-.use 11569 >> 用你袋子里的诱饵来产卵拉尔科维。
+.use 11569 >>用你袋子里的诱饵来产卵拉尔科维。
 .use 11570 >>最后，使用信息素混合物召唤他。
 .goto Un'Goro Crater,79.0,49.9
 .complete 4292,1 
 step
 .goto Un'Goro Crater,71.6,75.9
-.turnin 4289 >> 把Un'Goro的猿猴交上来
-.accept 4301 >> 接受强大的乌恰
-.turnin 4292 >> 把诱饵交给拉尔科维
+.turnin 4289 >>把Un'Goro的猿猴交上来
+.accept 4301 >>接受强大的乌恰
+.turnin 4292 >>把诱饵交给拉尔科维
 step
 #xprate <1.5
 #completewith next
 >>杀戮和掠夺Gorishi暴徒以获取气味腺
 .complete 4496,1 
 step
->> 下到洞里去。使用房间中央袋子里的刮药瓶（空玻璃药水）
+>>下到洞里去。使用房间中央袋子里的刮药瓶(空玻璃药水)
 .goto Un'Goro Crater,48.7,85.2
 .complete 3883,1 
 step
@@ -15449,10 +15737,10 @@ step
 .complete 4496,1 
 step
 #completewith next
->> 掠夺Pterrordax的天平。如果你现在不做，这将在稍后完成
+>>掠夺Pterrordax的天平。如果你现在不做，这将在稍后完成
 .complete 4503,2 
 step << tbc
->> 杀死山中发现的Pterrordax。
+>>杀死山中发现的Pterrordax。
 .goto Un'Goro Crater,57.6,90.4,40,0
 .goto Un'Goro Crater,50.6,89.8,40,0
 .goto Un'Goro Crater,44.6,90.6
@@ -15493,14 +15781,14 @@ step << wotlk
 .complete 4503,2 
 step
 .goto Un'Goro Crater,30.9,50.2
-.accept 974 >> 接受查找源
+.accept 974 >>接受查找源
 step
 #completewith next
 .goto Un'Goro Crater,47.1,47.1,10,0
 .goto Un'Goro Crater,47.7,48.3,10,0
 .goto Un'Goro Crater,48.2,50.1,10,0
 .goto Un'Goro Crater,48.6,49.8,50,0
-.goto Un'Goro Crater,49.6,45.7,60 >> 你可以沿着火山西侧的熔岩路径走，作为一条捷径
+.goto Un'Goro Crater,49.6,45.7,60 >>你可以沿着火山西侧的熔岩路径走，作为一条捷径
 step
 #completewith Springs
 >>杀死火山周围的红色/橙色元素。抢走他们的灰烬
@@ -15514,11 +15802,11 @@ step
 #label Springs
 >>返回克拉克尔
 .goto Un'Goro Crater,30.9,50.5
-.turnin 974 >> 转入查找来源
+.turnin 974 >>转入查找来源
 step
 #xprate <1.5
 .goto Un'Goro Crater,30.9,50.5
-.accept 980 >> 接受新春
+.accept 980 >>接受新春
 step
 #completewith PterrordaxAndys
 .goto Un'Goro Crater,35.49,43.91,0
@@ -15567,42 +15855,42 @@ step
 step
 >>骑向火山东侧。进入洞穴
 .goto Un'Goro Crater,51.9,49.9
-.turnin 4492 >> 上缴Lost！
-.accept 4491 >> 接受朋友的帮助
+.turnin 4492 >>上缴Lost！
+.accept 4491 >>接受朋友的帮助
 step
 .goto Un'Goro Crater,43.6,8.5
-.use 11804 >> 记住，当Spraggle停止移动时，使用Spraggle's Canteen叫醒他。
+.use 11804 >>记住，当Spraggle停止移动时，使用Spraggle's Canteen叫醒他。
 .complete 4491,1 
 step
 .goto Un'Goro Crater,43.6,8.5
-.turnin 4501 >> 交上来小心Pterrordax
+.turnin 4501 >>交上来小心Pterrordax
 step
 .goto Un'Goro Crater,44.2,11.4
-.turnin 4503 >> 交上Shizzle的传单
+.turnin 4503 >>交上Shizzle的传单
 step
 .goto Un'Goro Crater,43.9,7.3
-.turnin 3883 >> 转入外星生态
-.turnin 3881 >> 上缴远征救助
+.turnin 3883 >>转入外星生态
+.turnin 3881 >>上缴远征救助
 step
 .goto Un'Goro Crater,41.9,2.6
-.turnin 4285 >> 北方铁塔掉头
-.turnin 4288 >> 在西塔上转弯
-.turnin 4287 >> 在东塔上掉头
+.turnin 4285 >>北方铁塔掉头
+.turnin 4288 >>在西塔上转弯
+.turnin 4287 >>在东塔上掉头
 step
 .goto Un'Goro Crater,41.9,2.6
 >>角色扮演活动结束后再次与她交谈
-.accept 4321 >> 接受并理解它
-.turnin 4321 >> 转向理解它
+.accept 4321 >>接受并理解它
+.turnin 4321 >>转向理解它
 step
 .goto Un'Goro Crater,43.5,7.5
-.turnin 3882 >> 转入Roll the Bones
+.turnin 3882 >>转入Roll the Bones
 step
 .goto Un'Goro Crater,43.6,8.4
-.turnin 4491 >> 向我的朋友求助
+.turnin 4491 >>向我的朋友求助
 step
 .goto Un'Goro Crater,45.5,8.7
-.turnin 4145 >> 交给拉里昂和穆伊金
-.accept 4147 >> 接受Marvon的研讨会
+.turnin 4145 >>交给拉里昂和穆伊金
+.accept 4147 >>接受Marvon的研讨会
 step
 >>跑到大猩猩洞穴的后面。杀死U'cha。抢走他的皮毛
 .goto Un'Goro Crater,68.0,13.2
@@ -15610,14 +15898,14 @@ step
 .unitscan U'cha
 step
 .goto Un'Goro Crater,67.6,16.8
-.turnin 4243 >> 转向追逐A-Me 01
+.turnin 4243 >>转向追逐A-Me 01
 step
 >>如果你之前从拍卖行得到了一个Mithril Casing，请在a-Me 01上交任务
 >>如果您没有Mithril套管，请跳过此步骤
 .goto Un'Goro Crater,67.67,16.75
-.accept 4244 >> 接受追逐A-Me 01
-.turnin 4244 >> 转向追逐A-Me 01
-.accept 4245 >> 接受追逐A-Me 01
+.accept 4244 >>接受追逐A-Me 01
+.turnin 4244 >>转向追逐A-Me 01
+.accept 4245 >>接受追逐A-Me 01
 step
 .isOnQuest 4245
 >>护送A-Me回到元帅庇护所外面
@@ -15630,7 +15918,7 @@ step
 step
 #label UchaTurnin
 .goto Un'Goro Crater,71.6,76.0
-.turnin 4301 >> 上交The Mighty U'cha
+.turnin 4301 >>上交The Mighty U'cha
 step
 #xprate <1.5
 .goto Un'Goro Crater,67.09,72.94
@@ -15644,94 +15932,94 @@ step
 step
 #xprate <1.5
 #completewith next
-.hs >> Gadgetzan之炉
+.hs >>Gadgetzan之炉
 step << !Mage
 #xprate >1.499
 #completewith next
-.hs >> Gadgetzan之炉
+.hs >>Gadgetzan之炉
 step
 #xprate <1.5
 .goto Tanaris,51.6,26.8
-.turnin 4504 >> 转入超级粘滞
+.turnin 4504 >>转入超级粘滞
 step
 #xprate <1.5
 .goto Tanaris,50.9,27.0
-.turnin 4496 >> 在丛林中转弯
+.turnin 4496 >>在丛林中转弯
 step << !Mage
 #completewith next
 .goto Tanaris,51.6,25.5
-.fly Thunder Bluff >> 飞向雷霆崖
+.fly Thunder Bluff >>飞向雷霆崖
 step << Mage
 #completewith next
-.zone Thunder Bluff >> 传送到Thunder Bluff
+.zone Thunder Bluff >>传送到Thunder Bluff
 step << !Mage
 #completewith next
 .goto Tanaris,51.6,25.5
-.fly Thunder Bluff >> 飞向雷霆崖
+.fly Thunder Bluff >>飞向雷霆崖
 step << Mage
 #completewith next
-.zone Thunder Bluff >> 传送到Thunder Bluff
+.zone Thunder Bluff >>传送到Thunder Bluff
 step << Druid
 #completewith next
 .goto Thunder Bluff,77.0,29.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 #completewith next
 .goto Thunder Bluff,59.1,86.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 #completewith next
 .goto Thunder Bluff,54.1,83.9
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 #completewith next
 .goto Thunder Bluff,57.6,85.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Shaman
 #completewith next
 .goto Thunder Bluff,22.8,21.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 #completewith next
 .goto Thunder Bluff,24.6,22.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Mage
 #completewith next
 .goto Thunder Bluff,25.2,20.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .goto Thunder Bluff,78.5,28.7
-.accept 3761 >> 接受Un'Goro土壤
+.accept 3761 >>接受Un'Goro土壤
 step
 .goto Thunder Bluff,77.3,22.3
-.turnin 3761 >> 转入Un'Goro土壤
+.turnin 3761 >>转入Un'Goro土壤
 step
 >>在拍卖行购买每种布料3叠。
 .goto Thunder Bluff,43.3,42.8
-.turnin 7820 >> 交出捐赠的羊毛
-.turnin 7821 >> 捐献丝绸
-.turnin 7822 >> 交出Mageweave的捐赠
-.turnin 7823 >> 交出Runecloth的捐赠
+.turnin 7820 >>交出捐赠的羊毛
+.turnin 7821 >>捐献丝绸
+.turnin 7822 >>交出Mageweave的捐赠
+.turnin 7823 >>交出Runecloth的捐赠
 step
 #completewith next
 .goto Thunder Bluff,47.0,49.8
-.fly Ratchet >> 飞到棘轮
+.fly Ratchet >>飞到棘轮
 step
 .goto The Barrens,62.5,38.7
-.turnin 4147 >> 上马文的工作室
-.turnin 4502 >> 交出火山活动
+.turnin 4147 >>上马文的工作室
+.turnin 4502 >>交出火山活动
 step
 #xprate <1.5
 .maxlevel 54
 #completewith next
 .goto The Barrens,62.0,39.4
-.home >> 把你的炉石放在棘轮上
+.home >>把你的炉石放在棘轮上
 step
 #xprate <1.5
 .maxlevel 54
 #completewith next
 .goto The Barrens,63.1,37.2
-.fly Splintertree Post >> 飞到Splinterree Post
+.fly Splintertree Post >>飞到Splinterree Post
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -15742,93 +16030,93 @@ RXPGuides.RegisterGuide([[
 #next 53-53 费伍德森林
 step
 .goto Orgrimmar,54.1,68.4
-.home >> 将您的炉石设置为Orgrimmar
+.home >>将您的炉石设置为Orgrimmar
 step << Shaman
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.3,14.8
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,47.5,46.7
-.vendor >> 如果你有钱，买你的宠物升级。
+.vendor >>如果你有钱，买你的宠物升级。
 step << Mage
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .goto Orgrimmar,56.40,46.50
-.accept 4494 >> 接受Silithid的三月
+.accept 4494 >>接受Silithid的三月
 step
 .goto Orgrimmar,59.40,36.90
-.turnin 81 >> 提交Ripple交付
+.turnin 81 >>提交Ripple交付
 step
 .isQuestComplete 4300
 .goto Orgrimmar,55.60,34.20
-.turnin 4300 >> 上缴骨刃武器
+.turnin 4300 >>上缴骨刃武器
 step
 .goto Orgrimmar,75.00,34.30
-.accept 3504 >> 接受背叛
+.accept 3504 >>接受背叛
 step
 .maxlevel 53,azharaskip
 .goto Orgrimmar,45.2,63.9
-.fly Splintertree Post>> 飞到Splinterree Post
+.fly Splintertree Post>>飞到Splinterree Post
 step
 .goto Azshara,10.40,74.90,40,0
 .goto Azshara,11.40,78.10
->> 前往艾萨拉
-.accept 5535 >> 接受精神动荡
-.accept 5536 >> 接受充满仇恨的土地
+>>前往艾萨拉
+.accept 5535 >>接受精神动荡
+.accept 5536 >>接受充满仇恨的土地
 step
 .goto Azshara,20.09,61.79
->> 杀死该地区的萨特尔斯
+>>杀死该地区的萨特尔斯
 .complete 5536,1
 .complete 5536,2
 .complete 5536,3
 step
 .goto Azshara,17.20,68.41
->> 杀死该地区的亡灵
+>>杀死该地区的亡灵
 .complete 5535,1
 .complete 5535,2
 step
 .goto Azshara,11.36,78.16
-.turnin 5535 >> 陷入精神动荡
-.turnin 5536 >> 投奔充满仇恨的土地
+.turnin 5535 >>陷入精神动荡
+.turnin 5536 >>投奔充满仇恨的土地
 step
 .goto Azshara,22.00,49.70
-.fp Azshara >> 获取Azshara飞行路线
+.fp Azshara >>获取Azshara飞行路线
 step
 .isOnQuest 3504
 .goto Azshara,22.20,51.50
-.turnin 3504 >> 交出被背叛
+.turnin 3504 >>交出被背叛
 step
 .isQuestTurnedIn 3504
 .goto Azshara,22.20,51.50
-.accept 3505 >> 接受背叛
+.accept 3505 >>接受背叛
 step
 .goto Azshara,22.50,51.40
-.accept 3517 >> 接受窃取知识
+.accept 3517 >>接受窃取知识
 step
 .goto Azshara,53.45,21.82
-.accept 3601 >> 接受Kim'jael真的！
+.accept 3601 >>接受Kim'jael真的！
 step
 #completewith Magus
 .goto Azshara,57.02,29.45,0
->> 抢劫营地周围散落的箱子
+>>抢劫营地周围散落的箱子
 .complete 3601,1
 .complete 3601,2
 .complete 3601,3
@@ -15836,7 +16124,7 @@ step
 step
 .isOnQuest 3505
 .goto Azshara,57.02,29.45
->> 杀死该地区的血精灵。当勘测员发射Nova，回收员治疗和火球时要小心
+>>杀死该地区的血精灵。当勘测员发射Nova，回收员治疗和火球时要小心
 .complete 3505,2
 .complete 3505,3
 step
@@ -15844,11 +16132,11 @@ step
 .goto Azshara,59.40,31.20
 >>跑向召唤圈，然后点击底座上的书
 .complete 3505,1
-.turnin 3505 >> 交出被背叛
+.turnin 3505 >>交出被背叛
 step
 .isQuestTurnedIn 3505
 .goto Azshara,59.50,31.20
-.accept 3506 >> 接受背叛
+.accept 3506 >>接受背叛
 step
 #label Magus
 .isQuestTurnedIn 3505
@@ -15857,39 +16145,39 @@ step
 .complete 3506,1
 step
 .goto Azshara,57.02,29.45
->> 抢劫帐篷附近分散在营地周围的箱子
+>>抢劫帐篷附近分散在营地周围的箱子
 .complete 3601,1
 .complete 3601,2
 .complete 3601,3
 .complete 3601,4
 step
 .goto Azshara,57.02,29.45
-.xp 53 >> 研磨到53级，这是你在60级之前需要的最后研磨点。如果你不想研磨这么多，你可以做一两个地牢。
+.xp 53 >>研磨到53级，这是你在60级之前需要的最后研磨点。如果你不想研磨这么多，你可以做一两个地牢。
 #era
 step
 .goto Azshara,53.45,21.82
-.turnin 3601 >> 交给金贾尔真的！
-.accept 5534 >> 接受Kim'jael的“丢失”设备
+.turnin 3601 >>交给金贾尔真的！
+.accept 5534 >>接受Kim'jael的“丢失”设备
 step
 #label nagasrune
 #sticky
->> 杀死Nagas。抢走他们的“一些符文”
+>>杀死Nagas。抢走他们的“一些符文”
 .complete 5534,1
 step
 .goto Azshara,47.80,60.80
->> 向南走到悬崖上，跳入水中。然后使用第一个小瓶。
+>>向南走到悬崖上，跳入水中。然后使用第一个小瓶。
 .complete 3568,1
 step
 .goto Azshara,47.80,51.30
->> 使用第二个小瓶
+>>使用第二个小瓶
 .complete 3568,2
 step
 .goto Azshara,48.70,48.50
->> 使用第三个小瓶
+>>使用第三个小瓶
 .complete 3568,3
 step
 .goto Azshara,47.50,46.20
->> 使用第四个小瓶
+>>使用第四个小瓶
 .complete 3568,4
 step
 >>这些石碑散落在这些废墟中。找到每一个。
@@ -15904,15 +16192,15 @@ step
 #requires nagasrune
 .goto Azshara,45.55,37.79,50,0
 .goto Azshara,53.45,21.82
->> 沿着斜坡向北驶出艾萨拉海岸。跑回Kim'jael
-.turnin 5534 >> 交出Kim'jael的“失踪”设备
+>>沿着斜坡向北驶出艾萨拉海岸。跑回Kim'jael
+.turnin 5534 >>交出Kim'jael的“失踪”设备
 step
 .goto Azshara,22.60,51.40
->> 暂时跳过其他任务
-.turnin 3517 >> 交出偷窃知识
-.accept 3561 >> 接受交付给Archage Xylem
-.accept 3518 >> 接受交付至Magatha
-.accept 3541 >> 接受交付至Jes'rimon
+>>暂时跳过其他任务
+.turnin 3517 >>交出偷窃知识
+.accept 3561 >>接受交付给Archage Xylem
+.accept 3518 >>接受交付至Magatha
+.accept 3541 >>接受交付至Jes'rimon
 step
 .isQuestTurnedIn 3505
 .goto Azshara,22.3,51.5
@@ -15937,7 +16225,7 @@ step
 step
 #label azharaskip
 .goto Ashenvale,55.78,28.12
-.zone Felwood >> 前往费尔伍德
+.zone Felwood >>前往费尔伍德
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -15953,73 +16241,73 @@ step
 .abandon 3568
 step
 .goto Felwood,51.00,85.00
-.accept 8460 >> 接受Timbermaw Ally
+.accept 8460 >>接受Timbermaw Ally
 step
 .goto Felwood,50.90,81.70
-.accept 5156 >> 接受验证损坏
+.accept 5156 >>接受验证损坏
 step
 .goto Felwood,51.20,82.10
-.accept 5155 >> 接受Jaedenar部队
+.accept 5155 >>接受Jaedenar部队
 step
 .goto Felwood,46.70,83.30
-.accept 4102 >> 接受清洁Felwood
+.accept 4102 >>接受清洁Felwood
 step
 .goto Felwood,38.45,60.72
->> 杀死在Jaedenar发现的暴徒
->> 小心专业人员，因为他们有火焰喷射和闪烁
+>>杀死在Jaedenar发现的暴徒
+>>小心专业人员，因为他们有火焰喷射和闪烁
 .complete 5155,1
 .complete 5155,2
 .complete 5155,3
 .complete 5155,4
 step
 .goto Felwood,34.80,52.70
-.accept 6162 >> 接受丈夫的最后一战
+.accept 6162 >>接受丈夫的最后一战
 step
 .goto Felwood,34.20,52.30
-.accept 4505 >> 接受腐败之井
+.accept 4505 >>接受腐败之井
 step
 .goto Felwood,34.40,53.90
-.fp Felwood >> 获取Felwood飞行路线
+.fp Felwood >>获取Felwood飞行路线
 step
 .goto Felwood,36.02,66.99,70,0
 .goto Felwood,32.30,66.60
->> 在绿月光井的库存中使用硬化Flasket
+>>在绿月光井的库存中使用硬化Flasket
 .complete 4505,1
 step
 #completewith next
 .goto Felwood,48.93,90.22,0
->> 杀死该地区的枯枝落叶熊
+>>杀死该地区的枯枝落叶熊
 .complete 8460,1
 .complete 8460,2
 .complete 8460,3
 step
 .goto Felwood,48.20,94.30
->> 杀死霸王罗尔。抢他的爪子
+>>杀死霸王罗尔。抢他的爪子
 .complete 6162,1
 step
 .goto Felwood,48.93,90.22
->> 杀死该地区的枯枝落叶熊
+>>杀死该地区的枯枝落叶熊
 .complete 8460,1
 .complete 8460,2
 .complete 8460,3
 step
 .goto Felwood,51.00,85.00
-.turnin 8460 >> 交出Timbermaw Ally
-.accept 8462 >> 接受与Nafien交谈
+.turnin 8460 >>交出Timbermaw Ally
+.accept 8462 >>接受与Nafien交谈
 step
 .goto Felwood,51.20,82.20
-.turnin 5155 >> 交出杰德纳的力量
-.accept 5157 >> 接受腐败水的收集
+.turnin 5155 >>交出杰德纳的力量
+.accept 5157 >>接受腐败水的收集
 step
 .goto Felwood,35.20,59.80
->> 使用Jaedenar发现的绿色水井上的空食堂
+>>使用Jaedenar发现的绿色水井上的空食堂
 .complete 5157,1
 step
 #completewith next
 .goto Felwood,40.87,42.03,0
 .goto Felwood,46.03,38.06,0
->> 杀死该地区的熵兽和恐怖。
->> 如果你找不到恐怖，只能找到野兽，那么杀死一些野兽，迫使恐怖重生
+>>杀死该地区的熵兽和恐怖。
+>>如果你找不到恐怖，只能找到野兽，那么杀死一些野兽，迫使恐怖重生
 .complete 5156,2
 .complete 5156,3
 .unitscan Entropic Horror
@@ -16030,8 +16318,8 @@ step
 step
 .goto Felwood,40.87,42.03,90,0
 .goto Felwood,46.03,38.06
->> 杀死该地区的熵兽和恐怖。
->> 如果你找不到恐怖，只能找到野兽，那么杀死一些野兽，迫使恐怖重生
+>>杀死该地区的熵兽和恐怖。
+>>如果你找不到恐怖，只能找到野兽，那么杀死一些野兽，迫使恐怖重生
 .complete 5156,2
 .complete 5156,3
 .unitscan Entropic Horror
@@ -16039,24 +16327,24 @@ step
 #era/som
 #completewith next
 .goto Winterspring,17.63,50.02,0
->> 杀死你看到的Angerclaw Grizzlys和Felpow Ravagers
+>>杀死你看到的Angerclaw Grizzlys和Felpow Ravagers
 .complete 4120,1
 .complete 4120,2
 step
 .goto Felwood,55.70,17.4
->> 前往铁树洞穴。杀死内外的沃普伍德暴徒。抢他们的血琥珀
+>>前往铁树洞穴。杀死内外的沃普伍德暴徒。抢他们的血琥珀
 .complete 4102,1
 step
 #era/som
 .goto Felwood,53.75,28.06,90,0
 .goto Felwood,58.03,17.83,90,0
 .goto Felwood,63.27,19.15
->> 杀死Angerclaw Grizzlys和Felpow Ravagers
+>>杀死Angerclaw Grizzlys和Felpow Ravagers
 .complete 4120,1
 .complete 4120,2
 step
 .goto Felwood,64.70,8.20
-.turnin 8462 >> 转身与Nafien交谈
+.turnin 8462 >>转身与Nafien交谈
 step
 #completewith next
 .goto Felwood,65.16,7.88,40,0
@@ -16064,26 +16352,26 @@ step
 .goto Felwood,66.40,2.95,40,0
 .goto Felwood,68.24,5.60,40,0
 .goto Felwood,68.73,6.38
-.zone Winterspring >> 穿过Timbermaw Hold前往冬泉
+.zone Winterspring >>穿过Timbermaw Hold前往冬泉
 step
 .goto Winterspring,31.30,45.10
-.accept 5082 >> 接受冬天来临的威胁
+.accept 5082 >>接受冬天来临的威胁
 step
 .goto Winterspring,31.30,45.10
-.turnin 3908 >> 上缴这是每个人的秘密
+.turnin 3908 >>上缴这是每个人的秘密
 step
 #completewith next
 .goto Winterspring,30.80,36.20,0
->> 杀死Furbolgs直到你抢劫一个空的消防水瓶
+>>杀死Furbolgs直到你抢劫一个空的消防水瓶
 .collect 12771,1,5083
-.accept 5083 >> 接受冬季消防用水
+.accept 5083 >>接受冬季消防用水
 step
 .goto Winterspring,30.81,35.89,90,0
 .goto Winterspring,33.20,37.01,90,0
 .goto Winterspring,30.81,35.89,90,0
 .goto Winterspring,41.13,42.90,0
 .goto Winterspring,33.20,37.01
->> 杀死该区域的Furbolgs。如果你的产卵用完，杀死东南部的弗波格人
+>>杀死该区域的Furbolgs。如果你的产卵用完，杀死东南部的弗波格人
 .complete 5082,1
 .complete 5082,2
 .complete 5082,3
@@ -16093,52 +16381,52 @@ step
 .goto Winterspring,30.81,35.89,90,0
 .goto Winterspring,41.13,42.90,0
 .goto Winterspring,33.20,37.01
->> 杀死Furbolgs直到你抢劫一个空的消防水瓶
+>>杀死Furbolgs直到你抢劫一个空的消防水瓶
 .collect 12771,1,5083
-.accept 5083 >> 接受冬季消防用水
+.accept 5083 >>接受冬季消防用水
 step
 .goto Winterspring,31.30,45.20
-.turnin 5082 >> 冬季来临的威胁
-.turnin 5083 >> 投入冬季消防用水
-.accept 5084 >> 接受堕落腐败
-.accept 3909 >> 接受Videre Elixir
+.turnin 5082 >>冬季来临的威胁
+.turnin 5083 >>投入冬季消防用水
+.accept 5084 >>接受堕落腐败
+.accept 3909 >>接受Videre Elixir
 step
 #softcore
 #completewith next
-.deathskip >> 在精神治疗师处死亡并重生
+.deathskip >>在精神治疗师处死亡并重生
 step
 .goto Winterspring,61.60,38.60
-.turnin 4808 >> 转入Felnok Steelspring
+.turnin 4808 >>转入Felnok Steelspring
 step
 .goto Winterspring,60.47,36.30
-.fp Everlook >> 获取Everlook飞行路线
-.fly Felwood >> 飞到费尔伍德
+.fp Everlook >>获取Everlook飞行路线
+.fly Felwood >>飞到费尔伍德
 step
 .goto Felwood,34.20,52.30
-.turnin 4505 >> 上缴腐败之井
+.turnin 4505 >>上缴腐败之井
 step
 .goto Felwood,34.80,52.70
-.turnin 6162 >> 上交丈夫的最后一战
+.turnin 6162 >>上交丈夫的最后一战
 step
 #softcore
 #completewith next
 .goto Felwood,41.30,67.10
->> 前往Jaedenar以南的煤泥池。在南费尔伍德的精神疗养院死亡并重生
+>>前往Jaedenar以南的煤泥池。在南费尔伍德的精神疗养院死亡并重生
 step
 .goto Felwood,46.60,83.00
-.turnin 4102 >> 轮流清洁Felwood
->> 向阿拉森德里斯索要塞纳里奥灯塔
+.turnin 4102 >>轮流清洁Felwood
+>>向阿拉森德里斯索要塞纳里奥灯塔
 .collect 11511,1
 step
 .goto Felwood,51.20,82.10
-.turnin 5157 >> 上缴腐败水
-.accept 5158 >> 接受寻求精神援助
+.turnin 5157 >>上缴腐败水
+.accept 5158 >>接受寻求精神援助
 step
 .goto Felwood,50.90,81.70
-.turnin 5156 >> 上缴验证腐败
+.turnin 5156 >>上缴验证腐败
 step
-.hs >> 赫斯到奥格瑞玛
->> 如果需要，购买食物/水
+.hs >>赫斯到奥格瑞玛
+>>如果需要，购买食物/水
 step
 #softcore
 .goto Orgrimmar,55.55,64.74
@@ -16147,18 +16435,18 @@ step
 step
 .isOnQuest 3541
 .goto Orgrimmar,55.52,34.07
-.turnin 3541 >> 交给杰斯里蒙
-.accept 3563 >> 接受Jes'rimon给Jediga的付款
+.turnin 3541 >>交给杰斯里蒙
+.accept 3563 >>接受Jes'rimon给Jediga的付款
 step
 .isOnQuest 3507
 .goto Orgrimmar,75.20,34.00
-.turnin 3507 >> 交出被背叛
+.turnin 3507 >>交出被背叛
 step
 .goto Orgrimmar,45.11,63.89
-.fly Camp Taurajo >> 飞往陶拉霍营地
+.fly Camp Taurajo >>飞往陶拉霍营地
 step
 .goto The Barrens,45.6,59.0
-.home >> 将您的炉石设置为陶拉霍营地
+.home >>将您的炉石设置为陶拉霍营地
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -16169,38 +16457,38 @@ RXPGuides.RegisterGuide([[
 #next 54-56 费伍德森林/冬泉谷
 step
 .goto The Barrens,44.45,59.15
-.fly Tanaris >> 飞往塔纳瑞斯
+.fly Tanaris >>飞往塔纳瑞斯
 step
 .goto Tanaris,50.90,27.00
-.turnin 4494 >> 三月份上船
-.accept 4496 >> 接受丛林中的邦格
+.turnin 4494 >>三月份上船
+.accept 4496 >>接受丛林中的邦格
 step
 .goto Tanaris,51.60,25.50
-.fly Un'Goro Crater>> 飞到Un'Goro火山口
+.fly Un'Goro Crater>>飞到Un'Goro火山口
 step
 .goto Tanaris,12.70,5.90
-.accept 3881 >> 接受远征救助
-.accept 3883 >> 接受外来生态
+.accept 3881 >>接受远征救助
+.accept 3883 >>接受外来生态
 step
 .goto Tanaris,12.50,6.00
-.accept 3882 >> 接受滚动骨骼
+.accept 3882 >>接受滚动骨骼
 step
 >>进入洞穴
 .goto Un'Goro Crater,43.16,6.24,30,0
 .goto Un'Goro Crater,41.90,2.70
-.accept 4288 >> 接受西塔
-.accept 4285 >> 接受北方铁塔
-.accept 4287 >> 接受东塔
+.accept 4288 >>接受西塔
+.accept 4285 >>接受北方铁塔
+.accept 4287 >>接受东塔
 step
 .goto Tanaris,12.50,6.50
-.accept 4492 >> 接受迷失！
-.accept 4501 >> 接受小心Pterrordax
+.accept 4492 >>接受迷失！
+.accept 4501 >>接受小心Pterrordax
 step
 .goto Un'Goro Crater,45.53,8.72
-.accept 4145 >> 接受拉里昂和穆伊金
+.accept 4145 >>接受拉里昂和穆伊金
 step
 .goto Tanaris,12.80,8.10
-.accept 4503 >> 接受Shizzle的传单
+.accept 4503 >>接受Shizzle的传单
 step
 #completewith Mighty
 >>当你穿越该区域时，从暴徒那里收集Un'Goro土壤
@@ -16211,7 +16499,7 @@ step
 .complete 4503,2 
 step
 #completewith Gorillaz
->> 杀死一些在北塔北部发现的Pterrordax
+>>杀死一些在北塔北部发现的Pterrordax
 .complete 4501,1 
 step
 .isOnQuest 4285
@@ -16220,7 +16508,7 @@ step
 .complete 4285,1 
 step
 #label Gorillaz
-.goto Un'Goro Crater,62.97,17.39,150 >> 前往真菌岩
+.goto Un'Goro Crater,62.97,17.39,150 >>前往真菌岩
 step
 .goto Un'Goro Crater,63.3,16.8
 >>杀死洞穴内外的戈瑞拉斯。抢走他们的皮毛
@@ -16255,20 +16543,20 @@ step
 .goto Un'Goro Crater,77.3,50.0
 .complete 4287,1 
 step
->> 打开Torwa's Pouch。将沙棘肉放在平坦的岩石上，然后涂上信息素混合物
->> 一旦拉科维被传唤，就把他杀死。抢劫他的头
+>>打开Torwa's Pouch。将沙棘肉放在平坦的岩石上，然后涂上信息素混合物
+>>一旦拉科维被传唤，就把他杀死。抢劫他的头
 .goto Un'Goro Crater,79.94,49.88
 .complete 4292,1 
 step
 #label Ucha
 .goto Un'Goro Crater,71.6,75.9
-.turnin 4292 >> 把诱饵交给拉尔科维
-.turnin 4289 >> 把Un'Goro的猿猴交上来
-.accept 4301 >> 接受强大的乌恰
+.turnin 4292 >>把诱饵交给拉尔科维
+.turnin 4289 >>把Un'Goro的猿猴交上来
+.accept 4301 >>接受强大的乌恰
 step
 .isOnQuest 4300
 .goto Un'Goro Crater,68.6,46.4
->> 杀死猛禽。为了拉瓦萨的爪子而抢劫他们
+>>杀死猛禽。为了拉瓦萨的爪子而抢劫他们
 .complete 4300,1
 step
 #completewith next
@@ -16276,8 +16564,8 @@ step
 >>杀死该地区的Silithid暴徒。掠夺他们以获取气味
 .complete 4496,1 
 step
->> 下到Silithid洞穴。拥抱左墙朝向第一个房间
->> 当你在房间中间时，使用刮水瓶
+>>下到Silithid洞穴。拥抱左墙朝向第一个房间
+>>当你在房间中间时，使用刮水瓶
 .goto Un'Goro Crater,49.97,81.36,40,0
 .goto Un'Goro Crater,48.7,85.2
 .complete 3883,1 
@@ -16291,7 +16579,7 @@ step
 >>掠夺你杀死的Pterrordax的鳞片。你稍后会完成这个
 .complete 4503,2 
 step
->> 杀死南部山区需要的其他Pterrordax人
+>>杀死南部山区需要的其他Pterrordax人
 .goto Un'Goro Crater,50.49,90.54,60,0
 .goto Un'Goro Crater,44.11,91.63
 .complete 4501,1 
@@ -16324,13 +16612,13 @@ step
 .complete 4503,2 
 step
 .goto Un'Goro Crater,30.9,50.2
-.accept 974 >> 接受查找源
+.accept 974 >>接受查找源
 step
 #completewith next
 .goto Un'Goro Crater,47.1,47.1,10,0
 .goto Un'Goro Crater,47.7,48.3,10,0
 .goto Un'Goro Crater,48.2,50.1,10,0
-.goto Un'Goro Crater,48.6,49.8,20 >> 你可以沿着火山西侧的熔岩路径走，作为一条捷径
+.goto Un'Goro Crater,48.6,49.8,20 >>你可以沿着火山西侧的熔岩路径走，作为一条捷径
 step
 >>爬到火山顶。使用Krakle温度计
 .goto Un'Goro Crater,49.6,45.7
@@ -16339,8 +16627,8 @@ step
 #label Springs
 >>返回克拉克尔
 .goto Un'Goro Crater,30.9,50.5
-.turnin 974 >> 转入查找来源
-.accept 980 >> 接受新春
+.turnin 974 >>转入查找来源
+.accept 980 >>接受新春
 step
 #completewith PterrordaxAndys
 .goto Un'Goro Crater,35.49,43.91,0
@@ -16376,44 +16664,44 @@ step
 step
 >>骑向火山东侧。进入洞穴
 .goto Un'Goro Crater,51.9,49.9
-.turnin 4492 >> 上缴Lost！
-.accept 4491 >> 接受朋友的帮助
+.turnin 4492 >>上缴Lost！
+.accept 4491 >>接受朋友的帮助
 step
 .goto Un'Goro Crater,43.6,8.5
->> 对于这次护送任务，请记住在他停止移动时，使用包中的食堂叫醒他。小心不要骑得太快离开林戈
+>>对于这次护送任务，请记住在他停止移动时，使用包中的食堂叫醒他。小心不要骑得太快离开林戈
 .complete 4491,1 
 step
 .goto Un'Goro Crater,43.6,8.5
-.turnin 4501 >> 交上来小心Pterrordax
+.turnin 4501 >>交上来小心Pterrordax
 step
 .goto Un'Goro Crater,44.2,11.4
-.turnin 4503 >> 交上Shizzle的传单
+.turnin 4503 >>交上Shizzle的传单
 step
 .goto Un'Goro Crater,43.9,7.3
-.turnin 3883 >> 转入外星生态
-.turnin 3881 >> 上缴远征救助
+.turnin 3883 >>转入外星生态
+.turnin 3881 >>上缴远征救助
 step
 >>进入洞穴
 .goto Un'Goro Crater,43.16,6.24,30,0
 .goto Un'Goro Crater,41.9,2.6
-.turnin 4288 >> 在西塔上转弯
-.turnin 4285 >> 北方铁塔掉头
-.turnin 4287 >> 在东塔上掉头
-.accept 4321 >> 接受并理解它
-.turnin 4321 >> 转向理解它
+.turnin 4288 >>在西塔上转弯
+.turnin 4285 >>北方铁塔掉头
+.turnin 4287 >>在东塔上掉头
+.accept 4321 >>接受并理解它
+.turnin 4321 >>转向理解它
 step
 .goto Un'Goro Crater,43.5,7.5
-.turnin 3882 >> 转入Roll the Bones
+.turnin 3882 >>转入Roll the Bones
 step
 .goto Un'Goro Crater,43.6,8.4
-.turnin 4491 >> 向我的朋友求助
+.turnin 4491 >>向我的朋友求助
 step
 .goto Un'Goro Crater,45.5,8.7
-.turnin 4145 >> 交给拉里昂和穆伊金
-.accept 4147 >> 接受Marvon的研讨会
+.turnin 4145 >>交给拉里昂和穆伊金
+.accept 4147 >>接受Marvon的研讨会
 step
 .goto Un'Goro Crater,46.1,13.5
-.accept 4243 >> 接受追逐A-Me 01
+.accept 4243 >>接受追逐A-Me 01
 step
 .isOnQuest 4285
 >>与铁塔互动
@@ -16423,7 +16711,7 @@ step
 >>返回大猩猩洞穴。当你进入洞穴时，拥抱右边的墙
 .goto Un'Goro Crater,64.17,16.43,40,0
 .goto Un'Goro Crater,67.6,16.8
-.turnin 4243 >> 转向追逐A-Me 01
+.turnin 4243 >>转向追逐A-Me 01
 step
 >>跑到山洞的后面。杀死U'cha。抢走他的皮毛
 .goto Un'Goro Crater,68.0,13.2
@@ -16433,9 +16721,9 @@ step
 >>如果你之前从拍卖行得到了一个Mithril Casing，请在a-Me 01上交任务
 >>如果您没有Mithril套管，请跳过此步骤
 .goto Un'Goro Crater,67.67,16.75
-.accept 4244 >> 接受追逐A-Me 01
-.turnin 4244 >> 转向追逐A-Me 01
-.accept 4245 >> 接受追逐A-Me 01
+.accept 4244 >>接受追逐A-Me 01
+.turnin 4244 >>转向追逐A-Me 01
+.accept 4245 >>接受追逐A-Me 01
 step
 #softcore
 .isOnQuest 4245
@@ -16455,7 +16743,7 @@ step
 step
 #label Mighty
 .goto Un'Goro Crater,71.6,76.0
-.turnin 4301 >> 上交The Mighty U'cha
+.turnin 4301 >>上交The Mighty U'cha
 step
 >>从暴徒或土壤块中收集非戈罗土壤
 .collect 11018,25 
@@ -16464,61 +16752,61 @@ step
 >>跑回元帅庇护所
 .goto Un'Goro Crater,43.16,6.24,30,0
 .goto Un'Goro Crater,41.9,2.6
-.turnin 4285 >> 北方铁塔掉头
-.turnin 4287 >> 在东塔上掉头
-.accept 4321 >> 接受并理解它
-.turnin 4321 >> 转向理解它
+.turnin 4285 >>北方铁塔掉头
+.turnin 4287 >>在东塔上掉头
+.accept 4321 >>接受并理解它
+.turnin 4321 >>转向理解它
 step
 #hardcore
-.fly Tanaris >> 飞往塔纳瑞斯
+.fly Tanaris >>飞往塔纳瑞斯
 step
 #completewith next
 #softcore
 .goto Tanaris,27.06,56.58
-.zone Tanaris >> 返回塔纳瑞斯
+.zone Tanaris >>返回塔纳瑞斯
 step
 #completewith next
 #softcore
 .goto Tanaris,27.89,59.02
-.deathskip >> 在Gadgetzan的精神治疗者处死亡并重生
+.deathskip >>在Gadgetzan的精神治疗者处死亡并重生
 step
 .goto Tanaris,50.90,27.00
-.turnin 4496 >> 在丛林中转弯
+.turnin 4496 >>在丛林中转弯
 step
 .goto Tanaris,51.60,25.50
-.fly Feralas>> 飞往费拉拉斯
+.fly Feralas>>飞往费拉拉斯
 step
 #era/som
 .goto Feralas,76.18,43.83
-.turnin 4120 >> 交出腐败的力量
+.turnin 4120 >>交出腐败的力量
 step
 >>前往Dire Maul
 .goto Feralas,60.07,47.44,50,0
-.goto Feralas,59.59,43.45,10 >> 拥抱死亡之锤外的墙。确保您的普通聊天更改为“Dire Maul”。这是为了稍后解锁任务
+.goto Feralas,59.59,43.45,10 >>拥抱死亡之锤外的墙。确保您的普通聊天更改为“Dire Maul”。这是为了稍后解锁任务
 step
 .goto Feralas,50.76,49.83,60,0
 .goto Feralas,45.12,25.56
->> 从格雷根那里买些诱饵
+>>从格雷根那里买些诱饵
 .collect 11141,1,3909,1
 step
 .goto Feralas,44.60,10.19
->> 给守卫埃沃罗特的米布利恩一些诱饵。在废墟中抢劫埃沃罗特
+>>给守卫埃沃罗特的米布利恩一些诱饵。在废墟中抢劫埃沃罗特
 .collect 11242,1,3909,1
 step
 .goto Feralas,45.12,25.56
->> 与格雷根交谈并在埃沃罗特交易
+>>与格雷根交谈并在埃沃罗特交易
 .complete 3909,1
 step << !Mage
-.hs >> 炉灶前往陶拉霍营地
->> 如果需要，购买食物/水
+.hs >>炉灶前往陶拉霍营地
+>>如果需要，购买食物/水
 step << !Mage
 .goto The Barrens,44.45,59.15
-.fly Thunder Bluff >> 飞向雷霆崖
+.fly Thunder Bluff >>飞向雷霆崖
 step << Mage
-.zone Thunder Bluff >> 传送到Thunder Bluff
+.zone Thunder Bluff >>传送到Thunder Bluff
 step << Mage
 .goto Thunder Bluff,25.2,20.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 #sticky
 #label BluffRunner
@@ -16527,60 +16815,60 @@ step
 .goto Thunder Bluff,55.63,50.08,70,0
 .goto Thunder Bluff,41.54,57.87,0
 >>找到Bluff Runner Windstrider。接受他的追求
-.accept 1000 >> 接受新边疆
-.accept 5095 >> 接受武器召唤：瘟疫之地！
+.accept 1000 >>接受新边疆
+.accept 5095 >>接受武器召唤：瘟疫之地！
 .unitscan Bluff Runner Windstrider
 step
 .goto Thunder Bluff,45.80,64.70
-.accept 3762 >> 接受协助建筑德鲁伊Runetotem
+.accept 3762 >>接受协助建筑德鲁伊Runetotem
 step << Druid
 .goto Thunder Bluff,77.0,29.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Thunder Bluff,59.1,86.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Thunder Bluff,54.1,83.9
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 .goto Thunder Bluff,57.6,85.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Shaman
 .goto Thunder Bluff,22.8,21.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 .goto Thunder Bluff,24.6,22.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .goto Thunder Bluff,78.50,28.60
-.turnin 1000 >> 交出新边疆
-.accept 1123 >> 接受Rabine Saturna
-.turnin 3762 >> 协助拱门德鲁伊Runetotem
-.accept 3761 >> 接受Un'Goro土壤
+.turnin 1000 >>交出新边疆
+.accept 1123 >>接受Rabine Saturna
+.turnin 3762 >>协助拱门德鲁伊Runetotem
+.accept 3761 >>接受Un'Goro土壤
 step
 .goto Thunder Bluff,77.30,22.20
-.turnin 3761 >> 转入Un'Goro土壤
+.turnin 3761 >>转入Un'Goro土壤
 step
 .goto Thunder Bluff,78.40,28.80
-.accept 3782 >> 接受Morrowgrain研究
+.accept 3782 >>接受Morrowgrain研究
 step
 .isOnQuest 3518
 .goto Thunder Bluff,70.20,30.70
-.turnin 3518 >> 交给Magatha
+.turnin 3518 >>交给Magatha
 step
 .isQuestTurnedIn 3518
 .goto Thunder Bluff,70.20,30.70
-.accept 3562 >> 接受Magatha对Jediga的付款
+.accept 3562 >>接受Magatha对Jediga的付款
 step
 .goto Thunder Bluff,71.00,33.80
-.turnin 3782 >> 转入Morrowgrain研究
+.turnin 3782 >>转入Morrowgrain研究
 step
 #requires BluffRunner
 .goto Thunder Bluff,46.8,50.0
-.fly Ratchet>> 飞到棘轮
+.fly Ratchet>>飞到棘轮
 ]])
 RXPGuides.RegisterGuide([[
-#version 7
+#version 9
 #wotlk
 #tbc
 #group RestedXP 部落 45-60
@@ -16594,39 +16882,39 @@ step
 .maxlevel 54
 #completewith next
 .goto Azshara,10.40,74.90
-.zone Azshara >> 跑向艾萨拉
+.zone Azshara >>跑向艾萨拉
 step
 #xprate <1.5
 .maxlevel 54
 .goto Azshara,22.3,51.4
-.turnin -3504 >> 交出被背叛
-.accept 3505 >> 接受背叛
+.turnin -3504 >>交出被背叛
+.accept 3505 >>接受背叛
 step
 #xprate <1.5
 #level 55
 #completewith next
-.abandon 3504 >> 被遗弃的背叛者
+.abandon 3504 >>被遗弃的背叛者
 step
 #xprate <1.5
 .isQuestTurnedIn 3504
 .goto Azshara,22.5,51.2
-.accept 3517 >> 接受窃取知识
+.accept 3517 >>接受窃取知识
 step
 #xprate <1.5
 .isQuestTurnedIn 3504
 .goto Azshara,22.0,49.7
-.fp Valormok >> 获取Valormok飞行路线
+.fp Valormok >>获取Valormok飞行路线
 step
 #xprate <1.5
 .isQuestTurnedIn 3504
 .goto Azshara,53.6,21.8
-.accept 3601 >> 接受Kim'jael真的！
+.accept 3601 >>接受Kim'jael真的！
 step
 #xprate <1.5
 #completewith MagusR
 .isOnQuest 3601
 .goto Azshara,56.9,30.2,0
->> 掠夺营地周围随机产卵的小板条箱。
+>>掠夺营地周围随机产卵的小板条箱。
 .complete 3601,2 
 .complete 3601,1 
 .complete 3601,4 
@@ -16647,8 +16935,8 @@ step
 #xprate <1.5
 .isOnQuest 3505
 .goto Azshara,59.5,31.2
-.turnin 3505 >> 交出被背叛
-.accept 3506 >> 接受背叛
+.turnin 3505 >>交出被背叛
+.accept 3506 >>接受背叛
 step
 #xprate <1.5
 .isOnQuest 3506
@@ -16661,7 +16949,7 @@ step
 #xprate <1.5
 .isOnQuest 3601
 .goto Azshara,56.9,30.2
->> 掠夺营地周围随机产卵的小板条箱。
+>>掠夺营地周围随机产卵的小板条箱。
 .complete 3601,2 
 .complete 3601,1 
 .complete 3601,4 
@@ -16670,8 +16958,8 @@ step
 #xprate <1.5
 .isOnQuest 3601
 .goto Azshara,53.5,21.8
-.turnin 3601 >> 交给金贾尔真的！
-.accept 5534 >> 接受Kim'jael的“丢失”设备
+.turnin 3601 >>交给金贾尔真的！
+.accept 5534 >>接受Kim'jael的“丢失”设备
 step
 #xprate <1.5
 .isOnQuest 5534
@@ -16681,28 +16969,28 @@ step
 step
 #xprate <1.5
 .isOnQuest 3568
-.use 10695 >> 打开库存中的空瓶盒
->> 走到窗台，跳进水里。一定要在水里着陆，然后游到岸边。
-.use 10690 >> 点击第四个小瓶
+.use 10695 >>打开库存中的空瓶盒
+>>走到窗台，跳进水里。一定要在水里着陆，然后游到岸边。
+.use 10690 >>点击第四个小瓶
 .goto Azshara,47.4,45.9
 .complete 3568,4 
 step
 #xprate <1.5
 .isOnQuest 3568
 .goto Azshara,48.5,48.4
-.use 10689 >> 点击第三个小瓶
+.use 10689 >>点击第三个小瓶
 .complete 3568,3 
 step
 #xprate <1.5
 .isOnQuest 3568
 .goto Azshara,47.7,51.1
-.use 10688 >> 点击第二个小瓶
+.use 10688 >>点击第二个小瓶
 .complete 3568,2 
 step
 #xprate <1.5
 .isOnQuest 3568
 .goto Azshara,47.6,60.7
-.use 10687 >> 点击第一个小瓶
+.use 10687 >>点击第一个小瓶
 .complete 3568,1 
 step
 #xprate <1.5
@@ -16777,13 +17065,13 @@ step
 #completewith next
 .isQuestTurnedIn 3565
 .goto Ashenvale,55.78,28.12
-.zone Felwood >> 前往费尔伍德
+.zone Felwood >>前往费尔伍德
 step
 #xprate <1.5
 .isQuestTurnedIn 3565
 #completewith next
 .goto Felwood,51.5,82.3
-.fp Emerald Sanctuary >> 获得翡翠保护区飞行路线
+.fp Emerald Sanctuary >>获得翡翠保护区飞行路线
 step
 #xprate <1.5
 .isQuestTurnedIn 3565
@@ -16803,7 +17091,7 @@ step
 #xprate <1.5
 .isOnQuest 5515
 .goto Felwood,38.8,60.3
->> 杀死在Jaedenar发现的暴徒
+>>杀死在Jaedenar发现的暴徒
 .complete 5155,1 
 .complete 5155,2 
 .complete 5155,4 
@@ -16822,7 +17110,7 @@ step
 #xprate <1.5
 .zoneskip Felwood,1
 .goto Felwood,34.4,53.9
-.fp Bloodvenom Post >> 获取Bloodvenom Post飞行路线
+.fp Bloodvenom Post >>获取Bloodvenom Post飞行路线
 step
 #xprate <1.5
 #sticky
@@ -16833,7 +17121,7 @@ step
 step
 #xprate <1.5
 .isOnQuest 5156
->> 如果你找不到任何内脏恐惧，杀死内脏野兽使其繁殖。
+>>如果你找不到任何内脏恐惧，杀死内脏野兽使其繁殖。
 .goto Felwood,41.4,43.1
 .complete 5156,1 
 .complete 5156,2 
@@ -16871,7 +17159,7 @@ step
 .goto Felwood,68.24,5.60,40,0
 .goto Felwood,68.73,6.38
 .zoneskip Felwood,1
-.zone Winterspring >> 穿过Timbermaw Hold前往Winterspring。如果暴徒有敌意，不要杀他们。继续穿过隧道。
+.zone Winterspring >>穿过Timbermaw Hold前往Winterspring。如果暴徒有敌意，不要杀他们。继续穿过隧道。
 step
 #xprate <1.5
 .zoneskip Winterspring,1
@@ -16918,8 +17206,8 @@ step
 .isOnQuest 5084
 .goto Felwood,60.20,5.90
 >>穿过洞穴跑回费尔伍德。点击Cauldron
-.turnin 5084 >> 沦为腐败
-.accept 5085 >> 接受神秘顾
+.turnin 5084 >>沦为腐败
+.accept 5085 >>接受神秘顾
 step
 #xprate <1.5
 #completewith next
@@ -16929,7 +17217,7 @@ step
 .goto Felwood,68.24,5.60,40,0
 .goto Felwood,68.73,6.38
 .zoneskip Felwood,1
-.zone Winterspring >> 穿过Timbermaw Hold前往Winterspring。如果暴徒有敌意，不要杀他们。继续穿过隧道。
+.zone Winterspring >>穿过Timbermaw Hold前往Winterspring。如果暴徒有敌意，不要杀他们。继续穿过隧道。
 step
 #xprate <1.5
 .isOnQuest 5085
@@ -16947,7 +17235,7 @@ step
 #xprate <1.5
 .zoneskip Winterspring,1
 .goto Winterspring,60.5,36.3
-.fp Everlook >> 获取Everlook飞行路线
+.fp Everlook >>获取Everlook飞行路线
 step
 #xprate <1.5
 #completewith next
@@ -17069,13 +17357,13 @@ step
 #xprate <1.5
 .zoneskip Felwood,1
 #completewith next
->> 检查Songflower是否已起床。如果无法获得，请跳过此步骤。
+>>检查Songflower是否已起床。如果无法获得，请跳过此步骤。
 .goto Felwood,40.1,56.6
 .turnin 4464 >>交出腐败的松花
 step
 #xprate <1.5
 .isOnQuest 5165
->> 在山洞里捣乱，直到钥匙掉下来。
+>>在山洞里捣乱，直到钥匙掉下来。
 .goto Felwood,36.2,55.7
 .collect 13140,1,5202
 .accept 5202 >>接受一把奇怪的红色钥匙
@@ -17151,19 +17439,19 @@ step
 #xprate <1.5
 .isOnQuest 5204
 #completewith next
-.goto Felwood,38.47,59.51,50 >> 跑向Jaedenar（阴影控制）
+.goto Felwood,38.47,59.51,50 >>跑向Jaedenar(阴影控制)
 step
 #xprate <1.5
 .isOnQuest 5204
 .goto Felwood,35.39,58.74,30,0
 .goto Felwood,38.30,50.50
->> 深入暗影堡，杀死拉凯亚。她不会拉她身体两侧的添加物
+>>深入暗影堡，杀死拉凯亚。她不会拉她身体两侧的添加物
 .complete 5204,1
 .unitscan Rakaiah
 step
 #xprate <1.5
 .isOnQuest 5204
->> 清理尸体周围的暴徒时要小心，因为他们会让你在战斗中逃走。
+>>清理尸体周围的暴徒时要小心，因为他们会让你在战斗中逃走。
 .goto Felwood,38.5,50.3
 .turnin 5204 >>上车报应之光
 .accept 5385 >>接受Trey Lightforge的遗骸
@@ -17171,9 +17459,9 @@ step
 #xprate <1.5
 .isOnQuest 5242
 .goto Felwood,38.90,46.80
->> 深入洞穴
->> 杀死穆拉和萨利娅。利用房间外的外墙，滥用视线，避开费尔丹的暗影箭
->> 杀死影王费尔丹，然后洗劫他的头。
+>>深入洞穴
+>>杀死穆拉和萨利娅。利用房间外的外墙，滥用视线，避开费尔丹的暗影箭
+>>杀死影王费尔丹，然后洗劫他的头。
 .complete 5242,1
 .complete 5242,2
 .complete 5242,3
@@ -17181,7 +17469,7 @@ step
 #xprate <1.5
 .isOnQuest 5385
 #completewith next
-.deathskip >> 在精神治疗者处死亡并重生，或返回翡翠庇护所
+.deathskip >>在精神治疗者处死亡并重生，或返回翡翠庇护所
 step
 #xprate <1.5
 .isOnQuest 5385
@@ -17213,58 +17501,58 @@ step << Mage
 #xprate <1.5
 #completewith next
 .goto Orgrimmar,38.8,85.6
-.zone Orgrimmar >> 电传至Orgrimmar
+.zone Orgrimmar >>电传至Orgrimmar
 step << Paladin
 #xprate <1.5
 #completewith next
 .goto Orgrimmar,32.4,35.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Shaman
 #xprate <1.5
 #completewith next
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 #xprate <1.5
 #completewith next
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 #xprate <1.5
 #completewith next
 .goto Orgrimmar,66.3,14.8
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 #xprate <1.5
 #completewith next
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 #xprate <1.5
 #completewith next
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 #xprate <1.5
 #completewith next
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock tbc
 #xprate <1.5
 #completewith next
 .goto Orgrimmar,47.5,46.7
-.vendor >> 购买痛苦之鞭（排名5）
+.vendor >>购买痛苦之鞭(排名5)
 .collect 16373,1
 step << Mage
 #xprate <1.5
 #completewith next
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 #xprate <1.5
 #completewith next
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 #xprate <1.5
 >>寻找战友戈尔拉。他在奥格瑞玛四处走动。如果你找不到他，跳过它。
@@ -17279,7 +17567,7 @@ step
 step
 #xprate <1.5
 #completewith next
-.abandon 4300 >> 遗弃骨刃武器
+.abandon 4300 >>遗弃骨刃武器
 step
 #xprate <1.5
 .isOnQuest 3541
@@ -17306,62 +17594,62 @@ RXPGuides.RegisterGuide([[
 #next 56-58 西瘟疫之地 瘟疫之地/东瘟疫之地
 step
 .goto The Barrens,62.50,38.70
-.turnin 4502 >> 交出火山活动
+.turnin 4502 >>交出火山活动
 step
 .goto The Barrens,62.50,38.70
-.turnin 4147 >> 上马文的工作室
+.turnin 4147 >>上马文的工作室
 step
 .goto The Barrens,65.80,43.80
-.turnin 5158 >> 转而寻求精神援助
-.accept 5159 >> 接受Felwood的清洁水回流
+.turnin 5158 >>转而寻求精神援助
+.accept 5159 >>接受Felwood的清洁水回流
 step
 .isOnQuest 3562
 .goto The Barrens,63.1,37.1
-.fly Azshara>> 飞往艾萨拉
+.fly Azshara>>飞往艾萨拉
 step
 .isOnQuest 3562
 .goto Azshara,22.50,51.40
-.turnin 3562 >> 将Magatha的付款交给Jediga
+.turnin 3562 >>将Magatha的付款交给Jediga
 step
 .goto Azshara,22.50,51.40
 .isOnQuest 3563
-.turnin 3563 >> 把杰斯·里蒙的钱交给杰迪加
+.turnin 3563 >>把杰斯·里蒙的钱交给杰迪加
 step
 .goto Azshara,22.50,51.40
-.accept 3542 >> 接受交付至Andron Gant
+.accept 3542 >>接受交付至Andron Gant
 .isQuestTurnedIn 3562
 step
 
-.fly Felwood>> 飞到费尔伍德
+.fly Felwood>>飞到费尔伍德
 step
 .goto Felwood,34.30,52.30
-.accept 4506 >> 接受损坏的军刀
+.accept 4506 >>接受损坏的军刀
 step
 #era/som
 .goto Felwood,34.80,52.80
-.accept 4521 >> 接受野生守护者
+.accept 4521 >>接受野生守护者
 step
 #sticky
 #label SoulShards
->> 从你杀死的暴徒那里收集6块腐烂的灵魂碎片，并用你的物品清单中的灯塔进行掠夺
+>>从你杀死的暴徒那里收集6块腐烂的灵魂碎片，并用你的物品清单中的灯塔进行掠夺
 .collect 11515,6
 step
 .goto Felwood,51.20,82.10
-.turnin 5159 >> 将清洁水返回费尔伍德
-.accept 5165 >> 接受浇灭防护火焰
+.turnin 5159 >>将清洁水返回费尔伍德
+.accept 5165 >>接受浇灭防护火焰
 step
 .goto Felwood,36.02,66.99,70,0
 .goto Felwood,32.40,66.60
-.cast 15647 >> 在损坏的月光井使用Winna的小猫搬运器
+.cast 15647 >>在损坏的月光井使用Winna的小猫搬运器
 
 
 step
 #sticky
 #label StrangeRed
 .goto Felwood,37.96,54.37,0
->> 在暗影堡内碾碎Jaedenar暴徒，直到你拿到血红钥匙
+>>在暗影堡内碾碎Jaedenar暴徒，直到你拿到血红钥匙
 .collect 13140,1,5202
-.accept 5202 >> 接受一把奇怪的红色钥匙
+.accept 5202 >>接受一把奇怪的红色钥匙
 step
 #sticky
 #label StrangeRed2
@@ -17374,58 +17662,58 @@ step
 #label Arko
 #requires StrangeRed2
 >>在你扑灭暗影堡内的铜匠时，保护阿科纳林。你在护送时需要这样做。别忘了，否则你得走回去。
->>小心，因为这个任务可能很难。3恶魔守卫将在阿科纳林装备她的盔甲后产生（使用短时间<3分钟的冷却时间）。让阿科纳林一号坦克，她有6千马力。
+>>小心，因为这个任务可能很难。3恶魔守卫将在阿科纳林装备她的盔甲后产生(使用短时间<3分钟的冷却时间)。让阿科纳林一号坦克，她有6千马力。
 >>一旦阿科纳林离开洞穴，精英们将在最后产卵。小心，因为他有一个500点伤害的瞬间冲击法术
 .complete 5203,1 
 step
 .goto Felwood,38.47,59.51,50,0
 .goto Felwood,35.39,58.74,30,0
 .goto Felwood,36.26,56.30
->> 跑进Jaedenar的影子堡。浇第一个铜器
+>>跑进Jaedenar的影子堡。浇第一个铜器
 .complete 5165,1
 step
 .goto Felwood,36.48,55.18
->> 浇第二个铜器
+>>浇第二个铜器
 .complete 5165,4
 step
 .goto Felwood,36.73,53.26
->> 浇第三个铜器
+>>浇第三个铜器
 .complete 5165,3
 step
 .goto Felwood,37.67,52.68
->> 浇第四个铜器
+>>浇第四个铜器
 .complete 5165,2
 step
 #requires Arko
 .goto Felwood,34.20,52.30
->>当你靠近Winna时，与猫交谈（否则你将无法入睡）
-.turnin 4506 >> 交出损坏的军刀
+>>当你靠近Winna时，与猫交谈(否则你将无法入睡)
+.turnin 4506 >>交出损坏的军刀
 step
 >>前往费尔伍德北部
 .goto Felwood,64.70,8.10
-.accept 8461 >> 接受北方的枯枝落叶
+.accept 8461 >>接受北方的枯枝落叶
 step
 #completewith next
 .goto Felwood,62.68,8.06,0
->> 杀死该区域的Furbolgs
+>>杀死该区域的Furbolgs
 .complete 8461,1
 .complete 8461,2
 .complete 8461,3
 step
 .goto Felwood,60.20,5.90
 >>点击Cauldron
-.turnin 5084 >> 沦为腐败
-.accept 5085 >> 接受神秘顾
+.turnin 5084 >>沦为腐败
+.accept 5085 >>接受神秘顾
 step
 .goto Felwood,62.68,8.06
->> 杀死该区域的Furbolgs
+>>杀死该区域的Furbolgs
 .complete 8461,1
 .complete 8461,2
 .complete 8461,3
 step
 .goto Felwood,64.70,8.20
-.turnin 8461 >> 北方的枯枝落叶
-.accept 8465 >> 接受与萨尔法交谈
+.turnin 8461 >>北方的枯枝落叶
+.accept 8465 >>接受与萨尔法交谈
 step
 #completewith next
 .goto Felwood,65.16,7.88,40,0
@@ -17433,50 +17721,50 @@ step
 .goto Felwood,66.40,2.95,40,0
 .goto Felwood,68.24,5.60,40,0
 .goto Felwood,68.73,6.38
-.zone Winterspring >> 穿过Timbermaw Hold前往冬泉
+.zone Winterspring >>穿过Timbermaw Hold前往冬泉
 step
 .goto Felwood,68.30,6.10
-.turnin 8465 >> 转身与萨尔法交谈
+.turnin 8465 >>转身与萨尔法交谈
 
 step
 #softcore
 .goto Winterspring,31.30,45.10
-.turnin 980 >> 把新春交上来
-.accept 4842 >> 接受奇怪的来源
-.turnin 3909 >> 交出Videre Elixir
-.accept 3912 >> 接受在墓地见面
-.turnin 5085 >> 交出神秘顾
-.accept 5086 >> 接受有毒恐怖
+.turnin 980 >>把新春交上来
+.accept 4842 >>接受奇怪的来源
+.turnin 3909 >>交出Videre Elixir
+.accept 3912 >>接受在墓地见面
+.turnin 5085 >>交出神秘顾
+.accept 5086 >>接受有毒恐怖
 step
 #hardcore
 .goto Winterspring,31.30,45.10
-.turnin 980 >> 把新春交上来
-.accept 4842 >> 接受奇怪的来源
-.turnin 3909 >> 交出Videre Elixir
-.turnin 5085 >> 交出神秘顾
-.accept 5086 >> 接受有毒恐怖
+.turnin 980 >>把新春交上来
+.accept 4842 >>接受奇怪的来源
+.turnin 3909 >>交出Videre Elixir
+.turnin 5085 >>交出神秘顾
+.accept 5086 >>接受有毒恐怖
 step
 #era/som
 #completewith Ursius
 .goto Winterspring,44.98,37.83,0
->> 在前往Everlook的途中杀死粗糙的猫头鹰
+>>在前往Everlook的途中杀死粗糙的猫头鹰
 .complete 4521,2
 step
 >>跑向Everlook
 .goto Winterspring,61.2,38.8
-.home >> 将您的炉石设置为Everlook
+.home >>将您的炉石设置为Everlook
 step
 #era/som
 .goto Winterspring,60.88,37.61
-.accept 3783 >> 接受我们在吗，雪人？
+.accept 3783 >>接受我们在吗，雪人？
 step
 #label Ursius
 .goto Winterspring,61.93,38.37
-.accept 5054 >> 接受Shardtooth的Ursius
+.accept 5054 >>接受Shardtooth的Ursius
 step
 #era/som
 .goto Winterspring,44.98,37.83
->> 杀死Everlook以西的破烂猫头鹰
+>>杀死Everlook以西的破烂猫头鹰
 .complete 4521,2
 step
 #era/som
@@ -17497,8 +17785,8 @@ step
 .goto Winterspring,62.55,30.83,70,0
 .goto Winterspring,62.43,28.08,70,0
 .goto Winterspring,63.40,27.04
->> 杀死乌尔修斯。如果需要，你可以把他放回Everlook。记住造成51%+伤害
->> 小心，因为这个任务可能很困难
+>>杀死乌尔修斯。如果需要，你可以把他放回Everlook。记住造成51%+伤害
+>>小心，因为这个任务可能很困难
 .complete 5054,1
 .unitscan Ursius
 step
@@ -17514,17 +17802,17 @@ step
 >>杀死Yetis。抢他们的皮毛
 .complete 3783,1
 step << Shaman
-.hs >> 炉灶 to Everlook公司
->> 如果需要，购买食物/水
+.hs >>炉灶 to Everlook公司
+>>如果需要，购买食物/水
 step
 .goto Winterspring,61.90,38.40
-.turnin 5054 >> 交出切牙的乌尔修斯
-.accept 5055 >> 接受冷风布鲁曼
-.accept 969 >> 接受幸运与你同在 << Hunter
+.turnin 5054 >>交出切牙的乌尔修斯
+.accept 5055 >>接受冷风布鲁曼
+.accept 969 >>接受幸运与你同在 << Hunter
 step
 #era/som
 .goto Winterspring,60.88,37.61
-.turnin 3783 >> 上车我们在吗，雪蒂？
+.turnin 3783 >>上车我们在吗，雪蒂？
 step
 #softcore
 .goto Winterspring,54.7,46.0,60,0
@@ -17532,7 +17820,7 @@ step
 .goto Winterspring,60.5,55.6,60,0
 .goto Winterspring,62.4,58.9,60,0
 .goto Winterspring,58.8,63.5
->> 杀了Brumeran，必要时为他集合。
+>>杀了Brumeran，必要时为他集合。
 >>这个任务很艰巨。如果需要，跳过此任务
 .complete 5055,1
 .unitscan Brumeran
@@ -17543,148 +17831,148 @@ step
 .goto Winterspring,60.5,55.6,60,0
 .goto Winterspring,62.4,58.9,60,0
 .goto Winterspring,58.8,63.5
->> 杀死Brumeran
+>>杀死Brumeran
 >>这个任务很艰巨。如果需要，跳过此任务
 .complete 5055,1
 .unitscan Brumeran
 step << Hunter
 #completewith next
 .goto Winterspring,60.43,65.31,0
->> 掠夺峡谷外围的蓝色水晶，用你的宠物诱骗巨人远离水晶。抢了一个就跑了
+>>掠夺峡谷外围的蓝色水晶，用你的宠物诱骗巨人远离水晶。抢了一个就跑了
 >>这是一个很难独奏的任务，如果有必要，跳过这个任务
 .complete 969,1
-.link https://www.twitch.tv/videos/850027450?t=00h26m14s >> 点击此处查看视频参考
+.link https://www.twitch.tv/videos/850027450?t=00h26m14s >>点击此处查看视频参考
 step
->> 前往Darkwhisper峡谷边界
+>>前往Darkwhisper峡谷边界
 .goto Winterspring,60.09,73.34
 .complete 4842,1 
 step << Hunter
 .goto Winterspring,60.43,65.31
->> 掠夺峡谷外围的蓝色水晶，用你的宠物诱骗巨人远离水晶。抢了一个就跑了
+>>掠夺峡谷外围的蓝色水晶，用你的宠物诱骗巨人远离水晶。抢了一个就跑了
 >>这是一个很难独奏的任务，如果有必要，跳过这个任务
 .complete 969,1
-.link https://www.twitch.tv/videos/850027450?t=00h26m14s >> 点击此处查看视频参考
+.link https://www.twitch.tv/videos/850027450?t=00h26m14s >>点击此处查看视频参考
 step
 #era/som
 #softcore
 #completewith next
-.deathskip >> 一旦你完成所有任务，就有目的地死去，并在Everlook重生
+.deathskip >>一旦你完成所有任务，就有目的地死去，并在Everlook重生
 step
 #som
 #phase 3-6
 #softcore
 #requires brumeran2
-.hs >> 炉灶 to Everlook公司
->> 如果需要，购买食物/水
+.hs >>炉灶 to Everlook公司
+>>如果需要，购买食物/水
 step
 #hardcore
 #requires brumeran2
-.hs >> 炉灶 to Everlook公司
->> 如果需要，购买食物/水
+.hs >>炉灶 to Everlook公司
+>>如果需要，购买食物/水
 step
 #requires brumeran2
 #softcore
 #completewith next
-.deathskip >> 一旦你完成所有任务，就有目的地死去，并在Everlook重生
+.deathskip >>一旦你完成所有任务，就有目的地死去，并在Everlook重生
 step << Hunter
 .goto Winterspring,61.90,38.40
-.turnin 969 >> 交好运与你同在
+.turnin 969 >>交好运与你同在
 .isQuestComplete 969
 step
 .goto Winterspring,61.90,38.40
-.turnin 5055 >> 《冷风之布鲁梅兰》
+.turnin 5055 >>《冷风之布鲁梅兰》
 .isQuestComplete 5055
 step
 #era/som
 #softcore
 .goto Winterspring,60.47,36.30
-.fly Tanaris>> 飞往塔纳瑞斯
+.fly Tanaris>>飞往塔纳瑞斯
 step
 #era/som
 #softcore
 .goto Tanaris,53.90,23.40
->> 在Tanaris墓地使用Videre Elixir
-.turnin 3912 >> 转入墓地会面
-.accept 3913 >> 接受严峻形势
+>>在Tanaris墓地使用Videre Elixir
+.turnin 3912 >>转入墓地会面
+.accept 3913 >>接受严峻形势
 step
 #era/som
 #softcore
 .goto Tanaris,53.80,29.10
-.turnin 3913 >> 在严重情况下移交
-.accept 3914 >> 接受林肯的剑
+.turnin 3913 >>在严重情况下移交
+.accept 3914 >>接受林肯的剑
 step
 #era/som
 #softcore
 .goto Tanaris,51.60,25.50
-.fly Un'Goro Crater>> 飞到Un'Goro火山口
+.fly Un'Goro Crater>>飞到Un'Goro火山口
 step
 #era/som
 #softcore
 .goto Tanaris,13.10,6.40
-.turnin 3914 >> 交出林肯的剑
-.accept 3941 >> 接受侏儒的帮助
+.turnin 3914 >>交出林肯的剑
+.accept 3941 >>接受侏儒的帮助
 step
 #era/som
 #softcore
 .goto Tanaris,11.60,3.40
-.turnin 3941 >> 交出侏儒的援助
-.accept 3942 >> 接受Linken的记忆
+.turnin 3941 >>交出侏儒的援助
+.accept 3942 >>接受Linken的记忆
 step
 #era/som
 #softcore
 #completewith next
-.hs >> 冬季温泉之炉
->> 如果需要，购买食物/水
+.hs >>冬季温泉之炉
+>>如果需要，购买食物/水
 step
 .goto Winterspring,61.34,38.97
-.accept 6029 >> 接受Everlook报告
-.accept 6030 >> 接受尼古拉斯·兹文霍夫公爵
+.accept 6029 >>接受Everlook报告
+.accept 6030 >>接受尼古拉斯·兹文霍夫公爵
 step
 .goto Winterspring,60.47,36.30
-.fly Felwood>> 飞到费尔伍德
+.fly Felwood>>飞到费尔伍德
 step
 #era/som
 .goto Felwood,34.70,52.70
-.turnin 4521 >> 交出野生守护者
-.accept 4741 >> 接受野生守护者
+.turnin 4521 >>交出野生守护者
+.accept 4741 >>接受野生守护者
 step
 .goto Felwood,51.20,82.10
-.turnin 5165 >> 转身扑灭防护火焰
-.accept 5242 >> 接受最后一击
+.turnin 5165 >>转身扑灭防护火焰
+.accept 5242 >>接受最后一击
 step
 .goto Felwood,51.30,82.00
-.turnin 5203 >> 从Jaedenar移交营救
-.accept 5204 >> 接受光明的报应
+.turnin 5203 >>从Jaedenar移交营救
+.accept 5204 >>接受光明的报应
 step
 #era/som
 #softcore
 .goto Felwood,51.30,81.50
-.turnin 3942 >> 交出林肯的记忆
-.accept 4084 >> 接受银心勋章
+.turnin 3942 >>交出林肯的记忆
+.accept 4084 >>接受银心勋章
 step
 #era/som
 #label wolvesbears
 #completewith next
->> 杀死狼/熊。掠夺他们的爪子
+>>杀死狼/熊。掠夺他们的爪子
 .complete 4084,1
 step
 #completewith next
-.goto Felwood,38.47,59.51,50 >> 跑向Jaedenar（阴影控制）
+.goto Felwood,38.47,59.51,50 >>跑向Jaedenar(阴影控制)
 step
 .goto Felwood,35.39,58.74,30,0
 .goto Felwood,38.30,50.50
->> 深入暗影堡。杀死Rakaiah
+>>深入暗影堡。杀死Rakaiah
 .complete 5204,1
 step
 .goto Felwood,38.50,50.40
->> 清理尸体周围的暴徒时要小心，因为他们会让你处于战斗状态，但不会攻击你
-.turnin 5204 >> 上车报应之光
-.accept 5385 >> 接受Trey Lightforge的遗骸
+>>清理尸体周围的暴徒时要小心，因为他们会让你处于战斗状态，但不会攻击你
+.turnin 5204 >>上车报应之光
+.accept 5385 >>接受Trey Lightforge的遗骸
 step
 .goto Felwood,38.90,46.80
->> 深入洞穴
->> 杀死穆拉和萨利娅。滥用视线以避免费尔丹的暗影箭，使用房间外的外墙
->> 杀死影王费尔丹，然后洗劫他的头。
+>>深入洞穴
+>>杀死穆拉和萨利娅。滥用视线以避免费尔丹的暗影箭，使用房间外的外墙
+>>杀死影王费尔丹，然后洗劫他的头。
 .complete 5242,1
 .complete 5242,2
 .complete 5242,3
@@ -17692,22 +17980,22 @@ step
 #completewith next
 .goto Felwood,38.72,46.77
 +执行注销跳过以传送出阴影保持
-.link https://youtu.be/SWBtPqm5M0Q?t=128 >> 单击此处以供参考
+.link https://youtu.be/SWBtPqm5M0Q?t=128 >>单击此处以供参考
 step
 #era/som
 .goto Felwood,51.90,21.80
->> 杀死叛徒。抢夺铁树之心
+>>杀死叛徒。抢夺铁树之心
 .complete 4084,2
 step
 .goto Winterspring,12.41,50.58
->> 消灭有毒恐怖。抢他们的水滴
+>>消灭有毒恐怖。抢他们的水滴
 .complete 5086,1
 step
 #era/som
 .goto Felwood,53.75,28.06,90,0
 .goto Felwood,58.03,17.83,90,0
 .goto Felwood,63.27,19.15
->> 杀死狼/熊。掠夺他们的爪子
+>>杀死狼/熊。掠夺他们的爪子
 .complete 4084,1
 step
 #completewith next
@@ -17716,12 +18004,12 @@ step
 .goto Felwood,66.40,2.95,40,0
 .goto Felwood,68.24,5.60,40,0
 .goto Felwood,68.73,6.38
-.zone Winterspring >> 穿过Timbermaw Hold前往冬泉
+.zone Winterspring >>穿过Timbermaw Hold前往冬泉
 step
 .goto Winterspring,31.30,45.20
-.turnin 4842 >> 交出奇怪的来源
-.turnin 5086 >> 交出有毒恐怖
-.accept 5087 >> 接受冬季跑步者
+.turnin 4842 >>交出奇怪的来源
+.turnin 5086 >>交出有毒恐怖
+.accept 5087 >>接受冬季跑步者
 step
 .goto Winterspring,67.96,37.54,0
 .goto Winterspring,66.16,33.66,0
@@ -17736,86 +18024,86 @@ step
 .goto Winterspring,30.12,42.57,0
 .goto Winterspring,28.01,34.60,0
 .goto Felwood,60.20,5.90
->> 寻找冬季跑步者。他们在Timbermaw Hold隧道和Everlook东北部Winterfall村之间的道路上巡逻
->> 或者，穿过洞穴跑回Felwood，杀死Felpow村大锅里的Runner
+>>寻找冬季跑步者。他们在Timbermaw Hold隧道和Everlook东北部Winterfall村之间的道路上巡逻
+>>或者，穿过洞穴跑回Felwood，杀死Felpow村大锅里的Runner
 .complete 5087,1
 .unitscan Winterfall Runner
 step
 .goto Winterspring,31.30,45.20
-.turnin 5087 >> 收缴冬季跑步者
-.accept 5121 >> 接受高层领导冬季秋季
+.turnin 5087 >>收缴冬季跑步者
+.accept 5121 >>接受高层领导冬季秋季
 step << !Mage
 #softcore
-.deathskip >> 在Everlook的精神疗养院死亡并重生
+.deathskip >>在Everlook的精神疗养院死亡并重生
 step << !Mage
 #softcore
 .goto Winterspring,60.47,36.30
-.fly Felwood >> 飞到费尔伍德
+.fly Felwood >>飞到费尔伍德
 step << !Mage
 #hardcore
 .goto Moonglade,32.2,66.6
 >>返回Furbolg隧道，从北出口进入Moonglade
-.fly Felwood >> 飞到费尔伍德
+.fly Felwood >>飞到费尔伍德
 step << Mage
 #completewith next
 >>电传至Orgrimmar
-.fly Splintertree >> 飞到灰谷的Splinterree Post，然后跑到Felwood
+.fly Splintertree >>飞到灰谷的Splinterree Post，然后跑到Felwood
 step << Rogue/Warrior
 >>跑到费尔伍德南部
 .goto Winterspring,13.90,96.10
-.turnin 5242 >> 最后一次击球
+.turnin 5242 >>最后一次击球
 step << Rogue/Warrior
 .goto Winterspring,14.00,96.00
-.turnin 5385 >> 交出Trey Lightforge的遗骸
+.turnin 5385 >>交出Trey Lightforge的遗骸
 step
 #era/som
 #softcore
 .goto Winterspring,14.00,95.60
-.turnin 4084 >> 交出银心
+.turnin 4084 >>交出银心
 step << !Mage
 #hardcore
 .goto Ashenvale,73.2,61.6
 >>头部至Splinterree Post
-.fly Orgrimmar>> 飞往奥格瑞玛
+.fly Orgrimmar>>飞往奥格瑞玛
 step << !Mage
 #softcore
 .goto Ashenvale,73.2,61.6
 >>头部至Splinterree Post
-.fly Orgrimmar>> 飞往奥格瑞玛
+.fly Orgrimmar>>飞往奥格瑞玛
 >>或者，您也可以使用网站解卡服务传送到Orgrimmar
 .zoneskip Durotar
 step << Shaman
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.3,14.8
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,47.5,46.7
-.vendor >> 如果你有钱，买你的宠物升级。
+.vendor >>如果你有钱，买你的宠物升级。
 step << Mage
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Mage
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 ]])
 RXPGuides.RegisterGuide([[
-#version 7
+#version 9
 #wotlk
 #tbc
 #group RestedXP 部落 45-60
@@ -17830,61 +18118,61 @@ step << !Mage
 step << Paladin
 #completewith next
 .goto Orgrimmar,32.4,35.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Shaman
 #completewith next
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 #completewith next
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 #completewith next
 .goto Orgrimmar,66.3,14.8
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 #completewith next
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 #completewith next
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 #completewith next
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock tbc
 #completewith next
 .goto Orgrimmar,47.5,46.7
-.vendor >> 购买痛苦之鞭（排名5）
+.vendor >>购买痛苦之鞭(排名5)
 .collect 16373,1
 step << Priest
 #completewith next
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << !Mage
 .goto Durotar,50.8,13.8
-.zone Tirisfal Glades >> 带着齐柏林飞艇去提里斯福尔冰川
+.zone Tirisfal Glades >>带着齐柏林飞艇去提里斯福尔冰川
 step << Mage
 .goto Undercity,82.36,15.31
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step << Mage
 #completewith next
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Mage
 #completewith next
 .goto Undercity,82.36,15.31
 +转到右侧的试剂供应商，通过将角色定位在最低楼梯的最高部分，直到它们看起来像在浮动，然后注销并重新登录，从而执行注销跳过。
-.link https://www.youtube.com/watch?v=-Bi95bCN8dM >> 单击此处查看示例
+.link https://www.youtube.com/watch?v=-Bi95bCN8dM >>单击此处查看示例
 >>如果你做不到这一点，就正常离开幽暗城
 step << Mage
-.goto Tirisfal Glades,61.85,66.59,60 >> 退出地下城
+.goto Tirisfal Glades,61.85,66.59,60 >>退出地下城
 step
 .goto Tirisfal Glades,83.1,68.9
 .turnin -5093 >>交出武器召唤：瘟疫之地！
-.accept 5096 >>接受红色分流
+.accept 5096 >>接受猩红分流
 step
 .goto Western Plaguelands,26.55,56.18
 >>抢劫火旁的板条箱。同时保存你在该区域获得的每个骨骼碎片！
@@ -17896,7 +18184,7 @@ step
 step << wotlk
 #completewith next
 .goto Tirisfal Glades,83.57,69.95
-.fp The Bulwark >> 获取堡垒飞行路线
+.fp The Bulwark >>获取堡垒飞行路线
 step
 .goto Tirisfal Glades,83.2,71.4
 .accept 9443 >>接受所谓的光明使者标记
@@ -17904,7 +18192,7 @@ step
 .goto Tirisfal Glades,83.3,72.1
 .accept 5901 >>接受你身上的瘟疫
 step
->> 这可能非常困难。试着一次攻击一两个暴徒，直到你能到达帐篷并摧毁它。
+>>这可能非常困难。试着一次攻击一两个暴徒，直到你能到达帐篷并摧毁它。
 .use 12807 >>烧毁指挥帐篷，然后在上面使用你库存中的横幅
 .goto Western Plaguelands,40.5,51.8
 .complete 5096,1 
@@ -17954,7 +18242,7 @@ step
 step
 #completewith next
 .goto Western Plaguelands,48.2,49.7
-.turnin 5059 >> 转入锁定状态
+.turnin 5059 >>转入锁定状态
 step
 .goto Western Plaguelands,48.2,49.7
 >>杀死Farmer Dalson
@@ -17962,7 +18250,7 @@ step
 step
 .goto Western Plaguelands,47.4,49.7
 >>点击农舍顶层的橱柜
-.turnin 5060 >> 转入锁定状态
+.turnin 5060 >>转入锁定状态
 step
 .goto Western Plaguelands,39.4,66.9
 .accept 4971 >>接受时间问题
@@ -18046,7 +18334,7 @@ step
 step
 #completewith next
 >>杀死沿路的血色法师和骑士。如果你找不到两个，请稍后再来
->>法师和骑士共享重生，所以你可能需要杀死一些人来重生你需要的人（大约75%骑士，25%法师）
+>>法师和骑士共享重生，所以你可能需要杀死一些人来重生你需要的人(大约75%骑士，25%法师)
 .goto Western Plaguelands,50.43,41.12,70,0
 .goto Western Plaguelands,53.50,36.85,70,0
 .goto Western Plaguelands,50.43,41.12
@@ -18063,7 +18351,7 @@ step
 .complete 6004,2 
 step
 >>杀死沿路的血色法师和骑士。如果你找不到两个，请稍后再来
->>法师和骑士共享重生，所以你可能需要杀死一些人来重生你需要的人（大约75%骑士，25%法师）
+>>法师和骑士共享重生，所以你可能需要杀死一些人来重生你需要的人(大约75%骑士，25%法师)
 .goto Western Plaguelands,50.43,41.12,70,0
 .goto Western Plaguelands,53.50,36.85,70,0
 .goto Western Plaguelands,50.43,41.12
@@ -18205,11 +18493,11 @@ step
 .maxlevel 57
 #completewith next
 .goto EPLClassic,62.5,66.5
->> 从镇上的亡灵暴徒那里获得7个活腐生物，并在它们过期之前将其转化为凝固腐生物
+>>从镇上的亡灵暴徒那里获得7个活腐生物，并在它们过期之前将其转化为凝固腐生物
 .collect 15447,7 
 step
 .maxlevel 57
-.use 15454 >> 使用研钵和杵将活腐菌结合成凝固腐菌
+.use 15454 >>使用研钵和杵将活腐菌结合成凝固腐菌
 .goto EPLClassic,62.5,66.5
 .complete 6022,1 
 step
@@ -18226,7 +18514,7 @@ step
 step
 .maxlevel 57
 .goto EPLClassic,80.2,57.0
-.fp Light's Hope Chapel >> 获得光明希望教堂的飞行路线
+.fp Light's Hope Chapel >>获得光明希望教堂的飞行路线
 step
 .maxlevel 57
 #completewith Memories
@@ -18292,7 +18580,7 @@ step
 .complete 6164,1 
 step
 .isQuestComplete 5281
->> 在完成任务后，你可以与卖家交谈，从他那里随机购买一件绿色物品。
+>>在完成任务后，你可以与卖家交谈，从他那里随机购买一件绿色物品。
 .goto EPLClassic,14.5,33.6
 .turnin 6164 >>交上Augustus的收据簿
 step
@@ -18308,7 +18596,7 @@ step
 .goto EPLClassic,10.99,47.75,40,0
 +通过执行东部PL山地跳跃，穿越山体以节省旅行时间
 .use 8529 >>你的包里必须有诺格福格药剂
-.link https://www.youtube.com/watch?v=6VIULBxMyfU >> 单击此处以供参考
+.link https://www.youtube.com/watch?v=6VIULBxMyfU >>单击此处以供参考
 step
 .isQuestComplete 5543
 .goto EPLClassic,7.6,43.7
@@ -18337,7 +18625,7 @@ step
 .accept 6136 >>接受那具尸体
 step
 .maxlevel 57
->> 附近有垃圾巡逻队，四处走动寻找他。杀了他，抢了他的皮毛
+>>附近有垃圾巡逻队，四处走动寻找他。杀了他，抢了他的皮毛
 .goto EPLClassic,46.2,64.0,40,0
 .goto EPLClassic,27.2,73.6
 .complete 6135,1 
@@ -18347,14 +18635,14 @@ step
 >>点击土冢召唤Mercutio并添加3个。杀死Mercutio，并为Taelan的锤子抢劫他
 >>请小心，因为加法器需要很长时间才能复位并因某种原因断开皮带。
 >>这个任务是游戏中最困难的任务之一。如果需要，跳过它 << !Mage !Warlock !Hunter !Rogue !Druid
->> 分裂拉动暴雪繁殖的背包。风筝Mercutio离开，直到其他暴徒挣脱皮带 << Mage
->> 分裂拉动伴随着火雨而产生的背包。风筝Mercutio离开，直到其他暴徒挣脱皮带 << Warlock
->> 劈拉用凌空抽射产生的背包。风筝Mercutio离开，直到其他暴徒挣脱皮带 << Hunter
->> 潜入繁殖群的中间，然后解除潜行，立即攻击所有怪物。保持对Mercutio的放松，同时冲向其他暴徒 << Rogue
->> 潜入繁殖群的中间，然后解除潜行，立即攻击所有怪物。在远离其他暴徒的同时，保持对Mercutio的放松 << Druid
+>>分裂拉动暴雪繁殖的背包。风筝Mercutio离开，直到其他暴徒挣脱皮带 << Mage
+>>分裂拉动伴随着火雨而产生的背包。风筝Mercutio离开，直到其他暴徒挣脱皮带 << Warlock
+>>劈拉用凌空抽射产生的背包。风筝Mercutio离开，直到其他暴徒挣脱皮带 << Hunter
+>>潜入繁殖群的中间，然后解除潜行，立即攻击所有怪物。保持对Mercutio的放松，同时冲向其他暴徒 << Rogue
+>>潜入繁殖群的中间，然后解除潜行，立即攻击所有怪物。在远离其他暴徒的同时，保持对Mercutio的放松 << Druid
 .goto EPLClassic,28.30,86.89
 .complete 5781,1 
-.link https://www.twitch.tv/videos/850028806?t=02h34m49s >> 单击此处以供参考 << Mage/Warlock/Hunter/Druid/Rogue
+.link https://www.twitch.tv/videos/850028806?t=02h34m49s >>单击此处以供参考 << Mage/Warlock/Hunter/Druid/Rogue
 step
 .maxlevel 57
 #sticky
@@ -18426,31 +18714,31 @@ step << !Mage
 .fly Undercity >>飞到地下城
 step << Mage
 #completewith next
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step << Priest
 #completewith next
 .goto Undercity,47.6,18.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warrior
 #completewith next
 .goto Undercity,48.3,15.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Mage
 #completewith next
 .goto Undercity,56.3,16.3
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 #completewith next
 .goto Undercity,88.9,15.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 #completewith next
 .goto Undercity,85.2,71.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Paladin
 #completewith next
 .goto Undercity,58.0,90.3
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .isQuestComplete 5023
 .goto Undercity,69.7,43.7
@@ -18483,7 +18771,7 @@ step
 step
 .maxlevel 57
 .goto Undercity,57.3,91.3
->> 前往幽暗城
+>>前往幽暗城
 .accept 5961 >>接受女妖女王的冠军
 step << tbc
 .isQuestComplete 964
@@ -18493,7 +18781,7 @@ step << tbc
 step << wotlk
 #completewith next
 .goto Undercity,63.2,48.3
-.fly The Bulwark >> 飞到堡垒
+.fly The Bulwark >>飞到堡垒
 step << wotlk
 .isQuestComplete 964
 .goto Tirisfal Glades,83.3,69.2
@@ -18526,7 +18814,7 @@ step
 .unitscan Jabbering Ghoul
 step
 .goto Western Plaguelands,38.4,54.1
-.use 12722 >> 使用库存中的魅力组合它们
+.use 12722 >>使用库存中的魅力组合它们
 .turnin 5051 >>两半变成一
 step
 .goto Western Plaguelands,48.9,78.4
@@ -18551,13 +18839,13 @@ step
 .accept 5154 >>接受《达罗郡年鉴》
 step
 .maxlevel 57
->> 进入市政厅。进入室内时要小心，不要在外面骚扰暴徒
->> 在地上找一本真正的书。抢劫它。
->> 只有当您将鼠标悬停在正确的书上时，它才会在页面上显示为白色。不是半灰/半白。
->> 如果你找不到任何假书，你可能需要掠夺一些假书来生成真书（因为它们共享生成）
+>>进入市政厅。进入室内时要小心，不要在外面骚扰暴徒
+>>在地上找一本真正的书。抢劫它。
+>>只有当您将鼠标悬停在正确的书上时，它才会在页面上显示为白色。不是半灰/半白。
+>>如果你找不到任何假书，你可能需要掠夺一些假书来生成真书(因为它们共享生成)
 .goto Western Plaguelands,43.4,69.6
 .complete 5154,1 
-.link https://i.imgur.com/B2HDb6K.png >> 单击此处查看可视示例
+.link https://i.imgur.com/B2HDb6K.png >>单击此处查看可视示例
 step
 .maxlevel 57
 .goto Western Plaguelands,39.5,66.8
@@ -18615,7 +18903,7 @@ step
 .goto Tirisfal Glades,83.1,68.9
 .turnin 5238 >>交任务完成！
 step
->> 保留此任务的奖励。这是一次经验回合。不要从中获得声誉。
+>>保留此任务的奖励。这是一次经验回合。不要从中获得声誉。
 .goto Tirisfal Glades,83.1,68.6
 .turnin 5408 >>交出仆从的天灾石
 step
@@ -18667,12 +18955,12 @@ step << !Mage
 step << Mage
 .isOnQuest 4987
 #completewith next
-.zone Thunder Bluff >> 传送到Thunder Bluff
+.zone Thunder Bluff >>传送到Thunder Bluff
 step << Druid
 .isOnQuest 4987
 #completewith next
 .goto Thunder Bluff,76.6,27.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .isOnQuest 4987
 .goto Thunder Bluff,75.8,31.3
@@ -18701,9 +18989,9 @@ step << !Mage
 .fly Orgrimmar >>飞往奥格瑞玛
 step << Mage
 #completewith next
-.zone Orgrimmar >> 电传至Orgrimmar
+.zone Orgrimmar >>电传至Orgrimmar
 step
->> 去AH，每叠买6个。羊毛/丝绸/马盖韦和Runecloth。
+>>去AH，每叠买6个。羊毛/丝绸/马盖韦和Runecloth。
 .goto Orgrimmar,37.7,87.7
 .turnin 7833 >>交出捐赠的羊毛
 .turnin 7834 >>捐献丝绸
@@ -18718,64 +19006,64 @@ step
 step << Paladin
 #completewith next
 .goto Orgrimmar,32.4,35.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Shaman
 #completewith next
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 #completewith next
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 #completewith next
 .goto Orgrimmar,66.3,14.8
-.trainer >> 去训练你的宠物法术吧
+.trainer >>去训练你的宠物法术吧
 step << Warrior
 #completewith next
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 #completewith next
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 #completewith next
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock tbc
 #completewith next
 .goto Orgrimmar,47.5,46.7
-.vendor >> 购买痛苦之鞭（等级6）
+.vendor >>购买痛苦之鞭(等级6)
 .collect 16374,1
 step << Mage
 #completewith next
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 #completewith next
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << wotlk
 #completewith next
 .goto Orgrimmar,38.1,85.8
-.zone Blasted Lands >> 将门户带到Blasted Lands
+.zone Blasted Lands >>将门户带到Blasted Lands
 step << !wotlk
 #completewith next
-.zone Stranglethorn Vale >> 带着齐柏林飞艇去荆棘谷。或者，支付法师一个通往斯托纳德的入口
+.zone Stranglethorn Vale >>带着齐柏林飞艇去荆棘谷。或者，支付法师一个通往斯托纳德的入口
 .zoneskip Duskwood
 .zoneskip Swamp of Sorrows
 .zoneskip Blasted Lands
 step << !wotlk
 #completewith next
 .goto Stranglethorn Vale,40.6,3.1
-.zone Duskwood >> 前往黄昏
+.zone Duskwood >>前往黄昏
 .zoneskip Swamp of Sorrows
 .zoneskip Blasted Lands
 step << !wotlk
 #completewith next
 .goto Duskwood,91.3,41.6
-.zone Deadwind Pass >> 前往逆风山口
+.zone Deadwind Pass >>前往逆风山口
 .zoneskip Swamp of Sorrows
 .zoneskip Blasted Lands
 step << !wotlk
@@ -18783,12 +19071,12 @@ step << !wotlk
 .goto Deadwind Pass,47.7,33.6,60,0
 .goto Deadwind Pass,51.6,42.2,60,0
 .goto Deadwind Pass,60.0,41.2
-.zone Swamp of Sorrows >> 前往悲伤沼泽
+.zone Swamp of Sorrows >>前往悲伤沼泽
 step << !wotlk
 #completewith next
 .goto Swamp of Sorrows,33.4,71.9,60,0
 .goto Swamp of Sorrows,33.2,68.4
-.zone Blasted Lands >> 前往被炸毁的土地
+.zone Blasted Lands >>前往被炸毁的土地
 step
 .goto Blasted Lands,58.1,56.1
 .accept 9407 >>通过黑暗之门接受
@@ -18803,14 +19091,14 @@ RXPGuides.RegisterGuide([[
 step << !Mage
 #sticky
 #completewith next
-.goto Durotar,50.8,13.8,40 >> 去齐柏林塔。带着齐柏林飞艇去幽暗城
+.goto Durotar,50.8,13.8,40 >>去齐柏林塔。带着齐柏林飞艇去幽暗城
 step << !Mage
 .zone Tirisfal Glades >>抵达提里斯福尔
 step
 >>跑向堡垒
 .goto Tirisfal Glades,83.1,68.9
 .turnin 5095 >>交出武器召唤：瘟疫之地！
-.accept 5096 >>接受红色分流
+.accept 5096 >>接受猩红分流
 step
 .goto Western Plaguelands,26.55,56.18
 >>抢劫火旁的板条箱
@@ -18823,7 +19111,7 @@ step
 .goto Tirisfal Glades,83.3,72.1
 .accept 5901 >>接受你身上的瘟疫
 step
->> 要小心，因为暴徒相对比较难，而且可以在这里相互牵制
+>>要小心，因为暴徒相对比较难，而且可以在这里相互牵制
 >>烧毁指挥帐篷，然后在上面使用你库存中的横幅
 .goto Western Plaguelands,40.5,51.8
 .complete 5096,1 
@@ -18860,7 +19148,7 @@ step
 .turnin 5230 >>返回堡垒
 .accept 5231 >>接受目标：Dalson的眼泪
 step
->>使用门口侧面包中的信标火炬（不要杀死里面的精英）
+>>使用门口侧面包中的信标火炬(不要杀死里面的精英)
 .goto Western Plaguelands,42.28,66.05
 .complete 5098,2 
 step
@@ -18884,7 +19172,7 @@ step
 #completewith next
 >>单击室外。这将产生一个暴徒。杀了它
 .goto Western Plaguelands,48.2,49.7
-.turnin 5059 >> 转入锁定状态
+.turnin 5059 >>转入锁定状态
 step
 .goto Western Plaguelands,48.2,49.7
 >>杀死Farmer Dalson。他打人时要小心
@@ -18892,9 +19180,9 @@ step
 step
 .goto Western Plaguelands,47.4,49.7
 >>点击农舍顶层的橱柜
-.turnin 5060 >> 转入锁定状态
+.turnin 5060 >>转入锁定状态
 step
->>使用门口侧面包中的信标火炬（不要杀死里面的精英）
+>>使用门口侧面包中的信标火炬(不要杀死里面的精英)
 .goto Western Plaguelands,40.15,71.50
 .complete 5098,1 
 step
@@ -18902,7 +19190,7 @@ step
 .goto Western Plaguelands,39.4,66.9
 .accept 4971 >>接受时间问题
 step
->>使用门口侧面包中的信标火炬（不要杀死里面的精英）
+>>使用门口侧面包中的信标火炬(不要杀死里面的精英)
 .goto Western Plaguelands,44.24,63.06
 .complete 5098,3 
 step
@@ -18912,7 +19200,7 @@ step
 >>他们可以在安多哈尔附近的水中躲避
 .complete 4971,1 
 step
->>使用门口侧面包中的信标火炬（不要杀死里面的精英）
+>>使用门口侧面包中的信标火炬(不要杀死里面的精英)
 .goto Western Plaguelands,46.73,71.14
 .complete 5098,4 
 step
@@ -18983,7 +19271,7 @@ step
 step
 #completewith next
 >>杀死沿路的血色法师和骑士。如果你找不到两个，请稍后再来
->>法师和骑士共享重生，所以你可能需要杀死一些人来重生你需要的人（大约75%骑士，25%法师）
+>>法师和骑士共享重生，所以你可能需要杀死一些人来重生你需要的人(大约75%骑士，25%法师)
 .goto Western Plaguelands,50.43,41.12,70,0
 .goto Western Plaguelands,53.50,36.85,70,0
 .goto Western Plaguelands,50.43,41.12
@@ -19000,7 +19288,7 @@ step
 .complete 6004,2 
 step
 >>杀死沿路的血色法师和骑士。如果你找不到两个，请稍后再来
->>法师和骑士共享重生，所以你可能需要杀死一些人来重生你需要的人（大约75%骑士，25%法师）
+>>法师和骑士共享重生，所以你可能需要杀死一些人来重生你需要的人(大约75%骑士，25%法师)
 .goto Western Plaguelands,50.43,41.12,70,0
 .goto Western Plaguelands,53.50,36.85,70,0
 .goto Western Plaguelands,50.43,41.12
@@ -19138,10 +19426,10 @@ step
 .complete 5542,2 
 step
 #completewith next
->> 从镇上的亡灵暴徒那里获得7个活腐生物，并在它们过期之前将其转化为凝固腐生物
+>>从镇上的亡灵暴徒那里获得7个活腐生物，并在它们过期之前将其转化为凝固腐生物
 .collect 15447,7 
 step
->> 使用研钵和杵将活腐菌结合成凝固腐菌
+>>使用研钵和杵将活腐菌结合成凝固腐菌
 .goto Eastern Plaguelands,62.5,66.5
 .complete 6022,1 
 step
@@ -19153,7 +19441,7 @@ step
 .complete 6042,1 
 step
 .goto Eastern Plaguelands,80.2,57.0
-.fp Light's Hope Chapel >> 获得光明希望教堂的飞行路线
+.fp Light's Hope Chapel >>获得光明希望教堂的飞行路线
 step
 .goto Eastern Plaguelands,81.4,59.9
 .turnin 6030 >>交给尼古拉斯·兹文霍夫公爵
@@ -19229,7 +19517,7 @@ step
 .goto Eastern Plaguelands,10.99,47.75,40,0
 +通过执行东部PL山地跳跃，穿越山体以节省旅行时间
 >>你的包里必须有诺格福格药剂
-.link https://www.youtube.com/watch?v=6VIULBxMyfU >> 单击此处以供参考
+.link https://www.youtube.com/watch?v=6VIULBxMyfU >>单击此处以供参考
 step
 #era/som
 .goto Eastern Plaguelands,7.6,43.7
@@ -19263,14 +19551,14 @@ step
 >>点击土冢召唤Mercutio并添加3个。杀死Mercutio，并为Taelan的锤子抢劫他
 >>请小心，因为加法器需要很长时间才能复位并因某种原因断开皮带。
 >>这个任务是游戏中最困难的任务之一。如果需要，跳过它 << !Mage !Warlock !Hunter !Rogue !Druid
->> 分裂拉动暴雪繁殖的背包。风筝Mercutio离开，直到其他暴徒挣脱皮带 << Mage
->> 分裂拉动伴随着火雨而产生的背包。风筝Mercutio离开，直到其他暴徒挣脱皮带 << Warlock
->> 劈拉用凌空抽射产生的背包。风筝Mercutio离开，直到其他暴徒挣脱皮带 << Hunter
->> 潜入繁殖群的中间，然后解除潜行，立即攻击所有怪物。保持对Mercutio的放松，同时冲向其他暴徒 << Rogue
->> 潜入繁殖群的中间，然后解除潜行，立即攻击所有怪物。在远离其他暴徒的同时，保持对Mercutio的放松 << Druid
+>>分裂拉动暴雪繁殖的背包。风筝Mercutio离开，直到其他暴徒挣脱皮带 << Mage
+>>分裂拉动伴随着火雨而产生的背包。风筝Mercutio离开，直到其他暴徒挣脱皮带 << Warlock
+>>劈拉用凌空抽射产生的背包。风筝Mercutio离开，直到其他暴徒挣脱皮带 << Hunter
+>>潜入繁殖群的中间，然后解除潜行，立即攻击所有怪物。保持对Mercutio的放松，同时冲向其他暴徒 << Rogue
+>>潜入繁殖群的中间，然后解除潜行，立即攻击所有怪物。在远离其他暴徒的同时，保持对Mercutio的放松 << Druid
 .goto Eastern Plaguelands,28.4,85.3
 .complete 5781,1 
-.link https://www.twitch.tv/videos/850028806?t=02h34m49s >> 单击此处以供参考 << Mage/Warlock/Hunter/Druid/Rogue
+.link https://www.twitch.tv/videos/850028806?t=02h34m49s >>单击此处以供参考 << Mage/Warlock/Hunter/Druid/Rogue
 step
 #era/som
 #sticky
@@ -19337,32 +19625,32 @@ step << !Mage
 .goto Eastern Plaguelands,80.2,57.1
 .fly Undercity >>飞到地下城
 step << Mage
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 step << Priest
 .goto Undercity,47.6,18.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warrior
 .goto Undercity,48.3,15.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Mage
 .goto Undercity,56.3,16.3
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Undercity,88.9,15.9
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 .goto Undercity,85.2,71.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Paladin
 .goto Undercity,58.0,90.3
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 >>向AH购买布料。现在买三叠。这是可选的。如果你拿不到布，跳过这一步。
 .goto Undercity,71.8,29.0
-.turnin 7813 >> 交出捐赠的羊毛
-.turnin 7814 >> 捐献丝绸
-.turnin 7817 >> 交出Mageweave的捐赠
-.turnin 7818 >> 交出Runecloth的捐赠
+.turnin 7813 >>交出捐赠的羊毛
+.turnin 7814 >>捐献丝绸
+.turnin 7817 >>交出Mageweave的捐赠
+.turnin 7818 >>交出Runecloth的捐赠
 #softcore
 step
 .goto Undercity,69.7,43.7
@@ -19401,10 +19689,10 @@ step
 step
 .goto Undercity,55.22,90.88
 +转到主平台的边缘，执行“注销跳过”，方法是定位角色，直到其看起来像是浮动的，然后注销并重新登录。
-.link https://www.youtube.com/watch?v=jj85AXyF1XE >> 当跑向转弯处时，打开此标签。单击此处查看示例
+.link https://www.youtube.com/watch?v=jj85AXyF1XE >>当跑向转弯处时，打开此标签。单击此处查看示例
 >>如果你做不到这一点，就正常离开幽暗城
 step
-.goto Tirisfal Glades,61.85,66.59,60 >> 退出地下城
+.goto Tirisfal Glades,61.85,66.59,60 >>退出地下城
 step
 #era/som
 .goto Tirisfal Glades,83.3,69.2
@@ -19446,13 +19734,13 @@ step
 .turnin 5153 >>交一位奇怪的历史学家
 .accept 5154 >>接受《达罗郡年鉴》
 step
->> 进入市政厅。进入室内时要小心，不要在外面骚扰暴徒
->> 在地上找一本真正的书。抢劫它。
->> 只有当您将鼠标悬停在正确的书上时，它才会在页面上显示为白色。不是半灰/半白。
->> 如果你找不到任何假书，你可能需要掠夺一些假书来生成真书（因为它们共享生成）
+>>进入市政厅。进入室内时要小心，不要在外面骚扰暴徒
+>>在地上找一本真正的书。抢劫它。
+>>只有当您将鼠标悬停在正确的书上时，它才会在页面上显示为白色。不是半灰/半白。
+>>如果你找不到任何假书，你可能需要掠夺一些假书来生成真书(因为它们共享生成)
 .goto Western Plaguelands,43.4,69.6
 .complete 5154,1 
-.link https://i.imgur.com/B2HDb6K.png >> 单击此处查看可视示例
+.link https://i.imgur.com/B2HDb6K.png >>单击此处查看可视示例
 step
 >>去客栈的顶层。与Chromie交谈
 .goto Western Plaguelands,39.5,66.8
@@ -19480,11 +19768,11 @@ step
 .goto Western Plaguelands,47.94,21.43,60,0
 .goto Western Plaguelands,43.31,17.34,50,0
 .goto Western Plaguelands,45.6,18.6
->>在暴徒面前跑进炉灶glen。进入炉灶glen后，按照箭头重置它们
->>跑到塔顶。小心，外面的圣骑士可以治疗。你可以试着从他们身边跑过去/人群控制他们并爬到顶端，但要注意，暴徒没有Z轴范围（他们可以从塔底击中你）
+>>在暴徒面前跑进Hearthglen。进入Hearthglen后，按照箭头重置它们
+>>跑到塔顶。小心，外面的圣骑士可以治疗。你可以试着从他们身边跑过去/人群控制他们并爬到顶端，但要注意，暴徒没有Z轴范围(他们可以从塔底击中你)
 .complete 6025,1 
 step
->>离开炉灶glen返回Kirsta
+>>离开Hearthglen返回Kirsta
 .goto Western Plaguelands,51.9,28.1
 .turnin 6025 >>移交未完成的业务
 step
@@ -19519,17 +19807,17 @@ step
 >>跑回纳撒诺斯
 .goto Eastern Plaguelands,26.6,74.8
 .turnin 5961 >>交出女妖女王的冠军
-.turnin 6133 >> 流浪者领主的最深处
+.turnin 6133 >>流浪者领主的最深处
 step
 #era/som
 >>跑回光之希望教堂
 .goto Eastern Plaguelands,81.5,59.7
 .turnin 5210 >>交给卡林兄弟
 step
-.hs >> 炉灶 to Everlook公司
+.hs >>炉灶 to Everlook公司
 ]])
 RXPGuides.RegisterGuide([[
-#version 7
+#version 9
 #wotlk
 #tbc
 #group RestedXP 部落 60-70
@@ -19539,32 +19827,32 @@ RXPGuides.RegisterGuide([[
 step
 .goto Blasted Lands,58.09,56.00
 >>与达顿交谈
-.accept 9407 >> 通过黑暗之门接受
+.accept 9407 >>通过黑暗之门接受
 step
 #completewith next
 .goto Blasted Lands,58.74,60.28
-.zone Hellfire Peninsula >> 穿过黑暗之门
+.zone Hellfire Peninsula >>穿过黑暗之门
 step
 .goto Hellfire Peninsula,87.35,49.80
 >>与猎户座交谈
-.turnin 9407 >> 穿过黑暗之门
-.accept 10120 >> 接受到达外域
+.turnin 9407 >>穿过黑暗之门
+.accept 10120 >>接受到达外域
 step
 .goto Hellfire Peninsula,87.34,48.13
 >>与Vlaga交谈
-.turnin 10120 >> 到达外域时的交车
-.accept 10289 >> 接受萨尔玛之旅
+.turnin 10120 >>到达外域时的交车
+.accept 10289 >>接受萨尔玛之旅
 step
 .goto Hellfire Peninsula,87.34,48.13
 >>与Vlaga交谈
-.fly Thrallmar >> 飞往萨尔玛
+.fly Thrallmar >>飞往萨尔玛
 .skipgossip
 step
 .goto Hellfire Peninsula,55.89,36.60,15,0
 .goto Hellfire Peninsula,55.86,37.12
 >>与Krakork交谈
-.turnin 10289 >> 《萨尔玛之旅》
-.accept 10291 >> 接受向Nazgrel的报告
+.turnin 10289 >>《萨尔玛之旅》
+.accept 10291 >>接受向Nazgrel的报告
 step
 #completewith next
 .goto Hellfire Peninsula,56.46,37.73,20,0
@@ -19574,23 +19862,23 @@ step
 #completewith ThrallmarHS
 .goto Hellfire Peninsula,56.71,37.47
 >>进入客栈
-.home >> 将您的炉石设置为萨尔玛
+.home >>将您的炉石设置为萨尔玛
 >>如果需要，购买一些新食物/水 << !Warrior !Rogue !DK
 >>如果需要的话，买一些新食物 << Warrior/Rogue/DK
 step
 .goto Hellfire Peninsula,55.14,37.28,20,0
 >>在里面与Nazgrel和Vurtok交谈
-.turnin 10291 >> 向Nazgrel提交报告
-.accept 10121 >> 接受消灭燃烧军团
+.turnin 10291 >>向Nazgrel提交报告
+.accept 10121 >>接受消灭燃烧军团
 .goto Hellfire Peninsula,55.01,35.96
-.accept 10450 >> 接受Bonechewer鲜血
+.accept 10450 >>接受Bonechewer鲜血
 .goto Hellfire Peninsula,55.13,36.39
 step
 >>与Meggeg和Shatterskul交谈
-.accept 10086 >> 接受我为部落工作！
+.accept 10086 >>接受我为部落工作！
 .goto Hellfire Peninsula,55.18,38.79
-.turnin 10121 >> 上缴消灭燃烧军团
-.accept 10123 >> 接受Felsark Ravine
+.turnin 10121 >>上缴消灭燃烧军团
+.accept 10123 >>接受Felsark Ravine
 .goto Hellfire Peninsula,58.07,41.28
 step
 >>杀死该地区的恐怖召唤者、小鬼和恶魔
@@ -19603,8 +19891,8 @@ step
 step
 .goto Hellfire Peninsula,58.07,41.28
 >>与粉碎骷髅交谈
-.turnin 10123 >> 转入Felsark Ravine
-.accept 10124 >> 接受前方基地：雷沃的坠落
+.turnin 10123 >>转入Felsark Ravine
+.accept 10124 >>接受前方基地：雷沃的坠落
 step
 .goto Hellfire Peninsula,61.67,47.95,50,0
 .goto Hellfire Peninsula,60.14,46.51,50,0
@@ -19622,19 +19910,19 @@ step
 .unitscan Tagar Spinebreaker
 step
 >>返回萨尔玛。先和梅格谈谈，然后再和沃托克谈谈
-.turnin 10086 >> 我为部落工作！
-.accept 10087 >> 接受燃烧吧…为了部落！
+.turnin 10086 >>我为部落工作！
+.accept 10087 >>接受燃烧吧…为了部落！
 .goto Hellfire Peninsula,55.18,38.79
-.turnin 10450 >> 上缴Bonechewer鲜血
-.accept 10449 >> 接受药剂师Zelana
+.turnin 10450 >>上缴Bonechewer鲜血
+.accept 10449 >>接受药剂师Zelana
 .goto Hellfire Peninsula,55.13,36.39
 step
 >>前往雷弗瀑布。与to'arch和Zelana交谈
-.turnin 10124 >> 前垒转身：雷弗倒下
-.accept 10208 >> 接受干扰他们的强化
+.turnin 10124 >>前垒转身：雷弗倒下
+.accept 10208 >>接受干扰他们的强化
 .goto Hellfire Peninsula,65.89,43.59
-.turnin 10449 >> 交给药剂师泽拉纳
-.accept 10242 >> 接受Spinebreaker帖子
+.turnin 10449 >>交给药剂师泽拉纳
+.accept 10242 >>接受Spinebreaker帖子
 .goto Hellfire Peninsula,66.17,41.95
 step
 .goto Hellfire Peninsula,70.75,43.11,50,0
@@ -19663,12 +19951,12 @@ step
 step
 .goto Hellfire Peninsula,65.89,43.59
 >>回到收割者的堕落。与to'arch交谈
-.turnin 10208 >> 转入破坏他们的强化
-.accept 10129 >> 接受任务：Murketh和Shaadraz网关
+.turnin 10208 >>转入破坏他们的强化
+.accept 10129 >>接受任务：Murketh和Shaadraz网关
 step
 #completewith next
 .goto Hellfire Peninsula,66.10,43.71
-.fly >> 与联队指挥官Brack交谈
+.fly >>与联队指挥官Brack交谈
 .skipgossip 19401,2
 .timer 98,Mission: Gateways Flight
 step
@@ -19680,9 +19968,9 @@ step
 step
 .goto Hellfire Peninsula,65.89,43.59
 >>与to'arch交谈
-.turnin 10129 >> 移交任务：Murketh和Shaadraz网关
-.accept 10162 >> 接受任务：深海大陆架
-.accept 10388 >> 接受返回萨尔玛
+.turnin 10129 >>移交任务：Murketh和Shaadraz网关
+.accept 10162 >>接受任务：深海大陆架
+.accept 10388 >>接受返回萨尔玛
 step
 #completewith next
 .goto Hellfire Peninsula,66.10,43.71,-1
@@ -19701,28 +19989,28 @@ step
 step
 .goto Hellfire Peninsula,65.89,43.59
 >>与to'arch交谈
-.turnin 10162 >> 移交任务：深海大陆架
+.turnin 10162 >>移交任务：深海大陆架
 step
 #completewith next
 .goto Hellfire Peninsula,66.10,43.71
-.fly Spinebreaker Post>> 与联队指挥官布拉克通话，飞往“脊柱破碎者哨所”
+.fly Spinebreaker Post>>与联队指挥官布拉克通话，飞往“脊柱破碎者哨所”
 .skipgossip 19401,1
 .timer 46,Spinebreaker Post Flight
 step
 .goto Hellfire Peninsula,61.66,81.19
-.fp Spinebreaker Post >> 获取Spinebreaker飞行后路径
+.fp Spinebreaker Post >>获取Spinebreaker飞行后路径
 step
 >>与Ogath、Mordiba、Albreck、Grelag和通缉海报交谈
-.accept 10278 >> 接受扭曲裂痕
+.accept 10278 >>接受扭曲裂痕
 .goto Hellfire Peninsula,61.87,81.53
-.accept 10220 >> 接受让他们倾听
+.accept 10220 >>接受让他们倾听
 .goto Hellfire Peninsula,61.78,81.71
-.turnin 10242 >> 交出脊柱破碎器柱
-.accept 10538 >> 接受沸腾的血液
+.turnin 10242 >>交出脊柱破碎器柱
+.accept 10538 >>接受沸腾的血液
 .goto Hellfire Peninsula,61.13,81.77
-.accept 9345 >> 接受准备救助
+.accept 9345 >>接受准备救助
 .goto Hellfire Peninsula,60.93,81.67
-.accept 10809 >> 接受通缉：虫王克鲁什
+.accept 10809 >>接受通缉：虫王克鲁什
 .goto Hellfire Peninsula,61.23,80.60
 step
 #completewith Spineleaf
@@ -19734,14 +20022,14 @@ step
 .goto Hellfire Peninsula,55.89,78.43
 >>杀死不屈的骑士。为了一个神秘的汤姆而抢劫他们。在您的包中点击它
 .collect 28552,1,10229,1
-.accept 10229 >> 接受解密Tome
+.accept 10229 >>接受解密Tome
 .use 28552
 .unitscan Unyielding Knight
 step
 .goto Hellfire Peninsula,61.74,81.79
 >>返回Spinebreaker Post。与Althen交谈
-.turnin 10229 >> 交给汤姆解密
-.accept 10230 >> 接受战斗号角
+.turnin 10229 >>交给汤姆解密
+.accept 10230 >>接受战斗号角
 step
 #completewith next
 >>杀死该地区不屈的步兵、骑士和巫师
@@ -19773,10 +20061,10 @@ step
 .goto Hellfire Peninsula,55.11,79.59
 step
 >>返回Spinebreaker Post。与Althen和Mordiba交谈
-.turnin 10230 >> 交出战斗号角
-.accept 10250 >> 接受血腥复仇
+.turnin 10230 >>交出战斗号角
+.accept 10250 >>接受血腥复仇
 .goto Hellfire Peninsula,61.74,81.79
-.turnin 10220 >> 交上来让他们听
+.turnin 10220 >>交上来让他们听
 .goto Hellfire Peninsula,61.78,81.71
 step
 #completewith next
@@ -19796,13 +20084,13 @@ step
 .complete 10809,1 
 step
 >>返回Spinebreaker Post。与Darkhowl、Althen和Zezzak交谈
-.turnin 10809 >> 通缉犯：Worg Master Kruush
-.accept 10792 >> 接受Zeth'Gor必须燃烧！
+.turnin 10809 >>通缉犯：Worg Master Kruush
+.accept 10792 >>接受Zeth'Gor必须燃烧！
 .goto Hellfire Peninsula,61.21,81.33
-.turnin 10250 >> 交出血腥复仇
-.accept 10258 >> 接受荣誉堕落者
+.turnin 10250 >>交出血腥复仇
+.accept 10258 >>接受荣誉堕落者
 .goto Hellfire Peninsula,61.78,81.71
-.accept 10813 >> 接受格里洛克的眼睛
+.accept 10813 >>接受格里洛克的眼睛
 .goto Hellfire Peninsula,61.66,81.87
 step
 #completewith BuildingsB
@@ -19856,7 +20144,7 @@ step
 #completewith next
 .goto Hellfire Peninsula,67.05,75.50,50,0
 .goto Hellfire Peninsula,69.17,69.93
-.cast 38554 >> 频道在该地区的Grillok之眼上使用你袋子里的Zezzak’s Shard
+.cast 38554 >>频道在该地区的Grillok之眼上使用你袋子里的Zezzak’s Shard
 .unitscan Eye of Grillok
 .isOnQuest 10813
 .use 31463
@@ -19866,38 +20154,38 @@ step
 >>如果你的Grillok之眼buff过期，那么在另一个上使用Zezzak的碎片
 .complete 10813,1 
 .use 31463
-.turnin 10813 >> 《格里洛克的眼睛》（The Turn in The Eyes of Grillok）
-.accept 10834 >> 接受Grillok“Darkey”
+.turnin 10813 >>《格里洛克的眼睛》(The Turn in The Eyes of Grillok)
+.accept 10834 >>接受Grillok“Darkey”
 step
 .isQuestComplete 9345
 #completewith end
 #label Salve1
 >>与格雷格交谈
-.turnin 9345 >> 轮流准备药膏
-.accept 10213 >> 接受调查车祸
+.turnin 9345 >>轮流准备药膏
+.accept 10213 >>接受调查车祸
 .goto Hellfire Peninsula,60.93,81.67,-1
 step
 >>与Darkhowl和Albreck交谈
-.turnin 10792 >> 交上Zeth'Gor必须燃烧！
+.turnin 10792 >>交上Zeth'Gor必须燃烧！
 .goto Hellfire Peninsula,61.21,81.33
-.turnin 10538 >> 热血翻身
-.accept 10835 >> 接受药剂师Antonivich
+.turnin 10538 >>热血翻身
+.accept 10835 >>接受药剂师Antonivich
 .goto Hellfire Peninsula,61.13,81.77
 step
 #requires Salve1
 .goto Hellfire Peninsula,56.92,77.37
 >>与塔内的霍加斯交谈
-.turnin 10258 >> 向堕落者致敬
+.turnin 10258 >>向堕落者致敬
 step << skip
 >>前往齐柏林坠机。与Legassi和Screed交谈
-.accept 9349 >> 接受Ravager鸡蛋收集
+.accept 9349 >>接受Ravager鸡蛋收集
 .goto Hellfire Peninsula,49.24,74.83
-.accept 10161 >> 紧急情况下接受。。。
+.accept 10161 >>紧急情况下接受。。。
 .goto Hellfire Peninsula,49.15,74.87
 step
 .goto Hellfire Peninsula,49.24,74.83
 >>前往齐柏林坠机。与Legassi交谈
-.accept 9349 >> 接受Ravager鸡蛋收集
+.accept 9349 >>接受Ravager鸡蛋收集
 step << skip
 #completewith Spineleaf
 >>抢劫整个区域地面上的齐柏林飞艇碎片
@@ -19918,15 +20206,14 @@ step
 step
 .goto Hellfire Peninsula,49.24,74.83
 >>返回齐柏林飞船坠毁。与Legassi交谈
-.turnin 9349 >> 交给Ravager鸡蛋回收站
-.accept 9361 >> 接受Helboar，其他白肉
+.turnin 9349 >>交给Ravager鸡蛋回收站
+.accept 9361 >>接受Helboar，其他白肉
 
 step
 #completewith next
-.goto Hellfire Peninsula,48.8,36.8
 .use 23338 >>在该区域移动的岩石上奔跑，杀死Marauding Curst Bursters。抢劫他们以换取一个腐蚀的皮箱。在您的包中点击它
 .collect 23338,1,9373,1 
-.accept 9373 >> 接受失踪的导弹
+.accept 9373 >>接受失踪的导弹
 step
 .loop 55,Hellfire Peninsula,46.10,71.85,45.11,71.84,45.39,70.17,46.89,68.32,50.01,64.14,52.83,70.37,46.10,71.85
 >>杀死该地区的无爪黑豹。抢走他们的变质肉
@@ -19936,41 +20223,41 @@ step
 step
 .goto Hellfire Peninsula,49.24,74.83
 >>返回齐柏林飞船坠毁。与Legassi交谈
-.turnin 9361 >> 把另一块白肉Helboar交上来
-.accept 9356 >> 接受平滑为黄油
+.turnin 9361 >>把另一块白肉Helboar交上来
+.accept 9356 >>接受平滑为黄油
 step
 #label Spineleaf
 >>前往Falcon Watch。与Carinda、Azethen、Ryathen和Calesthris交谈
-.accept 9374 >> 接受Arelion杂志
+.accept 9374 >>接受Arelion杂志
 .goto Hellfire Peninsula,26.37,60.32
-.accept 9387 >> 接受腐败的根源
+.accept 9387 >>接受腐败的根源
 .goto Hellfire Peninsula,26.78,59.71
-.accept 9366 >> 接受需要恶魔血统的人
+.accept 9366 >>接受需要恶魔血统的人
 .goto Hellfire Peninsula,26.99,59.53
-.accept 9396 >> 接受阿拉科亚的魔法
+.accept 9396 >>接受阿拉科亚的魔法
 .goto Hellfire Peninsula,27.05,59.78
 step
 #sticky
 #label FalconFP
-.fp Falcon Watch >> 获取猎鹰观察飞行路线
+.fp Falcon Watch >>获取猎鹰观察飞行路线
 .goto Hellfire Peninsula,27.79,59.99
 step
 >>前往猎鹰手表的上部。与德伦娜交谈
-.accept 9397 >> 接受羽毛鸟
+.accept 9397 >>接受羽毛鸟
 .goto Hellfire Peninsula,27.71,60.33
 step
 #requires FalconFP
 .goto Hellfire Peninsula,28.04,60.30
 >>与通缉海报交谈
-.accept 9466 >> 接受通缉：野人黑爪
+.accept 9466 >>接受通缉：野人黑爪
 step
 #completewith next
 .goto Hellfire Peninsula,28.37,60.18
-.cast 30141 >> 使用体内的易位珠传送
+.cast 30141 >>使用体内的易位珠传送
 step
 .goto Hellfire Peninsula,28.49,60.24
 >>与塔顶的文恩伦交谈
-.accept 9340 >> 接受大裂缝
+.accept 9340 >>接受大裂缝
 step
 .goto Hellfire Peninsula,29.52,65.12,60,0
 .goto Hellfire Peninsula,30.17,59.96,60,0
@@ -19986,25 +20273,25 @@ step
 step
 #completewith next
 .goto Hellfire Peninsula,28.37,60.18
-.cast 30141 >> 使用体内的易位珠传送
+.cast 30141 >>使用体内的易位珠传送
 step
 .goto Hellfire Peninsula,28.49,60.24
 >>与塔顶的文恩伦交谈
-.turnin 9340 >> 交出大裂缝
-.accept 9391 >> 接受标记路径
-.turnin 9466 >> 通缉犯：野人黑爪
+.turnin 9340 >>交出大裂缝
+.accept 9391 >>接受标记路径
+.turnin 9466 >>通缉犯：野人黑爪
 .isQuestComplete 9466
 step
 .goto Hellfire Peninsula,28.49,60.24
 >>与塔顶的文恩伦交谈
-.turnin 9340 >> 交出大裂缝
-.accept 9391 >> 接受标记路径
+.turnin 9340 >>交出大裂缝
+.accept 9391 >>接受标记路径
 step
-.abandon 9466 >> 被通缉的弃儿：野人黑爪
+.abandon 9466 >>被通缉的弃儿：野人黑爪
 step
 #completewith Grillok
 .goto Hellfire Peninsula,27.79,59.99
-.fly Spinebreaker >> 飞到Spinebreaker Post
+.fly Spinebreaker >>飞到Spinebreaker Post
 step
 #completewith Buzzard
 >>在整个区域的地面上聚集地狱火尖刺鸟
@@ -20047,22 +20334,22 @@ step << skip
 .complete 10161,1 
 step << skip
 >>返回Spinebreaker Post。与Grelag、Zezzak和Ogath交谈
-.turnin 9345 >> 轮流准备药膏
-.accept 10213 >> 接受调查车祸
+.turnin 9345 >>轮流准备药膏
+.accept 10213 >>接受调查车祸
 .goto Hellfire Peninsula,60.93,81.67
-.turnin 10834 >> 把Grillok交给“Darkey”
+.turnin 10834 >>把Grillok交给“Darkey”
 .goto Hellfire Peninsula,61.66,81.87
-.turnin 10278 >> 转向曲速裂谷
-.accept 10294 >> 接受空心山脊
+.turnin 10278 >>转向曲速裂谷
+.accept 10294 >>接受空心山脊
 .goto Hellfire Peninsula,61.87,81.53
 step
 >>返回Spinebreaker Post。与Grelag、Zezzak和Ogath交谈
-.turnin 9345 >> 轮流准备药膏
-.accept 10213 >> 接受调查车祸
+.turnin 9345 >>轮流准备药膏
+.accept 10213 >>接受调查车祸
 .goto Hellfire Peninsula,60.93,81.67
-.turnin 10834 >> 把Grillok交给“Darkey”
+.turnin 10834 >>把Grillok交给“Darkey”
 .goto Hellfire Peninsula,61.66,81.87
-.turnin 10278 >> 转向曲速裂谷
+.turnin 10278 >>转向曲速裂谷
 .goto Hellfire Peninsula,61.87,81.53
 step << skip
 .goto Hellfire Peninsula,76.56,64.09,50,0
@@ -20070,35 +20357,35 @@ step << skip
 >>杀死该地区的虚空行者。掠夺他们的碎片
 .complete 10294,1 
 step << skip
-.turnin 10294 >> 转入Void Ridge
-.accept 10295 >> 从深渊接受
+.turnin 10294 >>转入Void Ridge
+.accept 10295 >>从深渊接受
 >>返回Spinebreaker Post。与Ogath交谈
 .goto Hellfire Peninsula,61.87,81.53
 step << skip
 #completewith next
 .goto Hellfire Peninsula,80.87,78.75
-.cast 35036 >> 使用包中的曲裂发生器召唤虚空男爵加拉西斯
+.cast 35036 >>使用包中的曲裂发生器召唤虚空男爵加拉西斯
 .use 29226
 step << skip
 .goto Hellfire Peninsula,81.17,78.85
 >>杀死加拉西斯。抢他的灵魂碎片
 .complete 10295,1 
 step << skip
-.turnin 10295 >> 从深渊归来
+.turnin 10295 >>从深渊归来
 >>返回Spinebreaker Post。与Ogath交谈
 .goto Hellfire Peninsula,61.87,81.53
 step << skip
 >>前往齐柏林坠机。与Legassi和Screed交谈
-.turnin 9356 >> 顺滑如黄油
+.turnin 9356 >>顺滑如黄油
 .goto Hellfire Peninsula,49.24,74.83
-.turnin 10213 >> 上车调查车祸
-.turnin 10161 >> 在紧急情况下上车。。。
+.turnin 10213 >>上车调查车祸
+.turnin 10161 >>在紧急情况下上车。。。
 .goto Hellfire Peninsula,49.15,74.87
 step
 >>返回齐柏林飞船坠毁。与Legassi和Screed交谈
-.turnin 9356 >> 顺滑如黄油
+.turnin 9356 >>顺滑如黄油
 .goto Hellfire Peninsula,49.24,74.83
-.turnin 10213 >> 上车调查车祸
+.turnin 10213 >>上车调查车祸
 .goto Hellfire Peninsula,49.15,74.87
 step
 >>点亮该区域的信标
@@ -20110,30 +20397,30 @@ step
 .goto Hellfire Peninsula,30.02,60.58
 step << Druid
 #completewith next
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 step << Druid
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.trainer >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.trainer >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 step
 #completewith next
-.hs >> 赫斯到萨尔玛
+.hs >>赫斯到萨尔玛
 step
 .goto Hellfire Peninsula,55.14,37.28,20,0
 .goto Hellfire Peninsula,55.01,35.96
 >>返回萨尔玛。在里面和Nazgrel交谈
-.turnin 10388 >> 返回萨尔玛
-.accept 9400 >> 接受刺客
-.accept 10390 >> 接受Forge营地：Mageddon
+.turnin 10388 >>返回萨尔玛
+.accept 9400 >>接受刺客
+.accept 10390 >>接受Forge营地：Mageddon
 step
 #completewith next
 >>杀死该地区的甘阿尔格仆人
@@ -20151,7 +20438,7 @@ step
 .use 29590 >>杀死拉佐索。抢劫他的导弹和头部。他逆时针在营地周围巡逻
 .complete 10390,2 
 .collect 29590,1,10393,1 
-.accept 10393 >> 接受卑鄙计划
+.accept 10393 >>接受卑鄙计划
 .unitscan Razorsaw
 step
 .goto Hellfire Peninsula,63.50,31.00,50,0
@@ -20164,14 +20451,14 @@ step
 .complete 10390,1 
 step << Shaman
 #completewith next
-.hs >> 赫斯到萨尔玛
+.hs >>赫斯到萨尔玛
 step
 .goto Hellfire Peninsula,55.14,37.28,20,0
 >>返回萨尔玛。与Bloodhawk和Nazgrel交谈
-.turnin 10393 >> 提交卑鄙计划
+.turnin 10393 >>提交卑鄙计划
 .goto Hellfire Peninsula,55.13,36.03
-.turnin 10390 >> 转入Forge Camp:Mageddon
-.accept 10391 >> 接受愤怒的大炮
+.turnin 10390 >>转入Forge Camp:Mageddon
+.accept 10391 >>接受愤怒的大炮
 .goto Hellfire Peninsula,55.01,35.96
 step
 .goto Hellfire Peninsula,57.79,32.07,60,0
@@ -20185,18 +20472,18 @@ step
 .goto Hellfire Peninsula,55.14,37.28,20,0
 .goto Hellfire Peninsula,55.01,35.96
 >>返回萨尔玛。与Nazgrel交谈
-.turnin 10391 >> 愤怒的大炮上缴
-.accept 10392 >> 接受深渊之门
+.turnin 10391 >>愤怒的大炮上缴
+.accept 10392 >>接受深渊之门
 step
 >>在塔中与Antonivich交谈
-.turnin 10835 >> 交给药剂师Antonivich
-.accept 10864 >> 接受灵魂的负担
+.turnin 10835 >>交给药剂师Antonivich
+.accept 10864 >>接受灵魂的负担
 .goto Hellfire Peninsula,52.28,36.46
 step
-.skill riding,<225,1
 #completewith next
-.goto Hellfire Peninsula,55.10,33.81,30,0
-.goto Hellfire Peninsula,55.87,33.16,20 >> 沿着这条小路走
+.goto Hellfire Peninsula,55.10,33.81,40,0
+.goto Hellfire Peninsula,55.87,33.16,30 >>沿着这条小路走
+.skill riding,225,1
 step
 .goto Hellfire Peninsula,53.09,26.46
 >>杀死阿里克斯·阿马尔。抢他去拿钥匙
@@ -20209,20 +20496,20 @@ step
 step
 .goto Hellfire Peninsula,55.14,37.28,20,0
 >>返回萨尔玛。与Nazgrel和Bloodhawk交谈
-.turnin 10392 >> 转入深渊之门
-.accept 10136 >> 接受残忍的意图
+.turnin 10392 >>转入深渊之门
+.accept 10136 >>接受残忍的意图
 .goto Hellfire Peninsula,55.01,35.96
-.accept 10389 >> 接受痛苦和黑暗
+.accept 10389 >>接受痛苦和黑暗
 .goto Hellfire Peninsula,55.13,36.03
 step
 .goto Hellfire Peninsula,51.37,30.52
 >>与萨尔玛矿外的Razelcrach交谈
-.accept 10236 >> 接受外域吸食！
+.accept 10236 >>接受外域吸食！
 step
 #completewith next
 .use 23338 >>在该区域移动的岩石上奔跑，杀死Marauding Curst Bursters。抢劫他们以换取一个腐蚀的皮箱。在您的包中点击它
 .collect 23338,1,9373,1 
-.accept 9373 >> 接受失踪的导弹
+.accept 9373 >>接受失踪的导弹
 step
 .goto Hellfire Peninsula,49.02,37.63,50,0
 .goto Hellfire Peninsula,47.98,37.39,50,0
@@ -20236,8 +20523,8 @@ step
 step
 .goto Hellfire Peninsula,51.37,30.52
 >>与Razelcrach交谈
-.turnin 10236 >> 交给外域混蛋！
-.accept 10238 >> 接受如何为地精服务
+.turnin 10236 >>交给外域混蛋！
+.accept 10238 >>接受如何为地精服务
 step
 #completewith next
 >>杀死该地区的破碎手兽人
@@ -20267,24 +20554,24 @@ step
 .use 27479
 step << Shaman
 #completewith next
-.hs >> 赫斯到萨尔玛
+.hs >>赫斯到萨尔玛
 .cooldown item,6948,>0
 step
 >>返回萨尔玛。与梅格和安东尼维奇交谈
-.turnin 10087 >> 把它烧了…为了部落！
+.turnin 10087 >>把它烧了…为了部落！
 .goto Hellfire Peninsula,55.18,38.79
-.turnin 10864 >> 交出灵魂的负担
-.accept 10838 >> 接受恶魔尖叫者
+.turnin 10864 >>交出灵魂的负担
+.accept 10838 >>接受恶魔尖叫者
 .goto Hellfire Peninsula,52.28,36.46
 step
 .goto Hellfire Peninsula,51.37,30.52
 >>与Razelcrach交谈
-.turnin 10238 >> 上交如何为地精服务
-.accept 10629 >> 接受Shizz工作
+.turnin 10238 >>上交如何为地精服务
+.accept 10629 >>接受Shizz工作
 step
 .goto Hellfire Peninsula,51.37,30.52
 #completewith next
-.cast 37690 >> 在Razelcrach时，使用你包里的Felhound Whistle召唤Felhond
+.cast 37690 >>在Razelcrach时，使用你包里的Felhound Whistle召唤Felhond
 .use 30803
 step
 .goto Hellfire Peninsula,50.7,28.9
@@ -20294,8 +20581,8 @@ step
 step
 .goto Hellfire Peninsula,51.37,30.52
 >>与Razelcrach交谈
-.turnin 10629 >> 交出杂耍作品
-.accept 10630 >> 在萨尔玛下面接受
+.turnin 10629 >>交出杂耍作品
+.accept 10630 >>在萨尔玛下面接受
 step
 .goto Hellfire Peninsula,51.72,31.68,20,0
 .goto Hellfire Peninsula,52.57,30.59,20,0
@@ -20305,7 +20592,7 @@ step
 step
 .goto Hellfire Peninsula,51.37,30.52
 >>与Razelcrach交谈
-.turnin 10630 >> 在萨尔玛下面上阵
+.turnin 10630 >>在萨尔玛下面上阵
 step
 .goto Hellfire Peninsula,49.02,37.63,50,0
 .goto Hellfire Peninsula,47.98,37.39,50,0
@@ -20321,7 +20608,7 @@ step
 .goto Hellfire Peninsula,47.98,37.39
 .use 23338 >>在该区域移动的岩石上奔跑，杀死Marauding Curst Bursters。抢劫他们以换取一个腐蚀的皮箱。在您的包中点击它
 .collect 23338,1,9373,1 
-.accept 9373 >> 接受失踪的导弹
+.accept 9373 >>接受失踪的导弹
 step
 #completewith next
 .goto Hellfire Peninsula,45.35,46.03
@@ -20364,117 +20651,117 @@ step
 .goto Hellfire Peninsula,33.62,43.54
 >>与克鲁恩·斯宾布雷克的尸体交谈
 .complete 9400,1 
-.turnin 9400 >> 交出刺客
-.accept 9401 >> 接受一件奇怪的武器
+.turnin 9400 >>交出刺客
+.accept 9401 >>接受一件奇怪的武器
 step << Druid
 #completewith next
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 step << Druid
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.trainer >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.trainer >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 step
 #completewith Thrallmar3
-.hs >> 赫斯到萨尔玛
+.hs >>赫斯到萨尔玛
 step
 >>返回萨尔玛。与Antonivich、Bloodhawk、Nazgrel和
-.turnin 10838 >> 交给恶魔尖叫者
-.accept 10875 >> 接受向Nazgrel的报告
+.turnin 10838 >>交给恶魔尖叫者
+.accept 10875 >>接受向Nazgrel的报告
 .goto Hellfire Peninsula,52.28,36.46
-.turnin 10389 >> 交出痛苦与黑暗
+.turnin 10389 >>交出痛苦与黑暗
 .goto Hellfire Peninsula,55.14,37.28,20,0
 .goto Hellfire Peninsula,55.13,36.03
-.turnin 10875 >> 向Nazgrel提交报告
-.turnin 9401 >> 交出一件奇怪的武器
-.turnin 10136 >> 交出残忍的意图
-.accept 9405 >> 接受酋长的命令
+.turnin 10875 >>向Nazgrel提交报告
+.turnin 9401 >>交出一件奇怪的武器
+.turnin 10136 >>交出残忍的意图
+.accept 9405 >>接受酋长的命令
 .goto Hellfire Peninsula,55.01,35.96
 .isQuestComplete 10136
 step
 #xprate <1.5
 #label Thrallmar3
 >>返回萨尔玛。与Antonivich、Bloodhawk、Nazgrel和Regulkut交谈
-.turnin 10838 >> 交给恶魔尖叫者
-.accept 10875 >> 接受向Nazgrel的报告
+.turnin 10838 >>交给恶魔尖叫者
+.accept 10875 >>接受向Nazgrel的报告
 .goto Hellfire Peninsula,52.28,36.46
-.turnin 10389 >> 交出痛苦与黑暗
+.turnin 10389 >>交出痛苦与黑暗
 .goto Hellfire Peninsula,55.14,37.28,20,0
 .goto Hellfire Peninsula,55.13,36.03
-.turnin 10875 >> 向Nazgrel提交报告
-.turnin 9401 >> 交出一件奇怪的武器
-.accept 9405 >> 接受酋长的命令
+.turnin 10875 >>向Nazgrel提交报告
+.turnin 9401 >>交出一件奇怪的武器
+.accept 9405 >>接受酋长的命令
 .goto Hellfire Peninsula,55.01,35.96
-.turnin 9405 >> 交出酋长的命令
-.accept 9410 >> 接受精神指引
+.turnin 9405 >>交出酋长的命令
+.accept 9410 >>接受精神指引
 .goto Hellfire Peninsula,54.23,37.90
 step
 #xprate >1.499
 #label Thrallmar3
 >>返回萨尔玛。与Antonivich、Bloodhawk、Nazgrel和Regulkut交谈
-.turnin 10838 >> 交给恶魔尖叫者
-.accept 10875 >> 接受向Nazgrel的报告
+.turnin 10838 >>交给恶魔尖叫者
+.accept 10875 >>接受向Nazgrel的报告
 .goto Hellfire Peninsula,52.28,36.46
-.turnin 10389 >> 交出痛苦与黑暗
+.turnin 10389 >>交出痛苦与黑暗
 .goto Hellfire Peninsula,55.14,37.28,20,0
 .goto Hellfire Peninsula,55.13,36.03
-.turnin 10875 >> 向Nazgrel提交报告
-.turnin 9401 >> 交出一件奇怪的武器
-.accept 9405 >> 接受酋长的命令
+.turnin 10875 >>向Nazgrel提交报告
+.turnin 9401 >>交出一件奇怪的武器
+.accept 9405 >>接受酋长的命令
 .goto Hellfire Peninsula,55.01,35.96
-.turnin 9405 >> 交出酋长的命令
+.turnin 9405 >>交出酋长的命令
 .goto Hellfire Peninsula,54.23,37.90
 step << skip
 >>返回萨尔玛。与Antonivich、Bloodhawk、Nazgrel和Regulkut交谈
-.turnin 10838 >> 交给恶魔尖叫者
-.accept 10875 >> 接受向Nazgrel的报告
+.turnin 10838 >>交给恶魔尖叫者
+.accept 10875 >>接受向Nazgrel的报告
 .goto Hellfire Peninsula,52.28,36.46
-.turnin 10389 >> 交出痛苦与黑暗
+.turnin 10389 >>交出痛苦与黑暗
 .goto Hellfire Peninsula,55.14,37.28,20,0
 .goto Hellfire Peninsula,55.13,36.03
-.turnin 10875 >> 向Nazgrel提交报告
-.turnin 9401 >> 交出一件奇怪的武器
-.accept 9405 >> 接受酋长的命令
-.accept 10876 >> 接受城堡的脚下
+.turnin 10875 >>向Nazgrel提交报告
+.turnin 9401 >>交出一件奇怪的武器
+.accept 9405 >>接受酋长的命令
+.accept 10876 >>接受城堡的脚下
 .goto Hellfire Peninsula,55.01,35.96
-.turnin 9405 >> 交出酋长的命令
-.accept 9410 >> 接受精神指引
+.turnin 9405 >>交出酋长的命令
+.accept 9410 >>接受精神指引
 .goto Hellfire Peninsula,54.23,37.90
 step
-.abandon 10136 >> 放弃残忍的意图
+.abandon 10136 >>放弃残忍的意图
 step
 #completewith next
 .goto Hellfire Peninsula,56.29,36.24
-.fly Falcon Watch >> 飞到猎鹰手表
+.fly Falcon Watch >>飞到猎鹰手表
 step
 >>前往Falcon Watch。与德伦娜交谈
-.accept 9381 >> 接受真实箭头
-.accept 10442 >> 接受帮助塞纳里奥邮报
+.accept 9381 >>接受真实箭头
+.accept 10442 >>接受帮助塞纳里奥邮报
 .goto Hellfire Peninsula,27.71,60.33
 step
 #completewith next
 .goto Hellfire Peninsula,28.37,60.18
-.cast 30141 >> 使用体内的易位珠传送
+.cast 30141 >>使用体内的易位珠传送
 step
 .goto Hellfire Peninsula,28.49,60.24
 >>与塔顶的文恩伦交谈
-.accept 10103 >> 接受向苏莱提交的报告
-.turnin 9391 >> 转向标记路径
+.accept 10103 >>接受向苏莱提交的报告
+.turnin 9391 >>转向标记路径
 step
 >>与Ryathen和Carinda交谈
-.turnin 9366 >> 因需要恶魔血统而入狱
-.accept 9370 >> 接受必须停止清洁
+.turnin 9366 >>因需要恶魔血统而入狱
+.accept 9370 >>接受必须停止清洁
 .goto Hellfire Peninsula,26.99,59.53
-.turnin 9374 >> 上交Arelion杂志
-.accept 10286 >> 接受阿雷里奥的秘密
+.turnin 9374 >>上交Arelion杂志
+.accept 10286 >>接受阿雷里奥的秘密
 .goto Hellfire Peninsula,26.37,60.32
 step
 #completewith AvruuO
@@ -20490,13 +20777,13 @@ step
 .goto Hellfire Peninsula,25.72,76.44
 .use 23580 >>杀死Avruu。抢他的球。在您的包中点击它
 .collect 23580,1,9418,1 
-.accept 9418 >> 接受Avruu的球
+.accept 9418 >>接受Avruu的球
 .unitscan Avruu
 step
 #label AvruuO
 .goto Hellfire Peninsula,28.93,81.46
 >>单击Haal'eshi祭坛。击败阿雷纳斯，然后和他谈谈
-.turnin 9418 >> 交给阿夫鲁的球
+.turnin 9418 >>交给阿夫鲁的球
 .skipgossip
 .timer 9,Aeranas RP
 step
@@ -20518,7 +20805,7 @@ step
 step
 .goto Hellfire Peninsula,24.54,76.07
 >>与笼子里受伤的血精灵交谈，开始护送
-.accept 9375 >> 接受猎鹰观察之路
+.accept 9375 >>接受猎鹰观察之路
 step
 .goto Hellfire Peninsula,26.21,70.84,50,0
 .goto Hellfire Peninsula,25.55,67.93,50,0
@@ -20528,17 +20815,17 @@ step
 step
 .goto Hellfire Peninsula,27.16,61.90
 >>与Taleris交谈
-.turnin 9375 >> 在通往猎鹰守望的道路上转弯
-.accept 9376 >> 接受朝圣者的困境
+.turnin 9375 >>在通往猎鹰守望的道路上转弯
+.accept 9376 >>接受朝圣者的困境
 step << DK/Druid
 #xprate >1.499
 .goto Hellfire Peninsula,26.9,59.6
-.home >> 将炉石设置为猎鹰手表
+.home >>将炉石设置为猎鹰手表
 step
 #completewith next
 >>如果你看到阿莱迪斯，可以在路上和他谈谈。杀了他
-.turnin 10286 >> 交出阿雷里奥的秘密
-.accept 10287 >> 接受揭露的女主人
+.turnin 10286 >>交出阿雷里奥的秘密
+.accept 10287 >>接受揭露的女主人
 .unitscan Magister Aledis
 .skipgossip
 step
@@ -20547,13 +20834,13 @@ step
 .complete 9376,1 
 step
 >>前往塞纳里奥邮报。与阿米提尔、马胡兰、提亚和托拉提安交谈
-.accept 9912 >> 接受塞纳里奥探险队
+.accept 9912 >>接受塞纳里奥探险队
 .goto Hellfire Peninsula,16.04,52.15
-.accept 10159 >> 接受保持桑方山畅通！
+.accept 10159 >>接受保持桑方山畅通！
 .goto Hellfire Peninsula,15.65,52.15
-.turnin 10442 >> 转而帮助塞纳里奥邮报
-.turnin 9373 >> 交出失踪的导弹
-.accept 9372 >> 接受恶魔污染
+.turnin 10442 >>转而帮助塞纳里奥邮报
+.turnin 9373 >>交出失踪的导弹
+.accept 9372 >>接受恶魔污染
 .goto Hellfire Peninsula,15.70,52.08
 .accept 10132 >>接受巨大威胁
 .goto Hellfire Peninsula,15.62,52.04
@@ -20564,12 +20851,12 @@ step
 step
 .goto Hellfire Peninsula,15.59,58.74
 >>与Akoru交谈
-.accept 10403 >> 接受纳拉杜
+.accept 10403 >>接受纳拉杜
 step
 .goto Hellfire Peninsula,16.27,65.09
 >>在里面和纳拉杜交谈
-.turnin 10403 >> 交给纳拉杜
-.accept 10367 >> 接受我们中间的叛徒
+.turnin 10403 >>交给纳拉杜
+.accept 10367 >>接受我们中间的叛徒
 step
 .goto Hellfire Peninsula,14.34,63.50
 >>抢劫大楼内的箱子
@@ -20577,8 +20864,8 @@ step
 step
 .goto Hellfire Peninsula,16.27,65.09
 >>与纳拉杜交谈
-.turnin 10367 >> 在我们中间交出叛徒
-.accept 10368 >> 接受Dreghood长老
+.turnin 10367 >>在我们中间交出叛徒
+.accept 10368 >>接受Dreghood长老
 step
 >>与废墟中被俘虏的破碎者交谈以释放他们
 .complete 10368,1 
@@ -20591,8 +20878,8 @@ step
 step
 .goto Hellfire Peninsula,16.27,65.09
 >>与纳拉杜交谈
-.turnin 10368 >> 交给Dreghood长老
-.accept 10369 >> 接受Arzeth的Demise
+.turnin 10368 >>交给Dreghood长老
+.accept 10369 >>接受Arzeth的Demise
 step
 .goto Hellfire Peninsula,14.29,62.38,50,0
 .goto Hellfire Peninsula,14.35,56.99
@@ -20602,7 +20889,7 @@ step
 #label Arzeth
 .goto Hellfire Peninsula,16.27,65.09
 >>与纳拉杜交谈
-.turnin 10369 >> 交给Arzeth的Demise
+.turnin 10369 >>交给Arzeth的Demise
 step
 .goto Hellfire Peninsula,15.18,62.60,50,0
 .goto Hellfire Peninsula,13.44,62.01,50,0
@@ -20638,7 +20925,7 @@ step
 step
 #completewith next
 .goto Hellfire Peninsula,33.62,43.53
-.cast 29731 >> 前往兽人尸体。使用包中的祖先精灵狼图腾
+.cast 29731 >>前往兽人尸体。使用包中的祖先精灵狼图腾
 .timer 240,A Spirit Guide RP
 .use 23669
 step
@@ -20646,14 +20933,14 @@ step
 .goto Hellfire Peninsula,33.62,43.53,0
 .goto Hellfire Peninsula,32.00,27.80
 >>护送这只狼，确保你和它呆在一起。
->>当你拥有狼的“灵魂指引”buff时，与Gorkan交谈（让Mag'har变得友好）
-.turnin 9410 >> 交一份精神指南
+>>当你拥有狼的“灵魂指引”buff时，与Gorkan交谈(让Mag'har变得友好)
+.turnin 9410 >>交一份精神指南
 .accept 9406 >>接受Mag'har
 .use 23669
 
 step
 #completewith next
-.cast 29279 >> 使用阿戈纳祭坛上的信号宝石
+.cast 29279 >>使用阿戈纳祭坛上的信号宝石
 .goto Hellfire Peninsula,39.04,40.33
 step
 .goto Hellfire Peninsula,37.25,39.05
@@ -20671,34 +20958,34 @@ step << skip
 .use 31702
 step << Druid
 #completewith next
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 step << Druid
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.trainer >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.trainer >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 step
 #xprate <1.5
 #completewith next
-.hs >> 赫斯到萨尔玛
+.hs >>赫斯到萨尔玛
 step << DK/Druid
 #xprate >1.499
 #completewith next
-.hs >> 火炉到猎鹰手表
+.hs >>火炉到猎鹰手表
 step << skip
 .goto Hellfire Peninsula,55.14,37.28,20,0
 .goto Hellfire Peninsula,55.01,35.96
 >>返回萨尔玛。与Nazgrel交谈
 .turnin 9406 >>交给Mag'har
-.turnin 10876 >> 在城堡脚下转弯
+.turnin 10876 >>在城堡脚下转弯
 .accept 9438 >>接受Messenger至Thrall
 step
 #xprate <1.5
@@ -20711,19 +20998,19 @@ step
 #xprate <1.5
 #completewith next
 .goto Hellfire Peninsula,56.29,36.24
-.fly Falcon Watch >> 飞到猎鹰手表
+.fly Falcon Watch >>飞到猎鹰手表
 step
 >>前往Falcon Watch。与Drenna、Calesthris、Ryathon、Azethen和Taleris交谈
-.turnin 9381 >> 转入真实箭头
-.turnin 9397 >> 交出羽毛鸟
+.turnin 9381 >>转入真实箭头
+.turnin 9397 >>交出羽毛鸟
 .goto Hellfire Peninsula,27.71,60.33
-.turnin 9396 >> 阿拉科亚的魔力
+.turnin 9396 >>阿拉科亚的魔力
 .goto Hellfire Peninsula,27.05,59.78
-.turnin 9370 >> 必须停止清洗
+.turnin 9370 >>必须停止清洗
 .goto Hellfire Peninsula,26.99,59.53
-.turnin 9387 >> 交出腐败根源
+.turnin 9387 >>交出腐败根源
 .goto Hellfire Peninsula,26.78,59.71
-.turnin 9376 >> 交出朝圣者的困境
+.turnin 9376 >>交出朝圣者的困境
 .goto Hellfire Peninsula,27.16,61.90
 step
 .goto Hellfire Peninsula,26.32,63.13,60,0
@@ -20739,14 +21026,14 @@ step
 .goto Hellfire Peninsula,4.71,50.48
 .line Hellfire Peninsula,26.32,63.13,25.53,62.77,25.62,59.40,29.18,56.93,31.78,57.51,32.59,56.36,31.28,52.38,26.73,49.42,7.41,49.90,5.40,51.31,4.71,50.48
 >>在从Falcon Watch到Cenarion Post的路上与Magister Aledis交谈。杀了他
-.turnin 10286 >> 交出阿雷里奥的秘密
-.accept 10287 >> 接受揭露的女主人
+.turnin 10286 >>交出阿雷里奥的秘密
+.accept 10287 >>接受揭露的女主人
 .unitscan Magister Aledis
 .skipgossip
 step
 >>返回塞纳里奥邮报。与Thiah交谈
-.turnin 9372 >> 交出恶魔污染
-.accept 10255 >> 接受测试解药
+.turnin 9372 >>交出恶魔污染
+.accept 10255 >>接受测试解药
 .goto Hellfire Peninsula,15.70,52.08
 step
 .goto Hellfire Peninsula,18.40,52.73,60,0
@@ -20758,7 +21045,7 @@ step
 #label end
 .goto Hellfire Peninsula,15.70,52.08
 >>与Thiah交谈
-.turnin 10255 >> 交验解药
+.turnin 10255 >>交验解药
 step
 #completewith next
 .goto Hellfire Peninsula,15.0,45.7,0
@@ -20813,7 +21100,7 @@ step
 step
 .goto Hellfire Peninsula,13.52,39.70
 >>杀死歌利亚顿。这个任务很困难。如果需要，为他找一个小组。如果你找不到一个团队或是独自一人，请跳过这一步。
->>当心，歌利亚有一个巨大的（60码）击退
+>>当心，歌利亚有一个巨大的(60码)击退
 .complete 10351,1 
 .use 29478
 .isQuestTurnedIn 10134
@@ -20825,7 +21112,7 @@ step
 step
 #label ThrallmarHS
 >>如果无法完成精英任务，则放弃它们
-.abandon 10351 >> 放弃自然补救措施
+.abandon 10351 >>放弃自然补救措施
 .abandon 10132 >>放弃巨大威胁
 step
 .goto Hellfire Peninsula,12.15,46.50,50,0
@@ -20848,29 +21135,29 @@ RXPGuides.RegisterGuide([[
 step
 #era/som
 .goto Winterspring,61.60,38.60
-.accept 4809 >> 接受冷风喇叭
+.accept 4809 >>接受冷风喇叭
 step
 #era/som
 .goto Winterspring,60.90,37.70
-.accept 977 >> 接受我们在吗，雪人？
+.accept 977 >>接受我们在吗，雪人？
 step << skip
 #completewith next
 .goto Winterspring,67.19,35.81,0
->> 在村子里杀了Furbolgs。如果村庄太拥挤，请跳过这一步
+>>在村子里杀了Furbolgs。如果村庄太拥挤，请跳过这一步
 .complete 8464,1
 .complete 8464,2
 .complete 8464,3
 step
 .goto Winterspring,69.62,38.31
->> 杀死高官越冬。杀了他的萨满保镖，逃跑，必要时杀了冬瀑
->> 小心点，因为《冬天降临》确实会施放冰霜冲击
+>>杀死高官越冬。杀了他的萨满保镖，逃跑，必要时杀了冬瀑
+>>小心点，因为《冬天降临》确实会施放冰霜冲击
 .complete 5121,1
->> 从冬天的秋天掠夺粗糙的日志。接受任务
+>>从冬天的秋天掠夺粗糙的日志。接受任务
 .collect 12842,1,5123
-.accept 5123 >> 接受最终作品
+.accept 5123 >>接受最终作品
 step << skip
 .goto Winterspring,67.19,35.81
->> 在村子里杀了Furbolgs。如果村庄太拥挤，跳过这一步
+>>在村子里杀了Furbolgs。如果村庄太拥挤，跳过这一步
 .complete 8464,1
 .complete 8464,2
 .complete 8464,3
@@ -20878,39 +21165,39 @@ step
 #era/som
 .goto Winterspring,67.66,41.70,50,0
 .goto Winterspring,70.00,41.88
->> 到洞里去。杀死雪人族长和母亲。抢走他们来换取百里斯廷雪人之角
+>>到洞里去。杀死雪人族长和母亲。抢走他们来换取百里斯廷雪人之角
 .complete 977,1
 step << Shaman
-.hs >> 炉灶 to Everlook公司
->> 如果需要，购买食物/水
+.hs >>炉灶 to Everlook公司
+>>如果需要，购买食物/水
 step
 #era/som
 .goto Winterspring,60.90,37.70
-.turnin 977 >> 上车我们在吗，雪蒂？
-.accept 5163 >> 接受我们在吗，雪人？
+.turnin 977 >>上车我们在吗，雪蒂？
+.accept 5163 >>接受我们在吗，雪人？
 step
 #era/som
 .goto Winterspring,61.50,38.60
->> 在Legacki上使用机械雪人
+>>在Legacki上使用机械雪人
 .complete 5163,1
 step
 #era/som
 .goto Winterspring,65.10,21.10
->> 杀死该地区的月面猫头鹰。在他们施放《月光之火》和《复兴》时要小心
+>>杀死该地区的月面猫头鹰。在他们施放《月光之火》和《复兴》时要小心
 .complete 4741,1
 step
 #completewith next
-.deathskip >> 死亡跳到Everlook
+.deathskip >>死亡跳到Everlook
 #softcore
 step
 >>返回多诺瓦
 .goto Winterspring,31.30,45.20
-.turnin 5121 >> 在高首席冬季秋季
-.turnin 5123 >> 交上最后一块
-.accept 5128 >> 接受最高首领的话
+.turnin 5121 >>在高首席冬季秋季
+.turnin 5123 >>交上最后一块
+.accept 5128 >>接受最高首领的话
 step << skip
 .goto Felwood,68.30,6.07
-.turnin 8464 >> 参加冬季秋季活动
+.turnin 8464 >>参加冬季秋季活动
 .isQuestComplete 8464
 step << !Druid
 #completewith next
@@ -20920,106 +21207,106 @@ step << !Druid
 .goto Winterspring,26.36,28.04,40,0
 .goto Winterspring,26.61,24.49,40,0
 .goto Winterspring,26.59,24.17
-.zone Moonglade >> 进入furbolg隧道，从北边出口进入Moonglade
+.zone Moonglade >>进入furbolg隧道，从北边出口进入Moonglade
 step << Druid
-.zone Moonglade >> 传送至Moonglade
+.zone Moonglade >>传送至Moonglade
 step
 .goto Moonglade,51.70,45.00
-.turnin 1123 >> 转入Rabine Saturna
-.accept 1124 >> 接受荒地
+.turnin 1123 >>转入Rabine Saturna
+.accept 1124 >>接受荒地
 step
 .goto Moonglade,51.68,45.09
->> 完成与拉宾的对话。如果无法使用Dire Maul对话框，请跳过此步骤
-.accept 5527 >> 接受纯净圣物
+>>完成与拉宾的对话。如果无法使用Dire Maul对话框，请跳过此步骤
+.accept 5527 >>接受纯净圣物
 .skipgossip
 step
 .goto Moonglade,32.10,66.60
-.fp Moonglade >> 获取Moonglade飞行路线 << !Druid
-.fly Felwood>> 飞到费尔伍德
+.fp Moonglade >>获取Moonglade飞行路线 << !Druid
+.fly Felwood>>飞到费尔伍德
 step
 #era/som
 .goto Felwood,34.70,52.80
-.turnin 4741 >> 交出野生守护者
-.accept 4721 >> 接受野生守护者
+.turnin 4741 >>交出野生守护者
+.accept 4721 >>接受野生守护者
 step << !Rogue !Warrior
 #era/som
 .goto Winterspring,13.90,96.10
-.turnin 5242 >> 最后一次击球
+.turnin 5242 >>最后一次击球
 step << !Rogue !Warrior
 #era/som
 .goto Winterspring,14.00,96.00
-.turnin 5385 >> 交出Trey Lightforge的遗骸
+.turnin 5385 >>交出Trey Lightforge的遗骸
 step
 #era/som
 .goto Winterspring,13.90,95.80
-.turnin 5128 >> 上缴最高长官的话
+.turnin 5128 >>上缴最高长官的话
 step
 #era/som
 #softcore
 .goto Winterspring,14.00,95.60
-.turnin 4084 >> 交出银心
-.accept 4005 >> 接受Aquimentas
+.turnin 4084 >>交出银心
+.accept 4005 >>接受Aquimentas
 step
 #completewith next
-.hs >> 赫斯返回冬泉，然后飞往艾萨拉
->> 如果需要，购买食物/水
+.hs >>赫斯返回冬泉，然后飞往艾萨拉
+>>如果需要，购买食物/水
 step
 #completewith next
 .goto Ashenvale,62.70,39.80
 .zone Ashenvale >>如果您的炉石正在冷却，请前往Splinterree Post
 step
 #completewith next
-.fly Azshara>> 飞往艾萨拉
+.fly Azshara>>飞往艾萨拉
 step
 .isOnQuest 3564
 .goto Azshara,22.50,51.40
-.turnin 3564 >> 将Andron的付款交给Jediga
+.turnin 3564 >>将Andron的付款交给Jediga
 step << !Mage
 .goto Azshara,22.00,49.70
-.fly Thunder Bluff>> 飞向雷霆崖
+.fly Thunder Bluff>>飞向雷霆崖
 step << Mage
-.zone Thunder Bluff >> 传送到Thunder Bluff
+.zone Thunder Bluff >>传送到Thunder Bluff
 step
 .goto Thunder Bluff,43.3,42.8
 >>如果你不能早些时候买，就在AH上买三叠每一块布。
-.turnin 7820 >> 交出捐赠的羊毛
-.turnin 7821 >> 捐献丝绸
-.turnin 7822 >> 交出Mageweave的捐赠
-.turnin 7823 >> 交出Runecloth的捐赠
+.turnin 7820 >>交出捐赠的羊毛
+.turnin 7821 >>捐献丝绸
+.turnin 7822 >>交出Mageweave的捐赠
+.turnin 7823 >>交出Runecloth的捐赠
 #softcore
 step
 .goto Thunder Bluff,75.80,31.20
-.turnin 4987 >> 交给雕刻的奥肯分行
+.turnin 4987 >>交给雕刻的奥肯分行
 step
 .goto Thunder Bluff,46.8,50.0
-.fly Tanaris>> 飞往塔纳瑞斯
+.fly Tanaris>>飞往塔纳瑞斯
 step
 #som
 #phase 3-6
 #softcore
 .goto Tanaris,53.90,23.40
->> 在Tanaris墓地使用Videre Elixir
-.turnin 3912 >> 转入墓地会面
-.accept 3913 >> 接受严峻形势
+>>在Tanaris墓地使用Videre Elixir
+.turnin 3912 >>转入墓地会面
+.accept 3913 >>接受严峻形势
 step
 #som
 #phase 3-6
 #softcore
 .goto Tanaris,53.80,29.10
-.turnin 3913 >> 在严重情况下移交
-.accept 3914 >> 接受林肯的剑
+.turnin 3913 >>在严重情况下移交
+.accept 3914 >>接受林肯的剑
 step
 #era/som
 .goto Tanaris,51.56,26.75
-.accept 4504 >> 接受超级粘滞
+.accept 4504 >>接受超级粘滞
 step
 #era/som
 .goto Tanaris,51.10,26.90
->> 在喷洒装置上使用机械雪人
+>>在喷洒装置上使用机械雪人
 .complete 5163,2
 step
 .goto Tanaris,50.90,27.00
-.accept 4507 >> 接受典当俘虏女王
+.accept 4507 >>接受典当俘虏女王
 step
 #era/som
 #softcore
@@ -21028,37 +21315,37 @@ step
 .complete 4005,1
 step
 .goto Tanaris,51.6,25.5
-.fly Un'Goro Crater>> 飞到Un'Goro火山口
+.fly Un'Goro Crater>>飞到Un'Goro火山口
 step
 #era/som
 #softcore
 .goto Tanaris,11.60,3.40
-.turnin 4005 >> 交出蓄水层
-.accept 3961 >> 接受Linken的冒险
+.turnin 4005 >>交出蓄水层
+.accept 3961 >>接受Linken的冒险
 step
 #era/som
 #softcore
 .goto Tanaris,13.10,6.40
-.turnin 3961 >> 交给Linken的冒险
-.accept 3962 >> 接受独自一人很危险
+.turnin 3961 >>交给Linken的冒险
+.accept 3962 >>接受独自一人很危险
 step
 #som
 #phase 3-6
 #softcore
 .goto Tanaris,13.10,6.40
-.turnin 3914 >> 交出林肯的剑
-.accept 3941 >> 接受侏儒的帮助
+.turnin 3914 >>交出林肯的剑
+.accept 3941 >>接受侏儒的帮助
 step
 #som
 #phase 3-6
 #softcore
 .goto Tanaris,11.60,3.40
-.turnin 3941 >> 交出侏儒的援助
-.accept 3942 >> 接受Linken的记忆
+.turnin 3941 >>交出侏儒的援助
+.accept 3942 >>接受Linken的记忆
 step
 #era/som
 .goto Un'Goro Crater,43.70,9.40
->> 在Quixxil上使用机械雪人
+>>在Quixxil上使用机械雪人
 .complete 5163,3
 step
 #era/som
@@ -21077,71 +21364,71 @@ step
 #softcore
 #completewith next
 .goto Un'Goro Crater,50.28,49.98
->> 点击洞穴后面的胸部
+>>点击洞穴后面的胸部
 .complete 3962,2
 step
 #era/som
 #softcore
 .goto Un'Goro Crater,50.28,49.98,0
->> 在副手上装备阿奎门塔斯银质图腾
+>>在副手上装备阿奎门塔斯银质图腾
 >>使用它来削弱火山顶部的Blazerunner
 .complete 3962,1
 step
 #era/som
 #softcore
 .goto Un'Goro Crater,50.28,49.98
->> 点击洞穴后面的胸部
+>>点击洞穴后面的胸部
 .complete 3962,2
 step
 .goto Un'Goro Crater,44.6,81.6
 >>深入硅锂石蜂巢，使用硅锂石水晶提供的任务物品召唤蜂巢女王
->>谨慎行事，在召唤女王之前清理房间，这个任务很难，你必须处理3波3个怪物，并且你只有1次尝试这个任务（所以它是可选的）。记住要在房间外杀死暴徒，这样你就可以吃/喝
+>>谨慎行事，在召唤女王之前清理房间，这个任务很难，你必须处理3波3个怪物，并且你只有1次尝试这个任务(所以它是可选的)。记住要在房间外杀死暴徒，这样你就可以吃/喝
 *At the last wave, you can ignore the 2 adds, kill the queen and loot the quest item
 >>小心，如果你以前没有做过，这个任务会很难完成
 .complete 4507,1
-.link https://www.twitch.tv/videos/680871694?t=00h49m29s >> 如果您需要参考，请单击此处
+.link https://www.twitch.tv/videos/680871694?t=00h49m29s >>如果您需要参考，请单击此处
 step
 #completewith next
 .goto Silithus,88.09,23.43,70,0
 .goto Un'Goro Crater,30.15,10.41,70,0
 .goto Un'Goro Crater,25.14,12.71,70,0
 .goto Silithus,81.87,18.93
-.zone Silithus >> 前往Silithus
+.zone Silithus >>前往Silithus
 step
 .goto Silithus,81.87,18.93
-.turnin 1124 >> 转入荒地
-.accept 1125 >> 接受南风的精神
+.turnin 1124 >>转入荒地
+.accept 1125 >>接受南风的精神
 step
 #completewith end
-.xpto60 >> 当你有足够的xp到ding 60时，跳到指南的第2部分
+.xpto60 >>当你有足够的xp到ding 60时，跳到指南的第2部分
 step
 #phase 4
 .goto Silithus,51.80,38.60
->> 与客栈二楼的小妖精交谈
-.accept 8277 >> 接受致命的沙漠毒液
+>>与客栈二楼的小妖精交谈
+.accept 8277 >>接受致命的沙漠毒液
 step << Mage/Hunter/Warlock
 #phase 4
 .goto Silithus,51.30,38.20
->> 点击通缉海报
-.accept 8283 >> 接受通缉-死亡扣，沙之恐怖
+>>点击通缉海报
+.accept 8283 >>接受通缉-死亡扣，沙之恐怖
 step
 #phase 4
 #completewith next
 .goto Silithus,51.15,38.29
-.turnin 8275 >> 交出夺回西里修斯
-.accept 8280 >> 接受固定供应管线
+.turnin 8275 >>交出夺回西里修斯
+.accept 8280 >>接受固定供应管线
 step
 #phase 4
 .goto Silithus,49.60,37.30
-.accept 8284 >> 接受暮光之谜
+.accept 8284 >>接受暮光之谜
 step
 #phase 4
 .goto Silithus,49.20,34.20
-.accept 8304 >> 接受最亲爱的Natalia
+.accept 8304 >>接受最亲爱的Natalia
 step
 #phase 4
 .goto Silithus,48.60,37.80
-.accept 8318 >> 接受秘密通信
+.accept 8318 >>接受秘密通信
 step
 #phase 4
 #completewith s1
@@ -21160,42 +21447,42 @@ step
 .complete 8277,2
 step
 #completewith Spirits
->> 杀死从灵魂中产生的暴徒。抢走他们，因为他们在布兰的信中的机会很小。接受它的任务
+>>杀死从灵魂中产生的暴徒。抢走他们，因为他们在布兰的信中的机会很小。接受它的任务
 .collect 20461,1,8308 
 .accept 8308
 step
 #completewith next
 .goto Silithus,63.53,49.90,0
->> 杀死村庄周围的精灵。每次精灵死亡时都要小心，它很有可能会产卵
->> 小心点，因为德鲁伊可以月光燃烧和复活
+>>杀死村庄周围的精灵。每次精灵死亡时都要小心，它很有可能会产卵
+>>小心点，因为德鲁伊可以月光燃烧和复活
 .complete 1125,1
 .complete 1125,2
 step
 .goto Silithus,63.22,55.35
->> 点击小屋内的小瓮
+>>点击小屋内的小瓮
 .complete 5527,1
 .isOnQuest 5527
 step
 #label Spirits
 .goto Silithus,63.53,49.90
->> 杀死村庄周围的精灵。每次精灵死亡时都要小心，它很有可能会产卵
->> 小心点，因为德鲁伊可以月光燃烧和复活
+>>杀死村庄周围的精灵。每次精灵死亡时都要小心，它很有可能会产卵
+>>小心点，因为德鲁伊可以月光燃烧和复活
 .complete 1125,1
 .complete 1125,2
 step
 .goto Silithus,81.87,18.93
-.turnin 1125 >> 交出南风的灵魂
-.accept 1126 >> 接受塔内蜂巢
+.turnin 1125 >>交出南风的灵魂
+.accept 1126 >>接受塔内蜂巢
 step
 .goto Silithus,60.22,52.55
->> 清除在塔底繁殖的3个虫子
+>>清除在塔底繁殖的3个虫子
 >>单击塔顶部的对象
 >>点击后杀死2个伏击者
 .complete 1126,1
 step
 .goto Silithus,81.87,18.93
-.turnin 1126 >> 在塔内的蜂巢中交出
-.accept 6844 >> 接受Umber，档案管理员
+.turnin 1126 >>在塔内的蜂巢中交出
+.accept 6844 >>接受Umber，档案管理员
 step
 #phase 4
 #label s1
@@ -21223,24 +21510,24 @@ step
 step
 #phase 4
 .goto Silithus,49.70,37.30
-.turnin 8284 >> 交出《暮色之谜》
-.accept 8285 >> 接受沙漠者
+.turnin 8284 >>交出《暮色之谜》
+.accept 8285 >>接受沙漠者
 step
 #phase 4
 .goto Silithus,51.10,38.20
-.turnin 8280 >> 转向固定供油管
-.accept 8281 >> 接受升级安全
+.turnin 8280 >>转向固定供油管
+.accept 8281 >>接受升级安全
 step
 #phase 4
 .goto Silithus,51.70,38.50
-.turnin 8277 >> 交出致命的沙漠毒液
-.accept 8278 >> 接受诺格的最后希望
+.turnin 8277 >>交出致命的沙漠毒液
+.accept 8278 >>接受诺格的最后希望
 step
 #phase 4
 #label s3
 #sticky
 .goto Silithus,39.31,53.33,0
->> 压井挖泥船破碎机（x20）
+>>压井挖泥船破碎机(x20)
 .complete 8281,1
 step
 #phase 4
@@ -21255,24 +21542,24 @@ step
 step
 #phase 4
 .goto Silithus,41.30,88.50
->> 与Rutgar交谈
+>>与Rutgar交谈
 .complete 8304,2
 .goto Silithus,40.80,88.80
->> 与Frankal交谈
+>>与Frankal交谈
 .complete 8304,1
 step << Mage/Hunter/Warlock
 #phase 4
 .goto Silithus,45.00,92.20
->> 杀死死亡扣。抢他的钳子
->> 小心，因为这个任务很难完成。如果需要，跳过它
->> 不要让他进入近战范围，因为他有8秒眩晕
+>>杀死死亡扣。抢他的钳子
+>>小心，因为这个任务很难完成。如果需要，跳过它
+>>不要让他进入近战范围，因为他有8秒眩晕
 .complete 8283,1
 step
 #phase 4
 #label Deserter
 .goto Silithus,67.20,69.70
-.turnin 8285 >> 收缴沙漠者
-.accept 8279 >> 接受《暮光之城词典》
+.turnin 8285 >>收缴沙漠者
+.accept 8279 >>接受《暮光之城词典》
 step
 #phase 4
 .goto Silithus,62.52,64.00,90,0
@@ -21290,102 +21577,102 @@ step
 step
 #phase 4
 .goto Silithus,51.10,38.20
-.turnin 8281 >> 提交加强安全措施
+.turnin 8281 >>提交加强安全措施
 step
 #phase 4
 .goto Silithus,51.70,38.50
-.turnin 8278 >> 交出诺格的最后希望
-.accept 8282 >> 接受诺格丢失的背包
+.turnin 8278 >>交出诺格的最后希望
+.accept 8282 >>接受诺格丢失的背包
 step
 #phase 4
 .goto Silithus,49.20,34.30
-.turnin 8304 >> 交给亲爱的娜塔莉亚
+.turnin 8304 >>交给亲爱的娜塔莉亚
 step << Mage/Warlock/Hunter
 #phase 4
 .goto Silithus,50.80,33.60
-.turnin 8283 >> 通缉犯-死亡扣，沙滩恐怖
+.turnin 8283 >>通缉犯-死亡扣，沙滩恐怖
 step
 #sticky
 #phase 4
 #sticky
 #label texts
->> 杀死暮光崇拜者。抢劫他们以获取加密的暮光之城文本
+>>杀死暮光崇拜者。抢劫他们以获取加密的暮光之城文本
 .collect 20404,10,8323,1
 step
 #phase 4
 .goto Silithus,40.86,42.22
->> 杀死暮光守卫哈文斯
+>>杀死暮光守卫哈文斯
 >>他在塞纳里奥要塞附近的暮色营地巡逻
 .complete 8279,3
 .unitscan TWILIGHT KEEPER HAVUNTH
 step
 #phase 4
 .goto Silithus,26.34,36.62
->> 杀死暮色守卫玛娜
+>>杀死暮色守卫玛娜
 >>她在塞纳里奥霍尔德以西的暮色营地巡逻
 .complete 8279,1
 .unitscan TWILIGHT KEEPER MAYNA
 step
 #phase 4
 .goto Silithus,16.08,86.37
->> 杀死暮光守卫埃克塞特
+>>杀死暮光守卫埃克塞特
 >>他在西南暮色营的后面
 .complete 8279,2
 step
 #phase 4
 #requires texts
 .goto Silithus,44.50,91.40
->> 收集诺格的背包。小心不要伤害死亡扣
+>>收集诺格的背包。小心不要伤害死亡扣
 .complete 8282,1
 step
 #phase 4
 .goto Silithus,67.20,69.80
-.turnin 8279 >> 交上《暮光之城词典》
-.accept 8287 >> 接受一个可怕的目标
-.accept 8323 >> 接受真正的信徒
-.turnin 8323 >> 交给真正的信徒
+.turnin 8279 >>交上《暮光之城词典》
+.accept 8287 >>接受一个可怕的目标
+.accept 8323 >>接受真正的信徒
+.turnin 8323 >>交给真正的信徒
 step
 #phase 4
 .goto Silithus,51.70,38.50
->> 前往塞纳里奥要塞
-.turnin 8282 >> 交出诺格丢失的背包
+>>前往塞纳里奥要塞
+.turnin 8282 >>交出诺格丢失的背包
 step
 #phase 4
 .goto Silithus,49.20,34.20
-.turnin 8287 >> 交上一个可怕的目标
+.turnin 8287 >>交上一个可怕的目标
 step
 #phase 4
 .goto Silithus,48.70,37.50
->> 杀死信徒。抢劫他们以获取加密的暮光之城文本
+>>杀死信徒。抢劫他们以获取加密的暮光之城文本
 .complete 8318,1
 step
 #phase 4
 .goto Silithus,48.60,37.70
-.turnin 8318 >> 交出秘密通信
+.turnin 8318 >>交出秘密通信
 step
 #era/som
 #softcore
 #completewith next
 .goto Silithus,50.59,34.45
-.fly Un'Goro >> 飞到Un'Goro火山口
+.fly Un'Goro >>飞到Un'Goro火山口
 step
 #era/som
 #softcore
 .goto Un'Goro Crater,44.65,8.09
-.turnin 3962 >> 上车独自一人很危险
+.turnin 3962 >>上车独自一人很危险
 step
 #completewith end
 .goto Un'Goro Crater,45.23,5.82
-.fly Tanaris>> 飞往塔纳瑞斯
+.fly Tanaris>>飞往塔纳瑞斯
 step
 #era/som
 .goto Tanaris,51.56,26.75
-.turnin 4504 >> 转入超级粘滞
+.turnin 4504 >>转入超级粘滞
 step
 #label end
 .goto Tanaris,50.88,26.96
-.turnin 4507 >> 上缴典当俘虏女王
-.accept 4509 >> 接受暴风雨前的平静
+.turnin 4507 >>上缴典当俘虏女王
+.accept 4509 >>接受暴风雨前的平静
 ]])
 RXPGuides.RegisterGuide([[
 #version 1
@@ -21395,33 +21682,33 @@ RXPGuides.RegisterGuide([[
 #name 59-60 冬泉谷/希利苏斯 II
 step
 #completewith next
-.fly Un'Goro>> 飞到Un'Goro火山口
+.fly Un'Goro>>飞到Un'Goro火山口
 step
 #era/som
 .goto Un'Goro Crater,44.65,8.09
-.turnin 3962 >> 上车独自一人很危险
+.turnin 3962 >>上车独自一人很危险
 step
 #completewith tanaris
-.fly Tanaris>> 飞往塔纳瑞斯
+.fly Tanaris>>飞往塔纳瑞斯
 step
 .goto Tanaris,50.88,26.96
-.turnin 4507 >> 上缴典当俘虏女王
-.accept 4509 >> 接受暴风雨前的平静
+.turnin 4507 >>上缴典当俘虏女王
+.accept 4509 >>接受暴风雨前的平静
 step
 #label tanaris
 .goto Tanaris,51.56,26.75
-.turnin 4504 >> 转入超级粘滞
+.turnin 4504 >>转入超级粘滞
 step
-.hs >> 炉灶 to Everlook公司
->> 如果需要，购买食物/水
+.hs >>炉灶 to Everlook公司
+>>如果需要，购买食物/水
 step
 #era/som
 .goto Winterspring,60.88,37.61
-.turnin 5163 >> 上车我们在吗，雪蒂？
+.turnin 5163 >>上车我们在吗，雪蒂？
 step
 #completewith moonglade
 #label ding60
-.xpto60 >> 当你有足够的经验值时，停止在冬泉的任务
+.xpto60 >>当你有足够的经验值时，停止在冬泉的任务
 step
 #era/som
 #label owlbeasts
@@ -21437,88 +21724,88 @@ step
 >>在Everlook北部杀死嵌合体
 .complete 4809,1
 .goto Winterspring,60.4,23.2
-.turnin 4809 >> 接通冷风喇叭
+.turnin 4809 >>接通冷风喇叭
 .goto Winterspring,61.6,38.6
 step
 #label moonglade
 #requires horns
 .goto Winterspring,60.47,36.30
-.fly Moonglade>> 飞往Moonglade
+.fly Moonglade>>飞往Moonglade
 step
 .goto Moonglade,44.88,35.60
-.turnin 6844 >> 收文，档案管理员
-.accept 6845 >> 接受揭开过去的秘密
+.turnin 6844 >>收文，档案管理员
+.accept 6845 >>接受揭开过去的秘密
 
 step
 .goto Moonglade,51.68,45.09
-.turnin 6845 >> 揭开过去的秘密
+.turnin 6845 >>揭开过去的秘密
 
 step
 .goto Moonglade,51.68,45.09
-.turnin 5527 >> 交出一件纯净的圣物
+.turnin 5527 >>交出一件纯净的圣物
 .isQuestComplete 5527
 step
 .goto Moonglade,44.87,35.62
-.accept 1185 >> 在甲壳虫下接受。。。
-.turnin 1185 >> 在甲壳虫手下上缴。。。
+.accept 1185 >>在甲壳虫下接受。。。
+.turnin 1185 >>在甲壳虫手下上缴。。。
 .isQuestTurnedIn 1126
 step
-.zone Felwood >> 穿过洞穴跑回费尔伍德
+.zone Felwood >>穿过洞穴跑回费尔伍德
 step
 .goto Felwood,62.9,8.4
-.xpto60 >> 在北费尔伍德磨碎弗波格斯，直到你有足够的经验值到鼎60
+.xpto60 >>在北费尔伍德磨碎弗波格斯，直到你有足够的经验值到鼎60
 step
 .goto Moonglade,32.2,66.6
-.fly Bloodvenom >> 飞到费尔伍德
+.fly Bloodvenom >>飞到费尔伍德
 step
 #som
 #phase 3-6
 .goto Felwood,51.30,81.50
-.turnin 3942 >> 交出林肯的记忆
+.turnin 3942 >>交出林肯的记忆
 step << !Rogue !Warrior
 #som
 #phase 3-6
 .goto Winterspring,13.90,96.10
-.turnin 5242 >> 最后一次击球
+.turnin 5242 >>最后一次击球
 step << !Rogue !Warrior
 #som
 #phase 3-6
 .goto Winterspring,14.00,96.00
-.turnin 5385 >> 交出Trey Lightforge的遗骸
+.turnin 5385 >>交出Trey Lightforge的遗骸
 step
 #som
 #phase 3-6
 .goto Winterspring,13.90,95.80
-.turnin 5128 >> 上缴最高长官的话
+.turnin 5128 >>上缴最高长官的话
 step
 #era/som
 .goto Winterspring,0.50,72.30
-.turnin 4721 >> 交出野生守护者
+.turnin 4721 >>交出野生守护者
 .isQuestComplete 4721
 step << !Mage
 #era/som
 .goto Felwood,34.44,53.97
-.fly Orgrimmar>> 飞往奥格瑞玛
+.fly Orgrimmar>>飞往奥格瑞玛
 step << !Mage
 #era/som
 .goto Ashenvale,73.2,61.6
-.fly Orgrimmar>> 飞往奥格瑞玛
+.fly Orgrimmar>>飞往奥格瑞玛
 step << Mage
-.zone Orgrimmar>> 电传至Orgrimmar
+.zone Orgrimmar>>电传至Orgrimmar
 step
 .goto Orgrimmar,56.50,46.40
-.turnin 4509 >> 暴风雨来临前冷静地转身
-.accept 4511 >> 接受暴风雨前的平静
+.turnin 4509 >>暴风雨来临前冷静地转身
+.accept 4511 >>接受暴风雨前的平静
 step
 .goto Orgrimmar,49.70,69.30
-.turnin 4511 >> 暴风雨来临前冷静地转身
+.turnin 4511 >>暴风雨来临前冷静地转身
 ]])
 RXPGuides.RegisterGuide([[
 #tbc
 #wotlk
 #version 7
 #group RestedXP TBC 指南
-#subgroup RestedXP 部落 60-70 Dungeon Cleave
+#subgroup RestedXP部落60-70地牢裂口
 #version 7
 << Horde
 #name 60-70 部落 地下城 刷本
@@ -21538,7 +21825,7 @@ step
 .accept 10120 >>接受到达外域
 step
 .goto Hellfire Peninsula,87.3,48.1
-.fp Dark Portal >> 获得命运之梯飞行路线
+.fp Dark Portal >>获得命运之梯飞行路线
 step
 .goto Hellfire Peninsula,87.3,48.1
 .turnin 10120 >>到达外域时的交车
@@ -21555,7 +21842,7 @@ step
 .home >>将您的炉石设置为萨尔玛
 step
 .goto Hellfire Peninsula,56.8,37.8
-.vendor >>去宝石供应商里根·曼库索（Reagan Mancuso）购买与你的课程相关的入门宝石，以备将来使用。此外，如果你在专业方面表现出色，萨尔玛拥有所有的大师级教练。
+.vendor >>去宝石供应商里根·曼库索(Reagan Mancuso)购买与你的课程相关的入门宝石，以备将来使用。此外，如果你在专业方面表现出色，萨尔玛拥有所有的大师级教练。
 step
 .goto Hellfire Peninsula,55.0,36.0
 .turnin 10291 >>向Nazgrel提交报告
@@ -21605,7 +21892,7 @@ step
 .accept 9608 >>接受愤怒之心
 step
 .goto Hellfire Peninsula,46.0,58.7,20,0
-.goto Hellfire Peninsula,46.1,51.7,20 >> 前往血炉。在航路点寻找通向墙壁的木楼梯。沿着这堵墙骑马会把你带到这个地方。
+.goto Hellfire Peninsula,46.1,51.7,20 >>前往血炉。在航路点寻找通向墙壁的木楼梯。沿着这堵墙骑马会把你带到这个地方。
 step
 #sticky
 >>掠夺兽人的兽人血瓶
@@ -21615,11 +21902,11 @@ step
 >>到达血炉的最后一个老板
 .complete 9608,1
 step
-.xp 62 >> 将血炉研磨至62级。
+.xp 62 >>将血炉升级到62级。
 step << Druid
->> 使用“传送到月光”法术
+>>使用“传送到月光”法术
 .goto Moonglade,52.5,40.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .goto Hellfire Peninsula,87.3,48.1
 .hs >>赫斯到萨尔玛
@@ -21638,7 +21925,7 @@ step << BloodElf
 >>游骑兵队长文恩伦在塔顶。单击要传送到顶部的塔底部的球体。
 step
 .goto Hellfire Peninsula,27.8,60.0
-.fp Falcon Watch >> 获取Falcon Watch飞行路线
+.fp Falcon Watch >>获取Falcon Watch飞行路线
 step
 .goto Hellfire Peninsula,27.7,60.3
 .accept 10442 >>接受帮助塞纳里奥邮报
@@ -21665,7 +21952,7 @@ step
 .turnin 10349 >>交回土工
 .accept 10351 >>接受自然补救措施
 step
->>击败歌利亚通（63精英元素）
+>>击败歌利亚通(63精英元素)
 .goto Hellfire Peninsula,13.4,38.2
 .complete 10351,1 
 step
@@ -21698,14 +21985,14 @@ step
 #sticky
 #completewith next
 .goto Terokkar Forest,33.1,6.1,100,0
-.zone Terokkar Forest >> 沿着这条路向东南走，直到到达特罗卡森林。
+.zone Terokkar Forest >>沿着这条路向东南走，直到到达特罗卡森林。
 step
 >>沿着这条路一直走到通往沙塔斯城的桥。寻找一个有任务的“哈格德战争退伍军人”。
 .goto Shattrath City,60.7,14.9
 .accept 10210 >>接受A'dal
 step
 .goto Shattrath City,63.9,40.9
-.fp Shattrath >> 获得沙塔斯城的飞行路线
+.fp Shattrath >>获得沙塔斯城的飞行路线
 step
 .goto Shattrath City,54.1,44.5
 >>与A'dal交谈
@@ -21719,40 +22006,40 @@ step
 .turnin 10211 >>在光明之城转弯
 >>选择你的忠诚：“Aldor”或“Scryer”，然后拿起后续任务。
 step << Druid
->> 使用“传送到月光”法术
+>>使用“传送到月光”法术
 .goto Moonglade,52.5,40.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << !Druid
 #sticky
 #completewith next
 +将门户带到Orgrimmar
 .goto Shattrath City,52.2,52.8
 step << !Druid
-.zone Orgrimmar >> 前往奥格瑞玛
+.zone Orgrimmar >>前往奥格瑞玛
 step << Paladin
 .goto Orgrimmar,32.4,35.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Shaman
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warrior
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Mage
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << !Druid
 #sticky
 #completewith next
@@ -21761,9 +22048,9 @@ step << !Druid
 step << Druid
 #sticky
 #completewith next
-.hs >> 炉灶 to Cenarion避难所
+.hs >>炉灶 to Cenarion避难所
 step
-.zone Zangarmarsh >> 前往赞格马什
+.zone Zangarmarsh >>前往赞格马什
 step
 .goto Zangarmarsh,78.4,62.1
 .turnin 9716 >>Umbrafen湖的转弯干扰
@@ -21790,12 +22077,12 @@ step
 .goto Zangarmarsh,52.3,36.0
 .accept 9738 >>接受迷失在行动中
 step
-.goto Zangarmarsh,48.9,35.7,20 >> 进入副笔
+.goto Zangarmarsh,48.9,35.7,20 >>进入副笔
 step
 #sticky
 #label SPDruids
->> 自然主义者比特就在格米尔兰（最后的老板）的前面，他在笼子里的游泳池的左边
->> Weeder Greenthumb在Mennu和Rokmar（第一和第二老板）之间，从桥上跳下后爬上斜坡
+>>自然主义者比特就在格米尔兰(最后的老板)的前面，他在笼子里的游泳池的左边
+>>Weeder Greenthumb在Mennu和Rokmar(第一和第二老板)之间，从桥上跳下后爬上斜坡
 .complete 9738,2
 .complete 9738,3
 step
@@ -21804,11 +22091,11 @@ step
 #requires SPDruids
 .goto Zangarmarsh,48.9,35.7,20 >>从笔用完
 step
-.goto Zangarmarsh,54.3,34.4,20 >> 进入沼泽地
+.goto Zangarmarsh,54.3,34.4,20 >>进入沼泽地
 step
 >>运行一次Underbog
->>土匪雷格在加兹安（第二任老板）之后，就在它下到芬尼河之前，在公路岔口的左侧隐身
->>Windcaller Claw是沼泽领主Musel'ek（第三任老板）的宠物。杀死Claw以释放他，然后与他交谈以获得信贷
+>>土匪雷格在加兹安(第二任老板)之后，就在它下到芬尼河之前，在公路岔口的左侧隐身
+>>Windcaller Claw是沼泽领主Musel'ek(第三任老板)的宠物。杀死Claw以释放他，然后与他交谈以获得信贷
 .complete 9738,1
 .complete 9738,4
 step
@@ -21840,7 +22127,7 @@ step
 .turnin 9730 >>交出黑暗势力领袖
 step
 .goto Zangarmarsh,84.7,55.1
-.fp Swamprat >> 获取Swamprat Post飞行路径。
+.fp Swamprat >>获取Swamprat Post飞行路径。
 .fly Shattrath City >>飞往沙塔斯城
 step
 #scryer
@@ -21858,38 +22145,38 @@ step
 +将门户带到Orgrimmar
 .goto Shattrath City,52.2,52.8
 step
-.zone Orgrimmar >> 前往奥格瑞玛
+.zone Orgrimmar >>前往奥格瑞玛
 step << Paladin
 .goto Orgrimmar,32.4,35.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Shaman
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warrior
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Mage
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 #sticky
 #completewith next
 .goto Orgrimmar,52.7,49.1
 +贫民窟壁炉使用烈焰裂缝。区域进入愤怒之火峡谷，然后掉落小组。一旦所有人都被送回沙塔斯市，改革党就会重新执政。
 step
-.zone Shattrath City >> 前往沙塔斯城
+.zone Shattrath City >>前往沙塔斯城
 step
 .goto Shattrath City,67.8,51.5,40 >>通过东南桥离开沙塔斯城。
 step
@@ -21927,7 +22214,7 @@ step
 .turnin 9971 >>在密室交出线索
 step
 .goto Terokkar Forest,49.2,43.5
-.fp Stonebreaker Hold >> 获得碎石机等待飞行路线
+.fp Stonebreaker Hold >>获得碎石机等待飞行路线
 >>到这里有点棘手，向东跑出城市，顺时针绕过山脉。
 step
 .goto Terokkar Forest,49.0,44.6
@@ -21968,9 +22255,9 @@ step
 .turnin 10216 >>交班安全是首要任务
 .turnin 10165 >>交出削弱竞争
 step << Druid
->> 使用“传送到月光”法术
+>>使用“传送到月光”法术
 .goto Moonglade,52.5,40.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .hs >>哈斯到沙塔斯城。
 step
@@ -21982,31 +22269,31 @@ step
 +将门户带到Orgrimmar
 .goto Shattrath City,52.2,52.8
 step
-.zone Orgrimmar >> 前往奥格瑞玛
+.zone Orgrimmar >>前往奥格瑞玛
 step << Paladin
 .goto Orgrimmar,32.4,35.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Shaman
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warrior
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Mage
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .goto Orgrimmar,45.3,63.9
 .fly Gadgetzan >>飞到Gadgetzan
@@ -22022,11 +22309,11 @@ step
 step
 .goto Tanaris,58.4,54.3
 .turnin 10277 >>时间的洞穴
-.accept 10282 >>接受旧Hillsbrad
+.accept 10282 >>接受旧希尔斯布莱德丘陵
 step
-.goto Tanaris,55.6,53.6,20 >>进入Old Hillsbrad Foothills Dungeon。
+.goto Tanaris,55.6,53.6,20 >>进入旧希尔斯布莱德丘陵。
 step
-.turnin 10282 >>转入Old Hillsbrad
+.turnin 10282 >>转入旧希尔斯布莱德丘陵
 .accept 10283 >>接受塔雷莎的转移
 step
 >>向位于Durnholde Keep地下室监狱的Thrall求助。
@@ -22037,18 +22324,18 @@ step
 .turnin 10284 >>转身逃离Durnholde
 .accept 10285 >>接受返回Andormu
 step
->>退出旧希尔斯布拉德山麓地牢。
+>>退出旧希尔斯布莱德丘陵山麓地牢。
 .goto Tanaris,55.6,53.6
 .turnin 10285 >>返回安多尔姆
 .accept 10296 >>接受黑色沼泽
 step
-.hs >> 哈斯到沙塔斯城。
+.hs >>哈斯到沙塔斯城。
 step
 >>前往血环。乘电梯到阿尔多山脊，然后穿过隧道前往纳格朗。
 .goto Shattrath City,22.2,50.1,20
 step
 .goto Nagrand,57.2,35.3
-.fp Garadar >> 获取Garadar飞行路线。
+.fp Garadar >>获取Garadar飞行路线。
 step
 .goto Nagrand,42.8,20.7,100 >>前往血环
 step
@@ -22084,7 +22371,7 @@ step
 step
 >>前往下城的Sethekk地区
 .goto Shattrath City, 58.0,15.5
-.accept 10180 >> 接受不能离开
+.accept 10180 >>接受不能离开
 step
 .goto Shattrath City,64.0,41.0
 .fly Stonebreaker Hold >>飞到碎石器舱
@@ -22109,42 +22396,42 @@ step
 .turnin 10097 >>交兄弟反对兄弟
 .turnin 10098 >>交出特洛克的遗产
 step << Druid
->> 使用“传送到月光”法术
+>>使用“传送到月光”法术
 .goto Moonglade,52.5,40.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
-.hs >> 哈斯到沙塔斯城。
+.hs >>哈斯到沙塔斯城。
 step
 #sticky
 #completewith next
 +将门户带到Orgrimmar
 .goto Shattrath City,52.2,52.8
 step
-.zone Orgrimmar >> 前往奥格瑞玛
+.zone Orgrimmar >>前往奥格瑞玛
 step << Paladin
 .goto Orgrimmar,32.4,35.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Shaman
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warrior
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Mage
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step
 .goto Durotar,50.6,12.6,20
 >>带着齐柏林飞艇去荆棘谷的格罗姆戈尔大本营。
@@ -22158,7 +22445,7 @@ step
 .accept 9825 >>接受不安分活动
 step
 .goto Deadwind Pass,48.7,78.9,20,0
-.goto Deadwind Pass,51.7,79.3,30 >> 沿着地下室的入口走
+.goto Deadwind Pass,51.7,79.3,30 >>沿着地下室的入口走
 step
 #sticky
 #completewith PondR
@@ -22203,7 +22490,7 @@ step
 .turnin 9824 >>转入奥术干扰
 .accept 9826 >>接受Dalaran的联系
 step
->> 骑马返回斯托纳德。
+>>骑马返回斯托纳德。
 .goto Swamp of Sorrows,46.0,54.7
 .fly Tarren Mill >>飞往塔伦磨坊
 step
@@ -22222,10 +22509,10 @@ step
 .goto Silverpine Forest,45.5,68.8
 step
 #label ShattAlterac
-.zone Shattrath City >> 前往沙塔斯城
+.zone Shattrath City >>前往沙塔斯城
 step
 .goto Shattrath City,54.7,44.4
->> 乘车前往市中心。
+>>乘车前往市中心。
 .turnin 9829 >>转入卡德加
 .accept 9831 >>接受进入Karazhan
 step
@@ -22237,20 +22524,20 @@ step
 >>如果你的食物/饮料/弹药/毒药等不足，请从外面的小贩那里补充
 .goto Terokkar Forest,39.7,70.1
 step
-.goto Terokkar Forest,39.7,71.0,30 >> 用Sethekk Halls的钥匙打开阴影迷宫门。
+.goto Terokkar Forest,39.7,71.0,30 >>用Sethekk Halls的钥匙打开阴影迷宫门。
 step
 #sticky
 .complete 9831,1 
 >>击败穆尔后，在地牢末尾获得“第一关键碎片”。
 step
 .xp 69 >>运行影子实验室到69级。
->> 你可以选择只清除地牢的前两个老板，以提高效率。
+>>你可以选择只清除地牢的前两个老板，以提高效率。
 step
 #sticky
 #completewith next
-.hs >> 赫斯到沙塔斯城
+.hs >>赫斯到沙塔斯城
 step
-.zone Shattrath City >> 抵达沙塔斯市
+.zone Shattrath City >>抵达沙塔斯市
 step
 .goto Shattrath City,54.7,44.4
 .turnin 9831 >>转入Karazhan
@@ -22267,10 +22554,10 @@ step
 .goto Zangarmarsh,52.3,36.0
 .accept 9763 >>接受军阀的庇护
 step
-.goto Zangarmarsh,50.4,33.3,20 >> 进入Steamvaults
+.goto Zangarmarsh,50.4,33.3,20 >>进入Steamvaults
 step
 #sticky
->>在第一个凸台（水的北部）附近的水下获得“第二个关键碎片”。
+>>在第一个boss(水的北部)附近的水下获得“第二个关键碎片”。
 .complete 9832,1 
 step
 #sticky
@@ -22286,7 +22573,7 @@ step
 >>游出Coilfang水库，骑到通往Blade’s Edge Mountains的洞穴。
 .accept 10928 >>接受杀死爬虫
 step
->>穿过洞穴时杀死爬虫（你可以上山）
+>>穿过洞穴时杀死爬虫(你可以上山)
 .goto Blade's Edge Mountains,36.5,84.1
 .complete 10927,1 
 step
@@ -22297,7 +22584,7 @@ step
 .turnin 10928 >>投案杀死爬虫
 step
 .goto Blade's Edge Mountains,52.0,54.1
-.fp Thunderlord Stronghold >> 获得雷公寨飞行路线。
+.fp Thunderlord Stronghold >>获得雷公寨飞行路线。
 step
 .goto Blade's Edge Mountains,52.0,54.4
 >>与Tor'chunk Twoclaws交谈
@@ -22307,7 +22594,7 @@ step
 .goto Blade's Edge Mountains,58.1,46.3,30 >>在你的左边寻找一条微妙的路径。这将引导你走向尼瑟斯托姆。
 step
 .goto Blade's Edge Mountains,61.7,39.6
-.fp Evergrove >> 获取Evergrove飞行路线。
+.fp Evergrove >>获取Evergrove飞行路线。
 step
 #sticky
 #completewith next
@@ -22318,7 +22605,7 @@ step
 .turnin 11036 >>上缴世界特产！
 step
 .goto Netherstorm,33.7,64.0
-.fp Area 52 >> 获取52区飞行路线。
+.fp Area 52 >>获取52区飞行路线。
 step
 .goto Netherstorm,32.0,64.4
 .home >>将您的炉石设置为52区
@@ -22338,7 +22625,7 @@ step
 .goto Netherstorm,41.1,72.5
 .complete 10173,1 
 step
->>杀死彭塔沙龙（恐怖魔王）。把他抢走
+>>杀死彭塔沙龙(恐怖魔王)。把他抢走
 .goto Netherstorm,42.7,72.2
 .complete 10265,1 
 step
@@ -22422,21 +22709,21 @@ step
 .accept 10192 >>接受Krasus的纲要
 step
 .goto Netherstorm,57.7,85.0
-.accept 10334 >> 接受需要更多牛铃
-.accept 10331 >> 接受必要的工具
+.accept 10334 >>接受需要更多牛铃
+.accept 10331 >>接受必要的工具
 step
 .goto Netherstorm,57.5,86.3
-.accept 10343 >> 接受无尽的入侵
-.accept 10184 >> 接受邪恶残余
-.accept 10185 >> 接受比死亡更糟糕的命运
-.accept 10222 >> 接受太阳怒卫队
+.accept 10343 >>接受无尽的入侵
+.accept 10184 >>接受邪恶残余
+.accept 10185 >>接受比死亡更糟糕的命运
+.accept 10222 >>接受太阳怒卫队
 step
 .goto Netherstorm,55.7,87.2
 .complete 10343,1 
 step
 >>寻找一名名叫Abjurist Belmara的女性人类法师巡逻。
 .goto Netherstorm,58.7,88.4
-.accept 10305 >> 接受Abjurit Belmara
+.accept 10305 >>接受Abjurit Belmara
 step
 .goto Netherstorm,57.5,89.5
 .complete 10192,2 
@@ -22448,16 +22735,16 @@ step
 .complete 10192,3 
 step
 >>使用大法师瓦尔戈特的杖
-.turnin 10192 >> 交上克拉索斯的纲要
-.accept 10301 >> 接受解锁概要
+.turnin 10192 >>交上克拉索斯的纲要
+.accept 10301 >>接受解锁概要
 step
 >>寻找一个名为科利安·弗罗斯特韦弗的男性侏儒法师巡逻队。
 .goto Netherstorm,59.5,86.4
-.accept 10307 >> 接受科利安·弗罗斯特韦弗
+.accept 10307 >>接受科利安·弗罗斯特韦弗
 step
 >>寻找一个名为巫师卢米纳特的男性血精灵法师巡逻。
 .goto Netherstorm,60.2,84.9
-.accept 10306 >> 接受魔术师Luminrath
+.accept 10306 >>接受魔术师Luminrath
 step
 .goto Netherstorm,61.3,85.1
 >>杀死铁匠周围的暴徒
@@ -22468,28 +22755,28 @@ step
 .complete 10184,1 
 step
 .goto Netherstorm,57.7,85.2
-.turnin 10331 >> 交回必要的工具
-.accept 10332 >> 接受Smith Rhonsus大师
+.turnin 10331 >>交回必要的工具
+.accept 10332 >>接受Smith Rhonsus大师
 step
 .goto Netherstorm,57.5,86.2
-.turnin 10184 >> 交出恶意残留物
-.turnin 10343 >> 交出永恒的入侵
-.accept 10312 >> 接受《基林瓦尔纪事》
-.accept 10233 >> 接受火把烈日之怒保持
+.turnin 10184 >>交出恶意残留物
+.turnin 10343 >>交出永恒的入侵
+.accept 10312 >>接受《基林瓦尔纪事》
+.accept 10233 >>接受火把烈日之怒保持
 step
 .goto Netherstorm,61.1,85.3
 .complete 10332,1 
 step
 .goto Netherstorm,60.5,87.9
 .complete 10312,1 
-.accept 10182 >> 接受战斗法师Dathric
+.accept 10182 >>接受战斗法师Dathric
 step
 .goto Netherstorm,57.7,85.1
-.turnin 10332 >> 交给史密斯·朗索斯大师
+.turnin 10332 >>交给史密斯·朗索斯大师
 step
 .goto Netherstorm,57.5,86.2
-.turnin 10312 >> 上交《基林瓦尔年鉴》
-.accept 10316 >> 接受证据搜索
+.turnin 10312 >>上交《基林瓦尔年鉴》
+.accept 10316 >>接受证据搜索
 step
 .goto Netherstorm,56.9,86.8
 .complete 10182,1 
@@ -22508,23 +22795,23 @@ step
 .complete 10185,2 
 step
 .goto Netherstorm,57.5,86.3
-.turnin 10182 >> 交出战斗法师达思里克
-.turnin 10185 >> 交上比死亡更糟糕的命运
-.turnin 10305 >> 移交Abjurit Belmara
-.turnin 10306 >> 交给魔术师Luminrath
-.turnin 10307 >> 交出科利安·弗罗斯特韦弗
+.turnin 10182 >>交出战斗法师达思里克
+.turnin 10185 >>交上比死亡更糟糕的命运
+.turnin 10305 >>移交Abjurit Belmara
+.turnin 10306 >>交给魔术师Luminrath
+.turnin 10307 >>交出科利安·弗罗斯特韦弗
 step
 .goto Netherstorm,60.4,78.0
-.turnin 10316 >> 提交寻找证据
+.turnin 10316 >>提交寻找证据
 step
 .goto Netherstorm,59.2,78.8
-.turnin 10334 >> 转入需要更多牛铃
-.accept 10337 >> 奶牛回家时接受
+.turnin 10334 >>转入需要更多牛铃
+.accept 10337 >>奶牛回家时接受
 step
 .complete 10337,1 
 step
 .goto Netherstorm,57.7,85.0
-.turnin 10337 >> 当奶牛回家的时候就睡觉
+.turnin 10337 >>当奶牛回家的时候就睡觉
 step
 #sticky
 >>杀死法术收割者马拉泰尔
@@ -22537,15 +22824,15 @@ step
 .complete 10233,2 
 step
 >>点击大法师的杖
-.turnin 10301 >> 打开大纲
-.accept 10209 >> 接受召唤师坎丁奖
+.turnin 10301 >>打开大纲
+.accept 10209 >>接受召唤师坎丁奖
 step
 .goto Netherstorm,57.5,86.3
-.turnin 10222 >> 交出太阳怒卫队
-.accept 10223 >> 接受Daellis的拒绝
-.turnin 10233 >> 交出火把太阳怒
+.turnin 10222 >>交出太阳怒卫队
+.accept 10223 >>接受Daellis的拒绝
+.turnin 10233 >>交出火把太阳怒
 step
-.hs >> 炉膛至52区
+.hs >>炉膛至52区
 step
 .goto Netherstorm,32.5,64.3
 .turnin 10205 >>交出曲速突袭者Nesaad
@@ -22591,7 +22878,7 @@ step
 .accept 10268 >>与王子一起接受观众
 step
 .goto Netherstorm,45.3,34.9
-.fp Stormspire >> 获取Stormspire飞行路线
+.fp Stormspire >>获取Stormspire飞行路线
 step
 .goto Netherstorm,45.8,36.0
 .turnin 10268 >>将观众交给王子
@@ -22612,7 +22899,7 @@ step
 .turnin 10275 >>转入三角点二
 .accept 10276 >>接受全三角形
 step
->>杀死库鲁萨斯（70级精英恶魔）
+>>杀死库鲁萨斯(70级精英恶魔)
 .goto Netherstorm,53.5,21.5
 .complete 10276,1 
 step
@@ -22633,40 +22920,40 @@ step
 .accept 10704 >>接受如何闯入Arcatraz
 >>丁70级-恭喜！
 step << Druid
->> 使用“传送到月光”法术
+>>使用“传送到月光”法术
 .goto Moonglade,52.5,40.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << !Druid
 #sticky
 #completewith next
 +将门户带到Orgrimmar
 .goto Shattrath City,52.2,52.8
 step << !Druid
-.zone Orgrimmar >> 前往奥格瑞玛
+.zone Orgrimmar >>前往奥格瑞玛
 step << Paladin
 .goto Orgrimmar,32.4,35.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Shaman
 .goto Orgrimmar,38.6,36.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Hunter
 .goto Orgrimmar,66.1,18.5
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warrior
 .goto Orgrimmar,79.7,31.4
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Rogue
 .goto Orgrimmar,44.0,54.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Mage
 .goto Orgrimmar,38.8,85.6
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << Priest
 .goto Orgrimmar,35.6,87.8
-.trainer >> 去训练你的职业咒语
+.trainer >>去训练你的职业咒语
 step << !Druid
 .goto Orgrimmar,52.7,49.1,20
 >>贫民窟壁炉使用烈焰裂缝。分区到RFC，然后删除组。一旦所有人都被送回沙塔斯市，改革党就会重新执政。
@@ -22681,7 +22968,7 @@ step
 #completewith next
 .hs >>赫斯到沙塔斯城
 step
-.zone Shattrath City >> 前往沙塔斯城
+.zone Shattrath City >>前往沙塔斯城
 step
 .goto Shattrath City,63.9,41.2
 .fly The Stormspire >>飞到风暴岛。
@@ -22689,12 +22976,12 @@ step
 #sticky
 #completewith next
 .goto Netherstorm,66.0,67.3
-.vendor >> 供应商并在此处维修（如果需要）
+.vendor >>供应商并在此处维修(如果需要)
 step
 .goto Netherstorm,65.2,66.8
-.fp Cosmowrench >> 获取Cosmowrench飞行路线
+.fp Cosmowrench >>获取Cosmowrench飞行路线
 step
-.goto Netherstorm,71.7,55.1,20 >> 飞到Botancia，然后进去
+.goto Netherstorm,71.7,55.1,20 >>飞到Botancia，然后进去
 step
 >>在《植物学》结尾处杀死沃普斯普林特。掠夺它以获得“Arcatraz钥匙的顶部碎片”。
 .complete 10704,1
@@ -22703,12 +22990,12 @@ step
 #completewith next
 +离开地牢，准备运行Mechanar。如果您需要供应商/维修，请返回Cosmowrench
 step
-.goto Netherstorm,70.6,69.8,20 >> 飞到麦加那，然后进去
+.goto Netherstorm,70.6,69.8,20 >>飞到麦加那，然后进去
 step
 >>杀死帕塔莱恩以获得“奥克拉兹钥匙底部碎片”。
 .complete 10704,2
 step
-.hs >> 赫斯到沙塔斯城
+.hs >>赫斯到沙塔斯城
 step
 .goto Shattrath City,54.0,44.9
 .turnin 10704 >>交出如何闯入Arcatraz
@@ -22716,14 +23003,14 @@ step
 .goto Shattrath City,63.9,41.2
 .fly The Stormspire >>飞到风暴岛
 step
-.goto Netherstorm,74.4,57.7,20 >> 飞到Arcatraz，打开门，然后进去
+.goto Netherstorm,74.4,57.7,20 >>飞到Arcatraz，打开门，然后进去
 step
 >>“第三个关键片段”藏在第一个老板之后的蓝色房间角落里。
 .complete 9832,2 
 step
 #sticky
 #completewith next
-+贫民窟炉灶使用Arcatraz返回沙塔斯。一旦所有人都被送回沙塔斯城，就要进行改革。
++贫民窟Hearth使用Arcatraz返回沙塔斯。一旦所有人都被送回沙塔斯城，就要进行改革。
 step
 .zone Shattrath City >>前往沙塔斯城
 step
@@ -22736,7 +23023,7 @@ step
 +将门户带到雷霆崖
 .goto Shattrath City,52.2,52.8
 step
-.zone Thunder Bluff >> 前往雷霆崖
+.zone Thunder Bluff >>前往雷霆崖
 step
 .goto Thunder Bluff,46.8,49.9
 .fly Gadgetzan >>飞到Gadgetzan
@@ -22749,7 +23036,7 @@ step
 #completewith next
 +与时间管理员交谈。接受前往大师巢穴的骑行
 step
-.goto Tanaris,57.4,62.8,20 >> 进入黑色沼泽
+.goto Tanaris,57.4,62.8,20 >>进入黑色沼泽
 step
 >>与Sa'at交谈。确保你的地牢小组的每个成员都从他那里拿起了一个计时灯塔。
 .turnin 10296 >>《黑色沼泽》
@@ -22767,14 +23054,14 @@ step
 .goto Tanaris,58.4,54.3
 .turnin 10298 >>交出少年英雄
 step
-.hs >> 哈斯到沙塔斯城。
+.hs >>哈斯到沙塔斯城。
 step
 .goto Shattrath City,54.7,44.4
 .turnin 9837 >>返回卡德加
 >>您现在已接通Karazhan-恭喜！
 ]])
 RXPGuides.RegisterGuide([[
-#version 7
+#version 9
 #wotlk
 #tbc
 #group RestedXP 部落 60-70
@@ -22791,67 +23078,67 @@ step
 step
 #completewith next
 .goto Zangarmarsh,82.81,64.85
-.zone Zangarmarsh >> 前往赞格马什
+.zone Zangarmarsh >>前往赞格马什
 step
 #label TribeX
 >>与Ikeyen和Laurana交谈
-.accept 9747 >> 接受Umbrafen部落
+.accept 9747 >>接受Umbrafen部落
 .goto Zangarmarsh,80.39,64.15
-.accept 9802 >> 接受赞格马什的植物
+.accept 9802 >>接受赞格马什的植物
 .goto Zangarmarsh,80.32,64.17
 step
 >>与通缉海报对话，然后上楼与Hamoot对话
-.accept 9817 >> 接受血鳞领袖
-.accept 9730 >> 接受黑暗势力领袖
+.accept 9817 >>接受血鳞领袖
+.accept 9730 >>接受黑暗势力领袖
 .goto Zangarmarsh,79.08,64.88
-.accept 9728 >> 接受热烈欢迎
+.accept 9728 >>接受热烈欢迎
 .goto Zangarmarsh,79.09,65.27
 step
 #completewith SwampratHS
 .goto Zangarmarsh,78.49,62.95
-.home >> 把你的炉石放在塞纳里奥避难所
+.home >>把你的炉石放在塞纳里奥避难所
 step
 >>在客栈和阳台上与Lethyn和Ysiel交谈
-.accept 9895 >> 接受死亡平衡
+.accept 9895 >>接受死亡平衡
 .goto Zangarmarsh,78.53,63.15,-1
-.turnin 9912 >> 提交塞纳里奥探险队
-.accept 9716 >> 接受乌姆布拉芬湖的干扰
+.turnin 9912 >>提交塞纳里奥探险队
+.accept 9716 >>接受乌姆布拉芬湖的干扰
 .goto Zangarmarsh,78.40,62.02,-1
 step
 .goto Zangarmarsh,84.76,55.11
 >>前往Swamprat Post
-.fp Swamprat Post >> 获取Swamprat飞行后路径
+.fp Swamprat Post >>获取Swamprat飞行后路径
 step
 #label SwampratHS
 >>与Zurai、Reavij和Magasha交谈
-.turnin 10103 >> 向苏莱提交报告
-.accept 9774 >> 接受厚水螅鳞片
+.turnin 10103 >>向苏莱提交报告
+.accept 9774 >>接受厚水螅鳞片
 .goto Zangarmarsh,85.28,54.75
-.accept 9770 >> 接受威胁马什方
+.accept 9770 >>接受威胁马什方
 .goto Zangarmarsh,84.96,54.04
-.accept 9769 >> 接受时尚没有解释
-.accept 9773 >> 不要再吃蘑菇了！
+.accept 9769 >>接受时尚没有解释
+.accept 9773 >>不要再吃蘑菇了！
 .goto Zangarmarsh,84.36,54.34
 step << !DK !Druid
 #completewith next
 .goto Shattrath City,52.19,52.90 << !Mage
-.zone Orgrimmar >> 把入口带到奥格瑞玛 << !Mage
-.zone Orgrimmar >> 电传至Orgrimmar << Mage
+.zone Orgrimmar >>把入口带到奥格瑞玛 << !Mage
+.zone Orgrimmar >>电传至Orgrimmar << Mage
 step << Mage
 .goto Orgrimmar,38.36,85.56
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Priest
 .goto Orgrimmar,35.59,87.85
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Shaman/Paladin
 #completewith next
 .goto Orgrimmar,40.5,36.9,25 >>输入Grommash Hold
 step << Shaman
 .goto Orgrimmar,37.82,36.45
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Paladin
 .goto Orgrimmar,32.26,35.71
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step
 #xprate <1.5
 .goto Orgrimmar,39.59,37.04,30,0 << !Paladin !Shaman
@@ -22860,46 +23147,46 @@ step
 .turnin 9438 >>把信使交给萨尔
 step << Hunter/Warrior
 #completewith next
-.goto Orgrimmar,63.6,38.2,30 >> 进入荣誉谷
+.goto Orgrimmar,63.6,38.2,30 >>进入荣誉谷
 step << Hunter tbc
 #sticky
 #label HunterTrain
 .goto Orgrimmar,66.31,14.80,0,0
-.trainer >> 训练你的宠物法术
+.trainer >>训练你的宠物法术
 
 step << Hunter
 .goto Orgrimmar,66.03,18.52
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Warrior
 .goto Orgrimmar,79.93,31.30
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Rogue/Warlock
 #completewith next
-.goto Orgrimmar,40.77,55.23,30 >> 进入阴影的裂缝
+.goto Orgrimmar,40.77,55.23,30 >>进入阴影的裂缝
 step << Rogue
 .goto Orgrimmar,43.90,54.65
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Warlock tbc
 #sticky
 #label WarlockTrain
 .goto Orgrimmar,47.52,46.71
-.vendor >> 与Kurgul交谈。如果需要，可以购买宠物护肤品
+.vendor >>与Kurgul交谈。如果需要，可以购买宠物护肤品
 
 step << Warlock
 .goto Orgrimmar,47.98,45.92
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << !DK !Druid
 #requires HunterTrain << Hunter tbc
 #requires WarlockTrain << Warlock tbc
 #completewith next
-.hs >> 炉灶 to Cenarion避难所
+.hs >>炉灶 to Cenarion避难所
 step
 #completewith Scales
 >>杀死Umbraglow毒刺。掠夺他们的翅膀
 .complete 9769,1 
 step
 #completewith next
-.cast 22807 >> 在你的袋子里使用水呼吸药剂
+.cast 22807 >>在你的袋子里使用水呼吸药剂
 .use 25539
 step
 #completewith next
@@ -22952,7 +23239,7 @@ step
 step
 .goto Zangarmarsh,83.38,85.54
 >>在里面与Kayra交谈
-.accept 9752 >> 接受逃离乌姆布拉芬
+.accept 9752 >>接受逃离乌姆布拉芬
 step
 #completewith next
 .goto Zangarmarsh,83.89,78.58,100,0
@@ -22982,36 +23269,36 @@ step
 .unitscan Boglash
 step
 >>返回塞纳里奥避难所。与Ikeyen、Lauranna、Blackhoof、Lethyn和Ysiel交谈
-.turnin 9747 >> 移交Umbrafen部落
-.accept 9788 >> 接受潮湿、黑暗的地方
+.turnin 9747 >>移交Umbrafen部落
+.accept 9788 >>接受潮湿、黑暗的地方
 .goto Zangarmarsh,80.39,64.15
-.turnin 9802 >> 扎格马什岛植物的移交
-.accept 10096 >> 接受保存Sporeloks
+.turnin 9802 >>扎格马什岛植物的移交
+.accept 10096 >>接受保存Sporeloks
 .goto Zangarmarsh,80.32,64.17
-.accept 9894 >> 接受保护观察者
+.accept 9894 >>接受保护观察者
 .goto Zangarmarsh,80.37,64.73
-.turnin 9895 >> 交上垂死天平
+.turnin 9895 >>交上垂死天平
 .goto Zangarmarsh,78.53,63.15
-.turnin 9752 >> 转身逃离乌姆布拉芬
-.turnin 9716 >> Umbrafen湖的转弯干扰
-.accept 9718 >> 当乌鸦飞翔时接受
+.turnin 9752 >>转身逃离乌姆布拉芬
+.turnin 9716 >>Umbrafen湖的转弯干扰
+.accept 9718 >>当乌鸦飞翔时接受
 .goto Zangarmarsh,78.40,62.02
 .isQuestComplete 9802
 step
 #label CenarionPost2
 >>返回塞纳里奥避难所。与Ikeyen、Lauranna、Blackhoof、Lethyn和Ysiel交谈
-.turnin 9747 >> 移交Umbrafen部落
-.accept 9788 >> 接受潮湿、黑暗的地方
+.turnin 9747 >>移交Umbrafen部落
+.accept 9788 >>接受潮湿、黑暗的地方
 .goto Zangarmarsh,80.39,64.15
-.accept 10096 >> 接受保存Sporeloks
+.accept 10096 >>接受保存Sporeloks
 .goto Zangarmarsh,80.32,64.17
-.accept 9894 >> 接受保护观察者
+.accept 9894 >>接受保护观察者
 .goto Zangarmarsh,80.37,64.73
-.turnin 9895 >> 交上垂死天平
+.turnin 9895 >>交上垂死天平
 .goto Zangarmarsh,78.53,63.15
-.turnin 9752 >> 转身逃离乌姆布拉芬
-.turnin 9716 >> Umbrafen湖的转弯干扰
-.accept 9718 >> 当乌鸦飞翔时接受
+.turnin 9752 >>转身逃离乌姆布拉芬
+.turnin 9716 >>Umbrafen湖的转弯干扰
+.accept 9718 >>当乌鸦飞翔时接受
 .goto Zangarmarsh,78.40,62.02
 step
 .goto Zangarmarsh,78.40,62.02
@@ -23023,15 +23310,15 @@ step
 step
 .goto Zangarmarsh,78.40,62.02
 >>与Ysiel交谈
-.turnin 9718 >> 乌鸦飞翔时转身
-.accept 9720 >> 必须保留接受余额
+.turnin 9718 >>乌鸦飞翔时转身
+.accept 9720 >>必须保留接受余额
 step
 >>返回Swamprat Post。与Zurai和Magasha交谈
-.turnin 9774 >> 交上厚水螅鳞片
-.accept 9771 >> 接受搜索Scout Jyoba
+.turnin 9774 >>交上厚水螅鳞片
+.accept 9771 >>接受搜索Scout Jyoba
 .goto Zangarmarsh,85.28,54.75
-.turnin 9773 >> 不要再吃蘑菇了！
-.accept 9899 >> 接受取消的作业
+.turnin 9773 >>不要再吃蘑菇了！
+.accept 9899 >>接受取消的作业
 .goto Zangarmarsh,84.36,54.34
 step
 #completewith Jyoba
@@ -23066,8 +23353,8 @@ step
 #label Jyoba
 .goto Zangarmarsh,80.75,36.27
 >>与Jyoba的尸体交谈
-.turnin 9771 >> 转而寻找Jyoba童子军
-.accept 9772 >> 接受Jyoba的报告
+.turnin 9771 >>转而寻找Jyoba童子军
+.accept 9772 >>接受Jyoba的报告
 step
 #completewith BasidiumX
 .loop 60,Zangarmarsh,82.12,44.97,79.44,42.62,77.86,35.41,80.99,31.26,84.94,36.18,85.96,42.24,82.12,44.97
@@ -23078,7 +23365,7 @@ step
 .loop 60,Zangarmarsh,82.12,44.97,79.44,42.62,77.86,35.41,80.99,31.26,84.94,36.18,85.96,42.24,82.12,44.97
 .use 24484 >>杀死枯萎的巨人。掠夺他们的枯萎的Basidium。在您的包中点击它
 .collect 24484,1,9828,1 
-.accept 9828 >> 接受枯萎的Basidium
+.accept 9828 >>接受枯萎的Basidium
 step
 .loop 60,Zangarmarsh,82.12,44.97,79.44,42.62,77.86,35.41,80.99,31.26,84.94,36.18,85.96,42.24,82.12,44.97
 >>杀死枯萎的巨人。为了Jyoba的报告而抢劫他们
@@ -23088,7 +23375,7 @@ step
 .loop 60,Zangarmarsh,82.12,44.97,79.44,42.62,77.86,35.41,80.99,31.26,84.94,36.18,85.96,42.24,82.12,44.97
 .use 24484 >>杀死枯萎的巨人。掠夺他们的枯萎的Basidium。在您的包中点击它
 .collect 24484,1,9828,1 
-.accept 9828 >> 接受枯萎的Basidium
+.accept 9828 >>接受枯萎的Basidium
 step
 #completewith Controls
 >>杀死Fen Striders。抢走他们的配偶
@@ -23110,7 +23397,7 @@ step
 #completewith Controls
 .use 24330 >>杀死使用种子后产卵的蒸汽泵监督者。掠夺他们的排水示意图。在您的包中点击它
 .collect 24330,1,9731,1 
-.accept 9731 >> 接受排放示意图
+.accept 9731 >>接受排放示意图
 step
 .goto Zangarmarsh,61.97,40.84
 >>在湖控中心使用袋子里的铁藤种子
@@ -23140,7 +23427,7 @@ step
 .goto Zangarmarsh,70.60,80.29
 .use 24330 >>继续使用控制装置上袋子里的种子。杀死使用后产生的蒸汽泵监督人员。继续这样做，直到你为他们的排水示意图抢劫他们。在您的包中点击它
 .collect 24330,1,9731,1 
-.accept 9731 >> 接受排放示意图
+.accept 9731 >>接受排放示意图
 .use 24355
 step
 #completewith Funggor
@@ -23183,27 +23470,27 @@ step
 .complete 10096,1 
 step << DK/Druid
 #completewith mark
-.hs >> 炉灶 to Cenarion避难所
+.hs >>炉灶 to Cenarion避难所
 step
 >>返回塞纳里奥避难所。与Ikeyen、Lauranna和Blackhoof交谈
-.turnin 10096 >> 交上来拯救孢子虫
-.turnin 9802 >> 扎格马什岛植物的移交
+.turnin 10096 >>交上来拯救孢子虫
+.turnin 9802 >>扎格马什岛植物的移交
 .goto Zangarmarsh,80.32,64.17,-1
-.turnin 9788 >> 在潮湿、黑暗的地方转弯
+.turnin 9788 >>在潮湿、黑暗的地方转弯
 .goto Zangarmarsh,80.39,64.15,-1
-.turnin 9894 >> 保护看守人
-.accept 9785 >> 接受古人的祝福
+.turnin 9894 >>保护看守人
+.accept 9785 >>接受古人的祝福
 .goto Zangarmarsh,80.37,64.73,-1
 .isOnQuest 9802
 step
 #label CenarionRefuge3
 >>返回塞纳里奥避难所。与Ikeyen、Lauranna和Blackhoof交谈
-.turnin 10096 >> 交上来拯救孢子虫
+.turnin 10096 >>交上来拯救孢子虫
 .goto Zangarmarsh,80.32,64.17,-1
-.turnin 9788 >> 在潮湿、黑暗的地方转弯
+.turnin 9788 >>在潮湿、黑暗的地方转弯
 .goto Zangarmarsh,80.39,64.15,-1
-.turnin 9894 >> 保护看守人
-.accept 9785 >> 接受古人的祝福
+.turnin 9894 >>保护看守人
+.accept 9785 >>接受古人的祝福
 .goto Zangarmarsh,80.37,64.73,-1
 step
 #label mark
@@ -23230,70 +23517,70 @@ step
 .unitscan Keleth
 step
 >>与Blackhoof交谈
-.turnin 9785 >> 上缴古人的祝福
+.turnin 9785 >>上缴古人的祝福
 .goto Zangarmarsh,80.37,64.73
 step
 .goto Zangarmarsh,79.09,65.27
 >>和楼上塔楼的哈穆特谈谈
-.turnin 9728 >> 热烈欢迎
-.turnin 9730 >> 交出黑暗势力领袖
-.turnin 9817 >> 交出血鳞首领
+.turnin 9728 >>热烈欢迎
+.turnin 9730 >>交出黑暗势力领袖
+.turnin 9817 >>交出血鳞首领
 .isQuestComplete 9728
 .isQuestComplete 9730
 .isQuestComplete 9817
 step
 .goto Zangarmarsh,79.09,65.27
 >>和楼上塔楼的哈穆特谈谈
-.turnin 9730 >> 交出黑暗势力领袖
-.turnin 9817 >> 交出血鳞首领
+.turnin 9730 >>交出黑暗势力领袖
+.turnin 9817 >>交出血鳞首领
 .isQuestComplete 9730
 .isQuestComplete 9817
 step
 .goto Zangarmarsh,79.09,65.27
 >>和楼上塔楼的哈穆特谈谈
-.turnin 9728 >> 热烈欢迎
-.turnin 9817 >> 交出血鳞首领
+.turnin 9728 >>热烈欢迎
+.turnin 9817 >>交出血鳞首领
 .isQuestComplete 9728
 .isQuestComplete 9817
 step
 .goto Zangarmarsh,79.09,65.27
 >>和楼上塔楼的哈穆特谈谈
-.turnin 9728 >> 热烈欢迎
-.turnin 9730 >> 交出黑暗势力领袖
+.turnin 9728 >>热烈欢迎
+.turnin 9730 >>交出黑暗势力领袖
 .isQuestComplete 9730
 .isQuestComplete 9728
 step
 .goto Zangarmarsh,79.09,65.27
 >>和楼上塔楼的哈穆特谈谈
-.turnin 9730 >> 交出黑暗势力领袖
+.turnin 9730 >>交出黑暗势力领袖
 .isQuestComplete 9730
 step
 .goto Zangarmarsh,79.09,65.27
 >>和楼上塔楼的哈穆特谈谈
-.turnin 9817 >> 交出血鳞首领
+.turnin 9817 >>交出血鳞首领
 .isQuestComplete 9817
 step
 .goto Zangarmarsh,79.09,65.27
 >>和楼上塔楼的哈穆特谈谈
-.turnin 9728 >> 热烈欢迎
+.turnin 9728 >>热烈欢迎
 .isQuestComplete 9728
 step
 .goto Zangarmarsh,78.53,63.15
 >>在里面和Lethyn交谈
-.accept 9697 >> 接受观察者Leesa'oh
-.accept 9957 >> 接受塞纳里奥灌木丛有什么问题？
+.accept 9697 >>接受观察者Leesa'oh
+.accept 9957 >>接受塞纳里奥灌木丛有什么问题？
 step
 >>前往Swamprat Post。与Magasha、Reavij和Zurai交谈
-.turnin 9899 >> 将工作交给Undone
-.turnin 9769 >> 上缴时尚没有解释
+.turnin 9899 >>将工作交给Undone
+.turnin 9769 >>上缴时尚没有解释
 .goto Zangarmarsh,84.36,54.34
-.turnin 9828 >> 交出枯萎的Basidium
-.turnin 9770 >> 上缴威胁马什方
-.accept 9898 >> 什么都不要接受“爱得像个大毒刺”
+.turnin 9828 >>交出枯萎的Basidium
+.turnin 9770 >>上缴威胁马什方
+.accept 9898 >>什么都不要接受“爱得像个大毒刺”
 .goto Zangarmarsh,84.96,54.04
-.turnin 9772 >> 交Jyoba的报告
-.accept 9775 >> 接受报告给暗影猎人丹杰
-.accept 9796 >> 接受来自赞格马什的新闻
+.turnin 9772 >>交Jyoba的报告
+.accept 9775 >>接受报告给暗影猎人丹杰
+.accept 9796 >>接受来自赞格马什的新闻
 .goto Zangarmarsh,85.28,54.75
 step
 #completewith ZabraFP
@@ -23307,19 +23594,19 @@ step
 #label ZabraFP
 .goto Zangarmarsh,33.07,51.07
 >>前往扎布拉金
-.fp Zabra'jin >> 获取Zabra'jin飞行路线
+.fp Zabra'jin >>获取Zabra'jin飞行路线
 step
 >>与Janidi、Tor'gash、Zurjaya、通缉海报和Gambarinka交谈
-.accept 9846 >> 接受费拉芬的灵魂
+.accept 9846 >>接受费拉芬的灵魂
 .goto Zangarmarsh,32.38,51.97
-.accept 9814 >> 接受爆米花蘑菇，周一！
+.accept 9814 >>接受爆米花蘑菇，周一！
 .goto Zangarmarsh,32.89,48.89
-.accept 9845 >> 接受钓鱼以击败竞争对手
+.accept 9845 >>接受钓鱼以击败竞争对手
 .goto Zangarmarsh,32.25,49.61
-.accept 10117 >> 接受通缉：酋长穆马基
-.accept 9820 >> 接受通缉：Boss Grog'ak
+.accept 10117 >>接受通缉：酋长穆马基
+.accept 9820 >>接受通缉：Boss Grog'ak
 .goto Zangarmarsh,31.99,49.32
-.accept 9841 >> 接受毒刺
+.accept 9841 >>接受毒刺
 .goto Zangarmarsh,31.63,49.19
 step
 #completewith Sporelings
@@ -23336,19 +23623,19 @@ step
 step
 .goto Zangarmarsh,23.32,66.21
 >>与Leesa'oh交谈
-.turnin 9697 >> 交给观察者Leesa'oh
-.accept 9701 >> 接受对Sporelings的观察
+.turnin 9697 >>交给观察者Leesa'oh
+.accept 9701 >>接受对Sporelings的观察
 step
 #label Sporelings
 .goto Zangarmarsh,19.03,62.34,50,0
 .goto Zangarmarsh,19.19,64.60
 .line Zangarmarsh,19.03,62.34,19.19,64.60
 >>和法森谈谈，他在附近稍稍巡逻
-.accept 9739 >> 接受Sporelings的困境
-.accept 9743 >> 接受天敌
+.accept 9739 >>接受Sporelings的困境
+.accept 9743 >>接受天敌
 step
 #completewith Tendrils
->>在地上抢劫袋子（它们看起来像气球）
+>>在地上抢劫袋子(它们看起来像气球)
 .complete 9739,1 
 step
 #completewith next
@@ -23365,15 +23652,15 @@ step
 .complete 9743,1 
 step
 .loop 60,Zangarmarsh,13.76,57.97,10.51,60.28,10.53,62.68,13.24,63.84,17.35,63.48,17.46,57.13,13.76,57.97
->>在地上抢劫袋子（它们看起来像气球）
+>>在地上抢劫袋子(它们看起来像气球)
 .complete 9739,1 
 step
 .goto Zangarmarsh,19.03,62.34,50,0
 .goto Zangarmarsh,19.19,64.60
 .line Zangarmarsh,19.03,62.34,19.19,64.60
 >>和法森谈谈，他在附近稍稍巡逻
-.turnin 9739 >> 把斯普林斯夫妇的困境交出来
-.turnin 9743 >> 交出天敌
+.turnin 9739 >>把斯普林斯夫妇的困境交出来
+.turnin 9743 >>交出天敌
 step
 #completewith Blacksting
 >>在整个赞格马什掠夺地上的橙色蘑菇
@@ -23385,8 +23672,8 @@ step
 step
 .goto Zangarmarsh,23.32,66.21
 >>与Lessa'oh交谈
-.turnin 9701 >> 轮流观察Sporelings
-.accept 9702 >> 接受暴食问题
+.turnin 9701 >>轮流观察Sporelings
+.accept 9702 >>接受暴食问题
 step
 #completewith next
 .loop 60,Zangarmarsh,26.31,62.73,27.31,66.10,28.34,63.77,29.80,65.23,31.36,67.21,32.31,65.48,33.59,65.76,32.31,65.48,30.89,63.10,31.89,60.49,29.28,59.50,29.10,62.48,26.31,62.73
@@ -23404,26 +23691,26 @@ step
 .reputation 970,neutral,0,1
 step
 .loop 60,Zangarmarsh,26.31,62.73,27.31,66.10,28.34,63.77,29.80,65.23,31.36,67.21,32.31,65.48,33.59,65.76,32.31,65.48,30.89,63.10,31.89,60.49,29.28,59.50,29.10,62.48,26.31,62.73
-.reputation 970,neutral,-750 >> 与斯波雷加一起磨碎沼泽领主，直到你距离中立点750声望
+.reputation 970,neutral,-750 >>与斯波雷加一起磨碎沼泽领主，直到你距离中立点750声望
 step
 .goto Zangarmarsh,23.32,66.21
 >>与Lessa'oh交谈
-.turnin 9702 >> 提交一个暴食问题
-.accept 9708 >> 接受熟悉的真菌
+.turnin 9702 >>提交一个暴食问题
+.accept 9708 >>接受熟悉的真菌
 step
 #completewith next
 >>杀死沼泽步行者。抢走他们的配偶
 .collect 24449,6,9806,1 
 step
 #completewith next
-.turnin 9744 >> 交更多卷须！
+.turnin 9744 >>交更多卷须！
 .reputation 970,neutral,0,1
 step
 .goto Zangarmarsh,19.03,62.34,50,0
 .goto Zangarmarsh,19.19,64.60
 .line Zangarmarsh,19.03,62.34,19.19,64.60
 >>和法森谈谈，他在附近稍稍巡逻
-.accept 9919 >> 接受斯波雷加
+.accept 9919 >>接受斯波雷加
 step
 #completewith Burstcap
 >>杀死沼泽步行者和更大的配偶。抢走他们的配偶
@@ -23470,7 +23757,7 @@ step
 .collect 24449,6,9806,1 
 step
 #completewith ThrashersX
-.cast 22807 >> 在你的袋子里使用水呼吸药剂
+.cast 22807 >>在你的袋子里使用水呼吸药剂
 .use 25539
 step
 #completewith next
@@ -23535,18 +23822,18 @@ step
 .complete 9728,1 
 step
 >>返回Zabra'jin。与Gambarinka、Zurjaya、Tor'gash和Janidi交谈
-.turnin 9841 >> 转身刺入毒刺
-.accept 9842 >> 接受最锋利的刀片
+.turnin 9841 >>转身刺入毒刺
+.accept 9842 >>接受最锋利的刀片
 .goto Zangarmarsh,31.63,49.19
-.turnin 9845 >> 投篮击败对手
-.accept 9903 >> 接受他们中最大的一个
-.accept 9904 >> 接受追捕恐怖爪
+.turnin 9845 >>投篮击败对手
+.accept 9903 >>接受他们中最大的一个
+.accept 9904 >>接受追捕恐怖爪
 .goto Zangarmarsh,32.25,49.61
-.turnin 9814 >> 星期一，把爆米花蘑菇交上来！
-.accept 9816 >> 接受你见过这些吗？
+.turnin 9814 >>星期一，把爆米花蘑菇交上来！
+.accept 9816 >>接受你见过这些吗？
 .goto Zangarmarsh,32.89,48.89
-.turnin 9846 >> 交出费尔芬的灵魂
-.accept 9847 >> 接受一个精神盟友？
+.turnin 9846 >>交出费尔芬的灵魂
+.accept 9847 >>接受一个精神盟友？
 .goto Zangarmarsh,32.38,51.97
 step
 #completewith FSpores
@@ -23560,7 +23847,7 @@ step
 .goto Zangarmarsh,32.86,59.52
 .use 25459 >>杀死“Count”Ungula。抢他的下颌骨。在您的包中点击它
 .collect 25459,1,9911,1 
-.accept 9911 >> 接受沼泽伯爵
+.accept 9911 >>接受沼泽伯爵
 step
 #completewith Zabra3
 >>杀死更大的Sporebats和Fen Striders。抢走他们的配偶
@@ -23582,20 +23869,20 @@ step
 step
 #label Zabra3
 >>返回Zabra'jin。在酒店顶部与Janidi、Gambarinka和Denjai交谈
-.turnin 9847 >> 交出一个精神盟友？
+.turnin 9847 >>交出一个精神盟友？
 .goto Zangarmarsh,32.38,51.97
-.turnin 9842 >> 交上最锋利的刀刃
+.turnin 9842 >>交上最锋利的刀刃
 .goto Zangarmarsh,31.63,49.19
-.turnin 9775 >> 向暗影猎手登贾提交报告
-.turnin 9820 >> 通缉犯：Boss Grog'ak
-.accept 9822 >> 接受即将到来的攻击
+.turnin 9775 >>向暗影猎手登贾提交报告
+.turnin 9820 >>通缉犯：Boss Grog'ak
+.accept 9822 >>接受即将到来的攻击
 .goto Zangarmarsh,30.74,50.89
 step
 .goto Zangarmarsh,23.32,66.21
 >>与Lessa'oh交谈
-.turnin 9708 >> 交上熟悉的真菌
-.accept 9709 >> 接受偷回蘑菇
-.turnin 9911 >> 交出沼泽伯爵
+.turnin 9708 >>交上熟悉的真菌
+.accept 9709 >>接受偷回蘑菇
+.turnin 9911 >>交出沼泽伯爵
 step
 #label FSpores
 .loop 50,Zangarmarsh,20.87,66.51,21.59,60.30,22.02,58.36,20.27,57.74,18.36,55.46,21.05,52.64,25.47,57.26,20.87,66.51
@@ -23607,12 +23894,12 @@ step
 .collect 24245,10,9808,1 
 step
 >>前往斯波雷加。与Msshi'fn和Gshaff交谈
-.turnin 9919 >> 交给斯波雷加
-.accept 9808 >> 接受Glowcap蘑菇
-.turnin 9808 >> 倒入Glowcap蘑菇
+.turnin 9919 >>交给斯波雷加
+.accept 9808 >>接受Glowcap蘑菇
+.turnin 9808 >>倒入Glowcap蘑菇
 .goto Zangarmarsh,19.68,52.07
-.accept 9806 >> 接受可育孢子
-.turnin 9806 >> 交出可育孢子
+.accept 9806 >>接受可育孢子
+.turnin 9806 >>交出可育孢子
 .goto Zangarmarsh,19.14,49.38
 step
 .goto Zangarmarsh,22.33,45.89
@@ -23624,47 +23911,47 @@ step
 .complete 9822,1 
 step << Druid
 #completewith next
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 step << Druid
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.trainer >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.trainer >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 step
 #completewith next
-.hs >> 炉灶 to Cenarion避难所
+.hs >>炉灶 to Cenarion避难所
 step
 .goto Zangarmarsh,78.49,62.95
->>与Coryth（客栈老板）交谈。从他那里买一瓶塞纳里奥烈酒
+>>与Coryth(客栈老板)交谈。从他那里买一瓶塞纳里奥烈酒
 .collect 29112,1,10287,1 
 
 step
 .goto Zangarmarsh,78.40,62.02
 >>与Ysiel交谈
-.turnin 9731 >> 转向排水示意图
-.accept 9724 >> 塞纳里奥圈接受警告
-.turnin 9720 >> 必须保持上缴余额
+.turnin 9731 >>转向排水示意图
+.accept 9724 >>塞纳里奥圈接受警告
+.turnin 9720 >>必须保持上缴余额
 step
 >>前往塞纳里奥邮报。与Mahuram和Amythiel交谈
-.turnin 10159 >> 上车，保持桑芳山畅通！
+.turnin 10159 >>上车，保持桑芳山畅通！
 .goto Hellfire Peninsula,15.65,52.15
-.turnin 9724 >> 上车警告塞纳里奥圈
-.accept 9732 >> 接受返回沼泽
+.turnin 9724 >>上车警告塞纳里奥圈
+.accept 9732 >>接受返回沼泽
 .goto Hellfire Peninsula,16.04,52.15
 step
 >>前往Falcon Watch。先和卡琳达谈谈，然后再和维埃拉谈谈
-.turnin 10287 >> 揭发的女主人
-.accept 9472 >> 接受阿雷里奥的女主人
+.turnin 10287 >>揭发的女主人
+.accept 9472 >>接受阿雷里奥的女主人
 .goto Hellfire Peninsula,26.37,60.32
-.turnin 9483 >> 让生活更美好
+.turnin 9483 >>让生活更美好
 .goto Hellfire Peninsula,27.15,62.11
 step
 .goto Hellfire Peninsula,26.55,63.92
@@ -23674,18 +23961,18 @@ step
 step
 .goto Hellfire Peninsula,26.37,60.32
 >>与Carinda交谈
-.turnin 9472 >> 交出阿雷里奥的女主人
+.turnin 9472 >>交出阿雷里奥的女主人
 step
 #completewith next
 .goto Hellfire Peninsula,27.79,59.99
-.fly Zabra'jin >> 飞往扎布拉金
+.fly Zabra'jin >>飞往扎布拉金
 step
 >>前往扎布拉金。与Zurjaya和Denjai交谈
-.turnin 9904 >> 转而追捕恐怖分子
+.turnin 9904 >>转而追捕恐怖分子
 .goto Zangarmarsh,32.25,49.61
-.turnin 9822 >> 发动进攻
-.accept 9823 >> 接受我们或他们
-.accept 10118 >> 接受给匕首的信息
+.turnin 9822 >>发动进攻
+.accept 9823 >>接受我们或他们
+.accept 10118 >>接受给匕首的信息
 .goto Zangarmarsh,30.74,50.89
 step
 .goto Zangarmarsh,42.23,41.43
@@ -23713,7 +24000,7 @@ step
 .complete 10118,2 
 step
 #completewith Gorefist
-.goto Zangarmarsh,17.08,13.10,40 >> 穿过蘑菇桥
+.goto Zangarmarsh,17.08,13.10,40 >>穿过蘑菇桥
 .skill riding,225,1
 step
 #completewith next
@@ -23752,43 +24039,43 @@ step
 step
 #xprate <1.5
 #completewith next
-.deathskip >> 在精神治疗师处死亡并重生
+.deathskip >>在精神治疗师处死亡并重生
 step
 .goto Zangarmarsh,23.32,66.21
 >>与Lessa'oh交谈
-.turnin 9709 >> 转身偷回蘑菇
+.turnin 9709 >>转身偷回蘑菇
 
 step
 >>返回Zabra'jin。在酒店、Zurjaya和Tor'gash的顶层与Denjai交谈
-.turnin 9823 >> 交给我们或他们
-.turnin 10118 >> 把消息交给匕首芬
-.turnin 10117 >> 通缉犯：穆马基酋长
+.turnin 9823 >>交给我们或他们
+.turnin 10118 >>把消息交给匕首芬
+.turnin 10117 >>通缉犯：穆马基酋长
 .accept 9795 >>接受食人魔威胁
 .goto Zangarmarsh,30.74,50.89
-.turnin 9903 >> 交给他们中最大的
+.turnin 9903 >>交给他们中最大的
 .goto Zangarmarsh,32.25,49.61
-.turnin 9816 >> 上车你见过这些吗？
+.turnin 9816 >>上车你见过这些吗？
 .goto Zangarmarsh,32.89,48.89
 step
 #completewith next
 .goto Zangarmarsh,33.07,51.07
-.fly Swamprat Post >> 飞到沼泽地哨所
+.fly Swamprat Post >>飞到沼泽地哨所
 step
 .goto Zangarmarsh,84.96,54.04
 >>与雷维吉交谈
-.turnin 9898 >> 尊重他人
+.turnin 9898 >>尊重他人
 step
 #label end
 .goto Zangarmarsh,78.40,62.02
 >>与Ysiel交谈
-.turnin 9732 >> 返回沼泽地
+.turnin 9732 >>返回沼泽地
 step
 .goto Zangarmarsh,79.09,65.27
 >>和楼上塔楼的哈穆特谈谈
-.turnin 9728 >> 热烈欢迎
+.turnin 9728 >>热烈欢迎
 ]])
 RXPGuides.RegisterGuide([[
-#version 7
+#version 9
 #wotlk
 #tbc
 #group RestedXP 部落 60-70
@@ -23799,30 +24086,30 @@ RXPGuides.RegisterGuide([[
 step
 #completewith next
 .goto Terokkar Forest,34.44,9.21
-.zone Terokkar Forest >> 前往特罗卡森林
+.zone Terokkar Forest >>前往特罗卡森林
 .skill riding,225,1
 step
 >>前往沙塔斯。与哈格德战争退伍军人、阿达尔和卡德加交谈
-.accept 10210 >> 接受A'dal
+.accept 10210 >>接受A'dal
 .goto Shattrath City,59.66,41.45
-.turnin 10210 >> 交给A'dal
+.turnin 10210 >>交给A'dal
 .goto Shattrath City,54.01,44.78
-.accept 10211 >> 接受光明之城
+.accept 10211 >>接受光明之城
 .goto Shattrath City,54.74,44.32
 .timer 473,City of Light RP
 step << Mage
 .goto Shattrath City,58.77,47.18
-.train 35715 >> 与Iorioa交谈。火车港口：沙塔斯和港口：沙塔斯
+.train 35715 >>与Iorioa交谈。火车港口：沙塔斯和港口：沙塔斯
 step
 #xprate <1.5
 >>与赛斯、树上的维卡克斯和瑞拉克交谈。在RP结束前快速完成此操作。暂时不要休息
-.accept 10037 >> 接受而不是鱼'
+.accept 10037 >>接受而不是鱼'
 .goto Shattrath City,63.94,15.52
-.accept 10917 >> 接受弃儿的困境
+.accept 10917 >>接受弃儿的困境
 .goto Shattrath City,52.38,16.47,30,0
 .goto Shattrath City,43.73,21.73,30,0
 .goto Shattrath City,46.47,20.12
-.accept 10847 >> 接受草图的眼睛
+.accept 10847 >>接受草图的眼睛
 .goto Shattrath City,52.54,21.03
 step
 .goto Shattrath City,50.36,42.87
@@ -23831,7 +24118,7 @@ step
 step
 .goto Shattrath City,54.74,44.32
 >>与卡德加交谈
-.turnin 10211 >> 在光明之城转弯
+.turnin 10211 >>在光明之城转弯
 step
 #label choice
 #completewith aldorOrScryer
@@ -23841,11 +24128,11 @@ step
 step
 #scryer
 #label aldorOrScryer
-.turnin 10552 >> 向清洁工递交效忠书
+.turnin 10552 >>向清洁工递交效忠书
 step
 #aldor
 #label aldorOrScryer
-.turnin 10551 >> 向阿尔多献殷勤
+.turnin 10551 >>向阿尔多献殷勤
 step
 #scryer
 #requires choice
@@ -23857,20 +24144,20 @@ step
 #requires choice
 >>与卡德加交谈
 .goto Shattrath City,54.74,44.32
-.accept 10554 >> 接受Ishanah
+.accept 10554 >>接受Ishanah
 step
 #aldor
 #completewith next
-.groundgoto Shattrath City,41.73,38.60,30 >> 乘电梯到阿尔多山口
+.groundgoto Shattrath City,41.73,38.60,30 >>乘电梯到阿尔多山口
 step
 #aldor
 #label ShattrathHS
 .goto Shattrath City,28.29,49.38
-.home >> 把你的炉石搬到沙塔斯城
+.home >>将您的炉石设置为沙塔斯城
 step
 #scryer
 #completewith next
-.goto Shattrath City,49.97,62.81,30 >> 乘坐电梯到达Scryer’s Tier
+.goto Shattrath City,49.97,62.81,30 >>乘坐电梯到达Scryer’s Tier
 .skill riding,225,1
 step
 #scryer
@@ -23880,29 +24167,29 @@ step
 step
 #scryer
 .goto Shattrath City,56.31,81.55
-.home >>把你的炉石搬到沙塔斯城
+.home >>将您的炉石设置为沙塔斯城
 step
 #requires choice
 step
 #completewith next
 .goto Shattrath City,52.19,52.90 << !Mage
-.zone Orgrimmar >> 把入口带到奥格瑞玛 << !Mage
-.zone Orgrimmar >> 电传至Orgrimmar << Mage
+.zone Orgrimmar >>把入口带到奥格瑞玛 << !Mage
+.zone Orgrimmar >>电传至Orgrimmar << Mage
 step << Mage
 .goto Orgrimmar,38.36,85.56
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Priest
 .goto Orgrimmar,35.59,87.85
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Shaman/Paladin
 #completewith next
 .goto Orgrimmar,40.5,36.9,25 >>输入Grommash Hold
 step << Shaman
 .goto Orgrimmar,37.82,36.45
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Paladin
 .goto Orgrimmar,32.26,35.71
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step
 .goto Orgrimmar,39.59,37.04,30,0 << !Paladin !Shaman
 .goto Orgrimmar,31.60,37.82
@@ -23910,77 +24197,77 @@ step
 .turnin 9438 >>把信使交给萨尔
 step << Hunter/Warrior
 #completewith next
-.goto Orgrimmar,63.6,38.2,30 >> 进入荣誉谷
+.goto Orgrimmar,63.6,38.2,30 >>进入荣誉谷
 step << Hunter tbc
 #sticky
 #label HunterTrain
 .goto Orgrimmar,66.31,14.80,0,0
-.trainer >> 训练你的宠物法术
+.trainer >>训练你的宠物法术
 
 step << Hunter
 .goto Orgrimmar,66.03,18.52
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Warrior
 .goto Orgrimmar,79.93,31.30
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Rogue/Warlock
 #completewith next
-.goto Orgrimmar,40.77,55.23,30 >> 进入阴影的裂缝
+.goto Orgrimmar,40.77,55.23,30 >>进入阴影的裂缝
 step << Rogue
 .goto Orgrimmar,43.90,54.65
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Warlock tbc
 #sticky
 #label WarlockTrain
 .goto Orgrimmar,47.52,46.71
-.vendor >> 与Kurgul交谈。如果需要，可以购买宠物护肤品
+.vendor >>与Kurgul交谈。如果需要，可以购买宠物护肤品
 
 step << Warlock
 .goto Orgrimmar,47.98,45.92
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Druid
 #completewith next
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 step << Druid
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.trainer >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.trainer >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 step
 #requires HunterTrain << Hunter tbc
 #requires WarlockTrain << Warlock tbc
 #completewith next
-.hs >> 赫斯到沙塔斯
+.hs >>赫斯到沙塔斯
 step << skip
 #xprate <1.5
 #aldor
 #requires HunterTrain << Hunter tbc
 #requires WarlockTrain << Warlock tbc
 >>与伊沙纳、亚述和沙尼尔交谈
-.turnin 10554 >> 交给伊沙纳
-.accept 10021 >> 接受恢复灯光
+.turnin 10554 >>交给伊沙纳
+.accept 10021 >>接受恢复灯光
 .goto Shattrath City,23.98,29.74
-.accept 10024 >> 接受沃伦萨尔的观点
+.accept 10024 >>接受沃伦萨尔的观点
 .goto Shattrath City,54.99,22.55
-.accept 10020 >> 接受Zahlia的治疗
+.accept 10020 >>接受Zahlia的治疗
 .goto Shattrath City,64.47,15.13
 step
 #aldor
 #requires HunterTrain << Hunter tbc
 #requires WarlockTrain << Warlock tbc
 >>与伊莎娜和沙尼尔交谈
-.turnin 10554 >> 交给伊沙纳
-.accept 10021 >> 接受恢复灯光
+.turnin 10554 >>交给伊沙纳
+.accept 10021 >>接受恢复灯光
 .goto Shattrath City,23.98,29.74
-.accept 10020 >> 接受Zahlia的治疗
+.accept 10020 >>接受Zahlia的治疗
 .goto Shattrath City,64.47,15.13
 step
 #aldor
@@ -23988,9 +24275,9 @@ step
 #requires WarlockTrain << Warlock tbc
 .goto Terokkar Forest,44.33,26.31
 >>前往塞纳里奥灌木丛。与塔夫格伦交谈
-.turnin 9957 >> 交出塞纳里昂灌木丛出了什么问题？
-.accept 9971 >> 在密室接受线索
-.accept 9968 >> 接受奇异能量
+.turnin 9957 >>交出塞纳里昂灌木丛出了什么问题？
+.accept 9971 >>在密室接受线索
+.accept 9968 >>接受奇异能量
 step << skip
 #xprate <1.5
 #scryer
@@ -24024,7 +24311,7 @@ step
 .goto Terokkar Forest,43.28,23.03,30,0
 .goto Terokkar Forest,43.44,22.36
 >>与典狱长Treelos交谈。他在塞纳里奥灌木丛巡逻
-.accept 9951 >> 接受它在看着你！
+.accept 9951 >>接受它在看着你！
 .unitscan Warden Treelos
 step
 .groundgoto Terokkar Forest,43.46,22.31,20,0
@@ -24050,7 +24337,7 @@ step
 .goto Terokkar Forest,43.28,23.03,30,0
 .goto Terokkar Forest,43.44,22.36
 >>与典狱长Treelos交谈。他在塞纳里奥灌木丛巡逻
-.turnin 9951 >> 上车，它在看着你！
+.turnin 9951 >>上车，它在看着你！
 .unitscan Warden Treelos
 step
 #label Object
@@ -24072,43 +24359,43 @@ step
 step
 .goto Terokkar Forest,44.33,26.31
 >>与塔夫格伦交谈
-.turnin 9971 >> 在密室交出线索
-.turnin 9968 >> 交出奇异能量
-.accept 9978 >> 通过任何必要的方式接受
+.turnin 9971 >>在密室交出线索
+.turnin 9968 >>交出奇异能量
+.accept 9978 >>通过任何必要的方式接受
 step
 .loop 50,Terokkar Forest,37.58,25.83,38.33,26.72,39.17,26.57,40.53,25.45,39.96,24.43,39.11,24.04,39.96,24.43,40.53,25.45,41.44,25.95,42.30,26.62,43.07,26.59,43.92,26.05,45.40,26.56,46.39,26.22,47.18,27.10,48.20,27.25,48.98,27.96,49.66,28.21,50.48,29.26,51.14,29.30
 >>沿着沙塔斯和图瑞姆之间的路走，直到找到恩普尔。和他谈谈，然后打败他。再和他谈谈
-.turnin 9978 >> 以任何必要的方式上缴
-.accept 9979 >> 接受Wind Trader Lathrai
+.turnin 9978 >>以任何必要的方式上缴
+.accept 9979 >>接受Wind Trader Lathrai
 .unitscan Empoor
 .skipgossip
 step
 .goto Terokkar Forest,49.71,43.33
 >>前往Stonebreaker Hold。与Mokasa交谈
-.turnin 9796 >> 提交来自Zangarmarsh的新闻
+.turnin 9796 >>提交来自Zangarmarsh的新闻
 .isOnQuest 9796
 step
 .goto Terokkar Forest,49.20,43.42
-.fp Stonebreaker Hold >> 获得碎石机等待飞行路线
+.fp Stonebreaker Hold >>获得碎石机等待飞行路线
 step
 >>到客栈里去。与Rokag和Faila交谈
-.accept 9987 >> 接受Strymying the Arakkoa
+.accept 9987 >>接受Strymying the Arakkoa
 .goto Terokkar Forest,48.97,44.62
-.accept 10039 >> 接受与Neftis探子交谈
-.accept 10868 >> 接受阿拉科阿战争道路
+.accept 10039 >>接受与Neftis探子交谈
+.accept 10868 >>接受阿拉科阿战争道路
 .goto Terokkar Forest,48.94,44.58
 step
 #completewith Unwelcome
 .goto Terokkar Forest,48.76,45.05
-.home >> 将你的炉石设置为碎石手
+.home >>将你的炉石设置为碎石手
 step
 >>与Kurgatok、Malukaz和Rakoria交谈
-.accept 10000 >> 接受不受欢迎的状态
-.accept 10027 >> 接受魔法骚扰
+.accept 10000 >>接受不受欢迎的状态
+.accept 10027 >>接受魔法骚扰
 .goto Terokkar Forest,48.77,45.68
-.accept 10018 >> 接受狼灵的护甲
+.accept 10018 >>接受狼灵的护甲
 .goto Terokkar Forest,50.17,46.44
-.accept 9993 >> 接受Olemba籽油
+.accept 9993 >>接受Olemba籽油
 .goto Terokkar Forest,50.13,44.88
 step
 #completewith next
@@ -24119,7 +24406,7 @@ step
 step
 .goto Terokkar Forest,63.38,42.72
 >>前往碎石营地。与凯德交谈
-.accept 10008 >> 接受特洛卡发生的一切留在特洛卡
+.accept 10008 >>接受特洛卡发生的一切留在特洛卡
 step
 #completewith Alphas
 >>在Terokkar各地抢劫地面上的浅蓝色球果
@@ -24147,8 +24434,8 @@ step
 #label Unwelcome
 .goto Terokkar Forest,63.38,42.72
 >>与凯德交谈
-.turnin 10000 >> 提交不受欢迎的状态
-.accept 10003 >> 接受消防联络人
+.turnin 10000 >>提交不受欢迎的状态
+.accept 10003 >>接受消防联络人
 step
 #label Alphas
 .loop 50,Terokkar Forest,69.32,51.89,70.23,50.50,67.86,50.31,68.03,48.57,67.53,46.63,66.12,48.97,65.18,47.23,64.45,48.06,64.57,49.84,63.40,52.03
@@ -24163,7 +24450,7 @@ step
 #completewith next
 .goto Terokkar Forest,67.93,53.56,0
 >>掠夺地面上的计划
-.accept 10013 >> 拿起任务，一只看不见的手
+.accept 10013 >>拿起任务，一只看不见的手
 step
 .groundgoto Terokkar Forest,67.15,54.38,20,0
 >>进入大楼。杀死Lisaile
@@ -24173,7 +24460,7 @@ step
 #label Unseen
 .goto Terokkar Forest,67.93,53.56
 >>掠夺地面上的计划
-.accept 10013 >> 接受一只看不见的手
+.accept 10013 >>接受一只看不见的手
 step
 .goto Terokkar Forest,66.87,54.76,50,0
 .goto Terokkar Forest,65.54,55.78,50,0
@@ -24198,8 +24485,8 @@ step
 #label FirewingL
 .goto Terokkar Forest,63.38,42.72
 >>与凯德交谈
-.turnin 10003 >> 交出消防联络人
-.turnin 10008 >> 交出特洛卡发生的事情留在特洛卡
+.turnin 10003 >>交出消防联络人
+.turnin 10008 >>交出特洛卡发生的事情留在特洛卡
 step
 #completewith next
 >>杀死曲速追踪者。75%的时间他们是隐形的
@@ -24317,7 +24604,7 @@ step << skip
 
 step
 #completewith next
-.cast 22807 >> 在你的袋子里使用水呼吸药剂
+.cast 22807 >>在你的袋子里使用水呼吸药剂
 .use 25539 
 .itemcount 25539,1
 step
@@ -24327,29 +24614,29 @@ step
 .complete 10037,1 
 step << Mage
 #completewith next
-.zone Shattrath City >> 传送到沙塔斯
+.zone Shattrath City >>传送到沙塔斯
 
 step
 #aldor
 >>返回沙塔斯。与Lathrai、Sha'nir和Seth交谈
-.turnin 9979 >> 交给Lathrai风电交易商
-.accept 10112 >> 接受个人喜好
+.turnin 9979 >>交给Lathrai风电交易商
+.accept 10112 >>接受个人喜好
 .goto Shattrath City,72.23,30.72
-.turnin 10020 >> 为Zahlia提供治疗
+.turnin 10020 >>为Zahlia提供治疗
 .goto Shattrath City,64.47,15.13
-.turnin 10037 >> 宁可成为鱼儿
+.turnin 10037 >>宁可成为鱼儿
 .goto Shattrath City,63.94,15.52
 .isQuestComplete 10020
 step
 >>返回沙塔斯。与Lathrai和Seth交谈
-.turnin 9979 >> 交给Lathrai风电交易商
-.accept 10112 >> 接受个人喜好
+.turnin 9979 >>交给Lathrai风电交易商
+.accept 10112 >>接受个人喜好
 .goto Shattrath City,72.23,30.72
-.turnin 10037 >> 宁可成为鱼儿
+.turnin 10037 >>宁可成为鱼儿
 .goto Shattrath City,63.94,15.52
 step
 >>在树平台上与Vekax交谈
-.turnin 10917 >> 反击被放逐者的困境
+.turnin 10917 >>反击被放逐者的困境
 .goto Shattrath City,52.38,16.47,30,0
 .goto Shattrath City,43.73,21.73,30,0
 .goto Shattrath City,46.47,20.12
@@ -24357,27 +24644,27 @@ step
 step
 .goto Shattrath City,52.54,21.03
 >>与Rilak交谈
-.turnin 10847 >> 《斯凯蒂斯的眼睛》
-.accept 10849 >> 接受寻找Kirrik
+.turnin 10847 >>《斯凯蒂斯的眼睛》
+.accept 10849 >>接受寻找Kirrik
 step
 #completewith next
 .hs >>炉到碎石器把持
 step
 >>与Kurgatok、Faila和Rokag交谈
-.turnin 10027 >> 交出魔法骚扰
+.turnin 10027 >>交出魔法骚扰
 .goto Terokkar Forest,48.77,45.68
-.turnin 10868 >> 转入阿拉科阿战争道路
+.turnin 10868 >>转入阿拉科阿战争道路
 .goto Terokkar Forest,48.94,44.58
-.turnin 10013 >> 交给一只看不见的手
+.turnin 10013 >>交给一只看不见的手
 .goto Terokkar Forest,48.97,44.62
 step
 .goto Terokkar Forest,49.81,45.28
 >>与通缉海报交谈
-.accept 10034 >> 接受通缉：骷髅手死了！
+.accept 10034 >>接受通缉：骷髅手死了！
 step
 >>与Rakoria交谈
-.turnin 9993 >> 加入Olemba籽油
-.accept 10201 >> 接受现在，真相时刻
+.turnin 9993 >>加入Olemba籽油
+.accept 10201 >>接受现在，真相时刻
 .goto Terokkar Forest,50.13,44.88
 step
 #completewith next
@@ -24388,12 +24675,12 @@ step
 .skipgossip 19606,1
 step
 >>与Rakoria交谈
-.turnin 10201 >> 现在，真相时刻
+.turnin 10201 >>现在，真相时刻
 .goto Terokkar Forest,50.13,44.88
 step
 >>与Malukaz交谈
-.turnin 10018 >> 交出狼灵的背心
-.accept 10023 >> 接受铁爪主教
+.turnin 10018 >>交出狼灵的背心
+.accept 10023 >>接受铁爪主教
 .goto Terokkar Forest,50.17,46.44
 step
 #completewith Caravan
@@ -24402,17 +24689,17 @@ step
 step
 #completewith next
 >>与Mekeda交谈。他逆时针巡逻
-.accept 10878 >> 在黑暗降临之前接受
+.accept 10878 >>在黑暗降临之前接受
 step
 #label Caravan
 >>前往难民营。与Lakotae、Kirrik和Ethan交谈
-.accept 10896 >> 接受受感染的保护者
+.accept 10896 >>接受受感染的保护者
 .goto Terokkar Forest,37.86,51.69
-.turnin 10849 >> 转入寻找Kirrik
-.accept 10839 >> 接受面纱蒙皮：特洛克的黑石
+.turnin 10849 >>转入寻找Kirrik
+.accept 10839 >>接受面纱蒙皮：特洛克的黑石
 .goto Terokkar Forest,37.56,51.50,30,0
 .goto Terokkar Forest,37.09,50.69
-.accept 10852 >> 接受丢失的朋友
+.accept 10852 >>接受丢失的朋友
 .goto Terokkar Forest,37.74,51.34
 step
 .goto Terokkar Forest,37.73,51.80,30,0
@@ -24424,7 +24711,7 @@ step
 .goto Terokkar Forest,38.20,51.74
 .line Terokkar Forest,38.20,51.74,38.38,51.14,37.86,50.06,37.51,49.98,37.23,50.32,37.28,50.99,37.73,51.80,38.20,51.74
 >>与Mekeda交谈。他逆时针在商队周围巡逻
-.accept 10878 >> 在黑暗降临之前接受
+.accept 10878 >>在黑暗降临之前接受
 step
 #completewith next
 >>杀死骷髅人
@@ -24440,8 +24727,8 @@ step
 .goto Terokkar Forest,39.03,43.75
 >>在与奈夫蒂斯交谈之前，请务必下马
 >>与Neftis交谈
-.turnin 10039 >> 转而与侦察员Neftis交谈
-.accept 10041 >> 接受他们是谁？
+.turnin 10039 >>转而与侦察员Neftis交谈
+.accept 10041 >>接受他们是谁？
 step << skip
 #completewith next
 .goto Terokkar Forest,39.03,43.75,0
@@ -24465,8 +24752,8 @@ step
 step
 .goto Terokkar Forest,39.03,43.75
 >>与Neftis交谈
-.turnin 10041 >> 交出他们是谁？
-.accept 10043 >> 接受杀死影子议会！
+.turnin 10041 >>交出他们是谁？
+.accept 10043 >>接受杀死影子议会！
 step
 #completewith next
 >>杀死暗影刽子手和召唤师
@@ -24532,13 +24819,13 @@ step
 .complete 10917,1 
 step << Mage
 #completewith Lathrai
-.zone Shattrath City >> 传送到沙塔斯
+.zone Shattrath City >>传送到沙塔斯
 step
 >>返回沙塔斯。与Lathrai和Vekax交谈
-.turnin 10112 >> 交出个人恩惠
-.accept 9990 >> 接受调查学费
+.turnin 10112 >>交出个人恩惠
+.accept 9990 >>接受调查学费
 .goto Shattrath City,72.23,30.72
-.turnin 10917 >> 反击被放逐者的困境
+.turnin 10917 >>反击被放逐者的困境
 .goto Shattrath City,52.38,16.47,30,0
 .goto Shattrath City,43.73,21.73,30,0
 .goto Shattrath City,46.47,20.12
@@ -24546,13 +24833,13 @@ step
 step
 #label Lathrai
 >>返回沙塔斯。与Lathrai交谈
-.turnin 10112 >> 交出个人恩惠
-.accept 9990 >> 接受调查学费
+.turnin 10112 >>交出个人恩惠
+.accept 9990 >>接受调查学费
 .goto Shattrath City,72.23,30.72
 step
 #completewith next
 .goto Shattrath City,64.05,41.12
-.fp Shattrath >> 获取沙塔斯飞行路线
+.fp Shattrath >>获取沙塔斯飞行路线
 step
 #completewith next
 .goto Shattrath City,64.05,41.12
@@ -24564,43 +24851,43 @@ step
 step
 .goto Terokkar Forest,44.33,26.31
 >>与塔夫格伦交谈
-.turnin 9990 >> 上缴调查学费
-.accept 9995 >> 接受这些是什么？
+.turnin 9990 >>上缴调查学费
+.accept 9995 >>接受这些是什么？
 step << Druid
 #completewith next
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 step << Druid
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.trainer >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.trainer >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 step
 #completewith next
-.hs >> 炉到碎石器把持
+.hs >>炉到碎石器把持
 .cooldown item,6948,>0
 step
 >>返回碎石场。与Faila、Rokag和Tooki交谈
-.turnin 10043 >> 请来杀死影子议会！
+.turnin 10043 >>请来杀死影子议会！
 .goto Terokkar Forest,48.94,44.58
-.turnin 9987 >> 转向苦苦挣扎的阿拉科亚
+.turnin 9987 >>转向苦苦挣扎的阿拉科亚
 .goto Terokkar Forest,48.97,44.62
-.turnin 9995 >> 交上来这些是什么？
-.accept 10448 >> 接受向碎石者营地的报告
+.turnin 9995 >>交上来这些是什么？
+.accept 10448 >>接受向碎石者营地的报告
 .goto Terokkar Forest,50.04,45.94
 step
 .goto Terokkar Forest,63.29,42.38,30,0
 .goto Terokkar Forest,63.30,41.98
 >>返回碎石营地。与Chawni交谈
-.turnin 10448 >> 向碎石者营地提交报告
-.accept 9997 >> 接受对发射点的攻击
+.turnin 10448 >>向碎石者营地提交报告
+.accept 9997 >>接受对发射点的攻击
 step
 .goto Terokkar Forest,63.73,35.31,60,0
 .goto Terokkar Forest,64.41,35.33,60,0
@@ -24636,7 +24923,7 @@ step
 .goto Terokkar Forest,73.93,35.16
 >>在开始护送之前，杀死圆圈南侧的术士群，以使护送更加容易
 >>与笼子里的艾拉交谈，开始护送
-.accept 10052 >> 接受从射击点逃生！
+.accept 10052 >>接受从射击点逃生！
 step
 #label Isla
 .goto Terokkar Forest,71.95,38.09,50,0
@@ -24654,8 +24941,8 @@ step
 .goto Terokkar Forest,63.29,42.38,30,0
 .goto Terokkar Forest,63.30,41.98
 >>返回碎石营地。与Chawni交谈
-.turnin 9997 >> 攻击射击点
-.accept 10447 >> 接受最终代码
+.turnin 9997 >>攻击射击点
+.accept 10447 >>接受最终代码
 step
 #scryer
 #completewith MBomb
@@ -24696,17 +24983,17 @@ step
 .collect 29426,10,10412,1 
 step
 #completewith next
-.hs >> 炉到碎石器把持
+.hs >>炉到碎石器把持
 .cooldown item,6948,>0
 step
 >>返回碎石场。与Faila、Tooki和Malukaz交谈
-.turnin 10052 >> 从火警点开始逃跑！
+.turnin 10052 >>从火警点开始逃跑！
 .goto Terokkar Forest,48.94,44.58
-.turnin 10447 >> 提交最终代码
-.accept 10006 >> 接受让土工Tavgren知道
+.turnin 10447 >>提交最终代码
+.accept 10006 >>接受让土工Tavgren知道
 .goto Terokkar Forest,50.04,45.94
-.turnin 10023 >> 交给铁爪族长
-.accept 10791 >> 接受欢迎狼精神
+.turnin 10023 >>交给铁爪族长
+.accept 10791 >>接受欢迎狼精神
 .goto Terokkar Forest,50.17,46.44
 step
 .goto Terokkar Forest,50.17,46.44
@@ -24730,7 +25017,7 @@ step
 .complete 10878,2 
 .complete 10878,3 
 .collect 31707,1,10880 
-.accept 10880 >> 接受阴谋集团订单
+.accept 10880 >>接受阴谋集团订单
 step
 #label Mites
 .goto Terokkar Forest,40.75,49.86,50,0
@@ -24742,22 +25029,22 @@ step
 #completewith next
 .line Terokkar Forest,38.20,51.74,38.38,51.14,37.86,50.06,37.51,49.98,37.23,50.32,37.28,50.99,37.73,51.80,38.20,51.74
 >>与Mekeda交谈。他逆时针在商队周围巡逻
-.turnin 10878 >> 夜幕降临前上车
-.turnin 10880 >> 交出阴谋命令
-.accept 10881 >> 接受影墓
+.turnin 10878 >>夜幕降临前上车
+.turnin 10880 >>交出阴谋命令
+.accept 10881 >>接受影墓
 step
 >>返回难民营。与Lakotae、Ethan、Kirrik和Orglum交谈 << WOTLK
 >>返回难民营。与Lakotae、Ethan和Kirrik交谈 << TBC
-.turnin 10896 >> 交出受感染的保护者
+.turnin 10896 >>交出受感染的保护者
 .goto Terokkar Forest,37.86,51.69
-.turnin 10852 >> 交回思念的朋友
+.turnin 10852 >>交回思念的朋友
 .goto Terokkar Forest,37.74,51.34
-.turnin 10839 >> 收起面纱：特洛克的黑石
-.accept 10848 >> 接受面纱狂魔：释放邪恶
+.turnin 10839 >>收起面纱：特洛克的黑石
+.accept 10848 >>接受面纱狂魔：释放邪恶
 .goto Terokkar Forest,37.56,51.50,30,0
 .goto Terokkar Forest,37.09,50.69
-.accept 10840 >> 接受光明之墓 << WOTLK
-.accept 10842 >> 接受复仇的灵魂 << WOTLK
+.accept 10840 >>接受光明之墓 << WOTLK
+.accept 10842 >>接受复仇的灵魂 << WOTLK
 .goto Terokkar Forest,37.45,50.76
 step
 .goto Terokkar Forest,37.73,51.80,30,0
@@ -24769,9 +25056,9 @@ step
 .goto Terokkar Forest,38.20,51.74
 .line Terokkar Forest,38.20,51.74,38.38,51.14,37.86,50.06,37.51,49.98,37.23,50.32,37.28,50.99,37.73,51.80,38.20,51.74
 >>与Mekeda交谈。他逆时针在商队周围巡逻
-.turnin 10880 >> 交出阴谋命令
-.accept 10881 >> 接受影墓
-.turnin 10878 >> 夜幕降临前上车
+.turnin 10880 >>交出阴谋命令
+.accept 10881 >>接受影墓
+.turnin 10878 >>夜幕降临前上车
 step
 .goto Terokkar Forest,30.68,50.76,50,0
 .goto Terokkar Forest,27.41,51.45,50,0
@@ -24788,7 +25075,7 @@ step
 .collect 29425,10,10325,1 
 step
 #completewith next
-.goto Terokkar Forest,31.07,52.67,20 >> 进入影墓
+.goto Terokkar Forest,31.07,52.67,20 >>进入影墓
 step
 >>在暗影墓内，掠夺包含槌、帷幕和卷轴的箱子
 .complete 10881,2 
@@ -24800,7 +25087,7 @@ step
 step
 .goto Terokkar Forest,30.61,49.06
 >>与影墓内的赤野交谈
-.accept 10887 >> 接受逃离坟墓
+.accept 10887 >>接受逃离坟墓
 step
 #label Akuno
 .goto Terokkar Forest,33.77,51.61
@@ -24813,7 +25100,7 @@ step
 .collect 29425,10,10325,1 
 step << WOTLK
 #completewith Draenei
-.goto Terokkar Forest,47.00,55.14,20 >> 进入灯光之墓
+.goto Terokkar Forest,47.00,55.14,20 >>进入灯光之墓
 step << WOTLK
 #completewith next
 >>杀死以太冥界者和以太掠夺者
@@ -24855,16 +25142,16 @@ step
 #completewith next
 .line Terokkar Forest,38.20,51.74,38.38,51.14,37.86,50.06,37.51,49.98,37.23,50.32,37.28,50.99,37.73,51.80
 >>与Mekeda交谈。他逆时针在商队周围巡逻
-.turnin 10881 >> 把影子墓交进去
-.turnin 10887 >> 从坟墓逃走
+.turnin 10881 >>把影子墓交进去
+.turnin 10887 >>从坟墓逃走
 step
 >>返回难民营。与Kirrik和Orglum交谈
-.turnin 10848 >> 收起面纱雷兹：释放邪恶
+.turnin 10848 >>收起面纱雷兹：释放邪恶
 
 .goto Terokkar Forest,37.56,51.50,30,0
 .goto Terokkar Forest,37.09,50.69
-.turnin 10840 >> 在灯光的坟墓里
-.turnin 10842 >> 交出复仇的灵魂 << WOTLK
+.turnin 10840 >>在灯光的坟墓里
+.turnin 10842 >>交出复仇的灵魂 << WOTLK
 .goto Terokkar Forest,37.45,50.76
 step
 .goto Terokkar Forest,37.73,51.80,30,0
@@ -24876,17 +25163,17 @@ step
 .goto Terokkar Forest,38.20,51.74
 .line Terokkar Forest,38.20,51.74,38.38,51.14,37.86,50.06,37.51,49.98,37.23,50.32,37.28,50.99,37.73,51.80
 >>与Mekeda交谈。他逆时针在商队周围巡逻
-.turnin 10881 >> 把影子墓交进去
-.turnin 10887 >> 从坟墓逃走
+.turnin 10881 >>把影子墓交进去
+.turnin 10887 >>从坟墓逃走
 step << Shaman
 #completewith next
-.hs >> 炉到碎石器把持
+.hs >>炉到碎石器把持
 .cooldown item,6948,>0
 step
 >>返回碎石场。与Mawg和Malukaz交谈
-.turnin 10034 >> 通缉犯：骷髅手死了！
+.turnin 10034 >>通缉犯：骷髅手死了！
 .goto Terokkar Forest,49.25,45.88
-.turnin 10791 >> 转身迎狼精神
+.turnin 10791 >>转身迎狼精神
 .goto Terokkar Forest,50.17,46.44
 step << tbc
 #xprate <1.5
@@ -24902,11 +25189,11 @@ step << tbc
 step << tbc
 #xprate <1.5
 .goto Terokkar Forest,37.5,50.9
-.turnin 10840 >> 在灯光的坟墓里
+.turnin 10840 >>在灯光的坟墓里
 step << tbc
 #xprate <1.5
 .goto Terokkar Forest,37.1,49.6
-.accept 10030 >> 接受恢复骨骼
+.accept 10030 >>接受恢复骨骼
 step << tbc
 #xprate <1.5
 .isOnQuest 10036
@@ -24922,19 +25209,19 @@ step << tbc
 step << tbc
 #xprate <1.5
 .goto Terokkar Forest,31.4,75.7
-.accept 10873 >> 接受夜间拍摄
+.accept 10873 >>接受夜间拍摄
 step << tbc
 #xprate <1.5
 .goto Terokkar Forest,31.0,76.1
-.accept 10913 >> 接受不当埋葬
+.accept 10913 >>接受不当埋葬
 step << tbc
 #xprate <1.5
 .goto Terokkar Forest,31.0,76.5
-.accept 10877 >> 接受恐惧遗迹
+.accept 10877 >>接受恐惧遗迹
 step << tbc
 #xprate <1.5
 .goto Terokkar Forest,31.1,76.3
-.accept 10922 >> 接受骨骼挖掘
+.accept 10922 >>接受骨骼挖掘
 step << tbc
 #xprate <1.5
 .goto Terokkar Forest,29.9,71.2
@@ -24948,11 +25235,11 @@ step << tbc
 step << tbc
 #xprate <1.5
 .goto Terokkar Forest,31.0,76.2
-.turnin 10922 >> 转向挖掘骨骼
+.turnin 10922 >>转向挖掘骨骼
 step << tbc
 #xprate <1.5
 .goto Terokkar Forest,31.0,76.2
-.accept 10929 >> 接受冒烟
+.accept 10929 >>接受冒烟
 step << tbc
 #xprate <1.5
 .goto Terokkar Forest,31.9,75.8
@@ -24967,12 +25254,12 @@ step << tbc
 step << tbc
 #xprate <1.5
 .goto Terokkar Forest,31.0,76.3
-.turnin 10929 >> 转入Fumping
+.turnin 10929 >>转入Fumping
 step << tbc
 #xprate <1.5
 .goto Terokkar Forest,31.0,76.1
-.turnin 10913 >> 转入不当埋葬
-.accept 10914 >> 接受需要英雄
+.turnin 10913 >>转入不当埋葬
+.accept 10914 >>接受需要英雄
 step << tbc
 #xprate <1.5
 .goto Terokkar Forest,35.4,75.0
@@ -24981,8 +25268,8 @@ step << tbc
 step << tbc
 #xprate <1.5
 .goto Terokkar Forest,31.1,76.0
-.turnin 10914 >> 需要交英雄
-.accept 10915 >> 接受堕落的君主
+.turnin 10914 >>需要交英雄
+.accept 10915 >>接受堕落的君主
 step << tbc
 #xprate <1.5
 .goto Terokkar Forest,35.9,65.2
@@ -24991,8 +25278,8 @@ step << tbc
 step << tbc
 #xprate <1.5
 .goto Terokkar Forest,37.6,51.4
-.turnin 10861 >> 转入帷幕石：先发制人打击
-.accept 10874 >> 接受面纱莎拉：信号发射
+.turnin 10861 >>转入帷幕石：先发制人打击
+.accept 10874 >>接受面纱莎拉：信号发射
 step << tbc
 #xprate <1.5
 .isQuestComplete 10036
@@ -25002,7 +25289,7 @@ step << tbc
 #xprate <1.5
 .goto Terokkar Forest,53.8,72.2
 >>这个护送很难。我们建议分组进行此操作。
-.accept 10898 >> 接受Skywing
+.accept 10898 >>接受Skywing
 step << tbc
 #xprate <1.5
 #sticky
@@ -25034,7 +25321,7 @@ step << tbc
 #xprate <1.5
 #requires Arakkoafeathers
 .goto Terokkar Forest,49.8,76.1
-.accept 10920 >> 接受堕落者
+.accept 10920 >>接受堕落者
 step << tbc
 #xprate <1.5
 .goto Terokkar Forest,51.2,80.3
@@ -25044,12 +25331,12 @@ step << tbc
 step << tbc
 #xprate <1.5
 .goto Terokkar Forest,49.8,76.2
-.turnin 10920 >> 为堕落者而自首
+.turnin 10920 >>为堕落者而自首
 step << tbc
 #xprate <1.5
 .goto Terokkar Forest,49.8,76.2
 >>如果你无法独奏精英Terokkarantula，那就组队完成这个任务。如果没有，跳过这个任务。
-.accept 10921 >> 接受Terokkarantula
+.accept 10921 >>接受Terokkarantula
 step << tbc
 #xprate <1.5
 .isOnQuest 10921
@@ -25146,7 +25433,7 @@ step << tbc
 step << tbc
 #xprate <1.5
 .goto Shattrath City,46.1,22.6
-.turnin 10917 >> 反击被放逐者的困境
+.turnin 10917 >>反击被放逐者的困境
 step << tbc
 #xprate <1.5
 .goto Shattrath City,46.4,43.6
@@ -25155,107 +25442,107 @@ step << tbc
 step
 #scryer
 #completewith next
-.goto Shattrath City,49.97,62.81,30 >> 乘坐电梯到达Scryer’s Tier
+.goto Shattrath City,49.97,62.81,30 >>乘坐电梯到达Scryer’s Tier
 .skill riding,225,1
 step
 #scryer
 .goto Shattrath City,56.31,81.55
-.home >>把你的炉石搬到沙塔斯城
+.home >>将您的炉石设置为沙塔斯城
 step
 #scryer
 .goto Shattrath City,45.17,81.46
 >>与Fyalen交谈
-.accept 10412 >> 接受消防标识
-.turnin 10412 >> 交出消防标识
+.accept 10412 >>接受消防标识
+.turnin 10412 >>交出消防标识
 step
 #aldor
 #completewith next
-.groundgoto Shattrath City,41.73,38.60,30 >> 乘电梯到阿尔多山口
+.groundgoto Shattrath City,41.73,38.60,30 >>乘电梯到阿尔多山口
 step
 #aldor
 >>与Adyen和Ishanah交谈
-.accept 10325 >> 接受基尔加丹的标记
-.turnin 10325 >> 基尔加丹的上缴标记
+.accept 10325 >>接受基尔加丹的标记
+.turnin 10325 >>基尔加丹的上缴标记
 .goto Shattrath City,30.72,34.63
-.turnin 10021 >> 转向恢复灯光
+.turnin 10021 >>转向恢复灯光
 .goto Shattrath City,23.98,29.74
 step
 #aldor
 #label ShattrathHS
 .goto Shattrath City,28.29,49.38
-.home >> 把你的炉石搬到沙塔斯城
+.home >>将您的炉石设置为沙塔斯城
 step
 #completewith next
 .goto Shattrath City,52.19,52.90 << !Mage
-.zone Orgrimmar >> 把入口带到奥格瑞玛 << !Mage
-.zone Orgrimmar >> 电传至Orgrimmar << Mage
+.zone Orgrimmar >>把入口带到奥格瑞玛 << !Mage
+.zone Orgrimmar >>电传至Orgrimmar << Mage
 step << Mage
 .goto Orgrimmar,38.36,85.56
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Priest
 .goto Orgrimmar,35.59,87.85
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Shaman/Paladin
 #completewith next
 .goto Orgrimmar,40.5,36.9,25 >>输入Grommash Hold
 step << Shaman
 .goto Orgrimmar,37.82,36.45
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Paladin
 .goto Orgrimmar,32.26,35.71
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Hunter/Warrior
 #completewith next
-.goto Orgrimmar,63.6,38.2,30 >> 进入荣誉谷
+.goto Orgrimmar,63.6,38.2,30 >>进入荣誉谷
 step << Hunter TBC
 #sticky
 #label HunterTrain
 .goto Orgrimmar,66.31,14.80,0,0
-.trainer >> 训练你的宠物法术
+.trainer >>训练你的宠物法术
 step << Hunter
 .goto Orgrimmar,66.03,18.52
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Warrior
 .goto Orgrimmar,79.93,31.30
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Rogue/Warlock
 #completewith next
-.goto Orgrimmar,40.77,55.23,30 >> 进入阴影的裂缝
+.goto Orgrimmar,40.77,55.23,30 >>进入阴影的裂缝
 step << Rogue
 .goto Orgrimmar,43.90,54.65
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Warlock TBC
 #sticky
 #label WarlockTrain
 .goto Orgrimmar,47.52,46.71
-.vendor >> 与Kurgul交谈。如果需要，可以购买宠物护肤品
+.vendor >>与Kurgul交谈。如果需要，可以购买宠物护肤品
 step << Warlock
 .goto Orgrimmar,47.98,45.92
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Druid
 #completewith next
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 step << Druid
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.trainer >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.trainer >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 step
 #completewith next
-.hs >> 赫斯到沙塔斯
+.hs >>赫斯到沙塔斯
 step
-.zone Shattrath City >> 前往沙塔斯
+.zone Shattrath City >>前往沙塔斯
 ]])
 RXPGuides.RegisterGuide([[
-#version 7
+#version 9
 #wotlk
 #tbc
 #group RestedXP 部落 60-70
@@ -25276,7 +25563,7 @@ step
 step
 #completewith next
 .goto Nagrand,33.64,15.72
-.zone Nagrand >> 前往纳格朗
+.zone Nagrand >>前往纳格朗
 .skill riding,225,1
 step
 >>前往元素王座。与Lo'ap和Untrag交谈
@@ -25319,11 +25606,11 @@ step
 .xp <65,1
 step
 .goto Nagrand,57.19,35.25
-.fp Garadar >> 获取Garadar飞行路线
+.fp Garadar >>获取Garadar飞行路线
 step
 .goto Nagrand,55.20,36.11
 >>与Celestine交谈
-.accept 9983 >> 接受他自称利他主义。。。
+.accept 9983 >>接受他自称利他主义。。。
 .xp <66,1
 step
 #completewith Bullrok
@@ -25345,7 +25632,7 @@ step
 #label Bullrok
 .goto Nagrand,55.79,37.95
 >>与Bullrok交谈
-.accept 10479 >> 接受证明你的实力
+.accept 10479 >>接受证明你的实力
 .xp <65,1
 
 step
@@ -25378,14 +25665,14 @@ step
 #label Saved1
 #completewith Safari1
 >>杀死甘克利后与克里斯汀交谈。这是Safari罕见的随机事件
-.accept 9897 >> 接受我被救了！
+.accept 9897 >>接受我被救了！
 .goto Nagrand,71.42,40.60,0
 .unitscan Gankly Rottenfist
 step
 #requires Saved1
 #completewith next
 >>与哈罗德交谈
-.turnin 9897 >> 我被救了！
+.turnin 9897 >>我被救了！
 .goto Nagrand,71.38,40.62
 step
 #label Safari1
@@ -25460,7 +25747,7 @@ step
 .goto Nagrand,61.68,67.13
 >>与瓦扎特交谈
 .turnin 10109 >>交上来，我必须要！
-.accept 10111 >> 接受给我鸡蛋！
+.accept 10111 >>接受给我鸡蛋！
 step
 #completewith next
 .goto Nagrand,61.82,68.84,30 >>使用Wazat旁边的Jump-A-Tron 4000获得慢速球buff。跑上你南边的悬崖，朝着有蛋窝的树跳去
@@ -25477,10 +25764,10 @@ step
 step
 .goto Nagrand,61.68,67.13
 >>与瓦扎特交谈
-.turnin 10111 >> 进来把鸡蛋给我！
+.turnin 10111 >>进来把鸡蛋给我！
 .isQuestComplete 10111
 step
-.abandon 10111 >> 放弃给我鸡蛋！
+.abandon 10111 >>放弃给我鸡蛋！
 step
 .loop 60,Nagrand,57.61,60.98,59.50,58.79,61.32,62.32,70.43,56.50,65.39,63.76,71.13,62.77,70.44,72.05,66.97,75.29,66.01,67.94,57.61,60.98
 >>杀死塔布雄鹿和羊蹄
@@ -25489,7 +25776,7 @@ step
 step
 #completewith next
 .goto Terokkar Forest,19.74,57.57
-.zone Terokkar Forest >> 前往特罗卡森林
+.zone Terokkar Forest >>前往特罗卡森林
 .skill riding,225,1
 step
 #label Kilrath
@@ -25540,14 +25827,14 @@ step
 #label Saved2
 #completewith Safari2
 >>杀死甘克利后与克里斯汀交谈。这是Safari罕见的随机事件
-.accept 9897 >> 接受我被救了！
+.accept 9897 >>接受我被救了！
 .goto Nagrand,71.42,40.60,0
 .unitscan Gankly Rottenfist
 step
 #requires Saved2
 #completewith next
 >>与哈罗德交谈
-.turnin 9897 >> 我被救了！
+.turnin 9897 >>我被救了！
 .goto Nagrand,71.38,40.62
 step
 #label Safari2
@@ -25580,7 +25867,7 @@ step
 .unitscan Gordawg
 step
 #completewith CBulls
-.destroy 24475 >> 您可以从您的包中删除“Gordawg’s Imprint”，因为它不再需要了
+.destroy 24475 >>您可以从您的包中删除“Gordawg’s Imprint”，因为它不再需要了
 step
 >>与Sharvak和Morgh交谈
 .turnin 9870 >>交出元素的王座
@@ -25669,7 +25956,7 @@ step
 .isQuestComplete 9821
 step
 #completewith next
-.cast 31920 >> 使用包中的Nagrand Cherry
+.cast 31920 >>使用包中的Nagrand Cherry
 .use 24421
 step
 .goto Nagrand,61.62,29.65,60,0
@@ -25691,14 +25978,14 @@ step
 #label Saved3
 #completewith Safari3
 >>杀死甘克利后与克里斯汀交谈。这是Safari罕见的随机事件
-.accept 9897 >> 接受我被救了！
+.accept 9897 >>接受我被救了！
 .goto Nagrand,71.42,40.60,0
 .unitscan Gankly Rottenfist
 step
 #requires Saved3
 #completewith next
 >>与哈罗德交谈
-.turnin 9897 >> 我被救了！
+.turnin 9897 >>我被救了！
 .goto Nagrand,71.38,40.62
 step
 #label Safari3
@@ -25710,7 +25997,7 @@ step
 .accept 9851 >>接受Clefthoof Mastery
 .goto Nagrand,71.38,40.62
 step
-.use 24467 >> 在温德雷德村的小屋里使用你袋子里的生火
+.use 24467 >>在温德雷德村的小屋里使用你袋子里的生火
 .complete 9805,1 
 .goto Nagrand,72.38,50.39
 .complete 9805,2 
@@ -25726,7 +26013,7 @@ step
 .complete 9906,1 
 .complete 9906,2 
 step
-.use 25458 >> 在燃烧的刀刃山上使用你包里的玛格哈尔战斗标准
+.use 25458 >>在燃烧的刀刃山上使用你包里的玛格哈尔战斗标准
 .complete 9910,1 
 .goto Nagrand,72.21,69.90,-1
 .complete 9910,2 
@@ -25748,20 +26035,20 @@ step
 .complete 9906,2 
 step << Druid
 #completewith next
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 step << Druid
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.trainer >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.trainer >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 step
 #completewith ElkayJorin
 .hs >>从赫斯到加拉达
@@ -25769,7 +26056,7 @@ step
 #completewith next
 .goto Nagrand,55.20,36.11
 >>与Celestine交谈
-.accept 9983 >> 接受他自称利他主义。。。
+.accept 9983 >>接受他自称利他主义。。。
 .xp <66,1
 step
 #label ElkayJorin
@@ -25804,7 +26091,7 @@ step
 step
 #label Cave
 #completewith next
-.goto Nagrand,40.74,31.28,20 >> 进入Boulderfirst洞穴
+.goto Nagrand,40.74,31.28,20 >>进入Boulderfirst洞穴
 step
 #completewith next
 >>杀死巨石拳食人魔
@@ -25850,8 +26137,8 @@ step
 .goto Nagrand,41.18,44.33
 >>如果部落控制了哈拉，去那里，然后和建筑内的卡尔托斯谈谈
 *If the Alliance or nobody is controlling Halaa, skip this step
-.accept 10074 >> 接受Oshu'gun水晶粉
-.turnin 10074 >> 交出Oshu'gun水晶粉
+.accept 10074 >>接受Oshu'gun水晶粉
+.turnin 10074 >>交出Oshu'gun水晶粉
 .itemcount 26043,20 
 step
 .goto Nagrand,32.44,36.02
@@ -25913,7 +26200,7 @@ step
 .accept 9866 >>接受他将行走地球。。。
 step
 #completewith ThroneOE
-.hs >> 加拉达之炉。到达后不要交任务
+.hs >>加拉达之炉。到达后不要交任务
 .cooldown item,6948,>0
 step
 .goto Nagrand,56.76,18.16,60,0
@@ -25980,7 +26267,7 @@ step
 .unitscan Gordawg
 step << Shaman
 #completewith Garadar4
-.hs >> 从赫斯到加拉达
+.hs >>从赫斯到加拉达
 .cooldown item,6948,>0
 step
 .goto Nagrand,57.10,34.87,20,0
@@ -26083,7 +26370,7 @@ step
 .complete 9925,1 
 step
 .loop 60,Nagrand,44.13,76.74,35.70,58.91,29.60,61.89,33.11,77.90,44.13,76.74
->>杀死野生艾克。抢走他们的象牙（公牛埃里克不会丢下他们）
+>>杀死野生艾克。抢走他们的象牙(公牛埃里克不会丢下他们)
 .collect 25463,3,9914,1 
 .unitscan Wild Elekk
 step
@@ -26139,20 +26426,20 @@ step
 step
 .goto Nagrand,27.33,43.09
 >>与利特鲁斯交谈
-.turnin 9983 >> 他自称利他主义。。。
+.turnin 9983 >>他自称利他主义。。。
 .isOnQuest 9983
 step
 #questguide
 #requires Altruis
 .goto Nagrand,27.33,43.09
 >>与利特鲁斯交谈
-.accept 9991 >> 接受土地测量
+.accept 9991 >>接受土地测量
 step
 #questguide
 .goto Nagrand,27.33,43.09
 >>等飞机起飞
 .complete 9991,1 
-.turnin 9991 >> 土地勘测中的移交
+.turnin 9991 >>土地勘测中的移交
 
 .timer 135,Surveying the Land RP
 step
@@ -26277,14 +26564,14 @@ step
 #label Saved3
 #completewith Safari3
 >>杀死甘克利后与克里斯汀交谈。这是Safari罕见的随机事件
-.accept 9897 >> 接受我被救了！
+.accept 9897 >>接受我被救了！
 .goto Nagrand,71.42,40.60,0
 .unitscan Gankly Rottenfist
 step
 #requires Saved3
 #completewith ShadoM
 >>与哈罗德交谈
-.turnin 9897 >> 我被救了！
+.turnin 9897 >>我被救了！
 .goto Nagrand,71.38,40.62
 step
 >>返回Nesingwarve Safari。与Shado、Harold和Hemet交谈
@@ -26320,11 +26607,11 @@ step
 .accept 9856 >>接受Windroc Mastery
 .goto Nagrand,71.57,40.52
 step
-.abandon 9859 >> 放弃塔布大师
-.abandon 9851 >> 放弃Clefthoof Mastery
+.abandon 9859 >>放弃塔布大师
+.abandon 9851 >>放弃Clefthoof Mastery
 step
 >>与哈罗德交谈
-.turnin 9897 >> 我被救了！
+.turnin 9897 >>我被救了！
 .goto Nagrand,71.38,40.62
 .isOnQuest 9897
 step
@@ -26336,8 +26623,8 @@ step
 .goto Nagrand,73.81,62.60
 >>与刀锋的Lantresor交谈
 .turnin 10107 >>交出外交措施
-.accept 9928 >> 接受武器欺骗
-.accept 9927 >> 接受无情的狡猾
+.accept 9928 >>接受武器欺骗
+.accept 9927 >>接受无情的狡猾
 step
 #completewith next
 .goto Nagrand,70.51,79.79,0
@@ -26383,20 +26670,20 @@ step
 .accept 9932 >>接受证据主体
 step << Druid
 #completewith next
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 step << Druid
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.trainer >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.trainer >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 step
 #completewith next
 .hs >>从赫斯到加拉达
@@ -26439,7 +26726,7 @@ step
 step
 #completewith next
 .goto Nagrand,46.57,24.40
-.cast 32408 >> 在葬礼上，使用包里的湿羊毛毯。杀死破坏者正在攻击的食人魔
+.cast 32408 >>在葬礼上，使用包里的湿羊毛毯。杀死破坏者正在攻击的食人魔
 .timer 62,Body of Evidence RP
 .use 25658 
 
@@ -26466,9 +26753,9 @@ step
 .complete 9931,1 
 step
 .goto Nagrand,42.77,20.73
->>寻找一组“血之环”任务线。有6个精英任务可以提供大量快速xp和一件武器，可以让你持续到70。只有当你的队伍准备好并且任务进度与你相同时才接受这个。（此任务行禁用自动接受）。如果找不到组，请跳过此步骤
+>>寻找一组“血之环”任务线。有6个精英任务可以提供大量快速xp和一件武器，可以让你持续到70。只有当你的队伍准备好并且任务进度与你相同时才接受这个。(此任务行禁用自动接受)。如果找不到组，请跳过此步骤
 >>与Gurgthock交谈
-.accept 9962,1 >> 接受血环：断脚趾
+.accept 9962,1 >>接受血环：断脚趾
 step
 .goto Nagrand,43.66,20.37
 >>杀死血环中的断趾
@@ -26477,12 +26764,12 @@ step
 step
 .goto Nagrand,42.77,20.68
 >>与沃丁交谈
-.turnin 9962 >> 交给血环：脚趾骨折
+.turnin 9962 >>交给血环：脚趾骨折
 .isQuestComplete 9962
 step
 .goto Nagrand,42.77,20.73
 >>与Gurgthock交谈
-.accept 9967,1 >> 接受血环：蓝色兄弟
+.accept 9967,1 >>接受血环：蓝色兄弟
 .isQuestTurnedIn 9962
 step
 .goto Nagrand,43.66,20.37
@@ -26492,12 +26779,12 @@ step
 step
 .goto Nagrand,42.77,20.68
 >>与沃丁交谈
-.turnin 9967 >> 交出血环：蓝色兄弟
+.turnin 9967 >>交出血环：蓝色兄弟
 .isQuestComplete 9967
 step
 .goto Nagrand,42.77,20.73
 >>与Gurgthock交谈
-.accept 9970,1 >> 接受血环：破碎的魔王Rokdar
+.accept 9970,1 >>接受血环：破碎的魔王Rokdar
 .isQuestTurnedIn 9967
 step
 .goto Nagrand,43.66,20.37
@@ -26507,12 +26794,12 @@ step
 step
 .goto Nagrand,42.77,20.68
 >>与沃丁交谈
-.turnin 9970 >> 交出血环：破碎的洛达尔
+.turnin 9970 >>交出血环：破碎的洛达尔
 .isQuestComplete 9970
 step
 .goto Nagrand,42.77,20.73
 >>与Gurgthock交谈
-.accept 9972,1 >> 接受血环：斯科拉加特
+.accept 9972,1 >>接受血环：斯科拉加特
 .isQuestTurnedIn 9970
 step
 .goto Nagrand,43.66,20.37
@@ -26522,12 +26809,12 @@ step
 step
 .goto Nagrand,42.77,20.68
 >>与沃丁交谈
-.turnin 9972 >> 将血环交给斯科拉加特
+.turnin 9972 >>将血环交给斯科拉加特
 .isQuestComplete 9972
 step
 .goto Nagrand,42.77,20.73
 >>与Gurgthock交谈
-.accept 9973,1 >> 接受血环：战争冠军
+.accept 9973,1 >>接受血环：战争冠军
 .isQuestTurnedIn 9972
 step
 .goto Nagrand,43.66,20.37
@@ -26537,22 +26824,22 @@ step
 step
 .goto Nagrand,42.77,20.68
 >>与沃丁交谈
-.turnin 9973 >> 交出血环：战锤冠军
+.turnin 9973 >>交出血环：战锤冠军
 .isQuestComplete 9973
 step
 .goto Nagrand,42.77,20.73
 >>与Gurgthock交谈
-.accept 9977,1 >> 接受血环：最后的挑战
+.accept 9977,1 >>接受血环：最后的挑战
 .isQuestTurnedIn 9973
 step
 .goto Nagrand,43.43,20.57
->>杀死血环中的莫戈（两次）
+>>杀死血环中的莫戈(两次)
 .complete 9977,1 
 .isOnQuest 9977
 step
 .goto Nagrand,42.77,20.68
 >>与沃丁交谈
-.turnin 9977 >> 交出血环：最后的挑战
+.turnin 9977 >>交出血环：最后的挑战
 .isQuestComplete 9977
 step
 .line Nagrand,32.66,24.25,33.01,20.84,34.16,20.04,35.46,19.31,36.93,20.77,35.87,23.93,33.32,27.93,31.32,30.74,32.95,28.13,32.66,26.83,32.66,24.25
@@ -26575,14 +26862,14 @@ step << Shaman
 .cooldown item,6948,>0
 step << Mage
 #completewith Lantresor
-.zone Shattrath City >> 传送到沙塔斯
+.zone Shattrath City >>传送到沙塔斯
 step
 .goto Nagrand,71.57,40.52
 >>返回Nesingwarve Safari。与Shado交谈
 .turnin 9856 >>交出Windroc Mastery
 .isQuestComplete 9856
 step
-.abandon 9856 >> 放弃温得罗大师
+.abandon 9856 >>放弃温得罗大师
 step
 #label Lantresor
 .goto Nagrand,73.81,62.60
@@ -26594,74 +26881,74 @@ step << !Druid !DK !Mage
 #completewith next
 .goto Nagrand,75.88,56.87,40,0
 .goto Shattrath City,16.19,54.11
-.zone Shattrath City >> 前往沙塔斯城
+.zone Shattrath City >>前往沙塔斯城
 .skill riding,225,1
 step << !Druid !DK !Mage
 #completewith next
 .goto Shattrath City,52.19,52.90
-.zone Orgrimmar >> 把入口带到奥格瑞玛
+.zone Orgrimmar >>把入口带到奥格瑞玛
 step << Mage
 #completewith next
-.zone Orgrimmar >> 电传至Orgrimmar
+.zone Orgrimmar >>电传至Orgrimmar
 step << Mage
 .goto Orgrimmar,38.36,85.56
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Priest
 .goto Orgrimmar,35.59,87.85
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Shaman/Paladin
 #completewith next
 .goto Orgrimmar,40.5,36.9,25 >>输入Grommash Hold
 step << Shaman
 .goto Orgrimmar,37.82,36.45
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Paladin
 .goto Orgrimmar,32.26,35.71
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Hunter/Warrior
 #completewith next
-.goto Orgrimmar,63.6,38.2,30 >> 进入荣誉谷
+.goto Orgrimmar,63.6,38.2,30 >>进入荣誉谷
 step << Hunter TBC
 #sticky
 #label HunterTrain
 .goto Orgrimmar,66.31,14.80,0,0
-.trainer >> 训练你的宠物法术
+.trainer >>训练你的宠物法术
 step << Hunter
 .goto Orgrimmar,66.03,18.52
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Warrior
 .goto Orgrimmar,79.93,31.30
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Rogue/Warlock
 #completewith next
-.goto Orgrimmar,40.77,55.23,30 >> 进入阴影的裂缝
+.goto Orgrimmar,40.77,55.23,30 >>进入阴影的裂缝
 step << Rogue
 .goto Orgrimmar,43.90,54.65
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Warlock TBC
 #sticky
 #label WarlockTrain
 .goto Orgrimmar,47.52,46.71
-.vendor >> 与Kurgul交谈。如果需要，可以购买宠物护肤品
+.vendor >>与Kurgul交谈。如果需要，可以购买宠物护肤品
 step << Warlock
 .goto Orgrimmar,47.98,45.92
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << Druid
 #completewith next
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 step << Druid
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.trainer >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.trainer >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 step
 #completewith next
 .hs >>从赫斯到加拉达
@@ -26692,7 +26979,7 @@ step
 #label Saved5
 #completewith Safari5
 >>杀死甘克利后与克里斯汀交谈。这是Safari罕见的随机事件
-.accept 9897 >> 接受我被救了！
+.accept 9897 >>接受我被救了！
 .goto Nagrand,71.42,40.60,0
 .unitscan Gankly Rottenfist
 step
@@ -26700,7 +26987,7 @@ step
 #requires Saved5
 #completewith next
 >>与哈罗德交谈
-.turnin 9897 >> 我被救了！
+.turnin 9897 >>我被救了！
 .goto Nagrand,71.38,40.62
 step
 #label Safari5
@@ -26711,13 +26998,13 @@ step
 .isQuestComplete 9852
 ]])
 RXPGuides.RegisterGuide([[
-#version 7
+#version 9
 #wotlk
 #tbc
 #group RestedXP 部落 60-70
 << Horde
 #name 65-67 刀锋山
-#next 67-67 刀锋山 Turnins
+#next 67-67 刀锋山
 step << !Mage
 #completewith next
 .goto Nagrand,57.19,35.25
@@ -26727,7 +27014,7 @@ step << !Mage
 .skill riding,225,1
 step << Mage
 #completewith next
-.zone Shattrath City >> 传送到沙塔斯
+.zone Shattrath City >>传送到沙塔斯
 .zoneskip Zangarmarsh
 .zoneskip Blade's Edge Mountains
 .skill riding,300,1
@@ -26748,24 +27035,23 @@ step
 .skill riding,225,1
 step
 .goto Blade's Edge Mountains,52.96,96.22
-.zone Zangarmarsh >> 前往赞格马什
+.zone Zangarmarsh >>前往赞格马什
 .zoneskip Blade's Edge Mountains
 .skill riding,<300,1
 step
-.maxlevel 66
 .goto Blade's Edge Mountains,52.96,96.22
 >>在洞穴外与Grahk交谈
 .accept 10928 >>接受杀死爬虫
-step
 .maxlevel 66
+step
 .goto Blade's Edge Mountains,51.55,90.09,50,0
 .goto Blade's Edge Mountains,52.62,86.11,50,0
 .goto Blade's Edge Mountains,51.23,80.35
 >>当你前往另一边时，杀死洞穴内的洞穴爬行者。你可以爬进这个洞穴
 .complete 10928,1 
+.isOnQuest 10928
 step
-.maxlevel 66
->>前往雷主山寨。与Tor'chunk、Nekthar（他在篝火和通缉海报之间巡逻）、通缉张贴者和Gordrek交谈
+>>前往雷主山寨。与Tor'chunk、Nekthar(他在篝火和通缉海报之间巡逻)、通缉张贴者和Gordrek交谈
 .turnin 10928 >>投案杀死爬虫
 .accept 10503 >>接受Bladespire威胁
 .goto Blade's Edge Mountains,51.94,58.41
@@ -26777,74 +27063,72 @@ step
 .accept 10486 >>接受侵扰的荒野
 .goto Blade's Edge Mountains,52.26,57.58,30,0
 .goto Blade's Edge Mountains,52.37,57.94
-step
 .maxlevel 66
+step
 #completewith ThunderlordArt
 .goto Blade's Edge Mountains,53.37,55.41
 .home >>将你的炉石放置在雷霆领主据点
+.maxlevel 66
 step
-.maxlevel 66
 .goto Blade's Edge Mountains,52.05,54.11
-.fp Thunderlord Stronghold >> 获得雷公寨飞行路线
+.fp Thunderlord Stronghold >>获得雷公寨飞行路线
 step << Hunter TBC
-.maxlevel 66
 #completewith next
 .goto Blade's Edge Mountains,53.53,53.21
 >>与洛尔交谈
 .stable >>稳定您的宠物
+.isOnQuest 10486
 step << Hunter TBC
-.maxlevel 66
 #completewith next
 .groundgoto Blade's Edge Mountains,56.17,72.20,30,0
 .groundgoto Blade's Edge Mountains,57.43,70.21,30,0
 .goto Blade's Edge Mountains,57.35,62.62
 .cast 1515 >>驯服63级裂刃掠夺者
+.isOnQuest 10486
 step << Hunter TBC
-.maxlevel 66
 #completewith next
 .loop 60,Blade's Edge Mountains,51.45,62.50,52.52,64.23,53.92,67.53,54.66,70.89,52.59,74.02,50.72,73.53,51.74,71.50,50.35,70.78,48.98,69.28,49.33,63.40,49.61,61.42,51.45,62.50
 .train 35298 >>使用掠夺者学习戈尔9级。
 >>杀死刀翼吸血鬼
 .complete 10486,1 
+.isOnQuest 10486
 step
-.maxlevel 66
 .loop 60,Blade's Edge Mountains,51.45,62.50,52.52,64.23,53.92,67.53,54.66,70.89,52.59,74.02,50.72,73.53,51.74,71.50,50.35,70.78,48.98,69.28,49.33,63.40,49.61,61.42,51.45,62.50
 >>杀死刀翼吸血鬼
 .complete 10486,1 
+.isOnQuest 10486
 step << Shaman
-.maxlevel 66
 #completewith next
 .hs >>火炉前往雷主山寨
 .cooldown item,6948,>0
 step
-.maxlevel 66
 >>返回雷主山寨。与Gor'drek交谈
 .turnin 10486 >>交出《侵扰的荒野》
 .accept 10487 >>接受德雷克斯的灰尘
 .goto Blade's Edge Mountains,52.26,57.58,30,0
 .goto Blade's Edge Mountains,52.37,57.94
-step << Hunter TBC
 .maxlevel 66
+step << Hunter TBC
 #completewith next
 .goto Blade's Edge Mountains,53.53,53.21
 >>与洛尔交谈
 .stable >>把你的老掠夺者弄出来。教它戈尔9级
+.isQuestTurnedIn 10486
 step
-.maxlevel 66
 #completewith Thunderlord
 >>杀死剑锋食人魔和剑锋猛禽。掠夺猛禽的肋骨
 .complete 10503,1 
 .complete 10503,2 
-.collect 31670,3,10860 
+.collect 31670,3,10860,1 
+.isOnQuest 10503
 step
-.maxlevel 66
 #label ThunderlordArt
 .goto Blade's Edge Mountains,41.7,52.8
 .use 30431 >>杀死刀锋食人魔。掠夺他们以换取雷神氏族工艺品。在您的包中点击它
-.collect 30431,1,10524 
+.collect 30431,1,10524,1 
 .accept 10524 >>接受雷神氏族工艺品
+.isOnQuest 10503
 step
-.maxlevel 66
 #label Thunderlord
 >>盗取石头结构顶部的雷神氏族箭、建筑物内的鼓和建筑物内的石碑
 .complete 10524,1 
@@ -26854,32 +27138,28 @@ step
 .goto Blade's Edge Mountains,40.18,58.34,-1
 .complete 10524,3 
 .goto Blade's Edge Mountains,41.19,46.50,-1
+.isOnQuest 10524
 step
-.maxlevel 66
 .loop 60,Blade's Edge Mountains,43.48,46.85,41.40,46.63,39.81,49.22,38.90,52.64,38.44,56.05,38.99,57.99,40.23,58.34,42.32,58.35,42.57,54.37,42.11,52.30,47.50,52.35,49.61,50.17,42.91,48.97,43.48,46.85
 >>杀死剑锋食人魔和剑锋猛禽。掠夺猛禽的肋骨
 .complete 10503,1 
 .complete 10503,2 
-.collect 31670,3,10860 
+.collect 31670,3,10860,1 
+.isOnQuest 10503
 step << Shaman
-.maxlevel 66
-#label ThunderlordHS
 #completewith BladespireT
 .hs >>火炉前往雷主山寨
 .cooldown item,6948,>0
 step
-.maxlevel 66
-#requires ThunderlordHS << Shaman
 #completewith next
 .goto Blade's Edge Mountains,51.06,51.05,40,0
 .goto Blade's Edge Mountains,51.96,52.69,30,0
 .goto Blade's Edge Mountains,50.17,52.86,30,0
 .goto Blade's Edge Mountains,49.61,54.64,50,0
-.goto Blade's Edge Mountains,51.94,58.41,150 >> 通过小路返回雷主山寨
+.goto Blade's Edge Mountains,51.94,58.41,150 >>通过小路返回雷主山寨
 .cooldown item,6948,<0 << Shaman
 .skill riding,225,1
 step
-.maxlevel 66
 #label BladespireT
 >>返回雷主山寨。与Tor'chunk和Rokgah交谈
 .turnin 10503 >>交出Bladespire威胁
@@ -26888,36 +27168,35 @@ step
 .turnin 10524 >>交出雷神氏族工艺品
 .accept 10525 >>接受愿景指南
 .goto Blade's Edge Mountains,52.80,58.96
-step
 .maxlevel 66
+step
 #completewith next
 .goto Blade's Edge Mountains,52.80,58.96
-.vehicle >> 使用包中的火红灵魂碎片
+.vehicle >>使用包中的火红灵魂碎片
 .timer 83,Vision Guide RP
 .use 30481
+.isOnQuest 10525
 
 step
-.maxlevel 66
 >>等待RP，然后与Rokgah通话
 .complete 10525,1 
 .goto Blade's Edge Mountains,39.73,85.35
 .turnin 10525 >>交验视力指南
 .accept 10526 >>接受雷霆锋
 .goto Blade's Edge Mountains,52.80,58.96
+.isOnQuest 10525
 .use 30481
 step
-.maxlevel 66
 #completewith next
 .goto Blade's Edge Mountains,48.40,65.00,50,0
-.goto Blade's Edge Mountains,41.81,65.64,60 >> 过桥到活林
+.goto Blade's Edge Mountains,41.81,65.64,60 >>过桥到活林
 .skill riding,225,1
 step
-.maxlevel 66
 #completewith next
 >>杀死费德雷克斯。掠夺他们的灰尘
 .complete 10487,1 
+.isOnQuest 10487
 step
-.maxlevel 66
 .goto Blade's Edge Mountains,37.02,69.11,60,0
 .goto Blade's Edge Mountains,37.59,72.29,60,0
 .goto Blade's Edge Mountains,37.55,73.10,60,0
@@ -26930,52 +27209,51 @@ step
 >>杀死深根巨肢。抢他的箱子。他在“活林”的小路上巡逻。
 .complete 10489,1 
 .unitscan Stronglimb Deeproot
+.isOnQuest 10489
 step
-.maxlevel 66
 .loop 50,Blade's Edge Mountains,37.12,79.10,38.45,79.74,37.14,76.36,38.53,73.89,37.96,72.18,41.12,67.47,39.48,67.47,38.50,69.42,36.01,71.15,37.14,76.36,37.12,79.10
 >>杀死费德雷克斯。掠夺他们的灰尘
 .complete 10487,1 
+.isOnQuest 10487
 step
-.maxlevel 66
 .goto Blade's Edge Mountains,44.97,72.32
 >>和土堆里的T'chali交谈
 .accept 10542 >>接受他们偷走我的胡卡和我酿造！
-step
 .maxlevel 66
+step
 #completewith Brutebane
 >>杀死血腥食人魔
 .complete 10505,1 
+.isOnQuest 10505
 step
-.maxlevel 66
 #completewith Thunderspike
 >>杀死嗜血酿酒师。抢劫他们的Brutebane Brew
 >>从Bloodmaul前哨和Draenethyst矿周围的木桶中抢劫Brutebane啤酒
 .complete 10542,2 
+.isOnQuest 10542
 step
-.maxlevel 66
 .goto Blade's Edge Mountains,42.10,81.24
 >>抢劫地上的Hookah
 .complete 10542,1 
+.isOnQuest 10542
 step
-.maxlevel 66
 #completewith next
 .goto Blade's Edge Mountains,42.52,84.12,40,0
 .goto Blade's Edge Mountains,41.17,85.53,40,0
 .goto Blade's Edge Mountains,39.94,83.94,30,0
 .goto Blade's Edge Mountains,39.74,85.51
 .cast 3365 >>进洞里去。点击地面上的雷霆刺以生成戈尔·格里姆古特
+.isOnQuest 10526
 step
-.maxlevel 66
 #label Thunderspike
 .goto Blade's Edge Mountains,39.80,85.49
 >>杀死戈尔·格里姆古特。抢走他的雷霆刺
 .complete 10526,1 
+.isOnQuest 10526
 step
-.maxlevel 66
 #completewith next
 .goto Blade's Edge Mountains,42.52,84.12,40 >>离开洞穴
 step
-.maxlevel 66
 #label Brutebane
 .goto Blade's Edge Mountains,42.06,83.15,40,0
 .goto Blade's Edge Mountains,41.84,81.04,40,0
@@ -26988,31 +27266,31 @@ step
 >>杀死嗜血酿酒师。抢劫他们的Brutebane Brew
 >>从血腥前哨周围的木桶中掠夺布鲁特班酒
 .complete 10542,2 
+.isOnQuest 10542
 step << TBC
-.maxlevel 66
 #xprate >1.499
 .loop 55,Blade's Edge Mountains,46.38,76.02,47.76,74.83,46.81,79.64,45.90,77.84,44.37,82.35,43.36,81.29,41.88,83.17,42.07,79.05,43.73,77.33,42.78,73.28,46.38,76.02
 >>杀死血腥食人魔
 .complete 10505,1 
+.isOnQuest 10505
 step << WOTLK
-.maxlevel 66
 .loop 55,Blade's Edge Mountains,46.38,76.02,47.76,74.83,46.81,79.64,45.90,77.84,44.37,82.35,43.36,81.29,41.88,83.17,42.07,79.05,43.73,77.33,42.78,73.28,46.38,76.02
 >>杀死血腥食人魔
 .complete 10505,1 
+.isOnQuest 10505
 step << tbc
-.maxlevel 66
 #xprate <1.5
 .goto Blade's Edge Mountains,44.97,72.32
 >>和土堆里的T'chali交谈
 .turnin 10542 >>他们偷了我Hookah和我酿酒！
 .accept 10545 >>接受Bladespire Kegger
-step
 .maxlevel 66
+step
 .goto Blade's Edge Mountains,44.97,72.32
 >>和土堆里的T'chali交谈
 .turnin 10542 >>他们偷了我Hookah和我酿酒！
-step << tbc
 .maxlevel 66
+step << tbc
 #xprate <1.5
 .goto Blade's Edge Mountains,42.81,56.64,60,0
 .goto Blade's Edge Mountains,42.01,52.71,60,0
@@ -27020,27 +27298,27 @@ step << tbc
 .use 30353 >>在Bladespire Ogres附近的包里放上血腥毒蛇桶，放好后逃跑。呆得足够远，这样他们就不会伤害你。
 >>在等待冷却的同时碾碎怪物
 .complete 10545,1 
+.isOnQuest 10545
 step << tbc
-.maxlevel 66
 #xprate <1.5
 .goto Blade's Edge Mountains,44.97,72.32
 >>和土堆里的T'chali交谈
 .turnin 10545 >>转入Bladespire Kegger
 .accept 10543 >>接受Grimnok和Korgaah，我是为了你！
-step << tbc
 .maxlevel 66
+step << tbc
 #xprate <1.5
 #completewith Brew
 >>杀死血腥食人魔
 .complete 10505,1 
+.isOnQuest 10505
 step << tbc
-.maxlevel 66
 #xprate <1.5
 .goto Blade's Edge Mountains,45.45,80.40
 >>在塔顶杀死格里姆诺克
 .complete 10543,1 
+.isOnQuest 10543
 step << tbc
-.maxlevel 66
 #xprate <1.5
 #label Brew
 .goto Blade's Edge Mountains,45.75,78.24,40,0
@@ -27051,27 +27329,28 @@ step << tbc
 >>杀死嗜血酿酒师。抢劫他们的Brutebane Brew
 >>从血腥前哨周围的木桶中掠夺布鲁特班酒
 .collect 29443,3,10543 
+.isOnQuest 10543
 step << tbc
-.maxlevel 66
 #xprate <1.5
 .loop 55,Blade's Edge Mountains,46.38,76.02,47.76,74.83,46.81,79.64,45.90,77.84,44.37,82.35,43.36,81.29,41.88,83.17,42.07,79.05,43.73,77.33,42.78,73.28,46.38,76.02
 >>杀死血腥食人魔
 .complete 10505,1 
+.isOnQuest 10505
 step << tbc
-.maxlevel 66
 #xprate <1.5
 .groundgoto Blade's Edge Mountains,42.88,46.37,20,0
 .goto Blade's Edge Mountains,43.41,47.05
 .use 29443 >>跑上坡道。用你袋子里的血腥布鲁特班酒引诱Korgaah的守卫远离他。杀死Korgaah
 .complete 10543,2 
 .skill riding,225,1
+.isOnQuest 10543
 step << tbc
-.maxlevel 66
 #xprate <1.5
 .goto Blade's Edge Mountains,43.41,47.05
 .use 29443 >>飞到大楼的二楼。用你袋子里的血腥布鲁特班酒引诱Korgaah的守卫远离他。杀死Korgaah
 .complete 10543,2 
 .skill riding,<225,1
+.isOnQuest 10543
 step << tbc
 .maxlevel 66
 #xprate <1.5
@@ -27080,41 +27359,41 @@ step << tbc
 .turnin 10543 >>交给Grimnok和Korgaah，我是为了你！
 .accept 10544 >>接受对你们两个家族的诅咒！
 step << tbc
-.maxlevel 66
 #xprate <1.5
 .goto Blade's Edge Mountains,47.05,77.94
 .use 30479 >>在大建筑前用你袋子里的邪恶强盗来清洗它。杀死产卵的恶魔。这样做两次
 .complete 10544,2 
+.isOnQuest 10544
 step << tbc
-.maxlevel 66
 #xprate <1.5
 .use 30479 >>然后用你在建筑物前的袋子里的邪恶强盗来清洗。杀死产生的恶魔
 .goto Blade's Edge Mountains,42.02,57.14
 .complete 10544,1,1 
+.isOnQuest 10544
 step << tbc
-.maxlevel 66
 #xprate <1.5
 .use 30479 >>然后用你在建筑物前的袋子里的邪恶强盗来清洗。杀死产生的恶魔
 .goto Blade's Edge Mountains,40.47,57.78
 .complete 10544,1,2 
+.isOnQuest 10544
 step << tbc
-.maxlevel 66
 #xprate <1.5
 .use 30479 >>然后用你在建筑物前的袋子里的邪恶强盗来清洗。杀死产生的恶魔
 .goto Blade's Edge Mountains,39.19,57.47
 .complete 10544,1,3 
+.isOnQuest 10544
 step << tbc
-.maxlevel 66
 #xprate <1.5
 .use 30479 >>然后用你在建筑物前的袋子里的邪恶强盗来清洗。杀死产生的恶魔
 .goto Blade's Edge Mountains,38.74,56.05
 .complete 10544,1,4 
+.isOnQuest 10544
 step << tbc
-.maxlevel 66
 #xprate <1.5
 .use 30479 >>然后用你在建筑物前的袋子里的邪恶强盗来清洗。杀死产生的恶魔
 .goto Blade's Edge Mountains,42.02,57.14
 .complete 10544,1 
+.isOnQuest 10544
 step << tbc
 .maxlevel 66
 #xprate <1.5
@@ -27122,12 +27401,10 @@ step << tbc
 >>和土堆里的T'chali交谈
 .turnin 10544 >>诅咒你们两个家族！
 step
-.maxlevel 66
 #completewith next
 .hs >>火炉前往雷主山寨
 .cooldown item,6948,>0
 step
-.maxlevel 66
 >>返回雷主山寨。与Gor'drek、Rokgah、Tor'chunk、Garm和Rexxar交谈
 .turnin 10487 >>从德雷克斯身上掉下灰尘
 .accept 10488 >>接受保护我们自己
@@ -27143,42 +27420,41 @@ step
 .turnin 10718 >>灵魂发声
 .accept 10614 >>接受风中的低语
 .goto Blade's Edge Mountains,51.82,58.34
-step
 .maxlevel 66
+step
 .loop 60,Blade's Edge Mountains,51.45,62.50,52.52,64.23,53.92,67.53,54.66,70.89,52.59,74.02,50.72,73.53,51.74,71.50,50.35,70.78,48.98,69.28,49.33,63.40,49.61,61.42,51.45,62.50
 .use 30175 >>在你的包里放上Gor'drek的药膏，雷神恶魔狼
 .complete 10488,1 
+.isOnQuest 10488
 step
-.maxlevel 66
 #completewith next
 .goto Blade's Edge Mountains,55.81,72.35,40,0
 .goto Blade's Edge Mountains,57.67,70.09,40,0
 .goto Blade's Edge Mountains,60.34,56.43,70,0
-.goto Blade's Edge Mountains,69.62,61.51,50 >> 前往Vekhar看台
+.goto Blade's Edge Mountains,69.62,61.51,50 >>前往Vekhar看台
 .skill riding,225,1
 step
-.maxlevel 66
 #completewith next
 >>与Dertrok交谈
+.accept 10565 >>接受维克尼尔的石头
 .goto Blade's Edge Mountains,75.14,62.11,0,0
-step
 .maxlevel 66
+step
 >>前往Mok'Nathal村。与Leoroxx交谈
 .turnin 10614 >>风中低语
 .accept 10709 >>接受团聚
 .goto Blade's Edge Mountains,75.29,60.86
-step
 .maxlevel 66
+step
 #completewith Vekh
 .goto Blade's Edge Mountains,76.09,60.31
 .home >>把你的炉石放在Mok'Nathal村
 step
-.maxlevel 66
 >>与瓦拉交谈
 .accept 10860 >>接受Mok'Nathal治疗
 .goto Blade's Edge Mountains,76.09,60.31
-step
 .maxlevel 66
+step
 >>与Taerek、Silmara和Dertrok交谈
 .accept 10617 >>接受蚕茧
 .goto Blade's Edge Mountains,75.88,61.43
@@ -27186,25 +27462,26 @@ step
 .goto Blade's Edge Mountains,75.84,61.54
 .accept 10565 >>接受维克尼尔的石头
 .goto Blade's Edge Mountains,75.14,62.11
-step
 .maxlevel 66
+step
 #completewith Vekh
 >>杀死拉瓦。抢走他们的茧。它们在低健康状态下会变成丝灵
 >>杀死西尔奎因。掠夺他们的翅膀
 .complete 10617,1 
 .complete 10618,1 
+.isOnQuest 10617
+.isOnQuest 10618
 step
-.maxlevel 66
 .loop 50,Blade's Edge Mountains,76.89,72.76,76.53,76.35,77.56,76.97,78.43,76.22,78.39,73.69,76.89,72.76
 >>杀死维克尼尔。抢他们的水晶
-.collect 30561,1,10565 
+.collect 30561,1,10565,1 
+.isOnQuest 10565
 step
-.maxlevel 66
 .goto Blade's Edge Mountains,77.81,74.66
 .use 30561 >>在你的包里用紫色圆圈里的维克尼尔水晶
 .complete 10565,1 
+.isOnQuest 10565
 step
-.maxlevel 66
 #label Vekh
 >>返回Mok'Nathal村。与Dertrok和Leoroxx交谈
 .turnin 10565 >>交出维克尼尔的石头
@@ -27212,17 +27489,17 @@ step
 .goto Blade's Edge Mountains,75.14,62.11
 .accept 10846 >>接受理解Mok'Nathal
 .goto Blade's Edge Mountains,75.29,60.86
-step
 .maxlevel 66
+step
 #sticky
 #label Wands
-.use 30650 >> 在包中使用Dertrok的魔杖盒
+.use 30650 >>在包中使用Dertrok的魔杖盒
 .collect 30651,1,10566,1 
 .collect 30652,1,10566,1 
 .collect 30653,1,10566,1 
 .collect 30654,1,10566,1 
+.isOnQuest 10566
 step
-.maxlevel 66
 .line Blade's Edge Mountains,76.89,72.76,76.53,76.35,77.56,76.97,78.43,76.22,78.39,73.69,76.89,72.76
 .goto Blade's Edge Mountains,76.89,72.76,60,0
 .goto Blade's Edge Mountains,76.53,76.35,60,0
@@ -27234,13 +27511,13 @@ step
 >>杀死西尔奎因。掠夺他们的翅膀
 .complete 10617,1 
 .complete 10618,1 
+.isOnQuest 10617
+.isOnQuest 10618
 step
-.maxlevel 66
 #requires Wands
 #completewith Vekh2
-.goto Blade's Edge Mountains,71.34,74.41,30 >> 进入洞穴，前往特罗格玛的领地
+.goto Blade's Edge Mountains,71.34,74.41,30 >>进入洞穴，前往特罗格玛的领地
 step
-.maxlevel 66
 #completewith next
 #requires Wands
 >>杀死维克尼尔。掠夺他们的注入晶体。当Dullgrom挖泥船上有水晶时，使用魔杖测试魔杖
@@ -27253,16 +27530,16 @@ step
 .use 30652
 .use 30653
 .use 30654
+.isOnQuest 10566
 step
-.maxlevel 66
 #requires Wands
 #label Vekh2
 .goto Blade's Edge Mountains,69.83,73.10,30,0
 .goto Blade's Edge Mountains,70.08,72.18
 >>在洞穴尽头杀死维克
 .complete 10846,1 
+.isOnQuest 10846
 step
-.maxlevel 66
 .loop 40,Blade's Edge Mountains,71.34,74.41,72.24,73.42,73.63,73.35,72.51,75.83,71.34,74.41,70.39,71.72
 >>杀死维克尼尔。掠夺他们的注入晶体。当Dullgrom挖泥船上有水晶时，使用魔杖测试魔杖。对一个食人魔使用第一根和第二根魔杖，然后对另一个使用第四根和第三根魔杖
 .collect 30655,4,10566,1,-1 
@@ -27274,13 +27551,12 @@ step
 .use 30652
 .use 30653
 .use 30654
+.isOnQuest 10566
 step << Shaman
-.maxlevel 66
 #completewith next
 .hs >>火炉前往雷主山寨
 .cooldown item,6948,>0
 step << Shaman
-.maxlevel 66
 >>返回雷主山寨。与塔雷克、斯利马拉、利奥罗克、多加和德特洛克交谈
 .turnin 10617 >>交出绢茧
 .goto Blade's Edge Mountains,75.88,61.43
@@ -27294,8 +27570,8 @@ step << Shaman
 .turnin 10566 >>交出试错
 .accept 10615 >>接受阮·威尔
 .goto Blade's Edge Mountains,75.14,62.11
-step << !Shaman
 .maxlevel 66
+step << !Shaman
 >>返回雷主山寨。与Dertrok、Silmara、Taerek、Leoroxx和Dohgar交谈
 .turnin 10566 >>交出试错
 .accept 10615 >>接受阮·威尔
@@ -27309,18 +27585,15 @@ step << !Shaman
 .goto Blade's Edge Mountains,75.29,60.86
 .accept 10851 >>接受我敌人的图腾
 .goto Blade's Edge Mountains,74.91,60.47
-step
 .maxlevel 66
-#completewith next
+step
 .goto Blade's Edge Mountains,76.37,65.93
-.fp Mok'Nathal Village >> 获得Mok'Nathal村的飞行路线
+.fp Mok'Nathal Village >>获得Mok'Nathal村的飞行路线
 step
-.maxlevel 66
 #completewith next
 .goto Blade's Edge Mountains,76.37,65.93
 .fly Thunderlord Stronghold >>飞到雷霆堡
 step
-.maxlevel 66
 >>返回雷主山寨。与Gor'drek和Rexxar交谈
 .turnin 10488 >>自首保护我们自己
 .goto Blade's Edge Mountains,52.26,57.58,30,0
@@ -27328,21 +27601,21 @@ step
 .turnin 10709 >>加入留尼汪
 .accept 10714 >>接受灵魂的翅膀
 .goto Blade's Edge Mountains,51.82,58.34
-step
 .maxlevel 66
+step
 .goto Blade's Edge Mountains,57.24,34.55
 .use 31128 >>在篝火上用你包里的雷克萨哨子，让占卜者和监工互相交谈
 .complete 10714,1 
+.isOnQuest 10714
+
 step
-.maxlevel 66
 #completewith next
 .goto Blade's Edge Mountains,58.50,30.20,40,0
 .goto Blade's Edge Mountains,59.29,32.26,40,0
 .goto Blade's Edge Mountains,60.42,28.41,40,0
-.goto Blade's Edge Mountains,61.48,29.64,40 >> 上山到阮威尔
+.goto Blade's Edge Mountains,61.48,29.64,40 >>上山到阮威尔
 .skill riding,225,1
 step
-.maxlevel 66
 >>前往埃弗格罗夫。与Faradrella、Timeon和Chawn交谈
 .accept 10753 >>接受淘汰野生动物
 .goto Blade's Edge Mountains,62.56,38.23
@@ -27351,18 +27624,17 @@ step
 .goto Blade's Edge Mountains,62.16,39.11
 .accept 10682 >>接受谈判时间。。。
 .goto Blade's Edge Mountains,61.97,39.47
-step
 .maxlevel 66
+step
 .goto Blade's Edge Mountains,61.68,39.61
-.fp Evergrove >> 获取Evergrove飞行路线
+.fp Evergrove >>获取Evergrove飞行路线
 step
-.maxlevel 66
 .goto Blade's Edge Mountains,61.25,38.46
 >>与Mosswood交谈
 .accept 10770 >>接受小灰烬
 .accept 10771 >>从灰烬中接受
-step
 .maxlevel 66
+step
 .line Blade's Edge Mountains,62.82,25.94,63.12,27.41,63.34,27.87,63.28,28.37,62.73,28.77,62.45,29.31,62.37,29.65,62.44,31.66,62.11,33.34,61.80,34.00,61.43,34.10,60.61,33.98,60.12,34.47,60.01,34.80,60.08,35.15,59.90,35.72,59.60,36.07,59.11,36.21,58.96,36.61,58.65,36.91,58.18,36.96,57.90,37.34,57.84,37.81,59.13,39.47,59.90,40.27,60.51,40.90,61.50,42.02,61.78,42.41,62.62,43.95,62.97,45.05,63.06,46.38
 63.06,46.38
 .goto Blade's Edge Mountains,63.06,46.38,60,0
@@ -27399,47 +27671,47 @@ step
 .complete 10682,1 
 .unitscan Overseer Nuaar
 .skipgossip
+.isOnQuest 10682
 step
-.maxlevel 66
 >>返回Evergrove。与Chawn和Samia交谈
 .turnin 10682 >>提交谈判时间。。。
 .accept 10713 >>接受…和行动时间
 .goto Blade's Edge Mountains,61.97,39.47
 .accept 10717 >>接受偷窃者的偷窃
 .goto Blade's Edge Mountains,61.94,39.45
-step
 .maxlevel 66
+step
 #completewith next
 .use 31120 >>杀死Wyrmcult。抢劫他们的会议记录。在您的包中点击它
 .collect 31120,1,10719,1 
 .accept 10719 >>接受你收到通知了吗？
+.isOnQuest 10713
 step
-.maxlevel 66
 .loop 50,Blade's Edge Mountains,59.62,38.72,57.43,39.14,57.71,37.76,59.10,36.09,59.93,35.16,60.82,33.54,62.10,32.35,61.78,27.86,62.89,25.82,63.56,27.91,62.10,32.35,61.55,34.48,60.09,36.97,59.62,38.72
 >>杀死Wyrmcult偷猎者和休尔斯。抢劫偷猎者的网
 .complete 10717,1 
 .complete 10713,1 
+.isOnQuest 10713
 step
-.maxlevel 66
 .loop 50,Blade's Edge Mountains,59.62,38.72,57.43,39.14,57.71,37.76,59.10,36.09,59.93,35.16,60.82,33.54,62.10,32.35,61.78,27.86,62.89,25.82,63.56,27.91,62.10,32.35,61.55,34.48,60.09,36.97,59.62,38.72
 .use 31120 >>杀死Wyrmcult。抢劫他们的会议记录。在您的包中点击它
 .collect 31120,1,10719,1 
 .accept 10719 >>接受你收到通知了吗？
+.isOnQuest 10713
 step
-.maxlevel 66
 #completewith next
 .loop 50,Blade's Edge Mountains,63.61,34.11,65.32,34.83,65.52,31.59,65.32,29.29,63.99,31.39,63.61,34.11
 >>杀死阮欧克人。掠夺他们的爪子
 .collect 30704,6,10567,1 
+.isOnQuest 10567
 step
-.maxlevel 66
 .goto Blade's Edge Mountains,64.48,33.09
 .use 30704 >>使用绿色圆圈中的阮欧克爪。杀死产卵的Harbringer。抢他的吊坠
 .cast 37426
-.timer 10,Creating the Pendant RP
+.timer 8,Creating the Pendant RP
 .complete 10567,1 
+.isOnQuest 10567
 step
-.maxlevel 66
 >>返回Evergrove。与Timeon、Chawn和Samia交谈
 .turnin 10567 >>打开创建吊坠
 .accept 10607 >>接受乌鸦神的低语
@@ -27451,64 +27723,60 @@ step
 .turnin 10717 >>投靠偷窃者偷窃
 .accept 10747 >>接受妖术幼崽
 .goto Blade's Edge Mountains,61.94,39.45
-step
 .maxlevel 66
+step
 #completewith SpiritW
 .goto Blade's Edge Mountains,61.68,39.61
 .fly Thunderlord Stronghold >>飞到雷霆堡
 step
-.maxlevel 66
 #completewith SablemaneGulch
 .goto Blade's Edge Mountains,53.37,55.41
 .home >>将你的炉石放置在雷霆领主据点
 .skill riding,<225,1
 step
-.maxlevel 66
 #label SpiritW
 >>返回雷主山寨。与雷克萨交谈
 .turnin 10714 >>打开精灵的翅膀
 .accept 10783 >>接受萨布勒曼男爵
 .goto Blade's Edge Mountains,51.82,58.34
-step
 .maxlevel 66
+step
 .goto Blade's Edge Mountains,53.25,41.18
 >>与萨布勒曼交谈
 .turnin 10783 >>交给萨布勒曼男爵
 .accept 10715 >>接受进入漩涡峡谷
-step
 .maxlevel 66
+step
 .loop 50,Blade's Edge Mountains,51.18,37.94,48.99,41.05,49.28,44.96,47.16,45.03,45.19,47.89,44.82,44.78,47.03,43.18,48.99,41.05
 >>杀死地壳爆破器。抢劫他们的毒腺
 .complete 10715,1 
+.isOnQuest 10715
 step
-.maxlevel 66
 #label SablemaneGulch
 .goto Blade's Edge Mountains,53.25,41.18
 >>与萨布勒曼交谈
 .turnin 10715 >>转入漩涡峡谷
 .accept 10749 >>接受萨布勒曼男爵的毒药
-step
 .maxlevel 66
+step
 #completewith next
 .hs >>火炉前往雷霆寨
 .skill riding,<225,1
 .cooldown item,6948,>0
 step
-.maxlevel 66
 >>返回雷霆寨。与雷克萨和托尔库克交谈
 .turnin 10749 >>交出萨布勒曼男爵的毒药
 .accept 10720 >>接受最小的生物
 .goto Blade's Edge Mountains,51.82,58.34
 .accept 10784 >>接受粉碎血腥营地
 .goto Blade's Edge Mountains,51.94,58.41
-step
 .maxlevel 66
+step
 #completewith next
 .goto Blade's Edge Mountains,52.05,54.11
 .fly Mok'Nathal Village >>飞往Mok'Nathal村
 .skill riding,225,1
 step
-.maxlevel 66
 .goto Blade's Edge Mountains,69.00,63.82,60,0
 .goto Blade's Edge Mountains,68.43,69.79,60,0
 .goto Blade's Edge Mountains,66.97,60.75,60,0
@@ -27516,24 +27784,24 @@ step
 .goto Blade's Edge Mountains,63.88,52.26
 >>杀死鳞蛇。掠夺他们的肉
 .complete 10860,2 
+.isOnQuest 10860
 .skill riding,225,1
 step
-.maxlevel 66
 #completewith next
 >>杀死刀锋食人魔。抢劫他们的图腾
 .complete 10851,1 
+.isOnQuest 10851
 step
-.maxlevel 66
 .goto Blade's Edge Mountains,57.14,54.49
 >>杀死Gnosh Brognat
 .complete 10843,1 
+.isOnQuest 10843
 step
-.maxlevel 66
 .loop 55,Blade's Edge Mountains,57.36,54.97,58.16,54.54,60.59,55.17,58.57,58.05,58.31,61.57,57.53,60.36,56.65,60.46,57.36,54.97
 >>杀死刀锋食人魔。抢劫他们的图腾
 .complete 10851,1 
+.isOnQuest 10851
 step
-.maxlevel 66
 .goto Blade's Edge Mountains,63.88,52.26,60,0
 .goto Blade's Edge Mountains,66.88,54.90,60,0
 .goto Blade's Edge Mountains,66.97,60.75,60,0
@@ -27541,14 +27809,13 @@ step
 >>杀死鳞蛇。掠夺他们的肉
 .complete 10860,2 
 .skill riding,<225,1
+.isOnQuest 10860
 step
-.maxlevel 66
 #completewith next
 .hs >>炉灶 to Mok'Nathal村
 .skill riding,225,1
 .cooldown item,6948,>0
 step
-.maxlevel 66
 >>返回Mok'Nathal村。与Varah、Leoroxx和Dohgar交谈
 .turnin 10860 >>提交Mok'Nathal Treats
 .goto Blade's Edge Mountains,76.09,60.31
@@ -27557,8 +27824,8 @@ step
 .turnin 10851 >>交出敌人的图腾
 .goto Blade's Edge Mountains,74.91,60.47
 .skill riding,225,1
-step
 .maxlevel 66
+step
 >>返回Mok'Nathal村。与Dohgar、Leoroxx和Varah交谈
 .turnin 10851 >>交出敌人的图腾
 .goto Blade's Edge Mountains,74.91,60.47
@@ -27567,8 +27834,8 @@ step
 .turnin 10860 >>提交Mok'Nathal Treats
 .goto Blade's Edge Mountains,76.09,60.31
 .skill riding,<225,1
-step << tbc
 .maxlevel 66
+step << tbc
 #xprate <1.5
 >>返回Mok'Nathal村。与Varah、Leoroxx和Dohgar交谈
 .turnin 10860 >>提交Mok'Nathal Treats
@@ -27580,8 +27847,8 @@ step << tbc
 .accept 10853 >>接受灵魂召唤
 .goto Blade's Edge Mountains,74.91,60.47
 .skill riding,225,1
-step << tbc
 .maxlevel 66
+step << tbc
 #xprate <1.5
 >>返回Mok'Nathal村。与Dohgar、Leoroxx和Varah交谈
 .turnin 10851 >>交出敌人的图腾
@@ -27593,26 +27860,24 @@ step << tbc
 .turnin 10860 >>提交Mok'Nathal Treats
 .goto Blade's Edge Mountains,76.09,60.31
 .skill riding,<225,1
-step
 .maxlevel 66
+step
 #completewith Damaged
 .goto Blade's Edge Mountains,76.37,65.93
-.fly Evergrove >> 飞往埃弗格罗夫
+.fly Evergrove >>飞往埃弗格罗夫
 .skill riding,300,1
 step
-.maxlevel 66
 #completewith Imps
 .goto Blade's Edge Mountains,62.86,38.31
 .home >>将您的炉石设置为Evergrove
 .skill riding,300,1
 step
-.maxlevel 66
 #completewith next
 >>杀死恶棍鳞片和匕首锯
 .complete 10753,1 
 .complete 10753,2 
+.isOnQuest 10753
 step
-.maxlevel 66
 #label Damaged
 .goto Blade's Edge Mountains,69.23,37.45,60,0
 .goto Blade's Edge Mountains,68.66,33.30,60,0
@@ -27623,19 +27888,19 @@ step
 .collect 31384,1,10810,1 
 .accept 10810 >>接受损坏的面具
 .unitscan Fel Corrupter
+.isOnQuest 10810
 step
-.maxlevel 66
 .loop 60,Blade's Edge Mountains,68.77,34.63,68.31,30.34,70.65,30.50,70.91,26.73,73.67,26.67,73.39,30.11,71.84,34.87,68.77,34.63
 >>杀死恶棍鳞片和匕首锯
 .complete 10753,1 
 .complete 10753,2 
+.isOnQuest 10753
 step
-.maxlevel 66
 #completewith next
 >>杀死烧焦小鬼
 .complete 10770,1 
+.isOnQuest 10770
 step
-.maxlevel 66
 >>在土壤上使用袋子里的铁根种子
 .complete 10771,1 
 .goto Blade's Edge Mountains,71.66,22.38
@@ -27643,32 +27908,30 @@ step
 .goto Blade's Edge Mountains,71.61,20.31
 .complete 10771,3 
 .goto Blade's Edge Mountains,71.59,18.50
+.isOnQuest 10771
 step
-.maxlevel 66
 #label Imps
 .loop 50,Blade's Edge Mountains,70.65,18.63,70.63,20.56,70.65,22.68,71.06,23.80,71.92,24.64,72.31,22.97,71.71,21.21,73.06,20.10,73.44,18.06,70.65,18.63
 >>杀死烧焦小鬼
 .complete 10770,1 
+.isOnQuest 10770
 step
-.maxlevel 66
 #completewith next
 .hs >>赫斯到埃弗格罗夫
 .cooldown item,6948,>0
 .skill riding,300,1
 step
-.maxlevel 66
 >>回到阮世德。与O'Mally交谈
 .turnin 10810 >>交回损坏的面罩
 .accept 10812 >>接受神秘面具
 .goto Blade's Edge Mountains,62.66,40.38
-step
 .maxlevel 66
+step
 #completewith BloodmaulM
 .goto Blade's Edge Mountains,62.86,38.31
 .home >>将您的炉石设置为Evergrove
 .skill riding,<300,1
 step
-.maxlevel 66
 #sticky
 #label MysteryM
 .goto Blade's Edge Mountains,62.53,39.91,40,0
@@ -27681,25 +27944,25 @@ step
 >>与Antelarion交谈，他在镇上逆时针巡逻。还不接受下一个任务
 .turnin 10812 >>交出神秘面具
 .accept 10819 >>接受恶棍防毒面具
-step
 .maxlevel 66
+step
 >>与Mosswood和Faradrella交谈
 .turnin 10770 >>交出小Embers
 .turnin 10771 >>从灰烬中归来
 .goto Blade's Edge Mountains,61.25,38.46
 .turnin 10753 >>转而淘汰野生动物
 .goto Blade's Edge Mountains,62.56,38.23
-step
 .maxlevel 66
+step
 #requires MysteryM
 #completewith next
 .goto Blade's Edge Mountains,56.41,29.23
-.cast 38544 >> 用袋子里的Kodohide鼓来控制土拨鼠。使用隐形能力，跑到酒桶里毒死他们。
+.cast 38544 >>用袋子里的Kodohide鼓来控制土拨鼠。使用隐形能力，跑到酒桶里毒死他们。
 .use 31141
+.isOnQuest 10720
 step
-.maxlevel 66
 #requires MysteryM
->>使用“隐身”（2）和“扔橡子”（3）来避免与暴徒战斗。使用“毒药桶”（4）毒药桶
+>>使用“隐身”(2)和“扔橡子”(3)来避免与暴徒战斗。使用“毒药桶”(4)毒药桶
 >>小心不要死亡或离开土拨鼠，因为Kodohide鼓有很长的冷却时间
 .complete 10720,2 
 .goto Blade's Edge Mountains,55.34,28.20
@@ -27709,26 +27972,23 @@ step
 .goto Blade's Edge Mountains,55.97,23.08
 .use 31141
 step
-.maxlevel 66
 #label BloodmaulM
-.loop 50,Blade's Edge Mountains,57.05,27.86,55.30,27.11,55.18,24.26,56.40,22.11,57.70,24.45,56.91,25.87,57.93,29.95,57.05,27.86
+.loop 50,Blade's Edge Mountains,57.05,27.86,55.30,27.11,55.18,24.26,56.40,22.11,57.70,24.45,56.91,25.87,57.93,29.95,54.68,33.92,57.05,27.86
 >>点击土拨鼠buff。杀死血腥暴徒和术士
 .complete 10784,1 
 .complete 10784,2 
+.isOnQuest 10784
 step << Shaman
-.maxlevel 66
 #completewith next
 .hs >>赫斯到埃弗格罗夫
 .cooldown item,6948,>0
 step
-.maxlevel 66
 #completewith Smallest
 .goto Blade's Edge Mountains,61.68,39.61
 >>返回Evergrove
 .fly Thunderlord Stronghold >>飞到雷霆堡
 .skill riding,300,1
 step
-.maxlevel 66
 #label Smallest
 >>返回雷主山寨。与雷克萨和托尔库克交谈
 .turnin 10720 >>交出最小的生物
@@ -27736,166 +27996,158 @@ step
 .goto Blade's Edge Mountains,51.82,58.34
 .turnin 10784 >>转入粉碎血腥营地
 .goto Blade's Edge Mountains,51.94,58.41
-step
 .maxlevel 66
+step
 #completewith next
 .goto Blade's Edge Mountains,60.19,47.66
-.cast 38362 >> 在您的包中使用Huffer’s Whistle。等待Huffer攻击Grulloc。当他逃跑时，抢劫了格鲁洛克的口袋
+.cast 38362 >>在您的包中使用Huffer’s Whistle。等待Huffer攻击Grulloc。当他逃跑时，抢劫了格鲁洛克的口袋
 .timer 14,Huffer Distract
 .use 31350
+.isOnQuest 10721
 step
-.maxlevel 66
 .goto Blade's Edge Mountains,60.89,47.78
 >>等待Huffer攻击Grulloc。当他逃跑时，抢劫了格鲁洛克的口袋
 .complete 10721,1 
+.isOnQuest 10721
 step
-.maxlevel 66
 .goto Blade's Edge Mountains,53.25,41.18
 >>与萨布勒曼交谈
 .turnin 10721 >>为Grulloc报仇
 .accept 10785 >>接受这是个陷阱！
-step
 .maxlevel 66
+step
 >>返回雷主山寨。与雷克萨和托尔库克交谈
 .turnin 10785 >>上车，这是个陷阱！
 .accept 10723 >>接受食龙者戈格罗姆
 .goto Blade's Edge Mountains,51.82,58.34
 .accept 10786 >>在Boulder'mok接受屠宰
 .goto Blade's Edge Mountains,51.94,58.41
-step << skip
 .maxlevel 66
+step << skip
 #completewith next
 .hs >>赫斯到埃弗格罗夫
 .cooldown item,6948,>0
 step
-.maxlevel 66
 #completewith next
 .goto Blade's Edge Mountains,52.05,54.11
 .fly Evergrove >>飞往埃弗格罗夫
 .skill riding,225,1
 step
-.maxlevel 66
 #completewith next
 .goto Blade's Edge Mountains,52.05,54.11,60,0
-.goto Blade's Edge Mountains,50.35,36.01,50 >> 跨维姆斯基尔桥
+.goto Blade's Edge Mountains,50.35,36.01,50 >>跨维姆斯基尔桥
 .skill riding,225,1
 step
-.maxlevel 66
 .goto Blade's Edge Mountains,50.35,36.01
 >>与桥上的Moonshade交谈
 .turnin 10894 >>交出Wyrmskull Watcher
 .accept 10893 >>接受长尾是Lynchpin
-step
 .maxlevel 66
+step
 >>杀死隧道内的Draaca
 .goto Blade's Edge Mountains,46.03,32.93,40,0
 .goto Blade's Edge Mountains,45.81,32.90,40,0
 .goto Blade's Edge Mountains,44.78,32.07
 .complete 10893,1 
 .unitscan Draaca Longtail
+.isOnQuest 10893
 step
-.maxlevel 66
 .goto Blade's Edge Mountains,49.92,35.92,20,0
 .goto Blade's Edge Mountains,50.35,36.01
 >>与Moonshade交谈
 .turnin 10893 >>交给长尾的是Lynchpin
 .accept 10722 >>在Blackwing Coven接受会议
-step
 .maxlevel 66
+step
 #completewith Prophecy
-.use 31489 >>杀死格里什纳。为他们的格里什纳之球而抽签。在您的包中点击它
+.use 31489 >>杀死格里什纳。掠夺他们的格里什纳之珠。在您的包中点击它
 .collect 31489,1,10825,1 
 .accept 10825 >>接受真相
+.isOnQuest 10607
 step
-.maxlevel 66
 #completewith Prophecy
-+杀死格里什纳。当他们死后，站在他们旁边，获得一个2分钟的增益，你需要与图腾互动。
++杀死格里什纳。当他们死后，站在他们旁边，获得一个2分钟的增益，你需要与预言互动
+.isOnQuest 10607
 step
-.maxlevel 66
 >>去格里什纳的预言馆接受他们
 .complete 10607,4 
 .goto Blade's Edge Mountains,40.18,23.02
 .complete 10607,3 
 .goto Blade's Edge Mountains,40.67,18.63
+.isOnQuest 10607
 step
-.maxlevel 66
 #completewith next
 .goto Blade's Edge Mountains,40.61,17.46,20,0
 .goto Blade's Edge Mountains,39.92,16.42,20,0
 .goto Blade's Edge Mountains,39.02,17.25,20 >>爬上西侧的树平台。过桥，然后点击预言
 .skill riding,225,1
+.isOnQuest 10607
 step
-.maxlevel 66
 >>前往树平台上的预言
 .complete 10607,1 
 .goto Blade's Edge Mountains,39.02,17.25
+.isOnQuest 10607
 step
-.maxlevel 66
 #completewith next
 .goto Blade's Edge Mountains,41.08,18.18,20,0
 .goto Blade's Edge Mountains,42.35,19.18,20,0
 .goto Blade's Edge Mountains,42.47,21.63,20 >>爬上东侧的树平台。过桥，走下一层楼，然后点击预言
 .skill riding,225,1
 step
-.maxlevel 66
 #label Prophecy
 >>前往树平台底层的预言
 .goto Blade's Edge Mountains,42.47,21.63
 .complete 10607,2 
+.isOnQuest 10607
 step
-.maxlevel 66
 .loop 60,Blade's Edge Mountains,42.30,24.63,41.37,20.69,39.96,22.83,38.41,20.01,39.33,17.50,40.80,17.74,42.15,18.55,42.73,21.32,42.30,24.63
-.use 31489 >>杀死格里什纳。为他们的格里什纳之球而抽签。在您的包中点击它
+.use 31489 >>杀死格里什纳。掠夺他们的格里什纳之珠。在您的包中点击它
 .collect 31489,1,10825,1 
 .accept 10825 >>接受真相
+.isOnQuest 10607
 step
-.maxlevel 66
 #completewith Plant
 >>杀死大石头食人魔
 .complete 10786,1 
 .complete 10786,2 
+.isOnQuest 10786
 step
-.maxlevel 66
 .loop 60,Blade's Edge Mountains,31.88,21.40,31.59,22.91,30.89,24.19,29.49,23.96,30.41,22.68,30.38,21.06,31.19,19.79,31.88,21.40
 >>杀死Boulder'mok食人魔。抢劫他们的图腾
 .collect 31754,3,10723,1 
 .isOnQuest 10723
 step
-.maxlevel 66
 #completewith next
 .goto Blade's Edge Mountains,30.58,22.18
 .cast 39220 >>点击Gorgrom的祭坛启动RP
-.timer 15,Grisly Totem RP
+.timer 15,Gorgrom RP
 step
-.maxlevel 66
 #label Plant
 .goto Blade's Edge Mountains,30.64,22.13
-.use 31754 >>等待较短的RP。当Gorgrom死后，使用你袋子里的恐怖图腾3次
+.use 31754 >>等待短RP。当戈格罗姆死后，用你袋子里的恐怖图腾对付他三次
 .complete 10723,1 
+.isOnQuest 10723
 step
-.maxlevel 66
 .loop 60,Blade's Edge Mountains,31.88,21.40,31.59,22.91,30.89,24.19,29.49,23.96,30.41,22.68,30.38,21.06,31.19,19.79,31.88,21.40
 >>杀死大石头食人魔
 .complete 10786,1 
 .complete 10786,2 
+.isOnQuest 10786
 step
-.maxlevel 66
 .loop 50,Blade's Edge Mountains,30.77,31.59,31.05,33.60,33.35,32.28,33.10,30.99,30.77,31.59
 >>杀死Wyrmcult。抢劫他们的服装碎片
 .collect 31121,3,10747,1 
 .isOnQuest 10722
 step
-.maxlevel 66
 #completewith Scraps
-.goto Blade's Edge Mountains,32.04,33.87,20 >> 进入黑翼湾
+.goto Blade's Edge Mountains,32.04,33.87,20 >>进入黑翼湾
 step
-.maxlevel 66
 #completewith Kolphis
 >>在Wyrmcult Blackwhelps上使用包中的Blackwhellp Net。你可以踩在洞穴里的卵上，产卵更多的黑熊。
 .complete 10747,1 
 .use 31129
+.isOnQuest 10747
 step
-.maxlevel 66
 #label Scraps
 .goto Blade's Edge Mountains,32.25,34.77,30,0
 .goto Blade's Edge Mountains,33.90,34.36,30,0
@@ -27909,26 +28161,22 @@ step
 .collect 31121,5,10747,1 
 .isOnQuest 10722
 step
-.maxlevel 66
-#completewith next
-.use 31121 >> 用你袋子里的衣服碎片来伪装监督人
+.use 31121 >>用你袋子里的衣服碎片来伪装监督人
 .collect 31122,1,10747,1 
 .isOnQuest 10722
 step
-.maxlevel 66
 .cast 38157 >>在包中使用监督伪装
 .use 31122
 .isOnQuest 10722
 step
-.maxlevel 66
 #label Kolphis
 .goto Blade's Edge Mountains,32.66,37.51
->>在洞穴尽头与科尔菲斯·黑克斯卡尔（Kolphis Darkscale）交谈，同时进行伪装。小心，伪装只持续3分钟
+>>在洞穴尽头与科尔菲斯·黑克斯卡尔(Kolphis Darkscale)交谈，同时进行伪装。小心，伪装只持续3分钟
 .complete 10722,1 
 .use 31122
 .skipgossip
+.isOnQuest 10722
 step
-.maxlevel 66
 .goto Blade's Edge Mountains,33.62,37.14,30,0
 .goto Blade's Edge Mountains,33.64,35.63,30,0
 .goto Blade's Edge Mountains,33.92,34.33,30,0
@@ -27937,25 +28185,24 @@ step
 .goto Blade's Edge Mountains,33.64,35.63,30,0
 .goto Blade's Edge Mountains,33.92,34.33,30,0
 .goto Blade's Edge Mountains,31.41,36.29
->>在Wyrmcult Blackwhelps上使用包中的Blackwhellp Net。你可以踩在洞穴里的卵上（虽然没有伪装），以产卵更多的黑熊。
+>>在Wyrmcult Blackwhelps上使用包中的Blackwhellp Net。你可以踩在洞穴里的卵上(虽然没有伪装)，以产卵更多的黑熊。
 .complete 10747,1 
 .use 31129
+.isOnQuest 10747
 step
-.maxlevel 66
 #completewith next
 .hs >>赫斯到埃弗格罗夫
 step << WOTLK
-.maxlevel 66
 >>返回Evergrove。与Timeon、Chawn、Samia交谈
 .turnin 10607 >>倾诉乌鸦神的低语
 .goto Blade's Edge Mountains,62.16,39.11
 .turnin 10722 >>在Blackwing Coven上交会议
 .turnin 10825 >>揭开真相
 .goto Blade's Edge Mountains,61.97,39.47
-.turnin 10747 >>交出妖精幼崽
+.turnin 10747 >>交出妖术幼崽
 .goto Blade's Edge Mountains,61.94,39.45
-step << tbc
 .maxlevel 66
+step << tbc
 #xprate >1.499
 >>返回Evergrove。与Timeon、Chawn、Samia交谈
 .turnin 10607 >>倾诉乌鸦神的低语
@@ -27963,10 +28210,10 @@ step << tbc
 .turnin 10722 >>在Blackwing Coven上交会议
 .turnin 10825 >>揭开真相
 .goto Blade's Edge Mountains,61.97,39.47
-.turnin 10747 >>交出妖精幼崽
+.turnin 10747 >>交出妖术幼崽
 .goto Blade's Edge Mountains,61.94,39.45
-step << tbc
 .maxlevel 66
+step << tbc
 #xprate <1.5
 >>返回Evergrove。与Timeon、Chawn、Samia交谈
 .turnin 10607 >>倾诉乌鸦神的低语
@@ -27976,16 +28223,16 @@ step << tbc
 .turnin 10825 >>揭开真相
 .accept 10829 >>接受树必须知道
 .goto Blade's Edge Mountains,61.97,39.47
-.turnin 10747 >>交出妖精幼崽
+.turnin 10747 >>交出妖术幼崽
 .goto Blade's Edge Mountains,61.94,39.45
-step << tbc
 .maxlevel 66
+step << tbc
 #xprate <1.5
 .goto Blade's Edge Mountains,37.1,22.2
-.turnin 10829 >> 上交树必须知道
-.accept 10830 >> 接受驱魔树
-step << tbc
+.turnin 10829 >>上交树必须知道
+.accept 10830 >>接受驱魔树
 .maxlevel 66
+step << tbc
 #xprate <1.5
 #completewith leafbeardE
 .goto Blade's Edge Mountains,34.3,19.8
@@ -27996,67 +28243,67 @@ step << tbc
 .goto Blade's Edge Mountains,41.3,21.9,0
 >>杀死/掠夺Dire Ravens Dire Pinfeerts
 >>从格里什纳特的营地中掠夺格里什纳斯球。
-.collect 31495,5
-.collect 31517,5
+.collect 31495,5,10830
+.collect 31517,5,10830
+.isOnQuest 10830
 step << tbc
-.maxlevel 66
 #xprate <1.5
 #label leafbeardE
 .goto Blade's Edge Mountains,34.3,19.8
 >>把球和羽毛结合起来得到驱魔羽毛。在Leafbeards上使用它们。你杀了鬼魂后，叶胡子们会变得友好起来。
 .complete 10830,1 
+.isOnQuest 10830
 step << tbc
-.maxlevel 66
 #xprate <1.5
 .goto Blade's Edge Mountains,37.1,22.2
 .turnin 10830 >>上车驱魔树
-step << tbc
 .maxlevel 66
+step << skip
 #xprate <1.5
 #completewith next
 .goto Blade's Edge Mountains,31.7,32.0
-+农场5服装碎片，另一个伪装。一旦你做到了，就使用它。
+>>收集服装碎片。把它化装起来
+.collect 31121,5,10748,1 
+.isOnQuest 10748
 step << tbc
-.maxlevel 66
 #xprate <1.5
 .goto Blade's Edge Mountains,33.7,35.9
->>跑到黑翼湾后面杀了麦克斯纳。
+>>跑到黑翼湾的后面。杀死Maxnar
 .complete 10748,1 
+.isOnQuest 10748
 step << tbc
-.maxlevel 66
 #xprate <1.5
 .goto Blade's Edge Mountains,62.0,39.5
+>>返回Evergrove。与Chawn交谈
 .turnin 10748 >>上交Maxnar必须死！
-step
 .maxlevel 66
+step
 #completewith next
 .goto Blade's Edge Mountains,61.68,39.61
 .fly Thunderlord Stronghold >>飞到雷霆堡
 step
-.maxlevel 66
 >>返回雷主山寨。与雷克萨和托尔库克交谈
 .turnin 10723 >>交出食龙者戈格罗姆
 
 .goto Blade's Edge Mountains,51.82,58.34
 .turnin 10786 >>在Boulder'mok上交屠宰场
 .goto Blade's Edge Mountains,51.94,58.41
-step << tbc
 .maxlevel 66
+step << tbc
 #xprate <1.5
 #completewith next
 .goto Blade's Edge Mountains,55.31,72.78,50,0
-.goto Blade's Edge Mountains,58.45,69.96,70 >> 走上山的小路到剃刀岭
+.goto Blade's Edge Mountains,58.45,69.96,70 >>走上山的小路到剃刀岭
 .skill riding,225,1
 step << tbc
-.maxlevel 66
 #xprate <1.5
 #completewith next
 .goto Blade's Edge Mountains,59.97,74.23,60,0
 .goto Blade's Edge Mountains,62.35,78.01,60,0
 .use 31663 >>使用你袋子里的召唤灵图腾，然后杀死周围的小幽冥龙。尝试每个图腾至少获得2只龙兽。掠夺他们的灵魂
 .complete 10853,1 
+.isOnQuest 10853
 step << tbc
-.maxlevel 66
 #xprate <1.5
 .goto Blade's Edge Mountains,65.37,78.11,60,0
 .goto Blade's Edge Mountains,64.30,77.02,60,0
@@ -28072,14 +28319,14 @@ step << tbc
 >>杀死恐惧翼。他逆时针巡逻
 .complete 10845,1 
 .unitscan Dreadwing
+.isOnQuest 10845
 step << tbc
-.maxlevel 66
 #xprate <1.5
 .goto Blade's Edge Mountains,66.94,76.36
 .use 31663 >>使用你袋子里的召唤灵图腾，然后杀死周围的小幽冥龙。尝试每个图腾至少获得2只龙兽。掠夺他们的灵魂
 .complete 10853,1 
+.isOnQuest 10853
 step << tbc
-.maxlevel 66
 #xprate <1.5
 >>返回Mok'Nathal村。与Leoroxx和Dohgar交谈
 .turnin 10845 >>转身杀了养母
@@ -28087,108 +28334,297 @@ step << tbc
 .turnin 10853 >>交回精神召唤
 .accept 10859 >>接受收集球
 .goto Blade's Edge Mountains,74.91,60.47
-step << tbc
 .maxlevel 66
+step << tbc
 #xprate <1.5
 #completewith next
 .goto Blade's Edge Mountains,76.37,65.93
 .fly Evergrove >>飞往埃弗格罗夫
 .skill riding,225,1
 step << tbc
-.maxlevel 66
 #xprate <1.5
 #completewith next
 .goto Blade's Edge Mountains,65.28,40.00,50,0
 .goto Blade's Edge Mountains,65.81,37.75,50,0
-.goto Blade's Edge Mountains,66.68,38.29,60 >> 走上山的小路到刀口
+.goto Blade's Edge Mountains,66.68,38.29,60 >>走上山的小路到刀口
 .skill riding,225,1
 step << tbc
-.maxlevel 66
 #xprate <1.5
 .goto Blade's Edge Mountains,67.4,42.1
 >>把图腾放在这个地方15次。进行此操作之前，请先清除该区域。
 .complete 10859,1 
+.isOnQuest 10859
 step << tbc
-.maxlevel 66
 #xprate <1.5
 .goto Blade's Edge Mountains,74.9,60.5
 .turnin 10859 >>转向收集球
 .accept 10865 >>接受通知Leoroxx！
-step << tbc
 .maxlevel 66
+step << tbc
 #xprate <1.5
 .goto Blade's Edge Mountains,75.3,60.9
 .turnin 10865 >>上车通知Leoroxx！
 .accept 10867 >>接受只能有一个响应
-step << tbc
 .maxlevel 66
+step << tbc
 #xprate <1.5
+#completewith LegionC
 .goto Blade's Edge Mountains,76.1,60.3
 .home >>把你的炉石放在Mok'Nathal村
 step << tbc
-.maxlevel 66
 #xprate <1.5
+#completewith next
 .goto Blade's Edge Mountains,76.4,65.9
 .fly Evergrove >>飞往埃弗格罗夫
 step << tbc
-.maxlevel 66
 #xprate <1.5
 .goto Blade's Edge Mountains,66.4,44.1
 >>杀死周围的Razaan，直到Nexus Prince Razaan从在中间的传送门出现。
 .complete 10867,1 
+.isOnQuest 10867
 step << tbc
-.maxlevel 66
 #xprate <1.5
 .goto Blade's Edge Mountains,74.9,60.5
 .turnin 10867 >>上车只能有一个响应
-step << tbc
 .maxlevel 66
+step << tbc
+#completewith LegionC
 #xprate <1.5
 .goto Blade's Edge Mountains,76.4,65.8
 .fly Evergrove >>飞往埃弗格罗夫
 step << tbc
-.maxlevel 66
 #xprate <1.5
-.goto Blade's Edge Mountains,62.3,38.5
->>找到野领主羚羊。他在埃弗格罗夫巡逻。
+.goto Blade's Edge Mountains,62.53,39.91,40,0
+.goto Blade's Edge Mountains,62.00,40.21,40,0
+.goto Blade's Edge Mountains,61.45,39.73,40,0
+.goto Blade's Edge Mountains,61.28,38.77,40,0
+.goto Blade's Edge Mountains,62.20,38.15,40,0
+.goto Blade's Edge Mountains,62.69,39.13
+.line Blade's Edge Mountains,62.53,39.91,62.00,40.21,61.45,39.73,61.28,38.77,62.20,38.15,62.69,39.13,62.53,39.91
+>>与Antelarion交谈，他在镇上逆时针巡逻
 .accept 10819 >>接受恶棍防毒面具
+.isQuestTurnedIn 10812
 step
-.maxlevel 66
 #completewith next
-.cast 38448 >> 在你的包里装备恶棍防毒面具，以便与军团通讯器通话
+.cast 38448 >>在你的包里装备恶棍防毒面具，以便与军团通讯器通话
 step
-.maxlevel 66
+#label LegionC
 >>带着你的恶棍防毒面具与军团通讯员交谈
 .goto Blade's Edge Mountains,73.27,40.03
 .turnin 10819 >>交出恶棍防毒面具
 .accept 10820 >>接受欺骗你的敌人
 .use 31366
+.isQuestComplete 10819
 step
-.maxlevel 66
+>>带着你的恶棍防毒面具与军团通讯员交谈
+.goto Blade's Edge Mountains,73.27,40.03
+.accept 10820 >>接受欺骗你的敌人
+.use 31366
+.isQuestTurnedIn 10819
+step
 .loop 40,Blade's Edge Mountains,74.28,38.54,75.39,39.66,74.93,40.17,75.30,41.73,74.22,42.56,73.77,41.02,74.28,38.54
 >>重新装备普通头盔
 >>杀死该地区的Doomforge服务员和工程师
 .complete 10820,1 
 .complete 10820,2 
+.isOnQuest 10820
 step
-.maxlevel 66
 #completewith next
-.cast 38448 >> 在你的包里装备恶棍防毒面具，以便与军团通讯器通话
+.cast 38448 >>在你的包里装备恶棍防毒面具，以便与军团通讯器通话
 step
-.maxlevel 66
 .goto Blade's Edge Mountains,73.27,40.03
 >>带着你的恶棍防毒面具与军团通讯员交谈
 .turnin 10820 >>投降，欺骗你的敌人
-
+.accept 10821 >>接受你被解雇了！
+.maxlevel 66
+step
+.loop 40,Blade's Edge Mountains,73.63,39.14,72.82,40.35,72.90,40.76,72.92,41.50,72.90,41.96,73.36,42.46,73.39,43.64,74.38,41.90,74.01,38.52,73.63,39.14
+>>杀死愤怒守卫。抢走他们5把营地愤怒钥匙。不要点击任何方尖碑
+.collect 31536,5,10821,1 
+.isOnQuest 10821
+step
+#completewith Doomcryer
+#label FirstO
+.goto Blade's Edge Mountains,73.53,43.51
+.cast 38746 >>单击第一个方尖碑
+*If you cannot click it, skip this step
+.isOnQuest 10821
+step
+#completewith Doomcryer
+#requires FirstO
+#label SecondO
+.goto Blade's Edge Mountains,73.82,41.03
+.cast 38746 >>单击第二个方尖碑
+*If you cannot click it, skip this step
+.isOnQuest 10821
+step
+#completewith Doomcryer
+#requires SecondO
+#label ThirdO
+.goto Blade's Edge Mountains,73.94,39.89
+.cast 38746 >>点击第三方尖塔
+*If you cannot click it, skip this step
+.isOnQuest 10821
+step
+#completewith Doomcryer
+#requires ThirdO
+#label FourthO
+.goto Blade's Edge Mountains,75.45,40.52
+.cast 38746 >>点击第四方尖塔
+*If you cannot click it, skip this step
+.isOnQuest 10821
+step
+#completewith Doomcryer
+#requires FourthO
+.goto Blade's Edge Mountains,75.33,41.74
+.cast 38746 >>点击第五方尖碑
+*If you cannot click it, skip this step
+.timer 30,Doomcryer Spawn
+.isOnQuest 10821
+step
+#label Doomcryer
+.goto Blade's Edge Mountains,74.32,42.52
+>>点击营地周围的五座方尖碑召唤末日骑士
+>>杀死末日克莱尔。她击球很重，但不能避免速度慢或恐惧。这个任务很困难。如果需要，为她找一个小组。如果你找不到一个小组或单独一人，请跳过这一步。
+.complete 10821,1 
+.isOnQuest 10821
+step
+#completewith Nuaar
+.hs >>赫斯到埃弗格罗夫
+.cooldown item,6948,>0
+step
+.goto Blade's Edge Mountains,62.53,39.91,40,0
+.goto Blade's Edge Mountains,62.00,40.21,40,0
+.goto Blade's Edge Mountains,61.45,39.73,40,0
+.goto Blade's Edge Mountains,61.28,38.77,40,0
+.goto Blade's Edge Mountains,62.20,38.15,40,0
+.goto Blade's Edge Mountains,62.69,39.13
+.line Blade's Edge Mountains,62.53,39.91,62.00,40.21,61.45,39.73,61.28,38.77,62.20,38.15,62.69,39.13,62.53,39.91
+>>与Antelarion交谈，他在镇上逆时针巡逻
+.turnin 10821 >>上车，你被解雇了！
+.isQuestComplete 10821
+.maxlevel 66
+step
+.goto Blade's Edge Mountains,62.53,39.91,40,0
+.goto Blade's Edge Mountains,62.00,40.21,40,0
+.goto Blade's Edge Mountains,61.45,39.73,40,0
+.goto Blade's Edge Mountains,61.28,38.77,40,0
+.goto Blade's Edge Mountains,62.20,38.15,40,0
+.goto Blade's Edge Mountains,62.69,39.13
+.line Blade's Edge Mountains,62.53,39.91,62.00,40.21,61.45,39.73,61.28,38.77,62.20,38.15,62.69,39.13,62.53,39.91
+>>与Antelarion交谈，他在镇上逆时针巡逻
+.accept 10910 >>接受死亡之门
+.isQuestTurnedIn 10821
+.maxlevel 66
+step
+#completewith Signal
+.goto Blade's Edge Mountains,64.31,70.67
+>>小心地从托什利车站东边跳到死亡之门
+.cast 38782 >>用你袋子里的德鲁伊信号在死亡之门召唤一个埃弗格罗夫德鲁伊
+.timer 18,Druid Signal RP
+.skill riding,225,1
+.isOnQuest 10910
+step
+#completewith next
+.goto Blade's Edge Mountains,64.31,70.67
+.cast 38782 >>用你袋子里的德鲁伊信号在死亡之门召唤一个埃弗格罗夫德鲁伊
+.timer 18,Druid Signal RP
+.skill riding,<225,1
+.isOnQuest 10910
+step
+#label Signal
+.goto Blade's Edge Mountains,64.31,70.67
+>>与埃弗格罗夫德鲁伊对话
+.turnin 10910 >>进入死亡之门
+.accept 10904 >>接受收割恶魔弹药
+.use 31763
+.isQuestTurnedIn 10821
+.maxlevel 66
+step
+.loop 45,Blade's Edge Mountains,63.79,70.87,63.76,68.70,63.08,66.67,62.35,61.39,61.57,59.57,63.39,59.88,63.07,63.93,64.96,67.57,63.79,70.87
+>>杀死死亡熔炉和死亡恶魔。抢他们的炮弹
+.complete 10904,1 
+.isOnQuest 10904
+step
+#completewith next
+.goto Blade's Edge Mountains,64.81,68.32,-1
+.goto Blade's Edge Mountains,61.96,60.29,-1
+.cast 38782 >>用你袋子里的德鲁伊信号召唤一个埃弗格罗夫德鲁伊
+.timer 18,Druid Signal RP
+.isOnQuest 10904
+step
+.goto Blade's Edge Mountains,64.81,68.32,-1
+.goto Blade's Edge Mountains,61.96,60.29,-1
+>>与埃弗格罗夫德鲁伊对话
+.turnin 10904 >>缴获恶魔弹药
+.accept 10911 >>随意接受火力！
+.isQuestTurnedIn 10821
+.maxlevel 66
+step
+>>使用你袋子里的天然弹药来控制地狱炮。使用它的第一个法术“曲门上的炮兵”在防御时摧毁曲门
+.complete 10911,1 
+.goto Blade's Edge Mountains,64.81,68.32,-1
+.complete 10911,2 
+.goto Blade's Edge Mountains,61.96,60.29,-1
+.isOnQuest 10911
+.isQuestTurnedIn 10821
+.use 31807
+step
+#completewith next
+.goto Blade's Edge Mountains,62.50,60.17
+.cast 38782 >>用你袋子里的德鲁伊信号召唤一个埃弗格罗夫德鲁伊
+.timer 18,Druid Signal RP
+.isOnQuest 10911
+step
+.goto Blade's Edge Mountains,62.50,60.17
+>>与埃弗格罗夫德鲁伊对话
+.turnin 10911 >>随意交火！
+.accept 10912 >>接受猎犬大师
+.isQuestTurnedIn 10821
+.maxlevel 66
+step
+#completewith next
+.goto Blade's Edge Mountains,63.62,59.11
+>>在拉Baelmon之前，用你袋子里的Evergrove魔杖召唤古人帮你杀了他
+.use 31809
+.isOnQuest 10912
+step
+.goto Blade's Edge Mountains,63.62,59.11
+>>杀死猎犬大师巴尔蒙。这个任务很困难。如果需要，为他找一个小组。如果你找不到一个团队或是独自一人，请跳过这一步。
+.complete 10912,1 
+.use 31809
+.isQuestTurnedIn 10821
+.isOnQuest 10912
+step
+#label HoundMaster
+.goto Blade's Edge Mountains,62.53,39.91,40,0
+.goto Blade's Edge Mountains,62.00,40.21,40,0
+.goto Blade's Edge Mountains,61.45,39.73,40,0
+.goto Blade's Edge Mountains,61.28,38.77,40,0
+.goto Blade's Edge Mountains,62.20,38.15,40,0
+.goto Blade's Edge Mountains,62.69,39.13
+.line Blade's Edge Mountains,62.53,39.91,62.00,40.21,61.45,39.73,61.28,38.77,62.20,38.15,62.69,39.13,62.53,39.91
+>>返回Evergrove。与Antelarion交谈，他在镇上逆时针巡逻
+.turnin 10912 >>交出猎犬大师
+.isQuestComplete 10912
+.maxlevel 66
+step
+.abandon 10912 >>抛弃猎犬大师
 ]])
 RXPGuides.RegisterGuide([[
-#version 7
+#version 9
 #wotlk
 #tbc
 #group RestedXP 部落 60-70
 << Horde
-#name 67-67 刀锋山 Turnins
+#name 67-67 刀锋山
 #next 67-69 虚空风暴
+
+step
++由于你现在是67级(或更高)，并且已经完成了当前刀锋的所有目标，向导现在会告诉你在前往荷兰风暴之前提交所有剩余任务。
+*Click the box here to begin this process
+.isQuestAvailable 10912
+.xp <67,1
 
 step
 .goto Blade's Edge Mountains,51.94,58.41
@@ -28512,19 +28948,85 @@ step
 .turnin 10820 >>投降，欺骗你的敌人
 .isQuestComplete 10820
 step
-.isOnQuest 10819
-.maxlevel 66
-#completewith next
-.cast 38448 >> 在你的包里装备恶棍防毒面具，以便与军团通讯器通话
+#sticky
+#completewith zonedone
++接下来的几个任务你应该做，因为XP/H很好。其他所有内容都已跳过。
 step
-.maxlevel 66
+.goto Blade's Edge Mountains,69.23,37.45,60,0
+.goto Blade's Edge Mountains,68.66,33.30,60,0
+.goto Blade's Edge Mountains,71.75,32.63,60,0
+.goto Blade's Edge Mountains,70.98,27.92
+.use 31384 >>杀死恶魔腐蚀者。他们四处巡逻。抢走他们损坏的面具。在您的包中点击它
+.collect 31384,1,10810,1 
+.accept 10810 >>接受损坏的面具
+.unitscan Fel Corrupter
+step
+>>回到阮世德。与O'Mally交谈
+.turnin 10810 >>交回损坏的面罩
+.accept 10812 >>接受神秘面具
+.goto Blade's Edge Mountains,62.66,40.38
+step
+.goto Blade's Edge Mountains,62.53,39.91,40,0
+.goto Blade's Edge Mountains,62.00,40.21,40,0
+.goto Blade's Edge Mountains,61.45,39.73,40,0
+.goto Blade's Edge Mountains,61.28,38.77,40,0
+.goto Blade's Edge Mountains,62.20,38.15,40,0
+.goto Blade's Edge Mountains,62.69,39.13
+.line Blade's Edge Mountains,62.53,39.91,62.00,40.21,61.45,39.73,61.28,38.77,62.20,38.15,62.69,39.13,62.53,39.91
+>>与Antelarion交谈，他在镇上逆时针巡逻。
+.turnin 10812 >>交出神秘面具
+.accept 10819 >>接受恶棍防毒面具
+step
 >>带着你的恶棍防毒面具与军团通讯员交谈
 .goto Blade's Edge Mountains,73.27,40.03
 .turnin 10819 >>交出恶棍防毒面具
-.isOnQuest 10820
+.accept 10820 >>接受欺骗你的敌人
+.use 31366
+.isQuestComplete 10819
+step
+.loop 40,Blade's Edge Mountains,74.28,38.54,75.39,39.66,74.93,40.17,75.30,41.73,74.22,42.56,73.77,41.02,74.28,38.54
+>>重新装备普通头盔
+>>杀死该地区的Doomforge服务员和工程师
+.complete 10820,1 
+.complete 10820,2 
+step
+.goto Blade's Edge Mountains,73.27,40.03
+>>带着你的恶棍防毒面具与军团通讯员交谈
+.turnin 10820 >>投降，欺骗你的敌人
+.accept 10821 >>接受你被解雇了！
+step
+.isOnQuest 10819
+#completewith next
+.cast 38448 >>在你的包里装备恶棍防毒面具，以便与军团通讯器通话
+step
+>>带着你的恶棍防毒面具与军团通讯员交谈
+.goto Blade's Edge Mountains,62.53,39.91,40,0
+.goto Blade's Edge Mountains,62.00,40.21,40,0
+.goto Blade's Edge Mountains,61.45,39.73,40,0
+.goto Blade's Edge Mountains,61.28,38.77,40,0
+.goto Blade's Edge Mountains,62.20,38.15,40,0
+.goto Blade's Edge Mountains,62.69,39.13
+.line Blade's Edge Mountains,62.53,39.91,62.00,40.21,61.45,39.73,61.28,38.77,62.20,38.15,62.69,39.13,62.53,39.91
+.turnin 10821 >>上车，你被解雇了！
+.accept 10910 >>接受死亡之门
+step
+.goto Blade's Edge Mountains,62.3,58.2
+.turnin 10910 >>进入死亡之门
+.accept 10904 >>接受收割恶魔弹药
+.use 31763
+step
+>>杀死死神之门的暴徒，直到你完成任务
+.goto Blade's Edge Mountains,62.2,61.0
+.complete 10904,1
+.use 31763
+step
+#label zonedone
+.goto Blade's Edge Mountains,62.3,58.2
+.turnin 10904 >>缴获恶魔弹药
+.use 31763
 ]])
 RXPGuides.RegisterGuide([[
-#version 7
+#version 9
 #wotlk
 #tbc
 #group RestedXP 部落 60-70
@@ -28538,57 +29040,57 @@ step
 step
 .goto Blade's Edge Mountains,74.89,24.48,100,0
 .goto Blade's Edge Mountains,77.36,24.53,100,0
-.goto Netherstorm,21.81,55.56,40 >> 前往荷兰风暴
+.goto Netherstorm,21.81,55.56,40 >>前往荷兰风暴
 .skill riding,225,1
 step
 .goto Netherstorm,20.15,55.84,30,0
 .goto Netherstorm,21.81,55.52
 >>与桥上的冥想学家交谈
-.accept 10183 >> 接受前往52区
+.accept 10183 >>接受前往52区
 step
 #label A529
 >>前往52区。与Boots、Khay'ji、Fuselage和通缉海报交谈
-.accept 10342 >> 接受保护Shaleskin页岩
+.accept 10342 >>接受保护Shaleskin页岩
 .goto Netherstorm,32.27,63.92
-.accept 10265 >> 接受Consortium Crystal Collection
+.accept 10265 >>接受Consortium Crystal Collection
 .goto Netherstorm,32.44,64.20
-.turnin 10183 >> 转入关闭至区域52
-.accept 10186 >> 接受你被录用了！
+.turnin 10183 >>转入关闭至区域52
+.accept 10186 >>接受你被录用了！
 .goto Netherstorm,32.68,64.41,30,0
 .goto Netherstorm,32.73,64.96
-.accept 10261 >> 接受通缉：歼灭机伺服！
-.accept 10701 >> 接受击溃Netherock
+.accept 10261 >>接受通缉：歼灭机伺服！
+.accept 10701 >>接受击溃Netherock
 .goto Netherstorm,32.09,64.64
 step
 #completewith Maxx
 .goto Netherstorm,31.96,64.42
-.home >> 将您的炉石设置为52区
+.home >>将您的炉石设置为52区
 step
 #aldor
 .goto Netherstorm,32.07,64.18
 >>在客栈里与奥利利斯交谈
 
-.accept 10241 >> 在马纳福堡接受分心
+.accept 10241 >>在马纳福堡接受分心
 step
 #scryer
 .goto Netherstorm,32.00,64.08
 >>在客栈与塔洛丁交谈
-.accept 10189 >> 接受Manaforge B'naar
+.accept 10189 >>接受Manaforge B'naar
 
 step
 >>与Ravandwyr交谈
-.accept 10173 >> 接受大法师的杖
+.accept 10173 >>接受大法师的杖
 .goto Netherstorm,31.36,66.15
 step
 #completewith Maxx
-.goto Netherstorm,30.19,63.01,60,0
+.goto Netherstorm,30.19,63.01,60,0,0
 >>杀死Shaleskin Flayers。抢走他们的页岩
 .complete 10342,1 
 step
 >>前往恩卡特废墟。与Alley谈谈，然后Maxx开始护送
-.accept 10190 >> 接受蓄电池重新充电
+.accept 10190 >>接受蓄电池重新充电
 .goto Netherstorm,31.52,56.60
-.accept 10191 >> 接受Mark V还活着！
+.accept 10191 >>接受Mark V还活着！
 .goto Netherstorm,31.59,56.64
 step
 #completewith next
@@ -28616,7 +29118,7 @@ step
 #label Maxx
 .goto Netherstorm,31.52,56.60
 >>与Alley交谈
-.turnin 10191 >> 上车Mark V还活着！
+.turnin 10191 >>上车Mark V还活着！
 step
 #completewith next
 .goto Netherstorm,20.9,64.4,0
@@ -28637,16 +29139,16 @@ step
 .complete 10342,1 
 step
 >>返回52区。与靴子、机身和特雷普对话
-.turnin 10342 >> 转入固定Shaleskin页岩
-.accept 10199 >> 接受额外的一脚
+.turnin 10342 >>转入固定Shaleskin页岩
+.accept 10199 >>接受额外的一脚
 .goto Netherstorm,32.27,63.92
-.turnin 10186 >> 交上来你被录用了！
-.accept 10203 >> 接受有价资产毁损
-.accept 10225 >> 接受工程报告
+.turnin 10186 >>交上来你被录用了！
+.accept 10203 >>接受有价资产毁损
+.accept 10225 >>接受工程报告
 .goto Netherstorm,32.68,64.41,30,0
 .goto Netherstorm,32.73,64.96
-.turnin 10225 >> 向工程部提交报告
-.accept 10224 >> 接受发动机的本质
+.turnin 10225 >>向工程部提交报告
+.accept 10224 >>接受发动机的本质
 .goto Netherstorm,32.43,66.78
 step
 #completewith next
@@ -28662,13 +29164,13 @@ step
 .complete 10224,1 
 step << Shaman
 #completewith next
-.hs >> 炉膛至52区
+.hs >>炉膛至52区
 .cooldown item,6948,>0
 step
 .goto Netherstorm,32.43,66.78
 >>返回52区。与Trep交谈
-.turnin 10224 >> 发动机的交车要素
-.accept 10226 >> 接受元素能量提取
+.turnin 10224 >>发动机的交车要素
+.accept 10226 >>接受元素能量提取
 step
 #aldor
 >>杀死太阳怒魔法师和血矮人
@@ -28761,7 +29263,7 @@ step
 .collect 30809,10,10653,1 
 step
 #label Dredging
->>完成杀死幽冥之光和相位猎人（如果你看到），然后取回疏浚爪
+>>完成杀死幽冥之光和相位猎人(如果你看到)，然后取回疏浚爪
 .complete 10203,2 
 .goto Netherstorm,41.49,71.78,0,0
 step
@@ -28772,121 +29274,121 @@ step
 .complete 10173,1 
 step << Shaman
 #completewith X
-.hs >> 炉膛至52区
+.hs >>炉膛至52区
 .cooldown item,6948,>0
 step
 #sticky
 #label NetherRay1
 .goto Netherstorm,32.27,63.92,0,0
 >>与Boots交谈
-.turnin 10199 >> 把那个额外的小腿交上来
+.turnin 10199 >>把那个额外的小腿交上来
 .isQuestComplete 10199
 step
 #aldor
 >>返回52区。与Blastfizzle、Trep、Ravandwyr、Orelis、Karja、Khay'ji、Fuselage和Papa交谈
-.turnin 10203 >> 交回有价资产变卖
-.accept 10221 >> 接受Boom博士！
+.turnin 10203 >>交回有价资产变卖
+.accept 10221 >>接受Boom博士！
 .goto Netherstorm,34.19,68.15
-.turnin 10226 >> 打开元素能量提取
+.turnin 10226 >>打开元素能量提取
 .goto Netherstorm,32.43,66.78
-.turnin 10173 >> 交出大法师的杖
-.accept 10300 >> 接受重建员工
+.turnin 10173 >>交出大法师的杖
+.accept 10300 >>接受重建员工
 .goto Netherstorm,31.36,66.15
-.turnin 10241 >> 在Manaforge B'naar分心
-.accept 10313 >> 接受测量翘曲能量
+.turnin 10241 >>在Manaforge B'naar分心
+.accept 10313 >>接受测量翘曲能量
 .goto Netherstorm,32.07,64.18
-.accept 10243 >> 接受Naaru技术
+.accept 10243 >>接受Naaru技术
 .goto Netherstorm,32.04,64.18
-.turnin 10265 >> 交回财团水晶收藏
-.accept 10262 >> 接受一堆Ethereals
+.turnin 10265 >>交回财团水晶收藏
+.accept 10262 >>接受一堆Ethereals
 .goto Netherstorm,32.44,64.20
-.turnin 10701 >> 转身击倒Netherock
+.turnin 10701 >>转身击倒Netherock
 .goto Netherstorm,32.68,64.41,30,0
 .goto Netherstorm,32.73,64.96
-.accept 10206 >> 接受选择您的部件
+.accept 10206 >>接受选择您的部件
 .goto Netherstorm,32.99,64.66
 .isQuestComplete 10701
 step
 #aldor
 >>返回52区。与Blastfizzle、Trep、Ravandwyr、Orelis、Karja、Khay'ji和Papa交谈
-.turnin 10203 >> 交回有价资产变卖
-.accept 10221 >> 接受Boom博士！
+.turnin 10203 >>交回有价资产变卖
+.accept 10221 >>接受Boom博士！
 .goto Netherstorm,34.19,68.15
-.turnin 10226 >> 打开元素能量提取
+.turnin 10226 >>打开元素能量提取
 .goto Netherstorm,32.43,66.78
-.turnin 10173 >> 交出大法师的杖
-.accept 10300 >> 接受重建员工
+.turnin 10173 >>交出大法师的杖
+.accept 10300 >>接受重建员工
 .goto Netherstorm,31.36,66.15
-.turnin 10241 >> 在Manaforge B'naar分心
-.accept 10313 >> 接受测量翘曲能量
+.turnin 10241 >>在Manaforge B'naar分心
+.accept 10313 >>接受测量翘曲能量
 .goto Netherstorm,32.07,64.18
-.accept 10243 >> 接受Naaru技术
+.accept 10243 >>接受Naaru技术
 .goto Netherstorm,32.04,64.18
-.turnin 10265 >> 交回财团水晶收藏
-.accept 10262 >> 接受一堆Ethereals
+.turnin 10265 >>交回财团水晶收藏
+.accept 10262 >>接受一堆Ethereals
 .goto Netherstorm,32.44,64.20
-.accept 10206 >> 接受选择您的部件
+.accept 10206 >>接受选择您的部件
 .goto Netherstorm,32.99,64.66
 step
 #scryer
 >>返回52区。与Blastfizzle、Trep、Ravandwyr、Thalodien、Larynna、Khay'ji、Fuselage和Papa交谈
-.turnin 10203 >> 交回有价资产变卖
-.accept 10221 >> 接受Boom博士！
+.turnin 10203 >>交回有价资产变卖
+.accept 10221 >>接受Boom博士！
 .goto Netherstorm,34.19,68.15
-.turnin 10226 >> 打开元素能量提取
+.turnin 10226 >>打开元素能量提取
 .goto Netherstorm,32.43,66.78
-.turnin 10173 >> 交出大法师的杖
-.accept 10300 >> 接受重建员工
+.turnin 10173 >>交出大法师的杖
+.accept 10300 >>接受重建员工
 .goto Netherstorm,31.36,66.15
-.turnin 10189 >> 交给马纳福格·巴纳尔
-.accept 10193 >> 接受高价值目标
+.turnin 10189 >>交给马纳福格·巴纳尔
+.accept 10193 >>接受高价值目标
 .goto Netherstorm,32.00,64.08
-.accept 10204 >> 接受血腥结晶
+.accept 10204 >>接受血腥结晶
 .goto Netherstorm,32.05,63.99
-.turnin 10265 >> 交回财团水晶收藏
-.accept 10262 >> 接受一堆Ethereals
+.turnin 10265 >>交回财团水晶收藏
+.accept 10262 >>接受一堆Ethereals
 .goto Netherstorm,32.44,64.20
-.turnin 10701 >> 转身击倒Netherock
+.turnin 10701 >>转身击倒Netherock
 .goto Netherstorm,32.68,64.41,30,0
 .goto Netherstorm,32.73,64.96
-.accept 10206 >> 接受选择您的部件
+.accept 10206 >>接受选择您的部件
 .goto Netherstorm,32.99,64.66
 .isQuestComplete 10701
 step
 #scryer
 >>返回52区。与Blastfizzle、Trep、Ravandwyr、Thalodien、Larynna、Khay'ji和Papa交谈
-.turnin 10203 >> 交回有价资产变卖
-.accept 10221 >> 接受Boom博士！
+.turnin 10203 >>交回有价资产变卖
+.accept 10221 >>接受Boom博士！
 .goto Netherstorm,34.19,68.15
-.turnin 10226 >> 打开元素能量提取
+.turnin 10226 >>打开元素能量提取
 .goto Netherstorm,32.43,66.78
-.turnin 10173 >> 交出大法师的杖
-.accept 10300 >> 接受重建员工
+.turnin 10173 >>交出大法师的杖
+.accept 10300 >>接受重建员工
 .goto Netherstorm,31.36,66.15
-.turnin 10189 >> 交给马纳福格·巴纳尔
-.accept 10193 >> 接受高价值目标
+.turnin 10189 >>交给马纳福格·巴纳尔
+.accept 10193 >>接受高价值目标
 .goto Netherstorm,32.00,64.08
-.accept 10204 >> 接受血腥结晶
+.accept 10204 >>接受血腥结晶
 .goto Netherstorm,32.05,63.99
-.turnin 10265 >> 交回财团水晶收藏
-.accept 10262 >> 接受一堆Ethereals
+.turnin 10265 >>交回财团水晶收藏
+.accept 10262 >>接受一堆Ethereals
 .goto Netherstorm,32.44,64.20
-.accept 10206 >> 接受选择您的部件
+.accept 10206 >>接受选择您的部件
 .goto Netherstorm,32.99,64.66
 step
 >>返回52区。与Blastfizzle、Trep、Ravandwyr、Khay'ji和Papa交谈
-.turnin 10203 >> 交回有价资产变卖
-.accept 10221 >> 接受Boom博士！
+.turnin 10203 >>交回有价资产变卖
+.accept 10221 >>接受Boom博士！
 .goto Netherstorm,34.19,68.15
-.turnin 10226 >> 打开元素能量提取
+.turnin 10226 >>打开元素能量提取
 .goto Netherstorm,32.43,66.78
-.turnin 10173 >> 交出大法师的杖
-.accept 10300 >> 接受重建员工
+.turnin 10173 >>交出大法师的杖
+.accept 10300 >>接受重建员工
 .goto Netherstorm,31.36,66.15
-.turnin 10265 >> 交回财团水晶收藏
-.accept 10262 >> 接受一堆Ethereals
+.turnin 10265 >>交回财团水晶收藏
+.accept 10262 >>接受一堆Ethereals
 .goto Netherstorm,32.44,64.20
-.accept 10206 >> 接受选择您的部件
+.accept 10206 >>接受选择您的部件
 .goto Netherstorm,32.99,64.66
 step
 #scryer
@@ -28994,8 +29496,8 @@ step
 #aldor
 .goto Netherstorm,23.08,67.33
 >>进入马纳福堡堡。与控制台通话
-.turnin 10243 >> 交出Naaru技术
-.accept 10245 >> 接受B'naar控制台转录
+.turnin 10243 >>交出Naaru技术
+.accept 10245 >>接受B'naar控制台转录
 step
 #aldor
 #label EPipe
@@ -29005,11 +29507,11 @@ step
 step << WOTLK
 .goto Netherstorm,26.81,76.98
 >>与Meancamp交谈
-.accept 10309 >> 接受这是一个地狱收割者，但用心
+.accept 10309 >>接受这是一个地狱收割者，但用心
 step << WOTLK
 #completewith next
 .goto Netherstorm,26.52,78.73
-.cast 35282 >> 在报废的收割者上使用你袋子里的收割者开始活动
+.cast 35282 >>在报废的收割者上使用你袋子里的收割者开始活动
 .use 29447
 .isOnQuest 10309
 step << WOTLK
@@ -29020,10 +29522,10 @@ step << WOTLK
 step << WOTLK
 .goto Netherstorm,26.81,76.98
 >>与Meancamp交谈
-.turnin 10309 >> 上车吧，这是一个地狱收割者，但用心
+.turnin 10309 >>上车吧，这是一个地狱收割者，但用心
 .isOnQuest 10309
 step << WOTLK
-.abandon 10309 >> 放弃它是一个恶魔的收割者，但用心
+.abandon 10309 >>放弃它是一个恶魔的收割者，但用心
 step
 #scryer
 .line Netherstorm,18.91,73.08,19.25,74.14,19.67,75.12,20.21,75.45,19.67,75.12,20.16,76.58,20.92,77.73,19.69,78.06,20.92,77.73,21.36,77.60,22.25,78.09,23.03,78.71,22.46,78.73,23.53,79.44,24.23,80.11,25.19,80.83,26.08,81.40,26.78,81.58,27.82,81.09,28.52,80.81,29.70,80.84,30.32,80.66,30.84,80.31,31.32,79.53,31.94,79.56,32.66,79.50,33.55,78.92,34.27,78.64,33.56,79.24,34.27,78.64,35.55,78.65,36.47,79.01,37.83,78.78,38.54,78.67,39.37,78.14,40.02,77.86,41.03,77.33
@@ -29083,208 +29585,208 @@ step
 .unitscan Netherock
 step
 #completewith A52
-.hs >> 炉膛至52区
+.hs >>炉膛至52区
 .cooldown item,6948,>0
 step
 #sticky
 #label NetherRay2
 .goto Netherstorm,32.27,63.92,0,0
 >>与Boots交谈
-.turnin 10199 >> 把那个额外的小腿交上来
+.turnin 10199 >>把那个额外的小腿交上来
 .isQuestComplete 10199
 step
 #aldor
 >>返回52区。与卡贾、奥利利斯、凯伊吉、富塞拉奇和爸爸交谈
-.turnin 10245 >> 提交B'naar控制台转录
-.accept 10299 >> 接受关闭Manaforge B'naar
+.turnin 10245 >>提交B'naar控制台转录
+.accept 10299 >>接受关闭Manaforge B'naar
 .goto Netherstorm,32.04,64.18
-.turnin 10313 >> 转向测量翘曲能量
+.turnin 10313 >>转向测量翘曲能量
 .goto Netherstorm,32.07,64.18
-.turnin 10262 >> 交上一堆以太币
-.accept 10205 >> 接受变形突袭者Nesaad
+.turnin 10262 >>交上一堆以太币
+.accept 10205 >>接受变形突袭者Nesaad
 .goto Netherstorm,32.44,64.20
-.turnin 10701 >> 转身击倒Netherock
+.turnin 10701 >>转身击倒Netherock
 .goto Netherstorm,32.68,64.41,30,0
 .goto Netherstorm,32.73,64.96
-.turnin 10206 >> 上车取你的零件
-.turnin 10261 >> 通缉犯：歼灭机伺服！
-.accept 10232 >> 与军团一刀两断
-.accept 10333 >> 接受帮助Mama Wheeler
+.turnin 10206 >>上车取你的零件
+.turnin 10261 >>通缉犯：歼灭机伺服！
+.accept 10232 >>与军团一刀两断
+.accept 10333 >>接受帮助Mama Wheeler
 .goto Netherstorm,32.99,64.66
 .isQuestComplete 10701
 .isQuestComplete 10261
 step
 #aldor
 >>返回52区。与卡贾、奥利利斯、凯伊吉、富塞拉奇和爸爸交谈
-.turnin 10245 >> 提交B'naar控制台转录
-.accept 10299 >> 接受关闭Manaforge B'naar
+.turnin 10245 >>提交B'naar控制台转录
+.accept 10299 >>接受关闭Manaforge B'naar
 .goto Netherstorm,32.04,64.18
-.turnin 10313 >> 转向测量翘曲能量
+.turnin 10313 >>转向测量翘曲能量
 .goto Netherstorm,32.07,64.18
-.turnin 10262 >> 交上一堆以太币
-.accept 10205 >> 接受变形突袭者Nesaad
+.turnin 10262 >>交上一堆以太币
+.accept 10205 >>接受变形突袭者Nesaad
 .goto Netherstorm,32.44,64.20
-.turnin 10701 >> 转身击倒Netherock
+.turnin 10701 >>转身击倒Netherock
 .goto Netherstorm,32.68,64.41,30,0
 .goto Netherstorm,32.73,64.96
-.turnin 10206 >> 上车取你的零件
-.accept 10232 >> 与军团一刀两断
-.accept 10333 >> 接受帮助Mama Wheeler
+.turnin 10206 >>上车取你的零件
+.accept 10232 >>与军团一刀两断
+.accept 10333 >>接受帮助Mama Wheeler
 .goto Netherstorm,32.99,64.66
 .isQuestComplete 10701
 step
 #aldor
 >>返回52区。与卡贾、奥利利斯、凯伊吉和爸爸交谈
-.turnin 10245 >> 提交B'naar控制台转录
-.accept 10299 >> 接受关闭Manaforge B'naar
+.turnin 10245 >>提交B'naar控制台转录
+.accept 10299 >>接受关闭Manaforge B'naar
 .goto Netherstorm,32.04,64.18
-.turnin 10313 >> 转向测量翘曲能量
+.turnin 10313 >>转向测量翘曲能量
 .goto Netherstorm,32.07,64.18
-.turnin 10262 >> 交上一堆以太币
-.accept 10205 >> 接受变形突袭者Nesaad
+.turnin 10262 >>交上一堆以太币
+.accept 10205 >>接受变形突袭者Nesaad
 .goto Netherstorm,32.44,64.20
-.turnin 10206 >> 上车取你的零件
-.turnin 10261 >> 通缉犯：歼灭机伺服！
-.accept 10232 >> 与军团一刀两断
-.accept 10333 >> 接受帮助Mama Wheeler
+.turnin 10206 >>上车取你的零件
+.turnin 10261 >>通缉犯：歼灭机伺服！
+.accept 10232 >>与军团一刀两断
+.accept 10333 >>接受帮助Mama Wheeler
 .goto Netherstorm,32.99,64.66
 .isQuestComplete 10261
 step
 #aldor
 #label A52
 >>返回52区。与卡贾、奥利利斯、凯伊吉和爸爸交谈
-.turnin 10245 >> 提交B'naar控制台转录
-.accept 10299 >> 接受关闭Manaforge B'naar
+.turnin 10245 >>提交B'naar控制台转录
+.accept 10299 >>接受关闭Manaforge B'naar
 .goto Netherstorm,32.04,64.18
-.turnin 10313 >> 转向测量翘曲能量
+.turnin 10313 >>转向测量翘曲能量
 .goto Netherstorm,32.07,64.18
-.turnin 10262 >> 交上一堆以太币
-.accept 10205 >> 接受变形突袭者Nesaad
+.turnin 10262 >>交上一堆以太币
+.accept 10205 >>接受变形突袭者Nesaad
 .goto Netherstorm,32.44,64.20
-.turnin 10206 >> 上车取你的零件
-.accept 10232 >> 与军团一刀两断
-.accept 10333 >> 接受帮助Mama Wheeler
+.turnin 10206 >>上车取你的零件
+.accept 10232 >>与军团一刀两断
+.accept 10333 >>接受帮助Mama Wheeler
 .goto Netherstorm,32.99,64.66
 step
 #scryer
 >>返回52区。与Thalodien、Larynna、Khay'ji、Fuselage和Papa交谈
-.turnin 10193 >> 提交高价值目标
-.accept 10329 >> 接受关闭Manaforge B'naar
+.turnin 10193 >>提交高价值目标
+.accept 10329 >>接受关闭Manaforge B'naar
 .goto Netherstorm,32.00,64.08
-.turnin 10204 >> 交出血腥结晶
+.turnin 10204 >>交出血腥结晶
 .goto Netherstorm,32.05,63.99
-.turnin 10262 >> 交上一堆以太币
-.accept 10205 >> 接受变形突袭者Nesaad
+.turnin 10262 >>交上一堆以太币
+.accept 10205 >>接受变形突袭者Nesaad
 .goto Netherstorm,32.44,64.20
-.turnin 10701 >> 转身击倒Netherock
+.turnin 10701 >>转身击倒Netherock
 .goto Netherstorm,32.68,64.41,30,0
 .goto Netherstorm,32.73,64.96
-.turnin 10206 >> 上车取你的零件
-.turnin 10261 >> 通缉犯：歼灭机伺服！
-.accept 10232 >> 与军团一刀两断
-.accept 10333 >> 接受帮助Mama Wheeler
+.turnin 10206 >>上车取你的零件
+.turnin 10261 >>通缉犯：歼灭机伺服！
+.accept 10232 >>与军团一刀两断
+.accept 10333 >>接受帮助Mama Wheeler
 .goto Netherstorm,32.99,64.66
 .isQuestComplete 10701
 .isQuestComplete 10261
 step
 #scryer
 >>返回52区。与Thalodien、Larynna、Khay'ji、Fuselage和Papa交谈
-.turnin 10193 >> 提交高价值目标
-.accept 10329 >> 接受关闭Manaforge B'naar
+.turnin 10193 >>提交高价值目标
+.accept 10329 >>接受关闭Manaforge B'naar
 .goto Netherstorm,32.00,64.08
-.turnin 10204 >> 交出血腥结晶
+.turnin 10204 >>交出血腥结晶
 .goto Netherstorm,32.05,63.99
-.turnin 10262 >> 交上一堆以太币
-.accept 10205 >> 接受变形突袭者Nesaad
+.turnin 10262 >>交上一堆以太币
+.accept 10205 >>接受变形突袭者Nesaad
 .goto Netherstorm,32.44,64.20
-.turnin 10701 >> 转身击倒Netherock
+.turnin 10701 >>转身击倒Netherock
 .goto Netherstorm,32.68,64.41,30,0
 .goto Netherstorm,32.73,64.96
-.turnin 10206 >> 上车取你的零件
-.accept 10232 >> 与军团一刀两断
-.accept 10333 >> 接受帮助Mama Wheeler
+.turnin 10206 >>上车取你的零件
+.accept 10232 >>与军团一刀两断
+.accept 10333 >>接受帮助Mama Wheeler
 .goto Netherstorm,32.99,64.66
 .isQuestComplete 10701
 step
 #scryer
 >>返回52区。与Thalodien、Larynna、Khay'ji和爸爸交谈
-.turnin 10193 >> 提交高价值目标
-.accept 10329 >> 接受关闭Manaforge B'naar
+.turnin 10193 >>提交高价值目标
+.accept 10329 >>接受关闭Manaforge B'naar
 .goto Netherstorm,32.00,64.08
-.turnin 10204 >> 交出血腥结晶
+.turnin 10204 >>交出血腥结晶
 .goto Netherstorm,32.05,63.99
-.turnin 10262 >> 交上一堆以太币
-.accept 10205 >> 接受变形突袭者Nesaad
+.turnin 10262 >>交上一堆以太币
+.accept 10205 >>接受变形突袭者Nesaad
 .goto Netherstorm,32.44,64.20
-.turnin 10206 >> 上车取你的零件
-.turnin 10261 >> 通缉犯：歼灭机伺服！
-.accept 10232 >> 与军团一刀两断
-.accept 10333 >> 接受帮助Mama Wheeler
+.turnin 10206 >>上车取你的零件
+.turnin 10261 >>通缉犯：歼灭机伺服！
+.accept 10232 >>与军团一刀两断
+.accept 10333 >>接受帮助Mama Wheeler
 .goto Netherstorm,32.99,64.66
 .isQuestComplete 10261
 step
 #scryer
 #label A52
 >>返回52区。与Thalodien、Larynna、Khay'ji和爸爸交谈
-.turnin 10193 >> 提交高价值目标
-.accept 10329 >> 接受关闭Manaforge B'naar
+.turnin 10193 >>提交高价值目标
+.accept 10329 >>接受关闭Manaforge B'naar
 .goto Netherstorm,32.00,64.08
-.turnin 10204 >> 交出血腥结晶
+.turnin 10204 >>交出血腥结晶
 .goto Netherstorm,32.05,63.99
-.turnin 10262 >> 交上一堆以太币
-.accept 10205 >> 接受变形突袭者Nesaad
+.turnin 10262 >>交上一堆以太币
+.accept 10205 >>接受变形突袭者Nesaad
 .goto Netherstorm,32.44,64.20
-.turnin 10206 >> 上车取你的零件
-.accept 10232 >> 与军团一刀两断
-.accept 10333 >> 接受帮助Mama Wheeler
+.turnin 10206 >>上车取你的零件
+.accept 10232 >>与军团一刀两断
+.accept 10333 >>接受帮助Mama Wheeler
 .goto Netherstorm,32.99,64.66
 step
 >>返回52区。与凯伊吉、福塞拉吉和爸爸交谈
-.turnin 10262 >> 交上一堆以太币
-.accept 10205 >> 接受变形突袭者Nesaad
+.turnin 10262 >>交上一堆以太币
+.accept 10205 >>接受变形突袭者Nesaad
 .goto Netherstorm,32.44,64.20
-.turnin 10701 >> 转身击倒Netherock
+.turnin 10701 >>转身击倒Netherock
 .goto Netherstorm,32.68,64.41,30,0
 .goto Netherstorm,32.73,64.96
-.turnin 10206 >> 上车取你的零件
-.turnin 10261 >> 通缉犯：歼灭机伺服！
-.accept 10232 >> 与军团一刀两断
-.accept 10333 >> 接受帮助Mama Wheeler
+.turnin 10206 >>上车取你的零件
+.turnin 10261 >>通缉犯：歼灭机伺服！
+.accept 10232 >>与军团一刀两断
+.accept 10333 >>接受帮助Mama Wheeler
 .goto Netherstorm,32.99,64.66
 .isQuestComplete 10701
 .isQuestComplete 10261
 step
 >>返回52区。与凯伊吉、福塞拉吉和爸爸交谈
-.turnin 10262 >> 交上一堆以太币
-.accept 10205 >> 接受变形突袭者Nesaad
+.turnin 10262 >>交上一堆以太币
+.accept 10205 >>接受变形突袭者Nesaad
 .goto Netherstorm,32.44,64.20
-.turnin 10701 >> 转身击倒Netherock
+.turnin 10701 >>转身击倒Netherock
 .goto Netherstorm,32.68,64.41,30,0
 .goto Netherstorm,32.73,64.96
-.turnin 10206 >> 上车取你的零件
-.accept 10232 >> 与军团一刀两断
-.accept 10333 >> 接受帮助Mama Wheeler
+.turnin 10206 >>上车取你的零件
+.accept 10232 >>与军团一刀两断
+.accept 10333 >>接受帮助Mama Wheeler
 .goto Netherstorm,32.99,64.66
 .isQuestComplete 10701
 step
 >>返回52区。与凯吉和爸爸交谈
-.turnin 10262 >> 交上一堆以太币
-.accept 10205 >> 接受变形突袭者Nesaad
+.turnin 10262 >>交上一堆以太币
+.accept 10205 >>接受变形突袭者Nesaad
 .goto Netherstorm,32.44,64.20
-.turnin 10206 >> 上车取你的零件
-.turnin 10261 >> 通缉犯：歼灭机伺服！
-.accept 10232 >> 与军团一刀两断
-.accept 10333 >> 接受帮助Mama Wheeler
+.turnin 10206 >>上车取你的零件
+.turnin 10261 >>通缉犯：歼灭机伺服！
+.accept 10232 >>与军团一刀两断
+.accept 10333 >>接受帮助Mama Wheeler
 .goto Netherstorm,32.99,64.66
 .isQuestComplete 10261
 step
 >>返回52区。与凯吉和爸爸交谈
-.turnin 10262 >> 交上一堆以太币
-.accept 10205 >> 接受变形突袭者Nesaad
+.turnin 10262 >>交上一堆以太币
+.accept 10205 >>接受变形突袭者Nesaad
 .goto Netherstorm,32.44,64.20
-.turnin 10206 >> 上车取你的零件
-.accept 10232 >> 与军团一刀两断
-.accept 10333 >> 接受帮助Mama Wheeler
+.turnin 10206 >>上车取你的零件
+.accept 10232 >>与军团一刀两断
+.accept 10333 >>接受帮助Mama Wheeler
 .goto Netherstorm,32.99,64.66
 step
 #requires NetherRay2
@@ -29333,74 +29835,74 @@ step
 .complete 10205,1 
 step << Shaman
 #completewith X
-.hs >> 炉膛至52区
+.hs >>炉膛至52区
 .cooldown item,6948,>0
 step
 #sticky
 #label NetherRay3
 .goto Netherstorm,32.27,63.92,0,0
 >>与Boots交谈
-.turnin 10199 >> 把那个额外的小腿交上来
+.turnin 10199 >>把那个额外的小腿交上来
 .isQuestComplete 10199
 step
 #aldor
 >>返回52区。与卡贾、奥利利斯、凯伊吉和爸爸交谈
-.turnin 10299 >> 关闭Manaforge B'naar
-.accept 10321 >> 接受关闭Manaforge Coruu
+.turnin 10299 >>关闭Manaforge B'naar
+.accept 10321 >>接受关闭Manaforge Coruu
 .goto Netherstorm,32.04,64.18
-.accept 10246 >> 接受对Manaforge Coruu的攻击
+.accept 10246 >>接受对Manaforge Coruu的攻击
 .goto Netherstorm,32.07,64.18
-.turnin 10205 >> 交出曲速突袭者Nesaad
-.accept 10266 >> 接受援助请求
+.turnin 10205 >>交出曲速突袭者Nesaad
+.accept 10266 >>接受援助请求
 .goto Netherstorm,32.44,64.20
-.turnin 10261 >> 通缉犯：歼灭机伺服！
+.turnin 10261 >>通缉犯：歼灭机伺服！
 .goto Netherstorm,32.99,64.66
 .isQuestComplete 10261
 step
 #aldor
 >>返回52区。与卡贾、奥利利斯和凯伊吉交谈
-.turnin 10299 >> 关闭Manaforge B'naar
-.accept 10321 >> 接受关闭Manaforge Coruu
+.turnin 10299 >>关闭Manaforge B'naar
+.accept 10321 >>接受关闭Manaforge Coruu
 .goto Netherstorm,32.04,64.18
-.accept 10246 >> 接受对Manaforge Coruu的攻击
+.accept 10246 >>接受对Manaforge Coruu的攻击
 .goto Netherstorm,32.07,64.18
-.turnin 10205 >> 交出曲速突袭者Nesaad
-.accept 10266 >> 接受援助请求
+.turnin 10205 >>交出曲速突袭者Nesaad
+.accept 10266 >>接受援助请求
 .goto Netherstorm,32.44,64.20
 step
 #scryer
 >>返回52区。与Thalodien、Khay'ji和Papa交谈
-.turnin 10329 >> 关闭Manaforge B'naar
-.accept 10194 >> 接受隐形飞行
+.turnin 10329 >>关闭Manaforge B'naar
+.accept 10194 >>接受隐形飞行
 .goto Netherstorm,32.00,64.08
-.turnin 10205 >> 交出曲速突袭者Nesaad
-.accept 10266 >> 接受援助请求
+.turnin 10205 >>交出曲速突袭者Nesaad
+.accept 10266 >>接受援助请求
 .goto Netherstorm,32.44,64.20
-.turnin 10261 >> 通缉犯：歼灭机伺服！
+.turnin 10261 >>通缉犯：歼灭机伺服！
 .goto Netherstorm,32.99,64.66
 .isQuestComplete 10261
 step
 #scryer
 >>返回52区。与Thalodien和Khay'ji交谈
-.turnin 10329 >> 关闭Manaforge B'naar
-.accept 10194 >> 接受隐形飞行
+.turnin 10329 >>关闭Manaforge B'naar
+.accept 10194 >>接受隐形飞行
 .goto Netherstorm,32.00,64.08
-.turnin 10205 >> 交出曲速突袭者Nesaad
-.accept 10266 >> 接受援助请求
+.turnin 10205 >>交出曲速突袭者Nesaad
+.accept 10266 >>接受援助请求
 .goto Netherstorm,32.44,64.20
 step
 >>返回52区。与凯吉交谈
-.turnin 10205 >> 交出曲速突袭者Nesaad
-.accept 10266 >> 接受援助请求
+.turnin 10205 >>交出曲速突袭者Nesaad
+.accept 10266 >>接受援助请求
 .goto Netherstorm,32.44,64.20
 step
 #requires NetherRay3
-.abandon 10261 >> 需要放弃：毁灭者伺服！
+.abandon 10261 >>需要放弃：毁灭者伺服！
 step
 #requires NetherRay3
 .goto Netherstorm,31.52,56.60
 >>与Alley交谈
-.turnin 10190 >> 轮流给蓄电池重新充电
+.turnin 10190 >>轮流给蓄电池重新充电
 .isQuestComplete 10190
 step
 #requires NetherRay3
@@ -29439,7 +29941,7 @@ step
 step
 .goto Netherstorm,31.52,56.60
 >>与Alley交谈
-.turnin 10190 >> 轮流给蓄电池重新充电
+.turnin 10190 >>轮流给蓄电池重新充电
 step
 .goto Netherstorm,34.71,59.53,10,0
 .goto Netherstorm,35.01,59.57
@@ -29447,74 +29949,74 @@ step
 .complete 10221,1 
 step
 #scryer
-.turnin 10199 >> 把那个额外的小腿交上来
+.turnin 10199 >>把那个额外的小腿交上来
 .goto Netherstorm,32.27,63.92
 step
 #aldor
 .goto Netherstorm,33.74,63.99
 >>返回52区
-.fp Area 52 >> 获取52区飞行路线
+.fp Area 52 >>获取52区飞行路线
 step
 #aldor
 >>与Boots和Ravandwyr交谈
-.turnin 10199 >> 把那个额外的小腿交上来
+.turnin 10199 >>把那个额外的小腿交上来
 .goto Netherstorm,32.27,63.92
-.turnin 10300 >> 上缴重建员工
-.accept 10174 >> 接受紫罗兰塔的诅咒
+.turnin 10300 >>上缴重建员工
+.accept 10174 >>接受紫罗兰塔的诅咒
 .goto Netherstorm,31.36,66.15
 .isQuestComplete 10199
 step
 #aldor
 >>与Ravandwyr交谈
-.turnin 10300 >> 上缴重建员工
-.accept 10174 >> 接受紫罗兰塔的诅咒
+.turnin 10300 >>上缴重建员工
+.accept 10174 >>接受紫罗兰塔的诅咒
 .goto Netherstorm,31.36,66.15
 step
 #scryer
 >>返回52区。与Boots和Ravandwyr交谈
-.turnin 10199 >> 把那个额外的小腿交上来
+.turnin 10199 >>把那个额外的小腿交上来
 .goto Netherstorm,32.27,63.92
-.turnin 10300 >> 上缴重建员工
-.accept 10174 >> 接受紫罗兰塔的诅咒
+.turnin 10300 >>上缴重建员工
+.accept 10174 >>接受紫罗兰塔的诅咒
 .goto Netherstorm,31.36,66.15
 .isOnQuest 10199
 step
 >>返回52区。与Ravandwyr交谈
-.turnin 10300 >> 上缴重建员工
-.accept 10174 >> 接受紫罗兰塔的诅咒
+.turnin 10300 >>上缴重建员工
+.accept 10174 >>接受紫罗兰塔的诅咒
 .goto Netherstorm,31.36,66.15
 step
 #completewith next
-.cast 34372 >> 在你的包里使用大法师瓦尔哥特的杖
+.cast 34372 >>在你的包里使用大法师瓦尔哥特的杖
 .use 28455
 step
 >>谈大法师瓦尔戈特的形象
-.turnin 10174 >> 紫罗塔的诅咒
-.accept 10188 >> 接受克拉苏斯的符号
+.turnin 10174 >>紫罗塔的诅咒
+.accept 10188 >>接受克拉苏斯的符号
 .use 28455
 step
 >>与Blastfizzle交谈
 .goto Netherstorm,34.19,68.15
-.turnin 10221 >> 交给Boom博士！
+.turnin 10221 >>交给Boom博士！
 step
 #scryer
 .goto Netherstorm,33.74,63.99
 >>不要在飞行路线旁边交出任务
-.fp Area 52 >> 获取52区飞行路线
+.fp Area 52 >>获取52区飞行路线
 step
 #scryer
 .goto Netherstorm,33.81,64.23
 .fly >>与维罗尼亚通话，飞往马纳福吉科鲁
-.turnin 10194 >> 转入隐形飞行
-.accept 10652 >> 在敌后接受
+.turnin 10194 >>转入隐形飞行
+.accept 10652 >>在敌后接受
 .skipgossip
 .timer 42,Behind Enemy Lines flight
 step
 #scryer
 .goto Netherstorm,48.24,86.60
 >>着陆时与Caledis交谈
-.turnin 10652 >> 在敌后转向
-.accept 10197 >> 接受令人信服的伪装
+.turnin 10652 >>在敌后转向
+.accept 10197 >>接受令人信服的伪装
 step
 .loop 55,Netherstorm,43.98,74.78,44.74,73.12,45.43,73.76,47.55,71.44,44.47,70.12,43.10,67.80,42.50,68.79,43.98,74.78
 >>杀死幽冥射线。抢劫他们的毒刺
@@ -29523,7 +30025,7 @@ step
 #aldor
 #completewith next
 .goto Netherstorm,44.07,76.56,40,0
-.goto Netherstorm,45.55,78.99,40 >> 穿过大桥前往马纳福戈-科鲁
+.goto Netherstorm,45.55,78.99,40 >>穿过大桥前往马纳福戈-科鲁
 .skill riding,225,1
 step
 #scryer
@@ -29532,14 +30034,14 @@ step
 .complete 10197,1 
 step
 >>前往基林瓦尔。与Thadell、Andrethan、Morran和Dieworth交谈
-.accept 10334 >> 接受需要更多牛铃
+.accept 10334 >>接受需要更多牛铃
 .goto Netherstorm,57.73,84.94
-.accept 10331 >> 接受必要的工具
+.accept 10331 >>接受必要的工具
 .goto Netherstorm,57.71,85.19
-.accept 10343 >> 接受无尽的入侵
+.accept 10343 >>接受无尽的入侵
 .goto Netherstorm,57.58,86.30
-.accept 10184 >> 接受邪恶残余
-.accept 10185 >> 接受比死亡更糟糕的命运
+.accept 10184 >>接受邪恶残余
+.accept 10185 >>接受比死亡更糟糕的命运
 .goto Netherstorm,57.50,86.34
 step
 .goto Netherstorm,55.68,87.17
@@ -29548,8 +30050,8 @@ step
 step
 .goto Netherstorm,57.58,86.30
 >>与莫兰交谈
-.turnin 10343 >> 交出永恒的入侵
-.accept 10239 >> 接受潜在能源
+.turnin 10343 >>交出永恒的入侵
+.accept 10239 >>接受潜在能源
 step
 #requires boxesnether
 #completewith Arcanists
@@ -29629,12 +30131,12 @@ step
 #scryer
 .goto Netherstorm,48.24,86.60
 >>与Caledis交谈
-.turnin 10197 >> 伪装得令人信服
-.accept 10198 >> 接受信息收集
+.turnin 10197 >>伪装得令人信服
+.accept 10198 >>接受信息收集
 step
 #scryer
 #completewith next
-.cast 34603 >> 在你进入马纳福格·科鲁之前，在你的包里使用太阳怒伪装
+.cast 34603 >>在你进入马纳福格·科鲁之前，在你的包里使用太阳怒伪装
 .use 28607
 step
 #scryer
@@ -29648,8 +30150,8 @@ step
 #scryer
 .goto Netherstorm,48.24,86.60
 >>与Calenis交谈
-.turnin 10198 >> 提交信息收集
-.accept 10330 >> 接受关闭Manaforge Coruu
+.turnin 10198 >>提交信息收集
+.accept 10330 >>接受关闭Manaforge Coruu
 step
 #scryer
 #completewith Coruu
@@ -29678,23 +30180,23 @@ step
 #scryer
 .goto Netherstorm,48.24,86.60
 >>与Calenis交谈
-.turnin 10330 >> 关闭Manaforge Coruu
-.accept 10200 >> 接受返回Thalodien
+.turnin 10330 >>关闭Manaforge Coruu
+.accept 10200 >>接受返回Thalodien
 step
 #completewith next
-.cast 34372 >> 在你的包里使用大法师瓦尔哥特的杖
+.cast 34372 >>在你的包里使用大法师瓦尔哥特的杖
 .use 28455
 step
 >>谈大法师瓦尔戈特的形象
-.turnin 10188 >> 交出克拉苏斯的符号
-.accept 10192 >> 接受Krasus的纲要
+.turnin 10188 >>交出克拉苏斯的符号
+.accept 10192 >>接受Krasus的纲要
 step
 #label boxesnether
 >>返回麒麟湾。与莫兰和迪沃斯交谈
-.turnin 10239 >> 交出潜在能源
-.accept 10240 >> 接受构建周长
+.turnin 10239 >>交出潜在能源
+.accept 10240 >>接受构建周长
 .goto Netherstorm,57.58,86.30
-.accept 10222 >> 接受太阳怒卫队
+.accept 10222 >>接受太阳怒卫队
 .goto Netherstorm,57.50,86.34
 step
 #completewith Kirin2
@@ -29705,7 +30207,7 @@ step
 .line Netherstorm,57.78,88.17,58.10,88.69,58.45,88.33,58.92,88.38,59.03,88.24
 .use 29234 >>杀死Abjurist Belmara。为她的汤姆抢劫她。在您的包中点击它
 .collect 29234,1,10305 
-.accept 10305 >> 接受Abjurit Belmara
+.accept 10305 >>接受Abjurit Belmara
 .unitscan Abjurist Belmara
 step
 >>到房子里面去。盗取其中的简编章节
@@ -29724,16 +30226,16 @@ step
 .goto Netherstorm,59.03,88.24
 .use 29234 >>杀死Abjurist Belmara。为她的汤姆抢劫她。在您的包中点击它
 .collect 29234,1,10305 
-.accept 10305 >> 接受Abjurit Belmara
+.accept 10305 >>接受Abjurit Belmara
 .unitscan Abjurist Belmara
 step
 #completewith next
-.cast 34372 >> 在你的包里使用大法师瓦尔哥特的杖
+.cast 34372 >>在你的包里使用大法师瓦尔哥特的杖
 .use 28455
 step
 >>谈大法师瓦尔戈特的形象
-.turnin 10192 >> 交上克拉索斯的纲要
-.accept 10301 >> 接受解锁概要
+.turnin 10192 >>交上克拉索斯的纲要
+.accept 10301 >>接受解锁概要
 step
 #sticky
 #label ERune
@@ -29751,7 +30253,7 @@ step
 .goto Netherstorm,58.98,85.69
 .use 29236 >>杀死科利安·弗罗斯特韦弗。抢他的帽子。在您的包中点击它
 .collect 29236,1,10307 
-.accept 10307 >> 接受科利安·弗罗斯特韦弗
+.accept 10307 >>接受科利安·弗罗斯特韦弗
 .unitscan Cohlien Frostweaver
 step
 .use 29235 >>杀死巫师卢米纳特。抢劫他的斗篷。在您的包中点击它
@@ -29761,7 +30263,7 @@ step
 .goto Netherstorm,59.72,84.79
 .line Netherstorm,59.72,84.79,59.91,84.30,60.28,84.90,59.49,86.12
 .collect 29235,1,10306 
-.accept 10306 >> 接受魔术师Luminrath
+.accept 10306 >>接受魔术师Luminrath
 .unitscan Conjurer Luminrath
 step
 .loop 45,Netherstorm,61.00,83.65,61.49,84.25,61.44,85.11,61.17,85.48,61.03,84.67,61.00,83.65
@@ -29769,23 +30271,23 @@ step
 .complete 10331,1 
 step
 >>返回麒麟湾。与Andrethan、Morran和Dieworth交谈
-.turnin 10331 >> 交回必要的工具
-.accept 10332 >> 接受Smith Rhonsus大师
+.turnin 10331 >>交回必要的工具
+.accept 10332 >>接受Smith Rhonsus大师
 .goto Netherstorm,57.71,85.19
-.accept 10233 >> 接受火把烈日之怒保持
+.accept 10233 >>接受火把烈日之怒保持
 .goto Netherstorm,57.58,86.30
-.turnin 10184 >> 交出恶意残留物
-.accept 10312 >> 接受《基林瓦尔纪事》
+.turnin 10184 >>交出恶意残留物
+.accept 10312 >>接受《基林瓦尔纪事》
 .goto Netherstorm,57.50,86.34
 .isQuestComplete 10184
 step
 #label Kirin2
 #requires ERune
 >>返回麒麟湾。与Andrean和Morran交谈
-.turnin 10331 >> 交回必要的工具
-.accept 10332 >> 接受Smith Rhonsus大师
+.turnin 10331 >>交回必要的工具
+.accept 10332 >>接受Smith Rhonsus大师
 .goto Netherstorm,57.71,85.19
-.accept 10233 >> 接受火把烈日之怒保持
+.accept 10233 >>接受火把烈日之怒保持
 .goto Netherstorm,57.58,86.30
 step
 .goto Netherstorm,57.35,82.90
@@ -29803,7 +30305,7 @@ step
 step
 .loop 35,Netherstorm,55.93,80.13,56.52,79.24,57.08,78.44,56.73,77.43,55.88,76.58,55.18,77.40,55.93,80.13
 >>在太阳怒堡杀死太阳怒火焰守卫。抢他们当火炬
-.use 28550 >>快速使用Ballistas和Tents旁边的火炬。如果您的火炬过期（持续5分钟），则抢劫另一支火炬
+.use 28550 >>快速使用Ballistas和Tents旁边的火炬。如果您的火炬过期(持续5分钟)，则抢劫另一支火炬
 .collect 28550,1,10233,0x1
 .complete 10233,1 
 .complete 10233,2 
@@ -29831,142 +30333,142 @@ step
 .complete 10222,1 
 step
 #completewith next
-.cast 34372 >> 在你的包里使用大法师瓦尔哥特的杖
+.cast 34372 >>在你的包里使用大法师瓦尔哥特的杖
 .use 28455
 step
 >>谈大法师瓦尔戈特的形象
-.turnin 10301 >> 打开大纲
-.accept 10209 >> 接受召唤师坎丁奖
+.turnin 10301 >>打开大纲
+.accept 10209 >>接受召唤师坎丁奖
 step
 .goto Netherstorm,54.30,86.07
 .use 28725 >>在Kirin'Var符文上使用包中的符文激活设备
 .complete 10240,3 
 step
 >>返回麒麟湾。与迪沃斯和莫兰交谈
-.turnin 10222 >> 交出太阳怒卫队
-.accept 10223 >> 接受Daellis的拒绝
+.turnin 10222 >>交出太阳怒卫队
+.accept 10223 >>接受Daellis的拒绝
 .goto Netherstorm,57.50,86.34
-.turnin 10233 >> 交出火把太阳怒
-.turnin 10240 >> 转入构建周长
+.turnin 10233 >>交出火把太阳怒
+.turnin 10240 >>转入构建周长
 .goto Netherstorm,57.58,86.30
 step << Druid
 #scryer
 #completewith next
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 step << Druid
 #scryer
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << DK
 #scryer
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 step << DK
 #scryer
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.trainer >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.trainer >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 step << Druid
 #aldor
 #completewith next
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 step << Druid
 #aldor
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.trainer >> 训练你的职业咒语
+.trainer >>训练你的职业咒语
 step << DK
 #aldor
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 step << DK
 #aldor
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.trainer >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.trainer >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 step
 #aldor
-.hs >> 炉膛至52区
+.hs >>炉膛至52区
 .zoneskip Netherstorm
 step
 #scryer
-.hs >> 炉膛至52区
+.hs >>炉膛至52区
 .zoneskip Netherstorm
 step
 #aldor
 >>返回52区。与外面的卡贾、奥利利斯和布茨交谈
-.turnin 10321 >> 关闭Manaforge Coruu
-.accept 10322 >> 接受关闭Manaforge Duro
+.turnin 10321 >>关闭Manaforge Coruu
+.accept 10322 >>接受关闭Manaforge Duro
 .goto Netherstorm,32.04,64.18
-.turnin 10246 >> 攻击马纳福格·科鲁
-.accept 10328 >> 接受Sunfrew简报
+.turnin 10246 >>攻击马纳福格·科鲁
+.accept 10328 >>接受Sunfrew简报
 .goto Netherstorm,32.07,64.18
-.turnin 10199 >> 把那个额外的小腿交上来
+.turnin 10199 >>把那个额外的小腿交上来
 .goto Netherstorm,32.27,63.92
 .isOnQuest 10199
 step
 #aldor
 >>返回52区。与卡贾和奥利利斯交谈
-.turnin 10321 >> 关闭Manaforge Coruu
-.accept 10322 >> 接受关闭Manaforge Duro
+.turnin 10321 >>关闭Manaforge Coruu
+.accept 10322 >>接受关闭Manaforge Duro
 .goto Netherstorm,32.04,64.18
-.turnin 10246 >> 攻击马纳福格·科鲁
-.accept 10328 >> 接受Sunfrew简报
+.turnin 10246 >>攻击马纳福格·科鲁
+.accept 10328 >>接受Sunfrew简报
 .goto Netherstorm,32.07,64.18
 step
 #scryer
 >>返回52区。与Thalodien和Larynna交谈
-.turnin 10200 >> 返回Thalodien
-.accept 10338 >> 接受关闭Manaforge Duro
+.turnin 10200 >>返回Thalodien
+.accept 10338 >>接受关闭Manaforge Duro
 .goto Netherstorm,32.00,64.08
-.accept 10341 >> 接受在他们倒下时踢他们
+.accept 10341 >>接受在他们倒下时踢他们
 .goto Netherstorm,32.05,63.99
 step
 #aldor
 #completewith Midrealm
 .goto Netherstorm,41.05,63.20,50,0
-.goto Netherstorm,42.31,60.49,50 >> 过桥去Midrealm Post
+.goto Netherstorm,42.31,60.49,50 >>过桥去Midrealm Post
 .skill riding,225,1
 step
 #scryer
 #completewith Midrealm
 .goto Netherstorm,41.05,63.20,50,0
-.goto Netherstorm,42.31,60.49,50 >> 过桥去Midrealm Post
+.goto Netherstorm,42.31,60.49,50 >>过桥去Midrealm Post
 .skill riding,225,1
 step
 #level 68
 >>前往Midrealm Post。与Gahruj、Mama、Mehrdad和Pore交谈
-.turnin 10266 >> 移交援助请求
-.accept 10267 >> 接受正确的重新占有
-.accept 10311 >> 接受Drijya需要你的帮助
+.turnin 10266 >>移交援助请求
+.accept 10267 >>接受正确的重新占有
+.accept 10311 >>接受Drijya需要你的帮助
 .goto Netherstorm,46.66,56.94
-.turnin 10333 >> 交上来帮助妈妈惠勒
-.accept 10234 >> 接受一个恶魔的垃圾。。。
+.turnin 10333 >>交上来帮助妈妈惠勒
+.accept 10234 >>接受一个恶魔的垃圾。。。
 .goto Netherstorm,46.63,56.53
-.accept 10348 >> 接受新机会
-.accept 10417 >> 接受运行诊断！
+.accept 10348 >>接受新机会
+.accept 10417 >>接受运行诊断！
 .goto Netherstorm,46.45,56.41
-.accept 10433 >> 接受保持外观
+.accept 10433 >>接受保持外观
 .goto Netherstorm,46.48,56.04
 step
 #label Midrealm
 >>前往Midrealm Post。与Gahruj、Mama、Mehrdad和Pore交谈
-.turnin 10266 >> 移交援助请求
-.accept 10267 >> 接受正确的重新占有
-.accept 10311 >> 接受Drijya需要你的帮助
+.turnin 10266 >>移交援助请求
+.accept 10267 >>接受正确的重新占有
+.accept 10311 >>接受Drijya需要你的帮助
 .goto Netherstorm,46.66,56.94
-.turnin 10333 >> 交上来帮助妈妈惠勒
-.accept 10234 >> 接受一个恶魔的垃圾。。。
+.turnin 10333 >>交上来帮助妈妈惠勒
+.accept 10234 >>接受一个恶魔的垃圾。。。
 .goto Netherstorm,46.63,56.53
-.accept 10348 >> 接受新机会
-.accept 10417 >> 接受运行诊断！
+.accept 10348 >>接受新机会
+.accept 10417 >>接受运行诊断！
 .goto Netherstorm,46.45,56.41
-.accept 10433 >> 接受保持外观
+.accept 10433 >>接受保持外观
 .goto Netherstorm,46.48,56.04
 step
 .goto Netherstorm,48.23,55.00
@@ -29975,8 +30477,8 @@ step
 step
 .goto Netherstorm,46.45,56.41
 >>与Mehrdad交谈
-.turnin 10417 >> 打开运行诊断！
-.accept 10418 >> 接受与破坏者的交易
+.turnin 10417 >>打开运行诊断！
+.accept 10418 >>接受与破坏者的交易
 step
 #completewith RipfangL
 >>掠夺生态穹顶内的白色和紫色花朵
@@ -30000,12 +30502,12 @@ step
 .complete 10348,1 
 step
 >>与Pore和Mehrdad交谈
-.turnin 10433 >> 交上来保持形象
-.accept 10434 >> 接受动感双人组
+.turnin 10433 >>交上来保持形象
+.accept 10434 >>接受动感双人组
 .goto Netherstorm,46.48,56.04
-.turnin 10348 >> 提交新机会
-.turnin 10418 >> 与破坏者交锋
-.accept 10423 >> 接受风暴风暴
+.turnin 10348 >>提交新机会
+.turnin 10418 >>与破坏者交锋
+.accept 10423 >>接受风暴风暴
 .goto Netherstorm,46.45,56.41
 step
 #aldor
@@ -30022,8 +30524,8 @@ step
 step
 .goto Netherstorm,46.63,56.53
 >>和妈妈谈谈
-.turnin 10234 >> 交出一个恶魔的垃圾。。。
-.accept 10235 >> 接受破除末日法则
+.turnin 10234 >>交出一个恶魔的垃圾。。。
+.accept 10235 >>接受破除末日法则
 step
 #aldor
 #completewith next
@@ -30036,41 +30538,41 @@ step
 step
 .goto Netherstorm,46.63,56.53
 >>和妈妈谈谈
-.turnin 10235 >> 上缴破除末日法则
-.accept 10237 >> 接受52区警告！
+.turnin 10235 >>上缴破除末日法则
+.accept 10237 >>接受52区警告！
 step
 .goto Netherstorm,48.11,63.50
 >>与Drijya交谈。如果他不在，跳过这一步
-.turnin 10311 >> 交给Drijya需要你的帮助
+.turnin 10311 >>交给Drijya需要你的帮助
 
 .isOnQuest 10311
 step
-.abandon 10311 >> 放弃Drijya需要你的帮助
+.abandon 10311 >>放弃Drijya需要你的帮助
 step << tbc
 #xprate <1.5
 .goto Netherstorm,65.20,66.81
-.fp Cosmowrench >> 获取Cosmowrench飞行路线
+.fp Cosmowrench >>获取Cosmowrench飞行路线
 step << tbc
 #xprate <1.5
 .goto Netherstorm,66.39,67.30
 >>与Sab'aoth交谈
-.accept 10924 >> 接受血腥的不可能！
+.accept 10924 >>接受血腥的不可能！
 
 step << tbc
 #xprate <1.5
 #completewith next
-.cast 39242 >> 使用背包中的Zeppit水晶召唤Zeppit
+.cast 39242 >>使用背包中的Zeppit水晶召唤Zeppit
 .use 31815
 step << tbc
 #xprate <1.5
 .loop 55,Netherstorm,64.66,64.22,63.23,65.15,63.26,60.63,59.18,59.43,59.71,58.21,62.15,58.72,66.59,58.65,67.18,63.83,64.66,64.22
-.use 31815 >>当Zeppit被召唤时，杀死Zeppit近距离范围内的曲速追击者。他会为你洗劫他们的鲜血（确保你在Zeppit的近旁，然后放在你的袋子里）。曲速追击者在战斗中大约75%的时间是隐形的
+.use 31815 >>当Zeppit被召唤时，杀死Zeppit近距离范围内的曲速追击者。他会为你洗劫他们的鲜血(确保你在Zeppit的近旁，然后放在你的袋子里)。曲速追击者在战斗中大约75%的时间是隐形的
 .complete 10924,1 
 step << tbc
 #xprate <1.5
 .goto Netherstorm,66.39,67.30
 >>与Sab'aoth交谈
-.turnin 10924 >> 交给血腥小鬼！
+.turnin 10924 >>交给血腥小鬼！
 step
 #scryer
 #completewith Daellis
@@ -30158,13 +30660,13 @@ step
 .unitscan Master Daellis Dawnstrike
 step
 #completewith next
-.cast 34372 >> 在你的包里使用大法师瓦尔哥特的杖
+.cast 34372 >>在你的包里使用大法师瓦尔哥特的杖
 .use 28455
 step
 #label Daellis
 >>谈大法师瓦尔戈特的形象
-.turnin 10209 >> 交出传唤官Kanthin的奖品
-.accept 10176 >> 接受守护者阿奎罗斯
+.turnin 10209 >>交出传唤官Kanthin的奖品
+.accept 10176 >>接受守护者阿奎罗斯
 step
 #scryer
 #completewith next
@@ -30200,12 +30702,12 @@ step
 step
 #completewith next
 .goto Netherstorm,51.30,71.16,50,0
-.goto Netherstorm,51.57,74.34,50 >> 穿过大桥回到基林瓦尔
+.goto Netherstorm,51.57,74.34,50 >>穿过大桥回到基林瓦尔
 .skill riding,225,1
 step
 .goto Netherstorm,57.50,86.34
 >>返回麒麟湾。与迪沃斯交谈
-.turnin 10223 >> 与Daellis同归于尽
+.turnin 10223 >>与Daellis同归于尽
 step
 .goto Netherstorm,58.06,86.40,15,0
 .goto Netherstorm,58.22,86.58
@@ -30214,7 +30716,7 @@ step
 step
 .goto Netherstorm,58.34,86.40
 >>爬到塔顶。与瓦哥特交谈
-.turnin 10176 >> 交给守护者阿奎洛斯
+.turnin 10176 >>交给守护者阿奎洛斯
 step
 #completewith next
 >>杀死被分割的灵魂和守卫
@@ -30236,31 +30738,31 @@ step
 #completewith next
 .goto Netherstorm,57.71,85.19
 >>与安德烈森交谈
-.turnin 10332 >> 交给史密斯·朗索斯大师
+.turnin 10332 >>交给史密斯·朗索斯大师
 step
 .goto Netherstorm,57.50,86.34
 >>与迪沃斯交谈
-.turnin 10184 >> 交出恶意残留物
-.accept 10312 >> 接受《基林瓦尔纪事》
+.turnin 10184 >>交出恶意残留物
+.accept 10312 >>接受《基林瓦尔纪事》
 step
 .goto Netherstorm,60.19,87.32,30,0
 .goto Netherstorm,60.40,88.01
 .use 29233 >>进入市政厅。杀死Dathric。抢走他的编年史和刀刃。单击包中的刀片
 .complete 10312,1 
 .collect 29233,1,10182,1 
-.accept 10182 >> 接受战斗法师Dathric
+.accept 10182 >>接受战斗法师Dathric
 step
 >>与安德烈森和迪沃斯交谈
-.turnin 10332 >> 交给史密斯·朗索斯大师
+.turnin 10332 >>交给史密斯·朗索斯大师
 .goto Netherstorm,57.71,85.19
-.turnin 10312 >> 上交《基林瓦尔年鉴》
-.accept 10316 >> 接受证据搜索
+.turnin 10312 >>上交《基林瓦尔年鉴》
+.accept 10316 >>接受证据搜索
 .goto Netherstorm,57.50,86.34
 .isOnQuest 10332
 step
 >>与迪沃斯交谈
-.turnin 10312 >> 上交《基林瓦尔年鉴》
-.accept 10316 >> 接受证据搜索
+.turnin 10312 >>上交《基林瓦尔年鉴》
+.accept 10316 >>接受证据搜索
 .goto Netherstorm,57.50,86.34
 step
 #completewith CohlienSp
@@ -30292,17 +30794,17 @@ step
 step
 .goto Netherstorm,57.50,86.34
 >>与迪沃斯交谈
-.turnin 10182 >> 交出战斗法师达思里克
-.turnin 10185 >> 交上比死亡更糟糕的命运
-.turnin 10305 >> 移交Abjurit Belmara
-.turnin 10306 >> 交给魔术师Luminrath
-.turnin 10307 >> 交出科利安·弗罗斯特韦弗
+.turnin 10182 >>交出战斗法师达思里克
+.turnin 10185 >>交上比死亡更糟糕的命运
+.turnin 10305 >>移交Abjurit Belmara
+.turnin 10306 >>交给魔术师Luminrath
+.turnin 10307 >>交出科利安·弗罗斯特韦弗
 step
 .goto Netherstorm,60.32,78.37,15,0
 .goto Netherstorm,60.30,77.97
 >>进入谷仓。与焦点对话
-.turnin 10316 >> 提交寻找证据
-.accept 10314 >> 接受持续的怀疑
+.turnin 10316 >>提交寻找证据
+.accept 10314 >>接受持续的怀疑
 step
 .loop 45,Netherstorm,60.90,78.59,61.92,79.96,60.81,81.13,59.75,82.42,58.99,80.72,60.90,78.59
 >>杀死受折磨的公民和灵魂。他们变成了Kirin'Var鬼魂。掠夺他们的残留物
@@ -30310,8 +30812,8 @@ step
 step
 .goto Netherstorm,59.15,78.78
 >>与贝西交谈。这就开始了护送
-.turnin 10334 >> 转入需要更多牛铃
-.accept 10337 >> 奶牛回家时接受
+.turnin 10334 >>转入需要更多牛铃
+.accept 10337 >>奶牛回家时接受
 step
 #completewith next
 >>杀死受折磨的公民和灵魂。他们变成了Kirin'Var鬼魂。掠夺他们的残留物
@@ -30326,10 +30828,10 @@ step
 .complete 10314,1 
 step
 >>与Thadell和Dieworth交谈
-.turnin 10337 >> 当奶牛回家的时候就睡觉
+.turnin 10337 >>当奶牛回家的时候就睡觉
 .goto Netherstorm,57.73,84.94
-.turnin 10314 >> 交出悬而未决的疑点
-.accept 10319 >> 接受采集母乳
+.turnin 10314 >>交出悬而未决的疑点
+.accept 10319 >>接受采集母乳
 .goto Netherstorm,57.50,86.34
 step
 .goto Netherstorm,59.86,80.39
@@ -30338,8 +30840,8 @@ step
 step
 >>与迪沃斯交谈
 .goto Netherstorm,57.50,86.34
-.turnin 10319 >> 轮流捕获植物园
-.accept 10320 >> 接受摧毁纳比略！
+.turnin 10319 >>轮流捕获植物园
+.accept 10320 >>接受摧毁纳比略！
 step
 .goto Netherstorm,62.68,78.85
 >>杀死教堂外的暴徒，然后杀死纳比略。从他的红色圆圈移到你下面的地方，用风筝把他绕到角落里，避开他的冰雹，注意他有一个30码外的被动呼救，小心他的击退。如果需要，为他找一个小组。如果你找不到一个团队或是独自一人，请跳过这一步。
@@ -30347,58 +30849,58 @@ step
 step
 .goto Netherstorm,57.50,86.34
 >>与迪沃斯交谈
-.turnin 10320 >> 投降，消灭纳比略！
+.turnin 10320 >>投降，消灭纳比略！
 .isQuestComplete 10320
 step
-.abandon 10320 >> 放弃摧毁纳比略！
+.abandon 10320 >>放弃摧毁纳比略！
 step
 #completewith next
-.hs >> 炉膛至52区
+.hs >>炉膛至52区
 step
 #aldor
 >>返回52区。与卡贾、奥利利斯、富塞拉奇和爸爸交谈
-.turnin 10322 >> 关闭Manaforge Duro
+.turnin 10322 >>关闭Manaforge Duro
 
 .goto Netherstorm,32.04,64.18
-.turnin 10328 >> 提交Sunfrew简报
-.accept 10431 >> 接受外部援助
+.turnin 10328 >>提交Sunfrew简报
+.accept 10431 >>接受外部援助
 .goto Netherstorm,32.07,64.18
-.turnin 10237 >> 进入52号警戒区！
-.accept 10247 >> 接受沃米萨博士。
+.turnin 10237 >>进入52号警戒区！
+.accept 10247 >>接受沃米萨博士。
 .goto Netherstorm,32.68,64.41,30,0
 .goto Netherstorm,32.73,64.96
-.turnin 10232 >> 与军团一起缴械
+.turnin 10232 >>与军团一起缴械
 .goto Netherstorm,32.99,64.66
 step
 #scryer
 >>返回52区。与Thalodien、Larynna、Fuselage和爸爸交谈
-.turnin 10338 >> 关闭Manaforge Duro
+.turnin 10338 >>关闭Manaforge Duro
 
 .goto Netherstorm,32.00,64.08
-.turnin 10341 >> 在他们倒下的时候把他们踢下去
-.accept 10202 >> 接受叛徒
+.turnin 10341 >>在他们倒下的时候把他们踢下去
+.accept 10202 >>接受叛徒
 .goto Netherstorm,32.05,63.99
-.turnin 10237 >> 进入52号警戒区！
-.accept 10247 >> 接受沃米萨博士。
+.turnin 10237 >>进入52号警戒区！
+.accept 10247 >>接受沃米萨博士。
 .goto Netherstorm,32.68,64.41,30,0
 .goto Netherstorm,32.73,64.96
-.turnin 10232 >> 与军团一起缴械
+.turnin 10232 >>与军团一起缴械
 .goto Netherstorm,32.99,64.66
 step
 >>返回52区。与靴子、机身和爸爸交谈
-.turnin 10199 >> 把那个额外的小腿交上来
+.turnin 10199 >>把那个额外的小腿交上来
 .goto Netherstorm,32.27,63.92
-.turnin 10237 >> 进入52号警戒区！
-.accept 10247 >> 接受沃米萨博士。
+.turnin 10237 >>进入52号警戒区！
+.accept 10247 >>接受沃米萨博士。
 .goto Netherstorm,32.68,64.41,30,0
 .goto Netherstorm,32.73,64.96
-.turnin 10232 >> 与军团一起缴械
+.turnin 10232 >>与军团一起缴械
 .goto Netherstorm,32.99,64.66
 step
 .goto Netherstorm,37.32,63.74,15,0
 .goto Netherstorm,37.29,63.62
 >>与沃米萨交谈。跳过后续操作
-.turnin 10247 >> 交给沃米萨博士。
+.turnin 10247 >>交给沃米萨博士。
 
 step << skip
 .goto Netherstorm,37.7,63.7
@@ -30406,80 +30908,80 @@ step << skip
 .complete 10248,1 
 step << skip
 .goto Netherstorm,37.3,63.6
-.turnin 10248 >> 交给你，机器人
-.accept 10249 >> 接受返回酋长！
+.turnin 10248 >>交给你，机器人
+.accept 10249 >>接受返回酋长！
 step
 #completewith next
 .goto Netherstorm,41.05,63.20,50,0
-.goto Netherstorm,42.31,60.49,50 >> 过桥去Midrealm Post
+.goto Netherstorm,42.31,60.49,50 >>过桥去Midrealm Post
 .skill riding,225,1
 step
 .goto Netherstorm,46.66,56.94
 >>返回Midrealm Post。与Gahruj交谈
-.turnin 10267 >> 正确收回
-.accept 10268 >> 与王子一起接受观众
+.turnin 10267 >>正确收回
+.accept 10268 >>与王子一起接受观众
 step
 #completewith next
 .goto Netherstorm,43.56,47.25,50,0
-.goto Netherstorm,42.45,41.33,50 >> 过桥到风暴岛
+.goto Netherstorm,42.45,41.33,50 >>过桥到风暴岛
 .skill riding,225,1
 step
 .skill riding,225,1
 .goto Netherstorm,42.32,32.57
 >>与Aurine交谈
-.accept 10426 >> 接受生态穹顶植物群
+.accept 10426 >>接受生态穹顶植物群
 step
 #completewith next
-.goto Netherstorm,42.54,33.55,14 >> 乘电梯去风暴岛
+.goto Netherstorm,42.54,33.55,14 >>乘电梯去风暴岛
 .skill riding,225,1
 step
 #completewith Markaru
 .goto Netherstorm,43.36,36.14
-.home >> 将您的炉石设置为风暴精灵
+.home >>将您的炉石设置为风暴精灵
 step
 #xprate <1.5
 >>与Ghabar、Elgenubi、Nauthis、Zephyrion、Audi和Haramad交谈
-.turnin 10423 >> 向风暴精灵求助
-.accept 10424 >> 接受诊断：严重
+.turnin 10423 >>向风暴精灵求助
+.accept 10424 >>接受诊断：严重
 .goto Netherstorm,43.54,35.15
-.accept 10290 >> 接受寻找法拉利
+.accept 10290 >>接受寻找法拉利
 .goto Netherstorm,44.08,36.05
-.accept 10336 >> 接受Culuthas的小黄人
-.accept 10855 >> 接受恶魔收割者，不，谢谢！
+.accept 10336 >>接受Culuthas的小黄人
+.accept 10855 >>接受恶魔收割者，不，谢谢！
 .goto Netherstorm,44.71,34.94
-.accept 10335 >> 接受废墟勘测
+.accept 10335 >>接受废墟勘测
 .goto Netherstorm,44.73,34.87
-.turnin 10434 >> 加入动感双人组
-.accept 10435 >> 接受取货
+.turnin 10434 >>加入动感双人组
+.accept 10435 >>接受取货
 .goto Netherstorm,44.74,36.75
-.turnin 10268 >> 将观众交给王子
-.accept 10269 >> 接受三角点一
+.turnin 10268 >>将观众交给王子
+.accept 10269 >>接受三角点一
 .goto Netherstorm,45.87,35.97
 step
 #xprate >1.499
 >>与Ghabar、Elgenubi、Nauthis、Zephyrion、Audi和Haramad交谈
-.turnin 10423 >> 向风暴精灵求助
-.accept 10424 >> 接受诊断：严重
+.turnin 10423 >>向风暴精灵求助
+.accept 10424 >>接受诊断：严重
 .goto Netherstorm,43.54,35.15
-.accept 10336 >> 接受Culuthas的小黄人
-.accept 10855 >> 接受恶魔收割者，不，谢谢！
+.accept 10336 >>接受Culuthas的小黄人
+.accept 10855 >>接受恶魔收割者，不，谢谢！
 .goto Netherstorm,44.71,34.94
-.accept 10335 >> 接受废墟勘测
+.accept 10335 >>接受废墟勘测
 .goto Netherstorm,44.73,34.87
-.turnin 10434 >> 加入动感双人组
-.accept 10435 >> 接受取货
+.turnin 10434 >>加入动感双人组
+.accept 10435 >>接受取货
 .goto Netherstorm,44.74,36.75
-.turnin 10268 >> 将观众交给王子
-.accept 10269 >> 接受三角点一
+.turnin 10268 >>将观众交给王子
+.accept 10269 >>接受三角点一
 .goto Netherstorm,45.87,35.97
 step
 .goto Netherstorm,45.31,34.87
-.fp Stormspire >> 获取Stormspire飞行路线
+.fp Stormspire >>获取Stormspire飞行路线
 step
 .skill riding,300,1
 .goto Netherstorm,42.32,32.57
 >>与Aurine交谈
-.accept 10426 >> 接受生态穹顶植物群
+.accept 10426 >>接受生态穹顶植物群
 step
 .loop 50,Netherstorm,41.13,35.29,41.49,37.21,41.82,40.03,40.60,40.29,39.03,40.99,38.31,39.57,37.69,38.19,38.28,35.00,41.13,35.29
 .use 29818 >>在法拉龙激光器上使用你袋子里的能量场调制器，然后杀死它们
@@ -30487,8 +30989,8 @@ step
 step
 .goto Netherstorm,42.32,32.57
 >>与Aurine交谈
-.turnin 10426 >> 生态穹顶的植物群
-.accept 10427 >> 接受生态穹顶的生物
+.turnin 10426 >>生态穹顶的植物群
+.accept 10427 >>接受生态穹顶的生物
 step
 #completewith next
 .use 29817 >>攻击Talbuk降低20%或更少的生命值，然后在你的包中使用TalbukTagger
@@ -30507,8 +31009,8 @@ step
 step
 .goto Netherstorm,42.32,32.57
 >>与Aurine交谈
-.turnin 10427 >> 生态穹顶的生物
-.accept 10429 >> 当大自然走得太远时接受
+.turnin 10427 >>生态穹顶的生物
+.accept 10429 >>当大自然走得太远时接受
 step
 #label Markaru
 .goto Netherstorm,44.59,28.31
@@ -30517,7 +31019,7 @@ step
 step
 .goto Netherstorm,42.32,32.57
 >>与Aurine交谈
-.turnin 10429 >> 当大自然走得太远时，就要转身
+.turnin 10429 >>当大自然走得太远时，就要转身
 step
 .loop 50,Netherstorm,39.11,28.77,38.01,30.41,36.22,30.11,35.54,28.97,35.83,28.22,37.14,27.86,36.23,26.00,36.73,24.74,38.68,25.07,38.12,27.81,39.57,27.48,39.11,28.77
 >>杀死甘阿尔格·梅克涅尔斯。抢劫他们的汽油
@@ -30527,23 +31029,23 @@ step
 .goto Netherstorm,36.73,25.15,-1
 .goto Netherstorm,37.95,25.69,-1
 >>与不活跃的收割者交谈
-.turnin 10850 >> 在地狱消防车里加入幽冥之气
+.turnin 10850 >>在地狱消防车里加入幽冥之气
 
 
 .isOnQuest 10855
 step
 #completewith next
 .goto Netherstorm,55.50,26.98,50,0
-.goto Netherstorm,57.10,30.95,50 >> 过桥到Protectorate Watch Post
+.goto Netherstorm,57.10,30.95,50 >>过桥到Protectorate Watch Post
 .skill riding,225,1
 step
 #xprate <1.5
 >>前往Protectorate Watch Post。与Marid、Navuud、稍微四处巡逻的Viridius和Dabiri交谈
-.accept 10270 >> 接受一个不那么谦虚的建议
+.accept 10270 >>接受一个不那么谦虚的建议
 .goto Netherstorm,58.32,31.66
-.accept 10411 >> 接受电击善良！
+.accept 10411 >>接受电击善良！
 .goto Netherstorm,59.25,32.58
-.accept 10422 >> 接受泰拉利乌斯船长
+.accept 10422 >>接受泰拉利乌斯船长
 .goto Netherstorm,58.60,31.77,40,0
 .goto Netherstorm,58.91,32.02,40,0
 .goto Netherstorm,59.14,32.12,40,0
@@ -30551,16 +31053,16 @@ step
 .goto Netherstorm,59.86,31.91,40,0
 .goto Netherstorm,60.07,32.52
 .line Netherstorm,58.60,31.77,58.91,32.02,59.14,32.12,59.47,31.88,59.86,31.91,60.07,32.52
-.accept 10437 >> 接受销毁配方
+.accept 10437 >>接受销毁配方
 .goto Netherstorm,60.11,31.72
 step
 #xprate >1.499
 >>前往Protectorate Watch Post。与Marid、Navuud、稍微四处巡逻的Viridius和Dabiri交谈
-.accept 10270 >> 接受一个不那么谦虚的建议
+.accept 10270 >>接受一个不那么谦虚的建议
 .goto Netherstorm,58.32,31.66
-.accept 10411 >> 接受电击善良！
+.accept 10411 >>接受电击善良！
 .goto Netherstorm,59.25,32.58
-.accept 10422 >> 接受泰拉利乌斯船长
+.accept 10422 >>接受泰拉利乌斯船长
 .goto Netherstorm,58.60,31.77,40,0
 .goto Netherstorm,58.91,32.02,40,0
 .goto Netherstorm,59.14,32.12,40,0
@@ -30571,14 +31073,14 @@ step
 step << skip
 #level 70
 .goto Netherstorm,59.5,32.4
-.accept 10339 >> 接受以太坊
+.accept 10339 >>接受以太坊
 step
 #completewith Seeping
-.goto Netherstorm,62.74,34.75,50 >> 上山旅行
+.goto Netherstorm,62.74,34.75,50 >>上山旅行
 .skill riding,225,1
 step
 #completewith next
-.cast 35685 >> 在包中使用Navuud的混合物
+.cast 35685 >>在包中使用Navuud的混合物
 .use 29737
 step
 #xprate <1.5
@@ -30605,10 +31107,10 @@ step
 step
 .goto Netherstorm,59.42,45.03
 >>与阿拉克斯交谈
-.accept 10345 >> 接受虚伪的谎言。。。
+.accept 10345 >>接受虚伪的谎言。。。
 step
 #completewith next
-.goto Netherstorm,61.07,45.39,30 >> 进入矿井
+.goto Netherstorm,61.07,45.39,30 >>进入矿井
 step
 #completewith Arconus
 .use 29473 >>使用包中的Protectorate点火器在矿井中焚烧干枯尸体
@@ -30619,7 +31121,7 @@ step
 .goto Netherstorm,60.02,43.35,15,0
 .goto Netherstorm,59.71,42.63,15,0
 >>拥抱洞穴左侧的墙壁。与亚六探员交谈，然后抢劫他旁边的电源组
-.accept 10353 >> 接受不可救药的阿科努斯
+.accept 10353 >>接受不可救药的阿科努斯
 .goto Netherstorm,60.92,41.53
 .complete 10270,1 
 .goto Netherstorm,60.98,41.52
@@ -30644,11 +31146,11 @@ step
 .complete 10345,1 
 step
 #completewith next
-.goto Netherstorm,61.03,46.23,50 >> 离开矿井
+.goto Netherstorm,61.03,46.23,50 >>离开矿井
 step
 .goto Netherstorm,59.42,45.03
 >>与阿拉克斯交谈
-.turnin 10345 >> 交出肉身谎言。。。
+.turnin 10345 >>交出肉身谎言。。。
 step << skip
 #level 70
 .goto Netherstorm,57.0,36.9
@@ -30659,8 +31161,8 @@ step << skip
 step << skip
 #level 70
 .goto Netherstorm,56.8,38.5
-.turnin 10339 >> 打开以太坊
-.accept 10384 >> 接受以太坊数据
+.turnin 10339 >>打开以太坊
+.accept 10384 >>接受以太坊数据
 step << skip
 #level 70
 .goto Netherstorm,55.8,40.0
@@ -30668,11 +31170,11 @@ step << skip
 step << skip
 #level 70
 .goto Netherstorm,56.8,38.7
-.turnin 10384 >> 提交以太坊数据
-.accept 10385 >> 接受脑损伤可能性=高
+.turnin 10384 >>提交以太坊数据
+.accept 10385 >>接受脑损伤可能性=高
 step
 #completewith next
-.cast 35685 >> 在包中使用Navuud的混合物
+.cast 35685 >>在包中使用Navuud的混合物
 .use 29737
 step
 #completewith Tyralius
@@ -30704,8 +31206,8 @@ step << skip
 step << skip
 #level 70
 .goto Netherstorm,56.8,38.8
-.turnin 10385 >> 转入脑损伤的可能性=高
-.accept 10405 >> 接受S-A-B-O-T-A-G-E
+.turnin 10385 >>转入脑损伤的可能性=高
+.accept 10405 >>接受S-A-B-O-T-A-G-E
 step << skip
 #level 70
 .goto Netherstorm,55.7,41.8
@@ -30714,20 +31216,20 @@ step << skip
 step << skip
 #level 70
 .goto Netherstorm,56.8,38.8
-.turnin 10405 >> 转入S-A-B-O-T-A-G-E
-.accept 10406 >> 接受传递消息
+.turnin 10405 >>转入S-A-B-O-T-A-G-E
+.accept 10406 >>接受传递消息
 step << skip
 #level 70
 .complete 10406,1 
 step << skip
 #level 70
 .goto Netherstorm,56.8,38.7
-.turnin 10406 >> 交上来传递信息
-.accept 10408 >> 接受Nexus King Salhadaar
+.turnin 10406 >>交上来传递信息
+.accept 10408 >>接受Nexus King Salhadaar
 step
 #xprate <1.5
 >>返回Protectorate Watch Post。与Viridius、Navuud、Ameer和Dabiri交谈
-.turnin 10422 >> 交给提拉利乌斯船长
+.turnin 10422 >>交给提拉利乌斯船长
 .goto Netherstorm,58.60,31.77,40,0
 .goto Netherstorm,58.91,32.02,40,0
 .goto Netherstorm,59.14,32.12,40,0
@@ -30735,17 +31237,17 @@ step
 .goto Netherstorm,59.86,31.91,40,0
 .goto Netherstorm,60.07,32.52
 .line Netherstorm,58.60,31.77,58.91,32.02,59.14,32.12,59.47,31.88,59.86,31.91,60.07,32.52
-.turnin 10411 >> 交上电击善良！
+.turnin 10411 >>交上电击善良！
 .goto Netherstorm,59.25,32.58
-.turnin 10353 >> 交给不可救药的阿科努斯
+.turnin 10353 >>交给不可救药的阿科努斯
 .goto Netherstorm,59.51,32.39
-.turnin 10437 >> 交出销毁配方
-.accept 10438 >> 接受阴蒂之翼
+.turnin 10437 >>交出销毁配方
+.accept 10438 >>接受阴蒂之翼
 .goto Netherstorm,60.11,31.72
 step
 #xprate >1.499
 >>返回Protectorate Watch Post。与Viridius、Navuud、Ameer和Dabiri交谈
-.turnin 10422 >> 交给提拉利乌斯船长
+.turnin 10422 >>交给提拉利乌斯船长
 .goto Netherstorm,58.60,31.77,40,0
 .goto Netherstorm,58.91,32.02,40,0
 .goto Netherstorm,59.14,32.12,40,0
@@ -30753,15 +31255,15 @@ step
 .goto Netherstorm,59.86,31.91,40,0
 .goto Netherstorm,60.07,32.52
 .line Netherstorm,58.60,31.77,58.91,32.02,59.14,32.12,59.47,31.88,59.86,31.91,60.07,32.52
-.turnin 10411 >> 交上电击善良！
+.turnin 10411 >>交上电击善良！
 .goto Netherstorm,59.25,32.58
-.turnin 10353 >> 交给不可救药的阿科努斯
+.turnin 10353 >>交给不可救药的阿科努斯
 .goto Netherstorm,59.51,32.39
 step
 .isQuestTurnedIn 10437
 #completewith next
 .goto Netherstorm,60.21,31.76
-.fly >> 与幽冥龙对话，骑上它
+.fly >>与幽冥龙对话，骑上它
 .skipgossip
 step
 .isQuestTurnedIn 10437
@@ -30772,23 +31274,23 @@ step
 .isQuestTurnedIn 10437
 .goto Netherstorm,60.11,31.72
 >>与达比里交谈
-.turnin 10438 >> 打开阴蒂之翼
+.turnin 10438 >>打开阴蒂之翼
 
 
 step
 .goto Netherstorm,66.73,33.89
-.use 28962 >> 使用包中的三角测量设备。使用后请站在这里
+.use 28962 >>使用包中的三角测量设备。然后走10码远，走到终点。
 .complete 10269,1 
 step
 #completewith next
 .goto Netherstorm,69.34,34.45,50,0
-.goto Netherstorm,70.06,37.52,50 >> 沿着天岭旅行
+.goto Netherstorm,70.06,37.52,50 >>沿着天岭旅行
 .skill riding,225,1
 step
 .goto Netherstorm,71.14,38.99
 >>与Teleport Pad通话，然后与Marid通话
-.turnin 10270 >> 提交一份不那么谦虚的建议
-.accept 10271 >> 接受直面业务
+.turnin 10270 >>提交一份不那么谦虚的建议
+.accept 10271 >>接受直面业务
 .skipgossip
 step
 .loop 50,Netherstorm,71.51,39.64,73.80,40.55,74.83,38.30,74.34,36.25,73.18,36.63,73.47,34.96,71.73,34.10,71.51,39.64
@@ -30797,13 +31299,13 @@ step
 step
 .goto Netherstorm,70.93,38.81
 >>与被围住的人交谈
-.turnin 10271 >> 转入正题
-.accept 10281 >> 接受正式介绍
+.turnin 10271 >>转入正题
+.accept 10281 >>接受正式介绍
 step
 .goto Netherstorm,71.22,35.12
 >>与Tyri交谈
-.turnin 10281 >> 提交正式介绍
-.accept 10272 >> 接受一个有希望的开始
+.turnin 10281 >>提交正式介绍
+.accept 10272 >>接受一个有希望的开始
 step
 .loop 50,Netherstorm,71.51,39.64,73.80,40.55,74.83,38.30,74.34,36.25,73.18,36.63,73.47,34.96,71.73,34.10,71.51,39.64
 >>掠夺地上的幽冥龙蛋
@@ -30811,20 +31313,20 @@ step
 step
 .goto Netherstorm,71.22,35.12
 >>与Tyri交谈
-.turnin 10272 >> 交上一个有希望的开始
-.accept 10273 >> 接受麻烦的分心
+.turnin 10272 >>交上一个有希望的开始
+.accept 10273 >>接受麻烦的分心
 step
 #completewith next
 .goto Netherstorm,71.09,39.80,50,0
 .goto Netherstorm,70.35,41.70,50,0
 .goto Netherstorm,69.81,35.10,50,0
-.goto Netherstorm,69.25,34.21,50 >> 返回Protectorate Watch Post
+.goto Netherstorm,69.25,34.21,50 >>返回Protectorate Watch Post
 .skill riding,225,1
 step
 .goto Netherstorm,58.35,31.26
 >>返回Protectorate Watch Post。与Hazzin交谈
-.turnin 10269 >> 转入三角点一
-.accept 10275 >> 接受三角点二
+.turnin 10269 >>转入三角点一
+.accept 10275 >>接受三角点二
 step
 .goto Netherstorm,58.31,31.66,-1
 .goto Netherstorm,59.95,30.96,-1
@@ -30835,8 +31337,8 @@ step
 step
 .goto Netherstorm,71.22,35.12
 >>返回天岭。与Tyri交谈
-.turnin 10273 >> 交给麻烦的分心
-.accept 10274 >> 接受保护天脊
+.turnin 10273 >>交给麻烦的分心
+.accept 10274 >>接受保护天脊
 step
 #completewith next
 .goto Netherstorm,72.18,43.38
@@ -30850,62 +31352,62 @@ step
 step
 .goto Netherstorm,71.22,35.12
 >>返回天岭。与Tyri交谈
-.turnin 10274 >> 转向保护天脊
+.turnin 10274 >>转向保护天脊
 .isQuestComplete 10274
 step
-.abandon 10274 >> 放弃保护天岭
+.abandon 10274 >>放弃保护天岭
 step
 #completewith next
-.hs >> 《烈焰之火》（炉灶 to The Stormspire）
+.hs >>《烈焰之火》(Hearth to The Stormspire)
 step
 >>返回风暴之灵。与Nautis和Ghabar交谈
-.turnin 10855 >> 交给Fel Reavers，不，谢谢！
-.accept 10856 >> 接受最佳防御
+.turnin 10855 >>交给Fel Reavers，不，谢谢！
+.accept 10856 >>接受最佳防御
 .goto Netherstorm,44.71,34.94
-.turnin 10424 >> 移交诊断：严重
-.accept 10430 >> 接受原型测试
+.turnin 10424 >>移交诊断：严重
+.accept 10430 >>接受原型测试
 .goto Netherstorm,43.54,35.15
 step
 #aldor
 >>前往Tuluman’s Landing。与Kaylaan、Tuluman和Oazul交谈
-.turnin 10431 >> 交出外部援助
-.accept 10380 >> 接受黑暗协议
+.turnin 10431 >>交出外部援助
+.accept 10380 >>接受黑暗协议
 .goto Netherstorm,34.80,38.30
-.accept 10317 >> 接受与领班的交易
+.accept 10317 >>接受与领班的交易
 .goto Netherstorm,34.62,37.95
-.accept 10315 >> 接受中和减温剂
+.accept 10315 >>接受中和减温剂
 .goto Netherstorm,34.50,37.80
 step
 >>前往Tuluman’s Landing。与Tuluman和Oazul交谈
-.accept 10317 >> 接受与领班的交易
+.accept 10317 >>接受与领班的交易
 .goto Netherstorm,34.62,37.95
-.accept 10315 >> 接受中和减温剂
+.accept 10315 >>接受中和减温剂
 .goto Netherstorm,34.50,37.80
 step
 #completewith next
 .goto Netherstorm,33.59,37.77,50,0
-.goto Netherstorm,31.51,41.63,50 >> 过桥到马纳福格阿拉
+.goto Netherstorm,31.51,41.63,50 >>过桥到马纳福格阿拉
 .skill riding,225,1
 step
 #scryer
 #completewith next
 .goto Netherstorm,29.56,41.80,50,0
-.goto Netherstorm,29.42,39.76,50 >> 上山前往马纳福格阿拉
+.goto Netherstorm,29.42,39.76,50 >>上山前往马纳福格阿拉
 .skill riding,225,1
 step
 #scryer
 .goto Netherstorm,26.19,41.57
 >>与Theledorn交谈
-.turnin 10202 >> 交一名叛徒
-.accept 10432 >> 接受筑坝证据
+.turnin 10202 >>交一名叛徒
+.accept 10432 >>接受筑坝证据
 step
 #completewith next
-.goto Netherstorm,26.37,43.91,50 >> 进入矿井
+.goto Netherstorm,26.37,43.91,50 >>进入矿井
 step
 .goto Netherstorm,26.37,42.27
 >>与矿井内的Sundown交谈
-.turnin 10317 >> 与领班打交道时上缴
-.accept 10318 >> 接受与管理员的交易
+.turnin 10317 >>与领班打交道时上缴
+.accept 10318 >>接受与管理员的交易
 step
 #completewith WarpTinker
 >>杀死矿井内的Sunfrew Nethermances
@@ -30963,12 +31465,12 @@ step
 step
 #completewith next
 .goto Netherstorm,29.56,41.80,50,0
-.goto Netherstorm,29.42,39.76,50 >> 上山前往马纳福格阿拉
+.goto Netherstorm,29.42,39.76,50 >>上山前往马纳福格阿拉
 .skill riding,225,1
 step
 #label Point2
 .goto Netherstorm,28.74,41.29
-.use 29018 >>使用包中的三角测量设备。使用后请站在这里
+.use 29018 >>使用包中的三角测量设备。然后走10码远，走到终点。
 .complete 10275,1 
 step
 #aldor
@@ -31010,16 +31512,16 @@ step << skip
 .complete 10365,1 
 step
 >>返回图卢曼登陆。与Oazul、Tuluman和Kaylaan交谈
-.turnin 10315 >> 转入中和减温剂
+.turnin 10315 >>转入中和减温剂
 .goto Netherstorm,34.50,37.80
-.turnin 10275 >> 转入三角点二
-.accept 10276 >> 接受全三角形
-.turnin 10318 >> 在处理管理员时上缴
+.turnin 10275 >>转入三角点二
+.accept 10276 >>接受全三角形
+.turnin 10318 >>在处理管理员时上缴
 .goto Netherstorm,34.62,37.95
 step
 #aldor
-.turnin 10380 >> 提交一份黑暗协议
-.accept 10381 >> 不再接受阿尔多
+.turnin 10380 >>提交一份黑暗协议
+.accept 10381 >>不再接受阿尔多
 .goto Netherstorm,34.80,38.30
 step
 #aldor
@@ -31049,8 +31551,8 @@ step
 step
 .goto Netherstorm,44.69,14.58
 >>前往Eco Dome Farfield。与塔沙尔交谈
-.turnin 10430 >> 交验原型
-.accept 10436 >> 全部接受清除！
+.turnin 10430 >>交验原型
+.accept 10436 >>全部接受清除！
 step
 .loop 50,Netherstorm,43.16,13.33,43.68,11.53,44.90,10.74,45.01,8.01,46.51,7.78,47.05,10.12,46.35,12.99,45.28,12.71
 >>杀死长喙猛禽
@@ -31060,8 +31562,8 @@ step
 step
 .goto Netherstorm,44.69,14.58
 >>与塔沙尔交谈。等待他的RP
-.turnin 10436 >> 全部上车，让开！
-.accept 10440 >> 接受成功！
+.turnin 10436 >>全部上车，让开！
+.accept 10440 >>接受成功！
 step
 #xprate <1.5
 .loop 50,Netherstorm,47.57,20.27,44.88,18.75,45.10,16.70,50.08,17.24,47.57,20.27
@@ -31069,7 +31571,7 @@ step
 .complete 10290,1 
 step
 .goto Netherstorm,48.76,22.64,50,0
-.goto Netherstorm,49.98,22.60,50 >> 上山去法拉隆遗址
+.goto Netherstorm,49.98,22.60,50 >>上山去法拉隆遗址
 .skill riding,225,1
 step
 #completewith Surveying
@@ -31099,92 +31601,92 @@ step
 .complete 10336,2 
 step
 #completewith Stormspire5
-.goto Netherstorm,42.54,33.55,14 >> 乘电梯去风暴岛
+.goto Netherstorm,42.54,33.55,14 >>乘电梯去风暴岛
 .cooldown item,6948,<0
 .skill riding,225,1
 step
 #completewith next
-.hs >> 烈焰之火
+.hs >>烈焰之火
 .cooldown item,6948,>0
 step
 >>返回风暴之灵。与Ghabar、Elgenubi、Nauthis、Zephyrion和Audi交谈
-.turnin 10440 >> 成功交出！
+.turnin 10440 >>成功交出！
 .goto Netherstorm,43.54,35.15
-.turnin 10290 >> 投案寻找法拉利
-.accept 10293 >> 接受撞击母岩
+.turnin 10290 >>投案寻找法拉利
+.accept 10293 >>接受撞击母岩
 .goto Netherstorm,44.08,36.05
-.turnin 10336 >> 交出Culuthas的小黄人
-.turnin 10856 >> 交出最佳防守
-.accept 10857 >> 接受Teleport This！
+.turnin 10336 >>交出Culuthas的小黄人
+.turnin 10856 >>交出最佳防守
+.accept 10857 >>接受Teleport This！
 .goto Netherstorm,44.71,34.94
-.turnin 10335 >> 轮流调查废墟
+.turnin 10335 >>轮流调查废墟
 .goto Netherstorm,44.73,34.87
-.turnin 10435 >> 上缴取货
+.turnin 10435 >>上缴取货
 .goto Netherstorm,44.74,36.75
 .isQuestComplete 10290
 step
 >>返回风暴之灵。与Ghabar、Nautis、Zephyrion和Audi交谈
-.turnin 10440 >> 成功交出！
+.turnin 10440 >>成功交出！
 .goto Netherstorm,43.54,35.15
-.turnin 10336 >> 交出Culuthas的小黄人
-.turnin 10856 >> 交出最佳防守
-.accept 10857 >> 接受Teleport This！
+.turnin 10336 >>交出Culuthas的小黄人
+.turnin 10856 >>交出最佳防守
+.accept 10857 >>接受Teleport This！
 .goto Netherstorm,44.71,34.94
-.turnin 10335 >> 轮流调查废墟
+.turnin 10335 >>轮流调查废墟
 .goto Netherstorm,44.73,34.87
-.turnin 10435 >> 上缴取货
+.turnin 10435 >>上缴取货
 .goto Netherstorm,44.74,36.75
 step
 #aldor
 #completewith next
 .goto Netherstorm,45.31,34.87
-.fly Area 52>> 飞往52区
+.fly Area 52>>飞往52区
 step
 #scryer
 #completewith next
 .goto Netherstorm,45.31,34.87
-.fly Area 52>> 飞往52区
+.fly Area 52>>飞往52区
 step << skip
 .goto Netherstorm,32.8,64.9
-.turnin 10249 >> 交回首领！
+.turnin 10249 >>交回首领！
 step
 #aldor
 >>返回52区。与奥利利斯和卡贾交谈
-.turnin 10381 >> 不要再把阿尔多交上来了
+.turnin 10381 >>不要再把阿尔多交上来了
 .goto Netherstorm,32.07,64.18
-.accept 10407 >> 接受索克塔尔的阴影
+.accept 10407 >>接受索克塔尔的阴影
 .goto Netherstorm,32.04,64.18
 
 step
 #scryer
 >>返回52区。与Thalodien交谈
-.turnin 10432 >> 提交筑坝证据
-.accept 10508 >> 接受Voren'thal的礼物
+.turnin 10432 >>提交筑坝证据
+.accept 10508 >>接受Voren'thal的礼物
 .goto Netherstorm,32.00,64.08
 
 step << skip
-.home >> 将您的炉石设置为52区
+.home >>将您的炉石设置为52区
 step
 #aldor
 #completewith next
-.hs >> 烈焰之火
+.hs >>烈焰之火
 .cooldown item,6948,>0
 step
 #scryer
 #completewith next
-.hs >> 烈焰之火
+.hs >>烈焰之火
 .cooldown item,6948,>0
 step
 #aldor
 #completewith next
 .goto Netherstorm,33.74,63.99
-.fly The Stormspire>> 飞到风暴岛
+.fly The Stormspire>>飞到风暴岛
 .cooldown item,6948,<0
 step
 #scryer
 #completewith next
 .goto Netherstorm,33.74,63.99
-.fly The Stormspire>> 飞到风暴岛
+.fly The Stormspire>>飞到风暴岛
 .cooldown item,6948,<0
 step
 #aldor
@@ -31200,12 +31702,12 @@ step
 #xprate <1.5
 #completewith next
 .goto Netherstorm,39.36,20.83
-.cast 38915 >> 使用包里的心理干扰棒进行网络愤怒遗忘
+.cast 38915 >>使用包里的心理干扰棒进行网络愤怒遗忘
 .use 31678
 step
 #xprate <1.5
 .goto Netherstorm,39.19,20.43
->>控制被遗忘的心灵，使用“引爆传送者”（3）摧毁传送者
+>>控制被遗忘的心灵，使用“引爆传送者”(3)摧毁传送者
 .complete 10857,1 
 .use 31678
 step
@@ -31222,23 +31724,23 @@ step
 #xprate <1.5
 #completewith next
 .goto Netherstorm,40.93,18.71
-.cast 38915 >> 使用包里的心理干扰棒进行网络愤怒遗忘
+.cast 38915 >>使用包里的心理干扰棒进行网络愤怒遗忘
 .use 31678
 step
 #xprate <1.5
 .goto Netherstorm,41.08,19.42
->>控制被遗忘的心灵，使用“引爆传送者”（3）摧毁传送者
+>>控制被遗忘的心灵，使用“引爆传送者”(3)摧毁传送者
 .complete 10857,2 
 step
 #xprate <1.5
 #completewith next
 .goto Netherstorm,41.82,21.10
-.cast 38915 >> 使用包里的心理干扰棒进行网络愤怒遗忘
+.cast 38915 >>使用包里的心理干扰棒进行网络愤怒遗忘
 .use 31678
 step
 #xprate <1.5
 .goto Netherstorm,42.28,21.07
->>控制被遗忘的心灵，使用“引爆传送者”（3）摧毁传送者
+>>控制被遗忘的心灵，使用“引爆传送者”(3)摧毁传送者
 .complete 10857,3 
 step
 #xprate <1.5
@@ -31257,163 +31759,158 @@ step
 step
 #xprate <1.5
 #completewith next
-.hs >> 烈焰之火
+.hs >>烈焰之火
 .cooldown item,6948,>0
 step
 #xprate <1.5
 >>返回风暴之灵。与Elgenubi和Nauthis交谈
-.turnin 10293 >> 转身击打母岩
+.turnin 10293 >>转身击打母岩
 .goto Netherstorm,44.08,36.05
-.turnin 10857 >> 交给Teleport This！
+.turnin 10857 >>交给Teleport This！
 .goto Netherstorm,44.71,34.94
 .isQuestComplete 10293
 .isQuestComplete 10857
 step
 #xprate <1.5
 >>返回风暴之灵。与Elgenubi交谈
-.turnin 10293 >> 转身击打母岩
+.turnin 10293 >>转身击打母岩
 .goto Netherstorm,44.08,36.05
 .isQuestComplete 10293
 step
 #xprate <1.5
 >>返回风暴之灵。与Nautis交谈
-.turnin 10857 >> 交给Teleport This！
+.turnin 10857 >>交给Teleport This！
 .goto Netherstorm,44.71,34.94
 .isQuestComplete 10857
 step
 #aldor
 #completewith next
 .goto Netherstorm,45.31,34.87
-.fly Area 52>> 飞往52区
+.fly Area 52>>飞往52区
 step
 #scryer
 #completewith next
 .goto Netherstorm,45.31,34.87
-.fly Area 52>> 飞往52区
+.fly Area 52>>飞往52区
 step
 #aldor
 .goto Netherstorm,32.04,64.18
 >>返回52区。与卡贾交谈
-.turnin 10407 >> 交出索克塔尔的影子
-.accept 10410 >> 接受Ishanah's Help
+.turnin 10407 >>交出索克塔尔的影子
+.accept 10410 >>接受Ishanah的帮助
 step
 #scryer
 .goto Netherstorm,32.00,64.08
 >>返回52区。与Thalodien交谈
-.turnin 10508 >> 为Voren'thal交礼物
-.accept 10509 >> 接受荣耀的约束
+.turnin 10508 >>为Voren'thal交礼物
+.accept 10509 >>接受荣耀的约束
 step
 #aldor
 #completewith next
-.hs >> 烈焰之火
+.hs >>烈焰之火
 .cooldown item,6948,>0
 step
 #scryer
 #completewith next
-.hs >> 烈焰之火
+.hs >>烈焰之火
 .cooldown item,6948,>0
 step
 #aldor
 #completewith next
 .goto Netherstorm,33.74,63.99
-.fly The Stormspire >> 飞到风暴岛
+.fly The Stormspire >>飞到风暴岛
 .cooldown item,6948,<0
 step
 #scryer
 #completewith next
 .goto Netherstorm,33.74,63.99
-.fly The Stormspire >> 飞到风暴岛
+.fly The Stormspire >>飞到风暴岛
 .cooldown item,6948,<0
 step
 >>在里面和Haramad交谈
-.turnin 10276 >> 以全三角形转弯
-.accept 10280 >> 接受特快专递至沙塔斯市
+.turnin 10276 >>以全三角形转弯
+.accept 10280 >>接受特快专递至沙塔斯市
 .goto Netherstorm,45.87,35.97
 .isQuestComplete 10276
 step
 >>在里面和哈拉马德谈谈。等待他的RP
-.accept 10280 >> 接受特快专递至沙塔斯市
+.accept 10280 >>接受特快专递至沙塔斯市
 .goto Netherstorm,45.87,35.97
 .isQuestTurnedIn 10276
 step
 #completewith next
 .goto Netherstorm,45.80,35.64
-.zone Shattrath City >> 使用Haramad旁边的Haramad Teleporter传送到沙塔斯城
+.zone Shattrath City >>使用Haramad旁边的Haramad Teleporter传送到沙塔斯城
 step
 .goto Shattrath City,53.98,44.73
 >>与A'dal交谈
-.turnin 10280 >> 将特快专递交给沙塔斯市
+.turnin 10280 >>将特快专递交给沙塔斯市
 .isQuestTurnedIn 10276
 step
-.zone Shattrath City >> 前往沙塔斯城
+.zone Shattrath City >>前往沙塔斯城
 step
 #aldor
 >>与Adyen和Ishanah交谈
-.accept 10653 >> 接受萨格拉斯的标记
-.turnin 10653 >> 交出萨格拉斯的标记
+.accept 10653 >>接受萨格拉斯的标记
+.turnin 10653 >>交出萨格拉斯的标记
 .goto Shattrath City,30.72,34.63
-.accept 10421 >> 接受恶魔武器
-.turnin 10421 >> 交出邪能装备s
-.turnin 10410 >> 交给Ishanah的帮助
+.accept 10421 >>接受恶魔武器
+.turnin 10421 >>交出Fel Armaments
+.turnin 10410 >>交给Ishanah的帮助
 .goto Shattrath City,23.98,29.74
 .isOnQuest 10410
 step
 #aldor
 >>与Adyen和Ishanah交谈
-.accept 10653 >> 接受萨格拉斯的标记
-.turnin 10653 >> 交出萨格拉斯的标记
+.accept 10653 >>接受萨格拉斯的标记
+.turnin 10653 >>交出萨格拉斯的标记
 .goto Shattrath City,30.72,34.63
-.accept 10421 >> 接受恶魔武器
-.turnin 10421 >> 交出邪能装备s
+.accept 10421 >>接受恶魔武器
+.turnin 10421 >>交出Fel Armaments
 .goto Shattrath City,23.98,29.74
 step
 #scryer
 >>与Fyalenn和Voren'thal交谈
-.accept 10656 >> 接受Sunfrew标牌
-.turnin 10656 >> 交上Sunfrew标牌
+.accept 10656 >>接受Sunfrew标牌
+.turnin 10656 >>交上Sunfrew标牌
 .goto Shattrath City,45.17,81.46
-.accept 10416 >> 接受功率合成
-.turnin 10416 >> 交合功率合成
-.turnin 10509 >> 为荣耀而战
+.accept 10416 >>接受功率合成
+.turnin 10416 >>交合功率合成
+.turnin 10509 >>为荣耀而战
 .goto Shattrath City,42.79,91.70
 .isOnQuest 10509
 step
 #scryer
 >>与Fyalenn和Voren'thal交谈
-.accept 10656 >> 接受Sunfrew标牌
-.turnin 10656 >> 交上Sunfrew标牌
+.accept 10656 >>接受Sunfrew标牌
+.turnin 10656 >>交上Sunfrew标牌
 .goto Shattrath City,45.17,81.46
-.accept 10416 >> 接受功率合成
-.turnin 10416 >> 交合功率合成
+.accept 10416 >>接受功率合成
+.turnin 10416 >>交合功率合成
 .goto Shattrath City,42.79,91.70
 ]])
 RXPGuides.RegisterGuide([[
-#version 5
+#version 9
 #wotlk
 #group RestedXP 部落 70-80
 #name 68-71 嚎风峡湾
 #next 70-72 北风苔原
-<<Horde
+<< Horde
 step
-#completewith Lysander
-+欢迎使用RXPGuides部落诺森德指南！
-.link https://discord.gg/restedxp >> 由于这是Beta版，指南可能有一些错误。如果在玩游戏时遇到任何问题，请在此处报告！
-
-step
-.zone Undercity >> 前往幽暗城市 << !Mage
-.zone Undercity >> 传送到地下城 << Mage
+.zone Undercity >>前往幽暗城市 << !Mage
+.zone Undercity >>传送到地下城 << Mage
 .zoneskip Tirisfal Glades
 .zoneskip HowlingFjord
 step
 #completewith next
 .goto Undercity,82.36,15.31
-+转到右侧的试剂供应商，执行“注销跳过”，将角色定位在最低楼梯的最高部分，直到看起来像漂浮在空中，然后注销并重新登录。
-.link https://www.youtube.com/watch?v=-Bi95bCN8dM >> 单击此处查看示例
->>如果你做不到这一点，就正常离开幽暗城
+.goto Undercity,67.90,15.29,30 >>转到右侧的试剂供应商，执行“注销跳过”，将角色定位在最低楼梯的最高部分，直到看起来像漂浮在空中，然后注销并重新登录。
+.link https://www.youtube.com/watch?v=-Bi95bCN8dM >>单击此处查看示例
+*If you can't do this, just run out of Undercity normally
 .zoneskip Tirisfal Glades
 .zoneskip HowlingFjord
 step
-.goto Tirisfal Glades,61.85,66.59,60 >> 退出地下城
+.goto Tirisfal Glades,61.85,66.59,60 >>退出地下城
 .zoneskip Tirisfal Glades
 .zoneskip HowlingFjord
 step
@@ -31423,7 +31920,7 @@ step
 step
 #label Lysander
 .goto HowlingFjord,78.5,29.0
->>当你到达嚎叫峡湾时，从飞艇塔上下来。与莱桑德交谈
+>>当你到达嚎叫峡湾时，从齐柏林塔上下来。与莱桑德交谈
 .accept 11167 >>接受新瘟疫
 step
 .goto HowlingFjord,79.0,29.7
@@ -31433,7 +31930,7 @@ step
 .goto HowlingFjord,79.3,30.6,20,0
 .goto HowlingFjord,79.7,30.8
 >>到楼下
-.home >> 将您的炉石设置为复仇登陆
+.home >>将您的炉石设置为复仇登陆
 step
 .goto HowlingFjord,79.3,30.6,20,0
 >>离开大楼。与Pontius和Anselm交谈
@@ -31443,7 +31940,7 @@ step
 .goto HowlingFjord,78.6,31.2
 step
 #completewith next
-.cast 42769 >> 使用包中的瘟疫犬笼子释放瘟疫犬
+.cast 42769 >>使用包中的瘟疫犬笼子释放瘟疫犬
 .use 33221
 step
 .goto HowlingFjord,73.7,32.5,70,0
@@ -31493,7 +31990,7 @@ step
 step
 .goto HowlingFjord,79.1,29.8
 #completewith next
-.fly >> 与蝙蝠处理者卡米尔交谈。向她要一只骑蝙蝠
+.fly >>与蝙蝠处理者卡米尔交谈。向她要一只骑蝙蝠
 .skipgossip
 .timer 147,Test at Sea Flight RP
 step
@@ -31515,7 +32012,7 @@ step
 step
 .goto HowlingFjord,79.1,29.8
 #completewith next
-.fly >> 与蝙蝠处理者卡米尔交谈。让她送你去Windrunner
+.fly >>与蝙蝠处理者卡米尔交谈。让她送你去Windrunner
 .skipgossip 1
 step
 .goto HowlingFjord,84.7,36.5
@@ -31625,8 +32122,8 @@ step
 >>杀死整个巴勒海姆的维库尔人
 .complete 11283,1 
 step
-.use 33472 >>用包里的高尔斯火炬在整个温特斯科恩烧毁建筑物（范围为30码）
->>当你到达兵营时，垃圾邮件使用火炬直到目标完成，然后从比约恩逃走（他可以抄送）
+.use 33472 >>用包里的高尔斯火炬在整个温特斯科恩烧毁建筑物(范围为30码)
+>>当你到达兵营时，垃圾邮件使用火炬直到目标完成，然后从比约恩逃走(他可以抄送)
 .complete 11285,2 
 .goto HowlingFjord,67.1,39.8
 .complete 11285,3 
@@ -31655,11 +32152,11 @@ step
 .accept 12481 >>接受在侮辱中增加伤害
 step
 .goto HowlingFjord,64.1,39.8
-.use 33581 >> 在比约恩使用维库尔攻势（它有30码的射程）。
+.use 33581 >>在比约恩使用维库尔攻势(它有30码的射程)。
 .complete 12481,1 
 step
 .goto HowlingFjord,65.9,36.7
->>跑回莱德尔。等待他杀死比约恩（比约恩的皮带不会断）
+>>跑回莱德尔。等待他杀死比约恩(比约恩的皮带不会断)
 .complete 12481,2 
 step
 .goto HowlingFjord,65.9,36.8
@@ -31675,10 +32172,10 @@ step
 #completewith Sivy
 .goto HowlingFjord,49.5,10.8
 >>到小屋里去
-.home >> 将您的炉石设置为夏令营
+.home >>将您的炉石设置为夏令营
 step
 .goto HowlingFjord,49.6,11.6
-.fp Camp Winterhoof >> 获取夏令营飞行路线
+.fp Camp Winterhoof >>获取夏令营飞行路线
 step
 >>与Nokoma和Kagan交谈
 .accept 11275 >>接受制作喇叭
@@ -31732,7 +32229,7 @@ step
 .goto HowlingFjord,48.4,10.4
 step
 .goto HowlingFjord,52.4,3.8
-.use 33450 >> 在冰冻的瀑布上使用雕刻的角。等待弗罗斯特戈尔变得敌对（需要20秒），然后杀了他
+.use 33450 >>在冰冻的瀑布上使用雕刻的角。等待弗罗斯特戈尔变得敌对(需要20秒)，然后杀了他
 .complete 11281,1 
 step
 #requires Iceshard
@@ -31774,7 +32271,7 @@ step
 .complete 11365,1 
 step
 #completewith next
-.hs >> 炉到夏令营
+.hs >>炉到夏令营
 .cooldown item,6948,>0
 step
 >>与Nokoma和Pembe交谈
@@ -31803,7 +32300,7 @@ step
 .isQuestComplete 11365
 step
 .goto HowlingFjord,48.1,10.5
-*与圣人伊丹交谈
+*Talk to Sage Edan
 .accept 11366 >>接受最低点
 .isQuestTurnedIn 11365
 step
@@ -31848,12 +32345,12 @@ step
 .complete 11351,1 
 step
 .goto HowlingFjord,71.6,17.7
-.use 33819 >> 在破损的平板上使用符文样本。等待RP
+.use 33819 >>在破损的平板上使用符文样本。等待RP
 .cast 43692
 .timer 23,The Lodestone RP
 .complete 11366,1 
 step << Shaman
-.hs >> 炉到夏令营
+.hs >>炉到夏令营
 .cooldown item,6948,>0
 step
 .goto HowlingFjord,48.1,10.5
@@ -31893,7 +32390,7 @@ step
 .complete 11352,2 
 step
 .goto HowlingFjord,70.4,23.9
-.use 33796 >>对中立的“石头巨人”（不是石头巨人）使用命令符文
+.use 33796 >>对中立的“石头巨人”(不是石头巨人)使用命令符文
 .complete 11352,1 
 step
 .goto HowlingFjord,69.4,11.5,70,0
@@ -31922,33 +32419,33 @@ step
 .goto HowlingFjord,44.9,34.7,0
 .use 33345 >>杀死该地区的维库尔人。掠夺他们来换取维库尔提升卷轴。接受任务
 .collect 33345,1,11260,1 
-.accept 11260 >> 接受，停止扬升！
+.accept 11260 >>接受，停止扬升！
 step
 .goto HowlingFjord,43.66,28.57
-.use 33343 >>在Longhouse的包中使用勇敢的火炬和火炬（火炬将瞄准Longhous外面的塔）
+.use 33343 >>在Longhouse的包中使用勇敢的火炬和火炬(火炬将瞄准Longhous外面的塔)
 .use 33344
 .complete 11258,1 
 .complete 11259,1 
 step
 #label SouthWest
 .goto HowlingFjord,43.11,36.15
-.use 33344 >>在大楼外（射程为90码）时，使用包中的警长火炬
+.use 33344 >>在大楼外(射程为90码)时，使用包中的警长火炬
 .complete 11259,3 
 step
 .goto HowlingFjord,44.9,34.7
 .use 33345 >>杀死该地区的维库尔人。掠夺他们来换取维库尔提升卷轴。在您的包中点击它
 .collect 33345,1,11260,1 
-.accept 11260 >> 接受，停止扬升！
+.accept 11260 >>接受，停止扬升！
 step
 #completewith next
 .goto HowlingFjord,44.84,34.93
-.cast 43089 >>在金字塔上使用升天卷轴召唤哈尔夫丹
+.cast 43089 >>使用金字塔上的上升卷轴召唤哈尔夫丹
 step
 .goto HowlingFjord,44.98,35.92
 .use 33346 >>杀死冰心汉弗丹
 .complete 11260,1 
 step
-.use 33344 >>在塔楼外（射程为90码）时，使用包中的警长火炬
+.use 33344 >>在塔楼外(射程为90码)时，使用包中的警长火炬
 .complete 11259,4 
 .goto HowlingFjord,47.10,36.87
 .complete 11259,2 
@@ -31978,38 +32475,38 @@ step
 .accept 11261 >>接受Skorn的征服者！
 step << Druid
 #completewith next
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 .xp <69,1
 step << Druid
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.train 26982 >> 训练你的职业咒语
+.train 26982 >>训练你的职业咒语
 .xp <69,1
 
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 .xp <69,1
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49928 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49928 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <69,1
 
 step << Mage
 #completewith next
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 .xp <69,1
 step << Mage
 .goto Undercity,85.1,10.0
-.train 27125 >> 训练你的职业咒语
+.train 27125 >>训练你的职业咒语
 .xp <69,1
 
 step
 #completewith Winterhoof
-.hs >> 炉到夏令营
+.hs >>炉到夏令营
 step
 #completewith Ankha
 .goto HowlingFjord,48.1,10.5,0,0
@@ -32083,13 +32580,13 @@ step
 step
 #completewith Turmoil
 .goto HowlingFjord,26.0,25.1
-.fp Apothecary Camp >> 获取药剂师营地飞行路线
-.fly Camp Winterhoof >> 飞往冬蹄营地
+.fp Apothecary Camp >>获取药剂师营地飞行路线
+.fly Camp Winterhoof >>飞往冬蹄营地
 step
 #completewith next
 .goto HowlingFjord,56.0,7.4,60,0
 .goto HowlingFjord,60.2,7.6,60,0
-.goto HowlingFjord,65.7,2.7,60 >> 迎风霜峰
+.goto HowlingFjord,65.7,2.7,60 >>迎风霜峰
 step
 #label Turmoil
 .goto HowlingFjord,61.3,2.2
@@ -32099,7 +32596,7 @@ step
 .complete 11317,1 
 step
 #completewith next
-.goto HowlingFjord,49.6,11.6,100 >> 带上刚刚获得的慢速下降buff，跳下夏令营
+.goto HowlingFjord,49.6,11.6,100 >>带上刚刚获得的慢速下降buff，跳下夏令营
 step
 #completewith next
 .goto HowlingFjord,49.6,11.6
@@ -32216,7 +32713,7 @@ step
 #completewith next
 .goto HowlingFjord,40.6,35.9,15,0
 .goto HowlingFjord,38.9,35.5,20,0
-.goto HowlingFjord,37.3,36.2 >> 沿着小路前往矮人矿工
+.goto HowlingFjord,37.3,36.2 >>沿着小路前往矮人矿工
 step
 .goto HowlingFjord,31.6,37.0,50,0
 .goto HowlingFjord,30.9,35.6,50,0
@@ -32238,7 +32735,7 @@ step
 step
 #completewith next
 .goto HowlingFjord,23.9,21.6,40,0
-.goto HowlingFjord,25.6,20.2,40 >> 沿着从海岸到药剂师营地的小路走
+.goto HowlingFjord,25.6,20.2,40 >>沿着从海岸到药剂师营地的小路走
 step
 #sticky
 #label Anastasia2
@@ -32257,7 +32754,7 @@ step
 #requires Anastasia2
 #completewith next
 .goto HowlingFjord,25.6,20.2,40,0
-.goto HowlingFjord,23.9,21.6,40 >> 沿着从药剂师营地到海岸的小路走
+.goto HowlingFjord,23.9,21.6,40 >>沿着从药剂师营地到海岸的小路走
 step
 #requires Anastasia2
 #completewith Trident
@@ -32307,7 +32804,7 @@ step
 step
 #completewith next
 .goto HowlingFjord,23.9,21.6,40,0
-.goto HowlingFjord,25.6,20.2,40 >> 沿着从海岸到药剂师营地的小路走
+.goto HowlingFjord,25.6,20.2,40 >>沿着从海岸到药剂师营地的小路走
 step
 #requires Crystals
 .goto HowlingFjord,26.2,24.6
@@ -32322,7 +32819,7 @@ step << Shaman
 step << !Shaman
 #completewith next
 .goto HowlingFjord,26.0,25.1
-.fly Camp Winterhoof >> 飞往冬蹄营地
+.fly Camp Winterhoof >>飞往冬蹄营地
 step
 .goto HowlingFjord,49.6,11.6
 >>在冬蹄营与Celea交谈
@@ -32406,7 +32903,7 @@ step
 .use 34091 >>骑马返回加勒布伦。在东南平台杀死Necro霸王Mezhen。为梅珍的作品抢劫他。在您的包中点击它
 .complete 11264,1 
 .collect 34091,1,11453 
-.accept 11453 >> 接受沉睡之王
+.accept 11453 >>接受沉睡之王
 step
 .goto HowlingFjord,39.6,7.8,40,0
 .goto HowlingFjord,40.88,6.49
@@ -32416,7 +32913,7 @@ step
 #label Glacion
 .goto HowlingFjord,36.46,7.35
 >>节省你的冷却时间。在西北平台杀死怀姆卡勒·维尔。抢他的角
-.use 33282 >>用你袋子里的喇叭召唤冰川。（着陆需要20-35秒）。杀了他
+.use 33282 >>用你袋子里的喇叭召唤冰川。(着陆需要20-35秒)。杀了他
 .complete 11267,1 
 .complete 11267,3 
 .complete 11267,2 
@@ -32449,35 +32946,35 @@ step
 .complete 11433,1 
 step << Druid
 #completewith next
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 .xp <70,1
 step << Druid
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.train 26990 >> 训练你的职业咒语
+.train 26990 >>训练你的职业咒语
 .xp <70,1
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 .xp <70,1
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 45463 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 45463 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <70,1
 step << Mage
 #completewith next
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 .xp <70,1
 step << Mage
 .goto Undercity,85.1,10.0
-.train 27126 >> 训练你的职业咒语
+.train 27126 >>训练你的职业咒语
 .xp <70,1
 step
 #completewith next
-.hs >> 炉到夏令营
+.hs >>炉到夏令营
 step
 >>与Ankha、Ashtotem和Ahota交谈
 .turnin 11268 >>交给行尸走肉
@@ -32491,7 +32988,7 @@ step
 .goto HowlingFjord,49.6,11.6
 >>在冬蹄营与Celea交谈
 .turnin 11267 >>交出霜虫及其主人
-.fly Apothecary Camp >> 飞往药剂师营地
+.fly Apothecary Camp >>飞往药剂师营地
 step
 .goto HowlingFjord,31.2,24.5
 >>返回圣人迷路者
@@ -32503,7 +33000,7 @@ step
 step
 .goto HowlingFjord,52.0,67.4
 >>乘车前往新阿加曼德
-.fp New Agamand >> 获取New Agamand飞行路线
+.fp New Agamand >>获取New Agamand飞行路线
 step
 >>与瘟疫使者、哈里斯和珍妮交谈
 .accept 11279 >>接受绿色鸡蛋和幼崽
@@ -32614,7 +33111,7 @@ step
 #requires VBones
 #completewith next
 .goto HowlingFjord,59.3,73.0,40,0
-.goto HowlingFjord,63.4,71.9,50 >> 穿过南桥
+.goto HowlingFjord,63.4,71.9,50 >>穿过南桥
 step
 #requires VBones
 >>前往鬼刃岗。与Ariel和Seguine交谈
@@ -32656,7 +33153,7 @@ step
 .goto HowlingFjord,67.8,71.9,70,0
 .goto HowlingFjord,64.9,71.4,70,0
 .goto HowlingFjord,65.4,67.0
->>开始耕种所有铲牙韧带
+>>开始种植所有铲牙的韧带
 .complete 11309,1 
 step
 .goto HowlingFjord,53.7,65.2
@@ -32667,11 +33164,11 @@ step
 step
 .goto HowlingFjord,50.7,58.7,50,0
 .goto HowlingFjord,49.4,54.0
-.use 33613 >> 跑去哈尔格林德，用你包里的憎恶装配工具包。使用“霹雳啪啪”（2）帮助你聚集暴徒。使用“瘟疫血爆炸”（1）来爆炸你的憎恶，杀死你聚集的暴徒。重复此操作，直到完成
+.use 33613 >>跑去哈尔格林德，用你包里的憎恶装配工具包。使用“霹雳啪啪”(2)帮助你聚集暴徒。使用“瘟疫血爆炸”(1)来爆炸你的憎恶，杀死你聚集的暴徒。重复此操作，直到完成
 .complete 11310,1 
 step
 .goto HowlingFjord,41.5,51.5
-.use 33441 >>当一只原龙出现时，将蒂林厄斯特的瘟疫肉放在地上（当单位扫描消失时）
+.use 33441 >>当一只原龙出现时，将蒂林厄斯特的瘟疫肉放在地上(当单位扫描消失时)
 .complete 11280,1 
 .unitscan Proto-Drake
 step
@@ -32692,7 +33189,7 @@ step
 .accept 11456 >>接受喂食幸存者
 step
 .goto HowlingFjord,24.66,57.77
-.fp Kamagua >> 获取Kamagua飞行路线
+.fp Kamagua >>获取Kamagua飞行路线
 step
 .goto HowlingFjord,28.8,65.5,60,0
 .goto HowlingFjord,32.5,66.3,60,0
@@ -32727,7 +33224,7 @@ step
 step
 #completewith next
 .goto HowlingFjord,23.10,62.57
-.vehicle >> 与划艇上的卢交谈，带你去斯卡拉瓦格点
+.vehicle >>与划艇上的卢交谈，带你去斯卡拉瓦格点
 .skipgossip
 step
 .goto HowlingFjord,35.09,80.94
@@ -32804,7 +33301,7 @@ step
 .accept 11467 >>接受死人的债务
 step
 #completewith next
-.goto HowlingFjord,36.8,77.6,60 >> 从Scalawag Point向北走
+.goto HowlingFjord,36.8,77.6,60 >>从Scalawag Point向北走
 step
 .goto HowlingFjord,35.40,78.20,50,0
 .goto HowlingFjord,34.04,79.30,50,0
@@ -32868,7 +33365,7 @@ step
 .turnin 11469 >>上咽肥皂
 step
 .goto HowlingFjord,37.86,74.77
->>在岛上等待船来（往返4分钟）。等它到了就上车，然后和上面的埃利斯船长谈谈
+>>在岛上等待船来(往返4分钟)。等它到了就上车，然后和上面的埃利斯船长谈谈
 .turnin 11519 >>交出伊索人丢失的盾牌
 .accept 11527 >>接受仁慈的兵变
 step
@@ -32928,12 +33425,12 @@ step << skip
 .complete 11472,1 
 step << skip
 #completewith Armor
-.destroy 34127 >> 销毁你袋子里剩下的美味礁鱼
+.destroy 34127 >>销毁你袋子里剩下的美味礁鱼
 step
 .goto HowlingFjord,33.61,75.92,20,0
 .goto HowlingFjord,33.80,78.01,30,0
 .goto HowlingFjord,33.57,78.18,12,0
->>进入洞穴。杀死“疯子”乔纳·斯特林（不要在这里使用你的酷东西）
+>>进入洞穴。杀死“疯子”乔纳·斯特林(不要在这里使用你的酷东西)
 >>然后，走到羊圈旁边的窗户里，把它放下。杀死霍泽尔。在这里使用你的冷却时间
 >>如果您无法完成此任务，请跳过它
 .complete 11471,1 
@@ -32944,8 +33441,8 @@ step
 .complete 11512,1 
 step
 #completewith next
-.goto HowlingFjord,33.6,75.6,30 >> 走捷径，在洞穴边跳墙。这是高度可选的，但可以为您节省大约20秒
-.link https://www.youtube.com/watch?v=QbvHRC0nIds >> 单击此处
+.goto HowlingFjord,33.6,75.6,30 >>走捷径，在洞穴边跳墙。这是高度可选的，但可以为您节省大约20秒
+.link https://www.youtube.com/watch?v=QbvHRC0nIds >>单击此处
 step
 .goto HowlingFjord,33.6,75.8,20,0
 .goto HowlingFjord,36.33,80.48
@@ -32962,7 +33459,7 @@ step
 step
 #completewith next
 .goto HowlingFjord,36.09,81.60
-.vehicle >> 在码头上与阿兰雅交谈
+.vehicle >>在码头上与阿兰雅交谈
 .timer 90,Bomber Flight
 .skipgossip
 step
@@ -32975,17 +33472,17 @@ step
 #completewith next
 #label Alanya2
 .goto HowlingFjord,80.87,75.11
-.vehicle >> 与哈里的轰炸机对话
+.vehicle >>与哈里的轰炸机对话
 .timer 65,Bomber Flight
 .skipgossip
 step
 .goto HowlingFjord,37.86,74.77
->>在岛上等待船来（往返4分钟）。等它到了就上车，然后和上面的埃利斯船长谈谈
+>>在岛上等待船来(往返4分钟)。等它到了就上车，然后和上面的埃利斯船长谈谈
 .turnin 11529 >>交出索洛夫的战利品
 .accept 11530 >>接受伊比利亚人的盾牌
 step
 #completewith next
-.goto HowlingFjord,42.07,67.72,15 >> 乘坐西风电梯前往嚎叫峡湾大陆
+.goto HowlingFjord,42.07,67.72,15 >>乘坐西风电梯前往嚎叫峡湾大陆
 step
 .goto HowlingFjord,40.29,60.25
 >>与奥弗斯交谈
@@ -33006,29 +33503,29 @@ step
 .goto HowlingFjord,61.98,80.05
 step << Druid
 #completewith DruidTrain2
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 .xp <70,1
 step << Druid
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.train 26990 >> 训练你的职业咒语
+.train 26990 >>训练你的职业咒语
 .xp <70,1
 step << Druid
 #label DruidTrain2
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.train 48442 >> 训练你的职业咒语
+.train 48442 >>训练你的职业咒语
 .xp <71,1
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 .xp <70,1
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 45463 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 45463 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <70,1
 step
 #completewith next
@@ -33067,19 +33564,19 @@ step
 .turnin 11572 >>转入返回Atuik
 step << Mage
 #completewith MageTrain2
-.zone Orgrimmar >> 电传至Orgrimmar
+.zone Orgrimmar >>电传至Orgrimmar
 step << Mage
 .goto Orgrimmar,38.4,86.1
-.train 27126 >> 下楼去。训练你的职业咒语
+.train 27126 >>下楼去。训练你的职业咒语
 .xp <70,1
 step << Mage
 #label MageTrain2
 .goto Orgrimmar,38.4,86.1
-.train 43023 >> 下楼去。训练你的职业咒语
+.train 43023 >>下楼去。训练你的职业咒语
 .xp <71,1
 step << !Mage
-.zone Orgrimmar >> 网站脱离Orgrimmar。要做到这一点，请按照下面的链接，然后单击您的角色并按照流程操作：
-.link https://us.battle.net/support/en/help/product/wow/197/834/solution >> 将此复制粘贴到浏览器中
+.zone Orgrimmar >>网站脱离Orgrimmar。要做到这一点，请按照下面的链接，然后单击您的角色并按照流程操作：
+.link https://us.battle.net/support/en/help/product/wow/197/834/solution >>将此复制粘贴到浏览器中
 >>或者，让一个法师传送到奥格瑞玛，或者手动前往那里
 .zoneskip Durotar
 step << Shaman/Paladin
@@ -33087,59 +33584,59 @@ step << Shaman/Paladin
 .goto Orgrimmar,40.5,36.9,25 >>输入Grommash Hold
 step << Shaman
 .goto Orgrimmar,38.6,36.0
-.train 25472 >> 训练你的职业咒语
+.train 25472 >>训练你的职业咒语
 .xp <70,1
 step << Shaman
 #label ShPaTraining
 .goto Orgrimmar,38.6,36.0
-.train 58699 >> 训练你的职业咒语
+.train 58699 >>训练你的职业咒语
 .xp <71,1
 step << Paladin
 .goto Orgrimmar,32.3,35.7
-.train 31884 >> 训练你的职业咒语
+.train 31884 >>训练你的职业咒语
 .xp <70,1
 step << Paladin
 #label ShPaTraining
 .goto Orgrimmar,32.3,35.7
-.train 54428 >> 训练你的职业咒语
+.train 54428 >>训练你的职业咒语
 .xp <71,1
 step << skip
 .goto Orgrimmar,44.0,54.6 << Rogue
-.train 51724 >> 训练你的职业咒语
+.train 51724 >>训练你的职业咒语
 .xp <71,1
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.train 27260 >> 训练你的职业咒语
+.train 27260 >>训练你的职业咒语
 .xp <70,1
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.train 47812 >> 训练你的职业咒语
+.train 47812 >>训练你的职业咒语
 .xp <71,1
 step << Priest
 .goto Orgrimmar,35.6,87.8
-.train 25368 >> 训练你的职业咒语
+.train 25368 >>训练你的职业咒语
 .xp <70,1
 step << Hunter/Warrior
 #completewith HuWaTraining
-.goto Orgrimmar,63.6,38.2,30 >> 进入荣誉谷
+.goto Orgrimmar,63.6,38.2,30 >>进入荣誉谷
 step << Hunter
 .goto Orgrimmar,66.1,18.5
-.train 27019 >> 训练你的职业咒语
+.train 27019 >>训练你的职业咒语
 .xp <70,1
 step << Hunter
 #label HuWaTraining
 .goto Orgrimmar,66.1,18.5
-.train 49051 >> 训练你的职业咒语
+.train 49051 >>训练你的职业咒语
 .xp <71,1
 step << Warrior
 #label HuWaTraining
 .goto Orgrimmar,76.9,32.6,30,0 << Warrior
 .goto Orgrimmar,79.8,31.4
-.train 25236 >> 训练你的职业咒语
+.train 25236 >>训练你的职业咒语
 .xp <70,1
 ]])
 RXPGuides.RegisterGuide([[
-#version 7
+#version 9
 #wotlk
 #tbc
 #group RestedXP 部落 60-70
@@ -33148,7 +33645,7 @@ RXPGuides.RegisterGuide([[
 step
 #completewith next
 .goto Shadowmoon Valley,20.11,25.49
-.zone Shadowmoon Valley >> 前往影月谷
+.zone Shadowmoon Valley >>前往影月谷
 step
 .goto Shadowmoon Valley,30.4,32.4
 .accept 10595 >>接受围困！
@@ -33157,7 +33654,7 @@ step
 .accept 10760 >>接受Sketh'lon残骸
 step
 .goto Shadowmoon Valley,30.3,29.2
-.fp Shadowmoon Village >> 获得影月村飞行路线
+.fp Shadowmoon Village >>获得影月村飞行路线
 step
 .goto Shadowmoon Valley,30.0,28.3
 .accept 10660 >>接受什么奇怪的生物。。。
@@ -33366,7 +33863,7 @@ step
 step
 #requires tabletfragsmv
 .goto Shadowmoon Valley,48.8,23.1
->放下一个灵魂图腾，杀死旁边的水元素来俘虏他们的灵魂。
+>Drop down a Totem of Spirits & kill Water elementals next to it to capture their souls.
 .complete 10480,1 
 step
 #requires wildlifesmv
@@ -33398,7 +33895,7 @@ step
 .goto Shadowmoon Valley,58.8,65.7,0
 .goto Shadowmoon Valley,57.7,73.2,0
 .goto Shadowmoon Valley,61.0,67.1,0
->放下一个灵魂图腾，杀死旁边的空气元素来俘虏他们的灵魂。
+>Drop down a Totem of Spirits & kill Air elementals next to it to capture their souls.
 .complete 10481,1 
 step
 .goto Shadowmoon Valley,58.2,70.8
@@ -33566,7 +34063,7 @@ step
 .turnin 10547 >>蓟头和鸡蛋的交还。。。
 ]])
 RXPGuides.RegisterGuide([[
-#version 7
+#version 9
 #wotlk
 #tbc
 #group RestedXP 部落 60-70
@@ -33575,7 +34072,7 @@ RXPGuides.RegisterGuide([[
 step
 #completewith next
 .goto Shadowmoon Valley,20.11,25.49
-.zone Shadowmoon Valley >> 前往影月谷
+.zone Shadowmoon Valley >>前往影月谷
 step
 .goto Shadowmoon Valley,30.4,32.4
 .accept 10595 >>接受围困！
@@ -33584,7 +34081,7 @@ step
 .accept 10760 >>接受Sketh'lon残骸
 step
 .goto Shadowmoon Valley,30.3,29.2
-.fp Shadowmoon Village >> 获得影月村飞行路线
+.fp Shadowmoon Village >>获得影月村飞行路线
 step
 .goto Shadowmoon Valley,30.0,28.3
 .accept 10660 >>接受什么奇怪的生物。。。
@@ -33991,7 +34488,7 @@ step
 .turnin 10547 >>蓟头和鸡蛋的交还。。。
 ]])
 RXPGuides.RegisterGuide([[
-#version 5
+#version 9
 #wotlk
 #group RestedXP 部落 70-80
 << Horde
@@ -33999,7 +34496,7 @@ RXPGuides.RegisterGuide([[
 #next 72-74 龙骨荒野
 step << !DK !Druid
 #completewith next
-.goto Orgrimmar,48.9,91.8,60 >> Orgrimmar出口
+.goto Orgrimmar,48.9,91.8,60 >>Orgrimmar出口
 .zoneskip Durotar
 .zoneskip BoreanTundra
 step
@@ -34011,7 +34508,7 @@ step
 >>与齐柏林飞艇旁边的战歌招募官交谈
 .accept 11585 >>接受地狱咆哮的守夜
 step
->> 去战歌要塞的底层。先和加罗什谈谈，然后再和索方谈谈
+>>去战歌要塞的底层。先和加罗什谈谈，然后再和索方谈谈
 .turnin 11585 >>交出地狱咆哮的守夜
 .goto BoreanTundra,41.35,53.60
 .accept 11596 >>接受战歌守卫
@@ -34019,7 +34516,7 @@ step
 step
 #completewith SouthHole
 .goto BoreanTundra,41.92,54.49
-.home >> 将您的炉石设置为战歌控制
+.home >>将您的炉石设置为战歌控制
 >>如果需要，购买新食物/水
 step
 >>头部朝外。与小屋内的拉兹戈交谈
@@ -34040,7 +34537,7 @@ step
 .goto BoreanTundra,44.6,57.0
 >>杀死该地区的Nerub'ar Skitters或Harvester
 >>抢劫该地区的木制部落板条箱
->>杀死该地区的Nerub'ar受害者（蜘蛛网），释放Peons或Guardians来帮助你战斗。
+>>杀死该地区的Nerub'ar受害者(蜘蛛网)，释放Peons或Guardians来帮助你战斗。
 .complete 11598,1 
 .complete 11606,1 
 .complete 11611,1 
@@ -34061,9 +34558,9 @@ step
 .goto BoreanTundra,43.20,55.06
 step
 #completewith next
-.goto BoreanTundra,42.44,55.34,20 >> 回到货舱底层
+.goto BoreanTundra,42.44,55.34,20 >>回到货舱底层
 step
->> 前往战歌要塞的较低级别。与Endorah、Talonga和Orn交谈
+>>前往战歌要塞的较低级别。与Endorah、Talonga和Orn交谈
 .accept 11574 >>接受太近的舒适度
 .goto BoreanTundra,41.73,54.73
 .accept 11888 >>接受前往Taunka'le村的骑行
@@ -34072,7 +34569,7 @@ step
 .goto BoreanTundra,41.98,54.11
 .skill cooking,<350,1
 step
->> 前往战歌要塞的较低级别。与Endorah和Talonga交谈
+>>前往战歌要塞的较低级别。与Endorah和Talonga交谈
 .accept 11574 >>接受太近的舒适度
 .goto BoreanTundra,41.73,54.73
 .accept 11888 >>接受前往Taunka'le村的骑行
@@ -34081,11 +34578,11 @@ step
 .goto BoreanTundra,41.20,54.01,30,0
 .goto BoreanTundra,41.23,53.40,30,0
 .goto BoreanTundra,41.69,53.45
->>与在货舱底层巡逻的苏拉诺克交谈（加洛什附近）
+>>与在货舱底层巡逻的苏拉诺克交谈(加洛什附近)
 .accept 12486 >>接受Bor'gorok前哨，快！
 step
 #completewith next
-.goto BoreanTundra,42.71,55.81,25 >> 回到货舱外
+.goto BoreanTundra,42.44,55.34,20 >>回到货舱外
 step
 #completewith SouthHole
 >>摧毁采石场坡道上的蛋袋
@@ -34093,7 +34590,7 @@ step
 .complete 11602,1 
 step
 #label SouthHole
-.use 34710 >> 在采石场的灰岩坑中使用袋子中的Seaforium深水装药包。等待炸药爆炸
+.use 34710 >>在采石场的灰岩坑中使用袋子中的Seaforium深水装药包。等待炸药爆炸
 .complete 11608,2 
 .goto BoreanTundra,44.24,56.76
 .complete 11608,1 
@@ -34107,11 +34604,11 @@ step
 #sticky
 #label Luther
 .goto BoreanTundra,40.07,52.06,-1
->>与亡灵尸体交谈
+>>与影语者路德的尸体对话
 .turnin 11614 >>交出未知真相
 .accept 11615 >>接受Nerub的秘密
 step
-.use 34710 >> 在采石场的灰岩坑中使用袋子中的Seaforium深水装药包
+.use 34710 >>在采石场的灰岩坑中使用袋子中的Seaforium深水装药包
 .complete 11608,3 
 .goto BoreanTundra,39.81,52.53,-1
 step
@@ -34122,14 +34619,13 @@ step
 .complete 11602,1 
 step
 #requires Luther
-.use 34710 >> 在采石场的灰岩坑中使用袋子中的Seaforium深水装药包
+.use 34710 >>在采石场的灰岩坑中使用袋子中的Seaforium深水装药包
 .goto BoreanTundra,41.34,50.36
 .complete 11608,4 
 step
 >>在外面和霍尔哥特谈谈。然后前往小屋与巴尔萨斯和拉兹戈交谈
 .turnin 11608 >>把那些蟑螂埋了！
 .goto BoreanTundra,43.33,55.36
-.turnin 11611 >>被天灾俘虏
 .turnin 11615 >>交出Nerub的秘密
 .accept 11616 >>接受发送给地狱咆哮的消息
 .goto BoreanTundra,43.20,55.06
@@ -34138,7 +34634,7 @@ step
 .goto BoreanTundra,43.19,54.98
 step
 #completewith next
-.goto BoreanTundra,42.44,55.34,20 >> 回到货舱底层
+.goto BoreanTundra,42.44,55.34,20 >>回到货舱底层
 step
 .goto BoreanTundra,41.35,53.60
 >>与Hold底层的Garrosh交谈
@@ -34147,29 +34643,20 @@ step
 step
 .goto BoreanTundra,40.72,52.54,20,0
 .goto BoreanTundra,40.36,51.39
->> 跑上楼梯，然后乘电梯到楼顶
-.fp Warsong Hold >> 获取战歌等待飞行路径
+>>跑上楼梯，然后乘电梯到战歌要塞的顶部
+.fp Warsong Hold >>获取战歌等待飞行路径
 step
 .goto BoreanTundra,42.02,54.49,30,0
 .goto BoreanTundra,42.73,55.62
->>与to’bor交谈，在货舱的阳台上巡逻（不要返回电梯）
+>>与to’bor交谈，在货舱的阳台上巡逻(不要返回电梯)
 .turnin 11634 >>将风大师交给
 .accept 11636 >>接受魔法地毯骑行
 step
 #completewith next
 .goto BoreanTundra,42.28,55.68
-.vehicle >>在Warsong Hold与Yanni交谈，然后乘坐魔法地毯前往Garrosh Landing。这趟旅程只需不到一分钟。
+.vehicle >>在Warsong Hold与Yanni交谈，然后乘坐魔法地毯前往Garrosh Landing。
 .timer 57,Yanni Magic Carpet flight
 .skipgossip
-step
-#questguide
->>先和Waltor谈谈，然后再和Grek'lor谈谈
-.accept 11655 >>接受进入迷雾
-.accept 11660 >>接受古代水手之角
-.goto BoreanTundra,32.34,54.27
-.turnin 11636 >>魔毯骑行中的转身
-.accept 11642 >>接受坦克不会自行修复
-.goto BoreanTundra,32.25,54.07
 step
 >>先和Waltor谈谈，然后再和Grek'lor谈谈
 .accept 11655 >>接受进入迷雾
@@ -34185,39 +34672,30 @@ step
 .accept 11644 >>接受超强金属板！
 .goto BoreanTundra,32.07,54.27
 step
-#questguide
-#completewith Mootoo
-.goto BoreanTundra,29.6,50.1,0
->> 杀死Kvaldirs。抢劫他们的文物。从迷雾编织者手中夺取号角。
-.complete 11655,1 
-.complete 11660,1 
-step
-#sticky
 #completewith hornbt
 .goto BoreanTundra,32.4,47.9,0,0
 >>杀死角附近的迷雾编织者。在做这件事的时候，专注于其他任务。
 .complete 11660,1 
-
 step
 #completewith Mootoo
 .goto BoreanTundra,29.6,50.1,0
->> 杀死Kvaldirs。抢劫他们的文物。
+>>杀死Kvaldirs。抢劫他们的文物。
 .complete 11655,1 
 step
 #completewith end
 #label metalplate
->> 抢劫地面上的金属板。
+>>抢劫地面上的金属板。
 .goto BoreanTundra,32.4,47.9,0,0
 .complete 11644,1 
 step
 #label Pneumatic
 .goto BoreanTundra,32.39,49.18
->>点击小屋内的气动储罐Transjigamarigh
+>>点击小屋内的气动储罐Transjigamarig。
 .complete 11643,1 
 step
 .goto BoreanTundra,31.9,52.7,15,0
 .goto BoreanTundra,31.88,52.32
->>跑到大楼的顶层。与Mootoo交谈。如果她没起来，就跳过这个。
+>>跑到大楼的顶层。与Mootoo交谈。如果她没有起来，就跳过这一步。
 .accept 11664 >>接受《逃离迷雾》
 step
 #label Mootoo
@@ -34226,31 +34704,19 @@ step
 .complete 11664,1 
 .isOnQuest 11664
 step
-#questguide
 .goto BoreanTundra,32.8,46.5,60,0
 .goto BoreanTundra,29.5,51.1,60,0
 .goto BoreanTundra,30.5,54.9,60,0
 .goto BoreanTundra,31.9,52.4
->> 杀死Kvaldirs。抢劫他们的文物。从迷雾编织者手中夺取号角。
+>>杀死Kvaldirs。抢劫他们的文物。
 .complete 11655,1 
-.complete 11660,1 
 step
-.goto BoreanTundra,32.8,46.5,60,0
-.goto BoreanTundra,29.5,51.1,60,0
-.goto BoreanTundra,30.5,54.9,60,0
-.goto BoreanTundra,31.9,52.4
->> 杀死Kvaldirs。抢劫他们的文物。
-.complete 11655,1 
-
-step
-.isQuestComplete 11664
 >>与穆托长老交谈
 .turnin 11664 >>转身逃离迷雾
 .goto BoreanTundra,31.68,54.37
+.isQuestComplete 11664
 step
-.isOnQuest 11664
->>如果无法完成护送任务，请放弃该任务。
-.abandon 11664
+.abandon 11664 >>放弃逃离迷雾
 step
 >>与莫布交谈
 #requires metalplate
@@ -34258,17 +34724,6 @@ step
 .turnin 11644 >>交上超级坚固的金属板！
 .accept 11651 >>大量接受坦克。。。
 .goto BoreanTundra,32.07,54.27
-step
-#questguide
->>与Grek'lo和Waltor交谈
-.turnin 11651 >>大量上缴坦克。。。
-.accept 11652 >>接受纳萨姆平原
-.goto BoreanTundra,32.25,54.07
-.turnin 11655 >>转向雾中
-.accept 11656 >>接受烧毁的雕像
-.turnin 11660 >>上缴古代水手之角
-.accept 11661 >>接受Orabus the Helmsman
-.goto BoreanTundra,32.34,54.27
 step
 >>与Grek'lo和Waltor交谈
 .turnin 11651 >>大量上缴坦克。。。
@@ -34278,45 +34733,34 @@ step
 .accept 11656 >>接受烧毁的雕像
 .goto BoreanTundra,32.33,54.26
 step
-.isQuestComplete 11660
 .turnin 11660 >>上缴古代水手之角
 .accept 11661 >>接受Orabus the Helmsman
 .goto BoreanTundra,32.34,54.27
+.isQuestComplete 11660
 step
-.use 34830 >>在该地区船只旁边的包中使用Tuskarr火炬
+.use 34830 >>在该地区船只旁边的包中使用Tuskarr火炬。
 .complete 11656,1 
 .goto BoreanTundra,31.58,48.13
 .complete 11656,2 
 .goto BoreanTundra,30.93,48.70
 .complete 11656,3 
 .goto BoreanTundra,29.61,52.79
-
 step
-#questguide
 #completewith next
 .goto BoreanTundra,26.91,54.75
-.cast 45703 >> 在战歌码头的尽头，使用包里的古代水手之角
+.cast 45703 >>在战歌码头的尽头，使用包里的古代水手之角。
 .use 34844
-step
-#questguide
-.goto BoreanTundra,26.68,54.64
-.use 34844 >> 当他到达时杀死船员和Orabus
-.complete 11661,1 
-step
 .isOnQuest 11661
-#completewith next
-.goto BoreanTundra,26.91,54.75
-.cast 45703 >> 在战歌码头的尽头，使用包里的古代水手之角
-.use 34844
+.timer 22,Orabus RP
 step
-.isOnQuest 11661
 .goto BoreanTundra,26.68,54.64
-.use 34844 >> 当他到达时杀死船员和Orabus
+.use 34844 >>杀死船员，然后在他到达时杀死Orabus。
 .complete 11661,1 
+.isOnQuest 11661
 step
 #label hornbt
 .goto BoreanTundra,29.88,61.81
-.use 34830 >>在船旁边的包中使用Tuskarr火炬
+.use 34830 >>在船旁边的包中使用Tuskarr火炬。
 .complete 11656,4 
 step
 #questguide
@@ -34326,44 +34770,50 @@ step
 .turnin 11661 >>交出舵手奥拉巴斯
 .accept 11662 >>接受寻找Karuk！
 step
-.isQuestComplete 11660
 .turnin 11660 >>上缴古代水手之角
 .accept 11661 >>接受Orabus the Helmsman
 .goto BoreanTundra,32.34,54.27
+.isQuestComplete 11660
 step
+.abandon 11660 >>放弃古代水手之角
 .isOnQuest 11660
->>如果你现在还没有放下号角，放弃这个任务。
-.abandon 11660
-
 step
-.isOnQuest 11661
 #completewith next
 .goto BoreanTundra,26.91,54.75
-.cast 45703 >> 在战歌码头的尽头，使用包里的古代水手之角
+.cast 45703 >>在战歌码头的尽头，使用包里的古代水手之角。
 .use 34844
-step
 .isOnQuest 11661
+.timer 22,Orabus RP
+step
 .goto BoreanTundra,26.68,54.64
-.use 34844 >> 当他到达时杀死船员和Orabus
+.use 34844 >>当船员和Orabus到达时，杀死他们。
 .complete 11661,1 
+.isOnQuest 11661
 step
 >>与Waltor交谈
-.isQuestComplete 11661
 .turnin 11661 >>交出舵手奥拉巴斯
-.accept 11662 >>接受寻找Karuk！
+.turnin 11656 >>交上烧毁的人像
 .goto BoreanTundra,32.34,54.27
+.isQuestComplete 11661
+.isQuestComplete 11656
 step
-.goto BoreanTundra,32.34,54.27
 >>与Waltor交谈
 .turnin 11656 >>交上烧毁的人像
-
+.goto BoreanTundra,32.34,54.27
+.isQuestComplete 11656
+step
+>>与Waltor交谈
+.accept 11662 >>接受寻找Karuk！
+.goto BoreanTundra,32.34,54.27
+.isQuestTurnedIn 11656
+.isQuestTurnedIn 11661
 step
 #completewith next
 .goto BoreanTundra,31.91,54.40
-.vehicle >> 进入攻城坦克
+.vehicle >>进入攻城坦克
 step
->>使用你的1-4技能杀死该区域周围的100个天灾。瞄准受伤战歌士兵并使用你的第5个异能。救援工程师移动更快
->>如果你的法力耗尽，就把车开到油桶上。缓慢完成任务，否则你可能需要另一辆攻城坦克
+>>使用你的1-4技能杀死天灾。对受伤的战歌士兵使用你的第5个异能。救援工程师移动更快
+>>如果你的法力耗尽，就把车开到油桶上
 .complete 11652,1 
 .complete 11652,2 
 .goto BoreanTundra,36.6,62.2
@@ -34374,7 +34824,7 @@ step
 #completewith Karuk1
 #label CTPrisoner1
 .goto BoreanTundra,44.10,77.90,50,0
->>杀死一个（或多个）围绕被俘虏塔斯卡尔囚犯的斯卡迪尔人，然后杀死Ripplash Myrmidon。之后与囚犯交谈
+>>杀死一个(或多个)围绕被俘虏塔斯卡尔囚犯的斯卡迪尔人，然后杀死Ripplash Myrmidon。之后与囚犯交谈
 >>如果他现在不起来，就忽略这个
 .accept 12471 >>接受克瓦尔迪尔的残忍
 .unitscan Captured Tuskarr Prisoner
@@ -34386,15 +34836,15 @@ step
 .turnin 12471 >>交出克瓦尔迪尔的残忍
 .isOnQuest 12471
 step
-.goto BoreanTundra,47.13,75.49
->>与Karuk交谈
-.turnin 11662 >>转向寻找Karuk！
-.isOnQuest 11662
-step
 #label Karuk1
 .goto BoreanTundra,47.13,75.49
 >>与Karuk交谈
 .accept 11613 >>接受卡鲁克的誓言
+step
+.goto BoreanTundra,47.13,75.49
+>>与Karuk交谈
+.turnin 11662 >>转向寻找Karuk！
+.isOnQuest 11662
 step
 #requires Cruelty1
 >>杀死该地区的斯卡迪尔龙舟人和袭击者
@@ -34406,7 +34856,7 @@ step
 #completewith Karuk2
 #label CTPrisoner2
 .goto BoreanTundra,44.10,77.90,50,0
->>杀死一个（或更多）围绕被俘虏塔斯卡尔囚犯的斯卡迪尔，然后杀死Ripplash Myrmidon。之后与囚犯交谈
+>>杀死一个(或更多)围绕被俘虏塔斯卡尔囚犯的斯卡迪尔，然后杀死Ripplash Myrmidon。之后与囚犯交谈
 >>如果他现在不起来，就忽略这个
 .accept 12471 >>接受克瓦尔迪尔的残忍
 .unitscan Captured Tuskarr Prisoner
@@ -34427,13 +34877,13 @@ step
 #requires Cruelty2
 .goto BoreanTundra,46.3,78.8,20,0
 .goto BoreanTundra,46.3,78.7
->>进入洞穴. Kill Gamel
+>>进入洞穴。杀死Gamel
 .complete 11619,1 
 step
 #completewith Karuk3
 #label CTPrisoner3
 .goto BoreanTundra,44.10,77.90,50,0
->>杀死一个（或更多）围绕被俘虏塔斯卡尔囚犯的斯卡迪尔，然后杀死Ripplash Myrmidon。之后与囚犯交谈
+>>杀死一个(或更多)围绕被俘虏塔斯卡尔囚犯的斯卡迪尔，然后杀死Ripplash Myrmidon。之后与囚犯交谈
 >>如果他现在不起来，就忽略这个
 .accept 12471 >>接受克瓦尔迪尔的残忍
 .unitscan Captured Tuskarr Prisoner
@@ -34454,7 +34904,7 @@ step
 #completewith Veehja
 #label CTPrisoner4
 .goto BoreanTundra,44.10,77.90,50,0
->>杀死一个（或更多）围绕被俘虏塔斯卡尔囚犯的斯卡迪尔，然后杀死Ripplash Myrmidon。之后与囚犯交谈
+>>杀死一个(或更多)围绕被俘虏塔斯卡尔囚犯的斯卡迪尔，然后杀死Ripplash Myrmidon。之后与囚犯交谈
 >>如果他现在不起来，就忽略这个
 .accept 12471 >>接受克瓦尔迪尔的残忍
 .unitscan Captured Tuskarr Prisoner
@@ -34498,14 +34948,14 @@ step
 .isQuestTurnedIn 11625
 step
 .goto BoreanTundra,51.90,88.46
-.use 35850 >> 去水下利维罗斯。用你袋子里的纳粹三叉戟对他造成很大伤害，然后杀了他
+.use 35850 >>去水下利维罗斯。用你袋子里的纳粹三叉戟对他造成很大伤害，然后杀了他
 .complete 11626,1 
 .isQuestTurnedIn 11625
 step
 #completewith Karuk5
 #label CTPrisoner5
 .goto BoreanTundra,44.10,77.90,50,0
->>杀死一个（或更多）围绕被俘虏塔斯卡尔囚犯的斯卡迪尔，然后杀死Ripplash Myrmidon。之后与囚犯交谈
+>>杀死一个(或更多)围绕被俘虏塔斯卡尔囚犯的斯卡迪尔，然后杀死Ripplash Myrmidon。之后与囚犯交谈
 >>如果他现在不起来，就忽略这个
 .accept 12471 >>接受克瓦尔迪尔的残忍
 .unitscan Captured Tuskarr Prisoner
@@ -34524,46 +34974,47 @@ step
 .isQuestTurnedIn 11625
 step << Druid
 #completewith DruidTrain
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 .xp <71,1
 step << Druid
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.train 48442 >> 训练你的职业咒语
+.train 48442 >>训练你的职业咒语
 .xp <71,1
 step << Druid
 #label DruidTrain
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.train 48464 >> 训练你的职业咒语
+.train 48464 >>训练你的职业咒语
 .xp <72,1
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 .xp <72,1
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49940 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49940 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <72,1
 step << Mage
 #completewith MageTrain
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 .xp <71,1
 step << Mage
 .goto Undercity,85.1,10.0
-.train 43023 >> 训练你的职业咒语
+.train 43023 >>训练你的职业咒语
 .xp <71,1
 step << Mage
 #label MageTrain
 .goto Undercity,85.1,10.0
-.train 42930 >> 训练你的职业咒语
+.train 42930 >>训练你的职业咒语
 .xp <72,1
 step
 #completewith Nasam
 .hs >>从火炉到战歌
+.cooldown item,6948,>0
 step
 >>与Orn Tenderhoof交谈
 .turnin 13090 >>上北方烹饪课
@@ -34579,7 +35030,8 @@ step
 #completewith next
 .goto BoreanTundra,38.95,55.43,20,0
 .goto BoreanTundra,39.18,55.38,15,0
-.goto BoreanTundra,38.93,54.08,15 >> 离开货舱，然后离开采石场
+.goto BoreanTundra,38.93,54.08,15 >>离开货舱，然后离开采石场
+.skill riding,225,1
 step
 >>与伊可利斯、卡纳利乌斯和托普交谈
 .turnin 11618 >>交出来的增援。。。
@@ -34598,7 +35050,7 @@ step
 step
 #completewith Slaughterhouse
 .goto BoreanTundra,36.1,48.2,0,0
->> 为钥匙杀死亡灵或战歌畸变。用它们对付关在笼子里的囚犯
+>>为钥匙杀死亡灵或战歌畸变。用它们对付关在笼子里的囚犯
 .collect 34908,5,11676,0x1,-1
 .complete 11676,1 
 step
@@ -34620,14 +35072,13 @@ step
 .goto BoreanTundra,35.5,48.4,60,0
 .goto BoreanTundra,36.3,52.6,60,0
 .goto BoreanTundra,38.2,50.0
->> 杀死你看到的所有死灵或畸变以获得钥匙。用它们对付关在笼子里的囚犯
+>>杀死你看到的所有死灵或畸变以获得钥匙。用它们对付关在笼子里的囚犯
 .collect 34908,5,11676,0x1,-1
 .complete 11676,1 
 step
 #requires Swines
 >>与Torp、Canarius和Ickoris交谈
 .turnin 11688 >>交出该死的脏猪
-.accept 11690 >>接受让Em活着回来
 .goto BoreanTundra,37.90,52.33
 .turnin 11676 >>交出仁慈的自由
 .goto BoreanTundra,37.91,52.58
@@ -34635,42 +35086,53 @@ step
 .accept 11703 >>接受Get to Getry
 .goto BoreanTundra,38.08,52.48
 step
-.use 34954 >> 在Kodos上的袋子里使用Torp的Kodo Snaffle。在每个新的kodo上使用“Stampede”（1）以加快移动速度。跑回托普，用（2）营救神户。
+#questguide
+.accept 11690 >>接受让Em活着回来
+.goto BoreanTundra,37.90,52.33
+step
+#questguide
+.use 34954 >>在Kodos上的包中使用Torp的Kodo Snaffle。在每个新的kodo上使用“Stampede”(1)以加快移动速度。跑回托普，用(2)营救神户。
 .waypoint Borean Tundra,36.52,47.84,0,vehicle,VEHICLE_PASSENGERS_CHANGED,VEHICLE_UPDATE,UNIT_EXITING_VEHICLE
 .goto BoreanTundra,37.9,52.6
 .complete 11690,1 
 step
+#questguide
 .goto BoreanTundra,37.90,52.33
 >>与Torp交谈
 .turnin 11690 >>交上来让他们活着回来
 step
 .goto BoreanTundra,34.59,46.43
->>与躲在塔顶的盖特里交谈
+>>与塔顶的盖特里交谈
 .turnin 11703 >>上车去Get to Getry
 .accept 11705 >>接受愚蠢的努力
 .timer 140,Foolish Endeavors RP
+.isOnQuest 11703
 step
->>跳下塔，然后等待RP。杀死瓦利杜斯
+.isOnQuest 11705
+>>跳下塔，等待RP结束。杀死Varidus
 >>请注意，此任务可能有漏洞，可能需要多次接受任务才能启动事件
 .goto BoreanTundra,35.2,46.1
 .complete 11705,1 
-step << Shaman
-.hs >>炉灶返回Warsong Hold
 step
-.goto BoreanTundra,38.95,55.43,20,0 << !Shaman
+#completewith next
+.hs >>从火炉到战歌
+.cooldown item,6948,>0
+step
+.isQuestComplete 11705
 .goto BoreanTundra,41.35,53.60
->>返回战歌保留 << !Shaman
->>与加罗什交谈
+>>返回战歌要塞。与加罗什交谈
 .turnin 11705 >>提交愚蠢的努力
 .accept 11709 >>接受Nork Bloodfrenzy的指控
 step
 #completewith next
-.goto BoreanTundra,42.71,55.81,25 >> 回到货舱外
+.goto BoreanTundra,42.71,55.81,25 >>回到货舱外
+.isOnQuest 11709
 step
 .goto BoreanTundra,43.71,54.43
 >>与挪威人交谈
 .turnin 11709 >>交出Nork Bloodfrenzy的指控
 .accept 11711 >>接受懦夫送货……30分钟内或免费
+.isOnQuest 11709
 step
 .goto BoreanTundra,52.07,52.50
 >>离开采石场前往血泊平原。与Laurith交谈
@@ -34678,9 +35140,10 @@ step
 step
 #completewith next
 .goto BoreanTundra,55.30,50.76
-.cast 45958 >> 使用路标旁边的战歌火炬枪。目标将在30秒后自动完成
+.cast 45958 >>使用路标旁的战歌火炬枪
 .timer 30,Coward Delivery RP
 .use 34971
+.isOnQuest 11711
 step
 >>等待任务完成，然后与通古克交谈
 .goto BoreanTundra,53.30,51.67,50,0
@@ -34690,16 +35153,18 @@ step
 .turnin 11711 >>交怯场送货……30分钟内或免费
 .accept 11714 >>接受灭虫
 .unitscan Scout Tungok
+.isOnQuest 11711
 step
 #completewith Pollen
 .goto BoreanTundra,51.5,63.5,0
 .goto BoreanTundra,50.7,49.4,0
 .goto BoreanTundra,53.9,49.6,0
 .goto BoreanTundra,51.5,63.5,0
->> 杀死平原周围的血孢子采集器、点火器和烤炉。
+>>杀死平原周围的血孢子采集器、点火器和烤炉。
 .complete 11714,1 
 .complete 11714,2 
 .complete 11714,3 
+.isOnQuest 11711
 step
 .goto BoreanTundra,50.7,49.4,50,0
 .goto BoreanTundra,53.9,49.6,50,0
@@ -34734,10 +35199,11 @@ step
 .goto BoreanTundra,50.7,49.4,50,0
 .goto BoreanTundra,53.9,49.6,50,0
 .goto BoreanTundra,51.5,63.5
->> 杀死平原周围的血孢子采集器、点火器和烤炉。
+>>杀死平原周围的血孢子采集器、点火器和烤炉。
 .complete 11714,1 
 .complete 11714,2 
 .complete 11714,3 
+.isOnQuest 11714
 step
 #completewith end
 #label Tungok2
@@ -34756,10 +35222,9 @@ step
 step
 #completewith next
 .goto BoreanTundra,52.07,52.50
-.cast 45995 >> 使用包里的抛光血孢子花
+.cast 45995 >>使用包里的抛光血孢子花
 .timer 10,Bloodspore Flower RP
 .use 34978
-
 step
 .goto BoreanTundra,52.07,52.50
 >>等待10秒钟，等待debuff结束
@@ -34773,27 +35238,29 @@ step
 .accept 11721 >>接受Tormentor Gammotra
 .goto BoreanTundra,52.18,52.82
 step
+#requires Tungok2
 #completewith next
-.goto BoreanTundra,49.11,58.43,30 >> 进入山中的洞穴
+.goto BoreanTundra,49.11,58.43,30 >>进入山中的洞穴
 step
 .goto BoreanTundra,45.81,60.70,30,0
 .goto BoreanTundra,45.8,61.6
->>当你靠近水的时候跳下来，到底楼。沿着洞穴的西南面走到Gammothra
-.use 34979 >> 将袋子中的碎血孔袋导入，以削弱Gammothra。杀了他，抢了他的头
+>>当你靠近水的时候跳下来，到洞穴的底部。沿着洞穴的西南面走到Gammothra
+.use 34979 >>将袋子中的碎血孔袋导入，以削弱Gammothra。杀了他，抢了他的头
 .complete 11721,1 
+.unitscan Gammothra the Tormentor
 step
-#completewith Omelet
-+跳到Gammothera房间里两块岩石的中间，尽可能地跳得高。
-+尽可能高的登录后，注销并重新登录。如果您无法让注销跳过工作，请跳过此步骤并正常退出洞穴。
-.goto BoreanTundra,46.7,62.2
-.link https://gyazo.com/1a30637d12dd12fd15ace7731236ea21 >>单击此处查看注销位置的图片参考。
-
+#completewith Gammothra
+.goto BoreanTundra,46.75,61.40
+.goto BoreanTundra,45.12,53.51,40 >>跳到Gammothera房间的岩石边缘，然后注销并重新登录。如果你不能这样做，跳过这一步，正常跑出洞穴
+.link https://www.youtube.com/watch?v=J3jq3PYRghQ >>单击此处以供参考
+.isOnQuest 11721
 step
 #label Omelet
 .goto BoreanTundra,48.55,59.02
 >>与巨大发光的鸡蛋交谈。你不需要和周围的暴徒战斗
 .accept 11724 >>接受大块蛾蛋卷？
 step
+#label Gammothra
 >>与Mighthorn和Laurith交谈
 .turnin 11721 >>交给Tormentor Gammotra
 .accept 11722 >>接受Gammoth奖杯
@@ -34802,62 +35269,76 @@ step
 .goto BoreanTundra,52.07,52.50
 step << Druid
 #completewith DruidTrain2
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 .xp <71,1
 step << Druid
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.train 48442 >> 训练你的职业咒语
+.train 48442 >>训练你的职业咒语
 .xp <71,1
 step << Druid
 #label DruidTrain2
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.train 48464 >> 训练你的职业咒语
+.train 48464 >>训练你的职业咒语
 .xp <72,1
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 .xp <72,1
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49940 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49940 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <72,1
 step << Mage
 #completewith MageTrain2
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 .xp <71,1
 step << Mage
 .goto Undercity,85.1,10.0
-.train 43023 >> 训练你的职业咒语
+.train 43023 >>训练你的职业咒语
 .xp <71,1
 step << Mage
 #label MageTrain2
 .goto Undercity,85.1,10.0
-.train 42930 >> 训练你的职业咒语
+.train 42930 >>训练你的职业咒语
 .xp <72,1
 step
 #completewith next
 .hs >>从火炉到战歌
+.cooldown item,6948,>0
 step
+.isQuestComplete 11722
 .goto BoreanTundra,41.35,53.60
 >>与Hold底层的Garrosh交谈
 .turnin 11722 >>交出Gammoth奖杯
+step
+.isQuestTurnedIn 11722
+.isQuestTurnedIn 11705
+.isQuestTurnedIn 11652
+.goto BoreanTundra,41.35,53.60
 .accept 11916 >>接受地狱咆哮的冠军
 step
+.isOnQuest 11916
 #completewith next
 .goto BoreanTundra,40.42,54.83,30,0
 .goto BoreanTundra,40.16,55.17
-.fly >> 让底层的Durkot Wolfbrother载你去Taunka'le村
+.fly >>让底层的Durkot Wolfbrother载你去Taunka'le村
 .skipgossip
 .timer 115,Ride to Taunka'le
 step
+.isOnQuest 11916
+#sticky
+#completewith next
 .goto BoreanTundra,77.76,37.77
->>在狼身上等待旅程结束，然后与飞行大师交谈
-.fp Taunka'le Village >> 获得Taunka'le村的飞行路线
++在狼身上等待旅程结束，然后与飞行大师交谈
+step
+#completewith next
+.goto BoreanTundra,77.76,37.77
+.fp Taunka'le Village >>获得Taunka'le村的飞行路线
 step
 >>与圣人和马汉交谈
 .turnin 11888 >>转入Taunka'le村
@@ -34866,19 +35347,20 @@ step
 .accept 11684 >>接受对陷坑的侦察
 .goto BoreanTundra,77.07,37.82
 step
-#completewith CPlane
-.goto BoreanTundra,76.25,37.18
-.home >> 把炉子放在陶恩卡勒村
-step
-.goto BoreanTundra,75.89,37.24
->>与Wintergale交谈
-.turnin 11916 >>交出地狱咆哮的冠军
-step
 >>与Fezzix交谈，然后与帐篷内的Taiga交谈
 .accept 11881 >>接受Load'er Up！
 .goto BoreanTundra,77.48,36.95
 .accept 11674 >>接受Sage Highmesa失踪
 .goto BoreanTundra,77.30,36.87
+step
+#completewith CPlane
+.goto BoreanTundra,76.25,37.18
+.home >>把炉子放在陶恩卡勒村
+step
+.isOnQuest 11916
+.goto BoreanTundra,75.89,37.24
+>>与Wintergale交谈
+.turnin 11916 >>交出地狱咆哮的冠军
 step
 .use 34920 >>在灰岩坑边缘的袋子里，使用间歇泉场地图。
 .complete 11684,1 
@@ -34893,7 +35375,7 @@ step
 .complete 11890,1 
 step
 .goto BoreanTundra,64.02,35.77
->>与侏儒尸体交谈
+>>与坠毁侦察机飞行员的尸体对话
 .accept 11887 >>接受应急物资
 step
 .goto BoreanTundra,64.0,37.2,70,0
@@ -34906,15 +35388,15 @@ step
 #completewith next
 #label CPlane
 .goto BoreanTundra,63.38,36.99
-.cast 46338 >> 清理坠毁飞机周围的区域，用你包里的珍妮哨子召唤骡子。
+.cast 46338 >>清理坠毁飞机周围的区域，用你包里的珍妮哨子召唤骡子。
 step
 #completewith next
 .goto BoreanTundra,77.61,36.84
-.use 35272 >> 带着珍妮跑回费齐克斯，珍妮不会被击中。珍妮跑得很慢，所以不要没有她就走了。如果你把她丢了，她就会消失
+.use 35272 >>带着珍妮跑回费齐克斯，珍妮不会被击中。珍妮跑得很慢，所以不要没有她就走了。如果你把她丢了，她就会消失
 .complete 11881,1 
 step
 #requires CPlane
->>跟Fezzix谈谈，然后跟Dorain谈谈
+>>先和Fezzix谈谈，然后是Dorain
 .turnin 11881 >>上车！
 .turnin 11887 >>移交应急物资
 .goto BoreanTundra,77.48,36.95
@@ -34948,15 +35430,15 @@ step
 .goto BoreanTundra,72.5,37.1,60,0
 .goto BoreanTundra,73.5,39.9,60,0
 .goto BoreanTundra,74.6,33.9
-.use 35281 >> 使用风之图腾。当蒸汽破坏者从你的图腾（大约30码范围内）身上受到攻击时，杀死他们以收集能量
+.use 35281 >>使用你包里的风之图腾。当蒸汽破坏者从你的图腾(大约30码范围内)身上受到攻击时，杀死他们以收集能量
 .complete 11893,1 
 step
 #completewith next
 .goto BoreanTundra,66.5,22.2,0
-.use 35352 >>在该区域的机械（但不是机械师）怪物上使用圣人的避雷针。杀了他们。专注于这个任务，因为棒子有很长的冷却时间
+.use 35352 >>对该区域的机械(而非机械师)暴徒使用圣人的避雷针并杀死他们。专注于这个任务，因为棒子有很长的冷却时间
 .complete 11896,1 
 step
-.use 35401 >> 杀死机械师。在你的袋子里放上伟大母亲的灵魂守护神——他们的尸体。
+.use 35401 >>杀死机械师。在你的袋子里放上伟大母亲的灵魂守护神——他们的尸体。
 >>抢劫散落在地上的零件
 .goto BoreanTundra,64.5,22.8,60,0
 .goto BoreanTundra,65.3,17.5,60,0
@@ -34971,11 +35453,11 @@ step
 .goto BoreanTundra,66.3,22.1,60,0
 .goto BoreanTundra,67.1,25.2,60,0
 .goto BoreanTundra,61.4,24.4
-.use 35352 >>在该区域的机械（但不是机械师）怪物上使用圣人的避雷针。杀了他们。首先关注这个任务，因为鱼竿有冷却时间
+.use 35352 >>在该区域的机械(但不是机械师)怪物上使用圣人的避雷针。杀了他们。首先关注这个任务，因为鱼竿有冷却时间
 .complete 11896,1 
 step
 #completewith next
-.hs >> 炉灶至Taunka'le村
+.hs >>炉灶至Taunka'le村
 .cooldown item,6948,>0
 step
 >>返回Taunka'le村。与铁眼圣人交谈
@@ -35028,7 +35510,7 @@ step
 .complete 11695,2 
 step
 .goto BoreanTundra,71.15,28.14
-.use 35288 >> 在通风口附近用你的皮毛使它们蒸汽固化。
+.use 35288 >>在通风口附近用你的皮毛使它们蒸汽固化。
 .collect 35288,5,11894,1,-1
 .complete 11894,1 
 step
@@ -35050,6 +35532,8 @@ step
 .goto BoreanTundra,64.43,23.40
 >>跑到油平台顶部。走进小房子，点击桌子上的大书，召唤麦加苏德。杀了他，抢了他的头
 .complete 11909,1 
+.cast 3365
+.timer 30,The Gearmaster RP
 .complete 11909,2 
 step
 .goto BoreanTundra,65.25,28.78
@@ -35084,13 +35568,17 @@ step
 >>与Wintergale交谈
 .accept 11628 >>接受天灾的裹尸布
 step
+#completewith next
+.destroy 34960 >>销毁包中的号角传说
+step
 .cast 45942 >>使用天坑附近的元素之角召唤克里克西斯勋爵。在短RP后杀了他。
+.timer 22,Lord Kryxix RP
 .goto BoreanTundra,70.83,36.72
 .complete 11706,2 
-.timer 22,Lord Kryxix RP
 .complete 11706,1 
 .goto BoreanTundra,70.13,35.96
 .use 34968
+.isOnQuest 11706
 step
 .goto BoreanTundra,74.67,23.67
 >>与Sage Highmesa交谈
@@ -35127,7 +35615,7 @@ step
 .accept 11677 >>接受阻止瘟疫
 step
 .goto BoreanTundra,74.77,14.10
-.use 34913 >> 到洞里去。在里面的大锅上使用Highmesa的清洁种子
+.use 34913 >>到洞里去。在里面的大锅上使用Highmesa的清洁种子
 .complete 11677,1 
 step
 .goto BoreanTundra,74.67,23.67
@@ -35136,7 +35624,7 @@ step
 .accept 11678 >>接受查找Bristlehorn
 .accept 11683 >>接受坠落的墓穴
 step
-#completewith Tinky
+#completewith Gyroscope
 .goto BoreanTundra,69.3,14.1,0,0
 >>杀死该地区的塔拉玛斯天灾
 .complete 11683,1 
@@ -35186,7 +35674,7 @@ step
 .goto BoreanTundra,82.37,36.85,60,0
 .goto BoreanTundra,82.36,41.69,60,0
 .goto BoreanTundra,79.90,31.60
->>掠夺地面上的天灾土（土堆）
+>>掠夺地面上的天灾土(土堆)
 .complete 11630,1 
 step
 >>返回陶恩卡。与小屋里的泰加对话，然后与温特盖尔对话
@@ -35231,7 +35719,7 @@ step
 #completewith Talet
 .use 34815 >>杀死一个黑暗的吸血鬼，并抢劫他以换取一瓶新鲜血液。在您的包中点击它
 .collect 34815,1,11654,1 
-.accept 11654 >> 接受血之尖塔
+.accept 11654 >>接受血之尖塔
 .unitscan Darkfallen Bloodbearer
 step
 #completewith Naferset
@@ -35254,12 +35742,12 @@ step
 .goto BoreanTundra,87.64,21.98
 .use 34815 >>杀死一个黑暗的吸血鬼，并抢劫他以换取一瓶新鲜血液。在您的包中点击它
 .collect 34815,1,11654,1 
-.accept 11654 >> 接受血之尖塔
+.accept 11654 >>接受血之尖塔
 .unitscan Darkfallen Bloodbearer
 step
 .goto BoreanTundra,87.64,21.98,40,0
 .goto BoreanTundra,87.65,20.43,30,0
->> 从底层的中央入口进入大楼。与雪追踪者格鲁姆交谈
+>>从底层的中央入口进入大楼。与雪追踪者格鲁姆交谈
 >>避免杀死该地区的亡灵法师
 .goto BoreanTundra,87.58,19.93
 .turnin 11654 >>血之尖塔
@@ -35310,54 +35798,54 @@ step
 step << Druid
 #requires ENecromancers
 #completewith DruidTrain3
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 .xp <71,1
 step << Druid
 #requires ENecromancers
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.train 48442 >> 训练你的职业咒语
+.train 48442 >>训练你的职业咒语
 .xp <71,1
 step << Druid
 #requires ENecromancers
 #label DruidTrain3
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.train 48464 >> 训练你的职业咒语
+.train 48464 >>训练你的职业咒语
 .xp <72,1
 step << DK
 #requires ENecromancers
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 .xp <72,1
 step << DK
 #requires ENecromancers
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49940 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49940 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <72,1
 step << Mage
 #requires ENecromancers
 #completewith MageTrain3
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 .xp <71,1
 step << Mage
 #requires ENecromancers
 .goto Undercity,85.1,10.0
-.train 43023 >> 训练你的职业咒语
+.train 43023 >>训练你的职业咒语
 .xp <71,1
 step << Mage
 #requires ENecromancers
 #label MageTrain3
 .goto Undercity,85.1,10.0
-.train 42930 >> 训练你的职业咒语
+.train 42930 >>训练你的职业咒语
 .xp <72,1
 step
 #requires ENecromancers
 #completewith Words
-.hs >> 炉灶返回Taunka'le村
+.hs >>炉灶至Taunka'le村
 .cooldown item,6948,>0
 step
 #questguide
@@ -35391,7 +35879,7 @@ step
 .goto BoreanTundra,86.88,30.32,20 >>把传送机带到纳克萨那
 step
 #questguide
->>杀死纳克萨纳（Naxxanar）底层（当前层）的路迪翁（Luthion）和凡思林（Vanthryn）
+>>杀死纳克萨纳(Naxxanar)底层(当前层)的路迪翁(Luthion)和凡思林(Vanthryn)
 .complete 11898,2 
 .goto BoreanTundra,87.97,28.98
 .complete 11898,3 
@@ -35403,7 +35891,7 @@ step
 .goto BoreanTundra,85.13,28.55,20,0
 .goto BoreanTundra,84.89,29.55,20,0
 .goto BoreanTundra,86.19,28.76
->> 把蓝色传送带到纳克萨那的顶层。走楼梯到瓦拉纳王子那里。杀了他
+>>把蓝色传送带到纳克萨那的顶层。走楼梯到瓦拉纳王子那里。杀了他
 .complete 11898,1 
 step
 #questguide
@@ -35501,15 +35989,15 @@ step
 .goto BoreanTundra,57.17,43.59,20,0
 .goto BoreanTundra,57.33,44.08,15,0
 .goto BoreanTundra,57.05,44.32,15,0
-.goto BoreanTundra,57.79,44.04
+.goto BoreanTundra,57.03,44.11
 .accept 11865 >>接受不公平的死亡
-.goto BoreanTundra,57.79,44.04
+.goto BoreanTundra,56.81,44.04
 .accept 11869 >>接受快乐如蛤蜊
 .goto BoreanTundra,57.33,44.08
 step
 #completewith next
 .goto BoreanTundra,55.9,47.4,0,0
->>杀死该地区的抢劫狂。他们可以被偷窃。抢走他们的耳朵。
+>>杀死该地区的掠夺者。他们可以被偷窃。抢走他们的耳朵。
 >>这部分不需要在这里完成。
 .complete 11866,1 
 step
@@ -35561,17 +36049,16 @@ step
 .goto BoreanTundra,55.4,27.7,60,0
 .goto BoreanTundra,53.3,28.0,60,0
 .goto BoreanTundra,56.8,37.7
-.use 35228 >> 使用包中的陷阱粉碎器释放被陷阱的猛犸幼崽
+.use 35228 >>使用包中的陷阱粉碎器释放被陷阱的猛犸幼崽
 .complete 11876,1 
 step
-.goto BoreanTundra,56.8,44.0
 >>如果你有让你变红的debuff，在进入营地之前等待它过期。
 >>与营地中的Killinger、Cenius、Lathorius和Zaza交谈
 .turnin 11884 >>交出奈德，犀牛之王。。。
 .goto BoreanTundra,57.17,43.59,20,0
 .goto BoreanTundra,57.33,44.08,15,0
 .goto BoreanTundra,57.05,44.32,15,0
-.goto BoreanTundra,57.79,44.04
+.goto BoreanTundra,57.03,44.11
 .turnin 11869 >>《快乐如蛤蜊》
 .accept 11870 >>接受放弃的范围
 .goto BoreanTundra,57.33,44.08
@@ -35581,11 +36068,11 @@ step
 .goto BoreanTundra,57.05,44.32
 .turnin 11865 >>为死亡而自首
 .accept 11868 >>接受Culler Cometh
-.goto BoreanTundra,57.79,44.04
-step
+.goto BoreanTundra,56.81,44.04
+step << skip
 .goto BoreanTundra,57.0,44.3,0
 .goto BoreanTundra,59.25,30.83
->>护送猛犸小牛向北前往库诺克。不要超出渲染范围（100码），因为这样会使小腿失去光泽。
+>>护送猛犸小牛向北前往库诺克。不要超出渲染范围(100码)，因为这样会使小腿失去光泽。
 >>如果小牛被夺走，放弃并从拉托利斯夺回任务
 .complete 11878,1 
 step
@@ -35600,18 +36087,18 @@ step
 .unitscan Wooly Mammoth Bull
 step
 .goto BoreanTundra,53.84,24.08
->>靠近猛犸毁灭者卡尔，拉住他。用“猛犸冲锋”杀死他（2），用“猛禽蹂躏”伤害他（1）
+>>靠近猛犸毁灭者卡尔，拉住他。用“猛犸冲锋”杀死他(2)，用“猛禽蹂躏”伤害他(1)
 >>杀死Kaw后，将猛犸赶下马，并在地上抢劫他的戟
 .complete 11879,1 
 step
 .goto BoreanTundra,57.05,44.32
 >>返回D.E.T.H.A.营地。与拉脱维亚人交谈
 .turnin 11879 >>交出猛犸毁灭者Kaw
-.accept 11892 >>接受哈罗德·莱恩的刺杀
 step
 .goto BoreanTundra,57.2,56.5
 >>杀死卡伦·昂托普
 .complete 11868,1 
+.isOnQuest 11868
 step
 .goto BoreanTundra,57.80,55.11
 >>与Liandra交谈
@@ -35634,23 +36121,27 @@ step
 step
 .groundgoto BoreanTundra,61.0,66.5,30,0
 .goto BoreanTundra,62.5,66.2
->>潜入水中，杀死沿着沉船南侧行走的侏儒（蛤蜊大师K）。
+>>潜入水中，杀死沿着沉船南侧行走的侏儒(蛤蜊大师K)。
 .complete 11872,1 
 .unitscan Clam Master K
 step
 >>返回D.E.H.T.A.营地。与塞尼乌斯、扎扎和拉托里乌斯交谈
 .turnin 11872 >>交给邪恶的蛤蜊大师。。。
 .goto BoreanTundra,57.33,44.08
+step
+.isQuestComplete 11868
 .turnin 11868 >>交给Culler Cometh
-.goto BoreanTundra,57.79,44.04
+.goto BoreanTundra,56.81,44.04
+step
+.isQuestTurnedIn 11868
 .accept 11892 >>接受哈罗德·莱恩的刺杀
 .goto BoreanTundra,57.05,44.32
-
 step
 .goto BoreanTundra,49.90,41.50
 .use 35293 >>杀死哈罗德·莱恩。这个任务可能很难，所以一定要用你所有的冷却时间来杀死他和塞纳里奥·霍恩。远离他的陷阱。如果你做不到，就跳过这个
 .complete 11892,1 
 .unitscan Harold Lane
+.isOnQuest 11892
 step
 .goto BoreanTundra,57.05,44.32
 >>返回Lathorius
@@ -35660,7 +36151,7 @@ step
 #sticky
 #label AbandonAss
 .goto BoreanTundra,63.8,46.1
-.abandon 11892 >> 放弃对哈罗德·莱恩的刺杀
+.abandon 11892 >>放弃对哈罗德·莱恩的刺杀
 step
 >>与伊塔鲁克和石头对话
 .accept 11612 >>接受回收采石场
@@ -35677,7 +36168,7 @@ step
 .complete 11612,1 
 step
 #requires AbandonAss
->>点击该区域地面上的小祭坛
+>>点击地面上的小雕像
 .complete 11605,2 
 .goto BoreanTundra,52.81,34.02
 .complete 11605,1 
@@ -35719,20 +36210,20 @@ step
 step
 .goto BoreanTundra,52.6,35.5
 >>杀死采石场周围的绿柱石回收机。抢他们的手榴弹
-.use 34772 >> 站在悬崖边。用你袋子里的侏儒手榴弹摧毁上面的平台
+.use 34772 >>站在悬崖边。用你袋子里的侏儒手榴弹摧毁上面的平台
 .collect 34772,3,11617,0x7,-1
 .complete 11617,1 
 step
 .goto BoreanTundra,50.4,34.5
 >>杀死采石场周围的绿柱石回收机。抢他们的手榴弹
-.use 34772 >> 站在悬崖边。用你袋子里的侏儒手榴弹摧毁上面的平台
+.use 34772 >>站在悬崖边。用你袋子里的侏儒手榴弹摧毁上面的平台
 .collect 34772,3,11617,0x7,-1
 .complete 11617,3 
 step
 #label North
 .goto BoreanTundra,52.6,32.4
 >>杀死采石场周围的绿柱石回收机。抢他们的手榴弹
-.use 34772 >> 站在平台正下方。用你袋子里的侏儒手榴弹摧毁上面的平台
+.use 34772 >>站在平台正下方。用你袋子里的侏儒手榴弹摧毁上面的平台
 .collect 34772,3,11617,0x7,-1
 .complete 11617,2 
 step
@@ -35785,7 +36276,7 @@ step
 #label ALFP
 #sticky
 .goto BoreanTundra,45.33,34.62
-.fp Amber Ledge >> 获取琥珀色Ledge飞行路径
+.fp Amber Ledge >>获取琥珀色Ledge飞行路径
 step
 >>在琥珀屋与多纳万和加伦交谈
 .turnin 11574 >>转弯太近，不舒适
@@ -35808,13 +36299,13 @@ step
 .goto BoreanTundra,34.44,42.35
 >>沿着陆地，然后游过水面 << !Shaman !DK
 >>骑马穿过水面向裂缝驶去 << Shaman/DK
-.use 34669 >> 使用你袋子里靠近地面紫色裂缝的测高仪
+.use 34669 >>使用你袋子里靠近地面紫色裂缝的测高仪
 .complete 11576,1 
 step
 #completewith next
-.goto BoreanTundra,40.17,42.08,50 >> 回到这里
+.groundgoto BoreanTundra,40.17,42.08,50 >>回到这里
 step
->>返回琥珀色列账。与Garren和Donathan交谈
+>>返回琥珀色列表。与Garren和Donathan交谈
 .turnin 11576 >>转入监测裂谷：Cleftcliff异常
 .accept 11582 >>接受监测裂谷：裂谷破碎
 .goto BoreanTundra,44.98,33.38
@@ -35827,7 +36318,7 @@ step
 .complete 11582,1 
 step
 #completewith next
-.goto BoreanTundra,43.5,33.2,20 >> 在这里回到大陆
+.groundgoto BoreanTundra,43.5,33.2,20 >>在这里回到大陆
 step
 .goto BoreanTundra,43.2,36.6,60,0
 .goto BoreanTundra,41.6,37.4
@@ -35862,13 +36353,13 @@ step
 .accept 11671 >>接受与时间赛跑
 step
 #completewith next
-.cast 45780 >> 使用你袋子里的绿柱石护盾雷管来摧毁检察官萨兰德的护盾
+.cast 45780 >>使用你袋子里的绿柱石护盾雷管来摧毁检察官萨兰德的护盾
 step
 .goto BoreanTundra,41.8,39.15
-.use 34897 >> 杀死检察官萨兰德。抢劫她尸体旁边的小箱子
+.use 34897 >>杀死检察官萨兰德。抢劫她尸体旁边的小箱子
 .complete 11671,1 
 step
->>返回琥珀色列账。先和多纳森谈谈，然后再和苏里斯特拉斯（大红龙）谈谈
+>>返回琥珀色列账。先和多纳森谈谈，然后再和苏里斯特拉斯(大红龙)谈谈
 .turnin 11671 >>与时间赛跑
 .accept 11679 >>接受密钥重构
 .goto BoreanTundra,45.26,33.35
@@ -35884,12 +36375,13 @@ step
 step
 .goto BoreanTundra,43.01,43.86,-1
 .goto BoreanTundra,46.37,32.39,-1
-.fly >>等待航班和RP结束。你将被传送到任务中
+>>等待航班和RP结束。你将被传送到任务中
+>>如果活动没有开始，放弃Rescuing Evanor并再次接受
 .turnin 11681 >>移交Rescuing Evanor
 .accept 11682 >>接受龙峰
 step
 .goto BoreanTundra,45.33,34.62
->>与Surristrasz（大红龙）交谈。这会把你送到科尔达拉
+>>与Surristrasz(大红龙)交谈。这会把你送到考拉达
 .turnin 11682 >>交给龙峰
 .accept 11733 >>接受穿越裂谷
 .skipgossip
@@ -35897,6 +36389,10 @@ step
 step << skip
 .goto BoreanTundra,33.13,34.45
 .fp Transitus Shield >>获得Transitus Shield飞行路线
+step
+#completewith next
+.goto BoreanTundra,45.33,34.62
+.fly Coldarra >>飞往考拉达
 step
 >>在室内与贝琳纳德交谈，然后在室外与雷洛拉斯兹和塞拉交谈
 .turnin 11733 >>转向横穿裂谷
@@ -35910,14 +36406,14 @@ step
 step
 #sticky
 #completewith Weaver1
->>当你通过科尔达拉探索时：
+>>当你通过考拉达探索时：
 >>-杀死你看到的所有Coldarra Spellweavers
 >>-抢劫地上的霜莓灌木
 .complete 11918,1 
 .complete 11912,1 
 step
 .goto BoreanTundra,32.6,27.8
->>杀死该地区的科尔达拉·斯皮尔宾德斯。抢走他们以获取闪烁碎片。在您的包中点击它
+.use 35648 >>杀死该地区的考拉达·斯皮尔宾德斯。抢走他们以获取闪烁碎片。在您的包中点击它
 .collect 35648,1,11941 
 .accept 11941 >>接受拼图。。。
 step
@@ -35927,20 +36423,20 @@ step
 .accept 11943 >>接受单元格
 step
 #completewith splinters
->>在科尔达拉周围寻找冰川古人和魔法古人。掠夺他们的分裂者
+>>在考拉达周围寻找冰川古人和魔法古人。掠夺他们的分裂者
 .complete 11910,1 
 .complete 11910,2 
 step
-.goto BoreanTundra,28.25,35.04
->>点击建筑内的蓝色小圆球（不是浮动的）
+.goto BoreanTundra,28.77,34.88
+>>点击建筑内的蓝色小圆球(不是浮动的)
 .complete 11900,2 
 step
 .goto BoreanTundra,24.14,29.60
 >>杀死战争使者戈雷德拉克。抢劫他的能量核心
 .complete 11943,1 
 step
-.goto BoreanTundra,22.62,23.42
->>点击建筑内的蓝色小圆球（不是浮动的）
+.goto BoreanTundra,22.37,24.18
+>>点击建筑内的蓝色小圆球(不是浮动的)
 .complete 11900,4 
 step
 .goto BoreanTundra,27.32,20.41
@@ -35948,8 +36444,8 @@ step
 .complete 11943,2 
 step
 #label Weaver1
-.goto BoreanTundra,31.72,20.57
->>点击建筑内的蓝色小圆球（不是浮动的）
+.goto BoreanTundra,31.26,20.20
+>>点击建筑内的蓝色小圆球(不是浮动的)
 .complete 11900,3 
 step
 #sticky
@@ -35966,7 +36462,7 @@ step
 .goto BoreanTundra,24.4,35.2,70,0
 .goto BoreanTundra,34.3,31.2,70,0
 .goto BoreanTundra,33.7,23.1
->>在科尔达拉全境抢劫冰莓灌木
+>>在考拉达全境抢劫冰莓灌木
 .complete 11912,1 
 step
 #requires berries2
@@ -35979,7 +36475,7 @@ step
 .turnin 11943 >>交出牢房
 .goto BoreanTundra,33.32,34.54
 step
-.use 35671 >> 点击你包里的强化奥术监狱召唤克里斯特拉斯扎
+.use 35671 >>点击你包里的强化奥术监狱召唤克里斯特拉斯扎
 .accept 11946 >>接受Keristrasza
 .turnin 11946 >>转入Keristrasza
 .accept 11951 >>接受诱饵并切换
@@ -35995,7 +36491,7 @@ step
 .goto BoreanTundra,27.5,31.3,70,0
 .goto BoreanTundra,24.9,31.2,70,0
 .goto BoreanTundra,25.2,24.2
->>绕过Nexus的上边缘/悬崖。杀死科尔达拉·威姆金斯。掠夺他们的斧头
+>>绕过Nexus的上边缘/悬崖。杀死考拉达·威姆金斯。掠夺他们的斧头
 .collect 35586,5,11936,1 
 step
 .goto BoreanTundra,24.9,31.2,50,0
@@ -36029,13 +36525,14 @@ step
 .complete 11910,1 
 .complete 11910,2 
 step
-.use 35671 >> 点击你包里的强化奥术监狱召唤凯里斯特拉斯扎。如果你丢失了它，请与Raelorasz联系，要求一个新的
+.use 35671 >>点击你包里的强化奥术监狱召唤凯里斯特拉斯扎。如果你丢失了它，请与Raelorasz联系，要求一个新的
 .turnin 11951 >>转入诱饵和开关
 .accept 11957 >>接受萨拉戈萨的终结
 step
 #completewith next
-.cast 46793 >> 再和克里斯特拉斯扎谈谈，她会把你传送到萨拉戈萨登陆。抵达后，前往平台中心，使用背包中的奥术力量聚焦召唤萨拉戈萨。
+.cast 46793 >>再和克里斯特拉斯扎谈谈，她会把你传送到萨拉戈萨登陆。抵达后，前往平台中心，使用背包中的奥术力量聚焦召唤萨拉戈萨。
 .goto BoreanTundra,21.57,22.55
+.skipgossip 26206,1
 step
 >>杀死萨拉戈萨。抢劫她的尸体
 .complete 11957,1 
@@ -36043,7 +36540,7 @@ step
 .use 35690
 .skipgossip
 step
-.use 35671 >> 点击你包里的强化奥术监狱召唤克里斯特拉斯扎
+.use 35671 >>点击你包里的强化奥术监狱召唤克里斯特拉斯扎
 .turnin 11957 >>交回萨拉戈萨的终点
 .accept 11967 >>接受召集红军
 .goto BoreanTundra,21.57,22.55
@@ -36055,6 +36552,7 @@ step
 .turnin 11914 >>交上来保守秘密
 .goto BoreanTundra,33.49,34.38
 .turnin 11967 >>轮流召集红军
+.goto BoreanTundra,33.32,34.49
 .turnin 11936 >>上交绘制平面图
 .accept 11969 >>接受跳出陷阱
 .accept 11919 >>接受Drake Hunt
@@ -36070,6 +36568,7 @@ step
 .turnin 11914 >>交上来保守秘密
 .goto BoreanTundra,33.49,34.38
 .turnin 11967 >>轮流召集红军
+.goto BoreanTundra,33.32,34.49
 .turnin 11936 >>上交绘制平面图
 .goto BoreanTundra,33.32,34.54
 .turnin 11900 >>轮流读取仪表
@@ -36080,7 +36579,7 @@ step
 step
 #questguide
 .goto BoreanTundra,25.34,21.82
-.cast 62272 >> 将Raelorasz Spark放在包里篝火旁，然后等待RP结束
+.cast 62272 >>将Raelorasz Spark放在包里篝火旁，然后等待RP结束
 .timer 195,Springing the Trap RP
 .use 44950
 .complete 11969,1 
@@ -36095,7 +36594,7 @@ step
 #questguide
 #completewith next
 .goto BoreanTundra,21.91,30.45
-.use 35506 >> 找到一只在地图西北边缘飞行的小鸭子
+.use 35506 >>找到一只在地图西北边缘飞行的小鸭子
 .cast 46607 >>用雷洛拉兹的长矛对准小鸭幼雏，让它跟着你。不要杀死它
 .unitscan Nexus Drake Hatchling
 step
@@ -36125,7 +36624,7 @@ step
 step
 #questguide
 .goto BoreanTundra,29.3,21.8
-.use 35506 >> 找到一只沿着地图东北边缘飞行的小鸭子
+.use 35506 >>找到一只沿着地图东北边缘飞行的小鸭子
 .cast 46607 >>用雷洛拉兹的长矛对准小鸭幼雏，让它跟着你。不要杀死它
 .unitscan Nexus Drake Hatchling
 step
@@ -36153,7 +36652,7 @@ step
 step
 .goto BoreanTundra,49.65,11.05
 >>小心下山，然后骑马前往博尔戈罗前哨
-.fp Bor'gorok Outpost >> 获取Bor'gorok前哨飞行路线
+.fp Bor'gorok Outpost >>获取Bor'gorok前哨飞行路线
 step
 >>与斯纳尔芳和博尔戈罗交谈
 .turnin 12486 >>向博尔戈罗前哨报到，快！
@@ -36164,7 +36663,7 @@ step
 step
 #completewith tadpoles
 .goto BoreanTundra,49.67,10.19
-.home >> 把你的家设在Bor'Gorok前哨
+.home >>把你的家设在Bor'Gorok前哨
 step
 .goto BoreanTundra,48.96,10.26
 >>与Taz'ishi交谈
@@ -36200,7 +36699,7 @@ step
 step
 .goto BoreanTundra,43.0,18.1,60,0
 .goto BoreanTundra,42.5,15.4
-.use 34598 >> 杀死Scalder。他是在海底巡逻的水元素。在他的尸体上使用国王的空海螺
+.use 34598 >>杀死Scalder。他是在海底巡逻的水元素。在他的尸体上使用国王的空海螺
 .complete 11571,1 
 .unitscan Scalder
 step
@@ -36245,7 +36744,7 @@ step
 .complete 11560,1 
 step
 .goto BoreanTundra,40.04,19.80
-.use 34669 >> 使用洞穴口袋子里的测高仪
+.use 34669 >>使用洞穴口袋子里的测高仪
 .complete 12728,1 
 step
 #completewith end
@@ -36292,7 +36791,7 @@ step
 .goto BoreanTundra,36.4,8.8,70,0
 .goto BoreanTundra,37.4,6.3,70,0
 .goto BoreanTundra,39.3,8.3
->>杀死鲸鱼Glrggl。抢他的头。他逆时针绕着两座北部冰山巡逻
+>>杀死Glrggl。抢他的头。他逆时针绕着两座北部冰山巡逻
 .complete 11563,1 
 .unitscan Glrggl
 step
@@ -36321,7 +36820,7 @@ step
 .complete 11561,1 
 step
 .goto BoreanTundra,37.84,23.23
->>深入洞穴，拥抱左侧。与Glrglrglr通话（暂时不要与Lurggblr通话）
+>>深入洞穴，拥抱左侧。与Glrglrglr通话(暂时不要与Lurggblr通话)
 .accept 11569 >>接受密钥管理员Urmgrgl
 step
 .goto BoreanTundra,38.0,22.2,12,0
@@ -36342,10 +36841,12 @@ step
 >>返回洞穴起点附近的笼子处的Glrglrglr
 .turnin 11569 >>交钥匙管理员Urmgrgl
 step
+#questguide
 .goto BoreanTundra,37.72,23.03
 >>与你旁边笼子里的Lurgglbr交谈
 .accept 11570 >>接受从Winterfin洞穴逃脱
 step
+#questguide
 #label Lurgglbr
 .goto BoreanTundra,39.9,19.8,40,0
 .goto BoreanTundra,39.6,18.1,40,0
@@ -36365,18 +36866,21 @@ step
 >>与Brglmurgl交谈
 .turnin 11561 >>把他们交上来！
 step
+#completewith next
 .isQuestTurnedIn 11559
 .goto BoreanTundra,43.04,13.79
 .vendor >>从Ahlurglgr购买更多Muriver Oils。
 .itemcount 34597,2
 step
+#questguide
 .goto BoreanTundra,43.50,13.97
 >>与Mrgl Mrgl国王交谈
 .turnin 11566 >>投降……不！
-step
-.isQuestComplete 11570
-.goto BoreanTundra,43.50,13.97
 .turnin 11570 >>转身逃离冬鳍石窟
+step
+.goto BoreanTundra,43.50,13.97
+>>与Mrgl Mrgl国王交谈
+.turnin 11566 >>投降……不！
 step
 .goto BoreanTundra,46.58,9.35
 >>与帝国主义者交谈
@@ -36398,13 +36902,13 @@ step
 .goto BoreanTundra,50.2,9.7
 >>与斯纳尔芳交谈
 .turnin 11631 >>空中视野的转变
-.accept 11635 >>接受《远见漫游者的精神》（Farseer Grimwalker’s Spirit）
+.accept 11635 >>接受《远见漫游者的精神》(Farseer Grimwalker’s Spirit)
 step
 .goto BoreanTundra,50.07,10.15
 >>与Ortrosh交谈
 .accept 11639 >>接受对Magmoth的报复
 step
->> 杀死Magmoth洞穴外的牧羊人和破碎者。还要杀死至少一半的萨满
+>>杀死Magmoth洞穴外的牧羊人和破碎者。还要杀死至少一半的萨满
 .complete 11639,2 
 .goto BoreanTundra,54.32,11.22,50,0
 .goto BoreanTundra,58.99,10.01,50,0
@@ -36424,11 +36928,11 @@ step
 #completewith next
 .goto BoreanTundra,55.26,11.98,40,0
 .goto BoreanTundra,55.93,11.28,20,0
-.goto BoreanTundra,55.93,11.28,20 >> 跳进洞里。去底层洞穴的东北角
+.goto BoreanTundra,55.93,11.28,20 >>跳进洞里。去底层洞穴的东北角
 step
 .goto BoreanTundra,56.17,9.12
 >>杀死格里姆沃克周围的萨满人以释放他。与Grimwalker交谈
-.turnin 11635 >>交出《远见漫游者的精神》（Farseer Grimwalker’s Spirit）
+.turnin 11635 >>交出《远见漫游者的精神》(Farseer Grimwalker’s Spirit)
 .accept 11637 >>接受Kaganishu
 step
 .goto BoreanTundra,56.19,12.78
@@ -36455,32 +36959,8 @@ step
 .goto BoreanTundra,54.80,13.09,20,0
 .goto BoreanTundra,55.99,13.68,20,0
 .goto BoreanTundra,56.43,11.72
-step << Druid
-#completewith DruidTrain4
-.cast 18960 >> 铸造Teleport:Moonglade
-.zoneskip Moonglade
-.xp <71,1
-step << Druid
-.goto Moonglade,52.4,40.6
->>前往Moonglade
-.train 48442 >> 训练你的职业咒语
-.xp <71,1
-step << Druid
-.goto Moonglade,52.4,40.6
->>前往Moonglade
-.train 48464 >> 训练你的职业咒语
-.xp <72,1
-step << Druid
-#label DruidTrain4
-.goto Moonglade,52.4,40.6
->>前往Moonglade
-.train 53307 >> 训练你的职业咒语
-.xp <74,1
 step
-#completewith next
-.hs >>炉灶返回Bor'gorok前哨
-step
->>现在在客栈里和Ortrosh谈谈，然后在外面和Snarlfang谈谈
+>>返回博尔戈罗前哨。与斯纳尔芳和奥特罗什交谈
 .turnin 11639 >>向Magmoth报仇
 .goto BoreanTundra,49.55,9.98
 .turnin 11638 >>交回我的遗体
@@ -36534,200 +37014,2363 @@ step
 >>返回琥珀色列账。与Garren交谈
 .turnin 12728 >>转向监视裂谷：Winterfin洞穴
 step << Mage
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 .zoneskip Tirisfal Glades
 .zoneskip HowlingFjord
 step << Mage
 .goto Undercity,85.1,10.0
-.train 43023 >> 训练你的职业咒语
+.train 43023 >>训练你的职业咒语
 .xp <71,1
 step << Mage
 .goto Undercity,85.1,10.0
-.train 42930 >> 训练你的职业咒语
+.train 42930 >>训练你的职业咒语
 .xp <72,1
 step << Mage
 .goto Undercity,85.1,10.0
-.train 43019 >> 训练你的职业咒语
+.train 43019 >>训练你的职业咒语
 .xp <73,1
-step << Mage
-#completewith next
-.goto Undercity,82.36,15.31
-+转到右侧的试剂供应商，执行“注销跳过”，将角色定位在最低楼梯的最高部分，直到看起来像漂浮在空中，然后注销并重新登录。
-.link https://www.youtube.com/watch?v=-Bi95bCN8dM >> 单击此处查看示例
->>如果你做不到这一点，就正常离开幽暗城
-.zoneskip Tirisfal Glades
-.zoneskip HowlingFjord
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49940 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49940 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <72,1
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49904 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49904 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.xp <73,1
+step << Druid
+#completewith DruidTrain4
+.cast 18960 >>铸造Teleport:Moonglade
+.zoneskip Moonglade
+.xp <71,1
+step << Druid
+.goto Moonglade,52.4,40.6
+>>前往Moonglade
+.train 48442 >>训练你的职业咒语
+.xp <71,1
+step << Druid
+#label DruidTrain4
+.goto Moonglade,52.4,40.6
+>>前往Moonglade
+.train 48464 >>训练你的职业咒语
+.xp <72,1
+step << !Druid !Mage !DK !Priest
+#completewith next
+.zone Orgrimmar >>网站脱离Orgrimmar。要做到这一点，请按照下面的链接，然后单击您的角色并按照流程操作：
+.link https://us.battle.net/support/en/help/product/wow/197/834/solution >>将此复制粘贴到浏览器中
+>>或者，让一个法师传送到奥格瑞玛，或者手动前往那里
+.zoneskip Durotar
+step << Shaman/Paladin
+#completewith ShPaTraining
+.goto Orgrimmar,40.5,36.9,25 >>输入Grommash Hold
+step << Shaman
+.goto Orgrimmar,38.6,36.0
+.train 58699 >>训练你的职业咒语
+.xp <71,1
+step << Shaman
+#label ShPaTraining
+.goto Orgrimmar,38.6,36.0
+.train 49237 >>训练你的职业咒语
+.xp <73,1
+step << Paladin
+#label ShPaTraining
+.goto Orgrimmar,32.3,35.7
+.train 54428 >>训练你的职业咒语
+.xp <71,1
+step << Rogue
+.goto Orgrimmar,44.0,54.6
+.train 48667 >>训练你的职业咒语
+.xp <73,1
+step << Warlock
+.goto Orgrimmar,48.0,46.0
+.train 47812 >>训练你的职业咒语
+.xp <71,1
+step << Hunter/Warrior
+#completewith HuWaTraining
+.goto Orgrimmar,63.6,38.2,30 >>进入荣誉谷
+step << Hunter
+#label HuWaTraining
+.goto Orgrimmar,66.1,18.5
+.train 49051 >>训练你的职业咒语
+.xp <71,1
+step << Warrior
+#label HuWaTraining
+.goto Orgrimmar,76.9,32.6,30,0 << Warrior
+.goto Orgrimmar,79.8,31.4
+.train 47470 >>训练你的职业咒语
+.xp <73,1
+step
+#completewith next
+.hs >>炉灶 to Bor’gorok前哨
+step
+#completewith next
+.goto BoreanTundra,49.63,11.03
+.fly Taunka'le Village >>飞往Taunka'le村
+step
+.goto Dragonblight,8.41,54.83
+.zone Dragonblight >>前往Dragonblight
+]])
+RXPGuides.RegisterGuide([[
+#version 9
+#wotlk
+#group RestedXP 部落 70-80
+<< Horde
+#name 70.5-71.5 Borean Tundra抢夺开始
+#next 72-74 龙骨荒野
+
+step
+#completewith Vigil
++您已选择70-71 Borean Tundra Prequest指南。本指南适用于那些在发布任务日志时提交TBC任务的人。
+>>使用本指南所需的建议XP至少为500000+/1523800xp，达到70级
+>>我们的目标是在进入龙枯萎病之前达到71和15小节左右。达到该阈值后，指南将跳过子区域
+step << !DK !Druid
+#completewith next
+.goto Orgrimmar,48.9,91.8,60 >>Orgrimmar出口
+.zoneskip Durotar
+.zoneskip BoreanTundra
+step
+.goto Durotar,41.6,18.2,30,0
+.goto Durotar,41.4,17.6
+.zone BoreanTundra >>把齐柏林飞艇从杜隆塔尔带到伯兰苔原
+step
+.goto BoreanTundra,41.62,53.98
+>>与齐柏林飞艇旁边的战歌招募官交谈
+.accept 11585 >>接受地狱咆哮的守夜
+step
+#label Vigil
+>>去战歌要塞的底层。先和加罗什谈谈，然后再和索方谈谈
+.turnin 11585 >>交出地狱咆哮的守夜
+.goto BoreanTundra,41.35,53.60
+.accept 11596 >>接受战歌守卫
+.goto BoreanTundra,41.43,53.67
+step
+#completewith SouthHole
+.goto BoreanTundra,41.92,54.49
+.home >>将您的炉石设置为战歌控制
+>>如果需要，购买新食物/水
+step
+>>头部朝外。与小屋内的拉兹戈交谈
+.turnin 11596 >>交出战歌防御据点
+.goto BoreanTundra,42.71,55.81,20,0
+.goto BoreanTundra,43.19,54.98
+step
+#completewith next
+.goto BoreanTundra,42.44,55.34,20 >>回到货舱底层
+step
+>>前往战歌要塞的较低级别。与Endorah、Talonga和Orn交谈
+.accept 11574 >>接受太近的舒适度
+.goto BoreanTundra,41.73,54.73
+.accept 11888 >>接受前往Taunka'le村的骑行
+.goto BoreanTundra,41.70,54.60
+.accept 13090 >>接受北方烹饪
+.goto BoreanTundra,41.98,54.11
+.skill cooking,<350,1
+step
+>>前往战歌要塞的较低级别。与Endorah和Talonga交谈
+.accept 11574 >>接受太近的舒适度
+.goto BoreanTundra,41.73,54.73
+.accept 11888 >>接受前往Taunka'le村的骑行
+.goto BoreanTundra,41.70,54.60
+step
+.goto BoreanTundra,41.20,54.01,30,0
+.goto BoreanTundra,41.23,53.40,30,0
+.goto BoreanTundra,41.69,53.45
+>>与在货舱底层巡逻的苏拉诺克交谈(加洛什附近)
+.accept 12486 >>接受Bor'gorok前哨，快！
+step
+.goto BoreanTundra,40.72,52.54,20,0
+.goto BoreanTundra,40.36,51.39
+>>跑上楼梯，然后乘电梯到战歌要塞的顶部
+.fp Warsong Hold >>获取战歌等待飞行路径
+step
+.goto BoreanTundra,52.07,52.50
+>>前往血汗平原。与Laurith交谈
+.accept 11716 >>接受神奇血汗
+step
+.goto BoreanTundra,50.7,49.4,50,0
+.goto BoreanTundra,53.9,49.6,50,0
+.goto BoreanTundra,51.5,63.5
+>>抢劫该地区的红花
+.complete 11716,1 
+step
+.goto BoreanTundra,52.07,52.50
+>>与Laurith交谈
+.turnin 11716 >>交给Wondrous Bloodspore
+.accept 11717 >>接受来源花粉
+step
+#label Pollen
+>>杀死该地区的蛾类。抢走它们的花粉
+.goto BoreanTundra,50.6,51.6,60,0
+.goto BoreanTundra,51.9,53.9,60,0
+.goto BoreanTundra,53.2,53.6,60,0
+.goto BoreanTundra,53.5,50.0,60,0
+.goto BoreanTundra,50.5,49.0
+.complete 11717,1 
+step
+.goto BoreanTundra,52.07,52.50
+>>与Laurith交谈
+.turnin 11717 >>从源头上交花粉
+.accept 11719 >>接受合适的测试对象
+step
+#completewith next
+.goto BoreanTundra,52.07,52.50
+.cast 45995 >>使用包里的抛光血孢子花
+.timer 10,Bloodspore Flower RP
+.use 34978
+step
+.goto BoreanTundra,52.07,52.50
+>>等待10秒钟，等待debuff结束
+.complete 11719,1 
+step
+>>与Laurith和Mighthorn交谈
+.turnin 11719 >>交一个合适的测试对象
+.accept 11720 >>接受Gammoth的入侵
+.goto BoreanTundra,52.07,52.50
+.turnin 11720 >>交出Gammoth的入侵
+.accept 11721 >>接受Tormentor Gammotra
+.goto BoreanTundra,52.18,52.82
+step
+#requires Tungok2
+#completewith next
+.goto BoreanTundra,49.11,58.43,30 >>进入山中的洞穴
+step
+.goto BoreanTundra,45.81,60.70,30,0
+.goto BoreanTundra,45.8,61.6
+>>当你靠近水的时候跳下来，到洞穴的底部。沿着洞穴的西南面走到Gammothra
+.use 34979 >>将袋子中的碎血孔袋导入，以削弱Gammothra。杀了他，抢了他的头
+*Group up for this quest if needed
+.complete 11721,1 
+.unitscan Gammothra the Tormentor
+step
+#completewith Gammothra
+.goto BoreanTundra,46.75,61.40
+.goto BoreanTundra,45.12,53.51,40 >>跳到Gammothera房间的岩石边缘，然后注销并重新登录。如果你不能这样做，跳过这一步，正常跑出洞穴
+.link https://www.youtube.com/watch?v=J3jq3PYRghQ >>单击此处以供参考
+.isOnQuest 11721
+step
+.goto BoreanTundra,48.55,59.02
+>>与巨大发光的鸡蛋交谈。你不需要和周围的暴徒战斗
+.accept 11724 >>接受大块蛾蛋卷？
+step
+#label Gammothra
+>>与Mighthorn和Laurith交谈
+.turnin 11721 >>交给Tormentor Gammotra
+.accept 11722 >>接受Gammoth奖杯
+.goto BoreanTundra,52.18,52.82
+.turnin 11724 >>上缴大蛾蛋卷？
+.goto BoreanTundra,52.07,52.50
+step
+.goto BoreanTundra,57.05,44.32
+>>前往D.E.H.T.A.营地。与大主教拉托里奥斯交谈
+.turnin 11864 >>提交任务声明
+.xp >70+1000000,1
+step
+.goto BoreanTundra,57.05,44.32
+>>前往D.E.H.T.A.营地。与大主教拉托里奥斯交谈
+.accept 11866 >>接受敌人的耳朵
+.accept 11876 >>接受帮助那些不能帮助自己的人
+.isQuestTurnedIn 11864
+step
+>>与营地中在雕像、扎扎和塞尼乌斯周围巡逻的基林格交谈
+.accept 11884 >>接受奈德，犀牛王。。。
+.goto BoreanTundra,57.17,43.59,20,0
+.goto BoreanTundra,57.33,44.08,15,0
+.goto BoreanTundra,57.05,44.32,15,0
+.goto BoreanTundra,57.03,44.11
+.accept 11865 >>接受不公平的死亡
+.goto BoreanTundra,56.81,44.04
+.accept 11869 >>接受快乐如蛤蜊
+.goto BoreanTundra,57.33,44.08
+.isQuestTurnedIn 11864
+step
+#completewith next
+.goto BoreanTundra,55.9,47.4,0,0
+>>杀死该地区的掠夺者。他们可以被偷窃。抢走他们的耳朵
+.complete 11866,1 
+.isQuestTurnedIn 11864
+step
+.goto BoreanTundra,56.2,46.1,60,0
+.goto BoreanTundra,57.7,46.4,60,0
+.goto BoreanTundra,57.9,48.7,60,0
+.goto BoreanTundra,56.5,50.2,60,0
+.goto BoreanTundra,57.6,52.1
+.use 35127 >>在地上的陷阱附近，使用袋子里的那堆假毛皮。不要等待RP
+.complete 11865,1 
+.isQuestTurnedIn 11864
+step
+.goto BoreanTundra,51.7,47.0,70,0
+.goto BoreanTundra,52.3,44.8,70,0
+.goto BoreanTundra,52.9,43.0,70,0
+.goto BoreanTundra,50.0,44.1
+>>杀死该区域的掠夺狂潜水员。在这里完成剩余的小耳朵
+.complete 11869,1 
+.complete 11866,1 
+.isQuestTurnedIn 11864
+step << skip
+#completewith next
+>>杀死毛茸茸的犀牛。抢走他们的冷却肉
+.complete 13090,1 
+.isOnQuest 13090
+step
+.groundgoto BoreanTundra,48.6,40.0,50,0
+.groundgoto BoreanTundra,44.9,45.7,50,0
+.groundgoto BoreanTundra,46.7,45.6,50,0
+.groundgoto BoreanTundra,44.9,45.7,0
+.goto BoreanTundra,48.6,40.0
+>>杀死奈达和午餐盒。这个任务可能很难。使用你的冷却时间，首先杀死午餐盒
+*Group up for this quest if needed
+.complete 11884,2 
+.complete 11884,1 
+.unitscan Nedar, Lord of Rhinos
+.isQuestTurnedIn 11864
+step << skip
+>>杀死毛茸茸的犀牛。抢走他们的冷却肉
+.goto BoreanTundra,38.78,67.31,60,0
+.goto BoreanTundra,41.72,72.93,60,0
+.goto BoreanTundra,44.40,74.00,60,0
+.goto BoreanTundra,38.78,67.31,60,0
+.goto BoreanTundra,41.72,72.93,60,0
+.goto BoreanTundra,44.40,74.00
+.complete 13090,1 
+.isOnQuest 13090
+step
+#completewith next
+.goto BoreanTundra,55.5,41.1,60,0
+.goto BoreanTundra,55.3,38.4,60,0
+.use 35228 >>使用包中的陷阱粉碎器释放被陷阱的猛犸幼崽
+.complete 11876,1 
+.isQuestTurnedIn 11864
+step
+>>与伊塔鲁克和石头对话
+.accept 11612 >>接受回收采石场
+.goto BoreanTundra,54.29,36.09
+.accept 11605 >>接受尊敬的祖先
+.goto BoreanTundra,54.63,35.88
+.xp >70+1200000,1
+step
+#requires AbandonAss
+#completewith next
+.goto BoreanTundra,54.1,34.5,0,0
+.goto BoreanTundra,52.0,30.6,0
+.goto BoreanTundra,50.9,33.4,0
+>>杀死该地区的绿柱石寻宝者
+*Group up for this quest if needed
+.complete 11612,1 
+.isOnQuest 11612
+step
+#requires AbandonAss
+>>点击地面上的小雕像
+.complete 11605,2 
+.goto BoreanTundra,52.81,34.02
+.complete 11605,1 
+.goto BoreanTundra,50.86,32.43
+.complete 11605,3 
+.goto BoreanTundra,52.31,31.13
+.isOnQuest 11605
+step
+.goto BoreanTundra,54.1,34.5,70,0
+.goto BoreanTundra,52.0,30.6,70,0
+.goto BoreanTundra,50.9,33.4,70,0
+.goto BoreanTundra,54.1,34.5
+>>杀死该地区的绿柱石寻宝者
+*Group up for this quest if needed
+.complete 11612,1 
+.isOnQuest 11612
+step
+>>与石头和伊塔鲁克对话
+.turnin 11605 >>交出尊敬的祖先
+.accept 11607 >>接受失去的灵魂
+.goto BoreanTundra,54.63,35.88
+.turnin 11612 >>轮流开垦采石场
+.accept 11617 >>接受阻碍他们逃跑
+.goto BoreanTundra,54.29,36.09
+.isQuestComplete 11605
+.isQuestComplete 11612
+step
+>>与石头和伊塔鲁克对话
+.accept 11607 >>接受失去的灵魂
+.goto BoreanTundra,54.63,35.88
+.turnin 11612 >>轮流开垦采石场
+.accept 11617 >>接受阻碍他们逃跑
+.goto BoreanTundra,54.29,36.09
+.isQuestTurnedIn 11605
+.isQuestComplete 11612
+step
+>>与石头和伊塔鲁克对话
+.turnin 11605 >>交出尊敬的祖先
+.accept 11607 >>接受失去的灵魂
+.goto BoreanTundra,54.63,35.88
+.accept 11617 >>接受阻碍他们逃跑
+.goto BoreanTundra,54.29,36.09
+.isQuestComplete 11605
+.isQuestTurnedIn 11612
+step
+>>与石头和伊塔鲁克对话
+.accept 11607 >>接受失去的灵魂
+.goto BoreanTundra,54.63,35.88
+.accept 11617 >>接受阻碍他们逃跑
+.goto BoreanTundra,54.29,36.09
+.isQuestTurnedIn 11605
+.isQuestTurnedIn 11612
+step
+#label cores
+#completewith coresEnd
+.waypoint BoreanTundra,51.7,31.6,15,0
+.waypoint BoreanTundra,52.3,31.0,40,0
+.waypoint BoreanTundra,51.0,32.3,40,0
+.goto BoreanTundra,51.7,31.6,0,0
+.use 34711 >>使用从绿柱石猎犬身上掉落的恶意核心来释放该地区的卡斯卡拉精灵
+*Group up for this quest if needed
+.collect 34711,6,11607,0x3,-1
+.complete 11607,1 
+.complete 11607,2 
+.isQuestTurnedIn 11605
+step
+.goto BoreanTundra,52.6,35.5
+>>杀死采石场周围的绿柱石回收机。抢他们的手榴弹
+.use 34772 >>站在悬崖边。用你袋子里的侏儒手榴弹摧毁上面的平台
+*Group up for this quest if needed
+.collect 34772,3,11617,0x7,-1
+.complete 11617,1 
+.isQuestTurnedIn 11612
+step
+.goto BoreanTundra,50.4,34.5
+>>杀死采石场周围的绿柱石回收机。抢他们的手榴弹
+.use 34772 >>站在悬崖边。用你袋子里的侏儒手榴弹摧毁上面的平台
+*Group up for this quest if needed
+.collect 34772,3,11617,0x7,-1
+.complete 11617,3 
+.isQuestTurnedIn 11612
+step
+#label North
+.goto BoreanTundra,52.6,32.4
+>>杀死采石场周围的绿柱石回收机。抢他们的手榴弹
+.use 34772 >>站在平台正下方。用你袋子里的侏儒手榴弹摧毁上面的平台
+*Group up for this quest if needed
+.collect 34772,3,11617,0x7,-1
+.complete 11617,2 
+.isQuestTurnedIn 11612
+step
+#requires cores
+#label coresEnd
+>>回到石头和伊塔鲁克
+.turnin 11607 >>交出失去的灵魂
+.accept 11609 >>接受收件
+.goto BoreanTundra,54.63,35.88
+.turnin 11617 >>转身阻止他们逃跑
+.accept 11623 >>接受对馆长的访问
+.goto BoreanTundra,54.29,36.09
+.isQuestTurnedIn 11605
+step
+#completewith next
+.goto BoreanTundra,51.2,36.5,50,0
+.goto BoreanTundra,52.9,32.6,0
+>>在采石场周围抢劫仪式物品。它们看起来像一个白色和蓝色的香炉架
+.complete 11609,1 
+.isQuestTurnedIn 11605
+step
+.goto BoreanTundra,50.1,32.6
+>>绕着采石场的外围跑。在蓝色平台上杀死Insivius
+*Group up for this quest if needed
+.complete 11623,1 
+.unitscan Curator Insivius
+.isQuestTurnedIn 11605
+step
+.goto BoreanTundra,52.9,32.6,70,0
+.goto BoreanTundra,53.9,35.0,70,0
+.goto BoreanTundra,50.9,33.2
+>>抢劫采石场周围的仪式物品。它们看起来像一个白色和蓝色的香炉架
+.complete 11609,1 
+.isQuestTurnedIn 11605
+step
+>>回到石头和伊塔鲁克
+.turnin 11609 >>轮流捡拾碎片
+.accept 11610 >>接受带领祖先回家
+.goto BoreanTundra,54.63,35.88
+.turnin 11623 >>向馆长提交参观报告
+.goto BoreanTundra,54.29,36.09
+.isQuestTurnedIn 11605
+step
+.use 34715 >>使用您包中的Tuskarr仪式物品。用它来释放长老的灵魂。你不必等待目标完成
+.complete 11610,2 
+.goto BoreanTundra,52.81,34.04
+.complete 11610,3 
+.goto BoreanTundra,52.32,31.15
+.complete 11610,1 
+.goto BoreanTundra,50.85,32.40
+.isQuestTurnedIn 11605
+step
+>>回到石头那里
+.turnin 11610 >>带领祖先回家
+.goto BoreanTundra,54.63,35.88
+.isQuestComplete 11610
+step
+#completewith next
+.goto BoreanTundra,57.6,38.4,60,0
+.goto BoreanTundra,59.5,31.3,60,0
+.goto BoreanTundra,55.4,27.7,60,0
+.goto BoreanTundra,53.3,28.0,60,0
+.goto BoreanTundra,56.8,37.7
+.use 35228 >>使用包中的陷阱粉碎器释放被陷阱的猛犸幼崽
+.complete 11876,1 
+.isQuestTurnedIn 11864
+step
+>>如果你有让你变红的debuff，在进入营地之前等待它过期。
+>>与营地中的Killinger、Cenius、Lathorius和Zaza交谈
+.turnin 11884 >>交出奈德，犀牛之王。。。
+.goto BoreanTundra,57.17,43.59,20,0
+.goto BoreanTundra,57.33,44.08,15,0
+.goto BoreanTundra,57.05,44.32,15,0
+.goto BoreanTundra,57.03,44.11
+.turnin 11869 >>《快乐如蛤蜊》
+.accept 11870 >>接受放弃的范围
+.goto BoreanTundra,57.33,44.08
+.turnin 11866 >>向敌人倾诉
+.turnin 11876 >>帮助那些不能帮助自己的人
+.accept 11878 >>接受库努克会知道的
+.goto BoreanTundra,57.05,44.32
+.turnin 11865 >>为死亡而自首
+.accept 11868 >>接受Culler Cometh
+.goto BoreanTundra,56.81,44.04
+.isQuestTurnedIn 11864
+step << skip
+.goto BoreanTundra,57.0,44.3,0
+.goto BoreanTundra,59.25,30.83
+>>护送猛犸小牛向北前往库诺克。不要超出渲染范围(100码)，因为这样会使小腿失去光泽。
+>>如果小牛被夺走，放弃并从拉托利斯夺回任务
+.complete 11878,1 
+step
+.goto BoreanTundra,59.43,30.38
+>>与库努克交谈
+.turnin 11878 >>交回库努克会知道的
+.accept 11879 >>接受猛犸毁灭者Kaw
+.isQuestTurnedIn 11864
+step
+#completewith next
+.goto BoreanTundra,53.7,24.4
+.vehicle >>骑上毛茸茸的猛犸公牛
+.unitscan Wooly Mammoth Bull
+step
+.goto BoreanTundra,53.84,24.08
+>>靠近猛犸毁灭者卡尔，拉住他。用“猛犸冲锋”杀死他(2)，用“猛禽蹂躏”伤害他(1)
+>>杀死Kaw后，将猛犸赶下马，并在地上抢劫他的戟
+*Group up for this quest if needed
+.complete 11879,1 
+.isQuestTurnedIn 11864
+step
+.goto BoreanTundra,57.05,44.32
+>>返回D.E.T.H.A.营地。与拉脱维亚人交谈
+.turnin 11879 >>交出猛犸毁灭者Kaw
+.isQuestTurnedIn 11864
+step
+.goto BoreanTundra,57.2,56.5
+>>杀死卡伦·昂托普
+*Group up for this quest if needed
+.complete 11868,1 
+.isOnQuest 11868
+.isQuestTurnedIn 11864
+step
+.goto BoreanTundra,57.80,55.11
+>>与Liandra交谈
+.turnin 11870 >>转入放弃的范围
+.accept 11871 >>不接受我们的监视
+.isQuestTurnedIn 11864
+step
+.goto BoreanTundra,59.2,55.6,50,0
+.groundgoto BoreanTundra,58.6,58.3,50,0
+.groundgoto BoreanTundra,60.3,58.0,50,0
+.groundgoto BoreanTundra,59.7,60.5,50,0
+.groundgoto BoreanTundra,60.0,64.1,50,0
+.goto BoreanTundra,61.8,63.5
+>>抢劫该地区地面上的箱子、袋子和书包
+.complete 11871,1 
+.isQuestTurnedIn 11864
+step
+.goto BoreanTundra,57.80,55.11
+>>返回Liandra
+.turnin 11871 >>不要在我们的监视下上车
+.accept 11872 >>接受邪恶的蛤蜊大师。。。
+.isQuestTurnedIn 11864
+step
+.groundgoto BoreanTundra,61.0,66.5,30,0
+.goto BoreanTundra,62.5,66.2
+>>潜入水中，杀死沿着沉船南侧行走的侏儒(蛤蜊大师K)
+*Group up for this quest if needed
+.complete 11872,1 
+.unitscan Clam Master K
+.isQuestTurnedIn 11864
+step
+>>前往卡斯卡拉。与Ataika和Utaik交谈
+.accept 11949 >>不打不接受！
+.goto BoreanTundra,63.80,46.12
+.daily 11945 >>接受做最坏的准备
+.goto BoreanTundra,63.95,45.72
+.isQuestTurnedIn 11864
+step
+#completewith next
+.goto BoreanTundra,66.2,45.9,0
+.goto BoreanTundra,63.7,52.2,0
+>>抢劫村庄周围的小篮子
+.complete 11945,1 
+.isOnQuest 11945
+.isQuestTurnedIn 11864
+step
+.goto BoreanTundra,67.3,47.7,60,0
+.goto BoreanTundra,63.61,53.93
+>>杀死村庄周围的袭击者
+*Group up for this quest if needed
+.complete 11949,1 
+.isQuestTurnedIn 11864
+step
+.goto BoreanTundra,66.2,45.9,60,0
+.goto BoreanTundra,63.7,52.2
+>>抢劫村庄周围的小篮子
+.complete 11945,1 
+.isOnQuest 11945
+.isQuestTurnedIn 11864
+step
+>>返回Ataika和Utaik
+.turnin 11949 >>不战而归！
+.accept 11950 >>接受穆希特的智慧
+.goto BoreanTundra,63.80,46.12
+.turnin 11945 >>上车做最坏的准备
+.goto BoreanTundra,63.95,45.72
+.isOnQuest 11945
+.isQuestTurnedIn 11864
+step
+>>返回Ataika
+.turnin 11949 >>不战而归！
+.accept 11950 >>接受穆希特的智慧
+.goto BoreanTundra,63.80,46.12
+.isQuestTurnedIn 11864
+step
+.goto BoreanTundra,67.21,54.86
+>>游到峡湾呼吸湾。与穆希特交谈
+.turnin 11950 >>交出穆希特的智慧
+.accept 11961 >>接受灵魂守护我们
+.isQuestTurnedIn 11864
+step
+.goto BoreanTundra,67.65,50.41
+>>在水下与伊鲁克的尸体交谈
+.complete 11961,1 
+.skipgossip
+.isQuestTurnedIn 11864
+step
+.goto BoreanTundra,67.21,54.86
+>>返回Muahit
+.turnin 11961 >>交出灵魂守护我们
+.accept 11968 >>接受潮流转向
+.isQuestTurnedIn 11864
+step
+.goto BoreanTundra,67.41,56.87
+>>在结冰的海岸杀死海加尔
+*Group up for this quest if needed
+.complete 11968,1 
+.unitscan Heigarr the Horrible
+.isQuestTurnedIn 11864
+step
+>>与Muahit和Hotawa交谈
+.turnin 11968 >>转向潮汐转向
+.goto BoreanTundra,67.21,54.86
+.accept 12117 >>接受前往莫阿基港的旅行
+.goto BoreanTundra,67.27,54.86
+.isQuestTurnedIn 11864
+step
+>>返回D.E.H.T.A.营地。与塞尼乌斯、扎扎和拉托里乌斯交谈
+.turnin 11872 >>交给邪恶的蛤蜊大师。。。
+.goto BoreanTundra,57.33,44.08
+.isQuestTurnedIn 11864
+step
+.isQuestComplete 11868
+.turnin 11868 >>交给Culler Cometh
+.goto BoreanTundra,56.81,44.04
+step
+.isQuestTurnedIn 11868
+.accept 11892 >>接受哈罗德·莱恩的刺杀
+.goto BoreanTundra,57.05,44.32
+step
+.goto BoreanTundra,49.90,41.50
+.use 35293 >>杀死哈罗德·莱恩。这个任务可能很难，所以一定要用你所有的冷却时间来杀死他和塞纳里奥·霍恩。远离他的陷阱。如果你做不到，就跳过这个
+*Group up for this quest if needed
+.complete 11892,1 
+.unitscan Harold Lane
+.isOnQuest 11892
+step
+#label ALFP
+#sticky
+.goto BoreanTundra,45.33,34.62
+.fp Amber Ledge >>获取琥珀色Ledge飞行路径
+step
+>>在琥珀屋与多纳万和加伦交谈
+.turnin 11574 >>转弯太近，不舒适
+.accept 11587 >>接受越狱
+.goto BoreanTundra,45.26,33.35
+.accept 11576 >>接受监测裂谷：Cleftcliff异常
+.goto BoreanTundra,44.98,33.38
+step
+#requires ALFP
+>>杀死绿柱石法师猎人直到你得到监狱钥匙。使用奥术监狱的钥匙
+*Group up for this quest if needed
+.collect 34688,1,11587,0x1,-1 
+.groundgoto BoreanTundra,43.0,36.5,60,0
+.groundgoto BoreanTundra,42.0,36.9,60,0
+.groundgoto BoreanTundra,40.5,38.8,60,0
+.groundgoto BoreanTundra,41.0,40.6,60,0
+.goto BoreanTundra,42.5,40.3
+.complete 11587,1 
+.goto BoreanTundra,42.60,36.75
+step
+.goto BoreanTundra,34.44,42.35
+>>沿着陆地，然后游过水面 << !Shaman !DK
+>>骑马穿过水面向裂缝驶去 << Shaman/DK
+.use 34669 >>使用你袋子里靠近地面紫色裂缝的测高仪
+.complete 11576,1 
+step << Druid
+#completewith DruidTrain2
+.cast 18960 >>铸造Teleport:Moonglade
+.zoneskip Moonglade
+.xp <71,1
+step << Druid
+.goto Moonglade,52.4,40.6
+>>前往Moonglade
+.train 48442 >>训练你的职业咒语
+.xp <71,1
+step << Druid
+#label DruidTrain2
+.goto Moonglade,52.4,40.6
+>>前往Moonglade
+.train 48464 >>训练你的职业咒语
+.xp <72,1
+step << DK
+#completewith next
+.cast 50977 >>铸造死亡之门
+.zoneskip Eastern Plaguelands
+.xp <72,1
+step << DK
+.goto Eastern Plaguelands,80.3,48.0
+>>穿过死亡之门
+.train 49940 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.xp <72,1
+step << Mage
+#completewith MageTrain2
+.zone Undercity >>传送到地下城
+.xp <71,1
+step << Mage
+.goto Undercity,85.1,10.0
+.train 43023 >>训练你的职业咒语
+.xp <71,1
+step << Mage
+#label MageTrain2
+.goto Undercity,85.1,10.0
+.train 42930 >>训练你的职业咒语
+.xp <72,1
+step
+#completewith next
+.hs >>从火炉到战歌
+.cooldown item,6948,>0
+step
+.goto BoreanTundra,41.35,53.60
+>>与Hold底层的Garrosh交谈
+.turnin 11722 >>交出Gammoth奖杯
+.isQuestComplete 11722
+step
+#completewith next
+.goto BoreanTundra,40.36,51.39
+>>跑上楼梯，然后乘电梯到战歌要塞的顶部。飞到琥珀色壁架
+.fly Amber Ledge >>飞到琥珀色壁架
+step
+>>返回琥珀色列表。与Garren和Donathan交谈
+.turnin 11576 >>转入监测裂谷：Cleftcliff异常
+.accept 11582 >>接受监测裂谷：裂谷破碎
+.goto BoreanTundra,44.98,33.38
+.turnin 11587 >>入狱越狱
+.accept 11590 >>接受绑架
+.goto BoreanTundra,45.26,33.35
+step
+.goto BoreanTundra,43.83,29.41
+.use 34669 >>小心下山或跳入下面的水里。潜下去，在海底紫色裂缝上再次使用测深仪
+.complete 11582,1 
+step
+#completewith next
+.groundgoto BoreanTundra,43.5,33.2,20 >>在这里回到大陆
+step
+.goto BoreanTundra,43.2,36.6,60,0
+.goto BoreanTundra,41.6,37.4
+.use 34691 >>伤害绿柱石法师50%或更少生命值。使用你袋子里的奥术活页夹来捕捉它
+.complete 11590,1 
+step
+>>返回琥珀色列账。与Garren和Donathan交谈。你可以忽略你的囚犯
+.turnin 11582 >>转向监控裂谷：裂谷破碎
+.accept 12728 >>接受监测裂谷：Winterfin洞穴
+.goto BoreanTundra,44.98,33.38
+.turnin 11590 >>转入绑架
+.accept 11646 >>接受Borean调查
+.goto BoreanTundra,45.26,33.35
+step
+.goto BoreanTundra,46.32,32.84
+>>跑上塔楼到一楼。与诺曼蒂斯交谈
+.turnin 11646 >>移交Borean Inquisition
+.accept 11648 >>接受说服的艺术
+step
+.goto BoreanTundra,46.33,32.92
+.use 34811 >>在图书馆员诺曼蒂斯旁边被监禁的绿柱石巫师身上使用神经刺针，直到任务完成
+.complete 11648,1 
+step
+.goto BoreanTundra,46.32,32.84
+>>与诺曼蒂斯交谈
+.turnin 11648 >>谈说服的艺术
+.accept 11663 >>接受共享情报
+step
+.goto BoreanTundra,45.26,33.35
+>>离开塔楼，和多纳坦通话
+.turnin 11663 >>分享情报
+.accept 11671 >>接受与时间赛跑
+step
+#completewith next
+.cast 45780 >>使用你袋子里的绿柱石护盾雷管来摧毁检察官萨兰德的护盾
+step
+.goto BoreanTundra,41.8,39.15
+.use 34897 >>杀死检察官萨兰德。抢劫她尸体旁边的小箱子
+*Group up for this quest if needed
+.complete 11671,1 
+step
+>>返回琥珀色列账。先和多纳森谈谈，然后再和苏里斯特拉斯(大红龙)谈谈
+.turnin 11671 >>与时间赛跑
+.accept 11679 >>接受密钥重构
+.goto BoreanTundra,45.26,33.35
+.turnin 11679 >>交钥匙重新锻造
+.accept 11680 >>接受夺冠
+.goto BoreanTundra,45.33,34.62
+step
+.goto BoreanTundra,46.38,37.31
+>>与安齐姆交谈。这会把你带到站台
+.turnin 11680 >>转弯起飞翼
+.accept 11681 >>接受Rescuing Evanor
+.timer 53,Rescuing Evanor RP
+step
+.goto BoreanTundra,43.01,43.86,-1
+.goto BoreanTundra,46.37,32.39,-1
+>>等待航班和RP结束。你将被传送到任务中
+>>如果活动没有开始，放弃Rescuing Evanor并再次接受
+.turnin 11681 >>移交Rescuing Evanor
+.accept 11682 >>接受龙峰
+step
+.goto BoreanTundra,45.33,34.62
+>>与Surristrasz(大红龙)交谈。这会把你送到考拉达
+.turnin 11682 >>交给龙峰
+.accept 11733 >>接受穿越裂谷
+.skipgossip
+.timer 60,Coldarra flight
+step
+#completewith next
+.goto BoreanTundra,45.33,34.62
+.fly Coldarra >>飞往考拉达
+step
+>>在室内与贝琳纳德交谈，然后在室外与雷洛拉斯兹和塞拉交谈
+.turnin 11733 >>转向横穿裂谷
+.accept 11900 >>接受仪表读数
+.accept 11910 >>接受古人的秘密
+.goto BoreanTundra,32.94,34.40
+.accept 11918 >>接受基本培训
+.goto BoreanTundra,33.32,34.54
+.accept 11912 >>为浆果接受坚果
+.goto BoreanTundra,33.49,34.38
+step
+#sticky
+#completewith Weaver1
+>>当你通过考拉达探索时：
+>>-杀死你看到的所有Coldarra Spellweavers
+>>-抢劫地上的霜莓灌木
+.complete 11918,1 
+.complete 11912,1 
+step
+.goto BoreanTundra,32.6,27.8
+.use 35648 >>杀死该地区的考拉达·斯皮尔宾德斯。抢走他们以获取闪烁碎片。在您的包中点击它
+.collect 35648,1,11941 
+.accept 11941 >>接受拼图。。。
+step
+.goto BoreanTundra,33.32,34.54
+>>返回Raelorasz
+.turnin 11941 >>交给Puzzling。。。
+.accept 11943 >>接受单元格
+step
+#completewith splinters
+>>在考拉达周围寻找冰川古人和魔法古人。掠夺他们的分裂者
+.complete 11910,1 
+.complete 11910,2 
+step
+.goto BoreanTundra,28.77,34.88
+>>点击建筑内的蓝色小圆球(不是浮动的)
+.complete 11900,2 
+step
+.goto BoreanTundra,24.14,29.60
+>>杀死战争使者戈雷德拉克。抢劫他的能量核心
+*Group up for this quest if needed
+.complete 11943,1 
+step
+.goto BoreanTundra,22.37,24.18
+>>点击建筑内的蓝色小圆球(不是浮动的)
+.complete 11900,4 
+step
+.goto BoreanTundra,27.32,20.41
+>>杀死塞鲁伦将军。抢劫他入狱
+*Group up for this quest if needed
+.complete 11943,2 
+step
+#label Weaver1
+.goto BoreanTundra,31.26,20.20
+>>点击建筑内的蓝色小圆球(不是浮动的)
+.complete 11900,3 
+step
+#sticky
+#label berries2
+.goto BoreanTundra,25.5,35.6,70,0
+.goto BoreanTundra,25.0,30.6,70,0
+.goto BoreanTundra,28.0,33.5,70,0
+.goto BoreanTundra,32.6,28.2,70,0
+.goto BoreanTundra,30.1,23.4
+>>杀死你看到的所有Coldarra Spellweavers
+*Group up for this quest if needed
+.complete 11918,1 
+step
+.goto BoreanTundra,21.5,26.9,70,0
+.goto BoreanTundra,24.4,35.2,70,0
+.goto BoreanTundra,34.3,31.2,70,0
+.goto BoreanTundra,33.7,23.1
+>>在考拉达全境抢劫冰莓灌木
+.complete 11912,1 
+step
+#requires berries2
+>>返回Transitus。与Serrah和Raelorasz交谈
+.turnin 11912 >>将坚果倒入浆果中
+.accept 11914 >>接受保持秘密安全
+.goto BoreanTundra,33.49,34.38
+.turnin 11918 >>上交基础培训
+.accept 11936 >>接受填充平面
+.turnin 11943 >>交出牢房
+.goto BoreanTundra,33.32,34.54
+step
+.use 35671 >>点击你包里的强化奥术监狱召唤克里斯特拉斯扎
+.accept 11946 >>接受Keristrasza
+.turnin 11946 >>转入Keristrasza
+.accept 11951 >>接受诱饵并切换
+step
+#completewith next
+.goto BoreanTundra,24.9,31.2,0
+.goto BoreanTundra,25.2,24.2,0
+>>绕过Nexus的上边缘/悬崖。掠夺地面上的紫色小水晶
+.complete 11951,1 
+step
+.goto BoreanTundra,29.5,30.81,90,0
+.goto BoreanTundra,28.7,33.6,70,0
+.goto BoreanTundra,27.5,31.3,70,0
+.goto BoreanTundra,24.9,31.2,70,0
+.goto BoreanTundra,25.2,24.2
+>>绕过Nexus的上边缘/悬崖。杀死考拉达·威姆金斯。掠夺他们的斧头
+.collect 35586,5,11936,1 
+step
+.goto BoreanTundra,24.9,31.2,50,0
+.goto BoreanTundra,25.2,24.2
+>>绕过Nexus的上边缘/悬崖。掠夺地面上的紫色小水晶
+.complete 11951,1 
+step
+#sticky
+#label reading
+.goto BoreanTundra,28.31,28.46
+>>点击Nexus会议石旁边的小圆球
+.complete 11900,1 
+step
+#label splinters
+.goto BoreanTundra,29.3,27.4,50,0
+.goto BoreanTundra,28.2,24.4,50,0
+.goto BoreanTundra,26.2,25.4
+>>绕过Nexus的较低区域。杀死奥术蛇并掠夺它们的精华。
+>>使用您刚刚收集的斧头，在下方区域周围打破龙蛋
+.collect 35586,5,11936,1,-1 
+.complete 11936,1 
+.complete 11914,1 
+step
+#requires reading
+.goto BoreanTundra,30.1,23.4,70,0
+.goto BoreanTundra,32.6,28.2,70,0
+.goto BoreanTundra,28.0,33.5,70,0
+.goto BoreanTundra,25.0,30.6,70,0
+.goto BoreanTundra,25.5,35.6
+>>杀死冰川古人和魔法古人。掠夺他们的分裂者
+.complete 11910,1 
+.complete 11910,2 
+step
+.use 35671 >>点击你包里的强化奥术监狱召唤凯里斯特拉斯扎。如果你丢失了它，请与Raelorasz联系，要求一个新的
+.turnin 11951 >>转入诱饵和开关
+.accept 11957 >>接受萨拉戈萨的终结
+step
+#completewith next
+.cast 46793 >>再和克里斯特拉斯扎谈谈，她会把你传送到萨拉戈萨登陆。抵达后，前往平台中心，使用背包中的奥术力量聚焦召唤萨拉戈萨。
+.goto BoreanTundra,21.57,22.55
+.skipgossip 26206,1
+step
+>>杀死萨拉戈萨。抢劫她的尸体
+.complete 11957,1 
+*Group up for this quest if needed
+.goto BoreanTundra,22.07,22.65
+.use 35690
+.skipgossip
+step
+.use 35671 >>点击你包里的强化奥术监狱召唤克里斯特拉斯扎
+.turnin 11957 >>交回萨拉戈萨的终点
+.accept 11967 >>接受召集红军
+.goto BoreanTundra,21.57,22.55
+step
+#questguide
+.goto BoreanTundra,21.6,22.5,0
+>>不要骑马返回Transitus。再次与Keristrasza通话，传送回Coldarra
+>>在外面和Serrah和Raelorasz交谈，然后在里面和Berinand交谈
+.turnin 11914 >>交上来保守秘密
+.goto BoreanTundra,33.49,34.38
+.turnin 11967 >>轮流召集红军
+.goto BoreanTundra,33.32,34.49
+.turnin 11936 >>上交绘制平面图
+.accept 11969 >>接受跳出陷阱
+.accept 11919 >>接受Drake Hunt
+.goto BoreanTundra,33.32,34.54
+.turnin 11900 >>轮流读取仪表
+.turnin 11910 >>交出古代的秘密
+.goto BoreanTundra,32.94,34.40
+.skipgossip
+step
+.goto BoreanTundra,21.6,22.5,0
+>>不要骑马返回Transitus。再次与Keristrasza通话，传送回Coldarra
+>>在外面和Serrah和Raelorasz交谈，然后在里面和Berinand交谈
+.turnin 11914 >>交上来保守秘密
+.goto BoreanTundra,33.49,34.38
+.turnin 11967 >>轮流召集红军
+.goto BoreanTundra,33.32,34.49
+.turnin 11936 >>上交绘制平面图
+.goto BoreanTundra,33.32,34.54
+.turnin 11900 >>轮流读取仪表
+.turnin 11910 >>交出古代的秘密
+.goto BoreanTundra,32.94,34.40
+.skipgossip
+
+step
+#questguide
+.goto BoreanTundra,25.34,21.82
+.cast 62272 >>将Raelorasz Spark放在包里篝火旁，然后等待RP结束
+.timer 195,Springing the Trap RP
+.use 44950
+.complete 11969,1 
+step
+#questguide
+#completewith next
++卸载Keristasza，然后施放慢速坠落 << Mage
++当你靠近地面时，下马克瑞斯塔萨，然后施放漂浮物 << Priest
++当你靠近地面时，卸载Keristasza，然后施放神圣盾牌或保护祝福 << Paladin
+.itemcount 17056,1 << Mage/Priest
+step
+#questguide
+#completewith next
+.goto BoreanTundra,21.91,30.45
+.use 35506 >>找到一只在地图西北边缘飞行的小鸭子
+.cast 46607 >>用雷洛拉兹的长矛对准小鸭幼雏，让它跟着你。不要杀死它
+.unitscan Nexus Drake Hatchling
+step
+#questguide
+.goto BoreanTundra,33.28,34.47
+>>把德雷克带回Transitus的Raelorasz。它与你的移动速度相匹配
+.complete 11919,1 
+step
+#questguide
+.goto BoreanTundra,33.32,34.54
+>>与Raelorasz交谈
+.turnin 11919 >>交给德雷克·亨特
+.turnin 11969 >>转身跳出陷阱
+.accept 11931 >>接受违反准则
+.accept 11940 >>接受Drake Hunt
+step
+#questguide
+#completewith next
+.goto BoreanTundra,32.72,27.88,0
+>>杀死Coldarra Spellbinders。掠夺他们闪耀的符文
+.complete 11931,1 
+step
+#questguide
+.goto BoreanTundra,32.72,27.88
+>>杀死检察官卡莱拉斯。为Azure Codex抢劫他
+.complete 11931,2 
+step
+#questguide
+.goto BoreanTundra,29.3,21.8
+.use 35506 >>找到一只沿着地图东北边缘飞行的小鸭子
+.cast 46607 >>用雷洛拉兹的长矛对准小鸭幼雏，让它跟着你。不要杀死它
+.unitscan Nexus Drake Hatchling
+step
+#questguide
+.goto BoreanTundra,34.5,29.6,50,0
+.goto BoreanTundra,32.8,31.4
+>>杀死Coldarra Spellbinders。掠夺他们闪耀的符文
+.complete 11931,1 
+step
+#questguide
+.goto BoreanTundra,33.28,34.47
+>>把德雷克带回Transitus的Raelorasz。它与你的移动速度相匹配
+.complete 11940,1 
+step
+#questguide
+.goto BoreanTundra,33.30,34.48
+>>与Raelorasz交谈
+.turnin 11931 >>上缴破解密码
+.turnin 11940 >>交给德雷克·亨特
+
+step
+#completewith next
+.goto BoreanTundra,33.13,34.45
+.fly Amber Ledge >>飞到琥珀色壁架
+step
+.goto BoreanTundra,49.65,11.05
+>>小心下山，然后骑马前往博尔戈罗前哨
+.fp Bor'gorok Outpost >>获取Bor'gorok前哨飞行路线
+step
+>>与斯纳尔芳和博尔戈罗交谈
+.turnin 12486 >>向博尔戈罗前哨报到，快！
+.accept 11624 >>接受天空会知道
+.goto BoreanTundra,50.28,9.71
+.accept 11591 >>接受向Steeljaw车队的报告
+.goto BoreanTundra,49.62,10.58
+step
+#completewith tadpoles
+.goto BoreanTundra,49.67,10.19
+.home >>把你的家设在Bor'Gorok前哨
+step
+.goto BoreanTundra,48.96,10.26
+>>与Taz'ishi交谈
+.accept 11702 >>接受King Mrgl Mrgl
+step
+.goto BoreanTundra,46.58,9.35
+>>与帝国主义者交谈
+.turnin 11624 >>天空会知道的
+.accept 11627 >>接受沸点
+step
+>>杀死Churn和Simmer。他们将在健康状况不佳时提交
+*Group up for this quest if needed
+.complete 11627,2 
+.goto BoreanTundra,45.88,13.08
+.complete 11627,1 
+.goto BoreanTundra,50.97,15.31
+step
+.goto BoreanTundra,46.58,9.35
+>>重返帝国
+.turnin 11627 >>转入沸点
+.accept 11649 >>接受愤怒的情绪
+step
+.goto BoreanTundra,45.9,6.5,80,0
+.goto BoreanTundra,42.2,8.2,60,0
+.goto BoreanTundra,43.0,10.6,60,0
+.goto BoreanTundra,46.2,10.7
+>>杀死激怒的风暴。抢劫他们的Motes
+.complete 11649,1 
+step
+.goto BoreanTundra,43.50,13.97
+>>与Mrgl Mrgl国王交谈
+.turnin 11702 >>交给国王姆格尔姆格尔
+.accept 11571 >>接受学习沟通
+step
+.goto BoreanTundra,43.0,18.1,60,0
+.goto BoreanTundra,42.5,15.4
+.use 34598 >>杀死Scalder。他是在海底巡逻的水元素。在他的尸体上使用国王的空海螺
+*Group up for this quest if needed
+.complete 11571,1 
+.unitscan Scalder
+step
+.goto BoreanTundra,43.50,13.97
+>>返回Mrgl Mrgl
+.turnin 11571 >>转向学习沟通
+.accept 11559 >>接受Winterfin Commerce
+step
+.goto BoreanTundra,40.5,15.8,70,0
+.goto BoreanTundra,41.6,18.9
+>>抢劫地上的小蛤蜊。它们通常位于默洛克小屋旁边，但很难被发现
+.complete 11559,1 
+step
+>>返回Winterfin撤退。与Ahlurglgr、King Mrgl Mrgl和Brglmurgl交谈
+.turnin 11559 >>温特芬商业
+.goto BoreanTundra,43.04,13.82
+.accept 11560 >>接受哦不，蝌蚪！
+.goto BoreanTundra,43.50,13.97
+.accept 11561 >>接受他们！
+.goto BoreanTundra,42.82,13.65
+step
+#completewith next
+.goto BoreanTundra,41.0,15.6,0
+.goto BoreanTundra,41.3,19.0,0
+.goto BoreanTundra,39.2,18.3,0
+.goto BoreanTundra,37.6,15.9,0
+>>杀死该地区的穆洛克人。你不必关注这个任务
+*Group up for this quest if needed
+.complete 11561,1 
+step
+#sticky
+#label tadpoles
+.goto BoreanTundra,41.0,15.6,40,0
+.goto BoreanTundra,41.3,19.0,40,0
+.goto BoreanTundra,39.2,18.3,40,0
+.goto BoreanTundra,37.6,15.9,40,0
+.goto BoreanTundra,41.0,15.6,40,0
+.goto BoreanTundra,41.3,19.0,40,0
+.goto BoreanTundra,40.04,19.80,40,0
+.goto BoreanTundra,39.2,18.3,40,0
+.goto BoreanTundra,37.6,15.9
+>>点击该区域的笼子释放蝌蚪
+*Group up for this quest if needed
+.complete 11560,1 
+step
+.goto BoreanTundra,40.04,19.80
+.use 34669 >>使用洞穴口袋子里的测高仪
+.complete 12728,1 
+step
+#completewith end
+#requires tadpoles
+#label Murloc2
+>>与Brglmurgl交谈
+.turnin 11561 >>把他们交上来！
+.goto BoreanTundra,42.82,13.65,0,0
+.isQuestComplete 11561
+step
+.isQuestTurnedIn 11559
+.goto BoreanTundra,43.04,13.79
+.vendor >>从Ahlurglgr购买尽可能多的Muriver Oils
+.itemcount 34597,2
+step
+#requires tadpoles
+>>与Mrgl Mrgl国王交谈
+.turnin 11560 >>哦，不，蝌蚪们！
+.accept 11562 >>接受我被清洁工勒索
+.goto BoreanTundra,43.50,13.97
+step
+#requires Murloc2
+>>与Mrmrglmr和Bmurglbrm交谈
+.turnin 11562 >>交上来我被我的清洁工勒索了
+.accept 11563 >>接受Grmmurggll Mrllggrl Glrggl！！！
+.goto BoreanTundra,41.98,12.77
+.accept 11564 >>接受多肉Orca Stew
+.goto BoreanTundra,42.03,13.16
+step
+.isQuestTurnedIn 11559
+#completewith next
+.use 38351 >>必要时，使用穆利弗油提高游泳速度。
+.itemcount 38351,1
+step
+#completewith next
+.goto BoreanTundra,38.0,9.5,0
+.goto BoreanTundra,36.4,8.8,0
+.goto BoreanTundra,37.4,6.3,0
+.goto BoreanTundra,39.3,8.3,0
+>>杀死该地区的Glimmer Bay Orcas。抢走他们的腮红
+.complete 11564,1 
+step
+.goto BoreanTundra,38.0,9.5,70,0
+.goto BoreanTundra,36.4,8.8,70,0
+.goto BoreanTundra,37.4,6.3,70,0
+.goto BoreanTundra,39.3,8.3
+>>杀死鲸鱼Glrggl。抢他的头。他逆时针绕着两座北部冰山巡逻
+*Group up for this quest if needed
+.complete 11563,1 
+.unitscan Glrggl
+step
+.goto BoreanTundra,40.1,12.2,70,0
+.goto BoreanTundra,39.3,6.7,70,0
+.goto BoreanTundra,36.0,8.1
+>>杀死该地区的Glimmer Bay Orcas。抢走他们的腮红
+.complete 11564,1 
+step
+>>返回Winterfin Recrest。与Mrmrglmr、Bmurglbrm和King Mrgl Mrgl交谈
+.turnin 11563 >>交给Grmmurggll Mrllggrl Glrggl！！！
+.accept 11565 >>接受备用套装
+.goto BoreanTundra,41.98,12.77
+.turnin 11564 >>加入多汁Orca Stew
+.goto BoreanTundra,42.03,13.16
+.turnin 11565 >>交出备用套装
+.accept 11566 >>接受投降……不！
+.goto BoreanTundra,43.50,13.97
+step
+#completewith Lurgglbr
+.goto BoreanTundra,41.0,15.6,0
+.goto BoreanTundra,41.3,19.0,0
+.goto BoreanTundra,39.2,18.3,0
+.goto BoreanTundra,37.6,15.9,0
+>>在山洞里杀死穆洛克。你不必关注这个任务
+*Group up for this quest if needed
+.complete 11561,1 
+step
+.goto BoreanTundra,37.84,23.23
+>>深入洞穴，拥抱左侧。与Glrglrglr通话(暂时不要与Lurggblr通话)
+.accept 11569 >>接受密钥管理员Urmgrgl
+step
+.goto BoreanTundra,38.0,22.2,12,0
+.goto BoreanTundra,39.0,22.7,30,0
+.goto BoreanTundra,39.8,22.5,30,0
+.goto BoreanTundra,39.3,23.7
+>>跑下斜坡，杀死Urmggl。抢他的钥匙
+*Group up for this quest if needed
+.complete 11569,1 
+.unitscan Urmgrgl
+step
+.goto BoreanTundra,37.0,21.8,40,0
+.goto BoreanTundra,36.9,24.0,40,0
+.goto BoreanTundra,37.55,27.53
+>>跑到洞穴的尽头。杀死克洛克西姆斯。抢走他的爪子
+*Group up for this quest if needed
+.complete 11566,1 
+step
+.goto BoreanTundra,37.84,23.23
+>>返回洞穴起点附近的笼子处的Glrglrglr
+.turnin 11569 >>交钥匙管理员Urmgrgl
+step
+#questguide
+.goto BoreanTundra,37.72,23.03
+>>与你旁边笼子里的Lurgglbr交谈
+.accept 11570 >>接受从Winterfin洞穴逃脱
+step
+#questguide
+#label Lurgglbr
+.goto BoreanTundra,39.9,19.8,40,0
+.goto BoreanTundra,39.6,18.1,40,0
+.goto BoreanTundra,41.36,16.32
+>>护送Lurgglbr。试着杀掉他遇到的暴徒，这样他就不会因为停下来攻击而浪费时间
+.complete 11570,1 
+
+step
+.goto BoreanTundra,41.0,15.6,70,0
+.goto BoreanTundra,41.3,19.0,70,0
+.goto BoreanTundra,39.2,18.3,70,0
+.goto BoreanTundra,37.6,15.9
+>>杀死该地区的Murlocs
+.complete 11561,1 
+step
+.goto BoreanTundra,42.82,13.65
+>>与Brglmurgl交谈
+.turnin 11561 >>把他们交上来！
+step
+#completewith next
+.isQuestTurnedIn 11559
+.goto BoreanTundra,43.04,13.79
+.vendor >>从Ahlurglgr购买更多Muriver Oils。
+.itemcount 34597,2
+step
+.goto BoreanTundra,43.50,13.97
+>>与Mrgl Mrgl国王交谈
+.turnin 11566 >>投降……不！
+step
+#questguide
+.goto BoreanTundra,43.50,13.97
+>>与Mrgl Mrgl国王交谈
+.turnin 11566 >>投降……不！
+.turnin 11570 >>转身逃离冬鳍石窟
+step
+.goto BoreanTundra,48.39,19.32,30,0
+.goto BoreanTundra,48.45,19.75
+>>与Ragefist交谈
+.turnin 11591 >>向Steeljaw车队提交报告
+.accept 11593 >>接受光荣的死者
+.accept 11594 >>接受让他们休息
+step
+.goto BoreanTundra,48.32,19.77
+>>与骄傲交谈。这将开始护送
+.accept 11592 >>接受我们的打击！
+step
+#completewith next
+.goto BoreanTundra,49.0,25.2,0
+.use 34692 >>在你的袋子里放上愤怒拳头的手电筒，攻击该地区死去的堕落守卫和工人
+>>杀死该地区的不死牛头人
+.complete 11593,1 
+.complete 11594,1 
+step
+.goto BoreanTundra,49.44,26.47
+>>追随骄傲。在护送过程中，尽可能多地烧死尸体和杀死鬼魂。在Steeljaw产卵时杀死他
+.complete 11592,1 
+step
+.goto BoreanTundra,51.2,24.6,50,0
+.goto BoreanTundra,48.7,20.9,50,0
+.goto BoreanTundra,47.4,21.7
+.use 34692 >>在你的袋子里放上愤怒拳头的手电筒，攻击该地区死去的堕落守卫和工人
+>>杀死该地区的不死牛头人
+.complete 11593,1 
+.complete 11594,1 
+step
+.goto BoreanTundra,48.39,19.32,30,0
+.goto BoreanTundra,48.45,19.75
+>>与Ragefist交谈
+.turnin 11593 >>交出光荣的死者
+.turnin 11594 >>上车休息
+step
+.goto BoreanTundra,46.58,9.35
+>>与帝国主义者交谈
+.turnin 11649 >>愤怒的情绪
+.accept 11629 >>接受重返精神代言人
+step
+.goto BoreanTundra,49.62,10.58
+>>返回博尔戈罗
+.turnin 11592 >>我们进攻！
+step
+.goto BoreanTundra,50.28,9.71
+>>返回博尔戈罗。与斯纳尔芳交谈
+.turnin 11629 >>交回精神代言人
+.accept 11631 >>接受空气愿景
+step
+#completewith next
+.goto BoreanTundra,50.28,9.71
+.use 34779 >>使用帝国元帅。等待RP
+.cast 45594
+.timer 25,Vision of Air RP
+.complete 11631,1 
+step
+.goto BoreanTundra,50.2,9.7
+>>与斯纳尔芳交谈
+.turnin 11631 >>空中视野的转变
+.accept 11635 >>接受《远见漫游者的精神》(Farseer Grimwalker’s Spirit)
+step
+.goto BoreanTundra,50.07,10.15
+>>与Ortrosh交谈
+.accept 11639 >>接受对Magmoth的报复
+step
+>>杀死Magmoth洞穴外的牧羊人和破碎者。还要杀死至少一半的萨满
+.complete 11639,2 
+.goto BoreanTundra,54.32,11.22,50,0
+.goto BoreanTundra,58.99,10.01,50,0
+.goto BoreanTundra,57.46,12.17,50,0
+.goto BoreanTundra,56.18,11.55,50,0
+.goto BoreanTundra,55.06,13.33
+.complete 11639,3 
+.goto BoreanTundra,53.45,14.95,50,0
+.goto BoreanTundra,54.09,13.37
+.complete 11639,1,5 
+step
+#completewith Remains
+>>杀死洞穴中的马格莫特雷加和马格莫特萨满的配偶
+.complete 11639,4 
+.complete 11639,1 
+step
+#completewith next
+.goto BoreanTundra,55.26,11.98,40,0
+.goto BoreanTundra,55.93,11.28,20,0
+.goto BoreanTundra,55.93,11.28,20 >>跳进洞里。去底层洞穴的东北角
+step
+.goto BoreanTundra,56.17,9.12
+>>杀死格里姆沃克周围的萨满人以释放他。与Grimwalker交谈
+.turnin 11635 >>交出《远见漫游者的精神》(Farseer Grimwalker’s Spirit)
+.accept 11637 >>接受Kaganishu
+step
+.goto BoreanTundra,56.19,12.78
+>>杀死Grimwalker南部的Kaganishu。为他的恋物癖抢劫他
+.complete 11637,2 
+step
+.goto BoreanTundra,56.17,9.12
+.use 34781 >>在Farseer Grimwalker上用你袋子里的恋物癖释放他。
+.complete 11637,1 
+step
+#label Remains
+.goto BoreanTundra,56.2,9.2
+>>与Grimwalker交谈，然后从他身下掠夺骨头
+.turnin 11637 >>转入Kaganishu
+.accept 11638 >>接受并退还我的剩余
+.complete 11638,1 
+step
+.goto BoreanTundra,55.81,11.13,20,0
+>>杀死洞穴中的马格莫特雷加和马格莫特萨满的配偶
+.complete 11639,4 
+.goto BoreanTundra,54.83,9.92,20,0
+.goto BoreanTundra,54.13,11.38
+.complete 11639,1 
+.goto BoreanTundra,54.80,13.09,20,0
+.goto BoreanTundra,55.99,13.68,20,0
+.goto BoreanTundra,56.43,11.72
+step
+.hs >>炉灶 to Bor’gorok前哨
+.cooldown item,6948,>0
+step
+>>与斯纳尔芳和奥特罗什交谈
+.turnin 11639 >>向Magmoth报仇
+.goto BoreanTundra,49.55,9.98
+.turnin 11638 >>交回我的遗体
+.goto BoreanTundra,50.28,9.71
+step
+.goto BoreanTundra,48.39,19.32,30,0
+.goto BoreanTundra,48.45,19.75
+>>与Ragefist交谈
+.turnin 11591 >>向Steeljaw车队提交报告
+.accept 11593 >>接受光荣的死者
+.accept 11594 >>接受让他们休息
+step
+.goto BoreanTundra,48.32,19.77
+>>与骄傲交谈。这将开始护送
+.accept 11592 >>接受我们的打击！
+step
+#completewith next
+.goto BoreanTundra,49.0,25.2,0
+.use 34692 >>在你的袋子里放上愤怒拳头的手电筒，攻击该地区死去的堕落守卫和工人
+>>杀死该地区的不死牛头人
+.complete 11593,1 
+.complete 11594,1 
+step
+.goto BoreanTundra,49.44,26.47
+>>追随骄傲。在护送过程中，尽可能多地烧死尸体和杀死鬼魂。在Steeljaw产卵时杀死他
+.complete 11592,1 
+step
+.goto BoreanTundra,51.2,24.6,50,0
+.goto BoreanTundra,48.7,20.9,50,0
+.goto BoreanTundra,47.4,21.7
+.use 34692 >>在你的袋子里放上愤怒拳头的手电筒，攻击该地区死去的堕落守卫和工人
+>>杀死该地区的不死牛头人
+.complete 11593,1 
+.complete 11594,1 
+step
+.goto BoreanTundra,48.39,19.32,30,0
+.goto BoreanTundra,48.45,19.75
+>>与Ragefist交谈
+.turnin 11593 >>交出光荣的死者
+.turnin 11594 >>上车休息
+step
+.goto BoreanTundra,49.62,10.58
+>>返回博尔戈罗
+.turnin 11592 >>我们进攻！
+step
+#completewith next
+.goto BoreanTundra,49.65,11.05
+.fly Amber Ledge >>飞到琥珀色壁架
+step
+.goto BoreanTundra,44.98,33.38
+>>返回琥珀色列账。与Garren交谈
+.turnin 12728 >>转向监视裂谷：Winterfin洞穴
+step
+.goto BoreanTundra,57.05,44.32
+>>返回Lathorius
+.turnin 11892 >>交出刺杀哈罗德巷案
+.isQuestComplete 11892
+step
+>>前往卡斯卡拉。与Ataika和Utaik交谈
+.accept 11949 >>不打不接受！
+.goto BoreanTundra,63.80,46.12
+.daily 11945 >>接受做最坏的准备
+.goto BoreanTundra,63.95,45.72
+step
+#completewith next
+.goto BoreanTundra,66.2,45.9,0
+.goto BoreanTundra,63.7,52.2,0
+>>抢劫村庄周围的小篮子
+.complete 11945,1 
+.isOnQuest 11945
+step
+.goto BoreanTundra,67.3,47.7,60,0
+.goto BoreanTundra,63.61,53.93
+>>杀死村庄周围的袭击者
+*Group up for this quest if needed
+.complete 11949,1 
+step
+.goto BoreanTundra,66.2,45.9,60,0
+.goto BoreanTundra,63.7,52.2
+>>抢劫村庄周围的小篮子
+.complete 11945,1 
+.isOnQuest 11945
+step
+>>返回Ataika和Utaik
+.turnin 11949 >>不战而归！
+.accept 11950 >>接受穆希特的智慧
+.goto BoreanTundra,63.80,46.12
+.turnin 11945 >>上车做最坏的准备
+.goto BoreanTundra,63.95,45.72
+.isOnQuest 11945
+step
+>>返回Ataika
+.turnin 11949 >>不战而归！
+.accept 11950 >>接受穆希特的智慧
+.goto BoreanTundra,63.80,46.12
+step
+.goto BoreanTundra,67.21,54.86
+>>游到峡湾呼吸湾。与穆希特交谈
+.turnin 11950 >>交出穆希特的智慧
+.accept 11961 >>接受灵魂守护我们
+step
+.goto BoreanTundra,67.65,50.41
+>>在水下与伊鲁克的尸体交谈
+.complete 11961,1 
+.skipgossip
+step
+.goto BoreanTundra,67.21,54.86
+>>返回Muahit
+.turnin 11961 >>交出灵魂守护我们
+.accept 11968 >>接受潮流转向
+step
+.goto BoreanTundra,67.41,56.87
+>>在结冰的海岸杀死海加尔
+*Group up for this quest if needed
+.complete 11968,1 
+.unitscan Heigarr the Horrible
+step
+>>与Muahit和Hotawa交谈
+.turnin 11968 >>转向潮汐转向
+.goto BoreanTundra,67.21,54.86
+.accept 12117 >>接受前往莫阿基港的旅行
+.goto BoreanTundra,67.27,54.86
+step
+#sticky
+#label AbandonAss
+.abandon 11892 >>放弃对哈罗德·莱恩的刺杀
+step
+#completewith end
+.goto BoreanTundra,77.76,37.77
+.fp Taunka'le Village >>获得Taunka'le村的飞行路线
+step
+#requires AbandonAss
+>>与圣人和马汉交谈
+.turnin 11888 >>转入Taunka'le村
+.accept 11890 >>接受他们在做什么？
+.goto BoreanTundra,77.25,38.47
+.accept 11684 >>接受对陷坑的侦察
+.goto BoreanTundra,77.07,37.82
+.xp >71+1154700,1
+step
+>>与圣人交谈
+.turnin 11888 >>转入Taunka'le村
+.xp <71+1154700,1
+step
+>>与Fezzix交谈，然后与帐篷内的Taiga交谈
+.accept 11881 >>接受Load'er Up！
+.goto BoreanTundra,77.48,36.95
+.accept 11674 >>接受Sage Highmesa失踪
+.goto BoreanTundra,77.30,36.87
+.isQuestTurnedIn 11888
+step
+#completewith CPlane
+.goto BoreanTundra,76.25,37.18
+.home >>把炉子放在陶恩卡勒村
+.isQuestTurnedIn 11888
+step
+.use 34920 >>在灰岩坑边缘的袋子里，使用间歇泉场地图。
+.complete 11684,1 
+.goto BoreanTundra,70.76,36.72
+.complete 11684,2 
+.goto BoreanTundra,69.94,33.12
+.complete 11684,3 
+.goto BoreanTundra,66.78,32.61
+.isQuestTurnedIn 11888
+step
+.goto BoreanTundra,66.0,24.6
+>>前往泵站
+.complete 11890,1 
+.isQuestTurnedIn 11888
+step
+.goto BoreanTundra,64.02,35.77
+>>与坠毁侦察机飞行员的尸体对话
+.accept 11887 >>接受应急物资
+.isQuestTurnedIn 11888
+step
+.goto BoreanTundra,64.0,37.2,70,0
+.goto BoreanTundra,59.4,39.3,70,0
+.goto BoreanTundra,61.0,33.2
+>>绕着游泳池跑。与死去的菲兹克侦察飞行员交谈
+.complete 11887,1 
+.skipgossip
+.isQuestTurnedIn 11888
+step
+#completewith next
+#label CPlane
+.goto BoreanTundra,63.38,36.99
+.cast 46338 >>清理坠毁飞机周围的区域，用你包里的珍妮哨子召唤骡子。
+.isQuestTurnedIn 11888
+step
+#completewith next
+.goto BoreanTundra,77.61,36.84
+.use 35272 >>带着珍妮跑回费齐克斯，珍妮不会被击中。珍妮跑得很慢，所以不要没有她就走了。如果你把她丢了，她就会消失
+.complete 11881,1 
+.isQuestTurnedIn 11888
+step
+#requires CPlane
+>>先和Fezzix谈谈，然后是Dorain
+.turnin 11881 >>上车！
+.turnin 11887 >>移交应急物资
+.goto BoreanTundra,77.48,36.95
+.accept 11893 >>接受元素的力量
+.goto BoreanTundra,77.62,36.95
+.isQuestTurnedIn 11888
+step
+>>与马汉和圣人交谈
+.turnin 11684 >>轮流侦察陷坑
+.accept 11685 >>接受元素的核心
+.goto BoreanTundra,77.07,37.82
+.turnin 11890 >>交出他们在做什么？
+.accept 11895 >>接受风暴大师
+.goto BoreanTundra,77.25,38.47
+.isQuestTurnedIn 11888
+step
+.goto BoreanTundra,77.05,38.72
+>>单击小屋内的风暴图腾。杀死生成的风暴风暴。
+.complete 11895,1 
+.isQuestTurnedIn 11888
+step
+.goto BoreanTundra,77.25,38.47
+>>回归圣人
+.turnin 11895 >>攻入风暴大师
+.accept 11896 >>接受闪电的弱点
+.isQuestComplete 11895
+.xp >71+1154700,1
+step
+.goto BoreanTundra,77.25,38.47
+>>回归圣人
+.accept 11896 >>接受闪电的弱点
+.isQuestTurnedIn 11895
+.xp >71+1154700,1
+step
+.goto BoreanTundra,77.25,38.47
+>>回归圣人
+.turnin 11895 >>攻入风暴大师
+.isQuestComplete 11895
+.xp <71+1154700,1
+step
+>>与铁眼交谈，然后与帐篷内的Taiga交谈
+.accept 11906 >>接受池清理
+.goto BoreanTundra,76.92,37.63
+.accept 11899 >>接受死者的灵魂
+.goto BoreanTundra,77.30,36.87
+.isOnQuest 11896
+step
+.goto BoreanTundra,72.2,25.1,60,0
+.goto BoreanTundra,72.5,37.1,60,0
+.goto BoreanTundra,73.5,39.9,60,0
+.goto BoreanTundra,74.6,33.9
+.use 35281 >>使用你包里的风之图腾。当蒸汽破坏者从你的图腾(大约30码范围内)身上受到攻击时，杀死他们以收集能量
+.complete 11893,1 
+.isOnQuest 11896
+step
+#completewith next
+.goto BoreanTundra,66.5,22.2,0
+.use 35352 >>对该区域的机械(而非机械师)暴徒使用圣人的避雷针并杀死他们。专注于这个任务，因为棒子有很长的冷却时间
+.complete 11896,1 
+.isOnQuest 11896
+step
+.use 35401 >>杀死机械师。在你的袋子里放上伟大母亲的灵魂守护神——他们的尸体。
+>>抢劫散落在地上的零件
+.goto BoreanTundra,64.5,22.8,60,0
+.goto BoreanTundra,65.3,17.5,60,0
+.goto BoreanTundra,61.5,21.0,60,0
+.goto BoreanTundra,61.3,25.3,60,0
+.goto BoreanTundra,64.7,26.6,60,0
+.goto BoreanTundra,67.2,26.0,60,0
+.goto BoreanTundra,64.5,22.8
+.complete 11899,1 
+.complete 11906,1 
+.isOnQuest 11896
+step
+.goto BoreanTundra,66.3,22.1,60,0
+.goto BoreanTundra,67.1,25.2,60,0
+.goto BoreanTundra,61.4,24.4
+.use 35352 >>在该区域的机械(但不是机械师)怪物上使用圣人的避雷针。杀了他们。首先关注这个任务，因为鱼竿有冷却时间
+.complete 11896,1 
+.isOnQuest 11896
+step
+#completewith next
+.hs >>炉灶至Taunka'le村
+.cooldown item,6948,>0
+.isOnQuest 11896
+step
+>>返回Taunka'le村。与铁眼交谈
+.turnin 11906 >>交清水池
+.goto BoreanTundra,76.92,37.63
+.isQuestComplete 11906
+step
+>>与圣人交谈
+.turnin 11896 >>将弱点转化为闪电
+.accept 11907 >>接受副酋长
+.goto BoreanTundra,77.25,38.47
+.isQuestComplete 11896
+step
+>>与圣人交谈
+.accept 11907 >>接受副酋长
+.goto BoreanTundra,77.25,38.47
+.isQuestTurnedIn 11896
+step
+>>在小屋里和泰加说话，然后在小屋外和多兰和菲兹克斯说话
+.turnin 11899 >>亡灵归来
+.accept 11909 >>接受击败Gearmaster
+.goto BoreanTundra,77.30,36.87
+.turnin 11893 >>交出元素的力量
+.goto BoreanTundra,77.62,36.95
+.accept 11894 >>接受修补程序
+.goto BoreanTundra,77.48,36.95
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,76.7,32.1,70,0
+.goto BoreanTundra,79.4,35.4,70,0
+.goto BoreanTundra,79.0,43.1,70,0
+.goto BoreanTundra,80.9,42.6,70,0
+.goto BoreanTundra,76.7,32.1
+>>杀死该地区的驯鹿。掠夺他们未被保护的藏身之处
+.collect 35288,5,11894,1
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,83.1,47.7,70,0
+.goto BoreanTundra,85.5,48.0,70,0
+.goto BoreanTundra,86.3,45.4,70,0
+.goto BoreanTundra,88.5,46.8,70,0
+.goto BoreanTundra,83.1,47.7
+>>杀死岸上的冰冻元素。掠夺他们的心
+.complete 11685,1 
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,75.57,35.77
+>>在陶恩卡外与巴拉交谈
+.turnin 11685 >>元素的核心
+.accept 11695 >>接受元素之角
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,78.9,28.3,70,0
+.goto BoreanTundra,78.0,27.9,70,0
+.goto BoreanTundra,78.5,29.3,70,0
+.goto BoreanTundra,79.0,29.0
+>>杀死酋长Gurgleboggle。抢他的钥匙
+.collect 34962,1,11695,2 
+.unitscan Chieftain Gurgleboggle
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,78.72,28.33
+>>单击池塘中间的球体
+.complete 11695,2 
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,71.15,28.14
+.use 35288 >>在通风口附近用你的皮毛使它们蒸汽固化。
+.collect 35288,5,11894,1,-1
+.complete 11894,1 
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,65.44,17.45
+>>点击蒸汽管道旁边的阀门召唤ED-210。杀死它
+.complete 11907,2 
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,60.19,20.38
+>>点击蒸汽管旁边的阀门，召唤托恩基。杀了它
+.complete 11907,1 
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,63.66,22.48
+>>点击蒸汽管旁边的阀门召唤Max Blasto。杀了它
+.complete 11907,3 
+.isQuestTurnedIn 11896
+step
+.groundgoto BoreanTundra,65.62,22.95,20,0
+.groundgoto BoreanTundra,64.87,24.14,15,0
+.groundgoto BoreanTundra,64.71,22.93,15,0
+.goto BoreanTundra,64.43,23.40
+>>跑到油平台顶部。走进小房子，点击桌子上的大书，召唤麦加苏德。杀了他，抢了他的头
+.complete 11909,1 
+.cast 3365
+.timer 30,The Gearmaster RP
+.complete 11909,2 
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,65.25,28.78
+>>点击蒸汽管道旁边的阀门，召唤研磨机。杀了它
+.complete 11907,4 
+.isQuestTurnedIn 11896
+step
+.groundgoto BoreanTundra,65.26,37.89,75,0
+.goto BoreanTundra,68.52,40.38
+>>杀死首领Burblegobble。抢他的钥匙
+.collect 34961,1,11695,1 
+.unitscan Chieftain Burblegobble
+.isQuestTurnedIn 11896
+step
+>>点击喇叭上半部的Bauble
+.goto BoreanTundra,68.5,40.3
+.complete 11695,1 
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,75.57,35.77
+>>返回巴拉。在《元素之角》中等待短RP。
+.turnin 11695 >>交出元素之角
+
+.accept 11706 >>接受收拢
+.isQuestTurnedIn 11896
+step
+>>与小屋里的泰加交谈。之后在外面与菲尼克斯和圣人交谈
+.turnin 11909 >>转入击败Gearmaster
+.goto BoreanTundra,77.30,36.87
+.turnin 11894 >>交上来修补
+.goto BoreanTundra,77.48,36.95
+.turnin 11907 >>交出副酋长
+.goto BoreanTundra,77.25,38.47
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,75.89,37.24
+>>与Wintergale交谈
+.accept 11628 >>接受天灾的裹尸布
+.isQuestTurnedIn 11896
+step
+#completewith next
+.destroy 34960 >>销毁包中的号角传说
+.isQuestTurnedIn 11896
+step
+.cast 45942 >>使用天坑附近的元素之角召唤克里克西斯勋爵。在短RP后杀了他。
+.timer 22,Lord Kryxix RP
+.goto BoreanTundra,70.83,36.72
+.complete 11706,2 
+.complete 11706,1 
+.goto BoreanTundra,70.13,35.96
+.use 34968
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,74.67,23.67
+>>与Sage Highmesa交谈
+.turnin 11674 >>交上Sage Highmesa失踪
+.accept 11675 >>接受适当的死亡
+.isQuestTurnedIn 11896
+step
+#completewith next
+.goto BoreanTundra,76.4,26.4,0,0
+>>杀死该地区的天灾猛犸。掠夺猛犸的毛皮
+.complete 11628,1 
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,76.4,26.4,70,0
+.goto BoreanTundra,82.9,29.5,70,0
+.goto BoreanTundra,75.3,16.8,70,0
+.goto BoreanTundra,71.6,17.0,70,0
+.goto BoreanTundra,76.4,26.4,70,0
+.goto BoreanTundra,82.9,29.5,70,0
+.goto BoreanTundra,75.3,16.8,70,0
+.goto BoreanTundra,71.6,17.0
+>>杀死该地区的天灾巨魔
+.complete 11675,1 
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,71.6,17.0,70,0
+.goto BoreanTundra,76.4,26.4,70,0
+.goto BoreanTundra,82.9,29.5,70,0
+.goto BoreanTundra,75.3,16.8,70,0
+.goto BoreanTundra,71.6,17.0
+>>杀死该地区的天灾猛犸。掠夺猛犸的毛皮
+.complete 11628,1 
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,74.67,23.67
+>>返回Highmesa
+.turnin 11675 >>正式死亡
+.accept 11677 >>接受阻止瘟疫
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,74.77,14.10
+.use 34913 >>到洞里去。在里面的大锅上使用Highmesa的清洁种子
+.complete 11677,1 
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,74.67,23.67
+>>返回Highmesa
+.turnin 11677 >>上车阻止瘟疫
+.accept 11678 >>接受查找Bristlehorn
+.accept 11683 >>接受坠落的墓穴
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,74.67,23.67
+>>返回Highmesa
+.turnin 11677 >>上车阻止瘟疫
+.isQuestTurnedIn 11896
+step
+#completewith Gyroscope
+.goto BoreanTundra,69.3,14.1,0,0
+>>杀死该地区的塔拉玛斯天灾
+.complete 11683,1 
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,68.7,15.3,60,0
+.goto BoreanTundra,69.10,12.64,20,0
+.goto BoreanTundra,69.76,12.45
+>>进入墓穴。与笼子里的布里斯托霍恩交谈
+.turnin 11678 >>转入查找Bristlehorn
+.accept 11687 >>接受医生和巫妖王
+.isQuestTurnedIn 11896
+step
+.groundgoto BoreanTundra,69.38,15.04,40,0
+.groundgoto BoreanTundra,69.53,16.02,30,0
+.groundgoto BoreanTundra,68.39,14.06,40,0
+.groundgoto BoreanTundra,69.57,12.31,40,0
+.goto BoreanTundra,70.09,13.69
+>>走出塔拉玛斯。爬上倒塌墓穴屋顶旁的小山，杀死巫妖王奇温特
+.complete 11687,2 
+.isQuestTurnedIn 11896
+step
+#label Gyroscope
+.goto BoreanTundra,69.88,13.33
+>>掉进中心的坑里，杀死Razorgrin医生
+.complete 11687,1 
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,71.2,15.0,70,0
+.goto BoreanTundra,68.2,16.9,70,0
+.goto BoreanTundra,67.2,12.5,70,0
+.goto BoreanTundra,69.7,13.8
+>>杀死该地区的塔拉玛斯天灾
+.complete 11683,1 
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,74.67,23.67
+>>返回Highmesa
+.turnin 11683 >>交出倒下的墓穴
+.turnin 11687 >>交给医生和巫妖王
+.accept 11689 >>接受带坏消息的退货
+.isQuestTurnedIn 11896
+step
+>>返回Taunka'le村。与巴拉和温特盖尔交谈
+.turnin 11706 >>收起塌陷
+.goto BoreanTundra,75.57,35.77
+.turnin 11628 >>交出天灾的裹尸布
+.accept 11630 >>接受坏地球
+.goto BoreanTundra,75.89,37.24
+.isQuestTurnedIn 11896
+step
+.goto BoreanTundra,79.90,31.60,60,0
+.goto BoreanTundra,82.54,31.26,60,0
+.goto BoreanTundra,82.37,36.85,60,0
+.goto BoreanTundra,82.36,41.69,60,0
+.goto BoreanTundra,79.90,31.60
+>>掠夺地面上的天灾土(土堆)
+.complete 11630,1 
+.isQuestTurnedIn 11896
+step
+>>返回陶恩卡。与小屋里的泰加交谈
+.turnin 11689 >>报应坏消息
+.goto BoreanTundra,77.30,36.87
+.isQuestTurnedIn 11896
+step
+>>与Wintergale交谈
+.turnin 11630 >>把坏地球交出来
+.goto BoreanTundra,75.89,37.24
+.isQuestComplete 11630
+.xp <71+1154700,1
+step
+>>与Wintergale交谈
+.turnin 11630 >>把坏地球交出来
+.accept 11633 >>接受融合
+.goto BoreanTundra,75.89,37.24
+.isQuestComplete 11630
+.xp >71+1154700,1
+step
+>>与Wintergale交谈
+.accept 11633 >>接受融合
+.goto BoreanTundra,75.89,37.24
+.isQuestTurnedIn 11630
+.xp >71+1154700,1
+step
+#completewith SDecay
++使用包里的免疫天灾裹尸布使其隐形。远离憎恶，因为他们可以透过隐身看到你。您还可以在不可见的情况下安装 << !Druid
++使用包里的免疫天灾裹尸布使其隐形。远离憎恶，因为他们可以透过隐身看到你。你可以在看不见的时候安装和变形 << Druid
+>>如果你失去了隐形能力，请卸载并重新装备斗篷
+.use 34782
+.isOnQuest 11633
+step
+.goto BoreanTundra,88.96,28.58
+>>进入痛苦之塔
+.complete 11633,3 
+.isOnQuest 11633
+step
+.goto BoreanTundra,88.08,20.90
+>>从塔尖的左侧或右侧跑到顶层的房间。
+.complete 11633,2 
+.isOnQuest 11633
+step
+#label SDecay
+.groundgoto BoreanTundra,84.21,21.69,30,0
+.goto BoreanTundra,83.99,20.86
+>>进入衰退之塔
+.complete 11633,1 
+.isOnQuest 11633
+step
+.goto BoreanTundra,85.03,28.82,50,0
+.goto BoreanTundra,84.28,30.80,50,0
+>>离开恩基拉时，别忘了重新装备你的普通斗篷
+>>返回Taunka'le村。与Wintergale、Aerie和Icehide交谈
+.turnin 11633 >>转入混合输入
+.accept 11640 >>接受权力话语
+.goto BoreanTundra,75.89,37.24
+.accept 11647 >>接受中和大锅
+.goto BoreanTundra,75.96,37.35
+.accept 11641 >>接受勇敢的打击
+.goto BoreanTundra,75.96,37.17
+.isQuestComplete 11633
+step
+.goto BoreanTundra,85.03,28.82,50,0
+.goto BoreanTundra,84.28,30.80,50,0
+>>离开恩基拉时，别忘了重新装备你的普通斗篷
+>>返回Taunka'le村。与Wintergale、Aerie和Icehide交谈
+.accept 11640 >>接受权力话语
+.goto BoreanTundra,75.89,37.24
+.accept 11647 >>接受中和大锅
+.goto BoreanTundra,75.96,37.35
+.accept 11641 >>接受勇敢的打击
+.goto BoreanTundra,75.96,37.17
+.isQuestTurnedIn 11633
+step
+#completewith Talet
+.use 34815 >>杀死一个黑暗的吸血鬼，并抢劫他以换取一瓶新鲜血液。在您的包中点击它
+.collect 34815,1,11654,1 
+.accept 11654 >>接受血之尖塔
+.unitscan Darkfallen Bloodbearer
+.isQuestTurnedIn 11633
+step
+#completewith Naferset
+.goto BoreanTundra,87.6,24.2,0,0
+>>在恩基拉杀死食尸鬼
+.complete 11641,1 
+.isQuestTurnedIn 11633
+step
+.groundgoto BoreanTundra,84.28,30.80,50,0
+.groundgoto BoreanTundra,85.03,28.82,50,0
+.goto BoreanTundra,87.67,29.95
+.use 34806 >>在你的包里靠近大锅的地方使用圣埃伊尔的图腾
+.complete 11647,1 
+.isQuestTurnedIn 11633
+step
+#label Talet
+.groundgoto BoreanTundra,88.56,28.27,40,0
+.goto BoreanTundra,89.38,28.86
+>>前往痛苦之塔。杀死特莱特周围的茧，让他变得脆弱。杀死塔莱特并掠夺他的卷轴
+.complete 11640,2 
+.isQuestTurnedIn 11633
+step
+.goto BoreanTundra,87.64,21.98
+.use 34815 >>杀死一个黑暗的吸血鬼，并抢劫他以换取一瓶新鲜血液。在您的包中点击它
+.collect 34815,1,11654,1 
+.accept 11654 >>接受血之尖塔
+.unitscan Darkfallen Bloodbearer
+.isQuestTurnedIn 11633
+step
+.goto BoreanTundra,87.64,21.98,40,0
+.goto BoreanTundra,87.65,20.43,30,0
+>>从底层的中央入口进入大楼。与雪追踪者格鲁姆交谈
+>>避免杀死该地区的亡灵法师
+.goto BoreanTundra,87.58,19.93
+.turnin 11654 >>血之尖塔
+.accept 11659 >>接受粉碎球体！
+.isQuestTurnedIn 11633
+step
+.goto BoreanTundra,87.23,20.97,20,0
+.goto BoreanTundra,87.74,19.61,20,0
+.goto BoreanTundra,88.98,20.65,20,0
+.goto BoreanTundra,88.47,22.01,20,0
+.goto BoreanTundra,88.23,20.47,30,0
+.goto BoreanTundra,88.3,20.2,0,0
+>>杀死这些球体来粉碎它们。杀死一些，如果不是塔尖内的所有亡灵巫师
+.complete 11659,1 
+.complete 11641,2,2 
+.isQuestTurnedIn 11633
+step
+.goto BoreanTundra,87.72,21.75,20,0
+.goto BoreanTundra,88.05,20.94
+>>退出血色之塔。走楼梯到血之塔的侧面。杀死二楼的安道拉，抢走他的卷轴
+.complete 11640,3 
+.isQuestTurnedIn 11633
+step
+.use 34806 >>在你的包里靠近该地区的大锅的地方使用圣艾尔图腾
+.complete 11647,2 
+.goto BoreanTundra,86.15,22.75
+.complete 11647,3 
+.goto BoreanTundra,85.56,20.09
+.isQuestTurnedIn 11633
+step
+#sticky
+#label ENecromancers
+.goto BoreanTundra,83.78,20.04,0,0
+>>杀死该地区的亡灵巫师
+.complete 11641,2 
+.isQuestTurnedIn 11633
+step
+#label Naferset
+.goto BoreanTundra,84.2,21.8,40,0
+.goto BoreanTundra,83.9,20.5
+>>前往衰退之塔。杀死纳弗塞特周围的亡灵法师，使他易受攻击。杀死纳弗塞特并掠夺他的卷轴
+.complete 11640,1 
+.isQuestTurnedIn 11633
+step
+.goto BoreanTundra,86.23,22.83,50,0
+.goto BoreanTundra,88.01,24.01,50,0
+.goto BoreanTundra,86.95,25.34,50,0
+.goto BoreanTundra,86.96,24.62,50,0
+.goto BoreanTundra,85.06,26.96,50,0
+.goto BoreanTundra,84.67,29.87,50,0
+.goto BoreanTundra,86.57,27.64
+>>杀死剩下的恩基拉食尸鬼
+.complete 11641,1 
+.isQuestTurnedIn 11633
+step << Priest
+#completewith next
+.hs >>炉灶至Taunka'le村
+.cooldown item,6948,>0
+step
+#label Words
+#requires ENecromancers
+>>返回Taunka'le村。与Wintergale、Icehide和Aerie交谈
+.turnin 11640 >>交出权力之言
+.goto BoreanTundra,75.89,37.24
+.turnin 11641 >>勇敢地进攻
+.goto BoreanTundra,75.96,37.35
+.turnin 11647 >>转向中和坩埚
+.goto BoreanTundra,75.89,37.24
+.isQuestTurnedIn 11633
+step
+.goto BoreanTundra,76.75,37.88
+>>在外面和朱尼克交谈
+.turnin 11659 >>转身粉碎球状物！
+.isQuestComplete 11659
+step << Mage
+.zone Undercity >>传送到地下城
+.zoneskip Tirisfal Glades
+.zoneskip HowlingFjord
+step << Mage
+.goto Undercity,85.1,10.0
+.train 43023 >>训练你的职业咒语
+.xp <71,1
+step << Mage
+.goto Undercity,85.1,10.0
+.train 42930 >>训练你的职业咒语
+.xp <72,1
+step << Mage
+.goto Undercity,85.1,10.0
+.train 43019 >>训练你的职业咒语
 .xp <73,1
 step << DK
 #completewith next
-.goto Eastern Plaguelands,83.9,50.4
-.fly Undercity >> 飞到地下城
-step << Mage/DK
-.goto Tirisfal Glades,61.85,66.59,60 >> 退出地下城
-.zoneskip Tirisfal Glades
-.zoneskip HowlingFjord
-step << !Mage !DK
-.zone Orgrimmar >> 网站脱离Orgrimmar。要做到这一点，请按照下面的链接，然后单击您的角色并按照流程操作：
-.link https://us.battle.net/support/en/help/product/wow/197/834/solution >> 将此复制粘贴到浏览器中
+.cast 50977 >>铸造死亡之门
+.zoneskip Eastern Plaguelands
+step << DK
+.goto Eastern Plaguelands,80.3,48.0
+>>穿过死亡之门
+.train 49940 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.xp <72,1
+step << DK
+.goto Eastern Plaguelands,80.3,48.0
+>>穿过死亡之门
+.train 49904 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.xp <73,1
+step << !Mage !DK !Druid !Priest
+#completewith next
+.zone Orgrimmar >>网站脱离Orgrimmar。要做到这一点，请按照下面的链接，然后单击您的角色并按照流程操作：
+.link https://us.battle.net/support/en/help/product/wow/197/834/solution >>将此复制粘贴到浏览器中
 >>或者，让一个法师传送到奥格瑞玛，或者手动前往那里
 .zoneskip Durotar
 step << skip
 #completewith next
 .goto BoreanTundra,45.33,34.62
-.fly Warsong Hold >> 飞到战歌要塞。或者，离开奥格瑞玛（如果它没有8小时冷却时间），或者支付法师一个通往奥格瑞马的门户
-.link https://us.battle.net/support/en/help/product/wow/197/834/solution >> 将此复制粘贴到浏览器中
+.fly Warsong Hold >>飞到战歌要塞。或者，离开奥格瑞玛(如果它没有8小时冷却时间)，或者支付法师一个通往奥格瑞马的门户
+.link https://us.battle.net/support/en/help/product/wow/197/834/solution >>将此复制粘贴到浏览器中
 .zoneskip Durotar
 .zoneskip Orgrimmar
 step << skip
 .goto BoreanTundra,41.3,53.5
 .zone Durotar >>当齐柏林飞艇来的时候，马上登上它。把它拿到杜隆塔尔。或者，支付一个法师到奥格瑞玛的门户
 .zoneskip Orgrimmar
-step << !Druid !DK !Mage !Priest
-#completewith next
-.goto Orgrimmar,48.9,91.8
-.zone Orgrimmar >> 进入奥格瑞玛
 step << Shaman/Paladin
 #completewith ShPaTraining
 .goto Orgrimmar,40.5,36.9,25 >>输入Grommash Hold
 step << Shaman
 .goto Orgrimmar,38.6,36.0
-.train 58699 >> 训练你的职业咒语
+.train 58699 >>训练你的职业咒语
 .xp <71,1
 step << Shaman
 #label ShPaTraining
 .goto Orgrimmar,38.6,36.0
-.train 49237 >> 训练你的职业咒语
+.train 49237 >>训练你的职业咒语
 .xp <73,1
 step << Paladin
 #label ShPaTraining
 .goto Orgrimmar,32.3,35.7
-.train 54428 >> 训练你的职业咒语
+.train 54428 >>训练你的职业咒语
 .xp <71,1
 step << Rogue
 .goto Orgrimmar,44.0,54.6
-.train 48667 >> 训练你的职业咒语
+.train 48667 >>训练你的职业咒语
 .xp <73,1
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.train 47812 >> 训练你的职业咒语
+.train 47812 >>训练你的职业咒语
 .xp <71,1
 step << Hunter/Warrior
 #completewith HuWaTraining
-.goto Orgrimmar,63.6,38.2,30 >> 进入荣誉谷
+.goto Orgrimmar,63.6,38.2,30 >>进入荣誉谷
 step << Hunter
 #label HuWaTraining
 .goto Orgrimmar,66.1,18.5
-.train 49051 >> 训练你的职业咒语
+.train 49051 >>训练你的职业咒语
 .xp <71,1
 step << Warrior
 #label HuWaTraining
 .goto Orgrimmar,76.9,32.6,30,0 << Warrior
 .goto Orgrimmar,79.8,31.4
-.train 47470 >> 训练你的职业咒语
+.train 47470 >>训练你的职业咒语
 .xp <73,1
-step << !DK !Druid !Mage
+step
 #completewith next
-.goto Orgrimmar,48.9,91.8,60 >> Orgrimmar出口
-.zoneskip Tirisfal Glades
-.zoneskip Howling Fjord
-.zoneskip Dragonblight
-step << !Mage !DK
-.goto Durotar,50.7,13.3,20,0
-.goto Durotar,50.8,13.9
-.zone Tirisfal Glades >>当齐柏林飞艇来的时候，马上登上它。带它去蒂里斯法尔·格拉德斯
-.zoneskip Tirisfal Glades
-.zoneskip Howling Fjord
-.zoneskip Dragonblight
+.hs >>炉灶至Taunka'le村
 step
-.goto Tirisfal Glades,60.1,58.5,30,0
-.goto Tirisfal Glades,59.1,59.0
-.zone HowlingFjord >>将齐柏林飞艇从提里斯法尔·格拉德斯带到咆哮峡湾
-.zoneskip Dragonblight
-step
-#completewith Tobias
-.goto HowlingFjord,79.0,29.7
-.fly New Agamand >> 飞到新阿加曼
-step
-.goto HowlingFjord,53.6,66.4
->>与哈里斯交谈
-.accept 12181 >>接受并命名
-step
-#label Tobias
-.goto HowlingFjord,52.0,67.4
->>与托拜厄斯交谈。这会把你带到龙骨镇的Venomwhiter
-.turnin 12181 >>交上来给它一个名字
-.accept 12182 >>接受Venomultine！
+#label end
+.goto Dragonblight,8.41,54.83
+.zone Dragonblight >>前往Dragonblight
 ]])
 RXPGuides.RegisterGuide([[
-#version 5
+#version 9
 #wotlk
 #group RestedXP 地下城 刷本 70-80
 << Horde
 #name 70-80 部落 地下城 刷本
 step << !Mage
 #completewith next
-.zone Orgrimmar >> 旅行或让法师传送到奥格瑞玛
+.zone Orgrimmar >>旅行或让法师传送到奥格瑞玛
 .zoneskip Durotar
 step << !Mage !DK !Druid
 #completewith ALFP
 .goto Orgrimmar,54.10,68.37
-.home >> 将您的炉石设置为Orgrimmar
+.home >>将您的炉石设置为Orgrimmar
 step << Mage
 #completewith next
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 .xp <71,1
 step << Mage
 .goto Undercity,85.1,10.0
 >>如果你预选到71岁，请接受训练
 >>确保你的团队可以通过召唤石或术士召唤来召唤你
-.train 43023 >> 训练你的职业咒语
+.train 43023 >>训练你的职业咒语
 .xp <71,1
 step << Shaman
 .goto Orgrimmar,38.6,36.0
 >>如果你预选到71岁，请接受训练
 >>确保你的团队可以通过召唤石或术士召唤来召唤你
-.train 58699 >> 训练你的职业咒语
+.train 58699 >>训练你的职业咒语
 .xp <71,1
 step << Paladin
 .goto Orgrimmar,32.3,35.7
 >>如果你预选到71岁，请接受训练
 >>确保你的团队可以通过召唤石或术士召唤来召唤你
-.train 54428 >> 训练你的职业咒语
+.train 54428 >>训练你的职业咒语
 .xp <71,1
 step << Warlock
 .goto Orgrimmar,48.0,46.0
 >>如果你预选到71岁，请接受训练
 >>确保你的团队可以通过召唤石或术士召唤来召唤你
-.train 47812 >> 训练你的职业咒语
+.train 47812 >>训练你的职业咒语
 .xp <71,1
 step << Hunter
 .goto Orgrimmar,66.1,18.5
 >>如果你预选到71岁，请接受训练
 >>确保你的团队可以通过召唤石或术士召唤来召唤你
-.train 49051 >> 训练你的职业咒语
+.train 49051 >>训练你的职业咒语
 .xp <71,1
 step << Mage
 #completewith next
-.zone Orgrimmar >> 电传至Orgrimmar
+.zone Orgrimmar >>电传至Orgrimmar
 .zoneskip BoreanTundra
 .zoneskip Durotar
-step
-#completewith Zeppelin
-+欢迎使用RXPGuides 70-80地牢裂口指南！
-.link https://discord.com/invite/ApNgbdQNQy >> 由于这是Beta版，指南可能有一些错误。如果在玩游戏时遇到任何问题，请在此处报告！
 step << Shaman/Priest/Druid/Mage/Paladin
 .goto Orgrimmar,45.43,56.54
 >>从大楼内的Horthus购买试剂
@@ -36741,18 +39384,18 @@ step << Shaman/Priest/Druid/Mage/Paladin
 .xp >72,1
 step << Druid
 #completewith next
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 .xp <71,1
 step << Druid
 .goto Moonglade,52.4,40.6
 >>如果你预选到71岁，请接受训练
 >>前往Moonglade。确保你的团队可以通过召唤石来召唤你到Nexus/Ragefire Chasm或术士召唤
-.train 48442 >> 训练你的职业咒语
+.train 48442 >>训练你的职业咒语
 .xp <71,1
 step << Druid/Shaman/Paladin/Hunter/Warlock
 #completewith next
-.hs >> 听到奥格瑞玛，或被传送/召唤到北风苔原/涅克斯/齐柏林飞艇去北风苔原
+.hs >>听到奥格瑞玛，或被传送/召唤到北风苔原/涅克斯/齐柏林飞艇去北风苔原
 .zoneskip Durotar
 .zoneskip BoreanTundra
 .xp <71,1
@@ -36777,7 +39420,7 @@ step
 .accept 11585 >>接受地狱咆哮的守夜
 .xp >72,1
 step
->> 去战歌要塞的底层。先和加罗什谈谈，然后再和索方谈谈
+>>去战歌要塞的底层。先和加罗什谈谈，然后再和索方谈谈
 .turnin 11585 >>交出地狱咆哮的守夜
 .goto BoreanTundra,41.35,53.60
 .accept 11596 >>接受战歌守卫
@@ -36786,8 +39429,8 @@ step
 step
 .goto BoreanTundra,41.92,54.49
 >>与威廉姆森交谈
-.vendor 25278 >> 买很多新食物。在下一次休息之前，你将在接下来的3个关卡中进行地下城训练 << Warrior/Rogue/DK
-.vendor 25278 >> 买很多新的食物/水。你将在下一次休息前进行3级地下城训练 << !Warrior !Rogue !DK
+.vendor 25278 >>买很多新食物。在下一次休息之前，你将在接下来的3个关卡中进行地下城训练 << Warrior/Rogue/DK
+.vendor 25278 >>买很多新的食物/水。你将在下一次休息前进行3级地下城训练 << !Warrior !Rogue !DK
 .isOnQuest 11596
 step
 .groundgoto BoreanTundra,40.72,52.54,20,0
@@ -36817,7 +39460,7 @@ step
 step
 #completewith next
 .goto BoreanTundra,45.33,34.62
-.fly Coldarra >> 飞往科尔达拉
+.fly Coldarra >>飞往考拉达
 .zoneskip Dragonblight
 .zoneskip ZulDrak
 .zoneskip The Storm Peaks
@@ -36848,7 +39491,7 @@ step
 step
 #completewith next
 .goto Borean Tundra,27.63,25.50
-.zone 129 >> 进入Nexus
+.zone 129 >>进入Nexus
 step << Druid/Mage/Shaman/Paladin/Warlock/Hunter
 #completewith Nexus
 .goto 129,19.23,52.43
@@ -36873,50 +39516,50 @@ step << Druid/Mage/Shaman/Paladin/Warlock/Hunter
 .isOnQuest 11911
 step << Druid/Mage/Shaman/Paladin/Warlock/Hunter
 #label Nexus
-.xp 71 >> 研磨Nexus至71级
+.xp 71 >>研磨Nexus至71级
 >>如果达到每小时锁定，请切换到Nexus锁定指南
 
 step << Druid
 #completewith next
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 .xp <71,1
 step << Druid
 .goto Moonglade,52.4,40.6
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 48442 >> 训练你的职业咒语
+.train 48442 >>训练你的职业咒语
 .xp <71,1
 step << Mage
 #completewith next
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 .xp <71,1
 step << Mage
 .goto Undercity,85.1,10.0
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 43023 >> 训练你的职业咒语
+.train 43023 >>训练你的职业咒语
 .xp <71,1
 step << Shaman/Paladin/Warlock/Hunter
 #completewith next
-.hs >> 赫斯到奥格瑞玛
+.hs >>赫斯到奥格瑞玛
 step << Shaman
 .goto Orgrimmar,38.6,36.0
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 58699 >> 训练你的职业咒语
+.train 58699 >>训练你的职业咒语
 .xp <71,1
 step << Paladin
 .goto Orgrimmar,32.3,35.7
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 54428 >> 训练你的职业咒语
+.train 54428 >>训练你的职业咒语
 .xp <71,1
 step << Warlock
 .goto Orgrimmar,48.0,46.0
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 47812 >> 训练你的职业咒语
+.train 47812 >>训练你的职业咒语
 .xp <71,1
 step << Hunter
 .goto Orgrimmar,66.1,18.5
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 49051 >> 训练你的职业咒语
+.train 49051 >>训练你的职业咒语
 .xp <71,1
 step << DK/Mage
 #completewith Nexus2
@@ -36944,27 +39587,27 @@ step << DK/Mage
 #label Nexus2
 .groundgoto Borean Tundra,27.75,28.43,40,0
 .goto Borean Tundra,27.63,25.09
-.xp 72 >> 将Nexus研磨至72级
+.xp 72 >>将Nexus升级到72级
 >>如果达到每小时锁定，请切换到Nexus锁定指南
 
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 49940 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49940 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <72,1
 .xp >78,1
 step << Mage
 #completewith next
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 .xp <72,1
 step << Mage
 .goto Undercity,85.1,10.0
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 42930 >> 训练你的职业咒语
+.train 42930 >>训练你的职业咒语
 .xp <72,1
 step
 #completewith Nexus3
@@ -36992,50 +39635,50 @@ step
 #label Nexus3
 .groundgoto Borean Tundra,27.75,28.43,40,0
 .goto Borean Tundra,27.63,25.09
-.xp 73 >> 将Nexus研磨至73级
+.xp 73 >>将Nexus升级到73级
 >>如果达到每小时锁定，请切换到Nexus锁定指南
 step << Rogue/Hunter/Warrior/Shaman/Paladin
 #completewith next
-.hs >> 赫斯到奥格瑞玛
+.hs >>赫斯到奥格瑞玛
 step << Mage
 #completewith next
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 .xp <72,1
 step << Mage
 .goto Undercity,85.1,10.0
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 43019 >> 训练你的职业咒语
+.train 43019 >>训练你的职业咒语
 .xp <73,1
 step << Rogue
 .goto Orgrimmar,44.0,54.6
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 48667 >> 训练你的职业咒语
+.train 48667 >>训练你的职业咒语
 .xp <73,1
 step << Hunter/Warrior
 #completewith next
-.goto Orgrimmar,63.6,38.2,30 >> 进入荣誉谷
+.goto Orgrimmar,63.6,38.2,30 >>进入荣誉谷
 .xp <73,1
 step << Hunter
 .goto Orgrimmar,66.1,18.5
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 49044 >> 训练你的职业咒语
+.train 49044 >>训练你的职业咒语
 .xp <73,1
 step << Warrior
 #label HuWaTraining
 .goto Orgrimmar,76.9,32.6,30,0
 .goto Orgrimmar,79.8,31.4
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 47470 >> 训练你的职业咒语
+.train 47470 >>训练你的职业咒语
 .xp <73,1
 step << Shaman
 .goto Orgrimmar,38.6,36.0
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 49237 >> 训练你的职业咒语
+.train 49237 >>训练你的职业咒语
 .xp <73,1
 step << Paladin
 .goto Orgrimmar,32.3,35.7
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 48931 >> 训练你的职业咒语
+.train 48931 >>训练你的职业咒语
 .xp <73,1
 step
 #completewith Berinand
@@ -37047,7 +39690,7 @@ step
 #completewith AmberL
 .goto BoreanTundra,32.94,34.40,-1
 >>与Berinand交谈
-.vendor 25314 >> 供应商和维修
+.vendor 25314 >>供应商和维修
 step
 .goto BoreanTundra,32.94,34.40,-1
 >>与Berinand交谈
@@ -37089,16 +39732,16 @@ step
 #completewith next
 .goto BoreanTundra,46.62,32.75
 >>在塔内与弗雷泽交谈
-.vendor 27137 >> 买很多食物。你将在接下来的两个关卡中进行地牢训练 << Warrior/Rogue/DK
-.vendor 27137 >> 买很多食物/水。你将在接下来的两个关卡中进行地牢训练 << !Warrior !Rogue !DK
+.vendor 27137 >>买很多食物。你将在接下来的两个关卡中进行地牢训练 << Warrior/Rogue/DK
+.vendor 27137 >>买很多食物/水。你将在接下来的两个关卡中进行地牢训练 << !Warrior !Rogue !DK
 .xp >74,1
 step
 #completewith next
 .goto Dragonblight,12.27,55.25
-.zone Dragonblight >> 前往Dragonblight
+.zone Dragonblight >>前往Dragonblight
 step
 #completewith next
-.goto Dragonblight,26.15,49.48,20 >> 跳进Narjun的深坑
+.goto Dragonblight,26.15,49.48,20 >>跳进Narjun的深坑
 step
 .goto Dragonblight,26.18,50.79
 >>与Narjun矿坑内的Kilix交谈
@@ -37121,7 +39764,7 @@ step
 step
 #completewith KilixT
 .goto 157,89.25,77.99
-.zone Dragonblight >> 从后门离开Azjol’nerub
+.zone Dragonblight >>从后门离开Azjol’nerub
 step
 .goto Dragonblight,25.68,48.35,30,0
 .goto Dragonblight,26.23,49.33,30,0
@@ -37159,31 +39802,31 @@ step
 .complete 13187,2 
 step
 #label AhnKahet1
-.xp 74 >> 研磨安卡赫：旧王国到74级
+.xp 74 >>研磨安卡赫：旧王国到74级
 step << Druid
 #completewith next
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 .xp <73,1
 step << Druid
 .goto Moonglade,52.4,40.6
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 53307 >> 训练你的职业咒语
+.train 53307 >>训练你的职业咒语
 .xp <74,1
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 .xp <74,1
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 49929 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49929 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <74,1
 .xp >80,1
 step << Mage
 #completewith next
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 .xp <74,1
 step << Mage
 .goto Undercity,85.1,10.0
@@ -37192,33 +39835,33 @@ step << Mage
 .xp <74,1
 step << Shaman/Paladin/Priest/Warlock/Hunter
 #completewith next
-.hs >> 赫斯到奥格瑞玛 << !Priest
-.hs >> 赫斯向奥格瑞玛致敬。如果你是神圣的或纪律性的，跳过这一步 << Priest
+.hs >>赫斯到奥格瑞玛 << !Priest
+.hs >>赫斯向奥格瑞玛致敬。如果你是神圣的或纪律性的，跳过这一步 << Priest
 step << Shaman
 .goto Orgrimmar,38.6,36.0
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 49270 >> 训练你的职业咒语
+.train 49270 >>训练你的职业咒语
 .xp <74,1
 step << Paladin
 .goto Orgrimmar,32.3,35.7
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 48805 >> 训练你的职业咒语
+.train 48805 >>训练你的职业咒语
 .xp <74,1
 step << Priest
 .goto Orgrimmar,35.6,87.8
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 48126 >> 训练你的职业法术。如果你是神圣的或纪律性的，跳过这一步
+.train 48126 >>训练你的职业法术。如果你是神圣的或纪律性的，跳过这一步
 .xp <74,1
 
 step << Warlock
 .goto Orgrimmar,48.0,46.0
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 47892 >> 训练你的职业咒语
+.train 47892 >>训练你的职业咒语
 .xp <74,1
 step << Hunter
 .goto Orgrimmar,66.1,18.5
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 61846 >> 训练你的职业咒语
+.train 61846 >>训练你的职业咒语
 .xp <74,1
 step
 .goto Dragonblight,26.18,50.79
@@ -37242,62 +39885,62 @@ step
 .xp 75 >>研磨安卡赫：旧王国到75级
 step << Druid
 #completewith next
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 .xp <75,1
 step << Druid
 .goto Moonglade,52.4,40.6
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 48440 >> 训练你的职业咒语
+.train 48440 >>训练你的职业咒语
 .xp <75,1
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 .xp <75,1
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 49923 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49923 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <75,1
 .xp >80,1
 step << Mage
 #completewith next
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 .xp <75,1
 step << Mage
 .goto Undercity,85.1,10.0
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 42955 >> 训练你的职业咒语
+.train 42955 >>训练你的职业咒语
 .xp <75,1
 step << Shaman/Paladin/Priest/Hunter/Warrior
 #completewith next
-.hs >> 赫斯到奥格瑞玛
+.hs >>赫斯到奥格瑞玛
 step << Shaman
 .goto Orgrimmar,38.6,36.0
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 49280 >> 训练你的职业咒语
+.train 49280 >>训练你的职业咒语
 .xp <75,1
 step << Paladin
 .goto Orgrimmar,32.3,35.7
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 48818 >> 训练你的职业咒语
+.train 48818 >>训练你的职业咒语
 .xp <75,1
 step << Priest
 .goto Orgrimmar,35.6,87.8
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 48124 >> 训练你的职业咒语
+.train 48124 >>训练你的职业咒语
 .xp <75,1
 step << Hunter
 .goto Orgrimmar,66.1,18.5
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 61005 >> 训练你的职业咒语
+.train 61005 >>训练你的职业咒语
 .xp <75,1
 step << Warrior
 .goto Orgrimmar,76.9,32.6,30,0
 .goto Orgrimmar,79.8,31.4
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 55694 >> 训练你的职业咒语
+.train 55694 >>训练你的职业咒语
 .xp <75,1
 step
 .goto Dragonblight,26.18,50.79
@@ -37318,7 +39961,7 @@ step
 #completewith end
 #label AgmarFP
 .goto Dragonblight,37.51,45.77
-.fp Agmar's Hammer >> 获取Agmar的Hammer飞行路线
+.fp Agmar's Hammer >>获取Agmar的Hammer飞行路线
 step << skip
 .goto Dragonblight,45.84,44.52
 >>杀死山顶的恐惧魔爪
@@ -37331,7 +39974,7 @@ step << skip
 step
 #completewith next
 .goto Zul'Drak,18.29,84.66
-.zone Zul'Drak >> 前往祖德拉克
+.zone Zul'Drak >>前往祖德拉克
 step
 >>旅行到光明的破灭。与Moky、Lantinga、Rageclaw和通缉海报交谈。如果你愿意，可以跳过这些任务，但建议你完成它们
 .accept 12859 >>接受这一点：火仍然很热！
@@ -37386,7 +40029,7 @@ step
 step
 .goto ZulDrak,34.8,85.1,80,0
 .goto ZulDrak,34.7,80.6
->>杀死该地区的不死巨魔。抢他们的开锁器（放进你的包里）
+>>杀死该地区的不死巨魔。抢他们的开锁器(放进你的包里)
 .use 41161 >>在俘虏的狂暴爪上使用它们来释放它们
 .collect 41161,8,12861,1,-1
 .complete 12861,1 
@@ -37552,7 +40195,7 @@ step
 .xp >78,1
 step
 .goto ZulDrak,40.53,65.61
->>如果你认为你会有至少10个Drakkari Offerings在你们中间，把它们全部交易给某人，然后接受这个任务，让他们可以交上来。这会给他们1小时的力量祝福（攻击力）
+>>如果你认为你会有至少10个Drakkari Offerings在你们中间，把它们全部交易给某人，然后接受这个任务，让他们可以交上来。这会给他们1小时的力量祝福(攻击力)
 >>与乌本戈交谈
 .accept 12565 >>接受津巴布韦的祝福
 .xp >78,1
@@ -37603,7 +40246,7 @@ step
 .goto ZulDrak,41.55,64.43
 .fp The Argent Stand >>获取银色停机位飞行路线
 step
->>完成《痛苦任务线》的剧情片。有6个精英任务可以提供大量的快速xp和一件武器，可以让你持续到80。只有当你的队伍准备好并且任务进度与你相同时才接受这个。（此问题行禁用自动接受）
+>>完成《痛苦任务线》的剧情片。有6个精英任务可以提供大量的快速xp和一件武器，可以让你持续到80。只有当你的队伍准备好并且任务进度与你相同时才接受这个。(此问题行禁用自动接受)
 .goto ZulDrak,46.3,57.9,50,0
 .goto ZulDrak,48.43,56.36
 .accept 12932,0 >>接受痛苦的剧场：Yggdras！
@@ -37703,14 +40346,14 @@ step
 .groundgoto ZulDrak,65.47,44.23,60,0
 .goto Zul'Drak,70.06,20.92
 >>与巴基尼人交谈
-.turnin 13099 >> “只需签入”
-.accept 13098 >> 为后代接受
-.accept 13111 >> 接受一种
+.turnin 13099 >>“只需签入”
+.accept 13098 >>为后代接受
+.accept 13111 >>接受一种
 .xp >78,1
 step
 #completewith next
 .goto Zul'Drak,76.02,20.79
-.zone 154 >> 输入Gundrak
+.zone 154 >>输入Gundrak
 step
 #completewith Gundrak1
 .goto 154,56.80,41.61
@@ -37751,49 +40394,49 @@ step
 .complete 13111,1 
 step << DK/Mage/Shaman/Hunter/Rogue
 #label Gundrak1
-.xp 76 >>将Gundrak研磨至76级
+.xp 76 >>将Gundrak升级到76级
 >>如果您达到每小时锁定，请切换到Gundrak锁定指南
 
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 .xp <76,1
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 49894 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49894 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <76,1
 .xp >80,1
 step << Mage
 #completewith next
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 .xp <76,1
 step << Mage
 .goto Undercity,85.1,10.0
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 42920 >> 训练你的职业咒语
+.train 42920 >>训练你的职业咒语
 .xp <76,1
 step << Shaman/Hunter/Rogue
 #completewith next
-.hs >> 赫斯到奥格瑞玛
+.hs >>赫斯到奥格瑞玛
 step << Shaman
 .goto Orgrimmar,40.5,36.9,25,0
 .goto Orgrimmar,38.6,36.0
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 58803 >> 训练你的职业咒语
+.train 58803 >>训练你的职业咒语
 .xp <76,1
 step << Hunter
 .goto Orgrimmar,63.6,38.2,30,0
 .goto Orgrimmar,66.1,18.5
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 53338 >> 训练你的职业咒语
+.train 53338 >>训练你的职业咒语
 .xp <76,1
 step << Rogue
 .goto Orgrimmar,40.4,54.5,30,0
 .goto Orgrimmar,44.0,54.6
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 48637 >> 训练你的职业咒语
+.train 48637 >>训练你的职业咒语
 .xp <76,1
 step
 #completewith Gundrak2
@@ -37835,42 +40478,42 @@ step
 .complete 13111,1 
 step
 #label Gundrak2
-.xp 77 >>将Gundrak研磨至77级
+.xp 77 >>将Gundrak升级到77级
 >>如果您达到每小时锁定，请切换到Gundrak锁定指南
 step << Warlock
 #completewith next
-.hs >> 赫斯到奥格瑞玛
+.hs >>赫斯到奥格瑞玛
 step << Warlock
 .goto Orgrimmar,40.4,54.5,30,0
 .goto Orgrimmar,48.0,46.0
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 47813 >> 训练你的职业咒语
+.train 47813 >>训练你的职业咒语
 .xp <77,1
 step
 .goto Zul'Drak,70.06,20.92
 >>退出Gundrak。与巴基尼人交谈
-.turnin 13098 >> 为后代而上
-.turnin 13111 >> 上缴一种
+.turnin 13098 >>为后代而上
+.turnin 13111 >>上缴一种
 .isQuestComplete 13098
 .isQuestComplete 13111
 step
 .goto Zul'Drak,70.06,20.92
 >>退出Gundrak。与巴基尼人交谈
-.turnin 13098 >> 为后代而上
+.turnin 13098 >>为后代而上
 .isQuestComplete 13098
 step
 .goto Zul'Drak,70.06,20.92
 >>退出Gundrak。与巴基尼人交谈
-.turnin 13098 >> 为后代而上
+.turnin 13098 >>为后代而上
 .isQuestComplete 13098
 step
 #completewith next
 .goto ZulDrak,70.47,23.30
-.fp Dubra'Jin >> 获取Dubra'Jin航线
+.fp Dubra'Jin >>获取Dubra'Jin航线
 step
 #completewith next
 .goto ZulDrak,70.47,23.30
-.fly The Argent Stand >> 飞到银色看台
+.fly The Argent Stand >>飞到银色看台
 step
 .goto ZulDrak,40.83,66.25
 >>与Marissa交谈
@@ -37896,17 +40539,17 @@ step
 .skipgossip
 .xp >78,1
 step
-.abandon 12796 >> 放弃达拉然魔法王国。不要把这个交进去
+.abandon 12796 >>放弃达拉然魔法王国。不要把这个交进去
 step << Mage
 .goto Dalaran,56.3,46.7
 .trainer >>进入大楼。训练您的达拉然门户
 step << Mage
 .goto Dalaran,55.0,46.2
-.train 42985 >> 训练你的职业咒语
+.train 42985 >>训练你的职业咒语
 .xp <77,1
 step
 .goto Dalaran,69.81,45.45
-.train 54197 >> 从Hira Snowdawn乘火车寒冷天气飞行
+.train 54197 >>从Hira Snowdawn乘火车寒冷天气飞行
 step << skip
 .goto The Storm Peaks,65.3,60.2
 .accept 13109 >>接受直径相反
@@ -37916,109 +40559,106 @@ step
 .goto The Storm Peaks,45.56,21.10
 .zone 138 >>进入闪电大厅
 step << Warrior/Druid/DK/Mage
-.xp 78 >>将闪电大厅研磨至78级
+.xp 78 >>将闪电大厅升级到78级
 step << Druid
 #completewith next
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 .xp <78,1
 step << Druid
 .goto Moonglade,52.4,40.6
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 48465 >> 训练你的职业咒语
+.train 48465 >>训练你的职业咒语
 .xp <78,1
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 .xp <78,1
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 49941 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语。如果需要的话，把你的武器运到楼下
+.train 49941 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语。如果需要的话，把你的武器运到楼下
 .xp <78,1
 step << Mage
 #completewith next
-.zone Dalaran >> 传送至达拉然
+.zone Dalaran >>传送至达拉然
 .xp <78,1
 step << Mage
 .goto Dalaran,55.0,46.2
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 42914 >> 训练你的职业咒语
+.train 42914 >>训练你的职业咒语
 .xp <78,1
 step << Warrior
 #completewith next
-.hs >> 赫斯到奥格瑞玛
+.hs >>赫斯到奥格瑞玛
 step << Warrior
 .goto Orgrimmar,63.6,38.2,30,0
 .goto Orgrimmar,76.9,32.6,20,0
 .goto Orgrimmar,79.8,31.4
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 47436 >> 训练你的职业咒语
+.train 47436 >>训练你的职业咒语
 .xp <78,1
 step << Mage/Druid/DK
-.xp 79 >>将闪电大厅研磨至79级
+.xp 79 >>将闪电大厅升级到79级
 step << Mage
 #completewith next
-.zone Dalaran >> 传送至达拉然
+.zone Dalaran >>传送至达拉然
 .xp <79,1
 step << Mage
 .goto Dalaran,55.0,46.2
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 43046 >> 训练你的职业咒语
+.train 43046 >>训练你的职业咒语
 .xp <79,1
 step << Druid
 #completewith next
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 .xp <79,1
 step << Druid
 .goto Moonglade,52.4,40.6
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 48378 >> 训练你的职业咒语
+.train 48378 >>训练你的职业咒语
 .xp <79,1
 step << DK
 #completewith next
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 .xp <79,1
 step << DK
 #label DKTrain1
 .goto Eastern Plaguelands,80.3,48.0
 >>确保你的团队可以通过召唤石或术士召唤将你召唤回来
-.train 55271 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 55271 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <79,1
 step
-.xp 80 >>将闪电大厅研磨至80级
+.xp 80 >>将闪电大厅升级到80级
 step << skip
 .goto The Storm Peaks,65.3,60.2
 .turnin 13109 >>直径相反的转向
 .turnin 13108 >>交出一切
 >>丁80级-恭喜！
-step
-+恭喜您完成了RestedXP 70-80地牢裂口指南！感谢您使用RestedXP。
-.link https://discord.gg/restedxp >> 由于这是Beta版，指南可能有一些错误。如果您在玩游戏时遇到任何问题，请在此处报告！
 ]])
 RXPGuides.RegisterGuide([[
-#version 5
+#version 9
 #wotlk
 #group RestedXP 地下城 刷本 70-80
 << Horde
-#name 70-73 魔枢副本 - Coldarra
+#name 70-73 Nexus封锁-考拉达部落
 #next 70-80 部落 地下城 刷本
 step
 #completewith end
 +使用本指南时，每当您的锁定到期时，请切换回主地牢裂口指南
 step
 #completewith Weaver1
->>当你通过科尔达拉探索时：
+>>当你通过考拉达探索时：
 >>-杀死你看到的所有Coldarra Spellweavers
 >>-寻找地上的霜莓灌木。如果你愿意，就跳过灌木
 .complete 11918,1 
 .complete 11912,1 
 step
 .goto BoreanTundra,32.6,27.8
->>杀死该地区的科尔达拉·斯皮尔宾德斯。抢走他们以获取闪烁碎片。在您的包中点击它
+>>杀死该地区的考拉达·斯皮尔宾德斯。抢走他们以获取闪烁碎片。在您的包中点击它
 .collect 35648,1,11941 
 .accept 11941 >>接受拼图。。。
 step
@@ -38073,7 +40713,7 @@ step
 +完成你即将完成的任务/认为你可以完成的任务，然后放弃所有未完成的Coldarra/Nexus相关任务
 step
 #completewith splinters
->>在科尔达拉周围寻找冰川古人和魔法古人。掠夺他们的分裂者
+>>在考拉达周围寻找冰川古人和魔法古人。掠夺他们的分裂者
 .complete 11910,1 
 .complete 11910,2 
 .isOnQuest 11910
@@ -38084,7 +40724,7 @@ step
 .isOnQuest 11900
 step
 .goto BoreanTundra,28.25,35.04
->>点击建筑内的蓝色小圆球（不是浮动的）
+>>点击建筑内的蓝色小圆球(不是浮动的)
 .complete 11900,2 
 .isOnQuest 11900
 step
@@ -38095,7 +40735,7 @@ step
 .unitscan Warbringer Goredrak
 step
 .goto BoreanTundra,22.62,23.42
->>点击建筑内的蓝色小圆球（不是浮动的）
+>>点击建筑内的蓝色小圆球(不是浮动的)
 .complete 11900,4 
 .isOnQuest 11900
 step
@@ -38107,7 +40747,7 @@ step
 step
 #label Weaver1
 .goto BoreanTundra,31.72,20.57
->>点击建筑内的蓝色小圆球（不是浮动的）
+>>点击建筑内的蓝色小圆球(不是浮动的)
 .complete 11900,3 
 .isOnQuest 11900
 step
@@ -38126,7 +40766,7 @@ step
 .goto BoreanTundra,24.4,35.2,70,0
 .goto BoreanTundra,34.3,31.2,70,0
 .goto BoreanTundra,33.7,23.1
->>抢劫整个科尔达拉的霜莓灌木。如果你想跳过这个
+>>抢劫整个考拉达的霜莓灌木。如果你想跳过这个
 .complete 11912,1 
 .isOnQuest 11912
 step
@@ -38246,7 +40886,7 @@ step
 .isQuestTurnedIn 11900
 step
 #requires Raelorasz4
-.use 35671 >> 点击你包里的强化奥术监狱召唤克里斯特拉斯扎
+.use 35671 >>点击你包里的强化奥术监狱召唤克里斯特拉斯扎
 .accept 11946 >>接受Keristrasza
 .turnin 11946 >>转入Keristrasza
 .accept 11951 >>接受诱饵并切换
@@ -38266,7 +40906,7 @@ step
 .goto BoreanTundra,27.5,31.3,70,0
 .goto BoreanTundra,24.9,31.2,70,0
 .goto BoreanTundra,25.2,24.2
->>绕过Nexus的上边缘/悬崖。杀死科尔达拉·威姆金斯。掠夺他们的斧头
+>>绕过Nexus的上边缘/悬崖。杀死考拉达·威姆金斯。掠夺他们的斧头
 .collect 35586,5,11936,1 
 .isOnQuest 11936
 step
@@ -38313,17 +40953,17 @@ step
 .complete 11910,2 
 .isOnQuest 11910
 step
-.use 35671 >> 点击你包里的强化奥术监狱召唤凯里斯特拉斯扎。如果您丢失了它，请与Raelorasz联系，要求新的。确保至少有一名党员不使用它
+.use 35671 >>点击你包里的强化奥术监狱召唤凯里斯特拉斯扎。如果您丢失了它，请与Raelorasz联系，要求新的。确保至少有一名党员不使用它
 .turnin 11951 >>转入诱饵和开关
 .accept 11957 >>接受萨拉戈萨的终结
 .isQuestComplete 11951
 step
-.use 35671 >> 点击你包里的强化奥术监狱召唤凯里斯特拉斯扎。如果您丢失了它，请与Raelorasz联系，要求新的。确保至少有一名党员不使用它
+.use 35671 >>点击你包里的强化奥术监狱召唤凯里斯特拉斯扎。如果您丢失了它，请与Raelorasz联系，要求新的。确保至少有一名党员不使用它
 .accept 11957 >>接受萨拉戈萨的终结
 .isQuestTurnedIn 11951
 step
 #completewith next
-.cast 46793 >> 再和克里斯特拉斯扎谈谈，她会把你传送到萨拉戈萨登陆。抵达后，前往平台中心，使用背包中的奥术力量聚焦召唤萨拉戈萨。
+.cast 46793 >>再和克里斯特拉斯扎谈谈，她会把你传送到萨拉戈萨登陆。抵达后，前往平台中心，使用背包中的奥术力量聚焦召唤萨拉戈萨。
 .goto BoreanTundra,21.57,22.55
 .use 35690 
 .isOnQuest 11957
@@ -38335,13 +40975,13 @@ step
 .skipgossip
 .isOnQuest 11957
 step
-.use 35671 >> 点击你包里的强化奥术监狱召唤克里斯特拉斯扎
+.use 35671 >>点击你包里的强化奥术监狱召唤克里斯特拉斯扎
 .turnin 11957 >>交回萨拉戈萨的终点
 .accept 11967 >>接受召集红军
 .goto BoreanTundra,21.57,22.55
 .isQuestComplete 11957
 step
-.use 35671 >> 点击你包里的强化奥术监狱召唤克里斯特拉斯扎
+.use 35671 >>点击你包里的强化奥术监狱召唤克里斯特拉斯扎
 .accept 11967 >>接受召集红军
 .goto BoreanTundra,21.57,22.55
 .isQuestTurnedIn 11957
@@ -38403,7 +41043,7 @@ step
 #completewith end
 .goto BoreanTundra,32.94,34.40,-1
 >>与Berinand交谈
-.vendor 25314 >> 供应商和维修
+.vendor 25314 >>供应商和维修
 step
 >>与Berinand交谈
 .turnin 11900 >>轮流读取仪表
@@ -38485,20 +41125,20 @@ step
 #level 73
 #label L73one
 >>放弃所有与Coldarra/Nexus相关的任务
-.abandon 11900 >> 放弃抄表
-.abandon 11905 >> 放弃推迟不可避免的事情
-.abandon 11910 >> 放弃古人的秘密
-.abandon 11918 >> 放弃基本培训
-.abandon 13095 >> 放弃他们没有羞耻感吗？
-.abandon 11912 >> 放弃坚果换浆果
-.abandon 11943 >> 放弃牢房
+.abandon 11900 >>放弃抄表
+.abandon 11905 >>放弃推迟不可避免的事情
+.abandon 11910 >>放弃古人的秘密
+.abandon 11918 >>放弃基本培训
+.abandon 13095 >>放弃他们没有羞耻感吗？
+.abandon 11912 >>放弃坚果换浆果
+.abandon 11943 >>放弃牢房
 step
 #completewith Dragonblight
 #requires L73one
 #level 73
 >>放弃所有与Coldarra/Nexus相关的任务
 .abandon 11911 >>放弃加速
-.abandon 11936 >>放弃策划（Plan）
+.abandon 11936 >>放弃策划(Plan)
 .abandon 11967 >>放弃召集红军
 .abandon 11914 >>放弃保守秘密
 .abandon 13095 >>放弃他们没有羞耻感吗？
@@ -38519,19 +41159,923 @@ step
 .xp <73,1
 ]])
 RXPGuides.RegisterGuide([[
-#version 5
+#version 9
 #wotlk
 #group RestedXP 部落 70-80
 << Horde
 #name 72-74 龙骨荒野
 #next 74-75 灰熊丘陵
 step
-.goto Dragonblight,76.48,62.20
-.fp Venomspite >> 获取Venomwhile飞行路径
+.goto Dragonblight,14.21,49.82
+>>前往西风难民营。与Roh'kill交谈
+.accept 11980 >>接受部落的骄傲
 step
->>与军需官、通缉海报和Vicky交谈
-.accept 12209 >>接受装备掠夺
+.goto Dragonblight,13.9,49.7,30,0
+.goto Dragonblight,13.6,49.1,30,0
+.goto Dragonblight,13.3,50.0,30,0
+.goto Dragonblight,12.8,48.2,30,0
+.goto Dragonblight,13.6,47.9
+>>与环绕营地核心圈的布赖特霍夫使者交谈
+.accept 11978 >>接受折叠
+.unitscan Emissary Brighthoof
+step
+.goto Dragonblight,16.0,52.4,70,0
+.goto Dragonblight,17.8,46.9,70,0
+.goto Dragonblight,14.6,44.5,70,0
+.goto Dragonblight,16.4,48.7,70,0
+.goto Dragonblight,16.0,52.4,70,0
+.goto Dragonblight,17.8,46.9,70,0
+.goto Dragonblight,14.6,44.5,70,0
+.goto Dragonblight,16.4,48.7
+>>抢劫板条箱并杀死该区域的救护车。
+.complete 11978,1 
+.complete 11980,1 
+step
+.goto Dragonblight,14.21,49.82
+>>返回Roh'kill
+.turnin 11980 >>交出部落的骄傲
+step
+.goto Dragonblight,13.9,49.7,30,0
+.goto Dragonblight,13.6,49.1,30,0
+.goto Dragonblight,13.3,50.0,30,0
+.goto Dragonblight,12.8,48.2,30,0
+.goto Dragonblight,13.6,47.9
+>>与环绕营地核心圈的布赖特霍夫使者交谈
+.turnin 11978 >>转入折叠
+.accept 11983 >>接受部落的血腥誓言
+step
+.goto Dragonblight,13.41,48.76
+>>与该地区的陶恩卡难民交谈
+.complete 11983,1 
+.skipgossip
+step
+.goto Dragonblight,13.9,49.7,30,0
+.goto Dragonblight,13.6,49.1,30,0
+.goto Dragonblight,13.3,50.0,30,0
+.goto Dragonblight,12.8,48.2,30,0
+.goto Dragonblight,13.6,47.9
+>>与环绕营地核心圈的布赖特霍夫使者交谈
+.turnin 11983 >>交出部落的血腥誓言
+.accept 12008 >>接受阿格玛的锤子
+step << skip
+.goto Dragonblight,36.61,46.57
+>>前往阿格玛锤子。与Juktok交谈
+.accept 11979 >>接受牛头人和牛头人
+step
+.goto Dragonblight,36.61,46.57
+>>与Juktok交谈
+.accept 12488 >>接受高级执行官的需求
+.xp <73,1
+step
+>>与Torvus交谈
+.accept 12033 >>接受来自西方的消息
+.goto Dragonblight,37.32,46.79
+.use 35941 >>点击你袋子里的信来烧掉它，或者点击邮箱旁边的烧烤器
+.complete 12033,1 
+.goto Dragonblight,37.35,46.68
+.turnin 12033 >>交出来自西方的信息
+.goto Dragonblight,37.32,46.79
+.isQuestTurnedIn 11916
+
+step
+>>与通缉海报对话，然后与里面的Aethas形象对话
+.accept 12089 >>接受通缉：Magister Keldonus
+.accept 12090 >>接受通缉：Gigantar
+.accept 12091 >>接受通缉：恐怖魔爪
+.goto Dragonblight,37.67,46.55
+.turnin 12008 >>交出阿格玛的锤子
+.accept 12034 >>接受胜利近在咫尺。。。
+.goto Dragonblight,38.14,46.34
+.accept 11999 >>接受来复枪尸体
+.goto Dragonblight,38.05,46.22
+
+
+step
+#label aghhs
+#completewith AUnderlord
+.goto Dragonblight,38.19,46.65,15,0
+.goto Dragonblight,38.72,46.71,15,0
+.goto Dragonblight,38.68,45.98,15,0
+.goto Dragonblight,38.19,45.99
+>>与兵营大师哈加交谈。他可以在后屋和第一组楼梯上巡逻
+.home >>把你的心放在阿格玛的锤子上
+.unitscan Barracks Master Harga
+step
+#requires aghhs
+.goto Dragonblight,37.51,45.77
+>>回到外面去
+.fp Agmar's Hammer >>获取Agmar的Hammer飞行路线
+step
+>>与塔楼底部的朱克托克、博鲁斯和戈特交谈。
+.turnin 12034 >>交出胜利近在咫尺。。。
+.accept 12036 >>从阿兹约尔·尼鲁的深处接受
+.goto Dragonblight,36.61,46.57
+.accept 12039 >>接受Yog Saron的黑血
+.goto Dragonblight,36.61,47.19
+.accept 12056 >>接受死亡标记：高级信徒赞格斯
+.goto Dragonblight,35.81,48.39
+step
+>>在外面和索尔谈谈。
+.goto Dragonblight,37.10,48.55
+.accept 12100 >>接受控制腐烂
+step
+.goto Dragonblight,31.9,45.9,70,0
+.goto Dragonblight,28.8,51.5,70,0
+.goto Dragonblight,23.8,50.0,70,0
+.goto Dragonblight,28.8,51.5,70,0
+.goto Dragonblight,31.9,45.9
+>>杀死受惊的麋鹿和狂犬病灰熊。抢了他们的器官
+.complete 12100,2 
+.complete 12100,1 
+step
+#completewith next
+.goto Dragonblight,26.15,49.48,15 >>跳进Narjun的深坑
+step
+#completewith Kilix
+.goto Dragonblight,26.7,48.1,0
+>>在Narjun矿坑内挖掘黑血节点
+.complete 12039,1 
+step
+.goto Dragonblight,26.19,50.78
+>>与Narjun矿坑内的Kilix交谈
+.accept 12040 >>接受艺术中的敌人
+.complete 12036,1 
+step
+#sticky
+#label AUnderlord
+>>在Narjun的地坑里杀死卑鄙者
+.goto Dragonblight,28.8,47.2,0,0
+.complete 12040,1 
+step
+.goto Dragonblight,26.7,49.4,20,0
+.goto Dragonblight,28.85,49.72
+>>走山洞中间的小路，杀死高僧赞格斯。抢他的头
+.complete 12056,1 
+step
+#label Kilix
+#requires AUnderlord
+>>返回Narjun矿坑内的Kilix
+.goto Dragonblight,26.19,50.78
+.turnin 12040 >>在阿尔萨斯交出敌人
+.accept 12041 >>接受失落的帝国
+step
+.goto Dragonblight,26.9,49.3,30,0
+.goto Dragonblight,28.8,49.7,30,0
+.goto Dragonblight,28.6,47.0,30,0
+.goto Dragonblight,26.7,48.1
+>>在Narjun矿坑内挖掘黑血节点
+.complete 12039,1,8 
+step
+#completewith Trader
+.goto Dragonblight,26.9,49.5,30,0
+.goto Dragonblight,26.7,48.7,15,0
+.goto Dragonblight,26.3,49.0,25 >>跑出洞穴
+step
+#sticky
+#label moonshadow
+#completewith end12006
+.goto Dragonblight,24.19,60.06
+>>在月光花园与埃森尼尔交谈
+.accept 12006 >>接受复仇这个暴行！
+step
+#completewith Arcanimus
+.goto Dragonblight,22.7,58.1,0
+.goto Dragonblight,23.3,61.3,0
+.goto Dragonblight,25.9,58.7,0
+.use 35792 >>右键单击散布在月光花园周围的死亡法师猎人尸体。打开他们的法师猎人的个人物品
+.complete 11999,1 
+step
+#completewith next
+#requires moonshadow
+.goto Dragonblight,21.6,58.9,50,0
+.goto Dragonblight,21.3,62.5,50,0
+>>在月光花园杀死人形/野兽/龙暴徒
+.complete 12006,1 
+step
+#label gardenplansmr
+.goto Dragonblight,21.1,64.0
+>>杀死Magister Keldonus。利用你的冷却时间。如果你不能做到这一点，跳过这个任务。
+.complete 12089,1 
+.isOnQuest 12089
+step
+.goto Dragonblight,19.1,61.6,70,0
+.goto Dragonblight,18.4,57.3,70,0
+.goto Dragonblight,20.0,56.4,70,0
+.goto Dragonblight,22.0,57.9,70,0
+.goto Dragonblight,21.3,62.3
+>>在月光花园杀死人形/野兽/龙暴徒
+.complete 12006,1 
+step
+#label end12006
+.goto Dragonblight,24.19,60.06
+>>返回民族
+.turnin 12006 >>交给我复仇！
+.accept 12013 >>接受结束安宁
+step
+.goto Dragonblight,20.0,59.7
+>>跑下斜坡，杀死阿卡尼莫斯
+.complete 12013,1 
+step
+#label Arcanimus
+.goto Dragonblight,24.19,60.06
+>>返回民族
+.turnin 12013 >>转入End Arcanius
+step
+.goto Dragonblight,22.7,58.1,70,0
+.goto Dragonblight,23.3,61.3,70,0
+.goto Dragonblight,25.9,58.7
+.use 35792 >>右键单击散布在月光花园周围的死亡法师猎人尸体。打开他们的法师猎人的个人物品
+.complete 11999,1 
+step
+#completewith next
+.hs >>阿格玛锤子之炉
+.cooldown item,6948,>0
+step
+>>回到阿格玛之锤。与Agmar、Aethas和Gort交谈
+.turnin 12041 >>归还失落的帝国
+.goto Dragonblight,38.14,46.33
+.turnin 11999 >>把来复枪交给尸体
+.accept 12005 >>接受阻止协议
+.goto Dragonblight,38.05,46.22
+.turnin 12036 >>从阿兹约尔·尼鲁的深处转入
+.accept 12053 >>接受部落的力量
+.goto Dragonblight,36.61,46.57
+.turnin 12039 >>上交Yog Saron的黑血
+.accept 12048 >>接受天灾武器
+.goto Dragonblight,36.61,47.19
+step
+>>与Borus、Soar、Sintar和Juktok交谈
+.turnin 12100 >>转身遏制腐烂
+.accept 12101 >>接受好医生。。。
+.goto Dragonblight,37.09,48.56
+.turnin 12101 >>交给好医生。。。
+.accept 12102 >>接受寻找红宝石紫丁香
+.accept 12189 >>接受海外移民！
+.goto Dragonblight,36.08,48.84
+.turnin 12056 >>被判死刑的人：高级信徒赞格斯
+.goto Dragonblight,35.81,48.39
+step
+.turnin 12089 >>通缉犯：Magister Keldonus
+.goto Dragonblight,35.81,48.39
+.isQuestComplete 12089
+step
+.goto Dragonblight,36.1,45.2
+.abandon 12089
+step
+>>与冰雾大师交谈
+.accept 12063 >>接受冰雾强度
+.goto Dragonblight,35.8,46.9,50,0
+.goto Dragonblight,36.0,45.9,50,0
+.goto Dragonblight,36.1,45.2
+step
+#sticky
+#label scarms
+.goto Dragonblight,23.3,42.8,0,0
+>>杀死冰雾村周围的阿努巴人。抢劫他们的武器
+.complete 12048,1 
+step
+#label Icemist
+.goto Dragonblight,22.60,41.73
+>>与河里篝火旁的Banthok交谈
+.turnin 12063 >>冰雾的转向强度
+.accept 12064 >>接受阿努巴尔的锁链
+step
+#sticky
+#label fbtome
+.goto Dragonblight,23.2,44.8,60,0
+.goto Dragonblight,24.2,46.2,0,0
+.use 36744 >>在冰雾村杀死阿努巴教徒。把他们抢走，以换取被肉裹住的汤姆。在您的包中点击它
+.collect 36744,1,12057,1 
+.accept 12057 >>接受肉身缠身的汤姆
+step
+.goto Dragonblight,25.0,44.6,15,0
+.goto Dragonblight,25.0,43.9
+>>进入Sinok的产卵下面的小洞穴，杀死Anok'ra并掠夺他的碎片
+.complete 12064,1 
+step
+.goto Dragonblight,26.6,42.5,40,0
+.goto Dragonblight,26.77,39.05,20,0
+.goto Dragonblight,23.87,39.13
+>>上山进入冰雾，然后进入大楼。杀了蒂瓦克斯，抢走他的碎片
+*He spawns in two different buildings.
+.complete 12064,2 
+step
+.goto Dragonblight,25.54,40.80
+.use 36738 >>在包中使用战歌战斗标准。保护它。它没有太多的生命值，所以很快就会杀死繁殖的暴徒。
+.complete 12053,1 
+step
+.goto Dragonblight,26.2,44.4,50,0
+.goto Dragonblight,23.9,44.6
+>>检查冰雾的木制阳台区域。杀死Sinok并抢劫他的碎片
+.complete 12064,3 
+.unitscan Sinok the Shadowrager
+step
+.goto Dragonblight,22.60,41.73
+>>返回河里篝火旁的Banthok
+.turnin 12064 >>阿努巴尔的锁链
+.accept 12069 >>接受高官归来
+step
+#completewith next
+.groundgoto Dragonblight,22.7,39.4,25 >>向北游。走坡道到村庄的西北侧
+step
+#completewith next
+.goto Dragonblight,25.6,40.9
+.cast 47412 >>点击Anub'ar机制释放Roanuk
+step
+.goto Dragonblight,25.12,39.76
+>>释放罗纳克后跟随他。杀死阿努布特坎国王。抢走他的外壳
+.complete 12069,1 
+step
+#requires scarms
+step
+#label Trader
+.goto Dragonblight,18.39,58.89
+>>在破庙西口杀死风商穆法赫。抢劫他的遗体
+.complete 12005,1 
+step
+.goto Dragonblight,19.46,58.03
+>>进入寺庙，沿着斜坡走到左边。杀死Goramosh，并为他的天平和奇怪的装置将其洗劫一空
+.complete 12005,2 
+.collect 36746,1,12059 
+.use 36746 >>右键单击包中的Goramosh的奇怪设备
+.accept 12059 >>接受奇怪的设备
+step
+#completewith next
+.hs >>阿格玛锤子之炉
+.cooldown item,6948,>0
+step
+.goto Dragonblight,38.1,46.3
+>>与Aethas和Agmar交谈
+.turnin 12005 >>上缴阻止协议
+.turnin 12059 >>交出一个奇怪的装置
+.accept 12061 >>接受投影和计划
+.goto Dragonblight,38.05,46.22
+.turnin 12069 >>上缴最高首领
+.accept 12140 >>接受万岁罗纳克！
+.goto Dragonblight,38.07,46.34
+step
+#sticky
+#label roanarp
+.goto Dragonblight,36.26,45.45,9,0
+>>与Roanauk Icemist对话以启动他的RP。您无需等待完成(需要40秒)
+.complete 12140,1 
+.skipgossip
+.timer 40,All Hail Roanauk! RP
+step
+>>与Juktok和Borus交谈
+.turnin 12053 >>交出部落的力量
+.accept 12071 >>接受空中攻击！
+.goto Dragonblight,36.61,46.57
+.turnin 12048 >>缴交天灾武器
+.goto Dragonblight,36.61,47.19
+step
+#requires fbtome
+.goto Dragonblight,35.81,48.39
+>>回到阿格玛之锤。与戈特交谈
+.turnin 12057 >>交出被肉裹着的汤姆
+.accept 12115 >>接受科尔蒂拉和死亡之语
+step
+.goto Dragonblight,36.1,45.9,30,0
+.goto Dragonblight,37.2,47.1,30,0
+.goto Dragonblight,36.1,47.6
+>>与内外圈顺时针巡逻的Koltira交谈
+.turnin 12115 >>交出科尔蒂拉和死亡之语
+.accept 12125 >>接受献血服务
+.accept 12126 >>接受邪恶的服务
+.accept 12127 >>接受Frost服务
+.unitscan Koltira Deathweaver
+step
+.goto Dragonblight,37.21,45.71
+>>与瓦尔诺克交谈
+.turnin 12071 >>空中进攻！
+.accept 12072 >>接受极乐世界被诅咒！
+step
+#requires roanarp
+step
+.goto Dragonblight,27.67,45.19
+#completewith next
+.use 36774
+.vehicle >>在冰雾村里时，在包里放上瓦尔诺克的火炬枪。骑上战车
+step
+.goto Dragonblight,27.7,37.5,60,0
+.goto Dragonblight,24.3,37.2
+>>冷却时使用“蓝色巨人”(2)，然后使用“极光野兽诅咒”(1)杀死正在飞行的阿努布。使用“Field Medi pack”(3)治疗骑手。
+.complete 12072,1,10 
+step
+.goto Dragonblight,26.6,46.8,70,0
+.goto Dragonblight,24.2,47.7
+>>冷却时使用“蓝色巨人”(2)，然后使用“极光野兽诅咒”(1)杀死正在飞行的阿努布。使用“Field Medi pack”(3)治疗骑手。
+.complete 12072,1 
+step
+#completewith next
+.vehicle >>使用Kor'Kron War Rider以更快的速度行进，直到它将你甩下。紧贴地面
+.use 36774
+.cooldown item,36774,>0
+step
+.use 36747 >>在Moonrest Gardens的任何地方使用您的浪涌针式搬运工
+.goto Dragonblight,19.5,59.6
+.complete 12061,1 
+step
+#completewith next
+.goto Dragonblight,17.6,59.0,0,0
++再次使用您的浪涌针传送机返回地面
+.use 36747
+step
+>>回到阿格玛之锤。
+.turnin 12061 >>提交投影和平面图
+.accept 12066 >>接受对海滩的关注
+.goto Dragonblight,38.03,46.29
+step
+#completewith next
+.use 36751 >>杀死埃米·马林上尉。抢劫她以换取Ley Line Focus Control Ring
+.collect 36751,1,12066,1 
+.goto Dragonblight,26.32,64.85
+.unitscan Captain Emmy Malin
+step
+.use 36751 >>使用包中Ley Line Focus旁边的戒指
+.complete 12066,1 
+.goto Dragonblight,26.5,65.2
+step
+#completewith next
+.groundgoto Dragonblight,27.9,66.5,30,0
+.groundgoto Dragonblight,28.9,66.1,20,0
+.groundgoto Dragonblight,29.7,67.0,40 >>走紫色小路去Lothalor Woodlands
+step
+.goto Dragonblight,35.69,65.85,40,0
+.goto Dragonblight,37.85,66.03
+.use 36827 >>对一个失去自由的Indu'le村民造成35%或更少的伤害。用你袋子里的血宝石对付他。
+.complete 12125,1 
+.unitscan Deranged Indu'le Villager
+step
+#sticky
+#label Koltira2
+.goto Dragonblight,36.1,45.9,30,0
+.goto Dragonblight,37.2,47.1,30,0
+.goto Dragonblight,36.1,47.6
+>>与内外圈顺时针巡逻的Koltira交谈
+.turnin 12125 >>献血时上缴
+step
+>>回到阿格玛之锤。和瓦尔诺克谈谈，然后进去和阿格玛和艾塞谈谈
+.turnin 12072 >>交出极光野兽，该死！
+.goto Dragonblight,37.21,45.71
+.turnin 12066 >>聚焦海滩
+.accept 12084 >>在森林之巅接受
+.goto Dragonblight,38.05,46.22
+.turnin 12140 >>交上万岁罗纳克！
+.goto Dragonblight,38.07,46.34
+step
+>>与格里夫交谈
+.goto Dragonblight,36.51,47.87
+.accept 12096 >>接受强化古人
+step
+#requires Koltira2
+.goto Dragonblight,33.8,60.2,70,0
+.goto Dragonblight,36.2,61.7,70,0
+.goto Dragonblight,30.6,66.7,70,0
+.goto Dragonblight,34.3,68.3,70,0
+.goto Dragonblight,29.8,71.4
+>>在Lothalor Woodlands附近寻找Woodland Walkers，并与他们交谈以获得Walkers的吠声。如果他们怀有敌意来掠夺树皮，就杀死他们。
+.use 36786 >>使用该地区Lothalor古人的步行者树皮
+.collect 36786,3,12096,0x1,-1
+.complete 12096,1 
+.skipgossip
+step
+.goto Dragonblight,33.1,71.5,60,0
+.goto Dragonblight,32.4,72.7,60,0
+.goto Dragonblight,31.5,72.0,60,0
+.goto Dragonblight,31.9,70.4
+.use 36780 >>杀死塔齐尼中尉。他是一个巨魔，在方圆50码的紫环周围巡逻。抢劫他以换取Ley Line Focus Control护身符和信件。在您的包中点击它
+.collect 36779,1,12084,1 
+.collect 36780,1,12085,1 
+.accept 12085 >>接受一封回家的信
+.unitscan Lieutenant Ta'zinni
+step
+.goto Dragonblight,32.2,71.4
+.use 36779 >>将Ley Line Focus Control护身符放在包里，放在带有紫色符文的大金属环旁边
+.complete 12084,1 
+step
+.goto Dragonblight,48.52,74.39
+>>前往莫阿基港
+.fp Moa'ki >>获得莫阿基港航线
+step
+#completewith Konani
+.turnin 12117 >>前往莫阿基港
+.isOnQuest 12117
+step
+#completewith next
+.turnin 12118 >>前往莫阿基港
+.isOnQuest 12118
+step
+#label Konani
+>>和科纳尼谈谈，然后在外面和毛伊谈谈
+.accept 11958 >>接受，不浪费任何东西
+.goto Dragonblight,47.99,74.87
+.accept 11960 >>接受未来规划
+.goto Dragonblight,48.25,74.35
+
+step
+#sticky
+#label GladePups
+.goto Dragonblight,47.4,64.3,40,0
+.goto Dragonblight,47.2,61.5,40,0
+.goto Dragonblight,45.2,61.6
+>>右击小屋附近的小沃尔瓦小狗
+.complete 11960,1 
+.isOnQuest 11960
+step
+.goto Dragonblight,43.6,58.8
+>>杀死雪花冰川周围的沃尔瓦人。抢劫他们的货物
+.complete 11958,1 
+step
+#requires GladePups
+>>返回莫阿基港，在外面和毛伊交谈，然后在小屋里和科纳尼交谈
+.turnin 11960 >>为未来制定计划
+.goto Dragonblight,48.25,74.35
+.turnin 11958 >>上缴，不浪费任何东西
+.accept 11959 >>接受Slay Loguhn
+.goto Dragonblight,47.99,74.87
+step
+.goto Dragonblight,52.1,70.3,70,0
+.goto Dragonblight,51.0,66.8,60,0
+.goto Dragonblight,51.1,64.9,60,0
+.goto Dragonblight,48.5,63.5,60,0
+.goto Dragonblight,47.5,62.2,60,0
+.goto Dragonblight,45.0,62.7,60,0
+.goto Dragonblight,44.3,57.9,60,0
+.goto Dragonblight,45.8,57.6,60,0
+.goto Dragonblight,47.0,57.9,60,0
+.goto Dragonblight,48.2,60.8,60,0
+.goto Dragonblight,51.4,63.6,60,0
+.goto Dragonblight,52.1,70.3,70,0
+.goto Dragonblight,51.0,66.8,60,0
+.goto Dragonblight,51.1,64.9,60,0
+.goto Dragonblight,48.5,63.5,60,0
+.goto Dragonblight,47.5,62.2,60,0
+.goto Dragonblight,45.0,62.7,60,0
+.goto Dragonblight,44.3,57.9,60,0
+.goto Dragonblight,45.8,57.6,60,0
+.goto Dragonblight,47.0,57.9,60,0
+.goto Dragonblight,48.2,60.8,60,0
+.goto Dragonblight,51.4,63.6,60,0
+.goto Dragonblight,52.1,70.3
+>>杀死吉安塔尔。他顺时针在雪花冰川周围巡逻。如果你杀不了他，就跳过这个。
+.complete 12090,1 
+.unitscan Gigantaur
+.isOnQuest 12090
+step
+.goto Dragonblight,46.34,59.13
+>>杀死洛根。抢他的血
+.collect 35688,1,11959,1 
+.use 35688 >>用你袋子里的洛根血
+.complete 11959,1 
+step
+#sticky
+#label Lilac
+.groundgoto Dragonblight,46.42,56.28,30,0
+.groundgoto Dragonblight,47.89,49.64,30,0
+.goto Dragonblight,47.68,49.06
+>>进入大树下的洞穴。抢走地上的红宝石紫丁香
+.complete 12102,1 
+step
+.goto Dragonblight,47.68,49.06
+.use 37833 >>杀死大丽亚·桑托克，并掠夺红宝石胸针。接受Brooch的任务。
+.collect 37833,1,12419,1
+.accept 12419 >>接受红宝石龙神的命运
+step
+#requires Lilac
+.goto Dragonblight,48.0,50.7,60,0
+.goto Dragonblight,46.6,49.9,60,0
+.goto Dragonblight,46.7,47.9,60,0
+.goto Dragonblight,48.4,46.2,60,0
+.goto Dragonblight,47.0,46.0,60,0
+.goto Dragonblight,45.7,48.7,60,0
+.goto Dragonblight,46.5,51.7
+.use 36835 >>找到瓦伦哈尔公爵在龙之林西侧巡逻。伤害他35%或更少的生命值。用你袋子里的邪恶宝石对付他。
+.complete 12126,1 
+.unitscan Duke Vallenhal
+step
+.groundgoto Dragonblight,46.92,41.68,50,0
+.groundgoto Dragonblight,46.22,40.95,40,0
+.goto Dragonblight,45.84,44.52
+>>往北边的雪缝里走，然后沿着小路走到山顶。在山顶杀死恐惧魔爪。如果你杀不了他就跳过这个
+.complete 12091,1 
+step
+>>回到阿格玛之锤。与Aethas和Agmar交谈
+.turnin 12084 >>在林地上转弯
+.accept 12106 >>接受搜索Indu'le村
+.goto Dragonblight,38.05,46.22
+.turnin 12085 >>交一封信回家
+.goto Dragonblight,38.07,46.34
+step
+#sticky
+#label Koltira3
+.goto Dragonblight,36.1,45.9,30,0
+.goto Dragonblight,37.2,47.1,30,0
+.goto Dragonblight,36.1,47.6
+>>与内外圈顺时针巡逻的Koltira交谈
+.turnin 12126 >>为邪恶的人服务
+step
+>>与格里夫交谈
+.turnin 12096 >>上缴强化古人
+.goto Dragonblight,36.51,47.87
+step
+>>进去和戈特谈谈
+.turnin 12090 >>通缉犯：Gigantar
+.turnin 12091 >>通缉犯：恐怖魔爪
+.goto Dragonblight,35.81,48.39
+.isQuestComplete 12090
+.isQuestComplete 12091
+step
+>>进去和戈特谈谈
+.turnin 12091 >>通缉犯：恐怖魔爪
+.goto Dragonblight,35.81,48.39
+.isQuestComplete 12091
+step
+>>进去和戈特谈谈
+.turnin 12090 >>通缉犯：Gigantar
+.goto Dragonblight,35.81,48.39
+.isQuestComplete 12090
+step
+.goto Dragonblight,35.81,48.39
+>>再和戈特谈谈
+.accept 12095 >>接受龙的堕落
+.isQuestTurnedIn 12089
+.isQuestTurnedIn 12090
+.isQuestTurnedIn 12091
+step
+.abandon 12090 >>想要放弃：Gigantar
+step
+.abandon 12091 >>需要放弃：恐怖魔爪
+step
+>>先和辛塔谈谈，然后再和外面的索尔谈谈。
+.turnin 12102 >>寻找红宝石紫丁香
+.accept 12104 >>接受重返飞翔
+.goto Dragonblight,36.08,48.89
+.turnin 12104 >>转身飞翔
+.accept 12111 >>接受野生动物漫游的地方
+.goto Dragonblight,37.08,48.55
+step
+.goto Dragonblight,36.09,48.86
+.turnin 12102 >>寻找红宝石紫丁香
+.accept 12104 >>接受重返飞翔
+step
+#requires Koltira3
+.goto Dragonblight,39.6,50.2,50,0
+.goto Dragonblight,38.3,56.8,50,0
+.goto Dragonblight,41.3,47.8,50,0
+.goto Dragonblight,38.3,56.8,50,0
+.goto Dragonblight,41.3,47.8
+.use 36818 >>使用包里的疫苗对付雪崩麋鹿和灰熊
+.complete 12111,1 
+.complete 12111,2 
+step
+.goto Dragonblight,37.08,48.55
+>>返回Soar
+.turnin 12111 >>在野生动物肆虐的地方上缴
+step
+#completewith next
+.goto Dragonblight,37.51,45.76
+.fly Moa'ki >>飞往莫阿基港
+step
+#completewith Kili
+.goto Dragonblight,48.15,74.76
+.home >>把你的炉子放在茅基港
+step
+.goto Dragonblight,47.99,74.87
+>>在小屋里与科纳尼交谈
+.turnin 11959 >>转入Slay Loguhn
+step
+.goto Dragonblight,48.00,76.15,20,0
+.goto Dragonblight,47.7,76.6
+>>与岸上的Tua'kea交谈
+.accept 12009 >>接受Tua'kea的螃蟹陷阱
+step
+.goto Dragonblight,49.14,75.69
+>>与小屋内的托阿鲁交谈
+.accept 12028 >>接受精神洞察力
+step
+.goto Dragonblight,48.96,75.79
+.use 35907 >>在你的包里，在他小屋外火盆旁边放上托鲁的灵香。等待RP事件
+.cast 47190
+.timer 160,Spiritual Insight RP
+.complete 12028,1 
+step
+.goto Dragonblight,49.12,75.66
+>>返回Toalu'u
+.turnin 12028 >>交出精神洞察力
+.accept 12030 >>接受长老Mana'loa
+step
+.isQuestTurnedIn 11559
+#completewith next
+.use 38351 >>必要时，使用穆利弗油提高游泳速度。
+.itemcount 38351,1
+step
+#completewith Kili
+.goto Dragonblight,46.5,76.2,0
+>>抢劫莫阿基港南部海底的小型捕蟹器
+.complete 12009,1 
+step
+.goto Dragonblight,47.72,79.99
+.use 37265 >>使用袋子里的呼吸囊。点击海底的残骸蟹陷阱
+.accept 12011 >>接受重大水灾迹象
+step
+.goto Dragonblight,47.7,76.6,20,0
+.goto Dragonblight,48.00,76.15
+>>返回Tua'kea
+.turnin 12011 >>出现重大水灾迹象
+.accept 12016 >>接受诱饵
+step
+.isQuestTurnedIn 11559
+#completewith next
+.use 38351 >>必要时，使用穆利弗油提高游泳速度。
+.itemcount 38351,1
+step
+#label Kili
+.goto Dragonblight,43.9,82.7,60,0
+.goto Dragonblight,42.0,80.0
+>>杀死在岛上巡逻的大螃蟹Kili'ua。抢劫他的钳子
+.complete 12016,1 
+.unitscan Kili'ua
+step
+.goto Dragonblight,46.5,76.2,60,0
+.goto Dragonblight,48.6,79.7,60,0
+.goto Dragonblight,50.4,79.3
+.use 37265 >>完成对莫阿基港南部海底小型捕蟹器的掠夺
+.complete 12009,1 
+step
+.goto Dragonblight,47.7,76.6,20,0
+.goto Dragonblight,48.00,76.15
+>>返回Tua'kea
+.turnin 12009 >>交给Tua'kea的螃蟹陷阱
+.isQuestComplete 12009
+step
+>>返回Tua'kea
+.goto Dragonblight,47.7,76.6,20,0
+.goto Dragonblight,48.00,76.15
+.turnin 12016 >>上缴诱饵
+.accept 12017 >>接受钩上的肉
+step
+.isQuestTurnedIn 11559
+#completewith next
+.use 38351 >>必要时，使用穆利弗油提高游泳速度。
+.itemcount 38351,1
+step
+.goto Dragonblight,46.74,78.18
+.use 35838 >>将Tu'u'gwar的诱饵放在你的袋子里，放在水下的钓鱼钩上，召唤Tu'u'gwar。杀了他
+.cast 47159
+.timer 21,Tu'u'gwar RP
+.complete 12017,1 
+step
+.goto Dragonblight,48.01,76.17
+>>返回Tua'kea
+.turnin 12017 >>把肉放在钩上
+step
+#completewith next
+.groundgoto Dragonblight,48.4,67.7,90 >>从莫阿基港向北走
+step
+#label Evenstar
+.goto Dragonblight,40.25,66.86
+.use 37265 >>使用袋子里的呼吸囊
+>>潜入湖中，与魔法师指挥官埃文斯塔交谈
+.turnin 12106 >>转入搜索Indu'le村
+.accept 12110 >>接受行尾
+.unitscan Mage-Commander Evenstar
+step
+.isQuestTurnedIn 11559
+#completewith next
+.use 38351 >>必要时，使用穆利弗油提高游泳速度。
+.itemcount 38351,1
+step
+.goto Dragonblight,39.76,67.03
+.use 36815 >>在Ley Line Focus附近的包中使用控制护身符
+.complete 12110,1 
+step
+#requires Evenstar
+.goto Dragonblight,36.63,64.96
+>>和大石头谈谈。尽量避免在途中杀害暴徒
+.turnin 12030 >>交给Elder Mana'loa
+.accept 12031 >>接受徘徊的自由
+step
+.goto Dragonblight,36.5,65.5,50,0
+.goto Dragonblight,37.0,70.8,50,0
+.goto Dragonblight,42.1,71.1,50,0
+.goto Dragonblight,41.4,63.7
+>>杀死因杜勒湖附近的不死塔斯卡尔鬼魂
+.complete 12031,1 
+step
+.goto Dragonblight,36.63,64.96
+>>返回大石头
+.turnin 12031 >>为逗留者提供自由
+.accept 12032 >>接受与深度的对话
+step
+.goto Dragonblight,34.5,80.1,40,0
+.goto Dragonblight,35.1,82.5,40,0
+.waypoint Dragonblight,34.11,84.76,-47098,wpbuff,UNIT_AURA
+.goto Dragonblight,33.97,83.48
+>>点击祭坛，等待RP。一旦你获得Oacha'noa’s Compulsion buff，你将有30秒的时间跳入Oacha'noa所在的水中。
+
+.complete 12032,1 
+step << Druid
+#completewith DruidTrain1
+.cast 18960 >>铸造Teleport:Moonglade
+.zoneskip Moonglade
+.xp <72,1
+step << Druid
+.goto Moonglade,52.4,40.6
+>>前往Moonglade
+.train 48464 >>训练你的职业咒语
+.xp <72,1
+step << Druid
+#label DruidTrain1
+.goto Moonglade,52.4,40.6
+>>前往Moonglade
+.train 53307 >>训练你的职业咒语
+.xp <74,1
+step << DK
+#completewith DKTrain1
+.cast 50977 >>铸造死亡之门
+.zoneskip Eastern Plaguelands
+.xp <72,1
+step << DK
+.goto Eastern Plaguelands,80.3,48.0
+>>穿过死亡之门
+.train 49940 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.xp <72,1
+step << DK
+.goto Eastern Plaguelands,80.3,48.0
+>>穿过死亡之门
+.train 49904 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.xp <73,1
+step << DK
+#label DKTrain1
+.goto Eastern Plaguelands,80.3,48.0
+>>穿过死亡之门
+.train 49929 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.xp <74,1
+step << Mage
+#completewith MageTrain1
+.zone Undercity >>传送到地下城
+.xp <72,1
+step << Mage
+.goto Undercity,85.1,10.0
+.train 42930 >>训练你的职业咒语
+.xp <72,1
+step << Mage
+.goto Undercity,85.1,10.0
+.train 43019 >>训练你的职业咒语
+.xp <73,1
+step << Mage
+#label MageTrain1
+.goto Undercity,85.1,10.0
+.train 42939 >>训练你的职业咒语
+.xp <74,1
+step
+#completewith next
+.hs >>哈斯到莫阿基港
+step
+.goto Dragonblight,49.12,75.66
+>>与小屋内的托阿鲁交谈
+.turnin 12032 >>转向与深度对话
+step
+.goto Dragonblight,53.07,66.83
+>>站在峡谷外围
+.complete 12110,2 
+step
+.goto Dragonblight,60.32,51.55
+>>前往Wyrmrest Temple
+.fp Wyrmrest Temple >>获得Wyrmrest Temple飞行路线
+step
+.goto Dragonblight,57.90,54.17
+#completewith next
+.fly >>与Tariolstrasz对话，飞到神庙顶部
+.maxlevel 79
+.skipgossip 1
+step
+>>在Wyrmrest Temple山顶，与Itharius、Chromie和Nalice交谈
+.accept 12458 >>接受激光种子
+.goto Dragonblight,59.60,54.47
+.accept 12470 >>接受无限之谜
+.goto Dragonblight,60.00,54.51
+.accept 12447 >>接受黑曜龙之剑
+.goto Dragonblight,60.07,54.20
+step
+.goto Dragonblight,59.8,54.7
+>>与克拉苏斯交谈
+.turnin 12419 >>交出红宝石龙之剑的命运
+.isOnQuest 12419
+step
+#completewith next
+.goto Dragonblight,59.53,53.31
+.fly >>与Torasrasza对话，飞回地面
+.maxlevel 79
+.skipgossip 1
+step
+.goto Dragonblight,76.48,62.20
+.fp Venomspite >>获取Venomwhile飞行路径
+step
+>>与Bartlett、通缉海报和Vicky交谈
 .accept 12303 >>接受战争经费
+.accept 12209 >>接受装备掠夺
 .goto Dragonblight,75.97,63.26
 .accept 12205 >>通缉犯：血腥杀手
 .goto Dragonblight,76.95,62.85
@@ -38551,6 +42095,11 @@ step
 .goto Dragonblight,76.87,63.13
 .home >>将你的心设为毒液怨恨
 step
+>>与罗斯交谈
+.goto Dragonblight,76.80,63.21
+.turnin 12488 >>交给需要你的高级执行官
+.isOnQuest 12488
+step
 .goto Dragonblight,77.58,62.47,12,0
 .goto Dragonblight,77.67,62.79
 >>进入大楼。与米德尔顿交谈
@@ -38562,10 +42111,17 @@ step
 .goto Dragonblight,77.67,62.79
 >>进入大楼。与米德尔顿交谈
 .accept 12188 >>接受被遗忘的瘟疫和你：如何不死
+.turnin 12189 >>把Imbeciles交给Abound！
+.isOnQuest 12189
+step
+.goto Dragonblight,77.58,62.47,12,0
+.goto Dragonblight,77.67,62.79
+>>进入大楼。与米德尔顿交谈
+.accept 12188 >>接受被遗忘的瘟疫和你：如何不死
 step
 .goto Dragonblight,77.67,62.79,12,0
 .goto Dragonblight,79.35,65.06
->>离开大楼向楼梯走去。前往汉森（小心不要摔死）
+>>离开大楼向楼梯走去。前往汉森(小心不要摔死)
 .accept 12304 >>接受Beachfront属性
 step
 #sticky
@@ -38634,9 +42190,10 @@ step
 #requires Stands
 #completewith next
 .hs >>炉灶回到Venomyature
+.cooldown item,6948,>0
 step
 #requires Stands
->>在客栈内与罗斯交谈，然后爬上楼梯去瑞宾
+>>在客栈内与罗斯交谈，然后爬上楼梯与雷宾交谈
 .turnin 12205 >>通缉犯：血腥杀手
 .goto Dragonblight,76.77,63.28
 .accept 12245 >>对被俘者毫不怜悯
@@ -38670,918 +42227,25 @@ step
 .accept 12230 >>接受从守城偷窃
 step
 >>与Bartlett和Hansel交谈
-.turnin 12209 >>转入物资采购
 .turnin 12303 >>投入战争资金
+.turnin 12209 >>转入物资采购
 .goto Dragonblight,75.97,63.26
 .accept 12214 >>接受新的折扣
 .goto Dragonblight,75.93,61.89
 step
-.goto Dragonblight,60.32,51.55
->>前往Wyrmrest Temple
-.fp Wyrmrest Temple >> 获得Wyrmrest Temple飞行路线
-step
-.goto Dragonblight,57.90,54.17
-#completewith next
-.fly >> 与Tariolstrasz对话，飞到神庙顶部
-.maxlevel 79
-.skipgossip 1
-step
->>在Wyrmrest Temple山顶，与Itharius、Chromie和Nalice交谈
-.accept 12458 >>接受激光种子
-.goto Dragonblight,59.60,54.47
-.accept 12470 >>接受无限之谜
-.goto Dragonblight,60.00,54.51
-.accept 12447 >>接受黑曜龙之剑
-.goto Dragonblight,60.07,54.20
-step
-#completewith next
-.goto Dragonblight,59.53,53.31
-.fly >> 与Torasrasza对话，飞回地面
-.maxlevel 79
-.skipgossip 1
-step
-.goto Dragonblight,48.52,74.39
->>前往莫阿基港
-.fp Moa'ki Harbor >> 获得莫阿基港航线
-step
-#completewith Konani
-.turnin 12117 >>前往莫阿基港
-.isOnQuest 12117
-step
-#completewith next
-.turnin 12118 >>前往莫阿基港
-.isOnQuest 12118
-step
-#label Konani
->>与大楼内的科纳尼和里普芳交谈，然后与大楼外的毛伊交谈
-.accept 11958 >>接受，不浪费任何东西
-.goto Dragonblight,47.99,74.87
-.accept 11996 >>Agmar锤子需要接受您的出席
-.goto Dragonblight,47.99,74.77
-.accept 11960 >>接受未来规划
-.goto Dragonblight,48.25,74.35
-
-step
-#sticky
-#label GladePups
-.goto Dragonblight,47.4,64.3,40,0
-.goto Dragonblight,47.2,61.5,40,0
-.goto Dragonblight,45.2,61.6
->>右击小屋附近的小沃尔瓦小狗
-.complete 11960,1 
-step
-.goto Dragonblight,43.6,58.8
->>杀死雪花冰川周围的沃尔瓦人。抢劫他们的货物
-.complete 11958,1 
-step
-#requires GladePups
-.goto Dragonblight,36.61,46.57
->>前往阿格玛锤子。与Juktok交谈
-.accept 11979 >>接受牛头人和牛头人
-.accept 12488 >>接受高级执行官的需求
-.xp 73,1
-step
-#requires GladePups
-.goto Dragonblight,36.61,46.57
->>前往阿格玛锤子。与Juktok交谈
-.accept 11979 >>接受牛头人和牛头人
-step
->>与Torvus交谈
-.accept 12033 >>接受来自西方的消息
-.goto Dragonblight,37.32,46.79
-.use 35941 >>点击你袋子里的信来烧掉它，或者点击邮箱旁边的烧烤器
-.complete 12033,1 
-.goto Dragonblight,37.35,46.68
-.turnin 12033 >>交出来自西方的信息
-.goto Dragonblight,37.32,46.79
-.isQuestTurnedIn 11916
-
-step
->>与通缉海报对话，然后与里面的Aethas形象对话
-.accept 12089 >>接受通缉：Magister Keldonus
-.accept 12090 >>接受通缉：Gigantar
-.accept 12091 >>接受通缉：恐怖魔爪
-.goto Dragonblight,37.67,46.55
-.turnin 11996 >>在Agmar的锤子上要求你在场
-.accept 11999 >>接受来复枪尸体
-.goto Dragonblight,38.05,46.22
-step
-#completewith moonshadow
-.goto Dragonblight,38.19,46.65,15,0
-.goto Dragonblight,38.72,46.71,15,0
-.goto Dragonblight,38.68,45.98,15,0
-.goto Dragonblight,38.19,45.99
->>与兵营大师哈加交谈。他可以在后屋和第一组楼梯上巡逻
-.home >>把你的心放在阿格玛的锤子上
-.unitscan Barracks Master Harga
-step
-.goto Dragonblight,37.51,45.77
->>回到外面去
-.fp Agmar's Hammer >> 获取Agmar的Hammer飞行路线
-step
-.goto Dragonblight,14.21,49.82
->>前往西风难民营。与Roh'kill交谈
-.accept 11980 >>接受部落的骄傲
-step
-.goto Dragonblight,13.9,49.7,30,0
-.goto Dragonblight,13.6,49.1,30,0
-.goto Dragonblight,13.3,50.0,30,0
-.goto Dragonblight,12.8,48.2,30,0
-.goto Dragonblight,13.6,47.9
->>与环绕营地核心圈的布赖特霍夫使者交谈
-.turnin 11979 >>交出牛头人和牛头人
-.accept 11978 >>接受折叠
-.unitscan Emissary Brighthoof
-step
-#questguide
-.goto Dragonblight,12.7,51.7
-.turnin 11930 >>穿过Transborea
-.isOnQuest 11930
-step
-.goto Dragonblight,16.0,52.4,70,0
-.goto Dragonblight,17.8,46.9,70,0
-.goto Dragonblight,14.6,44.5,70,0
-.goto Dragonblight,16.4,48.7,70,0
-.goto Dragonblight,16.0,52.4,70,0
-.goto Dragonblight,17.8,46.9,70,0
-.goto Dragonblight,14.6,44.5,70,0
-.goto Dragonblight,16.4,48.7
->>抢劫该地区的板条箱
->>杀死该地区的救护车
-.complete 11978,1 
-.complete 11980,1 
-step
-.goto Dragonblight,14.21,49.82
->>返回Roh'kill
-.turnin 11980 >>交出部落的骄傲
-step
-.goto Dragonblight,13.9,49.7,30,0
-.goto Dragonblight,13.6,49.1,30,0
-.goto Dragonblight,13.3,50.0,30,0
-.goto Dragonblight,12.8,48.2,30,0
-.goto Dragonblight,13.6,47.9
->>与环绕营地核心圈的布赖特霍夫使者交谈
-.turnin 11978 >>转入折叠
-.accept 11983 >>接受部落的血腥誓言
-step
-.goto Dragonblight,13.41,48.76
->>与该地区的陶恩卡难民交谈
-.complete 11983,1 
+>>与该地区的Scrivener、Schneider、Burke和Amai交谈。杀了他们。尽量避免杀死骑兵骑士
+.complete 12245,4 
+.goto Dragonblight,72.63,72.58
+.complete 12245,1 
+.goto Dragonblight,71.41,72.17
+.complete 12245,3 
+.goto Dragonblight,72.72,74.34
+.complete 12245,2 
+.goto Dragonblight,69.37,73.95
 .skipgossip
 step
-.goto Dragonblight,13.9,49.7,30,0
-.goto Dragonblight,13.6,49.1,30,0
-.goto Dragonblight,13.3,50.0,30,0
-.goto Dragonblight,12.8,48.2,30,0
-.goto Dragonblight,13.6,47.9
->>与环绕营地核心圈的布赖特霍夫使者交谈
-.turnin 11983 >>交出部落的血腥誓言
-.accept 12008 >>接受阿格玛的锤子
-step
-#sticky
-#label moonshadow
-#completewith end12006
-.goto Dragonblight,24.19,60.06
->>与Ethenial交谈
-.accept 12006 >>接受复仇这个暴行！
-step
-#completewith Arcanimus
-.goto Dragonblight,22.7,58.1,0
-.goto Dragonblight,23.3,61.3,0
-.goto Dragonblight,25.9,58.7,0
-.use 35792 >>右键单击散布在月光花园周围的死亡法师猎人尸体。打开他们的法师猎人的个人物品
-.complete 11999,1 
-step
 #completewith next
-#requires moonshadow
-.goto Dragonblight,21.6,58.9,50,0
-.goto Dragonblight,21.3,62.5,50,0
->>在月光花园杀死人形/野兽/龙暴徒
-.complete 12006,1 
-step
-#label gardenplansmr
-.goto Dragonblight,21.1,64.0
->>杀死Magister Keldonus。利用你的冷却时间。如果你不能做到这一点，跳过这个任务。
-.complete 12089,1 
-step
-.goto Dragonblight,19.1,61.6,70,0
-.goto Dragonblight,18.4,57.3,70,0
-.goto Dragonblight,20.0,56.4,70,0
-.goto Dragonblight,22.0,57.9,70,0
-.goto Dragonblight,21.3,62.3
->>在月光花园杀死人形/野兽/龙暴徒
-.complete 12006,1 
-step
-#label end12006
-.goto Dragonblight,24.19,60.06
->>返回民族
-.turnin 12006 >>交给我复仇！
-.accept 12013 >>接受结束安宁
-step
-.goto Dragonblight,20.0,59.7
->>沿着坡道跑下去。杀死阿卡尼穆斯
-.complete 12013,1 
-step
-#label Arcanimus
-.goto Dragonblight,24.19,60.06
->>返回民族
-.turnin 12013 >>转入End Arcanius
-step
-.goto Dragonblight,22.7,58.1,70,0
-.goto Dragonblight,23.3,61.3,70,0
-.goto Dragonblight,25.9,58.7
-.use 35792 >>右键单击散布在月光花园周围的死亡法师猎人尸体。打开他们的法师猎人的个人物品
-.complete 11999,1 
-step
->>回到阿格玛之锤。与Aethas和Agmar交谈
-.turnin 11999 >>把来复枪交给尸体
-.accept 12005 >>接受阻止协议
-.goto Dragonblight,38.05,46.22
-.turnin 12008 >>交出阿格玛的锤子
-.accept 12034 >>接受胜利近在咫尺。。。
-.goto Dragonblight,38.07,46.34
-
-step
->>与朱克托克、博鲁斯、塔底的戈特和索尔交谈
-.turnin 12034 >>交出胜利近在咫尺。。。
-.accept 12036 >>从阿兹约尔·尼鲁的深处接受
-.goto Dragonblight,36.61,46.57
-.accept 12039 >>接受Yog Saron的黑血
-.goto Dragonblight,36.61,47.19
-.accept 12056 >>接受死亡标记：高级信徒赞格斯
-.turnin 12089 >>通缉犯：Magister Keldonus
-.goto Dragonblight,35.81,48.39
-.accept 12100 >>接受控制腐烂
-.goto Dragonblight,37.08,48.55
-.isQuestComplete 12089
-step
->>与塔楼底部的朱克托克、博鲁斯和戈特交谈，然后是飞翔
-.turnin 12034 >>交出胜利近在咫尺。。。
-.accept 12036 >>从阿兹约尔·尼鲁的深处接受
-.goto Dragonblight,36.61,46.57
-.accept 12039 >>接受Yog Saron的黑血
-.goto Dragonblight,36.61,47.19
-.accept 12056 >>接受死亡标记：高级信徒赞格斯
-.goto Dragonblight,35.81,48.39
-.accept 12100 >>接受控制腐烂
-.goto Dragonblight,37.08,48.55
-step
-#completewith next
->>杀死麋鹿和灰熊。抢走他们的冷却肉
-.complete 13090,1 
-.isOnQuest 13090
-step
-.goto Dragonblight,31.9,45.9,70,0
-.goto Dragonblight,28.8,51.5,70,0
-.goto Dragonblight,23.8,50.0,70,0
-.goto Dragonblight,28.8,51.5,70,0
-.goto Dragonblight,31.9,45.9
->>杀死受惊的麋鹿和狂犬病灰熊。抢了他们的器官
-.complete 12100,2 
-.complete 12100,1 
-step
-#completewith next
-.goto Dragonblight,26.15,49.48,15 >> 跳进Narjun的深坑
-step
-#completewith Kilix
-.goto Dragonblight,26.7,48.1,0
->>在Narjun矿坑内挖掘黑血节点
-.complete 12039,1 
-step
-.goto Dragonblight,26.19,50.78
->>与Narjun矿坑内的Kilix交谈
-.accept 12040 >>接受艺术中的敌人
-.complete 12036,1 
-step
-#sticky
-#label AUnderlord
->>在Narjun的地坑里杀死卑鄙者
-.goto Dragonblight,28.8,47.2,0,0
-.complete 12040,1 
-step
-.goto Dragonblight,26.7,49.4,20,0
-.goto Dragonblight,28.85,49.72
->>走山洞中间的小路，杀死高僧赞格斯。抢他的头
-.complete 12056,1 
-step
-#label Kilix
-#requires AUnderlord
->>返回Narjun矿坑内的Kilix
-.goto Dragonblight,26.19,50.78
-.turnin 12040 >>在阿尔萨斯交出敌人
-.accept 12041 >>接受失落的帝国
-step
-.goto Dragonblight,26.9,49.3,30,0
-.goto Dragonblight,28.8,49.7,30,0
-.goto Dragonblight,28.6,47.0,30,0
-.goto Dragonblight,26.7,48.1
->>在Narjun矿坑内挖掘黑血节点
-.complete 12039,1,8 
-step
-#completewith Trader
-.goto Dragonblight,26.9,49.5,30,0
-.goto Dragonblight,26.7,48.7,15,0
-.goto Dragonblight,26.3,49.0,25 >> 跑出洞穴
-step
-.goto Dragonblight,25.7,49.6
->>向Narjun矿坑外挖掘黑血节点
-.complete 12039,1 
-step
-#label Trader
-.goto Dragonblight,18.39,58.89
->>在破庙西口杀死风商穆法赫。抢劫他的遗体
-.complete 12005,1 
-step
-.goto Dragonblight,19.46,58.03
->>进入寺庙，沿着斜坡走到左边。杀死Goramosh，并为他的天平和奇怪的装置将其洗劫一空
-.complete 12005,2 
-.collect 36746,1,12059 
-.use 36746 >> 右键单击包中的Goramosh的奇怪设备
-.accept 12059 >>接受奇怪的设备
-step
-#completewith next
-.hs >>阿格玛锤子之炉
-.cooldown item,6948,>0
-step
->>回到阿格玛之锤。与Gort、Borus和Juktok交谈
-.turnin 12056 >>被判死刑的人：高级信徒赞格斯
-.goto Dragonblight,35.81,48.39
-.turnin 12039 >>上交Yog Saron的黑血
-.accept 12048 >>接受天灾武器
-.goto Dragonblight,36.61,47.19
-.turnin 12036 >>从阿兹约尔·尼鲁的深处转入
-.accept 12053 >>接受部落的力量
-.goto Dragonblight,36.61,46.57
-step
->>进入大楼。与Aethas和Agmar交谈
-.turnin 12005 >>上缴阻止协议
-.turnin 12059 >>交出一个奇怪的装置
-.accept 12061 >>接受投影和计划
-.goto Dragonblight,38.05,46.22
-.turnin 12041 >>归还失落的帝国
-.goto Dragonblight,38.07,46.34
-step
->>到外面去。先和索尔说话，然后是辛塔，然后是冰雾
-.turnin 12100 >>转身遏制腐烂
-.accept 12101 >>接受好医生。。。
-.goto Dragonblight,37.08,48.55
-.turnin 12101 >>交给好医生。。。
-.accept 12102 >>接受寻找红宝石紫丁香
-.goto Dragonblight,36.08,48.89
-.accept 12063 >>接受冰雾强度
-.goto Dragonblight,35.8,46.9,50,0
-.goto Dragonblight,36.0,45.9,50,0
-.goto Dragonblight,36.1,45.2
-step
-.goto Dragonblight,25.4,56.2,-1
-.use 36747 >> 返回Moonrest Gardens，使用浪涌针式搬运工前往空中浮动平台
-.complete 12061,1 
-.goto Dragonblight,19.59,59.77,-1
-step << Mage/Priest/Paladin
-#completewith Icemist
-.goto Dragonblight,21.0,47.5,150 >> 投下慢速下降，上马，然后跳下平台 << Mage
-.goto Dragonblight,21.0,47.5,200 >> 跳下平台，当你接近底部时施放漂浮物 << Priest
-.goto Dragonblight,21.0,47.5,200 >> 跳下平台，然后在接近底部时施放神盾或保护祝福 << Paladin
-.itemcount 17056,1 << Mage/Priest
-step
-#completewith Icemist
-.goto Dragonblight,22.5,57.0,100 >> 再次使用浪涌针传送机传送回来。
-.use 36747
-.itemcount 17056,<1 << Mage/Priest
-step
-#sticky
-#label scarms
-.goto Dragonblight,23.3,42.8,0,0
->>杀死冰雾村周围的阿努巴人。抢劫他们的武器
-.complete 12048,1 
-step
-#label Icemist
-.goto Dragonblight,22.60,41.73
->>与河里篝火旁的Banthok交谈
-.turnin 12063 >>冰雾的转向强度
-.accept 12064 >>接受阿努巴尔的锁链
-step
-#sticky
-#label fbtome
-.goto Dragonblight,23.2,44.8,60,0
-.goto Dragonblight,24.2,46.2,0,0
-.use 36744 >>在冰雾村杀死阿努巴教徒。把他们抢走，以换取被肉裹住的汤姆。在您的包中点击它
-.collect 36744,1,12057,1 
-.accept 12057 >>接受肉身缠身的汤姆
-step
-.goto Dragonblight,25.0,44.6,15,0
-.goto Dragonblight,25.0,43.9
->>进入Sinok产卵下面的小洞穴，杀死Anok'ra。抢劫他的碎片
-.complete 12064,1 
-step
-.goto Dragonblight,26.6,42.5,40,0
-.goto Dragonblight,26.77,39.05
->>上山进入冰雾，然后进入大楼。杀死蒂瓦克斯。抢劫他的碎片
-.complete 12064,2 
-step
-.goto Dragonblight,25.54,40.80
-.use 36738 >> 在包中使用战歌战斗标准。保护它。它没有太多的生命值，所以很快就会杀死繁殖的暴徒。
-.complete 12053,1 
-step
-.goto Dragonblight,26.2,44.4,50,0
-.goto Dragonblight,23.9,44.6
->>检查冰雾的木制阳台区域。杀死Sinok。抢劫他的碎片
-.complete 12064,3 
-.unitscan Sinok the Shadowrager
-step
-.goto Dragonblight,22.60,41.73
->>返回河里篝火旁的Banthok
-.turnin 12064 >>阿努巴尔的锁链
-.accept 12069 >>接受高官归来
-step
-#completewith next
-.goto Dragonblight,22.7,39.4,25 >>向北游。走坡道到村庄的西北侧
-step
-#completewith next
-.goto Dragonblight,25.6,40.9
-.cast 47412 >>点击Anub'ar机制释放Roanuk
-step
-.goto Dragonblight,25.12,39.76
->>释放罗纳克后跟随他。杀死Anub’et'kan。抢走他的外壳
-.complete 12069,1 
-step
-#requires scarms
-step
-#requires fbtome
-.goto Dragonblight,35.81,48.39
->>回到阿格玛之锤。与戈特交谈
-.turnin 12057 >>交出被肉裹着的汤姆
-.accept 12115 >>接受科尔蒂拉和死亡之语
-
-step
-#completewith next
-.goto Dragonblight,35.8,46.6,0
->>与内外圈顺时针巡逻的Koltira交谈
-.turnin 12115 >>交出科尔蒂拉和死亡之语
-.accept 12125 >>接受献血服务
-.accept 12126 >>接受邪恶的服务
-.accept 12127 >>接受Frost服务
-step
->>与Borus和Juktok交谈
-.turnin 12048 >>缴交天灾武器
-.goto Dragonblight,36.61,47.19
-.turnin 12053 >>交出部落的力量
-.accept 12071 >>接受空中攻击！
-.goto Dragonblight,36.61,46.57
-step
-.goto Dragonblight,36.1,45.9,30,0
-.goto Dragonblight,37.2,47.1,30,0
-.goto Dragonblight,36.1,47.6
->>与内外圈顺时针巡逻的Koltira交谈
-.turnin 12115 >>交出科尔蒂拉和死亡之语
-.accept 12125 >>接受献血服务
-.accept 12126 >>接受邪恶的服务
-.accept 12127 >>接受Frost服务
-.unitscan Koltira Deathweaver
-step
-.goto Dragonblight,37.21,45.71
->>与瓦尔诺克交谈
-.turnin 12071 >>空中进攻！
-.accept 12072 >>接受极乐世界被诅咒！
-step
-.goto Dragonblight,38.1,46.3
->>进去吧。与Aethas和Agmar交谈
-.turnin 12061 >>提交投影和平面图
-.accept 12066 >>接受对海滩的关注
-.goto Dragonblight,38.05,46.22
-.turnin 12069 >>上缴最高首领
-.accept 12140 >>接受万岁罗纳克！
-.goto Dragonblight,38.07,46.34
-step
-#completewith next
-.goto Dragonblight,36.26,45.45,9,0
->>与Roanauk Icemist对话以启动他的RP。您无需等待完成（需要40秒）。之后骑车前往冰雾村
-.complete 12140,1 
-.skipgossip
-.timer 40,All Hail Roanauk! RP (CONTINUE QUESTING)
-step
-.goto Dragonblight,27.67,45.19
-#completewith next
-.use 36774
-.vehicle >>在冰雾村里时，在包里放上瓦尔诺克的火炬枪。骑上战车
-step
-.goto Dragonblight,27.7,37.5,60,0
-.goto Dragonblight,24.3,37.2
->>冷却时使用“蓝色巨人”（2），然后使用“极光野兽诅咒”（1）杀死正在飞行的阿努布。使用“Field Medi pack”（3）治疗骑手。
-.complete 12072,1,10 
-step
-.goto Dragonblight,26.6,46.8,70,0
-.goto Dragonblight,24.2,47.7
->>冷却时使用“蓝色巨人”（2），然后使用“极光野兽诅咒”（1）杀死正在飞行的阿努布。使用“Field Medi pack”（3）治疗骑手。
-.complete 12072,1 
-step
-#completewith next
-.vehicle >> 使用Kor'Kron War Rider以更快的速度行进，直到它将你甩下。紧贴地面
-.use 36774
-.cooldown item,36774,>0
-step
-#completewith next
-.use 36751 >>杀死埃米·马林上尉。抢劫她以换取Ley Line Focus Control Ring
-.collect 36751,1,12066,1 
-.goto Dragonblight,26.32,64.85
-step
-.use 36751 >>使用包中Ley Line Focus旁边的戒指
-.complete 12066,1 
-.goto Dragonblight,26.5,65.2
-step
-#completewith next
-.goto Dragonblight,27.9,66.5,30,0
-.goto Dragonblight,28.9,66.1,20,0
-.goto Dragonblight,29.7,67.0,40 >> 走紫色小路去Lothalor Woodlands
-step
-.goto Dragonblight,35.69,65.85,40,0
-.goto Dragonblight,37.85,66.03
-.use 36827 >>对一个失去自由的Indu'le村民造成35%或更少的伤害。用你袋子里的血宝石对付他。
-.complete 12125,1 
-.unitscan Deranged Indu'le Villager
-step
-#sticky
-#label Koltira2
-.goto Dragonblight,36.1,45.9,30,0
-.goto Dragonblight,37.2,47.1,30,0
-.goto Dragonblight,36.1,47.6
->>与内外圈顺时针巡逻的Koltira交谈
-.turnin 12125 >>献血时上缴
-step
->>回到阿格玛之锤。和瓦尔诺克谈谈，然后进去和阿格玛和艾塞谈谈
-.turnin 12072 >>交出极光野兽，该死！
-.goto Dragonblight,37.21,45.71
-.turnin 12066 >>聚焦海滩
-.accept 12084 >>在森林之巅接受
-.goto Dragonblight,38.05,46.22
-.turnin 12140 >>交上万岁罗纳克！
-.goto Dragonblight,38.07,46.34
-step
-.goto Dragonblight,36.51,47.87
->>与格里夫交谈
-.accept 12096 >>接受强化古人
-step
-#requires Koltira2
-.goto Dragonblight,33.8,60.2,70,0
-.goto Dragonblight,36.2,61.7,70,0
-.goto Dragonblight,30.6,66.7,70,0
-.goto Dragonblight,34.3,68.3,70,0
-.goto Dragonblight,29.8,71.4
->>在这个地区周围寻找林地步行者，和他们交谈以获得步行者的吠声。如果他们怀有敌意抢劫树皮，就杀死他们
-.use 36786 >>使用该地区Lothalor古人的步行者树皮
-.collect 36786,3,12096,0x1,-1
-.complete 12096,1 
-.skipgossip
-step
-.goto Dragonblight,33.1,71.5,60,0
-.goto Dragonblight,32.4,72.7,60,0
-.goto Dragonblight,31.5,72.0,60,0
-.goto Dragonblight,31.9,70.4
-.use 36780 >>杀死塔齐尼中尉。他是一个巨魔，在方圆50码的紫环周围巡逻。抢劫他以换取Ley Line Focus Control护身符和信件。在您的包中点击它
-.collect 36779,1,12084,1 
-.collect 36780,1,12085,1 
-.accept 12085 >>接受一封回家的信
-.unitscan Lieutenant Ta'zinni
-step
-.goto Dragonblight,32.2,71.4
-.use 36779 >>将Ley Line Focus Control护身符放在包里，放在带有紫色符文的大金属环旁边
-.complete 12084,1 
-step
->>返回莫阿基港，在外面和毛伊交谈，然后在小屋里和科纳尼交谈
-.turnin 11960 >>为未来制定计划
-.goto Dragonblight,48.25,74.35
-.turnin 11958 >>上缴，不浪费任何东西
-.accept 11959 >>接受Slay Loguhn
-.goto Dragonblight,47.99,74.87
-step
-.goto Dragonblight,52.1,70.3,70,0
-.goto Dragonblight,51.0,66.8,60,0
-.goto Dragonblight,51.1,64.9,60,0
-.goto Dragonblight,48.5,63.5,60,0
-.goto Dragonblight,47.5,62.2,60,0
-.goto Dragonblight,45.0,62.7,60,0
-.goto Dragonblight,44.3,57.9,60,0
-.goto Dragonblight,45.8,57.6,60,0
-.goto Dragonblight,47.0,57.9,60,0
-.goto Dragonblight,48.2,60.8,60,0
-.goto Dragonblight,51.4,63.6,60,0
-.goto Dragonblight,52.1,70.3,70,0
-.goto Dragonblight,51.0,66.8,60,0
-.goto Dragonblight,51.1,64.9,60,0
-.goto Dragonblight,48.5,63.5,60,0
-.goto Dragonblight,47.5,62.2,60,0
-.goto Dragonblight,45.0,62.7,60,0
-.goto Dragonblight,44.3,57.9,60,0
-.goto Dragonblight,45.8,57.6,60,0
-.goto Dragonblight,47.0,57.9,60,0
-.goto Dragonblight,48.2,60.8,60,0
-.goto Dragonblight,51.4,63.6,60,0
-.goto Dragonblight,52.1,70.3
->>杀死吉安塔尔。他顺时针在雪花冰川周围巡逻。如果你杀不了他，就跳过这个。
-.complete 12090,1 
-.unitscan Gigantaur
-step
-.goto Dragonblight,46.34,59.13
->>杀死洛根。抢他的血
-.collect 35688,1,11959,1 
-.use 35688 >>用你袋子里的洛根血
-.complete 11959,1 
-step
-#sticky
-#label Lilac
-.goto Dragonblight,47.89,49.64,30,0
-.goto Dragonblight,47.68,49.06
->>进入大树下的洞穴。抢走地上的红宝石紫丁香
-.complete 12102,1 
-step
-.goto Dragonblight,47.68,49.06
-.use 37833 >>杀死大丽亚·桑托克，并掠夺红宝石胸针。接受Brooch的任务。
-.collect 37833,1,12419,1
-.accept 12419 >>接受红宝石龙神的命运
-step
-#requires Lilac
-.goto Dragonblight,48.0,50.7,60,0
-.goto Dragonblight,46.6,49.9,60,0
-.goto Dragonblight,46.7,47.9,60,0
-.goto Dragonblight,48.4,46.2,60,0
-.goto Dragonblight,47.0,46.0,60,0
-.goto Dragonblight,45.7,48.7,60,0
-.goto Dragonblight,46.5,51.7
-.use 36835 >>找到瓦伦哈尔公爵在龙之林西侧巡逻。伤害他35%或更少的生命值。用你袋子里的邪恶宝石对付他。
-.complete 12126,1 
-.unitscan Duke Vallenhal
-step
-.goto Dragonblight,45.84,44.52
->>往西边的雪缝里走，然后沿着小路走到山顶。在山顶杀死恐惧魔爪。如果你杀不了他就跳过这个
-.complete 12091,1 
-step
->>回到阿格玛之锤。与Aethas和Agmar交谈
-.turnin 12084 >>在林地上转弯
-.accept 12106 >>接受搜索Indu'le村
-.goto Dragonblight,38.05,46.22
-.turnin 12085 >>交一封信回家
-.goto Dragonblight,38.07,46.34
-step
-#sticky
-#label Koltira3
-.goto Dragonblight,36.1,45.9,30,0
-.goto Dragonblight,37.2,47.1,30,0
-.goto Dragonblight,36.1,47.6
->>与内外圈顺时针巡逻的Koltira交谈
-.turnin 12126 >>为邪恶的人服务
-step
->>与格里夫交谈
-.turnin 12096 >>上缴强化古人
-.goto Dragonblight,36.51,47.87
-step
->>进去和戈特谈谈
-.turnin 12090 >>通缉犯：Gigantar
-.turnin 12091 >>通缉犯：恐怖魔爪
-.goto Dragonblight,35.81,48.39
-.isQuestComplete 12090
-.isQuestComplete 12091
-step
->>进去和戈特谈谈
-.turnin 12091 >>通缉犯：恐怖魔爪
-.goto Dragonblight,35.81,48.39
-.isQuestComplete 12091
-step
->>进去和戈特谈谈
-.turnin 12090 >>通缉犯：Gigantar
-.goto Dragonblight,35.81,48.39
-.isQuestComplete 12090
-step
-.goto Dragonblight,35.81,48.39
->>再和戈特谈谈
-.accept 12095 >>接受龙的堕落
-.isQuestTurnedIn 12089
-.isQuestTurnedIn 12090
-.isQuestTurnedIn 12091
-step
->>先和Sintar谈谈，然后再和Soar谈谈
-.turnin 12102 >>寻找红宝石紫丁香
-.accept 12104 >>接受重返飞翔
-.goto Dragonblight,36.08,48.89
-.turnin 12104 >>转身飞翔
-.accept 12111 >>接受野生动物漫游的地方
-.goto Dragonblight,37.08,48.55
-step
-#requires Koltira3
-.goto Dragonblight,39.6,50.2,50,0
-.goto Dragonblight,38.3,56.8,50,0
-.goto Dragonblight,41.3,47.8,50,0
-.goto Dragonblight,38.3,56.8,50,0
-.goto Dragonblight,41.3,47.8
-.use 36818 >>使用包里的疫苗对付雪崩麋鹿和灰熊
-.complete 12111,1 
-.complete 12111,2 
-step
-.goto Dragonblight,37.08,48.55
->>返回Soar
-.turnin 12111 >>在野生动物肆虐的地方上缴
-step
-#completewith next
-.goto Dragonblight,37.51,45.76
-.fly Moa'ki >>飞往莫阿基港
-step
-#completewith Kili
-.goto Dragonblight,48.15,74.76
-.home >>把你的炉子放在茅基港
-step
-.goto Dragonblight,47.99,74.87
->>在小屋里与科纳尼交谈
-.turnin 11959 >>转入Slay Loguhn
-step
-.goto Dragonblight,48.00,76.15,20,0
-.goto Dragonblight,47.7,76.6
->>与岸上的Tua'kea交谈
-.accept 12009 >>接受Tua'kea的螃蟹陷阱
-step
-.goto Dragonblight,49.14,75.69
->>与小屋内的托阿鲁交谈
-.accept 12028 >>接受精神洞察力
-step
-.goto Dragonblight,48.96,75.79
-.use 35907 >> 在你的包里，在他小屋外火盆旁边放上托鲁的灵香。等待RP事件
-.cast 47190
-.timer 160,Spiritual Insight RP
-.complete 12028,1 
-step
-.goto Dragonblight,49.12,75.66
->>返回Toalu'u
-.turnin 12028 >>交出精神洞察力
-.accept 12030 >>接受长老Mana'loa
-step
-.isQuestTurnedIn 11559
-#completewith next
-.use 38351 >>必要时，使用穆利弗油提高游泳速度。
-.itemcount 38351,1
-step
-#completewith Kili
-.goto Dragonblight,46.5,76.2,0
-.use 37265 >>抢劫莫阿基港南部海底的小型捕蟹器
-.complete 12009,1 
-step
-.goto Dragonblight,47.72,79.99
-.use 37265 >> 使用袋子里的呼吸囊。点击海底的残骸蟹陷阱
-.accept 12011 >>接受重大水灾迹象
-step
-.goto Dragonblight,47.7,76.6,20,0
-.goto Dragonblight,48.00,76.15
->>返回Tua'kea
-.turnin 12011 >>出现重大水灾迹象
-.accept 12016 >>接受诱饵
-step
-.isQuestTurnedIn 11559
-#completewith next
-.use 38351 >>必要时，使用穆利弗油提高游泳速度。
-.itemcount 38351,1
-step
-#label Kili
-.goto Dragonblight,43.9,82.7,60,0
-.goto Dragonblight,42.0,80.0
->>杀死在岛上巡逻的大螃蟹Kili'ua。抢劫他的钳子
-.complete 12016,1 
-.unitscan Kili'ua
-step
-.goto Dragonblight,46.5,76.2,60,0
-.goto Dragonblight,48.6,79.7,60,0
-.goto Dragonblight,50.4,79.3
-.use 37265 >>完成对莫阿基港南部海底小型捕蟹器的掠夺
-.complete 12009,1 
-step
-.goto Dragonblight,47.7,76.6,20,0
-.goto Dragonblight,48.00,76.15
->>返回Tua'kea
-.turnin 12009 >>交给Tua'kea的螃蟹陷阱
-.turnin 12016 >>上缴诱饵
-.accept 12017 >>接受钩上的肉
-step
-.isQuestTurnedIn 11559
-#completewith next
-.use 38351 >>必要时，使用穆利弗油提高游泳速度。
-.itemcount 38351,1
-step
-.goto Dragonblight,46.74,78.18
-.use 35838 >> 将Tu'u'gwar的诱饵放在你的袋子里，放在水下的钓鱼钩上，召唤Tu'u'gwar。杀了他
-.cast 47159
-.timer 21,Tu'u'gwar RP
-.complete 12017,1 
-step
-.goto Dragonblight,48.01,76.17
->>返回Tua'kea
-.turnin 12017 >>把肉放在钩上
-step
-#completewith next
-.goto Dragonblight,48.4,67.7,90 >> 从莫阿基港向北走
-step
-#sticky
-#label Evenstar
-.goto Dragonblight,40.25,66.86
-.use 37265 >>使用袋子里的呼吸囊
->>潜入湖中，与魔法师指挥官埃文斯塔交谈
-.turnin 12106 >>转入搜索Indu'le村
-.accept 12110 >>接受行尾
-step
-.isQuestTurnedIn 11559
-#completewith next
-.use 38351 >>必要时，使用穆利弗油提高游泳速度。
-.itemcount 38351,1
-step
-.goto Dragonblight,39.76,67.03
-.use 36815 >>在Ley Line Focus附近的包中使用控制护身符
-.complete 12110,1 
-step
-#requires Evenstar
-.goto Dragonblight,36.63,64.96
->>和大石头谈谈。尽量避免在途中杀害暴徒
-.turnin 12030 >>交给Elder Mana'loa
-.accept 12031 >>接受徘徊的自由
-step
-.goto Dragonblight,36.5,65.5,50,0
-.goto Dragonblight,37.0,70.8,50,0
-.goto Dragonblight,42.1,71.1,50,0
-.goto Dragonblight,41.4,63.7
->>杀死因杜勒湖附近的不死塔斯卡尔鬼魂
-.complete 12031,1 
-step
-.goto Dragonblight,36.63,64.96
->>返回大石头
-.turnin 12031 >>为逗留者提供自由
-.accept 12032 >>接受与深度的对话
-step
-.goto Dragonblight,34.5,80.1,40,0
-.goto Dragonblight,35.1,82.5,40,0
-.waypoint Dragonblight,34.11,84.76,-47098,wpbuff,UNIT_AURA
-.goto Dragonblight,33.91,83.22
->>点击祭坛并等待RP。一旦你获得Oacha’noa的强迫效果，你将有30秒的时间跳入大海怪所在的水域
-
-.complete 12032,1 
-step << Druid
-#completewith DruidTrain1
-.cast 18960 >> 铸造Teleport:Moonglade
-.zoneskip Moonglade
-.xp <72,1
-step << Druid
-.goto Moonglade,52.4,40.6
->>前往Moonglade
-.train 48464 >> 训练你的职业咒语
-.xp <72,1
-step << Druid
-#label DruidTrain1
-.goto Moonglade,52.4,40.6
->>前往Moonglade
-.train 53307 >> 训练你的职业咒语
-.xp <74,1
-step << DK
-#completewith DKTrain1
-.cast 50977 >> 铸造死亡之门
-.zoneskip Eastern Plaguelands
-.xp <72,1
-step << DK
-.goto Eastern Plaguelands,80.3,48.0
->>穿过死亡之门
-.train 49940 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
-.xp <72,1
-step << DK
-.goto Eastern Plaguelands,80.3,48.0
->>穿过死亡之门
-.train 49904 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
-.xp <73,1
-step << DK
-#label DKTrain1
-.goto Eastern Plaguelands,80.3,48.0
->>穿过死亡之门
-.train 49929 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
-.xp <74,1
-step << Mage
-#completewith MageTrain1
-.zone Undercity >> 传送到地下城
-.xp <72,1
-step << Mage
-.goto Undercity,85.1,10.0
-.train 42930 >> 训练你的职业咒语
-.xp <72,1
-step << Mage
-.goto Undercity,85.1,10.0
-.train 43019 >> 训练你的职业咒语
-.xp <73,1
-step << Mage
-#label MageTrain1
-.goto Undercity,85.1,10.0
-.train 42939 >> 训练你的职业咒语
-.xp <74,1
-step
-#completewith next
-.hs >>哈斯到莫阿基港
-step
-.goto Dragonblight,49.12,75.66
->>与小屋内的托阿鲁交谈
-.turnin 12032 >>转向与深度对话
-step
-.goto Dragonblight,52.92,65.64
->>站在峡谷外围
-.complete 12110,2 
+.groundgoto Dragonblight,68.51,71.66,20 >>跳到小窗台上，朝着翡翠龙骨走去
 step
 #completewith Alystros
 .goto Dragonblight,64.87,73.49,0,0
@@ -39609,6 +42273,7 @@ step
 >>杀死神殿周围的翡翠天爪
 .complete 12454,1 
 step
+#label Alystros
 .goto Dragonblight,63.7,76.0,60,0
 .goto Dragonblight,62.5,74.5,60,0
 .goto Dragonblight,62.8,72.1,60,0
@@ -39623,6 +42288,7 @@ step
 .goto Dragonblight,64.7,77.0
 .use 37881 >>用你袋子里的天爪蜕皮把栖息在你面前的山上的阿丽斯特罗斯打倒。杀了他。这个任务非常困难。如果需要，为他找一个小组。如果你找不到一个团队或是独自一人，请跳过这一步。
 .complete 12456,1 
+.isOnQuest 12456
 step
 #label Tears
 .goto Dragonblight,65.7,72.6,70,0
@@ -39649,43 +42315,28 @@ step
 .isQuestComplete 12456
 step
 .isOnQuest 12456
-.abandon 12456 >> 放弃芦荟的羽毛
+.abandon 12456 >>放弃芦荟的羽毛
 step
 #completewith next
-.goto Dragonblight,66.4,73.7,50,0
-.goto Dragonblight,67.5,71.8,50,0
-.goto Dragonblight,69.0,68.2,50,0
-.goto Dragonblight,70.5,68.8,50 >> 从这里走出翡翠龙神之路
-step
->>与该地区的Scrivener、Schneider、Burke和Amai交谈。杀了他们。尽量避免杀死骑兵骑士
-.complete 12245,4 
-.goto Dragonblight,72.63,72.58
-.complete 12245,1 
-.goto Dragonblight,71.41,72.17
-.complete 12245,2 
-.goto Dragonblight,69.37,73.95
-.complete 12245,3 
-.goto Dragonblight,72.72,74.34
-.skipgossip
+.groundgoto Dragonblight,66.4,73.7,50,0
+.groundgoto Dragonblight,67.5,71.8,50,0
+.groundgoto Dragonblight,69.0,68.2,50,0
+.groundgoto Dragonblight,70.5,68.8,50 >>从这里走出翡翠龙神之路
 step
 
 .waypoint Dragonblight,69.44,75.35,0,vehicle,VEHICLE_PASSENGERS_CHANGED,VEHICLE_UPDATE,UNIT_EXITING_VEHICLE
 >>杀死一名骑兵骑士。抢走他们的马鞭。在他们的坐骑上使用作物
-*DO NOT KILL THE H或SE, loot the item and use it to mount the horse
+*DO NOT KILL THE HORSE. Loot the item and use it to mount the horse
 
 .goto Dragonblight,75.9,61.9 
 .goto Dragonblight,69.44,75.35,0 
-.use 37202 >>将Onslaught战马归还给Bauer。使用“移交缰绳”（1）。
+.use 37202 >>将Onslaught战马归还给Bauer。使用“移交缰绳”(1)。
 .collect 37202,3,12214,0x1,-1 
 .complete 12214,1 
 step
 >>与Hansel交谈
 .turnin 12214 >>提交新的折扣
 .goto Dragonblight,75.93,61.89
-step
-#completewith Need
-.goto Dragonblight,76.87,63.13
-.home >>将你的心设为毒液怨恨
 step
 .goto Dragonblight,76.77,63.28,12,0
 .goto Dragonblight,76.77,63.28
@@ -39707,7 +42358,7 @@ step
 .complete 12252,1 
 step
 .goto Dragonblight,69.81,72.00
->>杀死Torturer Lecraft。抢劫他以换取Torturer's Rod。在您的包中点击它
+.use 37432 >>杀死Torturer Lecraft。抢劫他以换取Torturer's Rod。在您的包中点击它
 .complete 12252,2 
 .collect 37432,1,12271,1 
 .accept 12271 >>接受强制棒
@@ -39724,6 +42375,7 @@ step
 .goto Dragonblight,76.77,63.28
 .turnin 12488 >>交给需要你的高级执行官
 step
+#completewith next
 .goto Dragonblight,73.6,77.7,50,0
 .goto Dragonblight,72.9,78.1
 .cast 48712 >>在齐尔胡特设置强制棒
@@ -39735,17 +42387,19 @@ step
 .complete 12273,2 
 .use 37438
 step
+#completewith next
 .goto Dragonblight,67.89,75.18,50,0
 .goto Dragonblight,67.87,75.91
 .cast 48712 >>将强制棒对准墨瑟
 .use 37438
 step
-.goto Dragonblight,67.89,75.18,50
+.goto Dragonblight,67.89,75.18,50,0
 .goto Dragonblight,67.87,75.91
 >>杀死马厩主人默瑟
 .complete 12273,4 
 .use 37438
 step
+#completewith next
 .goto Dragonblight,70.2,71.9,15,0
 .goto Dragonblight,69.6,71.8,12,0
 .goto Dragonblight,70.2,71.9,35,0
@@ -39754,9 +42408,10 @@ step
 .use 37438
 step
 .goto Dragonblight,69.66,71.79
->>杀死指挥官乔丹
+.use 37438 >>杀死指挥官乔丹
 .complete 12273,1 
 step
+#completewith next
 .goto Dragonblight,70.62,70.49
 .cast 48712 >>将强制棒对准古德曼
 .use 37438
@@ -39773,25 +42428,25 @@ step
 
 step
 #completewith next
-.goto Dragonblight,78.81,61.49
+.goto Dragonblight,78.00,61.06
 .vehicle >>进入一个被遗忘的瘟疫传播者
 step
 .goto Dragonblight,83.6,53.6
->>尽可能远地使用“Blight Bomb”（1）杀死饥饿的死者
+>>尽可能远地使用“Blight Bomb”(1)杀死饥饿的死者
 .complete 12218,1 
 step
->>下车。杀死西格史密斯。抢他们的炸弹。在大炮周围抢劫炸弹
-.goto Dragonblight,82.0,53.3,25,0
-.goto Dragonblight,84.3,49.0,25,0
-.goto Dragonblight,82.7,47.1,25,0
-.goto Dragonblight,84.7,47.9,25,0
+>>下车。杀死西格史密斯。抢他们的炸弹。在该地区周围抢劫炸弹
+.goto Dragonblight,82.0,53.3,40,0
+.goto Dragonblight,84.3,49.0,40,0
+.goto Dragonblight,82.7,47.1,40,0
+.goto Dragonblight,84.7,47.9,40,0
 .goto Dragonblight,85.1,45.5
 .complete 12230,1 
 step
-#completewith Need
 .goto Dragonblight,77.69,61.89,0
 .goto Dragonblight,77.03,62.36,0
 .goto Dragonblight,76.49,62.60,0
+.goto Dragonblight,77.69,61.89
 .line Dragonblight,77.69,61.89,77.03,62.36,76.49,62.60
 >>与巡查毒液的死亡守卫莫尔德交谈
 .turnin 12230 >>从Siegemiths偷窃
@@ -39805,7 +42460,6 @@ step
 .goto Dragonblight,77.58,62.47,12,0
 .goto Dragonblight,77.67,62.79
 step
-#label Need
 >>上楼去和瑞宾谈谈
 .accept 12234 >>接受“需要知道”
 .goto Dragonblight,76.64,63.01,8,0
@@ -39820,10 +42474,11 @@ step
 .accept 12232 >>接受轰炸巴利斯塔
 step
 #completewith Kaleiki
-.goto Dragonblight,71.2,73.0,0
-.use 37259 >>在New 炉灶glen附近的Ballistas上使用你袋子里的Siegemith Bomb
+.goto Dragonblight,71.2,73.0,0,0
+.use 37259 >>在New Hearthglen附近的Ballistas上使用你袋子里的Siegemith Bomb
 .complete 12232,1 
 step
+.groundgoto Dragonblight,73.74,75.72,50,0
 .goto Dragonblight,71.61,80.42
 >>前往新炉谷海岸。抢走板条箱上的卷轴
 .complete 12234,3 
@@ -39854,7 +42509,7 @@ step
 .goto Dragonblight,68.9,76.9,50,0
 .goto Dragonblight,69.8,77.2,50,0
 .goto Dragonblight,71.2,73.0
-.use 37259 >>在New 炉灶glen附近的Ballistas上使用你袋子里的Siegemith Bomb
+.use 37259 >>在New Hearthglen附近的Ballistas上使用你袋子里的Siegemith Bomb
 .complete 12232,1 
 step
 #completewith next
@@ -39879,7 +42534,7 @@ step
 .goto Dragonblight,76.73,63.02
 >>跑上楼梯到二楼。与特务小姐Repine交谈
 .turnin 12234 >>交给需要了解的人
-.accept 12239 >>接受New 炉灶glen的间谍
+.accept 12239 >>接受New Hearthglen的间谍
 step
 .goto Dragonblight,77.69,61.89,50,0
 .goto Dragonblight,77.03,62.36,50,0
@@ -39890,13 +42545,14 @@ step
 step
 .goto Dragonblight,73.58,73.54
 >>返回新炉谷。与Skully交谈
-.turnin 12239 >>在New 炉灶glen上交间谍
+.turnin 12239 >>在New Hearthglen上交间谍
 .accept 12254 >>无需祈祷就接受
 step
 .goto Dragonblight,68.9,76.1,20,0
 .goto Dragonblight,69.21,76.70
->>走进小教堂。杀死Bishop Street。抢他的书
+>>走进小教堂，杀死主教街。抢他的书
 .complete 12254,1 
+.unitscan Bishop Street
 step
 .goto Dragonblight,73.58,73.54
 >>返回Skully
@@ -39914,6 +42570,9 @@ step
 .turnin 12260 >>提交完美拆解
 .accept 12274 >>接受失宠
 step
+#completewith next
++如果你丢掉伪装，再和斯科利探员谈谈。
+step
 .goto Dragonblight,72.3,73.5,12,0
 .goto Dragonblight,73.1,73.7,12,0
 .goto Dragonblight,73.0,73.2,12,0
@@ -39921,29 +42580,30 @@ step
 .goto Dragonblight,73.1,73.6,12,0
 .goto Dragonblight,73.0,73.3,12,0
 .goto Dragonblight,72.90,73.48
->>跑到楼顶，拉上修道院钟绳
+>>伪装起来，跑到楼顶，拉上修道院的钟绳
 .complete 12274,1 
 step
 .goto Dragonblight,73.0,73.9,12,0
 .goto Dragonblight,73.51,74.29,9,0
 .goto Dragonblight,72.3,73.5,20,0
 .goto Dragonblight,74.0,75.9
->>与底层建筑后面的高级修道院院长兰德格伦交谈。与他交谈后，离开大楼，跟随兰德格伦来到悬崖。紧靠着他。途中避开骑士
+>>与底层建筑后面的高级修道院院长兰德格伦交谈。跟他说话后离开大楼，跟着兰德格伦走到悬崖边。紧靠着他。途中避开骑士
 >>不要变身，因为你会失去伪装 << Druid
 >>如果你丢掉了伪装，回到斯凯利，要求换一个新的
 .complete 12274,2 
 .skipgossip
 step
 .goto Dragonblight,71.79,83.42
-.use 37304 >>跑回岸边。在船的后帆上使用袋子里的燃烧的水（抬头看）。
+.use 37304 >>跑回岸边。在船的后帆上使用袋子里的燃烧的水(抬头看)。
 .complete 12243,1 
 step
 .goto Dragonblight,71.8,83.5,9,0
 .goto Dragonblight,71.7,83.4,9,0
 .goto Dragonblight,71.9,83.4,9,0
 .goto Dragonblight,71.86,84.00
->>下楼去。杀死Shely上尉。抢劫他的Rutters
+>>下楼杀了谢莉上尉。抢劫他的Rutters
 .complete 12243,2 
+.unitscan Captain Shely
 step
 .goto Dragonblight,73.58,73.54
 >>返回Skully
@@ -39952,7 +42612,7 @@ step
 step
 .goto Dragonblight,68.2,76.4,15,0
 .goto Dragonblight,68.28,76.99
->>进入房子。在二楼，从桌子上抢走日记
+>>在房子的二楼，从桌子上抢走日记。
 .complete 12283,1 
 step
 #questguide
@@ -39978,6 +42638,7 @@ step
 .complete 12285,1 
 .isOnQuest 12285
 step
+#questguide
 #completewith next
 .hs >>从心脏到毒液
 .cooldown item,6948,>0
@@ -39988,11 +42649,13 @@ step
 .goto Dragonblight,76.77,63.28,12,0
 .goto Dragonblight,76.77,63.28
 step
+.groundgoto Dragonblight,70.52,63.17,50,0
 .goto Dragonblight,67.3,56.1
 .use 36847 >>对一个冰精灵造成35%或更少生命值的伤害。用你袋子里的冰霜宝石
 .complete 12127,1 
 step
->>骑马前往青铜龙之剑。在你的袋子里放上永恒沙漏，然后保护它免受海浪的侵袭
+.goto Dragonblight,71.19,40.94
+.use 37923 >>骑马前往青铜龙之剑。在你的袋子里放上永恒沙漏，然后保护它免受敌人的侵袭
 .cast 49890
 .timer 175,Hourglass of Eternity
 .complete 12470,1 
@@ -40003,7 +42666,7 @@ step
 .home >>把你的炉子放在温姆雷斯特神庙
 step
 .goto Dragonblight,57.90,54.17
-.fly >> 与Tariolstrasz对话，飞到神庙顶部
+.fly >>与Tariolstrasz对话，飞到神庙顶部
 .maxlevel 79
 .skipgossip 1
 step
@@ -40025,19 +42688,19 @@ step
 
 step << Mage/Priest/Paladin
 #completewith Agmar
-.goto Dragonblight,60.3,51.6,20 >> 投下慢速下降，上马，然后跳下平台 << Mage
-.goto Dragonblight,60.3,51.6,20 >> 跳下平台，当你接近底部时施放漂浮物 << Priest
-.goto Dragonblight,60.3,51.6,20 >> 跳下平台，然后在接近底部时施放神盾或保护祝福 << Paladin
+.goto Dragonblight,60.3,51.6,20 >>投下慢速下降，上马，然后跳下平台 << Mage
+.goto Dragonblight,60.3,51.6,20 >>跳下平台，当你接近底部时施放漂浮物 << Priest
+.goto Dragonblight,60.3,51.6,20 >>跳下平台，然后在接近底部时施放神盾或保护祝福 << Paladin
 .itemcount 17056,1 << Mage/Priest
 step
 #completewith next
 .goto Dragonblight,59.53,53.31
-.fly >> 与Torasrasza对话，飞回地面
+.fly >>与Torasrasza对话，飞回地面
 .maxlevel 79
 .skipgossip 1
 .itemcount 17056,<1 << Mage/Priest
 step << !Paladin
-.goto Dragonblight,60.3,51.6,20 >> 前往Flight Master
+.goto Dragonblight,60.3,51.6,20 >>前往Flight Master
 .isOnQuest 12110
 .itemcount 17056,<1 << Mage/Priest
 step
@@ -40049,7 +42712,7 @@ step
 .goto Dragonblight,38.05,46.22
 >>进入大楼。与Aethas交谈
 .turnin 12110 >>在终点转弯
-.accept 12122 >> 接受获得受众
+.accept 12122 >>接受获得受众
 step
 >>与Juktok交谈
 .goto Dragonblight,36.61,46.57
@@ -40085,9 +42748,11 @@ step
 .accept 12224 >>接受Kor'kron先锋！
 .goto Dragonblight,38.07,46.34
 step
->>前往龙穴。与Kontokanis和Rhokan交谈
+>>前往龙穴。与Kontokanis交谈
 .accept 12144 >>接受害虫控制
 .goto Dragonblight,46.68,33.50
+step
+>>与罗坎交谈
 .turnin 12095 >>转向龙卷风
 .goto Dragonblight,47.20,33.01
 .isOnQuest 12095
@@ -40111,6 +42776,7 @@ step
 .turnin 12097 >>北方天灾萨拉斯特拉
 .goto Dragonblight,47.20,33.01
 step
+.groundgoto Dragonblight,40.78,35.15,30,0
 .goto Dragonblight,37.1,31.8,45,0
 .goto Dragonblight,35.21,30.09
 >>前往内尔塔里昂的Maw。在里面和斯里纳尔交谈
@@ -40145,7 +42811,7 @@ step
 step
 #completewith next
 +当你开始向洞穴前进时，沿着侧面的“出口路线”跳上去。这将为您节省每次45秒的时间。
-.link https://www.youtube.com/watch?v=xYKP3ECePVw >> 单击此处获取如何执行此操作的快速指南。
+.link https://www.youtube.com/watch?v=xYKP3ECePVw >>单击此处获取如何执行此操作的快速指南。
 step
 .goto Dragonblight,34.9,32.0,30,0
 .goto Dragonblight,34.2,31.4,30,0
@@ -40162,7 +42828,7 @@ step
 step
 #completewith next
 +当你开始向洞穴前进时，沿着侧面的“出口路线”跳上去。这将为您节省每次45秒的时间。
-.link https://www.youtube.com/watch?v=xYKP3ECePVw >> 单击此处获取如何执行此操作的快速指南。
+.link https://www.youtube.com/watch?v=xYKP3ECePVw >>单击此处获取如何执行此操作的快速指南。
 step
 .goto Dragonblight,32.8,30.5,50,0
 .goto Dragonblight,33.7,28.7,50,0
@@ -40184,7 +42850,7 @@ step
 step
 #completewith next
 +当你开始向洞穴前进时，沿着侧面的“出口路线”跳上去。这将为您节省每次45秒的时间。
-.link https://www.youtube.com/watch?v=xYKP3ECePVw >> 单击此处获取如何执行此操作的快速指南。
+.link https://www.youtube.com/watch?v=xYKP3ECePVw >>单击此处获取如何执行此操作的快速指南。
 step
 .goto Dragonblight,34.9,32.0,30,0
 .goto Dragonblight,34.2,31.4,30,0
@@ -40203,9 +42869,10 @@ step
 step
 #completewith next
 .goto Dragonblight,35.13,31.65
-.goto Dragonblight,42.26,29.65,50 >> 跳到手的最大手指上。注销，然后重新登录
-.link https://www.youtube.com/watch?v=0r54ZZ1o0W8 >> 单击此处获取指南
+.goto Dragonblight,42.26,29.65,50 >>跳到手的最大手指上。注销，然后重新登录
+.link https://www.youtube.com/watch?v=0r54ZZ1o0W8 >>单击此处获取指南
 step
+.groundgoto Dragonblight,44.50,20.24,75,0
 .goto Dragonblight,40.71,18.06
 >>前往Kor'kron Vanguard。与Saurfang交谈
 .turnin 12224 >>交给Kor'kron先锋队！
@@ -40213,10 +42880,10 @@ step
 step
 #completewith next
 .goto Dragonblight,43.8,17.0
-.fp Kor'kron Vanguard >> 获取Kor'kron Vanguard飞行路线
+.fp Kor'koron Vanguard>>获取Kor'koron Vanguard飞行路线
 .fly Wyrmrest Temple >>飞往温姆雷斯特神庙
+
 step
-#questguide
 .goto Dragonblight,54.8,50.1,70,0
 .goto Dragonblight,56.3,51.0,70,0
 .goto Dragonblight,55.3,52.6,70,0
@@ -40227,17 +42894,17 @@ step
 step
 .goto Dragonblight,57.90,54.17
 >>与Tariolstrasz交谈
-.turnin 12122 >> 上台赢得观众
-.accept 12767 >> 接受与大使交谈
+.turnin 12122 >>上台赢得观众
+.accept 12767 >>接受与大使交谈
 step
+>>在寺庙底层外面与Gollack交谈
 .goto Dragonblight,58.0,55.3,30,0
 .goto Dragonblight,58.9,56.6
-.turnin 12767 >> 转身与大使交谈
-.accept 12461 >> 接受Ruby Dragonshrine的报告
->>在寺庙底层外面与Gollack交谈
+.turnin 12767 >>转身与大使交谈
+.accept 12461 >>接受Ruby Dragonshrine的报告
 step
 .goto Dragonblight,57.90,54.17
-.fly >> 与Tariolstrasz交谈，然后飞到神庙顶部
+.fly >>与Tariolstrasz交谈，然后飞到神庙顶部
 .maxlevel 79
 .skipgossip 1
 step
@@ -40264,7 +42931,7 @@ step
 .accept 12448 >>接受激烈的战斗
 step
 .goto Dragonblight,43.1,51.7
->>杀死在守卫旁边产卵的食尸鬼，以及海浪中的妖怪。如果没有诅咒，向前推进，杀死一个守卫神殿的人
+>>杀死在守卫旁边产卵的食尸鬼和海浪中出现的妖怪。等待一个憎恶以一个到来的波产卵。
 .complete 12448,1 
 .complete 12448,2 
 .goto Dragonblight,45.0,51.6
@@ -40281,7 +42948,7 @@ step
 .goto Dragonblight,45.5,47.2,80,0
 .goto Dragonblight,46.1,52.6,80,0
 .goto Dragonblight,49.3,49.7
->>掠夺龙之林地面上的红色小水晶（红宝石橡子）。它们最容易在树旁边找到
+>>掠夺龙之林地面上的红色小水晶(红宝石橡子)。它们最容易在树旁边找到
 >>在燃烧的龙尸体上使用红宝石橡子
 .collect 37727,6,12449,1,-1 
 .complete 12449,1 
@@ -40318,57 +42985,57 @@ step
 .accept 12769 >>接受Wyrmrest Temple的管家
 step << Druid
 #completewith DruidTrain2
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 .xp <72,1
 step << Druid
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.train 48464 >> 训练你的职业咒语
+.train 48464 >>训练你的职业咒语
 .xp <72,1
 step << Druid
 #label DruidTrain2
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.train 53307 >> 训练你的职业咒语
+.train 53307 >>训练你的职业咒语
 .xp <74,1
 step << DK
 #completewith DKTrain2
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 .xp <72,1
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49940 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49940 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <72,1
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49904 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49904 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <73,1
 step << DK
 #label DKTrain2
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49929 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49929 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <74,1
 step << Mage
 #completewith MageTrain2
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 .xp <72,1
 step << Mage
 .goto Undercity,85.1,10.0
-.train 42930 >> 训练你的职业咒语
+.train 42930 >>训练你的职业咒语
 .xp <72,1
 step << Mage
 .goto Undercity,85.1,10.0
-.train 43019 >> 训练你的职业咒语
+.train 43019 >>训练你的职业咒语
 .xp <73,1
 step << Mage
 #label MageTrain2
 .goto Undercity,85.1,10.0
-.train 42939 >> 训练你的职业咒语
+.train 42939 >>训练你的职业咒语
 .xp <74,1
 step
 #completewith next
@@ -40383,8 +43050,6 @@ step
 .turnin 12124 >>上车通知女王
 .accept 12435 >>接受向Devrestasz勋爵的报告
 .goto Dragonblight,59.84,54.65
-.turnin 12419 >>交出红宝石龙之剑的命运
-.goto Dragonblight,59.83,54.66
 .skipgossip 1
 step
 .goto Dragonblight,59.19,54.34
@@ -40393,12 +43058,12 @@ step
 .accept 12372 >>接受保卫Wyrmrest Temple
 step
 #completewith next
-.goto Dragonblight,58.28,53.73
-.vehicle 27629 >> 与寺庙中间一层的一名Wyrmrest Defender交谈
+.goto Dragonblight,58.36,55.21
+.vehicle 27629 >>与寺庙中间一层的一名Wyrmrest Defender交谈
 .skipgossip
 step
 #completewith next
->>使用“火焰呼吸”（1）和“献祭”（2）杀死龙神周围的龙。使用“更新”（3）治疗你的龙。冷却时使用“燃烧速度”（4）加快移动速度。确保在暴徒死亡时你离他们100码以内，否则你就得不到贷款
+>>使用“火焰呼吸”(1)和“献祭”(2)杀死龙神周围的龙。使用“更新”(3)治疗你的龙。冷却时使用“燃烧速度”(4)加快移动速度。确保在暴徒死亡时你离他们100码以内，否则你就得不到贷款
 .complete 12372,1 
 .complete 12372,2 
 .goto Dragonblight,55.2,54.3,100,0
@@ -40406,12 +43071,12 @@ step
 .goto Dragonblight,55.2,66.7
 .isOnQuest 12372
 step
->>在地面附近的天光上使用“破坏Azure龙神之剑”（5）来破坏神殿的稳定
+>>在地面附近的天光上使用“破坏Azure龙神之剑”(6)来破坏神殿的稳定
 .complete 12372,3 
 .goto Dragonblight,55.8,65.9
 .isOnQuest 12372
 step
->>使用“火焰呼吸”（1）和“献祭”（2）杀死龙神周围的龙。使用“更新”（3）治疗你的龙。冷却时使用“燃烧速度”（4）加快移动速度。确保在暴徒死亡时你离他们100码以内，否则你就得不到贷款
+>>使用“火焰呼吸”(1)和“献祭”(2)杀死龙神周围的龙。使用“更新”(3)治疗你的龙。冷却时使用“燃烧速度”(4)加快移动速度。确保在暴徒死亡时你离他们100码以内，否则你就得不到贷款
 .complete 12372,1 
 .complete 12372,2 
 .goto Dragonblight,55.2,54.3,100,0
@@ -40431,31 +43096,40 @@ step << skip
 .use 44450
 step
 .goto Dragonblight,46.68,33.50
->>从寺庙的中间一层往下掉到地上。前往Kontokanis并与之交谈
+>>从寺庙的中间一层往下掉到地上。前往龙之瀑布，与Kontokanis交谈
 .turnin 12144 >>移交害虫控制
 .accept 12145 >>接受峡谷追逐
+.isOnQuest 12144
+step
+#completewith next
+.goto Dragonblight,42.31,38.96,60,0
+.goto Dragonblight,42.91,41.63
+.complete 12145,1 
+.isOnQuest 12145
 step
 .goto Dragonblight,42.31,38.96,60,0
 .goto Dragonblight,42.91,41.63
->>杀死冰拳在峡谷中。掠夺镶有徽章的战斗号角。在您的包中点击它
+.use 36856 >>杀死冰拳在峡谷中。掠夺镶有徽章的战斗号角。在您的包中点击它
 .collect 36856,1,12147,1 
-.complete 12145,1 
 .accept 12147 >>接受令人不安的暗示
 .unitscan Icefist
 step
 .goto Dragonblight,46.68,33.50
 >>与Kontokanis交谈
 .turnin 12145 >>转入峡谷追逐
+.isQuestComplete 12145
 step
 .goto Dragonblight,48.44,24.12
 >>与地面上的地精尸体交谈
 .accept 12469 >>接受返回发件人
 step
->>前往喷嘴防锈柱。与Narf、Zivlix和Xink交谈
+>>前往喷嘴防锈柱。与Narf和Zivlix交谈
 .accept 12043 >>接受喷嘴防锈保护
 .goto Dragonblight,54.46,23.60
 .accept 12045 >>接受刨冰
 .goto Dragonblight,54.70,23.27
+step
+>>与辛克交谈
 .turnin 12469 >>交回发件人
 .accept 12044 >>接受库存
 .goto Dragonblight,55.00,23.42
@@ -40477,12 +43151,12 @@ step
 .complete 12045,1 
 step
 .goto Dragonblight,54.46,31.18
->>前往龙荒。使用红宝石灯塔安装红龙。使用“吞噬火球”（2）杀死山顶上的闪电使者泰西，然后在他下马后杀死大内克洛德·安提俄克。抢走掉在他下面的镰刀
+>>前往龙荒原，使用红宝石灯塔骑上红龙。使用“吞噬火球”(2)杀死山顶上的闪电使者泰西，然后在他下马后杀死大内克洛德·安提俄克。抢走掉在他下面的镰刀
 .complete 12498,2 
 .use 38302
 step
 .goto Dragonblight,55.78,34.34
->>在Ruby Beacon Drake上使用“吞噬火球”（2）杀死整个采石场的食尸鬼。在食尸鬼的近战范围内使用“吞食食尸鬼”（3）恢复生命值和法力。
+>>在Ruby Beacon Drake上使用“吞噬火球”(2)杀死整个采石场的食尸鬼。在食尸鬼的近战范围内使用“吞食食尸鬼”(3)恢复生命值和法力。
 .complete 12498,1 
 .use 38302
 step
@@ -40561,27 +43235,20 @@ step
 #sticky
 #label harpies
 .goto Dragonblight,45.53,10.67,0,0
->>使用切碎机内的“收集木材”（6）从该区域周围的树木中收获木材
+>>使用切碎机内的“收集木材”(6)从该区域周围的树木中收获木材
 .complete 12050,1 
 .use 36734
-.use 38302
 step
 .goto Dragonblight,45.8,12.5,70,0
 .goto Dragonblight,44.6,7.8,70,0
 .goto Dragonblight,46.6,10.5
->>使用你袋子里的辛克碎纸机控制装置来控制一个小妖精碎纸机。垃圾邮件使用“扭曲刀片”（1）和“发射锯片”（2）杀死该地区的科尔德林夫人和科尔德林哈比。使用“Hustle”（3）加快移动速度。如果需要治疗碎纸机，请使用“紧急维修工具”（4）。你也可以在碎纸机外面杀了Harpies
+>>使用你袋子里的辛克碎纸机控制装置来控制一个小妖精碎纸机。垃圾邮件使用“扭曲刀片”(1)和“发射锯片”(2)杀死该地区的科尔德林夫人和科尔德林哈比。使用“Hustle”(3)加快移动速度。如果需要治疗碎纸机，请使用“紧急维修工具”(4)。你也可以在碎纸机外面杀了Harpies
 .complete 12052,1 
 .goto Dragonblight,47.3,18.6,70,0
 .goto Dragonblight,52.8,19.1
 .complete 12052,2 
 .use 36734
-.use 38302
 .unitscan Mistress of the Coldwind
-step
-#completewith Zort
-+从这一点开始，你可以用包里的红宝石灯塔召唤一架飞行坐骑穿越龙骨荒野的中部
-.use 38302
-.maxlevel 79
 
 step
 #requires harpies
@@ -40615,7 +43282,7 @@ step
 .accept 12079 >>接受停车场
 step
 .goto Dragonblight,60.24,16.51
->>在峡谷中找到冰心乔蒙加。将它们储存起来，直到你受到腐蚀性酸的影响。一旦你有了debuff，使用Zort的刮刀收集它
+>>在峡谷中找到冰心乔蒙加。把它们放在罐子里，直到你被它们的腐蚀性酸成分感染为止。一旦你有了debuff，使用Zort的刮刀收集它
 .complete 12076,1 
 .use 36775
 step
@@ -40638,9 +43305,14 @@ step
 .complete 13090,1 
 .isOnQuest 13090
 step
+#completewith Rattlebore
+.use 36770
+>>在您的包中使用佐特的保护性长生不老药，帮助您免受乔蒙加人的伤害
+.itemcount 36770,1
+step
 #completewith next
 .goto Dragonblight,59.8,15.5,60,0
-.goto Dragonblight,57.18,12.17,25 >> 前往冰心洞穴
+.goto Dragonblight,57.18,12.17,25 >>前往冰心洞穴
 step
 #sticky
 #label JormungarCave
@@ -40656,6 +43328,7 @@ step
 .goto Dragonblight,50.68,17.79
 >>在冰心洞穴的尽头杀死响尾蛇。这个任务很困难。如果需要，为他找一个小组。如果你找不到一个团队或是独自一人，请跳过这一步。
 .complete 12080,1 
+.isOnQuest 12080
 step
 .goto Dragonblight,53.8,11.4,60,0
 .goto Dragonblight,52.7,17.3,60,0
@@ -40670,7 +43343,7 @@ step
 .goto Dragonblight,46.49,20.38,-1
 >>跳到该地区的一块蓝色岩石上。注销，然后重新登录
 .vehicle >>用你包里的红宝石灯塔召唤一架飞行坐骑飞回佐特和科哈尔
-.link https://www.youtube.com/watch?v=oRQQMuodz4A >> 单击此处获取指南
+.link https://www.youtube.com/watch?v=oRQQMuodz4A >>单击此处获取指南
 .use 38302
 step
 #requires JormungarCave
@@ -40678,45 +43351,40 @@ step
 .turnin 12078 >>转入蠕虫牧马人
 .goto Dragonblight,59.40,18.19
 .turnin 12079 >>转入停车场
+step
+>>与Ko'char交谈
 .turnin 12080 >>上交真正的大蠕虫
 .goto Dragonblight,58.97,17.82
 .isQuestComplete 12080
-step
-#requires JormungarCave
->>返回Zort和Ko'char
-.turnin 12078 >>转入蠕虫牧马人
-.goto Dragonblight,59.40,18.19
-.turnin 12079 >>转入停车场
-.goto Dragonblight,58.97,17.82
 step
 #sticky
 #label RBWorm
 .abandon 12080 >>放弃真正的大蠕虫
 step << Druid
 #completewith next
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 .xp <73,1
 step << Druid
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.train 53307 >> 训练你的职业咒语
+.train 53307 >>训练你的职业咒语
 .xp <74,1
 step << DK
 #completewith DKTrain3
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 .xp <73,1
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49904 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49904 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <73,1
 step << DK
 #label DKTrain3
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49929 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49929 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <74,1
 step
 #completewith next
@@ -40727,19 +43395,16 @@ step
 .turnin 12147 >>交出令人不安的含义
 .accept 12148 >>接受一种
 step
-#completewith RubyWings
-+从这一点开始，你可以用包里的红宝石灯塔召唤一架飞行坐骑穿越龙骨荒野的中部
-.use 38302
-.maxlevel 79
-step
 .goto Dragonblight,53.7,60.0,60,0
 .goto Dragonblight,50.8,59.1,60,0
 .goto Dragonblight,49.1,57.8,60,0
 .goto Dragonblight,53.7,60.0
+.use 38302 >>使用Ruby Beacon前往Bonesunder
 >>杀死Bonesunder，并为之掠夺他的角。当他开始施放“骨裂”法术时，躲开它。他在附近巡逻
 .complete 12148,1 
 .unitscan Bonesunder
 step
+>>返回温姆雷斯特神庙，与奥拉斯扎交谈
 .goto Dragonblight,60.00,55.2
 .turnin 12148 >>上缴一种
 step << skip
@@ -40751,87 +43416,53 @@ step
 >>与寺庙顶部的Alexstrasza交谈
 .turnin 12498 >>打开红宝石翅膀
 .accept 12500 >>接受返回Angrathar
-.goto Dragonblight,59.54,53.35
+.goto Dragonblight,59.83,54.63
 step
-#completewith next
 .goto Dragonblight,59.54,53.35
-.fly >> 与Torastrasza对话，飞到神庙的最底层
+.fly >>与Torastrasza对话，飞到寺庙的最底层，因为我们没有龙兽了。
 .skipgossip
 step
 #completewith next
-.goto Dragonblight,76.5,62.3
-.fly Kor'kron Vanguard >>飞往Kor'kron Vanguard
+.goto Dragonblight,60.33,51.51
+.fly Kor'koron Vanguard >>飞往Kor'koron Vanguard
 step
-.goto Dragonblight,40.7,18.2
+.goto Dragonblight,40.71,18.07
 >>返回Kor'kron Vanguard的Saurfang。如果你不想看电影，准备按Escape
 .turnin 12500 >>转入Angrathar
+
 step
+#questguide
 .goto Dragonblight,38.4,19.2
 >>在愤怒之门与Alexstraza交谈
 .accept 13242 >>接受黑暗搅拌
 step
-.goto Dragonblight,38.2,18.7
->>抢劫地上的钉子项圈
+#questguide
+.goto Dragonblight,38.16,18.70
+>>在地面上掠夺索方的战斗盔甲。
 .complete 13242,1 
 step
+#questguide
 #completewith Saurfang
 .goto Dragonblight,43.8,16.9
-.fly Warsong Hold >> 飞向战歌要塞
+.fly Warsong Hold >>飞向战歌要塞
 step
+#questguide
 >>与Orn Tenderhoof交谈
 .turnin 13090 >>上北方烹饪课
 .goto BoreanTundra,41.98,54.11
 .isQuestComplete 13090
 .skill cooking,<350,1
 step
+#questguide
 #label Saurfang
 .goto BoreanTundra,41.4,53.7
 >>与战歌要塞底层的索方交谈
 .turnin 13242 >>在黑暗中翻搅
 .accept 13257 >>接受战争先驱
-step << !Mage
+step
+#questguide
 .goto BoreanTundra,41.5,53.8
-.zone Durotar >> 从Saurfang后面的入口到Orgrimmar
-step << Mage
-.zone Orgrimmar >> 电传至Orgrimmar
-step << Mage
-.goto Orgrimmar,38.4,86.1
-.train 43019 >>下楼去。训练你的职业咒语
-.xp <73,1
-step << Mage
-#label MageTrain2
-.goto Orgrimmar,38.4,86.1
-.train 42939 >>下楼去。训练你的职业咒语
-.xp <74,1
-step << Shaman/Paladin
-#completewith ShPaTraining
-.goto Orgrimmar,40.5,36.9,25 >>输入Grommash Hold
-step << Shaman
-.goto Orgrimmar,38.6,36.0
-.train 49237 >> 训练你的职业咒语
-.xp <73,1
-step << Shaman
-.goto Orgrimmar,38.6,36.0
-.train 49270 >> 训练你的职业咒语
-.xp <74,1
-step << Shaman
-#label ShPaTraining
-.goto Orgrimmar,38.6,36.0
-.train 49280 >> 训练你的职业咒语
-.xp <75,1
-step << Paladin
-.goto Orgrimmar,32.3,35.7
-.train 48931 >> 训练你的职业咒语
-.xp <73,1
-step << Paladin
-.goto Orgrimmar,32.3,35.7
-.train 48805 >> 训练你的职业咒语
-.xp <74,1
-step << Paladin
-#label ShPaTraining
-.goto Orgrimmar,32.3,35.7
-.train 48818 >> 训练你的职业咒语
-.xp <75,1
+.zone Durotar >>从索尔芳旁边的入口到奥格瑞玛
 step
 #questguide
 .goto Orgrimmar,63.6,38.2,30,0 << Hunter/Warrior
@@ -40841,6 +43472,7 @@ step
 .turnin 13257 >>交给战争先驱
 .accept 13266 >>接受无悔的生活
 step
+#questguide
 #label end
 .goto Orgrimmar,63.6,38.2,30,0 << Hunter/Warrior
 .goto Orgrimmar,40.5,36.9,25,0 << !Shaman !Paladin
@@ -40851,8 +43483,7 @@ step
 #questguide
 #completewith next
 .goto Orgrimmar,33.4,36.6
-.zone Tirisfal Glades >> 将门户带到幽暗城
-.isOnQuest 13266
+.zone Tirisfal Glades >>将门户带到幽暗城
 step
 #questguide
 .goto Tirisfal Glades,61.7,62.9
@@ -40862,86 +43493,109 @@ step
 step
 #questguide
 .goto Undercity,54.5,89.6
->>与萨尔交谈
+>>与萨尔对话，开始地下城战役。完成活动并提交任务。
 .turnin 13267 >>交出地下城之战
+.skipgossip
 step << !Mage
 #questguide
 .goto Undercity,56.1,90.8
-.zone Durotar >> 把入口带到奥格瑞玛
+.zone Durotar >>把入口带到奥格瑞玛
 .zoneskip Dragonblight
 step << Mage
 #questguide
-.zone Orgrimmar >> 电传至Orgrimmar
+.zone Orgrimmar >>电传至Orgrimmar
 .zoneskip Dragonblight
 
 step << Priest
 .goto Orgrimmar,35.6,87.8
-.train 48126 >> 训练你的职业咒语
+.train 48126 >>训练你的职业咒语
 .xp <74,1
+.isQuestTurnedIn 13267
 step << Priest
 .goto Orgrimmar,35.6,87.8
-.train 48124 >> 训练你的职业咒语
+.train 48124 >>训练你的职业咒语
 .xp <75,1
+.isQuestTurnedIn 13267
 step << Rogue
 .goto Orgrimmar,44.0,54.6
-.train 48667 >> 训练你的职业咒语
+.train 48667 >>训练你的职业咒语
 .xp <73,1
+.isQuestTurnedIn 13267
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.train 47892 >> 训练你的职业咒语
+.train 47892 >>训练你的职业咒语
 .xp <74,1
+.isQuestTurnedIn 13267
 step << Hunter/Warrior
 #completewith HuWaTraining
-.goto Orgrimmar,63.6,38.2,30 >> 进入荣誉谷
+.goto Orgrimmar,63.6,38.2,30 >>进入荣誉谷
 .xp <73,1
+.isQuestTurnedIn 13267
 step << Hunter
 .goto Orgrimmar,66.1,18.5
-.train 49044 >> 训练你的职业咒语
+.train 49044 >>训练你的职业咒语
 .xp <73,1
+.isQuestTurnedIn 13267
 step << Hunter
 .goto Orgrimmar,66.1,18.5
-.train 61846 >> 训练你的职业咒语
+.train 61846 >>训练你的职业咒语
 .xp <74,1
+.isQuestTurnedIn 13267
 step << Hunter
 #label HuWaTraining
 .goto Orgrimmar,66.1,18.5
-.train 61005 >> 训练你的职业咒语
+.train 61005 >>训练你的职业咒语
 .xp <75,1
+.isQuestTurnedIn 13267
 step << Warrior
 #label HuWaTraining
 .goto Orgrimmar,76.9,32.6,30,0
 .goto Orgrimmar,79.8,31.4
-.train 47470 >> 训练你的职业咒语
+.train 47470 >>训练你的职业咒语
 .xp <73,1
+.isQuestTurnedIn 13267
 step << Warrior
 .goto Orgrimmar,76.9,32.6,30,0
 .goto Orgrimmar,79.8,31.4
-.train 55694 >> 训练你的职业咒语
+.train 55694 >>训练你的职业咒语
 .xp <75,1
-step
-.hs >>壁炉到温姆雷斯特神庙
-.zoneskip Dragonblight
-.cooldown item,6948,>0
+.isQuestTurnedIn 13267
 step
 .goto Orgrimmar,53.8,48.0
-.zone Dragonblight >> 贫民窟壁炉到温姆雷斯特神庙。为此，输入Ragefire Chasm，然后将下面的链接复制粘贴到聊天中。等待1分钟警告
-.link /run InviteUnit("a");C_Timer.After(1,function() LeaveParty() end) >> 单击此处
+.zone Dragonblight >>贫民窟壁炉到温姆雷斯特神庙。为此，输入Ragefire Chasm，然后将下面的链接复制并粘贴到聊天中。等待1分钟警告
+.link /run InviteUnit("a");C_Timer.After(1,function() LeaveParty() end) >>单击此处
+.cooldown item,6948,<0
 step
-#completewith next
-.goto Dragonblight,60.32,51.55
+.hs >>壁炉到温姆雷斯特神庙
+.cooldown item,6948,>0
+.zoneskip Dragonblight
+step
+#completewith WrothXd
+.goto Dragonblight,60.32,51.55,-1
+.goto Dragonblight,43.85,16.89,-1
 .fly Venomspite >>飞往Venomwhite
+step
+.goto Dragonblight,25.61,51.30,0
+.loop 50,Dragonblight,87.90,41.21,87.00,42.19,86.45,40.12,85.51,41.24,83.78,41.98,84.14,40.72,84.49,37.06,87.64,35.43,87.90,41.21
+.xp 73 >>将鲜红Onslaught磨碎至73级。或者，进行Azjol’nerub及其任务
 step
 .goto Dragonblight,76.77,63.28,12,0
 .goto Dragonblight,76.77,63.28
 >>与怨恨中的愤怒交谈
 .turnin 12488 >>交给需要你的高级执行官
+.isOnQuest 12488
+step
+#label WrothXd
+.goto Dragonblight,76.77,63.28,12,0
+.goto Dragonblight,76.77,63.28
+>>与怨恨中的愤怒交谈
 .accept 12487 >>接受征服保持，但要小心！
 step
 .goto GrizzlyHills,20.8,64.6
-.zone Grizzly Hills >> 前往灰熊山
+.zone Grizzly Hills >>前往灰熊山
 ]])
 RXPGuides.RegisterGuide([[
-#version 5
+#version 9
 #wotlk
 #group RestedXP 部落 70-80
 << Horde
@@ -40951,13 +43605,12 @@ step
 #completewith Talismans
 .goto GrizzlyHills,21.2,64.5,20,0
 .goto GrizzlyHills,20.8,64.6
->>在征服据点内与莱库交谈
-.home >> 将您的炉石设置为征服据点
+>>前往征服之旅，与莱库通话
+.home >>将您的炉石设置为征服据点
 step
 .goto GrizzlyHills,20.7,64.2
->>前往Grizzly Hills的征服据点。与克伦娜交谈
+>>与克伦娜交谈
 .turnin 12487 >>交给征服保持，但要小心！
-.accept 12468 >>接受征服者的任务
 .isOnQuest 12487
 step
 .goto GrizzlyHills,20.7,64.2
@@ -40967,12 +43620,12 @@ step
 .goto GrizzlyHills,21.0,64.1
 >>与Nazgrim交谈
 .turnin 12468 >>交出征服者的任务
-.accept 12256 >>接受Flamebinders的秘密
 .accept 12257 >>接受实力展示
+.accept 12256 >>接受Flamebinders的秘密
 step
 .goto GrizzlyHills,22.0,64.5
 >>与克雷交谈
-.fp Conquest Hold >> 获取征服保持飞行路径
+.fp Conquest Hold >>获取征服保持飞行路径
 step
 >>与Jun’ik和Lorkran交谈
 .accept 12175 >>接受灰虫皮
@@ -40985,21 +43638,21 @@ step
 .goto GrizzlyHills,25.2,70.2,0
 .goto GrizzlyHills,24.9,67.2,0
 .goto GrizzlyHills,26.0,66.9,0
->> 杀死格雷姆斯猎人和大角鹿。为了他们的藏身之地和鹿肉而抢劫他们
+>>杀死格雷姆斯猎人和大角鹿。为了他们的藏身之地和鹿肉而抢劫他们
 .complete 12175,1 
 .complete 12436,1 
 step
 #pvp
 >>乘车前往创业湾。与Khazgar、Kaggrum、Gurtor和Ragetotem交谈
->>注意：这个任务（并将其保存在你的任务日志中）会标记你为PVP。如果你想跳过它
-.accept 12317 >>接受让他们远离
-.goto GrizzlyHills,10.1,77.3
-.accept 12315 >>接受粉碎队长布莱特沃特！
-.goto GrizzlyHills,10.0,77.2
+>>注意：这个任务(并将其保存在你的任务日志中)会标记你为PVP。如果你想跳过它
 .accept 12433 >>接受寻找溶剂
 .goto GrizzlyHills,11.2,76.6
 .accept 12324 >>接受Smoke’Em Out
 .goto GrizzlyHills,11.4,76.7
+.accept 12317 >>接受让他们远离
+.goto GrizzlyHills,10.1,77.3
+.accept 12315 >>接受粉碎队长布莱特沃特！
+.goto GrizzlyHills,10.0,77.2
 
 step
 #completewith Brightwater
@@ -41007,21 +43660,21 @@ step
 .goto GrizzlyHills,14.6,76.3,40,0
 .goto GrizzlyHills,16.5,76.5,40,0
 .goto GrizzlyHills,18.0,79.6,0
-.use 37621 >> 用你袋子里的烟雾弹对付大楼里的创业公司流浪者。你可以用身体拉动它们，以便更好地堆叠炸弹
+.use 37621 >>用你袋子里的烟雾弹对付大楼里的创业公司流浪者。你可以用身体拉动它们，以便更好地堆叠炸弹
 .complete 12324,1 
 .isOnQuest 12324
 step
 #completewith Smoke
 #pvp
 .goto GrizzlyHills,16.6,78.3,0
->>在冒险湾杀死威斯特福尔旅海军陆战队（或联盟玩家）
+>>在冒险湾杀死威斯特福尔旅海军陆战队(或联盟玩家)
 .complete 12317,1 
 .isOnQuest 12317
 step
 #pvp
 #questguide
 >>查看风险湾是否由联盟或部落控制。如果由联盟控制，请跳过此步骤
->>注意：这个任务（并将其保存在你的任务日志中）会标记你为PVP。如果你想跳过它
+>>注意：这个任务(并将其保存在你的任务日志中)会标记你为PVP。如果你想跳过它
 .goto GrizzlyHills,14.8,86.6
 .accept 12432 >>接受红色火箭
 step
@@ -41038,7 +43691,7 @@ step
 #questguide
 #completewith next
 .goto GrizzlyHills,13.7,89.1
-.vehicle >> 前往创业湾码头。进入火箭推进弹头
+.vehicle >>前往创业湾码头。进入火箭推进弹头
 .isOnQuest 12432
 step
 #pvp
@@ -41053,7 +43706,7 @@ step
 #questguide
 >>游回风险湾码头。与Gorlok交谈
 .goto GrizzlyHills,14.8,86.6
-.turnin 12432 >>《骑红火箭》（Riding the Red Rocket）上映
+.turnin 12432 >>《骑红火箭》(Riding the Red Rocket)上映
 .isQuestComplete 12432
 step
 #pvp
@@ -41068,13 +43721,13 @@ step
 .goto GrizzlyHills,18.0,79.6,40,0
 .goto GrizzlyHills,16.5,76.5,40,0
 .goto GrizzlyHills,14.6,76.3
-.use 37621 >> 用你袋子里的烟雾弹对付大楼里的创业公司流浪者。你可以用身体拉动它们，以便更好地堆叠炸弹
+.use 37621 >>用你袋子里的烟雾弹对付大楼里的创业公司流浪者。你可以用身体拉动它们，以便更好地堆叠炸弹
 .complete 12324,1 
 .isOnQuest 12324
 step
 #pvp
 .goto GrizzlyHills,16.6,78.3
->>在冒险湾杀死威斯特福尔旅海军陆战队（或联盟玩家）
+>>在冒险湾杀死威斯特福尔旅海军陆战队(或联盟玩家)
 .complete 12317,1 
 .isOnQuest 12317
 step
@@ -41130,18 +43783,18 @@ step
 .goto GrizzlyHills,25.2,70.2,50,0
 .goto GrizzlyHills,24.9,67.2,50,0
 .goto GrizzlyHills,26.0,66.9
->> 杀死格雷姆斯猎人。抢劫他们的藏身之处
+>>杀死格雷姆斯猎人。抢劫他们的藏身之处
 .complete 12175,1 
 step
 #pvp
 .goto GrizzlyHills,26.4,65.8
 >>与克伦交谈
->>注意：这个任务（并将其保存在你的任务日志中）会标记你为PVP。如果你想跳过它
+>>注意：这个任务(并将其保存在你的任务日志中)会标记你为PVP。如果你想跳过它
 .accept 12170 >>接受Blackriver争吵
 step
 #pvp
 .goto GrizzlyHills,28.5,61.8
->>在黑河杀死琥珀色侦察兵（或联盟玩家）
+>>在黑河杀死琥珀色侦察兵(或联盟玩家)
 .complete 12170,1 
 .isOnQuest 12170
 step
@@ -41151,7 +43804,7 @@ step
 .turnin 12170 >>转入黑河争斗
 .isQuestComplete 12170
 step
-.goto GrizzlyHills,28.8,69.7,80,0
+.groundgoto GrizzlyHills,28.81,69.80,60,0
 .goto GrizzlyHills,31.1,65.4,60,0
 .goto GrizzlyHills,32.0,70.8,60,0
 .goto GrizzlyHills,34.1,62.7,60,0
@@ -41172,7 +43825,7 @@ step
 .complete 12257,1 
 step << Shaman
 #completewith next
-.hs >> 心脏到征服保持
+.hs >>心脏到征服保持
 .cooldown item,6948,>0
 step
 #requires Talismans
@@ -41188,13 +43841,15 @@ step
 .goto GrizzlyHills,22.7,66.2
 step
 #completewith next
+.groundgoto 24.29,80.85,50,0
 .goto GrizzlyHills,26.6,77.8
-.vehicle >> Voldrune的Flamebringer山
+.vehicle >>Voldrune的Flamebringer山
 .skipgossip
 step
 .goto GrizzlyHills,27.6,72.9
 >>塔纳在塔顶。
->>使用Wing Buffet（2）与Molten Fury（3）组合。当其他法术冷却时，喷发火焰呼吸（1）。
+>>使用Wing Buffet(2)与Molten Fury(3)组合。当其他法术冷却时，喷发火焰呼吸(1)。
+>>确保移出他的凌空射门。
 .complete 12259,1 
 step
 .goto GrizzlyHills,21.0,64.1
@@ -41222,77 +43877,77 @@ step
 .goto GrizzlyHills,36.2,67.8
 .use 37830 >>前往森林边缘哨所。为米哈伊尔杂志抢劫暴徒。点击你的包，接受任务
 .collect 37830,1,12423 
-.accept 12423 >> 接受下降到黑暗中
+.accept 12423 >>接受下降到黑暗中
 step
 #requires SilverbrookH
 .goto GrizzlyHills,38.1,69.5,70,0
 .goto GrizzlyHills,46.5,52.5
->> 杀死灰熊。抢劫他们的藏身之处
+>>杀死灰熊。抢劫他们的藏身之处
 .complete 12176,1 
 step << Druid
 #completewith DruidTrain1
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 .xp <74,1
 step << Druid
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.train 53307 >> 训练你的职业咒语
+.train 53307 >>训练你的职业咒语
 .xp <74,1
 step << Druid
 #label DruidTrain1
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.train 48440 >> 训练你的职业咒语
+.train 48440 >>训练你的职业咒语
 .xp <75,1
 step << DK
 #completewith DKTrain1
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 .xp <74,1
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49929 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49929 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <74,1
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49923 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49923 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <75,1
 step << DK
 #label DKTrain1
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49894 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49894 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <76,1
 step << Mage
 #completewith MageTrain1
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 .xp <74,1
 step << Mage
 .goto Undercity,85.1,10.0
-.train 42939 >> 训练你的职业咒语
+.train 42939 >>训练你的职业咒语
 .xp <74,1
 step << Mage
 .goto Undercity,85.1,10.0
-.train 42955 >> 训练你的职业咒语
+.train 42955 >>训练你的职业咒语
 .xp <75,1
 step << Mage
 #label MageTrain1
 .goto Undercity,85.1,10.0
-.train 42920 >> 训练你的职业咒语
+.train 42920 >>训练你的职业咒语
 .xp <76,1
 step
 #completewith next
-.hs >> 心脏到征服保持
+.hs >>心脏到征服保持
 step
 .goto GrizzlyHills,20.7,64.2
 >>在征服据点与克伦娜交谈
-.turnin 12423 >>上交米哈伊尔的日记
-.accept 12424 >>接受Gorgoning
 .turnin 12412 >>交出我敌人的朋友
 .accept 12413 >>接受对Silverbrook的攻击
+.turnin 12423 >>上交米哈伊尔的日记
+.accept 12424 >>接受Gorgoning
 step
 .goto GrizzlyHills,20.9,64.0
 >>与戈根谈谈
@@ -41352,12 +44007,14 @@ step
 .collect 38083,1,11989,1 
 .use 38083
 step
+.goto GrizzlyHills,16.43,47.77
 .use 38083 >>再和德拉库鲁谈谈
 .complete 11989,1 
+.skipgossip 26423,1
+step
 .turnin 11989 >>休战？
 .accept 11990 >>接受视力瓶
 .goto GrizzlyHills,16.43,47.77
-.skipgossip
 step
 .goto GrizzlyHills,15.96,47.79
 >>与阿梅纳交谈。从她那里买一个Imbued小瓶
@@ -41366,7 +44023,7 @@ step
 step
 .goto GrizzlyHills,16.7,43.4,70,0
 .goto GrizzlyHills,12.6,41.4
->>掠夺地上的布鲁斯威德式小植物
+>>抢劫地上的小黑泽伍德灌木
 .complete 11990,2 
 step
 .goto GrizzlyHills,15.30,40.08
@@ -41514,41 +44171,37 @@ step
 >>杀死该地区的Silverbrook Defenders
 .complete 12413,1 
 step
+#questguide
 #pvp
->>前往蓝天伐木营。与Aumana、Lurz、Grekk和Bargok交谈
->>注意：这些任务（并将它们保存在您的任务日志中）将标记您为PVP。如果你愿意，就跳过它们
+>>前往蓝天伐木营。与Aumana、Grekk和Bargok交谈
+>>注意：这些任务(并将它们保存在您的任务日志中)将标记您为PVP。如果你愿意，就跳过它们
 .accept 12288 >>接受压倒一切！
 .goto GrizzlyHills,33.8,32.7
-.accept 12280 >>接受进行维修
-.goto GrizzlyHills,34.3,32.6
 .accept 12270 >>接受粉碎联盟
 .goto GrizzlyHills,34.5,32.5
 .accept 12284 >>接受让Em紧跟其后
 .goto GrizzlyHills,34.5,33.0
+step
+>>与Lurz交谈
+.accept 12280 >>接受进行维修
+.goto GrizzlyHills,34.3,32.6
 step
 #pvp
 #completewith Engineer
 .goto GrizzlyHills,36.2,37.1,0
 .goto GrizzlyHills,32.9,39.9,0
 .goto GrizzlyHills,34.8,42.1,0
->>杀死该地区的威斯特福尔旅步兵（或联盟玩家）。
+>>杀死该地区的威斯特福尔旅步兵(或联盟玩家)。
 .complete 12284,1 
 .isOnQuest 12284
-step
-.goto GrizzlyHills,38.1,32.0,30,0
-.goto GrizzlyHills,37.0,32.4
->>登上蓝天伐木场北侧的水塔
->>进入顶部的小房间，抢走地上的宝石
-.turnin 12042 >>回首古人之心
-.accept 12802 >>接受我的心在你手中
 step
 #pvp
 #completewith WBInfantry
 .goto GrizzlyHills,36.2,37.1,0
 .goto GrizzlyHills,32.9,39.9,0
 .goto GrizzlyHills,34.8,42.1,0
->>进入一个坏掉的碎纸机。使用Overclock（3）加快跑步速度。
->>护送它回到格雷克，使用碎纸机递送（4）。
+>>进入一个坏掉的碎纸机。使用Overclock(3)加快跑步速度。
+>>护送它回到格雷克，使用碎纸机递送(4)。
 .complete 12270,1 
 .isOnQuest 12270
 step
@@ -41570,7 +44223,7 @@ step
 .goto GrizzlyHills,36.2,37.1,70,0
 .goto GrizzlyHills,32.9,39.9,70,0
 .goto GrizzlyHills,34.8,42.1
-.use 37568 >> 使用包里的更新止血带治疗受伤的淫秽者。专注于此（因为任务物品有很长的冷却时间）
+.use 37568 >>使用包里的更新止血带治疗受伤的淫秽者。专注于此(因为任务物品有很长的冷却时间)
 .complete 12288,1 
 .isOnQuest 12288
 step
@@ -41598,7 +44251,7 @@ step
 .goto GrizzlyHills,38.4,42.8,70,0
 .goto GrizzlyHills,39.1,34.8,70,0
 .goto GrizzlyHills,40.1,41.7
->>杀死该地区的威斯特福尔旅步兵（或联盟玩家）。
+>>杀死该地区的威斯特福尔旅步兵(或联盟玩家)。
 .complete 12284,1 
 .isOnQuest 12284
 step
@@ -41608,8 +44261,8 @@ step
 .goto GrizzlyHills,36.2,37.1,0
 .goto GrizzlyHills,32.9,39.9,0
 .goto GrizzlyHills,34.8,42.1,0
->>进入一个坏掉的碎纸机。使用Overclock（3）加快跑步速度。
->>护送它回到格雷克，使用碎纸机递送（4）。
+>>进入一个坏掉的碎纸机。使用Overclock(3)加快跑步速度。
+>>护送它回到格雷克，使用碎纸机递送(4)。
 .complete 12270,1 
 .isOnQuest 12270
 step
@@ -41653,6 +44306,13 @@ step
 .abandon 12284 >>放弃让Em紧跟其后
 .abandon 12288 >>被抛弃了！
 step
+.groundgoto GrizzlyHills,38.1,32.0,30,0
+.goto GrizzlyHills,37.0,32.4
+>>登上蓝天伐木场北侧的水塔
+>>进入顶部的小房间，抢走地上的宝石
+.turnin 12042 >>回首古人之心
+.accept 12802 >>接受我的心在你手中
+step
 #completewith next
 .goto GrizzlyHills,45.0,28.4,0
 >>杀死该地区的Drakkari巨魔。抢走他们的魔力
@@ -41664,61 +44324,61 @@ step
 .accept 12068 >>接受来自尘埃的声音
 step << Druid
 #completewith DruidTrain2
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 .xp <74,1
 step << Druid
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.train 53307 >> 训练你的职业咒语
+.train 53307 >>训练你的职业咒语
 .xp <74,1
 step << Druid
 #label DruidTrain2
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.train 48440 >> 训练你的职业咒语
+.train 48440 >>训练你的职业咒语
 .xp <75,1
 step << DK
 #completewith DKTrain2
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 .xp <74,1
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49929 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49929 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <74,1
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49923 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49923 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <75,1
 step << DK
 #label DKTrain2
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49894 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49894 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <76,1
 step << Mage
 #completewith MageTrain2
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 .xp <74,1
 step << Mage
 .goto Undercity,85.1,10.0
-.train 42939 >> 训练你的职业咒语
+.train 42939 >>训练你的职业咒语
 .xp <74,1
 step << Mage
 .goto Undercity,85.1,10.0
-.train 42955 >> 训练你的职业咒语
+.train 42955 >>训练你的职业咒语
 .xp <75,1
 step << Mage
 #label MageTrain2
 .goto Undercity,85.1,10.0
-.train 42920 >> 训练你的职业咒语
+.train 42920 >>训练你的职业咒语
 .xp <76,1
 step
 #completewith next
-.hs >> 心脏到征服保持
+.hs >>心脏到征服保持
 step
 >>在征服据点与克伦娜和戈根交谈
 .turnin 12178 >>交给Krenna
@@ -41729,14 +44389,15 @@ step
 step
 .goto GrizzlyHills,22.5,62.9
 >>与格雷霍恩交谈
-.accept 12213 >>接受黑暗
 .accept 12207 >>接受Vordrassil的堕落
+.accept 12213 >>接受黑暗
 .accept 12453 >>接受上方的眼睛
 step
->>为征服坑任务线寻找团队。有5个精英任务可以提供大量的快速经验值。只有当你的队伍已经准备好并且与你的任务进度相同时，才能接受这个。（此任务行禁用自动接受）。如果找不到组，请跳过此步骤
+>>为征服坑任务线寻找团队。有5个精英任务可以提供大量的快速经验值。只有当你的队伍已经准备好并且与你的任务进度相同时，才能接受这个。(此任务行禁用自动接受)。如果找不到组，请跳过此步骤
 >>与格伦尼克斯交谈
 .goto GrizzlyHills,22.4,63.8
-.accept 12427,0 >>接受征服坑：熊摔跤！
+.accept 12427,1 >>接受征服坑：熊摔跤！
+.isQuestTurnedIn 12178
 step
 .goto GrizzlyHills,23.5,64.9
 >>进入征服坑。杀死铁皮
@@ -41820,7 +44481,7 @@ step
 step
 #sticky
 #label impeagle
-.use 37877 >> 在该地区的帝王鹰身上使用包中的银羽毛
+.use 37877 >>在该地区的帝王鹰身上使用包中的银羽毛
 .goto GrizzlyHills,32.2,47.5,0,0
 .complete 12453,1 
 step
@@ -41865,6 +44526,7 @@ step
 .complete 12328,1 
 step
 #requires impeagle
+>>返回鲁纳
 .goto GrizzlyHills,44.0,48.0
 .turnin 12328 >>提交Ruuna的请求
 .accept 12327 >>接受脱体体验
@@ -41903,7 +44565,7 @@ step
 #sticky
 #label CampOFP
 .goto GrizzlyHills,65.0,46.9,0,0
-.fp Camp Oneqwah >> 获取Oneqwah营地飞行路线
+.fp Camp Oneqwah >>获取Oneqwah营地飞行路线
 step
 >>前往Oneqwah营地。与索洛克、沃塔克和托马克交谈
 .accept 12415 >>接受《打马人》
@@ -41919,14 +44581,14 @@ step
 #questguide
 .goto GrizzlyHills,65.7,43.3,25,0
 .goto GrizzlyHills,64.9,43.4
->>进入Duskhowl Den（村庄下面的洞穴）。与笼子里的安雅交谈。当萨沙跑进洞穴时，与她交谈
+>>进入Duskhowl Den(村庄下面的洞穴)。与笼子里的安雅交谈。当萨沙跑进洞穴时，与她交谈
 .turnin 12411 >>交上姐姐的誓言
 .accept 12164 >>接受Worg小时
 step
 #requires CampOFP
 .goto GrizzlyHills,65.7,43.3,25,0
 .goto GrizzlyHills,64.9,43.4
->>进入Duskhowl Den（村庄下面的洞穴）。与笼子里的安雅交谈
+>>进入Duskhowl Den(村庄下面的洞穴)。与笼子里的安雅交谈
 .turnin 12411 >>交上姐姐的誓言
 step
 #completewith Thor
@@ -41955,61 +44617,61 @@ step
 .complete 12026,1 
 step << Druid
 #completewith DruidTrain3
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 .xp <74,1
 step << Druid
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.train 53307 >> 训练你的职业咒语
+.train 53307 >>训练你的职业咒语
 .xp <74,1
 step << Druid
 #label DruidTrain3
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.train 48440 >> 训练你的职业咒语
+.train 48440 >>训练你的职业咒语
 .xp <75,1
 step << DK
 #completewith DKTrain3
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 .xp <74,1
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49929 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49929 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <74,1
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49923 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49923 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <75,1
 step << DK
 #label DKTrain3
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49894 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49894 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <76,1
 step << Mage
 #completewith MageTrain3
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 .xp <74,1
 step << Mage
 .goto Undercity,85.1,10.0
-.train 42939 >> 训练你的职业咒语
+.train 42939 >>训练你的职业咒语
 .xp <74,1
 step << Mage
 .goto Undercity,85.1,10.0
-.train 42955 >> 训练你的职业咒语
+.train 42955 >>训练你的职业咒语
 .xp <75,1
 step << Mage
 #label MageTrain3
 .goto Undercity,85.1,10.0
-.train 42920 >> 训练你的职业咒语
+.train 42920 >>训练你的职业咒语
 .xp <76,1
 step
 #completewith next
-.hs >> 心脏到征服保持
+.hs >>心脏到征服保持
 step
 .goto GrizzlyHills,22.5,62.9
 >>返回格雷霍恩
@@ -42021,7 +44683,7 @@ step
 step
 #completewith next
 .goto GrizzlyHills,21.98,64.45
-.fly Camp Oneqwah >> 飞往Oneqwah营地
+.fly Camp Oneqwah >>飞往Oneqwah营地
 step
 >>与Oneqwah营地的Paluna交谈
 .turnin 12026 >>交回损坏的轴颈
@@ -42048,7 +44710,7 @@ step
 step
 #label Grumbald
 .goto GrizzlyHills,66.6,58.8
->> 杀死Grumbald One Eye。抢走他的灵魂气息
+>>杀死Grumbald One Eye。抢走他的灵魂气息
 .complete 12054,1 
 step
 #label Kodian
@@ -42089,39 +44751,42 @@ step
 .complete 12195,1 
 step
 #label Paluna2
->>返回奥涅克瓦营地的帕卢纳、沃塔克和托尔马克。等待Paluna的RP。您可以在这段时间内进行供应商/维修等
+>>返回奥涅克瓦营地的帕卢纳和托尔马克。等待Paluna的RP。您可以在这段时间内进行供应商/维修等
 .turnin 12054 >>交给解密杂志
 .timer 30,Deciphering the Journal RP
 .goto GrizzlyHills,65.2,47.8
 .accept 12073 >>接受重击铁
 .goto GrizzlyHills,65.2,47.7
-.turnin 12195 >>交出意外的“来宾”
-.accept 12165 >>接受一个有趣的计划
-.goto GrizzlyHills,65.2,47.5
 .accept 12058 >>接受符文预言
 .goto GrizzlyHills,65.2,47.8
 step
+>>与沃塔克交谈
+.isOnQuest 12195
+.turnin 12195 >>交出意外的“来宾”
+.accept 12165 >>接受一个有趣的计划
+.goto GrizzlyHills,65.2,47.5
+step
 #completewith mountainhigh
-.use 37716 >> 在你看到的高地野马上，使用你袋子里的闪光弹。
+.use 37716 >>在你看到的高地野马上，使用你袋子里的闪光弹。
 .complete 12415,1 
 step
 #requires Guest4
 #completewith next
 .goto GrizzlyHills,62.3,29.2,120,0
-.goto GrizzlyHills,60.8,20.4,120 >> 骑马向西绕着山走
+.goto GrizzlyHills,60.8,20.4,120 >>骑马向西绕着山走
 step
 #requires Guest4
->> 去山顶。与库伦交谈
+>>去山顶。与库伦交谈
 .goto GrizzlyHills,64.6,15.2,70,0
 .goto GrizzlyHills,65.7,17.8
 .turnin 12074 >>交出权宜之计
 .accept 11982 >>接受雨淋式破坏
 step
->>收集地面上发光的巨石
+>>收集地面上发光的巨石。小心不要摔倒。
 .collect 35734,5,11982,1,-1 
 .goto GrizzlyHills,65.4,13.1,80,0
 .goto GrizzlyHills,67.2,12.2,15,0
-.use 35734 >>将你收集的巨石扔到铁矮人身上5次以下（可以是同一个矮人）。如果需要，收集更多巨石
+.use 35734 >>将收集到的巨石扔到铁矮人身上，扔次数不超过5次(可以是同一个矮人)。如果需要，收集更多巨石
 .complete 11982,1 
 .goto GrizzlyHills,69.0,14.5
 step
@@ -42142,12 +44807,12 @@ step
 .accept 11985 >>接受违约行为
 step
 .goto GrizzlyHills,62.0,12.8
-.use 37716 >> 在你看到的高地野马上，使用你袋子里的闪光弹。
+.use 37716 >>在你看到的高地野马上，使用你袋子里的闪光弹。
 .complete 12415,1 
 step
 #completewith next
 .goto GrizzlyHills,67.7,15.0,15,0
-.goto GrizzlyHills,67.8,15.6,15 >> 跳进下面的水里。小心别死在这里
+.goto GrizzlyHills,67.8,15.6,15 >>跳进下面的水里。小心别死在这里
 step
 #completewith Argrum
 .goto GrizzlyHills,67.2,15.7,0
@@ -42176,17 +44841,17 @@ step
 >>杀死该地区的铁矮人
 .complete 12073,1 
 step
-.goto GrizzlyHills,65.1,19.5,40,0
-.goto GrizzlyHills,60.9,19.8,70,0
+.groundgoto GrizzlyHills,65.1,19.5,40,0
+.groundgoto GrizzlyHills,60.9,19.8,70,0
 .goto GrizzlyHills,65.8,17.8
 >>离开峡谷。返回库伦
 .turnin 11985 >>投案自首
 .accept 12081 >>接受Gavrock
 step << Mage/Priest/Paladin
 #completewith next
-.goto GrizzlyHills,70.5,26.3,150 >> 投掷慢落，上山，然后下山 << Mage
-.goto GrizzlyHills,70.5,26.3,150 >> 跳下山，当你接近山脚时，投掷漂浮物 << Priest
-.goto GrizzlyHills,70.5,26.3,150 >> 跳下山，当你接近底部时，施放神盾或保护祝福 << Paladin
+.goto GrizzlyHills,70.5,26.3,150 >>投掷慢落，上山，然后下山 << Mage
+.goto GrizzlyHills,70.5,26.3,150 >>跳下山，当你接近山脚时，投掷漂浮物 << Priest
+.goto GrizzlyHills,70.5,26.3,150 >>跳下山，当你接近底部时，施放神盾或保护祝福 << Paladin
 .itemcount 17056,1 << Mage/Priest
 step
 >>骑车返回山的西侧。前往哈科尔营地。与Harkor和Kraz交谈 << !Mage !Priest !Paladin
@@ -42230,7 +44895,7 @@ step
 >>杀死紫色圆圈周围的铁符织者。在监督人布鲁农产卵时杀死他。
 .complete 12093,4 
 step
-.goto GrizzlyHills,74.6,37.5
+.goto GrizzlyHills,75.07,37.15
 >>杀死紫色圆圈周围的铁符织者。在监督人洛赫利产卵时杀死他。
 .complete 12093,3 
 step
@@ -42262,7 +44927,7 @@ step
 step
 .goto GrizzlyHills,76.1,41.4,70,0
 .goto GrizzlyHills,66.4,29.7
-.use 36796 >>在你的背包里放上Gavrock的Runebreaker来对付一个Runed Giant。如果它失败了，而巨人仍然怀有敌意，那么再次使用它（直到它变得友好为止）。
+.use 36796 >>在你的背包里放上Gavrock的Runebreaker来对付一个Runed Giant。如果它失败了，而巨人仍然怀有敌意，那么再次使用它(直到它变得友好为止)。
 .complete 12099,1 
 step
 #completewith Harrison
@@ -42270,7 +44935,7 @@ step
 .goto GrizzlyHills,72.6,26.8,0
 .goto GrizzlyHills,70.1,26.7,0
 .goto GrizzlyHills,70.2,23.5,0
->>在该地区杀死（活着的）Drakkari巨魔。抢走他们的魔力
+>>在该地区杀死(活着的)Drakkari巨魔。抢走他们的魔力
 .complete 12114,1 
 .complete 12114,2 
 .collect 36758,5,12120,1 
@@ -42283,6 +44948,7 @@ step
 >>在充满精神的房间里抢劫Drakkari Canopic罐子
 .complete 12116,1 
 step
+.goto GrizzlyHills,69.77,18.23,10
 .goto GrizzlyHills,69.4,18.3
 >>在被水稍微淹没的房间里抢劫Drakkari平板电脑
 .complete 12068,1 
@@ -42305,13 +44971,13 @@ step
 .goto GrizzlyHills,72.6,26.8,70,0
 .goto GrizzlyHills,70.1,26.7,70,0
 .goto GrizzlyHills,70.2,23.5
->>在该地区杀死（活着的）Drakkari巨魔。抢走他们的魔力
+>>在该地区杀死(活着的)Drakkari巨魔。抢走他们的魔力
 .complete 12114,1 
 .complete 12114,2 
 .collect 36758,5,12120,1 
 step
 .goto GrizzlyHills,71.7,26.2
-.use 35797 >>去铜匠那里（不是三只铜锣围着的火）。使用德拉库鲁的灵丹妙药
+.use 35797 >>去铜匠那里(不是三只铜锣围着的火)。使用德拉库鲁的灵丹妙药
 .turnin 12068 >>从尘埃中回荡声音
 
 step
@@ -42353,7 +45019,7 @@ step
 .accept 12121 >>接受在另一边见你
 step
 .goto GrizzlyHills,71.74,26.20
-.use 35797 >>去铜匠那里（不是三只铜锣围着的火）。使用德拉库鲁的灵丹妙药
+.use 35797 >>去铜匠那里(不是三只铜锣围着的火)。使用德拉库鲁的灵丹妙药
 .turnin 12068 >>从尘埃中回荡声音
 
 step
@@ -42366,9 +45032,9 @@ step
 .goto GrizzlyHills,71.4,22.9,30,0
 .goto GrizzlyHills,71.2,21.4,30,0
 .goto GrizzlyHills,69.41,19.48
->>进入德拉基尔金废墟（注：你可以用幽灵形态施放法术）
+>>进入德拉基尔金废墟(注：你可以用幽灵形态施放法术)
 .use 36834 >>在你护送哈里森离开的房间之前进入主房间。与那里的巨魔对话。如果你不知何故失去了“在另一边”的增益效果，请再次使用铜锣
-.link /console ffxDeath 0 >>如果由于鬼影效果而看不到，请复制粘贴此命令（单击此处），然后键入/reload
+.link /console ffxDeath 0 >>如果由于鬼影效果而看不到，请复制粘贴此命令(单击此处)，然后键入/reload
 .turnin 12121 >>转向另一边见
 .accept 12137 >>接受冷静，周一
 step
@@ -42383,7 +45049,7 @@ step
 .complete 12137,2 
 .skipgossip
 step
-.goto GrizzlyHills,73.91,34.12
+.goto GrizzlyHills,73.91,34.12,-1
 >>返回哈科尔营地。与Kraz交谈
 .turnin 12137 >>交上来冷静，周一
 .accept 12152 >>接受Jin’arrak的结局
@@ -42410,57 +45076,57 @@ step
 .complete 12152,1 
 step << Druid
 #completewith DruidTrain4
-.cast 18960 >> 铸造Teleport:Moonglade
+.cast 18960 >>铸造Teleport:Moonglade
 .zoneskip Moonglade
 .xp <75,1
 step << Druid
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.train 48440 >> 训练你的职业咒语
+.train 48440 >>训练你的职业咒语
 .xp <75,1
 step << Druid
 #label DruidTrain4
 .goto Moonglade,52.4,40.6
 >>前往Moonglade
-.train 48443 >> 训练你的职业咒语
+.train 48443 >>训练你的职业咒语
 .xp <77,1
 step << DK
 #completewith DKTrain4
-.cast 50977 >> 铸造死亡之门
+.cast 50977 >>铸造死亡之门
 .zoneskip Eastern Plaguelands
 .xp <75,1
 step << DK
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49923 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49923 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <75,1
 step << DK
 #label DKTrain4
 .goto Eastern Plaguelands,80.3,48.0
 >>穿过死亡之门
-.train 49894 >> 在阿切鲁斯的Amal'Tazad训练你的职业咒语
+.train 49894 >>在阿切鲁斯的Amal'Tazad训练你的职业咒语
 .xp <76,1
 step << Mage
 #completewith MageTrain4
-.zone Undercity >> 传送到地下城
+.zone Undercity >>传送到地下城
 .xp <75,1
 step << Mage
 .goto Undercity,85.1,10.0
-.train 42955 >> 训练你的职业咒语
+.train 42955 >>训练你的职业咒语
 .xp <75,1
 step << Mage
 .goto Undercity,85.1,10.0
-.train 42920 >> 训练你的职业咒语
+.train 42920 >>训练你的职业咒语
 .xp <76,1
 step << Mage
 #label MageTrain4
 .goto Undercity,85.1,10.0
-.train 42985 >> 训练你的职业咒语
+.train 42985 >>训练你的职业咒语
 .xp <77,1
 step
 #completewith next
 .goto GrizzlyHills,20.9,64.5
-.hs >> 心脏到征服保持
+.hs >>心脏到征服保持
 step
 .goto GrizzlyHills,22.5,62.9
 >>返回格雷霍恩
@@ -42469,10 +45135,10 @@ step
 .accept 12241 >>接受摧毁幼树
 .accept 12242 >>接受Vordrassil的种子
 step
->>为征服坑任务线寻找团队。有5个精英任务可以提供大量的快速经验值。只有当你的队伍已经准备好并且与你的任务进度相同时，才能接受这个。（此任务行禁用自动接受）。如果找不到组，请跳过此步骤
+>>为征服坑任务线寻找团队。有5个精英任务可以提供大量的快速经验值。只有当你的队伍已经准备好并且与你的任务进度相同时，才能接受这个。(此任务行禁用自动接受)。如果找不到组，请跳过此步骤
 >>与格伦尼克斯交谈
 .goto GrizzlyHills,22.4,63.8
-.accept 12427,0 >>接受征服坑：熊摔跤！
+.accept 12427,1 >>接受征服坑：熊摔跤！
 step
 .goto GrizzlyHills,23.5,64.9
 >>进入征服坑。杀死铁皮
@@ -42547,11 +45213,11 @@ step
 step
 #completewith next
 .goto GrizzlyHills,22.0,64.43
-.fly Camp Oneqwah >> 飞往Oneqwah营地
+.fly Camp Oneqwah >>飞往Oneqwah营地
 step
 #completewith VSeeds
 .goto GrizzlyHills,65.4,46.9
-.home >> 将您的炉石设置为Oneqwah营地
+.home >>将您的炉石设置为Oneqwah营地
 step
 >>在Oneqwah营地与Soulok、Paluna和Vor'takh交谈
 .turnin 12415 >>交出《骑马人》
@@ -42571,7 +45237,7 @@ step
 step
 .goto GrizzlyHills,50.5,46.0,45,0
 .goto GrizzlyHills,50.7,42.9
-.use 37306 >>输入Vordrassil。跳到树的底部，然后使用底部的绿色火炬
+.use 37306 >>输入Vordrassil。跳到树的底部，使用树附近的绿色火炬
 .complete 12241,1 
 step
 #label VSeeds
@@ -42590,19 +45256,19 @@ step
 #questguide
 #completewith next
 .goto GrizzlyHills,65.0,46.9
-.fly Conquest Hold >> 飞向征服据点
+.fly Conquest Hold >>飞向征服据点
 step
 #questguide
 .goto GrizzlyHills,22.5,62.9
 >>与格雷霍恩交谈
 .turnin 12241 >>交出摧毁幼树
 .turnin 12242 >>交出Vordrassil的种子
-.accept 12236 >> 接受熊神乌尔索克
+.accept 12236 >>接受熊神乌尔索克
 step
 #questguide
 #completewith next
 .goto GrizzlyHills,22.00,64.45
-.fly Camp Oneqwah >> 飞往Oneqwah营地
+.fly Camp Oneqwah >>飞往Oneqwah营地
 step
 #questguide
 .goto GrizzlyHills,52.6,24.0,20,0
@@ -42616,7 +45282,7 @@ step
 >>返回休·格拉斯。询问他
 .complete 12204,1 
 .turnin 12279 >>交出一只食欲旺盛的熊
-.skipgossip
+.skipgossip 26484,1
 step
 .goto GrizzlyHills,73.9,34.1
 >>返回哈科尔营地，与克拉兹交谈
@@ -42684,8 +45350,8 @@ step
 .turnin 12202 >>轮流培养形象
 .accept 12203 >>接受洛肯的命令
 .goto GrizzlyHills,65.2,47.7
-.turnin 12196 >> 从地面向上转弯
-.accept 12197 >> 接受我们拥有的力量
+.turnin 12196 >>从地面向上转弯
+.accept 12197 >>接受我们拥有的力量
 .goto GrizzlyHills,65.1,47.3
 step
 >>进入任一栋大楼。杀死Rune Smith Durar和Rune Smish Kalthorn。抢劫他们的电池
@@ -42695,9 +45361,9 @@ step
 .goto GrizzlyHills,76.83,59.35,-1
 step
 #completewith next
-.cast 48064 >> 上车，然后使用包中的监督伪装工具包。
+.cast 48064 >>上车，然后使用包中的监督伪装工具包。
 step
-.groundgoto GrizzlyHills,78.20,59.20,60,0
+.groundgoto GrizzlyHills,77.70,59.07,40,0
 .goto GrizzlyHills,81.60,60.34
 .cast 3365 >>伪装时不要施放任何法术。骑到最东边的建筑，点击Loken’s Pedestral。不要等待RP事件结束
 .timer 24,Message from Loken RP
@@ -42715,7 +45381,7 @@ step
 .goto GrizzlyHills,74.9,51.3,70,0
 .goto GrizzlyHills,77.5,52.4,70,0
 .goto GrizzlyHills,79.9,56.7
-.use 36936 >>使用包中的傀儡控制单元。在耗尽的战争傀儡出局（30码以内）的情况下杀死闪电哨兵，然后等待它（同样，30码以内
+.use 36936 >>使用包中的傀儡控制单元。在耗尽的战争傀儡出局的情况下杀死闪电哨兵，然后等待其收集哨兵的冲锋(30码以内)
 .complete 12198,1 
 step
 .goto GrizzlyHills,65.1,47.3
@@ -42723,26 +45389,26 @@ step
 .turnin 12198 >>上车…或者我们不上车
 .accept 12199 >>带下铁塔
 step
-.use 36865 >>骑车到顶层，乘电梯到底层。使用傀儡控制单元。使用EMP（2）消除他的无懈可击性，让铁砧（他的宠物）昏迷。垃圾邮件指控粉碎（1）杀死他
+.use 36865 >>骑车到顶层，乘电梯到底层。使用傀儡控制单元。使用EMP(2)消除他的无懈可击性，让铁砧(他的宠物)昏迷。垃圾邮件指控粉碎(1)杀死他
 .complete 12199,1 
 .goto GrizzlyHills,76.4,63.8
-step
+step << DK/Mage/Druid/Shaman
 #completewith next
-.hs >> 炉灶前往Oneqwah营地
+.hs >>炉灶前往Oneqwah营地
 .cooldown item,6948,>0
 step
 .goto GrizzlyHills,65.2,47.5
->>返回营地Oneqwah。与Tormak交谈
+>>返回Oneqwah营地。与Tormak交谈
 .turnin 12199 >>转身放下铁塔
 step
 #completewith end
 .goto GrizzlyHills,65.0,46.9
-.fly Conquest Hold >> 飞到征服据点。
+.fly Conquest Hold >>飞向征服据点
 step
 #questguide
 .goto GrizzlyHills,22.5,62.9
 >>与格雷霍恩交谈
-.turnin 12236 >> 交出熊神乌尔索克
+.turnin 12236 >>交出熊神乌尔索克
 step
 #label end
 .goto GrizzlyHills,22.5,62.9
@@ -42750,10 +45416,11 @@ step
 .turnin 12241 >>交出摧毁幼树
 .turnin 12242 >>交出Vordrassil的种子
 step
->>为征服坑任务线寻找团队。有5个精英任务可以提供大量的快速经验值。只有当你的队伍已经准备好并且与你的任务进度相同时，才能接受这个。（此任务行禁用自动接受）。如果找不到组，请跳过此步骤（这是您最后的机会！）
+>>为征服坑任务线寻找团队。有5个精英任务可以提供大量的快速经验值。只有当你的队伍已经准备好并且与你的任务进度相同时，才能接受这个。(此任务行禁用自动接受)。如果找不到组，请跳过此步骤(这是您最后的机会！)
 >>与格伦尼克斯交谈
 .goto GrizzlyHills,22.4,63.8
-.accept 12427,0 >>接受征服坑：熊摔跤！
+.accept 12427,1 >>接受征服坑：熊摔跤！
+.isQuestTurnedIn 12178
 step
 .goto GrizzlyHills,23.5,64.9
 >>进入征服坑。杀死铁皮
@@ -42817,17 +45484,18 @@ step
 .isQuestTurnedIn 12427
 step
 .goto GrizzlyHills,23.5,64.9
->>进入征服坑。等待RP。杀死Antis和Sethyel，然后是Krenna
+>>进入征服坑。等待RP。杀死Antis、Sethyel，然后是Krenna
 .complete 12431,1 
 .isQuestTurnedIn 12427
 step
-.isQuestTurnedIn 12427
 .goto GrizzlyHills,23.5,65.0
 >>快跟戈根谈谈。如果你在35秒内不跟她说话，任务就会失败
 .turnin 12431 >>交出征服坑：最终决战
+.isQuestTurnedIn 12427
 step << DK/Mage/Druid
+#completewith next
 .goto GrizzlyHills,22.0,64.5
-.fly Camp Oneqwah>> 飞往Oneqwah营地
+.fly Camp Oneqwah >>飞往Oneqwah营地
 step << !DK !Mage !Druid
 #completewith next
 .goto GrizzlyHills,20.6,64.3
@@ -42846,64 +45514,63 @@ step << !DK !Druid !Mage
 .zone Orgrimmar >>进入Sunreaver的庇护所。把入口带到奥格瑞玛
 step << Shaman
 .goto Orgrimmar,38.6,36.0
-.train 49280 >> 训练你的职业咒语
+.train 49280 >>训练你的职业咒语
 .xp <75,1
 step << Shaman
 .goto Orgrimmar,38.6,36.0
-.train 58803 >> 训练你的职业咒语
+.train 58803 >>训练你的职业咒语
 .xp <76,1
 step << Warlock
 .goto Orgrimmar,48.0,46.0
-.train 47813 >> 训练你的职业咒语
+.train 47813 >>训练你的职业咒语
 .xp <77,1
 step << Paladin
 .goto Orgrimmar,32.3,35.7
-.train 48818 >> 训练你的职业咒语
+.train 48818 >>训练你的职业咒语
 .xp <75,1
 step << Priest
 .goto Orgrimmar,35.6,87.8
-.train 48124 >> 训练你的职业咒语
+.train 48124 >>训练你的职业咒语
 .xp <75,1
 step << Hunter
 .goto Orgrimmar,66.1,18.5
-.train 61005 >> 训练你的职业咒语
+.train 61005 >>训练你的职业咒语
 .xp <75,1
 step << Hunter
 .goto Orgrimmar,66.1,18.5
-.train 53338 >> 训练你的职业咒语
+.train 53338 >>训练你的职业咒语
 .xp <76,1
 step << Rogue
 .goto Orgrimmar,44.0,54.6
-.train 48637 >> 训练你的职业咒语
+.train 48637 >>训练你的职业咒语
 .xp <76,1
 step << Warrior
 .goto Orgrimmar,79.8,31.4
-.train 55694 >> 训练你的职业咒语
+.train 55694 >>训练你的职业咒语
 .xp <75,1
-step << !DK !Druid !Mage
-.goto Orgrimmar,53.8,48.0
-.zone GrizzlyHills >> Ghetto 炉灶前往Oneqwah营地。为此，输入Ragefire Chasm，然后将下面的链接复制粘贴到聊天中。等待1分钟警告
-.link /run InviteUnit("a");C_Timer.After(1,function() LeaveParty() end) >> 单击此处
+step << !DK !Mage !Druid
+#completewith next
+.hs >>炉灶前往Oneqwah营地
 step
 .goto GrizzlyHills,65.0,46.9
-.zone Zul'Drak >> 与Makki交谈。请求飞往光明之城
+.zone Zul'Drak >>与Makki交谈。请求飞往光明之城
 .skipgossip 26853,2
 ]])
 RXPGuides.RegisterGuide([[
-#version 5
+#version 9
 #wotlk
 #group RestedXP 地下城 刷本 70-80
 << Horde
-#name 75-77 古达克副本
+#name 75-77贡德拉克封锁部落
 #next 70-80 部落 地下城 刷本
 
 step
 .loop 50,ZulDrak,68.00,33.67,63.78,33.81,63.72,38.24,67.38,38.75,69.52,35.43,68.00,33.67
 >>使用本指南时，每当您的锁定到期时，请切换回主地牢裂口指南
-.xp 77 >> 在Zol'Maz碾碎暴徒，直到你的封锁期结束。尝试在每个分区的一个角上强制进行动态重生
+.xp 77 >>在Zol'Maz碾碎暴徒，直到你的封锁期结束。尝试在每个分区的一个角上强制进行动态重生
 ]])
 RXPGuides.RegisterGuide([[
-#version 5
+#version 9
 #wotlk
 #group RestedXP 部落 70-80
 << Horde
@@ -42915,12 +45582,12 @@ step << skip
 step
 .goto Dalaran,69.35,40.58
 >>前往克拉苏斯登陆。与Klum交谈
-.accept 13419 >> 接受战争准备
+.accept 13419 >>接受战争准备
 step
 .goto IcecrownGlacier,87.8,78.1
 >>飞向冰冠上的银色先锋
 >>注：冰冠的第一部分是为稍后的饰品+任务线而做的
-.fp The Argent Vanguard >> 获得银色先锋飞行路线
+.fp The Argent Vanguard >>获得银色先锋飞行路线
 step
 .goto IcecrownGlacier,87.5,75.8
 >>飞到银色先锋。与提里奥交谈
@@ -42943,7 +45610,7 @@ step
 #label webbedfreed
 .goto IcecrownGlacier,83.5,75.1,0,0
 >>杀死该地区的网状十字军茧以释放它们。他们也会给你增色和治愈 << !Paladin
->>杀死该地区的网状十字军茧以释放它们。确保你给自己加了除国王以外的东西，因为npc会用它来加你（并治疗你） << Paladin
+>>杀死该地区的网状十字军茧以释放它们。确保你给自己加了除国王以外的东西，因为npc会用它来加你(并治疗你) << Paladin
 .complete 13008,1 
 step
 .goto IcecrownGlacier,84.7,78.8,80,0
@@ -42972,13 +45639,13 @@ step
 .goto IcecrownGlacier,87.0,79.0
 >>与Penumbrius交谈
 .turnin 13044 >>如果有幸存者。。。
-.accept 13045 >>接受《荒野的绿色》（The Wild Green Yonder）
+.accept 13045 >>接受《荒野的绿色》(The Wild Green Yonder)
 step
 #completewith next
 .goto IcecrownGlacier,87.1,79.2
-.vehicle 30228 >> 右击一个银色天爪来安装它
+.vehicle 30228 >>右击一个银色天爪来安装它
 step
->>飞去天灾之城。使用“俘虏十字军”（1）营救十字军（一次只能抓到一个），然后飞回银色先锋的古斯塔夫，使用“缴获十字军的掉落”（2）让他们掉落。冷却时使用“飞翔”（3）加快速度。
+>>飞去天灾之城。使用“俘虏十字军”(1)营救十字军(一次只能抓到一个)，然后飞回银色先锋的古斯塔夫，使用“缴获十字军的掉落”(2)让他们掉落。冷却时使用“飞翔”(3)加快速度。
 .pin Icecrown,78.7,67.0
 .waypoint IcecrownGlacier,78.7,67.0,0,rescue,VEHICLE_PASSENGERS_CHANGED,VEHICLE_UPDATE
 .goto Icecrown,86.68,76.83
@@ -43000,7 +45667,7 @@ step
 step
 .goto IcecrownGlacier,84.8,75.8
 
->>垃圾邮件使用“银色加农炮”（1）杀死一个小范围内的怪物并产生法力。使用“清算炸弹”（2）在一个大范围内杀死怪物，消耗法力。
+>>垃圾邮件使用“银色加农炮”(1)杀死一个小范围内的怪物并产生法力。使用“清算炸弹”(2)在一个大范围内杀死怪物，消耗法力。
 .complete 13086,1 
 .complete 13086,2 
 step
@@ -43012,7 +45679,7 @@ step
 >>与身后的提里奥交谈
 .accept 13105 >>再次接受，直到违约，英雄
 step
->>西北旅行。与Ebon Watcher、Silas、Spitzpatrick和屋内的Gustav交谈
+>>西北旅行。与房子里的黑檀守望者、塞拉斯、斯皮兹帕特里克和古斯塔夫交谈
 .turnin 13105 >>英雄，再上一次，直到决裂
 .accept 13118 >>接受天灾灵的净化
 .accept 13122 >>接受天灾之石
@@ -43031,7 +45698,7 @@ step
 #completewith Rations
 .goto TheStormPeaks,41.01,85.95,12,0
 .goto TheStormPeaks,41.09,85.91
-.home >> 将您的炉石设置为K3
+.home >>将您的炉石设置为K3
 step
 .goto TheStormPeaks,41.15,86.14
 >>到客栈里面去。与格雷琴交谈
@@ -43069,6 +45736,7 @@ step
 .goto TheStormPeaks,30.38,85.65
 >>杀死侏儒皮
 .complete 12836,1 
+.unitscan Gnarlhide
 step
 #label Rations
 .goto TheStormPeaks,31.81,85.75
@@ -43114,7 +45782,7 @@ step
 .complete 13135,1 
 step
 #completewith next
-.hs >> 炉膛至K3
+.hs >>炉膛至K3
 .cooldown item,6948,>0
 step
 >>返回K3。与Jeer和Ricket交谈
@@ -43132,7 +45800,7 @@ step
 .fp K3 >>获取K3飞行路线
 step
 .goto TheStormPeaks,43.4,82.3
-.use 40676 >> 在Garm’s Bane使用包中的改良地雷。把他们排成一行，让暴徒们撞上。暴徒不会攻击你。确保你下马，否则他们会被地雷袭击。
+.use 40676 >>在Garm’s Bane使用包中的改良地雷。把他们排成一行，让暴徒们撞上。暴徒不会攻击你。确保你下马，否则他们会被地雷袭击。
 .complete 12820,1 
 
 step
@@ -43162,6 +45830,7 @@ step
 .goto TheStormPeaks,48.1,70.6
 >>在洞穴深处杀死一只冰山爬行犬。抢劫它的毒液袋
 .complete 12831,1 
+.unitscan Icetip Crawler
 step
 .goto TheStormPeaks,43.9,76.3
 >>在洞穴的路障区域杀死雪盲挖掘者。掠夺他们的矿石
@@ -43174,7 +45843,7 @@ step
 step
 #label InjuredGoblin
 .goto TheStormPeaks,42.31,73.97
->>回到你之前谈过的受伤的地精矿工那里
+>>回到你之前交谈过的受伤的地精矿工那里。
 .turnin 12831 >>只交部分忘记的
 .accept 12832 >>接受痛苦的离别
 step
@@ -43209,7 +45878,7 @@ step
 .goto TheStormPeaks,35.5,85.0
 >>从Tore Rumblewrench旁边的分配器处获取U.D.E.D。
 .collect 40686,1,12828,1,1 
-.use 40686 >> 用U.D.E.D.对铁毛猛犸进行爆炸。抢劫掉掉在地上的肉堆
+.use 40686 >>用U.D.E.D.对铁毛猛犸进行爆炸。抢劫掉掉在地上的肉堆
 >>记住，如果不在45秒内投掷炸弹，炸弹就会爆炸你
 .complete 12828,1 
 .skipgossip
@@ -43227,7 +45896,7 @@ step
 .complete 12821,1 
 step
 .goto TheStormPeaks,50.69,81.90
-.use 40731 >> 在传送板上使用您包中的传送装置电池传送回K3
+.use 40731 >>在传送板上使用您包中的传送装置电池传送回K3
 .complete 12821,2 
 step
 .goto TheStormPeaks,40.93,85.30
@@ -43257,7 +45926,7 @@ step
 .goto TheStormPeaks,49.3,79.1,30,0
 .goto TheStormPeaks,50.5,78.1,30,0
 .goto TheStormPeaks,50.51,77.75
-.use 41431 >> 在Garm洞穴顶部的Frostgut祭坛使用包中的硬装炸药包
+.use 41431 >>在Garm洞穴顶部的Frostgut祭坛使用包中的硬装炸药包
 .complete 12823,1 
 step
 .goto TheStormPeaks,50.17,79.08
@@ -43278,7 +45947,6 @@ step
 .goto TheStormPeaks,50.16,81.64,-1
 +跳上较小的祭坛并注销。登录后，您将到达Garm’s Rise。如果您无法使其工作，请跳过此步骤。
 .link https://gyazo.com/c99feef87abf5fb5545bc737d0492f71 >>单击此处查看注销位置的图片参考
-
 step
 .goto TheStormPeaks,50.5,81.7,40,0
 .goto TheStormPeaks,50.16,81.64
@@ -43295,7 +45963,7 @@ step
 .accept 13060 >>当所有其他失败时接受
 step
 .goto TheStormPeaks,43.4,82.3
-.use 40676 >> 在Garm’s Bane使用包中的改良地雷。把他们排成一行，让暴徒们撞上。暴徒不会攻击你
+.use 40676 >>在Garm’s Bane使用包中的改良地雷。把他们排成一行，让暴徒们撞上。暴徒不会攻击你
 .complete 12833,1 
 .isOnQuest 12833
 step
@@ -43312,7 +45980,7 @@ step
 .complete 12844,1 
 step
 #completewith next
-.hs >> 炉膛至K3
+.hs >>炉膛至K3
 .cooldown item,6948,>0
 step
 .goto TheStormPeaks,41.15,86.14
@@ -43334,12 +46002,12 @@ step
 
 step
 #completewith next
-.goto TheStormPeaks,36.2,49.3,200 >> 乘坐飞行坐骑飞到格罗姆阿什
+.goto TheStormPeaks,36.2,49.3,200 >>乘坐飞行坐骑飞到格罗姆阿什
 .skill riding,<300,1
 step
 #completewith Valzij2
 .goto TheStormPeaks,37.12,49.54
-.home >> 将您的火炉设置为Grom'arsh Crash Site
+.home >>将您的火炉设置为Grom'arsh Crash Site
 step
 >>与Boktar和Olut交谈
 .accept 12895 >>接受失踪的铜须
@@ -43351,7 +46019,7 @@ step
 #sticky
 #label GromFP
 .goto TheStormPeaks,36.19,49.39,0,0
-.fp Grom'arsh Crash-Site >> 获取Grom'arsh Crash Site航班路径
+.fp Grom'arsh Crash-Site >>获取Grom'arsh Crash Site航班路径
 step
 .goto TheStormPeaks,36.43,49.09
 >>与Lorga交谈
@@ -43360,11 +46028,11 @@ step
 step
 #requires GromFP
 .goto TheStormPeaks,36.06,64.14
->>在树旁抢走一堆乱七八糟的雪（有点难看）
+>>在树旁抢走一堆乱七八糟的雪(有点难看)
 .complete 12895,1 
 step
 #completewith next
-.hs >> 格罗姆阿什坠毁现场的壁炉
+.hs >>格罗姆阿什坠毁现场的壁炉
 .cooldown item,6948,>0
 step
 .goto TheStormPeaks,37.31,49.66
@@ -43383,7 +46051,7 @@ step
 step
 .goto TheStormPeaks,48.02,60.98
 >>使用你的第一个能力暂时诱捕铁矮人。
->>使用（2）施放结霜陷阱以减缓铁矮人的速度。这样做直到你到达洞穴
+>>使用(2)施放结霜陷阱以减缓铁矮人的速度。这样做直到你到达洞穴
 .complete 12910,1 
 step
 .goto TheStormPeaks,48.56,60.82
@@ -43393,7 +46061,7 @@ step
 .use 41430
 step
 .goto TheStormPeaks,48.56,60.82
-.use 40971 >> 使用您包中的Brann通信器呼叫Brann。跟他谈谈
+.use 40971 >>使用您包中的Brann通信器呼叫Brann。跟他谈谈
 .turnin 12910 >>转入嗅出罪犯
 .accept 12913 >>接受说兽人，伙计！
 step
@@ -43491,7 +46159,7 @@ step
 .goto TheStormPeaks,44.3,66.8,40,0
 .goto TheStormPeaks,43.0,68.0,40,0
 .goto TheStormPeaks,43.4,70.5
-.use 42837 >> 用你袋子里的惩戒棒对付矿井里精疲力竭的维库尔
+.use 42837 >>用你袋子里的惩戒棒对付矿井里精疲力竭的维库尔
 .complete 12906,1 
 step
 .goto TheStormPeaks,44.39,68.93
@@ -43499,7 +46167,7 @@ step
 .turnin 12906 >>交班纪律
 .accept 12907 >>接受要制作的示例
 step
-.goto TheStormPeaks,45.42,69.06
+.goto TheStormPeaks,45.41,69.10
 >>在米尔德里德东边的山洞里杀死加哈尔
 .complete 12907,1 
 .unitscan Garhal
@@ -43516,7 +46184,7 @@ step
 step
 .goto TheStormPeaks,41.8,69.6,30,0
 .goto TheStormPeaks,47.47,69.09
->>离开福隆矿。飞往Brunnhildar村
+>>离开Forlon矿山，飞往Brunnhildar村
 .turnin 12921 >>换个场景
 .accept 12969 >>接受这是你的地精吗？
 step
@@ -43549,7 +46217,7 @@ step
 .goto TheStormPeaks,53.14,65.72
 >>与Brijana交谈
 .turnin 12972 >>上车你需要一只熊
-.accept 12851 >>接受Going Bearback
+.accept 12851 >>接受Bearly挂起
 step
 #completewith next
 .goto The Storm Peaks,53.12,65.61
@@ -43557,18 +46225,18 @@ step
 step
 .goto TheStormPeaks,53.1,65.6,0
 .goto TheStormPeaks,57.4,63.0
->>使用火焰箭（1）燃烧霜虫和霜巨人。不要使用速度爆发（2），只专注于打击所有目标
+>>使用火焰箭(1)燃烧霜虫和霜巨人。不要使用速度爆发(2)，只专注于打击所有目标
 .complete 12851,1 
 .complete 12851,2 
 step
 .goto TheStormPeaks,53.14,65.72
->>使用“速度爆发”（2）更快地返回布里亚纳。和她谈谈
-.turnin 12851 >>转入去熊背
+>>使用“速度爆发”(2)更快地返回布里亚纳。和她谈谈
+.turnin 12851 >>打开Bearly Hanging
 .accept 12856 >>接受冷酷
 step
 #completewith next
 .goto TheStormPeaks,63.20,62.88
-.vehicle >>飞往Dun Niffelem。登上一架俘虏的原德雷克，他们被拴在Dun Niffelem外墙周围的大冰柱上
+.vehicle >>飞到邓尼弗莱姆，骑上一辆囚禁的原德雷克。它们被拴在Dun Niffelem外墙周围的大冰柱上
 step
 .waypoint TheStormPeaks,53.1,65.7,0,niffelen,VEHICLE_PASSENGERS_CHANGED,VEHICLE_UPDATE
 .goto The Storm Peaks,66.75,60.63
@@ -43632,11 +46300,11 @@ step
 step
 #completewith next
 .goto TheStormPeaks,50.79,67.68
-.vehicle >> 飞往基尔加拉克。使用包中的战熊母马缰绳来安装它。
+.vehicle >>飞往基尔加拉克。使用包中的战熊母马缰绳来安装它。
 .use 42481
 step
 .goto TheStormPeaks,50.79,67.68
-.use 42481 >>杀死Kirgaraak。使用重锤（1）造成伤害。使用粉碎（2）进入冲锋（3）造成额外伤害。
+.use 42481 >>杀死Kirgaraak。使用槌(4)造成伤害。使用粉碎(5)进入冲锋(6)造成额外伤害。
 .complete 12996,1 
 step
 .goto TheStormPeaks,49.75,71.81
@@ -43646,11 +46314,11 @@ step
 step
 #completewith next
 .goto TheStormPeaks,49.24,68.46
-.vehicle >> 飞到毒牙坑。使用包中的战熊母马缰绳来安装它。
+.vehicle >>飞到毒牙坑。使用包中的战熊母马缰绳来安装它。
 .use 42499
 step
 .goto TheStormPeaks,49.24,68.46
-.use 42499 >>杀死坑里的战熊。使用重锤（1）造成伤害。使用粉碎（2）进入冲锋（3）造成额外伤害。
+.use 42499 >>杀死坑里的战熊。使用槌(4)造成伤害。使用粉碎(5)进入冲锋(6)造成额外伤害。
 .complete 12997,1 
 step
 .goto TheStormPeaks,49.75,71.81
@@ -43669,11 +46337,11 @@ step
 .accept 12886 >>接受Drakkensryd
 step
 .goto TheStormPeaks,35.4,57.8
-.use 41058 >>乘龙战机飞到风暴神殿（这需要1米10秒，所以你可以在此期间休息一下）。用你袋子里的海尔德尼尔鱼叉跳到有龙骑士的龙兽身上。杀了他们
+.use 41058 >>乘龙战机飞到风暴神殿(这需要1米10秒，所以你可以在此期间休息一下)。用你袋子里的海尔德尼尔鱼叉跳到有龙骑士的龙兽身上。杀了他们
 .complete 12886,1 
 step
 .goto TheStormPeaks,33.42,57.95
->>在风暴神庙的柱子上使用柱饰上的海尔德尼尔鱼叉（较小的球体）跳到上面。
+>>在风暴神庙的柱子上使用柱饰上的海尔德尼尔鱼叉(较小的球体)跳到上面。
 >>如果你够不到柱子装饰物，那就坐近一点原龙
 >>与索里姆交谈
 .turnin 12886 >>交给Drakkensryd
@@ -43696,7 +46364,7 @@ step
 #requires Vial
 #completewith Fires
 .goto TheStormPeaks,23.6,58.6
-.use 41612 >> 在起泡池，用冰霜油小瓶涂在受感染的原龙蛋上。确保每次都能得到6个以上的鸡蛋，否则你可能需要再拿一瓶
+.use 41612 >>在起泡池，用冰霜油小瓶涂在受感染的原龙蛋上。确保每次都能得到6个以上的鸡蛋，否则你可能需要再拿一瓶
 .complete 12925,1 
 step
 #completewith Eggs
@@ -43713,6 +46381,7 @@ step
 .goto TheStormPeaks,24.00,61.93
 >>进入瓦尔基里昂的大楼。杀死说风暴的尤尔达
 .complete 12968,1 
+.unitscan Yulda the Stormspeaker
 step
 .goto TheStormPeaks,24.05,61.70
 >>点击尤达旁边的板条箱
@@ -43721,7 +46390,7 @@ step
 #label Fires
 .goto TheStormPeaks,25.9,59.8,30,0
 .goto TheStormPeaks,27.1,60.0
->>进入瓦尔基里昂周围的瓦尔基里翁鱼叉炮。当你瞄准瓦尔基里翁周围的草垛时，使用火焰鱼叉（1）
+>>进入瓦尔基里昂周围的瓦尔基里翁鱼叉炮。当你瞄准瓦尔基里翁周围的草垛时，使用火焰鱼叉(1)
 .complete 12953,1 
 step
 .goto TheStormPeaks,27.1,61.2,70,0
@@ -43731,7 +46400,7 @@ step
 step
 #label Eggs
 .goto TheStormPeaks,23.04,58.24
-.use 41612 >> 使用你袋子里的冰霜油小瓶，放在起泡池里的瘟疫原龙蛋上。确保你每次吃6个以上的鸡蛋，否则你可能需要另买一瓶。
+.use 41612 >>使用你袋子里的冰霜油小瓶，放在起泡池里的瘟疫原龙蛋上。确保你每次吃6个以上的鸡蛋，否则你可能需要另买一瓶。
 .complete 12925,1 
 step
 .goto TheStormPeaks,23.1,58.0,70,0
@@ -43740,7 +46409,7 @@ step
 .complete 12942,1 
 step
 #completewith Gromarsh1
-.hs >> Grom’arsh坠毁现场的火炉
+.hs >>Grom’arsh坠毁现场的火炉
 step
 #completewith next
 .goto TheStormPeaks,36.97,49.51,-1
@@ -43778,7 +46447,7 @@ step
 .complete 12882,1 
 step << Shaman
 #completewith Gromarsh2
-.hs >> Grom’arsh坠毁现场的火炉
+.hs >>Grom’arsh坠毁现场的火炉
 step
 #completewith end
 #label OlutEnd
@@ -43795,12 +46464,12 @@ step
 step
 #requires OlutEnd
 #completewith next
-.cast 61122 >> 在包中使用Brann的通信器
+.cast 61122 >>在包中使用Brann的通信器
 .use 40971
 step
 #requires OlutEnd
 .goto TheStormPeaks,37.31,49.66
-.use 40971 >>与布兰交谈。等待RP（需要1米10秒，因此您可以在此期间休息）
+.use 40971 >>与布兰交谈。等待RP(需要1米10秒，因此您可以在此期间休息)
 .complete 12920,1 
 .skipgossip
 .timer 70,Catching up with Brann RP
@@ -43810,6 +46479,9 @@ step
 .turnin 12920 >>转身追上布兰
 .accept 12926 >>接受拼图
 step
+#completewith next
++从这里开始，开始保存你的Frostweave Cloth。稍后我们需要5个。
+step
 .goto TheStormPeaks,38.6,43.5,70,0
 .goto TheStormPeaks,37.4,43.0,70,0
 .goto TheStormPeaks,37.8,40.2,70,0
@@ -43818,22 +46490,22 @@ step
 .collect 41130,6,12926,1 
 step
 .goto TheStormPeaks,39.09,41.17
-.use 41130 >> 单击包中的Inventor磁盘碎片，将其合并到Inventor磁盘中
+.use 41130 >>单击包中的Inventor磁盘碎片，将其合并到Inventor磁盘中
 .complete 12926,1 
 step
 .goto TheStormPeaks,39.09,41.17
-.use 40971 >> 在您的包中使用Brann的通信器。与布兰交谈
+.use 40971 >>在您的包中使用Brann的通信器。与布兰交谈
 .turnin 12926 >>将碎片交给拼图
 .accept 12927 >>接受数据挖掘
 step
 .goto TheStormPeaks,37.3,43.3,70,0
 .goto TheStormPeaks,37.8,40.2,70,0
 .goto TheStormPeaks,39.09,41.17
-.use 41179 >> 在Makers平台的数据库旁边，将Inventor的磁盘放入您的包中
+.use 41179 >>在Makers平台的数据库旁边，将Inventor的磁盘放入您的包中
 .complete 12927,1 
 step
 .goto TheStormPeaks,37.7,45.3
-.use 40971 >> 在您的包中使用Brann的通信器。与布兰交谈
+.use 40971 >>在您的包中使用Brann的通信器。与布兰交谈
 .turnin 12927 >>提交数据挖掘
 .accept 13416 >>接受库控制台
 step
@@ -43845,32 +46517,32 @@ step
 step
 #completewith next
 .goto TheStormPeaks,37.43,46.84
-.cast 55197 >> 使用您包中的充能磁盘召唤Mechaton
+.cast 55197 >>使用您包中的充能磁盘召唤Mechaton
 .timer 53,Norgannon's Shell RP
 .use 44704
 step
 .goto TheStormPeaks,37.53,46.52
-.use 44704 >>等待RP，然后杀死Mechaton。抢他去拿贝壳
+.use 44704 >>等待RP事件，然后杀死Mechaton。抢他去拿贝壳
 .complete 12928,1 
 step
 .goto TheStormPeaks,30.64,36.32
 >>前往Bouldercrag避难所
-.fp Bouldercrag's Refuge >> 获得Bouldercrag的避难所飞行路线
+.fp Bouldercrag's Refuge >>获得Bouldercrag的避难所飞行路线
 step
 #completewith Plate
 .goto TheStormPeaks,30.6,36.9,30,0
 .goto TheStormPeaks,30.89,37.36
-.home >> 把你的炉石放在Bouldercrag的避难所
+.home >>把你的炉石放在Bouldercrag的避难所
 step
-.use 40971 >> 在您的包中使用Brann的通信器。与布兰交谈
+.use 40971 >>在您的包中使用Brann的通信器。与布兰交谈
 .turnin 12928 >>交出诺根农的贝壳
-
+.accept 12929 >>接受乌尔杜尔大地
 .accept 13273 >>接受追求核心
 step
 .goto TheStormPeaks,31.42,38.08
 >>与Bouldercrag交谈
 >>不要出售任何霜花
-
+.turnin 12929 >>移交乌尔杜尔的泥土
 .accept 12930 >>接受稀土
 step
 #requires BrannCom1
@@ -43879,8 +46551,8 @@ step
 .complete 12930,2 
 step
 #completewith next
-.cast 2580 >> 铸造Find Minerals以帮助您查找节点
-.skill mining,1
+.cast 2580 >>铸造Find Minerals以帮助您查找节点
+.skill mining,<1,1
 
 step
 .goto TheStormPeaks,30.97,34.21,60,0
@@ -43890,7 +46562,7 @@ step
 .complete 12930,1 
 step
 #completewith next
-.hs >> 炉灶到Bouldercrag避难所
+.hs >>炉灶到Bouldercrag避难所
 .cooldown item,6948,>0
 step
 .goto TheStormPeaks,31.42,38.08
@@ -43906,7 +46578,7 @@ step
 step
 .goto TheStormPeaks,28.6,35.6,70,0
 .goto TheStormPeaks,26.9,41.5
-.use 41988 >> 在你的袋子里用大地保护剂对付堕落的地球卫士
+.use 41988 >>使用你袋子里的大地保护者。投射后，您可以取消频道，并在它仍将完成时运行
 .complete 12937,1 
 step
 .goto TheStormPeaks,26.9,41.5
@@ -43923,7 +46595,7 @@ step
 step
 #completewith next
 .goto TheStormPeaks,30.6,36.9,30,0
-.goto TheStormPeaks,27.32,49.84,30 >> 前往冰冻矿井
+.goto TheStormPeaks,27.32,49.84,30 >>前往冰冻矿井
 step
 .goto TheStormPeaks,26.1,51.9
 >>杀死监工，洗劫矿车寻找矿石，并与洞穴中的机械师交谈
@@ -43947,7 +46619,7 @@ step
 .goto TheStormPeaks,26.0,47.0,0
 .goto TheStormPeaks,24.4,46.0,0
 .goto TheStormPeaks,25.0,51.6,0,0
-.use 42203 >> 杀死一个暴风战争傀儡。掠夺它以获得黑暗盔甲。在您的包中点击它
+.use 42203 >>杀死一个暴风战争傀儡。掠夺它以获得黑暗盔甲。在您的包中点击它
 .collect 42203,1,12979 
 .accept 12979 >>接受黑暗的盔甲
 step
@@ -44007,11 +46679,11 @@ step
 step
 #completewith next
 .goto TheStormPeaks,24.28,52.15
-.cast 56189 >> 使用包中的Bouldercrag战号开始RP活动
+.cast 56189 >>使用包中的Bouldercrag战号开始RP活动
 .timer 33,Valduran the Stormborn RP
 step
 .goto TheStormPeaks,24.28,52.15
-.use 42419 >> 等待RP，然后杀死Valduran
+.use 42419 >>等待RP，然后杀死Valduran
 .complete 12984,1 
 step
 >>与Bouldercrag在他的避难所交谈，然后与Bruor交谈
@@ -44027,7 +46699,7 @@ step
 >>杀死该区域的风暴锻造工匠
 .complete 12991,1 
 step
-.use 42441 >> 在该地区的Forges（装着蓝色水晶的木盆）上，使用包里的Bouldercrag炸弹
+.use 42441 >>在该地区的锻造厂(拿着蓝色水晶的矮人锻造厂)，使用包里的Bouldercrag炸弹
 .complete 12988,1 
 .goto TheStormPeaks,29.0,45.8
 .complete 12988,2 
@@ -44055,15 +46727,16 @@ step
 .accept 12998 >>接受风暴之心
 step
 #completewith next
-.goto TheStormPeaks,32.39,61.96,20 >> 通往乌尔迪斯的道路从这里开始
+.goto TheStormPeaks,32.39,61.96,20 >>通往乌尔迪斯的道路从这里开始
 step
 .goto TheStormPeaks,36.13,60.93
->>从南边飞过乌尔迪斯的洞（大约75%的路程）。走到尽头，然后掠夺风暴之心（蓝色球体）。
->>等待RP（需要27秒）。
+>>从南边飞过乌尔迪斯的洞(大约75%的路程)。走到尽头，然后掠夺风暴之心(蓝色球体)。
+>>等待RP(需要27秒)。
 .complete 12998,1 
 step
 #completewith next
-.hs >> 炉灶到Bouldercrag
+.hs >>炉灶到Bouldercrag避难所
+.cooldown item,6948,>0
 step
 .goto TheStormPeaks,31.42,38.08
 >>在他的庇护所与博尔德克雷格交谈
@@ -44076,7 +46749,8 @@ step
 step
 .goto TheStormPeaks,27.19,43.06,50,0
 .goto TheStormPeaks,28.78,47.99
->>铸造潜水器（1）能够移动。当你在铁巨像下时，施放浮现（1）。暴击Jormungar Strike（2）和酸性呼吸（3）造成伤害。一旦铁巨像情绪化，准备猛击地面，潜入（1）直到他完成施放，然后浮现（1）再次开始攻击他
+>>铸造潜水器(1)能够移动。当你在铁巨像下时，施放浮现(1)。暴击Jormungar Strike(2)并叠加酸息(3)造成伤害。
+>>当铁巨像情绪激动，准备猛击地面时，潜入水中(1)，在他身后奔跑，直到他完成施法，然后浮现(1)再次开始攻击他。
 .complete 13007,1 
 step
 .goto TheStormPeaks,31.42,38.08
@@ -44098,7 +46772,7 @@ step
 .skill riding,300,1
 step
 #completewith next
-.goto TheStormPeaks,48.4,72.2,200 >> 乘坐飞行坐骑飞往布伦希达尔
+.goto TheStormPeaks,48.4,72.2,200 >>乘坐飞行坐骑飞往布伦希达尔
 .skill riding,<300,1
 step
 #label Aberrations
@@ -44113,10 +46787,10 @@ step
 #label gretta
 #completewith end
 .goto TheStormPeaks,50.9,65.6
-.daily 13423,13424 >> 与格雷塔交谈。她每天可以完成四个任务中的一个，其中只有两个值得你花费时间：
->> 接受捍卫你的头衔
->> 或
->> 接受返回维修站
+.daily 13423,13424 >>与格雷塔交谈。她每天可以完成四个任务中的一个，其中只有两个值得你花费时间：
+>>接受捍卫你的头衔
+>>或
+>>接受返回维修站
 >>如果这些任务均未激活，请跳过此步骤
 step
 #completewith end
@@ -44132,14 +46806,14 @@ step
 #completewith next
 #requires gretta
 .goto TheStormPeaks,49.24,68.46
-.vehicle >> 飞到毒牙坑。使用包中的战熊母马缰绳来安装它。
+.vehicle >>飞到毒牙坑。使用包中的战熊母马缰绳来安装它。
 .use 42499
 step
 #completewith end
 #requires gretta
 #label beardaily
 .goto TheStormPeaks,49.24,68.46
-.use 42499 >>杀死坑里的战熊。使用重锤（1）造成伤害。使用粉碎（2）进入冲锋（3）造成额外伤害。
+.use 42499 >>杀死坑里的战熊。使用槌(4)造成伤害。使用粉碎(5)进入冲锋(6)造成额外伤害。
 .complete 13424,1 
 .isOnQuest 13424
 step
@@ -44159,7 +46833,7 @@ step
 #completewith Giants
 #label Slag
 .goto TheStormPeaks,71.8,61.1,0
->>杀死暴风铁巨人。抢劫他们的矿渣覆盖金属。开始任务
+.use 41556 >>杀死暴风铁巨人。抢劫他们的矿渣覆盖金属。开始任务
 .collect 41556,1,12922,1 
 .accept 12922 >>接受精炼厂之火
 
@@ -44175,13 +46849,13 @@ step
 #label Giants
 .goto TheStormPeaks,75.0,63.6,70,0
 .goto TheStormPeaks,71.8,61.1
->>抢劫在弗罗斯菲尔德湖和福约恩斯铁砧发现的花岗岩巨砾（你一次只能携带一块）
-.use 41505 >> 当你在Stormforged Iron Giants有一块巨石时，使用你袋子里的Thorim’s Charm of Earth来帮助杀死他们
+>>抢劫在弗罗斯菲尔德湖和福约恩斯铁砧发现的花岗岩巨砾(你一次只能携带一块)
+.use 41505 >>当你在Stormforged Iron Giants有一块巨石时，使用你袋子里的Thorim’s Charm of Earth来帮助杀死他们
 .collect 41506,1,12915,1,-1
 .complete 12915,2 
 step
 .goto TheStormPeaks,71.8,61.1
->>杀死暴风铁巨人。抢劫他们的矿渣覆盖金属。开始任务
+.use 41556 >>杀死暴风铁巨人。抢劫他们的矿渣覆盖金属。开始任务
 .collect 41556,1,12922,1 
 .accept 12922 >>接受精炼厂之火
 step
@@ -44199,8 +46873,8 @@ step
 .accept 12956 >>接受希望的火花
 step
 .goto TheStormPeaks,77.34,62.87
->>抢劫在弗罗斯菲尔德湖和福约恩斯铁砧发现的花岗岩巨砾（你一次只能携带一块）
-.use 41505 >> 当你在Fjorn有一块巨石时，用你袋子里的托里姆的地球魅力来帮助杀死他
+>>抢劫在弗罗斯菲尔德湖和福约恩斯铁砧发现的花岗岩巨砾(你一次只能携带一块)
+.use 41505 >>当你在Fjorn有一块巨石时，用你袋子里的托里姆的地球魅力来帮助杀死他
 .complete 12915,1 
 step
 #requires FjornAnvil
@@ -44210,17 +46884,17 @@ step
 .complete 13273,2 
 .goto TheStormPeaks,59.25,51.48
 step
-.use 40971 >> 在您的包中使用Brann的通信器。与布兰交谈
+.use 40971 >>在您的包中使用Brann的通信器。与布兰交谈
 .turnin 13273 >>转身追逐核心
 .accept 13274 >>接受核心守护者
 step
 .goto TheStormPeaks,55.35,57.76,30 >>飞到洛肯廉价店门口
 step
 .goto TheStormPeaks,56.38,52.11
->>走到最后。杀死阿森。为了诺根农的核心抢了他
+>>走到尽头，杀死阿森。为了诺根农的核心抢了他
 .complete 13274,1 
 step
-.use 40971 >> 在您的包中使用Brann的通信器。与布兰交谈
+.use 40971 >>在您的包中使用Brann的通信器。与布兰交谈
 .turnin 13274 >>交回核心守门员
 .accept 13285 >>接受锻造钥匙
 step
@@ -44229,9 +46903,9 @@ step
 step
 #completewith end
 #label BrannKey
-.goto TheStormPeaks,45.48,49.49,10
+.goto TheStormPeaks,45.48,49.49,10 >>飞往布兰
 .goto TheStormPeaks,45.48,49.49,0,0
->>飞上发明神庙。与Brann交谈（未通过通讯员传唤）以启动RP事件。不要等待他的RP
+>>飞上发明神庙。与Brann交谈(未通过通讯员传唤)以启动RP事件。不要等待他的RP
 >>在你和布兰通话后，开始飞回索里姆
 .complete 13285,1 
 .skipgossip
@@ -44241,78 +46915,102 @@ step
 >>飞到风暴神庙顶上的索里姆。跟他谈谈
 .turnin 12915 >>上交修补围栏
 .turnin 12956 >>点燃希望之火
+step
+#questguide
+.goto TheStormPeaks,33.42,57.95
+>>与索里姆交谈
 .accept 12924 >>接受打造联盟
 step
+#questguide
 #completewith FFDeep
 .goto TheStormPeaks,37.13,49.53
-.home >> 将您的火炉设置为Grom'arsh Crash Site
+.home >>将您的火炉设置为Grom'arsh Crash Site
+
 step
 .goto TheStormPeaks,37.31,49.66
 >>与Boktar交谈
 .turnin 13285 >>交钥匙锻造
+step
+#questguide
+.goto TheStormPeaks,37.31,49.66
+>>与Boktar交谈
 .accept 13426 >>接受证人Xantaur
 step
+#questguide
 .goto TheStormPeaks,62.64,60.93
 >>前往Dun Niffelem
-.fp Dun Niffelem >> 获取Dun Niffelem飞行路线
+.fp Dun Niffelem >>获取Dun Niffelem飞行路线
 step
+#questguide
 .goto TheStormPeaks,65.45,60.16
 >>与约库姆国王交谈
 .accept 12966 >>接受你不能错过他
 step
+#questguide
 .goto TheStormPeaks,75.37,63.57
 >>与Njormeld交谈
 .turnin 12966 >>你不能错过他
 .accept 12967 >>接受与元素的战斗
 step
+#questguide
 #completewith next
 .goto TheStormPeaks,75.71,63.91
 .vehicle >>右击斯诺里骑上他
 step
+#questguide
 .goto TheStormPeaks,77.2,62.7
->>使用“收集雪”（1）从附近的雪堆中获取雪。使用“投掷雪球”（2）杀死冒泡的恶魔。
-
+>>使用“收集雪”(1)从附近的雪堆中获取雪。使用“投掷雪球”(2)杀死冒泡的恶魔。
+>>如果他睡着了，使用Wake Snorri(5)。
 .complete 12967,1 
 
 step
+#questguide
 .goto TheStormPeaks,75.37,63.57
 >>与Njormeld交谈
 .turnin 12967 >>投身对抗自然
 .complete 12924,1 
 step
+#questguide
 >>返回Dun Niffelem。与恩约梅尔德和铁砧交谈
 .turnin 12924 >>投身打造联盟
 .accept 13009 >>接受新的开始
 .goto TheStormPeaks,63.20,63.27
 .daily 12981 >>接受高温和低温
-.goto TheStormPeaks,63.13,63.02
+.goto TheStormPeaks,63.16,62.93
 step
+#questguide
 .goto TheStormPeaks,65.45,60.16
 >>与约库姆国王交谈
 .accept 12975 >>接受纪念
 step
+#questguide
 .goto TheStormPeaks,69.6,58.8,70,0
 .goto TheStormPeaks,70.3,62.2
 >>杀死脆性叛徒。掠夺他们以获取冰的精华
 .collect 42246,6 
 step
+#questguide
 .goto TheStormPeaks,73.5,62.9,70,0
 .goto TheStormPeaks,76.2,63.4
-.use 42246 >> 使用弗约恩铁砧周围阴燃残渣旁边的冰块精华。抢劫冷冻铁屑
+.use 42246 >>使用弗约恩铁砧周围阴燃残渣旁边的冰块精华。抢劫冷冻铁屑
 .complete 12981,1 
 step
+#questguide
 .goto TheStormPeaks,71.7,47.6
 >>抢劫该地区地面上的小扁石
 .complete 12975,1 
 step
+#questguide
 .goto TheStormPeaks,65.41,50.60
-.fp Camp Tunka'lo >> 获得Tunka'lo营地飞行路线
+.fp Camp Tunka'lo >>获得Tunka'lo营地飞行路线
 step
+#questguide
 .goto TheStormPeaks,65.77,51.41
 >>飞到Tunka'lo营地。与小屋里的Xarantaur交谈
 .turnin 13426 >>交给证人Xarantaur
 .accept 13034 >>接受见证人和英雄
 step
+#questguide
 >>点击悬挂在Tunka'lo营地墙壁上的横幅
 .complete 13034,3 
 .goto TheStormPeaks,67.50,50.57
@@ -44321,16 +47019,19 @@ step
 .complete 13034,1 
 .goto TheStormPeaks,65.81,50.42
 step
+#questguide
 .goto TheStormPeaks,65.77,51.41
 >>与小屋里的Xarantaur交谈
 .turnin 13034 >>交出证人和英雄
 .accept 13037 >>接受风暴屋的记忆
 step
+#questguide
 #requires CampTFP
 #label FFDeep
 #completewith Swiftspear
-.goto TheStormPeaks,62.46,41.40,20 >> 前往弗罗斯弗洛深渊洞穴
+.goto TheStormPeaks,62.46,41.40,20 >>前往弗罗斯弗洛深渊洞穴
 step
+#questguide
 #requires CampTFP
 #completewith next
 .goto TheStormPeaks,61.18,38.99,10,0
@@ -44339,17 +47040,20 @@ step
 .skipgossip
 .timer 44,Memories of Stormhoof RP (CONTINUE QUESTING)
 step
+#questguide
 #label Swiftspear
 #requires CampTFP
 >>与Swiftspear交谈
 .goto TheStormPeaks,61.18,38.99
 .accept 13038 >>及时接受变形
 step
+#questguide
 .goto TheStormPeaks,61.7,39.8,50,0
 .goto TheStormPeaks,62.6,40.5
-.use 42781 >> 在洞穴中的霜层裂谷（黄色漩涡）上，使用你袋子里的酋长图腾
+.use 42781 >>在洞穴中的霜层裂谷(黄色漩涡)上，使用你袋子里的酋长图腾
 .complete 13038,1 
 step
+#questguide
 #completewith end
 .goto TheStormPeaks,61.18,38.99,10,0
 .goto TheStormPeaks,61.18,38.99,0
@@ -44358,6 +47062,7 @@ step
 .skipgossip
 .timer 44,Memories of Stormhoof RP (CONTINUE QUESTING)
 step
+#questguide
 .goto TheStormPeaks,65.77,51.41
 >>与Xarantaur交谈
 .turnin 13037 >>把记忆交给风暴屋
@@ -44365,9 +47070,11 @@ step
 .accept 13048 >>接受时间错了的地方
 .accept 13049 >>接受英雄的武器
 step
+#questguide
 #completewith next
-.goto TheStormPeaks,67.09,44.76,40 >> 前往嚎叫洞穴
+.goto TheStormPeaks,67.09,44.76,40 >>前往嚎叫洞穴
 step
+#questguide
 .goto TheStormPeaks,67.8,44.3,60,0
 .goto TheStormPeaks,69.3,42.0,60,0
 .goto TheStormPeaks,68.0,41.7,60,0
@@ -44381,42 +47088,49 @@ step
 .complete 13049,1 
 .complete 13049,2 
 step
+#questguide
 .goto TheStormPeaks,65.77,51.41
 >>与Xarantaur交谈
 .turnin 13048 >>在时间错了的地方上车
 .turnin 13049 >>交出英雄的武器
 .accept 13058 >>接受改变风向
 step
+#questguide
 #completewith next
 .goto TheStormPeaks,64.47,47.46
-.cast 56863 >> 用你包里的洛雷哈默成为风暴屋。
+.cast 56863 >>用你包里的洛雷哈默成为风暴屋。
 .use 42918
 step
+#questguide
 .goto TheStormPeaks,64.55,46.88
->>杀死北风作为防风罩。冷却时使用“风暴召唤”（3）。使用“地击”（2）打断他的“旋风”能力。垃圾邮件在冷却时使用“犀牛攻击”（1）。
+>>杀死北风作为防风罩。冷却时使用“风暴召唤”(3)。使用“地击”(2)打断他的“旋风”能力。垃圾邮件在冷却时使用“犀牛攻击”(1)。
 >>当北风达到20%时，他会在寺庙中心附近放一个喇叭-点击喇叭
 .complete 13058,1 
 .use 42918
 step
+#questguide
 .goto TheStormPeaks,65.77,51.41
 >>与Xarantaur交谈
 .turnin 13058 >>转向改变风向
 step
+#questguide
 >>返回Dun Niffelem。与约库姆国王、福约恩铁砧，然后是恩约梅尔德交谈
 .turnin 12975 >>交回纪念
 .accept 12976 >>接受堕落者纪念碑
 .goto TheStormPeaks,65.45,60.16
 .turnin 12981 >>转入冷热状态
-.goto TheStormPeaks,63.14,63.02
+.goto TheStormPeaks,63.16,62.93
 .turnin 12976 >>把纪念碑交给堕落者
 .accept 12985 >>接受锻造头部
 .goto TheStormPeaks,63.20,63.27
 step
+#questguide
 .goto TheStormPeaks,69.6,58.8,70,0
 .goto TheStormPeaks,70.3,62.2
-.use 42424 >> 在死铁巨人身上使用钻石尖劈。杀死繁殖的暴徒，然后掠夺他们的风暴眼
+.use 42424 >>在死铁巨人身上使用钻石尖劈。杀死繁殖的暴徒，然后掠夺他们的风暴眼
 .complete 12985,1 
 step
+#questguide
 >>返回Dun Niffelem。与恩约梅尔德和霍迪尔之角交谈
 .turnin 12985 >>转动锻造头部
 .accept 12987 >>接受放置Hodir的头盔
@@ -44424,73 +47138,87 @@ step
 .accept 12977 >>接受Hodir的呼叫
 .goto TheStormPeaks,64.17,65.01
 step
+#questguide
 .goto TheStormPeaks,64.24,59.23
-.use 42442 >> 飞到Dun Niffelem的闪闪发光的冰棍。坐在飞行坐骑上时，请使用包中的发音板
+.use 42442 >>飞到Dun Niffelem的闪闪发光的冰棍。坐在飞行坐骑上时，请使用包中的发音板
 .complete 12987,1 
 step
+#questguide
 .goto TheStormPeaks,63.20,63.27
 >>与Njormeld交谈
 .turnin 12987 >>轮流放置Hodir头盔
 step
+#questguide
 .goto TheStormPeaks,65.37,60.14
 >>与约库姆国王交谈
 .accept 13011 >>接受Culling Jorcuttar
 step
+#questguide
 .goto TheStormPeaks,64.22,59.39
 >>与你刚刚放在冰钉上的头盔交谈。
 .daily 13006 >>接受粘性清洁
 step
+#questguide
 #completewith next
 .goto TheStormPeaks,55.8,63.9,30 >>进入冬眠洞穴
 step
+#questguide
 #completewith Jorcuttar
 .goto TheStormPeaks,54.4,63.2,0
 >>在冬眠洞穴杀死粘性油。掠夺他们的石油
 .complete 13006,1 
 step
+#questguide
 .goto TheStormPeaks,55.8,63.9,30,0
 .goto TheStormPeaks,54.7,60.6
-.use 42732 >>在洞穴中的一只死冰爪熊身上使用长霜剃须刀，直到你得到侧翼。
+.use 42732 >>在洞穴中的一只死冰爪熊身上使用长霜剃须刀，直到你得到侧翼
 .collect 42733,1,13011,1 
-
 step
+#questguide
 #completewith next
 .goto TheStormPeaks,54.73,60.79
 .cast 56573 >>使用冰冻湖中的冰壶熊侧翼
 .use 42733
 step
+#questguide
 #label Jorcuttar
 .goto TheStormPeaks,54.73,60.79
 .use 42733 >>Jorcuttar产卵时杀死他
 .complete 13011,1 
 step
+#questguide
 .goto TheStormPeaks,53.71,61.66,60,0
 .goto TheStormPeaks,54.4,63.2
 >>杀死洞穴中的粘性油。掠夺他们的石油
 .complete 13006,1 
 step
+#questguide
 #completewith next
 .hs >>Grom’arsh坠毁现场的火炉
 
 step
+#questguide
 .goto TheStormPeaks,33.42,57.95
 >>飞到风暴神庙顶上的索里姆。跟他谈谈
 .turnin 13009 >>开创新的开端
 .accept 13050 >>接受Veranus
 step
+#questguide
 .goto TheStormPeaks,43.7,67.5,50,0
 .goto TheStormPeaks,45.4,66.9,50,0
 .goto TheStormPeaks,43.7,67.5
 >>抢劫山顶巢穴中的鸡蛋
 .complete 13050,1 
 step
+#questguide
 .goto TheStormPeaks,33.42,57.95
 >>飞到风暴神庙顶上的索里姆。跟他谈谈
 .turnin 13050 >>交Veranus
 .accept 13051 >>接受区域侵入
 step
+#questguide
 #completewith next
-.cast 56788 >> 在Broodmother的巢穴上，用你袋子里被盗的原始龙蛋来引诱Veranus。不要等待他的RP（应该需要38秒）
+.cast 56788 >>在Broodmother的巢穴上，用你袋子里被盗的原始龙蛋来引诱Veranus。不要等待他的RP(应该需要38秒)
 .timer 38,Veranus RP (CONTINUE QUESTING)
 >>在等待目标完成时飞回索里姆
 .goto TheStormPeaks,38.73,65.54
@@ -44499,22 +47227,26 @@ step
 .use 42797
 
 step
+#questguide
 .goto TheStormPeaks,33.42,57.95
 >>飞到风暴神庙顶上的索里姆。跟他谈谈
 .turnin 13051 >>移交领土侵入
 .accept 13010 >>接受风暴之锤克罗米尔
 step
+#questguide
 #completewith DunNif2
 .goto TheStormPeaks,36.19,49.39
 >>飞回Grom'arsh
 .fly Dun Niffelem >>飞往Dun Niffelem。这需要2米20秒，所以你可以在此期间休息一下
-.skill riding,300,1
+.skill riding,>300,1
 
 step
+#questguide
 #completewith next
-.goto TheStormPeaks,64.22,59.39,200 >> 乘坐飞行坐骑飞往Dun Niffelem
+.goto TheStormPeaks,64.22,59.39,200 >>乘坐飞行坐骑飞往Dun Niffelem
 .skill riding,<300,1
 step
+#questguide
 #label DunNif2
 >>在Dun Niffelem与Hodir’s Helmet、Horn和King Jokkum交谈
 .turnin 13006 >>交粘性清洁剂
@@ -44522,102 +47254,118 @@ step
 .accept 12977 >>接受Hodir的呼叫
 .goto TheStormPeaks,64.17,65.01
 .turnin 13011 >>卡林·约卡特尔上任
-.vehicle >> 与约库姆国王交谈。带他去雷霆城
+.vehicle >>与约库姆国王交谈。带他去雷霆城
 .timer 118,Krolmir, Hammer of Storms RP
 .complete 13010,1 
 .goto TheStormPeaks,65.45,60.16
 .skipgossip
 step
+#questguide
 #completewith next
 .goto TheStormPeaks,70.7,47.3,0
 .goto TheStormPeaks,70.1,52.5,0
 .goto TheStormPeaks,72.7,52.1,0
 .goto TheStormPeaks,74.7,48.3,0
-.use 42164 >> 杀死该地区的尼弗莱姆祖先和不安的弗罗斯特伯恩。用你袋子里的霍迪尔号角放在他们的尸体上解救他们
+.use 42164 >>杀死该地区的尼弗莱姆祖先和不安的弗罗斯特伯恩。用你袋子里的霍迪尔号角放在他们的尸体上解救他们
 >>您可以在RP事件发生时执行此操作
 .complete 12977,1 
 .complete 12977,2 
 step
+#questguide
 .goto TheStormPeaks,71.37,48.78
 >>在索里姆消失之前和他谈谈
 .turnin 13010 >>交给克洛米尔，风暴之锤
 .accept 13057 >>接受创客平台
 step
+#questguide
 .goto TheStormPeaks,70.7,47.3,60,0
 .goto TheStormPeaks,70.1,52.5,60,0
 .goto TheStormPeaks,72.7,52.1,60,0
 .goto TheStormPeaks,74.7,48.3
-.use 42164 >> 杀死该地区的尼弗莱姆祖先和不安的弗罗斯特伯恩。用你袋子里的霍迪尔号角放在他们的尸体上解救他们
+.use 42164 >>杀死该地区的尼弗莱姆祖先和不安的弗罗斯特伯恩。用你袋子里的霍迪尔号角放在他们的尸体上解救他们
 .complete 12977,1 
 .complete 12977,2 
 step
+#questguide
 .goto TheStormPeaks,56.26,51.36
 >>在创客平台与索里姆交谈
 .turnin 13057 >>在庄家的露台上转弯
 .accept 13005 >>接受地球誓言
 .accept 13035 >>接受洛肯的走狗
 step
+#questguide
 #completewith Duronn
 .goto TheStormPeaks,52.0,50.4,0
-.use 42840 >> 使用背包中的尖峰之角，帮助你在前往指定暴徒的途中杀死铁矮人和铁哨兵
+.use 42840 >>使用背包中的尖峰之角，帮助你在前往指定暴徒的途中杀死铁矮人和铁哨兵
 .complete 13005,1 
 .complete 13005,2 
 step
+#questguide
 .goto TheStormPeaks,48.72,45.65
-.use 42840 >> 用你袋子里的尖峰之角召唤一支小部队。用它杀死Halefnir
+.use 42840 >>用你袋子里的尖峰之角召唤一支小部队。用它杀死Halefnir
 .complete 13035,2 
 step
+#questguide
 #label Duronn
 .goto TheStormPeaks,44.94,38.03
-.use 42840 >> 用你袋子里的尖峰之角召唤一支小部队。用它来杀Duronn
+.use 42840 >>用你袋子里的尖峰之角召唤一支小部队。用它来杀Duronn
 .complete 13035,3 
 step
+#questguide
 #completewith next
 .goto TheStormPeaks,57.7,44.5,50,0
 .goto TheStormPeaks,57.7,44.5,0
-.use 42840 >> 使用尖峰之角帮助你杀死艾森福斯特洞穴外的铁哨兵
+.use 42840 >>使用尖峰之角帮助你杀死艾森福斯特洞穴外的铁哨兵
 .complete 13005,1 
 step
+#questguide
 .goto TheStormPeaks,56.9,44.1,30,0
 .goto TheStormPeaks,55.30,43.32
 >>进入东侧山脚的塑造者大厅
-.use 42840 >> 使用尖峰之角召唤一支小型军队。用它杀死艾森福斯特
+.use 42840 >>使用尖峰之角召唤一支小型军队。用它杀死艾森福斯特
 .complete 13035,1 
 step
+#questguide
 .goto TheStormPeaks,58.48,45.21
-.use 42840 >> 用你袋子里的尖峰之角来帮助你杀死该地区的铁矮人和铁哨兵
+.use 42840 >>用你袋子里的尖峰之角来帮助你杀死该地区的铁矮人和铁哨兵
 .complete 13005,1 
 .complete 13005,2 
 step
+#questguide
 .goto TheStormPeaks,56.26,51.36
 >>在创客平台与索里姆交谈
 .turnin 13005 >>宣誓入狱
 .turnin 13035 >>交出洛肯的走狗
 .accept 13047 >>接受清算
 step
+#questguide
 .goto TheStormPeaks,44.49,28.19
 >>飞到乌尔杜尔城外
-.fp Ulduar >> 获取Ulduar飞行路线
+.fp Ulduar >>获取Ulduar飞行路线
 .skill riding,<300,1
 step
+#questguide
 .goto TheStormPeaks,35.93,31.52
 >>飞往乌尔杜尔郊外的索里姆。与他交谈，等待RP活动结束。这需要1米31秒，因此您可以在此期间休息
 .complete 13047,1 
 .skipgossip
 .timer 91,The Reckoning RP
 step
+#questguide
 #completewith end
 .goto TheStormPeaks,44.49,28.19
 >>飞到乌尔杜尔城外
-.fp Ulduar >> 获取Ulduar飞行路线
-.fly Dun Niffelem >> 飞往Dun Niffelem
-.skill riding,300,1
+.fp Ulduar >>获取Ulduar飞行路线
+.fly Dun Niffelem >>飞往Dun Niffelem
+.skill riding,<300,1
 
 step
+#questguide
 #completewith next
-.goto TheStormPeaks,36.2,49.3,200 >> 乘坐飞行坐骑飞往Dun Niffelem
+.goto TheStormPeaks,36.2,49.3,200 >>乘坐飞行坐骑飞往Dun Niffelem
 .skill riding,<300,1
 step
+#questguide
 #label end
 >>返回Dun Niffelem。与乔库姆和号角交谈
 .turnin 13047 >>提交清算
@@ -44626,8 +47374,9 @@ step
 .goto TheStormPeaks,64.17,65.01
 step << !Mage
 #completewith next
-.goto TheStormPeaks,62.64,60.93
-.fly Dalaran >> 飞往达拉然
+.goto TheStormPeaks,62.64,60.93,-1
+.goto TheStormPeaks,36.20,49.38,-1
+.fly Dalaran >>飞往达拉然
 step << !Mage
 .goto Dalaran,57.5,33.5,30,0
 .goto Dalaran,63.8,32.8,20,0

@@ -3,7 +3,7 @@ RXPGuides.RegisterGuide([[
 << Horde
 #name 1-10 杜隆塔尔
 #version 1
-#group RestedXP 部落 1-22
+#group RestedXP部落1-22
 #defaultfor Troll/Orc
 #next 10-12 杜隆塔尔
 
@@ -30,7 +30,7 @@ step << Warrior/Shaman
     .goto Durotar,44.2,65.9,40,0
 step << Warrior/Shaman
     .goto Durotar,42.6,67.3
-    .vendor >>供应商垃圾。供应商铠装（如果低于10c）
+    .vendor >>供应商垃圾。供应商铠装(如果低于10c)
 step << Warrior
     .goto Durotar,42.9,69.4
     .train 6673 >>火车战斗呐喊
@@ -66,7 +66,7 @@ step << Warlock
     .complete 788,1 --Mottled Boar (10)
 step << Warlock
     #label WarlockBoars
-    .goto Durotar,45.0,57.4,90 >> 跑向家人
+    .goto Durotar,45.0,57.4,90 >>跑向家人
 step << Warlock
     .goto Durotar,45.3,56.9
     >>杀死邪恶家族的头颅
@@ -101,11 +101,11 @@ step << Warlock
     .complete 788,1 --Mottled Boar (10)
 step << Warlock
 	#era/som
-    .xp 3+850>>在回镇的路上研磨至850+/1400xp
+    .xp 3+850>>在回镇的路上研磨至850+/1400经验
 step << Warlock
 	#som
 	#phase 3-6
-    .xp 3 >> 在回镇的路上磨合到3级
+    .xp 3 >>在回镇的路上磨合到3级
 step << Warlock
 	#era/som
 	.goto Durotar,42.6,67.3
@@ -188,7 +188,7 @@ step << Orc Warlock
 step << Orc Warlock
      .goto Durotar,40.6,68.5
     .turnin 3090>>交上染色的羊皮纸
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Shaman/Priest/Mage
     .goto Durotar,42.6,67.3
     .vendor >>供应商垃圾和购买10水
@@ -197,7 +197,7 @@ step << Warrior/Rogue
     .vendor >>供应商垃圾
 step << Hunter
     .goto Durotar,42.6,67.3
-    .vendor >>供应商垃圾。购买箭，直到你的Quiver满为止（1000支箭）
+    .vendor >>供应商垃圾。购买箭，直到你的Quiver满为止(1000支箭)
 step
     #era
 	.goto Durotar,42.7,67.3
@@ -211,11 +211,11 @@ step << Troll Hunter
 step << Troll Mage
     .goto Durotar,42.5,69.0
     .turnin 3086 >>上交字形写字板
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Troll Priest
     .goto Durotar,42.4,68.8
     .turnin 3085 >>交上神圣的平板电脑
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Troll Shaman
     .goto Durotar,42.4,69.0
     .turnin 3084 >>交上符文书写板
@@ -243,7 +243,7 @@ step
 step
     #sticky
     #label Peons
-   .use 16114 >>用Foreman的21点叫醒树旁熟睡的Peons（把它放在你的吧台上，让它更容易使用）
+   .use 16114 >>用Foreman的21点叫醒树旁熟睡的Peons(把它放在你的吧台上，让它更容易使用)
     .complete 5441,1 --Peons Awoken (5)
 step << !Warlock
 	#era/som
@@ -312,7 +312,7 @@ step << !Warlock
 step << Shaman
     .goto Durotar,42.4,69.1
     .accept 1516 >>接受地球的召唤
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Shaman
     .goto Durotar,42.9,69.1
     >>选择员工
@@ -320,20 +320,20 @@ step << Shaman
     .accept 794 >>接受燃烧之刃奖章
 step << Mage
     .goto Durotar,42.5,69.0
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Priest
     .goto Durotar,42.4,68.8
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << !Shaman !Warlock
     .goto Durotar,42.9,69.1
     .turnin 792 >>交给卑鄙的家人
     .accept 794 >>接受燃烧之刃奖章
 step << Hunter
     .goto Durotar,42.8,69.3
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Warrior
     .goto Durotar,42.9,69.4
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step
     .goto Durotar,44.6,68.7
     .turnin 5441 >>交上懒惰的Peons
@@ -388,32 +388,32 @@ step
     .turnin 794 >>交出燃烧之刃奖章
     .accept 805 >>接受向森津村的报告
 step << !Shaman
-    .xp 6 >> 研磨至6级
+    .xp 6 >>升级到6级
 step << Priest
     .goto Durotar,42.4,68.8
-    .accept 5649 >> 有利于精神
-    .trainer >> 训练你的职业咒语
+    .accept 5649 >>有利于精神
+    .trainer >>训练你的职业咒语
 step << Mage
     .goto Durotar,42.5,69.0
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Shaman
     .goto Durotar,42.4,69.2
     .turnin 1516 >>地球的召唤
     .accept 1517 >>接受地球的召唤
 step << Hunter
     .goto Durotar,42.8,69.3
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Warrior
     .goto Durotar,42.9,69.4
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Rogue
     .goto Durotar,41.3,68.0
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Warlock
     .goto Durotar,40.6,68.5
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
     .goto Durotar,40.6,68.4
-    .vendor >> 如果你在训练后有钱，就买血盟书（否则以后再买）
+    .vendor >>如果你在训练后有钱，就买血盟书(否则以后再买)
 step << Shaman
     .goto Durotar,43.0,71.2,22,0
     .goto Durotar,41.5,73.3,14,0
@@ -427,7 +427,7 @@ step << Shaman
 step << Shaman
     .goto Durotar,42.4,69.1
     .turnin 1518 >>地球的召唤
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step
     >>离开起始区域
     .goto Durotar,52.1,68.3
@@ -454,26 +454,26 @@ step
     .accept 823 >>接受向Orgnil的报告
 step << Rogue
     .goto Durotar,56.29,73.40
-    .vendor >> 购买K'Waii投掷的3级装备
+    .vendor >>购买K'Waii投掷的3级装备
 step << Shaman
     .goto Durotar,56.5,73.1
-    >>修理你的武器。如果你有足够的钱（5s4c），请从Traxexir购买一根手杖。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(5s4c)，请从Traxexir购买一根手杖。否则，请跳过此步骤(稍后再回来)
     .collect 2495,1 --Collect Walking Stick
 step << Rogue
     .goto Durotar,56.5,73.1
-     >>修理你的武器。如果你有足够的钱（4s1c），请从Traxexir购买细高跟鞋。否则，请跳过此步骤（稍后再回来）
+     >>修理你的武器。如果你有足够的钱(4s1c)，请从Traxexir购买细高跟鞋。否则，请跳过此步骤(稍后再回来)
     .collect 2494,1 --Collect Stiletto
 step << Orc Warrior
     .goto Durotar,56.5,73.1
-    >>修理你的武器。如果你有足够的钱（4s84c），请从Traxexir购买一把大斧头。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(4s84c)，请从Traxexir购买一把大斧头。否则，请跳过此步骤(稍后再回来)
     .collect 2491,1 --Collect Large Axe
 step << Troll Warrior
     .goto Durotar,56.5,73.1
-    >>修理你的武器。如果你有足够的钱（5s40c），就从Traxexir买一辆Tomahawk。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(5s40c)，就从Traxexir买一辆Tomahawk。否则，请跳过此步骤(稍后再回来)
     .collect 2490,1 --Collect Tomahawk
 step << Hunter
     .goto Durotar,56.5,73.1
-    >>修理你的武器。如果你有足够的钱（2秒85美分），请从Traxexir购买Hornwood Recurrive Bow。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(2秒85美分)，请从Traxexir购买Hornwood Recurrive Bow。否则，请跳过此步骤(稍后再回来)
     .collect 2506,1 --Collect Hornwood Recurve Bow
 step
 	#era/som
@@ -481,12 +481,12 @@ step
     #completewith next
     .goto Durotar,59.7,71.7,50,0
     .goto Durotar,57.6,77.9,50,0
-    >> 沿着海滩奔跑，尽可能多地杀死爬行动物和马克鲁拉，以获取黏液和眼睛。您不必在此处完成此步骤。
+    >>沿着海滩奔跑，尽可能多地杀死爬行动物和马克鲁拉，以获取黏液和眼睛。您不必在此处完成此步骤。
     .complete 818,2 --Crawler Mucus (8)
     .complete 818,1 --Intact Makrura Eye (4)
 step
 	#era/som
-    .goto Durotar,52.1,83.3,75 >> 到达海滩尽头
+    .goto Durotar,52.1,83.3,75 >>到达海滩尽头
 step
 	#era/som
     .goto Durotar,50.9,79.2,30 >>进入科尔卡基地
@@ -528,40 +528,40 @@ step
 step
 	#era/som
     #softcore
-    .goto Durotar,57.5,73.3,200 >> 在篝火中死去，在精神治疗者那里重生，或者逃跑
+    .goto Durotar,57.5,73.3,200 >>在篝火中死去，在精神治疗者那里重生，或者逃跑
 step << Shaman
 	#era/som
     #softcore
     .goto Durotar,56.5,73.1
-    >>修理你的武器。如果你有足够的钱（5s4c），请从Traxexir购买一根手杖。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(5s4c)，请从Traxexir购买一根手杖。否则，请跳过此步骤(稍后再回来)
 	>>你可以从外面和他说话
     .collect 2495,1 --Collect Walking Stick
 step << Rogue
 	#era/som
     #softcore
     .goto Durotar,56.5,73.1
-     >>修理你的武器。如果你有足够的钱（4s1c），请从Traxexir购买细高跟鞋。否则，请跳过此步骤（稍后再回来）
+     >>修理你的武器。如果你有足够的钱(4s1c)，请从Traxexir购买细高跟鞋。否则，请跳过此步骤(稍后再回来)
 	>>你可以从外面和他说话
     .collect 2494,1 --Collect Stiletto
 step << Orc Warrior
 	#era/som
     #softcore
     .goto Durotar,56.5,73.1
-    >>修理你的武器。如果你有足够的钱（4s84c），请从Traxexir购买一把大斧头。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(4s84c)，请从Traxexir购买一把大斧头。否则，请跳过此步骤(稍后再回来)
 	>>你可以从外面和他说话
     .collect 2491,1 --Collect Large Axe
 step << Troll Warrior
 	#era/som
     #softcore
     .goto Durotar,56.5,73.1
-    >>修理你的武器。如果你有足够的钱（5s40c），就从Traxexir买一辆Tomahawk。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(5s40c)，就从Traxexir买一辆Tomahawk。否则，请跳过此步骤(稍后再回来)
 	>>你可以从外面和他说话
     .collect 2490,1 --Collect Tomahawk
 step << Hunter
 	#era/som
     #softcore
     .goto Durotar,56.5,73.1
-    >>修理你的武器。如果你有足够的钱（2秒85美分），请从Traxexir购买Hornwood Recurrive Bow。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(2秒85美分)，请从Traxexir购买Hornwood Recurrive Bow。否则，请跳过此步骤(稍后再回来)
 	>>你可以从外面和他说话
     .collect 2506,1 --Collect Hornwood Recurve Bow
 step
@@ -601,56 +601,56 @@ step
     .accept 791 >>接受负重
 step << Shaman
     .goto Durotar,52.0,40.5
-    >>修理你的武器。如果你有足够的钱（5s4c），从乌戈尔买一根拐杖。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(5s4c)，从乌戈尔买一根拐杖。否则，请跳过此步骤(稍后再回来)
     .collect 2495,1 --Collect Walking Stick
 step << Rogue
     .goto Durotar,52.0,40.5
-     >>修理你的武器。如果你有足够的钱（4s1c），从乌戈尔买一个细高跟鞋。否则，请跳过此步骤（稍后再回来）
+     >>修理你的武器。如果你有足够的钱(4s1c)，从乌戈尔买一个细高跟鞋。否则，请跳过此步骤(稍后再回来)
     .collect 2494,1 --Collect Stiletto
 step << Orc Warrior
     .goto Durotar,52.0,40.5
-    >>修理你的武器。如果你有足够的钱（4s84c），从乌戈尔买一把大斧子。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(4s84c)，从乌戈尔买一把大斧子。否则，请跳过此步骤(稍后再回来)
     .collect 2491,1 --Collect Large Axe
 step << Troll Warrior
     .goto Durotar,52.0,40.5
-    >>修理你的武器。如果你有足够的钱（5s40c），从乌戈尔买一辆战斧。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(5s40c)，从乌戈尔买一辆战斧。否则，请跳过此步骤(稍后再回来)
     .collect 2490,1 --Collect Tomahawk
 step << Hunter
 	#completewith next
     .goto Durotar,53.0,41.0
-    >>修理你的武器。如果你有足够的钱（2s85c），从Ghrawt买一把Hornwood Recurve Bow。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(2s85c)，从Ghrawt买一把Hornwood Recurve Bow。否则，请跳过此步骤(稍后再回来)
     .collect 2506,1 --Collect Hornwood Recurve Bow
 step << Hunter
     .goto Durotar,53.0,41.0
-    .vendor >> 从Ghrawt那里买足够的箭来装满你的箭袋
+    .vendor >>从Ghrawt那里买足够的箭来装满你的箭袋
 step << Warrior/Rogue
     .goto Durotar,52.0,40.7
     .money <0.0020
-    .train 2018 >> 火车铁匠。锻造允许你制造锐化宝石（+2武器伤害，持续1小时）。如果你愿意，可以跳过锻造和采矿
+    .train 2018 >>火车铁匠。锻造允许你制造锐化宝石(+2武器伤害，持续1小时)。如果你愿意，可以跳过锻造和采矿
 step << Warrior/Rogue
     .goto Durotar,51.8,40.9
     .money <0.0010
-    .trainer 2580 >> 训练采矿。在你的魔法书中施放“寻找矿物”
+    .trainer 2580 >>训练采矿。在你的魔法书中施放“寻找矿物”
 step << Warrior/Rogue
     .goto Durotar,53.0,42.0
     .money <0.0081
-    .collect 2901,1 >> 购买采矿镐。留意我的静脉，用铁匠技术为你的武器制作磨石
+    .collect 2901,1 >>购买采矿镐。留意我的静脉，用铁匠技术为你的武器制作磨石
 step << !Warrior !Rogue !Hunter
     .goto Durotar,51.5,41.6
     .turnin 2161 >>交出佩恩的负担
-    .home >> 把你的炉石放在剃刀山
-    .vendor >> 尽可能多地购买5级水
+    .home >>把你的炉石放在剃刀山
+    .vendor >>尽可能多地购买5级水
 step << Warrior/Rogue/Hunter
     .goto Durotar,51.5,41.6
     .turnin 2161 >>交出佩恩的负担
-    .home >> 把你的炉石放在剃刀山
-    .vendor >> 购买最多20种5级食物
+    .home >>把你的炉石放在剃刀山
+    .vendor >>购买最多20种5级食物
 step << Priest
     .goto Durotar,54.3,42.9
-    .turnin 5649 >> 有利于精神
-    .accept 5648 >> 灵性服装
+    .turnin 5649 >>有利于精神
+    .accept 5648 >>灵性服装
 step << Priest
-    >>在咕哝Kor'ja身上使用Lesser Heal Rank 2和Power Word：坚韧
+    >>使用较低治疗等级2，然后在咕哝Kor'ja身上使用力量词：坚韧
     .goto Durotar,53.1,46.5
     .complete 5648,1 --Heal and fortify Grunt Kor'ja
 step << Priest
@@ -683,7 +683,7 @@ step
     .goto Durotar,59.2,58.3,25 >>进入要塞
 step
     .goto Durotar,59.7,58.3
-    >>去要塞的顶层。杀死Benedict中尉并抢走他的钥匙-小心他使用盾牌猛击（打断）
+    >>去要塞的顶层。杀死Benedict中尉并抢走他的钥匙-小心他使用盾牌猛击(打断)
     .complete 784,3 --Lieutenant Benedict (1)
     .collect 4882,1 --Collect Benedict's Key (1)
 step
@@ -710,7 +710,7 @@ step
 step
     #softcore
     #requires KulTiras
-    .goto Durotar,53.5,44.5,120 >> 在精神治疗者处死亡并重生，或者逃跑
+    .goto Durotar,53.5,44.5,120 >>在精神治疗者处死亡并重生，或者逃跑
 step
     #softcore
     .goto Durotar,51.9,43.5
@@ -732,60 +732,60 @@ step
     .turnin 791 >>转身负重
 step << Shaman
     .goto Durotar,52.0,40.5
-    >>修理你的武器。如果你有足够的钱（5s4c），从乌戈尔买一根拐杖。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(5s4c)，从乌戈尔买一根拐杖。否则，请跳过此步骤(稍后再回来)
     .collect 2495,1 --Collect Walking Stick
 step << Rogue
     .goto Durotar,52.0,40.5
-     >>修理你的武器。如果你有足够的钱（4s1c），从乌戈尔买一个细高跟鞋。否则，请跳过此步骤（稍后再回来）
+     >>修理你的武器。如果你有足够的钱(4s1c)，从乌戈尔买一个细高跟鞋。否则，请跳过此步骤(稍后再回来)
     .collect 2494,1 --Collect Stiletto
 step << Orc Warrior
     .goto Durotar,52.0,40.5
-    >>修理你的武器。如果你有足够的钱（4s84c），从乌戈尔买一把大斧子。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(4s84c)，从乌戈尔买一把大斧子。否则，请跳过此步骤(稍后再回来)
     .collect 2491,1 --Collect Large Axe
 step << Troll Warrior
     .goto Durotar,52.0,40.5
-    >>修理你的武器。如果你有足够的钱（5s40c），从乌戈尔买一辆战斧。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(5s40c)，从乌戈尔买一辆战斧。否则，请跳过此步骤(稍后再回来)
     .collect 2490,1 --Collect Tomahawk
 step << Hunter
 	#completewith next
     .goto Durotar,53.0,41.0
-    >>修理你的武器。如果你有足够的钱（2s85c），从Ghrawt买一把Hornwood Recurve Bow。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(2s85c)，从Ghrawt买一把Hornwood Recurve Bow。否则，请跳过此步骤(稍后再回来)
     .collect 2506,1 --Collect Hornwood Recurve Bow
 step << Hunter
     .goto Durotar,53.0,41.0
-    .vendor >> 从Ghrawt那里买足够的箭来装满你的箭袋
+    .vendor >>从Ghrawt那里买足够的箭来装满你的箭袋
 step << Warrior/Rogue
     .goto Durotar,52.0,40.7
     .money <0.0020
-    .train 2018 >> 火车铁匠。锻造允许你制造锐化宝石（+2武器伤害，持续1小时）。如果你愿意，可以跳过锻造和采矿
+    .train 2018 >>火车铁匠。锻造允许你制造锐化宝石(+2武器伤害，持续1小时)。如果你愿意，可以跳过锻造和采矿
 step << Warrior/Rogue
     .goto Durotar,51.8,40.9
     .money <0.0010
-    .trainer 2580 >> 训练采矿。在你的魔法书中施放“寻找矿物”
+    .trainer 2580 >>训练采矿。在你的魔法书中施放“寻找矿物”
 step << Warrior/Rogue
     .goto Durotar,53.0,42.0
     .money <0.0081
-    .collect 2901,1 >> 购买采矿镐。留意我的静脉，用铁匠技术为你的武器制作磨石
+    .collect 2901,1 >>购买采矿镐。留意我的静脉，用铁匠技术为你的武器制作磨石
 step << Shaman
     .goto Durotar,54.4,42.6
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Priest
     .goto Durotar,54.3,42.9
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Warrior
     .goto Durotar,54.2,42.5
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Hunter
     .goto Durotar,51.8,43.5
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Rogue
     .goto Durotar,52.0,43.7
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Warlock
     .goto Durotar,54.4,41.2
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
     .goto Durotar,54.7,41.5
-    .vendor >> 如果您在培训后有钱，请购买Firebolt书籍（否则请稍后购买）
+    .vendor >>如果您在培训后有钱，请购买Firebolt书籍(否则请稍后购买)
 step << Warrior/Rogue
     .goto Durotar,54.2,41.9
     .money <0.01
@@ -796,10 +796,10 @@ step
     .vendor >>从Jark那里买一个6槽包
 step << Priest/Warlock/Mage
     .goto Durotar,51.5,41.6
-    .vendor >> 尽可能多地购买5级水
+    .vendor >>尽可能多地购买5级水
 step << Warrior/Rogue/Hunter
     .goto Durotar,51.5,41.6
-    .vendor >> 购买最多20种5级食物
+    .vendor >>购买最多20种5级食物
 step
     #sticky
     #completewith Tools
@@ -809,9 +809,9 @@ step
 step
     #label Tools
     >>检查离海岸最近的船上的工具箱。如果找不到这些产卵，请查看其他船只。它们可能有点难看
-    .goto Durotar,61.9,55.5,12 >> 在水下的窗户里
-    .goto Durotar,62.3,56.3,12 >> 水下的
-    .goto Durotar,61.4,56.1,12 >> 靠近海岸
+    .goto Durotar,61.9,55.5,12 >>在水下的窗户里
+    .goto Durotar,62.3,56.3,12 >>水下的
+    .goto Durotar,61.4,56.1,12 >>靠近海岸
     .complete 825,1 --Gnomish Tools (3)
 step
     #sticky
@@ -840,7 +840,7 @@ step
     .goto Durotar,67.4,87.8
     >>杀死扎拉扎内。当他施放治愈之波时，保存你的地球冲击。抢劫他的头 << Shaman
     >>杀死扎拉扎内。把你的凿击术留到他施放治疗波的时候。抢劫他的头 << Rogue
-    >>杀死扎拉扎内。小心，因为他可以治愈（你可能需要治疗药剂）。抢劫他的头 << !Shaman !Rogue
+    >>杀死扎拉扎内。小心，因为他可以治愈(你可能需要治疗药剂)。抢劫他的头 << !Shaman !Rogue
     .complete 826,3 --Zalazane's Head (1)
 step
     #label Trolls
@@ -865,9 +865,9 @@ step
     .complete 817,1 --Durotar Tiger Fur (4)
 step
     #softcore
-    .goto Durotar,57.5,73.3,200 >> 在精神治疗者处死亡并重生，或者逃跑
+    .goto Durotar,57.5,73.3,200 >>在精神治疗者处死亡并重生，或者逃跑
 step
-    >> 从Makrura/爬虫手中抢走剩余的眼睛和黏液
+    >>从Makrura/爬虫手中抢走剩余的眼睛和黏液
     .goto Durotar,59.7,71.7,100,0
     .goto Durotar,57.6,77.9,100,0
     .goto Durotar,59.7,71.7,100,0
@@ -877,14 +877,14 @@ step
     .complete 818,2 --Crawler Mucus (8)
 step
     .goto Durotar,56.48,73.11
-    .vendor >> Trayexir的供应商垃圾处理和维修。你可以在小屋外面和他说话
+    .vendor >>Trayexir的供应商垃圾处理和维修。你可以在小屋外面和他说话
 step << Mage
     >>到帐篷里去
     .goto Durotar,56.3,75.1
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step
 	#completewith SkullX
-    +把微弱发光的骷髅从转弯处保存起来，以便以后使用（你会被告知何时使用）
+    +把微弱发光的骷髅从转弯处保存起来，以便以后使用(你会被告知何时使用)
 step
     .goto Durotar,55.9,74.7
     .turnin 808 >>交出Minshina的头骨
@@ -919,23 +919,23 @@ step << Shaman
 	#phase 3-6
     .goto Durotar,54.4,42.5
     .accept 2983 >>接受火灾召唤
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Priest
 	#som
 	#phase 3-6
     .goto Durotar,54.3,42.9
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Orc Warrior/Troll Warrior
 	#som
 	#phase 3-6
     .goto Durotar,54.2,42.5
     .accept 1505 >>接受退伍军人乌泽克
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Rogue
 	#som
 	#phase 3-6
     .goto Durotar,52.0,43.7
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Warrior/Rogue
 	#som
 	#phase 3-6
@@ -946,24 +946,24 @@ step << Warlock
 	#som
 	#phase 3-6
     .goto Durotar,54.4,41.2
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
     .accept 1506 >>接受甘鲁的召唤
 step << Hunter
 	#som
 	#phase 3-6
     .goto Durotar,51.8,43.5
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
     .accept 6062 >>接受驯服野兽
 step << Hunter
 	#som
 	#phase 3-6
     .goto Durotar,51.8,43.5
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
     .accept 6062 >>接受驯服野兽
 step << Hunter
 	#som
 	#phase 3-6
-    >>单击包中的驯鹿棒。尝试在最大射程（30码）进行
+    >>单击包中的驯鹿棒。尝试在最大射程(30码)进行
     .goto Durotar,51.5,50.0
     .complete 6062,1 --Tame a Dire Mottled Boar
 step << Hunter
@@ -987,7 +987,7 @@ step << Hunter
 step << Hunter
 	#som
 	#phase 3-6
-    .use 15920 >>点击你包里的驯蝎棒。尝试在最大射程（30码）进行
+    .use 15920 >>点击你包里的驯蝎棒。尝试在最大射程(30码)进行
     .goto Durotar,59.3,27.6
     .complete 6082,1 --Tame an Armored Scorpid
 step << Hunter
@@ -1000,7 +1000,7 @@ step << Hunter
 	#som
 	#phase 3-6
     .goto Durotar,53.0,41.0
-    .vendor >>供应商垃圾箱。购买10级箭，直到你的Quiver满为止（1000支箭）
+    .vendor >>供应商垃圾箱。购买10级箭，直到你的Quiver满为止(1000支箭)
 step
     .goto Durotar,48.9,48.5
     >>杀死该地区的Quilboars和Scouts
@@ -1008,7 +1008,7 @@ step
     .complete 837,2 --Razormane Scout (4)
 step
     .goto Durotar,43.8,39.1
-    >>杀死该地区的除尘兵和战警。吸尘器施放回春（治疗），而战警则是坦克。
+    >>杀死该地区的除尘兵和战警。吸尘器施放回春(治疗)，而战警则是坦克。
     .complete 837,3 --Razormane Dustrunner (4)
     .complete 837,4 --Razormane Battleguard (4)
 step << Warlock/Hunter
@@ -1026,16 +1026,16 @@ step << Warlock/Hunter
 step << Warlock
 	#era/som
     .goto Durotar,54.4,41.2
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
     .accept 1506 >>接受甘鲁的召唤
 step << Hunter
 	#era/som
     .goto Durotar,51.8,43.5
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
     .accept 6062 >>接受驯服野兽
 step << Hunter
 	#era/som
-    .use 15917 >>单击包中的驯鹿棒。尝试在最大射程（30码）进行
+    .use 15917 >>单击包中的驯鹿棒。尝试在最大射程(30码)进行
     .goto Durotar,51.5,50.0
     .complete 6062,1 --Tame a Dire Mottled Boar
 step << Hunter
@@ -1055,7 +1055,7 @@ step << Hunter
     .accept 6082 >>接受驯服野兽
 step << Hunter
 	#era/som
-    .use 15920 >>点击你包里的驯蝎棒。尝试在最大射程（30码）进行
+    .use 15920 >>点击你包里的驯蝎棒。尝试在最大射程(30码)进行
     .goto Durotar,59.3,27.6
     .complete 6082,1 --Tame an Armored Scorpid
 step << Hunter
@@ -1066,7 +1066,7 @@ step << Hunter
 step << Hunter
 	#era/som
     .goto Durotar,53.0,41.0
-    .vendor >>供应商垃圾箱。购买10级箭，直到你的Quiver满为止（1000支箭）
+    .vendor >>供应商垃圾箱。购买10级箭，直到你的Quiver满为止(1000支箭)
 step
     .goto Durotar,43.1,30.3
     .accept 816 >>接受丢失但不遗忘
@@ -1099,7 +1099,7 @@ step << Warlock
 step << Warlock
 	#som
 	#phase 3-6
-    .goto Durotar,47.3,17.9,200 >> Orgrimmar出口
+    .goto Durotar,47.3,17.9,200 >>Orgrimmar出口
 step
     #completewith next
     .goto Durotar,41.7,25.5,120 >>跳进雷霆岭
@@ -1119,18 +1119,18 @@ step
     #softcore
 	#era/som
 	.goto Durotar,41.5,18.6
-    >> 战斗出雷脊区域或死亡跳跃到墓地。
+    >>战斗出雷脊区域或死亡跳跃到墓地。
     .accept 812 >>接受治疗需要
 step << !Warrior !Shaman
 	#som
 	#phase 3-6
-	.hs >> 炉底到剃须山
+	.hs >>炉底到剃须山
 step
     #hardcore
 	#era/som
     .goto Durotar,39.18,31.65,90,0
 	.goto Durotar,41.5,18.6
-    >> 冲出雷脊地区
+    >>冲出雷脊地区
     .accept 812 >>接受治疗需要
 step
 	#era/som
@@ -1139,12 +1139,12 @@ step
 step << Rogue
 	#era/som
     .goto Orgrimmar,48.13,80.55
-    .vendor >> 购买Trak'gen投掷的等级11。11级时装备它
+    .vendor >>购买Trak'gen投掷的等级11。11级时装备它
 step << Hunter
 	#era/som
     #completewith next
     .goto Orgrimmar,37.40,52.32
-    .vendor >> 从山体买些苹果喂你的宠物
+    .vendor >>从山体买些苹果喂你的宠物
     .collect 4536,10 --Shiny Red Apple (10)
 step
 	#era/som
@@ -1166,8 +1166,8 @@ step << Warlock
 step << Rogue
 	#era/som
     .goto Orgrimmar,42.72,53.56
-	.accept 1963 >> 接受破碎的手
-	.trainer >> 训练你的职业咒语
+	.accept 1963 >>接受破碎的手
+	.trainer >>训练你的职业咒语
 step
 	#era/som
     .goto Orgrimmar,47.2,53.4
@@ -1180,7 +1180,7 @@ step
 step
 	#era/som
     #completewith next
-    .hs >> 炉底到剃须山
+    .hs >>炉底到剃须山
 step << !Warlock !Hunter
 	#era/som
     .goto Durotar,51.1,42.4
@@ -1203,20 +1203,20 @@ step << Shaman
 	#era/som
     .goto Durotar,54.4,42.5
     .accept 2983 >>接受火灾召唤
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Priest
 	#era/som
     .goto Durotar,54.3,42.9
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Orc Warrior/Troll Warrior
 	#era/som
     .goto Durotar,54.2,42.5
     .accept 1505 >>接受退伍军人乌泽克
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Rogue
 	#era/som
     .goto Durotar,52.0,43.7
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Warrior/Rogue
 	#era/som
     .goto Durotar,54.2,41.9
@@ -1229,7 +1229,7 @@ RXPGuides.RegisterGuide([[
 << Horde
 #name 10-12 杜隆塔尔
 #version 1
-#group RestedXP 部落 1-22
+#group RestedXP部落1-22
 #defaultfor Troll/Orc
 #next 11-14 银松森林 << Troll Rogue/Orc Rogue
 #next 12-17 贫瘠之地 << Troll !Rogue/Orc !Rogue
@@ -1237,7 +1237,7 @@ RXPGuides.RegisterGuide([[
 step << Hunter
     #completewith next
     .goto Durotar,52.98,41.03
-    >>如果你买得起，请从供应商处购买层压递归弓（和箭头）
+    >>如果你买得起，请从供应商处购买层压递归弓(和箭头)
     .collect 2507,1 --Laminated Recurve Bow (1)
 step
     .goto Durotar,50.8,43.6
@@ -1255,7 +1255,7 @@ step << Orc Shaman/Troll Shaman
     .turnin 2983 >>交火召唤
     .accept 1524 >>接受火灾召唤
 step << Warrior/Shaman
-    .goto The Barrens,52.0,30.5,150 >> 跑到十字路口
+    .goto The Barrens,52.0,30.5,150 >>跑到十字路口
 step << Warrior/Shaman
     .goto The Barrens,52.2,31.8
     .accept 870 >>接受被遗忘的水池
@@ -1275,7 +1275,7 @@ step << Warrior/Shaman
     .accept 5041 >>接受十字路口的补给
 step << Warrior/Shaman
     .goto The Barrens,51.5,30.4
-    .fp The Crossroads >> 获得the Crossroads飞行路线
+    .fp The Crossroads >>获得the Crossroads飞行路线
 step << !Tauren Warrior/!Tauren Shaman
     >>不要去奥格瑞玛
     .goto The Barrens,51.5,30.3
@@ -1310,7 +1310,7 @@ step << Warrior/Shaman
 step << Warrior/Shaman
     #softcore
     #completewith next
-    .deathskip >> 在精神治疗师处死亡并重生
+    .deathskip >>在精神治疗师处死亡并重生
 step << Warrior/Shaman
     #softcore
     .turnin 848 >>倒入真菌孢子
@@ -1328,7 +1328,7 @@ step << Warrior/Shaman
 step << Warrior/Shaman
     >>沿着这条路跑。小心路上的高级暴徒
     .goto The Barrens,44.4,59.2
-    .fp Camp Taurajo >> 获得Taurajo营地飞行路线
+    .fp Camp Taurajo >>获得Taurajo营地飞行路线
 step << Warrior/Shaman
     >>向西进入Mulgore，寻找Morin Cloudstaller。他沿着东路巡逻
     .goto Mulgore,59.7,62.5,70,0
@@ -1375,7 +1375,7 @@ step << Warrior/Shaman
 step << Warrior/Shaman
 	#era/som
 	#completewith CaravanR
-	.use 4854 >>留心鬼嚎（稀有狼）。他在穆尔戈雷北部巡逻。杀死并抢劫他以换取恶魔疤痕斗篷。从物品中接受任务
+	.use 4854 >>留心鬼嚎(稀有狼)。他在穆尔戈雷北部巡逻。杀死并抢劫他以换取恶魔疤痕斗篷。从物品中接受任务
 	.collect 4854,1,770
 	.unitscan Ghost Howl
 step << Warrior/Shaman
@@ -1408,7 +1408,7 @@ step << Warrior/Shaman
     >>去塔的顶层
     .goto Thunder Bluff,45.6,52.0,25,0
     .goto Thunder Bluff,46.8,49.9
-    .fp Thunder Bluff >> 获得Thunder Bluff飞行路线
+    .fp Thunder Bluff >>获得Thunder Bluff飞行路线
 step << Warrior/Shaman
 	>>进入雷霆崖洞穴
     .goto Thunder Bluff,29.6,29.7,25,0
@@ -1492,7 +1492,7 @@ step << Warrior/Shaman
     .goto Mulgore,51.1,58.6,70,0
     .goto Mulgore,59.7,62.5,70,0
     .goto Mulgore,59.7,62.5
-    .turnin 751 >> 收缴被摧毁的商队
+    .turnin 751 >>收缴被摧毁的商队
     .accept 764 >>接受合资公司。
     .accept 765 >>接受主管Fizspholler
 	.unitscan Morin Cloudstalker
@@ -1532,11 +1532,11 @@ step << Warrior/Shaman
 step << Shaman
 	#level 12
     .goto Durotar,54.4,42.5
-  .trainer >> 训练你的职业咒语
+  .trainer >>训练你的职业咒语
 step << Orc Warrior/Troll Warrior
 	#level 12
     .goto Durotar,54.2,42.5
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Priest
     #sticky
     #label Linen
@@ -1554,7 +1554,7 @@ step << Warrior
     .vendor >>从Jark购买6个老虎袋，直到你无法装备新袋子
 step << Hunter
     .goto Durotar,53.0,41.0
-    .vendor >> 如果你有钱，就买层压递归弓。
+    .vendor >>如果你有钱，就买层压递归弓。
 step
     .goto Durotar,56.4,20.1
     .turnin 828 >>交给Margoz
@@ -1571,7 +1571,7 @@ step
     .goto Durotar,39.67,18.83,0
     .complete 813,1 --Venomtail Poison Sac (4)
 step << Hunter
-    .goto Durotar,55.06,9.91,60 >> 跑向骷髅岩
+    .goto Durotar,55.06,9.91,60 >>跑向骷髅岩
 step
 	#era/som
     #sticky
@@ -1592,11 +1592,11 @@ step << Warlock
     .goto Durotar,53.6,8.5,25,0
     .goto Durotar,51.8,8.1,25,0
     .goto Durotar,51.6,9.8
-    >> 沿着洞穴的正确路径走。继续跟踪洞穴，在洞穴尽头抢劫箱子。
+    >>沿着洞穴的正确路径走。继续跟踪洞穴，在洞穴尽头抢劫箱子。
     .complete 1501,1 --Tablet of Verga (1)
 step
     >>为了燃烧的阴影之眼杀死加兹乌斯。他可能在洞穴的多个区域。
-    >>在虚空行者身上使用粘胶以避免被击中，使用治疗药剂恢复健康。使用LoS（视线）避开Gazz'uz的暗影箭
+    >>在虚空行者身上使用粘胶以避免被击中，使用治疗药剂恢复健康。使用LoS(视线)避开Gazz'uz的暗影箭
     >>杀死Gazz'uz后，你可以跑到洞穴内发现的水体中躲避虚空行者
     >>他很难相处，所以要小心。如果需要，可以跳过此任务
     .goto Durotar,51.8,10.0
@@ -1610,7 +1610,7 @@ step
     .accept 829 >>接受Neeru Fireblade
 step << Shaman
     #completewith next
-    .goto Durotar,52.8,28.7,40 >> 到这里的洞穴里去
+    .goto Durotar,52.8,28.7,40 >>到这里的洞穴里去
 step << Shaman
     >>为了袋子杀死燃烧之刃信徒
     .goto Durotar,52.5,26.7
@@ -1628,7 +1628,7 @@ step
     .complete 835,2 --Dustwind Storm Witch (8)
 step
     #softcore
-    .deathskip >> 在精神治疗师处死亡并重生
+    .deathskip >>在精神治疗师处死亡并重生
 step
     #softcore
     .goto Durotar,46.4,22.9
@@ -1643,18 +1643,18 @@ step
 step
     #completewith next
 	#requires scorp2
-    .goto Durotar,45.50,11.70,70 >> 遇到奥格瑞玛
+    .goto Durotar,45.50,11.70,70 >>遇到奥格瑞玛
 step << Rogue
 	#som
 	#phase 3-6
     .goto Orgrimmar,48.13,80.55
-    .vendor >> 购买Trak'gen投掷的等级11。11级时装备它
+    .vendor >>购买Trak'gen投掷的等级11。11级时装备它
 step << Hunter
 	#som
 	#phase 3-6
     #completewith next
     .goto Orgrimmar,37.40,52.32
-    .vendor >> 从山体买些苹果喂你的宠物
+    .vendor >>从山体买些苹果喂你的宠物
     .collect 4536,10 --Shiny Red Apple (10)
 step
 	#som
@@ -1670,11 +1670,11 @@ step << Warrior/Shaman
     #requires scorp2
     .goto Orgrimmar,54.2,68.4
     .turnin 6384 >>转入骑行前往奥格瑞玛
-    .accept 6385 >> 接受风骑士大师多拉斯
+    .accept 6385 >>接受风骑士大师多拉斯
 step << Warrior/Shaman
     .goto Orgrimmar,45.2,63.8
-    .turnin 6385 >> 交给风骑士大师多拉斯
-    .accept 6386 >> 接受返回十字路口
+    .turnin 6385 >>交给风骑士大师多拉斯
+    .accept 6386 >>接受返回十字路口
 step
 	#era/som
     #requires scorp2
@@ -1683,11 +1683,11 @@ step
 step << Rogue
 	#level 12
     .goto Orgrimmar,42.8,53.4
-    .accept 1963 >> 接受破碎的手
-	.trainer >> 训练你的职业咒语
+    .accept 1963 >>接受破碎的手
+	.trainer >>训练你的职业咒语
 step << Rogue
     .goto Orgrimmar,42.8,53.4
-    .accept 1963 >> 接受破碎的手
+    .accept 1963 >>接受破碎的手
 step << Priest
     #sticky
     #label Robes
@@ -1738,7 +1738,7 @@ step
 	#softcore
 	#completewith next
     .goto Orgrimmar,52.76,48.95
-	.deathskip >> 进入阴影裂缝中的愤怒火焰裂缝。死在里面的暴徒中，在精神治疗者那里重生。
+	.deathskip >>进入阴影裂缝中的愤怒火焰裂缝。死在里面的暴徒中，在精神治疗者那里重生。
 step
 	#era/som
 	#softcore
@@ -1790,7 +1790,7 @@ step << Rogue
     .collect 4986,1,924 --Collect Flawed Power Stone
     .complete 924,1 --Destroy the Demon Seed (1)
 step << !Shaman !Warrior
-    .goto The Barrens,52.0,30.5,150 >> 跑到十字路口
+    .goto The Barrens,52.0,30.5,150 >>跑到十字路口
 step << !Shaman !Warrior
     .goto The Barrens,52.2,31.8
     .accept 870 >>接受被遗忘的水池
@@ -1803,10 +1803,10 @@ step << Orc !Warrior !Shaman/Troll !Warrior !Shaman
     .accept 6365 >>接受Orgrimmar的肉类
 step << Shaman Troll/Shaman Orc/Warrior Orc/Warrior Troll
     .goto The Barrens,52.5,29.8
-    .turnin 6386 >> 转弯返回十字路口
+    .turnin 6386 >>转弯返回十字路口
 step
     .goto The Barrens,51.99,29.89
-	.home >> 把炉子放在十字路口
+	.home >>把炉子放在十字路口
 step << !Shaman !Warrior
     .goto The Barrens,51.9,30.3
     .accept 869 >>接受猛禽窃贼
@@ -1816,7 +1816,7 @@ step << !Shaman !Warrior
     .accept 5041 >>接受十字路口的补给
 step << !Shaman !Warrior
     .goto The Barrens,51.5,30.4
-    .fp The Crossroads >> 获得the Crossroads飞行路线
+    .fp The Crossroads >>获得the Crossroads飞行路线
 step << Orc !Warrior !Shaman/Troll !Warrior !Shaman
     >>不要去奥格瑞玛
     .goto The Barrens,51.5,30.3
@@ -1828,67 +1828,67 @@ step << !Shaman !Warrior
     .accept 1492 >>接受码头管理员Dizzywig
 step << Mage
 	#era/som
-    +如果您计划通过AoE调平，请手动选择“荒地AoE指南”。否则，选择12-17 贫瘠之地 Guide
+    +如果您计划通过AoE调平，请手动选择“荒地AoE指南”。否则，选择12-17 Barrens Guide
 step << Mage
 	#som
 	#phase 3-6
-    +如果您计划通过AoE调平，请手动选择“荒地AoE指南”。否则，请选择12-17 贫瘠之地 Guide。请注意，随着最近100%任务xp SoM的变化，Mage AoE研磨比任务路线更糟糕
+    +如果您计划通过AoE调平，请手动选择“荒地AoE指南”。否则，请选择12-17 Barrens Guide。请注意，随着最近100%任务xp SoM的变化，Mage AoE研磨比任务路线更糟糕
 step << Rogue
     .goto The Barrens,51.5,30.3
-    .fly >> 飞往奥格瑞玛
+    .fly >>飞往奥格瑞玛
 step << Rogue
     .goto Orgrimmar,54.2,68.4
     .turnin 6384 >>转入骑行前往奥格瑞玛
-    .accept 6385 >> 接受风骑士大师多拉斯
+    .accept 6385 >>接受风骑士大师多拉斯
 step << Rogue
     .goto Orgrimmar,45.2,63.8
-    .turnin 6385 >> 交给风骑士大师多拉斯
-    .accept 6386 >> 接受返回十字路口
+    .turnin 6385 >>交给风骑士大师多拉斯
+    .accept 6386 >>接受返回十字路口
 step << Rogue
     #sticky
     #completewith next
-    .goto Durotar,50.8,13.8,40 >> 去齐柏林塔。带着齐柏林飞艇去幽暗城
+    .goto Durotar,50.8,13.8,40 >>去齐柏林塔。带着齐柏林飞艇去幽暗城
 step << Rogue
     .zone Tirisfal Glades >>抵达提里斯福尔
 step << Rogue
 	#som
 	#phase 3-6
-    .goto Tirisfal Glades,61.87,65.02,40 >> 跑到地下城
+    .goto Tirisfal Glades,61.87,65.02,40 >>跑到地下城
 step << Rogue
 	#som
 	#phase 3-6
-    .goto Tirisfal Glades,61.81,74.42,30 >> 跑到电梯间
+    .goto Tirisfal Glades,61.81,74.42,30 >>跑到电梯间
 step << Rogue
 	#som
 	#phase 3-6
     >>把其中一部电梯放下
     .goto Undercity,63.25,48.56
-    .fp Undercity >> 获取幽暗城飞行路线
+    .fp Undercity >>获取幽暗城飞行路线
 step << Rogue
 	#som
 	#phase 3-6
     .money <0.3023
     .goto Tirisfal Glades,64.16,75.54
-    >>与查尔斯交谈。买一把弯刀或弯刀。你很快就会训练剑（节省10银子）。如果你的武器更好，或者AH上有更好的东西，跳过这个
-    .vendor >> 买一把弯刀或弯刀，确保你还有10个银币。
+    >>与查尔斯交谈。买一把弯刀或弯刀。你很快就会训练剑(节省10银子)。如果你的武器更好，或者AH上有更好的东西，跳过这个
+    .vendor >>买一把弯刀或弯刀，确保你还有10个银币。
 step << Rogue
 	#som
 	#phase 3-6
     #softcore
     .goto Undercity,57.32,32.77
-    .trainer >> 训练剑。如果你之前没有足够的钱买一把弯刀，那么在买完之后，检查AH是否有武器
+    .trainer >>训练剑。如果你之前没有足够的钱买一把弯刀，那么在买完之后，检查AH是否有武器
 step << Rogue
 	#completewith Barrens
     #som
     #phase 3-6
-	.hs >> 如果你的炉子没火了，就把炉子放回十字路口
+	.hs >>如果你的炉子没火了，就把炉子放回十字路口
 step << Rogue
 	#completewith next
     #som
     #phase 3-6
     .goto Tirisfal Glades,60.89,59.06,30,0
     .goto Tirisfal Glades,60.73,58.76
-    .zone Durotar >> 把齐柏林飞艇带到杜隆塔尔
+    .zone Durotar >>把齐柏林飞艇带到杜隆塔尔
 step << Rogue
     #som
     #phase 3-6
@@ -1900,7 +1900,7 @@ step << Rogue
     #som
     #phase 3-6
     .goto The Barrens,62.26,19.38
-	.zone The Barrens >> 前往荒野
+	.zone The Barrens >>前往荒野
 step << Rogue
     #som
     #phase 3-6

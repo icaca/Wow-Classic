@@ -2,11 +2,11 @@ RXPGuides.RegisterGuide([[
 #tbc
 #wotlk
 << Horde
-#name 提升角色 58-60
+#name 增强字符58-60
 #version 1
-#group RestedXP 部落 Boosted 58-60
+#group RestedXP部落升级58-60
 #defaultfor 58Boost
-#next RestedXP 部落 60-70\60-61 Hellfire Peninsula
+#next RestedXP部落60-70\60-61地狱火半岛
 step << !Druid !Paladin
     .turnin 64046 >>开创新的开端
 step << Druid
@@ -36,26 +36,26 @@ step << Druid
     .accept 64051 >>接受战斗训练
 
 step << Warrior
-    .train 11581 >> 学习霹雳拍击。
+    .train 11581 >>学习霹雳拍击。
 step << Rogue
-    .train 11269 >> 学习埋伏
+    .train 11269 >>学习埋伏
 step << Hunter
-    .train 14325 >> 学习猎人的印记
+    .train 14325 >>学习猎人的印记
 step << Shaman
-    .train 10473 >> 学习霜震
+    .train 10473 >>学习霜震
 step << Warlock
-    .train 11726 >> 学习奴役恶魔
+    .train 11726 >>学习奴役恶魔
 step << Priest
-	.train 10912 >> 学习精神控制
+	.train 10912 >>学习精神控制
 step << BloodElf Priest
-    .train 32676 >> 学习消费魔法
+    .train 32676 >>学习消费魔法
 step << Troll Priest
-    .train 9035 >> 学习虚弱魔咒的所有等级
-    .train 18137 >> 学习暗影守卫的所有等级
+    .train 9035 >>学习虚弱魔咒的所有等级
+    .train 18137 >>学习暗影守卫的所有等级
 step << Druid
-    .train 9853 >> 学习纠缠根
+    .train 9853 >>学习纠缠根
 step << Mage
-    .train 22783 >> 学习法师护甲
+    .train 22783 >>学习法师护甲
 
 step << !Druid !Paladin
 	.complete 64050,1 --1/1 Train a Spell (1)
@@ -82,10 +82,10 @@ step << Druid
     .turnin 64053 >>上缴人才
 step << !Druid !Paladin
 	#label nondruidboost
-    .accept 64063 >> 接受黑暗之门
+    .accept 64063 >>接受黑暗之门
 step << Druid
 	#label druidboost
-	.accept 64217 >> 接受黑暗之门
+	.accept 64217 >>接受黑暗之门
 
 step << Druid
 
@@ -94,11 +94,11 @@ step << Druid
 step << Mage
     .goto Orgrimmar,38.7,85.5
     >>跑到二楼，将Teleport&Portal列车开往Orgrimmar
-	.train 3567 >> 电话：Orgrimmar
-	.train 11417 >> 门户：Orgrimmar
+	.train 3567 >>电话：Orgrimmar
+	.train 11417 >>门户：Orgrimmar
 step << Warlock
     .goto Orgrimmar,47.6,46.7,0
-	.vendor 5815 >> 与库尔古尔谈谈购买你的小黄人格里莫伊
+	.vendor 5815 >>与库尔古尔谈谈购买你的小黄人格里莫伊
 step	<<!Paladin
     .goto Orgrimmar,54.5,67.6
     >>从Barket Morag至少购买2堆食物/水。
@@ -118,9 +118,9 @@ step
 	.zone Tirisfal Glades >>抵达提里斯福尔
 step
 	.goto Tirisfal Glades,83.1,68.9
-    .accept 5096 >>接受红色分流
+    .accept 5096 >>接受猩红分流
 step
-	>> 抢劫火旁的板条箱。同时保存你在该区域获得的每个骨骼碎片！
+	>>抢劫火旁的板条箱。同时保存你在该区域获得的每个骨骼碎片！
 	.goto Tirisfal Glades,83.1,68.9
 	.collect 12814,1
 step
@@ -137,7 +137,7 @@ step
     .goto Tirisfal Glades,83.3,72.1
     .accept 5901 >>接受你身上的瘟疫
 step
-	>> 这个任务可能很难。慢慢地从帐篷后面把它们清理出来，然后把它摧毁。然后放下横幅。
+	>>这个任务可能很难。慢慢地从帐篷后面把它们清理出来，然后把它摧毁。然后放下横幅。
     .goto Western Plaguelands,40.7,51.7
     .complete 5096,1 --Destroy the command tent and plant the Scourge banner in the camp (1)
 step
@@ -385,7 +385,7 @@ step
     .accept 5152 >>接受玛琳阿姨
     .accept 5241 >>接受Carlin叔叔
 step
-	>> 从镇上的亡灵暴徒那里获得7个活腐生物，并在它们过期之前将其转化为凝固腐生物
+	>>从镇上的亡灵暴徒那里获得7个活腐生物，并在它们过期之前将其转化为凝固腐生物
     .goto Eastern Plaguelands,61.5,71.4
     .complete 6022,1 --Coagulated Rot (1)
 step
@@ -401,7 +401,7 @@ step
     .home >>把你的炉石放在光之希望教堂
 step
 	.goto Eastern Plaguelands,71.0,16.6
-	>>找到并杀死渗透者Hameya。他在这个地区闲逛。抢走他的钥匙。
+	>>退出飞行机器。你会收到一个降落伞。返回Xutjja
 	.complete 6024,1 --Hameya's Key (1)
 step
 	#sticky
@@ -497,7 +497,7 @@ step
     .complete 964,1 --Skeletal Fragments (15)
 step
     .goto Western Plaguelands,43.4,69.6
-	>> 寻找正确的书。只有当您将鼠标悬停在正确的书上时，它才会在页面上显示为白色。不是半灰/半白。
+	>>寻找正确的书。只有当您将鼠标悬停在正确的书上时，它才会在页面上显示为白色。不是半灰/半白。
     .complete 5154,1 --Annals of Darrowshire (1)
 
 step
@@ -543,20 +543,20 @@ step
 step
     #sticky
     #completewith next
-+去齐柏林塔。带着齐柏林飞艇去荆棘岛
++去齐柏林塔。带着齐柏林飞艇去荆棘谷
     .goto Tirisfal Glades,61.9,59.1
 step
 .zone Stranglethorn Vale >>抵达荆棘谷
 step << Druid
     .goto Stranglethorn Vale,32.5,29.3
     .complete 64217,2 --Speak to Thysta at Grom'gol Base Camp (1)
-	.fly Stonard >> 飞往斯托纳德
+	.fly Stonard >>飞往斯托纳德
 step << !Druid
     .goto Stranglethorn Vale,32.5,29.3
     .complete 64063,2 --Speak to Thysta at Grom'gol Base Camp (1)
-	.fly Stonard >> 飞往斯托纳德
+	.fly Stonard >>飞往斯托纳德
 step
-	.zone Blasted Lands >> 跑向被炸毁的土地
+	.zone Blasted Lands >>跑向被炸毁的土地
 step << !Druid
     .goto Blasted Lands,58.1,56.1
     .turnin 64063 >>进入黑暗之门

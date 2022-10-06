@@ -1,6 +1,6 @@
 # RestedXP Guides
 
-## [v4.3.2](https://github.com/RestedXP/RXPGuides/tree/v4.3.2) (2022-09-21)
-[Full Changelog](https://github.com/RestedXP/RXPGuides/compare/v4.3.1...v4.3.2) [Previous Releases](https://github.com/RestedXP/RXPGuides/releases)
+## [v4.3.12-1-g56952fc](https://github.com/RestedXP/RXPGuides/tree/56952fc56bb62a2162124d4858d73846eb754148) (2022-10-02)
+[Full Changelog](https://github.com/RestedXP/RXPGuides/compare/v4.3.12...56952fc56bb62a2162124d4858d73846eb754148) [Previous Releases](https://github.com/RestedXP/RXPGuides/releases)
 
-- Add missing AceDBOptions include for profile use
+- fixed issues related to zone transitions  

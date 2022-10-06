@@ -3,7 +3,7 @@ RXPGuides.RegisterGuide([[
 << Horde Mage
 #name 12-17 The 贫瘠之地 AoE
 #version 1
-#group RestedXP 部落 Mage AoE
+#group RestedXP 部落 法师 AoE
 #defaultfor Horde Mage
 #next 17-21 石爪山脉/贫瘠之地 AoE
 
@@ -35,7 +35,7 @@ step
     .accept 5041 >>接受十字路口的补给
 step
     .goto The Barrens,51.5,30.4
-    .fp The Crossroads >> 获得the Crossroads飞行路线
+    .fp The Crossroads >>获得the Crossroads飞行路线
 step << Troll Mage
     >>不要去奥格瑞玛
     .goto The Barrens,51.5,30.3
@@ -51,7 +51,7 @@ step
     >>检查陈氏空桶的位置。抢走它并开始任务，否则你稍后会得到它
     .goto The Barrens,55.7,27.3
     .collect 4926,1,819 --Collect Chen's Empty Keg
-    .accept 819 >> 收下陈的空桶
+    .accept 819 >>收下陈的空桶
 step
     .goto The Barrens,55.6,26.6
     >>杀死该地区的Quillboars
@@ -145,7 +145,7 @@ step
     .accept 887 >>接受Southsea Freebooters
 step
     .goto The Barrens,63.1,37.1
-    .fp Ratchet >> 获取棘轮飞行路径
+    .fp Ratchet >>获取棘轮飞行路径
 step
     .goto The Barrens,63.0,37.2
     .accept 894 >>接受Samophlange
@@ -196,7 +196,7 @@ step
     .accept 888 >>接受被盗战利品
 step
     .goto The Barrens,63.08,37.16
-    .fly Crossroads >> 飞向十字路口
+    .fly Crossroads >>飞向十字路口
 step
     .goto The Barrens,51.5,30.8
     .turnin 5041 >>十字路口的上缴物资
@@ -215,7 +215,7 @@ step
     .accept 850 >>接受Kolkar领导人
 step
     .goto The Barrens,45.4,28.4
-    .accept 855 >> 接受半人马座护腕
+    .accept 855 >>接受半人马座护腕
 step
     #completewith next
     >>杀死半人马座。掠夺他们的护腕。你稍后会完成这个
@@ -227,11 +227,11 @@ step
 step
     .isQuestComplete 855
     .goto The Barrens,45.39,28.44
-    .turnin 850 >> 移交Kolkar领导人
-    .turnin 855 >> 交出半人马座护腕
+    .turnin 850 >>移交Kolkar领导人
+    .turnin 855 >>交出半人马座护腕
 step
     .goto The Barrens,45.39,28.44
-    .turnin 850 >> 移交Kolkar领导人
+    .turnin 850 >>移交Kolkar领导人
 step
     #sticky
     #completewith Claws
@@ -263,8 +263,8 @@ step
 step
     #completewith next
     .goto The Barrens,43.8,12.2
-    >> 如果你仍然没有得到重型钉锤，请考虑从BVrang Wildgore那里购买 << Druid/Warrior
-    .vendor >> 如果需要的话，去找这家伙
+    >>如果你仍然没有得到重型钉锤，请考虑从BVrang Wildgore那里购买 << Druid/Warrior
+    .vendor >>如果需要的话，去找这家伙
 step
     #sticky
     #completewith next
@@ -313,9 +313,9 @@ step
     .accept 858 >>接受点火
 step
     >>磨练到16级很重要，因为接下来的3个任务相当困难。
-	.xp 16 >> 研磨至16
+	.xp 16 >>升级到16
 step
-    >>杀死监督员Lugwizzle（他在整个塔上巡逻）。抢他取点火钥匙
+    >>杀死监督员Lugwizzle(他在整个塔上巡逻)。抢他取点火钥匙
 	.goto The Barrens,56.3,8.6
     .complete 858,1 --Ignition Key (1)
 step
@@ -337,7 +337,7 @@ step
 	.goto Orgrimmar,11.5,67.0,40 >>跑到奥格瑞玛的西入口
 step
     .goto Orgrimmar,38.79,85.68
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step
     .goto Orgrimmar,54.2,68.6
     .turnin 6384 >>转入骑行前往奥格瑞玛
@@ -345,7 +345,7 @@ step
 step
     >>跑向飞行管理员。不要在任何地方飞行
     .goto Orgrimmar,45.2,63.8
-    .fp Orgrimmar >> 获取Orgrimmar飞行路线 << Undead
+    .fp Orgrimmar >>获取Orgrimmar飞行路线 << Undead
     .turnin 6385 >>交给风骑士大师多拉斯
     .accept 6386 >>接受返回十字路口。
 step
@@ -376,12 +376,12 @@ step
     .accept 905 >>接受愤怒的镰刀
 step
     .goto The Barrens,52.20,31.90
-    .turnin 870 >> 把被遗忘的水池交出来
-    .accept 877 >> 接受停滞的绿洲
+    .turnin 870 >>把被遗忘的水池交出来
+    .accept 877 >>接受停滞的绿洲
 step
     .goto The Barrens,52.00,31.60
-    .accept 899 >> 接受仇恨所消耗
-    .accept 4921 >> 接受战败
+    .accept 899 >>接受仇恨所消耗
+    .accept 4921 >>接受战败
 step
     >>塔顶
     .goto The Barrens,51.6,30.9
@@ -389,21 +389,21 @@ step
     .accept 875 >>接受哈比中尉
 step
     .goto The Barrens,51.50,30.20
-    .turnin 848 >> 倒入真菌孢子
+    .turnin 848 >>倒入真菌孢子
 step
     .goto The Barrens,51.5,30.3
     .fly Ratchet >>飞到棘轮
 step
     .goto The Barrens,63.0,37.2
     .turnin 902 >>交给Samophlange
-    .turnin 863 >> 上车逃生
-    .accept 1483 >> 接受Ziz Fizziks
+    .turnin 863 >>上车逃生
+    .accept 1483 >>接受Ziz Fizziks
 step
     .goto The Barrens,63.30,38.40
-    .turnin 896 >> 交给矿工的财富
+    .turnin 896 >>交给矿工的财富
 step
     .goto The Barrens,62.40,37.70
-    .accept 1069 >> 接受Deepmoss蜘蛛蛋
+    .accept 1069 >>接受Deepmoss蜘蛛蛋
 step
     >>抢劫板条箱
     .goto The Barrens,63.6,49.2
@@ -432,7 +432,7 @@ step
     >>杀死半人马座。抢走他们的护腕
     .complete 855,1 --Centaur Bracers (15)
 step
-    >> 在湖边碾磨任何一个Centuar，直到它们产卵Verog（当它产卵时，你会在聊天中看到一声尖叫）
+    >>在湖边碾磨任何一个Centuar，直到它们产卵Verog(当它产卵时，你会在聊天中看到一声尖叫)
     .goto The Barrens,52.95,41.77
     .complete 851,1 --Verog's Head (1)
 step
@@ -471,7 +471,7 @@ step
     .accept 878 >>战争中接受部落
 step
     .goto The Barrens,44.5,59.2
-    .fp Camp Taurajo >> 获得Taurajo营地飞行路线
+    .fp Camp Taurajo >>获得Taurajo营地飞行路线
     .fly Crossroads >>飞向十字路口
 step
     .goto The Barrens,51.9,30.3
@@ -498,7 +498,7 @@ step
     .accept 852 >>接受真主党血迹
 step
     .goto The Barrens,45.39,28.43
-    .turnin 855 >> 交出半人马座护腕
+    .turnin 855 >>交出半人马座护腕
     .isQuestComplete 855
 step
     .goto The Barrens,45.39,28.43
@@ -511,19 +511,19 @@ step
     .complete 855,1 --Centaur Bracers (15)
 step
     .goto The Barrens,45.87,40.80
-    >> 赫兹鲁尔在大WC湖周围巡逻
+    >>赫兹鲁尔在大WC湖周围巡逻
     .complete 852,1 --Hezrul's Head (1)
 step
 	#requires CeBracers
 	.goto The Barrens,45.37,28.43
     .turnin 852 >>交出真主党血迹
-    .turnin 855 >> 交出半人马座护腕
+    .turnin 855 >>交出半人马座护腕
 step
     .goto The Barrens,45.37,28.43
     .accept 4021 >>接受反击！
 step
-    >> 这个任务可能很难单独完成，如果你没有人与你一起组队，可以考虑为它分组，或者在任务给予者的建筑附近放风筝。
-    >> 如果太难就跳过这个
+    >>这个任务可能很难单独完成，如果你没有人与你一起组队，可以考虑为它分组，或者在任务给予者的建筑附近放风筝。
+    >>如果太难就跳过这个
     .goto The Barrens,44.33,28.14
     .complete 4021,1 --Piece of Krom'zar's Banner (1)
 --N Link to safespot abuse
@@ -550,9 +550,9 @@ step
     .complete 821,1 --Savannah Lion Tusk (5)
 step
     .goto The Barrens,35.3,27.9
-    .turnin 1061 >> 《石爪之魂》（The Spirits of Stonetalon）上映
-    .accept 1062 >> 接受地精侵略者
-    .accept 6548 >> 接受复仇我的村庄
+    .turnin 1061 >>《石爪之魂》(The Spirits of Stonetalon)上映
+    .accept 1062 >>接受地精侵略者
+    .accept 6548 >>接受复仇我的村庄
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -560,7 +560,7 @@ RXPGuides.RegisterGuide([[
 << Horde Mage
 #name 17-21 石爪山脉/贫瘠之地 AoE
 #version 1
-#group RestedXP 部落 Mage AoE
+#group RestedXP 部落 法师 AoE
 #defaultfor Horde Mage
 #next 21-30 银松森林/希尔斯布莱德丘陵 AoE
 
@@ -578,8 +578,8 @@ step
     .complete 6548,1 --Kill Grimtotem Ruffian (x8)
 step
     .goto The Barrens,35.2,27.8
-    .turnin 6548 >> 上缴复仇我的村庄
-    .accept 6629 >> 接受Kill Grundig Darkcloud
+    .turnin 6548 >>上缴复仇我的村庄
+    .accept 6629 >>接受Kill Grundig Darkcloud
 step
     >>从西边的小路进入村庄。在开始内部任务之前，确保杀死所有6只野兽。在主帐篷前杀死格隆迪希
     .goto Stonetalon Mountains,71.7,86.7,60,0
@@ -589,14 +589,14 @@ step
 step
     >>启动卡亚护送
     .goto Stonetalon Mountains,73.5,85.8
-    .accept 6523 >> 接受保护Kaya
+    .accept 6523 >>接受保护Kaya
 step
      >>护送Kaya并靠近她。3灰熊会在篝火旁产卵。在她到达营地之前吃/喝
     .goto Stonetalon Mountains,75.8,91.4
     .complete 6523,1 --Kaya Escorted to Camp Aparaje
 step
     .goto Stonetalon Mountains,71.4,95.1
-    .accept 6461 >> 接受输血器
+    .accept 6461 >>接受输血器
 step
     #sticky
     #label deepmossegg
@@ -618,8 +618,8 @@ step
     .complete 6461,2 --Kill Deepmoss Venomspitter (x7)
 step
     .goto Stonetalon Mountains,59.0,62.6
-    .turnin 1483 >> 交给Ziz Fizziks
-    .accept 1093 >> 接受超级收割者6000
+    .turnin 1483 >>交给Ziz Fizziks
+    .accept 1093 >>接受超级收割者6000
 step
     #sticky
     #requires deepmossegg
@@ -649,10 +649,10 @@ step
     .complete 1062,1 --Kill Venture Co. Logger (x15)
 step
     .goto Stonetalon Mountains,59.0,62.6
-    .turnin 1093 >> 转入超级收割台6000
-    .accept 1094 >> 接受进一步指示
+    .turnin 1093 >>转入超级收割台6000
+    .accept 1094 >>接受进一步指示
 step
-    .hs >> Hearth前往陶拉霍营地
+    .hs >>炉灶前往陶拉霍营地
 step
     .goto The Barrens,44.9,59.1
     .turnin 3261 >>交给Jorn Skyseer
@@ -670,7 +670,7 @@ step
     .goto The Barrens,46.0,49.2,0
     .goto The Barrens,45.3,52.5,0
     .goto The Barrens,45.0,51.8,0
-	>>找到并杀死该地区的拉科塔·马尼（格雷·科多）。抢走他的蹄子。如果你找不到他，跳过这个任务。
+	>>找到并杀死该地区的拉科塔·马尼(格雷·科多)。抢走他的蹄子。如果你找不到他，跳过这个任务。
 	.collect 5099,1,883 --Collect Hoof of Lakota'Mani
 	.accept 883 >>接受Lakota'Mani
 step
@@ -743,8 +743,8 @@ step
 step
     >>塔顶
     .goto The Barrens,51.60,30.90
-    .turnin 875 >> 交出哈比中尉
-    .accept 876 >> 接受Serena Bloodfeather
+    .turnin 875 >>交出哈比中尉
+    .accept 876 >>接受Serena Bloodfeather
 step
     >>这将启动定时任务
     .goto The Barrens,51.4,30.2
@@ -784,7 +784,7 @@ step
     .goto The Barrens,44.2,62.1,0
     .goto The Barrens,49.2,62.6,0
     .goto The Barrens,49.6,60.0,0
-    >>在该区域周围搜索Owatanka（蓝雷蜥蜴）。如果你找到他，抢走他的尾钉并开始任务。如果你找不到他，跳过这个任务
+    >>在该区域周围搜索Owatanka(蓝雷蜥蜴)。如果你找到他，抢走他的尾钉并开始任务。如果你找不到他，跳过这个任务
     .collect 5102,1,884 --Collect Owatanka's Tailspike
     .accept 884 >>接受Owatanka
 step
@@ -822,7 +822,7 @@ step
     #completewith next
     .goto The Barrens,44.54,59.27
     >>将你的血碎片交给来自芒果的风之精灵buff。如果意外出售了任何碎片，请跳过此步骤
-    .turnin 889 >> 风之灵归来
+    .turnin 889 >>风之灵归来
 step
     .goto Thunder Bluff,32.0,66.9,60 >>跑向电梯，进入雷霆崖
 step
@@ -836,17 +836,17 @@ step
  	>>走进视野之池
 	.goto Thunder Bluff,30.1,30.0,30,0
 	.goto Thunder Bluff,23.00,21.00
-    .turnin 853 >> 交给药剂师Zamah
+    .turnin 853 >>交给药剂师Zamah
 step
     .goto Thunder Bluff,25.16,20.95
-    .trainer >> 训练你的职业咒语
-	>>还没有回复AoE（如果你已经达到消防规范）
+    .trainer >>训练你的职业咒语
+	>>还没有回复AoE(如果你已经达到消防规范)
 step
     .goto Thunder Bluff,28.4,27.7
     .accept 264 >>接受直到死亡我们分开
 step
 	.goto Thunder Bluff,46.9,49.9
-    .fp Thunder Bluff >> 获得Thunder Bluff飞行路线
+    .fp Thunder Bluff >>获得Thunder Bluff飞行路线
     .fly Crossroads >>飞向十字路口
 step
     >>杀死Serena Bloodfeather。抢她的头
@@ -859,7 +859,7 @@ step
     .turnin 6523 >>交出保护Kaya
     .accept 6401 >>接受Kaya的活着
     .accept 1063 >>接受长老克罗恩
---    .accept 1068 >> 接受切碎机
+--    .accept 1068 >>接受切碎机
 step
     .goto Stonetalon Mountains,71.3,95.1
     .turnin 6461 >>收起输血器
@@ -871,28 +871,28 @@ step
     .turnin 6401 >>活捉Kaya
 step
     .goto Stonetalon Mountains,45.12,59.84
-    .fp Sun Rock>> 获取Sun Rock Retreat飞行路线
+    .fp Sun Rock>>获取Sun Rock Retreat飞行路线
 step
     #completewith next
-    .hs >> 炉底雷霆崖
+    .hs >>炉底雷霆崖
 step
     .goto Thunder Bluff,70.00,30.90
-    .turnin 1063 >> 交给克罗恩长老
-    .accept 1064 >> 接受被遗弃的援助
+    .turnin 1063 >>交给克罗恩长老
+    .accept 1064 >>接受被遗弃的援助
 step
     .goto Thunder Bluff,78.62,28.56
-    .turnin 1489 >> 交给Hamuul Runetotem
-    .accept 1490 >> 接受Nara Wildmane
+    .turnin 1489 >>交给Hamuul Runetotem
+    .accept 1490 >>接受Nara Wildmane
 step
     .goto Thunder Bluff,75.65,31.62
-    .turnin 1490 >> 交给奈拉·威尔德曼
+    .turnin 1490 >>交给奈拉·威尔德曼
 step
     .goto Thunder Bluff,23.00,21.0
-    .turnin 1064 >> 交出被遗弃的援助
-    .accept 1065 >> 接受塔伦磨坊之旅
+    .turnin 1064 >>交出被遗弃的援助
+    .accept 1065 >>接受塔伦磨坊之旅
 step
     .goto Thunder Bluff,25.16,20.95
-    .trainer >> 如果需要，训练你的职业法术
+    .trainer >>如果需要，训练你的职业法术
 	>>如果你还没有，请尊重Frost AoE
 step
     .goto Thunder Bluff,46.8,50.0
@@ -900,8 +900,8 @@ step
 step
     .goto The Barrens,51.60,30.90
 	>>上楼去
-    .turnin 876 >> 交给Serena Bloodfeather
+    .turnin 876 >>交给Serena Bloodfeather
 step
     .goto The Barrens,51.50,30.34
-    .fly Orgrimmar >> 飞往奥格瑞玛
+    .fly Orgrimmar >>飞往奥格瑞玛
 ]])

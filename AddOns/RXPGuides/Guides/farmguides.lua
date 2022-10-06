@@ -1,14 +1,14 @@
 RXPGuides.RegisterGuide([[
 #wotlk
-#group +采矿 & 草药学
+#group +采矿与草药
 #loop
 #hidewindow
-#subgroup Nagrand
-#name 采矿 & 草药学
+#subgroup 纳格兰
+#name 采矿与草药
 step
     #sticky
     .waypoint Nagrand,50,50
-    .zone Nagrand >> 前往纳格朗
+    .zone Nagrand >>前往纳格朗
 step
     #hidewindow
     +测验
@@ -18,16 +18,16 @@ step
 
 RXPGuides.RegisterGuide([[
 #wotlk
-#group +采矿 & 草药学
+#group +采矿与草药
 #loop
 #hidewindow
-#subgroup Nagrand
+#subgroup 纳格兰
 
 #name 采矿
 step
     #sticky
     .waypoint Nagrand,50,50
-    .zone Nagrand >> 前往纳格朗
+    .zone Nagrand >>前往纳格朗
 step
     #hidewindow
     +测验
@@ -37,16 +37,16 @@ step
 
 RXPGuides.RegisterGuide([[
 #wotlk
-#group +采矿 & 草药学
+#group +采矿与草药
 #loop
 #hidewindow
-#subgroup Nagrand
+#subgroup 纳格兰
 
-#name 草药学
+#name 草药
 step
     #sticky
     .waypoint Nagrand,50,50
-    .zone Nagrand >> 前往纳格朗
+    .zone Nagrand >>前往纳格朗
 step
     #hidewindow
     +测验
@@ -56,15 +56,15 @@ step
 
 RXPGuides.RegisterGuide([[
 #wotlk
-#group +采矿 & 草药学
+#group +采矿与草药
 #loop
 #hidewindow
-#subgroup Netherstorm
-#name 采矿 & 草药学
+#subgroup 荷兰风暴
+#name 采矿与草药
 step
     #sticky
     .waypoint Netherstorm,50,50
-    .zone Netherstorm >> 前往荷兰风暴
+    .zone Netherstorm >>前往荷兰风暴
 step
     #hidewindow
     +测验
@@ -74,15 +74,15 @@ step
 
 RXPGuides.RegisterGuide([[
 #wotlk
-#group +采矿 & 草药学
+#group +采矿与草药
 #loop
 #hidewindow
-#subgroup Netherstorm
+#subgroup 荷兰风暴
 #name 采矿
 step
     #sticky
     .waypoint Netherstorm,50,50
-    .zone Netherstorm >> 前往荷兰风暴
+    .zone Netherstorm >>前往荷兰风暴
 step
     #hidewindow
     +测验
@@ -92,15 +92,15 @@ step
 
 RXPGuides.RegisterGuide([[
 #wotlk
-#group +采矿 & 草药学
+#group +采矿与草药
 #loop
 #hidewindow
-#subgroup Netherstorm
-#name 草药学
+#subgroup 荷兰风暴
+#name 草药
 step
     #sticky
     .waypoint Netherstorm,50,50
-    .zone Netherstorm >> 前往荷兰风暴
+    .zone Netherstorm >>前往荷兰风暴
 step
     #hidewindow
     +测验
@@ -111,15 +111,15 @@ step
 
 RXPGuides.RegisterGuide([[
 #wotlk
-#group +采矿 & 草药学
+#group +采矿与草药
 #loop
 #hidewindow
-#subgroup Terokkar Forest
-#name 采矿 & 草药学
+#subgroup 泰罗卡森林
+#name 采矿与草药
 step
     #sticky
     .waypoint Terokkar Forest,50,50
-    .zone Terokkar Forest >> 前往特罗卡森林
+    .zone Terokkar Forest >>前往特罗卡森林
 step
     #hidewindow
     +测验
@@ -129,15 +129,15 @@ step
 
 RXPGuides.RegisterGuide([[
 #wotlk
-#group +采矿 & 草药学
+#group +采矿与草药
 #loop
 #hidewindow
-#subgroup Terokkar Forest
+#subgroup 泰罗卡森林
 #name 采矿
 step
     #sticky
     .waypoint Terokkar Forest,50,50
-    .zone Terokkar Forest >> 前往特罗卡森林
+    .zone Terokkar Forest >>前往特罗卡森林
 step
     #hidewindow
     +测验
@@ -147,15 +147,15 @@ step
 
 RXPGuides.RegisterGuide([[
 #wotlk
-#group +采矿 & 草药学
+#group +采矿与草药
 #loop
 #hidewindow
-#subgroup Terokkar Forest
-#name 草药学
+#subgroup 泰罗卡森林
+#name 草药
 step
     #sticky
     .waypoint Terokkar Forest,50,50
-    .zone Terokkar Forest >> 前往特罗卡森林
+    .zone Terokkar Forest >>前往特罗卡森林
 step
     #hidewindow
     +测验
@@ -165,15 +165,15 @@ step
 
 RXPGuides.RegisterGuide([[
 #wotlk
-#group +采矿 & 草药学
+#group +采矿与草药
 #loop
 #hidewindow
-#subgroup Shadowmoon Valley
-#name 采矿 & 草药学
+#subgroup 暗月峡谷
+#name 采矿与草药
 step
     #sticky
     .waypoint Shadowmoon Valley,50,50
-    .zone Shadowmoon Valley >> 前往影月谷
+    .zone Shadowmoon Valley >>前往影月谷
 step
     #hidewindow
     +测验
@@ -183,15 +183,15 @@ step
 
 RXPGuides.RegisterGuide([[
 #wotlk
-#group +采矿 & 草药学
+#group +采矿与草药
 #loop
 #hidewindow
-#subgroup Shadowmoon Valley
+#subgroup 暗月峡谷
 #name 采矿
 step
     #sticky
     .waypoint Shadowmoon Valley,50,50
-    .zone Shadowmoon Valley >> 前往影月谷
+    .zone Shadowmoon Valley >>前往影月谷
 step
     #hidewindow
     +测验
@@ -201,15 +201,15 @@ step
 
 RXPGuides.RegisterGuide([[
 #wotlk
-#group +采矿 & 草药学
+#group +采矿与草药
 #loop
 #hidewindow
-#subgroup Shadowmoon Valley
-#name 草药学
+#subgroup 暗月峡谷
+#name 草药
 step
     #sticky
     .waypoint Shadowmoon Valley,50,50
-    .zone Shadowmoon Valley >> 前往影月谷
+    .zone Shadowmoon Valley >>前往影月谷
 step
     #hidewindow
     +测验
@@ -219,15 +219,15 @@ step
 
 RXPGuides.RegisterGuide([[
 #wotlk
-#group +采矿 & 草药学
+#group +采矿与草药
 #loop
 #hidewindow
-#subgroup Zangarmarsh
-#name 采矿 & 草药学
+#subgroup 赞加沼泽
+#name 采矿与草药
 step
     #sticky
     .waypoint Zangarmarsh,50,50
-    .zone Zangarmarsh >> 前往赞格马什
+    .zone Zangarmarsh >>前往赞格马什
 step
     +所需目标，请勿删除此行
     .loop 20,Zangarmarsh,77.9,91.1,86.4,86.5,82.6,82.2,84.5,79.6,82.0,69.6,81.8,59.0,89.2,38.0,85.5,26.7,84.4,42.4,81.8,44.2,78.2,39.7,81.7,34.5,79.9,28.0,70.9,33.6,69.9,43.6,60.9,32.6,49.1,29.0,40.0,31.9,34.6,16.3,31.0,21.7,19.9,15.4,19.6,4.8,15.9,14.3,14.7,29.5,11.5,38.8,8.1,51.5,11.1,65.9,16.6,57.9,18.4,70.5,25.4,54.9,31.3,66.6,27.5,38.8,36.9,34.1,37.0,62.9,57.1,69.9,70.1,69.5,67.1,78.6,76.1,90.3,77.9,91.1
@@ -236,15 +236,15 @@ step
 
 RXPGuides.RegisterGuide([[
 #wotlk
-#group +采矿 & 草药学
+#group +采矿与草药
 #loop
 #hidewindow
-#subgroup Zangarmarsh
+#subgroup 赞加沼泽
 #name 采矿
 step
     #sticky
     .waypoint Zangarmarsh,50,50
-    .zone Zangarmarsh >> 前往赞格马什
+    .zone Zangarmarsh >>前往赞格马什
 step
     +所需目标，请勿删除此行
     .loop 20,Zangarmarsh,84.6,88.7,85.5,79.1,83.1,70.5,87.4,46.9,80.3,36.4,87.1,35.2,84.2,28.7,75.5,29.3,71.5,34.5,56.2,33.5,56.0,43.7,46.3,37.9,34.5,16.5,33.2,21.6,18.8,14.7,19.0,2.7,14.2,20.7,14.3,31.9,7.6,51.9,11.2,62.0,17.3,68.3,27.5,66.2,30.7,59.7,40.4,66.9,48.9,66.8,67.1,76.4,68.9,86.7,76.8,91.8,84.6,88.7
@@ -253,15 +253,15 @@ step
 
 RXPGuides.RegisterGuide([[
 #wotlk
-#group +采矿 & 草药学
+#group +采矿与草药
 #loop
 #hidewindow
-#subgroup Zangarmarsh
-#name 草药学
+#subgroup 赞加沼泽
+#name 草药
 step
     #sticky
     .waypoint Zangarmarsh,50,50
-    .zone Zangarmarsh >> 前往赞格马什
+    .zone Zangarmarsh >>前往赞格马什
 step
     +所需目标，请勿删除此行
     .loop 20,Zangarmarsh,77.9,91.1,85.0,85.2,82.6,82.2,84.5,79.6,82.0,69.6,81.8,59.0,89.4,37.6,85.7,28.8,84.4,42.4,81.8,44.2,78.2,39.7,81.7,34.5,80.3,29.8,71.6,35.6,69.9,43.6,61.0,33.9,49.0,30.6,40.0,31.9,34.8,17.7,31.0,21.7,19.9,15.4,19.6,2.4,15.9,14.3,14.7,29.5,11.5,38.8,9.1,51.7,11.1,65.9,16.6,57.9,18.4,70.5,25.4,54.9,31.3,66.6,27.5,36.6,36.9,34.1,37.5,62.3,57.1,69.9,70.1,69.5,67.1,78.6,76.1,90.3,77.9,91.1
@@ -270,15 +270,15 @@ step
 
 RXPGuides.RegisterGuide([[
 #wotlk
-#group +采矿 & 草药学
+#group +采矿与草药
 #loop
 #hidewindow
-#subgroup Hellfire Peninsula
-#name 采矿 & 草药学
+#subgroup 地狱火半岛
+#name 采矿与草药
 step
     #sticky
     .waypoint Hellfire Peninsula,50,50
-    .zone Hellfire Peninsula >> 前往地狱火半岛
+    .zone Hellfire Peninsula >>前往地狱火半岛
 step
     #hidewindow
     +测验
@@ -288,15 +288,15 @@ step
 
 RXPGuides.RegisterGuide([[
 #wotlk
-#group +采矿 & 草药学
+#group +采矿与草药
 #loop
 #hidewindow
-#subgroup Hellfire Peninsula
-#name 草药学
+#subgroup 地狱火半岛
+#name 草药
 step
     #sticky
     .waypoint Hellfire Peninsula,50,50
-    .zone Hellfire Peninsula >> 前往地狱火半岛
+    .zone Hellfire Peninsula >>前往地狱火半岛
 step
     #hidewindow
     +测验
@@ -306,15 +306,15 @@ step
 
 RXPGuides.RegisterGuide([[
 #wotlk
-#group +采矿 & 草药学
+#group +采矿与草药
 #loop
 #hidewindow
-#subgroup Hellfire Peninsula
+#subgroup 地狱火半岛
 #name 采矿
 step
     #sticky
     .waypoint Hellfire Peninsula,50,50
-    .zone Hellfire Peninsula >> 前往地狱火半岛
+    .zone Hellfire Peninsula >>前往地狱火半岛
 step
     #hidewindow
     +测验
@@ -324,15 +324,15 @@ step
 
 RXPGuides.RegisterGuide([[
 #wotlk
-#group +采矿 & 草药学
+#group +采矿与草药
 #loop
 #hidewindow
-#subgroup Blades Edge Mountains
-#name 采矿 & 草药学
+#subgroup 刀锋山脉
+#name 采矿与草药
 step
     #sticky
     .waypoint Blade's Edge Mountains,50,50
-    .zone Blade's Edge Mountains >> 前往刀锋山
+    .zone Blade's Edge Mountains >>前往刀锋山
 step
     #hidewindow
     +测验
@@ -342,15 +342,15 @@ step
 
 RXPGuides.RegisterGuide([[
 #wotlk
-#group +采矿 & 草药学
+#group +采矿与草药
 #loop
 #hidewindow
-#subgroup Blades Edge Mountains
+#subgroup 刀锋山脉
 #name 采矿
 step
     #sticky
     .waypoint Blade's Edge Mountains,50,50
-    .zone Blade's Edge Mountains >> 前往刀锋山
+    .zone Blade's Edge Mountains >>前往刀锋山
 step
     #hidewindow
     +测验
@@ -360,15 +360,15 @@ step
 
 RXPGuides.RegisterGuide([[
 #wotlk
-#group +采矿 & 草药学
+#group +采矿与草药
 #loop
 #hidewindow
-#subgroup Blades Edge Mountains
-#name 草药学
+#subgroup 刀锋山脉
+#name 草药
 step
     #sticky
     .waypoint Blade's Edge Mountains,50,50
-    .zone Blade's Edge Mountains >> 前往刀锋山
+    .zone Blade's Edge Mountains >>前往刀锋山
 step
     #hidewindow
     +测验
@@ -381,8 +381,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Netherstorm
-#name 向上隐藏
+#subgroup 荷兰风暴
+#name 恶魔毛皮
 step
     #hidewindow
     +测验
@@ -396,8 +396,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Netherstorm
-#name 虚空龙鳞
+#subgroup 荷兰风暴
+#name 幽冥龙鳞
 step
     #hidewindow
     +测验
@@ -411,7 +411,7 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Netherstorm
+#subgroup 荷兰风暴
 #name 邪能装备
 step
     #hidewindow
@@ -426,8 +426,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Blades Edge Mountains
-#name 风鳞
+#subgroup 刀锋山脉
+#name 风力等级
 step
     #hidewindow
     +测验
@@ -441,8 +441,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Blades Edge Mountains
-#name 虚空龙鳞
+#subgroup 刀锋山脉
+#name 幽冥龙鳞
 step
     #hidewindow
     +测验
@@ -456,8 +456,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Blades Edge Mountains
-#name 水晶能量皮革
+#subgroup 刀锋山脉
+#name 水晶灌注皮革
 step
     #hidewindow
     +测验
@@ -471,8 +471,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Nagrand
-#name Combined Primals
+#subgroup 纳格兰
+#name 组合基本体
 step
     #hidewindow
     +测验
@@ -486,8 +486,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Nagrand
-#name 源生之水
+#subgroup 纳格兰
+#name 原始之水
 step
 #hidewindow
     +回路1
@@ -503,12 +503,12 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Nagrand
-#name 厚裂蹄牛皮
+#subgroup 纳格兰
+#name 厚裂蹄皮
 step
     #sticky
     .waypoint Nagrand,50,50
-    .zone Nagrand >> 前往纳格朗
+    .zone Nagrand >>前往纳格朗
 step
     #hidewindow
     +区域1
@@ -522,8 +522,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Nagrand
-#name 塔布羊肉
+#subgroup 纳格兰
+#name 塔布克·维尼森
 step
     #hidewindow
     +测验
@@ -537,7 +537,7 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Nagrand
+#subgroup 纳格兰
 #name 眼镜蛇鳞片
 step
     #hidewindow
@@ -552,8 +552,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Nagrand
-#name 源生暗影
+#subgroup 纳格兰
+#name 原始暗影
 step
     #hidewindow
     +测验
@@ -567,8 +567,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Nagrand
-#name 源生之土
+#subgroup 纳格兰
+#name 原始大地
 
 step
     #hidewindow
@@ -583,8 +583,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Terokkar Forest
-#name 基尔加丹印记
+#subgroup 泰罗卡森林
+#name 基尔加丹标志
 step
     #hidewindow
     +测验
@@ -599,8 +599,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Terokkar Forest
-#name 火翼徽记
+#subgroup 泰罗卡森林
+#name 消防标识
 step
     #hidewindow
     +测验
@@ -614,8 +614,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Terokkar Forest
-#name 迁跃兽肉
+#subgroup 泰罗卡森林
+#name 虚空肉
 step
     #hidewindow
     +测验
@@ -629,8 +629,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Terokkar Forest
-#name 源生之水
+#subgroup 泰罗卡森林
+#name 原始之水
 step
     #hidewindow
     +测验
@@ -644,8 +644,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Terokkar Forest
-#name 蜘蛛网 蜘蛛丝
+#subgroup 泰罗卡森林
+#name 荷兰蜘蛛丝
 step
 #hidewindow
     .waypoint Terokkar Forest,17.3,80,-1520
@@ -664,7 +664,7 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Shadowmoon Valley
+#subgroup 暗月峡谷
 #name 邪能装备
 step
     #hidewindow
@@ -679,8 +679,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Shadowmoon Valley
-#name 源生火焰
+#subgroup 暗月峡谷
+#name 原始火焰
 step
     #hidewindow
     +测验
@@ -694,8 +694,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Shadowmoon Valley
-#name 源生之水
+#subgroup 暗月峡谷
+#name 原始之水
 step
     #hidewindow
     +测验
@@ -709,8 +709,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Shadowmoon Valley
-#name 源生空气
+#subgroup 暗月峡谷
+#name 原始空气
 step
     #hidewindow
     +测验
@@ -725,8 +725,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Shadowmoon Valley
-#name 奥法宝典
+#subgroup 暗月峡谷
+#name 奥术托姆
 step
     #hidewindow
     +测验
@@ -740,8 +740,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Shadowmoon Valley
-#name 风鳞
+#subgroup 暗月峡谷
+#name 风力等级
 step
     #hidewindow
     +测验
@@ -755,8 +755,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Hellfire Peninsula
-#name 源生暗影
+#subgroup 地狱火半岛
+#name 原始暗影
 step
     #hidewindow
     +测验
@@ -770,8 +770,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Hellfire Peninsula
-#name 源生火焰
+#subgroup 地狱火半岛
+#name 原始火焰
 step
     #hidewindow
     +测验
@@ -785,8 +785,8 @@ RXPGuides.RegisterGuide([[
 #group +外域农业
 #loop
 #hidewindow
-#subgroup Netherstorm
-#name 源生法力
+#subgroup 荷兰风暴
+#name 原始魔力
 step
     #hidewindow
     +测验
@@ -800,12 +800,12 @@ RXPGuides.RegisterGuide([[
 #group +艾泽拉斯农业
 #loop
 #hidewindow
-#subgroup Un'Goro Crater
-#name 草药学
+#subgroup 安戈洛环形山
+#name 草药
 step
     #sticky
     .waypoint Un'Goro Crater,50,50
-    .zone Un'Goro Crater >> 前往Un'Goro火山口
+    .zone Un'Goro Crater >>前往Un'Goro火山口
 step
     #hidewindow
     +测验
@@ -818,12 +818,12 @@ RXPGuides.RegisterGuide([[
 #group +艾泽拉斯农业
 #loop
 #hidewindow
-#subgroup Un'Goro Crater
+#subgroup 安戈洛环形山
 #name 采矿
 step
     #sticky
     .waypoint Un'Goro Crater,50,50
-    .zone Un'Goro Crater >> 前往Un'Goro火山口
+    .zone Un'Goro Crater >>前往Un'Goro火山口
 step
     #hidewindow
     +测验
@@ -836,12 +836,12 @@ RXPGuides.RegisterGuide([[
 #group +艾泽拉斯农业
 #loop
 #hidewindow
-#subgroup Un'Goro Crater
-#name 采矿 & 草药学
+#subgroup 安戈洛环形山
+#name 采矿与草药
 step
     #sticky
     .waypoint Un'Goro Crater,50,50
-    .zone Un'Goro Crater >> 前往Un'Goro火山口
+    .zone Un'Goro Crater >>前往Un'Goro火山口
 step
     #hidewindow
     +测验
@@ -854,12 +854,12 @@ RXPGuides.RegisterGuide([[
 #group +艾泽拉斯农业
 #loop
 #hidewindow
-#subgroup Winterspring
+#subgroup 冬泉谷
 #name 采矿
 step
     #sticky
     .waypoint Winterspring,50,50
-    .zone Winterspring >> 前往冬泉
+    .zone Winterspring >>前往冬泉
 step
     #hidewindow
     +测验
@@ -872,12 +872,12 @@ RXPGuides.RegisterGuide([[
 #group +艾泽拉斯农业
 #loop
 #hidewindow
-#subgroup Winterspring
-#name 草药学
+#subgroup 冬泉谷
+#name 草药
 step
     #sticky
     .waypoint Winterspring,50,50
-    .zone Winterspring >> 前往冬泉
+    .zone Winterspring >>前往冬泉
 step
     #hidewindow
     +测验
@@ -890,15 +890,1032 @@ RXPGuides.RegisterGuide([[
 #group +艾泽拉斯农业
 #loop
 #hidewindow
-#subgroup Winterspring
-#name 采矿 & 草药学
+#subgroup 冬泉谷
+#name 采矿与草药
 step
     #sticky
     .waypoint Winterspring,50,50
-    .zone Winterspring >> 前往冬泉
+    .zone Winterspring >>前往冬泉
 step
     #hidewindow
     +测验
     .loop 20,Winterspring,58.3,33.3,55.9,27.3,51.5,24.6,48.6,11.3,48.8,8.6,55.5,13.7,60.5,14.3,60.3,17.4,58.8,19.7,60.5,23.4,65.8,20.2,66.4,21.7,64.6,25.9,65.7,29.1,67.4,29.8,68.4,34.9,67.2,35.9,69.0,37.9,66.8,39.6,64.6,39.2,66.8,44.7,66.6,54.1,65.0,58.2,65.7,60.4,62.5,66.7,61.7,70.9,62.7,74.2,59.6,75.6,60.3,78.4,62.8,78.7,64.4,79.5,64.4,79.5,62.8,78.7,60.3,78.4,61.2,82.2,62.0,83.6,59.0,83.5,59.1,87.0,57.4,88.9,55.3,84.1,53.8,84.8,53.6,86.1,53.1,86.3,52.7,88.5,51.4,89.2,53.0,84.8,55.0,79.9,56.8,79.4,58.2,72.6,57.7,68.0,61.8,70.9,62.5,66.5,62.1,63.1,58.6,61.1,60.5,56.2,61.0,51.7,63.4,50.4,62.5,47.6,57.6,47.0,57.1,43.7,53.3,44.5,48.6,43.3,45.0,44.1,45.0,37.7,48.0,37.1,51.9,38.1,53.2,38.0,58.3,33.3
     .openmap Winterspring
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 北风苔原
+#name 永恒之水（冷冻元素）
+step
+    #sticky
+    .waypoint Borean Tundra,50,50
+    .zone Borean Tundra >>前往Borean Tundra
+step
+    #hidewindow
+    +测验
+    .loop 20,Borean Tundra,99.0,42.0,97.2,36.1,94.2,35.8,91.2,40.7,86.9,42.8,82.9,45.0,83.6,48.1,85.3,48.9,88.4,47.1,91.9,43.2,96.7,43.9,99.0,42.0
+    .openmap Borean Tundra
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 北风苔原
+#name 永恒之水（蒸汽耙）
+step
+    #sticky
+    .waypoint Borean Tundra,50,50
+    .zone Borean Tundra >>前往Borean Tundra
+step
+    #hidewindow
+    +测验
+    .loop 20,Borean Tundra,76.2,33.1,74.2,27.7,73.2,23.8,70.6,21.3,68.0,22.7,68.6,28.4,70.6,31.9,71.5,37.0,70.9,39.9,72.9,42.1,75.2,39.6,76.2,33.1
+    .openmap Borean Tundra
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 北风苔原
+#name 永恒之水（沸水）
+step
+    #sticky
+    .waypoint Borean Tundra,50,50
+    .zone Borean Tundra >>前往Borean Tundra
+step
+    #hidewindow
+    +测验
+    .loop 20,Borean Tundra,46.9,16.6,48.6,12.8,46.4,10.5,45.0,11.1,45.6,16.4,46.9,16.6
+    .openmap Borean Tundra
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 北风苔原
+#name 永恒之火（沸腾之灵）
+step
+    #sticky
+    .waypoint Borean Tundra,50,50
+    .zone Borean Tundra >>前往Borean Tundra
+step
+    #hidewindow
+    +测验
+    .loop 20,Borean Tundra,47.3,16.4,49.4,18.3,50.9,15.2,49.5,12.7,47.0,11.9,47.3,16.4
+    .openmap Borean Tundra
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 北风苔原
+#name 永恒的空气（激怒的暴风雨）
+step
+    #sticky
+    .waypoint Borean Tundra,50,50
+    .zone Borean Tundra >>前往Borean Tundra
+step
+    #hidewindow
+    +测验
+    .loop 20,Borean Tundra,44.4,12.2,46.8,11.2,46.7,7.2,45.1,5.8,41.8,8.2,42.2,10.8,44.4,12.2
+    .openmap Borean Tundra
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +烹饪和剥皮
+#loop
+#hidewindow
+#subgroup 北风苔原
+#name 犀牛肉和北欧皮革
+step
+    #sticky
+    .waypoint Borean Tundra,50,50
+    .zone Borean Tundra >>前往Borean Tundra
+step
+    #hidewindow
+    +区域1
+    .loop 20,Borean Tundra,47.3,39.4,44.7,39.8,42.2,42.6,40.6,42.8,42.1,48.0,42.2,48.9,47.9,48.0,47.3,39.4
+    .openmap Borean Tundra
+    #hidewindow
+    +区域2
+    .loop 20,Borean Tundra,49.7,74.3,43.4,76.4,40.1,73.8,40.6,70.3,45.8,69.7,48.7,68.9,50.7,66.7,52.1,68.7,49.7,74.3
+    .openmap Borean Tundra
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +烹饪和剥皮
+#loop
+#hidewindow
+#subgroup 肖拉查盆地
+#name 冷却肉和Sholazar盆地
+step
+    #sticky
+    .waypoint Sholazar Basin,50,50
+    .zone Borean Tundra >>前往Sholazar盆地
+step
+    #hidewindow
+    +区域1
+    .loop 20,Sholazar Basin,20.6,62.6,22.1,75.6,27.8,79.8,30.2,70.5,32.8,65.7,27.2,64.5,24.9,60.8,29.6,55.9,33.4,41.7,31.5,36.4,26.2,45.0,22.7,50.5,20.6,62.6
+    .openmap Sholazar Basin
+    #hidewindow
+    +区域2
+    .loop 20,Sholazar Basin,56.8,81.0,59.4,74.2,64.4,70.1,57.7,65.5,55.0,76.5,56.8,81.0
+    .openmap Sholazar Basin
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 肖拉查盆地
+#name 永恒的地球（生命元素）
+step
+    #sticky
+    .waypoint Sholazar Basin,50,50
+    .zone Sholazar Basin >>前往Sholazar盆地
+step
+    #hidewindow
+    +测验
+    .loop 20,Sholazar Basin,69.1,60.2,71.9,62.1,74.7,59.7,75.5,56.7,73.5,53.9,67.9,53.5,69.1,60.2
+    .openmap Sholazar Basin
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 肖拉查盆地
+#name 永恒的地球（Sholazar Guardian）
+step
+    #sticky
+    .waypoint Sholazar Basin,50,50
+    .zone Sholazar Basin >>前往Sholazar盆地
+step
+    #hidewindow
+    +测验
+    .loop 20,Sholazar Basin,80.5,54.4,84.3,53.6,
+    .openmap Sholazar Basin
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +烹饪和剥皮
+#loop
+#hidewindow
+#subgroup 肖拉查盆地
+#name Chunk o’Mammoth&Borean皮革
+step
+    #sticky
+    .waypoint Sholazar Basin,50,50
+    .zone Sholazar Basin >>前往Sholazar盆地
+step
+    #hidewindow
+    +测验
+    .loop 20,Sholazar Basin,58.6,38.6,56.5,30.1,51.3,28.7,39.2,26.5,36.4,27.8,36.3,32.4,46.9,44.5,54.0,44.8,55.1,38.4,58.6,38.6,
+    .openmap Sholazar Basin
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 肖拉查盆地
+#name 永恒的水与空气（风暴复仇与水灵）
+step
+    #sticky
+    .waypoint Sholazar Basin,50,50
+    .zone Sholazar Basin >>前往Sholazar盆地
+step
+    #hidewindow
+    +测验
+    .loop 20,Sholazar Basin,32.2,30.7,30.4,34.8,26.3,40.7,24.4,45.1,20.9,48.6,20.0,47.1,22.0,43.5,21.9,33.7,26.1,30.3,30.6,28.9,32.2,30.7
+    .openmap Sholazar Basin
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 龙枯草
+#name 永恒之水（结晶冰元素）
+step
+    #sticky
+    .waypoint Dragonblight,50,50
+    .zone Dragonblight >>前往Dragonblight
+step
+    #hidewindow
+    +测验
+    .loop 20,Dragonblight,48.4,20.0,49.0,21.9,53.3,21.1,53.4,17.5,50.4,15.7,46.8,15.2,46.6,19.1,48.4,20.0
+    .openmap Dragonblight
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 龙枯草
+#name 永恒的阴影（死亡使者复仇者）
+step
+    #sticky
+    .waypoint Dragonblight,50,50
+    .zone Dragonblight >>前往Dragonblight
+step
+    #hidewindow
+    +测验
+    .loop 20,Dragonblight,74.3,23.6,72.9,20.1,75.4,19.0,76.2,20.0,75.9,21.1,74.3,23.6
+    .openmap Dragonblight
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 龙枯草
+#name 永恒之水（冰雪复仇）
+step
+    #sticky
+    .waypoint Dragonblight,50,50
+    .zone Dragonblight >>前往Dragonblight
+step
+    #hidewindow
+    +测验
+    .loop 20,Dragonblight,66.0,51.9,68.4,50.3,68.9,52.7,68.1,56.2,66.9,56.4,66.2,54.2,66.0,51.9
+    .openmap Dragonblight
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 灰陵
+#name 永恒的地球（符文战斗傀儡）
+step
+    #sticky
+    .waypoint Grizzly Hills,50,50
+    .zone Grizzly Hills >>前往灰熊山
+step
+    #hidewindow
+    +测验
+    .loop 20,Grizzly Hills,62.8,25.8,62.1,23.0,63.0,19.3,64.7,18.4,66.2,20.1,67.3,24.2,64.0,28.2,62.7,27.4,62.8,25.8
+    .openmap Grizzly Hills
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 灰陵
+#name 永恒的空气（闪电哨兵）
+step
+    #sticky
+    .waypoint Grizzly Hills,50,50
+    .zone Grizzly Hills >>前往灰熊山
+step
+    #hidewindow
+    +测验
+    .loop 20,Grizzly Hills,75.7,49.9,78.2,51.5,81.1,56.6,80.8,59.6,76.7,63.6,71.9,62.7,71.9,55.7,73.4,50.7,75.7,49.9
+    .openmap Grizzly Hills
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 尖啸海湾
+#name 永恒的大地（铁符哨兵）
+step
+    #sticky
+    .waypoint Howling Fjord,50,50
+    .zone Howling Fjord >>前往嚎叫峡湾
+step
+    #hidewindow
+    +测验
+    .loop 20,Howling Fjord,70.8,31.6,69.0,30.4,65.8,29.1,66.3,24.4,69.8,20.9,72.5,17.8,74.7,24.2,70.8,31.6
+    .openmap Howling Fjord
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 尖啸海湾
+#name 永恒的大地（铁符魔）
+step
+    #sticky
+    .waypoint Howling Fjord,50,50
+    .zone Howling Fjord >>前往嚎叫峡湾
+step
+    #hidewindow
+    +测验
+    .loop 20,Howling Fjord,73.5,70.5,73.2,69.6,71.8,70.1,71.2,69.6,70.9,71.5,71.4,72.4,
+    .openmap Howling Fjord
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 尖啸海湾
+#name 永恒之水（冰元素）
+step
+    #sticky
+    .waypoint Howling Fjord,50,50
+    .zone Howling Fjord >>前往嚎叫峡湾
+step
+    #hidewindow
+    +测验
+    .loop 20,Howling Fjord,60.7,20.0,62.5,20.2,64.1,22.0,64.0,24.3,63.0,26.3,60.2,24.8,58.8,22.5,59.0,19.5,60.7,20.0
+    .openmap Howling Fjord
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 尖啸海湾
+#name 永恒之水（冰片元素）
+step
+    #sticky
+    .waypoint Howling Fjord,50,50
+    .zone Howling Fjord >>前往嚎叫峡湾
+step
+    #hidewindow
+    +测验
+    .loop 20,Howling Fjord,57.4,9.1,59.1,9.1,60.2,11.7,58.2,15.0,53.8,12.3,51.1,5.8,50.4,1.6,56.5,1.8,56.3,8.0,57.4,9.1
+    .openmap Howling Fjord
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 尖啸海湾
+#name 永恒生命（Thornvine爬行）
+step
+    #sticky
+    .waypoint Howling Fjord,50,50
+    .zone Howling Fjord >>前往嚎叫峡湾
+step
+    #hidewindow
+    +测验
+    .loop 20,Howling Fjord,55.8,17.1,55.7,19.6,52.1,20.2,51.6,16.6,52.4,14.0,55.3,15.3,55.8,17.1
+    .openmap Howling Fjord
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 祖达克
+#name 永恒之水（狂水灵）
+step
+    #sticky
+    .waypoint Zul'Drak,50,50
+    .zone Zul'Drak >>前往祖德拉克
+step
+    #hidewindow
+    +测验
+    .loop 20,Zul'Drak,43.2,84.7,37.5,75.7,41.2,70.5,47.0,80.1,45.5,83.3,43.2,84.7
+    .openmap Zul'Drak
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +烹饪和剥皮
+#loop
+#hidewindow
+#subgroup 祖达克
+#name 冰网蜘蛛丝&北欧皮革
+step
+    #sticky
+    .waypoint Zul'Drak,50,50
+    .zone Zul'Drak >>前往祖德拉克
+step
+    #hidewindow
+    +测验
+    .loop 20,Zul'Drak,34.7,58.1,34.5,46.1,37.1,46.5,43.3,49.2,43.5,36.8,46.4,36.0,46.3,50.8,39.9,58.2,34.7,58.1
+    .openmap Zul'Drak
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 祖达克
+#name 永恒之水（冻土）
+step
+    #sticky
+    .waypoint Zul'Drak,50,50
+    .zone Zul'Drak >>前往祖德拉克
+step
+    #hidewindow
+    +测验
+    .loop 20,Zul'Drak,52.2,56.7,48.7,49.1,48.8,42.1,57.2,42.1,59.5,49.8,54.7,57.3,52.2,56.7
+    .openmap Zul'Drak
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 祖达克
+#name 永恒的地球（祖姆罗克守护者）
+step
+    #sticky
+    .waypoint Zul'Drak,50,50
+    .zone Zul'Drak >>前往祖德拉克
+step
+    #hidewindow
+    +测验
+    .loop 20,Zul'Drak,59.3,49.3,56.5,44.7,59.6,39.8,62.7,44.3,59.3,49.3
+    .openmap Zul'Drak
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +烹饪和剥皮
+#loop
+#hidewindow
+#subgroup 风暴峰值
+#name Chunk o’Mammoth&Borean皮革
+step
+    #sticky
+    .waypoint The Storm Peaks,50,50
+    .zone The Storm Peaks >>前往风暴峰
+step
+    #hidewindow
+    +测验
+    .loop 20,The Storm Peaks,60.6,61.7,59.9,57.5,57.9,58.7,56.4,63.4,53.5,65.5,56.0,68.2,60.6,61.7
+    .openmap The Storm Peaks
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +烹饪和剥皮
+#loop
+#hidewindow
+#subgroup 风暴峰
+#name 蠕虫肉和Borean皮革
+step
+    #sticky
+    .waypoint The Storm Peaks,50,50
+    .zone The Storm Peaks >>前往风暴峰
+step
+    #hidewindow
+    +测验
+    .loop 20,The Storm Peaks,
+    .openmap The Storm Peaks
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 风暴峰
+#name 永恒之火（沸腾的复仇者）
+step
+    #sticky
+    .waypoint The Storm Peaks,50,50
+    .zone The Storm Peaks >>前往风暴峰
+step
+    #hidewindow
+    +测验
+    .loop 20,The Storm Peaks,68.8,62.6,68.7,57.4,70.8,55.5,71.7,56.3,72.2,58.8,72.8,61.8,77.4,61.7,77.9,62.8,76.2,64.4,67.8,63.7,68.8,62.6
+    .openmap The Storm Peaks
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 风暴峰
+#name 永恒的地球（脆性复仇）
+step
+    #sticky
+    .waypoint The Storm Peaks,50,50
+    .zone The Storm Peaks >>前往风暴峰
+step
+    #hidewindow
+    +测验
+    .loop 20,The Storm Peaks,68.8,62.6,68.7,57.4,70.8,55.5,71.5,58.4,71.5,61.1,72.7,63.4,70.5,63.1,68.8,62.6
+    .openmap The Storm Peaks
+]])
+
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 风暴峰
+#name 永恒之火（哀风）
+step
+    #sticky
+    .waypoint The Storm Peaks,50,50
+    .zone The Storm Peaks >>前往风暴峰
+step
+    #hidewindow
+    +测验
+    .loop 20,The Storm Peaks,62.5,41.5
+    .openmap The Storm Peaks
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 风暴峰
+#name 永恒的空气（风暴司祭盎）
+step
+    #sticky
+    .waypoint The Storm Peaks,50,50
+    .zone The Storm Peaks >>前往风暴峰
+step
+    #hidewindow
+    +测验
+    .loop 20,The Storm Peaks,66.1,39.2,69.5,39.8,70.8,42.2,68.2,46.0,66.7,45.5,65.4,42.0,66.1,39.2
+    .openmap The Storm Peaks
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 风暴峰
+#name 永恒之水（冰封的恶魔）
+step
+    #sticky
+    .waypoint The Storm Peaks,50,50
+    .zone The Storm Peaks >>前往风暴峰
+step
+    #hidewindow
+    +测验
+    .loop 20,The Storm Peaks,42.5,61.1,41.3,60.6,40.7,62.9,41.1,64.3,43.2,66.9,44.8,64.9,42.5,61.1
+    .openmap The Storm Peaks
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 风暴峰
+#name 永恒之水（暴风雪）
+step
+    #sticky
+    .waypoint The Storm Peaks,50,50
+    .zone The Storm Peaks >>前往风暴峰
+step
+    #hidewindow
+    +测验
+    .loop 20,The Storm Peaks,34.1,47.3,31.6,50.3,28.8,52.3,27.7,50.4,25.7,41.6,27.4,40.3,28.4,42.4,28.9,46.8,32.3,46.9,33.5,46.4,34.1,47.3
+    .openmap The Storm Peaks
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 冰冠冰川
+#name 霜纹布（转化英雄）
+step
+    #sticky
+    .waypoint Icecrown,50,50
+    .zone Icecrown >>前往冰冠
+step
+    #hidewindow
+    +测验
+    .loop 20, Icecrown,40.9,46.6,48.3,50.2,48.1,57.7,40.9,58.6,39.0,58.6,38.6,50.6,40.9,46.6
+    .openmap Icecrown
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +诺森德农场
+#loop
+#hidewindow
+#subgroup 冬抓
+#name 永恒的阴影（游荡的阴影）
+step
+    #sticky
+    .waypoint Wintergrasp,50,50
+    .zone Wintergrasp >>前往冬握
+step
+    #hidewindow
+    +测验
+    .loop 20, Wintergrasp,22.7,45.1,21.7,52.0,20.4,63.7,16.3,63.9,9.1,54.0,20.1,36.3,22.7,45.1
+    .openmap Wintergrasp
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +采矿与草药
+#loop
+#hidewindow
+#subgroup 北风苔原
+#name 草药
+step
+    #sticky
+    .waypoint Borean Tundra,50,50
+    .zone Borean Tundra >>前往Borean Tundra
+step
+    #hidewindow
+    +测验
+    .loop 20,Borean Tundra,77.0,30.1,77.5,35.8,75.5,41.7,69.0,41.8,64.5,39.8,60.7,42.5,61.6,58.4,57.4,48.8,49.8,69.5,49.2,74.9,46.2,72.2,32.8,63.5,32.5,54.3,44.0,43.9,52.7,49.0,52.7,41.0,58.0,40.4,60.1,32.5,54.9,27.9,48.4,23.2,50.0,20.0,58.1,18.7,61.8,14.3,66.0,16.1,73.4,25.9,70.1,31.0,72.6,34.2,77.0,30.1
+    .openmap Borean Tundra
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +采矿与草药
+#loop
+#hidewindow
+#subgroup 北风苔原
+#name 采矿
+step
+    #sticky
+    .waypoint Borean Tundra,50,50
+    .zone Borean Tundra >>前往Borean Tundra
+step
+    #hidewindow
+    +测验
+    .loop 20,Borean Tundra,91.1,33.6,87.8,44.7,78.9,44.7,78.9,30.0,73.4,32.7,72.6,28.0,68.2,25.5,69.3,31.5,64.1,33.4,61.7,37.7,66.3,38.8,72.6,45.3,66.0,46.6,59.6,59.4,56.6,57.8,52.8,73.2,49.3,69.4,50.6,57.1,43.1,70.4,34.1,67.0,29.5,56.5,49.2,49.1,52.3,35.9,50.0,33.3,41.7,41.6,23.8,33.6,22.7,28.9,25.0,22.0,30.4,22.3,33.2,27.6,39.9,20.0,44.2,21.3,41.9,13.7,48.7,15.3,55.5,11.8,60.0,11.7,59.4,19.2,61.1,22.3,65.9,16.6,74.2,17.1,78.0,21.3,84.1,32.3,91.1,33.6
+    .openmap Borean Tundra
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +采矿与草药
+#loop
+#hidewindow
+#subgroup 北风苔原
+#name 采矿与草药
+step
+    #sticky
+    .waypoint Borean Tundra,50,50
+    .zone Borean Tundra >>前往Borean Tundra
+step
+    #hidewindow
+    +测验
+    .loop 20,Borean Tundra,91.1,33.6,87.8,44.7,79.4,48.5,77.4,42.3,78.1,30.5,74.0,26.6,72.2,31.1,71.8,39.0,63.2,32.3,58.8,40.7,66.2,40.5,72.9,44.0,66.3,46.9,62.3,46.1,60.5,60.4,57.3,49.8,55.6,57.7,53.5,64.2,51.0,64.9,53.4,72.3,48.9,75.4,46.5,72.7,50.0,55.3,45.5,61.5,42.2,74.6,38.3,68.9,31.1,62.2,29.3,55.8,35.6,53.5,37.3,47.9,49.8,49.6,53.7,43.0,49.8,42.8,52.5,34.6,49.0,33.5,44.4,41.6,40.9,43.3,23.8,33.6,22.7,28.9,25.0,22.0,30.4,22.3,33.2,27.6,46.4,21.9,42.3,13.5,44.5,8.3,48.9,12.1,48.7,15.3,49.4,22.0,55.5,11.8,60.0,11.7,63.4,15.8,61.1,20.4,59.2,28.1,74.2,17.1,78.0,21.3,84.1,32.3,91.1,33.6
+    .openmap Borean Tundra
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +采矿与草药
+#loop
+#hidewindow
+#subgroup 肖拉查盆地
+#name 草药
+step
+    #sticky
+    .waypoint Sholazar Basin,50,50
+    .zone Sholazar Basin >>前往Sholazar盆地
+step
+    #hidewindow
+    +测验
+    .loop 20,Sholazar Basin,70.1,68.4,67.1,70.9,65.7,75.3,58.3,77.7,60.9,84.4,54.4,85.7,48.6,83.5,48.1,71.7,47.8,65.8,49.6,52.4,46.4,51.7,45.1,56.3,42.1,58.0,40.9,64.3,42.2,83.2,33.5,83.1,27.2,80.1,26.6,72.8,34.2,66.3,33.8,59.8,22.2,59.2,23.1,48.1,28.6,52.7,30.1,44.5,35.4,45.0,33.4,35.1,41.4,22.8,58.3,27.8,62.1,35.0,56.1,35.7,57.3,42.3,59.2,47.0,56.7,55.9,54.2,61.5,61.7,67.2,70.1,68.4
+    .openmap Sholazar Basin
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +采矿与草药
+#loop
+#hidewindow
+#subgroup 肖拉查盆地
+#name 采矿
+step
+    #sticky
+    .waypoint Sholazar Basin,50,50
+    .zone Sholazar Basin >>前往Sholazar盆地
+step
+    #hidewindow
+    +测验
+    .loop 20,Sholazar Basin,77.7,56.8,76.3,65.9,64.0,81.0,60.2,80.3,59.7,87.0,54.0,88.3,59.3,66.8,53.8,64.0,47.7,60.4,45.9,63.5,50.2,78.8,48.5,87.0,40.3,87.1,37.4,83.7,40.4,76.5,36.6,69.1,32.2,75.0,31.8,80.2,32.2,83.6,22.8,82.4,20.8,70.3,23.5,52.8,25.8,47.2,31.9,59.5,36.3,57.5,39.5,51.2,31.4,37.9,35.2,32.8,37.6,37.0,40.8,38.4,43.1,35.8,49.7,43.3,53.5,38.7,51.0,31.6,43.6,22.3,58.9,25.0,59.0,29.4,62.9,31.8,67.2,42.9,61.3,50.4,64.2,53.8,67.3,50.7,67.8,55.2,74.2,55.5,77.7,56.8
+    .openmap Sholazar Basin
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +采矿与草药
+#loop
+#hidewindow
+#subgroup 肖拉查盆地
+#name 采矿与草药
+step
+    #sticky
+    .waypoint Sholazar Basin,50,50
+    .zone Sholazar Basin >>前往Sholazar盆地
+step
+    #hidewindow
+    +测验
+    .loop 20,Sholazar Basin,79.2,52.4,76.3,65.9,71.5,72.1,65.2,71.0,65.9,78.9,59.7,87.0,54.0,88.3,59.3,66.8,53.8,64.0,47.7,60.4,42.9,60.6,42.6,65.4,47.8,67.6,50.9,72.8,47.9,78.1,48.5,87.0,40.3,87.1,37.4,83.7,40.4,76.5,36.6,69.1,32.2,75.0,31.8,80.2,32.2,83.6,22.8,82.4,20.8,70.3,23.5,52.8,25.8,47.2,29.6,52.7,30.4,62.5,34.5,62.6,33.7,57.7,36.3,57.5,39.5,51.2,35.4,44.9,29.5,45.3,31.4,37.9,35.2,32.8,37.6,37.0,40.8,38.4,43.1,35.8,49.7,43.3,53.5,38.7,51.0,31.6,43.6,22.3,58.9,25.0,59.0,29.4,62.9,31.8,67.2,42.9,61.3,50.4,57.9,50.5,60.6,55.0,64.2,53.8,67.3,50.7,67.8,55.2,74.2,55.5,76.4,48.5,79.2,52.4
+    .openmap Sholazar Basin
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +采矿与草药
+#loop
+#hidewindow
+#subgroup 龙枯草
+#name 草药
+step
+    #sticky
+    .waypoint Dragonblight,50,50
+    .zone Dragonblight >>前往Dragonblight
+step
+    #hidewindow
+    +测验
+    .loop 20,Dragonblight,16.1,47.9,14.8,56.8,19.3,55.3,23.2,57.2,29.9,60.6,34.2,59.6,35.0,73.0,38.5,74.5,48.5,70.4,54.9,70.9,49.4,63.2,43.8,65.6,45.7,59.9,41.2,55.8,46.3,50.0,43.4,47.4,43.3,35.1,30.5,45.7,29.0,52.8,24.2,52.0,20.8,48.0,16.1,47.9
+    .openmap Dragonblight
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +采矿与草药
+#loop
+#hidewindow
+#subgroup 龙枯草
+#name 采矿
+step
+    #sticky
+    .waypoint Dragonblight,50,50
+    .zone Dragonblight >>前往Dragonblight
+step
+    #hidewindow
+    +测验
+    .loop 20,Dragonblight,14.3,44.0,17.8,56.5,28.5,65.8,32.8,68.8,30.0,75.3,45.8,74.0,52.3,67.2,58.8,65.2,67.9,63.2,69.0,69.7,62.3,73.5,66.2,78.3,70.9,82.9,74.1,81.1,78.7,71.5,72.1,61.6,70.8,55.3,66.3,55.3,65.0,48.9,72.7,50.1,73.2,42.0,66.7,37.2,70.8,32.0,75.5,34.0,76.2,29.1,68.7,23.5,63.5,23.4,57.4,16.9,50.4,19.1,56.6,35.1,46.9,45.0,46.2,60.2,33.7,60.8,14.3,44.0
+    .openmap Dragonblight
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +采矿与草药
+#loop
+#hidewindow
+#subgroup 龙枯草
+#name 采矿与草药
+step
+    #sticky
+    .waypoint Dragonblight,50,50
+    .zone Dragonblight >>前往Dragonblight
+step
+    #hidewindow
+    +测验
+    .loop 20,Dragonblight,14.3,44.0,16.6,50.7,15.0,57.7,23.4,62.7,25.5,60.3,28.4,62.3,28.9,66.3,30.5,74.2,36.2,73.3,35.0,65.5,35.5,59.8,45.5,57.9,43.5,63.6,44.0,72.7,47.9,70.6,49.9,63.7,52.7,70.7,56.4,70.6,57.0,65.8,62.2,71.6,66.2,78.5,72.1,83.2,76.6,75.7,75.3,69.2,80.0,70.6,81.5,65.6,86.1,61.5,90.5,73.5,90.8,49.1,85.9,42.9,83.4,36.8,87.8,31.4,85.4,20.3,80.1,27.9,80.0,31.5,75.6,30.2,69.0,34.3,73.6,36.4,70.6,41.8,72.7,50.5,70.6,55.4,70.4,66.3,64.6,62.7,66.5,53.5,65.0,45.1,53.7,38.2,53.1,34.4,58.9,32.7,59.8,17.5,50.8,19.3,46.6,11.6,42.9,33.5,45.6,45.7,49.6,46.0,49.3,51.7,42.7,49.7,36.9,41.3,28.3,52.9,23.0,54.6,14.3,44.0
+    .openmap Dragonblight
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +采矿与草药
+#loop
+#hidewindow
+#subgroup 尖啸海湾
+#name 采矿与草药
+step
+    #sticky
+    .waypoint Howling Fjord,50,50
+    .zone Howling Fjord >>前往嚎叫峡湾
+step
+    #hidewindow
+    +测验
+    .loop 20,Howling Fjord,69.8,32.3,73.3,22.7,69.1,10.4,68.2,18.9,67.7,23.3,63.0,22.5,61.8,29.7,55.7,16.7,52.1,15.9,46.7,21.5,45.9,15.4,43.4,10.7,39.3,9.6,40.8,15.5,38.0,17.1,34.3,24.0,29.3,7.7,27.3,13.8,24.0,16.8,20.2,23.3,22.9,26.3,27.1,23.3,30.8,25.5,27.7,31.1,33.7,34.2,40.1,28.4,42.3,37.4,47.0,40.1,49.9,32.4,59.8,37.8,62.6,35.2,64.3,40.3,65.9,51.6,59.8,51.2,53.9,52.4,55.4,56.9,59.9,56.1,62.6,60.7,61.4,65.8,57.3,67.3,51.8,59.4,51.2,50.6,47.8,49.1,47.7,58.6,37.3,54.5,36.2,46.6,28.1,54.6,31.2,61.6,33.4,77.7,35.5,76.7,45.8,64.8,47.8,73.1,57.9,74.7,60.4,78.9,65.8,70.6,68.7,59.0,71.7,60.8,69.5,73.2,76.7,63.2,74.7,53.9,78.0,47.1,74.5,43.6,79.8,34.1,70.6,38.9,66.8,31.9,69.8,32.3
+    .openmap Howling Fjord
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +采矿与草药
+#loop
+#hidewindow
+#subgroup 尖啸海湾
+#name 草药
+step
+    #sticky
+    .waypoint Howling Fjord,50,50
+    .zone Howling Fjord >>前往嚎叫峡湾
+step
+    #hidewindow
+    +测验
+    .loop 20,Howling Fjord,27.3,10.4,30.4,23.8,38.3,21.9,42.0,25.3,42.0,29.9,47.3,26.8,45.3,23.1,50.8,16.1,57.4,23.1,56.2,35.8,53.5,49.0,53.2,58.4,59.7,56.8,61.2,48.8,60.2,35.6,68.1,19.3,71.6,26.9,67.7,34.8,78.0,46.4,70.6,49.0,72.0,57.2,76.1,63.3,75.7,65.8,70.5,64.4,68.8,74.0,66.5,69.2,61.4,79.6,55.9,74.5,48.6,70.1,50.7,60.7,41.9,55.9,34.7,49.2,37.8,44.8,47.3,42.4,40.7,38.0,32.1,34.0,24.0,26.7,25.8,18.3,27.3,10.4
+    .openmap Howling Fjord
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +采矿与草药
+#loop
+#hidewindow
+#subgroup 尖啸海湾
+#name 采矿
+step
+    #sticky
+    .waypoint Howling Fjord,50,50
+    .zone Howling Fjord >>前往嚎叫峡湾
+step
+    #hidewindow
+    +测验
+    .loop 20,Howling Fjord,67.6,33.6,73.3,22.7,69.1,10.4,61.1,25.2,53.5,14.9,45.9,15.4,43.4,10.7,39.3,9.6,40.8,15.5,38.0,17.1,29.3,7.7,27.3,13.8,24.0,16.8,20.2,23.3,22.9,26.3,27.1,23.3,27.7,31.1,40.1,28.4,42.3,37.4,47.0,40.1,49.9,32.4,60.7,38.2,64.3,40.3,65.9,51.6,62.0,53.8,61.4,65.8,57.3,67.3,52.4,56.6,46.3,52.1,37.3,54.5,35.4,53.1,28.1,54.6,31.2,61.6,33.4,77.7,35.5,76.7,45.8,64.8,47.8,73.1,57.9,74.7,60.4,78.9,65.8,70.6,68.7,59.0,71.7,60.8,72.8,68.6,76.7,63.2,74.7,53.9,78.0,47.1,74.5,43.6,79.8,34.1,70.9,36.2,67.6,33.6
+    .openmap Howling Fjord
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +采矿与草药
+#loop
+#hidewindow
+#subgroup 灰陵
+#name 草药
+step
+    #sticky
+    .waypoint Grizzly Hills,50,50
+    .zone Grizzly Hills >>前往灰熊山
+step
+    #hidewindow
+    +测验
+    .loop 20,Grizzly Hills,18.3,74.2,27.0,70.7,31.2,44.9,36.2,41.6,38.0,36.8,44.6,30.3,58.7,30.3,55.9,38.7,53.5,50.3,61.4,51.6,67.1,55.5,69.0,45.5,80.1,52.0,77.2,42.1,72.7,35.9,69.9,33.4,70.5,28.9,75.2,24.4,70.8,21.4,66.3,22.5,65.3,32.7,62.7,32.2,62.2,26.1,43.2,28.4,38.4,31.9,33.2,35.0,29.6,40.7,16.4,39.2,9.5,36.2,10.8,44.1,14.9,46.5,23.9,47.4,25.6,55.9,14.3,59.2,11.9,68.4,18.0,66.0,18.3,74.2
+    .openmap Grizzly Hills
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +采矿与草药
+#loop
+#hidewindow
+#subgroup 灰陵
+#name 采矿
+step
+    #sticky
+    .waypoint Grizzly Hills,50,50
+    .zone Grizzly Hills >>前往灰熊山
+step
+    #hidewindow
+    +测验
+    .loop 20,Grizzly Hills,12.2,65.3,28.8,60.1,31.1,44.7,38.2,38.7,45.8,47.6,46.7,51.5,55.3,50.7,55.2,39.4,51.4,34.9,49.2,28.1,56.8,24.4,69.7,13.0,65.3,23.2,63.2,31.0,71.5,22.8,73.4,28.8,69.7,36.2,76.8,41.4,79.2,59.5,69.2,60.8,64.8,65.9,57.9,56.2,49.5,57.5,48.6,40.1,40.6,32.0,29.4,40.1,23.1,29.9,20.7,39.7,18.6,36.0,17.0,40.3,12.6,37.0,12.2,65.3
+    .openmap Grizzly Hills
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +采矿与草药
+#loop
+#hidewindow
+#subgroup 灰陵
+#name 采矿与草药
+step
+    #sticky
+    .waypoint Grizzly Hills,50,50
+    .zone Grizzly Hills >>前往灰熊山
+step
+    #hidewindow
+    +测验
+    .loop 20,Grizzly Hills,12.6,64.1,18.2,65.2,18.9,74.4,25.2,72.8,31.4,45.1,38.4,37.8,45.1,49.9,52.0,50.1,55.7,52.8,56.1,49.9,54.6,46.5,54.3,38.8,49.9,37.7,46.2,31.4,55.2,24.3,52.3,18.6,58.5,20.5,68.4,8.2,70.4,13.9,65.0,18.3,65.6,23.7,57.9,30.2,66.2,30.4,70.6,22.2,72.9,28.9,67.9,38.3,68.8,46.1,74.3,44.1,76.2,40.1,79.3,50.7,79.1,60.2,68.1,62.2,66.7,54.3,61.7,50.7,62.4,61.8,58.1,57.7,47.5,56.4,44.0,59.4,41.3,31.9,29.6,39.2,23.8,39.7,24.4,33.3,22.5,28.7,17.4,40.2,10.3,35.2,12.6,46.5,19.4,46.0,24.5,50.5,25.6,55.4,21.1,58.5,13.1,52.0,12.6,64.1
+    .openmap Grizzly Hills
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +采矿与草药
+#loop
+#hidewindow
+#subgroup 祖达克
+#name 草药
+step
+    #sticky
+    .waypoint Zul'Drak,50,50
+    .zone Zul'Drak >>前往祖德拉克
+step
+    #hidewindow
+    +测验
+    .loop 20,Zul'Drak,21.6,84.2,30.1,84.0,34.0,88.4,39.0,86.5,36.2,74.7,37.2,70.5,42.0,72.2,46.0,80.5,51.8,76.3,55.5,79.7,57.2,68.8,65.4,77.2,76.2,70.1,76.5,63.9,70.3,62.8,70.7,56.6,73.7,55.1,71.3,44.1,77.8,41.7,80.0,34.2,83.3,28.8,77.0,25.3,78.2,19.9,74.9,17.5,71.6,22.2,73.9,30.0,73.0,36.3,65.9,36.2,63.3,50.4,58.3,46.1,56.2,34.7,49.9,35.4,41.3,43.9,41.3,48.1,43.7,53.6,42.9,63.2,37.1,61.1,34.0,49.7,33.4,43.6,22.4,52.1,28.2,57.1,30.6,56.3,31.4,65.1,29.5,71.5,30.7,73.8,23.1,79.6,21.6,84.2
+    .openmap Zul'Drak
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +采矿与草药
+#loop
+#hidewindow
+#subgroup 祖达克
+#name 采矿
+step
+    #sticky
+    .waypoint Zul'Drak,50,50
+    .zone Zul'Drak >>前往祖德拉克
+step
+    #hidewindow
+    +测验
+    .loop 20,Zul'Drak,60.6,33.9,60.1,37.9,50.6,38.5,43.4,44.3,37.5,44.3,33.9,45.8,31.3,42.3,22.4,50.1,23.2,53.7,21.3,56.9,15.5,59.3,11.9,72.9,21.3,74.0,23.9,70.8,23.1,64.2,27.7,68.2,30.8,60.7,31.5,54.0,36.3,52.9,36.5,61.8,37.2,70.9,31.2,78.8,31.8,83.8,38.4,83.3,40.8,81.6,44.3,82.6,46.5,78.7,44.7,75.9,49.7,71.8,52.5,67.2,53.8,72.8,60.1,81.9,61.8,79.5,60.2,72.4,61.5,61.5,56.0,49.8,53.0,49.2,56.6,43.9,70.9,49.8,74.7,47.8,73.4,36.0,69.9,27.1,60.6,33.9
+    .openmap Zul'Drak
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +采矿与草药
+#loop
+#hidewindow
+#subgroup 祖达克
+#name 采矿与草药
+step
+    #sticky
+    .waypoint Zul'Drak,50,50
+    .zone Zul'Drak >>前往祖德拉克
+step
+    #hidewindow
+    +测验
+    .loop 20,Zul'Drak,61.4,35.1,55.2,38.8,53.3,34.0,52.0,39.8,57.4,49.6,54.0,53.8,53.7,49.2,47.6,40.8,45.2,36.6,42.8,43.3,38.8,43.0,42.4,49.2,34.1,46.8,33.2,41.6,30.6,43.9,30.0,55.7,25.0,48.0,22.4,49.5,22.6,55.1,15.1,59.1,13.2,70.0,11.6,73.4,11.0,80.7,16.4,77.9,20.0,77.5,22.8,69.2,23.5,64.4,28.5,65.3,29.9,70.8,31.6,61.3,36.2,55.7,39.2,60.0,36.3,63.4,36.1,71.5,40.3,71.3,37.3,75.4,32.8,70.8,30.7,75.4,26.2,77.2,20.5,85.7,31.3,83.5,32.0,87.5,39.6,85.7,37.2,81.9,39.8,79.6,43.4,83.8,46.3,81.3,45.1,76.2,49.8,78.1,51.6,74.3,48.5,72.4,53.1,67.6,56.3,78.2,53.5,82.4,61.1,81.4,59.2,76.8,61.9,73.3,57.0,65.0,60.9,58.4,59.1,55.0,71.5,49.5,74.6,48.8,72.5,35.7,83.4,29.4,79.2,26.7,76.4,18.0,69.3,25.4,70.7,31.9,61.4,35.1
+    .openmap Zul'Drak
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +采矿与草药
+#loop
+#hidewindow
+#subgroup 风暴峰
+#name 草药
+step
+    #sticky
+    .waypoint The Storm Peaks,50,50
+    .zone The Storm Peaks >>前往风暴峰
+step
+    #hidewindow
+    +测验
+    .loop 20,The Storm Peaks,56.1,65.5,59.2,59.3,63.5,62.6,72.5,63.3,71.1,55.4,71.9,48.3,67.0,45.9,65.4,41.6,61.1,44.2,58.8,48.7,55.7,50.2,50.5,53.3,49.8,59.8,46.9,62.5,38.0,62.9,38.0,53.9,44.0,52.8,43.1,43.6,37.6,44.5,34.9,40.1,32.3,49.3,28.4,50.3,26.7,56.7,22.6,57.0,25.0,63.1,27.8,61.8,26.7,72.5,31.5,65.8,36.9,66.3,37.4,77.0,30.6,83.4,32.7,89.9,39.0,88.5,39.6,80.7,50.0,74.3,56.1,65.5
+    .openmap The Storm Peaks
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +采矿与草药
+#loop
+#hidewindow
+#subgroup 风暴峰
+#name 采矿
+step
+    #sticky
+    .waypoint The Storm Peaks,50,50
+    .zone The Storm Peaks >>前往风暴峰
+step
+    #hidewindow
+    +测验
+    .loop 20,The Storm Peaks,29.80,42.00,27.60,50.10,27.75,53.81,22.86,57.77,26.74,72.81,30.21,71.56,30.21,64.05,35.81,66.65,37.27,62.26,39.25,76.99,37.47,89.17,40.40,81.39,43.73,76.93,43.68,73.70,48.40,63.41,50.07,60.15,52.88,69.12,55.92,63.27,57.68,64.47,61.40,61.48,65.06,61.90,72.11,64.71,70.19,58.66,72.22,58.9,69.72,51.53,66.36,46.62,62.10,41.52,57.11,41.15,52.01,48.72,46.39,54.42,46.91,44.41,43.40,41.58,40.65,44.76,36.11,42.88,33.86,39.06,29.80,42.00
+    .openmap The Storm Peaks
+]])
+
+RXPGuides.RegisterGuide([[
+#wotlk
+#group +采矿与草药
+#loop
+#hidewindow
+#subgroup 风暴峰
+#name 采矿与草药
+step
+    #sticky
+    .waypoint The Storm Peaks,50,50
+    .zone The Storm Peaks >>前往风暴峰
+step
+    #hidewindow
+    +测验
+    .loop 20,The Storm Peaks,28.00,42.00,27.40,50.10,27.75,53.81,22.76,57.77,26.74,72.81,30.21,71.56,30.21,64.05,35.81,66.65,37.17,62.26,39.25,76.99,37.47,89.17,40.40,81.39,43.73,76.93,43.68,73.70,48.40,63.41,50.07,60.15,52.88,69.12,55.92,63.27,57.68,64.47,61.40,61.48,65.06,61.90,72.11,64.71,70.19,58.66,72.07,51.74,69.72,51.53,66.36,46.62,62.10,41.52,57.11,41.15,52.01,48.72,46.39,54.42,46.91,44.41,43.40,41.58,40.65,44.76,36.11,42.88,33.86,39.06,28.00,42.00
+    .openmap The Storm Peaks
 ]])

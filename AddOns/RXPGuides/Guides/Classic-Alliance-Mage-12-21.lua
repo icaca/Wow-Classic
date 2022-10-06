@@ -3,14 +3,14 @@ RXPGuides.RegisterGuide([[
 << Alliance Mage
 #name 12-18 黑海岸 法师 AoE
 #version 1
-#group RestedXP 联盟 Mage
+#group RestedXP 联盟 法师
 #defaultfor Alliance Mage
 #next 18-21 赤脊山 法师 AoE
 
 step
     #completewith next
     .goto Darkshore,36.77,44.28
-    .vendor >> 你可以从Laird（鱼贩）那里购买极便宜的5级食物
+    .vendor >>你可以从Laird(鱼贩)那里购买极便宜的5级食物
 step
     >>上楼到顶层
     .goto Darkshore,36.98,44.14
@@ -18,7 +18,7 @@ step
 step
     >>跳到一楼
     .goto Darkshore,37.04,44.13
-    .home >> 将您的炉石设置为Auberdine
+    .home >>将您的炉石设置为Auberdine
 step
     .goto Darkshore,37.32,43.64
     .accept 947 >>接受洞穴蘑菇
@@ -36,38 +36,38 @@ step
     .accept 3524 >>接受冲上岸
 step
     .goto Darkshore,36.34,45.58
-    .fp Auberdine >> 获取奥伯丁飞行路线
+    .fp Auberdine >>获取奥伯丁飞行路线
 step
     #completewith Bear
-     >> 杀死沿海的爬虫
+     >>杀死沿海的爬虫
     .complete 983,1 --Crawler Leg (6)
 step
     .goto Darkshore,36.38,50.88
-     >> 抢劫海洋生物
+     >>抢劫海洋生物
     .complete 3524,1 --Sea Creature Bones (1)
 step
     #sticky
     #completewith next
-    >> 找到一只狂犬病蓟熊。Aggro一号，在你的包里使用塔纳瑞恩的希望（紫色球体）
+    >>找到一只狂犬病蓟熊。Aggro一号，在你的包里使用塔纳瑞恩的希望(紫色球体)
     .complete 2118,1 --Rabid Thistle Bear Captured (1)
 step
     .goto Darkshore,39.01,53.70
-     >> 前往附近的弗堡营地
+     >>前往附近的弗堡营地
     .complete 984,1 --Find a corrupt furbolg camp (1)
 step
     #label Bear
-    >> 找到一只狂犬病蓟熊。Aggro一号，在你的包里使用塔纳瑞恩的希望（紫色球体）
+    >>找到一只狂犬病蓟熊。Aggro一号，在你的包里使用塔纳瑞恩的希望(紫色球体)
     .goto Darkshore,38.47,57.92
     .complete 2118,1 --Rabid Thistle Bear Captured (1)
 step
     .goto Darkshore,36.61,54.29,150,0
     .goto Darkshore,36.10,44.42
-    >> 杀死沿海的爬虫
+    >>杀死沿海的爬虫
     .complete 983,1 --Crawler Leg (6)
 step
     #sticky
     #completewith ReadAndy
-     >> 节省漫游者肉x5供日后食用
+     >>节省漫游者肉x5供日后食用
     .collect 5469,5,2178,1
 step
     .goto Darkshore,36.66,46.26
@@ -85,11 +85,11 @@ step
 step
     #sticky
     #completewith Thundris
-     >> 杀死海里的黑暗海岸脱粒鸟
+     >>杀死海里的黑暗海岸脱粒鸟
     .complete 1001,1 --Thresher Eye (3)
 step
     #completewith next
-    .goto Darkshore,33.70,42.45,60 >> 跑到码头，然后在十字路口跳入水中
+    .goto Darkshore,33.70,42.45,60 >>跑到码头，然后在十字路口跳入水中
 step
     .goto Darkshore,31.86,46.33
     >>点击水下的海龟头
@@ -97,18 +97,18 @@ step
 step
     .goto Darkshore,36.62,45.59
     >>在返回海岸的途中杀死脱粒者
-    .turnin 4681 >> 转入冲上岸
+    .turnin 4681 >>转入冲上岸
 step
     .goto Darkshore,38.84,43.41
-    .turnin 2118 >> 交出瘟疫土地
-    .accept 2138 >> 接受感染者的清洁
+    .turnin 2118 >>交出瘟疫土地
+    .accept 2138 >>接受感染者的清洁
 step
     .goto Darkshore,39.37,43.49
-    .turnin 984 >> 交出威胁有多大？
-    .accept 985 >> 接受威胁有多大？
-    .accept 4761 >> 接受Thundris Windweaver
+    .turnin 984 >>交出威胁有多大？
+    .accept 985 >>接受威胁有多大？
+    .accept 4761 >>接受Thundris Windweaver
 step
-    >> 杀死分叉
+    >>杀死分叉
     .goto Darkshore,39.83,56.11
     .goto Darkshore,39.74,53.76,0
     .complete 985,1 --Blackwood Pathfinder (8)
@@ -123,67 +123,67 @@ step
     .accept 965 >>接受Althalaxx塔
 step
     .goto Darkshore,38.11,41.16
-    .accept 982 >> 接受深海，浩瀚大海
+    .accept 982 >>接受深海，浩瀚大海
 step
     #label Thundris
     .goto Darkshore,37.39,40.13
-    .turnin 4761 >> 交出桑德里斯·温德韦弗
-    .accept 4762 >> 接受悬崖泉河
+    .turnin 4761 >>交出桑德里斯·温德韦弗
+    .accept 4762 >>接受悬崖泉河
     .accept 954 >>接受Bashal'Aran
     .accept 958 >>接受上流社会的工具
 step
      #label Threshers
      #sticky
-     >> 沿着海岸游泳，杀死脱粒鱼
+     >>沿着海岸游泳，杀死脱粒鱼
     .complete 1001,1 --Thresher Eye (3)
 step
     .goto Darkshore,38.93,29.33,40,0
     .goto Darkshore,38.23,28.79
-     >> 通过船体上的孔进入第一艘船，然后到船的最底层的后面
+     >>通过船体上的孔进入第一艘船，然后到船的最底层的后面
     .complete 982,1 --Silver Dawning's Lockbox (1)
 step
     #requires Threshers
     .goto Darkshore,40.30,27.69,40,0
     .goto Darkshore,39.63,27.45
-     >> 通过船体上的孔进入第二艘船，然后到船的最底层的后面
+     >>通过船体上的孔进入第二艘船，然后到船的最底层的后面
     .complete 982,2 --Mist Veil's Lockbox (1)
 step
     .goto Darkshore,41.96,28.64
-    .turnin 1001 >> 打开Buzzbox 411
-    .accept 1002 >> 接受Buzzbox 323
+    .turnin 1001 >>打开Buzzbox 411
+    .accept 1002 >>接受Buzzbox 323
 step
     .goto Darkshore,41.94,31.47
-    .accept 4723 >> 接受海滩生物
+    .accept 4723 >>接受海滩生物
 step
     .goto Felwood,27.70,10.03
-    .turnin 954 >> 转入Bashal’Aran
-    .accept 955 >> 接受Bashal'Aran
+    .turnin 954 >>转入Bashal’Aran
+    .accept 955 >>接受Bashal'Aran
 step
     .goto Felwood,29.13,12.34
-     >> 杀死格雷金斯。抢走他们的耳环
+     >>杀死格雷金斯。抢走他们的耳环
     .complete 955,1 --Grell Earring (8)
 step
     .goto Felwood,27.70,10.03
-    .turnin 955 >> 转入Bashal’Aran
-    .accept 956 >> 接受Bashal'Aran
+    .turnin 955 >>转入Bashal’Aran
+    .accept 956 >>接受Bashal'Aran
 step
     .goto Felwood,29.60,12.52
-     >> 杀死萨特尔斯。抢劫他们以换取封印
+     >>杀死萨特尔斯。抢劫他们以换取封印
     .complete 956,1 --Ancient Moonstone Seal (1)
 step
     .goto Felwood,27.70,10.03
-    .turnin 956 >> 转入Bashal’Aran
-    .accept 957 >> 接受Bashal'Aran
+    .turnin 956 >>转入Bashal’Aran
+    .accept 957 >>接受Bashal'Aran
 step
     #sticky
     #completewith ReadAndy
-     >> 杀死任何类型的登月者。掠夺他们的毒牙
+     >>杀死任何类型的登月者。掠夺他们的毒牙
     .complete 1002,1 --Moonstalker Fang (6)
 --N don't think unitscan is needed
 step
     #sticky
     #completewith ReadAndy
-    >>杀死你看到的狂犬病蓟熊。在他们给你狂犬病（debuff）之前，至少有50%的法力值并用核弹攻击他们
+    >>杀死你看到的狂犬病蓟熊。在他们给你狂犬病(debuff)之前，至少有50%的法力值并用核弹攻击他们
     .complete 2138,1 --Rabid Thistle Bear (20)
 step
     .goto Darkshore,50.77,25.43
@@ -195,7 +195,7 @@ step
     +把你抢来的小鸡蛋存起来，以便以后烹饪更上一层楼。把你得到的所有轻羽毛留到以后
 step
     .goto Darkshore,47.11,48.63
-     >> 跑到山上的红水晶
+     >>跑到山上的红水晶
     .complete 4811,1 --Locate the large, red crystal on Darkshore's eastern mountain range (1)
 step
     #label ReadAndy
@@ -205,33 +205,33 @@ step
     #sticky
     #label anaya
     .goto Darkshore,42.29,60.46,0
-     >> 杀死Anaya Dawnrunner。她在Ameth’Aran市中心巡逻
+     >>杀死Anaya Dawnrunner。她在Ameth’Aran市中心巡逻
     .complete 963,1
     .unitscan ANAYA DAWNRUNNER
 step
     #label ghosts
     #sticky
     .goto Darkshore,42.66,61.90,0
-     >> 杀死鬼魂。掠夺他们的文物
+     >>杀死鬼魂。掠夺他们的文物
     .complete 958,1 --Highborne Relic (7)
 step
     .goto Felwood,25.98,40.62
-     >> 点击地面上的平板电脑
+     >>点击地面上的平板电脑
     .complete 953,2 --Read the Fall of Ameth'Aran (1)
 step
     .goto Felwood,25.66,39.11
-     >> 点击露台上的绿色火炬
+     >>点击露台上的绿色火炬
     .complete 957,1 --Destroy the seal at the ancient flame (1)
 step
     .goto Felwood,26.71,35.53
-     >> 点击地面上的平板电脑
+     >>点击地面上的平板电脑
     .complete 953,1 --Read the Lay of Ameth'Aran (1)
 step
     #requires ghosts
 step
     #requires anaya
     .goto Darkshore,40.30,59.73
-    .turnin 953 >> 《阿米思·阿兰的堕落》（The Fall of Ameth’Aran）
+    .turnin 953 >>《阿米思·阿兰的堕落》(The Fall of Ameth’Aran)
 step
     .goto Darkshore,38.83,60.82
     >>完成杀死狂犬病蓟熊并获得漫游者肉
@@ -246,7 +246,7 @@ step
     .goto Darkshore,36.02,70.79
     .accept 4728 >>接受海滩生物
 step
-    .hs >> 奥伯丁之炉
+    .hs >>奥伯丁之炉
 step
     .goto Darkshore,38.84,43.42
     .turnin 2138 >>上交感染者的清洁
@@ -254,7 +254,7 @@ step
 step
     .goto Darkshore,38.11,41.17
     .turnin 982 >>转向深海，浩瀚大海
-    .vendor >> 从Gorbold那里买一些温和的香料，直到你有足够的食物来煮你所有的鸡蛋
+    .vendor >>从Gorbold那里买一些温和的香料，直到你有足够的食物来煮你所有的鸡蛋
 step
     .goto Darkshore,37.69,40.66
     >>确保你在烹饪方面有10分，否则你无法接受/提交任务
@@ -270,25 +270,25 @@ step
     .accept 729 >>接受心不在焉的探矿者
 step
     .goto Darkshore,37.71,43.36
-    .turnin 4811 >> 交出红色水晶
-    .accept 4812 >> 接受为瀑布
+    .turnin 4811 >>交出红色水晶
+    .accept 4812 >>接受为瀑布
 step
     .goto Darkshore,37.78,44.06
-     >> 给月球井的空水管注满水
+     >>给月球井的空水管注满水
     .complete 4812,1
-     >> 在月光井装满空碗
+     >>在月光井装满空碗
     .collect 12347,1,4763,1
 step
     #completewith next
     .goto Darkshore,36.83,43.91
-    .vendor >> 向Taldan购买15级饮料
+    .vendor >>向Taldan购买15级饮料
 step
     >>回到码头
     .goto Felwood,18.10,18.48
-    .turnin 963 >> 为了永恒的爱而投入
+    .turnin 963 >>为了永恒的爱而投入
 step
     .goto Darkshore,36.09,44.93
-    .accept 1138 >> 接受大海的果实
+    .accept 1138 >>接受大海的果实
 step
     .goto Darkshore,36.62,45.59
     .turnin 4722 >>上缴海滩海龟
@@ -296,13 +296,13 @@ step
     .turnin 4728 >>上缴海滩生物 << Gnome
 step
     .goto Darkshore,47.32,48.70
-     >> 点击红色水晶
-    .turnin 4812 >> 随着瀑布转向
-    .accept 4813 >> 接受其中的片段
+     >>点击红色水晶
+    .turnin 4812 >>随着瀑布转向
+    .accept 4813 >>接受其中的片段
 step
     #sticky
     #label MoonstalkersF
-     >> 杀死任何类型的登月者。掠夺他们的毒牙
+     >>杀死任何类型的登月者。掠夺他们的毒牙
     .complete 1002,1 --Moonstalker Fang (6)
     .unitscan Moonstalker,Moonstalker Runt
 step
@@ -311,12 +311,12 @@ step
 step
     .goto Darkshore,50.66,34.98
     >>装备你的新魔杖
-    >>从桶里抢了黑木谷物样本，然后向东南方向跑向邓母（不要与暴徒搏斗）
+    >>从桶里抢了黑木谷物样本，然后向东南方向跑向邓母(不要与暴徒搏斗)
     .collect 12342,1 --Blackwood Grain Sample (1)
 step
     .goto Darkshore,52.60,36.65,45,0
     >>杀死丹妈。小心，因为她的幼崽会把你打倒2秒钟
-    >>研磨至16，如果你在挣扎，请再试一次
+    >>升级到16，如果你在挣扎，请再试一次
     .goto Darkshore,51.48,38.26
     .complete 2139,1 --Den Mother (1)
 step
@@ -334,11 +334,11 @@ step
     .complete 4763,1 --Talisman of Corruption (1)
 step
     #completewith next
-    .goto Darkshore,54.98,32.79,35 >> 前往瀑布上方的洞穴
+    .goto Darkshore,54.98,32.79,35 >>前往瀑布上方的洞穴
 step
     .goto Darkshore,55.66,34.89
-     >> 停留在洞穴的上部。如果顶部末端没有死亡帽，则从下面放下并取一个
-     >> 当你洗劫死亡帽时，洞口的第一个蓝色的应该已经复活了
+     >>停留在洞穴的上部。如果顶部末端没有死亡帽，则从下面放下并取一个
+     >>当你洗劫死亡帽时，洞口的第一个蓝色的应该已经复活了
     .complete 947,1 --Scaber Stalk (5)
     .complete 947,2 --Death Cap (1)
 step
@@ -360,31 +360,31 @@ step
 step
     #sticky
     #completewith Turtles
-     >> 杀死沿海的珊瑚虫，不要特意完成这个任务-不要杀死4级以上的怪物
+     >>杀死沿海的珊瑚虫，不要特意完成这个任务-不要杀死4级以上的怪物
     .complete 1138,1 --Fine Crab Chunks (6)
 step
     .goto Darkshore,51.38,24.19,25,0
     .goto Darkshore,51.29,24.53
-    .turnin 1002 >> 打开Buzzbox 323
-    .accept 1003 >> 接受Buzzbox 525
+    .turnin 1002 >>打开Buzzbox 323
+    .accept 1003 >>接受Buzzbox 525
 step
     #softcore
     #label Turtles
     >>让附近的一些墨洛克人活着，你接受这个任务后会死的
     .goto Darkshore,44.18,20.60
-    .accept 4725 >> 接受海滩海龟
+    .accept 4725 >>接受海滩海龟
 step
     #hardcore
     #label Turtles
     .goto Darkshore,44.18,20.60
-    .accept 4725 >> 接受海滩海龟
+    .accept 4725 >>接受海滩海龟
 step
     #softcore
-    .deathskip >> 在奥伯丁死亡并重生
+    .deathskip >>在奥伯丁死亡并重生
 step
     .goto Darkshore,37.40,40.13
     >>装备你的新魔杖
-    .turnin 4763 >> 交出腐败的黑木
+    .turnin 4763 >>交出腐败的黑木
 step
     .goto Darkshore,38.84,43.42
     .turnin 2139 >>交给塔纳瑞恩的希望
@@ -393,12 +393,12 @@ step
     .turnin 4813 >>交出其中的碎片
 step
     .goto Darkshore,37.32,43.64
-    .turnin 947 >> 转入洞穴蘑菇
-    .accept 948 >> 接受Onu
+    .turnin 947 >>转入洞穴蘑菇
+    .accept 948 >>接受Onu
 step
     .goto Darkshore,37.23,44.23
-     >> 点击酒店外的通缉海报
-    .accept 4740 >> 接受通缉令：Murkdeep！
+     >>点击酒店外的通缉海报
+    .accept 4740 >>接受通缉令：Murkdeep！
 step
     .isQuestComplete 1138
     .goto Darkshore,36.09,44.93
@@ -407,26 +407,26 @@ step
     #label end
     #requires bowl
     .goto Felwood,19.10,20.63
-    .turnin 4727 >> 上缴海滩生物
-    .turnin 4725 >> 上缴海滩海龟
+    .turnin 4727 >>上缴海滩生物
+    .turnin 4725 >>上缴海滩海龟
 step
      #completewith Murkdeep
-     >> 杀死你找到的任何一个登月者陛下，如果你觉得舒服的话杀死所有的女族长。抢走他们的毛皮。它们与灰熊共享产卵。
+     >>杀死你找到的任何一个登月者陛下，如果你觉得舒服的话杀死所有的女族长。抢走他们的毛皮。它们与灰熊共享产卵。
     .complete 986,1 --Fine Moonstalker Pelt (5)
     .unitscan Moonstalker Sire,Moonstalker Matriarch
 step
      #completewith Murkdeep
     .goto Darkshore,38.60,80.50,0
-     >> 杀死灰蓟熊。抢劫头皮
+     >>杀死灰蓟熊。抢劫头皮
     .complete 1003,1 --Grizzled Scalp (4)
 step
     .goto Darkshore,43.55,76.29
-    .turnin 948 >> Onu上车
-    .accept 944 >> 接受大师的垂涎
+    .turnin 948 >>Onu上车
+    .accept 944 >>接受大师的垂涎
 step
     #completewith next
     .goto Darkshore,43.69,76.64
-    .vendor >> 从Tiyani购买15级水
+    .vendor >>从Tiyani购买15级水
 step << Human
     >>抢劫残骸
     .goto Darkshore,35.97,70.90
@@ -434,12 +434,12 @@ step << Human
 step
     #label Murkdeep
     .goto Darkshore,36.52,76.55
-    >> 清除穆洛克营地，远离中心的篝火
-    >> 当你清理完所有东西后，移动到营地中心召唤默克迪普
-    >> 如果你幸运的话，Murkdeep可能已经在离海岸30码的西边了（如果之前有人死于他的话）。
+    >>清除穆洛克营地，远离中心的篝火
+    >>当你清理完所有东西后，移动到营地中心召唤默克迪普
+    >>如果你幸运的话，Murkdeep可能已经在离海岸30码的西边了(如果之前有人死于他的话)。
     .complete 4740,1 --Murkdeep (1)
 step
-     >> 杀死海岸上的螃蟹，获取优质螃蟹块
+     >>杀死海岸上的螃蟹以获得优质螃蟹块
     .complete 1138,1 --Fine Crab Chunks (6)
 step
     >>抢劫残骸
@@ -456,27 +456,27 @@ step
     .goto Darkshore,31.22,85.56
     .accept 4732 >>接受海滩海龟
 step
-    >>在它的颈部抢劫，小心隐藏在地形中的2个怪物（你只需要杀死3个怪物就可以抢劫这一个）
+    >>在它的颈部抢劫，小心隐藏在地形中的2个怪物(你只需要杀死3个怪物就可以抢劫这一个)
     .goto Darkshore,31.28,87.39
     .accept 4733 >>接受海滩生物
 step
     .goto Darkshore,35.72,83.69
-    .turnin 729 >> 交回心不在焉的探矿者
+    .turnin 729 >>交回心不在焉的探矿者
 step
     .goto Darkshore,35.72,83.69
      >>这个任务非常困难。如果可以的话，可以和其他玩家一起玩。
-     >> 开始护送任务
-    .accept 731 >> 接受心不在焉的探矿者
+     >>开始护送任务
+    .accept 731 >>接受心不在焉的探矿者
 step
      >>护送探矿者返程
-     >>让Remtravel攻击一切（因为暴徒需要攻击他才能攻击他），然后用火球向暴徒射击
+     >>让Remtravel攻击一切(因为暴徒需要攻击他才能攻击他)，然后用火球向暴徒射击
      >>Remtravel真的很软弱，所以试着把他从其他暴徒那里除掉
      >>当流浪汉产卵时，变形他没有攻击的那只，然后当它击中另一只时用核武器攻击它。在法师向探矿者发射火球后，首先变形法师，并在接近尾声时繁殖
      >>如果你第一次不能完成这个任务，就跳过它吧——这是一个技能密集型任务，也是一个非常幸运的任务。
-     .complete 731,1 --护送探矿者返程 (1)
+     .complete 731,1 --Escort Prospector Remtravel (1)
 step
      #completewith Glaive
-     >> 杀死你找到的任何一个登月者陛下，如果你觉得舒服的话杀死所有的女族长。抢走他们的毛皮。它们与灰熊共享产卵。
+     >>杀死你找到的任何一个登月者陛下，如果你觉得舒服的话杀死所有的女族长。抢走他们的毛皮。它们与灰熊共享产卵。
     .complete 986,1 --Fine Moonstalker Pelt (5)
     .unitscan Moonstalker Sire,Moonstalker Matriarch
 step
@@ -485,39 +485,39 @@ step
 step
      #completewith next
     .goto Darkshore,38.60,80.50,0
-     >> 杀死灰蓟熊。抢劫头皮
+     >>杀死灰蓟熊。抢劫头皮
     .complete 1003,1 --Grizzled Scalp (4)
 step
     #sticky
     #completewith Therylune
     >>留心下面的力量。这是一个低下降率的免费任务
     .collect 5352,1,968 --Book: The Powers Below (1)
-    .accept 968 >> 接受以下权力
+    .accept 968 >>接受以下权力
 step
     #label Glaive
     .goto Darkshore,38.30,87.12
-     >> 进入大师的Glaive，清除中间祭坛周围的暴徒
+     >>进入大师的Glaive，清除中间祭坛周围的暴徒
     .complete 944,1
 step
     #sticky
     #label TheryluneE
     .goto Darkshore,38.65,87.34
-    .accept 945 >> 接受Therylune的逃脱
+    .accept 945 >>接受Therylune的逃脱
 step
-     >> 把你库存的烤面包碗扔在地上
-    .turnin 944 >> 交上大师的Glaive
-    .accept 949 >> 接受暮光之城营地
+     >>把你库存的烤面包碗扔在地上
+    .turnin 944 >>交上大师的Glaive
+    .accept 949 >>接受暮光之城营地
 step
     .goto Darkshore,38.55,86.03
-     >> 点击底座顶部的书。小心，如果你已经开始，Therylune就不会跑掉
-    .turnin 949 >> 在暮光之城露营
-    .accept 950 >> 接受返回Onu
+     >>点击底座顶部的书。小心，如果你已经开始，Therylune就不会跑掉
+    .turnin 949 >>在暮光之城露营
+    .accept 950 >>接受返回Onu
 step
     #label Therylune
     #requires TheryluneE
-    >> 完成护送任务
-    >> 当你杀死最后一个从冰川中出来的暴徒时，生一堆篝火，煮所有的肉/蛋，你仍然需要提高你的烹饪技能
-    >> 你需要50种烹饪技能才能在黑暗郡进行免费任务
+    >>完成护送任务
+    >>当你杀死最后一个从冰川中出来的暴徒时，生一堆篝火，煮所有的肉/蛋，你仍然需要提高你的烹饪技能
+    >>你需要50种烹饪技能才能在黑暗郡进行免费任务
     .complete 945,1 --Escort Therylune away from the Master's Glaive (1)
 step
      #sticky
@@ -526,25 +526,25 @@ step
     .goto Darkshore,38.96,80.07,100,0
     .goto Darkshore,43.82,82.08,100,0
     .goto Darkshore,38.96,80.07,0
-     >> 杀死你找到的任何一个登月者陛下，如果你觉得舒服的话杀死所有的女族长。抢走他们的毛皮。它们与灰熊共享产卵
-     >> 如果你在产卵和堕落方面非常不幸，你可以跳过这个任务
+     >>杀死你找到的任何一个登月者陛下，如果你觉得舒服的话杀死所有的女族长。抢走他们的毛皮。它们与灰熊共享产卵
+     >>如果你在产卵和堕落方面非常不幸，你可以跳过这个任务
     .complete 986,1 --Fine Moonstalker Pelt (5)
     .unitscan Moonstalker Sire,Moonstalker Matriarch
 step
     .goto Darkshore,38.60,80.50
-     >> 杀死黑海岸南部周围的灰熊。抢劫头皮
+     >>杀死黑海岸南部周围的灰熊。抢劫头皮
     .complete 1003,1 --Grizzled Scalp (4)
 step
     .goto Darkshore,41.40,80.56
-    .turnin 1003 >> 打开Buzzbox 525
+    .turnin 1003 >>打开Buzzbox 525
 step
     #requires MoonstalkerP
     .goto Darkshore,43.55,76.29
-    .turnin 950 >> 转入返回Onu
+    .turnin 950 >>转入返回Onu
 step
     #completewith next
     .goto Darkshore,43.69,76.63
-    .vendor >> 如果需要，从Tiyani购买食物/饮料
+    .vendor >>如果需要，从Tiyani购买食物/饮料
 step
     >>接受Kerlonian护送任务。如果他不在，跳过这一步
     .goto Darkshore,44.40,76.42
@@ -578,7 +578,7 @@ step
     .goto Ashenvale,22.64,51.91
     .turnin 945 >>交给Therylune的逃亡
 step
-    .hs >> 奥伯丁之炉
+    .hs >>奥伯丁之炉
 step
     .goto Darkshore,36.09,44.93
     .turnin 1138 >>把海果交上来
@@ -599,11 +599,11 @@ step
     .accept 993 >>接受丢失的主人
 step
     .goto Darkshore,37.44,41.84
-    .turnin 731 >> 交回心不在焉的探矿者
+    .turnin 731 >>交回心不在焉的探矿者
     .isQuestComplete 731
 step
     .goto Darkshore,37.44,41.84
-    .accept 741 >> 接受心不在焉的探矿者
+    .accept 741 >>接受心不在焉的探矿者
     .isQuestTurnedIn 731
 step
     #completewith next
@@ -613,10 +613,10 @@ step
     .goto Darkshore,33.17,40.17,40
 step
     .isOnQuest 741
-    .zone Teldrassil >> 乘船去达纳苏斯
+    .zone Teldrassil >>乘船去达纳苏斯
 step
     .isOnQuest 741
-    .goto Teldrassil,55.95,89.86,30 >> 穿过紫色大门
+    .goto Teldrassil,55.95,89.86,30 >>穿过紫色大门
 step
     .isOnQuest 741
     .goto Darnassus,31.24,84.49
@@ -625,17 +625,17 @@ step
 step
     #softcore
     #completewith next
-    +登出后，网站将离开埃尔文森林（就在暴风城外）。否则，乘船去米奈希尔，检查一下青铜管，然后一路飞到暴风城 << Human
-    +登出后，网站将离开埃尔文森林（就在暴风城外）。否则，乘船去米奈希尔，检查一下青铜管，飞往铁炉堡，然后乘电车去暴风城 << Gnome
+    +登出后，网站将离开埃尔文森林(就在暴风城外)。否则，乘船去米奈希尔，检查一下青铜管，然后一路飞到暴风城 << Human
+    +登出后，网站将离开埃尔文森林(就在暴风城外)。否则，乘船去米奈希尔，检查一下青铜管，飞往铁炉堡，然后乘电车去暴风城 << Gnome
 step
     #hardcore
     .goto Teldrassil,58.40,94.02
-    .fp Teldrassil >> 获取Teldrassil飞行路径
-    .fly Auberdine >> 飞往奥伯丁
+    .fp Teldrassil >>获取Teldrassil飞行路径
+    .fly Auberdine >>飞往奥伯丁
 step
     #hardcore
     .goto Darkshore,32.42,43.75,50,0
-    .zone Wetlands >> 乘船去米奈希尔
+    .zone Wetlands >>乘船去米奈希尔
 step
     #hardcore
     #completewith next
@@ -644,52 +644,52 @@ step
     .goto Wetlands,10.1,56.9,15,0
     .goto Wetlands,10.6,57.2,15,0
     .goto Wetlands,10.7,56.8
-    >> 如果你有8s，检查Neal Allen的青铜管，如果有就买。否则，请跳过此步骤
+    >>如果你有8s，检查Neal Allen的青铜管，如果有就买。否则，请跳过此步骤
     .collect 4371,1,175,1
 step
     #hardcore
     .goto Wetlands,9.49,59.69
-    .fly Ironforge >> 飞往铁炉堡
+    .fly Ironforge >>飞往铁炉堡
 step
     #hardcore
     #completewith next
     .goto Ironforge,56.23,46.83,0
     +执行注销跳过，跳到鹰头狮的头上，注销，然后再重新登录
-    .link https://www.youtube.com/watch?v=PWMJhodh6Bw >> 单击此处
+    .link https://www.youtube.com/watch?v=PWMJhodh6Bw >>单击此处
 step
     #hardcore
-    .zone Stormwind City >> 乘电车去暴风城
+    .zone Stormwind City >>乘电车去暴风城
 step
     #completewith FlyAndy
     .goto StormwindClassic,55.21,7.04
-    .vendor >> 如果你没有，就买一个铜管
+    .vendor >>如果你没有，就买一个铜管
     >>这是一个限量供应项目，如果npc没有，请跳过此步骤
     .bronzetube
 step << Human
     #label FlyAndy
     .goto Elwynn Forest,32.45,50.16
-    .zone Elwynn Forest >> 前往埃尔文森林
+    .zone Elwynn Forest >>前往埃尔文森林
 step << Gnome
     .goto Elwynn Forest,26.29,38.50
-    .zone Stormwind City >> 前往暴风城
+    .zone Stormwind City >>前往暴风城
 step << Gnome
     #label FlyAndy
     >>跑进暴风城，找到飞行路线
     .goto StormwindClassic,57.62,59.48,50,0
     .goto StormwindClassic,66.27,62.13
-    .fp Stormwind City >> 获得暴风城飞行路线
+    .fp Stormwind City >>获得暴风城飞行路线
 step << Gnome
     .goto StormwindClassic,66.05,65.64,12,0
-    .goto StormwindClassic,64.97,67.69,18 >> 跑进白墙，跌落到小窗台上。小心。沿着它向暴风城的出口跑去
+    .goto StormwindClassic,64.97,67.69,18 >>跑进白墙，跌落到小窗台上。小心。沿着它向暴风城的出口跑去
 step
-    >> 跑进Goldshire Inn的楼上
+    >>跑进Goldshire Inn的楼上
     .goto Elwynn Forest,42.97,65.65,15,0
     .goto Elwynn Forest,43.81,66.46,15,0
     .goto Elwynn Forest,43.25,66.19
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step
     .goto Elwynn Forest,91.42,73.59,125,0
-    .zone Redridge Mountains >> 一直向东跑到雷德里奇山脉。在途中整理好你的钥匙，确保你的法术舒适地放在你的栏上
+    .zone Redridge Mountains >>一直向东跑到雷德里奇山脉。在途中整理好你的钥匙，确保你的法术舒适地放在你的栏上
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -697,7 +697,7 @@ RXPGuides.RegisterGuide([[
 << Alliance Mage
 #name 18-21 赤脊山 法师 AoE
 #version 1
-#group RestedXP 联盟 Mage
+#group RestedXP 联盟 法师
 #defaultfor Alliance Mage
 #next 21-22 暮色森林 法师 AoE
 
@@ -706,7 +706,7 @@ step
     #completewith Gnolls
     +启动AoEing所需的任务怪物，按你看到的3+分组。
     >>如果需要，请在Redridge AoE部分的另一个选项卡中保持此教程打开：
-    .link https://youtu.be/SxMc2GoP33c?t=56 >> 单击此处
+    .link https://youtu.be/SxMc2GoP33c?t=56 >>单击此处
 step
     >>与守卫帕克交谈。他在十字路口巡逻了一会儿
     .goto Elwynn Forest,99.05,72.15
@@ -719,7 +719,7 @@ step
     .accept 246 >>接受评估威胁
 step
     .goto Redridge Mountains,30.59,59.40
-    .fp Redridge Mountains >> 获得Redridge Mountains飞行路线
+    .fp Redridge Mountains >>获得Redridge Mountains飞行路线
 step
     #requires Gnolls
     .goto Redridge Mountains,33.51,48.96
@@ -750,7 +750,7 @@ step
     .accept 129 >>接受免费午餐
 step
     .goto Redridge Mountains,27.01,44.82
-    .home >> 把你的炉子搬到莱克郡
+    .home >>把你的炉子搬到莱克郡
 step
     .goto Redridge Mountains,29.32,53.64
     .accept 3741 >>接受希拉里的项链
@@ -774,11 +774,11 @@ step
     .accept 130 >>接受拜访药师
 step
     .goto Redridge Mountains,30.59,59.41
-    .fly Stormwind >> 飞到暴风城
+    .fly Stormwind >>飞到暴风城
 step
     >>进入暴风城。去武器培训师那里
    .goto StormwindClassic,57.13,57.71
-   .trainer >> 训练1小时剑刃
+   .trainer >>训练1小时剑刃
 step
     #softcore
     .goto StormwindClassic,53.62,59.76,30,0
@@ -791,7 +791,7 @@ step
     #hardcore
     .goto StormwindClassic,53.62,59.76,30,0
     .goto StormwindClassic,55.25,7.08
-    .vendor >> 查看矮人区的Billibub是否有铜管。如果有，就买一个
+    .vendor >>查看矮人区的Billibub是否有铜管。如果有，就买一个
     .bronzetube
 step
     .goto StormwindClassic,63.99,75.34
@@ -809,13 +809,13 @@ step
 step
     #completewith next
     #label hsLakeshire
-    .hs Lakeshire >> 如果一切都结束了，那就去莱克郡吧
+    .hs Lakeshire >>如果一切都结束了，那就去莱克郡吧
 step
     #completewith hsLakeshire
     #label WFFP
     .goto Westfall,56.55,52.65
-    .fp Westfall >> 获取Westfall飞行路线 << Gnome
-    .fly Redridge >> 飞到雷德里奇
+    .fp Westfall >>获取Westfall飞行路线 << Gnome
+    .fly Redridge >>飞到雷德里奇
 step
     #requires WFFP
     .goto Redridge Mountains,30.97,47.27
@@ -861,8 +861,8 @@ step
     .complete 246,2 --Redridge Poacher (6)
 step
     #label Murlocs
-    >>AoE该地区的墨洛克人。你必须单目标瞄准潮汐骑士（闪电+治疗波）
-    >>你可以攻击Shorestickers（冲锋）和Flesheaters（攻击几率造成25点即时生命偷窃）。创造性地拉动
+    >>AoE该地区的墨洛克人。你必须单目标瞄准潮汐骑士(闪电+治疗波)
+    >>你可以攻击Shorestickers(冲锋)和Flesheaters(攻击几率造成25点即时生命偷窃)。创造性地拉动
     >>保存8个Fin供以后使用
     .goto Redridge Mountains,48.82,69.49
     .complete 127,1 --Spotted Sunfish (10)
@@ -927,8 +927,8 @@ step
     .accept 34 >>接受不受欢迎的客人
 step
     >>杀死Bellygrub。风筝把她带回镇上的卫队亚当斯
-    >>小心她颤抖（瞬间80度伤害），并冲锋（如果可能的话，让她减速并保持新星状态）
-    >>确保你造成大部分伤害（51%+）
+    >>小心她颤抖(瞬间80度伤害)，并冲锋(如果可能的话，让她减速并保持新星状态)
+    >>确保你造成大部分伤害(51%+)
     >>这个任务非常困难
     .goto Redridge Mountains,15.66,49.31
     .complete 34,1 --Bellygrub's Tusk (1)
@@ -960,12 +960,12 @@ step
 step
     #era/som
     #completewith next
-    .goto Redridge Mountains,49.25,39.66,150 >> 跑向蜘蛛
+    .goto Redridge Mountains,49.25,39.66,150 >>跑向蜘蛛
 step
     #era/som
     >>杀死蜘蛛。抢他们的肉
     >>小心，他们的毒药会造成一些伤害
-    >>小心Chatter（罕见），因为他有8秒长的眩晕
+    >>小心Chatter(罕见)，因为他有8秒长的眩晕
     .goto Redridge Mountains,57.23,45.24
     .complete 92,3 --Crisp Spider Meat (5)
 step
@@ -987,13 +987,13 @@ step
     .turnin 131 >>交付水仙花
 step
     .goto Redridge Mountains,27.01,44.81
-    .vendor >> 购买15级饮料
+    .vendor >>购买15级饮料
 step
     #era/som
     .goto Redridge Mountains,22.70,44.00
     >>离开客栈。向西走，然后进入大楼
-    .accept 92 >> 接受Redridge Goulash
-    .turnin 92 >> 交给Redridge Goulash
+    .accept 92 >>接受Redridge Goulash
+    .turnin 92 >>交给Redridge Goulash
 step
     #era/som
     #completewith next
@@ -1002,5 +1002,5 @@ step
     >>如果你没有足够的肉，就在去达克郡的路上磨碎一些野猪
 step
     .goto Redridge Mountains,6.50,91.18,90,0
-    .zone Duskwood >> 前往黄昏
+    .zone Duskwood >>前往黄昏
 ]])

@@ -25,7 +25,7 @@ step << Warlock
     .vendor >>供应商垃圾
 step << Warlock
     .goto Elwynn Forest,49.9,42.6
-    .accept 1598 >> 接受被盗的汤姆
+    .accept 1598 >>接受被盗的汤姆
     .trainer >>火车献祭
 step << Warlock
     #hardcore
@@ -44,20 +44,20 @@ step << Warlock
     .complete 1598,1 --Collect Powers of the Void (x1)
 step << Warlock
     #softcore
-    .deathskip >> 在精神治疗师处死亡并重生
+    .deathskip >>在精神治疗师处死亡并重生
 step << Warlock
     #hardcore
     #completewith next
     >>确保你在帐篷的深处，这样你就不会重新聚集
-    .hs >> Hearth返回Northshire Valley
+    .hs >>炉灶返回Northshire Valley
 step << Warlock
     .goto Elwynn Forest,49.9,42.6
-    .turnin 1598 >> 交出被盗的汤姆
+    .turnin 1598 >>交出被盗的汤姆
 step
     >>召唤小鬼，拒绝恶魔皮肤 << Warlock
     >>删除您的炉石
     .goto Elwynn Forest,48.2,42.9
-    .accept 783 >> 接受内部威胁
+    .accept 783 >>接受内部威胁
 step << Warrior
     #sticky
     #completewith next
@@ -68,25 +68,25 @@ step << Warrior
     .vendor >>供应商垃圾
 step
     .goto Elwynn Forest,48.9,41.6
-    .turnin 783 >> 提交内部威胁
-    .accept 7 >> 接受Kobold营地清理
+    .turnin 783 >>提交内部威胁
+    .accept 7 >>接受Kobold营地清理
 step << Warrior
     .goto Elwynn Forest,50.2,42.3
     .trainer >>火车战斗呐喊
 step
     >>跑回室外 << Warrior
     .goto Elwynn Forest,48.2,42.9
-    .accept 5261 >> 接受Eagan Peltskinner
+    .accept 5261 >>接受Eagan Peltskinner
 step << Priest/Mage/Warlock
     .goto Elwynn Forest,46.2,40.4
     .vendor >>杀死狼，直到价值50美分的小贩垃圾。供应商，然后从丹尼尔兄弟那里购买10 x10的水。
     .collect 159,10 --Collect Refreshing Spring Water (x10)
 step << Priest/Mage
-    .xp 2 >> 研磨至2
+    .xp 2 >>升级到2
 step
     .goto Elwynn Forest,48.9,40.2
-    .turnin 5261 >> 交给Eagan Peltskinner
-    .accept 33 >> 接受跨境狼群
+    .turnin 5261 >>交给Eagan Peltskinner
+    .accept 33 >>接受跨境狼群
 step
     .goto Elwynn Forest,46.70,37.78
     >>杀死幼狼。抢他们的肉
@@ -94,10 +94,10 @@ step
 step
     .goto Elwynn Forest,49.05,35.33
     >>杀死科博尔德害虫
-    .complete 7,1 --杀死科博尔德害虫 (x10)
+    .complete 7,1 --Kill Kobold Vermin (x10)
 step
     .goto Elwynn Forest,48.9,40.2
-    .turnin 33 >> 跨境交出狼
+    .turnin 33 >>跨境交出狼
 step << Priest/Mage/Warlock
     .goto Elwynn Forest,47.6,41.5
     .vendor >>小贩扔掉垃圾，然后从丹尼尔兄弟那里多买10瓶水
@@ -106,16 +106,16 @@ step << !Priest !Mage !Warlock
     .vendor >>供应商垃圾
 step
     .goto Elwynn Forest,48.9,41.6
-    .turnin 7 >> 提交科博尔德营地清理
-    .accept 15 >> 接受调查Echo Ridge
-    .accept 3100 >> 接受简单信函 << Warrior
-    .accept 3101 >> 接受神圣的信件 << Paladin
-    .accept 3102 >> 接受加密信函 << Rogue
-    .accept 3103 >> 接受神圣的信件 << Priest
-    .accept 3104 >> 接受字形字母 << Mage
-    .accept 3105 >> 接受涂改的信件 << Warlock
+    .turnin 7 >>提交科博尔德营地清理
+    .accept 15 >>接受调查Echo Ridge
+    .accept 3100 >>接受简单信函 << Warrior
+    .accept 3101 >>接受神圣的信件 << Paladin
+    .accept 3102 >>接受加密信函 << Rogue
+    .accept 3103 >>接受神圣的信件 << Priest
+    .accept 3104 >>接受字形字母 << Mage
+    .accept 3105 >>接受涂改的信件 << Warlock
 step
-    .xp 3 >> 研磨至3
+    .xp 3 >>升级到3
 step
     .goto Elwynn Forest,47.42,32.68
     >>杀死Kobold工人
@@ -123,7 +123,7 @@ step
 step
     #sticky
     #label xp3
-    .xp 3+1110>>在回来的路上研磨至1110+/1400xp
+    .xp 3+1110>>在回来的路上研磨至1110+/1400经验
 step
     .goto Elwynn Forest,47.7,41.4
     .vendor >>供应商垃圾
@@ -131,59 +131,59 @@ step
 step
     #requires xp3
     .goto Elwynn Forest,48.9,41.6
-    .turnin 15 >> 转入调查回音岭
-    .accept 21 >> 接受Echo Ridge的Skirmish
+    .turnin 15 >>转入调查回音岭
+    .accept 21 >>接受Echo Ridge的Skirmish
 step << Priest/Mage
     #sticky
     #completewith next
-    .goto Elwynn Forest,49.3,40.7,15 >> 到这里来
+    .goto Elwynn Forest,49.3,40.7,15 >>到这里来
 step << Mage
     #sticky
     #completewith next
     .goto Elwynn Forest,49.5,40.0,15 >>上楼去
 step << Mage
     .goto Elwynn Forest,49.7,39.4
-    .turnin 3104 >> 交回字形字母
-    .trainer >> 训练你的职业咒语
+    .turnin 3104 >>交回字形字母
+    .trainer >>训练你的职业咒语
 step << Priest
     #sticky
     #completewith next
-    .goto Elwynn Forest,49.8,40.2,15 >> 穿过门口
+    .goto Elwynn Forest,49.8,40.2,15 >>穿过门口
 step << Priest
     .goto Elwynn Forest,49.8,39.5
-    .turnin 3103 >> 交上神圣的信件
-    .trainer >> 训练你的职业咒语
+    .turnin 3103 >>交上神圣的信件
+    .trainer >>训练你的职业咒语
 step << Warrior/Paladin
     #sticky
     #completewith next
     .goto Elwynn Forest,49.6,41.8,15 >>呆在楼下
 step << Warrior
     .goto Elwynn Forest,50.2,42.3
-    .turnin 3100 >> 交回简单字母
-    .trainer >> 训练你的职业咒语
+    .turnin 3100 >>交回简单字母
+    .trainer >>训练你的职业咒语
 step << Paladin
     .goto Elwynn Forest,50.4,42.1
-    .turnin 3101 >> 交上神圣的信件
-    .trainer >> 训练你的职业咒语
+    .turnin 3101 >>交上神圣的信件
+    .trainer >>训练你的职业咒语
 step
     .goto Elwynn Forest,48.2,42.9
-    .accept 18 >> 接受小偷兄弟会
+    .accept 18 >>接受小偷兄弟会
 step << Warlock
     .goto Elwynn Forest,49.9,42.6
-    .turnin 3105 >> 交回涂改的字母
-    .xp 4 >> 研磨至4
+    .turnin 3105 >>交回涂改的字母
+    .xp 4 >>升级到4
     .trainer >>培训腐败
 step
     .goto Elwynn Forest,54.57,49.03
     >>杀死德菲亚斯暴徒。抢了他们的头巾
     .complete 18,1 --Collect Red Burlap Bandana (x12)
 step << Rogue
-    .xp 4 >> 研磨至4
+    .xp 4 >>升级到4
 step
     .goto Elwynn Forest,48.2,42.9
-    .turnin 18 >> 交出小偷兄弟会
-    .accept 6 >> 接受Garrick脚垫的酬金
-    .accept 3903 >> 接受米莉·奥斯沃思
+    .turnin 18 >>交出小偷兄弟会
+    .accept 6 >>接受Garrick脚垫的酬金
+    .accept 3903 >>接受米莉·奥斯沃思
 step
     .goto Elwynn Forest,47.7,41.4
     .vendor >>供应商垃圾，修理
@@ -193,18 +193,18 @@ step
     >>杀死矿井中的工人
     .complete 21,1 --Kill Kobold Laborer (x12)
 step
-    .xp 5 >> 研磨至5
+    .xp 5 >>升级到5
 step << !Priest !Mage
     .goto Elwynn Forest,50.7,39.2
-    .turnin 3903 >> 交给米莉·奥斯沃思。跳过后续操作
+    .turnin 3903 >>交给米莉·奥斯沃思。跳过后续操作
 step << Priest/Mage
     .goto Elwynn Forest,50.7,39.2
-    .turnin 3903 >> 交给米莉·奥斯沃思
-    .accept 3904 >> 接受米莉的收获
+    .turnin 3903 >>交给米莉·奥斯沃思
+    .accept 3904 >>接受米莉的收获
 step << Rogue
     .goto Elwynn Forest,50.3,39.9
     >>你不需要训练
-    .turnin 3102 >> 提交加密信件
+    .turnin 3102 >>提交加密信件
 step << Priest/Mage
     >>在田里抢劫葡萄桶
     .goto Elwynn Forest,54.5,49.4
@@ -215,7 +215,7 @@ step
     .complete 6,1 --Collect Garrick's Head (x1)
 step << !Priest !Mage
     #sticky
-    .abandon 3904 >> 放弃米莉的收获
+    .abandon 3904 >>放弃米莉的收获
 step << !Priest !Mage
     .xp 5+1715>>返回1715+/2800xp的途中研磨
     .goto Elwynn Forest,48.2,42.9
@@ -225,15 +225,15 @@ step << Priest/Mage
     .goto Elwynn Forest,50.7,39.2
 step << Priest/Mage
     .goto Elwynn Forest,50.7,39.2
-    .turnin 3904 >> 交出米莉的收获
+    .turnin 3904 >>交出米莉的收获
     .accept 3905 >>接受葡萄清单
 step
     .goto Elwynn Forest,48.2,42.9
-    .turnin 6 >> 在Garrick脚垫上交赏金
+    .turnin 6 >>在Garrick脚垫上交赏金
 step
     .goto Elwynn Forest,48.9,41.6
-    .turnin 21 >> 在Echo Ridge转弯
-    .accept 54 >> 接受向Goldshire的报告
+    .turnin 21 >>在Echo Ridge转弯
+    .accept 54 >>接受向Goldshire的报告
 step << Priest/Mage
     #sticky
     #completewith next
@@ -244,104 +244,104 @@ step << Priest/Mage
     .turnin 3905 >>上交葡萄清单
 step << Priest
     .goto Elwynn Forest,49.8,39.5
-    .accept 5623 >> 接受光明
+    .accept 5623 >>接受光明
 step
     .goto Elwynn Forest,45.6,47.7
-    .accept 2158 >> 接受休息和放松
+    .accept 2158 >>接受休息和放松
 step
     #hardcore
     .goto Elwynn Forest,42.1,65.9
-    .turnin 54 >> 向Goldshire提交报告
-    .accept 62 >> 接受Fargodeep矿井
+    .turnin 54 >>向Goldshire提交报告
+    .accept 62 >>接受Fargodeep矿井
 step
     #softcore
     #sticky
     #completewith Goldshire
-    .goto Elwynn Forest,39.5,60.5,200 >> 在精神疗养院死去并重生，或者逃到戈德郡
+    .goto Elwynn Forest,39.5,60.5,200 >>在精神疗养院死去并重生，或者逃到戈德郡
 step << Warrior/Paladin/Rogue
     .goto Elwynn Forest,41.7,65.5
-    .trainer >> 从阿格斯培训铁匠。这将允许你为你的武器制造+2伤害磨石，这些磨石非常坚固。 << Warrior/Rogue
-    .trainer >> 从阿格斯培训铁匠。这将允许你为你的武器制造+2点非常强大的伤害重石。 << Paladin
+    .trainer >>从阿格斯培训铁匠。这将允许你为你的武器制造+2伤害磨石，这些磨石非常坚固。 << Warrior/Rogue
+    .trainer >>从阿格斯培训铁匠。这将允许你为你的武器制造+2点非常强大的伤害重石。 << Paladin
 step << Warrior
     .goto Elwynn Forest,41.5,65.9
-    >>修理你的武器。如果你有足够的钱（5s36c），从科瑞纳买一辆格拉迪斯。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(5s36c)，从科瑞纳买一辆格拉迪斯。否则，请跳过此步骤(稍后再回来)
     .collect 2488,1
 step << Rogue
     .goto Elwynn Forest,41.5,65.9
-    >>修理你的武器。如果你有足够的钱（4s1c），就从科里纳买一个细高跟鞋。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(4s1c)，就从科里纳买一个细高跟鞋。否则，请跳过此步骤(稍后再回来)
     .collect 2494,1
 step << Paladin
     .goto Elwynn Forest,41.5,65.9
-    >>修理你的武器。如果你有足够的钱（7s 1c），从Corina买一把木制锤子。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(7s 1c)，从Corina买一把木制锤子。否则，请跳过此步骤(稍后再回来)
     .collect 2493,1 --Collect Wooden Mallet
 step << Mage/Priest/Warlock
     #completewith next
     .goto Elwynn Forest,41.7,65.9
-    .vendor >> 供应商垃圾，修理
+    .vendor >>供应商垃圾，修理
 step
     #label Goldshire
     .goto Elwynn Forest,42.1,65.9
-    .turnin 54 >> 向Goldshire提交报告
-    .accept 62 >> 接受Fargodeep矿井
+    .turnin 54 >>向Goldshire提交报告
+    .accept 62 >>接受Fargodeep矿井
 step
     >>在你进客栈的时候，靠近左边
     .goto Elwynn Forest,42.9,65.7,15,0
     .goto Elwynn Forest,43.3,65.7
-    .accept 60 >> 接受Kobold Candles
+    .accept 60 >>接受Kobold Candles
 step
     .goto Elwynn Forest,43.8,65.8
     >>请勿在此购买任何食物/饮料 << Warlock
-    .turnin 2158 >> 休息和放松
-    .home >> 将您的炉石设置为Goldshire
+    .turnin 2158 >>休息和放松
+    .home >>将您的炉石设置为Goldshire
 step
-    .xp 6 >> 研磨至6
+    .xp 6 >>升级到6
 step << Rogue
     .goto Elwynn Forest,43.96,65.92
-    .vendor 151 >> 购买布罗格的3级投掷。装备它
+    .vendor 151 >>购买布罗格的3级投掷。装备它
 step << Warlock
     #sticky
     #completewith next
     .goto Elwynn Forest,44.1,66.0,10 >>去客栈老板后面的房间，然后下楼。
 step << Warlock
     .goto Elwynn Forest,44.4,66.2
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
     .goto Elwynn Forest,44.4,66.0
-    .vendor >> 如果你在训练后有钱，就买血盟书（否则以后再买）
+    .vendor >>如果你在训练后有钱，就买血盟书(否则以后再买)
 step << Mage/Priest/Rogue
     #sticky
     #completewith next
     .goto Elwynn Forest,43.7,66.4,12 >>上楼去
 step << Mage
     .goto Elwynn Forest,43.2,66.2
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Priest
     .goto Elwynn Forest,43.3,65.7
-    .turnin 5623 >> 支持灯光
-    .accept 5624 >> 接受光明之衣
-    .trainer >> 训练你的职业咒语
+    .turnin 5623 >>支持灯光
+    .accept 5624 >>接受光明之衣
+    .trainer >>训练你的职业咒语
 step << Rogue
     .money <0.01
     .goto Elwynn Forest,43.9,65.9
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Rogue/Warrior
     .money <0.01
     .goto Elwynn Forest,43.4,65.5
-    .train 3273 >> 训练急救-不要一次包扎好所有绷带，最好稍后再包扎
+    .train 3273 >>训练急救-不要一次包扎好所有绷带，最好稍后再包扎
 step << Warrior
     .goto Elwynn Forest,43.8,65.8
-    .vendor >> 购买5级食物至1银
+    .vendor >>购买5级食物至1银
 step << Rogue
     .goto Elwynn Forest,43.8,65.8
-    .vendor >> 购买最多20种5级食物
+    .vendor >>购买最多20种5级食物
 step << Warrior
     .goto Elwynn Forest,41.1,65.8
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Paladin
     .goto Elwynn Forest,41.1,66.0
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step
     .goto Elwynn Forest,42.1,67.3
-    .accept 47 >> 接受金尘交换
+    .accept 47 >>接受金尘交换
 step << Priest
     >>使用较低治疗等级2，然后使用金字招牌：对守卫罗伯茨的坚韧
     .goto Elwynn Forest,48.2,68.0
@@ -353,48 +353,48 @@ step
     .collect 769,4 --Collect Chunk of Boar Meat (x4)
 step
     .goto Elwynn Forest,34.5,84.3
-    .accept 85 >> 接受丢失的项链
+    .accept 85 >>接受丢失的项链
     .goto Elwynn Forest,34.7,84.5
-    .accept 88 >> 接受公主必死无疑！
+    .accept 88 >>接受公主必死无疑！
 step
     #sticky
     #completewith Candles
-    >> 从附近的Kobolds买些蜡烛
+    >>从附近的Kobolds买些蜡烛
     .complete 60,1 --Collect Kobold Candle (x8)
 step
     #sticky
     #label Candles
     #completewith next
-    >> 从附近的Kobolds那里获得一些金粉
+    >>从附近的Kobolds那里获得一些金粉
     .complete 47,1 --Collect Gold Dust (x10)
 step << Priest/Mage/Warlock
     #label Dust
     >>将暴徒从矿井外向东驱赶
     .goto Elwynn Forest,43.1,85.7
-    .turnin 85 >> 交回丢失的项链
-    .accept 86 >> 为比利接受派
+    .turnin 85 >>交回丢失的项链
+    .accept 86 >>为比利接受派
 step << Warrior
     #label Dust
     >>将暴徒从矿井外向东碾碎。如果你在任何时候得到一块粗糙的石头，通过锻造将它变成一块锋利的石头，并将其应用到你的剑上
     .goto Elwynn Forest,43.1,85.7
-    .turnin 85 >> 交回丢失的项链
-    .accept 86 >> 为比利接受派
+    .turnin 85 >>交回丢失的项链
+    .accept 86 >>为比利接受派
 step << Rogue
     #label Dust
     >>将暴徒从矿井外向东碾碎。如果你在任何时候得到一块粗糙的石头，通过锻造将其变成一块锋利的石头，并将其应用到你的匕首上
     .goto Elwynn Forest,43.1,85.7
-    .turnin 85 >> 交回丢失的项链
-    .accept 86 >> 为比利接受派
+    .turnin 85 >>交回丢失的项链
+    .accept 86 >>为比利接受派
 step << Paladin
     #label Dust
     >>将暴徒从矿井外向东碾碎。如果你在任何时候得到一块粗糙的石头，通过锻造将其制成一块重石，并将其应用到你的狼牙棒上
     .goto Elwynn Forest,43.1,85.7
-    .turnin 85 >> 交回丢失的项链
-    .accept 86 >> 为比利接受派
+    .turnin 85 >>交回丢失的项链
+    .accept 86 >>为比利接受派
 step
     #label BoarMeat1
     .goto Elwynn Forest,43.2,89.6
-    .accept 106 >> 接受年轻恋人
+    .accept 106 >>接受年轻恋人
 step << Mage/Priest/Warlock
     .goto Elwynn Forest,42.4,89.4
     .vendor >>小贩，尽可能多买牛奶
@@ -407,41 +407,41 @@ step
     .collect 769,4 --Collect Chunk of Boar Meat (x4)
 step
     .goto Elwynn Forest,29.8,86.0
-    .turnin 106 >> 交出年轻恋人
-    .accept 111 >> 接受与Gramma交谈
+    .turnin 106 >>交出年轻恋人
+    .accept 111 >>接受与Gramma交谈
 step
     .goto Elwynn Forest,32.5,85.5
     >>吃完野猪肉
     .complete 86,1 --Collect Chunk of Boar Meat (x4)
 step
     .goto Elwynn Forest,34.5,84.3
-    .turnin 86 >> 把馅饼交给比利
-    .accept 84 >> 接受返回Billy
+    .turnin 86 >>把馅饼交给比利
+    .accept 84 >>接受返回Billy
 step
     .goto Elwynn Forest,34.9,83.9
-    .turnin 111 >> 打开Speak with Gramma
-    .accept 107 >> 接受给William的通知
+    .turnin 111 >>打开Speak with Gramma
+    .accept 107 >>接受给William的通知
 step
     #sticky
     #label KoboldCandles
-    >> 从附近的Kobolds买些蜡烛
+    >>从附近的Kobolds买些蜡烛
     .complete 60,1 --Collect Kobold Candle (x8)
 step
     #sticky
     #label GoldDust
-    >> 从附近的Kobolds那里获得一些金粉
+    >>从附近的Kobolds那里获得一些金粉
     .complete 47,1 --Collect Gold Dust (x10)
 step
     >>将暴徒从矿井外向东驱赶
     .goto Elwynn Forest,43.1,85.7
-    .turnin 84 >> 交给比利
-    .accept 87 >> 接受Goldtooth
+    .turnin 84 >>交给比利
+    .accept 87 >>接受Goldtooth
 step
     >>进入矿井
     .goto Elwynn Forest,40.5,82.3
     .complete 62,1 --Scout Through the Fargodeep Mine
 step << Warrior
-    >>尽可能多地招惹怒气（磨掉其他暴徒的怒气），然后为伯妮斯的项链杀死戈登斯
+    >>尽可能多地招惹怒气(磨掉其他暴徒的怒气)，然后为伯妮斯的项链杀死戈登斯
     .goto Elwynn Forest,41.7,78.1
     .complete 87,1 --Collect Bernice's Necklace  (x1)
 step << !Warrior
@@ -469,7 +469,7 @@ step
     #label Goldtooth
     #requires GoldDust
     .goto Elwynn Forest,34.5,84.3
-    .turnin 87 >> 交给Goldtooth
+    .turnin 87 >>交给Goldtooth
 step
     >>把一些暴徒逼回戈德郡
     .xp 7+2690>>研磨至2690+/4500xp << !Priest
@@ -477,71 +477,71 @@ step
     .goto Elwynn Forest,42.1,67.3
 step
     .goto Elwynn Forest,42.1,67.3
-    .turnin 47 >> 交金换尘
-    .accept 40 >> 接受鱼的危险
+    .turnin 47 >>交金换尘
+    .accept 40 >>接受鱼的危险
 step
     .goto Elwynn Forest,42.1,65.9
-    .turnin 40 >> 陷入困境
-    .accept 35 >> 接受进一步关注
-    .turnin 62 >> 交给Fargodeep矿井
-    .accept 76 >> 接受Jasperode矿
+    .turnin 40 >>陷入困境
+    .accept 35 >>接受进一步关注
+    .turnin 62 >>交给Fargodeep矿井
+    .accept 76 >>接受Jasperode矿
 step
     #completewith next
     .goto Elwynn Forest,41.7,65.9
     .vendor >>供应商垃圾，修理
 step << Warrior
     .goto Elwynn Forest,41.5,65.9
-    >>修理你的武器。如果你有足够的钱（5s36c），从科瑞纳买一辆格拉迪斯。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(5s36c)，从科瑞纳买一辆格拉迪斯。否则，请跳过此步骤(稍后再回来)
     .collect 2488,1
 step << Rogue
     .goto Elwynn Forest,41.5,65.9
-    >>修理你的武器。如果你有足够的钱（4s1c），就从科里纳买一个细高跟鞋。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(4s1c)，就从科里纳买一个细高跟鞋。否则，请跳过此步骤(稍后再回来)
     .collect 2494,1
 step << Paladin
     .goto Elwynn Forest,41.5,65.9
-    >>修理你的武器。如果你有足够的钱（7s 1c），从Corina买一把木制锤子。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(7s 1c)，从Corina买一把木制锤子。否则，请跳过此步骤(稍后再回来)
     .collect 2493,1 --Collect Wooden Mallet
 step
     .goto Elwynn Forest,43.3,65.7
-    .turnin 60 >> 交上Kobold Candles
-    .accept 61 >> 接受装运至暴风城
-    .turnin 107 >> 将便条交给威廉
-    .accept 112 >> 接受收集海带
+    .turnin 60 >>交上Kobold Candles
+    .accept 61 >>接受装运至暴风城
+    .turnin 107 >>将便条交给威廉
+    .accept 112 >>接受收集海带
 step
-    .xp 8 >> 研磨至8
+    .xp 8 >>升级到8
 step << Warlock
     >>回到地下室
     .goto Elwynn Forest,44.4,66.2
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
     .goto Elwynn Forest,44.4,66.0
-    .vendor >> 如果您在培训后有钱，请购买Firebolt书籍（否则请稍后购买）
+    .vendor >>如果您在培训后有钱，请购买Firebolt书籍(否则请稍后购买)
 step
     .money <0.1250
     .goto Elwynn Forest,44.0,65.9
     .vendor >>从Brog购买6槽包
 step << Warrior
     .goto Elwynn Forest,41.1,65.8
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Paladin
     .goto Elwynn Forest,41.1,66.0
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Mage/Priest/Rogue/Warrior
     #completewith next
     .goto Elwynn Forest,43.7,66.4,15 >>上楼去
 step << Mage
     .goto Elwynn Forest,43.2,66.2
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Priest
     .goto Elwynn Forest,43.3,65.7
-    .turnin 5624 >> 交出光明的衣裳
-    .trainer >> 训练你的职业咒语
+    .turnin 5624 >>交出光明的衣裳
+    .trainer >>训练你的职业咒语
 step << Rogue
     .goto Elwynn Forest,43.9,65.9
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Rogue/Warrior/Paladin
     .money <0.01
     .goto Elwynn Forest,43.4,65.5
-    .trainer >> 训练急救-不要一次包扎好所有绷带，最好稍后再包扎
+    .trainer >>训练急救-不要一次包扎好所有绷带，最好稍后再包扎
 step << !Warrior !Rogue
     .goto Elwynn Forest,43.8,65.8
     .vendor >>购买5级水，最高40
@@ -565,9 +565,9 @@ step
     .complete 76,1 --Scout through the Jasperlode Mine
 step
     .goto Elwynn Forest,74.0,72.2
-    .turnin 35 >> 提交更多问题
-    .accept 37 >> 接受寻找丢失的守卫
-    .accept 52 >> 接受保护边境
+    .turnin 35 >>提交更多问题
+    .accept 37 >>接受寻找丢失的守卫
+    .accept 52 >>接受保护边境
 step
     #sticky
     #completewith Prowlers
@@ -580,14 +580,14 @@ step
     .complete 52,2 --Kill Young Forest Bear (x5)
 step
     .goto Elwynn Forest,72.7,60.3
-    .turnin 37 >> 上缴找到丢失的守卫
-    .accept 45 >> 接受发现罗尔夫的命运
+    .turnin 37 >>上缴找到丢失的守卫
+    .accept 45 >>接受发现罗尔夫的命运
 step
     .goto Elwynn Forest,81.4,66.1
-    .accept 5545 >> 接受一堆麻烦
+    .accept 5545 >>接受一堆麻烦
 step
     .goto Elwynn Forest,83.3,66.1
-    .vendor >> 供应商垃圾，修理
+    .vendor >>供应商垃圾，修理
 step << Paladin
     #softcore
     .goto Elwynn Forest,76.8,62.4,100,0
@@ -609,35 +609,35 @@ step << !Paladin
     .complete 5545,1 --Collect Bundle of Wood (x8)
 step
     #label Bundles
-    .goto Elwynn Forest,79.8,55.5,90 >> 走向守卫的尸体
+    .goto Elwynn Forest,79.8,55.5,90 >>走向守卫的尸体
 step << Priest
     .goto Elwynn Forest,79.8,55.5
-    >> 杀死尸体周围的暴徒。预制更新和盾牌，获得全部法力，然后将2个怪物拉到小屋前，移开，然后核弹一个。杀了一个就跑，然后杀了另一个。抢劫地上的尸体
-    >> 小心，因为这个任务很困难
-    .turnin 45 >> 交给《发现罗尔夫的命运》
-    .accept 71 >> 接受向托马斯报告
+    >>杀死尸体周围的暴徒。预制更新和盾牌，获得全部法力，然后将2个怪物拉到小屋前，移开，然后核弹一个。杀了一个就跑，然后杀了另一个。抢劫地上的尸体
+    >>小心，因为这个任务很困难
+    .turnin 45 >>交给《发现罗尔夫的命运》
+    .accept 71 >>接受向托马斯报告
 step << !Paladin
     .goto Elwynn Forest,79.8,55.5
-    >> 杀死尸体周围的暴徒。把两个暴徒拉到小屋前，走开，一边放羊一边杀掉另一个，然后杀掉羊群暴徒。抢劫地上的尸体 << Mage
-    >> 池怒，然后杀死尸体周围的2名暴徒。将2名暴徒拉到小屋前，移开，保持一条腿筋，同时杀死另一条。杀了一个就逃跑（用弹珠在上面），然后拉杀另一个。抢劫地上的尸体 << Warrior
-    >> 杀死尸体周围的暴徒。把两个暴徒拉到小屋前，走开，用核弹袭击一个暴徒。使用回避。杀了一个就跑，然后杀了另一个。抢劫地上的尸体 << Rogue
+    >>杀死尸体周围的暴徒。把两个暴徒拉到小屋前，走开，一边放羊一边杀掉另一个，然后杀掉羊群暴徒。抢劫地上的尸体 << Mage
+    >>池怒，然后杀死尸体周围的2名暴徒。将2名暴徒拉到小屋前，移开，保持一条腿筋，同时杀死另一条。杀了一个就逃跑(用弹珠在上面)，然后拉杀另一个。抢劫地上的尸体 << Warrior
+    >>杀死尸体周围的暴徒。把两个暴徒拉到小屋前，走开，用核弹袭击一个暴徒。使用回避。杀了一个就跑，然后杀了另一个。抢劫地上的尸体 << Rogue
      >>杀死尸体周围的暴徒。把两个暴徒拉到小屋前，走开，然后让其中一个保持恐惧，并试着在两个上面都留下点。然后在地上洗劫尸体 << Warlock
-    >> 小心，因为这个任务很困难
-    .turnin 45 >> 交给《发现罗尔夫的命运》
-    .accept 71 >> 接受向托马斯报告
+    >>小心，因为这个任务很困难
+    .turnin 45 >>交给《发现罗尔夫的命运》
+    .accept 71 >>接受向托马斯报告
 step << Paladin
     #softcore
     .goto Elwynn Forest,79.8,55.5
-    >> 在尸体上奔跑，然后使用神圣保护，立即洗劫尸体，处理并接受任务。你会死的
-    .turnin 45 >> 交给《发现罗尔夫的命运》
-    .accept 71 >> 接受向托马斯报告
+    >>在尸体上奔跑，然后使用神圣保护，立即洗劫尸体，处理并接受任务。你会死的
+    .turnin 45 >>交给《发现罗尔夫的命运》
+    .accept 71 >>接受向托马斯报告
 step << Paladin
     #hardcore
     .goto Elwynn Forest,79.8,55.5
-    >> 杀死尸体周围的暴徒。将2名暴徒拉到小屋前，走开，用核弹袭击其中一名小屋暴徒。泡泡，治疗/必要时逃跑，然后回来杀死其他暴徒
-    >> 小心，因为这个任务很困难
-    .turnin 45 >> 交给《发现罗尔夫的命运》
-    .accept 71 >> 接受向托马斯报告
+    >>杀死尸体周围的暴徒。将2名暴徒拉到小屋前，走开，用核弹袭击其中一名小屋暴徒。泡泡，治疗/必要时逃跑，然后回来杀死其他暴徒
+    >>小心，因为这个任务很困难
+    .turnin 45 >>交给《发现罗尔夫的命运》
+    .accept 71 >>接受向托马斯报告
 step << Paladin
     #softcore
     #sticky
@@ -656,14 +656,14 @@ step
 step
     #label Bundles2
     .goto Elwynn Forest,81.4,66.1
-    .turnin 5545 >> 交一堆麻烦
+    .turnin 5545 >>交一堆麻烦
 step
     #label Prowlers
-    .xp 9 >> 研磨至9
+    .xp 9 >>升级到9
 step
     #label Bears
     .goto Elwynn Forest,79.5,68.8
-    .accept 83 >> 接受红色亚麻制品
+    .accept 83 >>接受红色亚麻制品
 step
     .goto Elwynn Forest,76.7,75.6,100,0
     .goto Elwynn Forest,79.7,83.7,100,0
@@ -677,16 +677,16 @@ step
     .complete 52,2 --Kill Young Forest Bear (x5)
 step
     .goto Elwynn Forest,74.0,72.2
-    .turnin 52 >> 上缴保卫边疆
-    .turnin 71 >> 向托马斯提交报告
-    .accept 39 >> 接受并交付Thomas的报告
-    .accept 109 >> 接受Gryan Stoutmantle的报告
+    .turnin 52 >>上缴保卫边疆
+    .turnin 71 >>向托马斯提交报告
+    .accept 39 >>接受并交付Thomas的报告
+    .accept 109 >>接受Gryan Stoutmantle的报告
 step
     #sticky
     #completewith Deed
-    >>留意德菲亚斯（Defias）的《威斯特福尔契约》（lucky drop）
+    >>留意德菲亚斯(Defias)的《威斯特福尔契约》(lucky drop)
     .collect 1972,1,184 --Collect Westfall Deed (x1)
-    .accept 184 >> 接受Furlbrow的契约
+    .accept 184 >>接受Furlbrow的契约
 step
     .goto Elwynn Forest,69.53,79.47
     >>开始围着农场转，杀掉德菲亚斯，然后抢劫他们的头巾
@@ -704,7 +704,7 @@ step << !Rogue !Warrior
     >>杀死公主。如果需要的话，使用之前的小治疗药剂。抢走她的衣领
     >>如果你在挣扎，你可以用篱笆来滥用路径和争取时间
     .complete 88,1 --Collect Brass Collar (x1)
-    .link https://www.youtube.com/watch?v=GRrXOV-UvD4 >> 如果遇到困难，请单击此处
+    .link https://www.youtube.com/watch?v=GRrXOV-UvD4 >>如果遇到困难，请单击此处
 step
     .xp 9+3400>>研磨至3400+/6500xp
 step
@@ -715,17 +715,17 @@ step
 step
     #label Deed
     .goto Elwynn Forest,79.5,68.9
-    .turnin 83 >> 交出红色亚麻制品
+    .turnin 83 >>交出红色亚麻制品
 step << !Warlock
     #softcore
     .goto Elwynn Forest,83.3,66.1
-    .vendor >> 供应商垃圾，修理
+    .vendor >>供应商垃圾，修理
 step << !Warlock
     .goto Redridge Mountains,8.5,72.0
     .xp 9+4475>>研磨至4475+/6500xp
 step << !Warlock
     .goto Redridge Mountains,8.5,72.0
-    .zone Redridge Mountains >> 向东行驶至雷德里奇山脉
+    .zone Redridge Mountains >>向东行驶至雷德里奇山脉
 step << !Warlock
     #softcore
     #sticky
@@ -738,68 +738,68 @@ step << !Warlock
 step << !Warlock
     #softcore
     .goto Redridge Mountains,30.6,59.4
-    .fp Redridge Mountains >> 获得Redridge Mountains飞行路线
+    .fp Redridge Mountains >>获得Redridge Mountains飞行路线
 step << !Warlock
     #hardcore
     >>朝飞行路线跑去。要格外小心，不要在途中对任何暴徒进行攻击或死亡。试着紧贴道路，保持警惕
     .goto Redridge Mountains,30.6,59.4
-    .fp Redridge Mountains >> 获得Redridge Mountains飞行路线
+    .fp Redridge Mountains >>获得Redridge Mountains飞行路线
 step
-    .hs >> 赫斯到戈德郡
+    .hs >>赫斯到戈德郡
 step
     .goto Elwynn Forest,43.3,65.7
     >>不要等待他的rp活动
-    .turnin 112 >> 转入收集海带
+    .turnin 112 >>转入收集海带
 step << Warrior/Rogue
     .goto Elwynn Forest,43.4,65.6
     >>与楼上的急救教练交谈
-    .train 3273 >> 培训急救
+    .train 3273 >>培训急救
 step
     .goto Elwynn Forest,42.2,65.8
-    .turnin 39 >> 提交提交托马斯的报告
-    .turnin 76 >> 交给Jasperode矿
-    .accept 239 >> 接受Westbrook Garrison需要帮助！
+    .turnin 39 >>提交提交托马斯的报告
+    .turnin 76 >>交给Jasperode矿
+    .accept 239 >>接受Westbrook Garrison需要帮助！
     .accept 59 >>接受布甲和皮甲 << Warlock
 step
     .goto Elwynn Forest,41.7,65.5
-    .accept 1097 >> 接受Elmore的任务
+    .accept 1097 >>接受Elmore的任务
 step
-    .xp 10 >> 研磨至10
+    .xp 10 >>升级到10
 step
     #softcore
     .goto Elwynn Forest,41.7,65.9
     .vendor >>供应商垃圾，修理
 step << Warrior
     .goto Elwynn Forest,41.1,65.8
-    .accept 1638 >> 接受战士训练
-    .trainer >> 训练你的职业咒语
+    .accept 1638 >>接受战士训练
+    .trainer >>训练你的职业咒语
 step << Paladin
     .goto Elwynn Forest,41.1,66.0
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step
     .goto Elwynn Forest,43.3,65.7
-    .accept 114 >> 接受逃脱
+    .accept 114 >>接受逃脱
 step << Warlock
     >>回到地下室
     .goto Elwynn Forest,44.4,66.2
-    .accept 1685 >> 接受加金的召唤
-    .trainer >> 训练你的职业咒语
+    .accept 1685 >>接受加金的召唤
+    .trainer >>训练你的职业咒语
 step << Mage/Priest/Rogue
     #sticky
     #completewith next
     .goto Elwynn Forest,43.7,66.4,10 >>上楼去
 step << Priest
     .goto Elwynn Forest,43.3,65.7
-    .accept 5635 >> 接受绝望祈祷
-    .trainer >> 训练你的职业咒语
+    .accept 5635 >>接受绝望祈祷
+    .trainer >>训练你的职业咒语
 step << Mage
     .goto Elwynn Forest,43.2,66.2
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Rogue
     .goto Elwynn Forest,43.9,65.9
     >>别担心没有两件武器，我们很快就会有另一件
     >>在这里培训时，要非常小心你的钱。但要确保你训练了Dual Wield和Sprint
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Rogue
     #som
     .goto Elwynn Forest,41.7,65.9
@@ -813,18 +813,18 @@ step << Rogue
 step
     >>跑出客栈往南走
     .goto Elwynn Forest,43.2,89.6
-    .turnin 114 >> 上车逃生
+    .turnin 114 >>上车逃生
 step
     .goto Elwynn Forest,34.7,84.5
-    .turnin 88 >> 公主必须死！
+    .turnin 88 >>公主必须死！
 step << Warlock
     >>点击周围任何通缉海报
     .goto Elwynn Forest,24.6,74.7
-    .accept 176 >> 接受通缉：“Hogger”
+    .accept 176 >>接受通缉：“Hogger”
 step
     .goto Elwynn Forest,24.2,74.5
-    .turnin 239 >> 交出Westbrook Garrison需要帮助！
-    .accept 11 >> 接受Riverpaw Gnoll Bounty << Warlock
+    .turnin 239 >>交出Westbrook Garrison需要帮助！
+    .accept 11 >>接受Riverpaw Gnoll Bounty << Warlock
 step << Warrior
     .money >0.3174
     #som
@@ -840,9 +840,9 @@ step << Warrior
 step << Warlock
     #sticky
     #completewith Armbands
-    >>请留意取金时间表（幸运滴），或Gruff Swiftbite的100%滴（罕见）。额外210xp
+    >>请留意取金时间表(幸运滴)，或Gruff Swiftbite的100%滴(罕见)。额外210xp
     .collect 1307,1,123 --Collect Gold Pickup Schedule (x1)
-    .accept 123 >> 接受催收员
+    .accept 123 >>接受催收员
 step << Warlock
     #label Hogger
     .unitscan Hogger
@@ -865,67 +865,67 @@ step << Warlock
 step << Warlock
     #label Armbands
     .goto Elwynn Forest,27.0,93.9
-    >> 杀死侏儒。抢劫他们作为臂章
+    >>杀死侏儒。抢劫他们作为臂章
     .complete 11,1 --Collect Painted Gnoll Armband (8)
 step << Rogue
     #era
     #label Armbands
     .money >0.3152
     .goto Elwynn Forest,24.2,74.5
-    .accept 11 >> 接受Riverpaw Gnoll Bounty
+    .accept 11 >>接受Riverpaw Gnoll Bounty
 step << Rogue
     #som
     #label Armbands
     .money >0.3197
     .goto Elwynn Forest,24.2,74.5
-    .accept 11 >> 接受Riverpaw Gnoll Bounty
+    .accept 11 >>接受Riverpaw Gnoll Bounty
 step << Rogue
     .goto Elwynn Forest,27.0,93.9
-    >> 杀死侏儒。抢劫他们作为臂章
+    >>杀死侏儒。抢劫他们作为臂章
     .complete 11,1 --Collect Painted Gnoll Armband (x8)
     .isOnQuest 11
 step << Warlock/Rogue
     .goto Elwynn Forest,24.2,74.5
-    .turnin 11 >> 交给Riverpaw Gnoll Bounty
+    .turnin 11 >>交给Riverpaw Gnoll Bounty
     .isOnQuest 11
 step << Rogue
     .abandon 123 >>放弃催收员
 step
     .goto Westfall,60.0,19.4
-    .turnin 184 >> 交出弗尔布罗的契约
+    .turnin 184 >>交出弗尔布罗的契约
     .isOnQuest 184
 step
     .goto Westfall,59.95,19.36
     .accept 64 >>接受被遗忘的传家宝
 step
     .goto Westfall,59.9,19.4
-    .accept 36 >> 接受Westfall Stew
+    .accept 36 >>接受Westfall Stew
     .accept 151 >>接受可怜的老布兰奇
 step
     .goto Westfall,56.04,31.22
     .accept 9 >>接受杀戮场
 step
     .goto Westfall,56.4,30.5
-    .turnin 36 >> 转入威斯特福尔炖菜
-    .accept 38 >> 接受Westfall Stew
+    .turnin 36 >>转入威斯特福尔炖菜
+    .accept 38 >>接受Westfall Stew
     .accept 22 >>接受Goretusk肝派
 step
     #softcore
     #sticky
     #completewith next
-    .goto Westfall,51.7,49.4,150 >> 在精神疗愈者处死亡并重生，或跑到哨兵山
+    .goto Westfall,51.7,49.4,150 >>在精神疗愈者处死亡并重生，或跑到哨兵山
 step
     .goto Westfall,56.3,47.5
-    .turnin 109 >> 向Gryan Stoutmantle提交报告
-    .accept 12 >> 接受人民民兵
+    .turnin 109 >>向Gryan Stoutmantle提交报告
+    .accept 12 >>接受人民民兵
 step
     #era
     .goto Westfall,56.3,47.5
-    .accept 102 >> 接受巡逻Westfall
+    .accept 102 >>接受巡逻Westfall
 step << Human
     .goto Westfall,57.0,47.2
     .vendor >>供应商垃圾
-    .accept 6181 >> 接受Swift消息
+    .accept 6181 >>接受Swift消息
 step << Rogue
     #era
     .money >0.3152
@@ -937,39 +937,39 @@ step << Rogue
 --Not taking into account Shipment q turnin money so its insurance money
 step
     .goto Westfall,56.6,52.6
-    .turnin 6181 >> 提交快捷信息 << Human
-    .accept 6281 >> 接受继续前往暴风城 << Human
+    .turnin 6181 >>提交快捷信息 << Human
+    .accept 6281 >>接受继续前往暴风城 << Human
 step
     .goto Westfall,56.6,52.6
-    .fly Stormwind >> 飞到暴风城
+    .fly Stormwind >>飞到暴风城
 step << Rogue
     #som
     >>进入大楼
     .goto StormwindClassic,57.32,62.08,20,0
     .goto StormwindClassic,58.37,61.69
-    .vendor >> 购买瑟曼的11级投掷。11级时装备它
+    .vendor >>购买瑟曼的11级投掷。11级时装备它
 step << Rogue
     #era
     >>进入大楼
     .goto StormwindClassic,57.32,62.08,20,0
     .goto StormwindClassic,58.37,61.69
-    .vendor >> 购买瑟曼的3级投掷。装备它
+    .vendor >>购买瑟曼的3级投掷。装备它
 step
     .goto StormwindClassic,56.2,64.6
     >>选择火箭队作为奖励。这些有很好的伤害，可以用来劈开
-    .turnin 61 >> 将货物交给Stormwind
+    .turnin 61 >>将货物交给Stormwind
 step << !Warlock
     .goto StormwindClassic,52.61,65.71
-    .home >> 将您的炉石设置为暴风城
+    .home >>将您的炉石设置为暴风城
 step << Warrior
     .goto StormwindClassic,57.1,57.7
-    .trainer >> 如果你有足够的钱，训练2小时剑。您必须保存20秒以备稍后使用
+    .trainer >>如果你有足够的钱，训练2小时剑。您必须保存20秒以备稍后使用
 step << Priest
     .goto StormwindClassic,57.1,57.7
     .trainer >>火车杆
 step << Mage/Warlock
     .goto StormwindClassic,57.1,57.7
-    .trainer >> 训练棍，如果你还有钱的话，1小时剑
+    .trainer >>训练棍，如果你还有钱的话，1小时剑
 step << Rogue
     .goto StormwindClassic,57.1,57.7
     .trainer >>训练1h剑
@@ -981,68 +981,68 @@ step << Paladin
     .trainer >>训练2h剑
 step << Warlock
     .goto StormwindClassic,52.61,65.71
-    .home >> 将您的炉石设置为暴风城
+    .home >>将您的炉石设置为暴风城
 step << Warlock
     #sticky
     #completewith next
     .goto StormwindClassic,29.2,74.0,20,0
-    .goto StormwindClassic,27.2,78.1,15 >> 走进屠宰羔羊，下楼去
+    .goto StormwindClassic,27.2,78.1,15 >>走进屠宰羔羊，下楼去
 step << Warlock
     .goto StormwindClassic,25.2,78.5
-    .turnin 1685 >> 提交加金的传票
-    .accept 1688 >> 接受Surena Caledon
+    .turnin 1685 >>提交加金的传票
+    .accept 1688 >>接受Surena Caledon
 step << Warlock
     #softcore
-    .deathskip >> 使用生命水龙头并站在你旁边的篝火上，在精神治疗者处死亡并重生
+    .deathskip >>使用生命水龙头并站在你旁边的篝火上，在精神治疗者处死亡并重生
 step << Warlock
     .goto Elwynn Forest,42.1,65.9
-    .zone Elwynn Forest >> 从暴风城跑回埃尔文
+    .zone Elwynn Forest >>从暴风城跑回埃尔文
 step << Warlock
     .isOnQuest 123
     .goto Elwynn Forest,42.1,65.9
     >>选择棍子，然后装备它
-    .turnin 176 >> 通缉犯：“Hogger”
-    .turnin 123 >> 交回收集器
+    .turnin 176 >>通缉犯：“Hogger”
+    .turnin 123 >>交回收集器
 step << Warlock
     .goto Elwynn Forest,42.1,65.9
     >>选择棍子，然后装备它
-    .turnin 176 >> 通缉犯：“Hogger”
+    .turnin 176 >>通缉犯：“Hogger”
 step << Warlock
-    .xp 11 >> 研磨至11
+    .xp 11 >>升级到11
 step << Warlock
     >>在途中磨练，试着为以后提高你的击球技能
-    >>杀死房子里的暴徒，让摩根保持恐惧（他凿伤并杀死宠物），核弹袭击苏雷纳。为她的喉咙抢劫她
+    >>杀死房子里的暴徒，让摩根保持恐惧(他凿伤并杀死宠物)，核弹袭击苏雷纳。为她的喉咙抢劫她
     .goto Elwynn Forest,71.0,80.8
     .complete 1688,1 --Collect Surena's Choker (x1)
 step << Warlock
     .goto Elwynn Forest,79.5,68.8
-    .turnin 59 >> 交出布甲和皮甲
+    .turnin 59 >>交出布甲和皮甲
 step << Warlock
     #sticky
     #completewith next
     .goto Redridge Mountains,17.4,69.6
-    .zone Redridge Mountains >> 在前往雷德里奇的途中研磨，确保至少有2个灵魂碎片（使用吸取灵魂）
+    .zone Redridge Mountains >>在前往雷德里奇的途中研磨，确保至少有2个灵魂碎片(使用吸取灵魂)
     .collect 6265,2 --Soul Shard (2)
 step << Warlock
     .goto Redridge Mountains,17.4,69.6
-    .accept 244 >> 接受侵扰侏儒
+    .accept 244 >>接受侵扰侏儒
 step << Warlock
     >>小心路上的暴徒
     .goto Redridge Mountains,30.7,60.0
-    .turnin 244 >> 交出侵扰侏儒
+    .turnin 244 >>交出侵扰侏儒
 step << Warlock
     .goto Redridge Mountains,30.6,59.4
-    .fp Redridge Mountains >> 获得Redridge Mountains飞行路线
-    .fly Stormwind >> 飞到暴风城
+    .fp Redridge Mountains >>获得Redridge Mountains飞行路线
+    .fly Stormwind >>飞到暴风城
 step << Warlock
     #sticky
     #completewith next
     .goto StormwindClassic,29.2,74.0,20,0
-    .goto StormwindClassic,27.2,78.1,15 >> 走进屠宰羔羊，下楼去
+    .goto StormwindClassic,27.2,78.1,15 >>走进屠宰羔羊，下楼去
 step << Warlock
     .goto StormwindClassic,25.2,78.5
-    .turnin 1688 >> 交给Surena Caledon
-    .accept 1689 >> 接受绑定
+    .turnin 1688 >>交给Surena Caledon
+    .accept 1689 >>接受绑定
 step << Warlock
     .goto StormwindClassic,25.2,80.7,14,0
     .goto StormwindClassic,23.2,79.5,14,0
@@ -1053,46 +1053,46 @@ step << Warlock
 step << Warlock
     .goto StormwindClassic,25.2,78.5
     >>一旦你学会了，就不要召唤你的虚空行者
-    .turnin 1689 >> 交回装订本
+    .turnin 1689 >>交回装订本
 step << Human
     .goto StormwindClassic,74.3,47.2
-    .turnin 6281 >> 转入继续暴风城
-    .accept 6261 >> 接受Dungar Longdrink
+    .turnin 6281 >>转入继续暴风城
+    .accept 6261 >>接受Dungar Longdrink
 step << Warrior
      >>进入客栈
     .goto StormwindClassic,71.7,39.9,20,0
     .goto StormwindClassic,74.3,37.3
-    .turnin 1638 >> 交战士训练
-    .accept 1639 >> 接受醉汉巴特比
+    .turnin 1638 >>交战士训练
+    .accept 1639 >>接受醉汉巴特比
 step << Warrior
     .goto StormwindClassic,73.8,36.3
-    .turnin 1639 >> 交给醉汉巴特比
-    .accept 1640 >> 接受Beat Bartleby
+    .turnin 1639 >>交给醉汉巴特比
+    .accept 1640 >>接受Beat Bartleby
     .complete 1640,1 --Beat Bartleby
 step << Warrior
     .goto StormwindClassic,73.8,36.3
-    .turnin 1640 >> 加入Beat Bartleby
-    .accept 1665 >> 接受巴特比的马克杯
+    .turnin 1640 >>加入Beat Bartleby
+    .accept 1665 >>接受巴特比的马克杯
 step << Warrior
     >>你现在将学习防御姿态和破甲
     .goto StormwindClassic,74.3,37.3
-    .turnin 1665 >> 交给巴特比的马克杯
+    .turnin 1665 >>交给巴特比的马克杯
 step << Priest
     #completewith next
     .goto StormwindClassic,38.8,26.4
-    .turnin 5635 >> 递交绝望祈祷
+    .turnin 5635 >>递交绝望祈祷
 step << Priest
     .goto StormwindClassic,38.62,26.10
-    .train 13908 >> 训练绝望祈祷
+    .train 13908 >>训练绝望祈祷
 step
     #completewith next
     .goto StormwindClassic,51.8,12.1
-    .turnin 1097 >> 交出Elmore的任务
+    .turnin 1097 >>交出Elmore的任务
 step
     .goto StormwindClassic,51.8,12.1
-    .accept 353 >> 接受Stormpike的交付
+    .accept 353 >>接受Stormpike的交付
 step << Warrior/Paladin/Rogue
-    >>把破甲放在你的栏上（它的伤害比英勇打击好） << Warrior
+    >>把破甲放在你的栏上(它的伤害比英勇打击好) << Warrior
     .goto StormwindClassic,56.3,17.0
     .vendor >>购买采矿镐。你稍后将训练采矿
 step
@@ -1103,18 +1103,18 @@ step
     >>有轨电车到了就乘，到了另一边就下车 << !Rogue !Warrior !Paladin !Warlock
     >>当电车到达时，乘电车。在等电车和上车时，要做绷带。当你到达另一边时接受q << Rogue/Warrior/Paladin
     >>当电车到达时，乘电车。施放召唤虚空行者并创造健康石。在另一边下车 << Warlock
-    .accept 6661 >> 接受Deeprun老鼠围捕
+    .accept 6661 >>接受Deeprun老鼠围捕
 step
     >>用你的长笛对付四处散落的老鼠
     .complete 6661,1 --Rats Captured (x5)
 step
-    .turnin 6661 >> 交给Deeprun老鼠围捕
+    .turnin 6661 >>交给Deeprun老鼠围捕
 step
     .goto Ironforge,77.0,51.0
     .zone Ironforge >>进入铁炉堡
 step
     .goto Ironforge,55.5,47.7
-    .fp Ironforge >> 获得铁炉堡飞行路线
+    .fp Ironforge >>获得铁炉堡飞行路线
 step << Warrior
     .goto Ironforge,61.2,89.5
     .trainer >>训练2小时梅斯和投掷
@@ -1133,7 +1133,7 @@ step
 step
     .goto Dun Morogh,60.1,52.6,50,0
     .goto Dun Morogh,63.1,49.8
-    .accept 314 >> 接受保护羊群
+    .accept 314 >>接受保护羊群
 step
     #sticky
     #completewith next
@@ -1146,15 +1146,15 @@ step
     .goto Dun Morogh,62.6,46.1
     .goto Dun Morogh,62.78,54.60,0
     .complete 314,1 --Collect Fang of Vagash (1)
-    .link https://www.youtube.com/watch?v=ZJX6sCkm5JY >> 单击此处了解如何独奏瓦加什
+    .link https://www.youtube.com/watch?v=ZJX6sCkm5JY >>单击此处了解如何独奏瓦加什
 step
     .goto Dun Morogh,63.1,49.8
-    .turnin 314 >> 转身保护羊群
+    .turnin 314 >>转身保护羊群
 step
     #sticky
     #label Cooking
     .goto Dun Morogh,68.4,54.5
-    .trainer >> Ghilm的火车烹饪
+    .trainer >>Ghilm的火车烹饪
 step
     .goto Dun Morogh,68.6,54.7
     .vendor >>供应商，购买食物+水 << !Rogue !Warrior
@@ -1162,10 +1162,10 @@ step
 step
     #requires Cooking
     .goto Dun Morogh,68.7,56.0
-    .accept 433 >> 接受公务员
+    .accept 433 >>接受公务员
 step
     .goto Dun Morogh,69.1,56.3
-    .accept 432 >> 接受那些被炸死的流浪汉！
+    .accept 432 >>接受那些被炸死的流浪汉！
 step << Warrior/Paladin/Rogue
     .goto Dun Morogh,69.3,55.5
     .train 2575 >>训练采矿，铸造寻找矿物
@@ -1182,13 +1182,13 @@ step << Warlock
     .xp 12
 step
     .goto Dun Morogh,69.1,56.3
-    .turnin 432 >> 把那些被炸死的暴徒交上来！
+    .turnin 432 >>把那些被炸死的暴徒交上来！
 step
     .goto Dun Morogh,68.9,55.9
-    .vendor >> 供应商垃圾，修理
+    .vendor >>供应商垃圾，修理
 step
     .goto Dun Morogh,68.7,56.0
-    .turnin 433 >> 上缴公务员
+    .turnin 433 >>上缴公务员
 step << !Warlock
     .xp 11
 step
@@ -1197,12 +1197,12 @@ step
 step
     .goto Dun Morogh,81.2,42.7,45,0
     .goto Dun Morogh,83.9,39.2
-    .accept 419 >> 接受迷失的飞行员
+    .accept 419 >>接受迷失的飞行员
 step
     >>点击矮人尸体
     .goto Dun Morogh,79.7,36.2
-    .turnin 419 >> 交出失踪的飞行员
-    .accept 417 >> 接受飞行员的复仇
+    .turnin 419 >>交出失踪的飞行员
+    .accept 417 >>接受飞行员的复仇
 step
     >>杀死芒格克劳。抢走他的爪子
     .goto Dun Morogh,78.9,37.0
@@ -1211,12 +1211,12 @@ step
     #som
     .goto Dun Morogh,83.9,39.2
     >>选择匕首，用它作为你的副手，直到你得到一把小贩的剑 << Rogue
-    .turnin 417 >> 提交飞行员的复仇
+    .turnin 417 >>提交飞行员的复仇
 step
     #era
     .goto Dun Morogh,83.9,39.2
     >>选择匕首，作为你的副手 << Rogue
-    .turnin 417 >> 提交飞行员的复仇
+    .turnin 417 >>提交飞行员的复仇
 step
     .goto Dun Morogh,84.4,31.1,25 >>穿过隧道去莫丹湖
 ]])
@@ -1237,8 +1237,8 @@ step
     .vendor >>供应商和维修
 step
     .goto Loch Modan,24.8,18.4
-    .turnin 353 >> 交给Stormpike的交货
-    .accept 307 >> 接受肮脏的爪子
+    .turnin 353 >>交给Stormpike的交货
+    .accept 307 >>接受肮脏的爪子
 step
     #sticky
     #completewith next
@@ -1252,26 +1252,26 @@ step
     .goto Loch Modan,35.1,47.8,130 >>在途中碾碎暴徒，以便稍后进行烹饪任务
 step
     .goto Loch Modan,34.8,49.3
-    .accept 418 >> 接受Thelsamar鲜血香肠
+    .accept 418 >>接受Thelsamar鲜血香肠
 step
     #sticky
     #label StormpikeO
-    .abandon 1338 >> 放弃Stormpike的命令。这是为了解锁登山者Stormpike的任务
+    .abandon 1338 >>放弃Stormpike的命令。这是为了解锁登山者Stormpike的任务
 step
     .goto Loch Modan,34.8,48.6
     .vendor >>购买1-2个6槽包
 step
     .goto Loch Modan,35.5,48.4
-    .vendor >> 购买食物/水（尝试喝40杯5级饮料，20杯5级食物） << Priest/Mage/Warlock/Paladin
-    .vendor >> 购买食物，尝试吃大约40种5级食物 << Rogue/Warrior
+    .vendor >>购买食物/水(尝试喝40杯5级饮料，20杯5级食物) << Priest/Mage/Warlock/Paladin
+    .vendor >>购买食物，尝试吃大约40种5级食物 << Rogue/Warrior
 step
     #requires StormpikeO
     .goto Loch Modan,32.6,49.9,80.0,0
     .goto Loch Modan,37.2,46.1,80.0,0
     .goto Loch Modan,36.7,41.6
     >>找到卡德雷尔。他沿着塞尔萨马尔公路巡逻
-    .accept 416 >> 接受捕鼠
-    .accept 1339 >> 接受登山者Stormpike的任务
+    .accept 416 >>接受捕鼠
+    .accept 1339 >>接受登山者Stormpike的任务
 step
     #sticky
     #completewith Thelsamar1
@@ -1295,18 +1295,18 @@ step
 step
     .goto Loch Modan,36.3,24.7
     >>收集你在山洞里找到的板条箱。小心，因为这在11级很难做到
-    >>几秒钟后，当Geomangers施放火焰防护（Fire immunity）时要小心 << Mage/Warlock
+    >>几秒钟后，当Geomangers施放火焰防护(Fire immunity)时要小心 << Mage/Warlock
     >>你可以在洞穴里再抢劫一次后返回，因为板条箱可以在你身后重生
     .complete 307,1 --Collect Miners' Gear (x4)
 step << Paladin/Warrior
     #sticky
     #label Mace
     .goto Loch Modan,42.9,9.9
-    .vendor >> 向销售商查询他可以销售的绿色2小时狼牙棒。如果你有足够的钱，买了它。否则，就在这里从科波德斯那里磨钱，直到你有足够的钱 << Paladin/Warrior
+    .vendor >>向销售商查询他可以销售的绿色2小时狼牙棒。如果你有足够的钱，买了它。否则，就在这里从科波德斯那里磨钱，直到你有足够的钱 << Paladin/Warrior
     >>如果你有80银币时武器还没有，跳过这一步
 step
-    >> 杀死科波德斯。抢走他们的耳朵
-    >> 确保为以后保存10块亚麻布。不要出售它 << Paladin
+    >>杀死科波德斯。抢走他们的耳朵
+    >>确保为以后保存10块亚麻布。不要出售它 << Paladin
     .complete 416,1 --Collect Tunnel Rat Ear (x12)
     .collect 2589,10 << Paladin
 step << Paladin/Warrior
@@ -1335,9 +1335,9 @@ step
     .vendor >>供应商和维修
 step
     .goto Loch Modan,24.7,18.3
-    .turnin 307 >> 交上脏爪子
-    .accept 1338 >> 接受Stormpike的命令
-    .turnin 1339 >> 提交登山者Stormpike的任务
+    .turnin 307 >>交上脏爪子
+    .accept 1338 >>接受Stormpike的命令
+    .turnin 1339 >>提交登山者Stormpike的任务
 step
     #sticky
     #label Meat9
@@ -1395,27 +1395,27 @@ step
     .goto Loch Modan,37.2,46.1,80.0,0
     .goto Loch Modan,36.7,41.6
     >>找到卡德雷尔。他沿着塞尔萨马尔公路巡逻
-    .turnin 416 >> 上缴捕鼠
+    .turnin 416 >>上缴捕鼠
 step
     .goto Loch Modan,34.8,49.3
-    .turnin 418 >> 加入塞尔萨马尔鲜血香肠
+    .turnin 418 >>加入塞尔萨马尔鲜血香肠
 step
     .goto Loch Modan,34.8,48.6
-    .vendor >> 购买1块燧石和火药，以及1块简单木材。如果需要，购买更多6个插槽
+    .vendor >>购买1块燧石和火药，以及1块简单木材。如果需要，购买更多6个插槽
     .collect 4470,1 --Simple Wood (1)
     .collect 4471,1 --Flint and Tinder (1)
 step
     .goto Loch Modan,33.9,51.0
-    .fp Thelsamar >> 获取Thelsamar飞行路线
+    .fp Thelsamar >>获取Thelsamar飞行路线
 step
     .goto Loch Modan,22.1,73.1
-    .accept 224 >> 接受保护国王的土地
+    .accept 224 >>接受保护国王的土地
 step
     .goto Loch Modan,23.2,73.7
     >>从后面进入沙坑
-    .accept 267 >> 接受Trogg威胁
+    .accept 267 >>接受Trogg威胁
 step
-    .goto Loch Modan,29.9,68.2,45 >> 跑到Troggs入口
+    .goto Loch Modan,29.9,68.2,45 >>跑到Troggs入口
 step
     .goto Loch Modan,30.0,72.4,100,0
     .goto Loch Modan,34.7,71.6,100,0
@@ -1439,20 +1439,20 @@ step << Warlock
     .xp 13+9600>>研磨至9600+/11400xp
 step << Warlock
     #som
-    .xp 14-2520 >> 研磨，直到达到8880xp，进入13级
+    .xp 14-2520 >>研磨，直到达到8880xp，进入13级
 step
     .goto Loch Modan,22.2,73.3
-    .turnin 224 >> 为保卫国王的土地而投降
+    .turnin 224 >>为保卫国王的土地而投降
 step
     #label TroggT
     .goto Loch Modan,23.2,73.7
-    .turnin 267 >> 提交Trogg威胁
+    .turnin 267 >>提交Trogg威胁
 step << Warlock
-    .xp 14 >> 研磨至14
+    .xp 14 >>升级到14
 step
-    .hs >> 霍斯到暴风城
-    .vendor >> 供应商垃圾 << !Paladin
-    .vendor >> 供应商垃圾箱。确保节省10件亚麻布 << Paladin
+    .hs >>霍斯到暴风城
+    .vendor >>供应商垃圾 << !Paladin
+    .vendor >>供应商垃圾箱。确保节省10件亚麻布 << Paladin
 step << Warlock/Priest
     #softcore
     #label Wand1
@@ -1478,54 +1478,54 @@ step << Warlock
     #sticky
     #completewith next
     .goto StormwindClassic,29.2,74.0,20,0
-    .goto StormwindClassic,27.2,78.1,15 >> 走进屠宰羔羊，下楼去
+    .goto StormwindClassic,27.2,78.1,15 >>走进屠宰羔羊，下楼去
 step << Warlock
     .goto StormwindClassic,26.11,77.20
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
     .goto StormwindClassic,25.65,77.63
-    .vendor >> 购买消耗阴影r1，然后牺牲r1书籍（如果你有钱）
+    .vendor >>购买消耗阴影r1，然后牺牲r1书籍(如果你有钱)
 step << Mage
-    .goto StormwindClassic,37.69,82.09,10 >> 爬上塔楼，然后穿过入口
-    .trainer >> 训练你的职业咒语
+    .goto StormwindClassic,37.69,82.09,10 >>爬上塔楼，然后穿过入口
+    .trainer >>训练你的职业咒语
 step << Paladin
     >>为Duthorian Rall执行任务
     .goto StormwindClassic,39.80,29.77
-    .turnin 1641 >> 交上神性之父
+    .turnin 1641 >>交上神性之父
     .collect 6775,1,1642 --Tome of Divinity (1)
-    .accept 1642 >> 接受神性之父
-    .turnin 1642 >> 交上神性之父
-    .accept 1643 >> 接受神性之父
+    .accept 1642 >>接受神性之父
+    .turnin 1642 >>交上神性之父
+    .accept 1643 >>接受神性之父
 step << Paladin
     .goto StormwindClassic,38.68,32.85
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Priest
     .goto StormwindClassic,38.54,26.86
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step
     .goto StormwindClassic,58.08,16.52
-    .turnin 1338 >> 提交Stormpike的命令
+    .turnin 1338 >>提交Stormpike的命令
 step << Rogue
    .goto StormwindClassic,74.65,52.83
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Warrior
     #completewith next
-    .goto StormwindClassic,74.91,51.55,20 >> 进入指挥中心
+    .goto StormwindClassic,74.91,51.55,20 >>进入指挥中心
 step << Warrior
     .goto StormwindClassic,78.67,45.80
-    .trainer >> 上楼去。训练你的职业咒语
+    .trainer >>上楼去。训练你的职业咒语
 step << Paladin
     .goto StormwindClassic,57.08,61.74
-    .turnin 1643 >> 交上神性之父
-    .accept 1644 >> 接受神性之父
-    .turnin 1644 >> 交上神性之父
-    .accept 1780 >> 接受神性之父
+    .turnin 1643 >>交上神性之父
+    .accept 1644 >>接受神性之父
+    .turnin 1644 >>交上神性之父
+    .accept 1780 >>接受神性之父
 step
     .goto StormwindClassic,66.28,62.13
-    .turnin 6261 >> 交给Dungar Longdrink
-    .accept 6285 >> 接受返回Lewis
+    .turnin 6261 >>交给Dungar Longdrink
+    .accept 6285 >>接受返回Lewis
 step
     .goto StormwindClassic,66.28,62.13
-    .fly Westfall >> 飞往威斯特福尔
+    .fly Westfall >>飞往威斯特福尔
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -1556,7 +1556,7 @@ step << Warlock
     .vendor >>供应商垃圾
 step << Warlock
     .goto Elwynn Forest,49.9,42.6
-    .accept 1598 >> 接受被盗的汤姆
+    .accept 1598 >>接受被盗的汤姆
     .trainer >>火车献祭
 step << Warlock
     #hardcore
@@ -1575,20 +1575,20 @@ step << Warlock
     .complete 1598,1 --Collect Powers of the Void (x1)
 step << Warlock
     #softcore
-    .deathskip >> 在精神治疗师处死亡并重生
+    .deathskip >>在精神治疗师处死亡并重生
 step << Warlock
     #hardcore
     #completewith next
     >>确保你在帐篷的深处，这样你就不会重新聚集
-    .hs >> Hearth返回Northshire Valley
+    .hs >>炉灶返回Northshire Valley
 step << Warlock
     .goto Elwynn Forest,49.9,42.6
-    .turnin 1598 >> 交出被盗的汤姆
+    .turnin 1598 >>交出被盗的汤姆
 step
     >>召唤小鬼，拒绝恶魔皮肤 << Warlock
     >>删除您的炉石
     .goto Elwynn Forest,48.2,42.9
-    .accept 783 >> 接受内部威胁
+    .accept 783 >>接受内部威胁
 step << Warrior
     #sticky
     #completewith next
@@ -1599,25 +1599,25 @@ step << Warrior
     .vendor >>供应商垃圾
 step
     .goto Elwynn Forest,48.9,41.6
-    .turnin 783 >> 提交内部威胁
-    .accept 7 >> 接受Kobold营地清理
+    .turnin 783 >>提交内部威胁
+    .accept 7 >>接受Kobold营地清理
 step << Warrior
     .goto Elwynn Forest,50.2,42.3
     .trainer >>火车战斗呐喊
 step
     >>跑回室外 << Warrior
     .goto Elwynn Forest,48.2,42.9
-    .accept 5261 >> 接受Eagan Peltskinner
+    .accept 5261 >>接受Eagan Peltskinner
 step << Priest/Mage/Warlock
     .goto Elwynn Forest,46.2,40.4
     .vendor >>杀死狼，直到价值50美分的小贩垃圾。供应商，然后从丹尼尔兄弟那里购买10 x10的水。
     .collect 159,10 --Collect Refreshing Spring Water (x10)
 step << Priest/Mage
-    .xp 2 >> 研磨至2
+    .xp 2 >>升级到2
 step
     .goto Elwynn Forest,48.9,40.2
-    .turnin 5261 >> 交给Eagan Peltskinner
-    .accept 33 >> 接受跨境狼群
+    .turnin 5261 >>交给Eagan Peltskinner
+    .accept 33 >>接受跨境狼群
 step
     .goto Elwynn Forest,46.70,37.78
     >>杀死幼狼。抢他们的肉
@@ -1625,10 +1625,10 @@ step
 step
     .goto Elwynn Forest,49.05,35.33
     >>杀死科博尔德害虫
-    .complete 7,1 --杀死科博尔德害虫 (x10)
+    .complete 7,1 --Kill Kobold Vermin (x10)
 step
     .goto Elwynn Forest,48.9,40.2
-    .turnin 33 >> 跨境交出狼
+    .turnin 33 >>跨境交出狼
 step << Priest/Mage/Warlock
     .goto Elwynn Forest,47.6,41.5
     .vendor >>小贩扔掉垃圾，然后从丹尼尔兄弟那里多买10瓶水
@@ -1637,16 +1637,16 @@ step << !Priest !Mage !Warlock
     .vendor >>供应商垃圾
 step
     .goto Elwynn Forest,48.9,41.6
-    .turnin 7 >> 提交科博尔德营地清理
-    .accept 15 >> 接受调查Echo Ridge
-    .accept 3100 >> 接受简单信函 << Warrior
-    .accept 3101 >> 接受神圣的信件 << Paladin
-    .accept 3102 >> 接受加密信函 << Rogue
-    .accept 3103 >> 接受神圣的信件 << Priest
-    .accept 3104 >> 接受字形字母 << Mage
-    .accept 3105 >> 接受涂改的信件 << Warlock
+    .turnin 7 >>提交科博尔德营地清理
+    .accept 15 >>接受调查Echo Ridge
+    .accept 3100 >>接受简单信函 << Warrior
+    .accept 3101 >>接受神圣的信件 << Paladin
+    .accept 3102 >>接受加密信函 << Rogue
+    .accept 3103 >>接受神圣的信件 << Priest
+    .accept 3104 >>接受字形字母 << Mage
+    .accept 3105 >>接受涂改的信件 << Warlock
 step
-    .xp 3 >> 研磨至3
+    .xp 3 >>升级到3
 step
     .goto Elwynn Forest,47.42,32.68
     >>杀死Kobold工人
@@ -1654,66 +1654,66 @@ step
 step << !Rogue
     #sticky
     #label xp3
-    .xp 3+820>>在回来的路上研磨到820+/1400xp
+    .xp 3+820>>在回来的路上研磨到820+/1400经验
 step
     .goto Elwynn Forest,47.7,41.4
     .vendor >>供应商垃圾
 step
     #requires xp3
     .goto Elwynn Forest,48.9,41.6
-    .turnin 15 >> 转入调查回音岭
-    .accept 21 >> 接受Echo Ridge的Skirmish
+    .turnin 15 >>转入调查回音岭
+    .accept 21 >>接受Echo Ridge的Skirmish
 step << Priest/Mage
     #sticky
     #completewith next
-    .goto Elwynn Forest,49.3,40.7,15 >> 到这里来
+    .goto Elwynn Forest,49.3,40.7,15 >>到这里来
 step << Mage
     #sticky
     #completewith next
     .goto Elwynn Forest,49.5,40.0,15 >>上楼去
 step << Mage
     .goto Elwynn Forest,49.7,39.4
-    .turnin 3104 >> 交回字形字母
-    .trainer >> 训练你的职业咒语
+    .turnin 3104 >>交回字形字母
+    .trainer >>训练你的职业咒语
 step << Priest
     #sticky
     #completewith next
-    .goto Elwynn Forest,49.8,40.2,15 >> 穿过门口
+    .goto Elwynn Forest,49.8,40.2,15 >>穿过门口
 step << Priest
     .goto Elwynn Forest,49.8,39.5
-    .turnin 3103 >> 交上神圣的信件
-    .trainer >> 训练你的职业咒语
+    .turnin 3103 >>交上神圣的信件
+    .trainer >>训练你的职业咒语
 step << Warrior/Paladin
     #sticky
     #completewith next
     .goto Elwynn Forest,49.6,41.8,15 >>呆在楼下
 step << Warrior
     .goto Elwynn Forest,50.2,42.3
-    .turnin 3100 >> 交回简单字母
-    .trainer >> 训练你的职业咒语
+    .turnin 3100 >>交回简单字母
+    .trainer >>训练你的职业咒语
 step << Paladin
     .goto Elwynn Forest,50.4,42.1
-    .turnin 3101 >> 交上神圣的信件
-    .trainer >> 训练你的职业咒语
+    .turnin 3101 >>交上神圣的信件
+    .trainer >>训练你的职业咒语
 step
     .goto Elwynn Forest,48.2,42.9
-    .accept 18 >> 接受小偷兄弟会
+    .accept 18 >>接受小偷兄弟会
 step << Warlock
     .goto Elwynn Forest,49.9,42.6
-    .turnin 3105 >> 交回涂改的字母
-    .xp 4 >> 研磨至4
+    .turnin 3105 >>交回涂改的字母
+    .xp 4 >>升级到4
     .trainer >>培训腐败
 step
     .goto Elwynn Forest,54.57,49.03
     >>杀死德菲亚斯暴徒。抢了他们的头巾
     .complete 18,1 --Collect Red Burlap Bandana (x12)
 step << Rogue
-    .xp 4 >> 研磨至4
+    .xp 4 >>升级到4
 step
     .goto Elwynn Forest,48.2,42.9
-    .turnin 18 >> 交出小偷兄弟会
-    .accept 6 >> 接受Garrick脚垫的酬金
-    .accept 3903 >> 接受米莉·奥斯沃思
+    .turnin 18 >>交出小偷兄弟会
+    .accept 6 >>接受Garrick脚垫的酬金
+    .accept 3903 >>接受米莉·奥斯沃思
 step
     .goto Elwynn Forest,47.7,41.4
     .vendor >>供应商垃圾，修理
@@ -1723,130 +1723,130 @@ step
     >>杀死矿井中的工人
     .complete 21,1 --Kill Kobold Laborer (x12)
 step
-    .xp 5 >> 研磨至5
+    .xp 5 >>升级到5
 step
     .goto Elwynn Forest,50.7,39.2
-    .turnin 3903 >> 交给米莉·奥斯沃思。跳过后续操作
+    .turnin 3903 >>交给米莉·奥斯沃思。跳过后续操作
 step << Rogue
     .goto Elwynn Forest,50.3,39.9
     >>你不需要训练
-    .turnin 3102 >> 提交加密信件
+    .turnin 3102 >>提交加密信件
 step
     .goto Elwynn Forest,57.5,48.2
     >>途中研磨。杀死加里克并抢走他的头
     .complete 6,1 --Collect Garrick's Head (x1)
 step
     #sticky
-    .abandon 3904 >> 放弃米莉的收获
+    .abandon 3904 >>放弃米莉的收获
 step
     .xp 5+1220>>返回1220+/2800xp的路上
     .goto Elwynn Forest,48.2,42.9
 step
     .goto Elwynn Forest,48.2,42.9
-    .turnin 6 >> 在Garrick脚垫上交赏金
+    .turnin 6 >>在Garrick脚垫上交赏金
 step
     .goto Elwynn Forest,48.9,41.6
-    .turnin 21 >> 在Echo Ridge转弯
-    .accept 54 >> 接受向Goldshire的报告
+    .turnin 21 >>在Echo Ridge转弯
+    .accept 54 >>接受向Goldshire的报告
 step << Priest
     .goto Elwynn Forest,49.8,39.5
-    .accept 5623 >> 接受光明
+    .accept 5623 >>接受光明
 step
     .goto Elwynn Forest,45.6,47.7
-    .accept 2158 >> 接受休息和放松
+    .accept 2158 >>接受休息和放松
 step
     #hardcore
     .goto Elwynn Forest,42.1,65.9
-    .turnin 54 >> 向Goldshire提交报告
-    .accept 62 >> 接受Fargodeep矿井
+    .turnin 54 >>向Goldshire提交报告
+    .accept 62 >>接受Fargodeep矿井
 step
     #softcore
     #sticky
     #completewith Goldshire
-    .goto Elwynn Forest,39.5,60.5,200 >> 在精神疗养院死去并重生，或者逃到戈德郡
+    .goto Elwynn Forest,39.5,60.5,200 >>在精神疗养院死去并重生，或者逃到戈德郡
 step << Warrior/Paladin/Rogue
     .goto Elwynn Forest,41.7,65.5
-    .trainer >> 从阿格斯培训铁匠。这将允许你为你的武器制造+2伤害磨石，这些磨石非常坚固。 << Warrior/Rogue
-    .trainer >> 从阿格斯培训铁匠。这将允许你为你的武器制造+2点非常强大的伤害重石。 << Paladin
+    .trainer >>从阿格斯培训铁匠。这将允许你为你的武器制造+2伤害磨石，这些磨石非常坚固。 << Warrior/Rogue
+    .trainer >>从阿格斯培训铁匠。这将允许你为你的武器制造+2点非常强大的伤害重石。 << Paladin
 step << Warrior
     .goto Elwynn Forest,41.5,65.9
-    >>修理你的武器。如果你有足够的钱（5s36c），从科瑞纳买一辆格拉迪斯。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(5s36c)，从科瑞纳买一辆格拉迪斯。否则，请跳过此步骤(稍后再回来)
     .collect 2488,1
 step << Rogue
     .goto Elwynn Forest,41.5,65.9
-    >>修理你的武器。如果你有足够的钱（4s1c），就从科里纳买一个细高跟鞋。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(4s1c)，就从科里纳买一个细高跟鞋。否则，请跳过此步骤(稍后再回来)
     .collect 2494,1
 step << Paladin
     .goto Elwynn Forest,41.5,65.9
-    >>修理你的武器。如果你有足够的钱（7s 1c），从Corina买一把木制锤子。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(7s 1c)，从Corina买一把木制锤子。否则，请跳过此步骤(稍后再回来)
     .collect 2493,1 --Collect Wooden Mallet
 step << Mage/Priest/Warlock
     #completewith next
     .goto Elwynn Forest,41.7,65.9
-    .vendor >> 供应商垃圾，修理
+    .vendor >>供应商垃圾，修理
 step
     #label Goldshire
     .goto Elwynn Forest,42.1,65.9
-    .turnin 54 >> 向Goldshire提交报告
-    .accept 62 >> 接受Fargodeep矿井
+    .turnin 54 >>向Goldshire提交报告
+    .accept 62 >>接受Fargodeep矿井
 step
     >>在你进客栈的时候，靠近左边
     .goto Elwynn Forest,42.9,65.7,15,0
     .goto Elwynn Forest,43.3,65.7
-    .accept 60 >> 接受Kobold Candles
+    .accept 60 >>接受Kobold Candles
 step
     .goto Elwynn Forest,43.8,65.8
     >>请勿在此购买任何食物/饮料 << Warlock
-    .turnin 2158 >> 休息和放松
-    .home >> 将您的炉石设置为Goldshire
+    .turnin 2158 >>休息和放松
+    .home >>将您的炉石设置为Goldshire
 step
-    .xp 6 >> 研磨至6
+    .xp 6 >>升级到6
 step << Rogue
     .goto Elwynn Forest,43.96,65.92
-    .vendor 151 >> 购买布罗格的3级投掷。装备它
+    .vendor 151 >>购买布罗格的3级投掷。装备它
 step << Warlock
     #completewith next
     .goto Elwynn Forest,44.1,66.0,10 >>去客栈老板后面的房间，然后下楼。
 step << Warlock
     .goto Elwynn Forest,44.4,66.2
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
     .goto Elwynn Forest,44.4,66.0
-    .vendor >> 如果你在训练后有钱，就买血盟书（否则以后再买）
+    .vendor >>如果你在训练后有钱，就买血盟书(否则以后再买)
 step << Mage/Priest/Rogue
     #sticky
     #completewith next
     .goto Elwynn Forest,43.7,66.4,12 >>上楼去
 step << Mage
     .goto Elwynn Forest,43.2,66.2
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Priest
     .goto Elwynn Forest,43.3,65.7
-    .turnin 5623 >> 支持灯光
-    .accept 5624 >> 接受光明之衣
-    .trainer >> 训练你的职业咒语
+    .turnin 5623 >>支持灯光
+    .accept 5624 >>接受光明之衣
+    .trainer >>训练你的职业咒语
 step << Rogue
     .money <0.01
     .goto Elwynn Forest,43.9,65.9
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Rogue/Warrior
     .money <0.01
     .goto Elwynn Forest,43.4,65.5
-    .train 3273 >> 训练急救-不要一次包扎好所有绷带，最好稍后再包扎
+    .train 3273 >>训练急救-不要一次包扎好所有绷带，最好稍后再包扎
 step << Warrior
     .goto Elwynn Forest,43.8,65.8
-    .vendor >> 购买5级食物至1银
+    .vendor >>购买5级食物至1银
 step << Rogue
     .goto Elwynn Forest,43.8,65.8
-    .vendor >> 购买最多20种5级食物
+    .vendor >>购买最多20种5级食物
 step << Warrior
     .goto Elwynn Forest,41.1,65.8
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Paladin
     .goto Elwynn Forest,41.1,66.0
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step
     .goto Elwynn Forest,42.1,67.3
-    .accept 47 >> 接受金尘交换
+    .accept 47 >>接受金尘交换
 step << Priest
     >>使用较低治疗等级2，然后使用金字招牌：对守卫罗伯茨的坚韧
     .goto Elwynn Forest,48.2,68.0
@@ -1858,48 +1858,48 @@ step
     .collect 769,4 --Collect Chunk of Boar Meat (x4)
 step
     .goto Elwynn Forest,34.5,84.3
-    .accept 85 >> 接受丢失的项链
+    .accept 85 >>接受丢失的项链
     .goto Elwynn Forest,34.7,84.5
-    .accept 88 >> 接受公主必死无疑！
+    .accept 88 >>接受公主必死无疑！
 step
     #sticky
     #completewith Candles
-    >> 从附近的Kobolds买些蜡烛
+    >>从附近的Kobolds买些蜡烛
     .complete 60,1 --Collect Kobold Candle (x8)
 step
     #sticky
     #label Candles
     #completewith next
-    >> 从附近的Kobolds那里获得一些金粉
+    >>从附近的Kobolds那里获得一些金粉
     .complete 47,1 --Collect Gold Dust (x10)
 step << Priest/Mage/Warlock
     #label Dust
     >>将暴徒从矿井外向东驱赶
     .goto Elwynn Forest,43.1,85.7
-    .turnin 85 >> 交回丢失的项链
-    .accept 86 >> 为比利接受派
+    .turnin 85 >>交回丢失的项链
+    .accept 86 >>为比利接受派
 step << Warrior
     #label Dust
     >>将暴徒从矿井外向东碾碎。如果你在任何时候得到一块粗糙的石头，通过锻造将它变成一块锋利的石头，并将其应用到你的剑上
     .goto Elwynn Forest,43.1,85.7
-    .turnin 85 >> 交回丢失的项链
-    .accept 86 >> 为比利接受派
+    .turnin 85 >>交回丢失的项链
+    .accept 86 >>为比利接受派
 step << Rogue
     #label Dust
     >>将暴徒从矿井外向东碾碎。如果你在任何时候得到一块粗糙的石头，通过锻造将其变成一块锋利的石头，并将其应用到你的匕首上
     .goto Elwynn Forest,43.1,85.7
-    .turnin 85 >> 交回丢失的项链
-    .accept 86 >> 为比利接受派
+    .turnin 85 >>交回丢失的项链
+    .accept 86 >>为比利接受派
 step << Paladin
     #label Dust
     >>将暴徒从矿井外向东碾碎。如果你在任何时候得到一块粗糙的石头，通过锻造将其制成一块重石，并将其应用到你的狼牙棒上
     .goto Elwynn Forest,43.1,85.7
-    .turnin 85 >> 交回丢失的项链
-    .accept 86 >> 为比利接受派
+    .turnin 85 >>交回丢失的项链
+    .accept 86 >>为比利接受派
 step
     #label BoarMeat1
     .goto Elwynn Forest,43.2,89.6
-    .accept 106 >> 接受年轻恋人
+    .accept 106 >>接受年轻恋人
 step << Mage/Priest/Warlock
     .goto Elwynn Forest,42.4,89.4
     .vendor >>小贩，尽可能多买牛奶
@@ -1912,41 +1912,41 @@ step
     .collect 769,4 --Collect Chunk of Boar Meat (x4)
 step
     .goto Elwynn Forest,29.8,86.0
-    .turnin 106 >> 交出年轻恋人
-    .accept 111 >> 接受与Gramma交谈
+    .turnin 106 >>交出年轻恋人
+    .accept 111 >>接受与Gramma交谈
 step
     .goto Elwynn Forest,32.5,85.5
     >>吃完野猪肉
     .complete 86,1 --Collect Chunk of Boar Meat (x4)
 step
     .goto Elwynn Forest,34.5,84.3
-    .turnin 86 >> 把馅饼交给比利
-    .accept 84 >> 接受返回Billy
+    .turnin 86 >>把馅饼交给比利
+    .accept 84 >>接受返回Billy
 step
     .goto Elwynn Forest,34.9,83.9
-    .turnin 111 >> 打开Speak with Gramma
-    .accept 107 >> 接受给William的通知
+    .turnin 111 >>打开Speak with Gramma
+    .accept 107 >>接受给William的通知
 step
     #sticky
     #label KoboldCandles
-    >> 从附近的Kobolds买些蜡烛
+    >>从附近的Kobolds买些蜡烛
     .complete 60,1 --Collect Kobold Candle (x8)
 step
     #sticky
     #label GoldDust
-    >> 从附近的Kobolds那里获得一些金粉
+    >>从附近的Kobolds那里获得一些金粉
     .complete 47,1 --Collect Gold Dust (x10)
 step
     >>将暴徒从矿井外向东驱赶
     .goto Elwynn Forest,43.1,85.7
-    .turnin 84 >> 交给比利
-    .accept 87 >> 接受Goldtooth
+    .turnin 84 >>交给比利
+    .accept 87 >>接受Goldtooth
 step
     >>进入矿井
     .goto Elwynn Forest,40.5,82.3
     .complete 62,1 --Scout Through the Fargodeep Mine
 step << Warrior
-    >>尽可能多地招惹怒气（磨掉其他暴徒的怒气），然后为伯妮斯的项链杀死戈登斯
+    >>尽可能多地招惹怒气(磨掉其他暴徒的怒气)，然后为伯妮斯的项链杀死戈登斯
     .goto Elwynn Forest,41.7,78.1
     .complete 87,1 --Collect Bernice's Necklace  (x1)
 step << !Warrior
@@ -1973,76 +1973,76 @@ step
     #softcore
     #requires GoldDust
     #completewith next
-    .deathskip >> 在Goldshire死亡并重生
+    .deathskip >>在Goldshire死亡并重生
 step
     #requires GoldDust
     #label Goldtooth
     .goto Elwynn Forest,42.1,67.3
-    .turnin 47 >> 交金换尘
-    .accept 40 >> 接受鱼的危险
+    .turnin 47 >>交金换尘
+    .accept 40 >>接受鱼的危险
 step
     .goto Elwynn Forest,42.1,65.9
-    .turnin 40 >> 陷入困境
-    .accept 35 >> 接受进一步关注
-    .turnin 62 >> 交给Fargodeep矿井
-    .accept 76 >> 接受Jasperode矿
+    .turnin 40 >>陷入困境
+    .accept 35 >>接受进一步关注
+    .turnin 62 >>交给Fargodeep矿井
+    .accept 76 >>接受Jasperode矿
 step
     #completewith next
     .goto Elwynn Forest,41.7,65.9
     .vendor >>供应商垃圾，修理
 step << Warrior
     .goto Elwynn Forest,41.5,65.9
-    >>修理你的武器。如果你有足够的钱（5s36c），从科瑞纳买一辆格拉迪斯。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(5s36c)，从科瑞纳买一辆格拉迪斯。否则，请跳过此步骤(稍后再回来)
     .collect 2488,1
 step << Rogue
     .goto Elwynn Forest,41.5,65.9
-    >>修理你的武器。如果你有足够的钱（4s1c），就从科里纳买一个细高跟鞋。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(4s1c)，就从科里纳买一个细高跟鞋。否则，请跳过此步骤(稍后再回来)
     .collect 2494,1
 step << Paladin
     .goto Elwynn Forest,41.5,65.9
-    >>修理你的武器。如果你有足够的钱（7s 1c），从Corina买一把木制锤子。否则，请跳过此步骤（稍后再回来）
+    >>修理你的武器。如果你有足够的钱(7s 1c)，从Corina买一把木制锤子。否则，请跳过此步骤(稍后再回来)
     .collect 2493,1 --Collect Wooden Mallet
 step
     .goto Elwynn Forest,43.3,65.7
-    .turnin 60 >> 交上Kobold Candles
-    .accept 61 >> 接受装运至暴风城
-    .turnin 107 >> 将便条交给威廉
-    .accept 112 >> 接受收集海带
+    .turnin 60 >>交上Kobold Candles
+    .accept 61 >>接受装运至暴风城
+    .turnin 107 >>将便条交给威廉
+    .accept 112 >>接受收集海带
 step
-    .xp 8 >> 研磨至8
+    .xp 8 >>升级到8
 step << Warlock
     >>回到地下室
     .goto Elwynn Forest,44.4,66.2
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
     .goto Elwynn Forest,44.4,66.0
-    .vendor >> 如果您在培训后有钱，请购买Firebolt书籍（否则请稍后购买）
+    .vendor >>如果您在培训后有钱，请购买Firebolt书籍(否则请稍后购买)
 step
     .money <0.1250
     .goto Elwynn Forest,44.0,65.9
     .vendor >>从Brog购买6槽包
 step << Warrior
     .goto Elwynn Forest,41.1,65.8
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Paladin
     .goto Elwynn Forest,41.1,66.0
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Mage/Priest/Rogue/Warrior
     #completewith next
     .goto Elwynn Forest,43.7,66.4,15 >>上楼去
 step << Mage
     .goto Elwynn Forest,43.2,66.2
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Priest
     .goto Elwynn Forest,43.3,65.7
-    .turnin 5624 >> 交出光明的衣裳
-    .trainer >> 训练你的职业咒语
+    .turnin 5624 >>交出光明的衣裳
+    .trainer >>训练你的职业咒语
 step << Rogue
     .goto Elwynn Forest,43.9,65.9
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Rogue/Warrior/Paladin
     .money <0.01
     .goto Elwynn Forest,43.4,65.5
-    .trainer >> 训练急救-不要一次包扎好所有绷带，最好稍后再包扎
+    .trainer >>训练急救-不要一次包扎好所有绷带，最好稍后再包扎
 step << !Warrior !Rogue
     .goto Elwynn Forest,43.8,65.8
     .vendor >>购买5级水，最高40
@@ -2065,9 +2065,9 @@ step
     .complete 76,1 --Scout through the Jasperlode Mine
 step
     .goto Elwynn Forest,74.0,72.2
-    .turnin 35 >> 提交更多问题
-    .accept 37 >> 接受寻找丢失的守卫
-    .accept 52 >> 接受保护边境
+    .turnin 35 >>提交更多问题
+    .accept 37 >>接受寻找丢失的守卫
+    .accept 52 >>接受保护边境
 step
     #sticky
     #completewith Prowlers
@@ -2080,14 +2080,14 @@ step
     .complete 52,2 --Kill Young Forest Bear (x5)
 step
     .goto Elwynn Forest,72.7,60.3
-    .turnin 37 >> 上缴找到丢失的守卫
-    .accept 45 >> 接受发现罗尔夫的命运
+    .turnin 37 >>上缴找到丢失的守卫
+    .accept 45 >>接受发现罗尔夫的命运
 step
     .goto Elwynn Forest,81.4,66.1
-    .accept 5545 >> 接受一堆麻烦
+    .accept 5545 >>接受一堆麻烦
 step
     .goto Elwynn Forest,83.3,66.1
-    .vendor >> 供应商垃圾，修理
+    .vendor >>供应商垃圾，修理
 step << Paladin
     #softcore
     .goto Elwynn Forest,76.8,62.4,100,0
@@ -2109,35 +2109,35 @@ step << !Paladin
     .complete 5545,1 --Collect Bundle of Wood (x8)
 step
     #label Bundles
-    .goto Elwynn Forest,79.8,55.5,90 >> 走向守卫的尸体
+    .goto Elwynn Forest,79.8,55.5,90 >>走向守卫的尸体
 step << Priest
     .goto Elwynn Forest,79.8,55.5
-    >> 杀死尸体周围的暴徒。预制更新和盾牌，获得全部法力，然后将2个怪物拉到小屋前，移开，然后核弹一个。杀了一个就跑，然后杀了另一个。抢劫地上的尸体
-    >> 小心，因为这个任务很困难
-    .turnin 45 >> 交给《发现罗尔夫的命运》
-    .accept 71 >> 接受向托马斯报告
+    >>杀死尸体周围的暴徒。预制更新和盾牌，获得全部法力，然后将2个怪物拉到小屋前，移开，然后核弹一个。杀了一个就跑，然后杀了另一个。抢劫地上的尸体
+    >>小心，因为这个任务很困难
+    .turnin 45 >>交给《发现罗尔夫的命运》
+    .accept 71 >>接受向托马斯报告
 step << !Paladin
     .goto Elwynn Forest,79.8,55.5
-    >> 杀死尸体周围的暴徒。把两个暴徒拉到小屋前，走开，一边放羊一边杀掉另一个，然后杀掉羊群暴徒。抢劫地上的尸体 << Mage
-    >> 池怒，然后杀死尸体周围的2名暴徒。将2名暴徒拉到小屋前，移开，保持一条腿筋，同时杀死另一条。杀了一个就逃跑（用弹珠在上面），然后拉杀另一个。抢劫地上的尸体 << Warrior
-    >> 杀死尸体周围的暴徒。把两个暴徒拉到小屋前，走开，用核弹袭击一个暴徒。使用回避。杀了一个就跑，然后杀了另一个。抢劫地上的尸体 << Rogue
+    >>杀死尸体周围的暴徒。把两个暴徒拉到小屋前，走开，一边放羊一边杀掉另一个，然后杀掉羊群暴徒。抢劫地上的尸体 << Mage
+    >>池怒，然后杀死尸体周围的2名暴徒。将2名暴徒拉到小屋前，移开，保持一条腿筋，同时杀死另一条。杀了一个就逃跑(用弹珠在上面)，然后拉杀另一个。抢劫地上的尸体 << Warrior
+    >>杀死尸体周围的暴徒。把两个暴徒拉到小屋前，走开，用核弹袭击一个暴徒。使用回避。杀了一个就跑，然后杀了另一个。抢劫地上的尸体 << Rogue
      >>杀死尸体周围的暴徒。把两个暴徒拉到小屋前，走开，然后让其中一个保持恐惧，并试着在两个上面都留下点。然后在地上洗劫尸体 << Warlock
-    >> 小心，因为这个任务很困难
-    .turnin 45 >> 交给《发现罗尔夫的命运》
-    .accept 71 >> 接受向托马斯报告
+    >>小心，因为这个任务很困难
+    .turnin 45 >>交给《发现罗尔夫的命运》
+    .accept 71 >>接受向托马斯报告
 step << Paladin
     #softcore
     .goto Elwynn Forest,79.8,55.5
-    >> 在尸体上奔跑，然后使用神圣保护，立即洗劫尸体，处理并接受任务。你会死的
-    .turnin 45 >> 交给《发现罗尔夫的命运》
-    .accept 71 >> 接受向托马斯报告
+    >>在尸体上奔跑，然后使用神圣保护，立即洗劫尸体，处理并接受任务。你会死的
+    .turnin 45 >>交给《发现罗尔夫的命运》
+    .accept 71 >>接受向托马斯报告
 step << Paladin
     #hardcore
     .goto Elwynn Forest,79.8,55.5
-    >> 杀死尸体周围的暴徒。将2名暴徒拉到小屋前，走开，用核弹袭击其中一名小屋暴徒。泡泡，治疗/必要时逃跑，然后回来杀死其他暴徒
-    >> 小心，因为这个任务很困难
-    .turnin 45 >> 交给《发现罗尔夫的命运》
-    .accept 71 >> 接受向托马斯报告
+    >>杀死尸体周围的暴徒。将2名暴徒拉到小屋前，走开，用核弹袭击其中一名小屋暴徒。泡泡，治疗/必要时逃跑，然后回来杀死其他暴徒
+    >>小心，因为这个任务很困难
+    .turnin 45 >>交给《发现罗尔夫的命运》
+    .accept 71 >>接受向托马斯报告
 step << Paladin
     #softcore
     #sticky
@@ -2156,14 +2156,14 @@ step
 step
     #label Bundles2
     .goto Elwynn Forest,81.4,66.1
-    .turnin 5545 >> 交一堆麻烦
+    .turnin 5545 >>交一堆麻烦
 step
     #label Prowlers
-    .xp 9 >> 研磨至9
+    .xp 9 >>升级到9
 step
     #label Bears
     .goto Elwynn Forest,79.5,68.8
-    .accept 83 >> 接受红色亚麻制品
+    .accept 83 >>接受红色亚麻制品
 step
     .goto Elwynn Forest,76.7,75.6,100,0
     .goto Elwynn Forest,79.7,83.7,100,0
@@ -2177,16 +2177,16 @@ step
     .complete 52,2 --Kill Young Forest Bear (x5)
 step
     .goto Elwynn Forest,74.0,72.2
-    .turnin 52 >> 上缴保卫边疆
-    .turnin 71 >> 向托马斯提交报告
-    .accept 39 >> 接受并交付Thomas的报告
-    .accept 109 >> 接受Gryan Stoutmantle的报告
+    .turnin 52 >>上缴保卫边疆
+    .turnin 71 >>向托马斯提交报告
+    .accept 39 >>接受并交付Thomas的报告
+    .accept 109 >>接受Gryan Stoutmantle的报告
 step
     #sticky
     #completewith Deed
-    >>留意德菲亚斯（Defias）的《威斯特福尔契约》（lucky drop）
+    >>留意德菲亚斯(Defias)的《威斯特福尔契约》(lucky drop)
     .collect 1972,1,184 --Collect Westfall Deed (x1)
-    .accept 184 >> 接受Furlbrow的契约
+    .accept 184 >>接受Furlbrow的契约
 step
     .goto Elwynn Forest,69.53,79.47
     >>开始围着农场转，杀掉德菲亚斯，然后抢劫他们的头巾
@@ -2204,7 +2204,7 @@ step << !Rogue !Warrior
     >>杀死公主。如果需要的话，使用之前的小治疗药剂。抢走她的衣领
     >>如果你在挣扎，你可以用篱笆来滥用路径和争取时间
     .complete 88,1 --Collect Brass Collar (x1)
-    .link https://www.youtube.com/watch?v=GRrXOV-UvD4 >> 如果遇到困难，请单击此处
+    .link https://www.youtube.com/watch?v=GRrXOV-UvD4 >>如果遇到困难，请单击此处
 step << !Warlock !Warrior
     .goto Elwynn Forest,69.4,79.2
     .xp 10+200>>研磨至200+/7600xp至10级
@@ -2216,17 +2216,17 @@ step
 step
     #label Deed
     .goto Elwynn Forest,79.5,68.9
-    .turnin 83 >> 交出红色亚麻制品
+    .turnin 83 >>交出红色亚麻制品
 step << !Warlock
     #softcore
     .goto Elwynn Forest,83.3,66.1
-    .vendor >> 供应商垃圾，修理
+    .vendor >>供应商垃圾，修理
 step << !Warlock !Warrior
     .goto Redridge Mountains,8.5,72.0
     .xp 10+1800>>研磨至1800+/7600xp至10级
 step << !Warlock
     .goto Redridge Mountains,8.5,72.0
-    .zone Redridge Mountains >> 向东行驶至雷德里奇山脉
+    .zone Redridge Mountains >>向东行驶至雷德里奇山脉
 step << !Warlock
     #softcore
     #sticky
@@ -2239,99 +2239,99 @@ step << !Warlock
 step << !Warlock
     #softcore
     .goto Redridge Mountains,30.6,59.4
-    .fp Redridge Mountains >> 获得Redridge Mountains飞行路线
+    .fp Redridge Mountains >>获得Redridge Mountains飞行路线
 step << !Warlock
     #hardcore
     >>朝飞行路线跑去。要格外小心，不要在途中对任何暴徒进行攻击或死亡。试着紧贴道路，保持警惕
     .goto Redridge Mountains,30.6,59.4
-    .fp Redridge Mountains >> 获得Redridge Mountains飞行路线
+    .fp Redridge Mountains >>获得Redridge Mountains飞行路线
 step
-    .hs >> 赫斯到戈德郡
+    .hs >>赫斯到戈德郡
 step
     .goto Elwynn Forest,43.3,65.7
     >>不要等待他的rp活动
-    .turnin 112 >> 转入收集海带
+    .turnin 112 >>转入收集海带
 step << Warrior/Rogue
     .goto Elwynn Forest,43.4,65.6
     >>与楼上的急救教练交谈
-    .train 3273 >> 培训急救
+    .train 3273 >>培训急救
 step
     .goto Elwynn Forest,42.2,65.8
-    .turnin 39 >> 提交提交托马斯的报告
-    .turnin 76 >> 交给Jasperode矿
-    .accept 239 >> 接受Westbrook Garrison需要帮助！
+    .turnin 39 >>提交提交托马斯的报告
+    .turnin 76 >>交给Jasperode矿
+    .accept 239 >>接受Westbrook Garrison需要帮助！
     .accept 59 >>接受布甲和皮甲 << Warlock
 step
     .goto Elwynn Forest,41.7,65.5
-    .accept 1097 >> 接受Elmore的任务
+    .accept 1097 >>接受Elmore的任务
 step
     #softcore
     .goto Elwynn Forest,41.7,65.9
     .vendor >>供应商垃圾，修理
 step << Warrior
     .goto Elwynn Forest,41.1,65.8
-    .accept 1638 >> 接受战士训练
-    .trainer >> 训练你的职业咒语
+    .accept 1638 >>接受战士训练
+    .trainer >>训练你的职业咒语
 step << Paladin
     .goto Elwynn Forest,41.1,66.0
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step
     .goto Elwynn Forest,43.3,65.7
-    .accept 114 >> 接受逃脱
+    .accept 114 >>接受逃脱
 step << Warlock
     >>回到地下室
     .goto Elwynn Forest,44.4,66.2
-    .accept 1685 >> 接受加金的召唤
-    .trainer >> 训练你的职业咒语
+    .accept 1685 >>接受加金的召唤
+    .trainer >>训练你的职业咒语
 step << Mage/Priest/Rogue
     #sticky
     #completewith next
     .goto Elwynn Forest,43.7,66.4,10 >>上楼去
 step << Priest
     .goto Elwynn Forest,43.3,65.7
-    .accept 5635 >> 接受绝望祈祷
-    .trainer >> 训练你的职业咒语
+    .accept 5635 >>接受绝望祈祷
+    .trainer >>训练你的职业咒语
 step << Mage
     .goto Elwynn Forest,43.2,66.2
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Rogue
     .goto Elwynn Forest,43.9,65.9
     >>别担心没有两件武器，我们很快就会有另一件
     >>在这里培训时，要非常小心你的钱。确保你训练了Dual Wield和Sprint，跳过其他
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Rogue
     .goto Elwynn Forest,41.7,65.9
     .vendor >>为您的业余爱好购买细高跟鞋
 step
     >>跑出客栈往南走
     .goto Elwynn Forest,43.2,89.6
-    .turnin 114 >> 上车逃生
+    .turnin 114 >>上车逃生
 step
     .goto Elwynn Forest,34.7,84.5
-    .turnin 88 >> 公主必须死！
+    .turnin 88 >>公主必须死！
 step
     .goto Elwynn Forest,34.5,84.3
-    .turnin 87 >> 交给Goldtooth
+    .turnin 87 >>交给Goldtooth
 step << Warlock
     >>点击周围任何通缉海报
     .goto Elwynn Forest,24.6,74.7
-    .accept 176 >> 接受通缉：“Hogger”
+    .accept 176 >>接受通缉：“Hogger”
 step
     .goto Elwynn Forest,24.2,74.5
-    .turnin 239 >> 交出Westbrook Garrison需要帮助！
-    .accept 11 >> 接受Riverpaw Gnoll Bounty << Warlock/Warrior
+    .turnin 239 >>交出Westbrook Garrison需要帮助！
+    .accept 11 >>接受Riverpaw Gnoll Bounty << Warlock/Warrior
 step << Warrior
     >>如果你有31秒74c以上的可出售物品/金钱，跳过绘制侏儒臂章任务
     >>如果你有更少，跳过这一步
     >>这是用于投掷、2小时锤击和2小时剑训练的。它也适用于11级投掷，并飞往暴风城
-    .abandon 11 >> 放弃Riverpaw Gnoll Bounty
+    .abandon 11 >>放弃Riverpaw Gnoll Bounty
     .goto Elwynn Forest,27.6,93.0
 step << Warlock/Warrior
     #sticky
     #completewith Armbands
-    >>请留意取金时间表（幸运滴），或Gruff Swiftbite的100%滴（罕见）。额外210xp
+    >>请留意取金时间表(幸运滴)，或Gruff Swiftbite的100%滴(罕见)。额外210xp
     .collect 1307,1,123 --Collect Gold Pickup Schedule (x1)
-    .accept 123 >> 接受催收员
+    .accept 123 >>接受催收员
 step << Warlock
     #label Hogger
     .unitscan Hogger
@@ -2354,7 +2354,7 @@ step << Warlock
 step << Warlock/Warrior
     #label Armbands
     .goto Elwynn Forest,27.0,93.9
-    >> 杀死侏儒。抢劫他们作为臂章
+    >>杀死侏儒。抢劫他们作为臂章
     .complete 11,1 --Collect Painted Gnoll Armband (8)
     .isOnQuest 11
 step << Warrior
@@ -2364,50 +2364,50 @@ step << Warrior
     .goto Elwynn Forest,27.6,93.0
 step << Warlock/Warrior
     .goto Elwynn Forest,24.2,74.5
-    .turnin 11 >> 交给Riverpaw Gnoll Bounty
+    .turnin 11 >>交给Riverpaw Gnoll Bounty
     .isOnQuest 11
 step
     .goto Westfall,60.0,19.4
-    .turnin 184 >> 交出弗尔布罗的契约
+    .turnin 184 >>交出弗尔布罗的契约
     .isOnQuest 184
 step
     .goto Westfall,59.9,19.4
-    .accept 36 >> 接受Westfall Stew
+    .accept 36 >>接受Westfall Stew
 step
     .goto Westfall,56.4,30.5
-    .turnin 36 >> 转入威斯特福尔炖菜
+    .turnin 36 >>转入威斯特福尔炖菜
 step
     #softcore
     #sticky
     #completewith next
-    .goto Westfall,51.7,49.4,150 >> 在精神疗愈者处死亡并重生，或跑到哨兵山
+    .goto Westfall,51.7,49.4,150 >>在精神疗愈者处死亡并重生，或跑到哨兵山
 step
     .goto Westfall,56.3,47.5
-    .turnin 109 >> 向Gryan Stoutmantle提交报告
+    .turnin 109 >>向Gryan Stoutmantle提交报告
 step << Human
     .goto Westfall,57.0,47.2
     .vendor >>供应商垃圾
-    .accept 6181 >> 接受Swift消息
+    .accept 6181 >>接受Swift消息
 step
     .goto Westfall,56.6,52.6
-    .turnin 6181 >> 提交快捷信息 << Human
-    .accept 6281 >> 接受继续前往暴风城 << Human
+    .turnin 6181 >>提交快捷信息 << Human
+    .accept 6281 >>接受继续前往暴风城 << Human
 step
     .goto Westfall,56.6,52.6
-    .fly Stormwind >> 飞到暴风城
+    .fly Stormwind >>飞到暴风城
 step << Rogue/Warrior
     >>进入大楼
     .goto StormwindClassic,57.32,62.08,20,0
     .goto StormwindClassic,58.37,61.69
-    .vendor >> 购买瑟曼的11级投掷。装备它 << Rogue
-    .vendor >> 购买瑟曼的11级投掷。你稍后会装备它 << Warrior
+    .vendor >>购买瑟曼的11级投掷。装备它 << Rogue
+    .vendor >>购买瑟曼的11级投掷。你稍后会装备它 << Warrior
 step
     .goto StormwindClassic,56.2,64.6
     >>选择火箭队作为奖励。这些有很好的伤害，可以用来劈开
-    .turnin 61 >> 将货物交给Stormwind
+    .turnin 61 >>将货物交给Stormwind
 step << Warrior
     .goto StormwindClassic,57.1,57.7
-    .trainer >> 如果你有闲钱，训练2小时剑。您必须保存20秒以备稍后使用
+    .trainer >>如果你有闲钱，训练2小时剑。您必须保存20秒以备稍后使用
 step << Priest/Mage/Warlock
     .goto StormwindClassic,57.1,57.7
     .trainer >>火车杆
@@ -2425,66 +2425,66 @@ step << Warlock
     #sticky
     #completewith next
     .goto StormwindClassic,29.2,74.0,20,0
-    .goto StormwindClassic,27.2,78.1,15 >> 走进屠宰羔羊，下楼去
+    .goto StormwindClassic,27.2,78.1,15 >>走进屠宰羔羊，下楼去
 step << Warlock
     .goto StormwindClassic,25.2,78.5
-    .turnin 1685 >> 提交加金的传票
-    .accept 1688 >> 接受Surena Caledon
+    .turnin 1685 >>提交加金的传票
+    .accept 1688 >>接受Surena Caledon
 step << Warlock
     .goto StormwindClassic,26.44,78.66
-     .trainer >> 训练你的职业咒语 << Warlock
+     .trainer >>训练你的职业咒语 << Warlock
 step << Warlock
     #softcore
-    .deathskip >> 使用生命水龙头并站在你旁边的篝火上，在精神治疗者处死亡并重生
+    .deathskip >>使用生命水龙头并站在你旁边的篝火上，在精神治疗者处死亡并重生
 step << Warlock
     .goto Elwynn Forest,42.1,65.9
-    .zone Elwynn Forest >> 从暴风城跑回埃尔文
+    .zone Elwynn Forest >>从暴风城跑回埃尔文
 step << Warlock
     .isOnQuest 123
     .goto Elwynn Forest,42.1,65.9
     >>选择棍子，然后装备它
-    .turnin 176 >> 通缉犯：“Hogger”
-    .turnin 123 >> 交回收集器
+    .turnin 176 >>通缉犯：“Hogger”
+    .turnin 123 >>交回收集器
 step << Warlock
     .goto Elwynn Forest,42.1,65.9
     >>选择棍子，然后装备它
-    .turnin 176 >> 通缉犯：“Hogger”
+    .turnin 176 >>通缉犯：“Hogger”
 step << Warlock
-    .xp 11 >> 研磨至11
+    .xp 11 >>升级到11
 step << Warlock
     >>在途中磨练，试着为以后提高你的击球技能
-    >>杀死房子里的暴徒，让摩根保持恐惧（他凿伤并杀死宠物），核弹袭击苏雷纳。为她的喉咙抢劫她
+    >>杀死房子里的暴徒，让摩根保持恐惧(他凿伤并杀死宠物)，核弹袭击苏雷纳。为她的喉咙抢劫她
     .goto Elwynn Forest,71.0,80.8
     .complete 1688,1 --Collect Surena's Choker (x1)
 step << Warlock
     .goto Elwynn Forest,79.5,68.8
-    .turnin 59 >> 交出布甲和皮甲
+    .turnin 59 >>交出布甲和皮甲
 step << Warlock
     #sticky
     #completewith next
     .goto Redridge Mountains,17.4,69.6
-    .zone Redridge Mountains >> 在前往雷德里奇的途中研磨，确保至少有2个灵魂碎片（使用吸取灵魂）
+    .zone Redridge Mountains >>在前往雷德里奇的途中研磨，确保至少有2个灵魂碎片(使用吸取灵魂)
     .collect 6265,2 --Soul Shard (2)
 step << Warlock
     .goto Redridge Mountains,17.4,69.6
-    .accept 244 >> 接受侵扰侏儒
+    .accept 244 >>接受侵扰侏儒
 step << Warlock
     >>小心路上的暴徒
     .goto Redridge Mountains,30.7,60.0
-    .turnin 244 >> 交出侵扰侏儒
+    .turnin 244 >>交出侵扰侏儒
 step << Warlock
     .goto Redridge Mountains,30.6,59.4
-    .fp Redridge Mountains >> 获得Redridge Mountains飞行路线
-    .fly Stormwind >> 飞到暴风城
+    .fp Redridge Mountains >>获得Redridge Mountains飞行路线
+    .fly Stormwind >>飞到暴风城
 step << Warlock
     #sticky
     #completewith next
     .goto StormwindClassic,29.2,74.0,20,0
-    .goto StormwindClassic,27.2,78.1,15 >> 走进屠宰羔羊，下楼去
+    .goto StormwindClassic,27.2,78.1,15 >>走进屠宰羔羊，下楼去
 step << Warlock
     .goto StormwindClassic,25.2,78.5
-    .turnin 1688 >> 交给Surena Caledon
-    .accept 1689 >> 接受绑定
+    .turnin 1688 >>交给Surena Caledon
+    .accept 1689 >>接受绑定
 step << Warlock
     .goto StormwindClassic,25.2,80.7,14,0
     .goto StormwindClassic,23.2,79.5,14,0
@@ -2495,10 +2495,10 @@ step << Warlock
 step << Warlock
     .goto StormwindClassic,25.2,78.5
     >>一旦你学会了，就不要召唤你的虚空行者
-    .turnin 1689 >> 交回装订本
+    .turnin 1689 >>交回装订本
 step << Human
     .goto StormwindClassic,74.3,47.2
-    .turnin 6281 >> 转入继续暴风城
+    .turnin 6281 >>转入继续暴风城
 step << !Mage !Warlock
     .goto StormwindClassic,42.66,33.75,30,0 << Paladin/Priest
      .goto StormwindClassic,38.68,32.85 << Paladin
@@ -2506,42 +2506,42 @@ step << !Mage !Warlock
     .goto StormwindClassic,74.91,51.55,20,0 << Warrior
     .goto StormwindClassic,78.67,45.80 << Warrior
     .goto StormwindClassic,74.64,52.82 << Rogue
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Warrior
      >>进入客栈
     .goto StormwindClassic,71.7,39.9,20,0
     .goto StormwindClassic,74.3,37.3
-    .turnin 1638 >> 交战士训练
-    .accept 1639 >> 接受醉汉巴特比
+    .turnin 1638 >>交战士训练
+    .accept 1639 >>接受醉汉巴特比
 step << Warrior
     .goto StormwindClassic,73.8,36.3
-    .turnin 1639 >> 交给醉汉巴特比
-    .accept 1640 >> 接受Beat Bartleby
+    .turnin 1639 >>交给醉汉巴特比
+    .accept 1640 >>接受Beat Bartleby
     .complete 1640,1 --Beat Bartleby
 step << Warrior
     .goto StormwindClassic,73.8,36.3
-    .turnin 1640 >> 加入Beat Bartleby
-    .accept 1665 >> 接受巴特比的马克杯
+    .turnin 1640 >>加入Beat Bartleby
+    .accept 1665 >>接受巴特比的马克杯
 step << Warrior
     >>你现在将学习防御姿态和破甲
     .goto StormwindClassic,74.3,37.3
-    .turnin 1665 >> 交给巴特比的马克杯
+    .turnin 1665 >>交给巴特比的马克杯
 step << Priest
     #completewith next
     .goto StormwindClassic,38.8,26.4
-    .turnin 5635 >> 递交绝望祈祷
+    .turnin 5635 >>递交绝望祈祷
 step << Priest
     .goto StormwindClassic,38.62,26.10
-    .train 13908 >> 训练绝望祈祷
+    .train 13908 >>训练绝望祈祷
 step
     #completewith next
     .goto StormwindClassic,51.8,12.1
-    .turnin 1097 >> 交出Elmore的任务
+    .turnin 1097 >>交出Elmore的任务
 step
     .goto StormwindClassic,51.8,12.1
-    .accept 353 >> 接受Stormpike的交付
+    .accept 353 >>接受Stormpike的交付
 step << Warrior/Paladin/Rogue
-    >>把破甲放在你的栏上（它的伤害比英勇打击好） << Warrior
+    >>把破甲放在你的栏上(它的伤害比英勇打击好) << Warrior
     .goto StormwindClassic,56.3,17.0
     .vendor >>购买采矿镐。你稍后将训练采矿
 step
@@ -2552,27 +2552,27 @@ step
     >>有轨电车到了就乘，到了另一边就下车 << !Rogue !Warrior !Paladin !Warlock
     >>当电车到达时，乘电车。在等电车和上车时，要做绷带。当你到达另一边时接受q << Rogue/Warrior/Paladin
     >>当电车到达时，乘电车。施放召唤虚空行者并创造健康石。在另一边下车 << Warlock
-    .accept 6661 >> 接受Deeprun老鼠围捕
+    .accept 6661 >>接受Deeprun老鼠围捕
 step
     >>用你的长笛对付四处散落的老鼠
     .complete 6661,1 --Rats Captured (x5)
 step
-    .turnin 6661 >> 交给Deeprun老鼠围捕
+    .turnin 6661 >>交给Deeprun老鼠围捕
 step
     .goto Ironforge,77.0,51.0
     .zone Ironforge >>进入铁炉堡
 step
     .goto Ironforge,55.5,47.7
-    .fp Ironforge >> 获得铁炉堡飞行路线
+    .fp Ironforge >>获得铁炉堡飞行路线
 step << Mage
     .goto Ironforge,27.17,8.57
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Warrior
     .goto Ironforge,61.2,89.5
     .trainer >>训练2小时梅斯和投掷
 step
     .goto Ironforge,18.22,51.44
-    .home >> 将您的炉石设置为铁炉堡
+    .home >>将您的炉石设置为铁炉堡
 step
     #sticky
     #som
@@ -2582,7 +2582,7 @@ step
 step
     .goto Dun Morogh,60.1,52.6,50,0
     .goto Dun Morogh,63.1,49.8
-    .accept 314 >> 接受保护羊群
+    .accept 314 >>接受保护羊群
 step
     #sticky
     #completewith next
@@ -2595,10 +2595,10 @@ step
     .goto Dun Morogh,62.6,46.1
     .goto Dun Morogh,62.78,54.60,0
     .complete 314,1 --Collect Fang of Vagash (1)
-    .link https://www.youtube.com/watch?v=ZJX6sCkm5JY >> 单击此处了解如何独奏瓦加什
+    .link https://www.youtube.com/watch?v=ZJX6sCkm5JY >>单击此处了解如何独奏瓦加什
 step
     .goto Dun Morogh,63.1,49.8
-    .turnin 314 >> 转身保护羊群
+    .turnin 314 >>转身保护羊群
 step
     .goto Dun Morogh,68.6,54.7
     .vendor >>供应商，购买食物+水 << !Rogue !Warrior
@@ -2606,10 +2606,10 @@ step
 step
     #requires Cooking
     .goto Dun Morogh,68.7,56.0
-    .accept 433 >> 接受公务员
+    .accept 433 >>接受公务员
 step
     .goto Dun Morogh,69.1,56.3
-    .accept 432 >> 接受那些被炸死的流浪汉！
+    .accept 432 >>接受那些被炸死的流浪汉！
 step << Warrior/Paladin/Rogue
     .goto Dun Morogh,69.3,55.5
     .train 2575 >>训练采矿，铸造寻找矿物
@@ -2622,25 +2622,25 @@ step
     .complete 433,1 --Kill Rockjaw Bonesnapper (10)
 step
     .goto Dun Morogh,69.1,56.3
-    .turnin 432 >> 把那些被炸死的暴徒交上来！
+    .turnin 432 >>把那些被炸死的暴徒交上来！
 step
     .goto Dun Morogh,68.9,55.9
-    .vendor >> 供应商垃圾，修理
+    .vendor >>供应商垃圾，修理
 step
     .goto Dun Morogh,68.7,56.0
-    .turnin 433 >> 上缴公务员
+    .turnin 433 >>上缴公务员
 step
     .goto Dun Morogh,68.6,54.7
     .vendor >>供应商，购买x30 5级饮料 << Mage/Warlock/Priest
 step
     .goto Dun Morogh,81.2,42.7,45,0
     .goto Dun Morogh,83.9,39.2
-    .accept 419 >> 接受迷失的飞行员
+    .accept 419 >>接受迷失的飞行员
 step
     >>点击矮人尸体
     .goto Dun Morogh,79.7,36.2
-    .turnin 419 >> 交出失踪的飞行员
-    .accept 417 >> 接受飞行员的复仇
+    .turnin 419 >>交出失踪的飞行员
+    .accept 417 >>接受飞行员的复仇
 step
     >>杀死芒格克劳。抢走他的爪子
     .goto Dun Morogh,78.9,37.0
@@ -2648,7 +2648,7 @@ step
 step
     .goto Dun Morogh,83.9,39.2
     >>选择匕首，用它作为你的副手，直到你得到一把小贩的剑 << Rogue
-    .turnin 417 >> 提交飞行员的复仇
+    .turnin 417 >>提交飞行员的复仇
 step
     .goto Dun Morogh,84.4,31.1,25 >>穿过隧道去莫丹湖
 ]])
@@ -2669,35 +2669,35 @@ step
     .vendor >>供应商和维修
 step
     .goto Loch Modan,24.8,18.4
-    .turnin 353 >> 交给Stormpike的交货
-    .accept 307 >> 接受肮脏的爪子
+    .turnin 353 >>交给Stormpike的交货
+    .accept 307 >>接受肮脏的爪子
 step
     .goto Loch Modan,33.9,51.0
-    .fp Thelsamar >> 获取Thelsamar飞行路线
+    .fp Thelsamar >>获取Thelsamar飞行路线
 step
     #sticky
     #label StormpikeO
-    .abandon 1338 >> 放弃Stormpike的命令。这是为了解锁登山者Stormpike的任务
+    .abandon 1338 >>放弃Stormpike的命令。这是为了解锁登山者Stormpike的任务
 step
     .goto Loch Modan,34.8,48.6
     >>跑到塞尔斯马尔的客栈
     .vendor >>购买1-2个6槽包
 step
     .goto Loch Modan,35.5,48.4
-    .vendor >> 购买食物/水（尝试喝20杯5级饮料，10杯5级食物） << Priest/Mage/Warlock/Paladin
-    .vendor >> 购买食物，尝试吃大约20种5级食物 << Rogue/Warrior
+    .vendor >>购买食物/水(尝试喝20杯5级饮料，10杯5级食物) << Priest/Mage/Warlock/Paladin
+    .vendor >>购买食物，尝试吃大约20种5级食物 << Rogue/Warrior
 step
     #requires StormpikeO
     .goto Loch Modan,32.6,49.9,80.0,0
     .goto Loch Modan,37.2,46.1,80.0,0
     .goto Loch Modan,36.7,41.6
     >>找到卡德雷尔。他沿着塞尔萨马尔公路巡逻
-    .accept 416 >> 接受捕鼠
-    .accept 1339 >> 接受登山者Stormpike的任务
+    .accept 416 >>接受捕鼠
+    .accept 1339 >>接受登山者Stormpike的任务
 step
     #completewith Gearbois
     .goto Loch Modan,38.66,18.72,0
-    >> 杀死科波德斯。抢走他们的耳朵
+    >>杀死科波德斯。抢走他们的耳朵
     .complete 416,1 --Collect Tunnel Rat Ear (x12)
     .collect 2589,10 << Paladin
 step
@@ -2706,12 +2706,12 @@ step
     #label Gearbois
     .goto Loch Modan,36.3,24.7
     >>收集你在山洞里找到的板条箱。小心，因为这在11级很难做到
-    >>几秒钟后，当Geomangers施放火焰防护（Fire immunity）时要小心 << Mage/Warlock
+    >>几秒钟后，当Geomangers施放火焰防护(Fire immunity)时要小心 << Mage/Warlock
     >>你可以在洞穴里再抢劫一次后返回，因为板条箱可以在你身后重生
     .complete 307,1 --Collect Miners' Gear (x4)
 step
     .goto Loch Modan,38.66,18.72
-    >> 杀死科波德斯。抢走他们的耳朵
+    >>杀死科波德斯。抢走他们的耳朵
     .complete 416,1 --Collect Tunnel Rat Ear (x12)
     .collect 2589,10 << Paladin
 step
@@ -2725,22 +2725,22 @@ step
     .vendor >>供应商和维修
 step
     .goto Loch Modan,24.7,18.3
-    .turnin 307 >> 交上脏爪子
-    .accept 1338 >> 接受Stormpike的命令
-    .turnin 1339 >> 提交登山者Stormpike的任务
+    .turnin 307 >>交上脏爪子
+    .accept 1338 >>接受Stormpike的命令
+    .turnin 1339 >>提交登山者Stormpike的任务
 step
     #softcore
     #completewith next
-    .deathskip >> 死后重生在塞尔萨马尔
+    .deathskip >>死后重生在塞尔萨马尔
 step
     .goto Loch Modan,32.6,49.9,80.0,0
     .goto Loch Modan,37.2,46.1,80.0,0
     .goto Loch Modan,36.7,41.6
     >>找到卡德雷尔。他沿着塞尔萨马尔公路巡逻
-    .turnin 416 >> 上缴捕鼠
+    .turnin 416 >>上缴捕鼠
 step
-    .hs >> 炉到铁炉
-    .vendor >> 供应商垃圾
+    .hs >>炉到铁炉
+    .vendor >>供应商垃圾
 step << Warlock/Priest
     #softcore
     #label Wand1
@@ -2767,7 +2767,7 @@ step << Warlock/Priest
 step << Warlock
     .goto Ironforge,51.1,8.7,18 >>进入大楼
     .goto Ironforge,50.4,6.3
-    .trainer >> 训练你的职业咒语
+    .trainer >>训练你的职业咒语
 step << Warlock
     .goto Ironforge,53.2,7.8,18 >>进入大楼
     .goto Ironforge,53.0,6.4
@@ -2780,14 +2780,14 @@ step << !Druid
     .goto Ironforge,25.21,10.75 << Priest
     .goto Ironforge,27.17,8.57 << Mage
     .goto Ironforge,24.55,4.46 << Paladin
-     .trainer >> 训练你的职业咒语
+     .trainer >>训练你的职业咒语
 step
     .goto Dun Morogh,53.5,34.9
     .zone Dun Morogh>>退出铁炉堡
 step
     #hardcore
     #completewith next
-    .goto Dun Morogh,59.43,42.85,150 >> 前往跳跃点
+    .goto Dun Morogh,59.43,42.85,150 >>前往跳跃点
 step
     #hardcore
     .goto Dun Morogh,59.5,42.8,40,0
@@ -2811,8 +2811,8 @@ step
     >>打开此链接并在另一个屏幕上进行跟踪。
     >>邓莫罗不死->湿地跳过
     >>横渡大海时要避开鳄鱼
-    .link https://www.youtube.com/watch?v=9afQTimaiZQ >> 单击此处以供参考
-    .goto Wetlands,12.1,60.3,80 >> 前往米奈希尔港
+    .link https://www.youtube.com/watch?v=9afQTimaiZQ >>单击此处以供参考
+    .goto Wetlands,12.1,60.3,80 >>前往米奈希尔港
 step
     #softcore
     #completewith next
@@ -2828,21 +2828,21 @@ step
     .deathskip >>继续向北奔跑，摔倒死亡，然后重生
 step
     #softcore
-    .goto Wetlands,12.7,46.7,80 >> 游到岸上
+    .goto Wetlands,12.7,46.7,80 >>游到岸上
 step
     .money <0.08
     .goto Wetlands,10.4,56.0,15,0
     .goto Wetlands,10.1,56.9,15,0
     .goto Wetlands,10.6,57.2,15,0
     .goto Wetlands,10.7,56.8
-    .vendor >> 如果你有8s，检查Neal Allen的铜管，如果有就买
+    .vendor >>如果你有8s，检查Neal Allen的铜管，如果有就买
 step
     .goto Wetlands,9.5,59.7
-    .fp Menethil Harbor >> 获取Menethil Harbor航线
+    .fp Menethil Harbor >>获取Menethil Harbor航线
 step
     .money <0.04
     .goto Wetlands,8.1,56.3
-    .vendor >> 在大楼里，查看Dewin是否有治疗药剂，购买时间减至1秒
+    .vendor >>在大楼里，查看Dewin是否有治疗药剂，购买时间减至1秒
 step
     .goto Wetlands,4.7,57.3
     .zone Darkshore >>船到了就上船。把它带到Darkshore去。

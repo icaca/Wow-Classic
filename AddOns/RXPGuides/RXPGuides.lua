@@ -36,7 +36,7 @@ addon.activeItems = {}
 addon.activeSpells = {}
 addon.RXPG = {}
 addon.functions = {}
-addon.activeFrames = {} -- Hold all active frame/features for Hide/Show
+addon.enabledFrames = {} -- Hold all enabled frame/features for Hide/Show
 addon.player = {
     class = select(2, UnitClass("player"))
 }
@@ -428,9 +428,11 @@ function addon:OnInitialize()
     addon.RXPG.LoadCachedGuides()
     addon.RXPG.LoadEmbeddedGuides()
     addon.UpdateGuideFontSize()
+    addon.isHidden = addon.settings.db.profile.hideGuideWindow
     addon.RXPFrame:SetShown(not addon.settings.db.profile.hideGuideWindow)
     addon.RXPFrame:SetScale(addon.settings.db.profile.windowScale)
     addon.arrowFrame:SetSize(32 * addon.settings.db.profile.arrowScale, 32 * addon.settings.db.profile.arrowScale)
+    addon.arrowFrame.text:SetFont(addon.font, addon.settings.db.profile.arrowText, "OUTLINE")
 end
 
 function addon:OnEnable()
@@ -468,6 +470,9 @@ function addon:OnEnable()
     self:RegisterEvent("PLAYER_CONTROL_LOST")
     self:RegisterEvent("PLAYER_CONTROL_GAINED")
 
+    self:RegisterEvent("PLAYER_ENTERING_WORLD")
+    self:RegisterEvent("PLAYER_LEAVING_WORLD")
+
     -- self:RegisterEvent("QUEST_LOG_UPDATE")
 
     questFrame:RegisterEvent("QUEST_COMPLETE")
@@ -482,9 +487,33 @@ function addon:OnEnable()
         self:RegisterEvent("QUEST_DATA_LOAD_RESULT")
     end
 
-    if addon.settings.db.profile.hideInRaid then
-        self:RegisterEvent("GROUP_ROSTER_UPDATE")
+    for _, frame in pairs(addon.enabledFrames) do
+        if frame.IsFeatureEnabled() then
+            frame:SetShown(addon.settings.db.profile.showEnabled)
+        end
     end
+
+    if addon.settings.db.profile.hideInRaid then
+        self:RegisterEvent("GROUP_JOINED", addon.HideInRaid)
+        self:RegisterEvent("GROUP_FORMED", addon.HideInRaid)
+        self:RegisterEvent("GROUP_LEFT")
+
+        -- Check if reloading in raid
+        addon.HideInRaid()
+    end
+
+    addon.targeting:Setup()
+end
+
+
+--Tracks if a player is on a loading screen and pauses the main update loop
+--Some information is not available during zone transitions
+function addon:PLAYER_ENTERING_WORLD()
+    addon.isHidden = addon.settings and addon.settings.db.profile.hideGuideWindow
+end
+
+function addon:PLAYER_LEAVING_WORLD()
+    addon.isHidden = true
 end
 
 function addon:GET_ITEM_INFO_RECEIVED(_, itemNumber, success)
@@ -546,16 +575,25 @@ function addon:QUEST_DATA_LOAD_RESULT(_, questId, success)
     addon.updateStepText = true
 end
 
-function addon:GROUP_ROSTER_UPDATE(_)
+function addon:GROUP_LEFT()
     if not addon.settings.db.profile.hideInRaid or (RXPCData and RXPCData.GA) or (addon.guide and addon.guide.farm) then return end
 
-    if UnitInRaid("player") then
-        addon.settings.HideActive()
-    else
-        addon.settings.RestoreActive()
+    if not addon.settings.db.profile.showEnabled then return end
+
+    for _, frame in pairs(addon.enabledFrames) do
+        frame:SetShown(frame.IsFeatureEnabled())
     end
 end
 
+function addon.HideInRaid()
+    if not addon.settings.db.profile.hideInRaid or (RXPCData and RXPCData.GA) or (addon.guide and addon.guide.farm) then return end
+
+    if not UnitInRaid("player") then return end
+
+    for _, frame in pairs(addon.enabledFrames) do
+        frame:Hide()
+    end
+end
 
 questFrame:SetScript("OnEvent", addon.QuestAutomation)
 
@@ -634,7 +672,9 @@ local skip = 0
 updateFrame:SetScript("OnUpdate", function(self, diff)
 
     updateTick = updateTick + diff
-    if updateTick > (0.05+math.random()/128) then
+    if addon.isHidden then
+        return
+    elseif updateTick > (0.05+math.random()/128) then
         local currentTime = GetTime()
         updateTick = 0
         updateStart = currentTime

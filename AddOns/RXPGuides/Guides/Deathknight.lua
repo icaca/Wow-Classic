@@ -3,7 +3,7 @@ RXPGuides.RegisterGuide([[
 #wotlk
 
 << DK
-#group RestedXP 死亡骑士 Start
+#group RestedXP死亡骑士开始
 
 #next RestedXP 联盟 60-70\59-61 地狱火半岛 << Alliance
 #next RestedXP 部落 60-70\59-61 地狱火半岛 << Horde
@@ -31,7 +31,7 @@ step
     .collect 38607,1,12619,1 --Battle-Worn Sword (1)
 step
     .goto ScarletEnclave,47.9,27.6
-	.use 38607 >> 前往Runeforge。点击你包里的战斗佩剑，使其成为一把Runeblade剑
+	.use 38607 >>前往Runeforge。点击你包里的战斗佩剑，使其成为一把Runeblade剑
     .complete 12619,1 --Runebladed Sword (1)
 step
     .goto ScarletEnclave,48.3,28.2
@@ -67,24 +67,24 @@ step
     .goto ScarletEnclave,51.1,36.2
     .goto ScarletEnclave,61.5,60.6,0
 	>>点击巫妖王左边或右边的眼睛
-	>>使用“Acherus虹吸”（1）分析锻造。使用“裹尸布”（3）以避免受到血腥暴徒的伤害。
+	>>使用“Acherus虹吸管”(1)分析锻件。使用“裹尸布”(3)以避免受到血腥暴徒的伤害。
     .complete 12641,1 --New Avalon Forge Analyzed (1)
 step
     .goto ScarletEnclave,61.7,68.2,0
-	>>使用“Acherus虹吸”（1）来分析Hold。使用“裹尸布”（3）以避免受到血腥暴徒的伤害。
+	>>使用“Acherus虹吸”(1)来分析Hold。使用“裹尸布”(3)以避免受到血腥暴徒的伤害。
     .complete 12641,3 --Scarlet Hold Analyzed (1)
 step
     .goto ScarletEnclave,53.4,70.7,0
-	>>使用“Acherus虹吸”（1）分析市政厅。使用“裹尸布”（3）以避免受到血腥暴徒的伤害。
+	>>使用“Acherus虹吸”(1)分析市政厅。使用“裹尸布”(3)以避免受到血腥暴徒的伤害。
     .complete 12641,2 --New Avalon Town Hall Analyzed (1)
 step
     .goto ScarletEnclave,52.2,80.7,0
-	>>使用“阿切鲁斯虹吸管”（1）来分析教堂。使用“裹尸布”（3）以避免受到血腥暴徒的伤害。
+	>>使用“阿切鲁斯虹吸管”(1)来分析教堂。使用“裹尸布”(3)以避免受到血腥暴徒的伤害。
     .complete 12641,4 --Chapel of the Crimson Flame Analyzed (1)
 --X NEED A NEW COMMAND FOR THESE PREVIOUS 4 STEPS
 step
 	#completewith next
- 	+完成后，按取消或（4）返回Ebon Hold
+ 	+完成后，按取消或(4)返回Ebon Hold
 step
 	#requires dkeyes
     .goto ScarletEnclave,51.3,35.3
@@ -131,7 +131,7 @@ step
 step
     .goto ScarletEnclave,53.7,36.3,50,0
     .goto ScarletEnclave,52.1,38.2
-	>>与Orithos（巡逻骷髅弓箭手）交谈
+	>>与Orithos(巡逻骷髅弓箭手)交谈
     .accept 12679 >>接受今晚我们在Havenshire吃饭
 step
 	#completewith next
@@ -146,7 +146,7 @@ step
 	.vehicle >>偷任何Havenshire马。小心马厩主人基特里克在马区巡逻，因为他是精英
 step
     .goto ScarletEnclave,52.4,34.3
-	>>把偷来的马还给死神之怒。在冷却时使用“Gallop”（2）加速跑步。使用“交付被盗马匹”（1）返还
+	>>把偷来的马还给死神之怒。在冷却时使用“Gallop”(2)加速跑步。使用“交付被盗马匹”(1)返还
     .complete 12680,1 --Horse Successfully Stolen (1)
 step
     .goto ScarletEnclave,53.2,33.5,30,0
@@ -160,7 +160,7 @@ step
     .vehicle >>杀死一个黑暗骑士阿舍罗斯。杀了他后，骑上他的死亡充电器
 step
     .goto ScarletEnclave,52.4,34.7
-	>>将Acherus死亡充电器返回死亡违约。使用“骑士召唤”（1）返回。
+	>>将Acherus死亡充电器返回死亡违约。使用“骑士召唤”(1)返回。
     .complete 12687,1 --The Horseman's Challenge (1)
 step
     .goto ScarletEnclave,53.2,33.5,30,0
@@ -169,7 +169,7 @@ step
     .turnin 12687 >>转入阴影王国
 step
 	#completewith next
-	.cast 48778 >> 进入你的角色面板（C），然后进入集合选项卡。召唤你的弓箭手死亡充电器，然后将其绑定到你的栏中
+	.cast 48778 >>进入你的角色面板(C)，然后进入集合选项卡。召唤你的弓箭手死亡充电器，然后将其绑定到你的栏中
 step
 	#completewith Mailbox
     .goto ScarletEnclave,55.6,51.4,0
@@ -241,19 +241,19 @@ step
     .goto ScarletEnclave,60.2,32.7,40,0
     .goto ScarletEnclave,63.5,32.3,20,0
     .goto ScarletEnclave,67.7,39.1
-    >>跑过矿井，从山上下来，走到Light’s Point Tower后面。在那里下山，然后跑到船上。避开你看到的所有非矿工暴徒。如果你死了，等待瓦尔基尔施压（不要释放灵魂）
-	>>一旦你到了船上，进入一门血色大炮。垃圾邮件“血色大炮”（1）杀死血色卫士。如果血色卫士开始近战攻击加农炮，使用“电磁脉冲”（2）
+    >>跑过矿井，从山上下来，走到Light’s Point Tower后面。在那里下山，然后跑到船上。避开你看到的所有非矿工暴徒。如果你死了，等待瓦尔基尔施压(不要释放灵魂)
+	>>一旦你到了船上，进入一门血色大炮。垃圾邮件“血色大炮”(1)杀死血色卫士。如果血色卫士开始近战攻击加农炮，使用“电磁脉冲”(2)
     .complete 12701,1 --Scarlet Defender (100)
 step
 	#completewith next
-	.vehicle >> 当你杀死了所有100名防御者后，使用“骷髅鹰头逃脱”（3）返回死神之手
+	.vehicle >>当你杀死了所有100名防御者后，使用“骷髅鹰头逃脱”(3)返回死神之手
 step
     .goto ScarletEnclave,52.3,34.1
 	>>返回瓦拉纳
     .turnin 12701 >>在光点上发动屠杀
     .accept 12706 >>接受死亡的胜利！
 step << skip
-    .hs >> Hearth back to Acherus（您的Hearth在此处自动设置）
+    .hs >>炉背 to Acherus(您的Hearth在此处自动设置)
 --X Flight timer is 15s on retail, so i think its slightly faster. Didn't get a hearthstone on my retail run either
 step << skip
 	#completewith next
@@ -261,7 +261,7 @@ step << skip
 step
 	#completewith next
     .goto ScarletEnclave,53.1,32.5
-	.fly >> 把一只天灾鹰头狮带回阿彻鲁斯
+	.fly >>把一只天灾鹰头狮带回阿彻鲁斯
 step
     .goto ScarletEnclave,48.9,29.9
 	>>返回Darion Mograine
@@ -270,7 +270,7 @@ step
 step
     .goto ScarletEnclave,47.5,26.5
 	.turnin 12849 >>交出血、霜和邪恶的力量
-	.trainer >> 训练你的职业咒语
+	.trainer >>训练你的职业咒语
 step
     .goto ScarletEnclave,47.5,26.5
 	.turnin 12849 >>交出血、霜和邪恶的力量
@@ -285,7 +285,7 @@ step
     .accept 12715 >>接受记忆之墓
 step
     .goto ScarletEnclave,52.9,35.2
-    >> 购买40具尸尘
+    >>购买40具尸尘
     .collect 37201,40
 step
     .goto ScarletEnclave,55.3,46.2
@@ -344,7 +344,7 @@ step
 step
 	#label Dawn
     .goto ScarletEnclave,62.4,68.2
-	>>装备Keleseth的劝导器，攻击血腥暴徒-继续杀戮他们，直到有人告诉你什么（当目标完成时，他们会变得中立）
+	>>装备Keleseth的劝导器，攻击血腥暴徒-继续杀戮他们，直到有人告诉你什么(当目标完成时，他们会变得中立)
     .complete 12720,1 --"Crimson Dawn" Revealed (1)
 step
 	#completewith Soldiers
@@ -387,14 +387,14 @@ step
 step
     .goto ScarletEnclave,53.9,58.1,15,0
 	>>骑回地穴。重新装备你的普通武器
-	.turnin 12722 >> 把羊羔交给屠夫
+	.turnin 12722 >>把羊羔交给屠夫
 	.goto ScarletEnclave,54.6,57.5
     .turnin 12720 >>交出如何赢得朋友和影响敌人
     .accept 12723 >>在红线后面接受
     .goto ScarletEnclave,54.2,57.4
 step
 	#completewith next
-	.destroy 39328 >> 删除包里剩下的十字军头骨
+	.destroy 39328 >>删除包里剩下的十字军头骨
 step
 	>>骑马到房子，然后上楼到二楼
     .turnin 12723 >>在红线后面转弯
@@ -405,7 +405,7 @@ step
 step
     .goto ScarletEnclave,62.8,68.6,15,0
     .goto ScarletEnclave,63.0,68.0
-	>>跑到思嘉堡的地窖，和科尔蒂拉·戴斯韦弗谈谈。避免在途中与暴徒战斗-如果你死了，让瓦尔基尔复活你（不要释放）
+	>>跑到思嘉堡的地窖，和科尔蒂拉·戴斯韦弗谈谈。避免在途中与暴徒战斗-如果你死了，让瓦尔基尔复活你(不要释放)
 	>>开始任务后不要保护科尔蒂拉，它不是护送者
     .turnin 12725 >>死里逃生的兄弟
     .accept 12727 >>接受血腥突破
@@ -532,7 +532,7 @@ step
     .accept 12757 >>接受红军的接近。。。
 step
 	#completewith next
-    .goto ScarletEnclave,50.0,32.3,20 >> 等待奥巴兹召唤传送门。点击通往阿切鲁斯的门户，返回指挥大厅
+    .goto ScarletEnclave,50.0,32.3,20 >>等待奥巴兹召唤传送门。点击通往阿切鲁斯的门户，返回指挥大厅
 step
     .goto ScarletEnclave,48.9,29.9
 	>>返回Darion Mograine
@@ -540,7 +540,7 @@ step
     .accept 12778 >>接受《血腥启示录》
 step
     .goto ScarletEnclave,47.4,26.8
-	.trainer >> 训练你的职业咒语
+	.trainer >>训练你的职业咒语
 --X SPELL IDS BASED ON SPECIALIZATION, COPY PASTE THIS FROM EARLIER
 step
 .goto ScarletEnclave,52.0,35.0
@@ -553,9 +553,9 @@ step
 step
 	#completewith next
 	.use 39700
-	.vehicle >> 用霜卵之角爬上冻僵龙
+	.vehicle >>用霜卵之角爬上冻僵龙
 step
-	>>施放“冰冻死亡箭”（1）造成伤害（不要施放）。使用“吞噬类人”（2）在近战范围内拾取一个血色士兵，恢复生命值和法力值。杀死被血色士兵包围的巴利斯塔
+	>>施放“冰冻死亡箭”(1)造成伤害(不要施放)。使用“吞噬类人”(2)在近战范围内拾取一个血色士兵，恢复生命值和法力值。杀死被血色士兵包围的巴利斯塔
     .goto ScarletEnclave,56.0,62.2,100,0
     .goto ScarletEnclave,55.4,64.8,100,0
     .goto ScarletEnclave,54.8,66.8,100,0
@@ -581,7 +581,7 @@ step
     .goto ScarletEnclave,49.3,28.7,45,0
     .goto ScarletEnclave,47.1,24.1,45,0
     .goto ScarletEnclave,34.1,30.4
-	>> 向北穿过有毒山口。骑马前往布劳曼磨坊，与塔拉诺交谈
+	>>向北穿过有毒山口。骑马前往布劳曼磨坊，与塔拉诺交谈
     .turnin 12800 >>交出巫妖王的命令
     .accept 12801 >>接受黎明之光
 step
@@ -590,7 +590,7 @@ step
 	.skipgossip 29173,2
 step
     .goto ScarletEnclave,39.0,38.5
-	>> 等待事件开始（此时您可以休息一下）。完成非常长的战斗和RP
+	>>等待事件开始(此时您可以休息一下)。完成非常长的战斗和RP
     .complete 12801,1 --The Light of Dawn Uncovered (1)
 step
     .goto Eastern Plaguelands,39,39
@@ -606,7 +606,7 @@ step
     .accept 13166 >>接受Ebon Hold之战
 step
 	#completewith next
-    .goto ScarletEnclave,50.3,33.1,8 >> 通过门户网站
+    .goto ScarletEnclave,50.3,33.1,8 >>通过门户网站
 step
 	#sticky
 	#label ScourgeH
@@ -638,7 +638,7 @@ step << Horde
 step << Horde
 	#completewith next
     .goto Orgrimmar,38.1,85.8
-	.zone Blasted Lands >> 将门户带到Blasted Lands
+	.zone Blasted Lands >>将门户带到Blasted Lands
 step << Alliance
     .goto ScarletEnclave,50.9,36.3
 	.zone Elwynn Forest >>将入口带到暴风城
