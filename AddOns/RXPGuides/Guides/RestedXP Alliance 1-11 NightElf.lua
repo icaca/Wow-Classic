@@ -15,7 +15,7 @@ step
     .goto Teldrassil,58.69,44.27 << tbc
     .goto Teldrassil,58.62,44.71 << wotlk
     >>与依尔沙林交谈
-    .accept 456 >>接受自然的平衡
+    .accept 456 >>接任务: 自然的平衡
 step
     #sticky
     #label balance1
@@ -27,9 +27,9 @@ step
     .xp 2 >>升级到2级
 step
     >>与Melithar和Dirania交谈
-    .accept 458 >>接受林地保护人
+    .accept 458 >>接任务: 森林守护者
 	.goto Teldrassil,59.93,42.48,-1
-    .accept 4495 >>接受一个好朋友
+    .accept 4495 >>接任务: 好朋友
     .goto Teldrassil,60.90,41.96,-1
 step << Hunter
     #xprate <1.5
@@ -42,28 +42,28 @@ step << Hunter
 step << Hunter
     .goto Teldrassil,54.59,32.99
     >>与Iveron交谈
-    .turnin 4495 >>交一个好朋友
-    .accept 3519 >>接受有需要的朋友
+    .turnin 4495 >>交任务: 好朋友
+    .accept 3519 >>接任务: 需要帮助的朋友
 step << Hunter
     #completewith next
     .hs >>赫斯到阴影谷
 step << Hunter
     .goto Teldrassil,57.71,45.06
     >>与Tarindrella交谈
-    .turnin 458 >>交出林地保护人
-    .accept 459 >>接受林地保护人
+    .turnin 458 >>交任务: 森林守护者
+    .accept 459 >>接任务: 森林守护者
 step
     #requires balance1
     >>与依尔沙林交谈
     .goto Teldrassil,58.69,44.27 << tbc
     .goto Teldrassil,58.62,44.71 << wotlk
-    .turnin 456 >>实现自然平衡
-    .accept 457 >>接受自然的平衡
-	.accept 3116 >>接受简单符号 << Warrior
-	.accept 3117 >>接受蚀刻的符号 << Hunter
---	.accept 3118 >>接受加密符号 << Rogue
-	.accept 3119 >>接受神圣的符号 << Priest
-	.accept 3120 >>接受青翠符号 << Druid
+    .turnin 456 >>交任务: 自然的平衡
+    .accept 457 >>接任务: 自然的平衡
+	.accept 3116 >>接任务: 简易符记 << Warrior
+	.accept 3117 >>接任务: 风化符记 << Hunter
+--	.accept 3118 >>接任务: 密文符记 << Rogue
+	.accept 3119 >>接任务: 神圣符记 << Priest
+	.accept 3120 >>接任务: 绿色符记 << Druid
 step << Warrior
     #completewith next
     .goto Teldrassil,59.31,41.09
@@ -75,7 +75,7 @@ step << Warrior
 	.goto Teldrassil,59.29,39.08,20,0
 	.goto Teldrassil,59.63,38.45
     >>在供应商后面启动坡道
-	.turnin 3116 >>转入简单符号
+	.turnin 3116 >>交任务: 简易符记
 step << Warrior
 	.goto Teldrassil,59.63,38.45
 	.trainer >>训练你的职业咒语
@@ -88,26 +88,26 @@ step << !Hunter
 step << !Hunter
     .goto Teldrassil,54.59,32.99
     >>与Iveron交谈
-    .turnin 4495 >>交一个好朋友
-    .accept 3519 >>接受有需要的朋友
+    .turnin 4495 >>交任务: 好朋友
+    .accept 3519 >>接任务: 需要帮助的朋友
 step << !Hunter
     #completewith next
     .hs >>赫斯到阴影谷
 step << !Hunter
     .goto Teldrassil,57.71,45.06
     >>与Tarindrella交谈
-    .turnin 458 >>交出林地保护人
-    .accept 459 >>接受林地保护人
+    .turnin 458 >>交任务: 森林守护者
+    .accept 459 >>接任务: 森林守护者
 step << !Hunter
     .goto Teldrassil,58.69,44.27 << tbc
     .goto Teldrassil,58.62,44.71 << wotlk
     >>与依尔沙林交谈
-    .turnin 457 >>实现自然平衡
+    .turnin 457 >>交任务: 自然的平衡
 step
     .goto Teldrassil,60.90,41.96
     >>与Dirania交谈
-    .turnin 3519 >>交出需要帮助的朋友
-    .accept 3521 >>接受艾弗隆的解药
+    .turnin 3519 >>交任务: 需要帮助的朋友
+    .accept 3521 >>接任务: 埃沃隆的解药
 step << Hunter
     #completewith htraining
     .goto Teldrassil,59.31,41.09
@@ -115,7 +115,7 @@ step << Hunter
 step
     .goto Teldrassil,57.81,41.65
     >>与吉尔沙兰交谈
-    .accept 916 >>接受Webwood毒液
+    .accept 916 >>接任务: 树林蜘蛛的毒囊
 step << Hunter
     #xprate <1.5
     .goto Teldrassil,56.02,41.82
@@ -131,20 +131,20 @@ step << Hunter
     .goto Teldrassil,58.64,38.74,30,0
     .goto Teldrassil,58.66,40.45
     >>爬上那棵大树，直到你到达那座小建筑物
-    .turnin 3117 >>交上蚀刻的符号
+    .turnin 3117 >>交任务: 风化符记
 step << Hunter
     .goto Teldrassil,58.66,40.45
     .train 1978 >>火车蛇刺
 step
     #requires EtchedSigil << Hunter
     .loop 20,Teldrassil,56.98,39.08,56.51,38.92,56.55,38.40,56.80,38.15,56.94,36.95,57.18,37.12,57.49,36.04,58.07,35.60,58.21,36.21,58.43,36.46,58.94,37.35,58.81,37.59,58.67,38.17,58.05,38.44,56.98,39.08
-	>>抢劫湖边的黄花
+	>>掠夺湖边的黄花
     .complete 3521,2 --Collect Moonpetal Lily (x4)
 step
     .goto Teldrassil,54.25,39.00,40,0
     .goto Teldrassil,54.61,44.03,40,0
     .goto Teldrassil,56.00,45.91
-	>>杀死格雷金斯。抢走它们，寻找蘑菇和苔藓。你也可以抢劫附近的蘑菇物品
+	>>杀死格雷金斯。抢走它们，寻找蘑菇和苔藓。你也可以掠夺附近的蘑菇物品
     .complete 3521,1 --Collect Hyacinth Mushroom (x7)
     .complete 459,1 --Collect Fel Moss (x8)
 step
@@ -153,7 +153,7 @@ step
 step
     .goto Teldrassil,56.48,29.38,40,0
     .goto Teldrassil,56.76,25.65
-	>>杀死蜘蛛。为了Ichor和Sacs抢劫他们
+	>>杀死蜘蛛。为了Ichor和Sacs掠夺他们
     .complete 3521,3 --Collect Webwood Ichor (x1)
     .complete 916,1 --Collect Webwood Venom Sac (x10)
 step
@@ -162,12 +162,12 @@ step
 step
     .goto Teldrassil,57.71,45.06
     >>与Tarindrella交谈
-    .turnin 459 >>交出林地保护人
+    .turnin 459 >>交任务: 森林守护者
 step
     .goto Teldrassil,60.90,41.96
     >>与Dirania交谈
-    .turnin 3521 >>交出艾弗隆的解药
-    .accept 3522 >>接受艾弗隆的解药
+    .turnin 3521 >>交任务: 埃沃隆的解药
+    .accept 3522 >>接任务: 埃沃隆的解药
 step << !Priest
     #completewith next
     .goto Teldrassil,59.31,41.09
@@ -190,7 +190,7 @@ step << Priest
     #label HallowedSigil
 	.goto Teldrassil,59.17,40.44
     >>上楼去
-	.turnin 3119 >>交上神圣的符号
+	.turnin 3119 >>交任务: 神圣符记
 step << Priest
 	.goto Teldrassil,59.17,40.44
 	.trainer >>训练你的职业咒语
@@ -198,23 +198,23 @@ step
     #requires HallowedSigil << Priest
     .goto Teldrassil,57.81,41.65
     >>与吉尔沙兰交谈
-    .turnin 916 >>交出Webwood毒液
-    .accept 917 >>接受Webwood蛋
+    .turnin 916 >>交任务: 树林蜘蛛的毒囊
+    .accept 917 >>接任务: 树林蜘蛛的卵
 step << Druid
     .goto Teldrassil,58.6,40.3
 	>>跑上大坡道，进入小房间
-	.turnin 3120 >>交给葱郁的印记
+	.turnin 3120 >>交任务: 绿色符记
 	.train 8921 >>火车月光
 step
     .goto Teldrassil,54.59,32.99
     >>与Iveron交谈
-    .turnin 3522 >>交出艾弗隆的解药
+    .turnin 3522 >>交任务: 埃沃隆的解药
 step
     #completewith next
     .goto Teldrassil,56.80,31.49,30 >>进洞里去
 step
     .goto Teldrassil,56.80,26.45
-	>>在洞穴后面抢劫一个Webwood蛋
+	>>在洞穴后面掠夺一个Webwood蛋
     .complete 917,1 --Collect Webwood Egg (x1)
 step
 	#completewith next
@@ -223,8 +223,8 @@ step
 step
     .goto Teldrassil,57.81,41.65
     >>与吉尔沙兰交谈
-    .turnin 917 >>交回Webwood鸡蛋
-    .accept 920 >>接受特纳龙的召唤
+    .turnin 917 >>交任务: 树林蜘蛛的卵
+    .accept 920 >>接任务: 特纳隆的召唤
 step
     .goto Teldrassil,57.81,40.93,40,0
     .goto Teldrassil,58.64,38.74,30,0
@@ -232,8 +232,8 @@ step
     .goto Teldrassil,59.34,40.09,30,0
     .goto Teldrassil,59.06,39.44
     >>沿着斜坡向上爬大树。与顶部的Tenaron交谈
-    .turnin 920 >>交上特纳龙的传票
-    .accept 921 >>接受地球之冠
+    .turnin 920 >>交任务: 特纳隆的召唤
+    .accept 921 >>接任务: 大地之冠
 step
     #sticky
     #label vial1
@@ -254,14 +254,14 @@ step << Hunter
     .goto Teldrassil,58.69,44.27 << tbc
     .goto Teldrassil,58.62,44.71 << wotlk
     >>与依尔沙林交谈
-    .turnin 457 >>实现自然平衡
+    .turnin 457 >>交任务: 自然的平衡
 step << Priest
     #requires vial1
     .goto Teldrassil,59.96,41.85,20,0
     .goto Teldrassil,59.69,41.22,20,0
 	.goto Teldrassil,59.17,40.44
     >>进去。上楼去
-    .accept 5622 >>接受Elune
+    .accept 5622 >>接任务: 月神的恩赐
 step
     #requires vial1
     .goto Teldrassil,57.81,40.93,40,0
@@ -270,12 +270,12 @@ step
     .goto Teldrassil,59.34,40.09,30,0
     .goto Teldrassil,59.06,39.44
     >>沿着斜坡向上爬大树。与顶部的Tenaron交谈
-    .turnin 921 >>地球之冠
-    .accept 928 >>接受地球之冠
+    .turnin 921 >>交任务: 大地之冠
+    .accept 928 >>接任务: 大地之冠
 step
     .goto Teldrassil,61.16,47.64
     >>与波瑟尼乌斯交谈
-    .accept 2159 >>接受Dolanar交付
+    .accept 2159 >>接任务: 多兰纳尔的货物
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -294,7 +294,7 @@ step
     .collect 5465,7,4161,1 --Collect Small Spider Leg (x7)
 step
     .goto Teldrassil,60.5,56.3
-    .accept 488 >>接受Zenn的出价
+    .accept 488 >>接任务: 赛恩的要求
 step
     #sticky
     #completewith zenn
@@ -309,14 +309,14 @@ step
     .collect 5465,7,4161,1 --Collect Small Spider Leg (x7)
 step
     .goto Teldrassil,56.1,57.8
-    .accept 997 >>接受Denalan的地球
+    .accept 997 >>接任务: 德纳兰的泥土
 step
     .goto Teldrassil,55.9,57.3
-    .accept 475 >>接受烦恼的微风
+    .accept 475 >>接任务: 烦恼之风
 step << Priest
     .goto Teldrassil,55.6,56.8
-    .turnin 5622 >>支持Elune
-    .accept 5621 >>接受月亮的衣服
+    .turnin 5622 >>交任务: 月神的恩赐
+    .accept 5621 >>接任务: 月光之衣
 	.trainer >>训练你的6级法术
 step << Rogue
     .goto Teldrassil,55.51,57.14
@@ -326,14 +326,14 @@ step
     #xprate <1.5
     .goto Teldrassil,55.5,57.0
     >>去树屋的顶端
-   .accept 932 >>接受扭曲的仇恨
-    .accept 2438 >>接受翡翠梦想家
+   .accept 932 >>接任务: 扭曲的仇恨
+    .accept 2438 >>接任务: 翡翠摄梦符
 step
     #xprate >1.3
     .goto Teldrassil,55.5,57.0
     >>去树屋的顶端
-    .accept 932 >>接受扭曲的仇恨 << !Hunter
-    .accept 2438 >>接受翡翠梦想家
+    .accept 932 >>接任务: 扭曲的仇恨 << !Hunter
+    .accept 2438 >>接任务: 翡翠摄梦符
 step << Hunter
     .goto Teldrassil,56.3,59.5
     >>修理你的武器。如果你有足够的钱(2s85c)，从Jeena那里买一个Hornwood Recurve Bow。否则，请跳过此步骤(稍后再回来)
@@ -359,7 +359,7 @@ step << Druid
     .collect 2495,1 --Walking Stick (1)
 step
     .goto Teldrassil,55.7,59.8
-    .turnin 2159 >>交付Dolanar交付
+    .turnin 2159 >>交任务: 多兰纳尔的货物
 step << Hunter
     .goto Teldrassil,56.7,59.5
 	.train 3044>>火车奥术射击
@@ -368,8 +368,8 @@ step << Druid
 	.trainer >>训练你的6级法术
 step
     .goto Teldrassil,56.2,61.7
-    .turnin 928 >>地球之冠
-    .accept 929 >>接受地球之冠
+    .turnin 928 >>交任务: 大地之冠
+    .accept 929 >>接任务: 大地之冠
 step << Druid
     #xprate <1.1
     .goto Teldrassil,57.6,60.6
@@ -386,28 +386,28 @@ step << Priest
     .complete 5621,1 --Heal and fortify Sentinel Shaya
 step
     .goto Teldrassil,60.9,68.5
-    .turnin 997 >>交给Denalan的地球
-    .accept 918 >>接受林木种子
-    .accept 919 >>接受木材萌芽
+    .turnin 997 >>交任务: 德纳兰的泥土
+    .accept 918 >>接任务: 林精的种子
+    .accept 919 >>接任务: 林精的新芽
 step
     .goto Teldrassil,56.1,66.6
-    >>在湖边跑来跑去，杀死伐木暴徒，抢劫地上的树苗
+    >>在湖边跑来跑去，杀死伐木暴徒，掠夺地上的树苗
     .complete 918,1 --Collect Timberling Seed (x8)
     .complete 919,1 --Collect Timberling Sprout (x12)
 step
     .goto Teldrassil,60.9,68.5
-    .turnin 918 >>交出林木种子
-    .accept 922 >>接受Rellian Greenspyre
-    .turnin 919 >>转向木材萌芽
+    .turnin 918 >>交任务: 林精的种子
+    .accept 922 >>接任务: 雷利亚·绿树
+    .turnin 919 >>交任务: 林精的新芽
 step
     .goto Teldrassil,68.0,59.6
-	>>抢劫房子里的梳妆台
+	>>掠夺房子里的梳妆台
     .complete 2438,1 --Collect Emerald Dreamcatcher (x1)
 step
     .goto Teldrassil,66.3,58.6
 	>>到楼上的房子里去
-    .turnin 475 >>一阵阵烦恼的微风
-    .accept 476 >>接受Gnarlpine腐败
+    .turnin 475 >>交任务: 烦恼之风
+    .accept 476 >>接任务: 瘤背熊怪的堕落
 step
     #label zenn
     .goto Teldrassil,63.4,58.1
@@ -422,28 +422,28 @@ step
 step
     #xprate <1.5
     .goto Teldrassil,60.7,54.4
-	.xp 7+3500>>研磨至7+3500xp级
+	.xp 7+3500>>提升经验到7+3500xp级
 step
     #xprate >1.3
     .goto Teldrassil,60.7,54.4
-	.xp 7+2900>>研磨至7+2900xp级
+	.xp 7+2900>>提升经验到7+2900xp级
 step
     .goto Teldrassil,60.5,56.3
-    .turnin 488 >>提交Zenn的出价
+    .turnin 488 >>交任务: 赛恩的要求
 step
 	.goto Teldrassil,56.1,57.7
-    .accept 489 >>接受寻求赎回！
+    .accept 489 >>接任务: 寻求救赎！
 step
     .goto Teldrassil,55.9,57.3
-    .turnin 476 >>移交Gnarlpine腐败
+    .turnin 476 >>交任务: 瘤背熊怪的堕落
 step << Priest
     .goto Teldrassil,55.5,56.7
-    .turnin 5621 >>穿上月亮的衣服
+    .turnin 5621 >>交任务: 月光之衣
 	.trainer >>训练你的8级法术
 step
     .goto Teldrassil,55.6,56.9
-    .turnin 2438 >>交上翡翠捕梦网
-    .accept 2459 >>接受食梦者Ferocitas
+    .turnin 2438 >>交任务: 翡翠摄梦符
+    .accept 2459 >>接任务: 噬梦者菲罗斯塔
 step << Hunter
 	#completewith next
     .goto Teldrassil,56.3,59.5
@@ -475,8 +475,8 @@ step << Druid
     .collect 2495,1 --Walking Stick (1)
 step << Druid
     .goto Teldrassil,56.2,61.7
-    .turnin 929 >>地球之冠
-    .accept 933 >>接受地球之冠
+    .turnin 929 >>交任务: 大地之冠
+    .accept 933 >>接任务: 大地之冠
 step << Druid
     .goto Teldrassil,55.9,61.6
 	.trainer >>训练你的8级法术
@@ -505,7 +505,7 @@ step
     .complete 489,1 --Collect Fel Cone (x3)
 step
     .goto Teldrassil,60.4,56.4
-    .turnin 489 >>交给Seek Redemption！
+    .turnin 489 >>交任务: 寻求救赎！
 step << Hunter
     #xprate <1.5
     .goto Teldrassil,51.2,50.6
@@ -520,16 +520,16 @@ step
 	.deathskip >>故意死亡并在墓地重生
 step << !Druid
     .goto Teldrassil,56.2,61.7
-    .turnin 929 >>地球之冠
+    .turnin 929 >>交任务: 大地之冠
 step
 	#xprate <1.5
     .goto Teldrassil,56.2,61.7
-    .accept 933 >>接受地球之冠
+    .accept 933 >>接任务: 大地之冠
 step
 	#xprate <1.5
 	.goto Teldrassil,42.54,76.08
 	>>点击大紫色植物
-	.accept 930 >>接受鲜果
+	.accept 930 >>接任务: 发光的水果
 step
 	#xprate <1.5
 	#label spiderLegs
@@ -548,14 +548,14 @@ step
 step
 	#xprate <1.5
     .goto Teldrassil,56.2,61.7
-    .turnin 933 >>地球之冠
-    .accept 7383 >>接受地球之冠
+    .turnin 933 >>交任务: 大地之冠
+    .accept 7383 >>接任务: 大地之冠
 step
 	#xprate <1.5
     .goto Teldrassil,57.1,61.3
     .train 2550 >>火车烹饪
-    .accept 4161 >>接受卡多雷食谱
-    .turnin 4161 >>上交卡多雷食谱
+    .accept 4161 >>接任务: 卡多雷的菜谱
+    .turnin 4161 >>交任务: 卡多雷的菜谱
 step
     .goto Teldrassil,55.7,59.8
     .home >>将您的炉石设置为Dolanar
@@ -565,28 +565,28 @@ step << Warrior/Rogue
 step
     #xprate >1.3
     .goto Teldrassil,55.5,56.9
-    .turnin 932 >>交给扭曲的帽子 << !Hunter
-    .turnin 2459 >>把Ferocitas交给食梦者
+    .turnin 932 >>交任务: 扭曲的仇恨 << !Hunter
+    .turnin 2459 >>交任务: 噬梦者菲罗斯塔
 step
     #xprate <1.5
     .goto Teldrassil,55.5,56.9
-    .turnin 932 >>交给扭曲的帽子
-    .turnin 2459 >>把Ferocitas交给食梦者
+    .turnin 932 >>交任务: 扭曲的仇恨
+    .turnin 2459 >>交任务: 噬梦者菲罗斯塔
 step
     .goto Teldrassil,51.9,56.4
     >>找到月亮女祭司阿玛拉，她在多拉纳尔以西的路上巡逻
-    .accept 487 >>接受通往达纳苏斯的道路
+    .accept 487 >>接任务: 达纳苏斯之路
 step
     .goto Teldrassil,46.6,53.0
     .complete 487,1 --Kill Gnarlpine Ambusher (x6)
 step << Druid
     .goto Teldrassil,51.9,56.4
     >>找到月亮女祭司阿玛拉，她在多拉纳尔以西的路上巡逻
-    .turnin 487 >>在通往达纳苏斯的道路上转弯
+    .turnin 487 >>交任务: 达纳苏斯之路
 step
 	#xprate <1.5
     .goto Teldrassil,38.3,34.3
-    .accept 937 >>接受迷人的喜悦
+    .accept 937 >>接任务: 神谕林地
 step
 	#xprate <1.5
     .goto Teldrassil,38.4,34.1
@@ -601,14 +601,14 @@ step
 step
 	#xprate <1.5
     .goto Teldrassil,34.6,28.9
-    .accept 931 >>接受闪闪发亮的额头
+    .accept 931 >>接任务: 发光的树叶
 step << Hunter
 	#xprate <1.5
     #completewith xp10
     #label mist1
     .goto Teldrassil,31.6,31.7
     >>开始护送任务
-    .accept 938 >>接受薄雾
+    .accept 938 >>接任务: 密斯特
 step << Hunter
     #xprate <1.5
     #sticky
@@ -626,26 +626,26 @@ step << Hunter
     #completewith xp10
     #requires mist1
     .goto Teldrassil,38.3,34.4
-    .turnin 938 >>雾中转弯
+    .turnin 938 >>交任务: 密斯特
 step << Hunter
 	#xprate <1.5
     #completewith xp10
 	#requires harpies
     .goto Teldrassil,38.3,34.4
-    .turnin 937 >>交出迷人的光彩
-    .accept 940 >>接受Teldrassil
+    .turnin 937 >>交任务: 神谕林地
+    .accept 940 >>接任务: 泰达希尔
 step << !Hunter
 	#xprate <1.5
     #label mist1
     .goto Teldrassil,31.6,31.7
     >>开始护送任务
-    .accept 938 >>接受薄雾
+    .accept 938 >>接任务: 密斯特
 step << !Hunter
 	#xprate <1.5
     .goto Teldrassil,38.3,34.4
-    .turnin 937 >>交出迷人的光彩
-    .accept 940 >>接受Teldrassil
-    .turnin 938 >>雾中转弯
+    .turnin 937 >>交任务: 神谕林地
+    .accept 940 >>接任务: 泰达希尔
+    .turnin 938 >>交任务: 密斯特
 step << !Hunter
 #xprate <1.5
     #label xp10
@@ -680,27 +680,27 @@ step << !Rogue
     #requires xp10
 1	>>跑到达纳苏斯
     .goto Darnassus,38.3,21.4
-    .turnin 922 >>交给Rellian Greenspyre
-    .accept 923 >>接受肿瘤
+    .turnin 922 >>交任务: 雷利亚·绿树
+    .accept 923 >>接任务: 青苔之瘤
 step << !Hunter !Rogue
 	#xprate <1.5
     .goto Darnassus,34.7,9.0
     >>爬到树屋的顶部
-    .turnin 940 >>交给Teldrassil
+    .turnin 940 >>交任务: 泰达希尔
 	.isOnQuest 940
 step << Druid
     .goto Darnassus,35.2,8.0
     >>前往树屋的中间层
-    .accept 5921 >>接受Moonglade
+    .accept 5921 >>接任务: 月光林地
 	.trainer >>训练你的10级法术
 step << !Rogue
     .goto Darnassus,36.5,86.0
-    .accept 2518 >>接受月亮的眼泪
+    .accept 2518 >>接任务: 月神的泪水
 step << Druid
     .goto Moonglade,56.2,30.8
     >>打开你的魔法书并传送到月光大陆
-    .turnin 5921 >>转入Moonglade
-    .accept 5929 >>接受大熊精神
+    .turnin 5921 >>交任务: 月光林地
+    .accept 5929 >>接任务: 巨熊之灵
 step << Druid
     .goto Moonglade,39.1,27.5
     >>与夜鹰城外的熊精灵交谈
@@ -708,8 +708,8 @@ step << Druid
 step << Druid
     .goto Moonglade,56.2,30.5
     >>使用你的心灵传送法术返回任务给予者
-    .turnin 5929 >>交出大熊精神
-    .accept 5931 >>接受返回达纳苏斯
+    .turnin 5929 >>交任务: 巨熊之灵
+    .accept 5931 >>接任务: 返回达纳苏斯
 step
     #requires xp10 << Rogue
     #completewith next << !Rogue
@@ -721,20 +721,20 @@ step
 	#xprate >1.3
     .goto Teldrassil,57.1,61.3
     .train 2550 >>火车烹饪
-    .accept 4161 >>接受卡多雷食谱
-    .turnin 4161 >>上交卡多雷食谱
+    .accept 4161 >>接任务: 卡多雷的菜谱
+    .turnin 4161 >>交任务: 卡多雷的菜谱
 step
 	#xprate >1.3
     .goto Teldrassil,51.9,56.4
     >>找到月亮女祭司阿玛拉，她在多拉纳尔以西的路上巡逻
-    .turnin 487 >>在通往达纳苏斯的道路上转弯
+    .turnin 487 >>交任务: 达纳苏斯之路
 	.maxlevel 9
 step << Hunter
     #completewith L10
     #level 10
     #label beast1
     .goto Teldrassil,56.7,59.6
-    .accept 6063 >>接受驯服野兽
+    .accept 6063 >>接任务: 驯服野兽
 	.train 13165 >>训练你的10级法术
 step << Hunter
     #completewith L10
@@ -748,28 +748,28 @@ step << Hunter
     #level 10
     #requires beast2
     .goto Teldrassil,56.7,59.5
-    .turnin 6063 >>转身驯服野兽
-    .accept 6101 >>接受驯服野兽
+    .turnin 6063 >>交任务: 驯服野兽
+    .accept 6101 >>接任务: 驯服野兽
 step
 	#xprate <1.5
     .goto Teldrassil,56.1,61.7
-    .turnin 7383 >>地球之冠
-    .accept 935 >>接受地球之冠
+    .turnin 7383 >>交任务: 大地之冠
+    .accept 935 >>接任务: 大地之冠
 step
 	#xprate <1.5
 	.goto Teldrassil,60.9,68.4
-    .turnin 931 >>把闪闪发亮的额头
-    .turnin 930 >>交出鲜果
+    .turnin 931 >>交任务: 发光的树叶
+    .turnin 930 >>交任务: 发光的水果
 step
 	#xprate <1.5
 	.goto Teldrassil,60.9,68.4
-	.turnin 927 >>转入苔藓缠绕的心
+	.turnin 927 >>交任务: 布满苔藓的心脏
     .isOnQuest 927
 step
 	#xprate <1.5
 	.goto Teldrassil,60.9,68.4
 	>>点击任务给予者旁边的植物花瓶
-	.turnin 941 >>转身种植心脏
+	.turnin 941 >>交任务: 培养心脏
 	.isQuestTurnedIn 927
 step << Hunter
 	#xprate <1.5
@@ -796,38 +796,38 @@ step << Rogue
 	.trainer >>训练你的10级法术
 step << Hunter
     .goto Teldrassil,56.7,59.6
-    .accept 6063 >>接受驯服野兽
+    .accept 6063 >>接任务: 驯服野兽
 	.trainer >>训练你的10级法术
 step << Hunter
     .goto Teldrassil,59.9,58.8
     .complete 6063,1 --Tame a Webwood Lurker
 step << Hunter
     .goto Teldrassil,56.7,59.5
-    .turnin 6063 >>转身驯服野兽
-    .accept 6101 >>接受驯服野兽
+    .turnin 6063 >>交任务: 驯服野兽
+    .accept 6101 >>接任务: 驯服野兽
 step << Hunter
     .goto Teldrassil,62.6,72.2
     .complete 6101,1 --Tame a Nightsaber Stalker
 step << Hunter
     .goto Teldrassil,56.7,59.5
-    .turnin 6101 >>转身驯服野兽
-    .accept 6102 >>接受驯服野兽
+    .turnin 6101 >>交任务: 驯服野兽
+    .accept 6102 >>接任务: 驯服野兽
 step << Hunter
     .goto Teldrassil,64.7,66.7
     .complete 6102,1 --Tame a Strigid Screecher
 step << Hunter
     .goto Teldrassil,56.7,59.5
-    .turnin 6102 >>转身驯服野兽
-    .accept 6103 >>接受训练野兽
+    .turnin 6102 >>交任务: 驯服野兽
+    .accept 6103 >>接任务: 训练野兽
 step << Warrior
     .goto Teldrassil,56.2,59.2
-    .accept 1684 >>接受Elanaria
+    .accept 1684 >>接任务: 艾兰娜瑞
 step << Rogue
     .goto Teldrassil,56.2,60.0
-    .accept 2241 >>接受苹果坠落
+    .accept 2241 >>接任务: 詹诺克的花
 step << !Druid
     .goto Teldrassil,51.8,56.4
-    .turnin 487 >>在通往达纳苏斯的道路上转弯
+    .turnin 487 >>交任务: 达纳苏斯之路
 step << Rogue
     #completewith next
     .goto Teldrassil,44.0,54.6
@@ -840,24 +840,24 @@ step << Rogue
     .collect 25873,1 >>从Ellandrieth购买一把锋利的飞刀
 step << Rogue
     .goto Darnassus,38.3,21.4
-    .turnin 922 >>交给Rellian Greenspyre
-    .accept 923 >>接受肿瘤
+    .turnin 922 >>交任务: 雷利亚·绿树
+    .accept 923 >>接任务: 青苔之瘤
 step << Rogue
     .goto Darnassus,34.7,9.0
     >>爬到树屋的顶部
-    .turnin -935 >>地球之冠
-    .turnin 940 >>交给Teldrassil
+    .turnin -935 >>交任务: 大地之冠
+    .turnin 940 >>交任务: 泰达希尔
 step << Rogue
     #xprate <1.5
     .goto Darnassus,34.7,9.0
-    .accept 952 >>接受古人的丛林
+    .accept 952 >>接任务: 古树之林
 step << Rogue
     .goto Darnassus,36.8,21.8
-    .turnin 2241 >>上交苹果瀑布
-    .accept 2242 >>接受命运召唤
+    .turnin 2241 >>交任务: 詹诺克的花
+    .accept 2242 >>接任务: 命运的召唤
 step << Rogue
     .goto Darnassus,36.5,86.0
-    .accept 2518 >>接受月亮的眼泪
+    .accept 2518 >>接任务: 月神的泪水
 step << Hunter
     #sticky
 	.goto Teldrassil,41.2,44.4,0
@@ -885,7 +885,7 @@ step << Rogue
 step
 	#xprate >1.3 << !Hunter
     .goto Teldrassil,38.3,34.3
-    .accept 937 >>接受迷人的喜悦
+    .accept 937 >>接任务: 神谕林地
 step
 	#xprate >1.3 << !Hunter
     #sticky
@@ -896,24 +896,24 @@ step
 	#xprate >1.3 << !Hunter
     .goto Teldrassil,31.6,31.7
     >>开始护送任务
-    .accept 938 >>接受薄雾
+    .accept 938 >>接任务: 密斯特
 step
 	#xprate >1.3 << !Hunter
     .goto Teldrassil,38.3,34.4
-    .turnin 938 >>雾中转弯
+    .turnin 938 >>交任务: 密斯特
 step
 	#xprate >1.3 << !Hunter
     #requires harpies2
     .goto Teldrassil,38.3,34.4
-    .turnin 937 >>交出迷人的光彩
-    .accept 940 >>接受Teldrassil
+    .turnin 937 >>交任务: 神谕林地
+    .accept 940 >>接任务: 泰达希尔
 step
     #softcore
 	#completewith next
     .deathskip >>在达纳苏斯墓地死亡并重生
 step
     .goto Darnassus,70.6,45.3
-    .accept 6344 >>接受Nessa Shadowsong
+    .accept 6344 >>接任务: 尼莎·影歌
 step
 	.abandon 927 >>抛弃苔藓缠绕的心。你永远没有机会交出
 step << Warrior
@@ -921,8 +921,8 @@ step << Warrior
     .collect 25873,1 >>从Ellandrieth购买一把锋利的飞刀
 step << Warrior
     .goto Darnassus,57.4,34.8
-    .turnin 1684 >>转入Elanaria
-    .accept 1683 >>接受Vorlus Vilehoof
+    .turnin 1684 >>交任务: 艾兰娜瑞
+    .accept 1683 >>接任务: 沃鲁斯·邪蹄
 step << Warrior
     #sticky
     #completewith next
@@ -939,40 +939,40 @@ step << Warrior
     .deathskip >>在你经过火山口地区并在达纳苏斯重生后，故意死亡
 step << Warrior
     .goto Darnassus,57.4,34.5
-    .turnin 1683 >>转入Vorlus Vilehoof
---	.accept 1686 >>接受埃卢拉的阴影
+    .turnin 1683 >>交任务: 沃鲁斯·邪蹄
+--	.accept 1686 >>接任务: 艾鲁拉的阴影
 step << Druid
     .goto Darnassus,35.1,8.6
-    .turnin 5931 >>返回达纳苏斯
-    .accept 6001 >>接受身体和心灵
+    .turnin 5931 >>交任务: 返回达纳苏斯
+    .accept 6001 >>接任务: 身心之力
 step
     .isOnQuest 935
     .goto Darnassus,34.8,9.2
-    .turnin 935 >>地球之冠
+    .turnin 935 >>交任务: 大地之冠
 step
     .goto Darnassus,34.8,9.2
-    .turnin 940 >>交给Teldrassil << Hunter
+    .turnin 940 >>交任务: 泰达希尔 << Hunter
 step
     #xprate <1.5
     .goto Darnassus,34.8,9.2
-    .accept 952 >>接受古人的丛林
+    .accept 952 >>接任务: 古树之林
 step << Hunter
     .goto Darnassus,40.3,8.8
-    .turnin 6103 >>上缴训练野兽
+    .turnin 6103 >>交任务: 训练野兽
 step << Rogue
     .goto Darnassus,36.8,21.8
-    .turnin 2242 >>交出命运召唤
+    .turnin 2242 >>交任务: 命运的召唤
 step
     .goto Darnassus,38.3,21.7
-    .turnin 923 >>转入肿瘤
+    .turnin 923 >>交任务: 青苔之瘤
 step << Rogue
     .goto Darnassus,62.68,65.58
 	>>去大楼的二楼
     .vendor >>购买从都灵投掷的11级。11级时装备它
 step
     .goto Darnassus,36.9,85.8
-    .turnin 2518 >>月亮的眼泪
-    .accept 2520 >>接受萨特拉的牺牲
+    .turnin 2518 >>交任务: 月神的泪水
+    .accept 2520 >>接任务: 萨丝拉的祭品
 step
     .goto Darnassus,39.7,85.8
 	>>在喷泉的袋子里放上萨特拉的祭品
@@ -980,7 +980,7 @@ step
 step
     #label end
     .goto Darnassus,36.6,85.9
-    .turnin 2520 >>交出萨特拉的牺牲
+    .turnin 2520 >>交任务: 萨丝拉的祭品
 step << Hunter tbc/Warrior tbc/Priest
     .goto Darnassus,57.8,46.6
     .train 227 >>火车杠
@@ -1006,12 +1006,12 @@ step
     .goto Teldrassil,56.3,92.3,175 >>通过银行旁边的紫色门户前往鲁思特兰村
 step
     .goto Teldrassil,56.3,92.3
-    .turnin 6344 >>转入Nessa Shadowsong
-    .accept 6341 >>接受Teldrassil的赏金
+    .turnin 6344 >>交任务: 尼莎·影歌
+    .accept 6341 >>接任务: 泰达希尔的渔业
 step
     .goto Teldrassil,58.4,94.0
-    .turnin 6341 >>交出Teldrassil的赏金
-    .accept 6342 >>接受飞往奥伯丁的航班
+    .turnin 6341 >>交任务: 泰达希尔的渔业
+    .accept 6342 >>接任务: 飞往奥伯丁
 step
     .fly Darkshore >>飞到黑海岸
 ]])

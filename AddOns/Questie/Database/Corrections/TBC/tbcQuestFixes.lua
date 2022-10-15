@@ -12,7 +12,7 @@ local QuestieCorrections = QuestieLoader:ImportModule("QuestieCorrections")
 local l10n = QuestieLoader:ImportModule("l10n")
 
 
-QuestieCorrections.reversedKillCreditQuestIDs = {
+QuestieCorrections.killCreditObjectiveFirst = {
     [10503] = true, -- The Bladespire Threat
 }
 
@@ -774,6 +774,9 @@ function QuestieTBCQuestFixes:Load()
         },
         [9421] = {
             [questKeys.preQuestSingle] = {9280,9369},
+        },
+        [9425] = {
+            [questKeys.requiredRaces] = raceIDs.BLOOD_ELF,
         },
         [9428] = {
             [questKeys.requiredRaces] = raceIDs.BLOOD_ELF,

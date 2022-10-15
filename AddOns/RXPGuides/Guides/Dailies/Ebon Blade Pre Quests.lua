@@ -17,12 +17,12 @@ step << Alliance
     .goto IcecrownGlacier,54.7,35.3,0
 	>>飞到破天荒号，联盟的大船，在高空盘旋
 	>>与船左后角的Thassarian交谈
-    .accept 12887 >>接受一切乐趣和游戏
+    .accept 12887 >>接任务: 乐趣十足
 step << Horde
 	.goto Icecrown,62.58,45.04
 	>>飞到奥格瑞姆之锤，一艘在高空盘旋的部落大船
 	>>在船的前室与Koltira Deathweaver交谈
-    .accept 12892 >>接受一切乐趣和游戏
+    .accept 12892 >>接任务: 乐趣十足
 step
     .goto IcecrownGlacier,44.5,21.6
 	.use 41265 >>飞到塔顶。在眼袋中使用Eyesoir Blaster，直到其死亡
@@ -31,9 +31,9 @@ step
 step
     .goto IcecrownGlacier,44.1,24.7
 	>>一直飞到地面上的男爵西尔弗。跟他谈谈
-    .turnin 12887 >>交给It's All Fun and Games << Alliance
-    .turnin 12892 >>交给It's All Fun and Games << Horde
-    .accept 12891 >>接受我的想法，但首先。。。
+    .turnin 12887 >>交任务: 乐趣十足 << Alliance
+    .turnin 12892 >>交任务: 乐趣十足 << Horde
+    .accept 12891 >>接任务: 我有一计……
 step
 	>>杀死艺人并掠夺他们的绳索，杀死憎恶者并掠夺其钩子，杀死邪教教徒并掠夺它们的棍子，杀死亡灵暴徒并掠夺她们的灵魂
     .complete 12891,1 --Cultist Rod (1)
@@ -59,8 +59,8 @@ step
 step
     .goto IcecrownGlacier,44.2,24.6
 	>>返回银色
-    .turnin 12891 >>交上来我有个主意，但首先。。。
-    .accept 12893 >>接受自由思想
+    .turnin 12891 >>交任务: 我有一计……
+    .accept 12893 >>接任务: 解放你的思想
 step
     .goto IcecrownGlacier,44.4,27.0
 	.use 41366 >>杀死维尔。在他的尸体上使用主权杖
@@ -83,9 +83,9 @@ step
 	#label Freemind
     .goto IcecrownGlacier,44.2,24.7
 	>>返回银色
-    .turnin 12893 >>转身解放你的思想
-    .accept 12896 >>如果他不能被转动就接受 << Alliance
-    .accept 12897 >>如果他不能被转动就接受 << Horde
+    .turnin 12893 >>交任务: 解放你的思想
+    .accept 12896 >>接任务: 顽固的敌人 << Alliance
+    .accept 12897 >>接任务: 顽固的敌人 << Horde
 step
     .goto IcecrownGlacier,44.7,19.8
 	>>进入大楼，点击将军的武器架。小心，因为这会产生精英。杀死Lightsbane将军
@@ -98,18 +98,18 @@ step << Alliance
     .goto IcecrownGlacier,57.5,39.1,0
     .goto IcecrownGlacier,54.7,35.3,0
 	>>飞回破天者。与船左后角的Thassarian交谈
-    .turnin 12896 >>如果他不能被移交，则返回移交处
-    .accept 12898 >>接受阴影Vault
+    .turnin 12896 >>交任务: 顽固的敌人
+    .accept 12898 >>接任务: 暗影拱顶
 step << Horde
 	>>飞回奥格里姆之锤。在船的前室与Koltira Deathweaver交谈
-    .turnin 12897 >>如果他不能被移交就移交
-    .accept 12899 >>接受阴影Vault
+    .turnin 12897 >>交任务: 顽固的敌人
+    .accept 12899 >>接任务: 暗影拱顶
 step
     .goto IcecrownGlacier,42.8,24.9
 	>>返回男爵西尔弗
-	.turnin 12898 >>交出暗影保险库 << Alliance
-    .turnin 12899 >>交出暗影保险库 << Horde
-    .accept 12938 >>接受公爵
+	.turnin 12898 >>交任务: 暗影拱顶 << Alliance
+    .turnin 12899 >>交任务: 暗影拱顶 << Horde
+    .accept 12938 >>接任务: 公爵
 step
 	#completewith next
     .goto IcecrownGlacier,43.7,24.4
@@ -117,12 +117,12 @@ step
 step
     .goto IcecrownGlacier,44.7,20.3
 	>>进入大楼。与Lankral交谈
-    .turnin 12938 >>交给公爵
-    .accept 12939 >>接受荣誉挑战
+    .turnin 12938 >>交任务: 公爵
+    .accept 12939 >>接任务: 荣耀的挑战
 step
     .goto Icecrown,43.60,25.13
 	>>与Leaper交谈，他绕着帐篷走
-    .accept 12955 >>接受消除竞争
+    .accept 12955 >>接任务: 消灭竞争者
 step
     .goto IcecrownGlacier,37.5,24.7,0,0
 	#sticky
@@ -144,19 +144,19 @@ step
 step
     .goto IcecrownGlacier,43.5,25.0
 	>>返回Leaper
-    .turnin 12955 >>上缴消除竞争
+    .turnin 12955 >>交任务: 消灭竞争者
 step
     .goto IcecrownGlacier,44.7,20.3
 	>>进入大楼。与Lankral交谈
-    .turnin 12939 >>移交荣誉挑战
-    .accept 12943 >>接受暗影密室法令
+    .turnin 12939 >>交任务: 荣耀的挑战
+    .accept 12943 >>接任务: 暗影拱顶裁决令
 step
 	#completewith next
     .goto IcecrownGlacier,39.01,23.99,25 >>通往乌夫兰大厅的路从这里开始
 step
     .goto IcecrownGlacier,41.0,23.9
 	>>回到野人山崖，然后进入乌夫兰的大厅。和被锁在里面的维伦谈谈
-    .accept 12949 >>接受获取密钥
+    .accept 12949 >>接任务: 夺取钥匙
 step
     .goto IcecrownGlacier,40.3,23.9
 	.use 41776 >>在Thane前面的包中使用影子金库法令。杀了他。
@@ -170,31 +170,31 @@ step
 step
     .goto IcecrownGlacier,41.0,23.9
 	>>回到乌夫兰的大厅。返回Vaelen
-    .turnin 12949 >>进去拿钥匙
-    .accept 12951 >>接受让男爵知道
+    .turnin 12949 >>交任务: 夺取钥匙
+    .accept 12951 >>接任务: 通知男爵
 step
     .goto IcecrownGlacier,39.01,23.99,25,0
     .goto IcecrownGlacier,42.9,24.9
 	>>离开大厅。返回男爵西尔弗
-    .turnin 12951 >>交上来让男爵知道
-    .daily 12995 >>接受并留下我们的印记
-    .accept 13085 >>接受Vaelen已返回
+    .turnin 12951 >>交任务: 通知男爵
+    .daily 12995 >>接任务: 彰显军威
+    .accept 13085 >>接任务: 维林回来了
 step
     .goto IcecrownGlacier,43.6,24.1,60,0
     .goto IcecrownGlacier,42.7,26.8
 	>>与沿着主要道路巡逻的Vile交谈
-    .accept 12992 >>接受Crush Dem Vrykuls！
+    .accept 12992 >>接任务: 干掉那些维库人！
 step
     .goto IcecrownGlacier,43.8,23.3,30,0
     .goto IcecrownGlacier,43.1,21.1
 	>>进入大楼。与左侧的Vaelen交谈
-    .turnin 13085 >>Vaelen回来了
-    .accept 12982 >>接受黑檀之刃囚徒
+    .turnin 13085 >>交任务: 维林回来了
+    .accept 12982 >>接任务: 黑锋囚犯
 step
     .goto IcecrownGlacier,44.7,20.4
 	>>与Lankral交谈
-    .turnin 12943 >>转入阴影库递减步长
-    .accept 13084 >>接受故意破坏佐敦海姆
+    .turnin 12943 >>交任务: 暗影拱顶裁决令
+    .accept 13084 >>接任务: 破坏尤顿海姆
 step
     .goto IcecrownGlacier,29.5,43.4,50,0
     .goto IcecrownGlacier,29.6,45.7,50,0
@@ -204,7 +204,7 @@ step
     .goto IcecrownGlacier,29.0,35.1,50,0
     .goto IcecrownGlacier,34.1,28.7,50,0
     .goto IcecrownGlacier,29.5,43.4
-	.use 42480 >>杀死该地区的维库尔，并掠夺他们的笼子钥匙。在他们的尸体上使用你袋子里的黑檀刀锋横幅。点击在整个Jotenheim发现的笼子上抢劫的任何钥匙
+	.use 42480 >>杀死该地区的维库尔，并掠夺他们的笼子钥匙。在他们的尸体上使用你袋子里的黑檀刀锋横幅。点击在整个Jotenheim发现的笼子上掠夺的任何钥匙
 	>>烧毁在约腾海姆发现的旗帜
 	.collect 42422,8,12982,1,-1 --Jotunheim Cage Key (8)
     .complete 12982,1 --Ebon Blade Prisoners set free (8)
@@ -215,30 +215,30 @@ step
     .goto IcecrownGlacier,42.7,26.8,60,0
     .goto IcecrownGlacier,43.6,24.1
 	>>返回阴影库。与沿着主要道路巡逻的Vile交谈
-    .turnin 12992 >>交给Crush Dem Vrykuls！
-    .daily 13071 >>像火一样接受邪恶！
+    .turnin 12992 >>交任务: 干掉那些维库人！
+    .daily 13071 >>接任务: 维尔喜欢火焰！
 step
     .goto IcecrownGlacier,43.8,23.3,30,0
     .goto IcecrownGlacier,43.1,21.1
 	>>进入大楼。与左侧的Vaelen交谈
-    .turnin 12982 >>交出黑檀之刃囚犯
+    .turnin 12982 >>交任务: 黑锋囚犯
 step
     .goto IcecrownGlacier,44.7,20.4
 	>>与Lankral交谈
-    .turnin 13084 >>转入破坏佐敦海姆
+    .turnin 13084 >>交任务: 破坏尤顿海姆
 step
     .goto IcecrownGlacier,42.9,24.9
     >>返回银色
-	.turnin 12995 >>上车留下我们的标记
+	.turnin 12995 >>交任务: 彰显军威
 	.isQuestComplete 12995
 step
     .goto IcecrownGlacier,42.9,24.9
 	>>与Silver交谈
-    .accept 12806 >>尽快接受崛起！
+    .accept 12806 >>接任务: 全速赶往死亡高地！
 step
     .goto IcecrownGlacier,43.5,25.0
 	>>与Leaper交谈，他绕着帐篷走
-    .daily 13069 >>接受射击
+    .daily 13069 >>接任务: 把它们打下来！
 step
     .goto IcecrownGlacier,27.9,33.2
 	>>进入位于中心位置的佐敦海姆快速消防鱼叉。
@@ -267,14 +267,14 @@ step
 step
     .goto IcecrownGlacier,19.5,48.1
 	>>下马，然后前往死亡之地。这是一个位于海平面和山顶之间的小平台。与阿雷特交谈
-    .turnin 12806 >>以应有的速度投身崛起！
-    .accept 12807 >>接受到目前为止的故事。。。
+    .turnin 12806 >>交任务: 全速赶往死亡高地！
+    .accept 12807 >>接任务: 迄今为止的故事……
 step
     .goto IcecrownGlacier,19.5,48.1
 	>>再和阿雷特少校谈谈
     .complete 12807,1 --Lord-Commander Arete's tale listened to. (1)
-    .turnin 12807 >>把故事交上来。。。
-    .accept 12810 >>接受水中的鲜血
+    .turnin 12807 >>交任务: 迄今为止的故事……
+    .accept 12810 >>接任务: 水中之血
 	.skipgossip
 step
 	#sticky
@@ -283,10 +283,10 @@ step
     .fp Death's Rise >>获得死亡崛起飞行路径
 step
 	>>与Setaal交谈
-    .daily 12813 >>从他们的尸体上接受，起来！
+    .daily 12813 >>接任务: 转化尸体
     .goto Icecrown,19.67,48.39
 	>>与Aurochs交谈。他在中间的火周围巡逻
-    .daily 12838 >>接受情报收集
+    .daily 12838 >>接任务: 收集情报
     .goto IcecrownGlacier,20.1,47.5,20,0
     .goto IcecrownGlacier,20.4,47.9,20,0
     .goto IcecrownGlacier,20.1,48.4,20,0
@@ -303,7 +303,7 @@ step
 	.isOnQuest 12813
 step
 	#requires DeathRise
-	>>杀死暴徒，然后抢劫他们的钥匙。用它们在Onslaught Harbor周围打开箱子存放文件
+	>>杀死暴徒，然后掠夺他们的钥匙。用它们在Onslaught Harbor周围打开箱子存放文件
 	>>文件箱没有100%下降率
     .goto IcecrownGlacier,10.7,45.6,40,0
     .goto IcecrownGlacier,10.3,46.4,40,0
@@ -344,18 +344,18 @@ step
     .complete 12810,1 --Blood collected from Ravenous Jaws (10)
 step
 	>>回归死亡的崛起。与阿雷特交谈
-    .turnin 12810 >>把血倒在水里
-    .accept 12814 >>接受你需要鹰头狮
+    .turnin 12810 >>交任务: 水中之血
+    .accept 12814 >>接任务: 你需要狮鹫
     .goto IcecrownGlacier,19.6,48.1
 step
 	>>与Aurochs交谈。他在中间的火周围巡逻
-    .turnin -12838 >>提交情报收集
+    .turnin -12838 >>交任务: 收集情报
     .goto IcecrownGlacier,20.1,47.5,20,0
     .goto IcecrownGlacier,20.4,47.9,20,0
     .goto IcecrownGlacier,20.1,48.4,20,0
     .goto IcecrownGlacier,19.7,47.9
 	>>与Setaal交谈
-    .turnin -12813 >>从他们的尸体上翻过来，起来！
+    .turnin -12813 >>交任务: 转化尸体
     .goto IcecrownGlacier,19.7,48.4
 step
     .goto IcecrownGlacier,10.4,44.1
@@ -369,8 +369,8 @@ step
 step
     .goto Icecrown,19.64,47.80
 	>>与Uzo Deathcaller交谈
-    .turnin 12814 >>上车你需要一个鹰头狮
-    .daily 12815 >>接受禁飞区
+    .turnin 12814 >>交任务: 你需要狮鹫
+    .daily 12815 >>接任务: 禁飞区
 step
     .goto IcecrownGlacier,10.5,44.1,70,0
     .goto IcecrownGlacier,5.0,43.4,70,0
@@ -382,12 +382,12 @@ step
 step
 	.goto Icecrown,19.64,47.80
 	>>回归死亡的崛起。与Uzo交谈
-    .turnin 12815 >>转入禁飞区
+    .turnin 12815 >>交任务: 禁飞区
 step
     >>返回阴影库。与Leaper和Vile交谈
-    .turnin -13069 >>投篮得分
+    .turnin -13069 >>交任务: 把它们打下来！
 	.goto IcecrownGlacier,43.5,25.0
-    .turnin -13071 >>像火一样的卑鄙！
+    .turnin -13071 >>交任务: 维尔喜欢火焰！
     .goto IcecrownGlacier,43.6,24.1,60,0
     .goto IcecrownGlacier,42.7,26.8
 step

@@ -463,12 +463,19 @@ function addon.comms.OpenBugReport(stepNumber)
     end
 
     local af = addon.arrowFrame
+    local sameContinent = 'N/A'
+
+    if af.element and af.element.instance then
+        local _, _, instance =
+            LibStub("HereBeDragons-2.0"):GetPlayerWorldPosition()
+        sameContinent = tostr(af.element.instance == instance)
+    end
+
     local arrowData = af and fmt(
-                          "  Shown: %s\n  hideArrow: %s\n  disableArrow: %s\n  Distance: %s\n  Instance: %s\n  Zone: %s\n  Coordinates: wy (%.02f) wx (%.02f)\n",
+                          "  Shown: %s\n  Hidden by step: %s\n  Disabled: %s\n  Distance: %s\n  Same Continent: %s\n  Zone: %s\n  Coordinates: wy (%.02f) wx (%.02f)\n",
                           tostr(af:IsShown()), tostr(addon.hideArrow),
                           tostr(addon.settings.db.profile.disableArrow),
-                          af.distance or -1,
-                          af.element and af.element.instance or 'N/A',
+                          af.distance or -1, sameContinent,
                           af.element and af.element.zone or 'N/A',
                           af.element and af.element.wy or 0,
                           af.element and af.element.wx or 0) or 'N/A'
@@ -486,6 +493,7 @@ Addon: %s
 XP Rate: %.1f
 Locale: %s
 Client Version: %s
+BNet: %s
 
 Current Step data
 %s
@@ -496,8 +504,9 @@ Arrow data
 ]], L("Describe your issue:"), L("Do not edit below this line"),
                         character or "Error", zone or "Error", guide or "Error",
                         addon.release, addon.settings.db.profile.xprate,
-                        GetLocale(), select(1, GetBuildInfo()), stepData,
-                        arrowData)
+                        GetLocale(), select(1, GetBuildInfo()), select(2,
+                                                                       BNGetInfo()) ~=
+                            nil and "Online" or "Offline", stepData, arrowData)
 
     local f = AceGUI:Create("Frame")
 

@@ -13,13 +13,13 @@ step
 step
 	>>从暗影库接受3个每日任务
     >>与Silver交谈
-	.daily 12995 >>接受并留下我们的印记
+	.daily 12995 >>接任务: 彰显军威
 	.goto Icecrown,42.84,24.92
 	>>与Leaper交谈。他绕着帐篷走
-	.daily 13069 >>接受射击
+	.daily 13069 >>接任务: 把它们打下来！
 	.goto IcecrownGlacier,43.5,25.0
 	>>跟维尔谈谈，他是个讨厌的家伙，在入口和主楼之间的小路上巡逻
-    .daily 13071 >>像火一样接受邪恶！
+    .daily 13071 >>接任务: 维尔喜欢火焰！
     .goto IcecrownGlacier,42.7,26.8,60,0
     .goto IcecrownGlacier,43.6,24.1
 step
@@ -60,11 +60,11 @@ step
 	.isOnQuest 13071
 step
     >>返回阴影库。与西尔弗、Leaper和Vile交谈
-	.turnin 12995 >>上车留下我们的标记
+	.turnin 12995 >>交任务: 彰显军威
 	.goto Icecrown,42.84,24.92
-    .turnin 13069 >>投篮得分
+    .turnin 13069 >>交任务: 把它们打下来！
 	.goto IcecrownGlacier,43.5,25.0
-    .turnin 13071 >>像火一样的卑鄙！
+    .turnin 13071 >>交任务: 维尔喜欢火焰！
     .goto IcecrownGlacier,43.6,24.1,60,0
     .goto IcecrownGlacier,42.7,26.8
 
@@ -72,16 +72,16 @@ step
 step
 	>>从死亡复活开始接受3个每日任务
 	>>与Setaal交谈
-	.daily 12813 >>从他们的尸体上接受，起来！
+	.daily 12813 >>接任务: 转化尸体
 	.goto Icecrown,19.67,48.39
 	>>与Aurochs交谈。他在中间的火周围巡逻
-    .daily 12838 >>接受情报收集
+    .daily 12838 >>接任务: 收集情报
     .goto IcecrownGlacier,20.1,47.5,20,0
     .goto IcecrownGlacier,20.4,47.9,20,0
     .goto IcecrownGlacier,20.1,48.4,20,0
     .goto IcecrownGlacier,19.7,47.9
 	>>与Uzo交谈
-    .daily 12815 >>接受禁飞区
+    .daily 12815 >>接任务: 禁飞区
 	.goto Icecrown,19.64,47.80
 step
 	#sticky
@@ -102,7 +102,7 @@ step
     .complete 12813,1 --Scarlet Onslaught corpse transformed (10)
 	.isOnQuest 12813
 step
-	>>杀死暴徒，然后抢劫他们的钥匙。用它们在Onslaught Harbor周围打开箱子存放文件
+	>>杀死暴徒，然后掠夺他们的钥匙。用它们在Onslaught Harbor周围打开箱子存放文件
 	>>文件箱没有100%下降率
     .goto IcecrownGlacier,10.7,45.6,40,0
     .goto IcecrownGlacier,10.3,46.4,40,0
@@ -136,11 +136,11 @@ step
 step
 	#requires Gryphon
 	>>回归死亡的崛起。与Uzo、Setaal和Aurochs交谈
-    .turnin 12815 >>转入禁飞区
+    .turnin 12815 >>交任务: 禁飞区
     .goto Icecrown,19.64,47.80
-    .turnin 12813 >>从他们的尸体上翻过来，起来！
+    .turnin 12813 >>交任务: 转化尸体
     .goto Icecrown,19.67,48.39
-    .turnin 12838 >>提交情报收集
+    .turnin 12838 >>交任务: 收集情报
     .goto IcecrownGlacier,20.1,47.5,20,0
     .goto IcecrownGlacier,20.4,47.9,20,0
     .goto IcecrownGlacier,20.1,48.4,20,0

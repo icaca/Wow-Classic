@@ -3,11 +3,11 @@ RXPGuides.RegisterGuide([[
 #group +RestedXP诺森德每日任务
 #subgroup 阵营每日任务
 #wotlk
-#name Kalu'ak每日任务
+#name 卡鲁亚克每日任务
 
 step
-	>>前往Dragonblight的Moa'ki港。与毛伊交谈
-    .daily 11960 >>接受未来规划
+	>>前往龙骨荒野的莫亚基港口。与猎手莫伊交谈
+    .daily 11960 >>接任务: 未来的种子
     .goto Dragonblight,48.25,74.35
 step
     .goto Dragonblight,47.4,64.3,40,0
@@ -17,28 +17,28 @@ step
     .complete 11960,1 --Snowfall Glade Pup (12)
 	.isOnQuest 11960
 step
-	>>返回莫阿基港。与毛伊交谈
-    .turnin 11960 >>为未来制定计划
+	>>返回莫亚基港口。与猎手莫伊交谈
+    .turnin 11960 >>交任务: 未来的种子
     .goto Dragonblight,48.25,74.35
 	.isQuestComplete 11960
 step
-	>>前往Borean Tundra的Kaskala。与尤泰克交谈
-    .daily 11945 >>接受做最坏的准备
+	>>前往北风苔原的乌泰尔。与尤泰克交谈
+    .daily 11945 >>接任务: 做最坏的打算
     .goto BoreanTundra,63.95,45.72
 step
     .goto BoreanTundra,66.2,45.9,60,0
     .goto BoreanTundra,63.7,52.2
-	>>抢劫村庄周围的小篮子
+	>>掠夺村庄周围的小篮子
 	.complete 11945,1 --Kaskala Supplies (8)
     .isOnQuest 11945
 step
-	>>返回Utaik
-    .turnin 11945 >>上车做最坏的准备
+	>>返回卡斯卡拉
+    .turnin 11945 >>交任务: 做最坏的打算
     .goto BoreanTundra,63.95,45.72
     .isQuestComplete 11945
 step
-	>>前往嚎叫峡湾的卡马加。与Anunia交谈
-    .daily 11472 >>接受通往他内心的路。。。
+	>>前往嚎风峡湾的卡玛古。与Anunia交谈
+    .daily 11472 >>接任务: 心心相印……
 	.goto HowlingFjord,24.59,58.87
 step
     .goto HowlingFjord,31.2,74.8,30,0
@@ -52,6 +52,6 @@ step
 step
     .goto HowlingFjord,24.59,58.87
 	>>与Anuniaq交谈
-    .turnin 11472 >>在通往心灵的路上。。。
+    .turnin 11472 >>交任务: 心心相印……
 	.isQuestComplete 11472
 ]])

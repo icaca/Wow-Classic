@@ -7,7 +7,7 @@ RXPGuides.RegisterGuide([[
 
 step << Mage
     #completewith next
-    .zone Undercity >>传送到地下城
+    .zone Undercity >>前往: 幽暗城
     .skill herbalism,70,1
 step << !Mage
     #completewith next
@@ -17,7 +17,7 @@ step << !Mage
 step << !Mage
     #completewith next
     .goto Shattrath City,51.6,52.6
-    .zone Undercity >>在沙塔斯，从入口到地下城
+    .zone Undercity >>前往: 幽暗城, 如果在沙塔斯城, 请使用传送门
     .skill herbalism,70,1
 step
     .goto Undercity,54.0,49.5
@@ -42,7 +42,7 @@ step
     .loop 60,Tirisfal Glades,53.7,59.8,51.5,62.2,49.1,66.4,43.4,67.3,42.5,64.3,42.1,60.1,41.3,53.8,39.4,50.5,30.6,49.7,30.5,46.6,37.4,45.9,39.1,39.1,44.7,40.5,43.7,31.9,48.7,29.8,52.2,28.6,47.8,43.1,45.7,46.1,46.8,52.0,50.1,55.2,52.8,48.5,56.0,48.5,58.5,47.6,60.2,44.8,57.4,39.0,57.0,33.1,58.3,30.6,61.6,32.7,63.7,35.4,66.6,35.6,63.5,44.0,63.7,48.5,65.5,51.4,58.5,58.2,56.8,59.6,53.7,59.8
 step << Mage
     #completewith next
-    .zone Undercity >>传送到地下城
+    .zone Undercity >>前往: 幽暗城
     .skill herbalism,115,1
 step << !Mage
     .goto Undercity,66.2,1.5,20,0
@@ -57,7 +57,7 @@ step << !Mage
 step << !Mage
     #completewith next
     .goto Shattrath City,51.6,52.6
-    .zone Undercity >>在沙塔斯，从入口到地下城
+    .zone Undercity >>前往: 幽暗城, 如果在沙塔斯城, 请使用传送门
     .skill herbalism,115,1
 step
     .goto Undercity,54.0,49.5
@@ -90,7 +90,7 @@ step
     .skill herbalism,225,1
 step << Mage
     #completewith next
-    .zone Swamp of Sorrows >>传送至Stonard
+    .zone Swamp of Sorrows >>前往: 悲伤沼泽
     .skill herbalism,225,1
 step << !Mage
     #completewith next
@@ -107,13 +107,13 @@ step
     .loop 60,Swamp of Sorrows,54.5,42.1,44.8,41.9,30.8,51.2,26.7,61.6,23.2,59.5,20.9,53.4,17.1,55.1,15.1,64.0,11.8,63.7,14.8,46.3,18.0,46.1,17.0,42.3,10.9,37.1,10.7,32.1,14.9,33.2,19.4,43.7,21.6,40.7,26.3,44.3,30.2,34.8,34.1,40.7,38.3,38.5,37.4,32.4,45.7,31.3,52.8,30.6,63.4,20.9,70.3,13.1,81.2,22.0,86.4,42.3,86.2,62.1,82.8,72.2,75.4,86.1,69.1,77.5,64.5,68.6,73.3,72.4,81.3,59.1,79.3,43.9,70.1,35.0,61.2,41.1,56.1,59.1,54.5,42.1
 step << Mage
     #completewith next
-    .zone Orgrimmar >>电传至Orgrimmar
+    .zone Orgrimmar >>前往: 奥格瑞玛
     .skill herbalism,300,1
 step << !Mage
     .goto Blasted Lands,52.0,7.7,60,0
     .goto Blasted Lands,58.8,60.2,50,0
     .goto Hellfire Peninsula,88.9,50.2
-    .zone Hellfire Peninsula >>进入爆炸之地。穿过黑暗之门
+    .zone Hellfire Peninsula >>前往: 地狱火半岛, 进入诅咒之地, 通过黑暗传送门
     .skill herbalism,300,1
     .cooldown item,6948,<0,1
 step << !Mage
@@ -124,7 +124,7 @@ step << !Mage
 step << !Mage
     #completewith next
     .goto Shattrath City,52.2,52.9
-    .zone Orgrimmar >>在沙塔斯，从入口到奥格瑞玛
+    .zone Orgrimmar >>前往: 奥格瑞玛
     .skill herbalism,300,1
 step
     #completewith next
@@ -139,17 +139,17 @@ step
     .skill herbalism,300,1
 step << Mage
     #completewith next
-    .zone Swamp of Sorrows >>传送至Stonard
+    .zone Swamp of Sorrows >>前往: 悲伤沼泽
     .skill herbalism,300,1
 step << !Mage
     .goto Durotar,45.5,12.2
-    .zone Durotar >>离开Orgrimmar进入Durotar。或者，支付法师一个通往斯托纳德的入口
+    .zone Durotar >>前往: 杜隆塔尔, 从奥格瑞玛跑到杜隆塔尔, 或者使用法师的斯通纳德传送门
     .skill herbalism,300,1
     .zoneskip Swamp of Sorrows
 step << !Mage
     .goto Durotar,50.7,13.3,20,0
     .goto Durotar,50.6,12.6
-    .zone Stranglethorn Vale >>爬上齐柏林塔。带齐柏林飞艇去荆棘谷
+    .zone Stranglethorn Vale >>前往: 荆棘谷, 乘坐飞艇
     .skill herbalism,300,1
     .zoneskip Swamp of Sorrows
 step << !Mage
@@ -165,12 +165,12 @@ step << !Mage
     .goto Blasted Lands,52.0,7.7,60,0
     .goto Blasted Lands,58.8,60.2,50,0
     .goto Hellfire Peninsula,88.9,50.2
-    .zone Hellfire Peninsula >>进入爆炸之地。穿过黑暗之门
+    .zone Hellfire Peninsula >>前往: 地狱火半岛, 进入诅咒之地, 通过黑暗传送门
     .skill herbalism,325,1
     .cooldown item,6948,<0,1
 step << Mage
     #completewith next
-    .zone Shattrath City >>传送到沙塔斯市
+    .zone Shattrath City >>前往: 沙塔斯城
     .skill herbalism,325,1
     .zoneskip Hellfire Peninsula
 step << !Mage
@@ -188,7 +188,7 @@ step
 step
     #completewith next
     .goto Hellfire Peninsula,52.2,36.2
-    .zone Hellfire Peninsula >>乘坐飞行坐骑飞往地狱火半岛的萨尔玛
+    .zone Hellfire Peninsula >>前往: 地狱火半岛
     .skill herbalism,325,1
     .skill riding,<300,1
 step
@@ -202,12 +202,12 @@ step
     .loop 60,Hellfire Peninsula,27.9,80.6,31.1,61.8,43.5,63.9,43.0,72.9,38.1,87.2,45.7,85.5,49.8,69.2,62.0,68.9,67.4,77.9,65.4,58.4,72.3,62.3,80.3,79.6,73.8,59.2,66.8,55.5,67.1,52.2,71.9,51.9,73.9,40.2,66.8,43.7,65.7,28.1,59.0,35.9,55.6,28.9,51.0,23.9,49.2,36.5,45.1,41.9,49.0,47.1,59.8,47.1,61.0,53.7,52.5,54.6,48.6,58.9,42.9,56.0,37.7,42.6,41.0,30.8,35.5,29.3,27.5,36.8,31.4,48.6,24.1,44.4,20.5,40.1,18.2,46.1,14.6,36.8,12.1,55.2,13.8,61.8,17.2,53.6,22.7,54.9,22.9,65.9,27.9,80.6
 step << Mage
     #completewith next
-    .zone Shattrath City >>传送到沙塔斯市
+    .zone Shattrath City >>前往: 沙塔斯城
     .skill herbalism,350,1
     .zoneskip Terokkar Forest
 step << !Mage
     .goto Terokkar Forest,60.5,24.2
-    .zone Terokkar Forest >>飞往特罗卡森林
+    .zone Terokkar Forest >>前往: 泰罗卡森林
     .skill herbalism,350,1
     .zoneskip Terokkar Forest
     .cooldown item,6948,<0,1
@@ -219,7 +219,7 @@ step << !Mage
 step
     #completewith next
     .goto Terokkar Forest,39.6,24.8
-    .zone Terokkar Forest >>飞往特罗卡森林
+    .zone Terokkar Forest >>前往: 泰罗卡森林
     .skill herbalism,350,1
 step
     #label Terokkar
@@ -228,12 +228,12 @@ step
 step
     #completewith next
     .goto Netherstorm,25.2,79.5
-    .zone Netherstorm >>乘你的飞行坐骑飞往荷兰风暴
+    .zone Netherstorm >>前往: 虚空风暴
     .skill herbalism,375,1
     .skill riding,<300,1
 step << Mage
     #completewith next
-    .zone Shattrath City >>传送到沙塔斯市
+    .zone Shattrath City >>前往: 沙塔斯城
     .skill herbalism,375,1
     .skill riding,300,1
     .zoneskip Netherstorm
@@ -248,7 +248,7 @@ step << !Mage
 step << !Mage
     #completewith next
     .goto Shattrath City,64.1,41.1
-    .zone Shattrath City >>飞回沙塔斯
+    .zone Shattrath City >>前往: 沙塔斯城
     .skill herbalism,375,1
     .skill riding,300,1
     .zoneskip Netherstorm
@@ -276,7 +276,7 @@ RXPGuides.RegisterGuide([[
 #name 1-375 联盟
 step << Mage
     #completewith next
-    .zone Stormwind City >>传送到暴风城
+    .zone Stormwind City >>前往: 暴风城
     .skill herbalism,70,1
 step << !Mage
     #completewith next
@@ -286,7 +286,7 @@ step << !Mage
 step << !Mage
     #completewith next
     .goto Shattrath City,55.8,36.6
-    .zone Stormwind City >>在沙塔斯，从入口到暴风城
+    .zone Stormwind City >>前往: 暴风城, 在沙塔斯城使用传送门
     .skill herbalism,70,1
 step
     .goto Stormwind City,54.3,84.1
@@ -295,7 +295,7 @@ step
 step
     #completewith next
     .goto Elwynn Forest,32.3,49.9
-    .zone Elwynn Forest >>离开暴风雪进入埃尔文森林
+    .zone Elwynn Forest >>前往: 艾尔文森林
     .skill herbalism,70,1
 step
     .openmap Elwynn Forest
@@ -303,11 +303,11 @@ step
     .loop 60,Elwynn Forest,32.4,56.2,36.5,58.7,40.5,54.7,47.7,59.3,60.9,59.2,65.8,64.8,68.9,62.3,68.9,52.0,65.8,45.5,72.2,40.0,79.6,39.4,81.6,49.7,80.7,56.4,86.9,61.5,85.9,73.2,87.3,79.2,85.2,82.6,79.9,80.9,76.0,82.8,62.7,77.7,57.4,78.2,49.4,84.3,42.2,89.1,40.4,87.5,42.0,80.8,39.3,74.8,36.0,81.9,34.8,85.6,26.4,90.9,26.5,81.2,23.0,75.9,26.0,74.7,29.4,68.2,29.1,62.0,30.5,58.5,32.4,56.2
 step << Mage
     #completewith next
-    .zone Stormwind City >>传送到暴风城
+    .zone Stormwind City >>前往: 暴风城
     .skill herbalism,150,1
 step << !Mage
     .goto Stormwind City,73.0,89.9
-    .zone Stormwind City >>骑马返回暴风城
+    .zone Stormwind City >>前往: 暴风城
     .skill herbalism,150,1
     .cooldown item,6948,<0,1
 step << !Mage
@@ -318,7 +318,7 @@ step << !Mage
 step << !Mage
     #completewith next
     .goto Shattrath City,55.8,36.6
-    .zone Stormwind City >>在沙塔斯，从入口到暴风城
+    .zone Stormwind City >>前往: 暴风城, 在沙塔斯城使用传送门
     .skill herbalism,150,1
 step
     .goto Stormwind City,54.3,84.1
@@ -348,7 +348,7 @@ step
     #completewith next
     .goto Blasted Lands,52.1,8.5,40,0
     .goto Swamp of Sorrows,33.9,65.9
-    .zone Swamp of Sorrows >>骑马前往悲伤沼泽
+    .zone Swamp of Sorrows >>前往: 悲伤沼泽
     .skill herbalism,225,1
 step
     >>首先关注Liferoot和Kingsblood，当你达到160技能时关注Fadeleaf
@@ -362,7 +362,7 @@ step
     #completewith next
     .goto Blasted Lands,52.1,8.5,-1
     .goto Deadwind Pass,56.8,42.0,-1
-    .zone Redridge Mountains >>前往逆风或爆炸地，以距离较近者为准
+    .zone Redridge Mountains >>前往: 赤脊山, 前往逆风小径或诅咒之地, 选择近者
     .zoneskip Deadwind Pass
     .zoneskip Blasted Lands
     .skill herbalism,300,1
@@ -386,14 +386,14 @@ step
     #completewith next
     .goto Blasted Lands,52.1,8.5,40,0
     .goto Swamp of Sorrows,33.9,65.9
-    .zone Swamp of Sorrows >>骑马前往悲伤沼泽
+    .zone Swamp of Sorrows >>前往: 悲伤沼泽
     .skill herbalism,300,1
 step
     .skill herbalism,300 >>在悲伤沼泽中从225-300点升级草药
     .loop 60,Swamp of Sorrows,54.5,42.1,44.8,41.9,30.8,51.2,26.7,61.6,23.2,59.5,20.9,53.4,17.1,55.1,15.1,64.0,11.8,63.7,14.8,46.3,18.0,46.1,17.0,42.3,10.9,37.1,10.7,32.1,14.9,33.2,19.4,43.7,21.6,40.7,26.3,44.3,30.2,34.8,34.1,40.7,38.3,38.5,37.4,32.4,45.7,31.3,52.8,30.6,60.0,33.2,63.4,20.9,70.3,13.1,81.2,22.0,79.1,31.5,,84.2,35.4,,86.4,42.3,86.2,62.1,82.8,72.2,78.5,77.4,71.1,68.9,76.9,67.2,81.3,59.1,79.3,43.9,70.1,35.0,61.2,41.1,56.1,59.1,54.5,42.1
 step << Mage
     #completewith next
-    .zone Shattrath City >>传送到沙塔斯市
+    .zone Shattrath City >>前往: 沙塔斯城
     .skill herbalism,325,1
     .zoneskip Hellfire Peninsula
 step << !Mage
@@ -411,7 +411,7 @@ step
 step
     #completewith next
     .goto Hellfire Peninsula,53.6,65.8
-    .zone Hellfire Peninsula >>飞向荣誉在地狱火半岛的飞行坐骑上举行
+    .zone Hellfire Peninsula >>前往: 地狱火半岛, 飞往荣耀堡
     .skill herbalism,325,1
     .skill riding,<300,1
 step
@@ -425,12 +425,12 @@ step
     .loop 45,Hellfire Peninsula,27.9,80.6,31.1,61.8,43.5,63.9,43.0,72.9,38.1,87.2,45.7,85.5,49.8,69.2,62.0,68.9,67.4,77.9,65.4,58.4,72.3,62.3,80.3,79.6,73.8,59.2,66.8,55.5,67.1,52.2,71.9,51.9,73.9,40.2,66.8,43.7,65.7,28.1,59.0,35.9,55.6,28.9,51.0,23.9,49.2,36.5,45.1,41.9,49.0,47.1,59.8,47.1,61.0,53.7,52.5,54.6,48.6,58.9,42.9,56.0,37.7,42.6,41.0,30.8,35.5,29.3,27.5,36.8,31.4,48.6,24.1,44.4,20.5,40.1,18.2,46.1,14.6,36.8,12.1,55.2,13.8,61.8,17.2,53.6,22.7,54.9,22.9,65.9,27.9,80.6
 step << Mage
     #completewith next
-    .zone Shattrath City >>传送到沙塔斯市
+    .zone Shattrath City >>前往: 沙塔斯城
     .skill herbalism,350,1
     .zoneskip Terokkar Forest
 step << !Mage
     .goto Terokkar Forest,60.5,24.2
-    .zone Terokkar Forest >>飞往特罗卡森林
+    .zone Terokkar Forest >>前往: 泰罗卡森林
     .skill herbalism,350,1
     .cooldown item,6948,<0,1
 step << !Mage
@@ -441,7 +441,7 @@ step << !Mage
 step
     #completewith next
     .goto Terokkar Forest,39.6,24.8
-    .zone Terokkar Forest >>飞往特罗卡森林
+    .zone Terokkar Forest >>前往: 泰罗卡森林
     .skill herbalism,350,1
 step
     .skill herbalism,350 >>在特罗卡森林从325-350升级你的草药
@@ -449,12 +449,12 @@ step
 step
     #completewith next
     .goto Netherstorm,25.2,79.5
-    .zone Netherstorm >>乘你的飞行坐骑飞往荷兰风暴
+    .zone Netherstorm >>前往: 虚空风暴
     .skill herbalism,375,1
     .skill riding,<300,1
 step << Mage
     #completewith next
-    .zone Shattrath City >>传送到沙塔斯市
+    .zone Shattrath City >>前往: 沙塔斯城
     .skill herbalism,375,1
     .skill riding,300,1
     .zoneskip Netherstorm
@@ -468,7 +468,7 @@ step << !Mage
 step << !Mage
     #completewith next
     .goto Shattrath City,64.1,41.1
-    .zone Shattrath City >>飞回沙塔斯
+    .zone Shattrath City >>前往: 沙塔斯城
     .skill herbalism,375,1
     .skill riding,300,1
     .zoneskip Netherstorm

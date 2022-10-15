@@ -16,7 +16,7 @@ step << !Orc !Troll
 step
     >>与Kaltunk交谈
     .goto Durotar,43.3,68.5
-    .accept 4641 >>接受你在世界上的位置
+    .accept 4641 >>接任务: 起点
 step << Warlock tbc
     #sticky
     #completewith next
@@ -24,7 +24,7 @@ step << Warlock tbc
     .goto Durotar,44.0,71.3,30,0
 step << Warlock tbc
     .goto Durotar,42.6,69.0
-.accept 1485 >>接受邪恶的家人
+.accept 1485 >>接任务: 邪灵劣魔
 step << Warrior/Shaman
     #sticky
 #completewith next
@@ -36,8 +36,8 @@ step << Warrior/Shaman
 step
     >>在牢房里与戈内克交谈
     .goto Durotar,42.1,68.4
-    .turnin 4641 >>在世界上找到你的位置
-    .accept 788 >>接受切削齿
+    .turnin 4641 >>交任务: 起点
+    .accept 788 >>接任务: 小试身手
 step << Warrior
     .goto Durotar,42.9,69.4
     .train 6673 >>火车战斗呐喊
@@ -79,11 +79,11 @@ step << Warlock
 step << Warlock
     >>途中打磨野猪
 .goto Durotar,40.6,62.6
-    .accept 790 >>接受Sarkoth
+    .accept 790 >>接任务: 萨科斯
 step << !Warlock
     >>途中磨碎野猪。与树旁的哈娜祖交谈
     .goto Durotar,40.6,62.6
-    .accept 790 >>接受Sarkoth
+    .accept 790 >>接任务: 萨科斯
 step
 	#sticky
 	#completewith next
@@ -100,118 +100,118 @@ step << !Warlock
 step
     >>返回哈纳祖
     .goto Durotar,40.6,62.6
-    .turnin 790 >>转入Sarkoth
-    .accept 804 >>接受Sarkoth
+    .turnin 790 >>交任务: 萨科斯
+    .accept 804 >>接任务: 萨科斯
 step << Warlock tbc
-    .xp 3+850>>在回镇的路上研磨至850+/1400经验
+    .xp 3+850>>在回镇的路上提升经验到850+/1400经验
 step << Warlock
     .goto Durotar,42.6,67.3
     .vendor >>供应商垃圾，购买10水 << tbc
     .vendor >>供应商垃圾 << wotlk
 step << Warlock tbc
     .goto Durotar,42.6,69.0
-    .turnin 1485 >>交给卑鄙的家人
-    .accept 1499 >>接受邪恶的家人
+    .turnin 1485 >>交任务: 邪灵劣魔
+    .accept 1499 >>接任务: 邪灵劣魔
 step << Warlock tbc
     .cast 688 >>选择匕首并装备它。记得召唤你的小鬼
 	.goto Durotar,42.9,69.1
-    .turnin 1499 >>交给卑鄙的家人
-    .accept 794 >>接受燃烧之刃奖章
+    .turnin 1499 >>交任务: 邪灵劣魔
+    .accept 794 >>接任务: 火刃奖章
 step << !Orc !Troll
     #requires motboars
     .goto Durotar,42.1,68.3
-    .turnin 788 >>转入切削齿
-    .turnin 804 >>转入Sarkoth
-    .accept 789 >>接受蝎子的刺
+    .turnin 788 >>交任务: 小试身手
+    .turnin 804 >>交任务: 萨科斯
+    .accept 789 >>接任务: 工蝎的尾巴
 step << Orc Rogue
     #requires motboars
     >>磨蹭着回镇上
     .goto Durotar,42.1,68.3
-    .turnin 788,2 >>转入切削齿
-    .turnin 804 >>转入Sarkoth
-    .accept 3088 >>接受加密的羊皮纸
-    .accept 789 >>接受蝎子的刺
+    .turnin 788,2 >>交任务: 小试身手
+    .turnin 804 >>交任务: 萨科斯
+    .accept 3088 >>接任务: 密文羊皮纸
+    .accept 789 >>接任务: 工蝎的尾巴
 step << Troll Rogue
     #requires motboars
     >>磨蹭着回镇上
     .goto Durotar,42.1,68.3
-    .turnin 788,2 >>转入切削齿
-    .turnin 804 >>转入Sarkoth
-    .accept 3083 >>接受加密平板电脑
-    .accept 789 >>接受蝎子的刺
+    .turnin 788,2 >>交任务: 小试身手
+    .turnin 804 >>交任务: 萨科斯
+    .accept 3083 >>接任务: 密文石板
+    .accept 789 >>接任务: 工蝎的尾巴
 step << Orc Hunter
     #requires motboars
     >>磨蹭着回镇上
     .goto Durotar,42.1,68.3
-    .turnin 788,2 >>转入切削齿
-    .turnin 804 >>转入Sarkoth
-    .accept 3087 >>接受蚀刻羊皮纸
-    .accept 789 >>接受蝎子的刺
+    .turnin 788,2 >>交任务: 小试身手
+    .turnin 804 >>交任务: 萨科斯
+    .accept 3087 >>接任务: 风蚀羊皮纸
+    .accept 789 >>接任务: 工蝎的尾巴
 step << Troll Hunter
     #requires motboars
     >>磨蹭着回镇上
     .goto Durotar,42.1,68.3
-    .turnin 788,2 >>转入切削齿
-    .turnin 804 >>转入Sarkoth
-    .accept 3082 >>接受蚀刻片
-    .accept 789 >>接受蝎子的刺
+    .turnin 788,2 >>交任务: 小试身手
+    .turnin 804 >>交任务: 萨科斯
+    .accept 3082 >>接任务: 风蚀石板
+    .accept 789 >>接任务: 工蝎的尾巴
 step << Troll Mage
     #requires motboars
     >>磨蹭着回镇上
     .goto Durotar,42.1,68.3
-    .turnin 788 >>转入切削齿
-    .turnin 804 >>转入Sarkoth
-    .accept 3086 >>接受字形数字化仪
-    .accept 789 >>接受蝎子的刺
+    .turnin 788 >>交任务: 小试身手
+    .turnin 804 >>交任务: 萨科斯
+    .accept 3086 >>接任务: 雕文石板
+    .accept 789 >>接任务: 工蝎的尾巴
 step << Troll Priest
     #requires motboars
     .goto Durotar,42.1,68.3
-    .turnin 788 >>转入切削齿
-    .turnin 804 >>转入Sarkoth
-    .accept 3085 >>接受神圣平板电脑
-    .accept 789 >>接受蝎子的刺
+    .turnin 788 >>交任务: 小试身手
+    .turnin 804 >>交任务: 萨科斯
+    .accept 3085 >>接任务: 神圣石板
+    .accept 789 >>接任务: 工蝎的尾巴
 step << Troll Shaman
     #requires motboars
     >>磨蹭着回镇上
     .goto Durotar,42.1,68.3
-    .turnin 788,2 >>转入切削齿
-    .turnin 804 >>转入Sarkoth
-    .accept 3084 >>接受符文书写板
-    .accept 789 >>接受蝎子的刺
+    .turnin 788,2 >>交任务: 小试身手
+    .turnin 804 >>交任务: 萨科斯
+    .accept 3084 >>接任务: 符文石板
+    .accept 789 >>接任务: 工蝎的尾巴
 step << Orc Shaman
     #requires motboars
     >>磨蹭着回镇上
     .goto Durotar,42.1,68.3
-    .turnin 788,2 >>转入切削齿
-    .turnin 804 >>转入Sarkoth
-    .accept 3089 >>接受铭文羊皮纸
-    .accept 789 >>接受蝎子的刺
+    .turnin 788,2 >>交任务: 小试身手
+    .turnin 804 >>交任务: 萨科斯
+    .accept 3089 >>接任务: 符文羊皮纸
+    .accept 789 >>接任务: 工蝎的尾巴
 step << Orc Warrior
     #requires motboars
     >>磨蹭着回镇上
     .goto Durotar,42.1,68.3
-    .turnin 788,2 >>转入切削齿
-    .turnin 804,2 >>转入Sarkoth
-    .accept 2383 >>接受简单的羊皮纸
-    .accept 789 >>接受蝎子的刺
+    .turnin 788,2 >>交任务: 小试身手
+    .turnin 804,2 >>交任务: 萨科斯
+    .accept 2383 >>接任务: 简易羊皮纸
+    .accept 789 >>接任务: 工蝎的尾巴
 step << Troll Warrior
     #requires motboars
     >>磨蹭着回镇上
     .goto Durotar,42.1,68.3
-    .turnin 788,2 >>转入切削齿
-    .turnin 804,2 >>转入Sarkoth
-    .accept 3065 >>接受简单平板电脑
-    .accept 789 >>接受蝎子的刺
+    .turnin 788,2 >>交任务: 小试身手
+    .turnin 804,2 >>交任务: 萨科斯
+    .accept 3065 >>接任务: 普通石板
+    .accept 789 >>接任务: 工蝎的尾巴
 step << Orc Warlock
     .goto Durotar,42.1,68.3
     >>磨蹭着回镇上
-    .turnin 788 >>转入切削齿
-    .turnin 804 >>转入Sarkoth
-    .accept 3090>>接受染色羊皮纸
-    .accept 789 >>接受蝎子的刺
+    .turnin 788 >>交任务: 小试身手
+    .turnin 804 >>交任务: 萨科斯
+    .accept 3090>>接任务: 被污染的羊皮纸
+    .accept 789 >>接任务: 工蝎的尾巴
 step << Orc Rogue
     .goto Durotar,41.3,68.0
-    .turnin 3088 >>交上加密羊皮纸
+    .turnin 3088 >>交任务: 密文羊皮纸
 step << Orc Warlock tbc
     .goto Durotar,40.6,68.4
     .vendor >>恶魔训练师处的供应商垃圾
@@ -229,7 +229,7 @@ step << Warlock wotlk
 --95c for imp
 step << Orc Warlock
     .goto Durotar,40.6,68.5
-    .turnin 3090>>交上染色的羊皮纸
+    .turnin 3090>>交任务: 被污染的羊皮纸
     .train 172 >>培训腐败 << tbc
 	.train 688 >>列车召唤小鬼 << wotlk
 step << Shaman/Priest/Mage
@@ -248,43 +248,43 @@ step << Warlock wotlk
 step
     >>与Galgar交谈
 .goto Durotar,42.7,67.3
-    .accept 4402 >>接受Galgar的仙人掌苹果惊喜
+    .accept 4402 >>接任务: 戈加尔的清凉果
 step << Orc Hunter
     >>与帐篷下的Jen'shan交谈
     .goto Durotar,42.8,69.3
-    .turnin 3087 >>交上蚀刻羊皮纸
+    .turnin 3087 >>交任务: 风蚀羊皮纸
 step << Troll Hunter
     >>与帐篷下的Jen'shan交谈
     .goto Durotar,42.8,69.3
-    .turnin 3082 >>上交蚀刻片
+    .turnin 3082 >>交任务: 风蚀石板
 step << Troll Mage
     .goto Durotar,42.5,69.0
-    .turnin 3086 >>上交字形写字板
+    .turnin 3086 >>交任务: 雕文石板
     .train 1459 >>训练奥术智能
 step << Troll Priest
     .goto Durotar,42.4,68.8
-    .turnin 3085 >>交上神圣的平板电脑
+    .turnin 3085 >>交任务: 神圣石板
 .train 1243 >>列车动力词：坚韧
 step << Troll Shaman
     .goto Durotar,42.4,69.0
-    .turnin 3084 >>交上符文书写板
+    .turnin 3084 >>交任务: 符文石板
 step << Orc Shaman
     .goto Durotar,42.4,69.0
-    .turnin 3089 >>交上铭文羊皮纸
+    .turnin 3089 >>交任务: 符文羊皮纸
 step << !Warlock tbc/wotlk
-    >>与Zureetha Farazek交谈
+    >>与祖雷萨交谈
     .goto Durotar,42.9,69.1
-    .accept 792 >>接受邪恶的家人
+    .accept 792 >>接任务: 邪灵劣魔
 step << Orc Warrior
     .goto Durotar,42.9,69.4
-    .turnin 2383 >>交上简单的羊皮纸
+    .turnin 2383 >>交任务: 简易羊皮纸
 step << Troll Warrior
     .goto Durotar,42.9,69.4
-    .turnin 3065 >>交回简单平板电脑
+    .turnin 3065 >>交任务: 普通石板
 step
     >>在路上篝火旁与Foreman Thazz'ril交谈
     .goto Durotar,44.6,68.7
-    .accept 5441 >>接受懒惰的Peons
+    .accept 5441 >>接任务: 懒惰的苦工
 step
     #sticky
     #completewith imps
@@ -337,7 +337,7 @@ step
     #requires cactusapples
     >>回镇上和Galgar谈谈
     .goto Durotar,42.7,67.2
-    .turnin 4402 >>交给Galgar的仙人掌苹果惊喜
+    .turnin 4402 >>交任务: 戈加尔的清凉果
 step << Warrior/Rogue/Hunter/Druid/Paladin/Shaman
     .goto Durotar,42.6,67.3
 .vendor >>供应商垃圾
@@ -349,10 +349,10 @@ step << Mage/Priest/Warlock
 step
     >>头部进入巢穴
     .goto Durotar,42.1,68.3
-    .turnin 789 >>掉进蝎子刺
+    .turnin 789 >>交任务: 工蝎的尾巴
 step << Shaman
     .goto Durotar,42.4,69.1
-    .accept 1516 >>接受地球的召唤
+    .accept 1516 >>接任务: 大地的召唤
     .train 8042 >>列车接地冲击
 step << Mage
     .goto Durotar,42.5,69.0
@@ -362,11 +362,11 @@ step << Priest
     .goto Durotar,42.4,68.8
     .train 589 >>训练暗语：痛苦
 step << tbc !Warlock/wotlk
-    >>与Zureetha Farazek交谈
+    >>与祖雷萨交谈
     .goto Durotar,42.9,69.1
-    .turnin 792,3 >>交给卑鄙的家人 << Hunter
-    .turnin 792 >>交给卑鄙的家人 << !Hunter
-    .accept 794 >>接受燃烧之刃奖章
+    .turnin 792,3 >>交任务: 邪灵劣魔 << Hunter
+    .turnin 792 >>交任务: 邪灵劣魔 << !Hunter
+    .accept 794 >>接任务: 火刃奖章
 step << Hunter
     .money <0.0190
 .goto Durotar,42.8,69.3
@@ -382,8 +382,8 @@ step << Warrior
 step
     .goto Durotar,44.6,68.7
     >>与Foreman Thazz'ril交谈
-    .turnin 5441 >>交上懒惰的Peons
-    .accept 6394 >>接受Thaz'ril的选择
+    .turnin 5441 >>交任务: 懒惰的苦工
+    .accept 6394 >>接任务: 塔兹利尔的镐
 step
 	#completewith next
     .goto Durotar,45.2,56.8,30 >>跑向洞穴
@@ -406,9 +406,9 @@ step
     .complete 794,1 --Burning Blade Medallion (1)
 	.unitscan Yarrog Baneshadow
 step << !Shaman
-    .xp 5+1725>>研磨至1725+/2800xp
+    .xp 5+1725>>提升经验到1725+/2800xp
 step << Shaman
-    .xp 5+1200>>研磨至1200+/2800xp
+    .xp 5+1200>>提升经验到1200+/2800xp
 step << !Paladin
     #completewith next
     .hs >>从炉膛到审判谷
@@ -419,13 +419,13 @@ step
     #xprate >1.4
     >>与工头交谈。我们将提前达到6级。
     .goto Durotar,44.6,68.6
-    .turnin 6394 >>交给Thaz'ril的Pick
+    .turnin 6394 >>交任务: 塔兹利尔的镐
 step
     >>保存你得到的治疗药剂，因为你以后可能需要它来对付半人马
 .goto Durotar,42.8,69.1
-    .turnin 794,2 >>交出燃烧之刃奖章 << Warrior
-    .turnin 794 >>交出燃烧之刃奖章 << !Warrior
-    .accept 805 >>接受向森津村的报告
+    .turnin 794,2 >>交任务: 火刃奖章 << Warrior
+    .turnin 794 >>交任务: 火刃奖章 << !Warrior
+    .accept 805 >>接任务: 去森金村报到
 step
 	#completewith next
     .goto Durotar,42.6,67.3
@@ -434,7 +434,7 @@ step << !Shaman
     .xp 6 >>升级到6级
 step << Priest
 	.goto Durotar,42.4,68.8
-	.accept 5649 >>有利于精神
+	.accept 5649 >>接任务: 部族的传统
 	.train 591 >>训练Smite 2级
     .train 17 >>列车动力字：盾牌
 step << Mage
@@ -443,8 +443,8 @@ step << Mage
     .train 2136 >>列车防火爆炸
 step << Shaman
     .goto Durotar,42.4,69.2
-    .turnin 1516 >>地球的召唤
-    .accept 1517 >>接受地球的召唤
+    .turnin 1516 >>交任务: 大地的召唤
+    .accept 1517 >>接任务: 大地的召唤
 step << Hunter
     .goto Durotar,42.8,69.3
     .train 1130 >>训练猎人的标记
@@ -476,21 +476,21 @@ step << Shaman
 step << Shaman
     >>用你袋子里的地球皂甙
 .goto Durotar,44.0,76.2
-    .turnin 1517 >>地球的召唤
-    .accept 1518 >>接受地球的召唤
+    .turnin 1517 >>交任务: 大地的召唤
+    .accept 1518 >>接任务: 大地的召唤
 step << Shaman
     .goto Durotar,42.4,69.1
-    .turnin 1518 >>地球的召唤
+    .turnin 1518 >>交任务: 大地的召唤
     .train 332 >>训练疗愈波2级
 step
     .isOnQuest 6394
     >>与工头交谈。
     .goto Durotar,44.6,68.6
-    .turnin 6394 >>交给Thaz'ril的Pick
+    .turnin 6394 >>交任务: 塔兹利尔的镐
 step
     >>离开起始区域
 .goto Durotar,52.1,68.3
-    .accept 2161 >>接受佩恩的负担
+    .accept 2161 >>接任务: 苦工的重担
 step
     .goto Durotar,54.3,73.3,15,0
     .goto Durotar,54.5,75.0,15,0
@@ -499,20 +499,20 @@ step
     .goto Durotar,54.5,75.0,15,0
     .goto Durotar,54.1,76.6
     >>与拉尔·普罗图斯克交谈。他在3个点之间巡逻
-    .accept 786 >>接受Thwarting Kolkar侵略
+    .accept 786 >>接任务: 科卡尔半人马的进攻
     .unitscan Lar Prowltusk
 step
     >>在小屋里与Vel'rin Fang交谈
-    .accept 817 >>接受实际猎物
+    .accept 817 >>接任务: 生活所需的虎皮
     .goto Durotar,56.0,73.9
     >>在池边与沃纳尔大师和加德林交谈
-    .accept 818 >>接受溶剂精神
+    .accept 818 >>接任务: 沃纳尔大师
     .goto Durotar,55.9,74.4 
-    .turnin 805 >>向森津村提交报告
+    .turnin 805 >>交任务: 去森金村报到
     .goto Durotar,55.9,74.7
-    .accept 808 >>接受Minshina的骷髅
-    .accept 826 >>接受Zalazane
-    .accept 823 >>接受向Orgnil的报告
+    .accept 808 >>接任务: 明希纳的颅骨
+    .accept 826 >>接任务: 扎拉赞恩
+    .accept 823 >>接任务: 向奥戈尼尔报告
 step << Shaman
     .goto Durotar,56.5,73.1
     .vendor >>供应商垃圾。如果你有足够的钱买手杖(4s80c)，就把你的武器卖掉。如果你还不够，你会回来的
@@ -619,32 +619,32 @@ step
 step
     .isOnQuest 823
     .goto Durotar,52.2,43.2
-    .turnin 823 >>向Orgnil提交报告
+    .turnin 823 >>交任务: 向奥戈尼尔报告
 step
     >>煤仓顶层内
     .goto Durotar,51.9,43.5
-    .accept 784 >>接受征服背叛者
+    .accept 784 >>接任务: 背信弃义的人类
 step << Shaman/Warrior
     .goto Durotar,52.2,43.2
-    .turnin 823 >>向Orgnil提交报告
-    .accept 806 >>接受黑暗风暴
+    .turnin 823 >>交任务: 向奥戈尼尔报告
+    .accept 806 >>接任务: 黑暗风暴
 step << !Shaman !Warrior
     #xprate <1.5
     .goto Durotar,52.2,43.2
-    .turnin 823 >>向Orgnil提交报告
+    .turnin 823 >>交任务: 向奥戈尼尔报告
 step
     .goto Durotar,51.1,42.6
     .vendor >>供应商垃圾
 step
     >>与Cook Torka交谈
     .goto Durotar,51.1,42.4
-    .accept 815 >>接受打破几个鸡蛋
+    .accept 815 >>接任务: 恐龙蛋大餐
 step
     .goto Durotar,50.2,43.1,15 >>沿着这条小路走
 step
     >>爬上塔楼和Furl Scornbrow谈谈
 .goto Durotar,49.9,40.3
-    .accept 791 >>接受负重
+    .accept 791 >>接任务: 新的背包
 step << Shaman
     .goto Durotar,52.0,40.5
     .money <0.0480
@@ -680,8 +680,8 @@ step << Warrior/Rogue/Paladin
     .train 2580 >>训练采矿。在你的魔法书中施放“寻找矿物”
 step << Priest
     .goto Durotar,54.3,42.9
-    .turnin 5649 >>有利于精神
-    .accept 5648 >>灵性服装
+    .turnin 5649 >>接任务: 部族的传统
+    .accept 5648 >>接任务: 灵魂之衣
     .train 2052 >>训练Lesser Heal r2
 step << Priest
     .goto Durotar,53.1,46.5
@@ -690,30 +690,30 @@ step << Priest
     .complete 5648,1 --Heal and cast Fortify on Grunt Kor'ja
 step << Priest
     .goto Durotar,54.3,42.9
-    .turnin 5648 >>灵性服装
+    .turnin 5648 >>接任务: 灵魂之衣
 step << Priest/Mage/Warlock/Shaman/Druid
     .goto Durotar,51.5,41.6
     >>与客栈老板交谈
-    .turnin 2161 >>交出佩恩的负担
+    .turnin 2161 >>交任务: 苦工的重担
     .home >>把你的炉石放在剃刀山
     .vendor >>尽可能多地购买冰镇牛奶
 step << Warrior/Rogue/Hunter
     .goto Durotar,51.5,41.6
     >>与客栈老板交谈
-    .turnin 2161 >>交出佩恩的负担
+    .turnin 2161 >>交任务: 苦工的重担
     .home >>把你的炉石放在剃刀山
     .vendor >>买尽可能多的肉腰
 step << Paladin
     .goto Durotar,51.5,41.6
     >>与客栈老板交谈
-    .turnin 2161 >>交出佩恩的负担
+    .turnin 2161 >>交任务: 苦工的重担
     .home >>把你的炉石放在剃刀山
 step << Warrior/Rogue/Paladin
     .goto Durotar,53.0,42.0
     .money <0.0077
 .collect 2901,1 >>购买采矿镐。留意我的静脉，用铁匠技术为你的武器制作磨石
 step << Paladin
-    .goto Orgrimmar,49.1,94.7,20 >>遇到奥格瑞玛
+    .goto Orgrimmar,49.1,94.7,20 >>前往: 奥格瑞玛
 step << Paladin
     .goto Orgrimmar,32.3,35.7
     .trainer >>去训练你的职业咒语
@@ -739,15 +739,15 @@ step
 step
 .goto Durotar,59.9,57.5,8 >>在这里上楼梯
 step
->>抢劫胸部。从物品中接受任务
+>>掠夺胸部。从物品中接受任务
 .goto Durotar,59.3,57.6
 .collect 4881,1,830 --Collect Aged Envelope (1)
     .use 4881
-.accept 830 >>接受上将的命令
+.accept 830 >>接任务: 将军的命令
 step
     #xprate <1.5
     .goto Durotar,58.4,57.2
-.xp 7+2195>>研磨至2195+/4500xp
+.xp 7+2195>>提升经验到2195+/4500xp
 step
     #xprate <1.5
     #requires KulTiras
@@ -756,18 +756,18 @@ step
 step
     #xprate <1.5
     .goto Durotar,51.9,43.5
-    .turnin 784 >>交出征服背叛者
-    .accept 825 >>从残骸中接受。。。。
-    .turnin 830 >>提交上将命令
-    .accept 837 >>接受侵犯
+    .turnin 784 >>交任务: 背信弃义的人类
+    .accept 825 >>接任务: 海底沉船
+    .turnin 830 >>交任务: 将军的命令
+    .accept 837 >>接任务: 野猪人的进犯
 step << Warlock/Shaman/Warrior
     #xprate <1.5
     .goto Durotar,51.9,43.5
-.accept 831 >>接受上将的命令
+.accept 831 >>接任务: 将军的命令
 step
     #xprate <1.5
 .goto Durotar,49.9,40.3
-    .turnin 791 >>转身负重
+    .turnin 791 >>交任务: 新的背包
 step << !Shaman !Warrior
     #xprate <1.5
     .abandon 806 >>放弃黑暗风暴
@@ -915,20 +915,20 @@ step
     .complete 826,2 --Voodoo Troll (8)
 step << Shaman
     .goto Durotar,67.4,87.8
-    >>杀死扎拉扎内。当他施放治愈之波时，保存你的地球冲击。抢劫他的头
+    >>杀死扎拉扎内。当他施放治愈之波时，保存你的地球冲击。掠夺他的头
     .complete 826,3 --Zalazane's Head (1)
 step << Rogue
     .goto Durotar,67.4,87.8
-    >>杀死扎拉扎内。把你的凿击术留到他施放治疗波的时候。抢劫他的头
+    >>杀死扎拉扎内。把你的凿击术留到他施放治疗波的时候。掠夺他的头
     .complete 826,3 --Zalazane's Head (1)
 step << !Rogue !Shaman
     .goto Durotar,67.4,87.8
-    >>杀死扎拉扎内。小心，因为他可以治愈(你可能需要治疗药剂)。抢劫他的头
+    >>杀死扎拉扎内。小心，因为他可以治愈(你可能需要治疗药剂)。掠夺他的头
     .complete 826,3 --Zalazane's Head (1)
 step
     #label Trolls
 .goto Durotar,67.4,87.8
-    >>在地上抢劫一个头骨
+    >>在地上掠夺一个头骨
     .complete 808,1 --Minshina's Skull (1)
 step
     #label Fur
@@ -967,17 +967,17 @@ step << Mage
 step
     >>返回森津村。保存微弱发光的骷髅供以后使用
 .goto Durotar,55.9,74.7
-    .turnin 808 >>交出Minshina的头骨
-    .turnin 826,1 >>转入Zalazane << Warrior
-    turnin 826 >>转入Zalazane << !Warrior
+    .turnin 808 >>交任务: 明希纳的颅骨
+    .turnin 826,1 >>交任务: 扎拉赞恩 << Warrior
+    turnin 826 >>交任务: 扎拉赞恩 << !Warrior
 step
     >>与Vornal大师、Vel'rin和Lar Prowltusk交谈
-    .turnin 818 >>上缴溶剂油
+    .turnin 818 >>交任务: 沃纳尔大师
     .goto Durotar,56.0,74.3
-    .turnin 817 >>交出实际猎物
+    .turnin 817 >>交任务: 生活所需的虎皮
     .goto Durotar,56.0,73.9
     .unitscan Lar Prowltusk
-    .turnin 786 >>交出Thwarting Kolkar侵略
+    .turnin 786 >>交任务: 科卡尔半人马的进攻
     .goto Durotar,54.3,73.3
 step
     #completewith next
@@ -998,33 +998,33 @@ step
 step
     #xprate <1.5
     .goto Durotar,43.8,39.1
-    .xp 9+5175>>研磨至5175+/6500xp
+    .xp 9+5175>>提升经验到5175+/6500xp
 step
     #xprate >1.499
     .goto Durotar,51.9,43.5
     >>前往地堡
-    .turnin 784 >>交出征服背叛者
-    .turnin 830 >>提交上将命令
-    .accept 837 >>接受侵犯 << Warrior/Shaman
+    .turnin 784 >>交任务: 背信弃义的人类
+    .turnin 830 >>交任务: 将军的命令
+    .accept 837 >>接任务: 野猪人的进犯 << Warrior/Shaman
 step << Hunter
     .xp <10,1
     .goto Durotar,51.8,43.5
-    .accept 6062 >>接受驯服野兽
+    .accept 6062 >>接任务: 驯服野兽
     .train 13165 >>鹰的训练视角
     .train 13549 >>训练毒蛇刺r2
 step << Warlock/Shaman/Warrior/Hunter
     #xprate >1.499
     .goto Durotar,51.9,43.5
-.accept 831 >>接受上将的命令
+.accept 831 >>接任务: 将军的命令
 step
     >>与Cook Torka交谈
     .goto Durotar,51.1,42.4
-        .turnin 815 >>轮流打碎几个鸡蛋
+        .turnin 815 >>交任务: 恐龙蛋大餐
 step
     #xprate >1.499
     >>爬上山，爬上塔，与Furl Scornbrow交谈，然后装备你的新包。
 .goto Durotar,49.9,40.3
-    .turnin 791 >>转身负重
+    .turnin 791 >>交任务: 新的背包
 step << Hunter
     .isOnQuest 6062
     .use 15917 >>单击包中的驯鹿棒。尝试在最大射程(30码)进行
@@ -1036,8 +1036,8 @@ step << !Shaman !Warrior
 step
     #xprate <1.5
     .goto Durotar,51.9,43.5
-    .turnin 825 >>从残骸上车。。。。
-    .turnin 837 >>交出侵占
+    .turnin 825 >>交任务: 海底沉船
+    .turnin 837 >>交任务: 野猪人的进犯
 step
     .goto Durotar,43.8,39.1
     .xp 10 >>升级到10
@@ -1047,7 +1047,7 @@ step << Paladin
     +如果你害怕Eversong比赛，那么现在手动选择10-13 Durotar->13-23 Barrens
 step << Shaman
     .goto Durotar,54.4,42.5
-    .accept 2983 >>接受火灾召唤
+    .accept 2983 >>接任务: 火焰的召唤
     .train 8075 >>大地图腾的训练力量
     .train 8050 >>列车火焰冲击
 step << Priest
@@ -1057,7 +1057,7 @@ step << Priest
 .train 594 >>训练暗语：痛苦r2
 step << Orc Warrior/Troll Warrior/Undead Warrior
     .goto Durotar,54.2,42.5
-    .accept 1505 >>接受退伍军人乌泽克
+    .accept 1505 >>接任务: 老兵犹塞克
     .train 2687 >>训练血腥
     .train 6546 >>列车Rend r2
 step << Rogue
@@ -1076,7 +1076,7 @@ step << Warrior/Rogue/Paladin
     .train 3273 >>培训急救
 step << Warlock
     .goto Durotar,54.4,41.2
-    .accept 1506 >>接受甘鲁的召唤
+    .accept 1506 >>接任务: 甘鲁尔的召唤
 step << Warlock
     .goto Durotar,54.4,41.2
     .train 1120 >>训练吸取灵魂
@@ -1085,7 +1085,7 @@ step << Warlock
     .train 707 >>火车献祭r2
 step << Hunter
     .goto Durotar,51.8,43.5
-    .accept 6062 >>接受驯服野兽
+    .accept 6062 >>接任务: 驯服野兽
     .train 13165 >>鹰的训练视角
     .train 13549 >>训练毒蛇刺r2
 step << Hunter
@@ -1098,8 +1098,8 @@ step << Hunter
     .unitscan Dire Mottled Boar
 step << Hunter
     .goto Durotar,51.8,43.5
-.turnin 6062 >>转身驯服野兽
-.accept 6083 >>接受驯服野兽
+.turnin 6062 >>交任务: 驯服野兽
+.accept 6083 >>接任务: 驯服野兽
 step << Hunter
     .use 15919 >>不要杀死你看到的装甲蝎子，因为你需要驯服下一个。向北前往海滩，驯服一只冲浪爬虫。
 .goto Durotar,59.3,27.6
@@ -1108,8 +1108,8 @@ step << Hunter
 step << Hunter
     >>返回Razor Hill
     .goto Durotar,51.8,43.5
-.turnin 6083 >>转身驯服野兽
-.accept 6082 >>接受驯服野兽
+.turnin 6083 >>交任务: 驯服野兽
+.accept 6082 >>接任务: 驯服野兽
 step << Hunter
     .use 15920 >>点击你包里的驯蝎棒。尝试在最大射程(30码)进行
     .goto Durotar,59.3,27.6
@@ -1118,18 +1118,18 @@ step << Hunter
 step << Hunter
     >>返回托塔
     .goto Durotar,51.8,43.5
-    .turnin 6082 >>转身驯服野兽
-    .accept 6081 >>接受训练野兽
+    .turnin 6082 >>交任务: 驯服野兽
+    .accept 6081 >>接任务: 训练野兽
 step << Hunter
     >>沿着这条路向北走，和雷兹拉克谈谈
     .goto Durotar,46.4,22.9
-    .accept 834 >>接受沙漠中的风
+    .accept 834 >>接任务: 沙漠之风
 step << Warlock/Hunter
-    .goto Orgrimmar,49.0,94.2,20 >>遇到奥格瑞玛
+    .goto Orgrimmar,49.0,94.2,20 >>前往: 奥格瑞玛
 step << Hunter
     >>前往荣誉谷，与Ormak Grimshot交谈
     .goto Orgrimmar,66.0,18.5
-    .turnin 6081 >>上缴训练野兽
+    .turnin 6081 >>交任务: 训练野兽
 step << Hunter tbc
     >>在酒吧里放上“野兽训练”。记得稍后教你的宠物技能
 .goto Orgrimmar,66.3,14.8
@@ -1137,14 +1137,14 @@ step << Hunter tbc
     .train 24547 >>训练天然护甲
 step << Warlock
 .goto Orgrimmar,48.3,45.3
-.turnin 1506 >>递交甘鲁尔的传票
-.accept 1501 >>接受虚空生物
+.turnin 1506 >>交任务: 甘鲁尔的召唤
+.accept 1501 >>接任务: 虚空中的生物
 step << Warlock/Hunter
     .goto Orgrimmar,34.3,36.4
-    .turnin 831 >>提交上将命令
+    .turnin 831 >>交任务: 将军的命令
 step << Warlock
 .goto Orgrimmar,31.6,37.8
-.accept 5726 >>接受隐藏的敌人
+.accept 5726 >>接任务: 隐藏的敌人
 step << Warlock
     #sticky
     #completewith next
@@ -1164,32 +1164,32 @@ step << Warlock
     #completewith Skull
     .use 4945 >>或者，你可以为任务物品杀死Gazz'uz(14级术士)。一定要使用之前的骷髅头、任何药水，或者在虚空行者身上使用粘性胶水。你可以用LoS(视线)Gazz'uz躲避他的暗箭，并害怕他的宠物。如果你不能杀了他，试着从他身边溜走，或者在水里死后重生。
     .collect 4903,1,832 --Collect Eye of Burning Shadow
-    .accept 832 >>接受燃烧的阴影
+    .accept 832 >>接任务: 燃影之眼
     .unitscan Gazz'uz
 step << Warlock
     .goto Durotar,53.6,8.5,10,0
     .goto Durotar,51.8,8.1,10,0
     .goto Durotar,51.6,9.8
-    >>进入洞穴的正确路径。继续跟踪洞穴，然后在洞穴尽头抢劫箱子
+    >>进入洞穴的正确路径。继续跟踪洞穴，然后在洞穴尽头掠夺箱子
     .complete 1501,1 --Tablet of Verga (1)
 step << Warlock
     #label Skull
     #completewith next
     .deathskip >>在精神疗愈者处死去并重生，或者逃到奥格瑞玛
 step << Warlock
-.goto Orgrimmar,49.0,94.2,20 >>遇到奥格瑞玛
+.goto Orgrimmar,49.0,94.2,20 >>前往: 奥格瑞玛
 step << Warlock
     .goto Orgrimmar,31.8,37.8
-    .turnin 5726 >>交出隐藏的敌人
-    .accept 5727 >>接受隐藏的敌人
+    .turnin 5726 >>交任务: 隐藏的敌人
+    .accept 5727 >>接任务: 隐藏的敌人
 step << Warlock
     .goto Orgrimmar,48.3,45.3
-    .turnin 1501 >>空虚的生物
-    .accept 1504 >>接受绑定
+    .turnin 1501 >>交任务: 虚空中的生物
+    .accept 1504 >>接任务: 誓缚
 step << Warlock
     .isOnQuest 832
 .goto Orgrimmar,49.5,50.6
-    .turnin 832 >>交出燃烧的阴影
+    .turnin 832 >>交任务: 燃影之眼
 step << Warlock
     >>与Neeru交谈并完成他的八卦选项
 .goto Orgrimmar,49.5,50.6
@@ -1202,10 +1202,10 @@ step << Warlock
 step << Warlock
     >>你现在可以召唤一个虚空行者
 .goto Orgrimmar,48.3,45.3
-    .turnin 1504 >>交回装订本
+    .turnin 1504 >>交任务: 誓缚
 step << Warlock
     .goto Orgrimmar,31.8,37.8
-    .turnin 5727 >>交出隐藏的敌人
+    .turnin 5727 >>交任务: 隐藏的敌人
 step << Warlock
     #sticky
     #completewith next
@@ -1214,16 +1214,16 @@ step << Warlock
     .goto Orgrimmar,49.0,94.2,275 >>逃离Orgrimmar
 step << !Shaman !Warrior !Warlock !Hunter
     .goto Durotar,46.4,22.9
-    .accept 834 >>接受沙漠中的风
+    .accept 834 >>接任务: 沙漠之风
 step << !Shaman !Warrior !Warlock
-    >>抢劫地上的小麻袋
+    >>掠夺地上的小麻袋
 .goto Durotar,51.7,27.7
     .complete 834,1 --Sack of Supplies (5)
 step << !Shaman !Warrior !Warlock
     .goto Durotar,46.4,22.9
     >>返回雷兹拉克
-    .turnin 834 >>沙漠中的风
-    .accept 835 >>接受固定线路
+    .turnin 834 >>交任务: 沙漠之风
+    .accept 835 >>接任务: 保卫商路
 step << !Shaman !Warrior !Warlock
     .goto Durotar,51.9,27.4,20 >>从这里穿过洞穴
 step << !Shaman !Warrior !Warlock
@@ -1242,8 +1242,8 @@ step << !Shaman !Warrior !Warlock
 step << !Shaman !Warrior !Warlock
     .goto Durotar,46.4,22.9
     >>返回雷兹拉克
-    .turnin 835,2 >>转向固定管路 << Hunter
-    .turnin 835 >>转向固定管路 << !Hunter
+    .turnin 835,2 >>交任务: 保卫商路 << Hunter
+    .turnin 835 >>交任务: 保卫商路 << !Hunter
 step << Hunter tbc
     .goto Durotar,57.2,12.0
     .tame 3108 >>驯服被包裹的冲浪爬虫(他们的爪等级为3)
@@ -1279,11 +1279,11 @@ RXPGuides.RegisterGuide([[
 #next 13-23 贫瘠之地
 step
     .goto Durotar,50.8,43.6
-    .accept 840 >>接受部落征兵
+    .accept 840 >>接任务: 部落的新兵
 step << Undead Warrior
     >>爬上塔楼
 .goto Durotar,49.9,40.3
-    .accept 791 >>接受负重
+    .accept 791 >>接任务: 新的背包
 step << Undead Warrior
     .goto Durotar,52.0,40.7
     .money <0.0020
@@ -1299,11 +1299,11 @@ step << Undead Warrior
 .collect 2901,1 >>购买采矿镐。留意我的静脉，用铁匠技术为你的武器制作磨石
 step << Undead Warrior
     .goto Durotar,54.2,42.5
-    .accept 1505 >>接受退伍军人乌泽克
+    .accept 1505 >>接任务: 老兵犹塞克
 step << Undead Warrior
 >>煤仓内，顶层
 .goto Durotar,51.9,43.5
-.accept 784 >>接受征服背叛者
+.accept 784 >>接任务: 背信弃义的人类
 step << Undead Warrior
     #sticky
     #label KulTiras
@@ -1323,16 +1323,16 @@ step << Undead Warrior
 step << Undead Warrior
 .goto Durotar,59.9,57.5,8 >>在这里上楼梯
 step << Undead Warrior
->>抢劫胸部。从物品中接受任务
+>>掠夺胸部。从物品中接受任务
 .goto Durotar,59.3,57.6
 .collect 4881,1,830 --Collect Aged Envelope (1)
-.accept 830 >>接受上将的命令
+.accept 830 >>接任务: 将军的命令
 step << Undead Warrior
     >>跑到森津
 .goto Durotar,55.9,74.7
-    .accept 808 >>接受Minshina的骷髅
-    .accept 826 >>接受Zalazane
-    .accept 823 >>接受向Orgnil的报告
+    .accept 808 >>接任务: 明希纳的颅骨
+    .accept 826 >>接任务: 扎拉赞恩
+    .accept 823 >>接任务: 向奥戈尼尔报告
 step << Undead Warrior
     .goto Durotar,67.3,87.1,350 >>游到岛上
 step << Undead Warrior
@@ -1343,12 +1343,12 @@ step << Undead Warrior
     .complete 826,2 --Voodoo Troll (8)
 step << Undead Warrior
     .goto Durotar,67.4,87.8
-    >>杀死扎拉扎内。小心，因为他可以治愈(你可能需要治疗药剂)。抢劫他的头
+    >>杀死扎拉扎内。小心，因为他可以治愈(你可能需要治疗药剂)。掠夺他的头
     .complete 826,3 --Zalazane's Head (1)
 step << Undead Warrior
     #label Trolls
 .goto Durotar,67.4,87.8
-    >>在地上抢劫一个头骨
+    >>在地上掠夺一个头骨
     .complete 808,1 --Minshina's Skull (1)
 step << Undead Warrior
 >>杀死其余的巨魔。当巫毒巨魔痊愈时要小心
@@ -1360,13 +1360,13 @@ step << Undead Warrior
 step << Undead Warrior
     >>保存微弱发光的骷髅供以后使用
 .goto Durotar,55.9,74.7
-    .turnin 808 >>交出Minshina的头骨
-    .turnin 826 >>转入Zalazane
+    .turnin 808 >>交任务: 明希纳的颅骨
+    .turnin 826 >>交任务: 扎拉赞恩
 step << Undead Warrior
     >>跑回Razor Hill
 .goto Durotar,52.2,43.2
-    .turnin 823 >>向Orgnil提交报告
-    .accept 806 >>接受黑暗风暴
+    .turnin 823 >>交任务: 向奥戈尼尔报告
+    .accept 806 >>接任务: 黑暗风暴
 step
     #xprate >1.499
     .goto Durotar,48.9,48.5
@@ -1381,26 +1381,26 @@ step
     .complete 837,4 --Razormane Battleguard (4)
 step
     .goto The Barrens,62.2,19.4
-    .turnin 840 >>交出部落征兵
-    .accept 842 >>接受十字路口征兵
+    .turnin 840 >>交任务: 部落的新兵
+    .accept 842 >>接任务: 十字路口征兵
 step
     .goto The Barrens,62.2,19.4
-    .zone The Barrens >>跑到荒野
+    .zone The Barrens >>前往: 贫瘠之地
 step << Warrior
     .goto The Barrens,61.4,21.1
-    .turnin 1505 >>交给退伍军人乌泽克
-    .accept 1498 >>接受防御之路
+    .turnin 1505 >>交任务: 老兵犹塞克
+    .accept 1498 >>接任务: 防御之道
 step << Orc Shaman/Troll Shaman
     .goto The Barrens,55.8,20.0
-    .turnin 2983 >>交火召唤
-    .accept 1524 >>接受火灾召唤
+    .turnin 2983 >>交任务: 火焰的召唤
+    .accept 1524 >>接任务: 火焰的召唤
 step << !Tauren
 #xprate <1.5
     .goto The Barrens,52.0,30.5,150 >>跑到十字路口
 step << !Tauren
 #xprate <1.5
     .goto The Barrens,52.2,31.8
-    .accept 870 >>接受被遗忘的水池
+    .accept 870 >>接任务: 遗忘之池
 step << !Tauren
 #xprate <1.5
     #completewith next
@@ -1409,21 +1409,21 @@ step << !Tauren
 step << !Tauren
 #xprate <1.5
     .goto The Barrens,52.2,31.0
-    .turnin 842 >>交出十字路口征兵
-    .accept 844 >>接受平原漫游者威胁
+    .turnin 842 >>交任务: 十字路口征兵
+    .accept 844 >>接任务: 平原陆行鸟的威胁
 step << Orc/Troll
 #xprate <1.5
     .goto The Barrens,52.5,29.8
-    .accept 6365 >>接受Orgrimmar的肉类
+    .accept 6365 >>接任务: 送往奥格瑞玛的肉
 step << !Tauren
 #xprate <1.5
     .goto The Barrens,51.9,30.3
-    .accept 869 >>接受猛禽窃贼
+    .accept 869 >>接任务: 偷钱的迅猛龙
 step << !Tauren
 #xprate <1.5
     .goto The Barrens,51.5,30.8
-    .accept 871 >>接受破坏攻击
-    .accept 5041 >>接受十字路口的补给
+    .accept 871 >>接任务: 野猪人的袭击
+    .accept 5041 >>接任务: 十字路口的补给品
 step << !Tauren
 #xprate <1.5
     .goto The Barrens,51.5,30.4
@@ -1432,13 +1432,13 @@ step << Orc/Troll
 #xprate <1.5
     >>不要飞往奥格瑞玛
 .goto The Barrens,51.5,30.3
-    .turnin 6365 >>将肉类交给Orgrimmar
-    .accept 6384 >>接受前往Orgrimmar的骑行
+    .turnin 6365 >>交任务: 送往奥格瑞玛的肉
+    .accept 6384 >>接任务: 飞往奥格瑞玛
 step << !Tauren
 #xprate <1.5
 .goto The Barrens,51.5,30.1
-    .accept 1492 >>接受码头管理员Dizzywig
-        .accept 848 >>接受真菌孢子
+    .accept 1492 >>接任务: 码头管理员迪兹维格
+        .accept 848 >>接任务: 菌类孢子
 step << !Tauren
 #xprate <1.5
     #sticky
@@ -1465,14 +1465,14 @@ step << !Tauren
 step << !Tauren
 #xprate <1.5
     .goto The Barrens,51.5,30.1
-    .turnin 848 >>倒入真菌孢子
+    .turnin 848 >>交任务: 菌类孢子
     >>等待角色扮演结束，需要几秒钟的时间。药剂师Zamah是一个定时问答者，如果你在任何时候都必须在打开之前退出，请注销。
-    .accept 853 >>接受药剂师Zamah
+    .accept 853 >>接任务: 药剂师扎玛
 step << !Tauren
 #xprate <1.5
     .goto The Barrens,52.2,31.8
-    .turnin 870 >>把被遗忘的水池交出来
-    .accept 877 >>接受停滞的绿洲
+    .turnin 870 >>交任务: 遗忘之池
+    .accept 877 >>接任务: 死水绿洲
 step << !Tauren
 #xprate <1.5
     >>沿着这条路跑
@@ -1488,17 +1488,17 @@ step << !Tauren
         .goto Mulgore,51.4,59.2
     >>任务给予者沿着整条路巡逻
     .unitscan Morin Cloudstalker
-    .accept 749 >>接受被摧毁的商队
+    .accept 749 >>接任务: 不幸的商队
 step << !Tauren
 #xprate <1.5
     .goto Mulgore,48.2,53.4
-    .accept 11129 >>接受凯尔失踪！
+    .accept 11129 >>接任务: 凯雷失踪了！
 step << !Tauren
 #xprate <1.5
     .goto Mulgore,53.7,48.1
-    >>穿过湖面，然后抢劫商队中间的箱子
-    .turnin 749 >>收缴被摧毁的商队
-    .accept 751 >>接受被摧毁的商队
+    >>穿过湖面，然后掠夺商队中间的箱子
+    .turnin 749 >>交任务: 不幸的商队
+    .accept 751 >>接任务: 不幸的商队
 step << !Tauren
 #xprate <1.5
     .goto Mulgore,55.5,55.8
@@ -1513,7 +1513,7 @@ step << !Tauren
     .goto Mulgore,59.6,62.4,50,0
         .goto Mulgore,51.4,59.2
     .unitscan Morin Cloudstalker
-    .turnin 751 >>收缴被摧毁的商队
+    .turnin 751 >>交任务: 不幸的商队
 step << !Tauren
 #xprate <1.5
     .goto Mulgore,47.3,56.9,30,0
@@ -1526,7 +1526,7 @@ step << !Tauren
 step << !Tauren
 #xprate <1.5
     .goto Mulgore,48.3,53.3
-    .turnin 11129 >>交出凯尔失踪了！
+    .turnin 11129 >>交任务: 凯雷失踪了！
 step << !Tauren
 #xprate <1.5
 .goto Thunder Bluff,32.0,66.9,20 >>跑向电梯，进入雷霆崖
@@ -1553,64 +1553,64 @@ step << !Tauren
 step << !Tauren
 #xprate <1.5
     .goto Thunder Bluff,23.0,21.1
-    .turnin 853 >>交给药剂师Zamah
+    .turnin 853 >>交任务: 药剂师扎玛
 step << !Tauren
 #xprate <1.5
     #completewith next
     .hs >>炉底到剃须山
 step
     .goto Durotar,43.1,30.3
-    .accept 816 >>接受丢失但不遗忘
+    .accept 816 >>接任务: 丢失的孩子
 step
     .goto Durotar,46.4,22.9
-    .accept 834 >>接受沙漠中的风
+    .accept 834 >>接任务: 沙漠之风
 step
-    >>抢劫地上的小麻袋
+    >>掠夺地上的小麻袋
 .goto Durotar,51.7,27.7
     .complete 834,1 --Sack of Supplies (5)
 step
     .goto Durotar,46.4,22.9
-    .turnin 834 >>沙漠中的风
-    .accept 835 >>接受固定线路
+    .turnin 834 >>交任务: 沙漠之风
+    .accept 835 >>接任务: 保卫商路
 step << wotlk
     .goto Durotar,40.8,16.3
-    .accept 812 >>接受治疗需要
+    .accept 812 >>接任务: 救命如救火
 step << tbc
     .goto Durotar,41.5,18.6
-    .accept 812 >>接受治疗需要
+    .accept 812 >>接任务: 救命如救火
 step
-.goto Orgrimmar,49.0,94.2,20 >>遇到奥格瑞玛
+.goto Orgrimmar,49.0,94.2,20 >>前往: 奥格瑞玛
 step << Orc/Troll
 #xprate <1.5
     .goto Orgrimmar,54.2,68.6
-    .turnin 6384 >>转入骑行前往奥格瑞玛
-    .accept 6385 >>接受风骑士大师多拉斯
+    .turnin 6384 >>交任务: 飞往奥格瑞玛
+    .accept 6385 >>接任务: 双足飞龙管理员多拉斯
 step << Orc/Troll
 #xprate <1.5
     .goto Orgrimmar,45.2,64.0
      >>交出任务，但不要飞回十字路口
-    .turnin 6385 >>交给风骑士大师多拉斯
-    .accept 6386 >>接受返回十字路口。
+    .turnin 6385 >>交任务: 双足飞龙管理员多拉斯
+    .accept 6386 >>接任务: 返回十字路口
 step << Orc/Troll
     .goto Orgrimmar,34.3,36.4
     >>从飞行路线塔穿过大桥
-    .turnin 831 >>提交上将命令
+    .turnin 831 >>交任务: 将军的命令
 step
     .goto Orgrimmar,31.9,37.7
-    .accept 5726 >>接受隐藏的敌人
+    .accept 5726 >>接任务: 隐藏的敌人
 step << Paladin
     .goto Orgrimmar,32.3,35.7
     .trainer >>去训练你的职业咒语
 step
     .goto Orgrimmar,47.2,53.4
     >>头撞到阴影的裂缝
-    .accept 813 >>接受寻找解药
+    .accept 813 >>接任务: 寻找解毒剂
 step
 .goto Orgrimmar,49.0,94.2,20 >>逃离Orgrimmar
 step
 .goto Durotar,41.7,25.5,30 >>跳进雷霆岭
 step
-    >>杀死菲兹尔，并为他的爪子抢劫他。设法清除周围营地的暴徒，腾出空间
+    >>杀死菲兹尔，并为他的爪子掠夺他。设法清除周围营地的暴徒，腾出空间
 .goto Durotar,41.9,26.0
     .complete 806,1 --Fizzle's Claw (1)
 step << !Warrior
@@ -1636,15 +1636,15 @@ step << Troll Shaman/Orc Shaman
 .goto Durotar,36.6,58.0,15 >>沿着山路跑
 step << Troll Shaman/Orc Shaman
     .goto Durotar,38.6,59.0
-    .turnin 1524 >>交火召唤
-    .accept 1525 >>接受火灾召唤
+    .turnin 1524 >>交任务: 火焰的召唤
+    .accept 1525 >>接任务: 火焰的召唤
 step
     #completewith next
     .deathskip >>在精神治疗者处死亡并重生，或者跑回剃须刀山
 step
 .goto Durotar,52.3,43.1
-    .turnin 806 >>转入黑暗风暴
-    .accept 828 >>接受Margoz
+    .turnin 806 >>交任务: 黑暗风暴
+    .accept 828 >>接任务: 玛高兹
 step << Shaman
     #sticky
     #completewith next
@@ -1666,13 +1666,13 @@ step << !Warrior
 step
     #xprate >1.499
     .goto Durotar,51.9,43.5
-    .turnin 837 >>交出侵占
+    .turnin 837 >>交任务: 野猪人的进犯
 step
     >>从剃刀山往东走，然后笔直向北走
     .goto Durotar,55.6,36.6,80,0
     .goto Durotar,56.4,20.1
-    .turnin 828 >>交给Margoz
-    .accept 827 >>接受骷髅石
+    .turnin 828 >>交任务: 玛高兹
+    .accept 827 >>接任务: 骷髅石
 step
     #sticky
     #completewith next
@@ -1687,16 +1687,16 @@ step
     .complete 827,1 --Searing Collar (6)
     .complete 5726,1 --Lieutenant's Insignia (1)
 step << Orc Shaman/Troll Shaman/Orc Warrior/Troll Shaman/Troll Warrior
-    .use 4945 >>为了燃烧的阴影之眼杀死加兹乌斯。他可能在洞穴的多个区域。使用你之前保存的微弱发光骷髅，在虚空行者身上涂上粘性胶水以减少你受到的伤害，使用治疗药剂恢复健康。使用LoS(视线)避开他的影子箭。如果死亡意味着杀害和抢劫Gazz'uz，不要害怕死亡
+    .use 4945 >>为了燃烧的阴影之眼杀死加兹乌斯。他可能在洞穴的多个区域。使用你之前保存的微弱发光骷髅，在虚空行者身上涂上粘性胶水以减少你受到的伤害，使用治疗药剂恢复健康。使用LoS(视线)避开他的影子箭。如果死亡意味着杀害和掠夺Gazz'uz，不要害怕死亡
 .goto Durotar,51.8,10.0
 .collect 4903,1,832 --Collect Eye of Burning Shadow
-    .accept 832 >>接受燃烧的阴影
+    .accept 832 >>接任务: 燃影之眼
     .unitscan Gazz'uz
 step << Tauren Shaman/Tauren Warrior/Undead Warrior/Paladin
-    .use 4945 >>为了燃烧的阴影之眼杀死加兹乌斯。他可能在洞穴的多个区域。如果你有治疗药剂，使用它们来恢复健康。使用LoS(视线)避开他的影子箭。如果死亡意味着杀害和抢劫Gazz'uz，不要害怕死亡
+    .use 4945 >>为了燃烧的阴影之眼杀死加兹乌斯。他可能在洞穴的多个区域。如果你有治疗药剂，使用它们来恢复健康。使用LoS(视线)避开他的影子箭。如果死亡意味着杀害和掠夺Gazz'uz，不要害怕死亡
 .goto Durotar,51.8,10.0
 .collect 4903,1,832 --Collect Eye of Burning Shadow
-    .accept 832 >>接受燃烧的阴影
+    .accept 832 >>接任务: 燃影之眼
     .unitscan Gazz'uz
 step
     #requires Collars2
@@ -1707,8 +1707,8 @@ step
     .complete 813,1 --Venomtail Poison Sac (4)
 step
 .goto Durotar,56.4,20.1
-    .turnin 827 >>转入骷髅岩
-    .accept 829 >>接受Neeru Fireblade
+    .turnin 827 >>交任务: 骷髅石
+    .accept 829 >>接任务: 尼尔鲁·火刃
 step << Shaman
     .isOnQuest 1525
     .goto Durotar,56.3,28.0,60,0
@@ -1736,7 +1736,7 @@ step
 step
     >>返回雷兹拉克
     .goto Durotar,46.4,22.9
-    .turnin 835 >>转向固定管路
+    .turnin 835 >>交任务: 保卫商路
 step
     >>为了毒囊杀死蝎子
     .goto Durotar,55.7,15.7
@@ -1746,40 +1746,40 @@ step << Warrior/Rogue
 	.collect 25873,1 >>从Zendo'jian那里购买一把锋利的飞刀
 step
     .goto Orgrimmar,31.8,37.8
-    .turnin 5726 >>交出隐藏的敌人
+    .turnin 5726 >>交任务: 隐藏的敌人
 step
     .goto Orgrimmar,47.0,53.4
-    .turnin 813 >>轮流寻找解药
+    .turnin 813 >>交任务: 寻找解毒剂
 step
     .goto Orgrimmar,49.4,50.5
-    .turnin 829 >>交出Neeru Fireblade
-    .accept 809 >>接受Ak'Zeloth
+    .turnin 829 >>交任务: 尼尔鲁·火刃
+    .accept 809 >>接任务: 雅克塞罗斯
 step
     .isOnQuest 832
     .goto Orgrimmar,49.4,50.5
-    .turnin 832 >>交出燃烧的阴影
+    .turnin 832 >>交任务: 燃影之眼
 step << tbc
     .goto Durotar,41.6,18.7
     >>即使显示“缺少前置请求”，您仍然可以提交此任务
-    .turnin 812 >>需要治疗
+    .turnin 812 >>交任务: 救命如救火
 step << wotlk
     .goto Durotar,40.8,16.3
     >>即使显示“缺少前置请求”，您仍然可以提交此任务
-    .turnin 812 >>需要治疗
+    .turnin 812 >>交任务: 救命如救火
 step
     .goto Durotar,43.1,30.3
-    .turnin 816 >>上缴失落但未被遗忘
+    .turnin 816 >>交任务: 丢失的孩子
 step
     .goto The Barrens,62.3,20.1
-    .turnin 809 >>交给Ak'Zeloth
-    .accept 924 >>接受恶魔种子
+    .turnin 809 >>交任务: 雅克塞罗斯
+    .accept 924 >>接任务: 恶魔之种
 step
     .goto The Barrens,62.3,20.0
-    >>抢劫阿克泽洛斯旁边的紫石。这个项目有一个30分钟的计时器，所以一定要快点
+    >>掠夺阿克泽洛斯旁边的紫石。这个项目有一个30分钟的计时器，所以一定要快点
     .collect 4986,1
-    .turnin 926 >>交出有缺陷的能量石
+    .turnin 926 >>交任务: 有瑕疵的能量石
 step << Warrior
     .goto The Barrens,61.4,21.1
-    .turnin 1498 >>转入防御之路
-    .accept 1502 >>接受Thun'grim Firegake
+    .turnin 1498 >>交任务: 防御之道
+    .accept 1502 >>接任务: 索恩格瑞姆·火眼
 ]])

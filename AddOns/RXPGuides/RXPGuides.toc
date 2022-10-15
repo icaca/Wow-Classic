@@ -1,9 +1,9 @@
-## Interface: 30400
-## Title: RestedXP Guides
+## Interface: 11403
+## Title: RestedXP 指南 狮心-北美刘嘉玲 汉化版
 ## Notes: In-game leveling guides
 ## Notes-zhCN: TODO
 ## Author: RestedXP
-## Version: v4.3.12
+## Version: v4.3.19
 ## OptionalDeps: Questie, unitscan
 ## SavedVariables: RXPData, RXPDB
 ## SavedVariablesPerCharacter: RXPCData, RXPCTrackingData, RXPCComms, RXPCSettings

@@ -9,42 +9,42 @@ step
 	+要解锁霍迪尔之子每日任务，你必须首先在风暴峰完成他们的任务链。请使用Hodir之子解锁每日任务指南解锁每日任务
 	.isQuestAvailable 13047
 step
-	>>与Fjorn的铁砧、Hodir的角、Hodir's Helm、Frostworg Denmooth、Hodir-'s Spear和Arngrim the Insatible交谈
-    .daily 12981 >>接受高温和低温
+	>>与Fjorn的铁砧、Hodir的角、Hodir's Helm、Frostworg Denmooth、Hodir-'s Spear和 贪婪的安格里姆 交谈
+    .daily 12981 >>接任务: 热与冷
     .goto TheStormPeaks,63.13,62.94
-    .daily 12977 >>接受Hodir的呼叫
+    .daily 12977 >>接任务: 霍迪尔的呼唤
     .goto TheStormPeaks,64.17,65.01
-	.daily 13006 >>接受粘性清洁
+	.daily 13006 >>接任务: 粘滞清洁
 	.goto TheStormPeaks,64.24,59.23
-	.daily 12994 >>接受间谍猎人
+	.daily 12994 >>接任务: 猎杀间谍
 	.goto TheStormPeaks,63.49,59.73
-	.daily 13003 >>接受如何屠龙
+	.daily 13003 >>接任务: 屠龙记
 	.goto TheStormPeaks,65.00,60.95
-	.daily 13046 >>接受进给Arngrim
+	.daily 13046 >>接任务: 喂饱安格里姆
 	.goto TheStormPeaks,67.61,59.95
 	.reputation 1119,revered,<0,1 -- if you're 0 into revered it will display this step
 	.isQuestTurnedIn 13047
 step
 	>>与Fjorn铁砧、Hodir之角、Hodir's Helm、Frostworg Denmother和Hodir's Spear交谈
-    .daily 12981 >>接受高温和低温
+    .daily 12981 >>接任务: 热与冷
     .goto TheStormPeaks,63.13,62.94
-    .daily 12977 >>接受Hodir的呼叫
+    .daily 12977 >>接任务: 霍迪尔的呼唤
     .goto TheStormPeaks,64.17,65.01
-	.daily 13006 >>接受粘性清洁
+	.daily 13006 >>接任务: 粘滞清洁
 	.goto TheStormPeaks,64.24,59.23
-	.daily 12994 >>接受间谍猎人
+	.daily 12994 >>接任务: 猎杀间谍
 	.goto TheStormPeaks,63.49,59.73
-	.daily 13003 >>接受如何屠龙
+	.daily 13003 >>接任务: 屠龙记
 	.goto TheStormPeaks,65.00,60.95
 	.reputation 1119,honored,<0,1 -- if you're 0 into honored it will display this step
 	.isQuestTurnedIn 13047
 step
 	>>与Fjorn铁砧、Hodir角和Hodir头盔交谈
-    .daily 12981 >>接受高温和低温
+    .daily 12981 >>接任务: 热与冷
     .goto TheStormPeaks,63.13,62.94
-    .daily 12977 >>接受Hodir的呼叫
+    .daily 12977 >>接任务: 霍迪尔的呼唤
     .goto TheStormPeaks,64.17,65.01
-	.daily 13006 >>接受粘性清洁
+	.daily 13006 >>接任务: 粘滞清洁
 	.goto TheStormPeaks,64.24,59.23
 	.reputation 1119,friendly,<0,1 -- if you're 0 into friendly it will display this step
 	.isQuestTurnedIn 13047
@@ -57,7 +57,7 @@ step
 step
 	.goto TheStormPeaks,73.5,62.9,70,0
     .goto TheStormPeaks,76.2,63.4
-	.use 42246 >>使用弗约恩铁砧周围阴燃残渣旁边的冰块精华。抢劫冷冻铁屑
+	.use 42246 >>使用弗约恩铁砧周围阴燃残渣旁边的冰块精华。掠夺冷冻铁屑
     .complete 12981,1 --Frozen Iron Scrap (6)
 	.isOnQuest 12981
 step
@@ -105,111 +105,111 @@ step
 	.isOnQuest 13003
 step
 	>>返回Dun Niffelem
-	>>与Fjorn的铁砧、Hodir的角、Hodir's Helm、Frostworg Denmooth、Hodir-'s Spear和Arngrim the Insatible交谈
-    .turnin 12981 >>转入冷热状态
+	>>与Fjorn的铁砧、Hodir的角、Hodir's Helm、Frostworg Denmooth、Hodir-'s Spear和 贪婪的安格里姆 交谈
+    .turnin 12981 >>交任务: 热与冷
     .goto TheStormPeaks,63.13,62.94
-    .turnin 12977 >>交给霍迪尔的电话
+    .turnin 12977 >>交任务: 霍迪尔的呼唤
     .goto TheStormPeaks,64.17,65.01
-	.turnin 13006 >>交粘性清洁剂
+	.turnin 13006 >>交任务: 粘滞清洁
 	.goto TheStormPeaks,64.24,59.23
-	.turnin 12994 >>交出间谍猎人
+	.turnin 12994 >>交任务: 猎杀间谍
 	.goto TheStormPeaks,63.49,59.73
-	.turnin 13003 >>交出如何屠龙
+	.turnin 13003 >>交任务: 屠龙记
 	.goto TheStormPeaks,65.00,60.95
-	.turnin 13046 >>转入进料Arngrim
+	.turnin 13046 >>交任务: 喂饱安格里姆
 	.goto TheStormPeaks,67.61,59.95
 	.isQuestComplete 12994
 	.isQuestComplete 13003
 	.isQuestComplete 13046
 step
 	>>返回Dun Niffelem
-	>>与Fjorn的铁砧、Hodir的号角、Hodir's Helm、Hodir-'s Spear和Arngrim the Insatible交谈
-    .turnin 12981 >>转入冷热状态
+	>>与Fjorn的铁砧、Hodir的号角、Hodir's Helm、Hodir-'s Spear和 贪婪的安格里姆 交谈
+    .turnin 12981 >>交任务: 热与冷
     .goto TheStormPeaks,63.13,62.94
-    .turnin 12977 >>交给霍迪尔的电话
+    .turnin 12977 >>交任务: 霍迪尔的呼唤
     .goto TheStormPeaks,64.17,65.01
-	.turnin 13006 >>交粘性清洁剂
+	.turnin 13006 >>交任务: 粘滞清洁
 	.goto TheStormPeaks,64.24,59.23
-	.turnin 13003 >>交出如何屠龙
+	.turnin 13003 >>交任务: 屠龙记
 	.goto TheStormPeaks,65.00,60.95
-	.turnin 13046 >>转入进料Arngrim
+	.turnin 13046 >>交任务: 喂饱安格里姆
 	.goto TheStormPeaks,67.61,59.95
 	.isQuestComplete 13003
 	.isQuestComplete 13046
 step
 	>>返回Dun Niffelem
 	>>与Fjorn铁砧、Hodir之角、Hodir's Helm、Frostworg Denmother和Hodir's Spear交谈
-    .turnin 12981 >>转入冷热状态
+    .turnin 12981 >>交任务: 热与冷
     .goto TheStormPeaks,63.13,62.94
-    .turnin 12977 >>交给霍迪尔的电话
+    .turnin 12977 >>交任务: 霍迪尔的呼唤
     .goto TheStormPeaks,64.17,65.01
-	.turnin 13006 >>交粘性清洁剂
+	.turnin 13006 >>交任务: 粘滞清洁
 	.goto TheStormPeaks,64.24,59.23
-	.turnin 12994 >>交出间谍猎人
+	.turnin 12994 >>交任务: 猎杀间谍
 	.goto TheStormPeaks,63.49,59.73
-	.turnin 13003 >>交出如何屠龙
+	.turnin 13003 >>交任务: 屠龙记
 	.goto TheStormPeaks,65.00,60.95
 	.isQuestComplete 12994
 	.isQuestComplete 13003
 step
 	>>返回Dun Niffelem
-	>>与Fjorn的铁砧、Hodir的角、Hodir's Helm、Frostworg Denmourt和Arngrim the Insatible交谈
-    .turnin 12981 >>转入冷热状态
+	>>与Fjorn的铁砧、Hodir的角、Hodir's Helm、Frostworg Denmourt和 贪婪的安格里姆 交谈
+    .turnin 12981 >>交任务: 热与冷
     .goto TheStormPeaks,63.13,62.94
-    .turnin 12977 >>交给霍迪尔的电话
+    .turnin 12977 >>交任务: 霍迪尔的呼唤
     .goto TheStormPeaks,64.17,65.01
-	.turnin 13006 >>交粘性清洁剂
+	.turnin 13006 >>交任务: 粘滞清洁
 	.goto TheStormPeaks,64.24,59.23
-	.turnin 12994 >>交出间谍猎人
+	.turnin 12994 >>交任务: 猎杀间谍
 	.goto TheStormPeaks,63.49,59.73
-	.turnin 13046 >>转入进料Arngrim
+	.turnin 13046 >>交任务: 喂饱安格里姆
 	.goto TheStormPeaks,67.61,59.95
 	.isQuestComplete 12994
 	.isQuestComplete 13046
 step
 	>>返回Dun Niffelem
 	>>与Fjorn的铁砧、Hodir的号角、Hodir's Helm和Insatible的Arngrim交谈
-    .turnin 12981 >>转入冷热状态
+    .turnin 12981 >>交任务: 热与冷
     .goto TheStormPeaks,63.13,62.94
-    .turnin 12977 >>交给霍迪尔的电话
+    .turnin 12977 >>交任务: 霍迪尔的呼唤
     .goto TheStormPeaks,64.17,65.01
-	.turnin 13006 >>交粘性清洁剂
+	.turnin 13006 >>交任务: 粘滞清洁
 	.goto TheStormPeaks,65.00,60.95
-	.turnin 13046 >>转入进料Arngrim
+	.turnin 13046 >>交任务: 喂饱安格里姆
 	.goto TheStormPeaks,67.61,59.95
 	.isQuestComplete 13046
 step
 	>>返回Dun Niffelem
 	>>与Fjorn铁砧、Hodir角、Hodir's头盔和Hodir长矛对话
-    .turnin 12981 >>转入冷热状态
+    .turnin 12981 >>交任务: 热与冷
     .goto TheStormPeaks,63.13,62.94
-    .turnin 12977 >>交给霍迪尔的电话
+    .turnin 12977 >>交任务: 霍迪尔的呼唤
     .goto TheStormPeaks,64.17,65.01
-	.turnin 13006 >>交粘性清洁剂
+	.turnin 13006 >>交任务: 粘滞清洁
 	.goto TheStormPeaks,64.24,59.23
-	.turnin 13003 >>交出如何屠龙
+	.turnin 13003 >>交任务: 屠龙记
 	.goto TheStormPeaks,65.00,60.95
 	.isQuestComplete 13003
 step
 	>>返回Dun Niffelem
 	>>与Fjorn的铁砧、Hodir的角、Hodir's Helm和Frostworg Denmother交谈
-    .turnin 12981 >>转入冷热状态
+    .turnin 12981 >>交任务: 热与冷
     .goto TheStormPeaks,63.13,62.94
-    .turnin 12977 >>交给霍迪尔的电话
+    .turnin 12977 >>交任务: 霍迪尔的呼唤
     .goto TheStormPeaks,64.17,65.01
-	.turnin 13006 >>交粘性清洁剂
+	.turnin 13006 >>交任务: 粘滞清洁
 	.goto TheStormPeaks,64.24,59.23
-	.turnin 12994 >>交出间谍猎人
+	.turnin 12994 >>交任务: 猎杀间谍
 	.goto TheStormPeaks,63.49,59.73
 	.isQuestComplete 12994
 step
 	>>返回Dun Niffelem
 	>>与Fjorn铁砧、Hodir角和Hodir头盔交谈
-    .turnin -12981 >>转入冷热状态
+    .turnin -12981 >>交任务: 热与冷
     .goto TheStormPeaks,63.13,62.94
-    .turnin -12977 >>交给霍迪尔的电话
+    .turnin -12977 >>交任务: 霍迪尔的呼唤
     .goto TheStormPeaks,64.17,65.01
-	.turnin -13006 >>交粘性清洁剂
+	.turnin -13006 >>交任务: 粘滞清洁
 	.goto TheStormPeaks,64.24,59.23
 step
 	+您已经完成了今天的所有霍迪尔之子每日任务：)记住，您可以将在该区域地面上发现的长霜碎片交给其他代表，以及阿尔都尔遗迹交给您！

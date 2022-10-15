@@ -13,9 +13,9 @@ step
 step
 	>>与蒂莫西·琼斯交谈
     .goto Dalaran,40.67,35.35
-    .accept 13041 >>接受并完成发货
+    .accept 13041 >>接任务: 完成订单
 	.complete 13041,1 --Chalcedony (1)
-    .turnin 13041 >>上缴完成发货
+    .turnin 13041 >>交任务: 完成订单
 	.isQuestAvailable 13041
 step
 	.goto Dalaran,40.67,35.35
@@ -50,11 +50,11 @@ step
 	.complete 12958,1 --Blood Jade Amulet (1)
 	.isOnQuest 12958
 step << Mage
-	.zone Dalaran >>传送至达拉然
+	.zone Dalaran >>前往: 达拉然
 step
 	>>在达拉然与蒂莫西·琼斯交谈
 	.goto Dalaran,40.67,35.35
-	.turnin 12958 >>上船：血玉护身符
+	.turnin 12958 >>交任务: 货单：血玉护符
 	.isQuestComplete 12958
 
 -- Quest: Shipment: Glowing Ivory Figurine -- 12959
@@ -69,7 +69,7 @@ step
 	.goto Dragonblight,65.94,36.65,60,0
 	.goto Dragonblight,65.00,45.69,60,0
 	.goto Dragonblight,56.41,48.12
-	>>为北象牙群岛杀死龙纹枯病中被遗弃的猛犸
+	>>为北象牙群岛杀死龙骨荒野中被遗弃的猛犸
 	.collect 42104,1 --Northern Ivory (1)
 	.isOnQuest 12959
 step
@@ -78,11 +78,11 @@ step
 	.complete 12959,1 --Glowing Ivory Figurine (1)
 	.isOnQuest 12959
 step << Mage
-	.zone Dalaran >>传送至达拉然
+	.zone Dalaran >>前往: 达拉然
 step
 	>>在达拉然与蒂莫西·琼斯交谈
 	.goto Dalaran,40.67,35.35
-	.turnin 12959 >>交付货物：发光象牙雕像
+	.turnin 12959 >>交任务: 货单：炽热鹿牙雕像
 	.isQuestComplete 12959
 
 -- Quest: Shipment: Wicked Sun Brooch -- 12960
@@ -106,11 +106,11 @@ step
 	.complete 12960,1 --Wicked Sun Brooch (1)
 	.isOnQuest 12960
 step << Mage
-	.zone Dalaran >>传送至达拉然
+	.zone Dalaran >>前往: 达拉然
 step
 	>>在达拉然与蒂莫西·琼斯交谈
 	.goto Dalaran,40.67,35.35
-	.turnin 12960 >>上船：坏太阳兄弟
+	.turnin 12960 >>交任务: 货单：邪恶太阳胸针
 	.isQuestComplete 12960
 
 -- Quest: Shipment: Intricate Bone Figurine -- 12961
@@ -133,11 +133,11 @@ step
 	.complete 12961,1 --Intricate Bone Figurine (1)
 	.isOnQuest 12961
 step << Mage
-	.zone Dalaran >>传送至达拉然
+	.zone Dalaran >>前往: 达拉然
 step
 	>>在达拉然与蒂莫西·琼斯交谈
 	.goto Dalaran,40.67,35.35
-	.turnin 12961 >>交船：复杂的骨雕
+	.turnin 12961 >>交任务: 货单：精致龙骨雕像
 	.isQuestComplete 12961
 
 -- Quest: Shipment: Bright Armor Relic -- 12962
@@ -151,7 +151,7 @@ step
 	.goto Dragonblight,57.83,14.22,50,0
 	.goto Dragonblight,58.62,16.39,50,0
 	.goto Dragonblight,54.77,19.10
-	>>杀死龙枯草中的冰晶元素以获得元素护甲碎片
+	>>杀死龙骨荒野中的冰晶元素以获得元素护甲碎片
 	.collect 42107,1 --Elemental Armor Scrap (1)
 	.isOnQuest 12962
 step
@@ -160,11 +160,11 @@ step
 	.complete 12962,1 --Bright Armor Relic (1)
 	.isOnQuest 12962
 step << Mage
-	.zone Dalaran >>传送至达拉然
+	.zone Dalaran >>前往: 达拉然
 step
 	>>在达拉然与蒂莫西·琼斯交谈
 	.goto Dalaran,40.67,35.35
-	.turnin 12962 >>交运：亮甲遗迹
+	.turnin 12962 >>交任务: 货单：光芒护甲圣物
 	.isQuestComplete 12962
 
 -- Quest: Shipment: Shifting Sun Curio -- 12963
@@ -186,11 +186,11 @@ step
 	.complete 12963,1 --Shifting Sun Curio (1)
 	.isOnQuest 12963
 step << Mage
-	.zone Dalaran >>传送至达拉然
+	.zone Dalaran >>前往: 达拉然
 step
 	>>在达拉然与蒂莫西·琼斯交谈
 	.goto Dalaran,40.67,35.35
-	.turnin 12963 >>交运：亮甲遗迹
+	.turnin 12963 >>交任务: 货单：光芒护甲圣物
 	.isQuestComplete 12963
 step
 	>>您已完成今天的珠宝制作每日任务

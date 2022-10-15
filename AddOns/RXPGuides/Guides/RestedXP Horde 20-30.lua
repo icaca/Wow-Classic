@@ -10,7 +10,7 @@ step << wotlk
     #completewith next
     +如果您可以访问此服务器上的gold，请尽快将gold邮寄给自己，以便进行挂载训练！
 step
-    .zone Orgrimmar >>遇到奥格瑞玛
+    .zone Orgrimmar >>前往: 奥格瑞玛
 step << !Troll !Orc
     >>去塔顶
     .goto Orgrimmar,45.1,63.9
@@ -21,15 +21,15 @@ step
 step << BloodElf
     .isOnQuest 9626
     .goto Orgrimmar,31.8,38.1
-    .turnin 9626 >>上交与总司令会面
-    .accept 9627 >>接受对部落的忠诚
+    .turnin 9626 >>交任务: 觐见酋长
+    .accept 9627 >>接任务: 部落的盟约
 step << !BloodElf
     .isOnQuest 9813
     .goto Orgrimmar,31.8,38.1
-    .turnin 9813 >>上交与总司令会面
+    .turnin 9813 >>交任务: 觐见酋长
 step
     .goto Orgrimmar,39.0,38.3
-    .accept 1061 >>接受石爪的精神
+    .accept 1061 >>接任务: 石爪之灵
 step << Warlock tbc
     #sticky
     >>你必须放弃卡伦丁的召唤任务才能接受灵魂吞噬者
@@ -37,19 +37,19 @@ step << Warlock tbc
     .isOnQuest 10605
 step << Warlock tbc
     .goto Orgrimmar,48.2,45.3
-    .accept 1507 >>接受灵魂吞噬者
+    .accept 1507 >>接任务: 噬魂者
 step << Warlock tbc
     .goto Orgrimmar,47.0,46.5
-    .turnin 1507 >>交给灵魂吞噬者
-    .accept 1508 >>接受盲Cazul
+    .turnin 1507 >>交任务: 噬魂者
+    .accept 1508 >>接任务: 盲眼卡祖尔
 step << Warlock tbc
     .goto Orgrimmar,37.0,59.4
-    .turnin 1508 >>转入盲卡祖
-    .accept 1509 >>接受Dogran的消息
+    .turnin 1508 >>交任务: 盲眼卡祖尔
+    .accept 1509 >>接任务: 多格兰的消息
 step << BloodElf
     #xprate <1.5
     .goto Orgrimmar,31.8,38.2
-    .accept 9428 >>接受报告至Splinterree Post
+    .accept 9428 >>接任务: 前往碎木岗哨
     .maxlevel 21
 step << Mage
     .goto Orgrimmar,38.7,85.4
@@ -73,16 +73,16 @@ step
 step
     #xprate <1.5
     >>接受棘轮周围的任务
-    .accept 1483 >>接受Ziz Fizziks
+    .accept 1483 >>接任务: 菲兹克斯
     .goto The Barrens,63.0,37.2
-    .accept 959 >>在码头接受麻烦
+    .accept 959 >>接任务: 港口的麻烦
     .goto The Barrens,63.1,37.6
-    .accept 865 >>接受猛禽角
+    .accept 865 >>接任务: 迅猛龙角
     .goto The Barrens,62.4,37.6
     .maxlevel 21
 step
     .goto The Barrens,62.4,37.6
-    .accept 1069 >>接受Deepmoss蜘蛛蛋
+    .accept 1069 >>接任务: 深苔蜘蛛的卵
 step << Rogue
 	.goto The Barrens,65.0,45.4
     >>跑到船上，然后下到二楼。开始挑选锁箱，直到你拥有80种挑选锁的技能。
@@ -91,33 +91,33 @@ step
     #xprate <1.5
     .maxlevel 21
     >>跑到十字路口
-    .accept 870 >>接受被遗忘的水池
+    .accept 870 >>接任务: 遗忘之池
     .goto The Barrens,52.3,31.9
 step
     .goto The Barrens,51.9,31.6
-    .accept 899 >>接受仇恨所消耗
-    .accept 4921 >>接受战败
+    .accept 899 >>接任务: 复仇的怒火
+    .accept 4921 >>接任务: 在战斗中失踪
 step
     #completewith next    
     .goto The Barrens,52.0,29.9
 	.home >>把你的炉石放在十字路口
 step << Warlock tbc
     .goto The Barrens,51.9,30.3
-    .turnin 1509 >>上交《狗跑新闻》
-    .accept 1510 >>接受Dogran的消息
+    .turnin 1509 >>交任务: 多格兰的消息
+    .accept 1510 >>接任务: 多格兰的消息
 step
     .goto The Barrens,51.5,30.3
     .fp The Crossroads >>获得the Crossroads飞行路线
 step
     #xprate <1.5
     .goto The Barrens,51.5,30.1
-    .accept 848 >>接受真菌孢子
+    .accept 848 >>接任务: 菌类孢子
     .maxlevel 21
 step
     #xprate <1.5
     >>向西走出十字路口
     .goto The Barrens,45.4,28.4
-    .accept 850 >>接受Kolkar领导人
+    .accept 850 >>接任务: 科卡尔首领
     .maxlevel 21
 step
     #sticky
@@ -154,16 +154,16 @@ step
 step
     .isOnQuest 1061
     .goto The Barrens,35.3,27.9
-    .turnin 1061 >>《石爪之魂》(The Spirits of Stonetalon)上映
-    .accept 1062 >>接受地精侵略者
+    .turnin 1061 >>交任务: 石爪之灵
+    .accept 1062 >>接任务: 地精侵略者
 step
     #xprate <1.5
     .goto The Barrens,35.3,27.9
-    .accept 6548 >>接受复仇我的村庄
+    .accept 6548 >>接任务: 为我的村庄复仇
     .maxlevel 21
 step
     .goto Stonetalon Mountains,81.8,96.1
-    .zone Stonetalon Mountains >>前往石爪山
+    .zone Stonetalon Mountains >>前往: 石爪山脉
 step
     >>杀死该地区的格里姆特姆斯
     .goto Stonetalon Mountains,80.7,89.2,50,0
@@ -180,8 +180,8 @@ step
 step
     .goto The Barrens,35.2,27.8
     >>回到荒野中的任务给予者那里
-    .turnin 6548 >>上缴复仇我的村庄
-    .accept 6629 >>接受Kill Grundig Darkcloud
+    .turnin 6548 >>交任务: 为我的村庄复仇
+    .accept 6629 >>接任务: 杀死格鲁迪格·暗云
     .isOnQuest 6548
 step
     #sticky
@@ -189,12 +189,12 @@ step
 	.goto Stonetalon Mountains,82.3,98.5,40 >>跑到这里的山上去
 step << Warlock tbc
     .goto Stonetalon Mountains,73.2,95.1
-    .turnin 1510 >>上交《狗跑新闻》
-    .accept 1511 >>接受Ken'zigla的吃水
+    .turnin 1510 >>交任务: 多格兰的消息
+    .accept 1511 >>接任务: 肯兹格拉的伤药
 step
     .goto Stonetalon Mountains,71.4,95.1
     >>在小屋里与Xen'Zilla交谈
-    .accept 6461 >>接受输血器
+    .accept 6461 >>接任务: 盗窃的蜘蛛
 step
     #sticky
     #completewith next
@@ -210,7 +210,7 @@ step
 step
     >>启动卡亚护送
     .goto Stonetalon Mountains,73.5,85.8
-    .accept 6523 >>接受保护Kaya
+    .accept 6523 >>接任务: 保护卡雅
     .isOnQuest 6629
 step
        >>护送Kaya并靠近她。3灰熊会在篝火旁产卵。在她到达营地之前吃/喝
@@ -225,7 +225,7 @@ step
 step
     >>点击沿路通缉海报
     .goto Stonetalon Mountains,59.0,75.7
-    .accept 6284 >>接受阿拉伯恐惧症
+    .accept 6284 >>接任务: 贝瑟莱斯
 step
     .goto Stonetalon Mountains,57.5,76.2,30 >>沿着这条小路跑到西希尔峡谷
 step
@@ -270,12 +270,12 @@ step
     #label spiderend
     >>前往山后的小妖精小屋
     .goto Stonetalon Mountains,59.0,62.6
-    .turnin 1483 >>交给Ziz Fizziks
+    .turnin 1483 >>交任务: 菲兹克斯
     .isOnQuest 1483
 step
     >>前往山后的小妖精小屋
     .goto Stonetalon Mountains,59.0,62.6
-    .accept 1093 >>接受超级收割者6000
+    .accept 1093 >>接任务: 超级收割机6000
 step
     #sticky
     #completewith next
@@ -305,8 +305,8 @@ step
     .isOnQuest 1062
 step
     .goto Stonetalon Mountains,59.0,62.6
-    .turnin 1093 >>转入超级收割台6000
-    .accept 1094 >>接受进一步指示
+    .turnin 1093 >>交任务: 超级收割机6000
+    .accept 1094 >>接任务: 新的指示
 step
     #requires deepmossegg
     .goto The Barrens,52.2,31.9
@@ -314,11 +314,11 @@ step
 step
     .isOnQuest 870
     .goto The Barrens,52.2,31.9
-    .turnin 870 >>把被遗忘的水池交出来
+    .turnin 870 >>交任务: 遗忘之池
 step
     .isQuestTurnedIn 870
     .goto The Barrens,52.2,31.9
-    .accept 877 >>接受停滞的绿洲
+    .accept 877 >>接任务: 死水绿洲
 step
     .goto The Barrens,52.3,31.9
     .vendor >>供应商清理并修理您的装备。
@@ -326,12 +326,12 @@ step
     .isOnQuest 848
     >>把这个交上来会开始一个定时任务。如果您在接下来的45多分钟内会很忙，请在此处注销。
     .goto The Barrens,51.5,30.2
-    .turnin 848 >>倒入真菌孢子
+    .turnin 848 >>交任务: 菌类孢子
 step
     .isQuestTurnedIn 848
     >>等待角色扮演，然后接受任务
     .goto The Barrens,51.5,30.2
-    .accept 853 >>接受药剂师Zamah
+    .accept 853 >>接任务: 药剂师扎玛
 step
     .isOnQuest 853
     #sticky
@@ -374,7 +374,7 @@ step
     >>找到并杀死该地区的拉科塔·马尼(格雷·科多)。抢走他的蹄子。如果你找不到他，跳过这个任务。
     .collect 5099,1,883 --Collect Hoof of Lakota'Mani
     .use 5099
-    .accept 883 >>接受Lakota'Mani
+    .accept 883 >>接任务: 拉克塔曼尼
     .unitscan Lakota'Mani
 step
     #requires Lakota1
@@ -382,30 +382,30 @@ step
 step
     #xprate <1.5
     .goto The Barrens,45.1,57.7
-    .accept 893 >>接受首选武器
+    .accept 893 >>接任务: 野猪人的武器
     .maxlevel 25
 step
     .isOnQuest 883
     .goto The Barrens,44.7,59.1
-    .turnin 883 >>交给Lakota’mani
+    .turnin 883 >>交任务: 拉克塔曼尼
 step
     .goto The Barrens,44.8,59.1
-    .accept 1130 >>接受Melor发送消息
+    .accept 1130 >>接任务: 梅洛的关注
 step << Warlock tbc
     .goto The Barrens,44.6,59.3
-    .turnin 1511 >>交上Ken'zigla的草稿
-    .accept 1515 >>接受道根的俘虏
+    .turnin 1511 >>交任务: 肯兹格拉的伤药
+    .accept 1515 >>接任务: 多格兰之囚
 step
     .goto The Barrens,44.5,59.2
-    .accept 878 >>战争中接受部落
+    .accept 878 >>接任务: 野猪人的内战
 step
     .goto The Barrens,44.5,59.2
     .fp Camp Taurajo >>获得Taurajo营地飞行路线
 step << Warlock tbc
     >>在去这里的路上杀死Quillboars
     .goto The Barrens,43.3,47.9
-    .turnin 1515 >>交出Dogran的俘虏
-    .accept 1512 >>接受爱的礼物
+    .turnin 1515 >>交任务: 多格兰之囚
+    .accept 1512 >>接任务: 爱的礼物
 step
     >>杀死大量的绒猪。尽可能优先考虑荆棘侠、找水者和风水师。掠夺他们的象牙。保存你得到的血块
     *Water Seekers only spawn in the south western most camps. Go East or North West for Geomancers / Thornweavers.
@@ -434,28 +434,28 @@ step
     >>在该区域周围搜索Owatanka(蓝雷蜥蜴)。如果你找到他，抢走他的尾钉并开始任务。如果找不到他，就跳过这个任务
     .collect 5102,1,884 --Collect Owatanka's Tailspike
     .use 5102
-    .accept 884 >>接受Owatanka
+    .accept 884 >>接任务: 奥瓦坦卡
     .unitscan Owatanka
 step    
     .goto The Barrens,44.6,59.2
-    .turnin 878 >>战争中沦陷的部落
-    .accept 5052 >>接受阿加马根的血片
-    .turnin 5052 >>交出阿加马根血片
+    .turnin 878 >>交任务: 野猪人的内战
+    .accept 5052 >>接任务: 阿迦玛甘的血岩碎片
+    .turnin 5052 >>交任务: 阿迦玛甘的血岩碎片
 	>>用你的血碎片来拯救风之精灵
-    .accept 889 >>接受风的精神
-    .turnin 889 >>风之灵归来
+    .accept 889 >>接任务: 风之魂
+    .turnin 889 >>交任务: 风之魂
 step
     #completewith tbroute
-    .destroy 5075 >>销毁所有剩余血块
+    .destroy 5075 >>摧毁: 血岩碎片
     .itemcount 5075,1
 step
     .isOnQuest 884
     .goto The Barrens,44.9,59.1
-    .turnin 884 >>交给Owatanka
+    .turnin 884 >>交任务: 奥瓦坦卡
 step
 	.isOnQuest 883
         .goto The Barrens,44.9,59.1
-    .turnin 883 >>交给Lakota’mani
+    .turnin 883 >>交任务: 拉克塔曼尼
 step << !Tauren
     #label tbroute
     .goto Thunder Bluff,32.1,67.2,30 >>奔向雷霆崖
@@ -477,7 +477,7 @@ step << Tauren
 step << Druid
 	#completewith next
 	.goto Thunder Bluff,76.5,27.2
-	.accept 27 >>接受教训以学习 << tbc
+	.accept 27 >>接任务: 必修的课程 << tbc
 	.trainer >>去训练你的职业咒语
 step
     #xprate <1.5
@@ -487,20 +487,20 @@ step
     #label Zamah
     >>与Clarice Foster交谈
     .goto Thunder Bluff,27.5,24.7
-    .accept 264 >>接受直到死亡我们分开
+    .accept 264 >>接任务: 至死方休
     .maxlevel 21
 step
     .isOnQuest 853
     .goto Thunder Bluff,23.0,20.9
     >>如果你失败了Zamah任务，就放弃它
-    .turnin 853 >>交给药剂师Zamah
+    .turnin 853 >>交任务: 药剂师扎玛
 step
     .isOnQuest 853
     .abandon 853 >>放弃药剂师Zamah
 step
     #xprate <1.5
     .goto Thunder Bluff,23.0,20.9
-    .accept 962 >>接受蛇花
+    .accept 962 >>接任务: 毒蛇花
     .maxlevel 21
 step << Tauren
     #completewith next
@@ -509,11 +509,11 @@ step << Tauren
 step
     .goto Thunder Bluff,61.4,80.9
     >>走向猎人的崛起
-    .turnin 1130 >>交出Melor发送消息
-    .accept 1131 >>接受Steelsnap
+    .turnin 1130 >>交任务: 梅洛的关注
+    .accept 1131 >>接任务: 钢齿土狼
 step
     .goto Thunder Bluff,54.9,51.4
-    .accept 1195 >>接受圣火
+    .accept 1195 >>接任务: 神圣之火
 step << !Tauren
     >>爬上塔楼
     .goto Thunder Bluff,47.0,49.8
@@ -525,41 +525,41 @@ step
 step
     .isOnQuest 865
     .goto The Barrens,62.4,37.6
-    .turnin 865 >>转入猛禽角
+    .turnin 865 >>交任务: 迅猛龙角
 step
     #xprate <1.5
     .isQuestTurnedIn 865
     .goto The Barrens,62.4,37.6
-    .accept 1491 >>接受智能饮料
+    .accept 1491 >>接任务: 智慧饮料
 step
     #label ratchetanchor1
     .goto The Barrens,62.4,37.6
-    .turnin 1069 >>交上深苔藓蜘蛛蛋
+    .turnin 1069 >>交任务: 深苔蜘蛛的卵
 step
     #sticky
     #completewith next
     .itemcount 5570,1
-    .destroy 5570 >>销毁所有剩余的深苔藓蜘蛛蛋
+    .destroy 5570 >>摧毁: 深苔蜘蛛的卵
 step
     .goto The Barrens,63.0,37.2
-    .turnin 1094 >>提交进一步说明
-    .accept 1095 >>接受进一步指示
+    .turnin 1094 >>交任务: 新的指示
+    .accept 1095 >>接任务: 新的指示
 step
     #completewith next
     .goto The Barrens,63.1,37.2
     .fly Crossroads >>飞向十字路口
 step
     .goto The Barrens,52.0,31.6
-    .turnin 4921 >>交出战败
-    .turnin 899 >>因仇恨而上缴
+    .turnin 4921 >>交任务: 在战斗中失踪
+    .turnin 899 >>交任务: 复仇的怒火
 step
     #sticky
     #completewith next
-    .destroy 5085 >>销毁所有剩余的Quilboar Tusks
+    .destroy 5085 >>摧毁: 刺背野猪人的獠牙
     .itemcount 5085,1
 step
     .goto The Barrens,52.2,31.9
-    .turnin 877 >>转入停滞的绿洲
+    .turnin 877 >>交任务: 死水绿洲
     .isOnQuest 877
 step
     .goto The Barrens,47.0,34.7,15,0
@@ -573,7 +573,7 @@ step
 step
     >>进入洞眼
     .goto Kalimdor,51.9,55.4
-    .accept 1486 >>接受偏差隐藏
+    .accept 1486 >>接任务: 变异皮革
     .isOnQuest 959
 step
     .goto The Barrens,46.1,36.7,35 >>离开眼睛。去洞口
@@ -638,62 +638,62 @@ step
     #requires Deviate
     >>跑回洞口
     .goto Kalimdor,51.9,55.4
-    .turnin 1486 >>交出离群的藏身处
+    .turnin 1486 >>交任务: 变异皮革
     .isOnQuest 1486
 step
     >>返回Kolkar前哨
     .goto The Barrens,45.4,28.4
-    .turnin 850 >>移交Kolkar领导人
+    .turnin 850 >>交任务: 科卡尔首领
     .isOnQuest 850
 step
     .isQuestComplete 1062
     >>前往石爪。与Seereth交谈
     .goto The Barrens,35.3,27.8
-    .turnin 1062 >>交出地精侵略者
+    .turnin 1062 >>交任务: 地精侵略者
 step
     .goto The Barrens,35.3,27.8
-    .accept 1063 >>接受长老克罗恩
+    .accept 1063 >>接任务: 长者
     .isQuestTurnedIn 1062
 step
     .isOnQuest 6523
     >>前往石爪
     .goto The Barrens,35.3,27.8
-    .turnin 6629 >>移交Kill Grundig Darkcloud
-    .turnin 6523 >>交出保护Kaya
+    .turnin 6629 >>交任务: 杀死格鲁迪格·暗云
+    .turnin 6523 >>交任务: 保护卡雅
 step
     .isQuestTurnedIn 6523
     .goto The Barrens,35.3,27.8
-    .accept 6401 >>接受Kaya的活着 
+    .accept 6401 >>接任务: 卡雅还活着
 step
 	.goto Stonetalon Mountains,82.3,98.5,40 >>跑到这里的山上去
     .isOnQuest 6461
 step
     .goto Stonetalon Mountains,71.3,95.0
-    .turnin 6461 >>收起输血器
+    .turnin 6461 >>交任务: 盗窃的蜘蛛
     .isOnQuest 6461 
 step
     #xprate >1.499
     .isOnQuest 1095
     >>前往山后的小妖精小屋
     .goto Stonetalon Mountains,59.0,62.6
-    .turnin 1095 >>提交进一步说明
+    .turnin 1095 >>交任务: 新的指示
 step << !Rogue
     #xprate <1.5
     >>前往太阳岩度假区
     >>到达太阳岩后，沿着左边的山路走
     .goto Stonetalon Mountains,49.0,62.8,40,0
     .goto Stonetalon Mountains,47.3,64.2
-    .accept 6562 >>接受深层次的麻烦
+    .accept 6562 >>接任务: 帮助耶努萨克雷
     .maxlevel 23
 step << Rogue
     >>前往太阳岩度假区
     >>到达太阳岩后，沿着左边的山路走
     .goto Stonetalon Mountains,49.0,62.8,40,0
     .goto Stonetalon Mountains,47.3,64.2
-    .accept 6562 >>接受深层次的麻烦
+    .accept 6562 >>接任务: 帮助耶努萨克雷
 step
     .goto Stonetalon Mountains,47.2,61.1
-    .turnin 6284 >>上缴阿拉伯恐惧症
+    .turnin 6284 >>交任务: 贝瑟莱斯
     .isOnQuest 6284
 step
     #xprate <1.5
@@ -702,16 +702,13 @@ step
     .maxlevel 23
 step
     .goto Stonetalon Mountains,47.5,58.3
-    .turnin 6401 >>活捉Kaya
+    .turnin 6401 >>交任务: 卡雅还活着
     .isOnQuest 6401
-step
-    .goto Stonetalon Mountains,45.1,59.8
-    .fp Sun Rock >>获得太阳岩撤退飞行路线
 step
     .isOnQuest 1095
     >>返回山后的小妖精小屋
     .goto Stonetalon Mountains,59.0,62.6
-    .turnin 1095 >>提交进一步说明
+    .turnin 1095 >>交任务: 新的指示
     .maxlevel 23
 step
     #xprate <1.5
@@ -735,30 +732,30 @@ step
 step
     #xprate <1.5
     .goto Ashenvale,11.8,34.7
-    .accept 216 >>在石头和蓟马之间接受
+    .accept 216 >>接任务: 蓟皮熊怪的麻烦
     .maxlevel 23
 step
     #xprate <1.5
     >>与小屋里的巨魔交谈
     .goto Ashenvale,11.6,34.9
-    .accept 6442 >>在Zoram Strand接受Naga
-    .accept 6462 >>接受巨魔魅力
+    .accept 6442 >>接任务: 佐拉姆海岸的纳迦
+    .accept 6462 >>接任务: 巨魔符咒
     .maxlevel 23
 step
     #xprate <1.5
     .isQuestComplete 6562
     .goto Ashenvale,11.6,34.3
-    .turnin 6562 >>深陷困境
+    .turnin 6562 >>交任务: 帮助耶努萨克雷
 step
     #xprate <1.5
     .goto Ashenvale,11.6,34.3
-    .accept 6563 >>接受阿库迈的精髓
+    .accept 6563 >>接任务: 阿库麦尔水晶
     .maxlevel 23
 step
     #xprate <1.5
     >>接受此任务将启动护送。跟着他
     .goto Ashenvale,12.1,34.4
-    .accept 6641 >>接受伏尔莎的激光
+    .accept 6641 >>接任务: 鞭笞者沃尔沙
     .maxlevel 23
 step
     #xprate <1.5
@@ -793,7 +790,7 @@ step
     .goto Ashenvale,13.6,9.0
     .use 16790 >>在水下游泳，进入黑深潭。杀死女祭司直到一张湿纸条掉落(任务)。然后右击它并接受任务。
     .collect 16790,1,6564 --Collect Damp Note
-    .accept 6564 >>接受对旧神的忠诚
+    .accept 6564 >>接任务: 上古之神的仆从
     .isOnQuest 6442
 step
     #xprate <1.5
@@ -815,28 +812,28 @@ step
     #requires wrathtailhead
     >>返回佐拉姆加前哨。
     .goto Ashenvale,12.2,34.2
-    .turnin 6641 >>交给伏尔莎激光器
+    .turnin 6641 >>交任务: 鞭笞者沃尔沙
     .isQuestComplete 6641
 step
     #xprate <1.5
     .goto Ashenvale,11.6,34.3
-    .turnin 6563 >>交回阿库迈的精华
+    .turnin 6563 >>交任务: 阿库麦尔水晶
     .isQuestComplete 6563
 step
     #xprate <1.5
     #sticky
     #completewith next
-    .destroy 16784 >>摧毁所有阿库迈剩余的蓝宝石
+    .destroy 16784 >>摧毁: 阿库麦尔蓝宝石
     .itemcount 16784,1
 step
     #xprate <1.5
     .goto Ashenvale,11.6,34.3
-    .turnin 6564 >>效忠旧神
+    .turnin 6564 >>交任务: 上古之神的仆从
     .isOnQuest 6564
 step
     #xprate <1.5
     .goto Ashenvale,11.7,34.9
-    .turnin 6442 >>在Zoram Strand上交给Naga
+    .turnin 6442 >>交任务: 佐拉姆海岸的纳迦
     .isQuestComplete 6442
 step << Druid tbc
     #sticky
@@ -847,8 +844,8 @@ step << Druid tbc
     .cast 18960 >>一旦你的炉石可用，使用“传送：月光”咒语
     >>上楼去
      .goto Moonglade,56.2,30.6
-    .turnin 27 >>交一堂课来学习
-    .accept 28 >>接受湖的审判
+    .turnin 27 >>交任务: 必修的课程
+    .accept 28 >>接任务: 湖中试炼
 step << Druid tbc
 	#completewith next
     .goto Moonglade,52.5,40.5
@@ -864,8 +861,8 @@ step << Druid tbc
     .complete 28,1 --Complete the Trial of the Lake. (1)
 step << Druid tbc
     .goto Moonglade,36.5,40.1
-    .turnin 28 >>《湖的试航》(Turn in Trial of the Lake)
-    .accept 30 >>接受海狮的审判
+    .turnin 28 >>交任务: 湖中试炼
+    .accept 30 >>接任务: 海狮试炼
 step
     #completewith next
     .hs >>火炉到雷霆崖
@@ -879,29 +876,29 @@ step
 step
     .isOnQuest 1063
     .goto Thunder Bluff,69.8,30.8
-    .turnin 1063 >>交给克罗恩长老
+    .turnin 1063 >>交任务: 长者
     >>等待角色扮演结束
-    .accept 1064 >>接受被遗弃的援助
+    .accept 1064 >>接任务: 被遗忘者的援助
 step
     .isOnQuest 1064
     >>前往灵泉下的水池
     .goto Thunder Bluff,22.9,21.1
-    .turnin 1064 >>交出被遗弃的援助
-    .accept 1065 >>接受塔伦磨坊之旅
+    .turnin 1064 >>交任务: 被遗忘者的援助
+    .accept 1065 >>接任务: 塔伦米尔之旅
 step
     .isOnQuest 1489
     .goto Thunder Bluff,78.4,28.4
-    .turnin 1489 >>交给Hamuul Runetotem
-    .accept 1490 >>接受Nara Runetotem
+    .turnin 1489 >>交任务: 哈缪尔·符文图腾
+    .accept 1490 >>接任务: 纳拉·蛮鬃
 step
     .isQuestTurnedIn 1489
     .goto Thunder Bluff,75.6,31.2
-    .turnin 1490 >>交给奈拉·伦托姆
+    .turnin 1490 >>交任务: 纳拉·蛮鬃
 step
     .isOnQuest 962
     >>前往灵泉下的水池
     .goto Thunder Bluff,22.9,21.1
-    .turnin 962 >>转入蛇花
+    .turnin 962 >>交任务: 毒蛇花
 step << Tauren wotlk
     .money <5.00
     .goto Mulgore,47.5,58.5
@@ -919,13 +916,13 @@ step
     #label troubleatdocks1
     .isOnQuest 959
     .goto The Barrens,63.1,37.6
-    .turnin 959 >>码头上的麻烦
+    .turnin 959 >>交任务: 港口的麻烦
 step
     .isOnQuest 1491
     .goto The Barrens,62.4,37.6
-    .turnin 1491 >>提交智能饮料
+    .turnin 1491 >>交任务: 智慧饮料
 step << Druid tbc
-    >>在水下抢劫灰色箱子
+    >>在水下掠夺灰色箱子
     .goto The Barrens,56.7,8.3
     .collect 15883,1
 step << Druid tbc
@@ -981,15 +978,15 @@ step << Priest
     .trainer >>去训练你的职业咒语
 step << Rogue tbc
     .goto Orgrimmar,43.1,53.7
-    .accept 2460 >>接受破碎的问候
+    .accept 2460 >>接任务: 碎手军礼
 step << Rogue tbc
     >>瞄准Shenthul并键入/敬礼
 	.emote SALUTE,3401
     .complete 2460,1 --Shattered Salute Performed (1)
 step << Rogue
     .goto Orgrimmar,43.1,53.7
-    .turnin 2460 >>交上破碎的礼炮 << tbc
-    .accept 2458 >>接受深度覆盖 << tbc
+    .turnin 2460 >>交任务: 碎手军礼 << tbc
+    .accept 2458 >>接任务: 卧底密探 << tbc
     .train 1725 >>列车分心
     .train 1856 >>火车消失
     .train 1759 >>火车罪恶打击r4
@@ -1006,8 +1003,8 @@ step << Rogue tbc
     .use 8051 >>当你距离任务主管菲祖尔大约50码时，使用火炬枪。然后向他致敬。当他变得友好时和他说话
 	.emote SALUTE,7233
 .goto The Barrens,55.4,5.6
-    .turnin 2458 >>转入深覆盖
-    .accept 2478 >>任务：可能但不可能
+    .turnin 2458 >>交任务: 卧底密探
+    .accept 2478 >>接任务: 基本不可能的任务
 step << Rogue tbc
 	.cast 5967 >>秘密和扒手Silixiz为他的塔钥匙。让你尽可能多地拥抱塔壁，然后走到他身后去扒窃他。如果他说了什么，退后，然后从另一个角度靠近，试图再次扒窃他。不要杀了他
     .goto The Barrens,54.8,5.9
@@ -1040,12 +1037,12 @@ step << Rogue tbc
 step << Rogue tbc
 	>>你现在将获得为期一周的降级，使你无法使用隐形。只需继续沿着路线走。
 	.goto Orgrimmar,43.1,53.7
-    .turnin 2478 >>移交任务：可能但不可能
-    .accept 2479 >>接受Hinott的帮助
+    .turnin 2478 >>交任务: 基本不可能的任务
+    .accept 2479 >>接任务: 希诺特的帮助
 step << Warlock tbc
     .goto Orgrimmar,48.2,45.3
-    .turnin 1512 >>交出爱的礼物
-    .accept 1513 >>接受绑定
+    .turnin 1512 >>交任务: 爱的礼物
+    .accept 1513 >>接任务: 誓缚
 step << Warlock tbc
     .use 6626 >>使用道根的吊坠在建筑的圆圈处召唤魔术师。杀了她
 	.goto Orgrimmar,49.4,50.0
@@ -1053,7 +1050,7 @@ step << Warlock tbc
 step << Warlock tbc
     >>从现在开始使用魔术师
     .goto Orgrimmar,48.2,45.3
-    .turnin 1513 >>交回装订本
+    .turnin 1513 >>交任务: 誓缚
     .isQuestComplete 1513
 step << Warlock
     .goto Orgrimmar,48.2,45.3
@@ -1072,7 +1069,7 @@ RXPGuides.RegisterGuide([[
 #next 27-30 贫瘠之地 / 千针石林
 
 step << !Shaman
-    #completewith next
+    #completewith Zeppelin
     .goto Orgrimmar,54.1,68.5
     .home >>将您的炉石设置为Orgrimmar
 step << Orc !Warlock wotlk
@@ -1084,6 +1081,7 @@ step << Troll !Warlock wotlk
 	.goto Durotar,55.2,75.5
 	.train 533 >>前往Durotar的Sen'jin村乘坐火车并购买您的坐骑
 step
+    #label Zeppelin
 	>>去齐柏林塔。把齐柏林飞艇带到提里斯法
 	.goto Durotar,50.8,13.8
 	.zone Tirisfal Glades >>抵达提里斯法尔·格拉德斯
@@ -1096,7 +1094,7 @@ step << Blood Elf !Warlock wotlk
     .money <5.00
     .goto Undercity,66.3,4.5,30,0
     .goto Undercity,54.9,11.3
-    .zone Silvermoon City >>点击易位球前往银月城
+    .zone Silvermoon City >>前往: 银月城
 step << Blood Elf !Warlock wotlk
     .money <5.00
     .goto Eversong Woods,61.1,54.7,5,0
@@ -1105,7 +1103,7 @@ step << Blood Elf !Warlock wotlk
 step << Blood Elf !Warlock wotlk
     .goto Silvermoon City,49.4,14.3
     >>如果可以的话，传送到幽暗城 << Mage
-    .zone Undercity >>点击易位之珠前往幽冥城
+    .zone Undercity >>前往: 幽暗城
 step << Druid tbc
     >>在水下打劫泡沫裂缝旁边的灰色胸部(疲劳中)。
     .goto Silverpine Forest,30.0,29.1
@@ -1115,22 +1113,22 @@ step << Druid tbc
 step
     >>跑向坟墓
 	.goto Silverpine Forest,42.9,40.9
-    .accept 493 >>接受希尔斯布莱德丘陵之旅
+    .accept 493 >>接任务: 前往希尔斯布莱德丘陵
 step
     >>点击地面上的石墓
     .goto Silverpine Forest,44.1,42.5
-    .turnin 264 >>至死不渝
+    .turnin 264 >>交任务: 至死方休
     .isOnQuest 264
 step
     .isOnQuest 3301
     .goto Silverpine Forest,43.0,42.0
-    .turnin 3301 >>提交Mara Runetotem
+    .turnin 3301 >>交任务: 茉拉·符文图腾
 step
     .goto Silverpine Forest,45.6,42.6
     .fp The Sepulcher >>获得the Sepulcher飞行路线
 step
     .goto Hillsbrad Foothills,20.80,47.40
-    .accept 494 >>接受罢工时间
+    .accept 494 >>接任务: 进攻的时机
 step
     .goto Hillsbrad Foothills,60.10,18.60
     .fp Tarren Mill>>获取Tarren Mill飞行路线
@@ -1140,31 +1138,31 @@ step << Shaman
     .complete 1536,1 --Filled Red Waterskin (1)
 step
     .goto Hillsbrad Foothills,61.5,19.2
-    .turnin 493 >>转入希尔斯布莱德丘陵之旅
+    .turnin 493 >>交任务: 前往希尔斯布莱德丘陵
 step
     .isOnQuest 1065
     .goto Hillsbrad Foothills,61.5,19.2
-    .turnin 1065 >>前往塔伦磨坊的旅程
-    .accept 1066 >>接受无辜者的鲜血
+    .turnin 1065 >>交任务: 塔伦米尔之旅
+    .accept 1066 >>接任务: 无辜者之血
 step
     .goto Hillsbrad Foothills,61.50,19.20
-    .accept 496 >>接受痛苦药剂
-    .accept 501 >>接受疼痛药剂
+    .accept 496 >>接任务: 受难药剂
+    .accept 501 >>接任务: 痛苦药剂
 step
     .goto Hillsbrad Foothills,62.50,19.70
      >>点击酒店外的通缉海报
-    .accept 567 >>接受危险！
+    .accept 567 >>接任务: 危险！
 step
     .goto Hillsbrad Foothills,62.20,20.50
-    .turnin 494 >>上缴时间打击
-    .accept 527 >>接受希尔斯布莱德丘陵战役
+    .turnin 494 >>交任务: 进攻的时机
+    .accept 527 >>接任务: 希尔斯布莱德之战
 step
     .goto Hillsbrad Foothills,62.60,20.70
     >>点击Melisara旁边的通缉海报
-    .accept 549 >>接受通缉：辛迪加人员
+    .accept 549 >>接任务: 通缉：辛迪加成员
 step
     .goto Hillsbrad Foothills,63.20,20.70
-    .accept 498 >>接受救援
+    .accept 498 >>接任务: 拯救行动
 step << Hunter
 	#completewith next
 	.goto Hillsbrad Foothills,62.56,19.91
@@ -1241,7 +1239,7 @@ step
 	.complete 496,1 --Collect Gray Bear Tongue (x10)
 step
         #requires syndicateq
-	>>杀死蜘蛛。抢劫他们直到爬行动物伊科掉下来
+	>>杀死蜘蛛。掠夺他们直到爬行动物伊科掉下来
 	.goto Hillsbrad Foothills,63.5,33.0,100,0
     .goto Hillsbrad Foothills,57.9,34.5,100,0
     .goto Hillsbrad Foothills,57.2,22.1,100,0
@@ -1301,13 +1299,13 @@ step
 step
 	#requires syndicateq
     .goto Hillsbrad Foothills,61.5,19.1
-    .turnin 1066 >>无辜者的血
+    .turnin 1066 >>交任务: 无辜者之血
 step
     .goto Hillsbrad Foothills,62.38,20.52
-	.turnin 549 >>需要上缴：财团人员
+	.turnin 549 >>交任务: 通缉：辛迪加成员
 step
     .goto Hillsbrad Foothills,63.2,20.7
-    .turnin 498 >>移交救援人员
+    .turnin 498 >>交任务: 拯救行动
 step << Hunter
 	#completewith next
 	.goto Hillsbrad Foothills,62.56,19.91
@@ -1319,11 +1317,11 @@ step
 	#requires Farmers
 	>>返回塔伦磨坊
     .goto Hillsbrad Foothills,62.3,20.2
-    .turnin 527 >>希尔斯布莱德丘陵战役
+    .turnin 527 >>交任务: 希尔斯布莱德之战
 step
     .goto Hillsbrad Foothills,62.5,20.3
-    .accept 528 >>接受希尔斯布莱德丘陵战役
-    .accept 546 >>接受死亡纪念品
+    .accept 528 >>接任务: 希尔斯布莱德之战
+    .accept 546 >>接任务: 死亡的纪念品
 step
 	#completewith next
     >>杀死熊和山狮。抢走他们的舌头和鲜血
@@ -1371,16 +1369,16 @@ step
 step
 	>>跑回塔伦磨坊
 	.goto Hillsbrad Foothills,62.4,20.3
-    .turnin 528 >>希尔斯布莱德丘陵战役
-    .accept 529 >>接受希尔斯布莱德丘陵战役
+    .turnin 528 >>交任务: 希尔斯布莱德之战
+    .accept 529 >>接任务: 希尔斯布莱德之战
 step
     .goto Hillsbrad Foothills,61.5,19.1
-    .turnin 496 >>上缴痛苦灵丹妙药
-    .accept 499 >>接受痛苦药剂
-    .turnin 501 >>上缴止痛药
-    .accept 502 >>接受疼痛药剂
-    .turnin 499 >>上缴痛苦灵丹妙药
-    .accept 1067 >>接受重返雷霆崖
+    .turnin 496 >>交任务: 受难药剂
+    .accept 499 >>接任务: 受难药剂
+    .turnin 501 >>交任务: 痛苦药剂
+    .accept 502 >>接任务: 痛苦药剂
+    .turnin 499 >>交任务: 受难药剂
+    .accept 1067 >>接任务: 返回雷霆崖
 step << Shaman/Warrior
     .goto Hillsbrad Foothills,60.4,26.2
     .vendor >>如果你第一次没有得到无情斧头，现在就去商店买。
@@ -1395,12 +1393,12 @@ step
     +在交出痛苦药剂时，你可以在获得额外经验后杀死斯坦利
 step
 	.goto Hillsbrad Foothills,32.6,35.6
-    .turnin 502 >>上缴止痛药
+    .turnin 502 >>交任务: 痛苦药剂
 step
 	.isOnQuest 546
 	#sticky
     #label humanskull
-	>>杀死人类。抢劫他们的头骨
+	>>杀死人类。掠夺他们的头骨
     .complete 546,1 --Collect Hillsbrad Human Skull (x30)
 step
 	>>杀死Verringtan铁匠和他的学徒
@@ -1412,8 +1410,8 @@ step
     #xprate >1.499 
 	.goto Hillsbrad Foothills,62.4,20.3
     #requires humanskull
-    .turnin 529 >>希尔斯布莱德丘陵战役
-    .turnin 546 >>递交死亡纪念品
+    .turnin 529 >>交任务: 希尔斯布莱德之战
+    .turnin 546 >>交任务: 死亡的纪念品
 step << Druid
 #completewith next
 	.cast 18960 >>使用魔法传送：月光
@@ -1426,13 +1424,13 @@ step << Druid tbc
 step << Druid tbc
     >>上楼去
     .goto Moonglade,56.2,30.6
-    .turnin 30 >>海狮的审判
-    .accept 31 >>接受水生形态
+    .turnin 30 >>交任务: 海狮试炼
+    .accept 31 >>接任务: 水栖形态
 step << !Shaman
 	#completewith next
 	#requires Crate
 	>>我们要到稍后才会提交这些任务。
-	.hs >>赫斯到奥格瑞玛
+	.hs >>前往: 奥格瑞玛
 step << Shaman
 	#completewith next
 	#requires Crate
@@ -1440,8 +1438,8 @@ step << Shaman
 	.hs >>炉灶前往陶拉霍营地
 step << Shaman
 	.goto The Barrens,43.4,77.4
-	.turnin 1536 >>水的召唤
-	.accept 1534 >>接受水的召唤
+	.turnin 1536 >>交任务: 水之召唤
+	.accept 1534 >>接任务: 水之召唤
 step << Shaman
 	#completewith next
 	.goto The Barrens,44.5,59.1
@@ -1520,9 +1518,9 @@ step
     .fly Splintertree >>飞到Splinterree Post
     .zoneskip Ashenvale
 step
-    .accept 6441 >>接受萨蒂尔喇叭
+    .accept 6441 >>接任务: 萨特之角
     .goto Ashenvale,73.1,61.5
-    .turnin 6383 >>交出灰谷狩猎
+    .turnin 6383 >>交任务: 灰谷狩猎
     .goto Ashenvale,73.8,61.5
 step
     #completewith next
@@ -1531,14 +1529,14 @@ step
 	.home >>将炉石设置为Splinterree Post
 step
     .goto Ashenvale,73.6,60.0
-    .accept 25 >>接受Stonetalon停止
+    .accept 25 >>接任务: 石爪山的困境
 step << BloodElf
     .goto Ashenvale,71.3,67.8
-    .turnin 9428 >>向Splinterree Post提交报告
+    .turnin 9428 >>交任务: 前往碎木岗哨
     .isOnQuest 9428
 step
     .goto Ashenvale,71.1,68.1
-    .accept 6503 >>接受灰谷领先者
+    .accept 6503 >>接任务: 灰谷先驱者
 step
  >>杀死在该地区潜行的灰谷先锋。
 .goto Ashenvale,72.5,72.5,40,0
@@ -1549,7 +1547,7 @@ step
     .unitscan Ashenvale Outrunner
 step
     .goto Ashenvale,68.3,75.3
-    .accept 6544 >>接受Torek的袭击
+    .accept 6544 >>接任务: 托雷克的突袭
     >>如果他不在那里，他可以花几分钟来重生
 step
     >>跟随Torek。这个任务可能有点难。它会在建筑内产生一个波浪敌人。您可能需要跳过。
@@ -1581,7 +1579,7 @@ step
     .goto Ashenvale,51.9,54.3,40,0
     .goto Ashenvale,61.2,51.5
     .collect 16304,1,24 --Collect Shadumbra's Head
-	.accept 24 >>接受阴影的头部
+	.accept 24 >>接任务: 萨杜布拉的头颅
 	.unitscan Shadumbra
 step
     >>杀死笑姐妹直到她们掉下蚀刻的药水
@@ -1594,19 +1592,19 @@ step << Rogue
     .fp Zoram >>获取Zoram'gar前哨飞行路线
 step << Rogue
     .goto Ashenvale,11.8,34.7
-    .accept 216 >>在石头和蓟马之间接受
+    .accept 216 >>接任务: 蓟皮熊怪的麻烦
 step << Rogue
     >>与小屋里的巨魔交谈
     .goto Ashenvale,11.6,34.9
-    .accept 6462 >>接受巨魔魅力
+    .accept 6462 >>接任务: 巨魔符咒
 step << Rogue
     .isQuestComplete 6562
     .goto Ashenvale,11.6,34.3
-    .turnin 6562 >>深陷困境
+    .turnin 6562 >>交任务: 帮助耶努萨克雷
 step << Rogue
     >>接受此任务将启动护送。跟着他
     .goto Ashenvale,12.1,34.4
-    .accept 6641 >>接受伏尔莎的激光
+    .accept 6641 >>接任务: 鞭笞者沃尔沙
 step << Rogue
     >>单击钎焊器。会有纳加海浪产卵。一旦沃沙出来，让莫格拉什在与他战斗之前先发脾气。
     .goto Ashenvale,9.8,27.4
@@ -1629,13 +1627,13 @@ step
 step
     #sticky
     #label Charms
-    >>抢劫隧道内的小箱子。
+    >>掠夺隧道内的小箱子。
     .complete 6462,1 --Collect Troll Charm (x8)
     .isOnQuest 6462
 step
     >>这将启动护送。准备好后启动。
     .goto Ashenvale,41.5,34.5
-    .accept 6482 >>接受鲁尔的自由
+    .accept 6482 >>接任务: 鲁尔的自由
     .isOnQuest 216
 step
     .goto Ashenvale,38.5,36.4
@@ -1672,14 +1670,14 @@ step
     .goto Ashenvale,44.3,68.6
     .use 16303 >>寻找乌尔桑古斯(熊)。他顺时针巡逻。为乌尔桑戈斯之爪杀死并掠夺他，然后点击它接受任务。
     .collect 16303,1,23 --Collect Ursangous's Paw (x1)
-    .accept 23 >>接受乌尔桑戈斯的爪子
+    .accept 23 >>接任务: 乌萨苟斯的爪子
 	.unitscan Ursangous
 step
     #sticky
     #label Tideress
     .use 16408 >>杀死湖心附近的守卫。抢她一个被污染的水球，然后点击它接受任务
     .collect 16408,1,1918 --Collect Befouled Water Globe (x1)
-    .accept 1918 >>接受斜面元素
+    .accept 1918 >>接任务: 被污染的水元素
 	.unitscan Tideress
 step
     #sticky
@@ -1706,7 +1704,7 @@ step << !Rogue
 step
     #xprate <1.5
     .goto Ashenvale,71.2,68.1
-    .turnin 6503 >>交给灰谷队的领先者
+    .turnin 6503 >>交任务: 灰谷先驱者
 step
     .goto Ashenvale,72.4,72.1,40,0
     .goto Ashenvale,75.7,70.0,40,0
@@ -1717,44 +1715,44 @@ step
     .goto Ashenvale,75.3,72.0,0
 	.use 16305 >>找夏普塔隆(大鸟)。他顺时针巡逻。杀了他，抢走了他的利爪。接受它的任务。将他单独降到大约60%的生命值，然后风筝将他带到亡灵营地杀死他。
     .collect 16305,1,2 --Collect Sharptalon's Claw
-    .accept 2 >>接受夏普塔龙之爪
+    .accept 2 >>接任务: 沙普塔隆的爪子
 	.unitscan Sharptalon
 step
     .isQuestComplete 6544
     >>回镇上去
-    .turnin 6544 >>交出Torek的袭击
+    .turnin 6544 >>交任务: 托雷克的突袭
     .goto Ashenvale,73.1,62.5
 step    
     .goto Ashenvale,73.8,61.5
-    .turnin 2 >>交给沙普塔龙的爪子
-    .turnin 24 >>翻转阴影的头部
-    .turnin 23 >>交出乌尔桑戈斯的爪子
-    .turnin 247 >>交出狩猎完成
+    .turnin 2 >>交任务: 沙普塔隆的爪子
+    .turnin 24 >>交任务: 萨杜布拉的头颅
+    .turnin 23 >>交任务: 乌萨苟斯的爪子
+    .turnin 247 >>交任务: 完成狩猎
 step
     .goto Ashenvale,73.7,60.0
-    .turnin 25 >>转入Stonetalon静止状态
-    .turnin 1918 >>交出斜面元素
+    .turnin 25 >>交任务: 石爪山的困境
+    .turnin 1918 >>交任务: 被污染的水元素
 step
     .goto Ashenvale,73.1,61.5
-    .turnin 6441 >>交出赛特角
+    .turnin 6441 >>交任务: 萨特之角
 step
     .goto Ashenvale,73.7,60.0
     .abandon 1918 >>放弃被污染的元素
-    .destroy 16408 >>摧毁被污染的水球
+    .destroy 16408 >>摧毁: 被污染的水球
 step
     #xprate <1.5
     .goto Ashenvale,73.7,60.0
     .isOnQuest 216
-    .accept 824 >>接受土戒Je'neu
+    .accept 824 >>接任务: 陶土议会的耶努萨克雷
 step
     >>前往客栈
     .goto Ashenvale,74.1,60.9
-    .turnin 6482 >>把自由交给鲁尔
+    .turnin 6482 >>交任务: 鲁尔的自由
     .isOnQuest 6482
 step
     #xprate >1.499 
     .goto Ashenvale,71.2,68.1
-    .turnin 6503 >>交给灰谷队的领先者
+    .turnin 6503 >>交任务: 灰谷先驱者
 step
     #xprate <1.5
 	#completewith next
@@ -1764,39 +1762,39 @@ step
 step
     #xprate <1.5
     .goto Ashenvale,11.9,34.5
-    .turnin 216 >>在岩石和蓟马之间转弯
+    .turnin 216 >>交任务: 蓟皮熊怪的麻烦
     .isOnQuest 216
 step
     #xprate <1.5
     .goto Ashenvale,11.7,34.8
-    .turnin 6462 >>加入巨魔魅力
+    .turnin 6462 >>交任务: 巨魔符咒
     .isOnQuest 6462
 step
     #xprate <1.5
     .isQuestTurnedIn 6462
     .goto Ashenvale,11.6,34.3
-    .turnin 824 >>交回土戒的Je'neu
+    .turnin 824 >>交任务: 陶土议会的耶努萨克雷
 step << Rogue
     #label zoramend
     #requires wrathtailhead
     >>返回佐拉姆加前哨。
     .goto Ashenvale,12.2,34.2
-    .turnin 6641 >>交给伏尔莎激光器
+    .turnin 6641 >>交任务: 鞭笞者沃尔沙
     .isQuestComplete 6641
 step << Rogue
     .goto Ashenvale,11.59,34.27
-    .accept 6921 >>在废墟中接受
-    .accept 6563 >>接受阿库迈的精髓
+    .accept 6921 >>接任务: 废墟之间
+    .accept 6563 >>接任务: 阿库麦尔水晶
 step << Rogue
     .goto Ashenvale,14.0,15.0,100 >>前往Blackfathom Deeps的入口
 step << Rogue
     .goto Ashenvale,13.15,12.96
 	>>杀死布莱克法索姆潮汐女祭司直到湿气音符掉落。开始任务
 	.collect 16790,1,6564
-    .accept 6564 >>接受对旧神的忠诚
+    .accept 6564 >>接任务: 上古之神的仆从
 step << Rogue
     .goto Ashenvale,17.04,12.29
-	>>潜入地牢，抢劫墙上的20个蓝宝石
+	>>潜入地牢，掠夺墙上的20个蓝宝石
     .complete 6563,1 --Sapphire of Aku'Mai (20)
 step << Rogue
 	#completewith next
@@ -1807,7 +1805,7 @@ step << Rogue
 	>>掠夺深渊核心，这就产生了首领。
 	>>从阿奎尼斯男爵手中抢走地球仪。接受任务
 	.collect 16762,1,6922 
-	.accept 6922 >>接受阿奎尼斯男爵
+	.accept 6922 >>接任务: 阿奎尼斯男爵
 step << Rogue
     .hs >>壁炉到Splinterree Post
 	>>如果需要，购买食物/水
@@ -1858,8 +1856,8 @@ RXPGuides.RegisterGuide([[
 
 step
 	.goto Thunder Bluff,55.2,51.5
-    .turnin 1195 >>交出圣火
-    .accept 1196 >>接受圣火
+    .turnin 1195 >>交任务: 神圣之火
+    .accept 1196 >>接任务: 神圣之火
 step << Warrior tbc/Paladin/Shaman
     .goto Thunder Bluff,54.0,57.3
     .vendor >>如果你在希尔斯布莱德丘陵没有得到一把无情的斧头，就买一把吧
@@ -1871,7 +1869,7 @@ step << Hunter
 step << Druid
     .goto Thunder Bluff,77.0,29.9
 	.trainer >>去训练你的职业咒语
-	.turnin 31 >>以水生形态交出 << tbc
+	.turnin 31 >>交任务: 水栖形态 << tbc
 step << Hunter
 	#completewith hearth
     .goto Thunder Bluff,59.1,86.9
@@ -1898,11 +1896,11 @@ step << Mage
 	.trainer >>去训练你的职业咒语
 step
     .goto Thunder Bluff,61.0,81.0
-    .accept 1131 >>接受Steelsnap
+    .accept 1131 >>接任务: 钢齿土狼
 step
     >>在灵魂升起下面的水池里
 	.goto Thunder Bluff,23.1,21.0
-    .turnin 1067 >>投奔雷霆崖
+    .turnin 1067 >>交任务: 返回雷霆崖
     .isOnQuest 1067
 step
     #label hearth
@@ -1920,14 +1918,14 @@ step
 step << Warrior
     >>在大楼里
 	.goto The Barrens,44.7,59.4
-	.turnin 1823 >>转身与鲁加交谈
-    .accept 1824 >>在巨人球场接受审判
+	.turnin 1823 >>交任务: 和鲁迦交谈
+    .accept 1824 >>接任务: 巨人旷野的试炼
 step
     .maxlevel 28
     >>与笼子里的芒果对话，如果你上次没有抓到的话，就从鞑靼人那里捡起选择武器
-    .accept 879 >>接受内部背叛
+    .accept 879 >>接任务: 内奸
     .goto The Barrens,44.6,59.2
-    .accept 893 >>接受首选武器
+    .accept 893 >>接任务: 野猪人的武器
     .goto The Barrens,45.0,57.6
 step
 	#sticky
@@ -1940,7 +1938,7 @@ step
 	>>在该区域周围搜索Owatanka(蓝雷蜥蜴)。如果你找到他，抢走他的尾钉并开始任务。如果你找不到他，跳过这个任务
 	.collect 5102,1,884 --Collect Owatanka's Tailspike
     .use 5102
-	.accept 884 >>接受Owatanka
+	.accept 884 >>接任务: 奥瓦坦卡
 	.unitscan Owatanka
 step << Warrior
     >>杀死该地区的Silithid暴徒。抢走他们的Twitching Antenna。速度要快，因为他们有15米的持续时间
@@ -1949,15 +1947,15 @@ step << Warrior
 step << Warrior
     >>在大楼里
 	.goto The Barrens,44.7,59.4
-    .turnin -1824 >>在巨人球场接受审判
+    .turnin -1824 >>交任务: 巨人旷野的试炼
 step << Warrior
     #xprate <1.5
     .goto The Barrens,44.7,59.4
-    .accept 1825 >>接受与Thun'grim交谈
+    .accept 1825 >>接任务: 和索恩格瑞姆交谈
 step << Shaman
     .goto The Barrens,43.4,77.4
-    .turnin 1534 >>水的召唤
-    .accept 220 >>接受水的召唤
+    .turnin 1534 >>交任务: 水之召唤
+    .accept 220 >>接任务: 水之召唤
 step
     #sticky
     #label Washte
@@ -1967,14 +1965,14 @@ step
     .goto The Barrens,47.6,79.8,0
     >>在该区域周围搜索Washte Pawne(红风蛇)。他放弃了一项任务。 
     .collect 5103,1,885 --Collect Washte Pawne's Feather
-    .accept 885 >>接受Washte Pawne
+    .accept 885 >>接任务: 瓦希塔帕恩
     .unitscan Washte Pawne
 step
     .goto The Barrens,46.0,76.2,50,0
     .goto The Barrens,46.0,81.2,50,0
     .goto The Barrens,46.0,76.2,50,0
     .goto The Barrens,46.0,81.2,50,0
-    .accept 843 >>接受甘恩的复垦。他沿路巡逻。
+    .accept 843 >>接任务: 加恩的报复
     .unitscan Gann Stonespire
     .maxlevel 28
 step
@@ -1984,7 +1982,7 @@ step
     .goto The Barrens,44.7,74.7,0
     >>在该区域周围搜索Washte Pawne(红风蛇)。他放弃了一项任务。如果你在最后一个地方找不到他，就跳过任务
     .collect 5103,1,885 --Collect Washte Pawne's Feather
-    .accept 885 >>接受Washte Pawne
+    .accept 885 >>接任务: 瓦希塔帕恩
     .unitscan Washte Pawne
 step
     #sticky
@@ -2004,12 +2002,12 @@ step
 	.unitscan Kuz 
 step
     .goto The Barrens,40.4,80.8
-    >>洛克在斜坡上的大楼里。杀掉并抢劫他的头骨。
+    >>洛克在斜坡上的大楼里。杀掉并掠夺他的头骨。
     .complete 879,3 --Collect Lok's Skull (x1)
 	.unitscan Lok Orcbane
 step
     .goto The Barrens,43.8,83.5
-    >>纳克位于山脊的南部。杀掉并抢劫他的头骨。
+    >>纳克位于山脊的南部。杀掉并掠夺他的头骨。
     .complete 879,2 --Collect Nak's Skull (x1)
 	.unitscan Nak
 step
@@ -2031,7 +2029,7 @@ step
     #completewith next
     >>在该区域周围搜索Washte Pawne(红风蛇)。他放弃了一项任务。如果你找不到他，就跳过任务
     .collect 5103,1,885 --Collect Washte Pawne's Feather
-    .accept 885 >>接受Washte Pawne
+    .accept 885 >>接任务: 瓦希塔帕恩
     .unitscan Washte Pawne
 step
     .isOnQuest 843
@@ -2041,17 +2039,17 @@ step
     .goto The Barrens,46.0,81.2,50,0
     .goto The Barrens,46.0,76.2,50,0
     >>再次在路上找到甘恩
-    .turnin 843 >>移交甘恩的复垦
+    .turnin 843 >>交任务: 加恩的报复
 step
     .goto The Barrens,46.0,81.2,50,0
     .goto The Barrens,46.0,76.2,50,0
     .goto The Barrens,46.0,81.2,50,0
     .goto The Barrens,46.0,76.2,50,0
-    .accept 846 >>接受甘恩的复仇
+    .accept 846 >>接任务: 加恩的报复
 step << Hunter/Warlock
     .goto The Barrens,48.9,86.2
     >>前往矮人地堡
-    .accept 857 >>接受月亮的眼泪
+    .accept 857 >>接任务: 众月之泪
 step
     >>杀掉暴徒并掠夺他们以报仇甘恩
 	.goto The Barrens,49.4,84.3
@@ -2068,7 +2066,7 @@ step
     #completewith wpscout1
     >>在该区域周围搜索Washte Pawne(红风蛇)。他放弃了一项任务。如果你找不到他，就跳过任务
     .collect 5103,1,885 --Collect Washte Pawne's Feather
-    .accept 885 >>接受Washte Pawne
+    .accept 885 >>接任务: 瓦希塔帕恩
     .unitscan Washte Pawne
 step
     #label wpscout1
@@ -2078,7 +2076,7 @@ step
     .goto The Barrens,46.0,81.2,50,0
     .goto The Barrens,46.0,76.2,50,0
     >>再次在路上找到甘恩
-    .turnin 846 >>交出甘恩的复仇
+    .turnin 846 >>交任务: 加恩的报复
     .unitscan Gann Stonespire
 step
     .isQuestTurnedIn 846
@@ -2086,11 +2084,11 @@ step
     .goto The Barrens,46.0,76.2,50,0
     .goto The Barrens,46.0,81.2,50,0
     .goto The Barrens,46.0,76.2,50,0
-    .accept 849 >>接受甘恩的复仇
+    .accept 849 >>接任务: 加恩的报复
 step << Hunter/Warlock
     .goto The Barrens,48.9,86.3
     >>抬头经过矮人掩体
-    .turnin 857 >>《月亮的眼泪》
+    .turnin 857 >>交任务: 众月之泪
 step
     .isOnQuest 849
     >>右击发射台顶部的飞行机器
@@ -2102,7 +2100,7 @@ step
     #completewith wpscout2
     >>在该区域周围搜索Washte Pawne(红风蛇)。他放弃了一项任务。如果你找不到他，就跳过任务
     .collect 5103,1,885 --Collect Washte Pawne's Feather
-    .accept 885 >>接受Washte Pawne
+    .accept 885 >>接任务: 瓦希塔帕恩
     .unitscan Washte Pawne
 step
     #label wpscout2
@@ -2112,18 +2110,18 @@ step
     .goto The Barrens,46.0,81.2,50,0
     .goto The Barrens,46.0,76.2,50,0
     >>再次找到甘恩
-    .turnin 849 >>交出甘恩的复仇
+    .turnin 849 >>交任务: 加恩的报复
     .unitscan Gann Stonespire
 step
     .goto Thousand Needles,32.2,22.2
     >>向南朝向千针
-    .accept 4542 >>接受发送给Freewind Post的消息
+    .accept 4542 >>接任务: 给乱风岗的紧急信件
 step
     #sticky
     #completewith next
     .use 12564 >>注意Galak Messenger。如果你看到了，杀了他，抢走笔记，接受任务。如果你找不到他，你也可以找他。
     .collect 12564,1,4881 --Collect Assassination Note
-    .accept 4881 >>接受刺杀阴谋
+    .accept 4881 >>接任务: 暗杀计划
     .unitscan Galak Messenger
 step
     #sticky
@@ -2132,26 +2130,26 @@ step
     .goto Thousand Needles,47.1,48.3,60
 step
     >>接受Freewind Post周围的任务
-    .accept 9431 >>接受不同的方法
+    .accept 9431 >>接任务: 另一条路
     .goto Thousand Needles,46.1,50.5
-    .accept 5147 >>接受通缉-Arnak Grimtotem
+    .accept 5147 >>接任务: 通缉：阿纳克·恐怖图腾
     .goto Thousand Needles,45.9,50.9
 step
     .goto Thousand Needles,46.1,51.7
     .isOnQuest 1196
-    .turnin 1196 >>交出圣火
-    .accept 1197 >>接受圣火
+    .turnin 1196 >>交任务: 神圣之火
+    .accept 1197 >>接任务: 神圣之火
 step
     .goto Thousand Needles,45.6,50.8
-    .turnin 4542 >>向Freewind Post提交消息
-    .accept 4841 >>接受安抚半人马座
+    .turnin 4542 >>交任务: 给乱风岗的紧急信件
+    .accept 4841 >>接任务: 清除半人马
 step
     .goto Thousand Needles,45.1,49.2
     .fp Freewind Post >>获取Freewind Post飞行路径
 step
-    .accept 4767 >>接受风骑士
+    .accept 4767 >>接任务: 驭风者
     .goto Thousand Needles,44.8,49.1
-    .accept 4821 >>接受异形蛋
+    .accept 4821 >>接任务: 异型卵
     .goto Thousand Needles,44.7,50.2
 step << Hunter
 #completewith next
@@ -2173,7 +2171,7 @@ step
     .complete 4841,1 --Kill Galak Scout (x12)
     .complete 4841,2 --Kill Galak Wrangler (x10)    
 step
-    >>抢劫洞穴系统末端的铜器。一旦你到了山洞的十字路口，向左拐。
+    >>掠夺洞穴系统末端的铜器。一旦你到了山洞的十字路口，向左拐。
     .goto Thousand Needles,42.0,31.5
     .complete 1197,1 --Collect Cloven Hoof (x1)
 step
@@ -2189,15 +2187,15 @@ step
     .goto Thousand Needles,54.6,44.3,30
 step
     .goto Thousand Needles,53.9,41.5
-    .accept 1149 >>接受信仰测试
+    .accept 1149 >>接任务: 信仰的试炼
 step
     .isOnQuest 1149
     >>从木平台的一端跳下来，你不会死的。
     .goto Thousand Needles,26.4,32.6,15
 step
     .goto Thousand Needles,53.9,41.7
-    .turnin 1149 >>信仰的交验
-    .accept 1150 >>接受耐久性试验
+    .turnin 1149 >>交任务: 信仰的试炼
+    .accept 1150 >>接任务: 耐力的试炼
 step
     #sticky
     #label Egg5
@@ -2217,18 +2215,18 @@ step
     #requires Egg5
     >>返回Freewind Post
     .goto Thousand Needles,45.6,50.8
-    .turnin 4841 >>交出安抚半人马座
-    .accept 5064 >>接受Grimtotem间谍
+    .turnin 4841 >>交任务: 清除半人马
+    .accept 5064 >>接任务: 恐怖图腾的密信
 step << tbc
     #completewith exitfreewind33
     +如果您可以在此服务器上访问更多黄金，请给自己发邮件35g。我们很快就会买你的坐骑。
 step
     .goto Thousand Needles,46.1,51.7
-    .turnin 1197 >>交出圣火
+    .turnin 1197 >>交任务: 神圣之火
 step
     .goto Thousand Needles,44.7,50.3
-    .turnin 4821 >>交上外星人蛋
-    .accept 4865 >>接受野蛇
+    .turnin 4821 >>交任务: 异型卵
+    .accept 4865 >>接任务: 狂热之蛇
 step
     #label exitfreewind33
     .isOnQuest 1150
@@ -2238,7 +2236,7 @@ step
     .goto Thousand Needles,27.3,51.2,20 >>进入洞穴
     >>记住，这里的小妖精可以保持沉默 << Priest/Warlock/Druid/Paladin/Mage/Shaman
 step
-    >>走到洞穴的尽头，打开板条箱。杀死格伦卡并抢劫她
+    >>走到洞穴的尽头，打开板条箱。杀死格伦卡并掠夺她
     .goto Thousand Needles,25.9,54.6
     .complete 1150,1 --Collect Grenka's Claw (x1)
 step
@@ -2249,7 +2247,7 @@ step
     #sticky
     #label Eggs
     #completewith Paoka
-    >>抢劫该地区地面上的鸡蛋。抢劫你看到的任何东西
+    >>掠夺该地区地面上的鸡蛋。掠夺你看到的任何东西
     .complete 4767,1 --Collect Highperch Wyvern Egg (x10)
 step
     .isOnQuest 4767
@@ -2257,7 +2255,7 @@ step
 step
         >>这将启动护送。准备好后启动。开始前试着吃5-6个鸡蛋，这样你就可以在出去的路上吃完。
     .goto Thousand Needles,17.8,40.6
-    .accept 4770 >>接受返程
+    .accept 4770 >>接任务: 回家
 step
     #label Paoka
     >>护送保卡下山。当三只飞龙到达该区域的中部时会产卵。
@@ -2269,12 +2267,12 @@ step
     .complete 4767,1 --Collect Highperch Wyvern Egg (x10)
 step
 .goto Thousand Needles,21.5,32.3
-    .turnin 4865 >>《狂蛇归来》
-    .accept 5062 >>接受圣火
-    .turnin 9431 >>换一种方式
-    .accept 5151 >>接受超级电容器Gizmo
-    .accept 9433 >>在月井里沉沦
-    .turnin 4770 >>转入返程
+    .turnin 4865 >>交任务: 狂热之蛇
+    .accept 5062 >>接任务: 神圣之火
+    .turnin 9431 >>交任务: 另一条路
+    .accept 5151 >>接任务: 超适应齿轮
+    .accept 9433 >>接任务: 月亮井的水
+    .turnin 4770 >>交任务: 回家
 step
     #sticky
     #completewith steelsnap
@@ -2286,7 +2284,7 @@ step
 #completewith messenger
 .use 12564 >>找到巡逻该区域的Galak Messenger。杀了他，抢了他的纸条。
     .collect 12564,1,4881 --Collect Assassination Note (x1)
-.accept 4881 >>接受刺杀阴谋
+.accept 4881 >>接任务: 暗杀计划
 step
     #label steelsnap
     .use 23675 >>使用隐藏在窗台上方灌木丛中的Robotron控制单元。 
@@ -2300,7 +2298,7 @@ step
 step
     #xprate <1.5
     .goto Thousand Needles,18.7,22.2,40,0
-    .xp 29+500>>研磨至500+/36300 xp
+    .xp 29+500>>提升经验到500+/36300 xp
 step
     #label messenger
 >>搜索Steelsnap(Hyena)。他逆时针巡逻
@@ -2318,8 +2316,8 @@ step
 	.unitscan Steelsnap
 step
     .goto Thousand Needles,21.5,32.5
-    .turnin 9433 >>在月井里转一圈
-    .accept 9434 >>接受Tonic测试
+    .turnin 9433 >>交任务: 月亮井的水
+    .accept 9434 >>接任务: 测试药剂
 step
 .use 12564 >>搜索Galak Messenger。他从一个营地出发，上路，然后去另一个营地
     .goto Thousand Needles,18.4,22.2,40,0
@@ -2333,7 +2331,7 @@ step
     .goto Thousand Needles,36.0,29.0,40,0
     .goto Thousand Needles,39.6,33.6
     .collect 12564,1,4881 --Collect Assassination Note (x1)
-    .accept 4881 >>接受刺杀阴谋
+    .accept 4881 >>接任务: 暗杀计划
 	.unitscan Galak Messenger
 step
     .goto Thousand Needles,37.5,38.4,30,0
@@ -2389,16 +2387,16 @@ step << Mage
     .trainer >>去训练你的职业咒语
 step
     .goto Thunder Bluff,61.4,80.8
-    .turnin 1131 >>转入Steelsnap
+    .turnin 1131 >>交任务: 钢齿土狼
 step
     .goto Thunder Bluff,60.8,81.5
-    .accept 1136 >>接受Frostmaw
+    .accept 1136 >>接任务: 霜喉雪人
 step
     .goto Thunder Bluff,69.7,30.9
-    .turnin 5062 >>交出圣火
+    .turnin 5062 >>交任务: 神圣之火
 step
     .goto Thunder Bluff,70.1,30.9
-    .accept 5088 >>接受Arikara
+    .accept 5088 >>接任务: 阿利卡拉
 step << Tauren wotlk
     .money <5.00
     .goto Mulgore,47.5,58.5
@@ -2417,34 +2415,34 @@ step
     .goto The Barrens,44.6,59.2
     >>与笼子里的芒果对话
     .isOnQuest 879
-    .turnin 879 >>自首背叛
-    .accept 906 >>接受内部背叛
+    .turnin 879 >>交任务: 内奸
+    .accept 906 >>接任务: 内奸
 step
     .goto The Barrens,45.1,57.7
     .isOnQuest 893
-    .turnin 893 >>交出首选武器
-    .accept 1153 >>接受新的矿石样本
+    .turnin 893 >>交任务: 野猪人的武器
+    .accept 1153 >>接任务: 新的矿石样本
 step
     .isOnQuest 885
     .goto The Barrens,44.9,59.1
-    .turnin 885 >>交给Washte Pawne
+    .turnin 885 >>交任务: 瓦希塔帕恩
 step
     .isOnQuest 884
     .goto The Barrens,44.9,59.1
-    .turnin 884 >>交给Owatanka
+    .turnin 884 >>交任务: 奥瓦坦卡
 step
     .isOnQuest 883
     .goto The Barrens,44.9,59.1
-    .turnin 883 >>交给Lakota’mani
+    .turnin 883 >>交任务: 拉克塔曼尼
 step
     #completewith next
     .goto The Barrens,44.4,59.0
     .fly Freewind Post >>飞到Freewind Post
 step
     #label flyskip
-    .turnin 4767 >>转入Wind Rider
+    .turnin 4767 >>交任务: 驭风者
     .goto Thousand Needles,44.8,49.0
-    .turnin 9434 >>开始测试补药
+    .turnin 9434 >>交任务: 测试药剂
     .goto Thousand Needles,46.2,50.5
 step << !Warrior
 	#completewith next
@@ -2458,10 +2456,10 @@ step
 step
     .goto Thousand Needles,54.0,41.4
     >>前往东北洞穴
-    .turnin 1150 >>耐久性转入试验
-    .accept 1151 >>接受强度试验
+    .turnin 1150 >>交任务: 耐力的试炼
+    .accept 1151 >>接任务: 力量的试炼
 step
-    >>杀死洛克阿利姆(岩石元素)。抢劫他的碎片。他在西部千针周围巡逻了一大圈。
+    >>杀死洛克阿利姆(岩石元素)。掠夺他的碎片。他在西部千针周围巡逻了一大圈。
     .goto Thousand Needles,29.3,33.6,40,0
     .goto Thousand Needles,27.1,28.7,40,0
     .goto Thousand Needles,22.5,31.3,40,0
@@ -2485,7 +2483,7 @@ step
 	.goto Thousand Needles,31.2,36.9,30 >>沿着这条路跑
     .isOnQuest 5064
 step
->>爬上山，穿过桥去寻找音符。抢劫箱子
+>>爬上山，穿过桥去寻找音符。掠夺箱子
     .goto Thousand Needles,32.0,32.6
     .complete 5064,1 --Collect Secret Note #1 (x1)
 step
@@ -2495,7 +2493,7 @@ step
     .goto Thousand Needles,39.3,41.6
     .complete 5064,3 --Collect Secret Note #3 (x1)
 step
-    .use 12785 >>清除篝火周围的暴徒，然后点燃篝火，然后杀死阿里卡拉。抢劫她
+    .use 12785 >>清除篝火周围的暴徒，然后点燃篝火，然后杀死阿里卡拉。掠夺她
     .goto Thousand Needles,37.9,35.3
     .complete 5088,1 --Collect Arikara Serpent Skin (x1)
     .complete 5088,2 --Light the Sacred Fire of Life
@@ -2506,7 +2504,7 @@ step
 	.unitscan Arnak Grimtotem
 step
     .goto Thousand Needles,38.1,26.6
-    .accept 4904 >>最终免费接受
+    .accept 4904 >>接任务: 终获解救
 step
     >>跟随拉科塔，在整个护送过程中保护她。暴徒将定期在平台上滋生。
     .goto Thousand Needles,30.7,37.1
@@ -2519,12 +2517,12 @@ step
     .isOnQuest 4881
 	>>当你接受任务的下一部分时，护送会开始。
 	.goto Thousand Needles,21.3,32.0
-	.turnin 4881 >>交出刺杀阴谋
+	.turnin 4881 >>交任务: 暗杀计划
 step
     .isQuestTurnedIn 4881
 	>>当你接受任务的下一部分时，护送会开始。
 	.goto Thousand Needles,21.3,32.0    
-	.accept 4966 >>接受保护Kanati Greycloud
+	.accept 4966 >>接任务: 保护卡纳提·灰云
 step
     .isOnQuest 4966
 	>>将产生3个暴徒。让卡纳提挑衅，然后干脆杀了他们
@@ -2533,12 +2531,12 @@ step
 step
     .isQuestComplete 4966
 	.goto Thousand Needles,21.4,31.8    
-    .turnin 4966 >>投案保护卡纳蒂·格雷科洛德
+    .turnin 4966 >>交任务: 保护卡纳提·灰云
 step
     #label OreSample
 .goto Thousand Needles,21.5,32.3
-    .turnin 5088 >>交给Arikara
-    .turnin 5151 >>打开超级电容器Gizmo
+    .turnin 5088 >>交任务: 阿利卡拉
+    .turnin 5151 >>交任务: 超适应齿轮
 step
     >>杀死该地区的Kobolds。掠夺他们以获取未经提炼的矿石样本
 .goto Thousand Needles,9.2,21.0
@@ -2554,40 +2552,40 @@ step
     .fly Freewind Post >>飞到Freewind Post
 step
     .goto Thousand Needles,45.7,50.8
-    .turnin 5064 >>加入Grimtotem Spying
-    .turnin 5147 >>通缉犯-Arnak Grimtotem
+    .turnin 5064 >>交任务: 恐怖图腾的密信
+    .turnin 5147 >>交任务: 通缉：阿纳克·恐怖图腾
 step
     .goto Thousand Needles,46.0,51.5
-    .turnin 4904 >>最后免费上缴
+    .turnin 4904 >>交任务: 终获解救
 step
     .goto Thousand Needles,53.9,41.4
-    .turnin 1151 >>强度转入试验
+    .turnin 1151 >>交任务: 力量的试炼
 step
     .goto Thousand Needles,67.6,64.0
     .xp 30 >>升级到30级
 step
     .isOnQuest 1146
     .goto Thousand Needles,67.6,64.0
-    .turnin 1146 >>加入蜂群成长
-    .accept 1147 >>接受蜂群的成长
+    .turnin 1146 >>交任务: 疯狂的虫群
+    .accept 1147 >>接任务: 疯狂的虫群
 step
     .xp <33,1
     >>接受赛道周围的任务
-	.accept 1110 >>接受火箭汽车零件
+	.accept 1110 >>接任务: 火箭车零件
     .goto Thousand Needles,77.8,77.2
-	.accept 1104 >>接受盐平毒液
+	.accept 1104 >>接任务: 含盐的蝎毒
     .goto Thousand Needles,77.9,77.2
-    .accept 1105 >>接受硬化壳
+    .accept 1105 >>接任务: 硬化龟壳
     .goto Thousand Needles,78.1,77.1
 step
     .goto Thousand Needles,77.8,77.3
-    .accept 1111 >>接受码头管理员Dizzywig
-    .accept 5762 >>接受Hemet Nesingwarve Jr。
+    .accept 1111 >>接任务: 码头管理员迪兹维格
+    .accept 5762 >>接任务: 赫米特·奈辛瓦里
 step
     .xp <33,1
-    .accept 1176 >>接受负载减轻
+    .accept 1176 >>接任务: 减轻负重
     .goto Thousand Needles,80.2,75.8
-    .accept 1175 >>接受道路上的碰撞
+    .accept 1175 >>接任务: 安全隐患
     .goto Thousand Needles,81.7,78.0
 step
     .xp <33,1
@@ -2616,7 +2614,7 @@ step
     .isOnQuest 1110
 	>>研磨硅磷脂生物直到你得到一个开裂的硅磷脂甲壳。点击它接受任务。
 	.collect 5877,1,1148
-	.accept 1148 >>接受部分Swarm
+	.accept 1148 >>接任务: 虫群的样本
 step
     .isQuestTurnedIn 1146
     .goto Thousand Needles,67.8,85.7
@@ -2628,29 +2626,29 @@ step
     .complete -1147,2 --Kill Silithid Hive Drone (x5)	
 step
 	#requires partsoftheswarm
-    .turnin -1147 >>加入蜂群成长
+    .turnin -1147 >>交任务: 疯狂的虫群
     .goto Thousand Needles,67.6,63.9
 step
-    .turnin -1110 >>交回火箭汽车零件
+    .turnin -1110 >>交任务: 火箭车零件
     .goto Thousand Needles,77.8,77.2
-    .turnin -1104 >>加入盐平毒液
+    .turnin -1104 >>交任务: 含盐的蝎毒
     .goto Thousand Needles,78.0,77.1
-    .turnin -1105 >>转入硬化壳
+    .turnin -1105 >>交任务: 硬化龟壳
     .goto Thousand Needles,78.1,77.1
 step
     .xp <33,1
     .isQuestTurnedIn 1104
-    .accept 1107 >>接受包裹的尾翼
-    .accept 1106 >>接受流亡者马泰克
+    .accept 1107 >>接任务: 坚硬的尾鳍
+    .accept 1106 >>接任务: 流放者马特克
 step
     .isOnQuest 1176
     .goto Thousand Needles,80.2,75.8
-    .turnin 1176 >>转向负载减轻
-    .accept 1178 >>接受地精赞助
+    .turnin 1176 >>交任务: 减轻负重
+    .accept 1178 >>接任务: 地精赞助商
 step
     .isOnQuest 1175
     .goto Thousand Needles,81.6,78.0
-    .turnin 1175 >>在道路上转弯
+    .turnin 1175 >>交任务: 安全隐患
 step
     .isOnQuest 1152
     .goto Tanaris,51.6,25.4
@@ -2681,7 +2679,7 @@ step << Warrior
     .isOnQuest 1145
 	#completewith next
     .goto Thunder Bluff,57.4,87.2
-    .accept 1718 >>接受岛民
+    .accept 1718 >>接任务: 岛民
     .trainer >>去训练你的职业咒语
 step << Warrior
     .isOnQuest 1153
@@ -2690,11 +2688,11 @@ step << Warrior
 step << !Warrior
     .isOnQuest 1153
     .goto The Barrens,44.9,59.1
-    .zone The Barrens >>抵达荒野
+    .zone The Barrens >>前往: 贫瘠之地
 step
     .isOnQuest 1153
     .goto The Barrens,45.1,57.7
-    .turnin 1153 >>交出新的矿石样本
+    .turnin 1153 >>交任务: 新的矿石样本
 step
     #completewith swarmgrows
     .goto The Barrens,44.4,59.1,-1
@@ -2703,30 +2701,30 @@ step
 step
     .isOnQuest 906
     .goto The Barrens,51.5,30.9
-    .turnin 906 >>自首背叛
+    .turnin 906 >>交任务: 内奸
 step
     #label swarmgrows
     .isQuestAvailable 1145
     .goto The Barrens,51.1,29.7
-    .accept 1145 >>接受蜂群的成长
+    .accept 1145 >>接任务: 疯狂的虫群
 step
     .isOnQuest 1148
     .goto The Barrens,51.1,29.6
-    .turnin 1148 >>交出部分蜂群
-    .accept 1184 >>接受部分Swarm
+    .turnin 1148 >>交任务: 虫群的消息
+    .accept 1184 >>接任务: 虫群的样本
 step
 	#completewith next
     .goto The Barrens,51.5,30.3
     .fly Ratchet >>飞到棘轮
 step
     .goto The Barrens,63.3,38.4
-    .turnin 1111 >>交码头管理员Dizzywig
-    .accept 1112 >>接受Kravel的零件
+    .turnin 1111 >>交任务: 码头管理员迪兹维格
+    .accept 1112 >>接任务: 给克拉维尔的零件
 step << Warrior
     .isOnQuest 874
     .goto The Barrens,65.8,43.8
-    .turnin 874 >>提交Mahren Skyseer
-    .accept 873 >>接受Isha Awak
+    .turnin 874 >>交任务: 玛伦·星眼
+    .accept 873 >>接任务: 依沙瓦克
 step << Warrior
     .isOnQuest 873
 	.goto The Barrens,65.6,47.1,40,0
@@ -2744,8 +2742,8 @@ step << Warrior
     .isOnQuest 1718
     >>游到岛上
     .goto The Barrens,68.6,49.2
-    .turnin 1718 >>《岛上居民》
-    .accept 1719 >>接受争吵
+    .turnin 1718 >>交任务: 岛民
+    .accept 1719 >>接任务: 格斗考验
 step << Warrior
     .isOnQuest 1719
     .goto The Barrens,68.6,48.7
@@ -2754,17 +2752,17 @@ step << Warrior
 step << Warrior tbc
     .isOnQuest 1719
     .goto The Barrens,68.6,49.2
-    .turnin 1719 >>交出争吵
-    .accept 1791 >>接受Windwatcher
+    .turnin 1719 >>交任务: 格斗考验
+    .accept 1791 >>接任务: 捕风者
 step << Warrior wotlk
     #xprate >1.499 
     .isOnQuest 1719
     .goto The Barrens,68.6,49.2
-    .turnin 1719 >>交出争吵
+    .turnin 1719 >>交任务: 格斗考验
 step << Warrior
     .isOnQuest 873
     .goto The Barrens,65.8,43.8
-    .turnin 873 >>交给Isha Awak
+    .turnin 873 >>交任务: 依沙瓦克
 step << Warrior
     .abandon 1838 >>抛弃残忍的盔甲
 step
@@ -2776,7 +2774,7 @@ step
 step
     .xp <33,1
 	.maxlevel 36
-	.zone Stranglethorn Vale >>抵达荆棘谷
+	.zone Stranglethorn Vale >>前往: 荆棘谷
 step << Shaman
     .xp <33,1
 	.maxlevel 36
@@ -2796,34 +2794,34 @@ step
     .xp <33,1
 	.isQuestTurnedIn 1178
     .goto Stranglethorn Vale,26.4,73.5
-    .turnin 1180 >>提交地精赞助
-    .accept 1181 >>接受地精赞助
+    .turnin 1180 >>交任务: 地精赞助商
+    .accept 1181 >>接任务: 地精赞助商
 step
     .xp <33,1
 	.isQuestTurnedIn 1180
 	>>前往建筑物的第二层
     .goto Stranglethorn Vale,28.3,77.6
-    .accept 575 >>接受供应和需求
+    .accept 575 >>接任务: 供与求
 step
     .xp <33,1
 	.isQuestTurnedIn 1180
 	>>去客栈吧，这个任务在底层
     .goto Stranglethorn Vale,27.0,77.2
-    .accept 605 >>接受唱蓝碎片
+    .accept 605 >>接任务: 歌唱水晶碎片
 step
     .xp <33,1
 	.isQuestTurnedIn 1180
 	>>这些任务在客栈的顶层
 	.goto Stranglethorn Vale,27.1,77.3
-    .accept 189 >>接受血鳞耳
-    .accept 213 >>接受敌对接管
-    .accept 201 >>接受调查营地
+    .accept 189 >>接任务: 血顶巨魔的耳朵
+    .accept 213 >>接任务: 恶性竞争
+    .accept 201 >>接任务: 调查营地
 step
     .xp <33,1
 	.isQuestTurnedIn 1180
     .goto Stranglethorn Vale,27.2,76.9
-    .turnin 1181 >>提交地精赞助
-    .accept 1182 >>接受地精赞助
+    .turnin 1181 >>交任务: 地精赞助商
+    .accept 1182 >>接任务: 地精赞助商
 step << Rogue
     .xp <33,1
 	.isQuestTurnedIn 1180
@@ -2844,7 +2842,7 @@ step
 step
     .xp <33,1
 	.maxlevel 36
-	.zone The Barrens >>乘坐棘轮抵达
+	.zone The Barrens >>前往: 贫瘠之地
 step
     .xp >33,1
     .goto Ashenvale,73.2,61.5,-1
@@ -2909,8 +2907,8 @@ step
     .xp >33,1
     .isOnQuest 1145
     .goto Orgrimmar,75.2,34.2
-    .turnin 1145 >>加入蜂群成长
-    .accept 1146 >>接受蜂群的成长
+    .turnin 1145 >>交任务: 疯狂的虫群
+    .accept 1146 >>接任务: 疯狂的虫群
 step << !Shaman !Warrior
     .maxlevel 32
     .goto Orgrimmar,54.1,68.4
@@ -2935,13 +2933,13 @@ step << Shaman
 step << Shaman
     .isOnQuest 874
     .goto The Barrens,65.8,43.8
-    .turnin 874 >>提交Mahren Skyseer
-    .accept 873 >>接受Isha Awak
+    .turnin 874 >>交任务: 玛伦·星眼
+    .accept 873 >>接任务: 依沙瓦克
 step << Shaman
     .isOnQuest 220
     .goto The Barrens,65.8,43.8
-    .turnin 220 >>水的召唤
-    .accept 63 >>接受水的召唤
+    .turnin 220 >>交任务: 水之召唤
+    .accept 63 >>接任务: 水之召唤
 step << Shaman
     .isOnQuest 873
 	.goto The Barrens,65.6,47.1,40,0
@@ -2958,7 +2956,7 @@ step << Shaman
 step << Shaman
     .isOnQuest 873
     .goto The Barrens,65.8,43.8
-    .turnin 873 >>交给Isha Awak
+    .turnin 873 >>交任务: 依沙瓦克
 step << Tauren tbc
     .money <35.00
     .goto The Barrens,63.1,37.1,-1
@@ -2980,7 +2978,7 @@ step << Tauren
 step << Shaman
     .isQuestAvailable 1531
     .goto Orgrimmar,38.0,37.7
-    .accept 1531 >>接受空中呼叫
+    .accept 1531 >>接任务: 空气的召唤
 step << Warrior
 	#completewith next
 	.goto Orgrimmar,81.5,19.6
@@ -3009,7 +3007,7 @@ step << Blood Elf !Warlock tbc
     .money <35.00
     .goto Undercity,66.3,4.5,30,0
     .goto Undercity,54.9,11.3
-    .zone Silvermoon City >>点击易位球前往银月城
+    .zone Silvermoon City >>前往: 银月城
     .zoneskip Orgrimmar
 step << Blood Elf !Warlock tbc
     .money <35.00
@@ -3020,14 +3018,14 @@ step << Blood Elf !Warlock tbc
 step << Blood Elf !Warlock tbc
     .goto Silvermoon City,49.4,14.3
     >>如果可以的话，传送到幽暗城 << Mage
-    .zone Undercity >>点击易位之珠前往幽冥城
+    .zone Undercity >>前往: 幽暗城
     .zoneskip Orgrimmar
 step << Blood Elf !Warlock tbc
     .goto Tirisfal Glades,61.9,59.1
-    .zone Stranglethorn Vale >>登上齐柏林飞艇前往荆棘谷
+    .zone Stranglethorn Vale >>前往: 荆棘谷
     .zoneskip Tirisfal Glades,1
 step << Undead !Warlock tbc
     .goto Tirisfal Glades,61.9,59.1
-    .zone Stranglethorn Vale >>登上齐柏林飞艇前往荆棘谷
+    .zone Stranglethorn Vale >>前往: 荆棘谷
     .zoneskip Tirisfal Glades,1
 ]])

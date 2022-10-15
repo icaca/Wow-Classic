@@ -1,0 +1,5 @@
+package-as: AutoLoggerClassic
+enable-nolib-creation: no
+
+ignore:
+    - README.md

@@ -18,38 +18,38 @@ step
 	+要解锁霍迪尔之子每日任务，你必须首先在风暴峰完成他们的任务链。请使用Hodir之子解锁每日任务指南解锁每日任务
 	.isQuestAvailable 13047
 step
-	>>与Fjorn的铁砧、Hodir的角、Hodir's Helm、Frostworg Denmourt和Arngrim the Insatible交谈
-    .daily 12981 >>接受高温和低温
+	>>与Fjorn的铁砧、Hodir的角、Hodir's Helm、Frostworg Denmourt和 贪婪的安格里姆 交谈
+    .daily 12981 >>接任务: 热与冷
     .goto TheStormPeaks,63.13,62.94
-    .daily 12977 >>接受Hodir的呼叫
+    .daily 12977 >>接任务: 霍迪尔的呼唤
     .goto TheStormPeaks,64.17,65.01
-	.daily 13006 >>接受粘性清洁
+	.daily 13006 >>接任务: 粘滞清洁
 	.goto TheStormPeaks,64.24,59.23
-	.daily 12994 >>接受间谍猎人
+	.daily 12994 >>接任务: 猎杀间谍
 	.goto TheStormPeaks,63.49,59.73
-	.daily 13046 >>接受进给Arngrim
+	.daily 13046 >>接任务: 喂饱安格里姆
 	.goto TheStormPeaks,67.61,59.95
 	.reputation 1119,revered,<0,1 -- if you're 0 into revered it will display this step
 	.isQuestTurnedIn 13047
 step
 	>>与Fjorn的铁砧、Hodir的角、Hodir's Helm和Frostworg Denmother交谈
-    .daily 12981 >>接受高温和低温
+    .daily 12981 >>接任务: 热与冷
     .goto TheStormPeaks,63.13,62.94
-    .daily 12977 >>接受Hodir的呼叫
+    .daily 12977 >>接任务: 霍迪尔的呼唤
     .goto TheStormPeaks,64.17,65.01
-	.daily 13006 >>接受粘性清洁
+	.daily 13006 >>接任务: 粘滞清洁
 	.goto TheStormPeaks,64.24,59.23
-	.daily 12994 >>接受间谍猎人
+	.daily 12994 >>接任务: 猎杀间谍
 	.goto TheStormPeaks,63.49,59.73
 	.reputation 1119,honored,<0,1 -- if you're 0 into honored it will display this step
 	.isQuestTurnedIn 13047
 step
 	>>与Fjorn铁砧、Hodir角和Hodir头盔交谈
-    .daily 12981 >>接受高温和低温
+    .daily 12981 >>接任务: 热与冷
     .goto TheStormPeaks,63.13,62.94
-    .daily 12977 >>接受Hodir的呼叫
+    .daily 12977 >>接任务: 霍迪尔的呼唤
     .goto TheStormPeaks,64.17,65.01
-	.daily 13006 >>接受粘性清洁
+	.daily 13006 >>接任务: 粘滞清洁
 	.goto TheStormPeaks,64.24,59.23
 	.reputation 1119,friendly,<0,1 -- if you're 0 into friendly it will display this step
 	.isQuestTurnedIn 13047
@@ -62,7 +62,7 @@ step
 step
 	.goto TheStormPeaks,73.5,62.9,70,0
     .goto TheStormPeaks,76.2,63.4
-	.use 42246 >>使用弗约恩铁砧周围阴燃残渣旁边的冰块精华。抢劫冷冻铁屑
+	.use 42246 >>使用弗约恩铁砧周围阴燃残渣旁边的冰块精华。掠夺冷冻铁屑
     .complete 12981,1 --Frozen Iron Scrap (6)
 	.isOnQuest 12981
 step
@@ -99,99 +99,99 @@ step
 	.isOnQuest 13006
 step
 	>>返回Dun Niffelem
-	>>与Fjorn的铁砧、Hodir的角、Hodir's Helm、Frostworg Denmourt和Arngrim the Insatible交谈
-    .turnin 12981 >>转入冷热状态
+	>>与Fjorn的铁砧、Hodir的角、Hodir's Helm、Frostworg Denmourt和 贪婪的安格里姆 交谈
+    .turnin 12981 >>交任务: 热与冷
     .goto TheStormPeaks,63.13,62.94
-    .turnin 12977 >>交给霍迪尔的电话
+    .turnin 12977 >>交任务: 霍迪尔的呼唤
     .goto TheStormPeaks,64.17,65.01
-	.turnin 13006 >>交粘性清洁剂
+	.turnin 13006 >>交任务: 粘滞清洁
 	.goto TheStormPeaks,64.24,59.23
-	.turnin 12994 >>交出间谍猎人
+	.turnin 12994 >>交任务: 猎杀间谍
 	.goto TheStormPeaks,63.49,59.73
-	.turnin 13046 >>转入进料Arngrim
+	.turnin 13046 >>交任务: 喂饱安格里姆
 	.goto TheStormPeaks,67.61,59.95
 	.isQuestComplete 12994
 	.isQuestComplete 13046
 step
 	>>返回Dun Niffelem
 	>>与Fjorn的铁砧、Hodir的号角、Hodir's Helm和Insatible的Arngrim交谈
-    .turnin 12981 >>转入冷热状态
+    .turnin 12981 >>交任务: 热与冷
     .goto TheStormPeaks,63.13,62.94
-    .turnin 12977 >>交给霍迪尔的电话
+    .turnin 12977 >>交任务: 霍迪尔的呼唤
     .goto TheStormPeaks,64.17,65.01
-	.turnin 13006 >>交粘性清洁剂
+	.turnin 13006 >>交任务: 粘滞清洁
 	.goto TheStormPeaks,64.24,59.23
-	.turnin 13046 >>转入进料Arngrim
+	.turnin 13046 >>交任务: 喂饱安格里姆
 	.goto TheStormPeaks,67.61,59.95
 	.isQuestComplete 13046
 step
 	>>返回Dun Niffelem
 	>>与Fjorn的铁砧、Hodir的角、Hodir's Helm和Frostworg Denmother交谈
-    .turnin 12981 >>转入冷热状态
+    .turnin 12981 >>交任务: 热与冷
     .goto TheStormPeaks,63.13,62.94
-    .turnin 12977 >>交给霍迪尔的电话
+    .turnin 12977 >>交任务: 霍迪尔的呼唤
     .goto TheStormPeaks,64.17,65.01
-	.turnin 13006 >>交粘性清洁剂
+	.turnin 13006 >>交任务: 粘滞清洁
 	.goto TheStormPeaks,64.24,59.23
-	.turnin 12994 >>交出间谍猎人
+	.turnin 12994 >>交任务: 猎杀间谍
 	.goto TheStormPeaks,63.49,59.73
 	.isQuestComplete 12994
 step
 	>>返回Dun Niffelem
-	>>与Fjorn的铁砧、Hodir的角、Hodir's Helm、Frostworg Denmourt和Arngrim the Insatible交谈
-    .turnin 12981 >>转入冷热状态
+	>>与Fjorn的铁砧、Hodir的角、Hodir's Helm、Frostworg Denmourt和 贪婪的安格里姆 交谈
+    .turnin 12981 >>交任务: 热与冷
     .goto TheStormPeaks,63.13,62.94
-    .turnin 12977 >>交给霍迪尔的电话
+    .turnin 12977 >>交任务: 霍迪尔的呼唤
     .goto TheStormPeaks,64.17,65.01
-	.turnin 13006 >>交粘性清洁剂
+	.turnin 13006 >>交任务: 粘滞清洁
 	.goto TheStormPeaks,64.24,59.23
-	.turnin 12994 >>交出间谍猎人
+	.turnin 12994 >>交任务: 猎杀间谍
 	.goto TheStormPeaks,63.49,59.73
-	.turnin 13046 >>转入进料Arngrim
+	.turnin 13046 >>交任务: 喂饱安格里姆
 	.goto TheStormPeaks,67.61,59.95
 	.isQuestComplete 12994
 	.isQuestComplete 13046
 step
 	>>返回Dun Niffelem
 	>>与Fjorn的铁砧、Hodir的号角、Hodir's Helm和Insatible的Arngrim交谈
-    .turnin 12981 >>转入冷热状态
+    .turnin 12981 >>交任务: 热与冷
     .goto TheStormPeaks,63.13,62.94
-    .turnin 12977 >>交给霍迪尔的电话
+    .turnin 12977 >>交任务: 霍迪尔的呼唤
     .goto TheStormPeaks,64.17,65.01
-	.turnin 13006 >>交粘性清洁剂
+	.turnin 13006 >>交任务: 粘滞清洁
 	.goto TheStormPeaks,65.00,60.95
-	.turnin 13046 >>转入进料Arngrim
+	.turnin 13046 >>交任务: 喂饱安格里姆
 	.goto TheStormPeaks,67.61,59.95
 	.isQuestComplete 13046
 step
 	>>返回Dun Niffelem
 	>>与Fjorn的铁砧、Hodir的角、Hodir's Helm和Frostworg Denmother交谈
-    .turnin 12981 >>转入冷热状态
+    .turnin 12981 >>交任务: 热与冷
     .goto TheStormPeaks,63.13,62.94
-    .turnin 12977 >>交给霍迪尔的电话
+    .turnin 12977 >>交任务: 霍迪尔的呼唤
     .goto TheStormPeaks,64.17,65.01
-	.turnin 13006 >>交粘性清洁剂
+	.turnin 13006 >>交任务: 粘滞清洁
 	.goto TheStormPeaks,64.24,59.23
-	.turnin 12994 >>交出间谍猎人
+	.turnin 12994 >>交任务: 猎杀间谍
 	.goto TheStormPeaks,63.49,59.73
 	.isQuestComplete 12994
 step
 	>>返回Dun Niffelem
 	>>与Fjorn铁砧、Hodir角和Hodir头盔交谈
-    .turnin -12981 >>转入冷热状态
+    .turnin -12981 >>交任务: 热与冷
     .goto TheStormPeaks,63.13,62.94
-    .turnin -12977 >>交给霍迪尔的电话
+    .turnin -12977 >>交任务: 霍迪尔的呼唤
     .goto TheStormPeaks,64.17,65.01
-	.turnin -13006 >>交粘性清洁剂
+	.turnin -13006 >>交任务: 粘滞清洁
 	.goto TheStormPeaks,64.24,59.23
 step << Mage
 	#completewith next
-	.zone Dalaran >>传送至达拉然
-	>>飞向冰冠
+	.zone Dalaran >>前往: 达拉然
+	>>前往: 冰冠冰川
 step << !Mage
 	#completewith next
     .hs >>如果你的炉子设在那里或冰冠附近，请向达拉然祈祷。
-	>>飞向冰冠
+	>>前往: 冰冠冰川
 
 --9 Quest section from Icecrown Gunship and close surroundings section. 6 Quests from the gunship, other 3 from on the ground/in Ymirheim
 
@@ -220,27 +220,27 @@ step << Alliance
 	>>在冰冠，飞往联盟炮舰，破天荒号
 	>>与骑士队长Drosche、虔诚的Absalan、高级队长Justin Bartlett、总工程师Boltwrench和Thassarian交谈
 	>>它们分别位于船的左后方、上层甲板、主中央舱和下层甲板上
-    .daily 13336 >>接受被选中者的鲜血
-    .daily 13300 >>接受奴隶到沙龙
-    .daily 13322 >>立即接受重新测试
-    .daily 13323 >>接受拖放
-	.daily 13344 >>不接受Bug
-    .daily 13333 >>接受捕获更多调度
+    .daily 13336 >>接任务: 伊米亚之血
+    .daily 13300 >>接任务: 萨隆邪铁的奴隶
+    .daily 13322 >>接任务: 重新考验
+    .daily 13323 >>接任务: 从天而“降”
+	.daily 13344 >>接任务: 活动窃听器
+    .daily 13333 >>接任务: 抢夺急件
 step << Horde
 	.goto IcecrownGlacier,67.00,38,0
 	>>在冰冠，飞往部落炮舰，奥格瑞姆之锤
 	>>与战争使者达沃斯·里奥特、凯尔坦兄弟、天空收割者科姆·布莱克斯卡、首席工程师科珀克劳和科尔蒂拉·戴斯韦弗交谈
 	>>它们分别位于主前舱，巡视上层甲板和下层甲板
-    .daily 13330 >>接受被选中者的鲜血
-    .daily 13302 >>接受奴隶到沙龙
-    .daily 13357 >>立即接受重新测试
-    .daily 13353 >>接受拖放
-	.daily 13365 >>不接受Bug
-    .daily 13331 >>接受让联盟保持盲目
+    .daily 13330 >>接任务: 伊米亚之血
+    .daily 13302 >>接任务: 萨隆邪铁的奴隶
+    .daily 13357 >>接任务: 重新考验
+    .daily 13353 >>接任务: 从天而“降”
+	.daily 13365 >>接任务: 活动窃听器
+    .daily 13331 >>接任务: 盲目的联盟
 step << Alliance
     .goto IcecrownGlacier,62.6,51.3
 	>>飞到地面指挥官库普(在地面上，而不是在船上)
-    .daily 13309 >>接受空中袭击
+    .daily 13309 >>接任务: 空中突袭
 step << Alliance
     #completewith next
     .goto Icecrown,62.55,50.67
@@ -254,12 +254,12 @@ step << Alliance
 step << Alliance
     .goto Icecrown,62.55,51.29
 	>>退出飞行机器。你会收到一个降落伞。返回库普
-    .turnin 13309 >>空袭上缴
+    .turnin 13309 >>交任务: 空中突袭
 	.isQuestComplete 13309
 step << Horde
 	>>飞到地面指挥官Xutjja(在地面，而不是在船上)
     .goto IcecrownGlacier,58.3,46.0
-    .daily 13310 >>接受空中袭击
+    .daily 13310 >>接任务: 空中突袭
 step << Horde
 	#completewith next
 	.vehicle >>右击飞行机器顶部的炮塔开始任务
@@ -273,13 +273,13 @@ step << Horde
 step << Horde
     .goto IcecrownGlacier,58.3,46.0
 	>>退出飞行机器。你会收到一个降落伞。返回Xutjja
-    .turnin 13310 >>空袭上缴
+    .turnin 13310 >>交任务: 空中突袭
 	.isQuestComplete 13310
 step << Alliance
     .goto IcecrownGlacier,62.5,51.1,15,0
     .goto IcecrownGlacier,62.8,51.6
 	>>与班组长交谈。如果其他人开始任务，并且有大约6分钟的重生时间，并且在库普右侧约10码处重生，他可能不会在这里。如果您不想等待或稍后检查，可以跳过此步骤
-    .daily 13284 >>接受地面攻击
+    .daily 13284 >>接任务: 地面突袭
 step << Alliance
     .goto IcecrownGlacier,58.2,55.9,0
     .goto IcecrownGlacier,59.6,59.3,0
@@ -314,7 +314,7 @@ step << Alliance
 step << Alliance
     .goto Icecrown,57.01,62.53
 	>>注意：这个任务为你标记PVP。然而，这很容易。
-    .daily 13280 >>接受山之王
+    .daily 13280 >>接任务: 占山为王
 step << Alliance
     #completewith next
     .goto Icecrown,56.99,62.60
@@ -327,17 +327,17 @@ step << Alliance
 	.isOnQuest 13280
 step << Alliance
     .goto Icecrown,56.97,62.55
-    .turnin 13280 >>山之王归来
+    .turnin 13280 >>交任务: 占山为王
 	.isQuestComplete 13280
 step << Alliance
 	>>返回地面指挥官库普
     .goto Icecrown,62.60,51.35
-    .turnin 13284 >>地面攻击中的转身
+    .turnin 13284 >>交任务: 地面突袭
 	.isQuestComplete 13284
 step << Horde
     .goto IcecrownGlacier,58.3,46.0
 	>>与班组长交谈。如果其他人开始任务，并且有大约6分钟的重生时间，他可能不会在这里。如果您不想等待或稍后检查，可以跳过此步骤
-    .daily 13301 >>接受地面攻击
+    .daily 13301 >>接任务: 地面突袭
 step << Horde
     .goto IcecrownGlacier,58.2,55.9,0
     .goto IcecrownGlacier,59.6,59.3,0
@@ -372,7 +372,7 @@ step << Horde
 step << Horde
     .goto IcecrownGlacier,51.9,57.6
 	>>注意：这个任务为你标记PvP。然而，这很容易。
-    .daily 13283 >>接受山之王
+    .daily 13283 >>接任务: 占山为王
 step << Horde
     #completewith next
     .goto Icecrown,51.95,57.62
@@ -385,12 +385,12 @@ step << Horde
 	.isOnQuest 13283
 step << Horde
     .goto Icecrown,51.9,57.6
-    .turnin 13283 >>山之王归来
+    .turnin 13283 >>交任务: 占山为王
 	.isQuestComplete 13283
 step << Horde
 	>>返回地面指挥官Xutjja
     .goto Icecrown,58.3,46.0
-    .turnin 13301 >>地面攻击中的转身
+    .turnin 13301 >>交任务: 地面突袭
 	.isQuestComplete 13301
 step
 	>>前往平台，杀死该区域内的苦涩元凶。掠夺他们的幻想之球
@@ -456,21 +456,21 @@ step << Alliance
     .goto IcecrownGlacier,57.5,39.1,0
     .goto IcecrownGlacier,54.7,35.3,0
 	>>返回破天者。与骑士队长Drosche、虔诚的Absalan、高级队长Justin Bartlett、总工程师Boltwrench和Thassarian交谈
-    .turnin -13336 >>献出被选中者的鲜血
-    .turnin -13300 >>把奴隶交给沙龙
-    .turnin -13322 >>立即提交重新测试
-    .turnin -13323 >>转入拖放
-	.turnin -13344 >>交上来的不是虫子
-    .turnin -13333 >>提交捕获更多调度
+    .turnin -13336 >>交任务: 伊米亚之血
+    .turnin -13300 >>交任务: 萨隆邪铁的奴隶
+    .turnin -13322 >>交任务: 重新考验
+    .turnin -13323 >>交任务: 从天而“降”
+	.turnin -13344 >>交任务: 活动窃听器
+    .turnin -13333 >>交任务: 抢夺急件
 step << Horde
 	.goto IcecrownGlacier,67.00,38.00
 	>>返回奥格里姆之锤。与战争使者达沃斯·里奥特、凯尔坦兄弟、天空收割者科姆·布莱克斯卡、首席工程师科珀克劳和科尔蒂拉·戴斯韦弗交谈
-    .turnin -13330 >>接受被选中者的鲜血
-    .turnin -13302 >>接受奴隶到沙龙
-    .turnin -13357 >>立即接受重新测试
-    .turnin -13353 >>接受拖放
-	.turnin -13365 >>不接受Bug
-    .turnin -13331 >>接受让联盟保持盲目
+    .turnin -13330 >>接任务: 伊米亚之血
+    .turnin -13302 >>接任务: 萨隆邪铁的奴隶
+    .turnin -13357 >>接任务: 重新考验
+    .turnin -13353 >>接任务: 从天而“降”
+	.turnin -13365 >>接任务: 活动窃听器
+    .turnin -13331 >>接任务: 盲目的联盟
 
 --6 Quest section from Knights of the Ebon Blade. 3 come from The Shadow Vault, other 3 from Death's Rise
 
@@ -482,13 +482,13 @@ step
 step
 	>>从暗影库接受3个每日任务
     >>与Silver交谈
-	.daily 12995 >>接受并留下我们的印记
+	.daily 12995 >>接任务: 彰显军威
 	.goto Icecrown,42.84,24.92
 	>>与Leaper交谈。他绕着帐篷走
-	.daily 13069 >>接受射击
+	.daily 13069 >>接任务: 把它们打下来！
 	.goto IcecrownGlacier,43.5,25.0
 	>>跟维尔谈谈，他是个讨厌的家伙，在入口和主楼之间的小路上巡逻
-    .daily 13071 >>像火一样接受邪恶！
+    .daily 13071 >>接任务: 维尔喜欢火焰！
     .goto IcecrownGlacier,42.7,26.8,60,0
     .goto IcecrownGlacier,43.6,24.1
 step
@@ -529,11 +529,11 @@ step
 	.isOnQuest 13071
 step
     >>返回阴影库。与西尔弗、Leaper和Vile交谈
-	.turnin 12995 >>上车留下我们的标记
+	.turnin 12995 >>交任务: 彰显军威
 	.goto Icecrown,42.84,24.92
-    .turnin 13069 >>投篮得分
+    .turnin 13069 >>交任务: 把它们打下来！
 	.goto IcecrownGlacier,43.5,25.0
-    .turnin 13071 >>像火一样的卑鄙！
+    .turnin 13071 >>交任务: 维尔喜欢火焰！
     .goto IcecrownGlacier,43.6,24.1,60,0
     .goto IcecrownGlacier,42.7,26.8
 
@@ -541,16 +541,16 @@ step
 step
 	>>从死亡复活开始接受3个每日任务
 	>>与Setaal交谈
-	.daily 12813 >>从他们的尸体上接受，起来！
+	.daily 12813 >>接任务: 转化尸体
 	.goto Icecrown,19.67,48.39
 	>>与Aurochs交谈。他在中间的火周围巡逻
-    .daily 12838 >>接受情报收集
+    .daily 12838 >>接任务: 收集情报
     .goto IcecrownGlacier,20.1,47.5,20,0
     .goto IcecrownGlacier,20.4,47.9,20,0
     .goto IcecrownGlacier,20.1,48.4,20,0
     .goto IcecrownGlacier,19.7,47.9
 	>>与Uzo交谈
-    .daily 12815 >>接受禁飞区
+    .daily 12815 >>接任务: 禁飞区
 	.goto Icecrown,19.64,47.80
 step
 	#sticky
@@ -571,7 +571,7 @@ step
     .complete 12813,1 --Scarlet Onslaught corpse transformed (10)
 	.isOnQuest 12813
 step
-	>>杀死暴徒，然后抢劫他们的钥匙。用它们在Onslaught Harbor周围打开箱子存放文件
+	>>杀死暴徒，然后掠夺他们的钥匙。用它们在Onslaught Harbor周围打开箱子存放文件
 	>>文件箱没有100%下降率
     .goto IcecrownGlacier,10.7,45.6,40,0
     .goto IcecrownGlacier,10.3,46.4,40,0
@@ -605,11 +605,11 @@ step
 step
 	#requires Gryphon
 	>>回归死亡的崛起。与Uzo、Setaal和Aurochs交谈
-    .turnin 12815 >>转入禁飞区
+    .turnin 12815 >>交任务: 禁飞区
     .goto Icecrown,19.64,47.80
-    .turnin 12813 >>从他们的尸体上翻过来，起来！
+    .turnin 12813 >>交任务: 转化尸体
     .goto Icecrown,19.67,48.39
-    .turnin 12838 >>提交情报收集
+    .turnin 12838 >>交任务: 收集情报
     .goto IcecrownGlacier,20.1,47.5,20,0
     .goto IcecrownGlacier,20.4,47.9,20,0
     .goto IcecrownGlacier,20.1,48.4,20,0

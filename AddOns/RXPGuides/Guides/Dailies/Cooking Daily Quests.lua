@@ -115,9 +115,9 @@ step << Horde
 step
 	>>着陆台上的大法师五角星
 	.goto Dalaran,68.53,42.04
-	.turnin 13107 >>上缴芥末犬 << Alliance
+	.turnin 13107 >>交任务: 荠菜热狗！ << Alliance
 	.isQuestComplete 13107 << Alliance
-	.turnin 13116 >>上缴芥末犬 << Horde
+	.turnin 13116 >>交任务: 荠菜热狗！ << Horde
 	.isQuestComplete 13116 << Horde
 
 -- Quest: Infused Mushroom Meatloaf
@@ -207,9 +207,9 @@ step
 	.goto Dalaran,48.79,54.94,6,0
 	.goto Dalaran,50.11,53.10,6,0
 	.goto Dalaran,52.31,55.59
-	.turnin 13100 >>加入浸菌肉饼 << Alliance
+	.turnin 13100 >>交任务: 魔法蘑菇肉片 << Alliance
 	.isQuestComplete 13100 << Alliance
-	.turnin 13112 >>加入浸菌肉饼 << Horde
+	.turnin 13112 >>交任务: 魔法蘑菇肉片 << Horde
 	.isQuestComplete 13112 << Horde
 
 -- Quest: Sewer Stew
@@ -290,13 +290,13 @@ step << Alliance
 	.goto 126,22.66,41.71,10,0
 	.goto 126,36.30,43.97,10,0
 	.goto 126,35.47,57.55
-	.turnin 13102 >>倒入下水道炖菜
+	.turnin 13102 >>交任务: 下水道炖肉
 	.isQuestComplete 13102
 step << Horde
 	>>把井倒进达拉然下水道。与Ajay Green交谈
 	.goto Dalaran,48.25,32.33,5,0
 	.goto 126,35.47,57.55
-	.turnin 13114 >>倒入下水道炖菜
+	.turnin 13114 >>交任务: 下水道炖肉
 	.isQuestComplete 13114
 
 -- Quest: Cheese for Glowergold
@@ -314,10 +314,16 @@ step << Horde
 	.isOnQuest 13115
 step
 	#label Cheese
-	>>在达拉然，走进一个玻璃大楼。抢劫年迈的达拉兰·林伯格。它可以在表的内部或外部随机生成
+	>>在达拉然，走进一个玻璃大楼。掠夺年迈的达拉兰·林伯格。它可以在表的内部或外部随机生成
 	.goto Dalaran,54.70,31.57
 	.collect 43137,1 --Aged Dalaran Limburger (1)
 	.isOnQuest 13103 << Alliance
+	.isOnQuest 13115 << Horde
+step 
+	>>开始寻找半满的达拉然酒杯。这些分布在达拉然的建筑中。检查客栈内部和楼上
+	.goto Dalaran,54.70,31.57
+	.collect 43138,6 --Half Full Dalaran Wine Glass (6)
+    .isOnQuest 13103 << Alliance
 	.isOnQuest 13115 << Horde
 step << Alliance
 	.use 43139 >>用袋子里的空奶酪服务拼盘将6个半满的达拉然酒杯和陈年达拉然林堡拼盘组合在一起，形成一个葡萄酒和奶酪拼盘
@@ -338,17 +344,18 @@ step
 
 -- Quest: Convention at the Legerdemain
 step << Alliance
-	>>在达拉然，去一个玻璃大楼。抢劫酒瓶。注意它随机繁殖，也可以在室外和楼上繁殖
+	>>在达拉然，去一个玻璃大楼。掠夺酒瓶。注意它随机繁殖，也可以在室外和楼上繁殖
 	.goto Dalaran,54.00,32.26
 	.complete 13101,2 --Jug of Wine (1)
 	.isOnQuest 13101
 step << Horde
-	>>在达拉然，去一个玻璃大楼。抢劫酒瓶。注意它随机繁殖，也可以在室外和楼上繁殖
+	>>在达拉然，去一个玻璃大楼。掠夺酒瓶。注意它随机繁殖，也可以在室外和楼上繁殖
 	.goto Dalaran,54.00,32.26
 	.complete 13113,2 --Jug of Wine (1)
 	.isOnQuest 13113
 step
 	#sticky
+    #completewith stew
 	>>在暴风峰杀死犀牛以获取冷冻肉。或者，你可以直接从达拉然拍卖行购买冷却肉或北炖肉
 	.goto TheStormPeaks,43.26,59.11,70,0
 	.goto TheStormPeaks,44.93,61.45,70,0
@@ -364,6 +371,7 @@ step
 	.isOnQuest 13113 << Horde
 step << Alliance
 	#sticky
+    #completewith stew
 	>>在暴风峰杀死犀牛以获取冷冻肉。或者，你可以直接从暴风城或铁炉堡的拍卖行购买冷却肉或北炖肉
 	.goto TheStormPeaks,43.26,59.11,70,0
 	.goto TheStormPeaks,44.93,61.45,70,0
@@ -379,6 +387,7 @@ step << Alliance
 	.isOnQuest 13101
 step << Horde
 	#sticky
+    #completewith stew
 	>>在暴风峰杀死犀牛以获取冷冻肉。或者，你可以直接从奥格瑞玛拍卖行购买冷却肉或北炖肉
 	.goto TheStormPeaks,43.26,59.11,70,0
 	.goto TheStormPeaks,44.93,61.45,70,0
@@ -390,21 +399,42 @@ step << Horde
 	.collect 43013,4,-1 -- Chilled Meat (4)
 	.goto Orgrimmar,54.57,63.68,0
 	.skill engineering,350,1
-	.isOnQuest 13113
+	.isOnQuest 13113   
 step << Alliance
+	#completewith next
+	.isQuestAvailable 13087
+	.isOnQuest 13101
+	>>要学习如何烹饪北方炖菜，你必须带4块冷却肉去嚎叫峡湾的Brom Brewbaster。或者，你可以直接从拍卖行购买北炖牛肉。如果您要从拍卖行购买北炖菜，请跳过此步骤
+	>>如果你要完成这个任务，你总共需要8块冷却肉
+	.collect 43013,4 -- Chilled Meat (4)
+	.accept 13087 >>接任务: 诺森德的厨师
+	.turnin 13087 >>交任务: 诺森德的厨师
+	.goto HowlingFjord,58.21,62.06	
+step << Horde
+	#completewith next
+	.isQuestAvailable 13089
+	.isOnQuest 13113
+	>>要学习如何烹饪北方炖菜，你必须带4块冷却肉到嚎叫峡湾的托马斯·科利乔那里。或者，你可以直接从拍卖行购买北炖牛肉。如果您要从拍卖行购买北炖菜，请跳过此步骤	
+	>>如果你要完成这个任务，你总共需要8块冷却肉
+	.collect 43013,4 -- Chilled Meat (4)
+	.accept 13089 >>接任务: 诺森德的厨师
+	.turnin 13089 >>交任务: 诺森德的厨师
+	.goto HowlingFjord,78.61,29.48
+step << Alliance
+    #label stew
 	.goto Dalaran,40.20,66.98
 	>>利用您的烹饪专业知识将4块冷却肉烹饪成4块北炖
 	.complete 13101,1 --Northern Stew (4)
 	.isOnQuest 13101
 step << Horde
+    #label stew    
 	.goto Dalaran,70.44,39.80
 	>>利用您的烹饪专业知识将4块冷却肉烹饪成4块北炖
 	.complete 13113,1 --Northern Stew (4)
 	.isOnQuest 13113
 step
-	>>在达拉然与Ranid Glowergold交谈
-	.goto Dalaran,36.42,29.64,10,0
-	.goto Dalaran,36.62,27.88
+	>>在达拉然与阿里尔·阿祖雷加交谈
+	.goto Dalaran,48.37,37.47
 	.turnin 13101 >>Legerdemain大会 << Alliance
 	.isQuestComplete 13101 << Alliance
 	.turnin 13113 >>Legerdemain大会 << Horde

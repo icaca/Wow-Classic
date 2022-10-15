@@ -14,20 +14,20 @@ step
 step
     .goto IcecrownGlacier,87.5,75.8
 	>>飞到银色先锋。与提里奥交谈
-    .accept 13036 >>接受荣誉高于一切
+    .accept 13036 >>接任务: 无上的荣耀
 step
     .goto IcecrownGlacier,87.1,75.8
 	>>与你下面的Entari交谈
-    .turnin 13036 >>荣誉高于一切
-    .accept 13008 >>接受天灾战术
+    .turnin 13036 >>交任务: 无上的荣耀
+    .accept 13008 >>接任务: 天灾的战术
 step
     .goto IcecrownGlacier,86.8,76.6
 	>>与古斯塔夫交谈
-    .accept 13040 >>接受治愈不治之症
+    .accept 13040 >>接任务: 致命的剧毒
 step
     .goto IcecrownGlacier,86.1,75.8
 	>>与Dalfors交谈
-    .accept 13039 >>接受捍卫先锋
+    .accept 13039 >>接任务: 保卫前线基地
 step
 	#sticky
 	#label webbedfreed
@@ -41,28 +41,28 @@ step
     .goto IcecrownGlacier,83.1,72.6,80,0
     .goto IcecrownGlacier,84.8,73.0,80,0
     .goto IcecrownGlacier,83.5,75.1
-	>>杀死该地区的Nerubians和Spiders。抢劫他们的毒液袋
+	>>杀死该地区的Nerubians和Spiders。掠夺他们的毒液袋
     .complete 13039,1 --Forgotten Depths Nerubians (15)
     .complete 13040,1 --Forgotten Depths Venom Sac (10)
 step
 	#requires webbedfreed
     .goto IcecrownGlacier,86.1,75.8
 	>>返回Dalfors
-    .turnin 13039 >>转而捍卫先锋
+    .turnin 13039 >>交任务: 保卫前线基地
 step
     .goto IcecrownGlacier,86.8,76.6
 	>>返回古斯塔夫
-    .turnin 13040 >>治疗不治之症
+    .turnin 13040 >>交任务: 致命的剧毒
 step
     .goto IcecrownGlacier,87.1,75.8
 	>>返回Entari
-    .turnin 13008 >>上缴天灾战术
-    .accept 13044 >>如果有幸存者，接受。。。
+    .turnin 13008 >>交任务: 天灾的战术
+    .accept 13044 >>接任务: 如果还有幸存者……
 step
     .goto IcecrownGlacier,87.0,79.0
 	>>与Penumbrius交谈
-    .turnin 13044 >>如果有幸存者。。。
-    .accept 13045 >>接受《荒野的绿色》(The Wild Green Yonder)
+    .turnin 13044 >>交任务: 如果还有幸存者……
+    .accept 13045 >>接任务: 空中救兵
 step
 	#completewith next
     .goto IcecrownGlacier,87.1,79.2
@@ -76,13 +76,13 @@ step
 step
     .goto IcecrownGlacier,87.5,75.8
 	>>飞回提里奥
-    .turnin 13045 >>变成荒野的绿色
-    .accept 13070 >>接受冷锋方法
+    .turnin 13045 >>交任务: 空中救兵
+    .accept 13070 >>接任务: 冷锋逼近
 step
     .goto IcecrownGlacier,85.6,76.0
 	>>在小房子里和Fezzik交谈
-    .turnin 13070 >>转入冷锋方式
-    .accept 13086 >>接受最后一道防线
+    .turnin 13070 >>交任务: 冷锋逼近
+    .accept 13086 >>接任务: 最后一道防线
 step
 	#completewith next
     .goto IcecrownGlacier,85.3,75.8
@@ -96,23 +96,23 @@ step
 step
     .goto IcecrownGlacier,85.6,76.0
 	>>退出大炮。返回Fezzik
-    .turnin 13086 >>交出最后一道防线
+    .turnin 13086 >>交任务: 最后一道防线
 step
     .goto IcecrownGlacier,86.0,75.8
 	>>与身后的提里奥交谈
-    .accept 13104 >>再次接受，直到违约，英雄 << !DK
-    .accept 13105 >>再次接受，直到违约，英雄 << DK
+    .accept 13104 >>接任务: 再次前往突破口吧，英雄 << !DK
+    .accept 13105 >>接任务: 再次前往突破口吧，英雄 << DK
 step
 	>>西北旅行。与Ebon Watcher、Silas、Spitzpatrick和屋内的Gustav交谈
-    .turnin 13104 >>英雄，再上一次，直到决裂 << !DK
-    .turnin 13105 >>英雄，再上一次，直到决裂 << DK
-    .accept 13118 >>接受天灾灵的净化
-    .accept 13122 >>接受天灾之石
+    .turnin 13104 >>交任务: 再次前往突破口吧，英雄 << !DK
+    .turnin 13105 >>交任务: 再次前往突破口吧，英雄 << DK
+    .accept 13118 >>接任务: 净化天灾城
+    .accept 13122 >>接任务: 天灾石
     .goto IcecrownGlacier,83.0,73.0
-    .accept 13130 >>接受开始革命的石头
-    .accept 13135 >>接受它会杀死我们所有人
+    .accept 13130 >>接任务: 公正堡的基石
+    .accept 13135 >>接任务: 危险的能量
     .goto IcecrownGlacier,83.0,73.1
-    .accept 13110 >>接受不安分的死者
+    .accept 13110 >>接任务: 永不安息的亡者
     .goto IcecrownGlacier,82.9,72.8
 step
 	#completewith Crusaders
@@ -190,7 +190,7 @@ step
 	>>杀死该区域的人形/亡灵/元素怪物。掠夺他们的能量
     .complete 13135,1 --Crystallized Energy (8)
 step
-	>>抢劫该地区地面上的紫色树桩
+	>>掠夺该地区地面上的紫色树桩
     .complete 13130,1 --Crystalline Heartwood (10)
     .goto CrystalsongForest,65.0,53.5,80,0
     .goto CrystalsongForest,70.6,56.1,80,0
@@ -220,17 +220,17 @@ step
     .complete 13135,1 --Crystallized Energy (8)
 step
 	>>返回黑檀守望者
-    .turnin 13130 >>交出引发革命的石头
-    .turnin 13135 >>上缴可能会杀死我们所有人
+    .turnin 13130 >>交任务: 公正堡的基石
+    .turnin 13135 >>交任务: 危险的能量
     .goto IcecrownGlacier,83.0,73.1
-    .turnin 13118 >>交出天灾灵的净化
-    .turnin 13122 >>交出天灾石
-    .accept 13125 >>接受停机位静止
+    .turnin 13118 >>交任务: 净化天灾城
+    .turnin 13122 >>交任务: 天灾石
+    .accept 13125 >>接任务: 凝固的空气
     .goto IcecrownGlacier,83.1,73.0
 step
     .goto IcecrownGlacier,82.9,72.8
 	>>到小屋里去
-    .turnin 13110 >>交给不安分的死者
+    .turnin 13110 >>交任务: 永不安息的亡者
 step
     .goto IcecrownGlacier,77.3,61.9
 	.use 43206 >>进入大楼。使用阿喀琉斯之角召唤NPC协助你杀死萨拉纳克斯
@@ -246,16 +246,16 @@ step
 step
     .goto IcecrownGlacier,83.0,72.9
 	>>返回黑檀守望者
-    .turnin 13125 >>将停机位静止
+    .turnin 13125 >>交任务: 凝固的空气
 step
     .goto IcecrownGlacier,82.9,72.8
 	>>到小屋里去
-    .accept 13139 >>接受诺森德冰封的心
+    .accept 13139 >>接任务: 进入诺森德的冰冷腹地
 step
     .goto IcecrownGlacier,86.0,75.8
 	>>返回提里奥
-    .turnin 13139 >>变成诺森德冰封的心
-    .accept 13141 >>接受十字军顶峰之战
+    .turnin 13139 >>交任务: 进入诺森德的冰冷腹地
+    .accept 13141 >>接任务: 北伐军之峰的战斗
 step
     .goto IcecrownGlacier,80.04,71.94
 	.use 43243 >>把十字军的祝福旗帜放在你的袋子里，放在一堆骷髅头上，抵御来袭的海浪。当死亡使者哈洛夫产卵时，集中精力杀死他
@@ -263,24 +263,24 @@ step
 step
     .goto IcecrownGlacier,82.9,72.8
 	>>到小屋里去
-    .turnin 13141 >>为十字军的顶峰而战
-    .accept 13157 >>接受十字军的顶峰
+    .turnin 13141 >>交任务: 北伐军之峰的战斗
+    .accept 13157 >>接任务: 北伐军之峰
 step
     .goto IcecrownGlacier,79.8,71.8
 	>>回到你防守旗帜的地方。与提里奥交谈
-    .turnin 13157 >>交出十字军的顶峰
-    .accept 13068 >>接受勇敢的故事
+    .turnin 13157 >>交任务: 北伐军之峰
+    .accept 13068 >>接任务: 勇气的传说
 step
     .goto IcecrownGlacier,79.4,72.3
     .fp Crusaders' Pinnacle >>获取十字军的Pinnacle飞行路线
 step << Horde
     .goto IcecrownGlacier,79.5,72.7
 	>>进入塔楼。与床上底层的Strongbrow交谈
-    .accept 13224 >>接受奥格林的锤子
+    .accept 13224 >>接任务: 奥格瑞姆之锤
 step << Alliance
     .goto Icecrown,79.44,72.84
 	>>进入塔楼。与床上底层的伊瓦利乌斯交谈
-    .accept 13225 >>接受破天荒者
+    .accept 13225 >>接任务: 破天号
 step << Alliance
     .goto IcecrownGlacier,65.1,57.2,0
     .goto IcecrownGlacier,64.7,52.4,0
@@ -291,8 +291,8 @@ step << Alliance
     .goto IcecrownGlacier,54.7,35.3,200,0
     .goto IcecrownGlacier,65.1,57.2
 	>>飞到“破天者”号上，这是一艘在高空飞行的大型联盟飞船。走进马拉德对面的大房间，和贾斯汀谈谈
-    .turnin 13225 >>交出破天荒者
-    .accept 13231 >>接受破碎的正面
+    .turnin 13225 >>交任务: 破天号
+    .accept 13231 >>接任务: 破碎前线
 step << Alliance
 	#label slaves1
 	#sticky
@@ -302,7 +302,7 @@ step << Alliance
     .goto IcecrownGlacier,57.5,39.1,0
     .goto IcecrownGlacier,54.7,35.3,0
 	>>找到虔诚的押沙兰。他绕着船尾走，上下左右楼梯
-    .daily 13300 >>接受奴隶到沙龙
+    .daily 13300 >>接任务: 萨隆邪铁的奴隶
 step << Alliance
     .goto IcecrownGlacier,65.1,57.2,0
     .goto IcecrownGlacier,64.7,52.4,0
@@ -310,8 +310,8 @@ step << Alliance
     .goto IcecrownGlacier,57.5,39.1,0
     .goto IcecrownGlacier,54.7,35.3,0
 	>>爬上船尾的楼梯，和骑士队长德罗西通话
-    .daily 13336 >>接受被选中者的鲜血
-    .accept 13341 >>接受加入攻击
+    .daily 13336 >>接任务: 伊米亚之血
+    .accept 13341 >>接任务: 协助突袭
 step << Alliance
 	#requires slaves1
     .goto IcecrownGlacier,65.1,57.2,0
@@ -320,25 +320,25 @@ step << Alliance
     .goto IcecrownGlacier,57.5,39.1,0
     .goto IcecrownGlacier,54.7,35.3,0
 	>>走船中央的楼梯(在马拉德后面)，然后走第一个楼梯两侧的楼梯，进入机舱。与总工程师Boltwrench交谈
-    .accept 13296 >>接受，快去伊米尔海姆！
+    .accept 13296 >>接任务: 前往伊米海姆！
 step << Horde
 	.goto IcecrownGlacier,67.00,38.00
 	>>飞到奥格瑞姆之锤，一艘在高空盘旋的部落大船。走进前面的大房间。与Sky Reaver Korm Blackscar交谈
-    .turnin 13224 >>交出奥格瑞姆的锤子
-    .accept 13228 >>接受破碎的正面
+    .turnin 13224 >>交任务: 奥格瑞姆之锤
+    .accept 13228 >>接任务: 破碎前线
 step << Horde
 	>>接受战争使者达沃斯·里奥特和凯尔坦兄弟的任务。他们在楼梯和下层甲板附近走动
-    .daily 13302 >>接受奴隶到沙龙
-    .daily 13330 >>接受被选中者的鲜血
-    .accept 13340 >>接受加入攻击
+    .daily 13302 >>接任务: 萨隆邪铁的奴隶
+    .daily 13330 >>接任务: 伊米亚之血
+    .accept 13340 >>接任务: 协助突袭
 step << Horde
 	>>去船的下甲板。与Cheif Engineer Copperclaw交谈
-    .accept 13293 >>接受，快去伊米尔海姆！
+    .accept 13293 >>接任务: 前往伊米海姆！
 step << Alliance
     .goto IcecrownGlacier,62.6,51.3
 	>>飞到地面指挥官库普(在地面上)
-    .turnin 13341 >>加入攻击行动
-    .daily 13309 >>接受空中袭击
+    .turnin 13341 >>交任务: 协助突袭
+    .daily 13309 >>接任务: 空中突袭
 	>>如果你愿意，你可以跳过每日任务
 step << Alliance
     #completewith next
@@ -354,14 +354,14 @@ step << Alliance
 step << Alliance
     .goto Icecrown,62.55,51.29
 	>>返回库普
-    .turnin 13309 >>空袭上缴
+    .turnin 13309 >>交任务: 空中突袭
 	.isQuestComplete 13309
 step << Alliance
     .goto IcecrownGlacier,62.5,51.1,15,0
     .goto IcecrownGlacier,62.8,51.6
 	>>与班组长交谈。如果其他人开始任务，并且有大约6分钟的重生时间，并且在库普右侧约10码处重生，他可能不会在这里
 	>>你可以跳过这个任务。这只是一个与其他人紧密联系的日常任务
-    .daily 13284 >>接受地面攻击
+    .daily 13284 >>接任务: 地面突袭
 step << Alliance
     .goto IcecrownGlacier,58.2,55.9,0
     .goto IcecrownGlacier,59.6,59.3,0
@@ -396,11 +396,11 @@ step << Alliance
 	#completewith next
     .goto Icecrown,57.01,62.53
 	>>飞到地面上的Frazzle
-    .turnin 13296 >>上车去伊米尔海姆！
+    .turnin 13296 >>交任务: 前往伊米海姆！
 step << Alliance
     .goto Icecrown,57.01,62.53
 	>>注意：这个任务为你标记PVP。然而，这很容易。
-    .daily 13280 >>接受山之王
+    .daily 13280 >>接任务: 占山为王
 step << Alliance
     #completewith next
     .goto Icecrown,56.99,62.60
@@ -414,15 +414,15 @@ step << Alliance
 step << Alliance
     .goto Icecrown,56.97,62.55
 	>>单击离开车辆按钮
-    .turnin 13280 >>山之王归来
+    .turnin 13280 >>交任务: 占山为王
 	.isQuestComplete 13280
 step << Horde
 	>>飞向地面指挥官Xutjja(他在地面上，而不是在船上)
     .goto IcecrownGlacier,58.3,46.0
-    .turnin 13340 >>加入攻击行动
+    .turnin 13340 >>交任务: 协助突袭
 step << Horde
     .goto IcecrownGlacier,58.3,46.0
-    .daily 13310 >>接受空中袭击
+    .daily 13310 >>接任务: 空中突袭
 	>>如果你愿意，你可以跳过每日任务
 step << Horde
 	#completewith next
@@ -436,12 +436,12 @@ step << Horde
 	.isOnQuest 13310
 step << Horde
     .goto IcecrownGlacier,58.3,46.0
-    .turnin 13310 >>空袭上缴
+    .turnin 13310 >>交任务: 空中突袭
 	.isQuestComplete 13310
 step << Horde
     .goto IcecrownGlacier,58.3,46.0
 	>>与班组长交谈。如果其他人开始任务并且有大约6分钟的重生时间，他可能不会在这里
-    .daily 13301 >>接受地面攻击
+    .daily 13301 >>接任务: 地面突袭
 	>>你可以跳过这个任务。这只是一个与其他人紧密联系的日常任务
 step << Horde
 	#sticky
@@ -472,8 +472,8 @@ step << Horde
 step << Horde
 	#requires ymirheimslain
     .goto IcecrownGlacier,51.9,57.6
-    .turnin 13293 >>上车去伊米尔海姆！
-    .daily 13283 >>接受山之王
+    .turnin 13293 >>交任务: 前往伊米海姆！
+    .daily 13283 >>接任务: 占山为王
 step << Horde
     #completewith next
     .goto Icecrown,51.95,57.62
@@ -487,13 +487,13 @@ step << Horde
 step << Horde
     .goto Icecrown,51.9,57.6
 	>>单击离开车辆按钮
-    .turnin 13283 >>山之王归来
+    .turnin 13283 >>交任务: 占山为王
 	.isQuestComplete 13283
 step << Alliance
     .goto IcecrownGlacier,66.4,66.5
 	>>在破碎的战线周围找到一名垂死的士兵并与之交谈
     .complete 13231,1 --Dying Soldier Questioned (1)
-    .accept 13232 >>接受完成我！
+    .accept 13232 >>接任务: 让我解脱吧！
 	.skipgossip
 step << Alliance
     .goto IcecrownGlacier,69.1,62.1
@@ -504,7 +504,7 @@ step << Horde
     .goto IcecrownGlacier,67.7,68.4
 	>>在破碎的前线找到一个垂死的狂暴者并与之交谈
     .complete 13228,1 --Dying Berserker Questioned (1)
-    .accept 13230 >>接受复仇！
+    .accept 13230 >>接任务: 为我复仇！
 step << Horde
     .goto IcecrownGlacier,68.7,64.2
 	>>在该地区附近找到更多垂死的士兵并干掉他们
@@ -520,10 +520,10 @@ step << Alliance
     .goto IcecrownGlacier,65.1,57.2,200,0
     .goto IcecrownGlacier,54.7,35.3
 	>>飞到破天荒号，这是一艘在高空飞行的大型联盟飞船(你可以在地图上看到它)。走进马拉德对面的大房间，和贾斯汀谈谈
-    .turnin 13231 >>转向破碎的正面
-    .turnin 13232 >>交上来干掉我！
-    .accept 13286 >>接受…我们能得到的所有帮助。
-    .accept 13290 >>请接受您的关注
+    .turnin 13231 >>交任务: 破碎前线
+    .turnin 13232 >>交任务: 让我解脱吧！
+    .accept 13286 >>接任务: ……所有可能的帮助
+    .accept 13290 >>接任务: 请留意一下……
 step << Alliance
 	#label slaves2
 	#sticky
@@ -533,7 +533,7 @@ step << Alliance
     .goto IcecrownGlacier,57.5,39.1,0
     .goto IcecrownGlacier,54.7,35.3,0
 	>>找到虔诚的押沙兰。他绕着船尾走，上下左右楼梯
-    .turnin 13300 >>把奴隶交给沙龙
+    .turnin 13300 >>交任务: 萨隆邪铁的奴隶
 	.isQuestComplete 13300
 step << Alliance
     .goto IcecrownGlacier,65.1,57.2,0
@@ -542,7 +542,7 @@ step << Alliance
     .goto IcecrownGlacier,57.5,39.1,0
     .goto IcecrownGlacier,54.7,35.3,0
 	>>爬上船尾的楼梯，和骑士队长德罗西通话
-    .turnin 13336 >>献出被选中者的鲜血
+    .turnin 13336 >>交任务: 伊米亚之血
 	.isQuestComplete 13336
 step << Alliance
     .goto IcecrownGlacier,65.1,57.2,0
@@ -551,8 +551,8 @@ step << Alliance
     .goto IcecrownGlacier,57.5,39.1,0
     .goto IcecrownGlacier,54.7,35.3,0
 	>>与船左后角的Thassarian通话
-    .turnin 13286 >>交出……我们能得到的所有帮助。
-    .accept 13287 >>接受扑克和产品
+    .turnin 13286 >>交任务: ……所有可能的帮助
+    .accept 13287 >>接任务: 知己知彼
 step << Alliance
     .goto IcecrownGlacier,65.1,57.2,0
     .goto IcecrownGlacier,64.7,52.4,0
@@ -560,40 +560,40 @@ step << Alliance
     .goto IcecrownGlacier,57.5,39.1,0
     .goto IcecrownGlacier,54.7,35.3,0
 	>>走船中央的楼梯(在马拉德后面)，然后走第一个楼梯两侧的楼梯，进入机舱。与总工程师Boltwrench交谈
-    .turnin 13290 >>请集中注意力
-    .accept 13291 >>接受借用的技术
+    .turnin 13290 >>交任务: 请留意一下……
+    .accept 13291 >>接任务: “借来”的技术
 step << Horde
 	.goto IcecrownGlacier,67.00,38.00
 	>>飞到奥格里姆之锤，一艘在高空盘旋的部落大船。在前室与Sky Reaver Korm Blackscar交谈
-    .turnin 13228 >>转向破碎的正面
-    .turnin 13230 >>交给我复仇！
-    .accept 13238 >>接受有利可图？
-    .accept 13260 >>接受需要一个人去了解一个人
+    .turnin 13228 >>交任务: 破碎前线
+    .turnin 13230 >>交任务: 为我复仇！
+    .accept 13238 >>接任务: 有价值的帮手？
+    .accept 13260 >>接任务: 知根知底
 step << Horde
 	>>和你旁边的科尔蒂拉谈谈
-    .turnin 13260 >>交上来需要一个人认识一个人
-    .accept 13237 >>接受扑克和产品
+    .turnin 13260 >>交任务: 知根知底
+    .accept 13237 >>接任务: 知己知彼
 step << Horde
 	>>与在楼梯附近走动的克尔坦兄弟交谈
-    .turnin 13302 >>把奴隶交给沙龙
+    .turnin 13302 >>交任务: 萨隆邪铁的奴隶
 	.isQuestComplete 13302
 step
 	>>与战争使者达沃斯·里奥特交谈。他也在底层甲板巡逻
-    .turnin 13330 >>献出被选中者的鲜血
+    .turnin 13330 >>交任务: 伊米亚之血
 	.isQuestComplete 13330
 step << Horde
 	>>去船的下甲板。与Cheif Engineer Copperclaw交谈
-    .turnin 13238 >>为了某样东西而上缴？
-    .accept 13239 >>接受波动性
+    .turnin 13238 >>交任务: 有价值的帮手？
+    .accept 13239 >>接任务: 爆炸油
 step << Alliance
 	>>返回地面指挥官库普
     .goto Icecrown,62.60,51.35
-    .turnin 13284 >>地面攻击中的转身
+    .turnin 13284 >>交任务: 地面突袭
 	.isQuestComplete 13284
 step << Horde
 	>>返回地面指挥官Xutjja
     .goto IcecrownGlacier,58.3,46.2
-    .turnin 13301 >>地面攻击中的转身
+    .turnin 13301 >>交任务: 地面突袭
 	.isQuestComplete 13301
 step << Alliance
 	#completewith next
@@ -601,7 +601,7 @@ step << Alliance
     .goto IcecrownGlacier,68.0,70.9,70,0
     .goto IcecrownGlacier,71.6,61.3,70,0
     .goto IcecrownGlacier,67.2,68.3
-	.use 44048 >>抢劫散落在破碎战线周围地面上的废弃装备碎片。当您拥有每件设备中的一件时，请在您的包中使用走私解决方案(您不需要等待RP)
+	.use 44048 >>掠夺散落在破碎战线周围地面上的废弃装备碎片。当您拥有每件设备中的一件时，请在您的包中使用走私解决方案(您不需要等待RP)
 	.collect 43609,3,13291,1,-1 --Pile of Bones (3)
 	.collect 43610,3,13291,1,-1 --Abandoned Helm (3)
 	.collect 43616,3,13291,1,-1 --Abandoned Armor (3)
@@ -612,7 +612,7 @@ step << Horde
     .goto IcecrownGlacier,68.0,70.9,70,0
     .goto IcecrownGlacier,71.6,61.3,70,0
     .goto IcecrownGlacier,67.2,68.3
-	.use 43608 >>抢劫散落在破碎战线周围地面上的废弃装备碎片。当你有每一件设备时，在你的袋子里放上科珀克劳挥发性油(你不需要等待RP)
+	.use 43608 >>掠夺散落在破碎战线周围地面上的废弃装备碎片。当你有每一件设备时，在你的袋子里放上科珀克劳挥发性油(你不需要等待RP)
 	.collect 43609,3,13239,1,-1 --Pile of Bones (3)
 	.collect 43610,3,13239,1,-1 --Abandoned Helm (3)
 	.collect 43616,3,13239,1,-1 --Abandoned Armor (3)
@@ -638,7 +638,7 @@ step << Alliance
     .goto IcecrownGlacier,68.0,70.9,70,0
     .goto IcecrownGlacier,71.6,61.3,70,0
     .goto IcecrownGlacier,67.2,68.3
-	.use 44048 >>抢劫散落在破碎战线周围地面上的废弃装备碎片。当您拥有每件设备中的一件时，请在您的包中使用走私解决方案(您不需要等待RP)
+	.use 44048 >>掠夺散落在破碎战线周围地面上的废弃装备碎片。当您拥有每件设备中的一件时，请在您的包中使用走私解决方案(您不需要等待RP)
 	.collect 43609,3,13291,1,-1 --Pile of Bones (3)
 	.collect 43610,3,13291,1,-1 --Abandoned Helm (3)
 	.collect 43616,3,13291,1,-1 --Abandoned Armor (3)
@@ -648,7 +648,7 @@ step << Horde
     .goto IcecrownGlacier,68.0,70.9,70,0
     .goto IcecrownGlacier,71.6,61.3,70,0
     .goto IcecrownGlacier,67.2,68.3
-	.use 43608 >>抢劫散落在破碎战线周围地面上的废弃装备碎片。当你有每一件设备时，在你的袋子里放上科珀克劳挥发性油(你不需要等待RP)
+	.use 43608 >>掠夺散落在破碎战线周围地面上的废弃装备碎片。当你有每一件设备时，在你的袋子里放上科珀克劳挥发性油(你不需要等待RP)
 	.collect 43609,3,13239,1,-1 --Pile of Bones (3)
 	.collect 43610,3,13239,1,-1 --Abandoned Helm (3)
 	.collect 43616,3,13239,1,-1 --Abandoned Armor (3)
@@ -663,9 +663,9 @@ step << Alliance
     .goto IcecrownGlacier,65.1,57.2,200,0
     .goto IcecrownGlacier,54.7,35.3
 	>>飞到“破天者”号上，这是一艘在高空飞行的大型联盟飞船。与船左后角的Thassarian通话
-    .turnin 13287 >>交出扑克和扑克
-    .accept 13288 >>接受这太可恶了！
-    .accept 13294 >>接受对巨人的挑战
+    .turnin 13287 >>交任务: 知己知彼
+    .accept 13288 >>接任务: 你的憎恶伙伴
+    .accept 13294 >>接任务: 对抗巨人
 step << Alliance
 	#requires notdead
     .goto IcecrownGlacier,65.1,57.2,0
@@ -677,16 +677,16 @@ step << Alliance
     .goto IcecrownGlacier,65.1,57.2,200,0
     .goto IcecrownGlacier,54.7,35.3
 	>>走船中央的楼梯(在马拉德后面)，然后走第一个楼梯两侧的楼梯，进入机舱。与总工程师Boltwrench交谈
-    .turnin 13291 >>移交借用的技术
+    .turnin 13291 >>交任务: “借来”的技术
 step << Horde
 	.goto IcecrownGlacier,67.00,38.00
 	>>飞到奥格瑞姆之锤，一艘在高空盘旋的部落大船。在船的前室和科尔蒂拉通话
-    .turnin 13237 >>交出扑克和扑克
-    .accept 13264 >>接受这太可恶了！
-	.accept 13277 >>接受对巨人的挑战
+    .turnin 13237 >>交任务: 知己知彼
+    .accept 13264 >>接任务: 你的憎恶伙伴
+	.accept 13277 >>接任务: 对抗巨人
 step << Horde
 	>>去船的下甲板。与Cheif Engineer Copperclaw交谈
-    .turnin 13239 >>波动率上缴
+    .turnin 13239 >>交任务: 爆炸油
 step
     .goto IcecrownGlacier,68.3,61.5
 	>>杀死该地区的绿巨人憎恶者，并掠夺他们的寒冷憎恶肠
@@ -705,8 +705,8 @@ step
 step << Horde
 	.goto IcecrownGlacier,67.00,38.00
 	>>返回奥格里姆之锤。与科尔蒂拉交谈
-    .turnin 13264 >>上车那太可恶了！
-    .accept 13351 >>接受潜行预览
+    .turnin 13264 >>交任务: 你的憎恶伙伴
+    .accept 13351 >>接任务: 预览
 step << Alliance
     .goto IcecrownGlacier,65.1,57.2,0
     .goto IcecrownGlacier,64.7,52.4,0
@@ -717,8 +717,8 @@ step << Alliance
     .goto IcecrownGlacier,65.1,57.2,200,0
     .goto IcecrownGlacier,54.7,35.3
 	>>返回破天者。与Thassarian交谈
-    .turnin 13288 >>上车那太可恶了！
-    .accept 13315 >>接受潜行预览
+    .turnin 13288 >>交任务: 你的憎恶伙伴
+    .accept 13315 >>接任务: 预览
 step << Alliance
 	>>在大墙上方平台上的航路点上方飞行
     .complete 13315,1 --1/1 Aldur'thar South Visited
@@ -764,16 +764,16 @@ step << Horde
 step << Horde
 	.goto IcecrownGlacier,67.00,38.00
 	>>飞到奥格瑞姆之锤，一艘在高空盘旋的部落大船。在船的前室和科尔蒂拉通话
-    .turnin 13351 >>打开Sneak预览
-	.turnin 13277 >>与巨人队交锋
-    .accept 13355 >>接受无法复制
-    .accept 13354 >>接受指挥系统
-    .accept 13352 >>接受拖放
-	.accept 13279 >>接受基础化学
-    .accept 13278 >>接受被玷污的警察
+    .turnin 13351 >>交任务: 预览
+	.turnin 13277 >>交任务: 对抗巨人
+    .accept 13355 >>接任务: 无法复制
+    .accept 13354 >>接任务: 指挥体系
+    .accept 13352 >>接任务: 从天而“降”
+	.accept 13279 >>接任务: 化学常识
+    .accept 13278 >>接任务: 污染者科普洛斯
 step << Horde
 	>>去船的下甲板。与Cheif Engineer Copperclaw交谈
-    .accept 13379 >>接受绿色技术
+    .accept 13379 >>接任务: 绿色科技
 step << Alliance
     .goto IcecrownGlacier,65.1,57.2,0
     .goto IcecrownGlacier,64.7,52.4,0
@@ -784,16 +784,16 @@ step << Alliance
     .goto IcecrownGlacier,65.1,57.2,200,0
     .goto IcecrownGlacier,54.7,35.3
 	>>飞到“破天者”号上，这是一艘在高空飞行的大型联盟飞船。与船左后角的Thassarian通话
-    .turnin 13315 >>打开Sneak预览
-    .turnin 13294 >>与巨人队交锋
-    .accept 13318 >>接受拖放
-    .accept 13319 >>接受指挥系统
-    .accept 13320 >>接受无法复制
-    .accept 13295 >>接受基础化学
-    .accept 13298 >>接受被玷污的警察
+    .turnin 13315 >>交任务: 预览
+    .turnin 13294 >>交任务: 对抗巨人
+    .accept 13318 >>接任务: 从天而“降”
+    .accept 13319 >>接任务: 指挥体系
+    .accept 13320 >>接任务: 无法复制
+    .accept 13295 >>接任务: 化学常识
+    .accept 13298 >>接任务: 污染者科普洛斯
 step << Alliance
 	>>走船中央的楼梯(在马拉德后面)，然后走第一个楼梯两侧的楼梯，进入机舱。与总工程师Boltwrench交谈
-    .accept 13383 >>接受借用的技术
+    .accept 13383 >>接任务: “借来”的技术
 step
 	#completewith next
     .goto IcecrownGlacier,63.3,62.1,25 >>进入Mord’rethar内部的大门。它在二级，由瘟疫恶魔守卫
@@ -856,8 +856,8 @@ step
 step << Alliance
 	>>飞向空中的小平台。与Killohertz交谈
 	.goto IcecrownGlacier,53.96,42.93
-	.turnin 13383 >>转入基洛赫茨
-	.accept 13380 >>接受领导指控
+	.turnin 13383 >>交任务: 吉普利·基罗赫斯
+	.accept 13380 >>接任务: 委以重任
 step << Alliance
 	.goto IcecrownGlacier,53.96,43.11
 	>>和凯伦谈谈，让她坐上轰炸机。使用冲锋盾牌(1)获得100个盾牌，然后切换到轰炸机湾(5)，开始轰炸下方的天灾，直到所有步兵和上尉被杀死。切换到防空炮塔(4)，开始使用防空火箭(1)在空中射击石像鬼。完成后，按下离开车辆按钮，您将返回平台
@@ -868,12 +868,12 @@ step << Alliance
 step << Alliance
 	>>与Killohertz交谈
     .goto IcecrownGlacier,53.96,42.93
-    .turnin 13380 >>交出领先优势
+    .turnin 13380 >>交任务: 委以重任
 step << Horde
 	>>飞向空中的小平台。与Tezzla交谈
     .goto IcecrownGlacier,53.99,36.87
-    .turnin 13379 >>交付绿色技术
-    .accept 13373 >>接受边缘科学福利
+    .turnin 13379 >>交任务: 绿色科技
+    .accept 13373 >>接任务: 边缘科学的益处
 step << Horde
 	.goto IcecrownGlacier,53.96,43.11
 	>>与Rizzy交谈，让他登上轰炸机。使用冲锋盾牌(1)获得100个盾牌，然后切换到轰炸机湾(5)，开始轰炸下方的天灾，直到所有步兵和上尉被杀死。切换到防空炮塔(4)，开始使用防空火箭(1)在空中射击石像鬼。完成后，按下离开车辆按钮，您将返回平台
@@ -884,7 +884,7 @@ step << Horde
 step << Horde
 	>>与Tezzla交谈
     .goto IcecrownGlacier,54.00,36.94
-    .turnin 13373 >>提交附加科学福利
+    .turnin 13373 >>交任务: 边缘科学的益处
 step << Alliance
     .goto IcecrownGlacier,65.1,57.2,0
     .goto IcecrownGlacier,64.7,52.4,0
@@ -895,12 +895,12 @@ step << Alliance
     .goto IcecrownGlacier,65.1,57.2,200,0
     .goto IcecrownGlacier,54.7,35.3
 	>>飞到“破天者”号上，这是一艘在高空飞行的大型联盟飞船。与船左后角的Thassarian通话
-    .turnin 13318 >>转入拖放
-    .turnin 13319 >>移交指挥系统
-    .turnin 13295 >>上交基础化学
-    .turnin 13298 >>交给被玷污的警察
-    .accept 13342 >>不接受Bug
-    .accept 13345 >>接受需要更多信息
+    .turnin 13318 >>交任务: 从天而“降”
+    .turnin 13319 >>交任务: 指挥体系
+    .turnin 13295 >>交任务: 化学常识
+    .turnin 13298 >>交任务: 污染者科普洛斯
+    .accept 13342 >>接任务: 活动窃听器
+    .accept 13345 >>接任务: 需要更多情报
 step << Alliance
     .goto IcecrownGlacier,65.1,57.2,0
     .goto IcecrownGlacier,64.7,52.4,0
@@ -911,21 +911,21 @@ step << Alliance
     .goto IcecrownGlacier,65.1,57.2,200,0
     .goto IcecrownGlacier,54.7,35.3
 	>>走船中央的楼梯(在马拉德后面)，然后走第一个楼梯两侧的楼梯，进入机舱。与总工程师Boltwrench交谈
-    .turnin 13320 >>转入无法复制
-    .accept 13321 >>立即接受重新测试
+    .turnin 13320 >>交任务: 无法复制
+    .accept 13321 >>接任务: 重新考验
 step << Horde
 	.goto IcecrownGlacier,67.00,38.00
 	>>飞到奥格瑞姆之锤，一艘在高空盘旋的部落大船。走进前面的大房间。与Kolitra交谈
-	.turnin 13352 >>转入拖放
-    .turnin 13354 >>移交指挥系统
-    .turnin 13279 >>上交基础化学
-    .turnin 13278 >>交给被玷污的警察
-    .accept 13358 >>不接受Bug
-    .accept 13366 >>接受需要更多信息
+	.turnin 13352 >>交任务: 从天而“降”
+    .turnin 13354 >>交任务: 指挥体系
+    .turnin 13279 >>交任务: 化学常识
+    .turnin 13278 >>交任务: 污染者科普洛斯
+    .accept 13358 >>接任务: 活动窃听器
+    .accept 13366 >>接任务: 需要更多情报
 step << Horde
 	>>去船的下甲板。与Cheif Engineer Copperclaw交谈
-    .turnin 13355 >>转入无法复制
-    .accept 13356 >>立即接受重新测试
+    .turnin 13355 >>交任务: 无法复制
+    .accept 13356 >>接任务: 重新考验
 step
 	#label taintedessence
 	#sticky
@@ -987,10 +987,10 @@ step << Alliance
     .goto IcecrownGlacier,65.1,57.2,200,0
     .goto IcecrownGlacier,54.7,35.3
 	>>飞到“破天者”号上，这是一艘在高空飞行的大型联盟飞船。与船左后角的Thassarian通话
-    .turnin 13342 >>交上来的不是虫子
-    .turnin 13345 >>转入需要更多信息
-    .accept 13346 >>接受恶棍不休息
-    .accept 13332 >>接受提高路障
+    .turnin 13342 >>交任务: 活动窃听器
+    .turnin 13345 >>交任务: 需要更多情报
+    .accept 13346 >>接任务: 片刻不得安宁
+    .accept 13332 >>接任务: 构建路障
 step << Alliance
     .goto IcecrownGlacier,65.1,57.2,0
     .goto IcecrownGlacier,64.7,52.4,0
@@ -1001,17 +1001,17 @@ step << Alliance
     .goto IcecrownGlacier,65.1,57.2,200,0
     .goto IcecrownGlacier,54.7,35.3
 	>>走船中央的楼梯(在马拉德后面)，然后走第一个楼梯两侧的楼梯，进入机舱。与总工程师Boltwrench交谈
-    .turnin 13321 >>立即提交重新测试
+    .turnin 13321 >>交任务: 重新考验
 step << Horde
 	.goto IcecrownGlacier,67.00,38.00
 	>>飞到奥格瑞姆之锤，一艘在高空盘旋的部落大船。走进前面的大房间。与Kolitra交谈
-    .turnin 13358 >>交上来的不是虫子
-	.turnin 13366 >>转入需要更多信息
-    .accept 13367 >>接受恶棍不休息
-    .accept 13306 >>接受提高路障
+    .turnin 13358 >>交任务: 活动窃听器
+	.turnin 13366 >>交任务: 需要更多情报
+    .accept 13367 >>接任务: 片刻不得安宁
+    .accept 13306 >>接任务: 构建路障
 step << Horde
 	>>去船的下甲板。与Cheif Engineer Copperclaw交谈
-    .turnin 13356 >>立即提交重新测试
+    .turnin 13356 >>交任务: 重新考验
 step
     .goto IcecrownGlacier,52.5,42.0,70,0
     .goto IcecrownGlacier,51.3,37.1,70,0
@@ -1059,17 +1059,17 @@ step << Alliance
     .goto IcecrownGlacier,65.1,57.2,200,0
     .goto IcecrownGlacier,54.7,35.3
 	>>飞到“破天者”号上，这是一艘在高空飞行的大型联盟飞船。与船左后角的Thassarian通话
-    .turnin 13346 >>恶棍不得休息
-    .turnin 13332 >>转弯，提高路障
-	.accept 13337 >>接受铁墙壁垒
-	.accept 13334 >>接受血腥横幅
+    .turnin 13346 >>交任务: 片刻不得安宁
+    .turnin 13332 >>交任务: 构建路障
+	.accept 13337 >>接任务: 铁墙壁垒
+	.accept 13334 >>接任务: 溅血的旗帜
 step << Horde
 	.goto IcecrownGlacier,67.00,38.00
 	>>飞到奥格瑞姆之锤，一艘在高空盘旋的部落大船。走进前面的大房间。与Kolitra交谈
-    .turnin 13367 >>恶棍不得休息
-    .turnin 13306 >>转弯，提高路障
-	.accept 13312 >>接受铁墙壁垒
-	.accept 13307 >>接受血腥横幅
+    .turnin 13367 >>交任务: 片刻不得安宁
+    .turnin 13306 >>交任务: 构建路障
+	.accept 13312 >>接任务: 铁墙壁垒
+	.accept 13307 >>接任务: 溅血的旗帜
 step
     .goto IcecrownGlacier,51.3,40.3,70,0
     .goto IcecrownGlacier,49.1,43.8
@@ -1102,10 +1102,10 @@ step << Alliance
     .goto IcecrownGlacier,65.1,57.2,200,0
     .goto IcecrownGlacier,54.7,35.3
 	>>飞到“破天者”号上，这是一艘在高空飞行的大型联盟飞船。与船左后角的Thassarian通话
-	.turnin 13334 >>交上血迹斑斑的旗帜
-	.turnin 13337 >>转入铁墙壁垒
+	.turnin 13334 >>交任务: 溅血的旗帜
+	.turnin 13337 >>交任务: 铁墙壁垒
 	>>走进《破天荒》中马拉德面对的大房间，和贾斯汀谈谈
-	.accept 13314 >>接受获取消息
+	.accept 13314 >>接任务: 获取情报
 step << Alliance
     .goto IcecrownGlacier,46.2,52.1,70,0
     .goto IcecrownGlacier,42.4,59.4,0,0
@@ -1121,22 +1121,22 @@ step << Alliance
     .goto IcecrownGlacier,65.1,57.2,200,0
     .goto IcecrownGlacier,54.7,35.3
 	>>走进《破天荒》中马拉德面对的大房间，和贾斯汀谈谈
-	.turnin 13314 >>交上来获取消息
+	.turnin 13314 >>交任务: 获取情报
 step << Horde
 	.goto IcecrownGlacier,67.00,38.00
 	>>飞到奥格瑞姆之锤，一艘在高空盘旋的部落大船。走进前面的大房间。与Kolitra交谈
-	.turnin 13312 >>转入铁墙壁垒
-	.turnin 13307 >>交上血迹斑斑的旗帜
+	.turnin 13312 >>交任务: 铁墙壁垒
+	.turnin 13307 >>交任务: 溅血的旗帜
 step << Horde
 	>>与你旁边的Krom Blackscar交谈
-	.accept 13313 >>接受天空中的瞎眼
+	.accept 13313 >>接任务: 遮挡天空
 step << Horde
 	.goto IcecrownGlacier,48.85,40.44
 	.use 44212 >>在空中破天荒侦察机上使用你包里的SGM-3
 	.complete 13313,1 --Skybreaker Recon Fighters shot down (6)
 step << Horde
 	>>飞到奥格瑞姆之锤，一艘在高空盘旋的部落大船。走进前面的大房间。与Krom Blackscar交谈
-	.turnin 13313 >>转身让天空中的眼睛失明
+	.turnin 13313 >>交任务: 遮挡天空
 step
 	+如果您跳过或未完成本指南中的任何任务，请重新启动指南并完成它们。要做到这一点，请点击齿轮并导航回冰冠炮舰解锁每日任务指南
 	>>如果你已经完成了所有的任务，你可以开始使用冰冠炮舰每日任务路线。请注意，有些任务今天可能不可用，因为您可能已经完成了一些日常任务

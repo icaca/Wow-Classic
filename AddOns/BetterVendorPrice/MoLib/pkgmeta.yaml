@@ -1,6 +1,0 @@
-ignore:
-    - installmolib.bat
-    - luaformat.cfg
-    - tests
-
-manual-changelog: ChangeLog.txt

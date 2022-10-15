@@ -8,7 +8,7 @@ RXPGuides.RegisterGuide([[
 
 step << Mage
     #completewith Thuwd
-    .zone Orgrimmar >>电传至Orgrimmar
+    .zone Orgrimmar >>前往: 奥格瑞玛
     .skill skinning,75,1
 step << !Mage
     #completewith next
@@ -19,7 +19,7 @@ step << !Mage
 step << !Mage
     #completewith Thuwd
     .goto Shattrath City,52.2,52.9
-    .zone Orgrimmar >>在沙塔斯，从入口到奥格瑞玛
+    .zone Orgrimmar >>前往: 奥格瑞玛
     .skill skinning,75,1
 step
     #sticky
@@ -38,7 +38,7 @@ step
     #requires Shank
     #completewith next
     .goto Durotar,45.5,12.2
-    .zone Durotar >>Orgrimmar出口至Durotar
+    .zone Durotar >>前往: 杜隆塔尔
     .skill skinning,75,1
 step
     #requires Shank
@@ -47,12 +47,12 @@ step
     .loop 45,Durotar,54.5,68.2,54.2,60.1,54.7,58.9,54.5,54.3,51.2,51.8,51.1,46.6,47.4,42.7,45.7,37.7,45.0,34.3,43.0,34.9,42.6,37.0,40.8,37.0,38.5,34.3,36.5,31.3,36.9,25.0,38.5,21.7,40.8,21.1,43.0,21.4,44.4,19.2,43.5,15.7,
 step << !Mage
     .goto Orgrimmar,48.8,91.0
-    .zone Orgrimmar >>骑马返回奥格瑞玛
+    .zone Orgrimmar >>前往: 奥格瑞玛
     .skill skinning,125,1
     .cooldown item,6948,<0,1
 step << Mage
     #completewith next
-    .zone Orgrimmar >>电传至Orgrimmar
+    .zone Orgrimmar >>前往: 奥格瑞玛
     .skill skinning,125,1
 step << !Mage
     #completewith next
@@ -62,7 +62,7 @@ step << !Mage
 step << !Mage
     #completewith next
     .goto Shattrath City,52.2,52.9
-    .zone Orgrimmar >>在沙塔斯，从入口到奥格瑞玛
+    .zone Orgrimmar >>前往: 奥格瑞玛
     .skill skinning,125,1
 step
     .goto Orgrimmar,62.1,45.7,20,0
@@ -89,7 +89,7 @@ step
 step
     #completewith next
     .goto Thousand Needles,32.1,22.7
-    .zone Thousand Needles >>骑到千针
+    .zone Thousand Needles >>前往: 千针石林
     .skill skinning,205,1
 step
     .skill skinning,205 >>在千针165-205之间平整您的皮肤
@@ -97,7 +97,7 @@ step
 step
     .goto Feralas,88.8,41.4,-1
     .goto Tanaris,51.3,21.4,-1
-    .zone Tanaris >>前往费拉拉斯或塔纳里斯，以距离较近者为准
+    .zone Tanaris >>前往: 塔纳利斯
     .skill skinning,230,1
     .zoneskip Feralas
 step
@@ -134,7 +134,7 @@ step
     .loop 45,Un'Goro Crater,31.5,28.9,37.1,28.9,42.1,33.4,42.7,40.2,40.7,45.1,34.3,44.6,29.4,40.0,29.4,34.4,31.5,28.9
 step << Mage
     #completewith next
-    .zone Shattrath City >>传送到沙塔斯市
+    .zone Shattrath City >>前往: 沙塔斯城
     .skill skinning,305,1
     .zoneskip Hellfire Peninsula
 step << !Mage
@@ -152,7 +152,7 @@ step
 step
     #completewith next
     .goto Hellfire Peninsula,56.3,38.6
-    .zone Hellfire Peninsula >>乘坐飞行坐骑飞往地狱火半岛的萨尔玛
+    .zone Hellfire Peninsula >>前往: 地狱火半岛
     .skill skinning,305,1
     .skill riding,<300,1
 step
@@ -174,7 +174,7 @@ step
     .loop 45,Hellfire Peninsula,41.1,82.5,35.2,87.4,34.7,91.1,37.2,91.8,40.3,88.5,42.4,85.3,41.1,82.5
 step << Mage
     #completewith next
-    .zone Shattrath City >>传送到沙塔斯市
+    .zone Shattrath City >>前往: 沙塔斯城
     .skill skinning,375,1
     .zoneskip Nagrand
 step << !Mage
@@ -186,7 +186,7 @@ step << !Mage
 step
     #completewith next
     .goto Nagrand,77.4,54.6
-    .zone Nagrand >>乘坐飞行坐骑飞往纳格朗
+    .zone Nagrand >>前往: 纳格兰
     .skill skinning,375,1
 step
     >>杀死塔布克和克莱夫蹄，然后剥下它们的皮
@@ -206,7 +206,7 @@ RXPGuides.RegisterGuide([[
 
 step << Mage
     #completewith Maris
-    .zone Stormwind City >>传送到暴风城
+    .zone Stormwind City >>前往: 暴风城
     .skill skinning,75,1
 step << !Mage
     #completewith next
@@ -215,7 +215,7 @@ step << !Mage
     .zoneskip Stormwind City
 step << !Mage
     .goto Shattrath City,55.8,36.6
-    .zone Stormwind City >>在沙塔斯，从入口到暴风城
+    .zone Stormwind City >>前往: 暴风城, 在沙塔斯城使用传送门
     .skill skinning,75,1
 step
     #sticky
@@ -234,7 +234,7 @@ step
     #requires Shank
     #completewith next
     .goto Elwynn Forest,32.3,49.9
-    .zone Elwynn Forest >>离开暴风雪进入埃尔文森林
+    .zone Elwynn Forest >>前往: 艾尔文森林
     .skill skinning,75,1
 step
     #requires Shank
@@ -243,14 +243,14 @@ step
 	.loop 25,Elwynn Forest,32.6,83.0,31.0,85.6,32.6,87.8,33.6,85.4,32.6,83.0
 step << Mage
     #completewith next
-    .zone Ironforge >>传送至铁炉堡
+    .zone Ironforge >>前往: 铁炉堡
     .skill skinning,125,1
 step << !Mage
     .goto Stormwind City,68.2,72.9,20,0
     .goto Stormwind City,71.0,72.5
     >>返回暴风城
     .fly Ironforge
-    .zone Ironforge >>前往铁炉堡
+    .zone Ironforge >>前往: 铁炉堡
     .zoneskip Ironforge
     .skill skinning,125,1
     .cooldown item,6948,<0,1
@@ -262,7 +262,7 @@ step << !Mage
 step << !Mage
     #completewith next
     .goto Shattrath City,56.3,36.9
-    .zone Ironforge >>在沙塔斯，从入口到铁炉堡
+    .zone Ironforge >>前往: 铁炉堡, 使用沙塔斯城的传送门
     .skill skinning,125,1
 step
     .goto Ironforge,42.1,33.2,15,0
@@ -284,13 +284,13 @@ step
     .loop 45,Loch Modan,61.5,40.9,72.4,41.8,76.8,47.9,77.4,41.4,59.9,28.0,61.5,40.9
 step << Mage
     #completewith next
-    .zone Ironforge >>传送至铁炉堡
+    .zone Ironforge >>前往: 铁炉堡
     .skill skinning,155,1
 step << !Mage
     .goto Loch Modan,33.9,51.0
     >>返回塞尔斯马尔
     .fly Ironforge
-    .zone Ironforge >>前往铁炉堡
+    .zone Ironforge >>前往: 铁炉堡
     .zoneskip Ironforge
     .skill skinning,155,1
     .cooldown item,6948,<0,1
@@ -302,7 +302,7 @@ step << !Mage
 step << !Mage
     #completewith next
     .goto Shattrath City,56.3,36.9
-    .zone Ironforge >>在沙塔斯，从入口到铁炉堡
+    .zone Ironforge >>前往: 铁炉堡, 使用沙塔斯城的传送门
     .skill skinning,155,1
 step
     .goto Ironforge,42.1,33.2,15,0
@@ -333,13 +333,13 @@ step
     .loop 45,Arathi Highlands,47.2,69.9,46.8,73.0,45.7,76.4,45.6,81.2,48.2,82.6,51.1,74.4,54.1,69.9,56.6,68.0,54.9,62.9,48.7,60.6,47.2,69.9
 step << Mage
     #completewith next
-    .zone Ironforge >>传送至铁炉堡
+    .zone Ironforge >>前往: 铁炉堡
     .skill skinning,230,1
 step << !Mage
     .goto Arathi Highlands,45.8,46.1
     >>返回避难所
     .fly Ironforge
-    .zone Ironforge >>前往铁炉堡
+    .zone Ironforge >>前往: 铁炉堡
     .zoneskip Ironforge
     .skill skinning,230,1
     .cooldown item,6948,<0,1
@@ -351,7 +351,7 @@ step << !Mage
 step << !Mage
     #completewith next
     .goto Shattrath City,56.3,36.9
-    .zone Ironforge >>在沙塔斯，从入口到铁炉堡
+    .zone Ironforge >>前往: 铁炉堡, 使用沙塔斯城的传送门
     .skill skinning,230,1
 step
     .goto Ironforge,42.1,33.2,15,0
@@ -361,7 +361,7 @@ step
     .skill skinning,230,1
 step << Mage
     #completewith next
-    .zone Dustwallow Marsh >>传送至Theramore
+    .zone Dustwallow Marsh >>前往: 尘泥沼泽
     .skill skinning,230,1
 step << !Mage
     #completewith next
@@ -372,7 +372,7 @@ step << !Mage
     .zoneskip Feralas
 step << !Mage
     .goto Wetlands,5.0,63.5
-    .zone Dustwallow Marsh >>乘船去黄昏沼泽(Theramore)
+    .zone Dustwallow Marsh >>在塞拉摩乘船前往: 尘泥沼泽
     .skill skinning,230,1
     .zoneskip Feralas
 step
@@ -394,7 +394,7 @@ step
     .loop 45,Feralas,48.4,37.9,49.9,33.7,52.,31.8,49.4,31.5,49.5,29.3,50.1,26.4,47.6,24.5,45.8,24.6,46.5,27.5,46.3,29.9
 step << Mage
     #completewith next
-    .zone Dustwallow Marsh >>传送至Theramore
+    .zone Dustwallow Marsh >>前往: 尘泥沼泽
     .skill skinning,300,1
 step
     #completewith next
@@ -409,7 +409,7 @@ step
     .loop 45,Un'Goro Crater,31.5,28.9,37.1,28.9,42.1,33.4,42.7,40.2,40.7,45.1,34.3,44.6,29.4,40.0,29.4,34.4,31.5,28.9
 step << Mage
     #completewith next
-    .zone Shattrath City >>传送到沙塔斯市
+    .zone Shattrath City >>前往: 沙塔斯城
     .skill skinning,330,1
     .zoneskip Hellfire Peninsula
 step << !Mage
@@ -427,7 +427,7 @@ step
 step
     #completewith next
     .goto Hellfire Peninsula,56.7,63.8
-    .zone Hellfire Peninsula >>飞向荣誉在地狱火半岛的飞行坐骑上举行
+    .zone Hellfire Peninsula >>前往: 地狱火半岛, 飞往荣耀堡
     .skill skinning,330,1
     .skill riding,<300,1
 step
@@ -450,7 +450,7 @@ step
     .loop 45,Hellfire Peninsula,41.1,82.5,35.2,87.4,34.7,91.1,37.2,91.8,40.3,88.5,42.4,85.3,41.1,82.5
 step << Mage
     #completewith next
-    .zone Shattrath City >>传送到沙塔斯市
+    .zone Shattrath City >>前往: 沙塔斯城
     .skill skinning,375,1
     .zoneskip Nagrand
 step << !Mage
@@ -462,7 +462,7 @@ step << !Mage
 step
     #completewith next
     .goto Nagrand,77.4,54.6
-    .zone Nagrand >>乘坐飞行坐骑飞往纳格朗
+    .zone Nagrand >>前往: 纳格兰
     .skill skinning,375,1
 step
     >>杀死塔布克和克莱夫蹄，然后剥下它们的皮

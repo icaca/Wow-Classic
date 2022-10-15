@@ -18,7 +18,7 @@ step << Mage
 step
     >>删除您的炉石 << !Warlock
     .goto Dun Morogh,29.9,71.2
-    .accept 179 >>接受矮人装扮
+    .accept 179 >>接任务: 矮人的交易
 step << Warrior/Warlock
     #sticky
     #completewith next
@@ -38,7 +38,7 @@ step << Warlock
 step << Warlock
     .goto Dun Morogh,28.6,66.1
     .trainer >>火车献祭
-    .accept 1599 >>接受开始
+    .accept 1599 >>接任务: 开端
 step
     >>杀死狼。抢他们的肉
     .goto Dun Morogh,28.7,74.8
@@ -67,7 +67,7 @@ step << Warlock
 step << Warlock
     >>回到术士训练师那里
     .goto Dun Morogh,28.6,66.1
-    .turnin 1599 >>开始时交上来
+    .turnin 1599 >>交任务: 开端
 step << Priest/Mage/Warlock
     .goto Dun Morogh,30.0,71.5
     >>召唤你的小鬼并在途中拒绝恶魔皮肤 << Warlock
@@ -78,20 +78,20 @@ step << Paladin/Warrior
     .vendor >>供应商垃圾
 step
     .goto Dun Morogh,29.9,71.2
-    .turnin 179 >>交出矮人套装
-    .accept 233 >>接受Coldridge Valley邮件递送
-    .accept 3106 >>接受简单符文 << Dwarf Warrior
-    .accept 3107 >>接受神圣符文 << Paladin
-    .accept 3109 >>接受加密符文 << Dwarf Rogue
-    .accept 3110 >>接受神圣符文 << Priest
-    .accept 3112 >>接受简单备忘录 << Gnome Warrior
-    .accept 3113 >>接受加密备忘录 << Gnome Rogue
-    .accept 3114 >>接受字形备忘录 << Mage
-    .accept 3115 >>接受被篡改的备忘录 << Gnome Warlock
+    .turnin 179 >>交任务: 矮人的交易
+    .accept 233 >>接任务: 寒脊山谷的送信任务
+    .accept 3106 >>接任务: 简易符文 << Dwarf Warrior
+    .accept 3107 >>接任务: 神圣符文 << Paladin
+    .accept 3109 >>接任务: 密文符文 << Dwarf Rogue
+    .accept 3110 >>接任务: 神圣符文 << Priest
+    .accept 3112 >>接任务: 简易备忘录 << Gnome Warrior
+    .accept 3113 >>接任务: 密文备忘录 << Gnome Rogue
+    .accept 3114 >>接任务: 雕文备忘录 << Mage
+    .accept 3115 >>接任务: 被污染的备忘录 << Gnome Warlock
 step
     #era
     .goto Dun Morogh,29.7,71.2
-    .accept 170 >>接受新威胁
+    .accept 170 >>接任务: 新的威胁
 step
     #sticky
     #completewith Rockjaw
@@ -107,9 +107,9 @@ step
     .complete 170,2 --Kill Burly Rockjaw Trogg (x6)
 step
     .goto Dun Morogh,22.6,71.4
-    .turnin 233 >>提交科尔德里奇谷邮件递送
-    .accept 183 >>接受野猪猎人
-    .accept 234 >>接受Coldridge Valley邮件递送
+    .turnin 233 >>交任务: 寒脊山谷的送信任务
+    .accept 183 >>接任务: 猎杀野猪
+    .accept 234 >>接任务: 寒脊山谷的送信任务
 step
     .goto Dun Morogh,22.2,72.5,100,0
     .goto Dun Morogh,20.5,71.4,100,0
@@ -122,10 +122,10 @@ step
     .complete 183,1 --Kill Small Crag Boar (x12)
 step
     .goto Dun Morogh,22.6,71.4
-    .turnin 183 >>上缴猎野猪者
+    .turnin 183 >>交任务: 猎杀野猪
 step << Paladin/Mage/Warlock
     #era
-    .xp 3+1130>>研磨至1130+/1400经验
+    .xp 3+1130>>提升经验到1130+/1400经验
     .goto Dun Morogh,23.0,75.0,100,0
     .goto Dun Morogh,24.2,72.5,100,0
     .goto Dun Morogh,27.7,76.3,100,0
@@ -133,7 +133,7 @@ step << Paladin/Mage/Warlock
     .goto Dun Morogh,24.2,72.5
 step << Paladin/Mage/Warlock
     #som
-    .xp 3+1022>>研磨至1022+/1400经验
+    .xp 3+1022>>提升经验到1022+/1400经验
     .goto Dun Morogh,23.0,75.0,100,0
     .goto Dun Morogh,24.2,72.5,100,0
     .goto Dun Morogh,27.7,76.3,100,0
@@ -142,11 +142,11 @@ step << Paladin/Mage/Warlock
 step
     #label Rockjaw
     .goto Dun Morogh,25.1,75.7
-    .turnin 234 >>提交科尔德里奇谷邮件递送
-    .accept 182 >>接受巨魔洞穴
+    .turnin 234 >>交任务: 寒脊山谷的送信任务
+    .accept 182 >>接任务: 巨魔洞穴
 step << Paladin/Mage/Warlock
     .goto Dun Morogh,25.0,76.0
-    .accept 3364 >>接受烫发晨报递送
+    .accept 3364 >>接任务: 热酒快递
     >>一旦接受，将启动5分钟计时器。放松并遵循指南
 step << Paladin/Mage/Warlock
     #era
@@ -158,31 +158,31 @@ step << Paladin/Mage/Warlock
     #completewith Scalding1
     >>如果你速度太慢，无法完成定时任务，请再去捡一次
     .goto Dun Morogh,25.0,76.0,0
-    .accept 3364 >>接受烫发晨报递送
+    .accept 3364 >>接任务: 热酒快递
     .goto Dun Morogh,28.8,66.4
-    .turnin 3364 >>交付烫伤晨报
+    .turnin 3364 >>交任务: 热酒快递
 step << Paladin/Mage/Warlock
     #label Scalding1
     .goto Dun Morogh,28.8,66.4
-    .turnin 3364 >>交付烫伤晨报
-    .accept 3365 >>接受带回马克杯
+    .turnin 3364 >>交任务: 热酒快递
+    .accept 3365 >>接任务: 归还酒杯
     .vendor >>供应商垃圾
 step << Dwarf Paladin
     .goto Dun Morogh,28.8,68.3
-    .turnin 3107 >>交上神圣符文
+    .turnin 3107 >>交任务: 神圣符文
     .trainer >>训练你的职业咒语
 step << Gnome Mage
     .goto Dun Morogh,28.7,66.4
-    .turnin 3114 >>递交字形备忘录
+    .turnin 3114 >>交任务: 雕文备忘录
     .trainer >>训练你的职业咒语
 step << Warlock
     .goto Dun Morogh,28.6,66.1
     .trainer >>上楼去。培养你的腐败
-    .turnin 3115 >>交回被篡改的备忘录
+    .turnin 3115 >>交任务: 被污染的备忘录
 step << Paladin/Mage/Warlock
     #era
     .goto Dun Morogh,29.7,71.2
-    .turnin 170 >>提交新威胁
+    .turnin 170 >>交任务: 新的威胁
 step << Mage/Warlock
     .goto Dun Morogh,30.0,71.5
     .vendor >>供应商，购买10水
@@ -222,25 +222,25 @@ step << !Paladin !Mage !Warlock
     #era
     #requires TrollTroggs
     .goto Dun Morogh,25.1,75.7
-    .turnin 182 >>转入巨魔洞穴
-    .accept 218 >>接受被盗日记
+    .turnin 182 >>交任务: 巨魔洞穴
+    .accept 218 >>接任务: 被窃取的日记
 step << !Paladin !Mage !Warlock
     #som
     .goto Dun Morogh,25.1,75.7
-    .turnin 182 >>转入巨魔洞穴
-    .accept 218 >>接受被盗日记
+    .turnin 182 >>交任务: 巨魔洞穴
+    .accept 218 >>接任务: 被窃取的日记
 step << Paladin/Mage/Warlock
     .goto Dun Morogh,25.1,75.7
-    .turnin 182 >>转入巨魔洞穴
-    .accept 218 >>接受被盗日记
+    .turnin 182 >>交任务: 巨魔洞穴
+    .accept 218 >>接任务: 被窃取的日记
 step << !Paladin !Mage !Warlock
     #softcore
     .goto Dun Morogh,25.0,76.0
-    .accept 3364 >>接受烫发晨报递送
+    .accept 3364 >>接任务: 热酒快递
     >>你现在有500万美元要拿到《华尔街日报》，然后交上《晨报》。如果你的任务失败了，死后再捡起来
 step << Paladin/Mage/Warlock
     .goto Dun Morogh,25.0,76.0
-    .turnin 3365 >>把杯子拿回来
+    .turnin 3365 >>交任务: 归还酒杯
 step
     .goto Dun Morogh,26.8,79.9,30,0
     .goto Dun Morogh,29.0,79.0,15,0
@@ -250,13 +250,13 @@ step
 step << !Paladin !Mage !Warlock
     #hardcore
     .goto Dun Morogh,25.0,76.0
-    .accept 3364 >>接受烫发晨报递送
+    .accept 3364 >>接任务: 热酒快递
 step << !Paladin !Mage !Warlock
     #hardcore
     >>磨碎一点回到这里
     .goto Dun Morogh,25.1,75.8
-    .turnin 218 >>交出被盗日记
-    .accept 282 >>接受Senir的意见
+    .turnin 218 >>交任务: 被窃取的日记
+    .accept 282 >>接任务: 森内尔的观察站
 step << !Paladin !Mage !Warlock
     #softcore
     .goto Dun Morogh,29.5,69.8,100 >>在精神治疗者处死亡并重生
@@ -265,31 +265,31 @@ step << !Paladin !Mage !Warlock
     #completewith Scalding2
     >>如果你速度太慢，无法完成定时任务，请再去捡一次
     .goto Dun Morogh,25.0,76.0,0
-    .accept 3364 >>接受烫发晨报递送
+    .accept 3364 >>接任务: 热酒快递
     .goto Dun Morogh,28.8,66.4
-    .turnin 3364 >>交付烫伤晨报
+    .turnin 3364 >>交任务: 热酒快递
 step << !Paladin !Mage !Warlock
     #label Scalding2
     .goto Dun Morogh,28.8,66.4
-    .turnin 3364 >>交付烫伤晨报
-    .accept 3365 >>接受带回马克杯
+    .turnin 3364 >>交任务: 热酒快递
+    .accept 3365 >>接任务: 归还酒杯
 step << Rogue
     .goto Dun Morogh,28.4,67.5
-    .turnin 3113 >>提交加密备忘录 << Gnome Rogue
-    .turnin 3109 >>提交加密符文 << Dwarf Rogue
+    .turnin 3113 >>交任务: 密文备忘录 << Gnome Rogue
+    .turnin 3109 >>交任务: 密文符文 << Dwarf Rogue
 step << Dwarf Priest
     .goto Dun Morogh,28.6,66.4
-    .turnin 3110 >>交出神圣符文
+    .turnin 3110 >>交任务: 神圣符文
     .trainer >>训练你的职业咒语
 step << Warrior
     .goto Dun Morogh,28.8,67.2
-    .turnin 3106 >>交出简单符文 << Dwarf Warrior
-    .turnin 3112 >>提交简单备忘录 << Gnome Warrior
+    .turnin 3106 >>交任务: 简易符文 << Dwarf Warrior
+    .turnin 3112 >>交任务: 简易备忘录 << Gnome Warrior
     .trainer >>训练你的职业咒语
 step << !Paladin !Mage !Warlock
     #era
     .goto Dun Morogh,29.7,71.2
-    .turnin 170 >>提交新威胁
+    .turnin 170 >>交任务: 新的威胁
 step << Priest
     .money <0.0025
     .goto Dun Morogh,30.0,71.5
@@ -297,18 +297,18 @@ step << Priest
 step
     >>磨碎一点回到这里
     .goto Dun Morogh,25.1,75.8
-    .turnin 218 >>交出被盗日记
-    .accept 282 >>接受Senir的意见
+    .turnin 218 >>交任务: 被窃取的日记
+    .accept 282 >>接任务: 森内尔的观察站
 step << !Paladin !Mage !Warlock
     .goto Dun Morogh,25.0,76.0
-    .turnin 3365 >>把杯子拿回来
+    .turnin 3365 >>交任务: 归还酒杯
 step
     .goto Dun Morogh,33.5,71.8
-    .turnin 282 >>提交Senir的观察结果
-    .accept 420 >>接受Senir的意见
+    .turnin 282 >>交任务: 森内尔的观察站
+    .accept 420 >>接任务: 森内尔的观察站
 step
     .goto Dun Morogh,33.9,72.2
-    .accept 2160 >>接受供应给Tannok
+    .accept 2160 >>接任务: 塔诺克的补给品
 step
     .goto Dun Morogh,34.1,71.6,20,0
     .goto Dun Morogh,35.7,66.0,0
@@ -345,13 +345,13 @@ step << Priest
     .goto Dun Morogh,36.4,62.9,45,0
     .goto Dun Morogh,37.7,60.5,45,0
     .goto Dun Morogh,43.9,55.7
-    .xp 5+2145>>研磨至2145/+2800xp
+    .xp 5+2145>>提升经验到2145/+2800xp
 step << !Priest
     >>将野猪磨碎，东北至哈拉诺斯
     .goto Dun Morogh,36.4,62.9,45,0
     .goto Dun Morogh,37.7,60.5,45,0
     .goto Dun Morogh,43.9,55.7
-    .xp 5+2415>>研磨至2415/+2800xp
+    .xp 5+2415>>提升经验到2415/+2800xp
 step
     #completewith next
     #softcore
@@ -359,13 +359,13 @@ step
 step
     #softcore
     .goto Dun Morogh,46.7,53.8
-    .turnin 420 >>提交Senir的观察结果
+    .turnin 420 >>交任务: 森内尔的观察站
     .vendor >>供应商垃圾
 step
     #hardcore
     >>在前往哈拉诺斯的途中磨碎野猪
     .goto Dun Morogh,46.7,53.8
-    .turnin 420 >>提交Senir的观察结果
+    .turnin 420 >>交任务: 森内尔的观察站
     .vendor >>供应商垃圾
 step << Warlock
     .goto Dun Morogh,47.3,53.7
@@ -376,10 +376,10 @@ step << !Priest
     .xp 6 >>升级到6
 step
     .goto Dun Morogh,46.8,52.4
-    .accept 384 >>接受啤酒烤猪排
+    .accept 384 >>接任务: 啤酒烤猪排
 step
     .goto Dun Morogh,47.2,52.2
-    .turnin 2160 >>向Tannok移交物资
+    .turnin 2160 >>交任务: 塔诺克的补给品
 step << Rogue
     .goto Dun Morogh,47.2,52.4
     .vendor >>购买克雷格投掷的3级。装备它
@@ -394,14 +394,14 @@ step << Paladin
     .trainer >>训练你的职业咒语
 step << Priest
     .goto Dun Morogh,47.3,52.2
-    .accept 5625 >>接受光明之衣
+    .accept 5625 >>接任务: 圣光之衣
 step << Priest
     >>使用较低治疗等级2，然后使用咒语：登山者杜尔夫的坚韧
     .goto Dun Morogh,45.8,54.6
      .complete 5625,1 --Heal and fortify Mountaineer Dolf
 step << Priest
     .goto Dun Morogh,47.3,52.2
-    .turnin 5625 >>交出光明的衣裳
+    .turnin 5625 >>交任务: 圣光之衣
     .trainer >>训练你的职业咒语
 step << Priest
     .xp 6 >>升级到6
@@ -444,21 +444,21 @@ step << Paladin
     >>如果你想从事自己的职业，跳过这一步
 step
     .goto Dun Morogh,46.0,51.7
-    .accept 400 >>钢格栅的验收工具
+    .accept 400 >>接任务: 贝尔丁的工具
 step
     .goto Dun Morogh,49.4,48.4
     >>不要在途中杀死熊
-    .accept 317 >>接受库存Jetsteam
+    .accept 317 >>接任务: 贝尔丁的补给
 step
     .goto Dun Morogh,49.6,48.6
-    .accept 313 >>接受Grizzled Den
+    .accept 313 >>接任务: 灰色洞穴
 step
     .goto Dun Morogh,50.4,49.1
-    .turnin 400 >>钢格栅上交工具
+    .turnin 400 >>交任务: 贝尔丁的工具
 step
     #label BoarMeat44
     .goto Dun Morogh,50.1,49.4
-    .accept 5541 >>接受弹药以防隆隆枪击
+    .accept 5541 >>接任务: 海格纳的弹药
 step << Warrior/Paladin/Rogue
     .money <0.0091
     .goto Dun Morogh,50.1,49.4
@@ -505,8 +505,8 @@ step << !Paladin !Warrior !Rogue
     .complete 317,2 --Collect Thick Bear Fur (x2)
 step << !Paladin !Warrior !Rogue
     .goto Dun Morogh,49.4,48.4
-    .turnin 317 >>上缴库存Jetsteam
-    .accept 318 >>接受Evershine
+    .turnin 317 >>交任务: 贝尔丁的补给
+    .accept 318 >>接任务: 艾沃沙酒
 step << Warrior
     .goto Dun Morogh,46.9,52.1,20,0
     .goto Dun Morogh,47.4,52.5
@@ -524,14 +524,14 @@ step
     >>杀死Wendigos。掠夺他们的鬃毛。留心纹理，为武器的配重块获取粗糙的石头 << Paladin
     .complete 313,1 --Collect Wendigo Mane (x8)
 step
-    >>抢劫板条箱
+    >>掠夺板条箱
     .goto Dun Morogh,44.1,56.9
     .complete 5541,1 --Collect Rumbleshot's Ammo (x1)
 step
     #label BearFur
     .goto Dun Morogh,40.6,62.6,50,0
     .goto Dun Morogh,40.7,65.1
-    .turnin 5541 >>交出弹药进行隆布尔枪击
+    .turnin 5541 >>交任务: 海格纳的弹药
     .vendor >>供应商和维修
 step << !Paladin !Warrior !Rogue
     .xp 7 >>升级到7
@@ -542,11 +542,11 @@ step << Paladin/Warrior/Rogue
     .complete 317,1 --Collect Chunk of Boar Meat (x4)
 step << Warrior/Paladin/Rogue
     .goto Dun Morogh,49.4,48.4
-    .turnin 317 >>上缴库存Jetsteam
-    .accept 318 >>接受Evershine
+    .turnin 317 >>交任务: 贝尔丁的补给
+    .accept 318 >>接任务: 艾沃沙酒
 step << Warrior/Paladin/Rogue
     .goto Dun Morogh,49.6,48.6
-    .turnin 313 >>在Grizzled Den转弯
+    .turnin 313 >>交任务: 灰色洞穴
 step << Warrior/Paladin/Rogue
     .goto Dun Morogh,50.1,49.4
     .collect 2901,1 >>购买采矿镐
@@ -596,13 +596,13 @@ step << Paladin/Warrior/Rogue
     .goto Dun Morogh,43.0,47.4,100,0
     .goto Dun Morogh,39.6,48.9,100,0
     .goto Dun Morogh,34.6,51.7
-    .accept 312 >>接受Tundra MacGrann被盗的Stash
+    .accept 312 >>接任务: 马克格拉恩的干肉
 step << !Paladin !Warrior !Rogue
     >>在途中碾碎一些暴徒
     .goto Dun Morogh,35.2,56.4,100,0
     .goto Dun Morogh,36.0,52.0,100,0
     .goto Dun Morogh,34.6,51.7
-    .accept 312 >>接受Tundra MacGrann被盗的Stash
+    .accept 312 >>接任务: 马克格拉恩的干肉
 step << !Mage !Priest
     #completewith next
     .goto Dun Morogh,30.5,46.0
@@ -613,12 +613,12 @@ step << Priest/Mage/Warlock
     .vendor >>小贩购买最多20杯5级饮料
 step
     .goto Dun Morogh,30.2,45.8
-    .turnin 318 >>交给Evershine
-    .accept 319 >>接受对Evershine的支持
-    .accept 315 >>接受完美的烈性酒
+    .turnin 318 >>交任务: 艾沃沙酒
+    .accept 319 >>接任务: 艾沃沙酒
+    .accept 315 >>接任务: 完美烈酒
 step
     .goto Dun Morogh,30.2,45.5
-    .accept 310 >>接受残酷的竞争对手
+    .accept 310 >>接任务: 针锋相对
 step
     #label Ribs
     .goto Dun Morogh,31.5,38.9,100,0
@@ -643,13 +643,13 @@ step
     .complete 384,1 --Collect Crag Boar Rib (x6)
 step
     .goto Dun Morogh,30.2,45.7
-    .turnin 319 >>为Evershine提供支持
-    .accept 320 >>接受返回Bellowfiz
+    .turnin 319 >>交任务: 艾沃沙酒
+    .accept 320 >>接任务: 艾沃沙酒
 step
     .isQuestTurnedIn 384
-    .xp 7+4360>>研磨至4360+/4500xp
+    .xp 7+4360>>提升经验到4360+/4500xp
 step
-    .xp 7+3735>>研磨至3735+/4500xp
+    .xp 7+3735>>提升经验到3735+/4500xp
     .goto Dun Morogh,31.5,38.9,100,0
     .goto Dun Morogh,28.3,39.9,100,0
     .goto Dun Morogh,28.7,43.7,100,0
@@ -698,11 +698,11 @@ step
     .goto Dun Morogh,47.6,52.4,15,0
     >>进客栈老板后面的房间。下楼去，然后和贾文谈谈，给他雷霆啤酒
     >>等待木桶鼠标移到“无人看守”位置，然后handin
-    .turnin 310 >>在激烈的竞争中获胜
-    .accept 311 >>接受返回Marleth
+    .turnin 310 >>交任务: 针锋相对
+    .accept 311 >>接任务: 向马莱斯回报
 step
     .goto Dun Morogh,46.8,52.4
-    .turnin 384 >>翻啤酒扒猪排
+    .turnin 384 >>交任务: 啤酒烤猪排
      >>当你下一个供应商时出售配方
 step << !Paladin !Rogue !Warrior
     .xp 8 >>升级到8
@@ -757,19 +757,19 @@ step << Priest/Mage/Warlock
     .vendor >>从客栈老板那里购买至多30杯5级饮料
 step
     .goto Dun Morogh,46.7,53.8
-    .accept 287 >>接受Frostmane保持
+    .accept 287 >>接任务: 霜鬃巨魔要塞
 step
     .goto Dun Morogh,49.6,48.6
-    .turnin 313 >>在Grizzled Den转弯
+    .turnin 313 >>交任务: 灰色洞穴
 step
     .goto Dun Morogh,49.4,48.4
     >>选择野营刀。保存以备以后使用 << Rogue
-    .turnin 320 >>转身返回贝洛菲兹
+    .turnin 320 >>交任务: 艾沃沙酒
 step
     #era << Warlock
     >>建筑物内部
     .goto Dun Morogh,45.8,49.4
-    .accept 412 >>接受操作重组
+    .accept 412 >>接任务: 自动净化装置
 step
     #completewith next
     .goto Dun Morogh,43.1,45.0,20,0
@@ -782,8 +782,8 @@ step
     .goto Dun Morogh,39.5,43.0
     .goto Dun Morogh,41.5,36.0
     >>清除这个地区的暴徒。如果你需要清理中间营地，请小心。如果你需要更多的暴徒，你可以把暴徒拉到小屋里，视线(LoS)在小屋后面。如果你运气不好，就跑到另一个地方去
-    >>在地上抢劫篮子
-    >>如果你在这里抢劫亚麻布，就要做砝码 << Paladin
+    >>在地上掠夺篮子
+    >>如果你在这里掠夺亚麻布，就要做砝码 << Paladin
     .complete 315,1 --Collect Shimmerweed (x6)
 step << !Mage !Warlock
     .goto Dun Morogh,38.5,54.0
@@ -797,7 +797,7 @@ step << Mage/Warlock
     .complete 312,1 --Collect MacGrann's Dried Meats (x1)
 step
     .goto Dun Morogh,34.6,51.7
-    .turnin 312 >>交出Tundra MacGrann被盗的Stash
+    .turnin 312 >>交任务: 马克格拉恩的干肉
 step << Mage/Priest/Warlock
     #completewith next
     .goto Dun Morogh,30.4,45.8
@@ -808,11 +808,11 @@ step << Warrior/Paladin/Rogue
     .vendor >>供应商垃圾
 step
     .goto Dun Morogh,30.2,45.7
-    .turnin 315 >>交上完美的烈酒
-    .accept 413 >>接受Shimmer Stout
+    .turnin 315 >>交任务: 完美烈酒
+    .accept 413 >>接任务: 微光酒
 step
     .goto Dun Morogh,30.2,45.5
-    .turnin 311 >>交给马利思
+    .turnin 311 >>交任务: 向马莱斯回报
 step
     #era << Warlock
     .goto Dun Morogh,27.2,43.0,80,0
@@ -821,7 +821,7 @@ step
     .goto Dun Morogh,24.3,44.0,80,0
     .goto Dun Morogh,25.4,45.4,80,0
     .goto Dun Morogh,25.00,43.50
-    >>杀死麻风侏儒。抢劫他们的装备和鞋帽
+    >>杀死麻风侏儒。掠夺他们的装备和鞋帽
     .complete 412,2 --Collect Gyromechanic Gear (x8)
     .complete 412,1 --Collect Restabilization Cog (x8)
 step
@@ -858,12 +858,12 @@ step
    .goto Dun Morogh,46.7,53.8,150 >>如果没问题的话，就把炉子烧了，否则就要碾回哈拉诺斯
 step
     .goto Dun Morogh,46.7,53.8
-    .turnin 287 >>交给Frostmane Hold
-    .accept 291 >>接受报告
+    .turnin 287 >>交任务: 霜鬃巨魔要塞
+    .accept 291 >>接任务: 森内尔的报告
 step << Rogue
     #level 10
     .goto Dun Morogh,47.6,52.6
-    .accept 2218 >>接受救世之路
+    .accept 2218 >>接任务: 救赎之路
 step << !Paladin !Priest
     .goto Dun Morogh,47.2,52.6
     .train 3273 >>培训急救
@@ -871,7 +871,7 @@ step
     #era << Warlock
     >>建筑物内部
     .goto Dun Morogh,45.8,49.4
-    .turnin 412 >>转入操作再栓塞
+    .turnin 412 >>交任务: 自动净化装置
 step << Warrior
     #sticky
     #completewith next
@@ -890,7 +890,7 @@ step << Warrior
 step
     .goto Dun Morogh,60.1,52.6,50,0
     .goto Dun Morogh,63.1,49.8
-    .accept 314 >>接受保护羊群
+    .accept 314 >>接任务: 保护牲畜
 step
     #sticky
     #completewith next
@@ -905,7 +905,7 @@ step
     .link https://www.youtube.com/watch?v=ZJX6sCkm5JY >>单击此处了解如何独奏瓦加什
 step
     .goto Dun Morogh,63.1,49.8
-    .turnin 314 >>转身保护羊群
+    .turnin 314 >>交任务: 保护牲畜
 step
     >>途中磨碎一点
     .goto Dun Morogh,68.6,54.7
@@ -916,14 +916,14 @@ step
     .train 2550 >>Ghilm的火车烹饪
 step
     .goto Dun Morogh,68.7,56.0
-    .accept 433 >>接受公务员
+    .accept 433 >>接任务: 公众之仆
 step
     #completewith next
     .goto Dun Morogh,68.9,55.9
     .vendor >>供应商垃圾，修理
 step
     .goto Dun Morogh,69.1,56.3
-    .accept 432 >>接受那些被炸死的流浪汉！
+    .accept 432 >>接任务: 该死的石腭怪！
 step
     .goto Dun Morogh,70.7,56.4,40,0
     .goto Dun Morogh,70.62,52.39,25,0
@@ -933,63 +933,63 @@ step
     .complete 433,1 --Kill Rockjaw Bonesnapper (x10)
 step
     .goto Dun Morogh,69.1,56.3
-    .turnin 432 >>把那些被炸死的暴徒交上来！
+    .turnin 432 >>交任务: 该死的石腭怪！
 step
     #completewith next
     .goto Dun Morogh,68.9,55.9
     .vendor >>供应商垃圾，修理
 step
     .goto Dun Morogh,68.7,56.0
-    .turnin 433 >>上缴公务员
+    .turnin 433 >>交任务: 公众之仆
 step
     #era
     .goto Dun Morogh,67.1,59.7
     .xp 10 >>在拖架上升级到10
 step
     .goto Dun Morogh,83.8,39.2
-    .accept 419 >>接受迷失的飞行员
+    .accept 419 >>接任务: 失踪的驾驶员
 step
     >>途中研磨
     .goto Dun Morogh,79.7,36.2
-    .turnin 419 >>交出失踪的飞行员
-    .accept 417 >>接受飞行员的复仇
+    .turnin 419 >>交任务: 失踪的驾驶员
+    .accept 417 >>接任务: 驾驶员的复仇
 step
     >>杀死芒格克劳。抢走他的爪子
     .goto Dun Morogh,78.97,37.14
     .complete 417,1 --Collect Mangy Claw (x1)
 step
     .goto Dun Morogh,83.9,39.2
-    .turnin 417 >>提交飞行员的复仇
+    .turnin 417 >>交任务: 驾驶员的复仇
 step
     .goto Dun Morogh,79.6,50.7,50,0
     .goto Dun Morogh,82.3,53.5,25,0
     .goto Dun Morogh,86.3,48.8
-    .turnin 413 >>转入Shimmer Stout
-    .accept 414 >>接受斯托特到卡德雷尔
+    .turnin 413 >>交任务: 微光酒
+    .accept 414 >>接任务: 卡德雷尔的酒
 step
     >>穿过隧道进入Loch
     .goto Loch Modan,22.1,73.1
-    .accept 224 >>接受保护国王的土地
+    .accept 224 >>接任务: 保卫国王的领土
 step
     .goto Loch Modan,23.2,73.7
     >>从后面进入沙坑
-    .accept 267 >>接受Trogg威胁
+    .accept 267 >>接任务: 穴居人的威胁
 step
     .goto Loch Modan,32.6,49.9,80.0,0
     .goto Loch Modan,37.2,46.1,80.0,0
     .goto Loch Modan,36.7,41.6
     >>找到卡德雷尔。他沿着塞尔萨马尔公路巡逻
-    .turnin 414 >>把斯托特交给卡德雷尔
-    .accept 416 >>接受捕鼠
-    .accept 1339 >>接受登山者Stormpike的任务
+    .turnin 414 >>交任务: 卡德雷尔的酒
+    .accept 416 >>接任务: 狗头人的耳朵
+    .accept 1339 >>接任务: 巡山人卡尔·雷矛的任务
 step
     >>进入大楼，然后下楼。与Brock交谈
     .goto Loch Modan,37.2,46.9,15,0
     .goto Loch Modan,37.0,47.8
-    .accept 6387 >>接受荣誉学生
+    .accept 6387 >>接任务: 荣誉学员
 step
     .goto Loch Modan,34.8,49.3
-    .accept 418 >>接受Thelsamar鲜血香肠
+    .accept 418 >>接任务: 塞尔萨玛血肠
 step
     .goto Loch Modan,34.8,48.6
     .vendor >>购买6槽包
@@ -1012,32 +1012,32 @@ step
 step
     >>跑到北方的掩体
     .goto Loch Modan,24.8,18.4
-    .accept 307 >>接受肮脏的爪子
-    .turnin 1339 >>提交登山者Stormpike的任务
-    .accept 1338 >>接受Stormpike的命令
+    .accept 307 >>接任务: 肮脏的爪子
+    .turnin 1339 >>交任务: 巡山人卡尔·雷矛的任务
+    .accept 1338 >>接任务: 卡尔·雷矛的订单
 step
     #completewith next
     .deathskip >>在塞尔萨马尔死亡并重生
 step
     #label Thelsamar1
     .goto Loch Modan,33.9,51.0
-    .turnin 6387 >>移交荣誉学生
-    .accept 6391 >>接受铁炉堡之旅
+    .turnin 6387 >>交任务: 荣誉学员
+    .accept 6391 >>接任务: 飞往铁炉堡
 step
     .goto Loch Modan,33.9,51.0
     .fly Ironforge >>飞往铁炉堡
 step
     .goto Ironforge,51.5,26.3
-    .turnin 6391 >>上交骑行前往铁炉堡
-    .accept 6388 >>接受Gryth Thurden
+    .turnin 6391 >>交任务: 飞往铁炉堡
+    .accept 6388 >>接任务: 格莱斯·瑟登
 step
     .goto Ironforge,39.5,57.5
-    .turnin 291 >>提交报告
+    .turnin 291 >>交任务: 森内尔的报告
 step
     >>不要在任何地方飞行
     .goto Ironforge,55.5,47.8
-    .turnin 6388 >>转入Gryth Thurden
-    .accept 6392 >>接受返回Brock
+    .turnin 6388 >>交任务: 格莱斯·瑟登
+    .accept 6392 >>接任务: 向布洛克回复
 step
     #completewith next
     +执行注销跳过，跳到鹰头狮的头上，注销，然后再重新登录
@@ -1046,34 +1046,34 @@ step
     .goto Ironforge,74.40,51.10,30,0
     .goto Ironforge,74.40,51.10,0
      >>进入Deeprun Tram，在中间平台与侏儒交谈
-    .accept 6661 >>接受Deeprun老鼠围捕
+    .accept 6661 >>接任务: 捕捉矿道老鼠
 step
     >>用你的长笛对付四处散落的老鼠
     .complete 6661,1 --Rats Captured (x5)
 step
-    .turnin 6661 >>交给Deeprun老鼠围捕
-    .accept 6662 >>接受我，兄弟，尼普西
+    .turnin 6661 >>交任务: 捕捉矿道老鼠
+    .accept 6662 >>接任务: 我的兄弟，尼普希
 step
      .isOnQuest 6662
     >>乘电车去暴风城，到了电车的另一边后再转弯
-    .turnin 6662 >>交给我，兄弟，尼普西
+    .turnin 6662 >>交任务: 我的兄弟，尼普希
     >>在等待/乘坐电车时进行急救训练，您需要80分的急救积分才能完成24级任务 << Rogue
 step
     #completewith next
     .goto StormwindClassic,60.5,12.3
-    .zone Stormwind City >>下车进入暴风城
+    .zone Stormwind City >>前往: 暴风城
 step
     .goto StormwindClassic,51.6,12.2
-    .accept 353 >>接受Stormpike的交付
+    .accept 353 >>接任务: 雷矛的包裹
 step
     .goto StormwindClassic,58.1,16.5
-    .turnin 1338 >>提交Stormpike的命令
+    .turnin 1338 >>交任务: 卡尔·雷矛的订单
 step << Priest
     #completewith next
     >>进入大教堂
     .goto StormwindClassic,38.54,26.86
     .trainer >>训练你的职业咒语
-    .turnin 5634 >>递交绝望祈祷
+    .turnin 5634 >>交任务: 绝望祷言
 step << Priest
     .goto StormwindClassic,38.62,26.10
     .train 13908 >>训练绝望祈祷
@@ -1083,28 +1083,28 @@ step << Warrior
 step << Warrior
     .goto StormwindClassic,78.67,45.80
     .trainer >>上楼去。训练你的职业咒语
-    .accept 1638 >>接受战士训练
+    .accept 1638 >>接任务: 战士的训练
 step << Warrior
     #sticky
     #completewith next
     .goto StormwindClassic,71.7,39.9,20 >>进入酒馆
 step << Warrior
     .goto StormwindClassic,74.3,37.3
-    .turnin 1638 >>交战士训练
-    .accept 1639 >>接受醉汉巴特比
+    .turnin 1638 >>交任务: 战士的训练
+    .accept 1639 >>接任务: 醉鬼巴特莱比
 step << Warrior
     .goto StormwindClassic,73.8,36.3
-    .turnin 1639 >>交给醉汉巴特比
-    .accept 1640 >>接受Beat Bartleby
+    .turnin 1639 >>交任务: 醉鬼巴特莱比
+    .accept 1640 >>接任务: 击败巴特莱比
     .complete 1640,1 --Beat Bartleby
 step << Warrior
     .goto StormwindClassic,73.8,36.3
-    .turnin 1640 >>加入Beat Bartleby
-    .accept 1665 >>接受巴特比的马克杯
+    .turnin 1640 >>交任务: 击败巴特莱比
+    .accept 1665 >>接任务: 巴特莱比的酒杯
 step << Warrior
     >>你现在将学习防御姿态和破甲
     .goto StormwindClassic,74.3,37.3
-    .turnin 1665 >>交给巴特比的马克杯
+    .turnin 1665 >>交任务: 巴特莱比的酒杯
 step << Warlock
     #sticky
     #completewith next
@@ -1115,7 +1115,7 @@ step << Warlock
     .trainer >>训练你的职业咒语
 step << Warlock
     .goto StormwindClassic,25.2,78.5
-    .accept 1688 >>接受Surena Caledon
+    .accept 1688 >>接任务: 苏伦娜·凯尔东
 step
     .goto StormwindClassic,57.1,57.7
     .trainer >>训练1h剑 << Rogue
@@ -1158,11 +1158,11 @@ step << Warlock
 step
     .goto Elwynn Forest,42.10,65.90
      >>前往Goldshire
-    .accept 62 >>接受Fargodeep矿井
+    .accept 62 >>接任务: 法戈第矿洞
 step
     >>在你靠近的左边
     .goto Elwynn Forest,43.3,65.7
-    .accept 60 >>接受Kobold Candles
+    .accept 60 >>接任务: 狗头人的蜡烛
 step << Mage
     .goto Elwynn Forest,43.25,66.19
     .trainer >>上楼去。训练你的职业咒语
@@ -1171,18 +1171,18 @@ step << Rogue
     .trainer >>上楼去。训练你的职业咒语
 step
     .goto Elwynn Forest,42.10,67.30
-    .accept 40 >>接受鱼的危险
-    .accept 47 >>接受金尘交换
+    .accept 40 >>接任务: 鱼人的威胁
+    .accept 47 >>接任务: 金砂交易
 step << Warlock
     >>点击周围任何通缉海报
     .goto Elwynn Forest,24.6,74.7
-    .accept 176 >>接受通缉：“Hogger”
+    .accept 176 >>接任务: 通缉：霍格
 step << Warlock
     #sticky
     #completewith collector
     >>请留意取金时间表(幸运滴)，或Gruff Swiftbite的100%滴(罕见)。额外210xp
     .collect 1307,1,123 --Collect Gold Pickup Schedule (x1)
-    .accept 123 >>接受催收员
+    .accept 123 >>接任务: 收货人
 step << Warlock
     #label Hogger
     .unitscan Hogger
@@ -1203,14 +1203,14 @@ step << Warlock
     >>小心，因为这可能很困难
     .complete 176,1 --Huge Gnoll Claw (1)
 step
-    .accept 88 >>接受公主必死无疑！
+    .accept 88 >>接任务: 公主必须死！
     .goto Elwynn Forest,34.60,84.50
-    .accept 85 >>接受丢失的项链
+    .accept 85 >>接任务: 丢失的项链
     .goto Elwynn Forest,34.40,84.2
 step
     .goto Elwynn Forest,43.0,85.8
-    .turnin 85 >>交回丢失的项链
-    .accept 86 >>为比利接受派
+    .turnin 85 >>交任务: 丢失的项链
+    .accept 86 >>接任务: 比利的馅饼
 step
     #sticky
     #label Fargodeep
@@ -1229,37 +1229,37 @@ step
 step << !Warlock
     #requires Fargodeep
     .goto Elwynn Forest,42.20,66.00
-    .turnin 62 >>交给Fargodeep矿井
-    .turnin 40 >>陷入困境
-    .accept 35 >>接受进一步关注
+    .turnin 62 >>交任务: 法戈第矿洞
+    .turnin 40 >>交任务: 鱼人的威胁
+    .accept 35 >>接任务: 卫兵托马斯
 step << Warlock
     #requires Fargodeep
     .goto Elwynn Forest,42.1,65.9
     >>选择棍子，然后装备它
-    .turnin 176 >>通缉犯：“Hogger”
-    .turnin 62 >>交给Fargodeep矿井
-    .turnin 40 >>陷入困境
-    .accept 35 >>接受进一步关注
+    .turnin 176 >>交任务: 通缉：霍格
+    .turnin 62 >>交任务: 法戈第矿洞
+    .turnin 40 >>交任务: 鱼人的威胁
+    .accept 35 >>接任务: 卫兵托马斯
 step << Warlock
     #label collector
     .goto Elwynn Forest,42.1,65.9
-    .turnin 123 >>交回收集器
+    .turnin 123 >>交任务: 收货人
     .isOnQuest 123
 step
     .goto Elwynn Forest,43.30,65.70
-    .turnin 60 >>交上Kobold Candles
-    .accept 61 >>接受装运至暴风城
+    .turnin 60 >>交任务: 狗头人的蜡烛
+    .accept 61 >>接任务: 送往暴风城的货物
 step
     .goto Elwynn Forest,42.20,67.20
-    .turnin 47 >>交金换尘
+    .turnin 47 >>交任务: 金砂交易
 step
     .goto Elwynn Forest,73.90,72.30
-    .turnin 35 >>提交更多问题
+    .turnin 35 >>交任务: 卫兵托马斯
 step
     #era
     .goto Elwynn Forest,73.90,72.30
-    .accept 37 >>接受寻找丢失的守卫
-    .accept 52 >>接受保护边境
+    .accept 37 >>接任务: 失踪的卫兵
+    .accept 52 >>接任务: 保卫边境
 step
     #era
     #sticky
@@ -1276,12 +1276,12 @@ step
     #era
     >>单击地面上的骨骼
     .goto Elwynn Forest,72.7,60.3
-    .turnin 37 >>上缴找到丢失的守卫
-    .accept 45 >>接受发现罗尔夫的命运
+    .turnin 37 >>交任务: 失踪的卫兵
+    .accept 45 >>接任务: 罗尔夫的下落
 step
     #era
     .goto Elwynn Forest,81.38,66.11
-    .accept 5545 >>接受一堆麻烦
+    .accept 5545 >>接任务: 木材危机
 step
     #era
     #sticky
@@ -1292,8 +1292,8 @@ step
     #era
     .goto Elwynn Forest,79.80,55.50
      >>单击骨骼堆。小心点，因为你可能需要在小屋前处理2次拖拉
-    .turnin 45 >>交给《发现罗尔夫的命运》
-    .accept 71 >>接受向托马斯报告
+    .turnin 45 >>交任务: 罗尔夫的下落
+    .accept 71 >>接任务: 回复托马斯
 step
     #era
     .goto Elwynn Forest,76.8,62.4,40,0
@@ -1308,12 +1308,12 @@ step
     #era
     #label Prowlers
     .goto Elwynn Forest,81.4,66.1
-    .turnin 5545 >>交一堆麻烦
+    .turnin 5545 >>交任务: 木材危机
 step
     #era
     #label Bears
     .goto Elwynn Forest,79.5,68.8
-    .accept 83 >>接受红色亚麻制品
+    .accept 83 >>接任务: 红色亚麻布
 step
     #era
     .goto Elwynn Forest,76.7,75.6,40,0
@@ -1328,12 +1328,12 @@ step
 step
     #era
     .goto Elwynn Forest,74.0,72.2
-    .turnin 52 >>上缴保卫边疆
-    .turnin 71 >>向托马斯提交报告
-    .accept 39 >>接受并交付Thomas的报告
-    .accept 109 >>接受Gryan Stoutmantle的报告
+    .turnin 52 >>交任务: 保卫边境
+    .turnin 71 >>交任务: 回复托马斯
+    .accept 39 >>接任务: 托马斯的报告
+    .accept 109 >>接任务: 向格里安·斯托曼报到
 step << Warlock
-    >>杀死房子里的暴徒，让摩根保持恐惧(他凿伤并杀死宠物)，核弹袭击苏雷纳。为她的喉咙抢劫她
+    >>杀死房子里的暴徒，让摩根保持恐惧(他凿伤并杀死宠物)，核弹袭击苏雷纳。为她的喉咙掠夺她
     .goto Elwynn Forest,71.0,80.8
     .complete 1688,1 --Surena's Choker (1)
 step
@@ -1345,7 +1345,7 @@ step
     #completewith next
     >>留意德菲亚斯(Defias)的《威斯特福尔契约》(lucky drop)
     .collect 1972,1,184 --Collect Westfall Deed (x1)
-    .accept 184 >>接受Furlbrow的契约
+    .accept 184 >>接任务: 法布隆的地契
 step
     #era
     .goto Elwynn Forest,70.5,77.6,60,0
@@ -1361,7 +1361,7 @@ step
     .goto Elwynn Forest,68.2,81.4,60,0
     .goto Elwynn Forest,70.8,80.9,60,0
     .goto Elwynn Forest,69.3,79.0
-    >>开始围着农场转，杀掉德菲亚斯，然后抢劫他们的头巾
+    >>开始围着农场转，杀掉德菲亚斯，然后掠夺他们的头巾
     .complete 83,1 --Collect Red Linen Bandana (x6)
 step
     #era
@@ -1373,30 +1373,30 @@ step
     #era
     #label Deed
     .goto Elwynn Forest,79.45,68.78
-    .turnin 83 >>交出红色亚麻制品
+    .turnin 83 >>交任务: 红色亚麻布
 step
     >>向东前往Redridge
     >>警卫在树桩周围巡逻了一会儿
     .goto Elwynn Forest,91.7,72.3,150,0
     .goto Redridge Mountains,17.4,69.6
-    .accept 244 >>接受侵扰侏儒
+    .accept 244 >>接任务: 豺狼人的入侵
 step
     >>小心路上的高级暴徒
     .goto Redridge Mountains,30.7,60.0
-    .turnin 244 >>交出侵扰侏儒
+    .turnin 244 >>交任务: 豺狼人的入侵
 step
     .goto Redridge Mountains,30.6,59.4
     .fly Stormwind >>飞到暴风城
 step
     .goto Elwynn Forest,26.21,39.66
     >>选择火箭队作为奖励。这些有很好的伤害，可以用来劈开
-    .turnin 61 >>将货物交给Stormwind
+    .turnin 61 >>交任务: 送往暴风城的货物
 step << Warlock
     >>回到术士训练师那里
     .goto StormwindClassic,25.2,78.5
     .trainer >>训练你的职业咒语
-    .turnin 1688 >>交给Surena Caledon
-    .accept 1689 >>接受绑定
+    .turnin 1688 >>交任务: 苏伦娜·凯尔东
+    .accept 1689 >>接任务: 誓缚
 step << Warlock
     .goto StormwindClassic,25.2,80.7,18,0
     .goto StormwindClassic,23.2,79.5,18,0
@@ -1408,11 +1408,11 @@ step << Warlock
      #softcore
     >>在返回术士训练师的途中进行生命分流
     .goto StormwindClassic,25.2,78.5
-    .turnin 1689 >>交回装订本
+    .turnin 1689 >>交任务: 誓缚
 step << Warlock
      #hardcore
     .goto StormwindClassic,25.2,78.5
-    .turnin 1689 >>交回装订本
+    .turnin 1689 >>交任务: 誓缚
 step << Warlock
     #softcore
     #completewith next
@@ -1426,7 +1426,7 @@ step
     #era
     .goto Elwynn Forest,42.10,65.92
     >>前往Goldshire
-    .turnin 39 >>提交提交托马斯的报告
+    .turnin 39 >>交任务: 托马斯的报告
 step << Mage
     .goto Elwynn Forest,43.25,66.20
     >>前往Goldshire Inn
@@ -1440,10 +1440,10 @@ step << Rogue
     >>前往Goldshire Inn
     .trainer >>上楼去。训练你的职业咒语
 step
-    .turnin 88 >>公主必须死！
+    .turnin 88 >>交任务: 公主必须死！
     .goto Elwynn Forest,34.66,84.48
 step
-    .turnin 86 >>把馅饼交给比利
+    .turnin 86 >>交任务: 比利的馅饼
     .goto Elwynn Forest,34.40,84.2
     .isQuestComplete 86
 step
@@ -1451,21 +1451,21 @@ step
     .abandon 86 >>给比利的放弃派
 step
     .goto Westfall,59.95,19.35
-    .turnin 184>>交出弗尔布罗的契约
+    .turnin 184>>交任务: 法布隆的地契
     .isOnQuest 184
 step
     .goto Westfall,59.95,19.35
-    .accept 64 >>接受被遗忘的传家宝
-    .accept 36 >>接受Westfall Stew
-    .accept 151 >>接受可怜的老布兰奇
+    .accept 64 >>接任务: 遗失的怀表
+    .accept 36 >>接任务: 杂味炖肉
+    .accept 151 >>接任务: 老马布兰契
 step
     .goto Westfall,56.10,31.30
-    .accept 9 >>接受杀戮场
+    .accept 9 >>接任务: 清理荒野
 step
     .goto Westfall,56.40,30.50
-    .turnin 36 >>转入威斯特福尔炖菜
-    .accept 38 >>接受Westfall Stew
-    .accept 22 >>接受Goretusk肝派
+    .turnin 36 >>交任务: 杂味炖肉
+    .accept 38 >>接任务: 杂味炖肉
+    .accept 22 >>接任务: 猪肝馅饼
 step
     #softcore
     #sticky
@@ -1474,17 +1474,17 @@ step
 step
     #era
     .goto Westfall,56.40,47.60
-    .turnin 109 >>向Gryan Stoutmantle提交报告
+    .turnin 109 >>交任务: 向格里安·斯托曼报到
 step
     .goto Westfall,56.40,47.60
-    .accept 12 >>接受人民民兵
+    .accept 12 >>接任务: 西部荒野人民军
 step
     #era
     .goto Westfall,56.40,47.60
-    .accept 102 >>接受巡逻Westfall
+    .accept 102 >>接任务: 西部荒野的豺狼人
 step
     .goto Westfall,54.00,53.00
-    .accept 153 >>接受红色皮革头巾
+    .accept 153 >>接任务: 红色皮质面罩
 step << Dwarf Paladin
     .goto Westfall,48.6,45.8
     >>确保你有10块亚麻布用于即将到来的圣骑士任务
@@ -1496,7 +1496,7 @@ step
 step << Paladin
     .goto StormwindClassic,60.5,12.3,40,0
     .goto StormwindClassic,60.5,12.3,0
-    .zone Ironforge >>坐电车回铁炉堡
+    .zone Ironforge >>前往: 铁炉堡
 step << !Paladin
     .hs >>赫斯到莫丹湖
 ]])
@@ -1513,32 +1513,32 @@ RXPGuides.RegisterGuide([[
 
 step << Dwarf Paladin
     .goto Ironforge,23.3,6.1
-    .accept 2999 >>接受神之汤姆
+    .accept 2999 >>接任务: 圣洁之书
 step << Dwarf Paladin
     .goto Ironforge,27.4,12.1
     >>上楼去和蒂扎战斗堡垒通话
-    .turnin 2999 >>交给神之汤姆
-    .accept 1645 >>接受神性之父
-    .turnin 1645 >>交上神性之父
-    .accept 1646 >>接受神性之父
-    .turnin 1646 >>交上神性之父
-    .accept 1647 >>接受神性之父
+    .turnin 2999 >>交任务: 圣洁之书
+    .accept 1645 >>接任务: 圣洁之书
+    .turnin 1645 >>交任务: 圣洁之书
+    .accept 1646 >>接任务: 圣洁之书
+    .turnin 1646 >>交任务: 圣洁之书
+    .accept 1647 >>接任务: 圣洁之书
 step << Dwarf Paladin
     >>与约翰·特纳交谈，他在城市的外环漫步
-    .turnin 1647 >>交上神性之父
-    .accept 1648 >>接受神性之父
-    .turnin 1648 >>交上神性之父
-    .accept 1778 >>接受神性之父
+    .turnin 1647 >>交任务: 圣洁之书
+    .accept 1648 >>接任务: 圣洁之书
+    .turnin 1648 >>交任务: 圣洁之书
+    .accept 1778 >>接任务: 圣洁之书
 step << Dwarf Paladin
     .goto Ironforge,27.7,12.3
     >>返回Tiza Battleforge
-    .turnin 1778 >>交上神性之父
-    .accept 1779 >>接受神性之父
+    .turnin 1778 >>交任务: 圣洁之书
+    .accept 1779 >>接任务: 圣洁之书
 step << Dwarf Paladin
     .goto Ironforge,23.6,8.6
     >>与缪尔登·巴特尔福格交谈
-    .turnin 1779 >>交上神性之父
-    .accept 1783 >>接受神性之父
+    .turnin 1779 >>交任务: 圣洁之书
+    .accept 1783 >>接任务: 圣洁之书
 step << !Warlock
     #som << !Paladin
     .goto Ironforge,55.5,47.8
@@ -1555,7 +1555,7 @@ step
     >>进入大楼，然后下楼。与Brock交谈
     .goto Loch Modan,37.2,46.9,15,0
     .goto Loch Modan,37.0,47.8
-    .turnin 6392 >>交回Brock
+    .turnin 6392 >>交任务: 向布洛克回复
 step
     #sticky
     #completewith next
@@ -1586,8 +1586,8 @@ step
     .vendor >>跑回沙坑。供应商和维修
 step
     .goto Loch Modan,24.76,18.39
-    .turnin 307 >>交上脏爪子
-    .turnin 353 >>交给Stormpike的交货
+    .turnin 307 >>交任务: 肮脏的爪子
+    .turnin 353 >>交任务: 雷矛的包裹
 step
     #sticky
     #label Meat9
@@ -1646,10 +1646,10 @@ step
     .goto Loch Modan,37.2,46.1,80.0,0
     .goto Loch Modan,36.7,41.6
     >>找到卡德雷尔。他沿着塞尔萨马尔公路巡逻
-    .turnin 416 >>上缴捕鼠
+    .turnin 416 >>交任务: 狗头人的耳朵
 step
     .goto Loch Modan,34.82,49.28
-    .turnin 418 >>加入塞尔萨马尔鲜血香肠
+    .turnin 418 >>交任务: 塞尔萨玛血肠
 step
     .goto Loch Modan,34.8,48.6
     .vendor >>购买1块燧石和火药，以及2块简单木材。如果需要，购买更多6个插槽
@@ -1665,29 +1665,29 @@ step
 step
     #era
     .goto Loch Modan,27.4,48.4
-    .xp 13+9600>>研磨至9600+/11400xp
+    .xp 13+9600>>提升经验到9600+/11400xp
 step
     #som
     .goto Loch Modan,27.4,48.4
     .xp 14-2300 >>研磨直到距离14级2300xp(9100/11400)
 step
     .goto Loch Modan,22.07,73.12
-    .turnin 224 >>为保卫国王的土地而投降
+    .turnin 224 >>交任务: 保卫国王的领土
 step
     .goto Loch Modan,23.23,73.67
-    .turnin 267 >>提交Trogg威胁
+    .turnin 267 >>交任务: 穴居人的威胁
 step << !Dwarf/!Paladin
     .goto Loch Modan,33.93,50.95
     .fly Ironforge>>飞往铁炉堡
 step << Dwarf Paladin
     #completewith next
     .goto Dun Morogh,87.1,51.1
-    .zone Dun Morogh >>前往Dun Morogh
+    .zone Dun Morogh >>前往: 丹莫罗
 step << Dwarf Paladin
     .goto Dun Morogh,78.3,58.1
     >>在纳姆·福克身上使用生命的象征
-    .turnin 1783 >>交上神性之父
-    .accept 1784 >>接受神性之父
+    .turnin 1783 >>交任务: 圣洁之书
+    .accept 1784 >>接任务: 圣洁之书
 step << Dwarf Paladin
     .goto Dun Morogh,77.3,60.5
     >>杀死黑铁间谍
@@ -1746,7 +1746,7 @@ step << Rogue
     #label Salvation
     .isOnQuest 2218
     .goto Ironforge,51.50,15.34
-    .turnin 2218 >>转向救世之路
+    .turnin 2218 >>交任务: 救赎之路
 step << Rogue
     .goto Ironforge,51.50,15.34
     .trainer >>上楼去。训练你的职业咒语
@@ -1770,12 +1770,12 @@ step << Rogue
     #requires Salvation
     .goto Ironforge,76.54,51.15,60,0
     .goto Ironforge,76.54,51.15,0
-    .zone Stormwind City >>乘电车去暴风城
+    .zone Stormwind City >>前往: 暴风城
     >>在等待/乘坐电车时进行急救训练，您需要80分的急救积分才能完成24级任务 << Rogue
 step << !Paladin !Rogue
     .goto Ironforge,76.54,51.15,60,0
     .goto Ironforge,76.54,51.15,0
-    .zone Stormwind City >>乘电车去暴风城
+    .zone Stormwind City >>前往: 暴风城
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -1795,19 +1795,19 @@ step << !Gnome !Dwarf
 step
     .goto Dun Morogh,29.9,71.2
     >>与Sten Stoutarm交谈
-    .accept 179 >>接受矮人装扮
+    .accept 179 >>接任务: 矮人的交易
 step
     .goto Dun Morogh,29.0,74.4
     .complete 179,1 --Tough Wolf Meat (8)
 step
     .goto Dun Morogh,29.9,71.3
-    .turnin 179 >>交出矮人套装
-    .accept 233 >>接受Coldridge Valley邮件递送
-    .accept 3108 >>接受蚀刻符文
+    .turnin 179 >>交任务: 矮人的交易
+    .accept 233 >>接任务: 寒脊山谷的送信任务
+    .accept 3108 >>接任务: 风蚀符文
 step
     .goto Dun Morogh,29.7,71.3
     >>与巴里尔冰锤对话
-    .accept 170 >>接受新威胁
+    .accept 170 >>接任务: 新的威胁
 step
     #sticky
     #label Rockjaw
@@ -1819,9 +1819,9 @@ step
 step
     .goto Dun Morogh,22.6,71.4
     >>与塔林·基尼交谈
-    .turnin 233 >>提交科尔德里奇谷邮件递送
-    .accept 234 >>接受Coldridge Valley邮件递送
-    .accept 183 >>接受野猪猎人
+    .turnin 233 >>交任务: 寒脊山谷的送信任务
+    .accept 234 >>接任务: 寒脊山谷的送信任务
+    .accept 183 >>接任务: 猎杀野猪
 step
     .goto Dun Morogh,22.2,72.5,100,0
     .goto Dun Morogh,20.5,71.4,100,0
@@ -1834,12 +1834,12 @@ step
     .complete 183,1 --Kill Small Crag Boar (x12)
 step
     .goto Dun Morogh,22.6,71.4
-    .turnin 183 >>上缴猎野猪者
+    .turnin 183 >>交任务: 猎杀野猪
 step
     .goto Dun Morogh,25.1,75.7
     >>与格雷林·白胡子交谈
-    .turnin 234 >>提交科尔德里奇谷邮件递送
-    .accept 182 >>接受巨魔洞穴
+    .turnin 234 >>交任务: 寒脊山谷的送信任务
+    .accept 182 >>接任务: 巨魔洞穴
 step
     #completewith next
     .goto Dun Morogh,22.7,79.3
@@ -1852,14 +1852,14 @@ step
 step
     #requires Rockjaw
     .goto Dun Morogh,25.0,75.9
-    .accept 3364 >>接受烫发晨报递送
+    .accept 3364 >>接任务: 热酒快递
 step
     #completewith next
     .hs >>炉底回到起始区域
 step
     .goto Dun Morogh,29.7,71.3
     >>与巴里尔冰锤对话
-    .turnin 170 >>提交新威胁
+    .turnin 170 >>交任务: 新的威胁
 step
     #completewith next
     .goto Dun Morogh,30.09,71.58
@@ -1868,16 +1868,16 @@ step
 step
     .goto Dun Morogh,29.1,67.5
     >>与索加斯·格里姆森交谈
-    .turnin 3108 >>交上蚀刻的符文
+    .turnin 3108 >>交任务: 风蚀符文
         .train 1978 >>火车蛇刺
 step
     .goto Dun Morogh,28.8,66.5
     >>与Durnan Furcutter交谈
-    .turnin 3364 >>交付烫伤晨报
-    .accept 3365 >>接受带回马克杯
+    .turnin 3364 >>交任务: 热酒快递
+    .accept 3365 >>接任务: 归还酒杯
 step
     .goto Dun Morogh,25.0,75.9
-    .turnin 3365 >>把杯子拿回来
+    .turnin 3365 >>交任务: 归还酒杯
 step
     .goto Dun Morogh,22.7,79.3
     .goto Dun Morogh,20.9,75.7,0
@@ -1887,8 +1887,8 @@ step
     .goto Dun Morogh,25.1,75.7
 step
     .goto Dun Morogh,25.0,75.9
-    .turnin 182 >>转入巨魔洞穴
-    .accept 218 >>接受被盗日记
+    .turnin 182 >>交任务: 巨魔洞穴
+    .accept 218 >>接任务: 被窃取的日记
 step
     .goto Dun Morogh,26.8,79.9,40,0
     .goto Dun Morogh,29.0,79.0,25,0
@@ -1901,17 +1901,17 @@ step
     .goto Dun Morogh,26.8,79.6,25 >>跑出洞穴
 step
     .goto Dun Morogh,25.1,75.7
-    .turnin 218 >>交出被盗日记
-    .accept 282 >>接受Senir的意见
+    .turnin 218 >>交任务: 被窃取的日记
+    .accept 282 >>接任务: 森内尔的观察站
 step
     .goto Dun Morogh,33.5,71.8
     >>与登山者Thalos交谈
-    .turnin 282 >>提交Senir的观察结果
-    .accept 420 >>接受Senir的意见
+    .turnin 282 >>交任务: 森内尔的观察站
+    .accept 420 >>接任务: 森内尔的观察站
 step
     .goto Dun Morogh,33.8,72.2
     >>与手对话弹簧链轮
-    .accept 2160 >>接受供应给Tannok
+    .accept 2160 >>接任务: 塔诺克的补给品
 step
     .goto Dun Morogh,34.1,71.6,20,0
     .goto Dun Morogh,35.7,66.0,0
@@ -1934,29 +1934,29 @@ step
     .collect 2886,6 --Collect Crag Boar Rib (x6)
 step
     .goto Dun Morogh,46.7,53.8
-    .turnin 420 >>提交Senir的观察结果
+    .turnin 420 >>交任务: 森内尔的观察站
 step
     #label ribs1
     .goto Dun Morogh,46.8,52.4
-    .accept 384 >>接受啤酒烤猪排
+    .accept 384 >>接任务: 啤酒烤猪排
 step
     .goto Dun Morogh,47.2,52.2
-    .turnin 2160 >>向Tannok移交物资
+    .turnin 2160 >>交任务: 塔诺克的补给品
 step
     .goto Dun Morogh,46.0,51.7
-    .accept 400 >>钢格栅的验收工具
+    .accept 400 >>接任务: 贝尔丁的工具
 step
     .goto Dun Morogh,49.5,48.3
-    .accept 317 >>接受库存Jetsteam
+    .accept 317 >>接任务: 贝尔丁的补给
 step
     .goto Dun Morogh,49.6,48.5
-    .accept 313 >>接受Grizzled Den
+    .accept 313 >>接任务: 灰色洞穴
 step
     .goto Dun Morogh,50.1,49.4
-    .accept 5541 >>接受弹药以防隆隆枪击
+    .accept 5541 >>接任务: 海格纳的弹药
 step
     .goto Dun Morogh,50.4,49.1
-    .turnin 400 >>钢格栅上交工具
+    .turnin 400 >>交任务: 贝尔丁的工具
 step
     #sticky
     #completewith BoarRibs2
@@ -1997,21 +1997,21 @@ step
 step
     .goto Dun Morogh,49.4,48.4
     >>与飞行员Bellowfiz交谈
-    .turnin 317 >>上缴库存Jetsteam
-    .accept 318 >>接受Evershine
+    .turnin 317 >>交任务: 贝尔丁的补给
+    .accept 318 >>接任务: 艾沃沙酒
 step
     .xp 6
 step << Hunter
     .goto Dun Morogh,45.8,53.1
     .train 3044 >>火车奥术射击
 step
-    >>抢劫板条箱
+    >>掠夺板条箱
 .goto Dun Morogh,44.1,56.9
     .complete 5541,1 --Rumbleshot's Ammo (1)
 step
     .goto Dun Morogh,40.7,65.1
     >>与Hegnar Rumbleshot交谈
-    .turnin 5541 >>交出弹药进行隆布尔枪击
+    .turnin 5541 >>交任务: 海格纳的弹药
 step << Hunter
     .goto Dun Morogh,40.7,65.1
     >>购买4级枪升级，如果你没有钱，跳过这一步
@@ -2029,7 +2029,7 @@ step
     .goto Dun Morogh,35.2,56.4,60,0
     .goto Dun Morogh,36.0,52.0,60,0
     .goto Dun Morogh,34.6,51.7
-    .accept 312 >>接受Tundra MacGrann被盗的Stash
+    .accept 312 >>接任务: 马克格拉恩的干肉
 step << !Mage
     .goto Dun Morogh,38.5,54.0
     >>等到老冰胡子离开山洞，你就可以偷偷进去洗劫箱子，或者这样做
@@ -2037,21 +2037,21 @@ step << !Mage
     .complete 312,1 --MacGrann's Dried Meats (1)
 step
     .goto Dun Morogh,34.6,51.6
-    .turnin 312 >>交出Tundra MacGrann被盗的Stash
+    .turnin 312 >>交任务: 马克格拉恩的干肉
 step
     .goto Dun Morogh,30.4,45.8
     .vendor >>供应商垃圾
 step
     .goto Dun Morogh,30.2,45.8
     >>与Rejold Barleybrew交谈
-    .turnin 318 >>交给Evershine
-    .accept 319 >>接受对Evershine的支持
-    .accept 315 >>接受完美的烈性酒
+    .turnin 318 >>交任务: 艾沃沙酒
+    .accept 319 >>接任务: 艾沃沙酒
+    .accept 315 >>接任务: 完美烈酒
 step
     #label BoarRibs2
     .goto Dun Morogh,30.2,45.4
     >>与Marleth Barleybrew交谈
-    .accept 310 >>接受残酷的竞争对手
+    .accept 310 >>接任务: 针锋相对
 step
     #completewith next
     >>杀死熊、野猪和豹子
@@ -2073,7 +2073,7 @@ step
     .deathskip >>故意死亡并在哈拉诺斯重生
 step << Hunter
     .goto Dun Morogh,49.6,48.5
-    .turnin 313 >>在Grizzled Den转弯
+    .turnin 313 >>交任务: 灰色洞穴
 step
     .goto Dun Morogh,47.4,52.5
     >>向客栈老板购买以下物品：
@@ -2082,21 +2082,21 @@ step
 step
     .goto Dun Morogh,47.7,52.6
     >>下楼，把雷霆啤酒给贾文，然后点击无人看守的桶
-    .turnin 310 >>在激烈的竞争中获胜
-    .accept 311 >>接受返回Marleth
+    .turnin 310 >>交任务: 针锋相对
+    .accept 311 >>接任务: 向马莱斯回报
 step
     .goto Dun Morogh,47.3,52.5
     .home >>将您的炉石设置为Kharanos
 step
     .goto Dun Morogh,46.9,52.4
     >>与Ragnar Thunderbrew交谈
-    .turnin 384 >>翻啤酒扒猪排
+    .turnin 384 >>交任务: 啤酒烤猪排
 step
     .goto Dun Morogh,46.7,53.9
-    .accept 287 >>接受Frostmane保持
+    .accept 287 >>接任务: 霜鬃巨魔要塞
 step << !Hunter
     .goto Dun Morogh,49.6,48.5
-    .turnin 313 >>在Grizzled Den转弯
+    .turnin 313 >>交任务: 灰色洞穴
 step << Hunter
     .goto Dun Morogh,45.8,53.0
     .train 5116>>火车震荡射击
@@ -2110,7 +2110,7 @@ step
 step
     .goto Dun Morogh,63.1,49.8
     >>与Rudra Amberstill交谈
-    .accept 314 >>接受保护羊群
+    .accept 314 >>接任务: 保护牲畜
 step
     #sticky
     #completewith next
@@ -2123,22 +2123,22 @@ step
     .link https://www.youtube.com/watch?v=ZJX6sCkm5JY >>单击此处了解如何独奏瓦加什
 step
     .goto Dun Morogh,63.1,49.8
-    .turnin 314 >>转身保护羊群
+    .turnin 314 >>交任务: 保护牲畜
     .isQuestComplete 314
 step
     .goto Dun Morogh,83.8,39.2
-    .accept 419 >>接受迷失的飞行员
+    .accept 419 >>接任务: 失踪的驾驶员
 step
     .goto Dun Morogh,79.7,36.2
-    .turnin 419 >>交出失踪的飞行员
-    .accept 417 >>接受飞行员的复仇
+    .turnin 419 >>交任务: 失踪的驾驶员
+    .accept 417 >>接任务: 驾驶员的复仇
 step
-    >>杀死芒格克劳。抢劫他的爪子，这个任务可能很难，把他放在任务给予者旁边的警卫那里
+    >>杀死芒格克劳。掠夺他的爪子，这个任务可能很难，把他放在任务给予者旁边的警卫那里
     .goto Dun Morogh,80.0,36.4
     .complete 417,1 --Collect Mangy Claw (x1)
 step
     .goto Dun Morogh,83.9,39.2
-    .turnin 417 >>提交飞行员的复仇
+    .turnin 417 >>交任务: 驾驶员的复仇
 step
     #hardcore
     .hs >>赫斯到哈拉诺斯
@@ -2149,7 +2149,7 @@ step
 step
     #era
     .goto Dun Morogh,45.8,49.4
-    .accept 412 >>接受操作重组
+    .accept 412 >>接任务: 自动净化装置
 step
     #completewith next
     .goto Dun Morogh,43.1,45.0,20,0
@@ -2169,13 +2169,13 @@ step
     #label return
     .goto Dun Morogh,30.2,45.7
     >>与Rejold Barleybrew交谈
-    .turnin 319 >>为Evershine提供支持
-    .accept 320 >>接受返回Bellowfiz
+    .turnin 319 >>交任务: 艾沃沙酒
+    .accept 320 >>接任务: 艾沃沙酒
 step
     .goto Dun Morogh,30.2,45.5
-    .turnin 311 >>交给马利思
-    .turnin 315 >>交上完美的烈酒
-    .accept 413 >>接受Shimmer Stout
+    .turnin 311 >>交任务: 向马莱斯回报
+    .turnin 315 >>交任务: 完美烈酒
+    .accept 413 >>接任务: 微光酒
 step
     #requires return
     >>进入巨魔洞穴
@@ -2233,48 +2233,48 @@ step
     .hs >>赫斯回到哈拉诺斯
 step
     .goto Dun Morogh,46.7,53.7
-    .turnin 287 >>交给Frostmane Hold
-    .accept 291 >>接受报告
+    .turnin 287 >>交任务: 霜鬃巨魔要塞
+    .accept 291 >>接任务: 森内尔的报告
 step
     #era
     .goto Dun Morogh,45.9,49.4
-    .turnin 412 >>转入操作再栓塞
+    .turnin 412 >>交任务: 自动净化装置
 step
     .goto Dun Morogh,49.4,48.3
-    .turnin 320 >>转身返回贝洛菲兹
+    .turnin 320 >>交任务: 艾沃沙酒
 step
     .goto Dun Morogh,45.8,53.0
-    .accept 6064 >>接受驯服野兽
+    .accept 6064 >>接任务: 驯服野兽
 step
     .goto Dun Morogh,48.3,56.9
     >>点击你包里的驯养棒来驯养一头大野猪。尝试在最大射程(30码)进行
     .complete 6064,1 --Tame a Large Crag Boar (1)
 step
     .goto Dun Morogh,45.8,53.0
-    .turnin 6064 >>转身驯服野兽
-    .accept 6084 >>接受驯服野兽
+    .turnin 6064 >>交任务: 驯服野兽
+    .accept 6084 >>接任务: 驯服野兽
 step
     .goto Dun Morogh,49.4,59.4
     >>点击你包里的驯雪豹棒。尝试在最大射程(30码)进行
     .complete 6084,1 --Tame a Snow Leopard (1)
 step
     .goto Dun Morogh,45.8,53.0
-    .turnin 6084 >>转身驯服野兽
-    .accept 6085 >>接受驯服野兽
+    .turnin 6084 >>交任务: 驯服野兽
+    .accept 6085 >>接任务: 驯服野兽
 step
     .goto Dun Morogh,50.4,59.7
     >>点击你包里的驯冰爪熊棒。尝试在最大射程(30码)进行
     .complete 6085,1 --Tame an Ice Claw Bear (1)
 step
     .goto Dun Morogh,45.8,53.0
-    .turnin 6085 >>转身驯服野兽
-    .accept 6086 >>接受训练野兽
+    .turnin 6085 >>交任务: 驯服野兽
+    .accept 6086 >>接任务: 训练野兽
 step
     .goto Dun Morogh,68.7,56.0
-    .accept 433 >>接受公务员
+    .accept 433 >>接任务: 公众之仆
 step
     .goto Dun Morogh,69.1,56.3
-    .accept 432 >>接受那些被炸死的流浪汉！
+    .accept 432 >>接任务: 该死的石腭怪！
 step
     .goto Dun Morogh,70.7,56.4,50,0
     .goto Dun Morogh,70.62,52.39
@@ -2283,17 +2283,17 @@ step
     .complete 433,1 --Kill Rockjaw Bonesnapper (x10)
 step
     .goto Dun Morogh,69.1,56.3
-    .turnin 432 >>把那些被炸死的暴徒交上来！
+    .turnin 432 >>交任务: 该死的石腭怪！
 step
     .goto Dun Morogh,68.7,56.0
-    .turnin 433 >>上缴公务员
+    .turnin 433 >>交任务: 公众之仆
 step << skip
     .goto Dun Morogh,68.4,54.5
     .train 2550 >>Ghilm的火车烹饪
 step
     .goto Dun Morogh,86.3,48.8
-    .turnin 413 >>转入Shimmer Stout
-    .accept 414 >>接受斯托特到卡德雷尔
+    .turnin 413 >>交任务: 微光酒
+    .accept 414 >>接任务: 卡德雷尔的酒
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -2309,54 +2309,54 @@ RXPGuides.RegisterGuide([[
 step
     .goto Loch Modan,22.07,73.12
     >>前往莫丹湖
-    .accept 224 >>接受保护国王的土地
+    .accept 224 >>接任务: 保卫国王的领土
 step
     .goto Loch Modan,23.23,73.67
-    .accept 267 >>接受Trogg威胁
+    .accept 267 >>接任务: 穴居人的威胁
 step
     #sticky
     #label ratcatching
      >>与巡逻塞尔萨马尔的警卫交谈
-    .accept 416 >>接受捕鼠
-    .accept 1339 >>接受登山者Stormpike的任务
+    .accept 416 >>接任务: 狗头人的耳朵
+    .accept 1339 >>接任务: 巡山人卡尔·雷矛的任务
 step
     .goto Loch Modan,34.82,49.28
-    .accept 418 >>接受Thelsamar鲜血香肠
+    .accept 418 >>接任务: 塞尔萨玛血肠
 step
        .goto Loch Modan,35.5,48.4
     .home >>将您的炉石设置为莫丹湖
 step
     .goto Loch Modan,37.01,47.80
-    .accept 6387 >>接受荣誉学生
+    .accept 6387 >>接任务: 荣誉学员
 step
     #requires ratcatching
     .goto Loch Modan,33.93,50.95
-    .turnin 6387 >>移交荣誉学生
-    .accept 6391 >>接受铁炉堡之旅
+    .turnin 6387 >>交任务: 荣誉学员
+    .accept 6391 >>接任务: 飞往铁炉堡
 step
      #completewith next
     .fly Ironforge>>飞往铁炉堡
 step
     .goto Ironforge,51.52,26.31
-    .turnin 6391 >>上交骑行前往铁炉堡
-    .accept 6388 >>接受Gryth Thurden
+    .turnin 6391 >>交任务: 飞往铁炉堡
+    .accept 6388 >>接任务: 格莱斯·瑟登
 step
     .goto Dun Morogh,57.42,30.31
-    .turnin 291 >>提交报告
+    .turnin 291 >>交任务: 森内尔的报告
 step <<  Hunter
     .goto Ironforge,70.86,85.83
-    .turnin 6086 >>上缴训练野兽
+    .turnin 6086 >>交任务: 训练野兽
 step
     .goto Ironforge,55.50,47.74
-    .turnin 6388 >>转入Gryth Thurden
-    .accept 6392 >>接受返回Brock
+    .turnin 6388 >>交任务: 格莱斯·瑟登
+    .accept 6392 >>接任务: 向布洛克回复
 step
     #completewith next
     .fly Loch Modan>>飞往莫丹湖
 step
     .goto Loch Modan,37.0,47.8
     >>进入大楼，然后下楼。与Brock交谈
-    .turnin 6392 >>交回Brock
+    .turnin 6392 >>交任务: 向布洛克回复
 step
     .goto Loch Modan,35.8,43.5
     >>如果你还有13发子弹，请从Vrok Blunderblast购买9级枪升级
@@ -2369,25 +2369,25 @@ step
     .complete 418,3
 step
     .goto Loch Modan,24.76,18.39
-    .turnin 1339 >>提交登山者Stormpike的任务
+    .turnin 1339 >>交任务: 巡山人卡尔·雷矛的任务
 step
     .goto Loch Modan,24.76,18.39
-    .accept 307 >>接受肮脏的爪子
+    .accept 307 >>接任务: 肮脏的爪子
 step
     .goto Loch Modan,24.76,18.39
-    .accept 1338 >>接受Stormpike的命令
+    .accept 1338 >>接任务: 卡尔·雷矛的订单
 step
     #sticky
     #label crates
     .goto Loch Modan,35.48,24.36
-     >>抢劫矿井内的板条箱
+     >>掠夺矿井内的板条箱
     .complete 307,1
 step
     #sticky
     #requires crates
     #label q307
     .goto Loch Modan,24.76,18.39
-    .turnin 307 >>交上脏爪子
+    .turnin 307 >>交任务: 肮脏的爪子
 step
     .goto Loch Modan,24.3,30.3
     .goto Loch Modan,36.42,24.56
@@ -2397,9 +2397,9 @@ step
     #requires q307
     #label sausage
     >>在返回塞尔萨马尔的路上完成野猪/熊/蜘蛛
-    .turnin 418 >>加入塞尔萨马尔鲜血香肠
+    .turnin 418 >>交任务: 塞尔萨玛血肠
     .goto Loch Modan,34.82,49.28
-    .turnin 416 >>上缴捕鼠
+    .turnin 416 >>交任务: 狗头人的耳朵
     .goto Loch Modan,34.26,47.70
 step
     .goto Loch Modan,32.55,74.61
@@ -2409,23 +2409,23 @@ step
     .complete 267,1
 step
     .goto Loch Modan,22.07,73.12
-    .turnin 224 >>为保卫国王的土地而投降
+    .turnin 224 >>交任务: 保卫国王的领土
 step
     .goto Loch Modan,23.23,73.67
-    .turnin 267 >>提交Trogg威胁
+    .turnin 267 >>交任务: 穴居人的威胁
 step
     .goto Loch Modan,65.93,65.62
-    .accept 298 >>接受开挖进度报告
+    .accept 298 >>接任务: 挖掘进度报告
 step
     .goto Loch Modan,83.46,65.45
-    .accept 257 >>接受猎人的夸耀
+    .accept 257 >>接任务: 自豪的猎人
 step
     .goto Loch Modan,77.30,61.45
     >>杀死狩猎小屋周围的鸟，这是一个困难的任务，但它给你一个很好的武器升级
     .complete 257,1
 step
     .goto Loch Modan,83.46,65.45
-    .turnin 257 >>交出猎人的狂言
+    .turnin 257 >>交任务: 自豪的猎人
 step
     #sticky
     .goto Loch Modan,82.60,63.40
@@ -2440,8 +2440,8 @@ step
     .deathskip >>拉暴徒，故意死亡，在塞斯玛重生
 step
     .goto Loch Modan,37.23,47.38
-    .turnin 298 >>移交挖掘进度报告
-    .accept 301 >>接受向铁炉堡的报告
+    .turnin 298 >>交任务: 挖掘进度报告
+    .accept 301 >>接任务: 向铁炉堡报告
 step
     .goto Loch Modan,33.93,50.95
     .fly Ironforge>>飞往铁炉堡
@@ -2450,32 +2450,32 @@ step
     .train 2550 >>确保在铁炉堡培训烹饪
 step
     .goto Ironforge,74.64,11.74
-    .turnin 301 >>向铁炉堡提交报告
+    .turnin 301 >>交任务: 向铁炉堡报告
 step
     .goto Ironforge,74.40,51.10,30,0
     .goto Ironforge,74.40,51.10,0
      >>进入Deeprun Tram，在中间平台与侏儒交谈
-    .accept 6661 >>接受Deeprun老鼠围捕
+    .accept 6661 >>接任务: 捕捉矿道老鼠
 step
     >>使用车站周围老鼠身上提供的长笛
     .complete 6661,1
 step
-    .turnin 6661 >>交给Deeprun老鼠围捕
-    .accept 6662 >>接受我，兄弟，尼普西
+    .turnin 6661 >>交任务: 捕捉矿道老鼠
+    .accept 6662 >>接任务: 我的兄弟，尼普希
 step
      >>骑到电车的另一侧，然后转弯
-    .turnin 6662 >>交给我，兄弟，尼普西
+    .turnin 6662 >>交任务: 我的兄弟，尼普希
 step
     #completewith next
     .goto StormwindClassic,60.5,12.3
-    .zone Stormwind City >>下车进入暴风城
+    .zone Stormwind City >>前往: 暴风城
 step
     #softcore
     .goto StormwindClassic,51.75,12.06
-    .accept 353 >>接受Stormpike的交付
+    .accept 353 >>接任务: 雷矛的包裹
 step
     .goto StormwindClassic,58.08,16.52
-    .turnin 1338 >>提交Stormpike的命令
+    .turnin 1338 >>交任务: 卡尔·雷矛的订单
 step
     .goto StormwindClassic,57.23,57.29
     .trainer >>火车杆
@@ -2485,7 +2485,7 @@ step
 step
     #softcore
     .goto Loch Modan,24.76,18.39
-    .turnin 353 >>交给Stormpike的交货
+    .turnin 353 >>交任务: 雷矛的包裹
 step
      #completewith next
      .deathskip >>死后在墓地重生
@@ -2497,7 +2497,7 @@ step
 step
     #hardcore
     .goto Dun Morogh,52.6,36.0
-    .zone Dun Morogh >>乘坐电车返回铁炉堡，前往邓莫罗
+    .zone Dun Morogh >>前往铁炉堡, 然后前往丹莫罗
 step
     #hardcore
     #label skip1
@@ -2540,7 +2540,7 @@ step
     .fp Menethil Harbor >>获取Menethil Harbor航线
 step
     .goto Wetlands,4.6,57.2
-    .zone Darkshore >>前往Menethil Harbor码头，乘船前往Darkshore
+    .zone Darkshore >>前往米奈希尔港, 然后乘船前往黑海岸
     >>在你等待的时候生篝火并平铺烹饪
     >>在等待船只的同时进行急救训练，您需要80分的急救积分才能完成24级任务 << Rogue
 ]])
@@ -2565,7 +2565,7 @@ step << Mage
 step
     >>删除您的炉石 << !Warlock
     .goto Dun Morogh,29.9,71.2
-    .accept 179 >>接受矮人装扮
+    .accept 179 >>接任务: 矮人的交易
 step << Warrior/Warlock
     #sticky
     #completewith next
@@ -2585,7 +2585,7 @@ step << Warlock
 step << Warlock
     .goto Dun Morogh,28.6,66.1
     .trainer >>火车献祭
-    .accept 1599 >>接受开始
+    .accept 1599 >>接任务: 开端
 step
     >>杀死狼。抢他们的肉
     .goto Dun Morogh,28.7,74.8
@@ -2614,7 +2614,7 @@ step << Warlock
 step << Warlock
     >>回到术士训练师那里
     .goto Dun Morogh,28.6,66.1
-    .turnin 1599 >>开始时交上来
+    .turnin 1599 >>交任务: 开端
 step << Priest/Mage/Warlock
     .goto Dun Morogh,30.0,71.5
     >>召唤你的小鬼并在途中拒绝恶魔皮肤 << Warlock
@@ -2625,21 +2625,21 @@ step << Paladin/Warrior
     .vendor >>供应商垃圾
 step
     .goto Dun Morogh,29.9,71.2
-    .turnin 179 >>交出矮人套装
-    .accept 233 >>接受Coldridge Valley邮件递送
-    .accept 3106 >>接受简单符文 << Dwarf Warrior
-    .accept 3107 >>接受神圣符文 << Paladin
-    .accept 3109 >>接受加密符文 << Dwarf Rogue
-    .accept 3110 >>接受神圣符文 << Priest
-    .accept 3112 >>接受简单备忘录 << Gnome Warrior
-    .accept 3113 >>接受加密备忘录 << Gnome Rogue
-    .accept 3114 >>接受字形备忘录 << Mage
-    .accept 3115 >>接受被篡改的备忘录 << Gnome Warlock
+    .turnin 179 >>交任务: 矮人的交易
+    .accept 233 >>接任务: 寒脊山谷的送信任务
+    .accept 3106 >>接任务: 简易符文 << Dwarf Warrior
+    .accept 3107 >>接任务: 神圣符文 << Paladin
+    .accept 3109 >>接任务: 密文符文 << Dwarf Rogue
+    .accept 3110 >>接任务: 神圣符文 << Priest
+    .accept 3112 >>接任务: 简易备忘录 << Gnome Warrior
+    .accept 3113 >>接任务: 密文备忘录 << Gnome Rogue
+    .accept 3114 >>接任务: 雕文备忘录 << Mage
+    .accept 3115 >>接任务: 被污染的备忘录 << Gnome Warlock
 step
     .goto Dun Morogh,22.6,71.4
-    .turnin 233 >>提交科尔德里奇谷邮件递送
-    .accept 183 >>接受野猪猎人
-    .accept 234 >>接受Coldridge Valley邮件递送
+    .turnin 233 >>交任务: 寒脊山谷的送信任务
+    .accept 183 >>接任务: 猎杀野猪
+    .accept 234 >>接任务: 寒脊山谷的送信任务
 step
     .goto Dun Morogh,22.2,72.5,100,0
     .goto Dun Morogh,20.5,71.4,100,0
@@ -2652,9 +2652,9 @@ step
     .complete 183,1 --Kill Small Crag Boar (x12)
 step
     .goto Dun Morogh,22.6,71.4
-    .turnin 183 >>上缴猎野猪者
+    .turnin 183 >>交任务: 猎杀野猪
 step << Paladin/Mage/Warlock
-    .xp 3+860>>研磨至860+/1400经验
+    .xp 3+860>>提升经验到860+/1400经验
     .goto Dun Morogh,23.0,75.0,100,0
     .goto Dun Morogh,24.2,72.5,100,0
     .goto Dun Morogh,27.7,76.3,100,0
@@ -2663,41 +2663,41 @@ step << Paladin/Mage/Warlock
 step
     #label Rockjaw
     .goto Dun Morogh,25.1,75.7
-    .turnin 234 >>提交科尔德里奇谷邮件递送
-    .accept 182 >>接受巨魔洞穴
+    .turnin 234 >>交任务: 寒脊山谷的送信任务
+    .accept 182 >>接任务: 巨魔洞穴
 step << Paladin/Mage/Warlock
     .goto Dun Morogh,25.0,76.0
-    .accept 3364 >>接受烫发晨报递送
+    .accept 3364 >>接任务: 热酒快递
     >>一旦接受，将启动5分钟计时器。放松并遵循指南
 step << Paladin/Mage/Warlock
     #sticky
     #completewith Scalding1
     >>如果你速度太慢，无法完成定时任务，请再去捡一次
     .goto Dun Morogh,25.0,76.0,0
-    .accept 3364 >>接受烫发晨报递送
+    .accept 3364 >>接任务: 热酒快递
     .goto Dun Morogh,28.8,66.4
-    .turnin 3364 >>交付烫伤晨报
+    .turnin 3364 >>交任务: 热酒快递
 step << Paladin/Mage/Warlock
     #label Scalding1
     .goto Dun Morogh,28.8,66.4
-    .turnin 3364 >>交付烫伤晨报
-    .accept 3365 >>接受带回马克杯
+    .turnin 3364 >>交任务: 热酒快递
+    .accept 3365 >>接任务: 归还酒杯
     .vendor >>供应商垃圾
 step << Paladin/Mage/Warlock
     .goto Dun Morogh,28.55,67.64
-    .accept 3361 >>接受难民的困境
+    .accept 3361 >>接任务: 逃难者的困境
 step << Dwarf Paladin
     .goto Dun Morogh,28.8,68.3
-    .turnin 3107 >>交上神圣符文
+    .turnin 3107 >>交任务: 神圣符文
     .trainer >>训练你的职业咒语
 step << Gnome Mage
     .goto Dun Morogh,28.7,66.4
-    .turnin 3114 >>递交字形备忘录
+    .turnin 3114 >>交任务: 雕文备忘录
     .trainer >>训练你的职业咒语
 step << Warlock
     .goto Dun Morogh,28.6,66.1
     .trainer >>上楼去。培养你的腐败
-    .turnin 3115 >>交回被篡改的备忘录
+    .turnin 3115 >>交任务: 被污染的备忘录
 step << Mage/Warlock
     .goto Dun Morogh,30.0,71.5
     .vendor >>供应商，购买10水
@@ -2708,16 +2708,16 @@ step << Paladin/Mage/Warlock
     >>杀死霜鬃巨魔幼崽
     .complete 182,1 --Kill Frostmane Troll Whelp (x14)
 step << Paladin/Mage/Warlock
-    >>抢劫地上的水桶
+    >>掠夺地上的水桶
     .goto Dun Morogh,26.33,79.28
     .complete 3361,3 --Felix's Bucket of Bolts (1)
 step << Paladin/Mage/Warlock
-    >>在地上抢劫箱子
+    >>在地上掠夺箱子
     .goto Dun Morogh,22.78,80.00
     .complete 3361,2 --Felix's Chest (1)
 step << Paladin/Mage/Warlock
     #label FelixB
-    >>抢劫地上的箱子
+    >>掠夺地上的箱子
     .goto Dun Morogh,20.88,76.07
     .complete 3361,1 --Felix's Box (1)
 step << Paladin/Mage/Warlock
@@ -2747,20 +2747,20 @@ step << !Paladin !Mage !Warlock
     .xp 4 >>升级到4
 step << !Paladin !Mage !Warlock
     .goto Dun Morogh,25.1,75.7
-    .turnin 182 >>转入巨魔洞穴
-    .accept 218 >>接受被盗日记
+    .turnin 182 >>交任务: 巨魔洞穴
+    .accept 218 >>接任务: 被窃取的日记
 step << Paladin/Mage/Warlock
     .goto Dun Morogh,25.1,75.7
-    .turnin 182 >>转入巨魔洞穴
-    .accept 218 >>接受被盗日记
+    .turnin 182 >>交任务: 巨魔洞穴
+    .accept 218 >>接任务: 被窃取的日记
 step << !Paladin !Mage !Warlock
     #softcore
     .goto Dun Morogh,25.0,76.0
-    .accept 3364 >>接受烫发晨报递送
+    .accept 3364 >>接任务: 热酒快递
     >>你现在有500万美元要拿到《华尔街日报》，然后交上《晨报》。如果你的任务失败了，死后再捡起来
 step << Paladin/Mage/Warlock
     .goto Dun Morogh,25.0,76.0
-    .turnin 3365 >>把杯子拿回来
+    .turnin 3365 >>交任务: 归还酒杯
 step
     #softcore
     .goto Dun Morogh,26.8,79.9,30,0
@@ -2779,12 +2779,12 @@ step
 step << !Paladin !Mage !Warlock
     #hardcore
     .goto Dun Morogh,25.0,76.0
-    .accept 3364 >>接受烫发晨报递送
+    .accept 3364 >>接任务: 热酒快递
 step << !Paladin !Mage !Warlock
     #hardcore
     .goto Dun Morogh,25.1,75.8
-    .turnin 218 >>交出被盗日记
-    .accept 282 >>接受Senir的意见
+    .turnin 218 >>交任务: 被窃取的日记
+    .accept 282 >>接任务: 森内尔的观察站
 step
     #softcore
     .goto Dun Morogh,29.5,69.8,100 >>在精神治疗者处死亡并重生
@@ -2793,31 +2793,31 @@ step << !Paladin !Mage !Warlock
     #completewith Scalding2
     >>如果你速度太慢，无法完成定时任务，请再去捡一次
     .goto Dun Morogh,25.0,76.0,0
-    .accept 3364 >>接受烫发晨报递送
+    .accept 3364 >>接任务: 热酒快递
     .goto Dun Morogh,28.8,66.4
-    .turnin 3364 >>交付烫伤晨报
+    .turnin 3364 >>交任务: 热酒快递
 step << !Paladin !Mage !Warlock
     #label Scalding2
     .goto Dun Morogh,28.8,66.4
-    .turnin 3364 >>交付烫伤晨报
-    .accept 3365 >>接受带回马克杯
+    .turnin 3364 >>交任务: 热酒快递
+    .accept 3365 >>接任务: 归还酒杯
     .vendor >>供应商垃圾
 step << Paladin/Mage/Warlock
     .goto Dun Morogh,28.55,67.64
     >>进入大楼
-    .turnin 3361 >>移交难民的困境
+    .turnin 3361 >>交任务: 逃难者的困境
 step << Rogue
     .goto Dun Morogh,28.4,67.5
-    .turnin 3113 >>提交加密备忘录 << Gnome Rogue
-    .turnin 3109 >>提交加密符文 << Dwarf Rogue
+    .turnin 3113 >>交任务: 密文备忘录 << Gnome Rogue
+    .turnin 3109 >>交任务: 密文符文 << Dwarf Rogue
 step << Dwarf Priest
     .goto Dun Morogh,28.6,66.4
-    .turnin 3110 >>交出神圣符文
+    .turnin 3110 >>交任务: 神圣符文
     .trainer >>训练你的职业咒语
 step << Warrior
     .goto Dun Morogh,28.8,67.2
-    .turnin 3106 >>交出简单符文 << Dwarf Warrior
-    .turnin 3112 >>提交简单备忘录 << Gnome Warrior
+    .turnin 3106 >>交任务: 简易符文 << Dwarf Warrior
+    .turnin 3112 >>交任务: 简易备忘录 << Gnome Warrior
     .trainer >>训练你的职业咒语
 step << Priest
     .money <0.0025
@@ -2825,18 +2825,18 @@ step << Priest
     .vendor >>最多购买10瓶水
 step
     .goto Dun Morogh,25.1,75.8
-    .turnin 218 >>交出被盗日记
-    .accept 282 >>接受Senir的意见
+    .turnin 218 >>交任务: 被窃取的日记
+    .accept 282 >>接任务: 森内尔的观察站
 step << !Paladin !Mage !Warlock
     .goto Dun Morogh,25.0,76.0
-    .turnin 3365 >>把杯子拿回来
+    .turnin 3365 >>交任务: 归还酒杯
 step
     .goto Dun Morogh,33.5,71.8
-    .turnin 282 >>提交Senir的观察结果
-    .accept 420 >>接受Senir的意见
+    .turnin 282 >>交任务: 森内尔的观察站
+    .accept 420 >>接任务: 森内尔的观察站
 step
     .goto Dun Morogh,33.9,72.2
-    .accept 2160 >>接受供应给Tannok
+    .accept 2160 >>接任务: 塔诺克的补给品
 step
     .goto Dun Morogh,34.1,71.6,20,0
     .goto Dun Morogh,35.7,66.0,0
@@ -2874,13 +2874,13 @@ step << Priest
     .goto Dun Morogh,36.4,62.9,45,0
     .goto Dun Morogh,37.7,60.5,45,0
     .goto Dun Morogh,43.9,55.7
-    .xp 5+2145>>研磨至2145/+2800xp
+    .xp 5+2145>>提升经验到2145/+2800xp
 step << !Priest
     >>将野猪磨碎，东北至哈拉诺斯
     .goto Dun Morogh,36.4,62.9,45,0
     .goto Dun Morogh,37.7,60.5,45,0
     .goto Dun Morogh,43.9,55.7
-    .xp 5+2415>>研磨至2415/+2800xp
+    .xp 5+2415>>提升经验到2415/+2800xp
 step
     #completewith next
     #softcore
@@ -2888,13 +2888,13 @@ step
 step
     #softcore
     .goto Dun Morogh,46.7,53.8
-    .turnin 420 >>提交Senir的观察结果
+    .turnin 420 >>交任务: 森内尔的观察站
     .vendor >>供应商垃圾
 step
     #hardcore
     >>在前往哈拉诺斯的途中磨碎野猪
     .goto Dun Morogh,46.7,53.8
-    .turnin 420 >>提交Senir的观察结果
+    .turnin 420 >>交任务: 森内尔的观察站
     .vendor >>供应商垃圾
 step << Warlock
     .goto Dun Morogh,47.3,53.7
@@ -2905,10 +2905,10 @@ step << !Priest
     .xp 6 >>升级到6
 step
     .goto Dun Morogh,46.8,52.4
-    .accept 384 >>接受啤酒烤猪排
+    .accept 384 >>接任务: 啤酒烤猪排
 step
     .goto Dun Morogh,47.2,52.2
-    .turnin 2160 >>向Tannok移交物资
+    .turnin 2160 >>交任务: 塔诺克的补给品
 step << Rogue
     .goto Dun Morogh,47.2,52.4
     .vendor >>购买克雷格投掷的3级。装备它
@@ -2923,14 +2923,14 @@ step << Paladin
     .trainer >>训练你的职业咒语
 step << Priest
     .goto Dun Morogh,47.3,52.2
-    .accept 5625 >>接受光明之衣
+    .accept 5625 >>接任务: 圣光之衣
 step << Priest
     >>使用较低治疗等级2，然后使用咒语：登山者杜尔夫的坚韧
     .goto Dun Morogh,45.8,54.6
      .complete 5625,1 --Heal and fortify Mountaineer Dolf
 step << Priest
     .goto Dun Morogh,47.3,52.2
-    .turnin 5625 >>交出光明的衣裳
+    .turnin 5625 >>交任务: 圣光之衣
     .trainer >>训练你的职业咒语
 step << Priest
     .xp 6 >>升级到6
@@ -2973,21 +2973,21 @@ step << Paladin
     >>如果你想从事自己的职业，跳过这一步
 step
     .goto Dun Morogh,46.0,51.7
-    .accept 400 >>钢格栅的验收工具
+    .accept 400 >>接任务: 贝尔丁的工具
 step
     .goto Dun Morogh,49.4,48.4
     >>不要在途中杀死熊
-    .accept 317 >>接受库存Jetsteam
+    .accept 317 >>接任务: 贝尔丁的补给
 step
     .goto Dun Morogh,49.6,48.6
-    .accept 313 >>接受Grizzled Den
+    .accept 313 >>接任务: 灰色洞穴
 step
     .goto Dun Morogh,50.4,49.1
-    .turnin 400 >>钢格栅上交工具
+    .turnin 400 >>交任务: 贝尔丁的工具
 step
     #label BoarMeat44
     .goto Dun Morogh,50.1,49.4
-    .accept 5541 >>接受弹药以防隆隆枪击
+    .accept 5541 >>接任务: 海格纳的弹药
 step << Warrior/Paladin/Rogue
     .money <0.0091
     .goto Dun Morogh,50.1,49.4
@@ -3034,8 +3034,8 @@ step << !Paladin !Warrior !Rogue
     .complete 317,2 --Collect Thick Bear Fur (x2)
 step << !Paladin !Warrior !Rogue
     .goto Dun Morogh,49.4,48.4
-    .turnin 317 >>上缴库存Jetsteam
-    .accept 318 >>接受Evershine
+    .turnin 317 >>交任务: 贝尔丁的补给
+    .accept 318 >>接任务: 艾沃沙酒
 step << Warrior
     .goto Dun Morogh,46.9,52.1,20,0
     .goto Dun Morogh,47.4,52.5
@@ -3053,14 +3053,14 @@ step
     >>杀死Wendigos。掠夺他们的鬃毛。留心纹理，为武器的配重块获取粗糙的石头 << Paladin
     .complete 313,1 --Collect Wendigo Mane (x8)
 step
-    >>抢劫板条箱
+    >>掠夺板条箱
     .goto Dun Morogh,44.1,56.9
     .complete 5541,1 --Collect Rumbleshot's Ammo (x1)
 step
     #label BearFur
     .goto Dun Morogh,40.6,62.6,50,0
     .goto Dun Morogh,40.7,65.1
-    .turnin 5541 >>交出弹药进行隆布尔枪击
+    .turnin 5541 >>交任务: 海格纳的弹药
     .vendor >>供应商和维修
 step << !Paladin !Warrior !Rogue
     .xp 7 >>升级到7
@@ -3071,11 +3071,11 @@ step << Paladin/Warrior/Rogue
     .complete 317,1 --Collect Chunk of Boar Meat (x4)
 step << Warrior/Paladin/Rogue
     .goto Dun Morogh,49.4,48.4
-    .turnin 317 >>上缴库存Jetsteam
-    .accept 318 >>接受Evershine
+    .turnin 317 >>交任务: 贝尔丁的补给
+    .accept 318 >>接任务: 艾沃沙酒
 step << Warrior/Paladin/Rogue
     .goto Dun Morogh,49.6,48.6
-    .turnin 313 >>在Grizzled Den转弯
+    .turnin 313 >>交任务: 灰色洞穴
 step << Warrior/Paladin/Rogue
     .goto Dun Morogh,50.1,49.4
     .collect 2901,1 >>购买采矿镐
@@ -3116,12 +3116,12 @@ step << Paladin/Warrior/Rogue
     .goto Dun Morogh,43.0,47.4,100,0
     .goto Dun Morogh,39.6,48.9,100,0
     .goto Dun Morogh,34.6,51.7
-    .accept 312 >>接受Tundra MacGrann被盗的Stash
+    .accept 312 >>接任务: 马克格拉恩的干肉
 step << !Paladin !Warrior !Rogue
     .goto Dun Morogh,35.2,56.4,100,0
     .goto Dun Morogh,36.0,52.0,100,0
     .goto Dun Morogh,34.6,51.7
-    .accept 312 >>接受Tundra MacGrann被盗的Stash
+    .accept 312 >>接任务: 马克格拉恩的干肉
 step << !Mage !Priest
     #completewith next
     .goto Dun Morogh,30.5,46.0
@@ -3132,12 +3132,12 @@ step << Priest/Mage/Warlock
     .vendor >>小贩购买最多20杯5级饮料
 step
     .goto Dun Morogh,30.2,45.8
-    .turnin 318 >>交给Evershine
-    .accept 319 >>接受对Evershine的支持
-    .accept 315 >>接受完美的烈性酒
+    .turnin 318 >>交任务: 艾沃沙酒
+    .accept 319 >>接任务: 艾沃沙酒
+    .accept 315 >>接任务: 完美烈酒
 step
     .goto Dun Morogh,30.2,45.5
-    .accept 310 >>接受残酷的竞争对手
+    .accept 310 >>接任务: 针锋相对
 step
     #label Ribs
     .goto Dun Morogh,31.5,38.9,100,0
@@ -3162,8 +3162,8 @@ step
     .complete 384,1 --Collect Crag Boar Rib (x6)
 step
     .goto Dun Morogh,30.2,45.7
-    .turnin 319 >>为Evershine提供支持
-    .accept 320 >>接受返回Bellowfiz
+    .turnin 319 >>交任务: 艾沃沙酒
+    .accept 320 >>接任务: 艾沃沙酒
 step
     #softcore
     .goto Dun Morogh,30.3,37.5,60 >>跑到这里
@@ -3199,11 +3199,11 @@ step
     .goto Dun Morogh,47.6,52.4,15,0
     >>进客栈老板后面的房间。下楼去，然后和贾文谈谈，给他雷霆啤酒
     >>等待木桶鼠标移到“无人看守”位置，然后handin
-    .turnin 310 >>在激烈的竞争中获胜
-    .accept 311 >>接受返回Marleth
+    .turnin 310 >>交任务: 针锋相对
+    .accept 311 >>接任务: 向马莱斯回报
 step
     .goto Dun Morogh,46.8,52.4
-    .turnin 384 >>翻啤酒扒猪排
+    .turnin 384 >>交任务: 啤酒烤猪排
      >>当你下一个供应商时出售配方
 step << Warlock
     .goto Dun Morogh,47.3,53.7
@@ -3247,18 +3247,18 @@ step << Priest/Mage/Warlock
     .vendor >>从客栈老板那里购买至多30杯5级饮料
 step
     .goto Dun Morogh,46.7,53.8
-    .accept 287 >>接受Frostmane保持
+    .accept 287 >>接任务: 霜鬃巨魔要塞
 step
     .goto Dun Morogh,49.6,48.6
-    .turnin 313 >>在Grizzled Den转弯
+    .turnin 313 >>交任务: 灰色洞穴
 step
     .goto Dun Morogh,49.4,48.4
     >>选择野营刀。保存以备以后使用 << Rogue
-    .turnin 320 >>转身返回贝洛菲兹
+    .turnin 320 >>交任务: 艾沃沙酒
 step << Warrior
     >>建筑物内部
     .goto Dun Morogh,45.8,49.4
-    .accept 412 >>接受操作重组
+    .accept 412 >>接任务: 自动净化装置
 step
     #completewith next
     .goto Dun Morogh,43.1,45.0,20,0
@@ -3271,8 +3271,8 @@ step
     .goto Dun Morogh,39.5,43.0
     .goto Dun Morogh,41.5,36.0
     >>清除这个地区的暴徒。如果你需要清理中间营地，请小心。如果你需要更多的暴徒，你可以把暴徒拉到小屋里，视线(LoS)在小屋后面。如果你运气不好，就跑到另一个地方去
-    >>在地上抢劫篮子
-    >>如果你在这里抢劫亚麻布，就要做砝码 << Paladin
+    >>在地上掠夺篮子
+    >>如果你在这里掠夺亚麻布，就要做砝码 << Paladin
     .complete 315,1 --Collect Shimmerweed (x6)
 step << !Mage !Warlock
     .goto Dun Morogh,38.5,54.0
@@ -3286,7 +3286,7 @@ step << Mage/Warlock
     .complete 312,1 --Collect MacGrann's Dried Meats (x1)
 step
     .goto Dun Morogh,34.6,51.7
-    .turnin 312 >>交出Tundra MacGrann被盗的Stash
+    .turnin 312 >>交任务: 马克格拉恩的干肉
 step << Mage/Priest/Warlock
     #completewith next
     .goto Dun Morogh,30.4,45.8
@@ -3297,11 +3297,11 @@ step << Warrior/Paladin/Rogue
     .vendor >>供应商垃圾
 step
     .goto Dun Morogh,30.2,45.7
-    .turnin 315 >>交上完美的烈酒
-    .accept 413 >>接受Shimmer Stout
+    .turnin 315 >>交任务: 完美烈酒
+    .accept 413 >>接任务: 微光酒
 step
     .goto Dun Morogh,30.2,45.5
-    .turnin 311 >>交给马利思
+    .turnin 311 >>交任务: 向马莱斯回报
 step << Warrior
     .goto Dun Morogh,27.2,43.0,80,0
     .goto Dun Morogh,24.8,39.3,80,0
@@ -3309,7 +3309,7 @@ step << Warrior
     .goto Dun Morogh,24.3,44.0,80,0
     .goto Dun Morogh,25.4,45.4,80,0
     .goto Dun Morogh,25.00,43.50
-    >>杀死麻风侏儒。抢劫他们的装备和鞋帽
+    >>杀死麻风侏儒。掠夺他们的装备和鞋帽
     .complete 412,2 --Collect Gyromechanic Gear (x8)
     .complete 412,1 --Collect Restabilization Cog (x8)
 step << Paladin
@@ -3347,15 +3347,15 @@ step
    .goto Dun Morogh,46.7,53.8,150 >>如果没问题的话，就把炉子烧了，否则就要碾回哈拉诺斯
 step
     .goto Dun Morogh,46.7,53.8
-    .turnin 287 >>交给Frostmane Hold
-    .accept 291 >>接受报告
+    .turnin 287 >>交任务: 霜鬃巨魔要塞
+    .accept 291 >>接任务: 森内尔的报告
 step
     #completewith EndDM
     >>在前往其他任务的途中杀死野猪，获得8块野猪肉，以便稍后执行任务。现在不要太专注于这个
     .collect 769,8 --Collect Chunk of Boar Meat (x8)
 step << Rogue
     .goto Dun Morogh,47.6,52.6
-    .accept 2218 >>接受救世之路
+    .accept 2218 >>接任务: 救赎之路
     .trainer >>训练你的职业咒语
     >>装备早期的野营刀
 step << Warlock
@@ -3380,7 +3380,7 @@ step << !Paladin !Priest
 step << Warrior
     >>建筑物内部
     .goto Dun Morogh,45.8,49.4
-    .turnin 412 >>转入操作再栓塞
+    .turnin 412 >>交任务: 自动净化装置
 step << Warrior
     #sticky
     #completewith next
@@ -3399,7 +3399,7 @@ step << Warrior
 step
     .goto Dun Morogh,60.1,52.6,50,0
     .goto Dun Morogh,63.1,49.8
-    .accept 314 >>接受保护羊群
+    .accept 314 >>接任务: 保护牲畜
 step
     #completewith next
     .goto Dun Morogh,62.3,50.3,14,0
@@ -3413,7 +3413,7 @@ step
     .link https://www.youtube.com/watch?v=ZJX6sCkm5JY >>单击此处了解如何独奏瓦加什
 step
     .goto Dun Morogh,63.1,49.8
-    .turnin 314 >>转身保护羊群
+    .turnin 314 >>交任务: 保护牲畜
 step
     >>途中磨碎一点
     .goto Dun Morogh,68.6,54.7
@@ -3424,14 +3424,14 @@ step
     .train 2550 >>Ghilm的火车烹饪
 step
     .goto Dun Morogh,68.7,56.0
-    .accept 433 >>接受公务员
+    .accept 433 >>接任务: 公众之仆
 step
     #completewith next
     .goto Dun Morogh,68.9,55.9
     .vendor >>供应商垃圾，修理
 step
     .goto Dun Morogh,69.1,56.3
-    .accept 432 >>接受那些被炸死的流浪汉！
+    .accept 432 >>接任务: 该死的石腭怪！
 step
     .goto Dun Morogh,70.7,56.4,40,0
     .goto Dun Morogh,70.62,52.39,25,0
@@ -3441,21 +3441,21 @@ step
     .complete 433,1 --Kill Rockjaw Bonesnapper (x10)
 step
     .goto Dun Morogh,69.1,56.3
-    .turnin 432 >>把那些被炸死的暴徒交上来！
+    .turnin 432 >>交任务: 该死的石腭怪！
 step
     #completewith next
     .goto Dun Morogh,68.9,55.9
     .vendor >>供应商垃圾，修理
 step
     .goto Dun Morogh,68.7,56.0
-    .turnin 433 >>上缴公务员
+    .turnin 433 >>交任务: 公众之仆
 step
     .goto Dun Morogh,83.8,39.2
-    .accept 419 >>接受迷失的飞行员
+    .accept 419 >>接任务: 失踪的驾驶员
 step
     .goto Dun Morogh,79.7,36.2
-    .turnin 419 >>交出失踪的飞行员
-    .accept 417 >>接受飞行员的复仇
+    .turnin 419 >>交任务: 失踪的驾驶员
+    .accept 417 >>接任务: 驾驶员的复仇
 step
     >>杀死芒格克劳。抢走他的爪子
     .goto Dun Morogh,78.97,37.14
@@ -3463,13 +3463,13 @@ step
 step
     #label EndDM
     .goto Dun Morogh,83.9,39.2
-    .turnin 417 >>提交飞行员的复仇
+    .turnin 417 >>交任务: 驾驶员的复仇
 step
     .goto Dun Morogh,79.6,50.7,50,0
     .goto Dun Morogh,82.3,53.5,25,0
     .goto Dun Morogh,86.3,48.8
-    .turnin 413 >>转入Shimmer Stout
-    .accept 414 >>接受斯托特到卡德雷尔
+    .turnin 413 >>交任务: 微光酒
+    .accept 414 >>接任务: 卡德雷尔的酒
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -3485,27 +3485,27 @@ RXPGuides.RegisterGuide([[
 step
     >>穿过隧道进入Loch
     .goto Loch Modan,22.1,73.1
-    .accept 224 >>接受保护国王的土地
+    .accept 224 >>接任务: 保卫国王的领土
 step
     .goto Loch Modan,23.2,73.7
     >>从后面进入沙坑
-    .accept 267 >>接受Trogg威胁
+    .accept 267 >>接任务: 穴居人的威胁
 step
     .goto Loch Modan,32.6,49.9,80.0,0
     .goto Loch Modan,37.2,46.1,80.0,0
     .goto Loch Modan,36.7,41.6
     >>找到卡德雷尔。他沿着塞尔萨马尔公路巡逻
-    .turnin 414 >>把斯托特交给卡德雷尔
-    .accept 416 >>接受捕鼠
-    .accept 1339 >>接受登山者Stormpike的任务
+    .turnin 414 >>交任务: 卡德雷尔的酒
+    .accept 416 >>接任务: 狗头人的耳朵
+    .accept 1339 >>接任务: 巡山人卡尔·雷矛的任务
 step
     >>进入大楼，然后下楼。与Brock交谈
     .goto Loch Modan,37.2,46.9,15,0
     .goto Loch Modan,37.0,47.8
-    .accept 6387 >>接受荣誉学生
+    .accept 6387 >>接任务: 荣誉学员
 step
     .goto Loch Modan,34.82,49.28
-    .accept 418 >>接受Thelsamar鲜血香肠
+    .accept 418 >>接任务: 塞尔萨玛血肠
 step
     .goto Loch Modan,34.8,48.6
     .vendor >>购买6槽包
@@ -3522,31 +3522,31 @@ step
 step
     >>跑到北方的掩体
     .goto Loch Modan,24.8,18.4
-    .accept 307 >>接受肮脏的爪子
-    .turnin 1339 >>提交登山者Stormpike的任务
-    .accept 1338 >>接受Stormpike的命令
+    .accept 307 >>接任务: 肮脏的爪子
+    .turnin 1339 >>交任务: 巡山人卡尔·雷矛的任务
+    .accept 1338 >>接任务: 卡尔·雷矛的订单
 step
     #label Thelsamar1
     .deathskip >>在塞尔萨马尔死亡并重生
 step
     .goto Loch Modan,33.9,51.0
-    .turnin 6387 >>移交荣誉学生
-    .accept 6391 >>接受铁炉堡之旅
+    .turnin 6387 >>交任务: 荣誉学员
+    .accept 6391 >>接任务: 飞往铁炉堡
 step
     .goto Loch Modan,33.9,51.0
     .fly Ironforge >>飞往铁炉堡
 step
     .goto Ironforge,51.5,26.3
-    .turnin 6391 >>上交骑行前往铁炉堡
-    .accept 6388 >>接受Gryth Thurden
+    .turnin 6391 >>交任务: 飞往铁炉堡
+    .accept 6388 >>接任务: 格莱斯·瑟登
 step
     .goto Ironforge,39.5,57.5
-    .turnin 291 >>提交报告
+    .turnin 291 >>交任务: 森内尔的报告
 step
     >>不要在任何地方飞行
     .goto Ironforge,55.5,47.8
-    .turnin 6388 >>转入Gryth Thurden
-    .accept 6392 >>接受返回Brock
+    .turnin 6388 >>交任务: 格莱斯·瑟登
+    .accept 6392 >>接任务: 向布洛克回复
 step
     #completewith next
     +执行注销跳过，跳到鹰头狮的头上，注销，然后再重新登录
@@ -3555,28 +3555,28 @@ step
     .goto Ironforge,74.40,51.10,30,0
     .goto Ironforge,74.40,51.10,0
      >>进入Deeprun Tram，在中间平台与侏儒交谈
-    .accept 6661 >>接受Deeprun老鼠围捕
+    .accept 6661 >>接任务: 捕捉矿道老鼠
 step
     >>用你的长笛对付四处散落的老鼠
     .complete 6661,1 --Rats Captured (x5)
 step
-    .turnin 6661 >>交给Deeprun老鼠围捕
-    .accept 6662 >>接受我，兄弟，尼普西
+    .turnin 6661 >>交任务: 捕捉矿道老鼠
+    .accept 6662 >>接任务: 我的兄弟，尼普希
 step
      .isOnQuest 6662
     >>乘电车去暴风城，到了电车的另一边后再转弯
-    .turnin 6662 >>交给我，兄弟，尼普西
+    .turnin 6662 >>交任务: 我的兄弟，尼普希
     >>在等待/乘坐电车时进行急救训练，您需要80分的急救积分才能完成24级任务 << Rogue
 step
     #completewith next
     .goto StormwindClassic,60.5,12.3
-    .zone Stormwind City >>下车进入暴风城
+    .zone Stormwind City >>前往: 暴风城
 step
     .goto StormwindClassic,51.6,12.2
-    .accept 353 >>接受Stormpike的交付
+    .accept 353 >>接任务: 雷矛的包裹
 step
     .goto StormwindClassic,58.1,16.5
-    .turnin 1338 >>提交Stormpike的命令
+    .turnin 1338 >>交任务: 卡尔·雷矛的订单
 step
     #sticky
     #completewith next
@@ -3587,7 +3587,7 @@ step
     .trainer >>训练你的职业咒语
 step
     .goto StormwindClassic,25.2,78.5
-    .accept 1688 >>接受Surena Caledon
+    .accept 1688 >>接任务: 苏伦娜·凯尔东
 step
     .goto StormwindClassic,57.1,57.7
     .trainer >>火车站。如果你有闲钱，训练1小时剑
@@ -3606,25 +3606,25 @@ step
 step
     .goto Elwynn Forest,42.10,65.90
      >>前往Goldshire
-    .accept 62 >>接受Fargodeep矿井
+    .accept 62 >>接任务: 法戈第矿洞
 step
     >>在你靠近的左边
     .goto Elwynn Forest,43.3,65.7
-    .accept 60 >>接受Kobold Candles
+    .accept 60 >>接任务: 狗头人的蜡烛
 step
     .goto Elwynn Forest,42.10,67.30
-    .accept 40 >>接受鱼的危险
-    .accept 47 >>接受金尘交换
+    .accept 40 >>接任务: 鱼人的威胁
+    .accept 47 >>接任务: 金砂交易
 step
     >>点击周围任何通缉海报
     .goto Elwynn Forest,24.6,74.7
-    .accept 176 >>接受通缉：“Hogger”
+    .accept 176 >>接任务: 通缉：霍格
 step
     #sticky
     #completewith collector
     >>请留意取金时间表(幸运滴)，或Gruff Swiftbite的100%滴(罕见)。额外210xp
     .collect 1307,1,123 --Collect Gold Pickup Schedule (x1)
-    .accept 123 >>接受催收员
+    .accept 123 >>接任务: 收货人
 step
     #label Hogger
     .unitscan Hogger
@@ -3645,14 +3645,14 @@ step
     >>小心，因为这可能很困难
     .complete 176,1 --Huge Gnoll Claw (1)
 step
-    .accept 88 >>接受公主必死无疑！
+    .accept 88 >>接任务: 公主必须死！
     .goto Elwynn Forest,34.60,84.50
-    .accept 85 >>接受丢失的项链
+    .accept 85 >>接任务: 丢失的项链
     .goto Elwynn Forest,34.40,84.2
 step
     .goto Elwynn Forest,43.0,85.8
-    .turnin 85 >>交回丢失的项链
-    .accept 86 >>为比利接受派
+    .turnin 85 >>交任务: 丢失的项链
+    .accept 86 >>接任务: 比利的馅饼
 step
     #sticky
     #label Fargodeep
@@ -3672,32 +3672,32 @@ step
     #requires Fargodeep
     .goto Elwynn Forest,42.1,65.9
     >>选择棍子，然后装备它
-    .turnin 176 >>通缉犯：“Hogger”
-    .turnin 62 >>交给Fargodeep矿井
-    .turnin 40 >>陷入困境
-    .accept 35 >>接受进一步关注
-    .turnin 123 >>交回收集器
+    .turnin 176 >>交任务: 通缉：霍格
+    .turnin 62 >>交任务: 法戈第矿洞
+    .turnin 40 >>交任务: 鱼人的威胁
+    .accept 35 >>接任务: 卫兵托马斯
+    .turnin 123 >>交任务: 收货人
     .isOnQuest 123
 step
     #requires Fargodeep
     .goto Elwynn Forest,42.1,65.9
     >>选择棍子，然后装备它
-    .turnin 176 >>通缉犯：“Hogger”
-    .turnin 62 >>交给Fargodeep矿井
-    .turnin 40 >>陷入困境
-    .accept 35 >>接受进一步关注
+    .turnin 176 >>交任务: 通缉：霍格
+    .turnin 62 >>交任务: 法戈第矿洞
+    .turnin 40 >>交任务: 鱼人的威胁
+    .accept 35 >>接任务: 卫兵托马斯
 step
     .goto Elwynn Forest,43.30,65.70
-    .turnin 60 >>交上Kobold Candles
-    .accept 61 >>接受装运至暴风城
+    .turnin 60 >>交任务: 狗头人的蜡烛
+    .accept 61 >>接任务: 送往暴风城的货物
 step
     .goto Elwynn Forest,42.20,67.20
-    .turnin 47 >>交金换尘
+    .turnin 47 >>交任务: 金砂交易
 step
     .goto Elwynn Forest,73.90,72.30
-    .turnin 35 >>提交更多问题
+    .turnin 35 >>交任务: 卫兵托马斯
 step
-    >>杀死房子里的暴徒，让摩根保持恐惧(他凿伤并杀死宠物)，核弹袭击苏雷纳。为她的喉咙抢劫她
+    >>杀死房子里的暴徒，让摩根保持恐惧(他凿伤并杀死宠物)，核弹袭击苏雷纳。为她的喉咙掠夺她
     .goto Elwynn Forest,71.0,80.8
     .complete 1688,1 --Surena's Choker (1)
 step
@@ -3708,30 +3708,30 @@ step << skip
     #completewith next
     >>留意德菲亚斯(Defias)的《威斯特福尔契约》(lucky drop)
     .collect 1972,1,184 --Collect Westfall Deed (x1)
-    .accept 184 >>接受Furlbrow的契约
+    .accept 184 >>接任务: 法布隆的地契
 step
     >>向东前往Redridge
     >>警卫在树桩周围巡逻了一会儿
     .goto Elwynn Forest,91.7,72.3,150,0
     .goto Redridge Mountains,17.4,69.6
-    .accept 244 >>接受侵扰侏儒
+    .accept 244 >>接任务: 豺狼人的入侵
 step
     >>小心路上的高级暴徒
     .goto Redridge Mountains,30.7,60.0
-    .turnin 244 >>交出侵扰侏儒
+    .turnin 244 >>交任务: 豺狼人的入侵
 step
     .goto Redridge Mountains,30.6,59.4
     .fly Stormwind >>飞到暴风城
 step
     .goto Elwynn Forest,26.21,39.66
     >>选择火箭队作为奖励。这些有很好的伤害，可以用来劈开
-    .turnin 61 >>将货物交给Stormwind
+    .turnin 61 >>交任务: 送往暴风城的货物
 step << Warlock
     >>回到术士训练师那里
     .goto StormwindClassic,25.2,78.5
     .trainer >>训练你的职业咒语
-    .turnin 1688 >>交给Surena Caledon
-    .accept 1689 >>接受绑定
+    .turnin 1688 >>交任务: 苏伦娜·凯尔东
+    .accept 1689 >>接任务: 誓缚
 step << Warlock
     .goto StormwindClassic,25.2,80.7,18,0
     .goto StormwindClassic,23.2,79.5,18,0
@@ -3743,21 +3743,21 @@ step << Warlock
      #softcore
     >>在返回术士训练师的途中进行生命分流
     .goto StormwindClassic,25.2,78.5
-    .turnin 1689 >>交回装订本
+    .turnin 1689 >>交任务: 誓缚
 step << Warlock
      #hardcore
     .goto StormwindClassic,25.2,78.5
-    .turnin 1689 >>交回装订本
+    .turnin 1689 >>交任务: 誓缚
 step << Warlock
     #softcore
     #completewith next
     .goto StormwindClassic,25.2,78.5
     .deathskip >>使用生命水龙头并站在你旁边的篝火上，在精神治疗者处死亡并重生
 step
-    .turnin 88 >>公主必须死！
+    .turnin 88 >>交任务: 公主必须死！
     .goto Elwynn Forest,34.66,84.48
 step
-    .turnin 86 >>把馅饼交给比利
+    .turnin 86 >>交任务: 比利的馅饼
     .goto Elwynn Forest,34.40,84.2
     .isQuestComplete 86
 step
@@ -3786,12 +3786,12 @@ step
 step
     >>穿过隧道进入Loch
     .goto Loch Modan,22.1,73.1
-    .accept 224 >>接受保护国王的土地
+    .accept 224 >>接任务: 保卫国王的领土
 step
     #label TroggT
     .goto Loch Modan,23.2,73.7
     >>从后面进入沙坑
-    .accept 267 >>接受Trogg威胁
+    .accept 267 >>接任务: 穴居人的威胁
 step << Paladin
     .goto Loch Modan,27.4,48.4
     >>研磨战车，在你的包里装上10块亚麻布，以备稍后圣骑士任务之用
@@ -3801,17 +3801,17 @@ step
     .goto Loch Modan,37.2,46.1,80.0,0
     .goto Loch Modan,36.7,41.6
     >>找到卡德雷尔。他沿着塞尔萨马尔公路巡逻
-    .turnin 414 >>把斯托特交给卡德雷尔
-    .accept 416 >>接受捕鼠
-    .accept 1339 >>接受登山者Stormpike的任务
+    .turnin 414 >>交任务: 卡德雷尔的酒
+    .accept 416 >>接任务: 狗头人的耳朵
+    .accept 1339 >>接任务: 巡山人卡尔·雷矛的任务
 step
     >>进入大楼，然后下楼。与Brock交谈
     .goto Loch Modan,37.2,46.9,15,0
     .goto Loch Modan,37.0,47.8
-    .accept 6387 >>接受荣誉学生
+    .accept 6387 >>接任务: 荣誉学员
 step
     .goto Loch Modan,34.82,49.28
-    .accept 418 >>接受Thelsamar鲜血香肠
+    .accept 418 >>接任务: 塞尔萨玛血肠
 step
     .goto Loch Modan,34.8,48.6
     .vendor >>购买1块燧石和火药，以及1块简单木材。如果需要，请购买6槽包
@@ -3827,7 +3827,7 @@ step << Mage/Paladin
     .complete 418,2 --Collect Bear Meat (x3)
     .complete 418,3 --Collect Spider Ichor (x3)
 step << Mage/Paladin
-    .xp 11+6615>>研磨至6615+/8800xp
+    .xp 11+6615>>提升经验到6615+/8800xp
     .goto Loch Modan,38.0,34.9,90,0
     .goto Loch Modan,37.1,39.8,90,0
     .goto Loch Modan,29.8,35.9,90,0
@@ -3841,33 +3841,33 @@ step << Mage/Paladin
     .goto Loch Modan,38.0,34.9
 step << Mage/Paladin
     .goto Loch Modan,33.9,51.0
-    .turnin 6387 >>移交荣誉学生
-    .accept 6391 >>接受铁炉堡之旅
+    .turnin 6387 >>交任务: 荣誉学员
+    .accept 6391 >>接任务: 飞往铁炉堡
     .fp Thelsamar >>获取Thelsamar飞行路线
     .fly Ironforge >>飞往铁炉堡
 step << Mage/Paladin
     .goto Ironforge,51.5,26.3
-    .turnin 6391 >>上交骑行前往铁炉堡
-    .accept 6388 >>接受Gryth Thurden
+    .turnin 6391 >>交任务: 飞往铁炉堡
+    .accept 6388 >>接任务: 格莱斯·瑟登
 step << Mage/Paladin
     .goto Ironforge,39.5,57.5
-    .turnin 291 >>提交报告
+    .turnin 291 >>交任务: 森内尔的报告
 step << Mage/Paladin
     .goto Ironforge,27.17,8.57 << Mage
     .goto Ironforge,23.3,6.1 << Paladin
      .trainer >>训练你的职业咒语
 step << Dwarf Paladin
     .goto Ironforge,23.3,6.1
-    .accept 2999 >>接受神之汤姆
+    .accept 2999 >>接任务: 圣洁之书
 step << Dwarf Paladin
     .goto Ironforge,27.4,12.1
     >>上楼去和蒂扎战斗堡垒通话
-    .turnin 2999 >>交给神之汤姆
-    .accept 1645 >>接受神性之父
-    .turnin 1645 >>交上神性之父
-    .accept 1646 >>接受神性之父
-    .turnin 1646 >>交上神性之父
-    .accept 1647 >>接受神性之父
+    .turnin 2999 >>交任务: 圣洁之书
+    .accept 1645 >>接任务: 圣洁之书
+    .turnin 1645 >>交任务: 圣洁之书
+    .accept 1646 >>接任务: 圣洁之书
+    .turnin 1646 >>交任务: 圣洁之书
+    .accept 1647 >>接任务: 圣洁之书
 step << Dwarf Paladin
     .goto Ironforge,18.15,51.45
     .home >>将您的炉石设置为铁炉堡
@@ -3876,24 +3876,24 @@ step << Dwarf Paladin
     .goto Ironforge,45.40,84.65
     .unitscan John Turner
     >>与约翰·特纳交谈，他在城市的外环漫步
-    .turnin 1647 >>交上神性之父
-    .accept 1648 >>接受神性之父
-    .turnin 1648 >>交上神性之父
-    .accept 1778 >>接受神性之父
+    .turnin 1647 >>交任务: 圣洁之书
+    .accept 1648 >>接任务: 圣洁之书
+    .turnin 1648 >>交任务: 圣洁之书
+    .accept 1778 >>接任务: 圣洁之书
 step << Dwarf Paladin
     .goto Ironforge,27.7,12.3
     >>返回Tiza Battleforge
-    .turnin 1778 >>交上神性之父
-    .accept 1779 >>接受神性之父
+    .turnin 1778 >>交任务: 圣洁之书
+    .accept 1779 >>接任务: 圣洁之书
 step << Dwarf Paladin
     .goto Ironforge,23.6,8.6
     >>与缪尔登·巴特尔福格交谈
-    .turnin 1779 >>交上神性之父
-    .accept 1783 >>接受神性之父
+    .turnin 1779 >>交任务: 圣洁之书
+    .accept 1783 >>接任务: 圣洁之书
 step << Mage/Paladin
     .goto Ironforge,55.5,47.8
-    .turnin 6388 >>转入Gryth Thurden
-    .accept 6392 >>接受返回Brock
+    .turnin 6388 >>交任务: 格莱斯·瑟登
+    .accept 6392 >>接任务: 向布洛克回复
     .fly Thelsamar >>飞往塞尔斯马尔
 step << skip
     #sticky
@@ -3910,10 +3910,10 @@ step
 step
     >>跑到北方的掩体
     .goto Loch Modan,24.8,18.4
-    .accept 307 >>接受肮脏的爪子
-    .turnin 1339 >>提交登山者Stormpike的任务
-    .accept 1338 >>接受Stormpike的命令 << !Warlock !Mage
-    .turnin 353 >>交给Stormpike的交货 << Warlock
+    .accept 307 >>接任务: 肮脏的爪子
+    .turnin 1339 >>交任务: 巡山人卡尔·雷矛的任务
+    .accept 1338 >>接任务: 卡尔·雷矛的订单 << !Warlock !Mage
+    .turnin 353 >>交任务: 雷矛的包裹 << Warlock
 step
     #label Tunnel
     #completewith next
@@ -3921,7 +3921,7 @@ step
 step
     .goto Loch Modan,35.75,22.42
     >>去科博尔德洞穴。收集你在里面找到的板条箱。
-    >>抢劫一个后，板条箱可能会在你身后靠近洞口的地方产卵，请务必在抢劫2或3个后进行检查
+    >>掠夺一个后，板条箱可能会在你身后靠近洞口的地方产卵，请务必在掠夺2或3个后进行检查
     .complete 307,1 --Collect Miners' Gear (x4)
 step
     .goto Loch Modan,35.46,18.78
@@ -3933,7 +3933,7 @@ step
     .vendor >>跑回沙坑。供应商和维修
 step
     .goto Loch Modan,24.76,18.39
-    .turnin 307 >>交上脏爪子
+    .turnin 307 >>交任务: 肮脏的爪子
 step
     #sticky
     #label Meat9
@@ -3992,11 +3992,11 @@ step
     .goto Loch Modan,37.2,46.1,80.0,0
     .goto Loch Modan,36.7,41.6
     >>找到卡德雷尔。他沿着塞尔萨马尔公路巡逻
-    .turnin 416 >>上缴捕鼠
+    .turnin 416 >>交任务: 狗头人的耳朵
 step
     #requires RatCatching
     .goto Loch Modan,34.82,49.28
-    .turnin 418 >>加入塞尔萨马尔鲜血香肠
+    .turnin 418 >>交任务: 塞尔萨玛血肠
 step
     .goto Loch Modan,34.8,48.6
     .vendor >>如果需要，请购买更多6个老虎袋
@@ -4008,29 +4008,29 @@ step
     .complete 267,1 --Collect Trogg Stone Tooth (x8)
 step << !Mage !Paladin
     .goto Loch Modan,27.4,48.4
-    .xp 13+5615>>研磨至5615+/11400xp
+    .xp 13+5615>>提升经验到5615+/11400xp
 step << Mage/Paladin
     .goto Loch Modan,27.4,48.4
-    .xp 13+7800>>研磨至7800+/11400xp
+    .xp 13+7800>>提升经验到7800+/11400xp
 step << Rogue
     .goto Loch Modan,27.4,48.4
     .money >0.4315
     >>研磨，直到你有43秒15美分以上的钱/可出售物品。这是用于邪恶打击3级、1小时武器技能训练、短刀(武器)和飞往铁炉堡
 step
     .goto Loch Modan,22.07,73.12
-    .turnin 224 >>为保卫国王的土地而投降
+    .turnin 224 >>交任务: 保卫国王的领土
 step
     .goto Loch Modan,23.23,73.67
-    .turnin 267 >>提交Trogg威胁
+    .turnin 267 >>交任务: 穴居人的威胁
 step << Dwarf Paladin
     #completewith next
     .goto Dun Morogh,87.1,51.1
-    .zone Dun Morogh >>前往Dun Morogh
+    .zone Dun Morogh >>前往: 丹莫罗
 step << Dwarf Paladin
     .goto Dun Morogh,78.3,58.1
     >>在纳姆·福克身上使用生命的象征
-    .turnin 1783 >>交上神性之父
-    .accept 1784 >>接受神性之父
+    .turnin 1783 >>交任务: 圣洁之书
+    .accept 1784 >>接任务: 圣洁之书
 step << Dwarf Paladin
     .goto Dun Morogh,77.3,60.5
     >>杀死黑铁间谍
@@ -4044,24 +4044,24 @@ step << Mage
     .hs >>希斯玛之炉
 step << !Dwarf/!Paladin
     .goto Loch Modan,33.9,51.0
-    .turnin 6387 >>移交荣誉学生 << !Mage
-    .accept 6391 >>接受铁炉堡之旅 << !Mage
+    .turnin 6387 >>交任务: 荣誉学员 << !Mage
+    .accept 6391 >>接任务: 飞往铁炉堡 << !Mage
     .fp Thelsamar >>获取Thelsamar飞行路线 << !Mage
     .fly Ironforge >>飞往铁炉堡
 step << !Mage !Paladin
     .goto Ironforge,51.5,26.3
-    .turnin 6391 >>上交骑行前往铁炉堡
-    .accept 6388 >>接受Gryth Thurden
+    .turnin 6391 >>交任务: 飞往铁炉堡
+    .accept 6388 >>接任务: 格莱斯·瑟登
 step << !Mage !Paladin !Warlock
     .goto Ironforge,18.15,51.45
     .home >>将您的炉石设置为铁炉堡
 step << !Mage !Paladin
     .goto Ironforge,39.5,57.5
-    .turnin 291 >>提交报告
+    .turnin 291 >>交任务: 森内尔的报告
 step << !Mage !Paladin
     .goto Ironforge,55.5,47.8
-    .turnin 6388 >>转入Gryth Thurden
--- .accept 6392 >>接受返回Brock
+    .turnin 6388 >>交任务: 格莱斯·瑟登
+-- .accept 6392 >>接任务: 向布洛克回复
 step << Warrior
     .goto Ironforge,62.0,89.6
     .train 176 >>火车抛锚
@@ -4107,7 +4107,7 @@ step << Rogue
     #completewith next
     .isOnQuest 2218
     .goto Ironforge,51.50,15.34
-    .turnin 2218 >>转向救世之路
+    .turnin 2218 >>交任务: 救赎之路
 step << !Druid !Warlock
     .goto Ironforge,65.90,88.41 << Warrior
     .goto Ironforge,51.50,15.34 << Rogue
@@ -4123,35 +4123,35 @@ step << !Warlock
     .goto Ironforge,74.40,51.10,30,0
     .goto Ironforge,74.40,51.10,0
      >>进入Deeprun Tram，在中间平台与侏儒交谈
-    .accept 6661 >>接受Deeprun老鼠围捕
+    .accept 6661 >>接任务: 捕捉矿道老鼠
 step << !Warlock
     >>用你的长笛对付四处散落的老鼠
     .complete 6661,1 --Rats Captured (x5)
 step << !Warlock
-    .turnin 6661 >>交给Deeprun老鼠围捕
-    .accept 6662 >>接受我，兄弟，尼普西 << !Mage
+    .turnin 6661 >>交任务: 捕捉矿道老鼠
+    .accept 6662 >>接任务: 我的兄弟，尼普希 << !Mage
     >>如果你不需要钱(5s60c)，而且电车已经到了，你可以跳过Nipsy << !Mage
 step << !Warlock !Mage
      .isOnQuest 6662
     >>乘电车去暴风城，到了电车的另一边后再转弯
-    .turnin 6662 >>交给我，兄弟，尼普西
+    .turnin 6662 >>交任务: 我的兄弟，尼普希
     >>在等待/乘坐电车时进行急救训练，您需要80分的急救积分才能完成24级任务 << Rogue
 step << !Warlock !Mage
     #completewith next
     .goto StormwindClassic,60.5,12.3
-    .zone Stormwind City >>下车进入暴风城
+    .zone Stormwind City >>前往: 暴风城
 step << skip
     .goto StormwindClassic,51.6,12.2
-    .accept 353 >>接受Stormpike的交付
+    .accept 353 >>接任务: 雷矛的包裹
 step << !Warlock !Mage
     .goto StormwindClassic,58.1,16.5
-    .turnin 1338 >>提交Stormpike的命令
+    .turnin 1338 >>交任务: 卡尔·雷矛的订单
 step << Priest
     #completewith next
     >>进入大教堂
     .goto StormwindClassic,38.54,26.86
     .trainer >>训练你的职业咒语
-    .turnin 5634 >>递交绝望祈祷
+    .turnin 5634 >>交任务: 绝望祷言
 step << Priest
     .goto StormwindClassic,38.62,26.10
     .train 13908 >>训练绝望祈祷
@@ -4161,28 +4161,28 @@ step << Warrior
 step << Warrior
     .goto StormwindClassic,78.67,45.80
     .trainer >>上楼去。训练你的职业咒语
-    .accept 1638 >>接受战士训练
+    .accept 1638 >>接任务: 战士的训练
 step << Warrior
     #sticky
     #completewith next
     .goto StormwindClassic,71.7,39.9,20 >>进入酒馆
 step << Warrior
     .goto StormwindClassic,74.3,37.3
-    .turnin 1638 >>交战士训练
-    .accept 1639 >>接受醉汉巴特比
+    .turnin 1638 >>交任务: 战士的训练
+    .accept 1639 >>接任务: 醉鬼巴特莱比
 step << Warrior
     .goto StormwindClassic,73.8,36.3
-    .turnin 1639 >>交给醉汉巴特比
-    .accept 1640 >>接受Beat Bartleby
+    .turnin 1639 >>交任务: 醉鬼巴特莱比
+    .accept 1640 >>接任务: 击败巴特莱比
     .complete 1640,1 --Beat Bartleby
 step << Warrior
     .goto StormwindClassic,73.8,36.3
-    .turnin 1640 >>加入Beat Bartleby
-    .accept 1665 >>接受巴特比的马克杯
+    .turnin 1640 >>交任务: 击败巴特莱比
+    .accept 1665 >>接任务: 巴特莱比的酒杯
 step << Warrior
     >>你现在将学习防御姿态和破甲
     .goto StormwindClassic,74.3,37.3
-    .turnin 1665 >>交给巴特比的马克杯
+    .turnin 1665 >>交任务: 巴特莱比的酒杯
 step << !Warlock !Mage
     .goto StormwindClassic,57.1,57.7
     .trainer >>训练1h剑 << Rogue
@@ -4207,7 +4207,7 @@ step
 step
     #hardcore
     .goto Dun Morogh,52.6,36.0
-    .zone Dun Morogh >>离开铁炉堡，前往邓莫罗
+    .zone Dun Morogh >>前往: 丹莫罗
 step
     #hardcore
     .goto Dun Morogh,59.5,42.8,40,0
@@ -4231,7 +4231,7 @@ step
     +打开此链接并在另一个屏幕上进行跟踪。
     >>邓莫罗不死->湿地跳过
     .link https://www.youtube.com/watch?v=9afQTimaiZQ >>单击此处以供参考
-    .goto Wetlands,9.5,59.7,80 >>前往米奈希尔港
+    .goto Wetlands,9.5,59.7,80 >>前往: 湿地
 step
     #hardcore
 	#label EndLoch
@@ -4239,7 +4239,7 @@ step
     .fp Menethil Harbor >>获取Menethil Harbor航线
 step
     .goto Wetlands,4.6,57.2
-    .zone Darkshore >>前往Menethil Harbor码头，乘船前往Darkshore
+    .zone Darkshore >>前往米奈希尔港, 然后乘船前往黑海岸
 	>>用早先的食物生篝火，开始烹饪野猪肉，直到你拥有10以上的技能
     >>在等待船只的同时进行急救训练，您需要80分的急救积分才能完成24级任务 << Rogue
 ]])
@@ -4262,19 +4262,19 @@ step << !Gnome !Dwarf
 step
     .goto Dun Morogh,29.9,71.2
     >>与Sten Stoutarm交谈
-    .accept 179 >>接受矮人装扮
+    .accept 179 >>接任务: 矮人的交易
 step
     .goto Dun Morogh,29.0,74.4
     .complete 179,1 --Tough Wolf Meat (8)
 step
     .goto Dun Morogh,29.9,71.3
-    .turnin 179 >>交出矮人套装
-    .accept 233 >>接受Coldridge Valley邮件递送
-    .accept 3108 >>接受蚀刻符文
+    .turnin 179 >>交任务: 矮人的交易
+    .accept 233 >>接任务: 寒脊山谷的送信任务
+    .accept 3108 >>接任务: 风蚀符文
 step
     .goto Dun Morogh,29.7,71.3
     >>与巴里尔冰锤对话
-    .accept 170 >>接受新威胁
+    .accept 170 >>接任务: 新的威胁
 step
     #sticky
     #label Rockjaw
@@ -4286,9 +4286,9 @@ step
 step
     .goto Dun Morogh,22.6,71.4
     >>与塔林·基尼交谈
-    .turnin 233 >>提交科尔德里奇谷邮件递送
-    .accept 234 >>接受Coldridge Valley邮件递送
-    .accept 183 >>接受野猪猎人
+    .turnin 233 >>交任务: 寒脊山谷的送信任务
+    .accept 234 >>接任务: 寒脊山谷的送信任务
+    .accept 183 >>接任务: 猎杀野猪
 step
     .goto Dun Morogh,22.2,72.5,100,0
     .goto Dun Morogh,20.5,71.4,100,0
@@ -4301,22 +4301,22 @@ step
     .complete 183,1 --Kill Small Crag Boar (x12)
 step
     .goto Dun Morogh,22.6,71.4
-    .turnin 183 >>上缴猎野猪者
+    .turnin 183 >>交任务: 猎杀野猪
 step
     .goto Dun Morogh,25.1,75.7
     >>与格雷林·白胡子交谈
-    .turnin 234 >>提交科尔德里奇谷邮件递送
-    .accept 182 >>接受巨魔洞穴
+    .turnin 234 >>交任务: 寒脊山谷的送信任务
+    .accept 182 >>接任务: 巨魔洞穴
 step
     .xp 4 >>升级到4
 step
     .goto Dun Morogh,25.0,75.9
-    .accept 3364 >>接受烫发晨报递送
+    .accept 3364 >>接任务: 热酒快递
 step
     #requires Rockjaw
     .goto Dun Morogh,29.7,71.3
     >>与巴里尔冰锤对话
-    .turnin 170 >>提交新威胁
+    .turnin 170 >>交任务: 新的威胁
 step
     #completewith next
     .goto Dun Morogh,30.09,71.58
@@ -4325,16 +4325,16 @@ step
 step
     .goto Dun Morogh,29.1,67.5
     >>与索加斯·格里姆森交谈
-    .turnin 3108 >>交上蚀刻的符文
+    .turnin 3108 >>交任务: 风蚀符文
         .train 1978 >>火车蛇刺
 step
     .goto Dun Morogh,28.8,66.5
     >>与Durnan Furcutter交谈
-    .turnin 3364 >>交付烫伤晨报
-    .accept 3365 >>接受带回马克杯
+    .turnin 3364 >>交任务: 热酒快递
+    .accept 3365 >>接任务: 归还酒杯
 step
     .goto Dun Morogh,25.0,75.9
-    .turnin 3365 >>把杯子拿回来
+    .turnin 3365 >>交任务: 归还酒杯
 step
     .goto Dun Morogh,22.7,79.3
     .goto Dun Morogh,20.9,75.7,0
@@ -4344,8 +4344,8 @@ step
     .goto Dun Morogh,25.1,75.7
 step
     .goto Dun Morogh,25.0,75.9
-    .turnin 182 >>转入巨魔洞穴
-    .accept 218 >>接受被盗日记
+    .turnin 182 >>交任务: 巨魔洞穴
+    .accept 218 >>接任务: 被窃取的日记
 step
     .goto Dun Morogh,26.8,79.9,40,0
     .goto Dun Morogh,29.0,79.0,25,0
@@ -4358,17 +4358,17 @@ step
     .goto Dun Morogh,26.8,79.6,25 >>跑出洞穴
 step
     .goto Dun Morogh,25.1,75.7
-    .turnin 218 >>交出被盗日记
-    .accept 282 >>接受Senir的意见
+    .turnin 218 >>交任务: 被窃取的日记
+    .accept 282 >>接任务: 森内尔的观察站
 step
     .goto Dun Morogh,33.5,71.8
     >>与登山者Thalos交谈
-    .turnin 282 >>提交Senir的观察结果
-    .accept 420 >>接受Senir的意见
+    .turnin 282 >>交任务: 森内尔的观察站
+    .accept 420 >>接任务: 森内尔的观察站
 step
     .goto Dun Morogh,33.8,72.2
     >>与手对话弹簧链轮
-    .accept 2160 >>接受供应给Tannok
+    .accept 2160 >>接任务: 塔诺克的补给品
 step
     .goto Dun Morogh,34.1,71.6,20,0
     .goto Dun Morogh,35.7,66.0,0
@@ -4392,29 +4392,29 @@ step
     .collect 2886,6 --Collect Crag Boar Rib (x6)
 step
     .goto Dun Morogh,46.7,53.8
-    .turnin 420 >>提交Senir的观察结果
+    .turnin 420 >>交任务: 森内尔的观察站
 step
     #label ribs1
     .goto Dun Morogh,46.8,52.4
-    .accept 384 >>接受啤酒烤猪排
+    .accept 384 >>接任务: 啤酒烤猪排
 step
     .goto Dun Morogh,47.2,52.2
-    .turnin 2160 >>向Tannok移交物资
+    .turnin 2160 >>交任务: 塔诺克的补给品
 step
     .goto Dun Morogh,46.0,51.7
-    .accept 400 >>钢格栅的验收工具
+    .accept 400 >>接任务: 贝尔丁的工具
 step
     .goto Dun Morogh,49.5,48.3
-    .accept 317 >>接受库存Jetsteam
+    .accept 317 >>接任务: 贝尔丁的补给
 step << skip
     .goto Dun Morogh,49.6,48.5
-    .accept 313 >>接受Grizzled Den
+    .accept 313 >>接任务: 灰色洞穴
 step
     .goto Dun Morogh,50.1,49.4
-    .accept 5541 >>接受弹药以防隆隆枪击
+    .accept 5541 >>接任务: 海格纳的弹药
 step
     .goto Dun Morogh,50.4,49.1
-    .turnin 400 >>钢格栅上交工具
+    .turnin 400 >>交任务: 贝尔丁的工具
 step
     #sticky
     #completewith BoarRibs2
@@ -4455,21 +4455,21 @@ step
 step
     .goto Dun Morogh,49.4,48.4
     >>与飞行员Bellowfiz交谈
-    .turnin 317 >>上缴库存Jetsteam
-    .accept 318 >>接受Evershine
+    .turnin 317 >>交任务: 贝尔丁的补给
+    .accept 318 >>接任务: 艾沃沙酒
 step
     .xp 6
 step << Hunter
     .goto Dun Morogh,45.8,53.1
     .train 3044 >>火车奥术射击
 step
-    >>抢劫板条箱
+    >>掠夺板条箱
 .goto Dun Morogh,44.1,56.9
     .complete 5541,1 --Rumbleshot's Ammo (1)
 step
     .goto Dun Morogh,40.7,65.1
     >>与Hegnar Rumbleshot交谈
-    .turnin 5541 >>交出弹药进行隆布尔枪击
+    .turnin 5541 >>交任务: 海格纳的弹药
 step << Hunter
     .goto Dun Morogh,40.7,65.1
     >>购买4级枪升级，如果你没有钱，跳过这一步
@@ -4487,7 +4487,7 @@ step
     .goto Dun Morogh,35.2,56.4,60,0
     .goto Dun Morogh,36.0,52.0,60,0
     .goto Dun Morogh,34.6,51.7
-    .accept 312 >>接受Tundra MacGrann被盗的Stash
+    .accept 312 >>接任务: 马克格拉恩的干肉
 step << !Mage
     .goto Dun Morogh,38.5,54.0
     >>等到老冰胡子离开山洞，你就可以偷偷进去洗劫箱子，或者这样做
@@ -4495,21 +4495,21 @@ step << !Mage
     .complete 312,1 --MacGrann's Dried Meats (1)
 step
     .goto Dun Morogh,34.6,51.6
-    .turnin 312 >>交出Tundra MacGrann被盗的Stash
+    .turnin 312 >>交任务: 马克格拉恩的干肉
 step
     .goto Dun Morogh,30.4,45.8
     .vendor >>供应商垃圾
 step
     .goto Dun Morogh,30.2,45.8
     >>与Rejold Barleybrew交谈
-    .turnin 318 >>交给Evershine
-    .accept 319 >>接受对Evershine的支持
-    .accept 315 >>接受完美的烈性酒
+    .turnin 318 >>交任务: 艾沃沙酒
+    .accept 319 >>接任务: 艾沃沙酒
+    .accept 315 >>接任务: 完美烈酒
 step
     #label BoarRibs2
     .goto Dun Morogh,30.2,45.4
     >>与Marleth Barleybrew交谈
-    .accept 310 >>接受残酷的竞争对手
+    .accept 310 >>接任务: 针锋相对
 step
     #completewith next
     >>杀死熊、野猪和豹子
@@ -4553,7 +4553,7 @@ step
     .hs >>赫斯回到哈拉诺斯
 step << skip
     .goto Dun Morogh,49.6,48.5
-    .turnin 313 >>在Grizzled Den转弯
+    .turnin 313 >>交任务: 灰色洞穴
 step
     .goto Dun Morogh,47.4,52.5
     >>向客栈老板购买以下物品：
@@ -4562,21 +4562,21 @@ step
 step
     .goto Dun Morogh,47.7,52.6
     >>下楼，把雷霆啤酒给贾文，然后点击无人看守的桶
-    .turnin 310 >>在激烈的竞争中获胜
-    .accept 311 >>接受返回Marleth
+    .turnin 310 >>交任务: 针锋相对
+    .accept 311 >>接任务: 向马莱斯回报
 step
     .goto Dun Morogh,47.3,52.5
     .home >>将您的炉石设置为Kharanos
 step
     .goto Dun Morogh,46.9,52.4
     >>与Ragnar Thunderbrew交谈
-    .turnin 384 >>翻啤酒扒猪排
+    .turnin 384 >>交任务: 啤酒烤猪排
 step
     .goto Dun Morogh,46.7,53.9
-    .accept 287 >>接受Frostmane保持
+    .accept 287 >>接任务: 霜鬃巨魔要塞
 step  << skip
     .goto Dun Morogh,49.6,48.5
-    .turnin 313 >>在Grizzled Den转弯
+    .turnin 313 >>交任务: 灰色洞穴
 step << Hunter
     .goto Dun Morogh,45.8,53.0
     .train 5116>>火车震荡射击
@@ -4606,13 +4606,13 @@ step
     #label return
     .goto Dun Morogh,30.2,45.7
     >>与Rejold Barleybrew交谈
-    .turnin 319 >>为Evershine提供支持
-    .accept 320 >>接受返回Bellowfiz
+    .turnin 319 >>交任务: 艾沃沙酒
+    .accept 320 >>接任务: 艾沃沙酒
 step
     .goto Dun Morogh,30.2,45.5
-    .turnin 311 >>交给马利思
-    .turnin 315 >>交上完美的烈酒
-    .accept 413 >>接受Shimmer Stout
+    .turnin 311 >>交任务: 向马莱斯回报
+    .turnin 315 >>交任务: 完美烈酒
+    .accept 413 >>接任务: 微光酒
 step
     #requires return
     >>进入巨魔洞穴
@@ -4647,42 +4647,42 @@ step
 	.deathskip >>在哈拉诺死后重生
 step
     .goto Dun Morogh,46.7,53.7
-    .turnin 287 >>交给Frostmane Hold
-    .accept 291 >>接受报告
+    .turnin 287 >>交任务: 霜鬃巨魔要塞
+    .accept 291 >>接任务: 森内尔的报告
 step
     .goto Dun Morogh,49.4,48.3
-    .turnin 320 >>转身返回贝洛菲兹
+    .turnin 320 >>交任务: 艾沃沙酒
 step
     .goto Dun Morogh,45.8,53.0
-    .accept 6064 >>接受驯服野兽
+    .accept 6064 >>接任务: 驯服野兽
 step
     .goto Dun Morogh,48.3,56.9
     >>点击你包里的驯养棒来驯养一头大野猪。尝试在最大射程(30码)进行
     .complete 6064,1 --Tame a Large Crag Boar (1)
 step
     .goto Dun Morogh,45.8,53.0
-    .turnin 6064 >>转身驯服野兽
-    .accept 6084 >>接受驯服野兽
+    .turnin 6064 >>交任务: 驯服野兽
+    .accept 6084 >>接任务: 驯服野兽
 step
     .goto Dun Morogh,49.4,59.4
     >>点击你包里的驯雪豹棒。尝试在最大射程(30码)进行
     .complete 6084,1 --Tame a Snow Leopard (1)
 step
     .goto Dun Morogh,45.8,53.0
-    .turnin 6084 >>转身驯服野兽
-    .accept 6085 >>接受驯服野兽
+    .turnin 6084 >>交任务: 驯服野兽
+    .accept 6085 >>接任务: 驯服野兽
 step
     .goto Dun Morogh,50.4,59.7
     >>点击你包里的驯冰爪熊棒。尝试在最大射程(30码)进行
     .complete 6085,1 --Tame an Ice Claw Bear (1)
 step
     .goto Dun Morogh,45.8,53.0
-    .turnin 6085 >>转身驯服野兽
-    .accept 6086 >>接受训练野兽
+    .turnin 6085 >>交任务: 驯服野兽
+    .accept 6086 >>接任务: 训练野兽
 step
     .goto Dun Morogh,63.1,49.8
     >>与Rudra Amberstill交谈
-    .accept 314 >>接受保护羊群
+    .accept 314 >>接任务: 保护牲畜
 step
     #sticky
     #completewith next
@@ -4695,11 +4695,11 @@ step
     .link https://www.youtube.com/watch?v=6PfhYU-9hoA >>点击此处查看视频参考
 step
     .goto Dun Morogh,63.1,49.8
-    .turnin 314 >>转身保护羊群
+    .turnin 314 >>交任务: 保护牲畜
     .isQuestComplete 314
 step
     .goto Dun Morogh,69.1,56.3
-    .accept 432 >>接受那些被炸死的流浪汉！
+    .accept 432 >>接任务: 该死的石腭怪！
 step
     .goto Dun Morogh,70.7,56.4,50,0
     .goto Dun Morogh,70.62,52.39
@@ -4708,29 +4708,29 @@ step
     --.complete 433,1 --Kill Rockjaw Bonesnapper (x10)
 step
     .goto Dun Morogh,69.1,56.3
-    .turnin 432 >>把那些被炸死的暴徒交上来！
+    .turnin 432 >>交任务: 该死的石腭怪！
 step << skip
     .goto Dun Morogh,68.4,54.5
     .train 2550 >>Ghilm的火车烹饪
 step
     .goto Dun Morogh,83.8,39.2
-    .accept 419 >>接受迷失的飞行员
+    .accept 419 >>接任务: 失踪的驾驶员
 step
     .goto Dun Morogh,79.7,36.2
-    .turnin 419 >>交出失踪的飞行员
-    .accept 417 >>接受飞行员的复仇
+    .turnin 419 >>交任务: 失踪的驾驶员
+    .accept 417 >>接任务: 驾驶员的复仇
 step
-    >>杀死芒格克劳。抢劫他的爪子，这个任务可能很难，把他放在任务给予者旁边的警卫那里
+    >>杀死芒格克劳。掠夺他的爪子，这个任务可能很难，把他放在任务给予者旁边的警卫那里
     .goto Dun Morogh,80.0,36.4
     .complete 417,1 --Collect Mangy Claw (x1)
 step
     .goto Dun Morogh,83.9,39.2
-    .turnin 417 >>提交飞行员的复仇
+    .turnin 417 >>交任务: 驾驶员的复仇
 
 step
     .goto Dun Morogh,86.3,48.8
-    .turnin 413 >>转入Shimmer Stout
-    .accept 414 >>接受斯托特到卡德雷尔
+    .turnin 413 >>交任务: 微光酒
+    .accept 414 >>接任务: 卡德雷尔的酒
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -4747,51 +4747,51 @@ RXPGuides.RegisterGuide([[
 step
     .goto Loch Modan,22.07,73.12
     >>前往莫丹湖
-    .accept 224 >>接受保护国王的土地
+    .accept 224 >>接任务: 保卫国王的领土
 step
     .goto Loch Modan,23.23,73.67
-    .accept 267 >>接受Trogg威胁
+    .accept 267 >>接任务: 穴居人的威胁
 step
     #sticky
     #label ratcatching
      >>与巡逻塞尔萨马尔的警卫交谈
-    --.accept 416 >>接受捕鼠
-    .accept 1339 >>接受登山者Stormpike的任务
+    --.accept 416 >>接任务: 狗头人的耳朵
+    .accept 1339 >>接任务: 巡山人卡尔·雷矛的任务
 step
        .goto Loch Modan,35.5,48.4
     .home >>将您的炉石设置为莫丹湖
 step
     .goto Loch Modan,37.01,47.80
-    .accept 6387 >>接受荣誉学生
+    .accept 6387 >>接任务: 荣誉学员
 step
     #requires ratcatching
     .goto Loch Modan,33.93,50.95
-    .turnin 6387 >>移交荣誉学生
-    .accept 6391 >>接受铁炉堡之旅
+    .turnin 6387 >>交任务: 荣誉学员
+    .accept 6391 >>接任务: 飞往铁炉堡
 step
      #completewith next
     .fly Ironforge>>飞往铁炉堡
 step
     .goto Ironforge,51.52,26.31
-    .turnin 6391 >>上交骑行前往铁炉堡
-    .accept 6388 >>接受Gryth Thurden
+    .turnin 6391 >>交任务: 飞往铁炉堡
+    .accept 6388 >>接任务: 格莱斯·瑟登
 step
     .goto Dun Morogh,57.42,30.31
-    .turnin 291 >>提交报告
+    .turnin 291 >>交任务: 森内尔的报告
 step <<  Hunter
     .goto Ironforge,70.86,85.83
-    .turnin 6086 >>上缴训练野兽
+    .turnin 6086 >>交任务: 训练野兽
 step
     .goto Ironforge,55.50,47.74
-    .turnin 6388 >>转入Gryth Thurden
-    .accept 6392 >>接受返回Brock
+    .turnin 6388 >>交任务: 格莱斯·瑟登
+    .accept 6392 >>接任务: 向布洛克回复
 step
     #completewith next
     .fly Loch Modan>>飞往莫丹湖
 step
     .goto Loch Modan,37.0,47.8
     >>进入大楼，然后下楼。与Brock交谈
-    .turnin 6392 >>交回Brock
+    .turnin 6392 >>交任务: 向布洛克回复
 step << Hunter
     .goto Loch Modan,35.8,43.5
     >>如果你还有13秒的剩余时间，请从Vrok Blunderblast购买9级枪升级，否则请跳过此步骤
@@ -4804,16 +4804,16 @@ step
     .complete 267,1
 step
     .goto Loch Modan,22.07,73.12
-    .turnin 224 >>为保卫国王的土地而投降
+    .turnin 224 >>交任务: 保卫国王的领土
 step
     .goto Loch Modan,23.23,73.67
-    .turnin 267 >>提交Trogg威胁
+    .turnin 267 >>交任务: 穴居人的威胁
 step
     .goto Loch Modan,24.76,18.39
-    .turnin 1339 >>提交登山者Stormpike的任务
+    .turnin 1339 >>交任务: 巡山人卡尔·雷矛的任务
 step
     .goto Loch Modan,24.76,18.39
-    .accept 1338 >>接受Stormpike的命令
+    .accept 1338 >>接任务: 卡尔·雷矛的订单
 step
 	#softcore
     #completewith next
@@ -4826,32 +4826,32 @@ step
     .train 2550 >>确保在铁炉堡培训烹饪
 step
     .goto Ironforge,74.64,11.74
-    .turnin 301 >>向铁炉堡提交报告
+    .turnin 301 >>交任务: 向铁炉堡报告
 step
     .goto Ironforge,74.40,51.10,30,0
     .goto Ironforge,74.40,51.10,0
      >>进入Deeprun Tram，在中间平台与侏儒交谈
-    .accept 6661 >>接受Deeprun老鼠围捕
+    .accept 6661 >>接任务: 捕捉矿道老鼠
 step
     >>使用车站周围老鼠身上提供的长笛
     .complete 6661,1
 step
-    .turnin 6661 >>交给Deeprun老鼠围捕
-    .accept 6662 >>接受我，兄弟，尼普西
+    .turnin 6661 >>交任务: 捕捉矿道老鼠
+    .accept 6662 >>接任务: 我的兄弟，尼普希
 step
      >>骑到电车的另一侧，然后转弯
-    .turnin 6662 >>交给我，兄弟，尼普西
+    .turnin 6662 >>交任务: 我的兄弟，尼普希
 step
     #completewith next
     .goto StormwindClassic,60.5,12.3
-    .zone Stormwind City >>下车进入暴风城
+    .zone Stormwind City >>前往: 暴风城
 step
     #softcore
     .goto StormwindClassic,51.75,12.06
-    .accept 353 >>接受Stormpike的交付
+    .accept 353 >>接任务: 雷矛的包裹
 step
     .goto StormwindClassic,58.08,16.52
-    .turnin 1338 >>提交Stormpike的命令
+    .turnin 1338 >>交任务: 卡尔·雷矛的订单
 step
     .goto StormwindClassic,57.23,57.29
     .trainer >>火车杆
@@ -4860,7 +4860,7 @@ step
     .hs >>如果您的炉灶仍在冷却，请返回瑟萨马尔，乘坐电车前往铁炉堡，然后飞往莫丹湖
 step
     .goto Loch Modan,24.76,18.39
-    .turnin 353 >>交给Stormpike的交货
+    .turnin 353 >>交任务: 雷矛的包裹
 step
 	#softcore
      #completewith next
@@ -4873,7 +4873,7 @@ step
 step
     #hardcore
     .goto Dun Morogh,52.6,36.0
-    .zone Dun Morogh >>乘坐电车返回铁炉堡，前往邓莫罗
+    .zone Dun Morogh >>前往铁炉堡, 然后前往丹莫罗
 step
     #hardcore
     #label skip1
@@ -4891,7 +4891,7 @@ step << Hunter
 	.collect 3023,1
 step
     .goto Wetlands,4.6,57.2
-    .zone Darkshore >>前往Menethil Harbor码头，乘船前往Darkshore
+    .zone Darkshore >>前往米奈希尔港, 然后乘船前往黑海岸
     >>在你等待的时候生篝火并平铺烹饪
     >>在等待船只的同时进行急救训练，您需要80分的急救积分才能完成24级任务 << Rogue
 ]])

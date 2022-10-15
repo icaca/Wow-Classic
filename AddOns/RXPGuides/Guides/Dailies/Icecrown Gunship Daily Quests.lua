@@ -85,37 +85,37 @@ step << Alliance
 	>>飞到联盟炮舰，破天荒号
 	>>与骑士队长Drosche、虔诚的Absalan、高级队长Justin Bartlett、总工程师Boltwrench和Thassarian交谈
 	>>注意，任务没有怜悯！是一个PvP任务，需要你在冰冠中杀死15名部落玩家。如果你愿意，你可以放弃/跳过这一天
-    .daily 13336 >>接受被选中者的鲜血
-    .daily 13300 >>接受奴隶到沙龙
-	.daily 13233 >>接受不怜悯！
-    .daily 13292 >>接受解决方案
-    .daily 13289 >>接受这太可恶了！
-	.daily 13297 >>接受消除瘟疫
-    .daily 13322 >>立即接受重新测试
-    .daily 13323 >>接受拖放
-	.daily 13344 >>不接受Bug
-    .daily 13350 >>接受恶棍不休息
-    .daily 13333 >>接受捕获更多调度
+    .daily 13336 >>接任务: 伊米亚之血
+    .daily 13300 >>接任务: 萨隆邪铁的奴隶
+	.daily 13233 >>接任务: 决不留情！
+    .daily 13292 >>接任务: 偷来的解决方案
+    .daily 13289 >>接任务: 你的憎恶伙伴
+	.daily 13297 >>接任务: 中和瘟疫
+    .daily 13322 >>接任务: 重新考验
+    .daily 13323 >>接任务: 从天而“降”
+	.daily 13344 >>接任务: 活动窃听器
+    .daily 13350 >>接任务: 片刻不得安宁
+    .daily 13333 >>接任务: 抢夺急件
 step << Horde
 	.goto IcecrownGlacier,67.00,38.00,0
 	>>飞向部落炮舰，奥格里姆之锤
 	>>与战争使者达沃斯·里奥特、凯尔坦兄弟、天空收割者科姆·布莱克斯卡、首席工程师科珀克劳和科尔蒂拉·戴斯韦弗交谈
 	>>注意，任务让他们付出代价！是一个PvP任务，需要你在冰冠杀死15名联盟玩家。如果你愿意，你可以放弃/跳过这一天
-    .daily 13330 >>接受被选中者的鲜血
-    .daily 13302 >>接受奴隶到沙龙
-	.daily 13234 >>接受让他们付出！
-    .daily 13261 >>接受波动性
-    .daily 13276 >>接受这太可恶了！
-	.daily 13281 >>接受消除瘟疫
-    .daily 13357 >>立即接受重新测试
-    .daily 13353 >>接受拖放
-	.daily 13365 >>不接受Bug
-    .daily 13368 >>接受恶棍不休息
-    .daily 13331 >>接受让联盟保持盲目
+    .daily 13330 >>接任务: 伊米亚之血
+    .daily 13302 >>接任务: 萨隆邪铁的奴隶
+	.daily 13234 >>接任务: 血的代价！
+    .daily 13261 >>接任务: 爆炸油
+    .daily 13276 >>接任务: 你的憎恶伙伴
+	.daily 13281 >>接任务: 中和瘟疫
+    .daily 13357 >>接任务: 重新考验
+    .daily 13353 >>接任务: 从天而“降”
+	.daily 13365 >>接任务: 活动窃听器
+    .daily 13368 >>接任务: 片刻不得安宁
+    .daily 13331 >>接任务: 盲目的联盟
 step << Alliance
     .goto IcecrownGlacier,62.6,51.3
 	>>飞到地面指挥官库普(在地面上，而不是在船上)
-    .daily 13309 >>接受空中袭击
+    .daily 13309 >>接任务: 空中突袭
 step << Alliance
     #completewith next
     .goto Icecrown,62.55,50.67
@@ -129,12 +129,12 @@ step << Alliance
 step << Alliance
     .goto Icecrown,62.55,51.29
 	>>返回库普
-    .turnin 13309 >>空袭上缴
+    .turnin 13309 >>交任务: 空中突袭
 	.isQuestComplete 13309
 step << Horde
 	>>飞到地面指挥官Xutjja(在地面，而不是在船上)
     .goto IcecrownGlacier,58.3,46.0
-    .daily 13310 >>接受空中袭击
+    .daily 13310 >>接任务: 空中突袭
 step << Horde
 	#completewith next
 	.vehicle >>跑到船上的Kor'kron抑制塔并点击它。
@@ -147,13 +147,13 @@ step << Horde
 	.isOnQuest 13310
 step << Horde
     .goto IcecrownGlacier,58.3,46.0
-    .turnin 13310 >>空袭上缴
+    .turnin 13310 >>交任务: 空中突袭
 	.isQuestComplete 13310
 step << Alliance
     .goto IcecrownGlacier,62.5,51.1,15,0
     .goto IcecrownGlacier,62.8,51.6
 	>>与班组长交谈。如果其他人开始任务并且有大约6分钟的重生时间，他可能不会在这里
-    .daily 13284 >>接受地面攻击
+    .daily 13284 >>接任务: 地面突袭
 step << Alliance
     .goto IcecrownGlacier,58.2,55.9,0
     .goto IcecrownGlacier,59.6,59.3,0
@@ -188,7 +188,7 @@ step << Alliance
 step << Alliance
     .goto Icecrown,57.01,62.53
 	>>注意：这个任务为你标记PVP。然而，这很容易。
-    .daily 13280 >>接受山之王
+    .daily 13280 >>接任务: 占山为王
 step << Alliance
     #completewith next
     .goto Icecrown,56.99,62.60
@@ -201,17 +201,17 @@ step << Alliance
 	.isOnQuest 13280
 step << Alliance
     .goto Icecrown,56.97,62.55
-    .turnin 13280 >>山之王归来
+    .turnin 13280 >>交任务: 占山为王
 	.isQuestComplete 13280
 step << Alliance
 	>>返回地面指挥官库普
     .goto Icecrown,62.60,51.35
-    .turnin 13284 >>地面攻击中的转身
+    .turnin 13284 >>交任务: 地面突袭
 	.isQuestComplete 13284
 step << Horde
     .goto IcecrownGlacier,58.3,46.0
 	>>与班组长交谈。如果其他人开始任务并且有大约6分钟的重生时间，他可能不会在这里
-    .daily 13301 >>接受地面攻击
+    .daily 13301 >>接任务: 地面突袭
 step << Horde
     .goto IcecrownGlacier,54.9,52.8,0,0
 	#completewith Mineslave
@@ -244,7 +244,7 @@ step << Horde
 step << Horde
     .goto IcecrownGlacier,51.9,57.6
 	>>注意：这个任务为你标记PvP。然而，这很容易。
-    .daily 13283 >>接受山之王
+    .daily 13283 >>接任务: 占山为王
 step << Horde
     #completewith next
     .goto Icecrown,51.95,57.62
@@ -257,24 +257,24 @@ step << Horde
 	.isOnQuest 13283
 step << Horde
     .goto Icecrown,51.9,57.6
-    .turnin 13283 >>山之王归来
+    .turnin 13283 >>交任务: 占山为王
 	.isQuestComplete 13283
 step << Horde
 	>>返回地面指挥官Xutjja
     .goto Icecrown,58.3,46.0
-    .turnin 13301 >>地面攻击中的转身
+    .turnin 13301 >>交任务: 地面突袭
 	.isQuestComplete 13301
 step
     .goto IcecrownGlacier,67.2,68.3,70,0
     .goto IcecrownGlacier,68.0,70.9,70,0
     .goto IcecrownGlacier,71.6,61.3,70,0
     .goto IcecrownGlacier,67.2,68.3
-	.use 44048 >>抢劫散落在破碎战线周围地面上的废弃装备碎片。当您拥有每件设备中的一件时，请在您的包中使用走私解决方案(您不需要等待RP) << Alliance
+	.use 44048 >>掠夺散落在破碎战线周围地面上的废弃装备碎片。当您拥有每件设备中的一件时，请在您的包中使用走私解决方案(您不需要等待RP) << Alliance
 	.collect 43609,3,13292,1,-1 << Alliance --Pile of Bones (3)
 	.collect 43610,3,13292,1,-1 << Alliance --Abandoned Helm (3)
 	.collect 43616,3,13292,1,-1  << Alliance --Abandoned Armor (3)
     .complete 13292,1 << Alliance --Field Tests Conducted (3)
-	.use 43608 >>抢劫散落在破碎战线周围地面上的废弃装备碎片。当你有每一件设备时，在你的袋子里放上科珀克劳挥发性油(你不需要等待RP) << Horde
+	.use 43608 >>掠夺散落在破碎战线周围地面上的废弃装备碎片。当你有每一件设备时，在你的袋子里放上科珀克劳挥发性油(你不需要等待RP) << Horde
 	.collect 43609,3,13261,1,-1  << Horde --Pile of Bones (3)
 	.collect 43610,3,13261,1,-1 << Horde --Abandoned Helm (3)
 	.collect 43616,3,13261,1,-1 << Horde --Abandoned Armor (3)
@@ -415,7 +415,7 @@ step << Horde
 step << Alliance
 	>>飞向空中的小平台。与Killohertz交谈
 	.goto IcecrownGlacier,53.96,42.93
-	.daily 13404 >>接受静态冲击部队：轰炸
+	.daily 13404 >>接任务: 短程行动：轰炸场
 step << Alliance
 	.goto IcecrownGlacier,53.96,43.11
 	>>和凯伦谈谈，让她坐上轰炸机。使用冲锋盾牌(1)获得100个盾牌，然后切换到轰炸机湾(5)，开始轰炸下方的天灾，直到所有步兵和上尉被杀死。切换到防空炮塔(4)，开始使用防空火箭(1)在空中射击石像鬼。完成后，按下离开车辆按钮，您将返回平台
@@ -426,12 +426,12 @@ step << Alliance
 step << Alliance
 	>>与Killohertz交谈
     .goto IcecrownGlacier,53.96,42.93
-    .turnin 13404 >>交出静态冲击部队：轰炸
+    .turnin 13404 >>交任务: 短程行动：轰炸场
 	.isQuestComplete 13404
 step << Horde
 	>>飞向空中的小平台。与Tezzla交谈
     .goto IcecrownGlacier,53.99,36.87
-    .daily 13406 >>接受波长：轰炸
+    .daily 13406 >>接任务: 短程行动：轰炸场
 step << Horde
 	.goto IcecrownGlacier,53.96,43.11
 	>>与Rizzy交谈，让他登上轰炸机。使用冲锋盾牌(1)获得100个盾牌，然后切换到轰炸机湾(5)，开始轰炸下方的天灾，直到所有步兵和上尉被杀死。切换到防空炮塔(4)，开始使用防空火箭(1)在空中射击石像鬼。完成后，按下离开车辆按钮，您将返回平台
@@ -442,7 +442,7 @@ step << Horde
 step << Horde
 	>>与Tezzla交谈
     .goto IcecrownGlacier,54.00,36.94
-    .turnin 13406 >>乘风破浪：轰炸
+    .turnin 13406 >>交任务: 短程行动：轰炸场
 	.isQuestComplete 13406
 step << Alliance
     .goto IcecrownGlacier,65.1,57.2,0
@@ -451,31 +451,31 @@ step << Alliance
     .goto IcecrownGlacier,57.5,39.1,0
     .goto IcecrownGlacier,54.7,35.3,0
 	>>返回破天者。与骑士队长Drosche、虔诚的Absalan、高级队长Justin Bartlett、总工程师Boltwrench和Thassarian交谈
-    .turnin -13336 >>献出被选中者的鲜血
-    .turnin -13300 >>把奴隶交给沙龙
-	.turnin -13233 >>上书不仁慈！
-    .turnin -13292 >>提交解决方案
-    .turnin -13289 >>上车那太可恶了！
-	.turnin -13297 >>转而平息瘟疫
-    .turnin -13322 >>立即提交重新测试
-    .turnin -13323 >>转入拖放
-	.turnin -13344 >>交上来的不是虫子
-    .turnin -13350 >>恶棍不得休息
-    .turnin -13333 >>提交捕获更多调度
+    .turnin -13336 >>交任务: 伊米亚之血
+    .turnin -13300 >>交任务: 萨隆邪铁的奴隶
+	.turnin -13233 >>交任务: 决不留情！
+    .turnin -13292 >>交任务: 偷来的解决方案
+    .turnin -13289 >>交任务: 你的憎恶伙伴
+	.turnin -13297 >>交任务: 中和瘟疫
+    .turnin -13322 >>交任务: 重新考验
+    .turnin -13323 >>交任务: 从天而“降”
+	.turnin -13344 >>交任务: 活动窃听器
+    .turnin -13350 >>交任务: 片刻不得安宁
+    .turnin -13333 >>交任务: 抢夺急件
 step << Horde
 	.goto IcecrownGlacier,67.00,38.00,0
 	>>返回奥格里姆之锤。与战争使者达沃斯·里奥特、凯尔坦兄弟、天空收割者科姆·布莱克斯卡、首席工程师科珀克劳和科尔蒂拉·戴斯韦弗交谈
-    .turnin -13330 >>献出被选中者的鲜血
-    .turnin -13302 >>把奴隶交给沙龙
-	.turnin -13234 >>交上来让他们付出代价！
-    .turnin -13261 >>波动率上缴
-    .turnin -13276 >>上车那太可恶了！
-	.turnin -13281 >>转而平息瘟疫
-    .turnin -13357 >>立即提交重新测试
-    .turnin -13353 >>转入拖放
-	.turnin -13365 >>交上来的不是虫子
-    .turnin -13368 >>恶棍不得休息
-    .turnin -13331 >>让联盟保持沉默
+    .turnin -13330 >>交任务: 伊米亚之血
+    .turnin -13302 >>交任务: 萨隆邪铁的奴隶
+	.turnin -13234 >>交任务: 血的代价！
+    .turnin -13261 >>交任务: 爆炸油
+    .turnin -13276 >>交任务: 你的憎恶伙伴
+	.turnin -13281 >>交任务: 中和瘟疫
+    .turnin -13357 >>交任务: 重新考验
+    .turnin -13353 >>交任务: 从天而“降”
+	.turnin -13365 >>交任务: 活动窃听器
+    .turnin -13368 >>交任务: 片刻不得安宁
+    .turnin -13331 >>交任务: 盲目的联盟
 step << Alliance
 	+您已经完成了今天的所有破天者每日任务：)如果愿意，请记住尝试完成您放弃/跳过的任何团队任务！
 step << Horde

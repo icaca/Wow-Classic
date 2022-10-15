@@ -30,7 +30,7 @@ step << Horde
 step
 	.goto Wintergrasp,79.57,46.92,-1
 	.goto Wintergrasp,79.88,41.38,-1
-	.zone Wintergrasp >>前往Wintergrasp
+	.zone Wintergrasp >>前往: 冬拥湖
 	.isOnQuest 13834
 step << Alliance
 	>>在冬抓岛的任何地方捕鱼以防恐怖
@@ -59,7 +59,7 @@ step << Horde
 step
 	>>在达拉然与玛西娅·蔡斯交谈
 	.goto Dalaran,53.04,64.95
-	.turnin 13834 >>上交危险美味
+	.turnin 13834 >>交任务: 危险的美食
 	.isQuestComplete 13834
 
 -- Quest: The Ghostfish -- 13830
@@ -91,7 +91,7 @@ step
 step
 	>>在达拉然与玛西娅·蔡斯交谈
 	.goto Dalaran,53.04,64.95
-	.turnin 13834 >>交出幽灵鱼
+	.turnin 13834 >>交任务: 危险的美食
 	.isQuestComplete 13830
 
 -- Quest: Jewel Of The Sewers -- 13832
@@ -108,7 +108,7 @@ step
 	.goto 126,22.66,41.71,10,0
 	.goto Dalaran,35.31,45.28,10,0
 	.goto Dalaran,53.04,64.95
-	.turnin 13832 >>上缴下水道宝石
+	.turnin 13832 >>交任务: 下水道中的珍宝
 	.isQuestComplete 13832
 
 -- Quest: Disarmed! -- 13836
@@ -125,7 +125,7 @@ step
 step
 	>>与达拉然的奥利萨拉交谈
 	.goto Dalaran,36.58,37.33
-	.turnin 13836 >>缴械投降！
+	.turnin 13836 >>交任务: 胳膊丢了！
 	.isQuestComplete 13836
 
 -- Quest: Blood Is Thicker -- 13833
@@ -146,7 +146,7 @@ step
 	.zone BoreanTundra >>前往Borean Tundra
 	.isOnQuest 13833
 step -- WIP. Currently no check for debuff. If they get debuff @ first WP then it will point to the next 2 WP's before pointing to the sea to start fishing
-	>>杀死Borean Tundra的任何动物，以获得动物血减毒效果
+	>>杀死北风苔原的任何动物，以获得动物血减毒效果
 	>>跳入水中去除去毛刺，这将形成一个血池
 	.goto BoreanTundra,75.56,42.01,60,0
 	>>血泊中的鱼血牙法国人
@@ -162,7 +162,7 @@ step
 step
 	>>在达拉然与玛西娅·蔡斯交谈
 	.goto Dalaran,53.04,64.95
-	.turnin 13834 >>血变浓了
+	.turnin 13834 >>交任务: 危险的美食
 	.isQuestComplete 13833
 step
 	+你已完成今天的钓鱼每日任务

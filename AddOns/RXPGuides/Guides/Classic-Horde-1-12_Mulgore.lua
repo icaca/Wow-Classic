@@ -14,10 +14,10 @@ step << !Tauren
     +您选择了一个针对牛头人的指南。这个区域对你来说不太合适，因为缺少了一个只为牛头人设置的主要任务线。建议您选择与开始时相同的起始区域
 step
     .goto Mulgore,44.9,77.1
-    .accept 747 >>接受狩猎开始
+    .accept 747 >>接任务: 开始狩猎
 step
     .goto Mulgore,44.2,76.1
-    .accept 752 >>接受一项艰巨的任务
+    .accept 752 >>接任务: 一件琐事
 step << Warrior/Shaman
     #sticky
     #completewith next
@@ -40,11 +40,11 @@ step
     .complete 747,2 --Plainstrider Feather (7)
 step
     .goto Mulgore,50.0,81.1
-    .turnin 752 >>交出一项微不足道的任务
-    .accept 753 >>接受一项艰巨的任务
+    .turnin 752 >>交任务: 一件琐事
+    .accept 753 >>接任务: 一件琐事
 step
     #label Plainstrider
-    >>在Hawkwind后面的井上抢劫水罐
+    >>在Hawkwind后面的井上掠夺水罐
     .goto Mulgore,50.2,81.4
     .complete 753,1 --Water Pitcher (1)
 step
@@ -54,25 +54,25 @@ step
     .complete 747,2 --Plainstrider Feather (7)
 step
     .goto Mulgore,44.8,77.0
-    .turnin 747 >>交出狩猎开始
-    .accept 3091 >>接受简单注释 << Warrior
-    .accept 3092 >>接受蚀刻笔记 << Hunter
-    .accept 3093 >>接受符文铭文注释 << Shaman
-    .accept 3094 >>接受绿色注释 << Druid
-    .accept 750 >>接受狩猎继续
+    .turnin 747 >>交任务: 开始狩猎
+    .accept 3091 >>接任务: 简易便笺 << Warrior
+    .accept 3092 >>接任务: 风化便笺 << Hunter
+    .accept 3093 >>接任务: 符文便笺 << Shaman
+    .accept 3094 >>接任务: 绿色便笺 << Druid
+    .accept 750 >>接任务: 继续狩猎
 step << Hunter
     .goto Mulgore,45.3,76.5
     .vendor >>供应商垃圾箱。购买1000颗子弹(5叠)
 step
     .goto Mulgore,44.2,76.1
-    .turnin 753 >>交出一项微不足道的任务
-    .accept 755 >>接受地球母亲的仪式
+    .turnin 753 >>交任务: 一件琐事
+    .accept 755 >>接任务: 大地之母仪祭
 step << Warrior
     .goto Mulgore,44.0,76.1
-    .turnin 3091 >>提交简单注释
+    .turnin 3091 >>交任务: 简易便笺
 step << Hunter
     .goto Mulgore,44.3,75.7
-    .turnin 3092 >>交上蚀刻的便笺
+    .turnin 3092 >>交任务: 风化便笺
 step << Warrior
     .goto Mulgore,44.7,77.9
     .vendor >>供应商垃圾
@@ -87,49 +87,49 @@ step
 step
     >>途中碾碎暴徒
     .goto Mulgore,42.6,92.2
-    .turnin 755 >>地球母亲的皈依仪式
-    .accept 757 >>接受力量仪式
+    .turnin 755 >>交任务: 大地之母仪祭
+    .accept 757 >>接任务: 力量仪祭
 step
     .goto Mulgore,45.44,90.56
     >>为美洲狮的皮毛杀死它们
     .complete 750,1 --Mountain Cougar Pelt (10)
 step << !Druid !Shaman
     .goto Mulgore,44.9,77.0
-    .xp 3+1150>>研磨至1150+/1400经验
+    .xp 3+1150>>提升经验到1150+/1400经验
 step << Druid/Shaman
     .goto Mulgore,44.9,77.0
-    .xp 3+1110>>研磨至1110+/1400经验
+    .xp 3+1110>>提升经验到1110+/1400经验
 step << Warrior/Hunter
     >>确保你有价值1美元90美分的可售物品。如果没有，研磨更多
     .goto Mulgore,44.9,77.0
-    .turnin 750 >>交出继续狩猎
-    .accept 780 >>接受战舰
+    .turnin 750 >>交任务: 继续狩猎
+    .accept 780 >>接任务: 斗猪
 step << Druid
     >>确保你有价值2美元的商品。如果没有，研磨更多
     .goto Mulgore,44.9,77.0
-    .turnin 750 >>交出继续狩猎
-    .accept 780 >>接受战舰
+    .turnin 750 >>交任务: 继续狩猎
+    .accept 780 >>接任务: 斗猪
 step << Shaman
     .goto Mulgore,44.9,77.0
-    .turnin 750 >>交出继续狩猎
-    .accept 780 >>接受战舰
+    .turnin 750 >>交任务: 继续狩猎
+    .accept 780 >>接任务: 斗猪
 step
     .goto Mulgore,45.3,76.5
     .vendor >>供应商垃圾
 step << Druid
     .goto Mulgore,45.1,75.9
-    .turnin 3094 >>交上葱郁的音符
+    .turnin 3094 >>交任务: 绿色便笺
     .train 8921 >>火车月光
 step << Shaman
     .goto Mulgore,45.0,75.9
-    .turnin 3093 >>交上符文铭文
+    .turnin 3093 >>交任务: 符文便笺
     .trainer >>训练你的职业咒语
 step << Shaman
     .goto Mulgore,44.7,76.2
-    .accept 1519 >>接受地球的召唤
+    .accept 1519 >>接任务: 大地的召唤
 step
     .goto Mulgore,45.0,76.4
-    .accept 3376 >>接受Break Sharptusk！
+    .accept 3376 >>接任务: 刺鬃酋长
 step << Hunter
     .goto Mulgore,44.3,75.7
     .trainer >>训练你的职业咒语
@@ -162,7 +162,7 @@ step << !Shaman
     >>到洞里去。抢走地面上的地图，然后单击它
     .goto Mulgore,63.2,82.7
     .collect 4851,1,781 --Collect Dirt-Stained Map
-    .accept 781 >>接受对Narache营地的攻击
+    .accept 781 >>接任务: 纳拉其营地的危机
 step << Shaman
     #requires Belt
 step << Shaman
@@ -170,39 +170,39 @@ step << Shaman
     >>到洞里去。抢走地面上的地图，然后单击它
     .goto Mulgore,63.2,82.7
     .collect 4851,1,781 --Collect Dirt-Stained Map
-    .accept 781 >>接受对Narache营地的攻击
+    .accept 781 >>接任务: 纳拉其营地的危机
 step
     .hs >>赫斯前往纳拉奇营地
 step
     .goto Mulgore,44.9,77.0
-    .turnin 780 >>交出战车
+    .turnin 780 >>交任务: 斗猪
 step << Shaman
     .goto Mulgore,44.7,76.2
-    .turnin 1519 >>地球的召唤
-    .accept 1520 >>接受地球的召唤
+    .turnin 1519 >>交任务: 大地的召唤
+    .accept 1520 >>接任务: 大地的召唤
 step << Shaman
     .goto Mulgore,53.9,80.5,90 >>跑向岩石
 step << Shaman
     >>用你袋子里的地球皂甙
     .goto Mulgore,53.9,80.5
-    .turnin 1520 >>地球的召唤
-    .accept 1521 >>接受地球的召唤
+    .turnin 1520 >>交任务: 大地的召唤
+    .accept 1521 >>接任务: 大地的召唤
 step << Shaman
     .goto Mulgore,44.7,76.2
-    .turnin 1521 >>地球的召唤
+    .turnin 1521 >>交任务: 大地的召唤
 step
     .goto Mulgore,44.5,76.5
-    .turnin 3376 >>交给Break Sharptusk！
+    .turnin 3376 >>交任务: 刺鬃酋长
 step
     .goto Mulgore,44.2,76.1
-    .turnin 781 >>袭击纳拉奇营地
-    .turnin 757 >>上缴力量仪式
-    .accept 763 >>接受地球母亲的仪式
+    .turnin 781 >>交任务: 纳拉其营地的危机
+    .turnin 757 >>交任务: 力量仪祭
+    .accept 763 >>接任务: 大地之母仪祭
 step
     .goto Mulgore,38.5,81.6
-    .accept 1656 >>接受未完成的任务
+    .accept 1656 >>接任务: 未完的任务
 step
-    .xp 5+2395>>研磨至2395+/2800xp
+    .xp 5+2395>>提升经验到2395+/2800xp
 step
 	#completewith next
 	#softcore
@@ -214,7 +214,7 @@ step
     .goto Mulgore,47.3,62.0,100 >>跑到血蹄村 << Hunter
 step << !Hunter
     .goto Mulgore,47.0,57.0
-    .accept 766 >>接受Mazzranache
+    .accept 766 >>接任务: 马兹拉纳其
 step << Shaman/Druid
     .goto Mulgore,45.7,58.6
       .vendor >>供应商垃圾箱。如果你有足够的钱买手杖(5s4c)，就卖掉你的武器。如果不够，请跳过此步骤
@@ -225,63 +225,63 @@ step << Warrior
     .collect 2493,1 --Collect Wooden Mallet
 step << !Hunter
     .goto Mulgore,46.6,61.1
-    .turnin 1656 >>交出未完成的任务
+    .turnin 1656 >>交任务: 未完的任务
     .home >>把你的炉石放在血蹄村
 step << !Hunter
     .goto Mulgore,47.5,60.2
-    .turnin 763 >>地球母亲的皈依仪式
-    .accept 745 >>接受土地共享
-    .accept 767 >>接受视觉仪式
-    .accept 746 >>接受矮人挖掘
+    .turnin 763 >>交任务: 大地之母仪祭
+    .accept 745 >>接任务: 土地之争
+    .accept 767 >>接任务: 幻象仪祭
+    .accept 746 >>接任务: 矮人的挖掘场
 step << !Hunter
     .goto Mulgore,47.8,57.6
-    .turnin 767 >>皈依视觉仪式
-    .accept 771 >>接受视觉仪式
+    .turnin 767 >>交任务: 幻象仪祭
+    .accept 771 >>接任务: 幻象仪祭
 step << Shaman
     .goto Mulgore,48.4,59.2
     .trainer >>训练你的职业咒语
 step << !Hunter
     .goto Mulgore,48.7,59.3
-    .accept 761 >>接受Swoop狩猎
+    .accept 761 >>接任务: 猎捕猛鹫
 step << Druid
     .goto Mulgore,48.5,59.6
     .trainer >>训练你的职业咒语
 step << Tauren/!Hunter
     .goto Mulgore,48.6,60.4
-    .accept 748 >>接受毒水
+    .accept 748 >>接任务: 毒水
 step << Warrior
     .goto Mulgore,49.5,60.6
     .trainer >>训练你的职业咒语
 step
     .goto Mulgore,47.3,62.0
-    .accept 743 >>接受风怒的危险
+    .accept 743 >>接任务: 风怒鹰身人
 step << Hunter
     .goto Mulgore,47.5,60.2
-    .turnin 763 >>地球母亲的皈依仪式
-    .accept 745 >>接受土地共享
-    .accept 767 >>接受视觉仪式
-    .accept 746 >>接受矮人挖掘
+    .turnin 763 >>交任务: 大地之母仪祭
+    .accept 745 >>接任务: 土地之争
+    .accept 767 >>接任务: 幻象仪祭
+    .accept 746 >>接任务: 矮人的挖掘场
 step << Hunter
     .goto Mulgore,46.6,61.1
-    .turnin 1656 >>交出未完成的任务
+    .turnin 1656 >>交任务: 未完的任务
     .home >>把你的炉石放在血蹄村
 step << Tauren Hunter
     .goto Mulgore,48.6,60.4
-    .accept 748 >>接受毒水
+    .accept 748 >>接任务: 毒水
 step << Hunter
     .goto Mulgore,48.7,59.3
-    .accept 761 >>接受Swoop狩猎
+    .accept 761 >>接任务: 猎捕猛鹫
 step << Hunter
     .goto Mulgore,47.8,57.6
-    .turnin 767 >>皈依视觉仪式
-    .accept 771 >>接受视觉仪式
+    .turnin 767 >>交任务: 幻象仪祭
+    .accept 771 >>接任务: 幻象仪祭
 step << Hunter
     .goto Mulgore,45.5,58.5
     .vendor >>供应商垃圾箱。如果你的武器能给你足够的钱来对付Ornate Blunderbus(4s 14c)，就把它卖掉。如果不够，请跳过此步骤
     .collect 2509,1 --Collect Ornate Blunderbuss
 step << Hunter
     .goto Mulgore,47.0,57.0
-    .accept 766 >>接受Mazzranache
+    .accept 766 >>接任务: 马兹拉纳其
 step << Hunter
     #completewith next
     .goto Mulgore,47.8,55.7
@@ -317,8 +317,8 @@ step << Tauren
     .complete 748,2 --Plainstrider Talon (4)
 step << Tauren
     .goto Mulgore,48.5,60.4
-    .turnin 748 >>上缴毒水
-    .accept 754 >>接受冬蹄清洁
+    .turnin 748 >>交任务: 毒水
+    .accept 754 >>接任务: 净化冰蹄之井
 step
     #sticky
     #label Stones
@@ -349,8 +349,8 @@ step
     .vendor >>供应商垃圾
 step << Tauren
     .goto Mulgore,48.5,60.4
-    .turnin 754 >>打开冬蹄清洁
-    .accept 756 >>接受雷鸣图腾
+    .turnin 754 >>交任务: 净化冰蹄之井
+    .accept 756 >>接任务: 雷角图腾
 step << Warrior
     #completewith next
     .goto Mulgore,49.5,60.6
@@ -365,7 +365,7 @@ step << Druid
     .trainer >>如果你还需要训练你的职业技能
 step
     .goto Mulgore,47.5,60.2
-    .turnin 745 >>轮流分享土地
+    .turnin 745 >>交任务: 土地之争
 step << Warrior
     .goto Mulgore,46.8,60.8
     .money <0.01
@@ -388,8 +388,8 @@ step
     #label Vision
     >>不要跟着狼产卵
     .goto Mulgore,47.8,57.5
-    .turnin 771 >>皈依视觉仪式
-    .accept 772 >>接受视觉仪式
+    .turnin 771 >>交任务: 幻象仪祭
+    .accept 772 >>接任务: 幻象仪祭
 step << Hunter
     .goto Mulgore,47.8,55.7
     .money <0.01
@@ -399,12 +399,12 @@ step
     .goto Mulgore,51.1,58.6,50,0
     .goto Mulgore,59.7,62.5,50,0
     .goto Mulgore,51.1,58.6
-    .accept 749 >>接受被摧毁的商队
+    .accept 749 >>接任务: 不幸的商队
 	.unitscan Morin Cloudstalker
 step
     .goto Mulgore,53.8,48.3
-    .turnin 749 >>收缴被摧毁的商队
-    .accept 751 >>接受被摧毁的商队
+    .turnin 749 >>交任务: 不幸的商队
+    .accept 751 >>接任务: 不幸的商队
 step
     #completewith Clawsx
     >>在整个区域寻找时，为Mazzranache获取物品
@@ -437,7 +437,7 @@ step
 step
     .isQuestComplete 766
     .goto Mulgore,47.0,57.2
-    .turnin 766 >>转入Mazzranache
+    .turnin 766 >>交任务: 马兹拉纳其
 step
     #completewith next
     .goto Mulgore,46.2,58.2
@@ -445,12 +445,12 @@ step
 step
 	#era/som
     .goto Mulgore,48.5,60.4
-    .turnin 756 >>交出雷鸣图腾
-    .accept 758 >>接受Thunderhorn Cleansing
+    .turnin 756 >>交任务: 雷角图腾
+    .accept 758 >>接任务: 净化雷角之井
 step
 	.isQuestComplete 761
     .goto Mulgore,48.7,59.4
-    .turnin 761 >>提交Swoop Hunting
+    .turnin 761 >>交任务: 猎捕猛鹫
 step << Shaman
     .goto Mulgore,48.4,59.2
     .trainer >>训练你的职业咒语
@@ -505,8 +505,8 @@ step
 step
 	#label Burial
     .goto Mulgore,32.7,36.1
-    .turnin 772 >>皈依视觉仪式
-    .accept 773 >>接受智慧仪式
+    .turnin 772 >>交任务: 幻象仪祭
+    .accept 773 >>接任务: 智慧仪祭
 step
 	#completewith next
     .goto Mulgore,54.15,27.81
@@ -525,21 +525,21 @@ step
     .complete 761,1 --Trophy Swoop Quill (8)
 step
     .goto Mulgore,59.9,25.6
-    .accept 833 >>接受神圣的葬礼
+    .accept 833 >>接任务: 神圣的墓地
 step
     >>杀死该地区的狐狸精
     .goto Mulgore,61.5,21.9
     .complete 833,1 --Bristleback Interloper (8)
 step
     .goto Mulgore,61.5,21.1
-    .turnin 773 >>上交智慧礼
-    .accept 775 >>接受雷霆崖之旅
+    .turnin 773 >>交任务: 智慧仪祭
+    .accept 775 >>接任务: 雷霆崖之旅
 step
     .goto Mulgore,59.8,25.6
-    .turnin 833 >>上缴圣葬
+    .turnin 833 >>交任务: 神圣的墓地
 step
    .goto Mulgore,61.5,21.9
-    .xp 9+4400>>研磨至4400+/6500xp
+    .xp 9+4400>>提升经验到4400+/6500xp
 step << !Druid
     #completewith next
     .hs >>炉灶 to Bloodhoof村
@@ -553,50 +553,50 @@ step << Druid
     .goto Mulgore,46.5,55.5,300 >>跑回血蹄村
 step << !Hunter
     .goto Mulgore,47.0,57.2
-    .turnin 766 >>转入Mazzranache
+    .turnin 766 >>交任务: 马兹拉纳其
 step
     .goto Mulgore,48.7,59.4
-    .turnin 761 >>提交Swoop Hunting
+    .turnin 761 >>交任务: 猎捕猛鹫
 step
     .goto Mulgore,46.9,60.2
-    .accept 861 >>接受猎人的方式
+    .accept 861 >>接任务: 猎人之道
 step
     .goto Mulgore,48.5,60.4
-    .turnin 758 >>转入雷鸣清洁
-    .accept 759 >>接受野马图腾 << !Hunter
+    .turnin 758 >>交任务: 净化雷角之井
+    .accept 759 >>接任务: 蛮鬃图腾 << !Hunter
 step << !Hunter
     .goto Mulgore,47.5,60.2
-    .turnin 746 >>转入矮人挖掘
+    .turnin 746 >>交任务: 矮人的挖掘场
 step
     .goto Mulgore,47.4,62.0
-    .turnin 743 >>交出风怒的危险
+    .turnin 743 >>交任务: 风怒鹰身人
 step << Shaman
     .goto Mulgore,48.4,59.2
-    .accept 2984 >>接受火灾召唤
+    .accept 2984 >>接任务: 火焰的召唤
      .trainer >>训练你的职业咒语
 step << Druid
     .goto Mulgore,48.5,59.6
-    .accept 5928 >>接听电话
+    .accept 5928 >>接任务: 响应召唤
      .trainer >>训练你的职业咒语
 step << Warrior
     .goto Mulgore,49.5,60.6
-    .accept 1505 >>接受退伍军人乌泽克
+    .accept 1505 >>接任务: 老兵犹塞克
      .trainer >>训练你的职业咒语
 step << Hunter
     .goto Mulgore,47.5,60.2
-    .turnin 746 >>转入矮人挖掘
+    .turnin 746 >>交任务: 矮人的挖掘场
 step << Tauren Hunter
     .goto Mulgore,48.5,60.4
-    .turnin 758 >>转入雷鸣清洁
+    .turnin 758 >>交任务: 净化雷角之井
 step << Hunter
     .goto Mulgore,47.0,57.2
-    .turnin 766 >>转入Mazzranache
+    .turnin 766 >>交任务: 马兹拉纳其
 step << Hunter
     .goto Mulgore,47.7,55.7
      .trainer >>训练你的宠物法术
 step << Hunter
     .goto Mulgore,47.8,55.7
-    .accept 6061 >>接受驯服野兽
+    .accept 6061 >>接任务: 驯服野兽
      .trainer >>训练你的职业咒语
 step << Hunter
     >>单击Plainstrider上包中的驯服棒。尝试在最大射程(30码)进行
@@ -604,24 +604,24 @@ step << Hunter
     .complete 6061,1 --Tame an Adult Plainstrider (1)
 step << Hunter
     .goto Mulgore,47.8,55.7
-    .turnin 6061 >>转身驯服野兽
-    .accept 6087 >>接受驯服野兽
+    .turnin 6061 >>交任务: 驯服野兽
+    .accept 6087 >>接任务: 驯服野兽
 step << Hunter
     >>点击你包里的驯服棒来对付追踪者。尝试在最大射程(30码)进行
     .goto Mulgore,47.1,48.3
     .complete 6087,1 --Tame a Prairie Stalker (1)
 step << Hunter
     .goto Mulgore,47.8,55.7
-    .turnin 6087 >>转身驯服野兽
-    .accept 6088 >>接受驯服野兽
+    .turnin 6087 >>交任务: 驯服野兽
+    .accept 6088 >>接任务: 驯服野兽
 step << Hunter
     >>在Swoop上单击包中的Taming Rod。在最大射程下进行，如果他们击倒你，立即重新投掷。如果你失败并用完了Taming Rod Charges，放弃任务，然后再捡起来回来
     .goto Mulgore,43.3,51.4
     .complete 6088,1 --Tame a Swoop (1)
 step << Hunter
     .goto Mulgore,47.8,55.7
-    .turnin 6088 >>转身驯服野兽
-    .accept 6089 >>接受训练野兽
+    .turnin 6088 >>交任务: 驯服野兽
+    .accept 6089 >>接任务: 训练野兽
 step
     >>寻找Morin Cloudstaller。他沿着东路巡逻
     .goto Mulgore,51.1,58.6,30,0
@@ -630,9 +630,9 @@ step
     .goto Mulgore,59.7,62.5,30,0
     .goto Mulgore,51.1,58.6,30,0
     .goto Mulgore,59.7,62.5,30,0
-    .turnin 751 >>收缴被摧毁的商队
-    .accept 764 >>接受合资公司。
-    .accept 765 >>接受主管Fizspholler
+    .turnin 751 >>交任务: 不幸的商队
+    .accept 764 >>接任务: 风险投资公司
+    .accept 765 >>接任务: 菲兹普罗克主管
 step
     >>杀死该地区的狼。抢走他们的牙齿
     .goto Mulgore,66.9,67.2
@@ -647,11 +647,11 @@ step
     .goto Mulgore,46.5,55.5,200 >>跑回血蹄村
 step
     .goto Mulgore,48.5,60.4
-    .turnin 759 >>交出野马图腾
-    .accept 760 >>接受Wildmane清理
+    .turnin 759 >>交任务: 蛮鬃图腾
+    .accept 760 >>接任务: 净化蛮鬃之井
 step
     .goto Mulgore,69.6,60.4,100,0
-    .zone The Barrens >>跑进荒野
+    .zone The Barrens >>前往: 贫瘠之地
 step << !Druid
     .goto The Barrens,44.5,59.1
     .fp Camp Taurajo >>获得Taurajo营地飞行路线
@@ -664,32 +664,32 @@ step << Druid
     .home >>将您的炉石设置为雷霆崖
 step << Druid
     .goto Thunder Bluff,78.1,28.6
-    .accept 886 >>接受荒芜的绿洲
+    .accept 886 >>接任务: 贫瘠之地的绿洲
 step << Druid
     .goto Thunder Bluff,76.7,27.3
-    .turnin 5928 >>听从召唤
+    .turnin 5928 >>交任务: 响应召唤
 step << Druid
     .goto Thunder Bluff,77.0,27.5
-    .accept 5922 >>接受Moonglade
+    .accept 5922 >>接任务: 月光林地
 step << Druid
     >>使用你的新咒语传送到月光大陆
     .goto Moonglade,56.2,30.7
-    .turnin 5922 >>转入Moonglade
-    .accept 5930 >>接受大熊精神
+    .turnin 5922 >>交任务: 月光林地
+    .accept 5930 >>接任务: 巨熊之灵
 step << Druid
     .goto Moonglade,39.2,27.5
     .complete 5930,1 --Seek out the Great Bear Spirit and learn what it has to share with you about the nature of the bear. (1)
 step << Druid
     >>传送回Moonglade
     .goto Moonglade,56.2,30.7
-    .turnin 5930 >>交出大熊精神
-    .accept 5932 >>接受回到雷霆崖
+    .turnin 5930 >>交任务: 巨熊之灵
+    .accept 5932 >>接任务: 返回雷霆崖
 step << Druid
     .hs >>火炉到雷霆崖
 step << Druid
     .goto Thunder Bluff,76.5,27.3
-    .turnin 5932 >>转身回到雷霆崖
-    .accept 6002 >>接受身体和心灵
+    .turnin 5932 >>交任务: 返回雷霆崖
+    .accept 6002 >>接任务: 身心之力
 step << Druid
     .goto Thunder Bluff,47.0,49.8
     .fly Camp Taurajo >>飞往陶拉霍营地
@@ -699,26 +699,26 @@ step << Druid
     .complete 6002,1 --Face Lunaclaw and earn the strength of body and heart it possesses. (1)
 step << Tauren
     .goto The Barrens,44.9,58.6
-    .accept 854 >>接受十字路口之旅
+    .accept 854 >>接任务: 十字路口之旅
 step << Druid
     .goto The Barrens,52.2,31.9
-    .turnin 886 >>《荒芜的绿洲》
-    .accept 870 >>接受被遗忘的水池
+    .turnin 886 >>交任务: 贫瘠之地的绿洲
+    .accept 870 >>接任务: 遗忘之池
 step << !Druid
     .goto The Barrens,52.2,31.9
-    .accept 870 >>接受被遗忘的水池
+    .accept 870 >>接任务: 遗忘之池
 step
     .goto The Barrens,51.5,30.1
-    .accept 848 >>接受真菌孢子
+    .accept 848 >>接任务: 菌类孢子
 step << Tauren
     .goto The Barrens,51.5,30.8
-    .turnin 854 >>转向十字路口
+    .turnin 854 >>交任务: 十字路口之旅
 step
     .goto The Barrens,51.5,30.4
     .fp The Crossroads >>获得the Crossroads飞行路线
 step
     .goto The Barrens,51.1,29.0
-    .accept 6361 >>接受一捆藏品
+    .accept 6361 >>接任务: 一捆兽皮
 step
     #sticky
     #completewith next
@@ -745,56 +745,56 @@ step
 step
     #softcore
     .goto The Barrens,52.3,31.9
-    .turnin 870 >>把被遗忘的水池交出来
-    .accept 877 >>接受停滞的绿洲
+    .turnin 870 >>交任务: 遗忘之池
+    .accept 877 >>接任务: 死水绿洲
 step
     #hardcore
     >>跑回十字路口
     .goto The Barrens,52.3,31.9
-    .turnin 870 >>把被遗忘的水池交出来
-    .accept 877 >>接受停滞的绿洲
+    .turnin 870 >>交任务: 遗忘之池
+    .accept 877 >>接任务: 死水绿洲
 step
     .goto The Barrens,52.0,29.9
     .home >>将您的炉石设置为十字路口
 step
     >>这将启动定时任务
     .goto The Barrens,51.4,30.2
-    .turnin 848 >>倒入真菌孢子
-    .accept 853 >>接受药剂师Zamah
+    .turnin 848 >>交任务: 菌类孢子
+    .accept 853 >>接任务: 药剂师扎玛
 step
     .goto The Barrens,51.5,30.3
-    .turnin 6361 >>交出一捆藏品
-    .accept 6362 >>接受雷霆崖骑行
+    .turnin 6361 >>交任务: 一捆兽皮
+    .accept 6362 >>接任务: 飞往雷霆崖
 step
     .fly Thunder Bluff >>飞向雷霆崖
 step << Hunter
 	.goto Thunder Bluff,57.4,89.4
-	.turnin 6089 >>上缴训练野兽
+	.turnin 6089 >>交任务: 训练野兽
 step
     .goto Thunder Bluff,45.6,55.9
-    .turnin 6362 >>转向雷霆崖
-    .accept 6363 >>接受风骑士大师
+    .turnin 6362 >>交任务: 飞往雷霆崖
+    .accept 6363 >>接任务: 双足飞龙管理员塔尔
 step
     .goto Thunder Bluff,37.8,59.4
-    .accept 744 >>接受仪式准备
+    .accept 744 >>接任务: 准备典礼
 step
     .goto Thunder Bluff,29.6,29.7,15 >>进入洞穴
 step << Druid
     >>装备员工
     .goto Thunder Bluff,23.0,21.0
-    .turnin 853 >>交给药剂师Zamah
+    .turnin 853 >>交任务: 药剂师扎玛
 step << !Druid
     >>你很快就会装备好员工的，一定要留着
     .goto Thunder Bluff,23.0,21.0
-    .turnin 853 >>交给药剂师Zamah
+    .turnin 853 >>交任务: 药剂师扎玛
 step
     .goto Thunder Bluff,46.8,49.7
-    .turnin 6363 >>交给风骑士大师
-    .accept 6364 >>接受返回Jahan
+    .turnin 6363 >>交任务: 双足飞龙管理员塔尔
+    .accept 6364 >>接任务: 向加翰回复
 step
     .goto Thunder Bluff,60.0,51.7
-    .turnin 775 >>将旅程变成雷霆崖
-    .accept 776 >>接受地球母亲的仪式
+    .turnin 775 >>交任务: 雷霆崖之旅
+    .accept 776 >>接任务: 大地之母仪祭
 step << Druid
     .money <0.1154
     .goto Thunder Bluff,40.9,62.7
@@ -804,13 +804,13 @@ step << Warrior/Hunter
     .train 227 >>火车杆
 step << Druid
     .goto Thunder Bluff,76.5,27.3
-    .turnin 6002 >>全身心投入
+    .turnin 6002 >>交任务: 身心之力
 step
     #sticky
     #completewith ThunderBluff
-    >>留心鬼嚎(罕见的白狼)。抢劫他以换取恶魔疤痕斗篷。如果找不到他，请跳过这一步。
+    >>留心鬼嚎(罕见的白狼)。掠夺他以换取恶魔疤痕斗篷。如果找不到他，请跳过这一步。
     .collect 4854,1,770 --Collect Demon Scarred Cloak
-    .accept 770 >>接受恶魔疤痕披风
+    .accept 770 >>接任务: 恶魔之伤
 step
     .goto Mulgore,31.7,28.2,90,0
     .goto Mulgore,30.2,19.5,90,0
@@ -846,25 +846,25 @@ step
     #label ThunderBluff
     >>回到雷霆崖
     .goto Thunder Bluff,60.1,51.7
-    .turnin 776 >>地球母亲的皈依仪式
+    .turnin 776 >>交任务: 大地之母仪祭
 step
     .goto Thunder Bluff,37.9,59.6
-    .turnin 744 >>为仪式做准备
+    .turnin 744 >>交任务: 准备典礼
 step
     .goto Thunder Bluff,61.3,80.9
-    .turnin 861 >>向猎人的方向转弯
+    .turnin 861 >>交任务: 猎人之道
 step
     .goto Thunder Bluff,61.2,81.2
-    .accept 860 >>接受Sergra Darkthorn
+    .accept 860 >>接任务: 瑟格拉·黑棘
 step
     .isOnQuest 770
     >>跑到血蹄村
     .goto Mulgore,46.8,60.2
-    .turnin 770 >>交上恶魔疤痕斗篷
+    .turnin 770 >>交任务: 恶魔之伤
 step
 	#era/som
     .goto Mulgore,48.6,60.4
-    .turnin 760 >>交Wildmane清洁
+    .turnin 760 >>交任务: 净化蛮鬃之井
 step
     .goto Mulgore,61.5,47.2,110 >>跑向矿井
 step
@@ -880,7 +880,7 @@ step
     .complete 765,1 --Fizsprocket's Clipboard (1)
 step
     #requires Workers
-    .xp 11+7150>>研磨至7150+/8700xp
+    .xp 11+7150>>提升经验到7150+/8700xp
 step
     #sticky
     #completewith next
@@ -893,8 +893,8 @@ step
     .goto Mulgore,59.7,62.5,30,0
     .goto Mulgore,51.1,58.6,30,0
     .goto Mulgore,59.7,62.5,30,0
-    .turnin 764 >>交给创业公司。
-    .turnin 765 >>移交主管Fizspholler
+    .turnin 764 >>交任务: 风险投资公司
+    .turnin 765 >>交任务: 菲兹普罗克主管
 step << Shaman
     .goto Mulgore,48.4,59.2
      .trainer >>训练你的职业咒语
@@ -913,43 +913,43 @@ step
     .goto The Barrens,52.0,29.9,150 >>火炉或飞回十字路口
 step
     .goto The Barrens,51.2,29.1
-    .turnin 6364 >>返回贾汉
+    .turnin 6364 >>交任务: 向加翰回复
 step
     .goto The Barrens,51.5,30.9
-    .accept 871 >>接受破坏攻击
-    .accept 5041 >>接受十字路口的补给
+    .accept 871 >>接任务: 野猪人的袭击
+    .accept 5041 >>接任务: 十字路口的补给品
 step
     .goto The Barrens,51.62,30.89
     >>上楼去
-    .accept 867 >>接受哈比突袭者
+    .accept 867 >>接任务: 鹰身强盗
 step
     .goto The Barrens,52.2,31.0
-    .turnin 860 >>转入Sergra Darkthorn
-    .accept 844 >>接受平原漫游者威胁
+    .turnin 860 >>交任务: 瑟格拉·黑棘
+    .accept 844 >>接任务: 平原陆行鸟的威胁
 step
     .goto The Barrens,52.0,30.3
-    .accept 869 >>接受猛禽窃贼
+    .accept 869 >>接任务: 偷钱的迅猛龙
 step << Shaman
     .goto The Barrens,55.9,19.9
-    .turnin 2984 >>交火召唤
-    .accept 1524 >>接受火灾召唤
+    .turnin 2984 >>交任务: 火焰的召唤
+    .accept 1524 >>接任务: 火焰的召唤
 step << Shaman
     .goto Durotar,36.6,58.0,25 >>沿着山路跑
 step << Shaman
     .goto Durotar,38.5,58.9
-    .turnin 1524 >>交火召唤
-    .accept 1525 >>接受火灾召唤
+    .turnin 1524 >>交任务: 火焰的召唤
+    .accept 1525 >>接任务: 火焰的召唤
 step << Warrior
     .goto The Barrens,61.4,21.1
-    .turnin 1505 >>交给退伍军人乌泽克
-    .accept 1498 >>接受防御之路
+    .turnin 1505 >>交任务: 老兵犹塞克
+    .accept 1498 >>接任务: 防御之道
 step << Warrior
     >>为歌唱的鳞片杀死闪电隐藏
     .complete 1498,1 --Singed Scale (5)
 step << Warrior
     .goto The Barrens,61.4,21.1
-    .turnin 1498 >>转入防御之路
-    .accept 1502 >>接受Thun'grim Firegake
+    .turnin 1498 >>交任务: 防御之道
+    .accept 1502 >>接任务: 索恩格瑞姆·火眼
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -969,10 +969,10 @@ step << !Tauren
     +您选择了一个针对牛头人的指南。这个区域对你来说不太合适，因为缺少了一个只为牛头人设置的主要任务线。建议您选择与开始时相同的起始区域
 step
     .goto Mulgore,44.9,77.1
-    .accept 747 >>接受狩猎开始
+    .accept 747 >>接任务: 开始狩猎
 step
     .goto Mulgore,44.2,76.1
-    .accept 752 >>接受一项艰巨的任务
+    .accept 752 >>接任务: 一件琐事
 step << Warrior/Shaman
     #sticky
     #completewith next
@@ -995,11 +995,11 @@ step
     .complete 747,2 --Plainstrider Feather (7)
 step
     .goto Mulgore,50.0,81.1
-    .turnin 752 >>交出一项微不足道的任务
-    .accept 753 >>接受一项艰巨的任务
+    .turnin 752 >>交任务: 一件琐事
+    .accept 753 >>接任务: 一件琐事
 step
     #label Plainstrider
-    >>在Hawkwind后面的井上抢劫水罐
+    >>在Hawkwind后面的井上掠夺水罐
     .goto Mulgore,50.2,81.4
     .complete 753,1 --Water Pitcher (1)
 step
@@ -1009,25 +1009,25 @@ step
     .complete 747,2 --Plainstrider Feather (7)
 step
     .goto Mulgore,44.8,77.0
-    .turnin 747 >>交出狩猎开始
-    .accept 3091 >>接受简单注释 << Warrior
-    .accept 3092 >>接受蚀刻笔记 << Hunter
-    .accept 3093 >>接受符文铭文注释 << Shaman
-    .accept 3094 >>接受绿色注释 << Druid
-    .accept 750 >>接受狩猎继续
+    .turnin 747 >>交任务: 开始狩猎
+    .accept 3091 >>接任务: 简易便笺 << Warrior
+    .accept 3092 >>接任务: 风化便笺 << Hunter
+    .accept 3093 >>接任务: 符文便笺 << Shaman
+    .accept 3094 >>接任务: 绿色便笺 << Druid
+    .accept 750 >>接任务: 继续狩猎
 step << Hunter
     .goto Mulgore,45.3,76.5
     .vendor >>供应商垃圾箱。购买1000颗子弹(5叠)
 step
     .goto Mulgore,44.2,76.1
-    .turnin 753 >>交出一项微不足道的任务
-    .accept 755 >>接受地球母亲的仪式
+    .turnin 753 >>交任务: 一件琐事
+    .accept 755 >>接任务: 大地之母仪祭
 step << Warrior
     .goto Mulgore,44.0,76.1
-    .turnin 3091 >>提交简单注释
+    .turnin 3091 >>交任务: 简易便笺
 step << Hunter
     .goto Mulgore,44.3,75.7
-    .turnin 3092 >>交上蚀刻的便笺
+    .turnin 3092 >>交任务: 风化便笺
 step << Warrior
     .goto Mulgore,44.7,77.9
     .vendor >>供应商垃圾
@@ -1042,8 +1042,8 @@ step
 step
     >>途中碾碎暴徒
     .goto Mulgore,42.6,92.2
-    .turnin 755 >>地球母亲的皈依仪式
-    .accept 757 >>接受力量仪式
+    .turnin 755 >>交任务: 大地之母仪祭
+    .accept 757 >>接任务: 力量仪祭
 step
     .goto Mulgore,45.44,90.56
     >>为美洲狮的皮毛杀死它们
@@ -1051,34 +1051,34 @@ step
 step << Warrior/Hunter
     >>确保你有价值1美元90美分的可售物品。如果没有，研磨更多
     .goto Mulgore,44.9,77.0
-    .turnin 750 >>交出继续狩猎
-    .accept 780 >>接受战舰
+    .turnin 750 >>交任务: 继续狩猎
+    .accept 780 >>接任务: 斗猪
 step << Druid
     >>确保你有价值2美元的商品。如果没有，研磨更多
     .goto Mulgore,44.9,77.0
-    .turnin 750 >>交出继续狩猎
-    .accept 780 >>接受战舰
+    .turnin 750 >>交任务: 继续狩猎
+    .accept 780 >>接任务: 斗猪
 step << Shaman
     .goto Mulgore,44.9,77.0
-    .turnin 750 >>交出继续狩猎
-    .accept 780 >>接受战舰
+    .turnin 750 >>交任务: 继续狩猎
+    .accept 780 >>接任务: 斗猪
 step
     .goto Mulgore,45.3,76.5
     .vendor >>供应商垃圾
 step << Druid
     .goto Mulgore,45.1,75.9
-    .turnin 3094 >>交上葱郁的音符
+    .turnin 3094 >>交任务: 绿色便笺
     .trainer >>训练你的职业咒语
 step << Shaman
     .goto Mulgore,45.0,75.9
-    .turnin 3093 >>交上符文铭文
+    .turnin 3093 >>交任务: 符文便笺
     .trainer >>训练你的职业咒语
 step << Shaman
     .goto Mulgore,44.7,76.2
-    .accept 1519 >>接受地球的召唤
+    .accept 1519 >>接任务: 大地的召唤
 step
     .goto Mulgore,45.0,76.4
-    .accept 3376 >>接受Break Sharptusk！
+    .accept 3376 >>接任务: 刺鬃酋长
 step << Hunter
     .goto Mulgore,44.3,75.7
     .trainer >>训练你的职业咒语
@@ -1111,7 +1111,7 @@ step << !Shaman
     >>到洞里去。抢走地面上的地图，然后单击它
     .goto Mulgore,63.2,82.7
     .collect 4851,1,781 --Collect Dirt-Stained Map
-    .accept 781 >>接受对Narache营地的攻击
+    .accept 781 >>接任务: 纳拉其营地的危机
 step << Shaman
     #requires Belt
 step << Shaman
@@ -1119,10 +1119,10 @@ step << Shaman
     >>到洞里去。抢走地面上的地图，然后单击它
     .goto Mulgore,63.2,82.7
     .collect 4851,1,781 --Collect Dirt-Stained Map
-    .accept 781 >>接受对Narache营地的攻击
+    .accept 781 >>接任务: 纳拉其营地的危机
 step
     #requires Belt
-	.zone The Barrens >>跳到洞穴尽头的蘑菇上。登入塔拉霍营地(荒地)
+	.zone The Barrens >>前往: 贫瘠之地, 跳到洞穴尽头的蘑菇上, 重新登录后你将被传送
     .goto Mulgore,63.10,83.03
 	.link https://www.youtube.com/watch?v=NfLrBPzt56s >>单击此处以供参考
 step
@@ -1142,40 +1142,40 @@ step
     .hs >>赫斯前往纳拉奇营地
 step
     .goto Mulgore,44.9,77.0
-    .turnin 780 >>交出战车
+    .turnin 780 >>交任务: 斗猪
 step << Shaman
     .goto Mulgore,44.7,76.2
-    .turnin 1519 >>地球的召唤
-    .accept 1520 >>接受地球的召唤
+    .turnin 1519 >>交任务: 大地的召唤
+    .accept 1520 >>接任务: 大地的召唤
 step << Shaman
     .goto Mulgore,53.9,80.5,90 >>跑向岩石
 step << Shaman
     >>用你袋子里的地球皂甙
     .goto Mulgore,53.9,80.5
-    .turnin 1520 >>地球的召唤
-    .accept 1521 >>接受地球的召唤
+    .turnin 1520 >>交任务: 大地的召唤
+    .accept 1521 >>接任务: 大地的召唤
 step << Shaman
     .goto Mulgore,44.7,76.2
-    .turnin 1521 >>地球的召唤
+    .turnin 1521 >>交任务: 大地的召唤
 step
     .goto Mulgore,44.5,76.5
-    .turnin 3376 >>交给Break Sharptusk！
+    .turnin 3376 >>交任务: 刺鬃酋长
 step
     .goto Mulgore,44.2,76.1
-    .turnin 781 >>袭击纳拉奇营地
-    .turnin 757 >>上缴力量仪式
-    .accept 763 >>接受地球母亲的仪式
+    .turnin 781 >>交任务: 纳拉其营地的危机
+    .turnin 757 >>交任务: 力量仪祭
+    .accept 763 >>接任务: 大地之母仪祭
 step
     .goto Mulgore,38.5,81.6
-    .accept 1656 >>接受未完成的任务
+    .accept 1656 >>接任务: 未完的任务
 step
-    .xp 5+2395>>研磨至2395+/2800xp
+    .xp 5+2395>>提升经验到2395+/2800xp
 step
     .goto Mulgore,46.5,55.5,300 >>在精神治疗者处死去并重生，或者跑到血蹄村
     #softcore
 step << !Hunter
     .goto Mulgore,47.0,57.0
-    .accept 766 >>接受Mazzranache
+    .accept 766 >>接任务: 马兹拉纳其
 step << Shaman/Druid
     .goto Mulgore,45.7,58.6
       .vendor >>供应商垃圾箱。如果你有足够的钱买手杖(5s4c)，就卖掉你的武器。如果不够，请跳过此步骤
@@ -1186,25 +1186,25 @@ step << Warrior
     .collect 2493,1 --Collect Wooden Mallet
 step << !Hunter
     .goto Mulgore,46.6,61.1
-    .turnin 1656 >>交出未完成的任务
+    .turnin 1656 >>交任务: 未完的任务
     .home >>把你的炉石放在血蹄村
 step << !Hunter
     .goto Mulgore,47.5,60.2
-    .turnin 763 >>地球母亲的皈依仪式
-    .accept 745 >>接受土地共享
-    .accept 767 >>接受视觉仪式
-    .accept 746 >>接受矮人挖掘
+    .turnin 763 >>交任务: 大地之母仪祭
+    .accept 745 >>接任务: 土地之争
+    .accept 767 >>接任务: 幻象仪祭
+    .accept 746 >>接任务: 矮人的挖掘场
 step << !Hunter
     .goto Mulgore,47.8,57.6
-    .turnin 767 >>皈依视觉仪式
-    .accept 771 >>接受视觉仪式
+    .turnin 767 >>交任务: 幻象仪祭
+    .accept 771 >>接任务: 幻象仪祭
 step << Shaman
     .money <0.01
     .goto Mulgore,48.4,59.2
     .trainer >>训练你的职业咒语
 step << !Hunter
     .goto Mulgore,48.7,59.3
-    .accept 761 >>接受Swoop狩猎
+    .accept 761 >>接任务: 猎捕猛鹫
 step << Druid
     .money <0.01
     .goto Mulgore,48.5,59.6
@@ -1215,31 +1215,31 @@ step << Warrior
     .trainer >>训练你的职业咒语
 step
     .goto Mulgore,47.3,62.0
-    .accept 743 >>接受风怒的危险
+    .accept 743 >>接任务: 风怒鹰身人
 step << Hunter
     .goto Mulgore,47.5,60.2
-    .turnin 763 >>地球母亲的皈依仪式
-    .accept 745 >>接受土地共享
-    .accept 767 >>接受视觉仪式
-    .accept 746 >>接受矮人挖掘
+    .turnin 763 >>交任务: 大地之母仪祭
+    .accept 745 >>接任务: 土地之争
+    .accept 767 >>接任务: 幻象仪祭
+    .accept 746 >>接任务: 矮人的挖掘场
 step << Hunter
     .goto Mulgore,46.6,61.1
-    .turnin 1656 >>交出未完成的任务
+    .turnin 1656 >>交任务: 未完的任务
     .home >>把你的炉石放在血蹄村
 step << Hunter
     .goto Mulgore,48.7,59.3
-    .accept 761 >>接受Swoop狩猎
+    .accept 761 >>接任务: 猎捕猛鹫
 step << Hunter
     .goto Mulgore,47.8,57.6
-    .turnin 767 >>皈依视觉仪式
-    .accept 771 >>接受视觉仪式
+    .turnin 767 >>交任务: 幻象仪祭
+    .accept 771 >>接任务: 幻象仪祭
 step << Hunter
     .goto Mulgore,45.5,58.5
     .vendor >>供应商垃圾箱。如果你的武器能给你足够的钱来对付Ornate Blunderbus(4s 14c)，就把它卖掉。如果不够，请跳过此步骤
     .collect 2509,1 --Collect Ornate Blunderbuss
 step << Hunter
     .goto Mulgore,47.0,57.0
-    .accept 766 >>接受Mazzranache
+    .accept 766 >>接任务: 马兹拉纳其
 step << Hunter
     #completewith next
     .money <0.01
@@ -1303,7 +1303,7 @@ step << Druid
     .trainer >>如果你还需要训练你的职业技能
 step
     .goto Mulgore,47.5,60.2
-    .turnin 745 >>轮流分享土地
+    .turnin 745 >>交任务: 土地之争
 step << Warrior
     .goto Mulgore,46.8,60.8
     .money <0.01
@@ -1326,8 +1326,8 @@ step
     #label Vision
     >>不要跟着狼产卵
     .goto Mulgore,47.8,57.5
-    .turnin 771 >>皈依视觉仪式
-    .accept 772 >>接受视觉仪式
+    .turnin 771 >>交任务: 幻象仪祭
+    .accept 772 >>接任务: 幻象仪祭
 step << Hunter
     .goto Mulgore,47.8,55.7
     .money <0.01
@@ -1340,11 +1340,11 @@ step
     .goto Mulgore,59.7,62.5,30,0
     .goto Mulgore,51.1,58.6,30,0
     .goto Mulgore,59.7,62.5,30,0
-    .accept 749 >>接受被摧毁的商队
+    .accept 749 >>接任务: 不幸的商队
 step
     .goto Mulgore,53.8,48.3
-    .turnin 749 >>收缴被摧毁的商队
-    .accept 751 >>接受被摧毁的商队
+    .turnin 749 >>交任务: 不幸的商队
+    .accept 751 >>接任务: 不幸的商队
 step
 	#completewith Burial
     >>在整个区域寻找时，为Mazzranache获取物品。狼换心脏，美洲狮换股骨，平原步行者换鳞片，暴雪换Swoops
@@ -1369,8 +1369,8 @@ step
     .complete 743,1 --Windfury Talon (8)
 step
     .goto Mulgore,32.7,36.1
-    .turnin 772 >>皈依视觉仪式
-    .accept 773 >>接受智慧仪式
+    .turnin 772 >>交任务: 幻象仪祭
+    .accept 773 >>接任务: 智慧仪祭
 step
 	#completewith next
     >>杀死该区域的Swoops。抢他们的羽毛笔
@@ -1394,21 +1394,21 @@ step
 step
 	#label Burial
     .goto Mulgore,59.9,25.6
-    .accept 833 >>接受神圣的葬礼
+    .accept 833 >>接任务: 神圣的墓地
 step
     >>杀死该地区的狐狸精
     .goto Mulgore,61.5,21.9
     .complete 833,1 --Bristleback Interloper (8)
 step
     .goto Mulgore,61.5,21.1
-    .turnin 773 >>上交智慧礼
-    .accept 775 >>接受雷霆崖之旅
+    .turnin 773 >>交任务: 智慧仪祭
+    .accept 775 >>接任务: 雷霆崖之旅
 step << !Druid
     .goto Mulgore,61.5,21.1
-    .xp 9+5240>>研磨至5240+/6500xp
+    .xp 9+5240>>提升经验到5240+/6500xp
 step
     .goto Mulgore,59.8,25.6
-    .turnin 833 >>上缴圣葬
+    .turnin 833 >>交任务: 神圣的墓地
 step
 	#softcore
     .goto Mulgore,59.8,25.6
@@ -1421,27 +1421,27 @@ step << !Hunter
 	.home >>将您的炉石设置为雷霆崖
 step << Druid
     .goto Thunder Bluff,77.0,27.5
-    .accept 5922 >>接受Moonglade
+    .accept 5922 >>接任务: 月光林地
 	.trainer >>训练你的职业咒语
 step << Druid
     >>使用你的新咒语传送到月光大陆
     .goto Moonglade,56.2,30.7
-    .turnin 5922 >>转入Moonglade
-    .accept 5930 >>接受大熊精神
+    .turnin 5922 >>交任务: 月光林地
+    .accept 5930 >>接任务: 巨熊之灵
 step << Druid
     .goto Moonglade,39.2,27.5
     .complete 5930,1 --Seek out the Great Bear Spirit and learn what it has to share with you about the nature of the bear. (1)
 step << Druid
     >>传送回Moonglade
     .goto Moonglade,56.2,30.7
-    .turnin 5930 >>交出大熊精神
-    .accept 5932 >>接受回到雷霆崖
+    .turnin 5930 >>交任务: 巨熊之灵
+    .accept 5932 >>接任务: 返回雷霆崖
 step << Druid
 	.hs >>火炉到雷霆崖
 step << Druid
     .goto Thunder Bluff,76.5,27.3
-    .turnin 5932 >>转身回到雷霆崖
-    .accept 6002 >>接受身体和心灵
+    .turnin 5932 >>交任务: 返回雷霆崖
+    .accept 6002 >>接任务: 身心之力
 step
     .goto Thunder Bluff,45.83,51.59,30,0
     .goto Thunder Bluff,47.00,49.83
@@ -1453,23 +1453,23 @@ step << Druid
     .complete 6002,1 --Face Lunaclaw and earn the strength of body and heart it possesses. (1)
 step << Druid
     .goto The Barrens,44.9,58.6
-    .accept 854 >>接受十字路口之旅
+    .accept 854 >>接任务: 十字路口之旅
 step << Druid
     .goto The Barrens,44.5,59.1
 	.fly Crossroads >>飞向十字路口
 step
     .goto The Barrens,52.2,31.9
-    .turnin 886 >>《荒芜的绿洲》 << Druid
-    .accept 870 >>接受被遗忘的水池
+    .turnin 886 >>交任务: 贫瘠之地的绿洲 << Druid
+    .accept 870 >>接任务: 遗忘之池
 step
     .goto The Barrens,51.5,30.1
-    .accept 848 >>接受真菌孢子
+    .accept 848 >>接任务: 菌类孢子
 step << Druid
     .goto The Barrens,51.5,30.8
-    .turnin 854 >>转向十字路口
+    .turnin 854 >>交任务: 十字路口之旅
 step
     .goto The Barrens,51.1,29.0
-    .accept 6361 >>接受一捆藏品
+    .accept 6361 >>接任务: 一捆兽皮
 step
     #sticky
     #completewith next
@@ -1496,26 +1496,26 @@ step
 step
     #softcore
     .goto The Barrens,52.3,31.9
-    .turnin 870 >>把被遗忘的水池交出来
-    .accept 877 >>接受停滞的绿洲
+    .turnin 870 >>交任务: 遗忘之池
+    .accept 877 >>接任务: 死水绿洲
 step
     #hardcore
     >>跑回十字路口
     .goto The Barrens,52.3,31.9
-    .turnin 870 >>把被遗忘的水池交出来
-    .accept 877 >>接受停滞的绿洲
+    .turnin 870 >>交任务: 遗忘之池
+    .accept 877 >>接任务: 死水绿洲
 step << skip
     .goto The Barrens,52.0,29.9
     .home >>将您的炉石设置为十字路口
 step
     >>这将启动定时任务
     .goto The Barrens,51.4,30.2
-    .turnin 848 >>倒入真菌孢子
-    .accept 853 >>接受药剂师Zamah
+    .turnin 848 >>交任务: 菌类孢子
+    .accept 853 >>接任务: 药剂师扎玛
 step
     .goto The Barrens,51.5,30.3
-    .turnin 6361 >>交出一捆藏品
-    .accept 6362 >>接受雷霆崖骑行
+    .turnin 6361 >>交任务: 一捆兽皮
+    .accept 6362 >>接任务: 飞往雷霆崖
 step << Hunter
     .goto The Barrens,51.5,30.4
     .fly Thunder Bluff >>飞向雷霆崖
@@ -1523,28 +1523,28 @@ step << !Hunter
 	.hs >>火炉到雷霆崖
 step << Hunter
 	.goto Thunder Bluff,57.4,89.4
-	.turnin 6089 >>上缴训练野兽
+	.turnin 6089 >>交任务: 训练野兽
 step
     .goto Thunder Bluff,45.6,55.9
-    .turnin 6362 >>转向雷霆崖
-    .accept 6363 >>接受风骑士大师
+    .turnin 6362 >>交任务: 飞往雷霆崖
+    .accept 6363 >>接任务: 双足飞龙管理员塔尔
 step
     .goto Thunder Bluff,29.6,29.7,15 >>进入洞穴
 step << Druid
     >>装备员工
     .goto Thunder Bluff,23.0,21.0
-    .turnin 853 >>交给药剂师Zamah
+    .turnin 853 >>交任务: 药剂师扎玛
 step << !Druid
     >>你很快就会装备好员工的，一定要留着
     .goto Thunder Bluff,23.0,21.0
-    .turnin 853 >>交给药剂师Zamah
+    .turnin 853 >>交任务: 药剂师扎玛
 step
     .goto Thunder Bluff,46.8,49.7
-    .turnin 6363 >>交给风骑士大师
-    .accept 6364 >>接受返回Jahan
+    .turnin 6363 >>交任务: 双足飞龙管理员塔尔
+    .accept 6364 >>接任务: 向加翰回复
 step
     .goto Thunder Bluff,60.0,51.7
-    .turnin 775 >>将旅程变成雷霆崖
+    .turnin 775 >>交任务: 雷霆崖之旅
 step << Druid
     .money <0.1154
     .goto Thunder Bluff,40.9,62.7
@@ -1554,12 +1554,12 @@ step << Warrior/Hunter
     .train 227 >>火车杆
 step << Druid
     .goto Thunder Bluff,76.5,27.3
-    .turnin 6002 >>全身心投入
+    .turnin 6002 >>交任务: 身心之力
 step << !Hunter
     #completewith next
-    >>留心鬼嚎(罕见的白狼)。抢劫他以换取恶魔疤痕斗篷。如果找不到他，请跳过这一步。
+    >>留心鬼嚎(罕见的白狼)。掠夺他以换取恶魔疤痕斗篷。如果找不到他，请跳过这一步。
     .collect 4854,1,770 --Collect Demon Scarred Cloak
-    .accept 770 >>接受恶魔疤痕披风
+    .accept 770 >>接任务: 恶魔之伤
 	.unitscan Ghost Howl
 step << Hunter
     #completewith next
@@ -1580,13 +1580,13 @@ step << !Hunter
     .goto Mulgore,46.5,55.5,200 >>跑回血蹄村
 step << !Hunter
     .goto Mulgore,47.0,57.2
-    .turnin 766 >>转入Mazzranache
+    .turnin 766 >>交任务: 马兹拉纳其
 step << !Hunter
     .goto Mulgore,47.5,60.2
-    .turnin 746 >>转入矮人挖掘
+    .turnin 746 >>交任务: 矮人的挖掘场
 step
     .goto Mulgore,47.4,62.0
-    .turnin 743 >>交出风怒的危险
+    .turnin 743 >>交任务: 风怒鹰身人
 step << Hunter
     .goto Mulgore,45.5,58.5
     .money <0.0414
@@ -1594,27 +1594,27 @@ step << Hunter
     .collect 2509,1 --Collect Ornate Blunderbuss
 step << Shaman
     .goto Mulgore,48.4,59.2
-    .accept 2984 >>接受火灾召唤
+    .accept 2984 >>接任务: 火焰的召唤
      .trainer >>训练你的职业咒语
 step << Druid
     .goto Mulgore,48.5,59.6
      .trainer >>训练你的职业咒语
 step << Warrior
     .goto Mulgore,49.5,60.6
-    .accept 1505 >>接受退伍军人乌泽克
+    .accept 1505 >>接任务: 老兵犹塞克
      .trainer >>训练你的职业咒语
 step << Hunter
     .goto Mulgore,47.5,60.2
-    .turnin 746 >>转入矮人挖掘
+    .turnin 746 >>交任务: 矮人的挖掘场
 step << Hunter
     .goto Mulgore,47.0,57.2
-    .turnin 766 >>转入Mazzranache
+    .turnin 766 >>交任务: 马兹拉纳其
 step << Hunter
     .goto Mulgore,47.7,55.7
      .trainer >>训练你的宠物法术
 step << Hunter
     .goto Mulgore,47.8,55.7
-    .accept 6061 >>接受驯服野兽
+    .accept 6061 >>接任务: 驯服野兽
      .trainer >>训练你的职业咒语
 step << Hunter
     >>单击Plainstrider上包中的驯服棒。尝试在最大射程(30码)进行
@@ -1622,28 +1622,28 @@ step << Hunter
     .complete 6061,1 --Tame an Adult Plainstrider (1)
 step << Hunter
     .goto Mulgore,47.8,55.7
-    .turnin 6061 >>转身驯服野兽
-    .accept 6087 >>接受驯服野兽
+    .turnin 6061 >>交任务: 驯服野兽
+    .accept 6087 >>接任务: 驯服野兽
 step << Hunter
     >>点击你包里的驯服棒来对付追踪者。尝试在最大射程(30码)进行
     .goto Mulgore,47.1,48.3
     .complete 6087,1 --Tame a Prairie Stalker (1)
 step << Hunter
     .goto Mulgore,47.8,55.7
-    .turnin 6087 >>转身驯服野兽
-    .accept 6088 >>接受驯服野兽
+    .turnin 6087 >>交任务: 驯服野兽
+    .accept 6088 >>接任务: 驯服野兽
 step << Hunter
     >>在Swoop上单击包中的Taming Rod。在最大射程下进行，如果他们击倒你，立即重新投掷。如果你失败并用完了Taming Rod Charges，放弃任务，然后再捡起来回来
     .goto Mulgore,43.3,51.4
     .complete 6088,1 --Tame a Swoop (1)
 step << Hunter
     .goto Mulgore,47.8,55.7
-    .turnin 6088 >>转身驯服野兽
-    .accept 6089 >>接受训练野兽
+    .turnin 6088 >>交任务: 驯服野兽
+    .accept 6089 >>接任务: 训练野兽
 step << !Hunter
     .isOnQuest 770
     .goto Mulgore,46.8,60.2
-    .turnin 770 >>交上恶魔疤痕斗篷
+    .turnin 770 >>交任务: 恶魔之伤
 step
     >>寻找Morin Cloudstaller。他沿着东路巡逻
     .goto Mulgore,51.1,58.6,30,0
@@ -1654,9 +1654,9 @@ step
     .goto Mulgore,59.7,62.5,30,0
     .goto Mulgore,51.1,58.6,30,0
     .goto Mulgore,59.7,62.5,30,0
-    .turnin 751 >>收缴被摧毁的商队
-    .accept 764 >>接受合资公司。
-    .accept 765 >>接受主管Fizspholler
+    .turnin 751 >>交任务: 不幸的商队
+    .accept 764 >>接任务: 风险投资公司
+    .accept 765 >>接任务: 菲兹普罗克主管
 step
     .goto Mulgore,61.5,47.2,110 >>跑向矿井
 step
@@ -1675,7 +1675,7 @@ step
     .complete 764,2 --Venture Co. Supervisor (6)
 step
     .goto Mulgore,63.0,44.3
-    .xp 11+5620>>研磨至5620+/8700xp
+    .xp 11+5620>>提升经验到5620+/8700xp
 step
     >>寻找Morin Cloudstaller。他沿着东路巡逻
     .goto Mulgore,51.1,58.6,30,0
@@ -1686,8 +1686,8 @@ step
     .goto Mulgore,59.7,62.5,30,0
     .goto Mulgore,51.1,58.6,30,0
     .goto Mulgore,59.7,62.5,30,0
-    .turnin 764 >>交给创业公司。
-    .turnin 765 >>移交主管Fizspholler
+    .turnin 764 >>交任务: 风险投资公司
+    .turnin 765 >>交任务: 菲兹普罗克主管
 step << Shaman
     .goto Mulgore,48.4,59.2
      .trainer >>训练你的职业咒语
@@ -1706,11 +1706,11 @@ step
 	.fly Crossroads >>飞向十字路口 << !Hunter !Druid
 step << Druid
     .goto Thunder Bluff,76.5,27.3
-    .turnin 6002 >>全身心投入
+    .turnin 6002 >>交任务: 身心之力
 	.trainer >>训练你的职业咒语
 step << Hunter
 	.goto Thunder Bluff,57.4,89.4
-	.turnin 6089 >>上缴训练野兽
+	.turnin 6089 >>交任务: 训练野兽
 	.trainer >>训练你的职业咒语
 step << Hunter/Druid
     .goto Thunder Bluff,45.83,51.59,30,0
@@ -1718,44 +1718,44 @@ step << Hunter/Druid
 	.fly Crossroads >>飞向十字路口
 step
     .goto The Barrens,51.2,29.1
-    .turnin 6364 >>返回贾汉
+    .turnin 6364 >>交任务: 向加翰回复
 step
     .goto The Barrens,51.5,30.9
-    .accept 871 >>接受破坏攻击
-    .accept 5041 >>接受十字路口的补给
+    .accept 871 >>接任务: 野猪人的袭击
+    .accept 5041 >>接任务: 十字路口的补给品
 step
     .goto The Barrens,51.62,30.89
     >>上楼去
-    .accept 867 >>接受哈比突袭者
+    .accept 867 >>接任务: 鹰身强盗
 step
     .goto The Barrens,52.0,29.9
     .home >>将您的炉石设置为十字路口
 step
     .goto The Barrens,52.2,31.0
-    .accept 844 >>接受平原漫游者威胁
+    .accept 844 >>接任务: 平原陆行鸟的威胁
 step
     .goto The Barrens,52.0,30.3
-    .accept 869 >>接受猛禽窃贼
+    .accept 869 >>接任务: 偷钱的迅猛龙
 step << Shaman
     .goto The Barrens,55.9,19.9
-    .turnin 2984 >>交火召唤
-    .accept 1524 >>接受火灾召唤
+    .turnin 2984 >>交任务: 火焰的召唤
+    .accept 1524 >>接任务: 火焰的召唤
 step << Shaman
     .goto Durotar,36.6,58.0,25 >>沿着山路跑
 step << Shaman
     .goto Durotar,38.5,58.9
-    .turnin 1524 >>交火召唤
-    .accept 1525 >>接受火灾召唤
+    .turnin 1524 >>交任务: 火焰的召唤
+    .accept 1525 >>接任务: 火焰的召唤
 step << Warrior
     .goto The Barrens,61.4,21.1
-    .turnin 1505 >>交给退伍军人乌泽克
-    .accept 1498 >>接受防御之路
+    .turnin 1505 >>交任务: 老兵犹塞克
+    .accept 1498 >>接任务: 防御之道
 step << Warrior
     >>为歌唱的鳞片杀死闪电隐藏
     .complete 1498,1 --Singed Scale (5)
 step << Warrior
     .goto The Barrens,61.4,21.1
-    .turnin 1498 >>转入防御之路
-    .accept 1502 >>接受Thun'grim Firegake
+    .turnin 1498 >>交任务: 防御之道
+    .accept 1502 >>接任务: 索恩格瑞姆·火眼
 ]])
 
