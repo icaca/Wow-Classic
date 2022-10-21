@@ -14,7 +14,7 @@ function M:ExpBar_Update()
 	local rest = self.restBar
 	if rest then rest:Hide() end
 
-	if DB.MyLevel < GetMaxPlayerLevel() then
+	if UnitLevel("player") < GetMaxPlayerLevel() then
 		local xp, mxp, rxp = UnitXP("player"), UnitXPMax("player"), GetXPExhaustion()
 		self:SetStatusBarColor(0, .7, 1)
 		self:SetMinMaxValues(0, mxp)
@@ -40,9 +40,9 @@ end
 function M:ExpBar_UpdateTooltip()
 	GameTooltip:SetOwner(self, "ANCHOR_LEFT")
 	GameTooltip:ClearLines()
-	GameTooltip:AddLine(LEVEL.." "..DB.MyLevel, 0,.6,1)
+	GameTooltip:AddLine(LEVEL.." "..UnitLevel("player"), 0,.6,1)
 
-	if DB.MyLevel < GetMaxPlayerLevel() then
+	if UnitLevel("player") < GetMaxPlayerLevel() then
 		GameTooltip:AddLine(" ")
 		local xp, mxp, rxp = UnitXP("player"), UnitXPMax("player"), GetXPExhaustion()
 		GameTooltip:AddDoubleLine(XP..":", xp.." / "..mxp.." ("..floor(xp/mxp*100).."%)", .6,.8,1, 1,1,1)
@@ -94,9 +94,10 @@ function M:SetupScript(bar)
 end
 
 function M:Expbar()
+	if C.db["Map"]["DisableMinimap"] then return end
 	if not C.db["Misc"]["ExpRep"] then return end
 
-	local bar = CreateFrame("StatusBar", nil, MinimapCluster)
+	local bar = CreateFrame("StatusBar", "NDuiExpRepBar", MinimapCluster)
 	bar:SetPoint("TOPLEFT", Minimap, "BOTTOMLEFT", 5, -5)
 	bar:SetPoint("TOPRIGHT", Minimap, "BOTTOMRIGHT", -5, -5)
 	bar:SetHeight(5)

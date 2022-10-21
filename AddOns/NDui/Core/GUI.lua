@@ -119,7 +119,6 @@ G.DefaultSettings = {
 		ReverseDebuff = false,
 		DebuffSize = 30,
 		DebuffsPerRow = 16,
-		Consolidate = false,
 	},
 	AuraWatch = {
 		Enable = true,
@@ -312,6 +311,7 @@ G.DefaultSettings = {
 	},
 	Map = {
 		DisableMap = false,
+		DisableMinimap = false,
 		Clock = false,
 		CombatPulse = true,
 		MapScale = .7,
@@ -641,6 +641,10 @@ loader:SetScript("OnEvent", function(self, _, addon)
 			NDuiADB["TexStyle"] = 2 -- reset value if not exists
 		end
 		DB.normTex = G.TextureList[NDuiADB["TexStyle"]].texture
+	end
+
+	if not C.db["Map"]["DisableMinimap"] then
+		GetMinimapShape = B.GetMinimapShape
 	end
 
 	self:UnregisterAllEvents()
@@ -1048,7 +1052,7 @@ G.TabList = {
 	L["Maps"],
 	L["Skins"],
 	L["Tooltip"],
-	NewTag..L["Misc"],
+	L["Misc"],
 	L["UI Settings"],
 	L["Profile"],
 }
@@ -1207,11 +1211,11 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Nameplate", "ShowPowerUnits", HeaderTag..L["ShowPowerUnits"].."*", true, setupNameplatePowerUnits, updatePowerUnitList, L["PowerUnitsTip"]},
 		{},--blank
 		{1, "Nameplate", "TankMode", HeaderTag..L["Tank Mode"].."*", nil, nil, nil, L["TankModeTip"]},
-		{1, "Nameplate", "OffTankThreat", NewTag..L["OffTankThreat"].."*", true, nil, nil, L["OffTankThreatTip"]},
+		{1, "Nameplate", "OffTankThreat", L["OffTankThreat"].."*", true, nil, nil, L["OffTankThreatTip"]},
 		{5, "Nameplate", "SecureColor", L["Secure Color"].."*"},
 		{5, "Nameplate", "TransColor", L["Trans Color"].."*", 1},
 		{5, "Nameplate", "InsecureColor", L["Insecure Color"].."*", 2},
-		{5, "Nameplate", "OffTankColor", NewTag..L["OffTank Color"].."*", 3},
+		{5, "Nameplate", "OffTankColor", L["OffTank Color"].."*", 3},
 		--{1, "Nameplate", "DPSRevertThreat", L["DPS Revert Threat"].."*", true},
 		{},--blank
 		{1, "Nameplate", "CVarOnlyNames", L["CVarOnlyNames"], nil, nil, updatePlateCVars, L["CVarOnlyNamesTip"]},
@@ -1305,6 +1309,7 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Map", "MapFader", L["MapFader"].."*", nil, nil, updateMapFader},
 		{3, "Map", "MapScale", L["Map Scale"], true, {.5, 1, .1}},
 		{},--blank
+		{1, "Map", "DisableMinimap", "|cffff0000"..L["DisableMinimap"], nil, nil, nil, L["DisableMinimapTip"]},
 		{3, "Map", "MinimapScale", L["Minimap Scale"].."*", nil, {.5, 3, .1}, updateMinimapScale},
 		{3, "Map", "MinimapSize", L["Minimap Size"].."*", true, {100, 500, 1}, updateMinimapScale},
 		{1, "Map", "Clock", L["Minimap Clock"].."*", nil, nil, showMinimapClock},
@@ -1377,8 +1382,8 @@ G.OptionList = { -- type, key, value, name, horizon, doubleline
 		{1, "Misc", "AutoDismount", L["AutoDismount"].."*", nil, nil, nil, L["AutoDismountTip"]},
 		{3, "Misc", "MaxZoom", L["MaxZoom"].."*", true, {1, 3.4, .1}, updateMaxZoomLevel},
 		{1, "Misc", "BlockInvite", "|cffff0000"..L["BlockInvite"].."*", nil, nil, nil, L["BlockInviteTip"]},
-		{1, "Misc", "Autoequip", NewTag..L["AutoEquip"].."*", true, nil, nil, L["AutoEquipTip"]},
-		{1, "Misc", "Screenshot", NewTag..L["Auto ScreenShot"].."*", nil, nil, updateScreenShot},
+		{1, "Misc", "Autoequip", L["AutoEquip"].."*", true, nil, nil, L["AutoEquipTip"]},
+		{1, "Misc", "Screenshot", L["Auto ScreenShot"].."*", nil, nil, updateScreenShot},
 	},
 	[14] = {
 		{1, "ACCOUNT", "VersionCheck", L["Version Check"]},

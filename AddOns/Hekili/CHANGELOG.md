@@ -1,0 +1,58 @@
+# Hekili
+
+## [v9.2.7-1.0.0b-53-gbce674c](https://github.com/Hekili/hekili/tree/bce674ca2c30e8a7c2783171f0c197d73f51a98d) (2022-10-15)
+[Full Changelog](https://github.com/Hekili/hekili/compare/v9.2.7-1.0.0b...bce674ca2c30e8a7c2783171f0c197d73f51a98d) 
+
+- Count target dummies with 1 HP as valid targets, but I'll probably have to revert this later.  
+- Don't autosnapshot at extremely low resources.  
+- Add Shamanistic Rage option.  
+- Include settings that have a range in the dropdown menu.  
+- Don't worry about setting up the last GCD start before GCD information is loaded.  
+- Fix DK Ghoul (pet) detection.  
+- Track Beacon of Light as a "friendly" dot.  
+- Fix Warrior auras and typo in Bloodthirst.  
+- Don't Viper Sting targets that don't have mana.  
+- Remove Blood Tap from CDs toggle; add another Frost DK priority.  
+- Move Demo Shout to shared auras.  
+- Fix bag reagents and health-as-resource.  
+- Don't darken spells that require reagents.  
+- More Hunter work.  
+- Fix FindUnitDebuffByID for auras with multiple IDs.  
+- Hunters.  
+- Righteous Fury tweak.  
+- Seal of Corruption/Vengeance.  
+- Paladins.  
+- Extra check for active\_dot.  
+- Expose more mainhand/offhand information.  
+- Open up some Paladin auras.  
+- Warlock priorities.  
+- Organize the priority selection list in the dropdown menu.  
+- Add potions; make some class auras shared.  
+- More Warlockery.  
+- A lot of Warlockery.  
+- Add "ability" to state environment.  
+- Warrior:  Recheck aura IDs  
+- Shaman spell tweaks.  
+- Test rewritten Frost DK priority.  
+- Try to proactively update keybindings for multi-rank abilities.  
+- Remove non-Wrath features and hope I don't regret it.  
+- Re-re-re-fix Unholy runes.  And Howling Blast/Rime.  
+- Detect multi-rank ability talents more correctly.  
+- Avoid doing work in the background when addon is not enabled.  
+- Profile more functions.  
+- Fix internal abilities with a negative ID.  
+- Fix Icy Talons spell IDs.  
+- Filler for DKs + fixes.  
+- Casting and GCD fixes.  
+- Put priorities into menu dropdown.  
+- Implement glyphs.  
+- Fix talent update event.  
+- More DK fixes.  
+- Death Knight resources are extra fun to model.  
+- Add skeletons for Druid, Hunter, Mage, Paladin, Priest, Rogue, Warlock.  
+- Warrior + fixes.  
+- DK priority tweaks.  
+- Work on DKs.  
+- Create Wrath branch with Shaman in-progress.  
+- Reset recommendations thread when specialization changes.  
+- Update some targets.  
