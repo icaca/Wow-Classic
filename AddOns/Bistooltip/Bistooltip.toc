@@ -1,9 +1,9 @@
 ## Interface: 30400
 ## Title: BiS-Tooltip
-## Notes: v6.7. In game BiS lists and item tooltip enrichment.
+## Notes: v6.8. In game BiS lists and item tooltip enrichment.
 ## Author: Hellixoid
 ## Author: Dweem
-## Version: 6.7
+## Version: 6.8
 ## SavedVariables: BisTooltipDB
 ## OptionalDeps:
 

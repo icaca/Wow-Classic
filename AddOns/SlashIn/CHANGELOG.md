@@ -1,9 +1,6 @@
 # SlashIn
 
-## [v9.2.4](https://github.com/funkydude/SlashIn/tree/v9.2.4) (2022-08-29)
-[Full Changelog](https://github.com/funkydude/SlashIn/compare/v9.2.3...v9.2.4) [Previous Releases](https://github.com/funkydude/SlashIn/releases)
+## [v10.0.0](https://github.com/funkydude/SlashIn/tree/v10.0.0) (2022-10-26)
+[Full Changelog](https://github.com/funkydude/SlashIn/compare/v9.2.4...v10.0.0) [Previous Releases](https://github.com/funkydude/SlashIn/releases)
 
-- Add Wago ID  
-- Add wrath toc  
-- Update workflow  
 - bump toc  

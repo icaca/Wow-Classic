@@ -1,0 +1,15 @@
+## Interface: 90207
+## Author: p3lim
+## Version: 56
+## Title: Lib: Processable
+## Notes: Library that lets you easily check if you can process resources
+## OptionalDeps: LibStub
+
+## X-Curse-Project-ID: 88553
+## X-WoWI-ID: 23440
+
+#@non-debug@
+# LibStub\LibStub.lua
+#@end-non-debug@
+
+embed.xml

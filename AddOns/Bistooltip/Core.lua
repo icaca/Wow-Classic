@@ -28,7 +28,7 @@ end
 
 function BistooltipAddon:OnInitialize()
     BistooltipAddon.AceAddonName = "Bis-Tooltip"
-    BistooltipAddon.AddonNameAndVersion = "Bis-Tooltip v6.7"
+    BistooltipAddon.AddonNameAndVersion = "Bis-Tooltip v6.8"
     BistooltipAddon:initConfig()
     addMapIcon()
     BistooltipAddon:initBislists()

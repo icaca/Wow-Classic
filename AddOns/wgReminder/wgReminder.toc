@@ -1,7 +1,0 @@
-## Interface: 30400
-## Title: wgReminder
-## Notes: Lightweight reminder for upcoming Wintergrasp battles.
-## Author: Beckeeh
-## Version: 1.0.0
-
-wgReminder.lua
