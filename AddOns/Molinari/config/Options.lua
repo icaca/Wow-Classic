@@ -1,8 +1,10 @@
 local addonName, ns = ...
 local L = ns.L
 
+local WOW_10 = select(4, GetBuildInfo()) >= 100000
+
 local function UpdateOptions()
-	if(InterfaceOptionsFrameAddOns:IsShown()) then
+	if((InterfaceOptionsFrameAddOns or SettingsPanel):IsShown()) then
 		LibStub('AceConfigRegistry-3.0'):NotifyChange(addonName)
 	end
 end
@@ -30,7 +32,7 @@ local function CreateOptions()
 				},
 				set = function(info, value)
 					ns.db.profile.general[info[#info]] = value
-					Molinari:UpdateModifier()
+					Molinari:UpdateStateDriver()
 				end,
 				disabled = InCombatLockdown,
 			},
@@ -46,25 +48,36 @@ local function CreateOptions()
 	LibStub('AceConfigDialog-3.0'):AddToBlizOptions(addonName)
 
 	-- handle combat updates
-	local EventHandler = CreateFrame('Frame', nil, InterfaceOptionsFrameAddOns)
+	local EventHandler = CreateFrame('Frame', nil, InterfaceOptionsFrameAddOns or SettingsPanel)
 	EventHandler:RegisterEvent('PLAYER_REGEN_ENABLED')
 	EventHandler:RegisterEvent('PLAYER_REGEN_DISABLED')
 	EventHandler:SetScript('OnEvent', UpdateOptions)
 end
 
-InterfaceOptionsFrameAddOns:HookScript('OnShow', function()
-	CreateOptions() -- LoD
-	ns.CreateBlocklistOptions() -- LoD
+if WOW_10 then
+	SettingsPanel:HookScript('OnShow', function()
+		CreateOptions() -- LoD
+		ns.CreateBlocklistOptions() -- LoD
+	end)
+else
+	InterfaceOptionsFrameAddOns:HookScript('OnShow', function()
+		CreateOptions() -- LoD
+		ns.CreateBlocklistOptions() -- LoD
 
-	-- we load too late, so we have to manually refresh the list
-	InterfaceAddOnsList_Update()
-end)
+		-- we load too late, so we have to manually refresh the list
+		InterfaceAddOnsList_Update()
+	end)
+end
 
 _G['SLASH_' .. addonName .. '1'] = '/molinari'
 SlashCmdList[addonName] = function()
 	CreateOptions() -- LoD
 	ns.CreateBlocklistOptions() -- LoD
 
-	InterfaceOptionsFrame_OpenToCategory(addonName)
-	InterfaceOptionsFrame_OpenToCategory(addonName) -- load twice due to an old bug
+	if WOW_10 then
+		Settings.OpenToCategory(addonName)
+	else
+		InterfaceOptionsFrame_OpenToCategory(addonName)
+		InterfaceOptionsFrame_OpenToCategory(addonName) -- load twice due to an old bug
+	end
 end

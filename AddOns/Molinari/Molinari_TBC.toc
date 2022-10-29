@@ -1,6 +1,6 @@
 ## Interface: 20504
 ## Author: p3lim
-## Version: 90207.85-Release
+## Version: 100000.87-Release
 ## Title: Molinari
 ## Notes: One-click Milling, Prospecting, Disenchanting and Lockpicking!
 ## OptionalDeps: LibStub, CallbackHandler-1.0, Ace3, LibProcessable
@@ -28,6 +28,8 @@ locale\ptBR.lua
 locale\ruRU.lua
 locale\zhCN.lua
 locale\zhTW.lua
+
+mixins\event.lua
 
 Molinari.lua
 
