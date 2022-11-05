@@ -2,7 +2,7 @@
 ## Title: AutoLoggerClassic
 ## Notes: Automatically triggers combat logging on and off in raids.
 ## Author: cloudbells
-## Version: v2.1.1-tbcc-release
+## Version: v2.1.3-wotlkc-release
 ## SavedVariablesPerCharacter: ALCOptions
 ## X-WoWI-ID: 25314
 ## X-Curse-Project-ID: 341902

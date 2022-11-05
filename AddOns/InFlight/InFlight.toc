@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-## Interface: 20503
-=======
 ## Interface: 30400
->>>>>>> Stashed changes
 ## Title: InFlight
 ## Notes: Status bar timer for your flight paths
 ## Notes-deDE: Zeitanzeige für Ihre Flugrouten

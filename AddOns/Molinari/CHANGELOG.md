@@ -1,5 +1,4 @@
-### Changes in 100000.87-Release:
+### Changes in 100000.89-Release:
 
-- Changed: Update LibProcessable embed
-- Fixed: Unintended global leak
+- Fixed: More errors on non-bag items
 
