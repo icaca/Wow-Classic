@@ -1,4 +1,4 @@
-## Interface: 90207
+## Interface: 100000
 #@non-debug@
 ## Title: Atlas |r|cFF0099FF[Transportation]|r
 ## Title-deDE: Atlas |r|cFF0099FF[Beförderungsrouten]|r
@@ -24,9 +24,9 @@
 # ## Notes: Transportation Maps
 # ## Notes-zhTW: Atlas 交通網路圖插件，顯示各大陸的海陸空交通節點
 #@end-debug@
-## Version: v1.51.08
+## Version: v1.52.00
 ## Author: arith, Dynaletik, dubcat
-## X-Date: 2022-09-04T14:00:21Z
+## X-Date: 2022-11-06T14:35:25Z
 ## X-Credits: Dan Gilbert, Lothaer
 ## X-Email: atlas.addon at gmail dot com
 ## X-Website: http://www.atlasmod.com

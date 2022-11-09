@@ -441,7 +441,7 @@ function private.IsDestroyable(itemString)
 	local classId = ItemInfo.GetClassId(itemString)
 	local subClassId = ItemInfo.GetSubClassId(itemString)
 	-- Workaround for Fire Leaf (i:36904) not being treated as an herb (at least in classsic)
-	if (classId == LE_ITEM_CLASS_TRADEGOODS and subClassId == ITEM_SUB_CLASS_HERB) or itemString == "i:39970" then
+	if (classId == LE_ITEM_CLASS_TRADEGOODS and subClassId == ITEM_SUB_CLASS_HERB) or itemString == "i:36904" then
 		conversionMethod = Conversions.METHOD.MILL
 		destroySpellId = SPELL_IDS.milling
 	elseif classId == LE_ITEM_CLASS_TRADEGOODS and subClassId == ITEM_SUB_CLASS_METAL_AND_STONE then
