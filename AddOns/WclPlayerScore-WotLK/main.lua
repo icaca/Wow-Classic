@@ -186,7 +186,7 @@ if (IsModifiedClick("CHATLINK")) then
   if (link and button) then
     local args = {};
     for v in string.gmatch(link, "[^:]+") do
-        table.insert(args, v);
+      table.insert(args, v);
     end
 		if (args[1] and args[1] == "player") then
 			args[2] = Ambiguate(args[2], "short")
