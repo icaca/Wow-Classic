@@ -12,7 +12,6 @@ local Event = TSM.Include("Util.Event")
 local TempTable = TSM.Include("Util.TempTable")
 local Log = TSM.Include("Util.Log")
 local ItemString = TSM.Include("Util.ItemString")
-local DefaultUI = TSM.Include("Service.DefaultUI")
 local ItemInfo = TSM.Include("Service.ItemInfo")
 local Settings = TSM.Include("Service.Settings")
 local AuctionTracking = TSM.Include("Service.AuctionTracking")
@@ -21,6 +20,7 @@ local private = {
 	mailDB = nil,
 	itemDB = nil,
 	quantityDB = nil,
+	isOpen = false,
 	tooltip = nil,
 	callbacks = {},
 	expiresCallbacks = {},
@@ -91,6 +91,8 @@ MailTracking:OnSettingsLoad(function()
 		:Commit()
 
 	private.settings.pendingMail[PLAYER_NAME] = private.settings.pendingMail[PLAYER_NAME] or {}
+	Event.Register("MAIL_SHOW", private.MailShowHandler)
+	Event.Register("MAIL_CLOSED", private.MailClosedHandler)
 	Event.Register("MAIL_INBOX_UPDATE", private.MailInboxUpdateHandler)
 
 	if TSM.IsWowClassic() then
@@ -230,8 +232,16 @@ end
 -- Event Handlers
 -- ============================================================================
 
+function private.MailShowHandler()
+	private.isOpen = true
+end
+
+function private.MailClosedHandler()
+	private.isOpen = false
+end
+
 function private.MailInboxUpdateHandler()
-	if not DefaultUI.IsMailVisible() then
+	if not private.isOpen then
 		return
 	end
 
@@ -239,7 +249,7 @@ function private.MailInboxUpdateHandler()
 end
 
 function private.MailInboxUpdateDelayed()
-	if not DefaultUI.IsMailVisible() then
+	if not private.isOpen then
 		return
 	end
 

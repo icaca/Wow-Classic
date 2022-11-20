@@ -10,7 +10,6 @@ local L = TSM.Include("Locale").GetTable()
 local Delay = TSM.Include("Util.Delay")
 local FSM = TSM.Include("Util.FSM")
 local Event = TSM.Include("Util.Event")
-local DefaultUI = TSM.Include("Service.DefaultUI")
 local Settings = TSM.Include("Service.Settings")
 local UIElements = TSM.Include("UI.UIElements")
 local private = {
@@ -109,12 +108,11 @@ function private.FSMCreate()
 	local function CurrencyUpdate()
 		private.fsm:ProcessEvent("EV_CURRENCY_UPDATE")
 	end
-	DefaultUI.RegisterMerchantVisibleCallback(function(visible)
-		if visible then
-			Delay.AfterFrame("MERCHANT_SHOW_DELAYED", 0, MerchantShowDelayed)
-		else
-			private.fsm:ProcessEvent("EV_MERCHANT_CLOSED")
-		end
+	Event.Register("MERCHANT_SHOW", function()
+		Delay.AfterFrame("MERCHANT_SHOW_DELAYED", 0, MerchantShowDelayed)
+	end)
+	Event.Register("MERCHANT_CLOSED", function()
+		private.fsm:ProcessEvent("EV_MERCHANT_CLOSED")
 	end)
 
 	local fsmContext = {
@@ -142,9 +140,8 @@ function private.FSMCreate()
 				if not private.defaultUISwitchBtn then
 					private.defaultUISwitchBtn = UIElements.New("ActionButton", "switchBtn")
 						:SetSize(60, TSM.IsWowClassic() and 16 or 15)
-						:SetFont("BODY_BODY3_MEDIUM")
 						:AddAnchor("TOPRIGHT", TSM.IsWowClassic() and -26 or -27, TSM.IsWowClassic() and -3 or -4)
-						:SetRelativeLevel(TSM.IsWowClassic() and 3 or 600)
+						:SetFont("BODY_BODY3_MEDIUM")
 						:DisableClickCooldown()
 						:SetText(L["TSM4"])
 						:SetScript("OnClick", private.SwitchBtnOnClick)
@@ -179,6 +176,7 @@ function private.FSMCreate()
 				end
 				MerchantFrame:ClearAllPoints()
 				MerchantFrame:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 100000, 100000)
+				OpenAllBags()
 				context.frame = private.CreateMainFrame()
 				context.frame:Show()
 				context.frame:GetElement("titleFrame.switchBtn"):Show()
@@ -189,6 +187,7 @@ function private.FSMCreate()
 				private.isVisible = true
 			end)
 			:SetOnExit(function(context)
+				CloseAllBags()
 				MerchantFrame:ClearAllPoints()
 				local point, region, relativePoint, x, y = unpack(context.defaultPoint)
 				if point and region and relativePoint and x and y then

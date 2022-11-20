@@ -24,12 +24,12 @@ local private = {
 
 ItemLinked:OnModuleLoad(function()
 	local origHandleModifiedItemClick = HandleModifiedItemClick
-	HandleModifiedItemClick = function(...)
-		return private.ItemLinkedHook(origHandleModifiedItemClick, ...)
+	HandleModifiedItemClick = function(link)
+		return private.ItemLinkedHook(origHandleModifiedItemClick, link)
 	end
 	local origChatEdit_InsertLink = ChatEdit_InsertLink
-	ChatEdit_InsertLink = function(...)
-		return private.ItemLinkedHook(origChatEdit_InsertLink, ...)
+	ChatEdit_InsertLink = function(link)
+		return private.ItemLinkedHook(origChatEdit_InsertLink, link)
 	end
 end)
 
@@ -52,12 +52,11 @@ end
 -- Private Helper Functions
 -- ============================================================================
 
-function private.ItemLinkedHook(origFunc, ...)
-	local putIntoChat = origFunc(...)
+function private.ItemLinkedHook(origFunc, itemLink)
+	local putIntoChat = origFunc(itemLink)
 	if putIntoChat then
 		return putIntoChat
 	end
-	local itemLink = ...
 	local name = ItemInfo.GetName(itemLink)
 	if not name or not private.HandleItemLinked(name, itemLink) then
 		return putIntoChat

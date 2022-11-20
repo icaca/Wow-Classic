@@ -239,21 +239,20 @@ function private.FSMCreate()
 				else
 					UIParent_OnEvent(UIParent, "TRADE_SKILL_SHOW")
 				end
-				local defaultFrame = TSM.IsWowClassic() and TradeSkillFrame or ProfessionsFrame
 				if not private.defaultUISwitchBtn then
 					private.defaultUISwitchBtn = UIElements.New("ActionButton", "switchBtn")
 						:SetSize(60, TSM.IsWowClassic() and 16 or 15)
-						:SetFont("BODY_BODY3_MEDIUM")
 						:AddAnchor("TOPRIGHT", TSM.IsWowClassic() and -60 or -27, TSM.IsWowClassic() and -16 or -4)
-						:SetRelativeLevel(TSM.IsWowClassic() and 3 or 600)
+						:SetRelativeLevel(3)
 						:DisableClickCooldown()
+						:SetFont("BODY_BODY3_MEDIUM")
 						:SetText(L["TSM4"])
 						:SetScript("OnClick", private.SwitchBtnOnClick)
 						:SetScript("OnEnter", private.SwitchButtonOnEnter)
 						:SetScript("OnLeave", private.SwitchButtonOnLeave)
-					private.defaultUISwitchBtn:_GetBaseFrame():SetParent(defaultFrame)
+					private.defaultUISwitchBtn:_GetBaseFrame():SetParent(TradeSkillFrame)
 				end
-				private.defaultUISwitchBtn:_GetBaseFrame():SetParent(private.craftOpen and CraftFrame or defaultFrame)
+				private.defaultUISwitchBtn:_GetBaseFrame():SetParent(private.craftOpen and CraftFrame or TradeSkillFrame)
 				if isIgnored then
 					TSM.Crafting.ProfessionScanner.SetDisabled(true)
 					private.defaultUISwitchBtn:Hide()
@@ -264,20 +263,26 @@ function private.FSMCreate()
 				if private.craftOpen then
 					ScriptWrapper.Set(CraftFrame, "OnHide", DefaultFrameOnHide)
 				else
-					ScriptWrapper.Set(defaultFrame, "OnHide", DefaultFrameOnHide)
+					ScriptWrapper.Set(TradeSkillFrame, "OnHide", DefaultFrameOnHide)
+				end
+				if not TSM.IsWowClassic() then
+					local linked, linkedName = TSM.Crafting.ProfessionUtil.IsLinkedProfession()
+					if TSM.Crafting.ProfessionUtil.IsDataStable() and not TSM.Crafting.ProfessionUtil.IsGuildProfession() and (not linked or (linked and linkedName == UnitName("player"))) then
+						TradeSkillFrame:OnEvent("TRADE_SKILL_DATA_SOURCE_CHANGED")
+						TradeSkillFrame:OnEvent("TRADE_SKILL_LIST_UPDATE")
+					end
 				end
 			end)
 			:SetOnExit(function(context)
-				local defaultFrame = TSM.IsWowClassic() and TradeSkillFrame or ProfessionsFrame
 				if private.craftOpen then
 					if CraftFrame then
 						ScriptWrapper.Clear(CraftFrame, "OnHide")
 						HideUIPanel(CraftFrame)
 					end
 				else
-					if defaultFrame then
-						ScriptWrapper.Clear(defaultFrame, "OnHide")
-						HideUIPanel(defaultFrame)
+					if TradeSkillFrame then
+						ScriptWrapper.Clear(TradeSkillFrame, "OnHide")
+						HideUIPanel(TradeSkillFrame)
 					end
 				end
 			end)

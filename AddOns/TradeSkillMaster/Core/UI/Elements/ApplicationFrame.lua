@@ -120,12 +120,8 @@ function ApplicationFrame.Release(self)
 	self._contentFrame = nil
 	self._contextTable = nil
 	self._defaultContextTable = nil
-	if TSM.IsWowClassic() then
-		self:_GetBaseFrame():SetMinResize(0, 0)
-		self:_GetBaseFrame():SetMaxResize(0, 0)
-	else
-		self:_GetBaseFrame():SetResizeBounds(0, 0, 0, 0)
-	end
+	self:_GetBaseFrame():SetMinResize(0, 0)
+	self:_GetBaseFrame():SetMaxResize(0, 0)
 	self._isScaling = nil
 	self._protected = nil
 	self._minWidth = 0
@@ -508,19 +504,11 @@ function private.ResizeButtonOnMouseDown(self, mouseButton)
 	if self._isScaling then
 		local minWidth = width * MIN_SCALE / self._contextTable.scale
 		local minHeight = height * MIN_SCALE / self._contextTable.scale
-		if TSM.IsWowClassic() then
-			frame:SetMinResize(minWidth, minHeight)
-			frame:SetMaxResize(width * 10, height * 10)
-		else
-			frame:SetResizeBounds(minWidth, minHeight, width * 10, height * 10)
-		end
+		frame:SetMinResize(minWidth, minHeight)
+		frame:SetMaxResize(width * 10, height * 10)
 	else
-		if TSM.IsWowClassic() then
-			frame:SetMinResize(self._minWidth, self._minHeight)
-			frame:SetMaxResize(width * 10, height * 10)
-		else
-			frame:SetResizeBounds(self._minWidth, self._minHeight, width * 10, height * 10)
-		end
+		frame:SetMinResize(self._minWidth, self._minHeight)
+		frame:SetMaxResize(width * 10, height * 10)
 	end
 	self:_SetResizing(true)
 	frame:StartSizing("BOTTOMRIGHT")

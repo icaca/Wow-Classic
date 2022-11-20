@@ -16,7 +16,6 @@ local Vararg = TSM.Include("Util.Vararg")
 local Analytics = TSM.Include("Util.Analytics")
 local Math = TSM.Include("Util.Math")
 local Debug = TSM.Include("Util.Debug")
-local DefaultUI = TSM.Include("Service.DefaultUI")
 local APIWrapper = LibTSMClass.DefineClass("APIWrapper")
 local private = {
 	wrappers = {},
@@ -25,6 +24,7 @@ local private = {
 	sortsPartsTemp = {},
 	itemKeyPartsTemp = {},
 	searchQueryAPITimes = {},
+	isAHOpen = false,
 	lastResponseReceived = 0,
 	hookedTime = {},
 	lastAuctionCanceledAuctionId = nil,
@@ -202,7 +202,8 @@ local API_EVENT_INFO = TSM.IsWowClassic() and
 -- ============================================================================
 
 AuctionHouseWrapper:OnModuleLoad(function()
-	DefaultUI.RegisterAuctionHouseVisibleCallback(private.AuctionHouseClosed, false)
+	Event.Register("AUCTION_HOUSE_SHOW", private.AuctionHouseShowHandler)
+	Event.Register("AUCTION_HOUSE_CLOSED", private.AuctionHouseClosedHandler)
 
 	-- setup wrappers
 	for apiName in pairs(API_EVENT_INFO) do
@@ -244,6 +245,10 @@ end)
 
 function AuctionHouseWrapper.RegisterAuctionIdUpdateCallback(callback)
 	tinsert(private.auctionIdUpdateCallbacks, callback)
+end
+
+function AuctionHouseWrapper.IsOpen()
+	return private.isAHOpen
 end
 
 function AuctionHouseWrapper.RegisterCanSendAuctionQueryCallback(callback)
@@ -500,7 +505,7 @@ function APIWrapper._HandleAPICall(self, ...)
 	end
 	Vararg.IntoTable(self._args, ...)
 	local timeout = nil
-	if not DefaultUI.IsAuctionHouseVisible() then
+	if not private.isAHOpen then
 		timeout = 0
 	elseif self._name == "QueryAuctionItems" and select(7, ...) then
 		timeout = GET_ALL_TIMEOUT
@@ -607,7 +612,12 @@ end
 -- Private Helper Functions
 -- ============================================================================
 
-function private.AuctionHouseClosed()
+function private.AuctionHouseShowHandler()
+	private.isAHOpen = true
+end
+
+function private.AuctionHouseClosedHandler()
+	private.isAHOpen = false
 	for _, wrapper in pairs(private.wrappers) do
 		wrapper:CancelIfPending()
 	end

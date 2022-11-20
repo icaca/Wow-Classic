@@ -10,7 +10,6 @@ local Database = TSM.Include("Util.Database")
 local Delay = TSM.Include("Util.Delay")
 local Event = TSM.Include("Util.Event")
 local ItemString = TSM.Include("Util.ItemString")
-local DefaultUI = TSM.Include("Service.DefaultUI")
 local ItemInfo = TSM.Include("Service.ItemInfo")
 local private = {
 	buybackDB = nil,
@@ -29,7 +28,8 @@ function Buyback.OnInitialize()
 		:AddNumberField("price")
 		:AddNumberField("quantity")
 		:Commit()
-	DefaultUI.RegisterMerchantVisibleCallback(private.MechantVisibilityHandler)
+	Event.Register("MERCHANT_SHOW", private.MerchantShowEventHandler)
+	Event.Register("MERCHANT_CLOSED", private.MerchantClosedEventHandler)
 	Event.Register("MERCHANT_UPDATE", private.MerchantUpdateEventHandler)
 end
 
@@ -48,13 +48,13 @@ end
 -- Private Helper Functions
 -- ============================================================================
 
-function private.MechantVisibilityHandler(visible)
-	if visible then
-		Delay.AfterFrame("UPDATE_BUYBACK_DB", 1, private.UpdateBuybackDB)
-	else
-		Delay.Cancel("UPDATE_BUYBACK_DB")
-		private.buybackDB:Truncate()
-	end
+function private.MerchantShowEventHandler()
+	Delay.AfterFrame("UPDATE_BUYBACK_DB", 1, private.UpdateBuybackDB)
+end
+
+function private.MerchantClosedEventHandler()
+	Delay.Cancel("UPDATE_BUYBACK_DB")
+	private.buybackDB:Truncate()
 end
 
 function private.MerchantUpdateEventHandler()

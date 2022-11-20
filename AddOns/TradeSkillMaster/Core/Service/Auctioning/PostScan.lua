@@ -13,8 +13,8 @@ local SlotId = TSM.Include("Util.SlotId")
 local Delay = TSM.Include("Util.Delay")
 local Math = TSM.Include("Util.Math")
 local Log = TSM.Include("Util.Log")
+local Event = TSM.Include("Util.Event")
 local ItemString = TSM.Include("Util.ItemString")
-local DefaultUI = TSM.Include("Service.DefaultUI")
 local Threading = TSM.Include("Service.Threading")
 local ItemInfo = TSM.Include("Service.ItemInfo")
 local BagTracking = TSM.Include("Service.BagTracking")
@@ -31,6 +31,7 @@ local private = {
 	subRowsTemp = {},
 	groupsQuery = nil, --luacheck: ignore 1004 - just stored for GC reasons
 	operationsQuery = nil, --luacheck: ignore 1004 - just stored for GC reasons
+	isAHOpen = false,
 }
 local RESET_REASON_LOOKUP = {
 	minPrice = "postResetMin",
@@ -53,7 +54,8 @@ local MAX_COMMODITY_STACKS_PER_AUCTION = 40
 
 function PostScan.OnInitialize()
 	BagTracking.RegisterCallback(private.UpdateOperationDB)
-	DefaultUI.RegisterAuctionHouseVisibleCallback(private.UpdateOperationDB, true)
+	Event.Register("AUCTION_HOUSE_SHOW", private.AuctionHouseShowHandler)
+	Event.Register("AUCTION_HOUSE_CLOSED", private.AuctionHouseClosedHandler)
 	private.operationDB = Database.NewSchema("AUCTIONING_OPERATIONS")
 		:AddUniqueStringField("autoBaseItemString")
 		:AddStringField("firstOperation")
@@ -268,12 +270,21 @@ end
 -- Private Helper Functions (General)
 -- ============================================================================
 
+function private.AuctionHouseShowHandler()
+	private.isAHOpen = true
+	private.UpdateOperationDB()
+end
+
+function private.AuctionHouseClosedHandler()
+	private.isAHOpen = false
+end
+
 function private.OnGroupsOperationsChanged()
 	Delay.AfterFrame("POST_GROUP_OPERATIONS_CHANGED", 1, private.UpdateOperationDB)
 end
 
 function private.UpdateOperationDB()
-	if not DefaultUI.IsAuctionHouseVisible() then
+	if not private.isAHOpen then
 		return
 	end
 	private.operationDB:TruncateAndBulkInsertStart()

@@ -9,7 +9,6 @@ local Merchant = TSM.Accounting:NewPackage("Merchant")
 local Event = TSM.Include("Util.Event")
 local Math = TSM.Include("Util.Math")
 local ItemString = TSM.Include("Util.ItemString")
-local DefaultUI = TSM.Include("Service.DefaultUI")
 local ItemInfo = TSM.Include("Service.ItemInfo")
 local private = {
 	repairMoney = 0,
@@ -30,9 +29,10 @@ local private = {
 -- ============================================================================
 
 function Merchant.OnInitialize()
-	DefaultUI.RegisterMerchantVisibleCallback(private.MechantVisibilityHandler)
+	Event.Register("MERCHANT_SHOW", private.SetupRepairCost)
 	Event.Register("BAG_UPDATE_DELAYED", private.OnMerchantUpdate)
 	Event.Register("UPDATE_INVENTORY_DURABILITY", private.AddRepairCosts)
+	Event.Register("MERCHANT_CLOSED", private.OnMerchantClosed)
 	hooksecurefunc("UseContainerItem", private.CheckMerchantSale)
 	hooksecurefunc("BuyMerchantItem", private.OnMerchantBuy)
 	hooksecurefunc("BuybackItem", private.OnMerchantBuyback)
@@ -44,17 +44,12 @@ end
 -- Repair Cost Tracking
 -- ============================================================================
 
-function private.MechantVisibilityHandler(visible)
-	if visible then
-		private.repairMoney = GetMoney()
-		private.couldRepair = CanMerchantRepair()
-		-- if merchant can repair set up variables so we can track repairs
-		if private.couldRepair then
-			private.repairCost = GetRepairAllCost()
-		end
-	else
-		private.couldRepair = nil
-		private.repairCost = 0
+function private.SetupRepairCost()
+	private.repairMoney = GetMoney()
+	private.couldRepair = CanMerchantRepair()
+	-- if merchant can repair set up variables so we can track repairs
+	if private.couldRepair then
+		private.repairCost = GetRepairAllCost()
 	end
 end
 
@@ -86,6 +81,11 @@ function private.AddRepairCosts()
 			private.repairCost = GetRepairAllCost()
 		end
 	end
+end
+
+function private.OnMerchantClosed()
+	private.couldRepair = nil
+	private.repairCost = 0
 end
 
 

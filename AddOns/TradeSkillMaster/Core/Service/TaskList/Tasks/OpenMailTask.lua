@@ -7,7 +7,6 @@
 local _, TSM = ...
 local OpenMailTask = TSM.Include("LibTSMClass").DefineClass("OpenMailTask", TSM.TaskList.ItemTask)
 local L = TSM.Include("Locale").GetTable()
-local DefaultUI = TSM.Include("Service.DefaultUI")
 TSM.TaskList.OpenMailTask = OpenMailTask
 local private = {
 	activeTasks = {},
@@ -23,7 +22,7 @@ local private = {
 function OpenMailTask.__init(self)
 	self.__super:__init()
 	if not private.registeredCallbacks then
-		DefaultUI.RegisterMailVisibleCallback(private.FrameCallback)
+		TSM.Mailing.RegisterFrameCallback(private.FrameCallback)
 		private.registeredCallbacks = true
 	end
 end
@@ -55,7 +54,7 @@ end
 -- ============================================================================
 
 function OpenMailTask._UpdateState(self)
-	if not DefaultUI.IsMailVisible() then
+	if not TSM.Mailing.IsOpen() then
 		return self:_SetButtonState(false, L["NOT OPEN"])
 	else
 		return self:_SetButtonState(false, L["OPEN"])

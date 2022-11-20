@@ -17,7 +17,6 @@ local Sound = TSM.Include("Util.Sound")
 local Money = TSM.Include("Util.Money")
 local Theme = TSM.Include("Util.Theme")
 local Analytics = TSM.Include("Util.Analytics")
-local DefaultUI = TSM.Include("Service.DefaultUI")
 local ItemInfo = TSM.Include("Service.ItemInfo")
 local Settings = TSM.Include("Service.Settings")
 local AuctionHouseWrapper = TSM.Include("Service.AuctionHouseWrapper")
@@ -26,6 +25,7 @@ local private = {
 	indexDB = nil,
 	quantityDB = nil,
 	updateQuery = nil, -- luacheck: ignore 1004 - just stored for GC reasons
+	isAHOpen = false,
 	callbacks = {},
 	expiresCallbacks = {},
 	indexUpdates = {
@@ -68,7 +68,8 @@ AuctionTracking:OnSettingsLoad(function()
 		:AddKey("factionrealm", "internalData", "expiringAuction")
 		:AddKey("sync", "internalData", "auctionQuantity")
 		:AddKey("global", "coreOptions", "auctionSaleSound")
-	DefaultUI.RegisterAuctionHouseVisibleCallback(private.AuctionHouseVisibilityHandler)
+	Event.Register("AUCTION_HOUSE_SHOW", private.AuctionHouseShowHandler)
+	Event.Register("AUCTION_HOUSE_CLOSED", private.AuctionHouseClosedHandler)
 	if TSM.IsWowClassic() then
 		Event.Register("AUCTION_OWNED_LIST_UPDATE", private.AuctionOwnedListUpdateHandler)
 	else
@@ -276,7 +277,7 @@ function AuctionTracking.GetQuantityByLevelItemString(levelItemString)
 end
 
 function AuctionTracking.QueryOwnedAuctions()
-	if not DefaultUI.IsAuctionHouseVisible() then
+	if not private.isAHOpen then
 		return
 	end
 	if TSM.IsWowClassic() then
@@ -300,18 +301,20 @@ end
 -- Event Handlers
 -- ============================================================================
 
-function private.AuctionHouseVisibilityHandler(visible)
-	if visible then
-		if TSM.IsWowClassic() then
-			AuctionTracking.QueryOwnedAuctions()
-			-- We don't always get AUCTION_OWNED_LIST_UPDATE events, so do our own scanning if needed
-			Delay.AfterTime("AUCTION_BACKGROUND_SCAN", 1, private.DoBackgroundScan, 1)
-		else
-			Delay.AfterTime(0.1, AuctionTracking.QueryOwnedAuctions)
-		end
+function private.AuctionHouseShowHandler()
+	private.isAHOpen = true
+	if TSM.IsWowClassic() then
+		AuctionTracking.QueryOwnedAuctions()
+		-- We don't always get AUCTION_OWNED_LIST_UPDATE events, so do our own scanning if needed
+		Delay.AfterTime("AUCTION_BACKGROUND_SCAN", 1, private.DoBackgroundScan, 1)
 	else
-		Delay.Cancel("AUCTION_BACKGROUND_SCAN")
+		Delay.AfterTime(0.1, AuctionTracking.QueryOwnedAuctions)
 	end
+end
+
+function private.AuctionHouseClosedHandler()
+	private.isAHOpen = false
+	Delay.Cancel("AUCTION_BACKGROUND_SCAN")
 end
 
 function private.DoBackgroundScan()
@@ -366,7 +369,7 @@ function private.AuctionCanceledHandler(_, auctionId)
 end
 
 function private.AuctionOwnedListUpdateDelayed()
-	if not DefaultUI.IsAuctionHouseVisible() then
+	if not private.isAHOpen then
 		return
 	elseif AuctionFrame and AuctionFrame:IsVisible() and AuctionFrame.selectedTab == 3 then
 		-- default UI auctions tab is visible, so scan later

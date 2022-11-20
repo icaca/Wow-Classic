@@ -19,7 +19,6 @@ local ItemInfo = TSM.Include("Service.ItemInfo")
 local InventoryInfo = TSM.Include("Service.InventoryInfo")
 local BagTracking = TSM.Include("Service.BagTracking")
 local PlayerInfo = TSM.Include("Service.PlayerInfo")
-local DefaultUI = TSM.Include("Service.DefaultUI")
 local UIElements = TSM.Include("UI.UIElements")
 local private = {
 	fsm = nil,
@@ -641,7 +640,9 @@ end
 -- ============================================================================
 
 function private.FSMCreate()
-	DefaultUI.RegisterMailVisibleCallback(function() private.fsm:ProcessEvent("EV_MAIL_CLEAR") end, false)
+	Event.Register("MAIL_CLOSED", function()
+		private.fsm:ProcessEvent("EV_MAIL_CLEAR")
+	end)
 	Event.Register("MAIL_SEND_INFO_UPDATE", function()
 		private.fsm:ProcessEvent("EV_MAIL_INFO_UPDATE")
 	end)

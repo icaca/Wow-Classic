@@ -88,11 +88,11 @@ function Tooltip.Show(parent, data, noWrapping, xOffset)
 			for _, slotId, itemId in RecipeString.OptionalMatIterator(data) do
 				local info = tremove(private.unusedOptionalMatTempTables) or {}
 				info.itemID = itemId
-				info.dataSlotIndex = slotId
-				info.quantity = 1
+				info.slot = slotId
+				info.count = 1
 				tinsert(private.optionalMatTable, info)
 			end
-			C_TradeSkillUI.SetTooltipRecipeResultItem(spellId, private.optionalMatTable, nil, level)
+			GameTooltip:SetRecipeResultItem(spellId, private.optionalMatTable, level)
 		end
 	elseif type(data) == "string" and (strfind(data, "^\124c.+\124Hitem:") or ItemString.IsItem(data)) then
 		GameTooltip:SetHyperlink(ItemInfo.GetLink(data))

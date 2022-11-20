@@ -8,6 +8,7 @@ local _, TSM = ...
 local Auctioning = TSM.UI.AuctionUI:NewPackage("Auctioning")
 local L = TSM.Include("Locale").GetTable()
 local FSM = TSM.Include("Util.FSM")
+local Event = TSM.Include("Util.Event")
 local Table = TSM.Include("Util.Table")
 local Sound = TSM.Include("Util.Sound")
 local Money = TSM.Include("Util.Money")
@@ -21,7 +22,6 @@ local BagTracking = TSM.Include("Service.BagTracking")
 local AuctionTracking = TSM.Include("Service.AuctionTracking")
 local AuctionScan = TSM.Include("Service.AuctionScan")
 local Settings = TSM.Include("Service.Settings")
-local DefaultUI = TSM.Include("Service.DefaultUI")
 local UIElements = TSM.Include("UI.UIElements")
 local private = {
 	settings = nil,
@@ -834,7 +834,9 @@ function private.FSMCreate()
 		isScanning = false,
 		pendingFuture = nil,
 	}
-	DefaultUI.RegisterAuctionHouseVisibleCallback(function() private.fsm:ProcessEvent("EV_AUCTION_HOUSE_CLOSED") end, false)
+	Event.Register("AUCTION_HOUSE_CLOSED", function()
+		private.fsm:ProcessEvent("EV_AUCTION_HOUSE_CLOSED")
+	end)
 	local fsmPrivate = {}
 	function fsmPrivate.UpdateDepositCost(context)
 		if context.scanType ~= "POST" then

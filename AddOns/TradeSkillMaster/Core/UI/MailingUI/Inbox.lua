@@ -753,7 +753,7 @@ end
 
 
 function private.GetInboxItemsTooltip(row)
-	return row:GetField("itemIndex") ~= 0 and row:GetField("itemLink") or nil
+	return row:GetField("itemIndex") ~= 0 and row:GetField("itemLink")
 end
 
 
