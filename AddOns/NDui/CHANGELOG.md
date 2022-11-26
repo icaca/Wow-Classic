@@ -1,7 +1,6 @@
 # NDui Classic
 
-## [3.5.3](https://github.com/siweia/NDui/tree/3.5.3) (2022-11-15)
+## [3.5.6](https://github.com/siweia/NDui/tree/3.5.6) (2022-11-23)
 
-- Update skin for WA.
-- Update reminder for Mage.
-- Update sortbags for bullets and arrows.
+- Update anchor for enchanted string.
+- Skins: fix checked texture.
