@@ -1,10 +1,13 @@
 # WclPlayerScore-WotLK
 
-## [v1.4.2](https://github.com/icaca/WclPlayerScore/tree/v1.4.2) (2022-11-29)
-[Full Changelog](https://github.com/icaca/WclPlayerScore/commits/v1.4.2) [Previous Releases](https://github.com/icaca/WclPlayerScore/releases)
+## [v1.4.8](https://github.com/icaca/WclPlayerScore/tree/v1.4.8) (2022-12-02)
+[Full Changelog](https://github.com/icaca/WclPlayerScore/commits/v1.4.8) [Previous Releases](https://github.com/icaca/WclPlayerScore/releases)
 
 - WCL Data Update  
-- Update WclPlayerScore-WotLK\_DB1.toc  
+- Merge branch 'main' of github.com:icaca/WclPlayerScore  
 - WCL Data Update  
-- Update .pkgmeta  
-- Update main.lua  
+- WCL Data Update  
+- WCL Data Update  
+- add 5199  
+- WCL Data Update  
+- Update README.md  
