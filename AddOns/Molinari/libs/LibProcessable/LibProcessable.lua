@@ -1,4 +1,4 @@
-local MAJOR, MINOR = 'LibProcessable', 57
+local MAJOR, MINOR = 'LibProcessable', 58
 assert(LibStub, MAJOR .. ' requires LibStub')
 
 local lib = LibStub:NewLibrary(MAJOR, MINOR)
@@ -10,7 +10,6 @@ local data = {} -- private table for storing data without exposing it
 local professions = {} -- private table for storing cached profession info
 
 local CLASSIC = select(4, GetBuildInfo()) < 90000
-local DRAGONFLIGHT = select(4, GetBuildInfo()) >= 100000
 
 -- upvalue constants with fallbacks
 local LE_ITEM_QUALITY_UNCOMMON = LE_ITEM_QUALITY_UNCOMMON or Enum.ItemQuality.Uncommon or 2
@@ -18,6 +17,7 @@ local LE_ITEM_QUALITY_EPIC = LE_ITEM_QUALITY_EPIC or Enum.ItemQuality.Epic or 4
 local LE_ITEM_CLASS_ARMOR = Enum.ItemClass.Armor or 4
 local LE_ITEM_CLASS_WEAPON = Enum.ItemClass.Weapon or 2
 local LE_ITEM_CLASS_GEM = Enum.ItemClass.Gem or 3
+local LE_ITEM_CLASS_PROFESSION = Enum.ItemClass.Profession or 19
 local LE_ITEM_ARMOR_COSMETIC = Enum.ItemClass.Cosmetic or 5
 local LE_ITEM_SUBCLASS_ARTIFACT = 11 -- no existing constant for this one
 local LE_ITEM_EQUIPLOC_SHIRT = Enum.InventoryType.IndexBodyType or 4
@@ -158,7 +158,8 @@ function lib:IsDisenchantable(item)
 				and C_Item.GetItemInventoryTypeByID(itemID) ~= LE_ITEM_EQUIPLOC_SHIRT
 				and (class == LE_ITEM_CLASS_WEAPON
 					or (class == LE_ITEM_CLASS_ARMOR and subClass ~= LE_ITEM_ARMOR_COSMETIC)
-					or (class == LE_ITEM_CLASS_GEM and subClass == LE_ITEM_SUBCLASS_ARTIFACT)))
+					or (class == LE_ITEM_CLASS_GEM and subClass == LE_ITEM_SUBCLASS_ARTIFACT)
+					or class == LE_ITEM_CLASS_PROFESSION))
 		end
 	end
 end
@@ -691,6 +692,17 @@ data.enchantingItems = {
 	[182043] = true, -- Antique Necromancer's Staff
 	[182067] = true, -- Antique Duelist's Rapier
 	[181991] = true, -- Antique Stalker's Bow
+
+	-- Dragonflight profession items
+	-- https://www.wowhead.com/items?filter=104;0;amount+of+magical+power+can+be+sensed+from+within
+	[200939] = true, -- Chromatic Pocketwatch
+	[200940] = true, -- Everflowing Inkwell
+	[200941] = true, -- Seal of Order
+	[200942] = true, -- Vibrant Emulsion
+	[200943] = true, -- Whispering Band
+	[200945] = true, -- Valiant Hammer
+	[200946] = true, -- Thunderous Blade
+	[200947] = true, -- Carving of Awakening
 }
 
 -- /run ChatFrame1:Clear(); for _,i in next,{C_TradeSkillUI.GetCategories()} do print(i, C_TradeSkillUI.GetCategoryInfo(i).name) end

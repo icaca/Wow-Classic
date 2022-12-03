@@ -1,4 +1,4 @@
-### Changes in 100002.91-Release:
+### Changes in 100002.93-Release:
 
-- Fixed: Error from mousing over items in ElvUI chat
+- Changed: Update LibProcessable embed
 
