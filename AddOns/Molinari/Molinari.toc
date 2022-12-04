@@ -1,6 +1,6 @@
 ## Interface: 100002
 ## Author: p3lim
-## Version: 100002.93-Release
+## Version: 100002.94-Release
 ## Title: Molinari
 ## Notes: One-click Milling, Prospecting, Disenchanting and Lockpicking!
 ## OptionalDeps: LibStub, CallbackHandler-1.0, Ace3, LibProcessable

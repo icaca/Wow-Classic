@@ -1,4 +1,4 @@
-### Changes in 100002.93-Release:
+### Changes in 100002.94-Release:
 
-- Changed: Update LibProcessable embed
+- Added: Support for disenchanting even more special items
 
